@@ -12,7 +12,7 @@ export const codeSnippetData = [
 // a certificate file and a private key file for the listener.
 // The \`websocket:ListenerSecureSocket\` record
 // provides the SSL-related listener configurations of the listener.
-listener websocket:Listener chatListener = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -22,14 +22,16 @@ listener websocket:Listener chatListener = new(9090,
 );
 
 service /chat on chatListener {
+
     resource function get .() returns websocket:Service {
         return new ChatService();
-   }
+    }
 }
 
 service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         check caller->writeMessage("Hello, How are you?");
     }
 }
@@ -49,10 +51,13 @@ export function WebsocketServiceSslTls({ codeSnippets }) {
       <h1>WebSocket service - SSL/TLS</h1>
 
       <p>
-        You can use the WebSocket listener to connect to or interact with an
-        WebSocket client. Provide the{" "}
-        <code>websocket:ListenerSecureSocket</code> configurations to the server
-        to expose an WSS connection.
+        The <code>websocket:Listener</code> configured with SSL/TLS allows you
+        to expose a connection secured with one-way SSL/TLS. A{" "}
+        <code>websocket:Listener</code> secured with TLS/SSL is created by
+        providing the <code>secureSocket</code> configurations which require the
+        server's public certificate as the <code>certFile</code> and the
+        server's private key as the <code>keyFile</code>. Use this to expose a
+        WSS connection.
       </p>
 
       <Row
@@ -217,7 +222,7 @@ export function WebsocketServiceSslTls({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

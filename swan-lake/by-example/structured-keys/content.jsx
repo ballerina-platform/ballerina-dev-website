@@ -54,35 +54,6 @@ export function StructuredKeys({ codeSnippets }) {
         <code>cloneReadOnly()</code> can be used to create an immutable value.
       </p>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/table-syntax/">Table syntax</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/multiple-key-fields/">
-              Multiple key fields
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/records/">Records</a>
-          </span>
-        </li>
-      </ul>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -93,7 +64,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=19880af7b4b31513253792ca793b24df&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=4534002569bd90ae46df90663e67c80f&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -252,6 +223,35 @@ export function StructuredKeys({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/table-syntax/">Table syntax</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/multiple-key-fields/">
+              Multiple key fields
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">

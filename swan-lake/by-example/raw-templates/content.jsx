@@ -346,7 +346,7 @@ export function RawTemplates({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Query actions" href="/learn/by-example/query-actions">
+          <Link title="JSON numbers" href="/learn/by-example/json-numbers">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -372,7 +372,7 @@ export function RawTemplates({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query actions
+                  JSON numbers
                 </span>
               </div>
             </div>

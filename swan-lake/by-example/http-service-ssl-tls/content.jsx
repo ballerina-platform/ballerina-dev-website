@@ -12,11 +12,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-// An HTTP listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations of the listener.
-listener http:Listener securedEP = new(9090,
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -26,6 +22,7 @@ listener http:Listener securedEP = new(9090,
 );
 
 service / on securedEP {
+
     resource function get albums() returns Album[] {
         return [
             {title: "Blue Train", artist: "John Coltrane"},
@@ -51,9 +48,12 @@ export function HttpServiceSslTls({ codeSnippets }) {
       <h1>HTTP service - SSL/TLS</h1>
 
       <p>
-        You can use the HTTPS listener to connect to or interact with an HTTPS
-        client. Provide the <code>http:ListenerSecureSocket</code>{" "}
-        configurations to the server to expose an HTTPS connection.
+        The <code>http:Listener</code> can be configured to communicate through
+        HTTPS by providing a certificate file and a private key file. The
+        certificate and the key can be provided through the{" "}
+        <code>secureSocket</code> field of the listener configuration. Use this
+        to secure the communication and data transfer between the server and the
+        client.
       </p>
 
       <Row
@@ -257,6 +257,7 @@ export function HttpServiceSslTls({ codeSnippets }) {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl https://localhost:9090/albums --cacert /path/to/server-public.crt`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -264,8 +265,9 @@ export function HttpServiceSslTls({ codeSnippets }) {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>.
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -295,7 +297,10 @@ export function HttpServiceSslTls({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Caching" href="/learn/by-example/http-caching-client">
+          <Link
+            title="Enable caching"
+            href="/learn/by-example/http-caching-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +326,7 @@ export function HttpServiceSslTls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching
+                  Enable caching
                 </span>
               </div>
             </div>

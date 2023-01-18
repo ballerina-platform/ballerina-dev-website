@@ -52,33 +52,6 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
         will return <code>nil</code>.
       </p>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/json-type/">JSON type</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/check-expression/">Check expression</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/optional-fields/">Optional fields</a>
-          </span>
-        </li>
-      </ul>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -89,7 +62,7 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4e4646a13f0b2cdac05f2836e0c8399c&file=access_optional_json_elements.bal",
+                "https://play.ballerina.io/?gist=9cc2e0cbf5686ec4e14c3f6042f305d9&file=access_optional_json_elements.bal",
                 "_blank"
               );
             }}
@@ -227,6 +200,33 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/check-expression/">Check expression</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/optional-fields/">Optional fields</a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">

@@ -79,7 +79,7 @@ export function Table({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e50bd81bb5a2d19aad3277e1a4e730ca&file=table.bal",
+                "https://play.ballerina.io/?gist=f7b084129d1432c5a23cfde137a62283&file=table.bal",
                 "_blank"
               );
             }}
@@ -261,7 +261,10 @@ export function Table({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="JSON numbers" href="/learn/by-example/json-numbers">
+          <Link
+            title="Error binding pattern in match statement"
+            href="/learn/by-example/error-binding-pattern-in-match-statement"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +290,7 @@ export function Table({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  JSON numbers
+                  Error binding pattern in match statement
                 </span>
               </div>
             </div>

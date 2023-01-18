@@ -54,7 +54,7 @@ export function AzureFunctionsDeployment({ codeSnippets }) {
 
       <p>
         For more information, see the{" "}
-        <a href="https://ballerina.io/learn/deployment/azure-functions/">
+        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
           Azure deployment guide
         </a>
         .
@@ -433,7 +433,7 @@ export function AzureFunctionsDeployment({ codeSnippets }) {
         The <code>timer</code> function is triggered by the Azure Functions app
         from a timer. You can check the queue storage to see the output. For
         more information on the infrastructure, see{" "}
-        <a href="/learn/deployment/azure-functions/">
+        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
           Azure Functions deployment
         </a>
         .

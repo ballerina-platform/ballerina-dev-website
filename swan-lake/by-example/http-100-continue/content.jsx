@@ -16,16 +16,13 @@ service / on new http:Listener(9090) {
         if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
-
                 // Send a \`100-continue\` response to the client.
                 check caller->continue();
-
-            // Send a \`417\` response to ignore the payload as the content type is mismatched
-            // with the expected content type.
             } else {
+                // Send a \`417\` response to ignore the payload as the content type is mismatched
+                // with the expected content type.
                 http:ExpectationFailed resp = {body: "Unprocessable Entity"};
-                check caller->respond(resp);
-                return;
+                return caller->respond(resp);
             }
         }
 
@@ -59,10 +56,14 @@ export function Http100Continue({ codeSnippets }) {
       <h1>HTTP service - 100 continue</h1>
 
       <p>
-        Convenience functions are provided in the HTTP library for ease of use
-        when handling <code>100-continue</code> scenarios.{" "}
+        Convenience functions are provided in the <code>http</code> module for
+        ease of use when handling <code>100-continue</code> scenarios. The{" "}
         <code>100-continue</code> indicates that the server has received the
-        request headers and the client can proceed with sending the request.
+        request headers and the client can proceed with sending the request. It
+        is done by invoking the <code>continue</code> method of the{" "}
+        <code>http:Caller</code> which results in an interim response containing
+        the <code>100 Continue</code> status code if allowed. This is useful
+        when handling multipart or large request payloads.
       </p>
 
       <Row
@@ -73,6 +74,31 @@ export function Http100Continue({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=fdcfdcee4a5c13d835c9dc7f14c235c5&file=http_100_continue.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-100-continue",
@@ -274,21 +300,21 @@ export function Http100Continue({ codeSnippets }) {
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
               <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> Expect:100-continue`}</span>
-              <span>{`> Content-Length: 17`}</span>
               <span>{`> Content-Type: text/plain`}</span>
+              <span>{`> Content-Length: 17`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 100 Continue`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:05 +0530`}</span>
               <span>{`* We are completely uploaded and fine`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< HTTP/1.1 201 Created`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 13`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:05 +0530`}</span>
               <span>{`<`}</span>
               <span>{`Hello World!`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
@@ -297,20 +323,20 @@ export function Http100Continue({ codeSnippets }) {
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
               <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
               <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> Expect:100-continue`}</span>
               <span>{`> Content-Type: application/json`}</span>
-              <span>{`> Content-Length: 25`}</span>
+              <span>{`> Content-Length: 23`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 417 Expectation Failed`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 20`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:19:53 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:59 +0530`}</span>
               <span>{`* HTTP error before end of send, stop sending`}</span>
               <span>{`<`}</span>
               <span>{`* Closing connection 0`}</span>

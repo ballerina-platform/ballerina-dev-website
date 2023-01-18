@@ -53,7 +53,7 @@ export function Covariance({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=43be736faae565e13a0a4a4bc0ef2b64&file=covariance.bal",
+                "https://play.ballerina.io/?gist=7e4c6d2a22da679edfdc14294ef528a8&file=covariance.bal",
                 "_blank"
               );
             }}

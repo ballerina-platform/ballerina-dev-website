@@ -73,11 +73,12 @@ export function GrpcClientBidirectionalStreaming({ codeSnippets }) {
       <h1>gRPC client - Bidirectional streaming RPC</h1>
 
       <p>
-        The gRPC server connector exposes the gRPC service over HTTP2. In a gRPC
-        bidirectional streaming scenario, the gRPC service and the client
-        operate when each other sends a sequence of messages using a read-write
-        stream. In such scenarios, the two streams operate independently.
-        Therefore, clients and servers can read and write in any order.
+        A <code>grpc:Client</code> is created by providing the endpoint URL of a
+        gRPC server. In the bidirectional streaming scenario, once connected,
+        the client and the service send message streams to each other. In this
+        scenario, the two streams operate independently, and therefore, clients
+        and servers can read and write in any order. Use this to send multiple
+        request messages to a server and get multiple response messages back.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -414,7 +415,7 @@ export function GrpcClientBidirectionalStreaming({ codeSnippets }) {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Execute the command below to run the client.</span>
+          <span>Run the client by executing the command below.</span>
         </li>
       </ul>
 
@@ -487,7 +488,7 @@ export function GrpcClientBidirectionalStreaming({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

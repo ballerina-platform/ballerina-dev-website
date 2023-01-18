@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define a service class to use as an object in the GraphQL service.
+// Defines a service class to use as an object in the GraphQL service.
 service class Profile {
     private final string name;
     private final int age;
@@ -31,9 +31,9 @@ service class Profile {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // This resolver returns a service type, which will be mapped to a GraphQL \`OBJECT\` type named
-    // \`Profile\`. Each resource method in the service type is mapped to a field in the \`OBJECT\`
-    // type.
+    // This resolver returns a service type, which will be mapped to a GraphQL output object type
+    // named \`Profile\`. Each resource method in the service type is mapped to a field in the GraphQL
+    // output object type.
     resource function get profile() returns Profile {
         return new ("Walter White", 51);
     }
@@ -64,29 +64,20 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
       <h1>GraphQL service - Service as output object</h1>
 
       <p>
-        A GraphQL resource method can return service objects. The returning
-        service objects are mapped to an <code>OBJECT</code> type in the GraphQL
-        schema. Each resource method in the returned service object becomes a
-        field in the created <code>OBJECT</code> type.
+        The Ballerina <code>graphql</code> module allows returning{" "}
+        <code>service</code> objects from the <code>resource</code> or{" "}
+        <code>remote</code> methods of the <code>graphql:Service</code>. These{" "}
+        <code>service</code> objects are mapped to GraphQL output object types
+        in the GraphQL schema. Each <code>resource</code> method in the returned{" "}
+        <code>service</code> object becomes a field in the created GraphQL
+        output object type. The <code>resource</code> methods in these{" "}
+        <code>service</code> types can have input parameters. These input
+        parameters are mapped to arguments in the corresponding field. Use a{" "}
+        <code>service</code> type to represent a GraphQL output object type when
+        a field of that GraphQL output object type has any input arguments.
+        Further, using a <code>service</code> type to represent a GraphQL output
+        object type offers the flexibility of organizing complex logic.
       </p>
-
-      <p>
-        This example shows a GraphQL endpoint, which has a field{" "}
-        <code>profile</code> of type <code>Profile!</code> in the root{" "}
-        <code>Query</code> type. A GraphQL client can query on this service to
-        retrieve specific fields or subfields of the <code>Profile</code>{" "}
-        object.
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Note:</strong> Although both the record and service types can
-          be used to represent an Object type, using a record type as an Object
-          has limitations. For example, a field represented as a record field
-          can not have an input argument, as opposed to a field represented
-          using a resource method in a service class.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -403,7 +394,7 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/graphql/latest">
-              <code>graphql</code> package - API documentation
+              <code>graphql</code> module - API documentation
             </a>
           </span>
         </li>
@@ -423,8 +414,8 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Record as output object"
-            href="/learn/by-example/graphql-returning-record-values"
+            title="Hello world"
+            href="/learn/by-example/graphql-hello-world"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -451,7 +442,7 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Record as output object
+                  Hello world
                 </span>
               </div>
             </div>
@@ -459,8 +450,8 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Input types"
-            href="/learn/by-example/graphql-input-types"
+            title="Record as output object"
+            href="/learn/by-example/graphql-returning-record-values"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -470,7 +461,7 @@ export function GraphqlReturningServiceObjects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Input types
+                  Record as output object
                 </span>
               </div>
               <svg

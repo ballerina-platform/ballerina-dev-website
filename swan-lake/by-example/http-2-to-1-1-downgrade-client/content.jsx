@@ -8,10 +8,10 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
@@ -36,9 +36,12 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
 
       <p>
         The HTTP client is configured to run over the HTTP/1.1 protocol. This
-        client will only send requests over the HTTP/1.1 protocol. When you send
-        a request to an HTTP2 supported service using this client, they will get
-        downgraded to HTTP/1.1.
+        client only sends requests over the HTTP/1.1 protocol. When you send a
+        request to an HTTP2-supported service using this client, the connection
+        gets downgraded to HTTP/1.1. If the client is configured to communicate
+        over HTTPS, the ALPN negotiation of choosing which protocol to be used
+        over the secure connection is handled internally. This avoids additional
+        round trips and is independent of the application-layer protocols.
       </p>
 
       <Row
@@ -49,6 +52,31 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=0d904233160e87a1b9548ca6bbab8c27&file=http_2_to_1_1_downgrade_client.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-2-to-1-1-downgrade-client",
@@ -209,7 +237,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

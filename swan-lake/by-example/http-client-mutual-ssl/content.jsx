@@ -8,15 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
-    // An HTTP client can be configured to initiate new connections that are secured via mutual SSL.
-    // The \`http:ClientSecureSocket\` record provides the SSL-related configurations.
-    http:Client albumClient = check new("localhost:9090",
+    // The HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+    http:Client albumClient = check new ("localhost:9090",
         secureSocket = {
             key: {
                 certFile: "../resource/path/to/public.crt",
@@ -44,10 +43,17 @@ export function HttpClientMutualSsl({ codeSnippets }) {
       <h1>HTTP client - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>http:Client</code> allows opening up a connection secured with
+        mutual SSL (mTLS), which is a certificate-based authentication process
+        in which two parties (the client and server) authenticate each other by
+        verifying the digital certificates. It ensures that both parties are
+        assured of each other's identity. The <code>http:Client</code> secured
+        with mutual SSL is created by providing the <code>secureSocket</code>{" "}
+        configurations, which require the client's public certificate as the{" "}
+        <code>certFile</code>, the client's private key as the{" "}
+        <code>keyFile</code>, and the server's certificate as the{" "}
+        <code>cert</code>. Use this to interact with mTLS-encrypted HTTP
+        servers.
       </p>
 
       <Row
@@ -58,6 +64,31 @@ export function HttpClientMutualSsl({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=23363c88b319499f0a0e7d552bc50ae3&file=http_client_mutual_ssl.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-mutual-ssl",
@@ -143,8 +174,8 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             Run the HTTP service given in the{" "}
             <a href="/learn/by-example/http-service-mutual-ssl/">
               Mutual SSL service
-            </a>
-            .
+            </a>{" "}
+            example.
           </span>
         </li>
       </ul>

@@ -21,7 +21,8 @@ import ballerina/log;
     value: GRPC_CLIENT_STREAMING_DESC
 }
 service "HelloWorld" on new grpc:Listener(9090) {
-    isolated remote function lotsOfGreetings(stream<string, error?> clientStream)
+
+    remote function lotsOfGreetings(stream<string, error?> clientStream)
                         returns string {
         // Reads and processes each message in the client stream.
         error? result = from string name in clientStream
@@ -57,11 +58,13 @@ export function GrpcServiceClientStreaming({ codeSnippets }) {
       <h1>gRPC service - Client-side streaming RPC</h1>
 
       <p>
-        The gRPC Server Connector is used to expose gRPC services over HTTP/2.
-        In a gRPC client streaming scenario, the client writes a sequence of
-        messages and sends them to the server. Once the client has finished
-        writing the messages, it waits for the server to read them and return a
-        response.
+        A <code>grpc:Listener</code> is created by providing the port and a{" "}
+        <code>grpc:Service</code> is attached to it. In the client streaming
+        scenario, once a client is connected to the service, the client sends a
+        message stream to the server. Once the client completes the request
+        message, the server sends the response message to complete the call. Use
+        this to receive multiple request messages from a client and send a
+        single response message back.
       </p>
 
       <h2>Generate the service definition</h2>
@@ -355,7 +358,7 @@ export function GrpcServiceClientStreaming({ codeSnippets }) {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>4.</span>
-          <span>Execute the command below to run the service.</span>
+          <span>Run the service by executing the command below.</span>
         </li>
       </ul>
 
@@ -438,7 +441,7 @@ export function GrpcServiceClientStreaming({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/grpc/latest">
-              <code>grpc</code> package - API documentation
+              <code>grpc</code> module - API documentation
             </a>
           </span>
         </li>

@@ -40,11 +40,13 @@ export function HttpServiceDataBinding({ codeSnippets }) {
       <h1>REST service - Payload data binding</h1>
 
       <p>
-        HTTP service payload data binding helps to access the request payload
-        through a resource signature parameter. The payload parameter should be
-        declared with the <code>@Payload</code> annotation and the parameter
-        type can be <code>anydata</code>. Binding failures will be responded
-        with a 400 Bad Request response.
+        HTTP service payload data binding allows accessing the request payload
+        using a resource signature parameter. The resource parameter which is
+        bound to the request payload should be annotated with{" "}
+        <code>@http:Payload</code> annotation. The resource parameter type
+        should be <code>anydata</code>. If the data binding fails, a{" "}
+        <code>400 Bad Request</code> response is sent to the client. Use this to
+        access the request payload directly from the resource.
       </p>
 
       <Row
@@ -55,6 +57,31 @@ export function HttpServiceDataBinding({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=348fd7461fd4729c4f6bc74b87191e0f&file=http_service_data_binding.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-service-data-binding",
@@ -257,6 +284,16 @@ export function HttpServiceDataBinding({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-send-request-receive-response/">
+            Send request/Receive response client
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -264,7 +301,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/annotations#Payload">
-              <code>http:Payload</code> annotation - API documentation
+              <code>@http:Payload</code> annotation - API documentation
             </a>
           </span>
         </li>
@@ -284,8 +321,8 @@ export function HttpServiceDataBinding({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service path and resource name"
-            href="/learn/by-example/http-service-path-and-resource-name"
+            title="Service and resource paths"
+            href="/learn/by-example/http-service-and-resource-paths"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,7 +349,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service path and resource name
+                  Service and resource paths
                 </span>
               </div>
             </div>

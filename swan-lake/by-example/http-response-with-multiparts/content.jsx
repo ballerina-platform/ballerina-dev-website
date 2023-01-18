@@ -15,21 +15,14 @@ service /multiparts on new http:Listener(9092) {
     resource function get encoder() returns http:Response {
         // Creates an enclosing entity to hold the child parts.
         mime:Entity parentPart = new;
-
-        // Creates a child part with the JSON content.
         mime:Entity childPart1 = new;
         childPart1.setJson({"name": "wso2"});
-        // Creates another child part with a file.
         mime:Entity childPart2 = new;
         // This file path is relative to where the Ballerina is running.
-        //If your file is located outside, give the
-        //absolute file path instead.
+        // If your file is located outside, give the absolute file path instead.
         childPart2.setFileAsEntityBody("./files/test.xml", contentType = mime:TEXT_XML);
-        // Creates an array to hold the child parts.
         mime:Entity[] childParts = [childPart1, childPart2];
-        // Sets the child parts to the parent part.
-        parentPart.setBodyParts(childParts,
-            contentType = mime:MULTIPART_MIXED);
+        parentPart.setBodyParts(childParts, contentType = mime:MULTIPART_MIXED);
         // Creates an array to hold the parent part and set it to the response.
         mime:Entity[] immediatePartsToResponse = [parentPart];
         http:Response outResponse = new;
@@ -38,16 +31,13 @@ service /multiparts on new http:Listener(9092) {
     }
 }
 
-// Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
     // This resource accepts multipart responses.
     resource function get decoder() returns string|http:InternalServerError|error {
         http:Client httpClient = check new ("localhost:9092");
         http:Response returnResult = check httpClient->/multiparts/encoder;
-        // Extracts the body parts from the response.
         mime:Entity[] parentParts = check returnResult.getBodyParts();
-        //Loops through body parts.
         foreach var parentPart in parentParts {
             handleNestedParts(parentPart);
         }
@@ -55,12 +45,11 @@ service /multiparts on new http:Listener(9090) {
     }
 }
 
-// Gets the child parts that are nested within the parent.
 function handleNestedParts(mime:Entity parentPart) {
     string contentTypeOfParent = parentPart.getContentType();
-    if (contentTypeOfParent.startsWith("multipart/")) {
+    if contentTypeOfParent.startsWith("multipart/") {
         var childParts = parentPart.getBodyParts();
-        if (childParts is mime:Entity[]) {
+        if childParts is mime:Entity[] {
             log:printInfo("Nested Parts Detected!");
             foreach var childPart in childParts {
                 handleContent(childPart);
@@ -71,42 +60,36 @@ function handleNestedParts(mime:Entity parentPart) {
     }
 }
 
-//The content logic that handles the body parts
-//vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
     string baseType = getBaseType(bodyPart.getContentType());
-    if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-        // Extracts XML data from the body part.
+    if mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType {
         var payload = bodyPart.getXml();
-        if (payload is xml) {
-             log:printInfo("XML data: " + payload.toString());
+        if payload is xml {
+            log:printInfo("XML data: " + payload.toString());
         } else {
-             log:printError("Error in parsing XML data", 'error = payload);
+            log:printError("Error in parsing XML data", 'error = payload);
         }
-    } else if (mime:APPLICATION_JSON == baseType) {
-        // Extracts JSON data from the body part.
+    } else if mime:APPLICATION_JSON == baseType {
         var payload = bodyPart.getJson();
-        if (payload is json) {
+        if payload is json {
             log:printInfo("JSON data: " + payload.toJsonString());
         } else {
-             log:printError("Error in parsing JSON data", 'error = payload);
+            log:printError("Error in parsing JSON data", 'error = payload);
         }
-    } else if (mime:TEXT_PLAIN == baseType) {
-        // Extracts text data from the body part.
+    } else if mime:TEXT_PLAIN == baseType {
         var payload = bodyPart.getText();
-        if (payload is string) {
+        if payload is string {
             log:printInfo("Text data: " + payload);
         } else {
             log:printError("Error in parsing text data", 'error = payload);
         }
-    } else if (mime:APPLICATION_PDF == baseType) {
-        // Extracts the byte stream from the body part and saves it as a file.
+    } else if mime:APPLICATION_PDF == baseType {
         var payload = bodyPart.getByteStream();
-        if (payload is stream<byte[], io:Error?>) {
-            //Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API by providing the file location to which the content should be written.
+        if payload is stream<byte[], io:Error?> {
+            // Writes the incoming stream to a file using the \`io:fileWriteBlocksFromStream\` API by providing the
+            // file location to which the content should be written.
             io:Error? result = io:fileWriteBlocksFromStream("./files/ReceivedFile.pdf", payload);
-
-            if (result is error) {
+            if result is error {
                 log:printError("Error occurred while writing ", 'error = result);
             }
             close(payload);
@@ -116,20 +99,17 @@ function handleContent(mime:Entity bodyPart) {
     }
 }
 
-//Gets the base type from a given content type.
 function getBaseType(string contentType) returns string {
     var result = mime:getMediaType(contentType);
-    if (result is mime:MediaType) {
+    if result is mime:MediaType {
         return result.getBaseType();
-    } else {
-        panic result;
     }
+    panic result;
 }
 
-//Closes the byte stream.
 function close(stream<byte[], io:Error?> byteStream) {
     var cr = byteStream.close();
-    if (cr is error) {
+    if cr is error {
         log:printError("Error occurred while closing the stream: ", 'error = cr);
     }
 }
@@ -143,6 +123,8 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -151,11 +133,16 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
       <h1>HTTP service - Response with multiparts</h1>
 
       <p>
-        Ballerina supports encoding and decoding multipart content in HTTP
-        responses along with the nested parts. When you request multiparts from
-        an HTTP inbound response, you get an array of the parts of the body (an
-        array of entities). If the received parts contain nested parts, you can
-        loop through the parent parts and get the child parts.
+        The multipart payload is one or more different sets of data combined in
+        a single body. HTTP service supports multipart content setting and
+        retrieving in the <code>http:Response</code> along with the nested parts
+        through support functions. An array of <code>mime:Entity</code> is
+        returned when retrieving parts through <code>getBodyParts</code> method
+        of the <code>http:Response</code>. If the received parts contain nested
+        parts, you can loop through the parent parts and get the child parts.
+        When sending out multipart content, <code>setBodyParts</code> is used to
+        set the array of <code>mime:Entity</code>. This is useful to handle
+        different content-typed messages as a single payload and large payloads.
       </p>
 
       <Row
@@ -166,6 +153,31 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=b3145083e00262cd45e3f4f8ae663679&file=http_response_with_multiparts.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-response-with-multiparts",
@@ -297,8 +309,6 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# In the directory, which contains the \`.bal\` file, create a directory named \`files\`,`}</span>
-              <span>{`# and add an XML file named \`test.xml\` in it.`}</span>
               <span>{`\$ bal run response_with_multiparts.bal`}</span>
               <span>{`time = 2021-01-21 22:20:38,143 level = INFO  module = "" message = "Nested Parts Detected!" `}</span>
               <span>{`time = 2021-01-21 22:20:38,185 level = INFO  module = "" message = "JSON data: {"name":"wso2"}" `}</span>
@@ -311,15 +321,17 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
-      </p>
+      <h2>Prerequisites</h2>
 
       <p>
         In the directory, which contains the <code>.bal</code> file, create a
         directory named <code>files</code>, and add an XML file named{" "}
         <code>test.xml</code> in it.
+      </p>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
       </p>
 
       <Row
@@ -399,9 +411,69 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
               <span>{`
 `}</span>
               <span>{`--646e483fc8826c55--`}</span>
-              <span>{`
-`}</span>
-              <span>{`#To decode the inbound response with multiparts.`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        To decode the inbound response with multiparts, execute the following
+        cURL command.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
               <span>{`\$ curl http://localhost:9090/multiparts/decoder`}</span>
               <span>{`Body Parts Received!`}</span>
             </code>
@@ -435,7 +507,10 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Chunking" href="/learn/by-example/http-service-chunking">
+          <Link
+            title="Sending headers"
+            href="/learn/by-example/http-send-header"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -461,7 +536,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Chunking
+                  Sending headers
                 </span>
               </div>
             </div>

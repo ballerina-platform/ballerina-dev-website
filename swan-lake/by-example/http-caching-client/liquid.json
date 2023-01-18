@@ -1,5 +1,5 @@
 {
-  "title": "Caching",
+  "title": "Enable caching",
   "description": "BBE on how the HTTP caching is configured and performed in Ballerina.",
   "keywords": [
     "ballerina",

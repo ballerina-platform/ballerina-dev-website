@@ -55,10 +55,14 @@ export function HttpCors({ codeSnippets }) {
       <h1>HTTP service - CORS (Cross-Origin Resource Sharing)</h1>
 
       <p>
-        The CORS headers can be applied in both the service-level and the
-        resource-level. Service-level CORS headers apply to all the resources
-        unless there are headers configured at the resource-level. Ballerina
-        CORS supports both simple and pre-flight requests.
+        Cross-Origin Resource Sharing (CORS) is an HTTP-header-based mechanism
+        that allows a server to indicate any origins other than its own from
+        which a browser should permit. The CORS headers can be applied at both
+        the service level and the resource level. Each configuration has the{" "}
+        <code>cors</code> field to specify the CORS config. Service-level CORS
+        headers apply to all the resources unless there are headers configured
+        at the resource level. Ballerina CORS supports both simple and
+        pre-flight requests.
       </p>
 
       <Row
@@ -69,6 +73,31 @@ export function HttpCors({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=57b4607378c067850078391cc01d6429&file=http_cors.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-cors",

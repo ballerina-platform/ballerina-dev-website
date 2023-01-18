@@ -1,0 +1,11 @@
+{
+  "title": "Produce message",
+  "description": "BBE on sending messages to a Kafka topic using a `kafka:Producer` client.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "kafka", "producer"],
+  "permalink": "/learn/by-example/kafka-producer-produce-message",
+  "active": "kafka-producer-produce-message",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-producer-produce-message",
+    "/swan-lake/learn/by-example/kafka-producer-produce-message.html"
+  ]
+}

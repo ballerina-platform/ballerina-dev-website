@@ -51,7 +51,7 @@ export function FunctionClosure({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=38080d4bb8c27dd6ce29af76371ee56e&file=function_closure.bal",
+                "https://play.ballerina.io/?gist=739a85c73a093033e78b2776a2c3c918&file=function_closure.bal",
                 "_blank"
               );
             }}

@@ -8,16 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    // The client is enriched with the \`Authorization: Bearer <token>\` header by
-    // passing the \`http:OAuth2PasswordGrantConfig\` to the \`auth\` configuration of the client.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             username: "admin",
@@ -63,11 +61,12 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
       <h1>HTTP client - OAuth2 password grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 password grant type can be used
-        to connect to a secured service. The client is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>http:OAuth2PasswordGrantConfig</code> to the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>http:Client</code> can connect to a service that is secured
+        with the OAuth2 password grant type by adding the{" "}
+        <code>Authorization: Bearer &lt;token&gt;</code> header to each request.
+        The required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the client configuration. Use this grant type
+        when you need to exchange the user's credentials for an access token.
       </p>
 
       <Row
@@ -78,6 +77,31 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=4b7f5d3c1aa486748d8f04f6207d812c&file=http_client_oauth2_password_grant_type.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-oauth2-password-grant-type",
@@ -246,7 +270,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

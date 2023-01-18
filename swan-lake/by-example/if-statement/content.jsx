@@ -73,7 +73,7 @@ export function IfStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ecb85be91470674d9a16d30c6d860e49&file=if_statement.bal",
+                "https://play.ballerina.io/?gist=0952621f60eacaab5ee322f481276d2b&file=if_statement.bal",
                 "_blank"
               );
             }}
@@ -204,8 +204,8 @@ export function IfStatement({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run if_statement.bal`}</span>
-              <span>{`Grade: B`}</span>
-              <span>{`Grade: A`}</span>
+              <span>{`B`}</span>
+              <span>{`A`}</span>
             </code>
           </pre>
         </Col>
@@ -217,7 +217,7 @@ export function IfStatement({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/booleans/">Boolean</a>
+            <a href="/learn/by-example/boolean/">Boolean</a>
           </span>
         </li>
       </ul>

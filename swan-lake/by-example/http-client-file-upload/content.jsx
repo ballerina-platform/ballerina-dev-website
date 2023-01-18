@@ -15,7 +15,6 @@ public function main() returns error? {
     http:Request request = new;
 
     // Sets the file as the request payload.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload.
     request.setFileAsPayload("./files/BallerinaLang.pdf", contentType = mime:APPLICATION_PDF);
 
     //Sends the request to the receiver service with the file content.
@@ -40,9 +39,11 @@ export function HttpClientFileUpload({ codeSnippets }) {
       <h1>HTTP client - File upload</h1>
 
       <p>
-        Ballerina supports HTTP input and output streaming capability based on
-        the Ballerina <code>stream</code> type. The example depicts a file
-        upload through streaming.
+        The output streaming is generally handled through the Ballerina{" "}
+        <code>stream</code> type. Additionally, the{" "}
+        <code>setFileAsPayload</code> of the <code>http:Request</code> is the
+        support function dedicated to file uploads. This is useful when handling
+        continuous payload, file uploads, etc.
       </p>
 
       <Row
@@ -53,6 +54,31 @@ export function HttpClientFileUpload({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=956253739c6f03b2cbaca1d3890bc789&file=http_client_file_upload.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-file-upload",
@@ -223,7 +249,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/#2423-resource-methods">
-              <code>http</code> package - Specification
+              <code>http</code> module - Specification
             </a>
           </span>
         </li>

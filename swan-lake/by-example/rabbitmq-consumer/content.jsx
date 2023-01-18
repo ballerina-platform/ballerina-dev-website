@@ -17,6 +17,7 @@ public type Order record {
 
 // The consumer service listens to the "OrderQueue" queue.
 service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -39,10 +40,16 @@ export function RabbitmqConsumer({ codeSnippets }) {
       <h1>RabbitMQ service - Consume message</h1>
 
       <p>
-        The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. Multiple services consuming messages from the
-        same queue or from different queues can be attached to the same
-        Listener.
+        The <code>rabbitmq:Service</code> listens to the given queue for
+        incoming messages. When a publisher sends a message on a queue, any
+        active service listening on that queue receives the message. A{" "}
+        <code>rabbitmq:Listener</code> is created by passing the host and port
+        of the RabbiMQ broker. A <code>rabbitmq:Service</code> attached to the
+        listener is used to listen to a specific queue and consume incoming
+        messages. The queue to listen to should be given as the service name or
+        in the <code>queueName</code> field of the{" "}
+        <code>rabbitmq:ServiceConfig</code>. Use it to listen to messages sent
+        to a particular queue.
       </p>
 
       <Row
@@ -238,8 +245,8 @@ export function RabbitmqConsumer({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Consumer SASL authentication"
-            href="/learn/by-example/kafka-client-consumer-sasl"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-consumer-sasl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -266,7 +273,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consumer SASL authentication
+                  SASL authentication
                 </span>
               </div>
             </div>

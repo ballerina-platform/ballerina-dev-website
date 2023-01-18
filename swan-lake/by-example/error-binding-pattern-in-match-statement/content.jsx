@@ -88,7 +88,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6a77632227067d858b0e9f25441d5637&file=error_binding_pattern_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=d71b535cd111454af42a6cf8c1bad788&file=error_binding_pattern_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -287,7 +287,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Error handling" href="/learn/by-example/error-handling">
+          <Link title="Table" href="/learn/by-example/table">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -296,7 +296,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Table
                 </span>
               </div>
               <svg

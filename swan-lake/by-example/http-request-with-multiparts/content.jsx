@@ -9,23 +9,21 @@ export const codeSnippetData = [
 import ballerina/log;
 import ballerina/mime;
 
-//Binds the listener to the service.
 service /multiparts on new http:Listener(9090) {
 
     resource function post decoder(http:Request request)
             returns http:Response|http:InternalServerError|error {
-        http:Response response = new;
-        // Extracts body parts from the request.
         var bodyParts = check request.getBodyParts();
         foreach var part in bodyParts {
             handleContent(part);
         }
+        http:Response response = new;
         response.setPayload(bodyParts);
         return response;
     }
 
-    resource function get encoder(http:Request req) returns
-            http:Response|http:InternalServerError|error {
+    resource function get encoder(http:Request req)
+            returns http:Response|http:InternalServerError|error {
         //Create a \`json\` body part.
         mime:Entity jsonBodyPart = new;
         jsonBodyPart.setContentDisposition(getContentDispositionForFormData("json part"));
@@ -52,30 +50,26 @@ service /multiparts on new http:Listener(9090) {
     }
 }
 
-// The content logic that handles the body parts vary based on your requirement.
 function handleContent(mime:Entity bodyPart) {
     // Get the media type from the body part retrieved from the request.
     var mediaType = mime:getMediaType(bodyPart.getContentType());
     if mediaType is mime:MediaType {
         string baseType = mediaType.getBaseType();
-        if (mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType) {
-            // Extracts \`xml\` data from the body part.
+        if mime:APPLICATION_XML == baseType || mime:TEXT_XML == baseType {
             var payload = bodyPart.getXml();
             if payload is xml {
                 log:printInfo(payload.toString());
             } else {
                 log:printError(payload.message());
             }
-        } else if (mime:APPLICATION_JSON == baseType) {
-            // Extracts \`json\` data from the body part.
+        } else if mime:APPLICATION_JSON == baseType {
             var payload = bodyPart.getJson();
             if payload is json {
                 log:printInfo(payload.toJsonString());
             } else {
                 log:printError(payload.message());
             }
-        } else if (mime:TEXT_PLAIN == baseType) {
-            // Extracts text data from the body part.
+        } else if mime:TEXT_PLAIN == baseType {
             var payload = bodyPart.getText();
             if payload is string {
                 log:printInfo(payload);
@@ -102,6 +96,8 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -110,11 +106,17 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
       <h1>HTTP client - Request with multiparts</h1>
 
       <p>
-        Ballerina supports encoding and decoding multipart content in http
-        requests along with nested parts. When you request multiparts from the
-        HTTP inbound request, you get an array of body parts (an array of
-        entities). You can loop through this array and handle the received body
-        parts according to your requirement.
+        The multipart payload is one or more different sets of data combined in
+        a single body. The <code>http:Client</code> supports multipart content
+        setting and retrieving in the <code>http:Request</code> along with the
+        nested parts through support functions. An array of{" "}
+        <code>mime:Entity</code> is returned when retrieving parts through{" "}
+        <code>getBodyParts</code> method of the <code>http:Request</code>. If
+        the received parts contain nested parts, you can loop through the parent
+        parts and get the child parts. When sending out multipart content,{" "}
+        <code>setBodyParts</code> is used to set the array of{" "}
+        <code>mime:Entity</code>. This is useful to handle different
+        content-typed messages as a single payload and large payloads.
       </p>
 
       <Row
@@ -125,6 +127,31 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=3145508db8644a9b52f01ae52a4bf013&file=http_request_with_multiparts.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-request-with-multiparts",
@@ -256,8 +283,6 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# In the directory, which contains the \`.bal\` file, create a directory named \`file\`,`}</span>
-              <span>{`# and add an XML file named \`test.xml\` in it.`}</span>
               <span>{`\$ bal run request_with_multiparts.bal`}</span>
               <span>{`time = 2021-01-21 22:00:17,167 level = INFO  module = "" message = "{"name":"ballerina"}"`}</span>
               <span>{`time = 2021-01-21 22:01:18,466 level = INFO  module = "" message = "{"name":"wso2"}"`}</span>
@@ -265,21 +290,22 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
               <span>{`    <version>0.963</version>`}</span>
               <span>{`    <test>test xml file to be used as a file part</test>`}</span>
               <span>{`</ballerinalang>"`}</span>
-              <span>{`^C[ballerina/http] stopped HTTP/WS listener 0.0.0.0:9090`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>
-        Invoke the service by executing the following cURL command in a new
-        terminal.
-      </p>
+      <h2>Prerequisites</h2>
 
       <p>
         In the directory, which contains the <code>.bal</code> file, create a
-        directory named <code>file</code>, and add an XML files named{" "}
+        directory named <code>files</code>, and add an XML file named{" "}
         <code>test.xml</code> in it.
+      </p>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal.
       </p>
 
       <Row
@@ -344,9 +370,69 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
 `}</span>
               <span>{`{"name":"ballerina"}`}</span>
               <span>{`--f710b4a02896b88a--`}</span>
-              <span>{`
-`}</span>
-              <span>{`# The cURL command, which you need to execute to encode the parts of the body and send a multipart request via the Ballerina service.`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Execute the following cURL command to encode the parts of the body and
+        send a multipart request via the Ballerina service.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
               <span>{`\$ curl -v http://localhost:9090/multiparts/encoder`}</span>
               <span>{`> GET /multiparts/encoder HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>

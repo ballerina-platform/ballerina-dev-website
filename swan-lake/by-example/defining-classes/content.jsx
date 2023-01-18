@@ -76,7 +76,7 @@ export function DefiningClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3b40966ba81129780397961cf375cc16&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=a4d85aa8f902556b67cb4177d9c68419&file=defining_classes.bal",
                 "_blank"
               );
             }}
@@ -258,7 +258,9 @@ export function DefiningClasses({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/object-values/">Object values</a>
+            <a href="/learn/by-example/object-value-from-class-definition/">
+              Object value from class definition
+            </a>
           </span>
         </li>
       </ul>

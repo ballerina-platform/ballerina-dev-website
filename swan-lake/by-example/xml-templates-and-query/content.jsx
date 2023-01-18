@@ -55,7 +55,7 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5a332005dd6369e6ed03ff548687514d&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=95b37af9433f981b75fe514785f81554&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}
@@ -228,7 +228,7 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/query-exoressions/">Query expressions</a>
+            <a href="/learn/by-example/query-expressions/">Query expressions</a>
           </span>
         </li>
       </ul>

@@ -16,7 +16,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
@@ -53,10 +52,18 @@ export function SerdesSimple({ codeSnippets }) {
       <h1>SerDes - Serialization/Deserialization</h1>
 
       <p>
-        The <code>serdes</code> module helps to serialize and deserialize
-        subtypes of Ballerina <code>anydata</code>. This example demonstrates
-        how to serialize and deserialize a user defined <code>record</code>{" "}
-        type.
+        The <code>serdes</code> module allows serializing and deserializing the
+        subtypes of Ballerina <code>anydata</code>. The{" "}
+        <code>serdes:Proto3Schema</code> object takes <code>typedesc</code> as
+        an argument when instantiating, and maps the given type to a Protocol
+        Buffer schema. The <code>serialize</code> and <code>deserialize</code>{" "}
+        methods of the <code>serdes:Proto3Schema</code> object serialize and
+        deserialize data using the generated Protocol Buffer schema. The{" "}
+        <code>serialize</code> method takes a value of the given type as an
+        argument whereas the <code>deserialize</code> method takes{" "}
+        <code>byte[]</code> as an argument and tries to bind the deserialized
+        value to the <code>typedesc</code> inferred from the
+        contextually-expected type.
       </p>
 
       <Row
@@ -69,7 +76,7 @@ export function SerdesSimple({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e285bd656f3a4177eeda22b55a3c9b90&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=228f03e206edb7f20971e06f094264f4&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -230,9 +237,9 @@ export function SerdesSimple({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Related Links</h2>
+      <h2>Related links</h2>
 
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -242,7 +249,7 @@ export function SerdesSimple({ codeSnippets }) {
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
@@ -252,6 +259,7 @@ export function SerdesSimple({ codeSnippets }) {
           </span>
         </li>
       </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

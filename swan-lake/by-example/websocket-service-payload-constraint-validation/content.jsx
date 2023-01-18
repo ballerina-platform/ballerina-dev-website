@@ -16,14 +16,16 @@ import ballerina/websocket;
 public type Chat string;
 
 service /chat on new websocket:Listener(9090) {
-   resource function get .() returns websocket:Service|websocket:Error {
-       return new ChatService();
-   }
+
+    resource function get .() returns websocket:Service {
+        return new ChatService();
+    }
 }
 
 service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, Chat chatMessage) returns websocket:Error? {
+
+    remote function onMessage(websocket:Caller caller, Chat chatMessage) returns error? {
         io:println(chatMessage);
         check caller->writeMessage("Hello!, How are you?");
     }
@@ -44,12 +46,16 @@ export function WebsocketServicePayloadConstraintValidation({ codeSnippets }) {
       <h1>WebSocket service - Payload constraint validation</h1>
 
       <p>
-        Through service payload constraint validation, the request payload can
-        be validated according to the defined constraints. The constraint
-        validation happens along with the data binding step in the remote
-        function signature parameter. If the validation fails, the{" "}
-        <code>onError</code> remote function is dispatched with the validation
-        error details.
+        The Ballerina constraint package allows you to add additional
+        constraints to the received payload. Through service payload constraint
+        validation, the payload can be validated according to the defined
+        constraints. The constraint validation happens along with the data
+        binding step in the remote method signature parameter. Constraints can
+        be added to a given data type using different annotations. If the
+        validation fails, the <code>onError</code> remote method is dispatched
+        with the validation error details. Use this to validate the receiving
+        payload, which allows you to guard against unnecessary processing and
+        malicious payloads.
       </p>
 
       <Row
@@ -212,7 +218,7 @@ export function WebsocketServicePayloadConstraintValidation({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>
@@ -278,8 +284,8 @@ export function WebsocketServicePayloadConstraintValidation({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Send/Receive message"
-            href="/learn/by-example/websocket-client"
+            title="Error handling"
+            href="/learn/by-example/websocket-service-error-handling"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -289,7 +295,7 @@ export function WebsocketServicePayloadConstraintValidation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send/Receive message
+                  Error handling
                 </span>
               </div>
               <svg

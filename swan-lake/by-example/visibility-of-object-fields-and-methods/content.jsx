@@ -113,7 +113,7 @@ export function VisibilityOfObjectFieldsAndMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=062619c40710270e454cd42cf9a8832b&file=visibility_of_object_fields_and_methods.bal",
+                "https://play.ballerina.io/?gist=c6812c78a30110a95bf7cfcf9563c1e7&file=visibility_of_object_fields_and_methods.bal",
                 "_blank"
               );
             }}
@@ -258,7 +258,7 @@ export function VisibilityOfObjectFieldsAndMethods({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/objects/">Objects</a>
+            <a href="/learn/by-example/object/">Object</a>
           </span>
         </li>
       </ul>

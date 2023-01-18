@@ -58,7 +58,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=604a1b263b1cdf426d05033294fda519&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=ee35b2f68aab3eda36383c564aa8fe3e&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}
@@ -220,8 +220,8 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
+            title="Configuring via CLI arguments"
+            href="/learn/by-example/configuring-via-cli"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -248,7 +248,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configurable variables
+                  Configuring via CLI arguments
                 </span>
               </div>
             </div>

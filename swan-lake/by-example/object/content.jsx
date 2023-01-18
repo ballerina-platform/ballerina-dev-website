@@ -69,7 +69,7 @@ export function Object({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a8d851cc685384f9aefc4a40991abcdf&file=object.bal",
+                "https://play.ballerina.io/?gist=e4d4fb812d4928b38ee1c3f545e7e559&file=object.bal",
                 "_blank"
               );
             }}
@@ -281,7 +281,7 @@ export function Object({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/object-values/">Object values</a>
+            <a href="/learn/by-example/object-closure/">Object closure</a>
           </span>
         </li>
       </ul>

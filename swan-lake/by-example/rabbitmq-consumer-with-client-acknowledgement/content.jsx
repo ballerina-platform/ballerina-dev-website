@@ -45,10 +45,17 @@ export function RabbitmqConsumerWithClientAcknowledgement({ codeSnippets }) {
       <h1>RabbitMQ service - Consumer with acknowledgement</h1>
 
       <p>
-        The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. The received messages are acknowledged
-        manually. By default, the ackMode is <code>rabbitmq:AUTO_ACK</code>,
-        which will automatically acknowledge all messages once consumed.
+        The <code>rabbitmq:Caller</code> allows manual acknowledgments for the
+        consumed messages. A <code>rabbitmq:Listener</code> is created by
+        passing the host and port of the RabbiMQ broker. A{" "}
+        <code>rabbitmq:Service</code> attached to the{" "}
+        <code>rabbitmq:Listener</code> can be used to listen to a specific
+        subject and consume incoming messages. To enable manual acknowledgments,
+        set the <code>autoAck</code> mode in <code>rabbitmq:ServiceConfig</code>{" "}
+        to <code>false</code>. The <code>rabbitmq:Caller</code> can be used to
+        acknowledge the message positively or negatively using the{" "}
+        <code>basicAck</code> and <code>basicNack</code> functions. Use it to
+        manually acknowledge the consumed messages.
       </p>
 
       <Row

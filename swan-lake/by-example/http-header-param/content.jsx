@@ -46,18 +46,17 @@ export function HttpHeaderParam({ codeSnippets }) {
       <h1>REST service - Header parameter</h1>
 
       <p>
-        The <code>http</code> module provides support for accessing inbound
-        request headers as resource method arguments. The header key can be
-        specified as a variable name along with the <code>@http:Header</code>{" "}
-        annotation. Else, it can be specified in the <code>name</code> field of
-        the annotation. The supported types are <code>string</code>,{" "}
-        <code>string[]</code>, and optional. The <code>string[]</code> type
-        returns all the values for a given header key while <code>string</code>{" "}
-        returns the first value. Unless the type is optional, the request will
-        be responded with a 400 Bad request in the absence of the mentioned
-        header. However, more header manipulations can be done via the{" "}
-        <code>http:Headers</code> header object, which also can be accessed as a
-        resource method argument without using the annotation.
+        The <code>@http:header</code> annotation allows reading header values
+        from the request. The annotation can be used to annotate a given
+        resource parameter. The name of the parameter must match the name of the
+        header. If there is a mismatch, then the header name must be given in
+        the annotation configuration. The resource parameter can be a simple
+        type or an array type (i.e., <code>string version</code> or{" "}
+        <code>string[] versions</code>). If there are many headers to read, a
+        record type can be used as the parameter. Unless the parameter is
+        optional (i.e., <code>string? version</code>), a{" "}
+        <code>400 Bad Request</code> response is sent to the client in the
+        absence of the mapping header.
       </p>
 
       <Row
@@ -68,6 +67,31 @@ export function HttpHeaderParam({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=e8130b574c3dda3f88b74f4b5d12eacc&file=http_header_param.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-header-param",
@@ -270,6 +294,17 @@ export function HttpHeaderParam({ codeSnippets }) {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-header-parameter/">
+            HTTP client - Header parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -277,7 +312,7 @@ export function HttpHeaderParam({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

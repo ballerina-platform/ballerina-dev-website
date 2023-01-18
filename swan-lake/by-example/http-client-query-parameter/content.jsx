@@ -48,12 +48,14 @@ export function HttpClientQueryParameter({ codeSnippets }) {
       <h1>HTTP client - Query parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying
-        URL query parameters as resource method argument. The supported types
-        are <code>string</code>, <code>int</code>, <code>float</code>,{" "}
-        <code>boolean</code>, <code>decimal</code>, and the <code>array</code>{" "}
-        types of the aforementioned types. The query param type can be{" "}
-        <code>nil</code> as well.
+        The <code>http:Client</code> supports specifying query parameters as
+        resource method arguments. Each query parameter can be stated as a
+        key-value pair. When the request is sent, the key-value pairs are
+        appended to the request path (e.g., <code>?foo=bar</code>). The
+        supported types are <code>string</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>boolean</code>, <code>decimal</code>, and{" "}
+        <code>array</code> types of the aforementioned types. Use this when
+        invoking endpoints that expect query parameters.
       </p>
 
       <Row
@@ -64,6 +66,31 @@ export function HttpClientQueryParameter({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=6e09c3160b2ffe9eb0188ed264c7a27f&file=http_client_query_parameter.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-query-parameter",
@@ -218,7 +245,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
       </Row>
 
       <p>
-        Furthermore, a <code>post</code> request with query parameter can be
+        Furthermore, a <code>post</code> request with a query parameter can be
         sent as shown below.
       </p>
 
@@ -230,6 +257,31 @@ export function HttpClientQueryParameter({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=cc17417ad433497ea573b0d8f60383f8&file=http_client_query_parameter_post.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-query-parameter",
@@ -313,7 +365,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

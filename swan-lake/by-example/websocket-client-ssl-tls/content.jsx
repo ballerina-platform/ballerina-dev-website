@@ -13,7 +13,7 @@ public function main() returns error? {
     // To secure a client using TLS/SSL, the client needs to be configured with
     // a certificate file of the listener.
     // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         secureSocket = {
             cert: "../resource/path/to/public.crt"
         }
@@ -38,9 +38,12 @@ export function WebsocketClientSslTls({ codeSnippets }) {
       <h1>WebSocket client - SSL/TLS</h1>
 
       <p>
-        You can use the WSS client to connect or interact with an WSS listener.
-        Provide the <code>websocket:ClientSecureSocket</code> configurations to
-        the client to initiate an WSS connection.
+        The <code>websocket:Client</code> secured with SSL/TLS connects to a
+        given SSL/TLS-secured WebSocket server (WSS). A{" "}
+        <code>websocket:Client</code> secured with SSL/TLS is created by
+        providing the <code>secureSocket</code> configurations which require the
+        server's public certificate as the <code>cert</code>. Use this to
+        interact with TLS-encrypted WebSocket servers.
       </p>
 
       <Row
@@ -209,7 +212,7 @@ export function WebsocketClientSslTls({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> package - API documentation
+              <code>websocket</code> module - API documentation
             </a>
           </span>
         </li>

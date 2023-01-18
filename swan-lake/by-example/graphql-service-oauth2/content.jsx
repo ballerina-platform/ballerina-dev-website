@@ -21,10 +21,10 @@ listener graphql:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with OAuth2 and by enforcing authorization optionally. It can be
-// enabled by setting the \`graphql:OAuth2IntrospectionConfig\` configurations. Authorization is
-// based on scopes. A scope maps to one or more groups. Authorization can be enabled by setting the
-// \`string|string[]\` type configurations for the \`scopes\` field.
+// The service can be secured with OAuth2 and by enforcing authorization optionally.
+// It can be enabled by setting the \`graphql:OAuth2IntrospectionConfig\` configurations.
+// Authorization is based on scopes. A scope maps to one or more groups. Authorization can be
+// enabled by setting the \`string|string[]\` type configurations for the \`scopes\` field.
 @graphql:ServiceConfig {
     auth: [
         {
@@ -44,6 +44,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -67,25 +68,18 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
       <h1>GraphQL service - OAuth2</h1>
 
       <p>
-        A GraphQL service can be secured with OAuth2 and by enforcing
-        authorization optionally. Then, it validates the OAuth2 token sent in
-        the <code>Authorization</code> header against the provided
-        configurations. This calls the configured introspection endpoint to
-        validate.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the introspection response using a custom claim
-        attribute. That custom claim attribute also can be configured as the{" "}
-        <code>scopeKey</code>.
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service are compared
-        against the scope included in the introspection response for at least
-        one match between the two sets.
+        The <code>graphql:Service</code> can be secured with OAuth2 and
+        additionally, scopes can be added to enforce fine-grained authorization.
+        It validates the OAuth2 token sent in the <code>Authorization</code>{" "}
+        header against the provided configurations. This calls the configured
+        introspection endpoint for validation. Ballerina uses the concept of
+        scopes for authorization. A resource declared in a service can be bound
+        to one/more scope(s). The scope can be included in the introspection
+        response using a custom claim attribute. That custom claim attribute
+        also can be configured as the <code>scopeKey</code>. In the
+        authorization phase, the scopes of the service are compared against the
+        scope included in the introspection response for at least one match
+        between the two sets.
       </p>
 
       <Row
@@ -177,7 +171,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Run a Ballerina STS server for OAuth2 introspection.</span>
+          <span>An STS endpoint should be up and running.</span>
         </li>
       </ul>
 
@@ -280,7 +274,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/oauth2/latest/">
-              <code>oauth2</code> package - API documentation
+              <code>oauth2</code> module - API documentation
             </a>
           </span>
         </li>

@@ -86,7 +86,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a328cb315e4b351013b11b3cbb43563f&file=json_type.bal",
+                "https://play.ballerina.io/?gist=45665be72aff849f3140f05ce17f44e6&file=json_type.bal",
                 "_blank"
               );
             }}
@@ -306,7 +306,7 @@ export function JsonType({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Immutability" href="/learn/by-example/immutability">
+          <Link title="Query actions" href="/learn/by-example/query-actions">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +332,7 @@ export function JsonType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Immutability
+                  Query actions
                 </span>
               </div>
             </div>

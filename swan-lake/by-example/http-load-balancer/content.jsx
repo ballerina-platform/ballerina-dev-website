@@ -17,7 +17,6 @@ public function main() returns error? {
             {url: "http://localhost:9091"},
             {url: "http://localhost:9092"}
         ],
-
         timeout: 5
     });
     string payload = check httpClient->/albums;
@@ -39,8 +38,10 @@ export function HttpLoadBalancer({ codeSnippets }) {
       <h1>HTTP client - Load balancer</h1>
 
       <p>
-        An HTTP load balancing endpoint is used when the request load needs to
-        be load balanced across a given set of target endpoints.
+        A load-balancing client is used when the request load needs to be load
+        balanced across a given set of target endpoints. These endpoints are
+        defined in the <code>targets</code> field of the load-balancing client
+        configuration.
       </p>
 
       <Row
@@ -51,6 +52,31 @@ export function HttpLoadBalancer({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=279c9e2c805baa5ffe621386c52d99aa&file=http_load_balancer.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-load-balancer",
@@ -210,7 +236,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>

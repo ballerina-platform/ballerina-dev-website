@@ -7,18 +7,17 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/http;
 
-http:Client clientEP = check new ("postman-echo.com");
+type Album readonly & record {
+    string title;
+    string artist;
+};
 
-service / on new http:Listener(9090) {
+http:Client clientEP = check new ("localhost:9090");
 
-    // The passthrough resource allows all HTTP methods as the accessor is \`default\`. The rest parameter in the
-    // resource path, allows any request URI to get dispatched
-    resource function 'default [string... path](http:Request req) returns json|error {
-        // When forward()\` is called on the backend client endpoint, it forwards the request that the passthrough
-        // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
-        // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
-        // there are no errors.
-        json payload = check clientEP->forward("/get", req);
+service / on new http:Listener(9092) {
+
+    resource function 'default [string... path](http:Request req) returns Album[]|error {
+        Album[] payload = check clientEP->forward("/albums", req);
         return payload;
     }
 }
@@ -40,8 +39,17 @@ export function HttpPassthrough({ codeSnippets }) {
       <h1>HTTP service - Passthrough</h1>
 
       <p>
-        The passthrough sample exhibits the process of an HTTP client connector.
-        The 'Echo Service' is used as a sample backend.
+        The passthrough service forwards the inbound request to the backend and
+        returns the backend response. The passthrough resource is designed to
+        allow all HTTP methods as the accessor is the <code>default</code>. Also
+        the rest parameter in the resource path as it allows any request URI to
+        get dispatched. When <code>forward()</code> is called on the backend
+        client, it forwards the request that the passthrough resource received
+        to the backend. When forwarding, the request is made using the same HTTP
+        method that was used to invoke the passthrough resource. The{" "}
+        <code>forward()</code> function returns the response from the backend if
+        there are no errors. This is useful to delegate the functionality to the
+        downstream services.
       </p>
 
       <Row
@@ -52,6 +60,31 @@ export function HttpPassthrough({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=52c6d5a0d494035004d31fa151c94c8a&file=http_passthrough.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-passthrough",
@@ -189,6 +222,21 @@ export function HttpPassthrough({ codeSnippets }) {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>{" "}
+            example as the backend service.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Invoke the service by executing the following cURL command in a new
         terminal.
@@ -247,8 +295,8 @@ export function HttpPassthrough({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/passthrough`}</span>
-              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7255d-23ce05a61ad55a0164ca19d3", "accept":"*/*", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
+              <span>{`\$ curl http://localhost:9092/passthrough`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]*`}</span>
             </code>
           </pre>
         </Col>

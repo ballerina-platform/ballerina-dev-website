@@ -15,8 +15,9 @@ public type Order record {
     boolean isValid;
 };
 
-// Binds the consumer to listen to the messages published to the 'demo.bbe' subject.
+// Binds the consumer to listen to the messages published to the 'orders.valid' subject.
 service "orders.valid" on new nats:Listener(nats:DEFAULT_URL) {
+
     remote function onMessage(Order 'order) returns error? {
         if 'order.isValid {
             log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -39,10 +40,16 @@ export function NatsBasicSub({ codeSnippets }) {
       <h1>NATS service - Consume message</h1>
 
       <p>
-        NATS implements a publish-subscribe message distribution model. A
-        publisher sends a message to a subject and any active subscriber
-        listening to that subject can consume the message. In this example, the
-        NATS service is used to consume messages from a subject.
+        The <code>nats:Service</code> listens to the given subject for incoming
+        messages. When a publisher sends a message to a subject, any active
+        service listening to that subject receives the message. A{" "}
+        <code>nats:Listener</code> is created by passing the URL of the NATS
+        broker. A <code>nats:Service</code> attached to the{" "}
+        <code>nats:Listener</code> can be used to listen to a specific subject
+        and consume incoming messages. The subject to listen to should be given
+        as the service name or in the <code>subject</code> field of the{" "}
+        <code>nats:ServiceConfig</code>. Use it to listen to messages sent to a
+        particular subject.
       </p>
 
       <Row
@@ -128,11 +135,6 @@ export function NatsBasicSub({ codeSnippets }) {
           )}
         </Col>
       </Row>
-
-      <p>
-        To run the sample, start an instance of the NATS server and execute the
-        following command.
-      </p>
 
       <h2>Prerequisites</h2>
 

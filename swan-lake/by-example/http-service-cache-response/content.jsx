@@ -19,10 +19,9 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // In this example, \`max-age\` directive is set to 15 seconds indicating that the response
-    // will be fresh for 15 seconds. By default \`must-revalidate\` directive is true and instructs that
-    // the cache should not serve a stale response without validating it with the origin server
-    // first. In addition to that, e-tag and last-modified headers are added by default to the response
+    // In this example, \`max-age\` directive is set to 15 seconds, indicating that the response
+    // will be fresh for 15 seconds. By default, \`must-revalidate\` directive is true and instructs that
+    // the cache should not serve a stale response without validating it with the origin server first.
     resource function get albums/[string title]() returns @http:Cache {maxAge: 15} Album|http:NotFound {
         return albums[title] ?: http:NOT_FOUND;
     }
@@ -43,8 +42,17 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
       <h1>REST service - Send cache response</h1>
 
       <p>
-        HTTP service can send cache response by adding <code>http:Cache</code>{" "}
-        annotation to the return type.
+        The <code>http:Service</code> can cache a response associated with a
+        request and reuse the cached response for subsequent requests. This can
+        be achieved by adding the <code>http:Cache</code> annotation to the
+        return type. By default, this annotation adds the{" "}
+        <code>must-revalidate</code>, <code>public</code>, and{" "}
+        <code>max-age=3600</code> directives to the <code>Cache-Control</code>{" "}
+        header of the response, along with the <code>ETag</code> and{" "}
+        <code>Last-Modified</code> headers. These default settings can be
+        changed by adding the configurations to the annotation. Furthermore, the
+        response is only cached when the return type is <code>anydata</code> or
+        a subtype of <code>http:SuccessStatusCodeResponse</code>.
       </p>
 
       <Row
@@ -55,6 +63,31 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=942cc3360ae6839134bcef19adb245d7&file=http_service_cache_response.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-service-cache-response",
@@ -133,13 +166,6 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
 
       <p>Run the service by executing the following command.</p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may enable the trace logs to observe the in
-          and out traffic.
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -199,10 +225,15 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        Invoke the service via the{" "}
-        <a href="/learn/by-example/http-caching-client">Caching client</a>.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-caching-client">Caching client</a>{" "}
+          example. In addition to that the{" "}
+          <a href="/learn/by-example/http-trace-logs/">trace logs</a> can be
+          enabled to observe the in and out traffic.
+        </p>
+      </blockquote>
 
       <h2>Related links</h2>
 
@@ -220,8 +251,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/http/#53-matrix">
-              <code>http</code> package - Specification
+            <a href="/spec/http/#46-cache-annotation">
+              <code>http:Cache</code> annotation - Specification
             </a>
           </span>
         </li>
@@ -231,8 +262,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send different status codes with payload"
-            href="/learn/by-example/http-send-different-status-codes-with-payload"
+            title="Error handling"
+            href="/learn/by-example/http-default-error-handling"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -259,7 +290,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send different status codes with payload
+                  Error handling
                 </span>
               </div>
             </div>

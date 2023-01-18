@@ -71,37 +71,6 @@ export function JsonNumbers({ codeSnippets }) {
         edge case: it is represented as a <code>float</code>.
       </p>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/casting-json-to-user-defined-type/">
-              Casting JSON to user-defined type
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/converting-to-user-defined-type/">
-              Converting to user-defined type
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/json-type/">JSON type</a>
-          </span>
-        </li>
-      </ul>
-
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -112,7 +81,7 @@ export function JsonNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a1400f1b38ea6da48dc1a90e4ce0b2aa&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=5494e9505b12307c47204f2be57c68b9&file=json_numbers.bal",
                 "_blank"
               );
             }}
@@ -276,6 +245,37 @@ export function JsonNumbers({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/casting-json-to-user-defined-type/">
+              Casting JSON to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/converting-to-user-defined-type/">
+              Converting to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
       <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
@@ -316,7 +316,7 @@ export function JsonNumbers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Table" href="/learn/by-example/table">
+          <Link title="Raw templates" href="/learn/by-example/raw-templates">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -325,7 +325,7 @@ export function JsonNumbers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table
+                  Raw templates
                 </span>
               </div>
               <svg

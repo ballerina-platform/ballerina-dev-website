@@ -69,7 +69,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6019cc03b7eefb487f12d0cbcad93cc4&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=2609dc515352eb131517fa0af0a69fcf&file=query_actions.bal",
                 "_blank"
               );
             }}
@@ -280,7 +280,7 @@ export function QueryActions({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link title="JSON type" href="/learn/by-example/json-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -289,7 +289,7 @@ export function QueryActions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Raw templates
+                  JSON type
                 </span>
               </div>
               <svg

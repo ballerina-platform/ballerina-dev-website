@@ -24,8 +24,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function get albums() returns Album[]|error {
@@ -33,7 +32,7 @@ service / on new http:Listener(8080) {
         stream<Album, sql:Error?> albumStream = self.db->query(\`SELECT * FROM albums\`);
 
         // Process the stream and convert results to Album[] or return error.
-        return check from Album album in albumStream
+        return from Album album in albumStream
             select album;
     }
 }
@@ -55,11 +54,10 @@ export function MysqlQueryOperation({ codeSnippets }) {
       <h1>Database Access - Simple query</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client select query
-        operations with the stream return type.
+        The <code>mysql:Client</code> allows querying the database with the use
+        of <code>query</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL statement as the argument.
       </p>
-
-      <p>This BBE is written in the context of an album microservice.</p>
 
       <blockquote>
         <p>
@@ -173,9 +171,9 @@ export function MysqlQueryOperation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            Refer{" "}
-            <a href="https://github.com/ballerina-platform/ballerina-distribution/blob/master/examples/mysql-prerequisite/README.md">
-              <code>mysql-prerequisite</code>
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
             </a>
             .
           </span>
@@ -334,7 +332,10 @@ export function MysqlQueryOperation({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Write file" href="/learn/by-example/sftp-client-write">
+          <Link
+            title="Send file"
+            href="/learn/by-example/sftp-client-send-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -360,7 +361,7 @@ export function MysqlQueryOperation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write file
+                  Send file
                 </span>
               </div>
             </div>

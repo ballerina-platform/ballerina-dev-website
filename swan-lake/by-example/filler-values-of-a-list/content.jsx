@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ffaa8ab4d6a1bbcc7b2e17115ea74724&file=filler_values_of_a_list.bal",
+                "https://play.ballerina.io/?gist=98a28c2f0489e9c8ca9de371fd798bda&file=filler_values_of_a_list.bal",
                 "_blank"
               );
             }}
@@ -199,115 +199,6 @@ export function FillerValuesOfAList({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
-
-      <h2>Filler values table</h2>
-
-      <p>Type descriptor | Filler value | When available</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>-------------- | ------------ | ---------------</span>
-        </li>
-      </ul>
-      <p>
-        <code>()</code> | <code>()</code> |
-      </p>
-
-      <p>
-        <code>boolean</code> | <code>false</code> |
-      </p>
-
-      <p>
-        <code>int</code> | <code>0</code> |
-      </p>
-
-      <p>
-        <code>float</code> | <code>+0.0f</code> |
-      </p>
-
-      <p>
-        <code>decimal</code> | <code>+0d</code> |
-      </p>
-
-      <p>
-        <code>string</code> | <code>&quot;&quot;</code> |
-      </p>
-
-      <p>
-        array or tuple type descriptor | <code>[]</code> | if that is a valid
-        constructor for the type
-      </p>
-
-      <p>
-        map or record type descriptor | <code>&#123;&#125;</code> | if that is a
-        valid constructor for the type
-      </p>
-
-      <p>
-        <code>readonly &amp; T</code> | the filler value for <code>T</code>{" "}
-        constructed as read-only | if that belongs to the type
-      </p>
-
-      <p>
-        <code>table</code> | empty table (with no rows) |
-      </p>
-
-      <p>
-        <code>object</code> | <code>new T()</code> | if <code>T</code> is a
-        class, where <code>T</code> is the type descriptor for the object, and
-        the static type of <code>T</code>'s init method allows no arguments and
-        does not include error
-      </p>
-
-      <p>
-        <code>stream</code> | empty stream |
-      </p>
-
-      <p>
-        <code>xml</code> | <code>xml``</code> |
-      </p>
-
-      <p>
-        built-in subtype of xml | <code>xml``</code> | if this belongs to the
-        subtype, i.e. if the subtype is <code>xml:Text</code>
-      </p>
-
-      <p>singleton | the single value used to specify the type |</p>
-
-      <p>
-        union | <code>()</code> | if <code>()</code> is a member of the union |
-      </p>
-
-      <p>
-        union | the filler value for basic type <code>B</code> | if all members
-        of the union belong to a single basic type <code>B</code>, and the
-        filler value for <code>B</code> also belongs to the union
-      </p>
-
-      <p>
-        <code>T?</code> | <code>()</code> |
-      </p>
-
-      <p>
-        <code>any</code> | <code>()</code> |
-      </p>
-
-      <p>
-        <code>anydata</code> | <code>()</code> |
-      </p>
-
-      <p>
-        <code>byte</code> | <code>0</code> |
-      </p>
-
-      <p>
-        built-in subtype of int | <code>0</code> |
-      </p>
-
-      <p>
-        <code>json</code> | <code>()</code> |
-      </p>
 
       <h2>Related links</h2>
 

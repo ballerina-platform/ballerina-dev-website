@@ -51,7 +51,7 @@ To view bug fixes, see the GitHub milestone for 2201.3.2 (Swan Lake) of the repo
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.2%22+is%3Aclosed)
 - [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FCLI+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
 - [Test framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FTestFramework+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
-- [Component Model Generator](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectDesignTool+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
+- [Project Design View](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectDesignTool+is%3Aclosed+milestone%3A2201.3.2+label%3AType%2FBug+)
 
 ## Ballerina packages updates
 

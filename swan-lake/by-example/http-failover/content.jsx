@@ -17,11 +17,11 @@ public function main() returns error? {
         interval: 5,
         // Define a set of HTTP Clients that are targeted for failover.
         targets: [
-            {url: "http://nonexistentEP"},
-            {url: "http://localhost:9090"}
-        ]
+                {url: "http://nonexistentEP/albums"},
+                {url: "http://localhost:9090/albums"}
+            ]
     });
-    string payload = check httpClient->/albums;
+    string payload = check httpClient->/greeting;
     io:println(payload);
 }
 `,
@@ -40,11 +40,14 @@ export function HttpFailover({ codeSnippets }) {
       <h1>HTTP client - Failover</h1>
 
       <p>
-        A failover client is used to preserve the continuity of the requests
-        flow even if the endpoint fails. The endpoints are defined in the{" "}
-        <code>targets</code> field of the failover client configuration. If one
-        of the endpoints fails, the client automatically fails over to another
-        endpoint.
+        Ballerina users can configure multiple HTTP clients in a given failover
+        group. If one of the HTTP clients (dependencies) fails, Ballerina
+        automatically fails over to another endpoint. The following example
+        depicts the <code>FailoverClient</code> behaviour with three target
+        services. The first two targets are configured to mimic failure
+        backends. After the first invocation the client resumes the failover
+        from the last successful target. In this case it is the third target and
+        the client will get the immediate response for subsequent calls.
       </p>
 
       <Row
@@ -55,31 +58,6 @@ export function HttpFailover({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=74938cbce86e78951dd165f647639a7d&file=http_failover.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-failover",
@@ -239,7 +217,7 @@ export function HttpFailover({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

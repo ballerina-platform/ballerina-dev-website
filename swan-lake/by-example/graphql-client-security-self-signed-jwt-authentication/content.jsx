@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-// User-defined data types to retrive data from the service.
+// User defined data types to retrive data from the service.
 type ProfileResponse record {|
     *graphql:GenericResponseWithErrors;
     record {|Profile profile;|} data;
@@ -21,8 +21,8 @@ type Profile record {|
 
 
 public function main() returns error? {
-    // Defines the GraphQL client to call the JWT Auth secured APIs.
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    // Create a GraphQL client with JWT authentication configurations.
+    graphql:Client graphqlClient = check new("localhost:9090/graphql",
         auth = {
             username: "ballerina",
             issuer: "wso2",
@@ -42,7 +42,7 @@ public function main() returns error? {
         }
     );
 
-    // Defines the GraphQL document to be sent to the GraphQL service.
+    // Define the GraphQL document to be sent to the GraphQL service.
     string document = "{ profile { name, age } }";
 
     // Execute the document and retrieve the response from the GraphQL service.
@@ -67,12 +67,17 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
       <h1>GraphQL client - Self signed JWT authentication</h1>
 
       <p>
-        The <code>graphql:Client</code> can connect to a service that is secured
-        with self-signed JWT by adding the{" "}
+        A GraphQL client, which is secured with self-signed JWT can be used to
+        connect to a secured GraphQL service. The client is enriched with the{" "}
         <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
         <code>graphql:JwtIssuerConfig</code> to the <code>auth</code>{" "}
         configuration of the client. A self-signed JWT is issued before the
         request is sent.
+      </p>
+
+      <p>
+        This example shows how to send a GraphQL request with self-signed JWT
+        Authentication.
       </p>
 
       <Row
@@ -253,7 +258,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/jwt/latest/">
-              <code>jwt</code> module - API documentation
+              <code>jwt</code> package API documentation
             </a>
           </span>
         </li>

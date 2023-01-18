@@ -8,10 +8,10 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {
+type Album readonly & record {|
     string title;
     string artist;
-};
+|};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
@@ -23,7 +23,7 @@ public function main() returns error? {
     io:println("GET request:" + albums.toJsonString());
 
     // Sends a \`POST\` request to the "/albums" resource.
-    Album album = check albumClient->/albums.post({
+    Album album  = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
@@ -45,17 +45,16 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
       <h1>HTTP client - Send request/Receive response</h1>
 
       <p>
-        The <code>http:Client</code> interacts with an HTTP server. The client
-        is instantiated with the service URL and it uses resource methods to
-        send requests and receive responses from the backend service. The
-        standard HTTP methods <code>get</code>, <code>post</code>,{" "}
-        <code>put</code>, <code>patch</code>, <code>delete</code>,{" "}
-        <code>head</code>, and <code>options</code> are available as resource
-        accessors. A resource method invocation is done by providing the{" "}
-        <code>resource path</code>, relevant <code>resource accessor</code>, and
-        required arguments after the <code>-&gt;</code>. Since HTTP{" "}
-        <code>get</code> is the default resource method, the accessor is not
-        mandatory when invoking an HTTP <code>GET</code> resource.
+        The HTTP client can be used to connect to and interact with an HTTP
+        server. The client is instantiated with URL and uses resource method to
+        make the network calls. The standard HTTP methods <code>get</code>,{" "}
+        <code>post</code>, <code>put</code>, <code>patch</code>,{" "}
+        <code>delete</code>, <code>head</code>, <code>options</code> are
+        available as resource methods and can be invoked as same as invoking a
+        remote method. To invoke an HTTP method, the relevant verb and the
+        required arguments can be provided after the <code>-&gt;</code>. For{" "}
+        <code>get</code> method, the verb is not explicitly needed since it will
+        be defaulted.
       </p>
 
       <Row
@@ -68,7 +67,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af53ce217824406f800a7ac64c4c114a&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=575fc4b2ffb3de2d6924a7f67b9c03b3&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -254,7 +253,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

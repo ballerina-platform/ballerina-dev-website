@@ -25,7 +25,7 @@ public function main() returns error? {
     json f = check e.fromJsonString();
     io:println(f);
 
-    json[] g = <json[]> f;
+    json[] g = <json[]>f;
     io:println(typeof g[0]);
     io:println(typeof g[1]);
     io:println(typeof g[2]);
@@ -38,7 +38,6 @@ public function main() returns error? {
     // \`-0\` is an edge case: represented as \`float\`.
     string i = "-0";
     io:println(typeof check i.fromJsonString());
-    return;
 }
 `,
 ];
@@ -66,11 +65,42 @@ export function JsonNumbers({ codeSnippets }) {
 
       <p>
         <code>cloneWithType()</code> or <code>ensureType()</code> will convert
-        from <code>int</code> or <code>decimal</code> into user's chosen numeric
-        type. Net result is that you can use <code>json</code> to exchange full
-        range of all three Ballerina numeric types. <code>-0</code> is an edge
-        case: represented as <code>float</code>.
+        from <code>int</code> or <code>decimal</code> into the user's chosen
+        numeric type. The net result is that you can use JSON to exchange the
+        full range of all three Ballerina numeric types. <code>-0</code> is an
+        edge case: it is represented as a <code>float</code>.
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/casting-json-to-user-defined-type/">
+              Casting JSON to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/converting-to-user-defined-type/">
+              Converting to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -82,7 +112,7 @@ export function JsonNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0f0eb232afcbc16b25025a091b6c4be1&file=json_numbers.bal",
+                "https://play.ballerina.io/?gist=a1400f1b38ea6da48dc1a90e4ce0b2aa&file=json_numbers.bal",
                 "_blank"
               );
             }}
@@ -246,6 +276,7 @@ export function JsonNumbers({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -285,7 +316,7 @@ export function JsonNumbers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Table syntax" href="/learn/by-example/table-syntax">
+          <Link title="Table" href="/learn/by-example/table">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -294,7 +325,7 @@ export function JsonNumbers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table syntax
+                  Table
                 </span>
               </div>
               <svg

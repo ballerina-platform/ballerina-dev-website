@@ -12,7 +12,7 @@ type Album readonly & record {|
     string artist;
 |};
 
-// Represents the subtype of http:Conflict status code record.
+// Represents the subtype of http:Conflict status code record
 type AlbumConflict record {|
     *http:Conflict;
     record {
@@ -27,7 +27,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse.
+    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse
     resource function post albums(@http:Payload Album album) returns Album|AlbumConflict {
         if albums.hasKey(album.title) {
             return {body: { message: "album already exists" }};
@@ -54,18 +54,12 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
       <h1>REST service - Send different status codes with payload</h1>
 
       <p>
-        The resource method can return a subtype of the{" "}
-        <code>http:StatusCodeResponse</code> record type with a body and
-        headers. This type can be created by including a subtype of the{" "}
-        <code>http:StatusCodeResponse</code> record type. The <code>body</code>{" "}
-        field represents the response payload, while the <code>headers</code>{" "}
-        field represents a <code>map</code> of the response headers. In
-        addition, the <code>body</code> field type can be overridden by a custom
-        record type. Use these custom subtypes if different status code
-        responses need to be sent with custom payload types and headers.
-        Furthermore, defining such records can produce a better representation
-        of the responses in the OpenAPI specification, and using typed records
-        for the <code>body</code> field provides compiler validations and better
+        In addition to returning <code>StatusCodeResponse</code> constants, the
+        resource method can return <code>StatusCodeResponse</code> record that
+        contains response headers and payload. Defining a custom record type
+        including the <code>StatusCodeResponse</code> can produce a better
+        representation of the response in the OpenAPI specification. In addition
+        to that, using typed records provides compiler validations and better
         tooling support.
       </p>
 
@@ -77,31 +71,6 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=7fad07ee7e3964f58d550607e9e1ba05&file=http_send_different_status_codes_with_payload.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-send-different-status-codes-with-payload",
@@ -317,16 +286,6 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/http-client-send-request-receive-response/">
-            Send request/Receive response client
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
-
       <h2>Related links</h2>
 
       <ul style={{ marginLeft: "0px" }} class="relatedLinks">
@@ -390,8 +349,8 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Error handling"
-            href="/learn/by-example/http-default-error-handling"
+            title="Send cache response"
+            href="/learn/by-example/http-service-cache-response"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -401,7 +360,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error handling
+                  Send cache response
                 </span>
               </div>
               <svg

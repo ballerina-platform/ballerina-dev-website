@@ -1,6 +1,6 @@
 {
   "title": "Optional fields",
-  "description": "This BBE demonstrates optional record fields in Ballerina.",
+  "description": "This BBE demonstrates optional record fields by defining a field without a value, destructuring a record with optional fields, and removing the optional field value from a record in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

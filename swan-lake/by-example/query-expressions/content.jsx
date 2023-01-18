@@ -6,24 +6,37 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
+ 
 public function main() {
     int[] nums = [1, 2, 3, 4];
-
-    // This is based on the \`{ 10 × i | i ∈ nums }\` set builder notation.
+ 
     // The \`from\` clause works similar to a \`foreach\` statement.
     int[] numsTimes10 = from var i in nums
                         // The \`select\` clause is evaluated for each iteration.
                         select i * 10;
-
     io:println(numsTimes10);
-
-    // This is based on the \`{ i | i mod 2 = 0, i ∈ nums }\` set builder notation.
-    int[] evenNums = from var i in nums
+ 
+    // A \`where\` clause can be used to filter iterable values.
+    // It can occur multiple times anywhere between a \`from\` and \`select\` clause.
+    // This will pass the frame to the \`select\` clause only if \`i % 2 == 0\` is true.
+    int[] evenNums = from int i in nums
                      where i % 2 == 0
                      select i;
-
     io:println(evenNums);
+ 
+    // The \`order by\` clause can be used to sort the result in 
+    // \`ascending\` or \`descending\` order.
+    int[] numsReversed = from int i in nums
+                         order by i descending
+                         select i;
+    io:println(numsReversed);
+ 
+    // Iterating a string value using the query expression.
+    string languageName = "Ballerina";
+    string newName = from var char in languageName
+                     select char + char;
+ 
+    io:println(newName);
 }
 `,
 ];
@@ -41,9 +54,14 @@ export function QueryExpressions({ codeSnippets }) {
       <h1>Query expressions</h1>
 
       <p>
-        Query-like expressions start with a <code>from</code> clause and end
-        with a <code>select</code> clause. It is a list comprehension, based on
-        the mathematical <code>set builder</code> notation.
+        A query expression is similar to the <code>SQL</code> query syntax where
+        you can construct a list, a mapping, a table, a stream, or a sequence by
+        iterating over an iterable value.
+      </p>
+
+      <p>
+        A query expression consists of a sequence of clauses starting with a{" "}
+        <code>from</code> clause and ending with a <code>select</code> clause.
       </p>
 
       <Row
@@ -56,7 +74,7 @@ export function QueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9e64e1bd1ca7d6f7c08de1d86c418703&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=8fc23a58dabe2668649822fe712d3ef9&file=query_expressions.bal",
                 "_blank"
               );
             }}
@@ -211,10 +229,122 @@ export function QueryExpressions({ codeSnippets }) {
               <span>{`\$ bal run query_expressions.bal`}</span>
               <span>{`[10,20,30,40]`}</span>
               <span>{`[2,4]`}</span>
+              <span>{`[4,3,2,1]`}</span>
+              <span>{`BBaalllleerriinnaa`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-expressions">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/sort-iterable-objects">
+              Sort iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/let-clause">
+              Let clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/limit-clause">
+              Limit clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/joining-iterable-objects">
+              Joining iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/querying-tables">Querying tables</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-maps-with-query">
+              Create maps with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-tables-with-query">
+              Create tables with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/on-conflict-clause">
+              On conflict clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-query-expressions">
+              Nested query expressions
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -255,8 +385,8 @@ export function QueryExpressions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructure records"
-            href="/learn/by-example/destructuring-records"
+            title="Sort iterable objects"
+            href="/learn/by-example/sort-iterable-objects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -266,7 +396,7 @@ export function QueryExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records
+                  Sort iterable objects
                 </span>
               </div>
               <svg

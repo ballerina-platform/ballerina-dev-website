@@ -7,28 +7,34 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Person record {
- string first;
- string last;
- int yearOfBirth;
-};
+type Student record {|
+    string first;
+    string last;
+    int mathematics;
+    int english;
+|};
 
 public function main() {
-    Person[] persons = [
-        {first: "Melina", last: "Kodel", yearOfBirth: 1994},
-        {first: "Tom", last: "Riddle", yearOfBirth: 1926}
+    Student[] students = [
+        {first: "Melina", last: "Kodel", mathematics: 79, english: 83},
+        {first: "Tom", last: "Riddle", mathematics: 69, english: 45}
     ];
 
-    string[] names = from var {first, last} in persons
-                     // The \`let\` clause binds the variables.
-                     let int len1 = first.length()
-                     // The \`where\` clause provides a way to perform conditional execution.
-                     where len1 > 0
-                     let int len2 = last.length()
-                     where len2 > 0
-                     let string name = first + " " + last
-                     select name;
-                     
+    int[] names = from var student in students
+                  // The \`let\` clause binds the variables.
+                  let int sum = (student.mathematics + student.english)
+                  where sum > 0
+                  let int avg = sum / 2
+                  select avg;
+
+    io:println(names);
+
+    // The \`let\` clause supports multiple variable declarations separated by \`,\`.
+    names = from var student in students
+                   let int sum = (student.mathematics + student.english), int avg = sum / 2
+                   where sum > 0
+                   select avg;
+
     io:println(names);
 }
 `,
@@ -44,12 +50,14 @@ export function LetClause({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Let clause</h1>
+      <h1>
+        The <code>let</code> clause
+      </h1>
 
       <p>
-        Query expressions can have <code>let</code> clauses. They can be
-        anywhere between <code>from</code> and <code>select</code> clauses.
-        Multiple <code>where</code> clauses are also allowed. The semantics are
+        The <code>let</code> clause can be used to define temporary variables
+        inside a query expression. It can occur multiple times anywhere between
+        the <code>from</code> and <code>select</code> clauses. The semantics are
         similar to <code>XQuery FLWOR</code>.
       </p>
 
@@ -63,7 +71,7 @@ export function LetClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a37caba2eb46fc0ed9e08e9a7d0c081&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=674058d5fbb7ff84d746ec68bfea08d6&file=let_clause.bal",
                 "_blank"
               );
             }}
@@ -216,17 +224,118 @@ export function LetClause({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run let_clause.bal`}</span>
-              <span>{`["Melina Kodel","Tom Riddle"]`}</span>
+              <span>{`[81,57]`}</span>
+              <span>{`[81,57]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-expressions">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/sort-iterable-objects">
+              Sort iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/limit-clause">
+              Limit clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/joining-iterable-objects">
+              Joining iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/querying-tables">Querying tables</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-maps-with-query">
+              Create maps with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-tables-with-query">
+              Create tables with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/on-conflict-clause">
+              On conflict clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-query-expressions">
+              Nested query expressions
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Destructure records"
-            href="/learn/by-example/destructuring-records"
+            title="Sort iterable objects"
+            href="/learn/by-example/sort-iterable-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -253,14 +362,14 @@ export function LetClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records
+                  Sort iterable objects
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Ordering" href="/learn/by-example/ordering">
+          <Link title="Limit clause" href="/learn/by-example/limit-clause">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -269,7 +378,7 @@ export function LetClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Ordering
+                  Limit clause
                 </span>
               </div>
               <svg

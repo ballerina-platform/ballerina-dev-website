@@ -17,8 +17,10 @@ type Album readonly & record {
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090");
 
+    // Sends a \`GET\` request to the "/albums" resource.
+    // The query parameter can be provided as parameters in the \`get\` method invocation.
     Album[] albums = check albumClient->/albums({
-        Accept: mime:APPLICATION_JSON
+        "Accept": mime:APPLICATION_JSON
     });
     io:println("Received albums: " + albums.toJsonString());
 }
@@ -29,9 +31,8 @@ string albumId = check albumClient->/album.post({
         title: "Blue Train",
         artist: "John Coltrane"
     },
-    // Headers can be specified as a \`map<string|string[]>\`
-    {
-        Accept: mime:APPLICATION_JSON
+    headers = {
+        "Accept": mime:APPLICATION_JSON
     }
 );
 io:println("Added album with id: " + albumId);
@@ -52,13 +53,9 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
       <h1>HTTP client - Header parameter</h1>
 
       <p>
-        The <code>http:Client</code> supports sending outbound request headers
-        along with the request payload. These headers can be passed as an
-        argument in the client resource method call. The headers should be
-        provided as a <code>map</code>, where the keys represent the header
-        names and the entries represent the header values. The header values can
-        be <code>string</code> or <code>string[]</code>. Use this when you want
-        to send additional headers as part of the request.
+        The http module provides support for sending outbound request headers as
+        resource method arguments. The headers can be provided as{" "}
+        <code>map&lt;string|string[]&gt;</code> to the resource method.
       </p>
 
       <Row
@@ -69,31 +66,6 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=9194dad8f3e9cdf12822d899fdf13e9a&file=http_client_header_parameter.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-header-parameter",
@@ -177,7 +149,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             Run the HTTP service given in the{" "}
-            <a href="/learn/by-example/http-header-param/">
+            <a href="/learn/by-example/http-header-parameter/">
               REST service - Header parameter
             </a>{" "}
             example.
@@ -248,7 +220,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
       </Row>
 
       <p>
-        Furthermore, a <code>post</code> request with additional headers can be
+        Furthermore, a <code>post</code> request with header parameter can be
         sent as shown below.
       </p>
 
@@ -260,31 +232,6 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=478c6e5308e2ef015c7b5eef7b0c9e16&file=http_client_header_parameter_post.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-header-parameter",
@@ -368,7 +315,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -423,10 +370,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Enable caching"
-            href="/learn/by-example/http-caching-client"
-          >
+          <Link title="Caching" href="/learn/by-example/http-caching-client">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -435,7 +379,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Enable caching
+                  Caching
                 </span>
               </div>
               <svg

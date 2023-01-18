@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerina/websocket;
 
 public function main() returns error? {
-    websocket:Client chatRetryClient = check new ("ws://localhost:9090/chat", {
+    websocket:Client chatRetryClient = check new("ws://localhost:9090/chat", {
         // Set the maximum retry count to 5 so that it will try 5 times with the interval of
         // 5 second in between the retry attempts.
         retryConfig: {
@@ -34,18 +34,15 @@ export function WebsocketRetryClient({ codeSnippets }) {
       <h1>WebSocket client - Retry</h1>
 
       <p>
-        The <code>websocket:Client</code> with enabled <code>retry</code>{" "}
-        automatically tries to reconnect to the given backend. The client only
-        retries when there is a connection error at the handshake phase or if an
-        abnormal closure with the status code(1006) is received once the
-        connection is upgraded to a WebSocket connection. The connection
-        closures with mutual acknowledgments will not be retried. If the maximum
-        reconnect attempt is reached, it stops the connection. A{" "}
-        <code>websocket:Client</code> that retries upon failures is created by
-        providing the <code>retry</code> configurations to the client. Use this
-        to re-establish the connection, in cases like the WebSocket client lost
-        the connection due to some transient failure such as a momentary loss of
-        network connectivity or a temporary unavailability of a service.
+        If the WebSocket client lost the connection due to some transient
+        failure such as momentary loss of network connectivity or temporary
+        unavailability of a service, it automatically tries to reconnect to the
+        given backend. The client only retries when there is a connection error
+        at the handshake phase or if an abnormal closure with the status
+        code(1006) receives once the connection is upgraded to a WebSocket
+        connection. The connection closures with mutual acknowledgements will
+        not be retried. If the maximum reconnect attempt is reached it gives up
+        on the connection.
       </p>
 
       <Row
@@ -215,7 +212,7 @@ export function WebsocketRetryClient({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/websocket/latest">
-              <code>websocket</code> module - API documentation
+              <code>websocket</code> package - API documentation
             </a>
           </span>
         </li>

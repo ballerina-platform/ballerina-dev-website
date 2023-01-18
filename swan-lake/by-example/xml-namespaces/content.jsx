@@ -51,7 +51,7 @@ export function XmlNamespaces({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=40c945966627ba19f108cc6f293f026b&file=xml_namespaces.bal",
+                "https://play.ballerina.io/?gist=1408fee6d8d75c1c245ce871d14c517f&file=xml_namespaces.bal",
                 "_blank"
               );
             }}
@@ -209,6 +209,18 @@ export function XmlNamespaces({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-data-model/">XML data model</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

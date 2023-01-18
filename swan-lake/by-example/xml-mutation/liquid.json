@@ -1,0 +1,18 @@
+{
+  "title": "XML mutation",
+  "description": "This BBE demonstrates how to update XML values.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "set children",
+    "change xml name"
+  ],
+  "permalink": "/learn/by-example/xml-mutation",
+  "active": "xml-mutation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-mutation",
+    "/swan-lake/learn/by-example/xml-mutation.html"
+  ]
+}

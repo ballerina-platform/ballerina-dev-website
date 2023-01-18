@@ -24,13 +24,13 @@ public function main() returns error? {
 
     // Request the server for the album. If the constraint validation fails,
     // an \`http:PayloadValidationError\` will be returned.
-    Album album = check albumClient->/albums.post({
+    Album album = check albumClient->post("/albums", {
         // Here, an album which exceeds the constraints are sent to a server
         // which returns the same record again to the client.
         title: "Blue Train",
         artist: "John Coltrane"
     });
-    io:println("Received album: " + album.toJsonString());
+    io:println("Received albums: " + album.toJsonString());
 }
 `,
 ];
@@ -48,16 +48,11 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
       <h1>HTTP client - Payload constraint validation</h1>
 
       <p>
-        The Ballerina <code>constraint</code> module allows adding additional
-        constraints to the response payload. The <code>http:Client</code> uses
-        the <code>constraint</code> module to validate the payload against the
-        given constraints. This validation happens soon after the successful
-        data-binding of the response payload. The constraints can be added to a
-        given data type using different annotations. If the validation fails, an{" "}
-        <code>http:PayloadValidationError</code> is returned with the validation
-        error message. Use this to validate the response payload as the
-        application program receives it, which protects the client against
-        unnecessary processing and malicious payloads.
+        Through client payload constraint validation, the response payload can
+        be validated according to the defined constraints. The constraint
+        validation happens along with the data binding step. If the validation
+        fails, a <code>http:PayloadValidationError</code> will be returned with
+        the validation details.
       </p>
 
       <Row
@@ -68,31 +63,6 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=b69fd0d620b816454747c21f2b329959&file=http_client_payload_constraint_validation.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-payload-constraint-validation",
@@ -253,7 +223,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>
@@ -263,7 +233,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="/spec/http/">
-              <code>http</code> module - Specification
+              <code>http</code> package - Specification
             </a>
           </span>
         </li>
@@ -272,7 +242,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/constraint-validations/">
+            <a href="/by-example/constraint-validations/">
               Constraint validation example
             </a>
           </span>

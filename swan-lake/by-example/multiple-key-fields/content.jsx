@@ -14,15 +14,23 @@ type Employee record {
 };
 
 public function main() {
-    // \`t\` has a key sequence with \`firstName\` and \`lastName\` fields.
-    table<Employee> key(firstName, lastName) t = table [
-        {firstName: "John", lastName: "Smith", salary: 100},
-        {firstName: "Fred", lastName: "Bloggs", salary: 200}
-    ];
+    // \`employees\` has a key sequence with the \`firstName\` and \`lastName\` fields.
+    table<Employee> key(firstName, lastName) employees = table [
+            {firstName: "John", lastName: "Smith", salary: 100},
+            {firstName: "John", lastName: "Bloggs", salary: 200}
+        ];
 
     // The key sequence provides keyed access to members of the \`table\`.
-    Employee? e = t["Fred", "Bloggs"];
+    Employee? e = employees["John", "Bloggs"];
+    io:println(e);
 
+    // \`employees\` has a key sequence with the \`firstName\` and \`lastName\` fields.
+    table<Employee> key<[string, string]> employees2 = table key(firstName, lastName) [
+            {firstName: "John", lastName: "Smith", salary: 100},
+            {firstName: "John", lastName: "Bloggs", salary: 200}
+        ];
+
+    e = employees2["John", "Smith"];
     io:println(e);
 }
 `,
@@ -42,10 +50,37 @@ export function MultipleKeyFields({ codeSnippets }) {
 
       <p>
         A <code>table</code> provides access to its members using a key that
-        comes from the <code>read-only</code> fields of the member. It is a key
+        comes from the <code>readonly</code> fields of the member. It is a key
         sequence, which is used to provide keyed access to its members. The key
-        sequence is an ordered sequence of field names.
+        sequence is an ordered sequence of the field names.
       </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/table-syntax/">Table Syntax</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/multiple-key-fields/">Structured keys</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -57,7 +92,7 @@ export function MultipleKeyFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f37c18916a6f89745764a38e094fbcca&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=90761ba1529985ec3be026d6f127cecb&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}
@@ -210,15 +245,17 @@ export function MultipleKeyFields({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run multiple_key_fields.bal`}</span>
-              <span>{`{"firstName":"Fred","lastName":"Bloggs","salary":200}`}</span>
+              <span>{`{"firstName":"John","lastName":"Bloggs","salary":200}`}</span>
+              <span>{`{"firstName":"John","lastName":"Smith","salary":100}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Table syntax" href="/learn/by-example/table-syntax">
+          <Link title="Table types" href="/learn/by-example/table-types">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +281,7 @@ export function MultipleKeyFields({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table syntax
+                  Table types
                 </span>
               </div>
             </div>

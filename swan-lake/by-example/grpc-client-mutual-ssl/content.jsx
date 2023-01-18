@@ -8,7 +8,8 @@ export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // The gRPC client can be configured to initiate new connections that are secured via mutual SSL.
+    // A gRPC client can be configured to initiate new connections that are secured via mutual SSL.
+    // The \`grpc:ClientSecureSocket\` record provides the SSL-related configurations.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         secureSocket = {
             key: {
@@ -38,17 +39,10 @@ export function GrpcClientMutualSsl({ codeSnippets }) {
       <h1>gRPC client - Mutual SSL</h1>
 
       <p>
-        The <code>grpc:Client</code> allows opening up a connection secured with
-        mutual SSL (mTLS), which is a certificate-based authentication process
-        in which two parties (the client and server) authenticate each other by
-        verifying the digital certificates. It ensures that both parties are
-        assured of each other's identity. The <code>grpc:Client</code> secured
-        with mutual SSL is created by providing the <code>secureSocket</code>{" "}
-        configurations, which require the client's public certificate as the{" "}
-        <code>certFile</code>, the client's private key as the{" "}
-        <code>keyFile</code>, and the server's certificate as the{" "}
-        <code>cert</code>. Use this to interact with mTLS-encrypted gRPC
-        servers.
+        Ballerina supports mutual SSL, which is a certificate-based
+        authentication process in which two parties (the client and server)
+        authenticate each other by verifying the digital certificates. It
+        ensures that both parties are assured of each other's identity.
       </p>
 
       <Row
@@ -136,13 +130,12 @@ export function GrpcClientMutualSsl({ codeSnippets }) {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the simple RPC client
-        with additional configurations. For information on implementing the
-        client, see{" "}
-        <a href="/learn/by-example/grpc-client-simple/">
-          gRPC client - Simple RPC
-        </a>
-        .
+        Setting up the client is the same as setting up the unary RPC client
+        with additional configurations. You can refer to the{" "}
+        <a href="/learn/by-example/grpc-client-unary/">
+          gRPC client - Unary RPC
+        </a>{" "}
+        to implement the client used here.
       </p>
 
       <h2>Prerequisites</h2>
@@ -160,7 +153,7 @@ export function GrpcClientMutualSsl({ codeSnippets }) {
         </li>
       </ul>
 
-      <p>Run the client by executing the command below.</p>
+      <p>Execute the command below to run the client.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"

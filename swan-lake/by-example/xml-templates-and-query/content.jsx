@@ -41,8 +41,8 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
       <h1>XML templates and query</h1>
 
       <p>
-        XML templates can be combined with queries (e.g., you can have a
-        template containing a query expression, which also contains a template).
+        XML templates can be combined with queries. It is possible to have a
+        template containing a query expression, which also contains a template.
       </p>
 
       <Row
@@ -55,7 +55,7 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=04b4ae5586caa5123c7214a82055aea7&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=5a332005dd6369e6ed03ff548687514d&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}
@@ -213,6 +213,36 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-data-model/">XML data model</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-exoressions/">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/iterating-over-xml-with-query/">
+              Iterating over xml with query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

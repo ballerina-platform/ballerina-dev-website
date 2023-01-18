@@ -8,14 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {
+type Album readonly & record {|
     string title;
     string artist;
-};
+|};
 
 public function main() returns error? {
     // Creates a new client with the Basic REST service URL.
-    http:Client albumClient = check new ("localhost:9090");
+    http:Client albumClient = check new("localhost:9090");
 
     // Binding the payload to a \`record\` array type.
     // The contextually expected type is inferred from the LHS variable type.
@@ -38,21 +38,15 @@ export function HttpClientDataBinding({ codeSnippets }) {
       <h1>HTTP client - Payload data binding</h1>
 
       <p>
-        The <code>http:Client</code> payload data-binding allows directly
-        binding the response payload to a given subtype of <code>anydata</code>.
-        It does this by mapping a given HTTP content-type to one or more
-        Ballerina types. For instance, <code>text/plain</code> is mapped to{" "}
-        <code>string</code>, whereas <code>application/json</code> is mapped to{" "}
-        <code>json</code>, <code>record</code>, etc. The client data-binding can
-        be used by simply assigning the resource method’s returned value to the
-        declared variable. If the response is anything other than 2xx, an{" "}
-        <code>error</code> is returned and no data-binding is performed. If
-        there is no mapping between the given Ballerina type and the response
-        content-type, again an <code>error</code> is returned. Use this when the
-        application is only interested in the response payload but not the
-        headers. When the response payload is JSON, the <code>record</code> type
-        is preferred to the <code>json</code> type as it provides compile-time
-        validations, better readability, and improved tooling support.
+        Through client payload data binding, the response payload can be
+        accessed directly. The payload type is inferred from the
+        contextually-expected type or from the <code>targetType</code> argument.
+        An <code>anydata</code> type or <code>http:Response</code> is expected
+        as the return value type along with the error. When the user expects
+        client data binding to happen, the HTTP error responses (
+        <code>4XX</code>, <code>5XX</code>) will be categorized as an{" "}
+        <code>error</code> (<code>http:ClientRequestError</code>,{" "}
+        <code>http:RemoteServerError</code>) of the client remote operation.
       </p>
 
       <Row
@@ -65,7 +59,7 @@ export function HttpClientDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ff736752184fdf6fcb61d2b5046ac374&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=5738806e349635f83acd3e37e2415539&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}
@@ -248,7 +242,7 @@ export function HttpClientDataBinding({ codeSnippets }) {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> module - API documentation
+              <code>http</code> package - API documentation
             </a>
           </span>
         </li>

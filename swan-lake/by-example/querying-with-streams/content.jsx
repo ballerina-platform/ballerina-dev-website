@@ -7,70 +7,30 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Error error;
-
-type LineStream stream<string, Error?>;
-
-type ValueRecord record {|
-    string value;
-|};
-
-const SAMPLE_LINE_COUNT = 5;
-
-class LineGenerator {
-    int i = -1;
-    string inputString;
-
-    public function init(string str) {
-        self.inputString = str;
-    }
-
-    public isolated function next() returns ValueRecord|Error? {
-        self.i += 1;
-        if (self.i < SAMPLE_LINE_COUNT) {
-            if (self.i % 2 == 0) {
-                return {value: self.inputString};
-            }
-            return {value: ""};
+class EvenNumberGenerator {
+    int i = 0;
+    public isolated function next() returns record {|int value;|}|error? {
+        self.i += 2;
+        if self.i > 10 {
+            return ();
         }
-        return;
+
+        return {value: self.i};
     }
 }
 
-// This method strips the blank lines.
-function strip(LineStream lines) returns LineStream {
-    // Creates a \`stream\` from a query expression.
-    LineStream res = stream from var line in lines
-             where line.trim().length() > 0
-             select line;
+public function main() returns error? {
+    EvenNumberGenerator evenGen = new ();
 
-    return res;
-}
+    // Creates a \`stream\` passing an \`EvenNumberGenerator\` object to the \`stream\` constructor.
+    stream<int, error?> evenNumberStream = new (evenGen);
 
-function count(LineStream lines) returns int|Error {
-    int nLines = 0;
+    // Iterates the \`evenNumberStream\` until it returns \`()\`.
+    // If the stream terminates with an error, the result of the query expression will be the error.
+    int[] evenNumbers = check from var number in evenNumberStream
+                        select number;
 
-    // Counts the number of lines by iterating the \`stream\` in a query action.
-    var _ = check from var _ in lines
-              do {
-                  nLines += 1;
-              };
-
-    return nLines;
-}
-
-public function main() {
-    LineGenerator generator = new ("Everybody can dance");
-    LineStream inputLineStream = new (generator);
-
-    LineStream strippedStream = strip(inputLineStream);
-
-    int|Error nonBlankCount = count(strippedStream);
-
-    if (nonBlankCount is int) {
-        io:println("Input line count: ", SAMPLE_LINE_COUNT.toString());
-        io:println("Non blank line count: ", nonBlankCount.toString());
-    }
+    io:println(evenNumbers);
 }
 `,
 ];
@@ -88,15 +48,11 @@ export function QueryingWithStreams({ codeSnippets }) {
       <h1>Querying with streams</h1>
 
       <p>
-        If stream terminates with <code>error</code>, result of{" "}
-        <code>query expression</code> is an <code>error</code>. You cannot use{" "}
-        <code>foreach</code> on <code>stream</code> type with termination type
-        that allows <code>error</code>. Instead use <code>from</code> with{" "}
-        <code>do</code> clause; the result is a subtype of <code>error?</code>.
-        Use <code>stream</code> keyword in front of <code>from</code> to create
-        a <code>stream</code> which is lazily evaluated. The failure of{" "}
-        <code>check</code> within the <code>query</code> will cause the{" "}
-        <code>stream</code> to produce an <code>error</code> termination value.
+        A query expression can be used to call the <code>next()</code> method of
+        a stream iteratively. A binding pattern in a query expression will bind
+        the value of the result from the <code>next()</code> operation on the
+        stream. If the stream terminates with an error, result of the query
+        expression will be the error.
       </p>
 
       <Row
@@ -109,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2a7ddd61f8f07c5042b7973c1dcc17b&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=e432c0d59f36f31c0d196e3bc1172f7f&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -262,16 +218,128 @@ export function QueryingWithStreams({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run querying_with_streams.bal`}</span>
-              <span>{`Input line count: 5`}</span>
-              <span>{`Non blank line count: 3`}</span>
+              <span>{`[2,4,6,8,10]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-expressions">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/sort-iterable-objects">
+              Sort iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/let-clause">
+              Let clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/limit-clause">
+              Limit clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/joining-iterable-objects">
+              Joining iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/querying-tables">Querying tables</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-maps-with-query">
+              Create maps with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-tables-with-query">
+              Create tables with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/on-conflict-clause">
+              On conflict clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-query-expressions">
+              Nested query expressions
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Stream type" href="/learn/by-example/stream-type">
+          <Link
+            title="Destructure records using query"
+            href="/learn/by-example/destructure-records-using-query"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -297,7 +365,7 @@ export function QueryingWithStreams({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Stream type
+                  Destructure records using query
                 </span>
               </div>
             </div>

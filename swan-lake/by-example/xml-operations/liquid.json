@@ -1,6 +1,6 @@
 {
   "title": "XML operations",
-  "description": "This BBE demonstrates XML operations in Ballerina",
+  "description": "This BBE demonstrates XML concatenation and how to use deep equality checks for XML in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

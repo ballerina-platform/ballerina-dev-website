@@ -1,0 +1,18 @@
+{
+  "title": "Type intersection for error types",
+  "description": "This BBE demonstrates type intersection for error types.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "intersection",
+    "distinct"
+  ],
+  "permalink": "/learn/by-example/error-type-intersection",
+  "active": "error-type-intersection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-type-intersection",
+    "/swan-lake/learn/by-example/error-type-intersection.html"
+  ]
+}

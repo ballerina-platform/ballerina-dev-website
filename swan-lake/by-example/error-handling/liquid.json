@@ -1,0 +1,17 @@
+{
+  "title": "Error handling",
+  "description": "This BBE demonstrates how errors are handled in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "error handling"
+  ],
+  "permalink": "/learn/by-example/error-handling",
+  "active": "error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-handling",
+    "/swan-lake/learn/by-example/error-handling.html"
+  ]
+}

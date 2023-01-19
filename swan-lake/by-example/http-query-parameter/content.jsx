@@ -19,7 +19,7 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The \`artist\` resource method argument is considered as the query parameter which is extracted from the request URI.
+    // The \`artist\` resource method argument is considered as the query parameter, which is extracted from the request URI.
     resource function get albums(string artist) returns Album[] {
         return from Album album in albums
             where album.artist == artist
@@ -69,7 +69,7 @@ export function HttpQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bf2ab0ff50af323d28ad9ae44a12af33&file=http_query_parameter.bal",
+                "https://play.ballerina.io/?gist=9aef68a24f6424184c466987866abb1a&file=http_query_parameter.bal",
                 "_blank"
               );
             }}

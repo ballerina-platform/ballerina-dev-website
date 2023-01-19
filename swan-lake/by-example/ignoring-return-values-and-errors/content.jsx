@@ -7,37 +7,39 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type UserInfo record {|
-   readonly string username;
-   string password;
-|};
+public function main() {
+    // Allowed only if the return value is \`()\`.
+    doX();
 
-type UserTable table<UserInfo> key(username);
+    // Allowed if the return value does not include an \`error\`.
+    _ = getX();
 
-enum HttpVersion {
-   HTTP_1_0 = "1.0",
-   HTTP_1_1 = "1.1",
-   HTTP_2_0 = "2.0"
+    // Use \`checkpanic\` if you don't want to handle an \`error\`.
+    checkpanic tryX(true);
+    checkpanic tryX(false);
+
 }
 
-// The configurable variables of \`float\`, \`string[]\`, enum, \`record\`, and \`table\` types are initialized.
-configurable float maxPayload = 1.0;
-configurable string[] acceptTypes = ["text/plain"];
-configurable HttpVersion httpVersion = HTTP_1_0;
-configurable UserInfo & readonly admin = ?;
-configurable UserTable & readonly users = ?;
+function doX() {
+    io:println("Do X");
+}
 
-public function main() {
-   io:println("maximum payload (in MB): ", maxPayload);
-   io:println("accepted content types: ", acceptTypes);
-   io:println("HTTP version: ", httpVersion);
-   io:println("admin details: ", admin);
-   io:println("users: ", users);
+function getX() returns boolean {
+    io:println("Get X");
+    return true;
+}
+
+function tryX(boolean x) returns error? {
+    io:println("Try X");
+    if !x {
+        return error("error!");
+    }
+    return;
 }
 `,
 ];
 
-export function ConfiguringViaToml({ codeSnippets }) {
+export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -47,34 +49,19 @@ export function ConfiguringViaToml({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Configure via TOML files</h1>
+      <h1>Ignoring return values and errors</h1>
 
       <p>
-        The values of the configurable variables can be configured through the
-        configuration files in the TOML(v0.4) format.
+        Ballerina does not allow silently ignoring return values. To ignore a
+        return value, assign it to <code>_</code>; this is like an implicitly
+        declared variable that cannot be referenced. When a return type includes
+        an error, you have to do something with the error.
       </p>
 
       <p>
-        The file location can be specified through an environment variable with
-        the name <code>BAL_CONFIG_FILES</code>. Specifying multiple
-        configuration files is supported using this environment variable with
-        the OS-specific separator. If an environment variable is not specified,
-        a file named <code>Config.toml</code> will be sought in the current
-        working directory.
-      </p>
-
-      <p>
-        An environment variable with the name <code>BAL_CONFIG_DATA</code> can
-        be used to provide the configuration file content instead of a separate
-        file.
-      </p>
-
-      <p>
-        For more information, see{" "}
-        <a href="/learn/configure-ballerina-programs/provide-values-to-configurable-variables/provide-via-toml-syntax/">
-          Configure via TOML syntax
-        </a>
-        .
+        <code>_</code> is of type any: you cannot use <code>_</code> to ignore
+        an error. <code>checkpanic</code> is like <code>check</code>, but panics
+        on error rather than returning.
       </p>
 
       <Row
@@ -83,9 +70,56 @@ export function ConfiguringViaToml({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=c7f9eaf57c80e4319c9d2d9af1afe82f&file=ignoring_return_values_and_errors.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/ignoring-return-values-and-errors",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -103,7 +137,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -192,12 +226,14 @@ export function ConfiguringViaToml({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run configuring_via_toml.bal`}</span>
-              <span>{`maximum payload (in MB): 3.21`}</span>
-              <span>{`accepted content types: ["application/xml","application/json","text/plain"]`}</span>
-              <span>{`HTTP version: 1.0`}</span>
-              <span>{`admin details: {"username":"admin","password":"password"}`}</span>
-              <span>{`users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]`}</span>
+              <span>{`\$ bal run ignoring_return_values_and_errors.bal`}</span>
+              <span>{`Do X`}</span>
+              <span>{`Get X`}</span>
+              <span>{`Try X`}</span>
+              <span>{`Try X`}</span>
+              <span>{`error: error!`}</span>
+              <span>{`        at ignoring_return_values_and_errors:tryX(ignoring_return_values_and_errors.bal:28)`}</span>
+              <span>{`           ignoring_return_values_and_errors:main(ignoring_return_values_and_errors.bal:12)`}</span>
             </code>
           </pre>
         </Col>
@@ -205,10 +241,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
-          >
+          <Link title="Error cause" href="/learn/by-example/error-cause">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -234,17 +267,14 @@ export function ConfiguringViaToml({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configurable variables
+                  Error cause
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Configuring via CLI arguments"
-            href="/learn/by-example/configuring-via-cli"
-          >
+          <Link title="Identity" href="/learn/by-example/identity">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -253,7 +283,7 @@ export function ConfiguringViaToml({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configuring via CLI arguments
+                  Identity
                 </span>
               </div>
               <svg

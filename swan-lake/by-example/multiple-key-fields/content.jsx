@@ -65,7 +65,7 @@ export function MultipleKeyFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8418cf9e0f7cb08a049ab06bbf5ca676&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=648a9512e2a3225a41637dbaa8d721cd&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}
@@ -231,7 +231,7 @@ export function MultipleKeyFields({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/table-syntax/">Table Syntax</a>
+            <a href="/learn/by-example/table/">Table</a>
           </span>
         </li>
       </ul>

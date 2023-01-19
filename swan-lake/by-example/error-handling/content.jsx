@@ -64,7 +64,7 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b50678396813016842e7a5af24af5050&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=324fc48405baaacf6bda1b31c46224d3&file=error_handling.bal",
                 "_blank"
               );
             }}

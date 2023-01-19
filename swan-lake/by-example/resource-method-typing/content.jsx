@@ -290,7 +290,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/http-data-binding/">
+            <a href="/learn/by-example/http-service-data-binding/">
               Service data binding
             </a>
           </span>

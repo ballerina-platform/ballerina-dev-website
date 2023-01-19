@@ -65,7 +65,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bb40dc516d4e01b6547cca6a9bb4bb6c&file=http_trace_logs.bal",
+                "https://play.ballerina.io/?gist=ced83f50c78beff6666504c20edaa122&file=http_trace_logs.bal",
                 "_blank"
               );
             }}
@@ -388,7 +388,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1a4536bc2d7e6a5a23693af749f4641&file=Config.toml",
+                "https://play.ballerina.io/?gist=358e9f2a5feb6f7a4b3e5c909b121a21&file=Config.toml",
                 "_blank"
               );
             }}

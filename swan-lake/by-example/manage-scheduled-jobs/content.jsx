@@ -112,7 +112,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=048f104ac8846e3bd6bc01c4d96b1313&file=manage_scheduled_jobs.bal",
+                "https://play.ballerina.io/?gist=35fa441118088be1a47bbfc59a0f0a3c&file=manage_scheduled_jobs.bal",
                 "_blank"
               );
             }}

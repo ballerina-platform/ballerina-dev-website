@@ -54,7 +54,7 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f2adc476dc1ed3d1b8900c677fd27bf0&file=http_client_ssl_tls.bal",
+                "https://play.ballerina.io/?gist=e0e215f99dc121ce26f580fa0fda938a&file=http_client_ssl_tls.bal",
                 "_blank"
               );
             }}

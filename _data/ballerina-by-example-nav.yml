@@ -511,14 +511,53 @@ sublinks:
           - title: Configurable variables
             id: 1
             url: configurable-variables
-          - title: Configuring via TOML files
-            id: 2
-            url: configuring-via-toml
-          - title: Configuring via CLI arguments
-            id: 3
-            url: configuring-via-cli
-      - title: Concurrency
+      - title: Error handling
         id: 26
+        sublinks:
+          - title: Error handling
+            id: 1
+            url: error-handling
+          - title: Check expression
+            id: 2
+            url: check-expression
+          - title: Error subtyping
+            id: 3
+            url: error-subtyping
+          - title: Panics
+            id: 4
+            url: panics
+          - title: Type intersection for error types
+            id: 5
+            url: error-type-intersection
+          - title: Error detail
+            id: 6
+            url: error-detail
+          - title: Error cause
+            id: 7
+            url: error-cause
+      - title: Ignore return values and errors
+        id: 27
+        sublinks:
+          - title: Ignore return values and errors
+            id: 1
+            url: ignoring-return-values-and-errors
+      - title: Mutability and identity
+        id: 28
+        sublinks:
+          - title: Identity
+            id: 1
+            url: identity
+          - title: 'Const and final '
+            id: 2
+            url: const-and-final
+          - title: Enumerations
+            id: 3
+            url: enumerations
+          - title: Immutability
+            id: 4
+            url: immutability
+      - title: Concurrency
+        id: 29
         sublinks:
           - title: Asynchronous function calls
             id: 1
@@ -563,7 +602,7 @@ sublinks:
             id: 14
             url: flush
       - title: Transactions
-        id: 27
+        id: 30
         sublinks:
           - title: Transaction statement
             id: 1
@@ -587,7 +626,7 @@ sublinks:
             id: 7
             url: commit-rollback-handlers
       - title: Concurrency safety
-        id: 28
+        id: 31
         sublinks:
           - title: Lock statement
             id: 1
@@ -623,13 +662,13 @@ sublinks:
             id: 11
             url: run-strands-safely-on-separate-threads
       - title: Interface to external code
-        id: 29
+        id: 32
         sublinks:
           - title: Interface to external code
             id: 1
             url: interface-to-external-code
       - title: Testing
-        id: 30
+        id: 33
         sublinks:
           - title: Assertions
             id: 1

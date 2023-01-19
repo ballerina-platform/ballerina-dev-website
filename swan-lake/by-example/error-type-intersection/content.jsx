@@ -5,28 +5,43 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  ` import ballerina/io;
+  `import ballerina/io;
 
-enum HttpVersion {
-   HTTP_1_0 = "1.0",
-   HTTP_1_1 = "1.1",
-   HTTP_2_0 = "2.0"
-}
+type IOError distinct error;
 
-// The configurable variables of \`float\`, \`union\`, and \`enum\` types are initialized.
-configurable float maxPayload = 1.0;
-configurable string|int localId = ?;
-configurable HttpVersion httpVersion = HTTP_1_0;
+type FileErrorDetail record {
+    string filename;
+};
+
+// The \`FileIOError\` type is defined as an intersection type using the \`&\` notation.
+// It is the intersection of two error types: \`IOError\` and \`error<FileErrorDetail>\`.
+// An error value belongs to this type if and only if it belongs to both \`IOError\` 
+// and \`error<FileErrorDetail>\`.
+type FileIOError IOError & error<FileErrorDetail>;
 
 public function main() {
-   io:println("maximum payload (in MB): ", maxPayload);
-   io:println("local ID: ", localId);
-   io:println("HTTP version: ", httpVersion);
+    // In order to create an error value that belongs to \`FileIOError\`, the \`filename\`
+    // detail field must be provided.
+    FileIOError fileIOError = error("file not found", filename = "test.txt");
+
+    // \`fileIOError\` belongs to both \`IOError\` and \`error<FileErrorDetail>\`.
+    io:println(fileIOError is IOError);
+    io:println(fileIOError is error<FileErrorDetail>);
+
+    // An \`IOError\` value will not belong to \`FileIOError\` if it doesn't belong to
+    // \`error<FileErrorDetail>\`.
+    IOError ioError = error("invalid input");
+    io:println(ioError is FileIOError);
+
+    // Similarly, an error value belonging to \`error<FileErrorDetail>\` will not belong 
+    // to \`FileIOError\` if it doesn't belong to \`IOError\`.
+    error<FileErrorDetail> fileError = error("cannot remove file", filename = "test.txt");
+    io:println(fileError is FileIOError);
 }
 `,
 ];
 
-export function ConfiguringViaCli({ codeSnippets }) {
+export function ErrorTypeIntersection({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -36,33 +51,12 @@ export function ConfiguringViaCli({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Configure via command-line arguments</h1>
+      <h1>Type intersection for error types</h1>
 
       <p>
-        The values of the configurable variables can be configured through the
-        command-line arguments when executing the Ballerina program. The
-        provided value is expected to be the <code>toString()</code>{" "}
-        representation of the intended value.
-      </p>
-
-      <p>
-        The command-line-based configuration is only supported for configurable
-        variables of types <code>int</code>, <code>byte</code>,{" "}
-        <code>float</code>, <code>boolean</code>, <code>string</code>,{" "}
-        <code>decimal</code>, <code>enum</code>, and <code>xml</code>.
-      </p>
-
-      <p>
-        The <code>-Ckey=value</code> syntax can be used to provide values
-        through the command-line parameters.
-      </p>
-
-      <p>
-        For more information, see{" "}
-        <a href="/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments/">
-          Configure via command-line arguments
-        </a>
-        .
+        You can define an error type that is both a subtype of a{" "}
+        <code>distinct</code> error type and has additional constraints on the
+        detail fields using intersection types.
       </p>
 
       <Row
@@ -71,9 +65,56 @@ export function ConfiguringViaCli({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=9dbfe4394938c6c94f1e2a27d5c437aa&file=error_type_intersection.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/error-type-intersection",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -91,7 +132,7 @@ export function ConfiguringViaCli({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -180,10 +221,11 @@ export function ConfiguringViaCli({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run configuring_via_cli.bal -- -CmaxPayload=2.5 -ClocalId=ID-1 -ChttpVersion=2.0`}</span>
-              <span>{`maximum payload (in MB): 2.5`}</span>
-              <span>{`local ID: ID-1`}</span>
-              <span>{`HTTP version: 2.0`}</span>
+              <span>{`\$ bal run error_type_intersection.bal`}</span>
+              <span>{`true`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
+              <span>{`false`}</span>
             </code>
           </pre>
         </Col>
@@ -191,10 +233,7 @@ export function ConfiguringViaCli({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Configuring via TOML files"
-            href="/learn/by-example/configuring-via-toml"
-          >
+          <Link title="Panics" href="/learn/by-example/panics">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -220,17 +259,14 @@ export function ConfiguringViaCli({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configuring via TOML files
+                  Panics
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Asynchronous function calls"
-            href="/learn/by-example/asynchronous-function-calls"
-          >
+          <Link title="Error detail" href="/learn/by-example/error-detail">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -239,7 +275,7 @@ export function ConfiguringViaCli({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Asynchronous function calls
+                  Error detail
                 </span>
               </div>
               <svg

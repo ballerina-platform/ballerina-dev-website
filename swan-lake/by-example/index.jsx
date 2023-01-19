@@ -572,13 +572,53 @@ import {
   codeSnippetData as ConfigurableVariablesCodeSnippetData,
 } from "./configurable-variables/content.jsx";
 import {
-  ConfiguringViaToml,
-  codeSnippetData as ConfiguringViaTomlCodeSnippetData,
-} from "./configuring-via-toml/content.jsx";
+  ErrorHandling,
+  codeSnippetData as ErrorHandlingCodeSnippetData,
+} from "./error-handling/content.jsx";
 import {
-  ConfiguringViaCli,
-  codeSnippetData as ConfiguringViaCliCodeSnippetData,
-} from "./configuring-via-cli/content.jsx";
+  CheckExpression,
+  codeSnippetData as CheckExpressionCodeSnippetData,
+} from "./check-expression/content.jsx";
+import {
+  ErrorSubtyping,
+  codeSnippetData as ErrorSubtypingCodeSnippetData,
+} from "./error-subtyping/content.jsx";
+import {
+  Panics,
+  codeSnippetData as PanicsCodeSnippetData,
+} from "./panics/content.jsx";
+import {
+  ErrorTypeIntersection,
+  codeSnippetData as ErrorTypeIntersectionCodeSnippetData,
+} from "./error-type-intersection/content.jsx";
+import {
+  ErrorDetail,
+  codeSnippetData as ErrorDetailCodeSnippetData,
+} from "./error-detail/content.jsx";
+import {
+  ErrorCause,
+  codeSnippetData as ErrorCauseCodeSnippetData,
+} from "./error-cause/content.jsx";
+import {
+  IgnoringReturnValuesAndErrors,
+  codeSnippetData as IgnoringReturnValuesAndErrorsCodeSnippetData,
+} from "./ignoring-return-values-and-errors/content.jsx";
+import {
+  Identity,
+  codeSnippetData as IdentityCodeSnippetData,
+} from "./identity/content.jsx";
+import {
+  ConstAndFinal,
+  codeSnippetData as ConstAndFinalCodeSnippetData,
+} from "./const-and-final/content.jsx";
+import {
+  Enumerations,
+  codeSnippetData as EnumerationsCodeSnippetData,
+} from "./enumerations/content.jsx";
+import {
+  Immutability,
+  codeSnippetData as ImmutabilityCodeSnippetData,
+} from "./immutability/content.jsx";
 import {
   AsynchronousFunctionCalls,
   codeSnippetData as AsynchronousFunctionCallsCodeSnippetData,
@@ -2085,10 +2125,30 @@ const BBEs = {
   ResourcePathParametersCodeSnippetData,
   ConfigurableVariables,
   ConfigurableVariablesCodeSnippetData,
-  ConfiguringViaToml,
-  ConfiguringViaTomlCodeSnippetData,
-  ConfiguringViaCli,
-  ConfiguringViaCliCodeSnippetData,
+  ErrorHandling,
+  ErrorHandlingCodeSnippetData,
+  CheckExpression,
+  CheckExpressionCodeSnippetData,
+  ErrorSubtyping,
+  ErrorSubtypingCodeSnippetData,
+  Panics,
+  PanicsCodeSnippetData,
+  ErrorTypeIntersection,
+  ErrorTypeIntersectionCodeSnippetData,
+  ErrorDetail,
+  ErrorDetailCodeSnippetData,
+  ErrorCause,
+  ErrorCauseCodeSnippetData,
+  IgnoringReturnValuesAndErrors,
+  IgnoringReturnValuesAndErrorsCodeSnippetData,
+  Identity,
+  IdentityCodeSnippetData,
+  ConstAndFinal,
+  ConstAndFinalCodeSnippetData,
+  Enumerations,
+  EnumerationsCodeSnippetData,
+  Immutability,
+  ImmutabilityCodeSnippetData,
   AsynchronousFunctionCalls,
   AsynchronousFunctionCallsCodeSnippetData,
   NamedWorkers,

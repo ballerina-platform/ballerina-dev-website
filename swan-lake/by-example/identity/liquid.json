@@ -1,0 +1,11 @@
+{
+  "title": "Identity",
+  "description": "This BBE demonstrates identity in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "identity"],
+  "permalink": "/learn/by-example/identity",
+  "active": "identity",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/identity",
+    "/swan-lake/learn/by-example/identity.html"
+  ]
+}

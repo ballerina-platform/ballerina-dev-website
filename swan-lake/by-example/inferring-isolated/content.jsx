@@ -85,7 +85,7 @@ export function InferringIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3912124766ce2de51f880baf20189bfc&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=e880f51acc36c6621d4beaccb749fa14&file=inferring_isolated.bal",
                 "_blank"
               );
             }}

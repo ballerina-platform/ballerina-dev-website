@@ -57,7 +57,7 @@ export function IoXml({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9ea3e44d6e5c6d1555249ee1e39de5ff&file=io_xml.bal",
+                "https://play.ballerina.io/?gist=f7ba76fca9785d12a7e837badfe10642&file=io_xml.bal",
                 "_blank"
               );
             }}

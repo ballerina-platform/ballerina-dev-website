@@ -1,0 +1,11 @@
+{
+  "title": "Immutability",
+  "description": "This BBE demonstrates immutability in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "immutability"],
+  "permalink": "/learn/by-example/immutability",
+  "active": "immutability",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/immutability",
+    "/swan-lake/learn/by-example/immutability.html"
+  ]
+}

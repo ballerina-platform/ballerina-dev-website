@@ -76,7 +76,7 @@ export function DefiningClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a4d85aa8f902556b67cb4177d9c68419&file=defining_classes.bal",
+                "https://play.ballerina.io/?gist=a9f9a6d76d21457b6f58868e2ee66a88&file=defining_classes.bal",
                 "_blank"
               );
             }}

@@ -76,7 +76,7 @@ export function Tuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ff31f9a17695a571563c6810b17b61ef&file=tuples.bal",
+                "https://play.ballerina.io/?gist=0b3a4edf3b265cd8a459563c90d147db&file=tuples.bal",
                 "_blank"
               );
             }}

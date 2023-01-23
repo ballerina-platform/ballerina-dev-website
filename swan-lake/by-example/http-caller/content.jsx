@@ -69,7 +69,7 @@ export function HttpCaller({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c4ce9cfba8d416cd317a10fe36671267&file=http_caller.bal",
+                "https://play.ballerina.io/?gist=a69817f91b72dd5587a20a43c60a634e&file=http_caller.bal",
                 "_blank"
               );
             }}

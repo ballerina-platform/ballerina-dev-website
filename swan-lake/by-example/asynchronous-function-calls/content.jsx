@@ -58,7 +58,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee35b2f68aab3eda36383c564aa8fe3e&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=96729d19beef1c0cfe0b14ada045ba1c&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}
@@ -219,10 +219,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Configuring via CLI arguments"
-            href="/learn/by-example/configuring-via-cli"
-          >
+          <Link title="Immutability" href="/learn/by-example/immutability">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +245,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configuring via CLI arguments
+                  Immutability
                 </span>
               </div>
             </div>

@@ -90,7 +90,7 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Test, debug &amp; document the code</h3>
+            <h3>Test, debug, and document the code</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -147,7 +147,7 @@ export default function Platform(props) {
 
 
           <div className={styles.pGroup}>
-            <h3>Ballerina Tooling</h3>
+            <h3>Ballerina tooling</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -217,7 +217,7 @@ export default function Platform(props) {
         <Col xs={12} lg={4} className={styles.contentCol}>
 
           <div className={styles.pGroup}>
-            <h3>Configure &amp; observe</h3>
+            <h3>Configure and observe</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -273,7 +273,7 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Native Support</h3>
+            <h3>Native support</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>

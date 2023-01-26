@@ -87,6 +87,27 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### Improvements
 
+#### CLI
+##### Refactor bal format command
+Introduced new flags to `bal format` command and updated the format of the command. New `bal format` command would look like below,
+
+`bal format [OPTIONS] [<package>|<module>|<source-file>]`
+```
+OPTIONS
+    --module <module-name>
+        Format only a specific module in the Package
+
+     --file <file-name>
+        Format only a specific file in the Package
+    
+     -d, --dry-run
+        Perform a dry run of the formatter and see which files will
+        be formatted after the execution.
+```
+
+#### JSON to Record Converter
+Improved the JSON to Record Converter tool to generate records with non-conflicting record names. The updated API requires the file URI and it will take care of the rest. When the API is used with Language-Server, the conversion will be much faster as the tool would use already existing compilation of the project.
+
 #### OpenAPI Tool
 
 ### Bug Fixes

@@ -40,13 +40,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.4](https://git
 
 ## Standard library updates
 
-#### New features
-
-##### `oauth2` package
-
-- Allow the use of inferred values for refreshing tokens through the password grant type
-- Allow the use of string value for the scopes field in client grant configuration 
-
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.4](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.4%22+label%3AType%2FBug).
 
 <!-- <style>.cGitButtonContainer, .cBallerinaTocContainer {display:none;}</style> -->

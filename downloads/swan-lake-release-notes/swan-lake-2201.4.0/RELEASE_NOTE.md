@@ -65,8 +65,8 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ##### `constraint` package
 
-- Added `@pattern` constraint on string types
-- Added constraint validation on `readonly` types
+- Introduced `@pattern` constraint on string types
+- Added constraint validation support for `readonly` types
 
 ##### `oauth2` package
 

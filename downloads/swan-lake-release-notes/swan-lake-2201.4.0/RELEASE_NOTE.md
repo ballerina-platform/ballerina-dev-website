@@ -68,7 +68,16 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 - Allow the use of inferred values for refreshing tokens through the password grant type
 - Allow the use of string values for the `scopes` field in the client grant configuration 
 
+##### `graphql` package
+
+- Added support for multiplexing in GraphQL subscriptions
+- Added support to access the GraphQL field information from resolvers
+
 ### Improvements
+
+##### `graphql` package
+
+- Removed limitation on GraphQL `context` object parameter order
 
 ### Bug fixes
 
@@ -89,6 +98,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 ### New features
 
 #### Language Server
+
+#### GraphQL Tool
+
+- Added support for GraphQL SDL schema file generation
 
 ### Improvements
 

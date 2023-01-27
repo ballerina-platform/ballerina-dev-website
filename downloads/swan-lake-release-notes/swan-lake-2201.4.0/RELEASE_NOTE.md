@@ -63,6 +63,11 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### New features
 
+##### `oauth2` package
+
+- Allow the use of inferred values for refreshing tokens through the password grant type
+- Allow the use of string values for the `scopes` field in the client grant configuration 
+
 ### Improvements
 
 ### Bug fixes

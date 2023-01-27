@@ -77,7 +77,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ##### `graphql` package
 
-- Removed limitation on GraphQL `context` object parameter order
+- Removed the limitation on the GraphQL `context` object parameter order
 
 ### Bug fixes
 

@@ -99,11 +99,22 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### Language Server
 
+* Added auto-completion support for regular expressions
+* Added `Create variable with Type` code action
+
 #### GraphQL Tool
 
 - Added support for GraphQL SDL schema file generation
 
 ### Improvements
+
+#### Language Server
+
+* Improved completion and code action support for pulled modules
+* Improved sorting of module level completion items
+* Added rename popup support for `Extract to constant`, `Extract to local variable` and `Extract to function` code actions.
+* Added quick pick support for selecting expressions in `Extract to constant` code action
+* Used code action resolve request for compiler plugin code actions
 
 #### OpenAPI Tool
 

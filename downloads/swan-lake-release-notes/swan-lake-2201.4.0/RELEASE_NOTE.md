@@ -73,6 +73,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 - Added support for multiplexing in GraphQL subscriptions
 - Added support to access the GraphQL field information from resolvers
 
+##### `nats` package
+
+- Added support for the new NATS JetStream client with publishing and subscribing functionalities
+
 ### Improvements
 
 ##### `graphql` package

@@ -178,7 +178,7 @@ listener http:Listener serviceListener = new(9090);
 
 // Service attaches to the Listener
 service /foo/bar on serviceListener {
-    resource function get sayHello(http:Caller caller) {}
+    resource function get greeting() returns string {}
 }
 ```
 
@@ -198,7 +198,7 @@ public function main() {
 }
 
 http:Service s = service object {
-    resource function get sayHello(http:Caller caller) {}
+    resource function get greeting() returns string {}
 };
 ```
 
@@ -495,7 +495,7 @@ not present in the request. In order to avoid the missing detail, a service leve
 }
 service /queryparamservice on new http:Listener(9090) {
 
-    resource function get test1(string foo, int bar) returns json {
+    resource function get queryvalues(string foo, int bar) returns json {
         json responseJson = { value1: foo, value2: bar};
         return responseJson;
     }
@@ -650,7 +650,7 @@ the process will happen according to the type `xml`.
 If the given types of the union are not compatible with the media type, an error is returned.
 
 ```ballerina
-resource function post hello(@http:Payload json|xml payload) { 
+resource function post album(@http:Payload json|xml payload) { 
     
 }
 
@@ -690,12 +690,12 @@ the type is nilable.
 
 ```ballerina
 //Single header value extraction
-resource function post hello1(@http:Header string referer) {
+resource function post album(@http:Header string referer) {
     
 }
 
 //Multiple header value extraction
-resource function post hello2(@http:Header {name: "Accept"} string[] accept) {
+resource function post product(@http:Header {name: "Accept"} string[] accept) {
     
 }
 
@@ -706,7 +706,7 @@ public type RateLimitHeaders record {|
 |};
 
 //Populate selected headers to a record
-resource function get hello3(@http:Header RateLimitHeaders rateLimitHeaders) {
+resource function get price(@http:Header RateLimitHeaders rateLimitHeaders) {
 }
 ```
 
@@ -714,7 +714,7 @@ If the requirement is to access all the header of the inbound request, it can be
 typed param in the signature. It does not need the annotation and not ordered.
 
 ```ballerina
-resource function get hello3(http:Headers headers) {
+resource function get price(http:Headers headers) {
     string|http:HeaderNotFoundError referer = headers.getHeader("Referer");
     string[]|http:HeaderNotFoundError accept = headers.getHeaders("Accept");
     string[] keys = headers.getHeaderNames();
@@ -732,7 +732,7 @@ not present in the request. In order to avoid the missing detail, a service leve
 }
 service /headerparamservice on HeaderBindingIdealEP {
 
-    resource function get test1(@http:Header string? foo) returns json {
+    resource function get headers(@http:Header string? foo) returns json {
         
     }
 }
@@ -798,8 +798,8 @@ In addition to that the `@http:Payload` annotation can be specified along with a
 mentioning the content type of the outbound payload.
 
 ```ballerina
-resource function get test() returns @http:Payload {mediaType:"text/id+plain"} string {
-    return "world";
+resource function get greeting() returns @http:Payload {mediaType:"text/id+plain"} string {
+    return "hello world";
 }
 ```
 
@@ -821,10 +821,14 @@ The status code response records are defined in the HTTP module for every HTTP s
 helps OpenAPI spec generation. 
 
 ```ballerina
-type Person record {
-   string name;
-};
-resource function put person(string name) returns record {|*http:Created; Person body;|} {
+type PersonCreated record {|
+    *http:Created;
+    record {|
+        string name;
+    |} body;
+|};
+
+resource function post name(string name) returns PersonCreated {
    Person person = {name:name};
    return {
        mediaType: "application/person+json",
@@ -1052,7 +1056,7 @@ instantiated calling `new`, instead user have to enable the config in the `Clien
 Provides secure HTTP remote methods for interacting with HTTP endpoints. This will make use of the authentication
 schemes configured in the HTTP client endpoint to secure the HTTP requests.
 ```ballerina
-http:Client clientEP = check new("https://localhost:9090",
+http:Client clientEP = check new ("https://localhost:9090",
     auth = {
         username: username,
         password: password
@@ -1069,7 +1073,7 @@ http:Client clientEP = check new("https://localhost:9090",
 ##### 2.4.1.2 Caching
 An HTTP caching client uses the HTTP caching layer once `cache` config is enabled.
 ```ballerina
-http:Client clientEP = check new("http://localhost:9090",
+http:Client clientEP = check new ("http://localhost:9090",
     cache = {
         enabled: true, 
         isShared: true 
@@ -1081,7 +1085,7 @@ http:Client clientEP = check new("http://localhost:9090",
 Provide the redirection support for outbound requests internally considering the location header when `followRedirects`
 configs are defined.
 ```ballerina
-http:Client clientEP = check new("http://localhost:9090", 
+http:Client clientEP = check new ("http://localhost:9090", 
     followRedirects = { 
         enabled: true, 
         maxCount: 3 
@@ -1092,7 +1096,7 @@ http:Client clientEP = check new("http://localhost:9090",
 ##### 2.4.1.4 Retry
 Provides the retrying over HTTP requests when `retryConfig` is defined.
 ```ballerina
-http:Client clientEP = check new("http://localhost:9090",
+http:Client clientEP = check new ("http://localhost:9090",
     retryConfig = {
         interval: 3,
         count: 3,
@@ -1104,7 +1108,7 @@ http:Client clientEP = check new("http://localhost:9090",
 ##### 2.4.1.5 Circuit breaker
 A Circuit Breaker implementation which can be used to gracefully handle network failures.
 ```ballerina
-http:Client clientEP = check new("http://localhost:9090", 
+http:Client clientEP = check new ("http://localhost:9090", 
     circuitBreaker = {
         rollingWindow: {
             timeWindow: 60,
@@ -1122,7 +1126,7 @@ http:Client clientEP = check new("http://localhost:9090",
 Provides the cookie functionality across HTTP client actions. The support functions defined in the request can be 
 used to manipulate cookies.
 ```ballerina
-http:Client clientEP = check new("http://localhost:9090", 
+http:Client clientEP = check new ("http://localhost:9090", 
     cookieConfig = { 
         enabled: true, 
         persistentCookieHandler: myPersistentStore 
@@ -1143,7 +1147,7 @@ public type LoadBalanceClientConfiguration record {|
     boolean failover = true;
 |};
 
-http:LoadBalanceClient clientEP = check new(
+http:LoadBalanceClient clientEP = check new (
     targets = [
         { url: "http://localhost:8093/LBMock1" },
         { url: "http://localhost:8093/LBMock2" },
@@ -1164,7 +1168,7 @@ public type FailoverClientConfiguration record {|
     decimal interval = 0;
 |};
 
-http:FailoverClient foBackendEP00 = check new(
+http:FailoverClient foBackendEP00 = check new (
     timeout = 5,
     failoverCodes = [501, 502, 503],
     interval = 5,
@@ -1538,7 +1542,6 @@ Ballerina dispatching logic is implemented to uniquely identify a resource based
 
 The ballerina dispatcher considers the absolute-resource-path of the service as the base path and the resource
 method name as the path of the resource method for the URI path match.
-
 Ballerina dispatching logic depends on the HTTP method of the request in addition to the URI. Therefore, matching only 
 the request path will not be sufficient. Once the dispatcher finds a resource, it checks for the method compatibility 
 as well. The accessor name of the resource describes the HTTP method where the name of the remote method implicitly 
@@ -1619,7 +1622,7 @@ public type HttpResourceConfig record {|
 @http:ResourceConfig {
     produces: ["application/json"]
 }
-resource function post test() {
+resource function post person() {
 
 }
 ```
@@ -1643,7 +1646,7 @@ define the potential request payload content type as the mediaType to perform so
 Consumes resource config field.
 
 ```ballerina
-resource function post hello(@http:Payload {mediaType:["application/json", "application/ld+json"]} json payload)  {
+resource function post person(@http:Payload {mediaType:["application/json", "application/ld+json"]} json payload)  {
     
 }
 ```
@@ -1661,7 +1664,7 @@ to perform some pre-runtime validations in addition to the compile-time validati
 config field.
 
 ```ballerina
-resource function post hello() returns @http:Payload{mediaType:"application/xml"} xml? {
+resource function post person() returns @http:Payload{mediaType:"application/xml"} xml? {
     
 }
 ```
@@ -1691,7 +1694,7 @@ It will ensure that the resource method responds with the right type and provide
 the response type that can be used to generate OpenAPI.
 
 ```ballerina
-resource function post foo(@http:CallerInfo { respondType: http:Accepted } http:Caller hc) returns error?{
+resource function get person(@http:CallerInfo { respondType: http:Accepted } http:Caller hc) returns error?{
     Person p = {};
     hc->respond(Person p);
 }
@@ -1701,7 +1704,7 @@ resource function post foo(@http:CallerInfo { respondType: http:Accepted } http:
 
 ```ballerina
 
-resource function post hello(@http:Header {name:"Referer"} string referer) {
+resource function get person(@http:Header {name:"Referer"} string referer) {
 
 }
 ```
@@ -1735,8 +1738,7 @@ values cache configuration will not be added through this annotation)
 ```ballerina
 // Sets the cache-control header as "public,must-revalidate,max-age=5". Also sets the etag header.
 // last-modified header will not be set
-resource function get cachingBackEnd(http:Request req) returns @http:Cache{maxAge : 5, 
-    setLastModified : false} string {
+resource function get greeting() returns @http:Cache{maxAge : 5, setLastModified : false} string {
     return "Hello, World!!"
 }
 ```
@@ -2019,8 +2021,8 @@ work such as the below.
  - Validating
  - Securing
 
-Interceptors are designed for both request and response flows. There are just service objects which 
-will be executed in a configured order to intercept request and response. These interceptor services can only have either a resource method 
+Interceptors are designed for both request and response flows. There are just service objects which will be executed in
+a configured order to intercept request and response. These interceptor services can only have either a resource method 
 or a remote method depends on the interceptor type. Moreover, they do not support `ServiceConfig`, `ResourceConfig`
 and `Cache` annotations.
 
@@ -2457,8 +2459,8 @@ authentication and/or authorization phases according to the configurations will 
         }
     ]
 }
-service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+service / on new http:Listener(9090) {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2513,8 +2515,8 @@ password="eve@123"
         }
     ]
 }
-service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+service / on new http:Listener(9090) {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2538,8 +2540,8 @@ service /foo on new http:Listener(9090) {
         }
     ]
 }
-service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+service / on new http:Listener(9090) {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2566,8 +2568,8 @@ service /foo on new http:Listener(9090) {
         }
     ]
 }
-service /foo on new http:Listener(9090) {
-    resource function get bar() returns string {
+service / on new http:Listener(9090) {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2919,8 +2921,8 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-service /foo on securedEP {
-    resource function get bar() returns string {
+service / on securedEP {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }
@@ -2954,8 +2956,8 @@ listener http:Listener securedEP = new(9090,
 
     }
 );
-service /foo on securedEP {
-    resource function get bar() returns string {
+service / on securedEP {
+    resource function get greeting() returns string {
         return "Hello, World!";
     }
 }

@@ -53,7 +53,77 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://git
 
 ### New features
 
+#### Ability to get the strand dump during `bal test`
+When running the tests in a Ballerina package or a file using the `bal test` command, the strand dump can be obtained by sending the `SIGTRAP` signal to that process denoted by the `BTestMain` class-name.
+
 ### Improvements
+
+#### Improvements in Runtime Java APIs
+
+##### Get the user-defined type name on Singleton types
+
+Calling `getName()` on the runtime class `FiniteType` will return the user-defined type name if it is available.
+
+For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the string `”OPEN”`.
+
+```ballerina
+const OPEN = "open";
+```
+
+##### Type-reference Type Support in Runtime Java APIs
+
+The following runtime APIs are now modified to return type-reference type instances according to the type definitions.
+
+- getElementType - from runtime class `ArrayType`
+- getDetailType - from runtime class `ErrorType`
+- getFieldType - from runtime class `Field`
+- getParameterTypes - from runtime class `FunctionType`
+- getReturnType - from runtime class `FunctionType`
+- getReturnParameterType - from runtime class `FunctionType`
+- getRestType - from runtime class `FunctionType`
+- getParameters - from runtime class `FunctionType` (The `Parameter.type` field can be a type-reference type.)
+- getConstituentTypes - from runtime class `IntersectionType`
+- getEffectiveType - from runtime class `IntersectionType`
+- getConstrainedType - from runtime class `MapType`
+- getParamValueType - from runtime class `ParameterizedType`
+- getRestFieldType - from runtime class `RecordType`
+- getReferredType - from runtime class `ReferenceType`
+- getConstrainedType - from runtime class `StreamType`
+- getCompletionType - from runtime class `StreamType`
+- getConstrainedType - from runtime class `TableType`
+- getTupleTypes - from runtime class `TupleType`
+- getRestType - from runtime class `TupleType`
+- getConstraint - from runtime class `TypedescType`
+- getMemberTypes - from runtime class `UnionType`
+- getOriginalMemberTypes - from runtime class `UnionType`
+- getElementType - from runtime class `BArray`
+- getConstraintType - from runtime class `BStream`
+- getCompletionType - from runtime class `BStream`
+- getKeyType - from runtime class `BTable`
+- getDescribingType - from runtime class `BTypedesc`
+- getType - from runtime class `BValue`
+- getType - from runtime class `TypeUtils`
+
+For example, if type-reference types are defined in the following way,
+
+```ballerina
+type Integer int;
+
+type IntegerArray Integer[];
+
+IntegerArray arr = [1, 2, 3, 4];
+```
+The results of the runtime API calls will be as follows.
+
+- `arr.getType()` - This will return a `ReferenceType` with the name `IntegerArray`
+- `getReferredType()` on `IntegerArray` - This will return an `ArrayType` with name `IntegerArray`
+- `getElementType()` on `IntegerArray` array type  - This will return a `ReferenceType` with the name `Integer`.
+
+> **Note:** The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
+
+```java
+Type getType();
+```
 
 ### Bug fixes
 

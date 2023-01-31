@@ -226,8 +226,9 @@ type Names string[];
 ## 3. `validate` function
 
 The Constraint library has a public function : `validate` which should be explicitly called by the developer to 
-validate the constraints. If the validation is successful then this function returns the type descriptor of the 
-value which is validated, else a `constraint:Error` is returned.
+validate the constraints. If the validation is successful then this function returns the validated value, else
+a `constraint:Error` is returned. Additionally, if the type of the value is different from the expected return
+type then the value will be cloned with the contextually expected type before the validation.
 
 The following is the definition of the `validate` function.
 ```ballerina

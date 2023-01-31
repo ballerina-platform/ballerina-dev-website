@@ -115,8 +115,8 @@ IntegerArray arr = [1, 2, 3, 4];
 ```
 The results of the runtime API calls will be as follows.
 
-- `arr.getType()` - This will return a `ReferenceType` with the name `IntegerArray`
-- `getReferredType()` on `IntegerArray` - This will return an `ArrayType` with name `IntegerArray`
+- `arr.getType()` - This will return a `ReferenceType` with the name `IntegerArray`.
+- `getReferredType()` on `IntegerArray` - This will return an `ArrayType` with name `IntegerArray`.
 - `getElementType()` on `IntegerArray` array type  - This will return a `ReferenceType` with the name `Integer`.
 
 > **Note:** The definition of the `getType` API in the `BObject` runtime class is now modified to the following.

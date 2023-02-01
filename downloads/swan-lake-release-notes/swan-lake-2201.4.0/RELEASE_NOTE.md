@@ -88,26 +88,25 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 ### Improvements
 
 #### CLI
-##### Refactored the `bal format` command
-Introduced new flags to the `bal format` command and updated the format of the command. The new `bal format` command is shown below.
-```bash
-bal format [OPTIONS] [<package>|<module>|<source-file>]
-```
-```
-OPTIONS
-    --module <module-name>
-        Format only a specific module in the Package
-
-     --file <file-name>
-        Format only a specific file in the Package
+- Improved the `bal format` CLI command by introducing new command options to selectively format modules or single files with a provided Ballerina package. The updated format of the `bal format` command is shown below.
+    ```bash
+    bal format [OPTIONS] [<package>|<module>|<source-file>]
+    ```
+    ```
+    OPTIONS
+        --module <module-name>
+            Format only a specific module in the Package
     
-     -d, --dry-run
-        Perform a dry run of the formatter and see which files will
-        be formatted after the execution.
-```
+         --file <file-name>
+            Format only a specific file in the Package
+        
+         -d, --dry-run
+            Perform a dry run of the formatter and see which files will
+            be formatted after the execution.
+    ```
 
-#### Improved the JSON to record converter
-Improved the JSON to record converter tool to generate records with non-conflicting record names.
+#### JSON-to-record converter
+- Improved the JSON-to-record converter tool to be more context-aware and generate records with non-conflicting names.
 #### OpenAPI Tool
 
 ### Bug Fixes

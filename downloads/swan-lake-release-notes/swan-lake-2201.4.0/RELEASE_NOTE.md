@@ -59,7 +59,7 @@ When running the tests in a Ballerina package or a file using the `bal test` com
 
 ### Improvements
 
-#### Improvements in Runtime Java APIs
+#### Improvements in runtime Java APIs
 
 ##### Get the user-defined type name on Singleton types
 
@@ -71,12 +71,12 @@ For example, if a constant is defined in the following way, the `getName()` meth
 const OPEN = "open";
 ```
 
-##### Type-reference type support in Runtime Java APIs
+##### Type-reference type support in runtime Java APIs
 
 The following runtime APIs are now modified to return the type-reference type instances according to the type definitions.
 
 
-| **runtime API**                                                          | **Java Class**                                     |
+| **Runtime API**                                                          | **Java class**                                     |
 |--------------------------------------------------------------------------|----------------------------------------------------|
 | `getElementType`                                                         | `io.ballerina.runtime.api.types.ArrayType`         |
 | `getDetailType`                                                          | `io.ballerina.runtime.api.types.ErrorType`         |
@@ -119,11 +119,13 @@ IntegerArray arr = [1, 2, 3, 4];
 ```
 the results of the runtime API calls will be as follows.
 
-| **runtime API call**                            | **Result**                                                       |
+| **Runtime API call**                            | **Result**                                                       |
 |-------------------------------------------------|------------------------------------------------------------------|
 | `arr.getType()`                                 | This will return a `ReferenceType` with the name `IntegerArray`. |
 | `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with name `IntegerArray`.        |
 | `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the name `Integer`.      |
+
+<br>
 
 > **Note:**
 > The definition of the `getType` API in the `BObject` runtime class is now modified to the following.

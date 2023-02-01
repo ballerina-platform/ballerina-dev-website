@@ -35,7 +35,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Introduce `bal protoc` command to generate source code from .proto files](https://github.com/ballerina-platform/ballerina-standard-library/issues/3778)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|4|2022-12-05|Active|
+|[Proposal: Introduce `bal protoc` command to generate source code from .proto files](https://github.com/ballerina-platform/ballerina-standard-library/issues/3778)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|6|2022-12-05|Active|
 |[[Proposal] Dispatching to custom remote functions based on the message type](https://github.com/ballerina-platform/ballerina-standard-library/issues/3670)|[Bhashinee](https://github.com/Bhashinee)|6|2022-11-18|Active|
 |[Proposal: GraphQL client subscription support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3560)|[MohamedSabthar](https://github.com/MohamedSabthar)|3|2022-10-27|Active|
 |[Proposal: GraphQL Field-Level Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/3528)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2022-10-19|Active|

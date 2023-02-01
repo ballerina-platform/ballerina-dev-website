@@ -66,7 +66,7 @@ export function TypeInference({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b745780a5bf504c0ccfb09439a435a4a&file=type_inference.bal",
+                "https://play.ballerina.io/?gist=710b565afcf5cdac1ebc6dc7a6fba6b4&file=type_inference.bal",
                 "_blank"
               );
             }}

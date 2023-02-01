@@ -8,9 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     // Define the load balance client endpoint to call the backend services.
-    http:LoadBalanceClient httpClient = check new ({
+    http:LoadBalanceClient albumClient = check new ({
         // Define the set of HTTP clients that need to be load balanced.
         targets: [
             {url: "http://localhost:9090"},
@@ -19,7 +24,7 @@ public function main() returns error? {
         ],
         timeout: 5
     });
-    string payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,
@@ -54,7 +59,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92c5bc400b1d2f6f2a1822bb352bd373&file=http_load_balancer.bal",
+                "https://play.ballerina.io/?gist=8b2900d4ccca280fba4d4d1bf6c096e3&file=http_load_balancer.bal",
                 "_blank"
               );
             }}

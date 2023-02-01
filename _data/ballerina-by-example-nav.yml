@@ -511,6 +511,12 @@ sublinks:
           - title: Configurable variables
             id: 1
             url: configurable-variables
+          - title: Configuring via TOML files
+            id: 2
+            url: configuring-via-toml
+          - title: Configuring via CLI arguments
+            id: 3
+            url: configuring-via-cli
       - title: Error handling
         id: 26
         sublinks:
@@ -982,17 +988,20 @@ sublinks:
           - title: Directives
             id: 14
             url: graphql-directives
-          - title: Context
+          - title: Context object
             id: 15
             url: graphql-context
-          - title: Interceptors
+          - title: Field object
             id: 16
+            url: graphql-service-field-object
+          - title: Interceptors
+            id: 17
             url: graphql-interceptors
           - title: File upload
-            id: 17
+            id: 18
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 18
+            id: 19
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10

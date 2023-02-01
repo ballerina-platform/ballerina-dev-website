@@ -8,6 +8,11 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090",
         httpVersion = http:HTTP_1_1,
@@ -15,7 +20,7 @@ public function main() returns error? {
             chunking: http:CHUNKING_NEVER
         }
     );
-    string payload = check albumClient->/albums.post({
+    Album payload = check albumClient->/albums.post({
         title: "Sarah Vaughan and Clifford Brown",
         artist: "Sarah Vaughan"
     });
@@ -58,7 +63,7 @@ export function HttpClientChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b2e87febeb3c8a6335f9a11d6a926d7e&file=http_client_chunking.bal",
+                "https://play.ballerina.io/?gist=48016340e7a2b48f7ada0ee4fa640232&file=http_client_chunking.bal",
                 "_blank"
               );
             }}

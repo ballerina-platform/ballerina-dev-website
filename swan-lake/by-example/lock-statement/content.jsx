@@ -55,7 +55,7 @@ export function LockStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=efb5a6478e01b344fe61f1689bb8d2c7&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=148914db0168252c333cd8dd90135cdd&file=lock_statement.bal",
                 "_blank"
               );
             }}

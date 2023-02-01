@@ -92,7 +92,7 @@ export function UuidOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f0cf4616f47fd642d271715dc9a4b1c&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=e8a4cb32bf41aad53382196b04d76577&file=uuid_operations.bal",
                 "_blank"
               );
             }}

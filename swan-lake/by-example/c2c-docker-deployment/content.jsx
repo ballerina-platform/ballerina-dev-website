@@ -53,7 +53,7 @@ export function C2cDockerDeployment({ codeSnippets }) {
 
       <p>
         For more information, see{" "}
-        <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
+        <a href="/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment/">
           Code to Cloud Deployment
         </a>
         .

@@ -15,12 +15,12 @@ type Album readonly & record {
 
 public function main() returns error? {
     // Enable HTTP/2 prior knowledge.
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         http2Settings = {
             http2PriorKnowledge: true
         }
     );
-    Album[] albums = check httpClient->/albums;
+    Album[] albums = check albumClient->/albums;
     io:println("GET request:" + albums.toJsonString());
 }
 `,
@@ -54,7 +54,7 @@ export function Http2PriorKnowledgeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d91fa5bb942c8e1832f452fe5fa8c02&file=http_2_prior_knowledge_client.bal",
+                "https://play.ballerina.io/?gist=ed9b6f1f9853681fa0fdf4e2369d238d&file=http_2_prior_knowledge_client.bal",
                 "_blank"
               );
             }}

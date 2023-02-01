@@ -8,9 +8,14 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     // Define the failover client endpoint to call the backend services.
-    http:FailoverClient httpClient = check new ({
+    http:FailoverClient albumClient = check new ({
 
         timeout: 5,
         failoverCodes: [501, 502, 503],
@@ -21,7 +26,7 @@ public function main() returns error? {
             {url: "http://localhost:9090"}
         ]
     });
-    string payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,
@@ -57,7 +62,7 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a76d68eef9f2454b03718b0723549f6c&file=http_failover.bal",
+                "https://play.ballerina.io/?gist=2dc2d30e6ad813259bea97ca295300e5&file=http_failover.bal",
                 "_blank"
               );
             }}

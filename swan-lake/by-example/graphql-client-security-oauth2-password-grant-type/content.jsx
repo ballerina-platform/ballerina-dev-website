@@ -269,7 +269,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11242-password-grant-type">
+            <a href="/spec/graphql/#12242-password-grant-type">
               GraphQL client OAuth2 password grant type - Specification
             </a>
           </span>

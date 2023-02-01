@@ -8,8 +8,13 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         retryConfig = {
             // The initial retry interval in seconds.
             interval: 3,
@@ -25,7 +30,7 @@ public function main() returns error? {
             maxWaitInterval: 20
         }
     );
-    string payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,
@@ -59,7 +64,7 @@ export function HttpRetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c9551547293a1e1fe6dee40965adee38&file=http_retry.bal",
+                "https://play.ballerina.io/?gist=90bb71b8924e179357184102b9d938ff&file=http_retry.bal",
                 "_blank"
               );
             }}

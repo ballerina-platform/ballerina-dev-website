@@ -63,7 +63,7 @@ export function HttpCachingClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f5e9f187006841e2c86727c1bc2cb49&file=http_caching_client.bal",
+                "https://play.ballerina.io/?gist=7f79fd73294b232ec6a4efffd75041f2&file=http_caching_client.bal",
                 "_blank"
               );
             }}

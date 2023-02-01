@@ -15,8 +15,8 @@ type Album readonly & record {
 
 public function main() returns error? {
     // Since the default HTTP version is 2.0, HTTP version is set to 1.1.
-    http:Client httpClient = check new ("localhost:9090", httpVersion = http:HTTP_1_1);
-    Album[] albums = check httpClient->/albums;
+    http:Client albumClient = check new ("localhost:9090", httpVersion = http:HTTP_1_1);
+    Album[] albums = check albumClient->/albums;
     io:println("GET request:" + albums.toJsonString());
 }
 `,
@@ -54,7 +54,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=76d47c091fbb9ff8a733346211b3bd6d&file=http_2_to_1_1_downgrade_client.bal",
+                "https://play.ballerina.io/?gist=4bfafc82b47fedd01249c7d9793fb02b&file=http_2_to_1_1_downgrade_client.bal",
                 "_blank"
               );
             }}

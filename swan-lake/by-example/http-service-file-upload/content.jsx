@@ -52,7 +52,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c8ec808225ba9a985ec3b9f6c53c1966&file=http_service_file_upload.bal",
+                "https://play.ballerina.io/?gist=a8d04cf811a0df2b0f7163f84f274a95&file=http_service_file_upload.bal",
                 "_blank"
               );
             }}

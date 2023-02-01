@@ -8,11 +8,16 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
     http:Client albumClient = check new ("localhost:9090", {
         timeout: 10
     });
-    string payload = check albumClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,
@@ -47,7 +52,7 @@ export function HttpTimeout({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d9d3c55e7e4324c4c989d863cd34b7e&file=http_timeout.bal",
+                "https://play.ballerina.io/?gist=410c449941449ca947404c2c72fde13a&file=http_timeout.bal",
                 "_blank"
               );
             }}

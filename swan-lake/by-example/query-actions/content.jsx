@@ -6,20 +6,20 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
-
+ 
 public function main() returns error? {
     int[] nums = [1, 2, 3, 4];
     int[] numsTimes10 = [];
-
+ 
     // The \`from\` clause works similar to a \`foreach\` statement.
     check from var i in nums
         // The \`do\` statement block is evaluated in each iteration.
         do {
             numsTimes10.push(i * 10);
         };
-
+ 
     io:println(numsTimes10);
-
+ 
     // Print only the even numbers in the \`nums\` array.
     // Intermediate clauses such as \`let\` clause, \`join\` clause, \`order by\` clause,
     // \`where clause\`, and \`limit\` clause can also be used.
@@ -69,7 +69,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c2298ef2cff7253c1576442ffeede315&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=90fe486f62422eb37853fd6ae1c7bfe3&file=query_actions.bal",
                 "_blank"
               );
             }}

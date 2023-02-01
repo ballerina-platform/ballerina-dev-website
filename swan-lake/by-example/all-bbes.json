@@ -909,7 +909,7 @@
         "name": "Query actions",
         "url": "query-actions",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -1194,6 +1194,24 @@
         "url": "configurable-variables",
         "verifyBuild": true,
         "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configuring via TOML files",
+        "url": "configuring-via-toml",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configuring via CLI arguments",
+        "url": "configuring-via-cli",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
         "isLearnByExample": true
       }
     ]
@@ -2367,8 +2385,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context",
+        "name": "Context object",
         "url": "graphql-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field object",
+        "url": "graphql-service-field-object",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

@@ -8,8 +8,13 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
+type Album readonly & record {
+    string title;
+    string artist;
+};
+
 public function main() returns error? {
-    http:Client httpClient = check new ("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         circuitBreaker = {
             // The failure calculation window measures how long the circuit breaker keeps the
             // statistics for the operations.
@@ -39,7 +44,7 @@ public function main() returns error? {
 
         }
     );
-    string payload = check httpClient->/albums;
+    Album[] payload = check albumClient->/albums;
     io:println(payload);
 }
 `,
@@ -76,7 +81,7 @@ export function HttpCircuitBreaker({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ca1c3c9c8f83107e95987250cfa6171e&file=http_circuit_breaker.bal",
+                "https://play.ballerina.io/?gist=67b32edb10c118b11ab24e61e2870675&file=http_circuit_breaker.bal",
                 "_blank"
               );
             }}

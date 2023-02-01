@@ -291,7 +291,7 @@ export function GraphqlHelloWorld({ codeSnippets }) {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 

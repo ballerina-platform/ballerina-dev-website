@@ -15,13 +15,13 @@ type Album readonly & record {|
 
 public function main() returns error? {
     // The \`followRedirects\` record provides configurations associated with HTTP redirects.
-    http:Client httpClient = check new ("localhost:9092",
+    http:Client albumClient = check new ("localhost:9092",
         followRedirects = {
             enabled: true,
             maxCount: 5
         }
     );
-    Album[] payload = check httpClient->/redirect;
+    Album[] payload = check albumClient->/redirect;
     io:println(string \`Response received: \${payload.toJsonString()}\`);
 }
 `,
@@ -58,7 +58,7 @@ export function HttpClientRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2a1ec88c202df7831c22b25c72657d11&file=http_client_redirects.bal",
+                "https://play.ballerina.io/?gist=fcfd206c59fd2367e700d741021b6205&file=http_client_redirects.bal",
                 "_blank"
               );
             }}

@@ -64,7 +64,7 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=324fc48405baaacf6bda1b31c46224d3&file=error_handling.bal",
+                "https://play.ballerina.io/?gist=8e00bab3424057bdfd77aa5c4f447e40&file=error_handling.bal",
                 "_blank"
               );
             }}
@@ -226,8 +226,8 @@ export function ErrorHandling({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
+            title="Configuring via CLI arguments"
+            href="/learn/by-example/configuring-via-cli"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -254,7 +254,7 @@ export function ErrorHandling({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configurable variables
+                  Configuring via CLI arguments
                 </span>
               </div>
             </div>

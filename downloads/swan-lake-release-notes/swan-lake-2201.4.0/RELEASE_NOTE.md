@@ -53,7 +53,85 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://git
 
 ### New features
 
+#### Get the strand dump during `bal test`
+
+When running the tests in a Ballerina package or a file using the `bal test` command, the strand dump can be obtained by sending the `SIGTRAP` signal to that process.
+
 ### Improvements
+
+#### Improvements in runtime Java APIs
+
+##### Get the user-defined type name on Singleton types
+
+Calling `getName()` on the runtime class `FiniteType` will return the user-defined type name if it is available.
+
+For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the string `"OPEN"`.
+
+```ballerina
+const OPEN = "open";
+```
+
+##### Type-reference type support in runtime Java APIs
+
+The following runtime APIs are now modified to return the type-reference type instances according to the type definitions.
+
+
+| **Runtime API**                                                          | **Java class**                                     |
+|--------------------------------------------------------------------------|----------------------------------------------------|
+| `getElementType`                                                         | `io.ballerina.runtime.api.types.ArrayType`         |
+| `getDetailType`                                                          | `io.ballerina.runtime.api.types.ErrorType`         |
+| `getFieldType`                                                           | `io.ballerina.runtime.api.types.Field`             |
+| `getParameterTypes`                                                      | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnType`                                                          | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnParameterType`                                                 | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getRestType`                                                            | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getParameters` The `Parameter.type` field can be a type-reference type. | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getConstituentTypes`                                                    | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getEffectiveType`                                                       | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.MapType`           |
+| `getParamValueType`                                                      | `io.ballerina.runtime.api.types.ParameterizedType` |
+| `getRestFieldType`                                                       | `io.ballerina.runtime.api.types.RecordType`        |
+| `getReferredType`                                                        | `io.ballerina.runtime.api.types.ReferenceType`     |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.StreamType`        |
+| `getCompletionType`                                                      | `io.ballerina.runtime.api.types.StreamType`        |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.TableType`         |
+| `getTupleTypes`                                                          | `io.ballerina.runtime.api.types.TupleType`         |
+| `getRestType`                                                            | `io.ballerina.runtime.api.types.TupleType`         |
+| `getConstraint`                                                          | `io.ballerina.runtime.api.types.TypedescType`      |
+| `getMemberTypes`                                                         | `io.ballerina.runtime.api.types.UnionType`         |
+| `getOriginalMemberTypes`                                                 | `io.ballerina.runtime.api.types.UnionType`         |
+| `getElementType`                                                         | `io.ballerina.runtime.api.values.BArray`           |
+| `getConstraintType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
+| `getCompletionType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
+| `getKeyType`                                                             | `io.ballerina.runtime.api.values.BTable`           |
+| `getDescribingType`                                                      | `io.ballerina.runtime.api.values.BTypedesc`        |
+| `getType`                                                                | `io.ballerina.runtime.api.values.BValue`           |
+| `getType`                                                                | `io.ballerina.runtime.api.utils.TypeUtils`         |
+
+For example, if the type-reference types are defined in the following way,
+
+```ballerina
+type Integer int;
+
+type IntegerArray Integer[];
+
+IntegerArray arr = [1, 2, 3, 4];
+```
+the results of the runtime API calls will be as follows.
+
+| **Runtime API call**                            | **Result**                                                       |
+|-------------------------------------------------|------------------------------------------------------------------|
+| `arr.getType()`                                 | This will return a `ReferenceType` with the name `IntegerArray`. |
+| `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with name `IntegerArray`.        |
+| `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the name `Integer`.      |
+
+<br>
+
+> **Note:**
+> The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
+> ```java
+>  Type getType();
+> ```
 
 ### Bug fixes
 

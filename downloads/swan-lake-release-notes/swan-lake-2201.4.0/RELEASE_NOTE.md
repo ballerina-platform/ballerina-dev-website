@@ -63,6 +63,11 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### New features
 
+##### `constraint` package
+
+- Introduced the `@pattern` constraint on string types
+- Added constraint validation support for `readonly` types
+
 ##### `oauth2` package
 
 - Allow the use of inferred values for refreshing tokens through the password grant type

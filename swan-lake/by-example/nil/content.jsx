@@ -58,7 +58,7 @@ export function Nil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=39cc0f27e298a56615ad9fa829efed87&file=nil.bal",
+                "https://play.ballerina.io/?gist=145feff1a5e13ab91f1074895bc2b5f5&file=nil.bal",
                 "_blank"
               );
             }}

@@ -83,7 +83,7 @@ export function CheckSemantics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=738dc83bda697105a81225edd98bc6fe&file=check_semantics.bal",
+                "https://play.ballerina.io/?gist=76e2f3e0121e92207f0ef7b92238217b&file=check_semantics.bal",
                 "_blank"
               );
             }}

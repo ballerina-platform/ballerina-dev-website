@@ -186,7 +186,7 @@ To complete this part of the guide, you need:
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
-   >**Tip:** Since GraalVM native build consumes significant amount of memory, it is recommented to increase the memory allocated to Docker to at least 8GB, and potentially add more CPUs as well. For more details, see [How to assign more memory to docker container].(https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437)
+   >**Tip:** Since GraalVM native build consumes significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB, and potentially add more CPUs as well. For more details, see [How to assign more memory to docker container].(https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437)
 4. A command terminal
 
 After the environment is set up, follow the steps below to build the native executable and pack it in a container.

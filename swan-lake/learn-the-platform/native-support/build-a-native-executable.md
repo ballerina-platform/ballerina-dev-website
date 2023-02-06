@@ -173,10 +173,6 @@ After the environment is set up, follow the steps below to build a native execut
 
 Now, you have built and tested a native executable locally for a simple Ballerina HTTP server application. 
 
-> **Info:** The following are the known issues with the Ballerina native image, which will be addressed in future releases :
-> - [Native image build is not working on Mac with Apple M1 chip](https://github.com/ballerina-platform/ballerina-lang/issues/39003)
-> - [Native image build is failing with non-reducible loop requires too much duplication](https://github.com/ballerina-platform/ballerina-lang/issues/38072)
-
 ## Pack the native executable in a container
 
 ### Set up the prerequisites
@@ -354,3 +350,8 @@ After the environment is set up, follow the steps below to build the native exec
    $ curl http://localhost:8080/greeting
    Hello, Docker!
    ```
+   
+## Known issues
+
+- [Native image build is not working on Mac with Apple M1 chip](https://github.com/ballerina-platform/ballerina-lang/issues/39003)
+- [Native image build is failing with `non-reducible loop requires too much duplication` error](https://github.com/ballerina-platform/ballerina-lang/issues/38072)

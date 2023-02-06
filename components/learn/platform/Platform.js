@@ -30,19 +30,19 @@ export default function Platform(props) {
         <Col xs={12} md={12}>
           <h2 id="learn-the-platform" className='section'>
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                className="bi bi-link-45deg mdButton pe-2"
-                viewBox="0 0 16 16"
-                onClick={(e) => props.getLink(e.target, 'learn-the-platform')}
-              >
-                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-              </svg>
-              Learn the platform
-            </h2>
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              className="bi bi-link-45deg mdButton pe-2"
+              viewBox="0 0 16 16"
+              onClick={(e) => props.getLink(e.target, 'learn-the-platform')}
+            >
+              <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+              <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+            </svg>
+            Learn the platform
+          </h2>
         </Col>
       </Row>
 
@@ -90,7 +90,7 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Test, debug &amp; document the code</h3>
+            <h3>Test, debug, and document the code</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -147,52 +147,7 @@ export default function Platform(props) {
 
 
           <div className={styles.pGroup}>
-            <h3>Configure &amp; observe</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
-                  Configure Ballerina programs
-                </a>
-              </p>
-              <p className={styles.description}>The language support for configurability.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
-                  Observe Ballerina programs</a>
-              </p>
-              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Java interoperability</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                  Call Java code from Ballerina
-                </a>
-              </p>
-              <p className={styles.description}>Calling Java code from Ballerina.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
-                  Java interoperability guide
-                </a>
-              </p>
-              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
-            </div>
-          </div>
-        </Col>
-        <Col xs={12} lg={4} className={styles.contentCol}>
-
-          <div className={styles.pGroup}>
-            <h3>Ballerina Tooling</h3>
+            <h3>Ballerina tooling</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -221,11 +176,11 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
-                  GraphQL tool
+                <a href={`${prefix}/learn/graphql-client-tool`} className={styles.titleLink}>
+                  GraphQL client tool
                 </a>
               </p>
-              <p className={styles.description}>Details of the Ballerina GraphQL tool.</p>
+              <p className={styles.description}>Details of the Ballerina GraphQL client tool.</p>
             </div>
 
             <div className={styles.content}>
@@ -256,6 +211,32 @@ export default function Platform(props) {
             </div>
           </div>
 
+
+
+        </Col>
+        <Col xs={12} lg={4} className={styles.contentCol}>
+
+          <div className={styles.pGroup}>
+            <h3>Configure and observe</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
+                  Configure Ballerina programs
+                </a>
+              </p>
+              <p className={styles.description}>The language support for configurability.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                  Observe Ballerina programs</a>
+              </p>
+              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
+            </div>
+          </div>
+
           <div className={styles.pGroup}>
             <h3>Ballerina Central</h3>
 
@@ -266,6 +247,41 @@ export default function Platform(props) {
                 </a>
               </p>
               <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Java interoperability</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
+                  Call Java code from Ballerina
+                </a>
+              </p>
+              <p className={styles.description}>Calling Java code from Ballerina.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
+                  Java interoperability guide
+                </a>
+              </p>
+              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Native support</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
+                  [Experimental] Build a native executable
+                </a>
+              </p>
+              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
             </div>
           </div>
         </Col>

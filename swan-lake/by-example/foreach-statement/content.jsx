@@ -73,7 +73,7 @@ export function ForeachStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5fb5076c0ee5ac0c8b9c9f0fa58ddaf5&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=2750859359a78726b81281c7689c571d&file=foreach_statement.bal",
                 "_blank"
               );
             }}

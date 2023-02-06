@@ -85,7 +85,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6bf8a6062aebaa00fe5f3ef5ef301e73&file=on_conflict_clause.bal",
+                "https://play.ballerina.io/?gist=e6c50858cef1e0205951ef70ee6773a1&file=on_conflict_clause.bal",
                 "_blank"
               );
             }}

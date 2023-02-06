@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2022/12/05   
+_Updated_: 2023/02/01   
 _Edition_: Swan Lake
 
 
@@ -455,7 +455,7 @@ with any annotation or additional detail. This parameter is not compulsory and n
 are as follows
 
 ```ballerina
-type BasicType boolean|int|float|decimal|string|map<json>;
+type BasicType boolean|int|float|decimal|string|map<json>|enum;
 public type QueryParamType ()|BasicType|BasicType[];
 ```
 

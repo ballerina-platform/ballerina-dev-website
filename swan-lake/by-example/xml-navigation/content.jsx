@@ -85,7 +85,7 @@ export function XmlNavigation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2eb63d77f5119fd9d8b5218d62440124&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=e7ff6c416b43fead98f487c083eb6ce5&file=xml_navigation.bal",
                 "_blank"
               );
             }}

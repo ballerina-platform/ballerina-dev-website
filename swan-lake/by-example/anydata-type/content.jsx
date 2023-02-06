@@ -58,7 +58,7 @@ export function AnydataType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f84c4458c32d8c1c4aca04997f327bf&file=anydata_type.bal",
+                "https://play.ballerina.io/?gist=8968df838aeff238266d33b88969d293&file=anydata_type.bal",
                 "_blank"
               );
             }}

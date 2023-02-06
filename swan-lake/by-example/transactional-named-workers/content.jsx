@@ -65,7 +65,7 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55324cfdb6ccf62d86a8892b02f21249&file=transactional_named_workers.bal",
+                "https://play.ballerina.io/?gist=6f575638dd0ec169b0230e27cdbd05b7&file=transactional_named_workers.bal",
                 "_blank"
               );
             }}

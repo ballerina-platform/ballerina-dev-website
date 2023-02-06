@@ -44,7 +44,7 @@ The only downside is that the GraalVM native image build is a highly complicated
 
 From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
-> **Info:** Apart from the Ballerina runtime and [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), the following Ballerina extended modules are GraalVM compatible :
+> **Info:** Apart from the Ballerina runtime and [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), the following Ballerina extended modules are GraalVM-compatible :
 >  - [`nats`](https://central.ballerina.io/ballerinax/nats)
 >  - [`kafka`](https://central.ballerina.io/ballerinax/kafka)
 >  - [`rabbitmq`](https://central.ballerina.io/ballerinax/rabbitmq)
@@ -175,7 +175,7 @@ Now, you have built and tested a native executable locally for a simple Ballerin
 
 > **Info:** The following are the known issues with the Ballerina native image, which will be addressed in future releases :
 > - [Native image build is not working on Mac with Apple M1 chip](https://github.com/ballerina-platform/ballerina-lang/issues/39003)
-> - [Native image build is failing with Non-reducible loop requires too much duplication](https://github.com/ballerina-platform/ballerina-lang/issues/38072)
+> - [Native image build is failing with non-reducible loop requires too much duplication](https://github.com/ballerina-platform/ballerina-lang/issues/38072)
 
 ## Pack the native executable in a container
 
@@ -186,7 +186,7 @@ To complete this part of the guide, you need:
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
-   >**Tip:** Since GraalVM native build consumes significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB, and potentially add more CPUs as well. For more details, see [How to assign more memory to docker container].(https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437)
+   >**Tip:** Since the GraalVM native build consumes a significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB and potentially add more CPUs as well. For more details, see [How to assign more memory to docker container](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437).
 4. A command terminal
 
 After the environment is set up, follow the steps below to build the native executable and pack it in a container.

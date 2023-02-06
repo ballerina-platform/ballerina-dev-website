@@ -15,6 +15,24 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
+                    "dirName": "Native support",
+                    "level": 2,
+                    "position": 9,
+                    "isDir": true,
+                    "url": "/learn/native-support",
+                    "id": "native-support",
+                    "subDirectories": [
+                        {
+                            "dirName": "[Experimental] Build a native executable",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/build-a-native-executable",
+                            "id": "build-a-native-executable"
+                        }
+                    ]
+                },
+                {
                     "dirName": "Ballerina specifications",
                     "level": 2,
                     "position": 8,
@@ -235,12 +253,12 @@
                             ]
                         },
                         {
-                            "dirName": "GraphQL tool",
+                            "dirName": "GraphQL client tool",
                             "level": 3,
                             "position": 3,
                             "isDir": false,
-                            "url": "/learn/graphql-tool",
-                            "id": "graphql-tool"
+                            "url": "/learn/graphql-client-tool",
+                            "id": "graphql-client-tool"
                         },
                         {
                             "dirName": "AsyncAPI tool",
@@ -355,7 +373,7 @@
                                             "isDir": false,
                                             "url": "/learn/style-guide/coding-conventions/README",
                                             "id": "README"
-                                        }  
+                                        }
                                     ]
                                 }
                             ]

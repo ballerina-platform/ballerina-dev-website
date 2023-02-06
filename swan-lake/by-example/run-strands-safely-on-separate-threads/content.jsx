@@ -97,7 +97,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=91ce04e355aafbf1e332e8200d5d29c7&file=run_strands_safely_on_separate_threads.bal",
+                "https://play.ballerina.io/?gist=d02558c1c0a7f6bf05d5f9605338f8cb&file=run_strands_safely_on_separate_threads.bal",
                 "_blank"
               );
             }}

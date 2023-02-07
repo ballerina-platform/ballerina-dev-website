@@ -184,6 +184,12 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Test Framework
+
+- Added support for executing tests using a GraalVM native image (experimental)
+  
+  Introduced the `--native` flag to `bal test` command, which executes tests using a GraalVM native executable.
+
 #### Language Server
 
 * Added the `Create variable with Type` code action
@@ -214,6 +220,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 - [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.4.0%22+is%3Aclosed)
 
 ## Ballerina packages updates
+
+### New Features
+- Added support for maintaining generated code in a Ballerina package
 
 ## Breaking changes
 

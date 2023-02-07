@@ -24,6 +24,9 @@ redirect_from:
 ├── Module.md
 ├── main.bal
 ├── utils.bal
+├── generated/
+│     ├── generated_service.bal
+│     └── model/
 ├── tests/
 │     ├── main_tests.bal
 │     └── utils_tests.bal
@@ -266,6 +269,11 @@ The `resources/` directory stores all module resources such as images, default c
 ### The `tests/` directory
 
 The `tests/` directory contains unit tests for the module and tests the module in isolation. The module-level test cases have access to the symbols with module-level visibility.
+
+
+## The `generated/` directory
+
+This directory contains generated Ballerina code. The `.bal` files at the root of the generated directory become a part of the default module. Any direct subdirectory becomes a module in the package. The files will logically merge into existing modules during compilation.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 

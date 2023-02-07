@@ -200,6 +200,9 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 - Added support for GraphQL SDL schema file generation
 
+#### OpenAPI Tool
+Added support to generate Ballerina client and service declarations from Swagger 2.0(i.e. OpenAPI 2.0) definitions
+
 ### Improvements
 
 #### Language Server
@@ -209,6 +212,11 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 * Used the code action resolve request for compiler plugin code actions
 
 #### OpenAPI Tool
+- Added support for the `additionalProperties` attribute in OpenAPI object schemas. With this support, the generated Ballerina records can be either open or closed records, based on the `additionalProperties` details.
+>**Info:** Thereby, some of your already generated open records may change into closed records, when re-generating using 2201.4.0 (and above) versions.
+- Improved support for `nullable:true` property OpenAPI schema, to generate record fields with default values (e.g. `string? name = ();`), instead of making the field both nilable and optional (e.g. `string? name?;`).
+- Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response`, respectively.
+
 
 ### Bug Fixes
 
@@ -217,7 +225,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 - [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.4.0+label%3AType%2FBug).
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.4.0+is%3Aclosed)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.0+is%3Aclosed+label%3AArea%2FDebugger)
-- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.4.0%22+is%3Aclosed)
+- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.4.0+%22+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

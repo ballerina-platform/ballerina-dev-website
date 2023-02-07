@@ -862,6 +862,8 @@ In GraphQL, an interface can be used to define a set of common fields for object
 
 In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
 
+Non-distinct `service` objects and `service` classes can not be used to define or implement GraphQL interfaces.
+
 ###### Example: Interfaces
 ```ballerina
 public type Profile distinct service object {
@@ -910,6 +912,35 @@ public isolated distinct service class Teacher {
 ```
 
 In the above example, the `Profile` object is an interface. The `Student` and `Teacher` classes are `Object` types that implement the `Profile` interface.
+
+###### Counter Example: Invalid Interfaces
+
+```ballerina
+public type Profile service object {
+    resource function get name() returns string;
+};
+
+public isolated service class Student {
+    *Profile;
+    final string name;
+    final int id;
+
+    isolated function init(string name, int id) {
+        self.name = name;
+        self.id = id;
+    }
+
+    isolated resource function get name() returns string {
+        return self.name;
+    }
+
+    isolated resource function get id() returns int {
+        return self.id;
+    }
+}
+```
+
+The above example results in a compilation error because the `Profile` object is not a `distinct` object, and the `Student` class is not a `distinct` class.
 
 #### 4.6.1 Interfaces Implementing Interfaces
 

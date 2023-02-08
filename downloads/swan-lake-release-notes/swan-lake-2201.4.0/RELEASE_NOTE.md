@@ -174,10 +174,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ##### `persist` package
 
-- Added a new `persist` package to provide the functionality required for Ballerina Persistence Layer. 
+- Added a new `persist` package to provide the functionality required for the Ballerina persistence layer. 
 
-  Ballerina Persistent Layer provides functionality to store and query data conveniently.
-  This is an Experimental feature; APIs might change in future releases.
+  The Ballerina persistent layer provides the functionality of storing and querying data conveniently.
+  >**Info:** This is an experimental feature; APIs might change in future releases.
 
 ### Improvements
 
@@ -223,10 +223,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 Added support to generate Ballerina client and service declarations from Swagger 2.0(i.e. OpenAPI 2.0) definitions
 
 #### Persist Tool
-- Added a new `persist` command to make it easy to enable Ballerina Persistence Layer in a Ballerina project.
+- Added a new `persist` command to make it easy to enable the Ballerina persistence layer in a Ballerina project.
 
-  With this support, users can define an entity data model, validate the model and generate `persist` clients, which provide convenient APIs to store and query data in a data store.
-  This is an Experimental feature; the tool commands might change in future releases.
+  With this support, users can define an entity data model, validate the model, and generate `persist` clients. This provides convenient APIs to store and query data in a data store.
+  >**Info:** This is an experimental feature; the commands associated with the tool might change in future releases.
 
 ### Improvements
 

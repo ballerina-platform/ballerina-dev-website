@@ -183,7 +183,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 ##### `io` package
 
 - To ensure the order of fields while mapping CSV files to records, the column headers have been made mandatory in CSV files. This is only applicable for the case where the expected type is `record[]`.
-- To ensure the order of fields while writing a record[] to a CSV, the column headers are automatically written to the CSV file.
+- To ensure the order of fields while writing a `record[]` to a CSV, the column headers are automatically written to the CSV file.
 
 ### Bug fixes
 

@@ -190,7 +190,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://git
 - Added the ability to disable the thin jar generation by setting `settings.thinJar = false` in Cloud.toml
 
 ### Improvements
-- Improved main class name generation in `CMD` to support complex package names
+- Improved the main class name generation in `CMD` to support complex package names
 
 ### Bug fixes
 

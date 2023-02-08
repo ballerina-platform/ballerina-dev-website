@@ -43,17 +43,17 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 ### New features
 
-#### Tuple member annotations 
+#### Support for annotations on tuple members
 
-- Added support for annotating tuple members
-- Tuple members can be annotated using annotations with `field` attachment points
-- Similar to records, annotations are not allowed on the `rest` type of a tuple
+Annotations are now supported on tuple members. Tuple members can be annotated using annotations declared with the `field` attachment point.
 
-```
+```ballerina
 annotation annot on field;
 
 type T [int, @annot string];
 ```
+
+Annotations are not allowed on the tuple rest descriptor. 
 
 #### Field annotation access in record type descriptors without a type definition
 
@@ -251,6 +251,27 @@ Added support to generate Ballerina client and service declarations from Swagger
 
 ### Improvements
 
+#### CLI
+- Improved the `bal format` CLI command by introducing new command options to selectively format modules or single files with a provided Ballerina package. The updated format of the `bal format` command is shown below.
+    ```bash
+    bal format [OPTIONS] [<package>|<module>|<source-file>]
+    ```
+    ```
+    OPTIONS
+        --module <module-name>
+            Format only a specific module in the Package
+    
+         --file <file-name>
+            Format only a specific file in the Package
+        
+         -d, --dry-run
+            Perform a dry run of the formatter and see which files will
+            be formatted after the execution.
+    ```
+
+#### JSON-to-record converter
+- Improved the JSON-to-record converter tool to be more context-aware and generate records with non-conflicting names.
+
 #### Language Server
 
 * Improved the completion and code action support for pulled modules
@@ -263,6 +284,10 @@ Added support to generate Ballerina client and service declarations from Swagger
 - Improved support for `nullable:true` property OpenAPI schema, to generate record fields with default values (e.g. `string? name = ();`), instead of making the field both nilable and optional (e.g. `string? name?;`).
 - Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response`, respectively.
 
+
+## Breaking changes
+- New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
 ### Bug Fixes
 

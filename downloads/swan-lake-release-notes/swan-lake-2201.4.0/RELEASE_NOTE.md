@@ -211,8 +211,8 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 #### OpenAPI Tool
 
 ## Breaking changes
-- New improvements added to the `bal format` command (to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868)) can be breaking for the users having CLI usages of `bal format <module_name>` option. 
-In such instances, the `bal format <package-path> --module <module_name>` options can be used for the same purpose from 2201.4.0 onwards.
+- New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
 ### Bug Fixes
 

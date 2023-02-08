@@ -57,8 +57,7 @@ type T [int, @annot string];
 
 #### Support for annotations on fields of anonymous record types
 
-Annotations for the fields of anonymous record types are  now allowed. Those annotations can be accessed by an external
-function.
+Annotations for the fields of anonymous record types are now allowed. Those annotations can be accessed by an external function.
 
 ```ballerina
 import ballerina/io;

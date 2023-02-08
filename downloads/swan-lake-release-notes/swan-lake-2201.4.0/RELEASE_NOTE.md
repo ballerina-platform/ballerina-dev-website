@@ -43,11 +43,11 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 ### New features
 
-#### Tuple member annotations 
+#### Support for annotations on tuple members
 
-Annotations for tuple members are now supported. Tuple members can be annotated using annotations with `field` attachment points. Similarly to records, annotations are not allowed on the `rest` type of a tuple
+Annotations are now supported on tuple members. Tuple members can be annotated using annotations declared with the `field` attachment point.
 
-```
+```ballerina
 annotation annot on field;
 
 type T [int, @annot string];

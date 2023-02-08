@@ -112,8 +112,8 @@ function getMockResponse() returns http:Response {
 
 ### Mock `final` clients
 
-Object mocking cannot be used as final clients cannot be modified. To facilitate testing, it is recommended 
-to write the client initialization logic in a separate function and assign the returned value to the client. 
+Object mocking cannot be used as final clients cannot be modified. It is recommended 
+to write the client initialization logic in a separate function and assign the returned value to the client to facilitate testing. 
 This initialization function can then be mocked using the legacy function mocking feature.
 
 ***Example:***

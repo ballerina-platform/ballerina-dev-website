@@ -217,6 +217,27 @@ Added support to generate Ballerina client and service declarations from Swagger
 
 ### Improvements
 
+#### CLI
+- Improved the `bal format` CLI command by introducing new command options to selectively format modules or single files with a provided Ballerina package. The updated format of the `bal format` command is shown below.
+    ```bash
+    bal format [OPTIONS] [<package>|<module>|<source-file>]
+    ```
+    ```
+    OPTIONS
+        --module <module-name>
+            Format only a specific module in the Package
+    
+         --file <file-name>
+            Format only a specific file in the Package
+        
+         -d, --dry-run
+            Perform a dry run of the formatter and see which files will
+            be formatted after the execution.
+    ```
+
+#### JSON-to-record converter
+- Improved the JSON-to-record converter tool to be more context-aware and generate records with non-conflicting names.
+
 #### Language Server
 
 * Improved the completion and code action support for pulled modules

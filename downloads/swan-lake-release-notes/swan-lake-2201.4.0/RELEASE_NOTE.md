@@ -230,6 +230,10 @@ Added support to generate Ballerina client and service declarations from Swagger
 - Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response`, respectively.
 
 
+## Breaking changes
+- New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
+
 ### Bug Fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the repositories below.

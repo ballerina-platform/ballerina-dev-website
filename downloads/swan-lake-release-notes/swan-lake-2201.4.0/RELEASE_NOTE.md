@@ -43,6 +43,18 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 ### New features
 
+#### Tuple member annotations 
+
+- Added support annotating tuple members 
+- Tuple members can be annotated with `field` annotations.
+
+```
+annotation annot on field;
+
+type T [int, @annot string];
+
+```
+
 ### Improvements
 
 ### Bug fixes

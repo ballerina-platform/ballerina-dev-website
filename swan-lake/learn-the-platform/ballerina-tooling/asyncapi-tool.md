@@ -21,7 +21,7 @@ To run this tutorial, you need the following prerequisites:
 1. [Ballerina 2202.1.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 
 ## Prepare the AsyncAPI contract
 

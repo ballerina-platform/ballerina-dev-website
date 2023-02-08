@@ -43,6 +43,18 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 ### New features
 
+#### Tuple member annotations 
+
+- Added support for annotating tuple members
+- Tuple members can be annotated using annotations with `field` attachment points
+- Similar to records, annotations are not allowed on the `rest` type of a tuple
+
+```
+annotation annot on field;
+
+type T [int, @annot string];
+```
+
 ### Improvements
 
 ### Bug fixes
@@ -53,7 +65,85 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://git
 
 ### New features
 
+#### Get the strand dump during `bal test`
+
+When running the tests in a Ballerina package or a file using the `bal test` command, the strand dump can be obtained by sending the `SIGTRAP` signal to that process.
+
 ### Improvements
+
+#### Improvements in runtime Java APIs
+
+##### Get the user-defined type name on Singleton types
+
+Calling `getName()` on the runtime class `FiniteType` will return the user-defined type name if it is available.
+
+For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the string `"OPEN"`.
+
+```ballerina
+const OPEN = "open";
+```
+
+##### Type-reference type support in runtime Java APIs
+
+The following runtime APIs are now modified to return the type-reference type instances according to the type definitions.
+
+
+| **Runtime API**                                                          | **Java class**                                     |
+|--------------------------------------------------------------------------|----------------------------------------------------|
+| `getElementType`                                                         | `io.ballerina.runtime.api.types.ArrayType`         |
+| `getDetailType`                                                          | `io.ballerina.runtime.api.types.ErrorType`         |
+| `getFieldType`                                                           | `io.ballerina.runtime.api.types.Field`             |
+| `getParameterTypes`                                                      | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnType`                                                          | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnParameterType`                                                 | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getRestType`                                                            | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getParameters` The `Parameter.type` field can be a type-reference type. | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getConstituentTypes`                                                    | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getEffectiveType`                                                       | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.MapType`           |
+| `getParamValueType`                                                      | `io.ballerina.runtime.api.types.ParameterizedType` |
+| `getRestFieldType`                                                       | `io.ballerina.runtime.api.types.RecordType`        |
+| `getReferredType`                                                        | `io.ballerina.runtime.api.types.ReferenceType`     |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.StreamType`        |
+| `getCompletionType`                                                      | `io.ballerina.runtime.api.types.StreamType`        |
+| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.TableType`         |
+| `getTupleTypes`                                                          | `io.ballerina.runtime.api.types.TupleType`         |
+| `getRestType`                                                            | `io.ballerina.runtime.api.types.TupleType`         |
+| `getConstraint`                                                          | `io.ballerina.runtime.api.types.TypedescType`      |
+| `getMemberTypes`                                                         | `io.ballerina.runtime.api.types.UnionType`         |
+| `getOriginalMemberTypes`                                                 | `io.ballerina.runtime.api.types.UnionType`         |
+| `getElementType`                                                         | `io.ballerina.runtime.api.values.BArray`           |
+| `getConstraintType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
+| `getCompletionType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
+| `getKeyType`                                                             | `io.ballerina.runtime.api.values.BTable`           |
+| `getDescribingType`                                                      | `io.ballerina.runtime.api.values.BTypedesc`        |
+| `getType`                                                                | `io.ballerina.runtime.api.values.BValue`           |
+| `getType`                                                                | `io.ballerina.runtime.api.utils.TypeUtils`         |
+
+For example, if the type-reference types are defined in the following way,
+
+```ballerina
+type Integer int;
+
+type IntegerArray Integer[];
+
+IntegerArray arr = [1, 2, 3, 4];
+```
+the results of the runtime API calls will be as follows.
+
+| **Runtime API call**                            | **Result**                                                       |
+|-------------------------------------------------|------------------------------------------------------------------|
+| `arr.getType()`                                 | This will return a `ReferenceType` with the name `IntegerArray`. |
+| `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with name `IntegerArray`.        |
+| `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the name `Integer`.      |
+
+<br>
+
+> **Note:**
+> The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
+> ```java
+>  Type getType();
+> ```
 
 ### Bug fixes
 
@@ -63,11 +153,34 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### New features
 
+##### `constraint` package
+
+- Introduced the `@pattern` constraint on string types
+- Added constraint validation support for `readonly` types
+
+##### `oauth2` package
+
+- Allow the use of inferred values for refreshing tokens through the password grant type
+- Allow the use of string values for the `scopes` field in the client grant configuration 
+
+##### `graphql` package
+
+- Added support for multiplexing in GraphQL subscriptions
+- Added support to access the GraphQL field information from resolvers
+
+##### `nats` package
+
+- Added support for the new NATS JetStream client with publishing and subscribing functionalities
+
 ### Improvements
+
+##### `graphql` package
+
+- Removed the limitation on the GraphQL `context` object parameter order
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.4.0%22+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.4.0%22+label%3AType%2FBug).
 
 ### Code to Cloud updates
 
@@ -83,7 +196,24 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Test Framework
+
+- Added support for executing tests using a GraalVM native image (experimental)
+  
+  Introduced the `--native` flag to `bal test` command, which executes tests using a GraalVM native executable.
+
 #### Language Server
+
+* Added the `Create variable with Type` code action
+* Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions
+* Added quick pick support for selecting expressions in the `Extract to constant` code action
+
+#### GraphQL Tool
+
+- Added support for GraphQL SDL schema file generation
+
+#### OpenAPI Tool
+Added support to generate Ballerina client and service declarations from Swagger 2.0(i.e. OpenAPI 2.0) definitions
 
 ### Improvements
 
@@ -107,7 +237,23 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### JSON-to-record converter
 - Improved the JSON-to-record converter tool to be more context-aware and generate records with non-conflicting names.
+
+#### Language Server
+
+* Improved the completion and code action support for pulled modules
+* Improved sorting of module-level completion items
+* Used the code action resolve request for compiler plugin code actions
+
 #### OpenAPI Tool
+- Added support for the `additionalProperties` attribute in OpenAPI object schemas. With this support, the generated Ballerina records can be either open or closed records, based on the `additionalProperties` details.
+>**Info:** Thereby, some of your already generated open records may change into closed records, when re-generating using 2201.4.0 (and above) versions.
+- Improved support for `nullable:true` property OpenAPI schema, to generate record fields with default values (e.g. `string? name = ();`), instead of making the field both nilable and optional (e.g. `string? name?;`).
+- Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response`, respectively.
+
+
+## Breaking changes
+- New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
 ### Bug Fixes
 
@@ -116,9 +262,12 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 - [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.4.0+label%3AType%2FBug).
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.4.0+is%3Aclosed)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.0+is%3Aclosed+label%3AArea%2FDebugger)
-- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.4.0%22+is%3Aclosed)
+- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.4.0+%22+label%3AType%2FBug)
 
 ## Ballerina packages updates
+
+### New Features
+- Added support for maintaining generated code in a Ballerina package
 
 ## Breaking changes
 

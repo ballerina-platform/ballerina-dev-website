@@ -52,6 +52,7 @@ annotation annot on field;
 
 type T [int, @annot string];
 ```
+
 Annotations are not allowed on the tuple rest descriptor. 
 
 ### Improvements

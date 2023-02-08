@@ -114,13 +114,15 @@ function getMockResponse() returns http:Response {
 
 Object mocking cannot be used as final clients cannot be modified. It is recommended 
 to write the client initialization logic in a separate function and assign the returned value to the client to facilitate testing. 
-This initialization function can then be mocked using the legacy function mocking feature.
+This initialization function can then be mocked using the compile-time function mocking feature.
 
 ***Example:***
 The following is a simple example on how to mock a `final` client.
 
 Initialize the client:
 ```bal
+import ballerina/http;
+
 final http:Client clientEndpoint = check intializeClient();
 
 function intializeClient() returns http:Client|error {
@@ -130,6 +132,9 @@ function intializeClient() returns http:Client|error {
 
 Mock the client for testing:
 ```bal
+import ballerina/http;
+import ballerina/test;
+
 @test:Mock { functionName: "intializeClient" }
 function getMockClient() returns http:Client|error {
     return test:mock(http:Client);

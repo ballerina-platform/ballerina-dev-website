@@ -46,7 +46,8 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 #### Tuple member annotations 
 
 - Added support for annotating tuple members.
-- Tuple members can be annotated with `field` annotations.
+- Tuple members can be annotated with annotations with `field` attachment points
+- Similar to records, annotations are not allowed on the rest type of a tuple.
 
 ```
 annotation annot on field;

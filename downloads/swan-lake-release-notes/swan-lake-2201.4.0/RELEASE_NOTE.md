@@ -55,9 +55,9 @@ annotation annot on field;
 type T [int, @annot string];
 ```
 
-#### Support for annotations on fields of anonymous record types
+#### Field annotation access in record type descriptors without a type definition
 
-Annotations for the fields of anonymous record types are now allowed. Those annotations can be accessed by an external function.
+Field annotation values of record type descriptors defined without a type definition can now be accessed at runtime.
 
 ```ballerina
 import ballerina/io;

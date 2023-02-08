@@ -55,6 +55,41 @@ annotation annot on field;
 type T [int, @annot string];
 ```
 
+#### Support for annotations on fields of anonymous record types
+
+Annotations for the fields of anonymous record types are  now allowed. Those annotations can be accessed by an external
+function.
+
+```ballerina
+import ballerina/io;
+import ballerina/jballerina.java;
+
+type AnnotRecord record {|
+    string value;
+|};
+
+annotation AnnotRecord annot on field;
+
+public function main() {
+
+    record {
+        @annot {value: "T1"}
+        string name;
+    } a = {name: "John"};
+
+    // Access annotation.
+    map<any> m = getFieldAnnotations(a, "$field$.name");
+
+    io:println(m);
+}
+
+function getFieldAnnotations(map<any> value, string annotName) returns map<any> =
+@java:Method {
+    'class: "a.b.c.GetFieldAnnotations",
+    name: "getFieldAnnotations"
+} external;
+```
+
 ### Improvements
 
 ### Bug fixes

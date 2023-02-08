@@ -59,36 +59,6 @@ Annotations are not allowed on the tuple rest descriptor.
 
 Field annotation values of record type descriptors defined without a type definition can now be accessed at runtime.
 
-```ballerina
-import ballerina/io;
-import ballerina/jballerina.java;
-
-type AnnotRecord record {|
-    string value;
-|};
-
-annotation AnnotRecord annot on field;
-
-public function main() {
-
-    record {
-        @annot {value: "T1"}
-        string name;
-    } a = {name: "John"};
-
-    // Access annotation.
-    map<any> m = getFieldAnnotations(a, "$field$.name");
-
-    io:println(m);
-}
-
-function getFieldAnnotations(map<any> value, string annotName) returns map<any> =
-@java:Method {
-    'class: "a.b.c.GetFieldAnnotations",
-    name: "getFieldAnnotations"
-} external;
-```
-
 ### Improvements
 
 ### Bug fixes

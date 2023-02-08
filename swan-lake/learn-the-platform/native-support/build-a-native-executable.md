@@ -351,13 +351,13 @@ After the environment is set up, follow the steps below to build the native exec
    Hello, Docker!
    ```
    
-## Execute test with the native image
+## Execute tests with the native image
 
-It is recommended to use the JVM for verifying the functionality of the application with sufficient tests and code coverage as running tests against the native image could take time. Running tests against the native image is only required when using libraries that are not verified against GraalVM native image build. All Ballerina standard libraries are verified and guaranteed to produce native image builds without any issues. The complete list of verified libraries can be found at the top of the article. 
+It is recommended to use the JVM for verifying the functionality of the application with sufficient tests and code coverage as running tests against the native image could take time. Running tests against the native image is only required when using libraries that are not verified against the GraalVM native image build. All Ballerina standard libraries are verified and guaranteed to produce native image builds without any issues. The complete list of verified libraries can be found at the top of the article. 
 
-Therefore, if the application is depending on a package that is not verified against GraalVM native build, it is recommended to run the tests against the native image to ensure there are no runtime errors. `bal test --native` can be used for this purpose.
+Therefore, if the application is depending on a package that is not verified against the GraalVM native build, it is recommended to run the tests against the native image to ensure that there are no runtime errors by executing the `bal test --native` command.
 
-Also, native testing can be scheduled as a daily check within CI pipelines to maintain compatibility with GraalVM.
+Also, native testing can be scheduled as a daily check within CI(Continuous Integration) pipelines to maintain compatibility with GraalVM.
 
 Follow the steps below to run the tests with the native image.
 
@@ -380,7 +380,7 @@ Follow the steps below to run the tests with the native image.
    ```
 
 3.  Run `bal test --native` to run the tests using the native executable. 
-      > **Info:**  This command will build a native executable with tests similar to bal build --native , and the tests will be executed by running this native executable.
+      > **Info:**  This command will build a native executable with tests similar to `bal build --native` , and the tests will be executed by running this native executable.
       ```
                Running Tests
                hello_world
@@ -390,7 +390,7 @@ Follow the steps below to run the tests with the native image.
                         0 skipped
       ```
 
-You have now tested a simple Ballerina HTTP server application for GraalVM compatibility.
+Now, you  tested a simple Ballerina HTTP server application for GraalVM compatibility.
 
 > **Note:** Code coverage  and runtime debug features are not supported with the native image testing. 
 

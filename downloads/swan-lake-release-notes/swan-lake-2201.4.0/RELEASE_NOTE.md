@@ -187,8 +187,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://git
 ### Code to Cloud updates
 
 ### New features
+- Added the ability to disable the thin JAR files generation by setting `settings.thinJar = false` in `Cloud.toml`
 
 ### Improvements
+- Improved the main class name generation in `CMD` to support complex package names
 
 ### Bug fixes
 

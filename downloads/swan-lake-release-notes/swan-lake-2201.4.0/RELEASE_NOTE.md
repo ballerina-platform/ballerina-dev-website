@@ -45,7 +45,7 @@ A few backward-incompatible changes have been introduced during the Swan Lake Be
 
 #### Tuple member annotations 
 
-- Added support annotating tuple members.
+- Added support for annotating tuple members.
 - Tuple members can be annotated with `field` annotations.
 
 ```

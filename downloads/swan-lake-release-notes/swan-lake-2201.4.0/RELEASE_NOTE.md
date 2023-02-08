@@ -172,6 +172,13 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 - Added support for the new NATS JetStream client with publishing and subscribing functionalities
 
+##### `persist` package
+
+- Added a new `persist` package to provide the functionality required for Ballerina Persistence Layer. 
+
+  Ballerina Persistent Layer provides functionality to store and query data conveniently.
+  This is an Experimental feature; APIs might change in future releases.
+
 ### Improvements
 
 ##### `graphql` package
@@ -214,6 +221,12 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### OpenAPI Tool
 Added support to generate Ballerina client and service declarations from Swagger 2.0(i.e. OpenAPI 2.0) definitions
+
+#### Persist Tool
+- Added a new `persist` command to make it easy to enable Ballerina Persistence Layer in a Ballerina project.
+
+  With this support, users can define an entity data model, validate the model and generate `persist` clients, which provide convenient APIs to store and query data in a data store.
+  This is an Experimental feature; the tool commands might change in future releases.
 
 ### Improvements
 

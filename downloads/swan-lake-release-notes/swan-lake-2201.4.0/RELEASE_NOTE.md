@@ -59,6 +59,8 @@ Annotations are not allowed on the tuple rest descriptor.
 
 ### Bug fixes
 
+- Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime
+
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates

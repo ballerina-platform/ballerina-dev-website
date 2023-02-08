@@ -55,13 +55,13 @@ type T [int, @annot string];
 
 Annotations are not allowed on the tuple rest descriptor. 
 
-#### Field annotation access in record type descriptors without a type definition
-
-Field annotation values of record type descriptors defined without a type definition can now be accessed at runtime.
-
 ### Improvements
 
 ### Bug fixes
+
+#### Field annotation access in record type descriptors without a type definition
+
+Field annotation values of record type descriptors defined without a type definition can now be accessed at runtime.
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 

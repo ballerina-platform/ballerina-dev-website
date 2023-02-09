@@ -223,7 +223,6 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 #### Language Server
 
 * Added the `Create variable with Type` code action
-* Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions
 * Added quick pick support for selecting expressions in the `Extract to constant` code action
 
 #### GraphQL Tool

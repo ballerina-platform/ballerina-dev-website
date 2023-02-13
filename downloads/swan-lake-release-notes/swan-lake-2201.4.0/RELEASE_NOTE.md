@@ -32,7 +32,7 @@ However, if you are using a version below 2201.0.0 (Swan Lake) and if you alread
 
 ## Install Ballerina
 
-If you have not installed Ballerina, then download the [installers](/downloads/#swanlake) to install.
+If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
 ## Language updates
 
@@ -45,7 +45,8 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
   ```ballerina
   annotation annot on field;
 
-  type T [int, @annot string];
+  type T [int, @annot
+      string ];
   ```
 
   Annotations are not allowed on the tuple rest descriptor. 
@@ -212,10 +213,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### Language Server
 
-* Added the `Create variable with Type` code action.
-* Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions.
+- Added the `Create variable with Type` code action.
+- Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions.
  >**Info:** This feature will be available from the [Ballerina VSCode plugin](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) version `4.0.0`.
-* Added quick pick support for selecting expressions in the `Extract to constant` code action.
+- Added quick pick support for selecting expressions in the `Extract to constant` code action.
 
 #### GraphQL Tool
 
@@ -242,6 +243,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
     ```bash
     bal format [OPTIONS] [<package>|<module>|<source-file>]
     ```
+
     ```
     OPTIONS
         --module <module-name>
@@ -283,7 +285,6 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the repositories below.
 
-- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.4.0+label%3AType%2FBug)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.4.0+is%3Aclosed)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.0+is%3Aclosed+label%3AArea%2FDebugger)
 - [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.4.0+%22+label%3AType%2FBug)

@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
@@ -30,24 +23,13 @@ function foo() returns int {
 `,
 ];
 
-export default function AsynchronousFunctionCalls() {
+export function AsynchronousFunctionCalls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -76,7 +58,7 @@ export default function AsynchronousFunctionCalls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c8a44a95c5488dc2f65279cfd113fd66&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=c9b839d163f693f47c92abb62931fa1e&file=asynchronous_function_calls.bal",
                 "_blank"
               );
             }}
@@ -101,7 +83,7 @@ export default function AsynchronousFunctionCalls() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/asynchronous-function-calls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/asynchronous-function-calls",
                 "_blank"
               );
             }}
@@ -237,10 +219,7 @@ export default function AsynchronousFunctionCalls() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Configurable variables"
-            href="/learn/by-example/configurable-variables"
-          >
+          <Link title="Immutability" href="/learn/by-example/immutability">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -266,7 +245,7 @@ export default function AsynchronousFunctionCalls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configurable variables
+                  Immutability
                 </span>
               </div>
             </div>

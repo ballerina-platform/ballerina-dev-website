@@ -185,7 +185,7 @@ Path: ["1","2","3"]
 
 ## Defining query parameters
 
-In a resource function, the query parameters are represented using the resource function parameters. The parameter type must be one of the types: `int`, `string`, `float`, `boolean`, and `decimal`. The name of the parameter represents the query parameter name. An example of this functionality is shown below.
+In a resource method, the query parameters are represented using the resource method parameters. The parameter type must be one of the types: `int`, `string`, `float`, `boolean`, and `decimal`. The name of the parameter represents the query parameter name. An example of this functionality is shown below.
 
 ```ballerina
 import ballerina/http;

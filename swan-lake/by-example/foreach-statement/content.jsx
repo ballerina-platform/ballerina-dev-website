@@ -1,77 +1,66 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    float v1 = sum([10.5, 20.5, 30.5]);
-    float v2 = sum2([10.5, 20.5, 30.5]);
-    io:println("v1:", v1, " v2:", v2);
-}
 
-function sum(float[] v) returns float {
-    float r = 0.0;
-    // \`foreach\` statement can be used to iterate an \`array\`.
-    // Each iteration returns an element in the \`array\`.
-    foreach float x in v {
-        r += x;
+    string[] names = ["Bob", "Jo", "Ann", "Tom"];
+    // Loop through a list.
+    foreach string name in names {
+        io:println(name);
     }
 
-    return r;
-}
-
-function sum2(float[] v) returns float {
-    float r = 0.0;
-    // \`m ..< n\` creates a value that when iterated over will give the
-    // integers starting from \`m\` that are \`< n\`.
-    foreach int i in 0 ..< v.length() {
-        r += v[i];
+    // Iterate a structure.
+    map<int> grades = { Bob : 65, Jo : 70, Ann : 75, Tom : 60};
+    int sum = 0;
+    foreach int grade in grades {
+      sum += grade;
     }
 
-    return r;
+    io:println("Average :", sum/grades.length());
+
+    // Binding patterns can be used with the \`foreach\` statement.
+    // Values in \`resultList\` are assigned to \`name\`, \`grade\` variables in the binding pattern.
+    [string, int][] resultList = [["Bob", 65], ["Jo", 70], ["Ann", 75], ["Tom", 60]];
+    // Binding patterns (e.g., \`[string, int]\` and \`[name, grade]\`) are used with the \`foreach\` statement.
+    foreach [string, int] [name, grade] in resultList {
+        io:println("Name:", name, " ", "Grade:", grade);
+    }
+
 }
 `,
 ];
 
-export default function ForeachStatement() {
+export function ForeachStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Foreach statement</h1>
 
       <p>
-        The <code>foreach</code> statement iterates over an iterable value, by
-        binding a variable to each member of the iterable value in order.{" "}
-        <code>foreach</code> also works for strings, and will iterate over each
-        character of the <code>string</code>.
+        The <code>foreach</code> statement iterates over an{" "}
+        <code>iterable</code> value such as arrays, tuples, maps, records,
+        string, and tables etc. by executing a block of statements for each
+        value in the iteration order. For a string value, it will iterate over
+        each code point of the string.
+      </p>
+
+      <p>
+        The syntax contains a variable and an <code>in</code> keyword followed
+        by an expression and a block of statements. The variable can also be in
+        the form of a type binding pattern and the expression can be an action
+        invocation, which should evaluate to an iterable value.
       </p>
 
       <Row
@@ -84,7 +73,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6b33df787626d6b5c6830b5ba49933d1&file=foreach_statement.bal",
+                "https://play.ballerina.io/?gist=2750859359a78726b81281c7689c571d&file=foreach_statement.bal",
                 "_blank"
               );
             }}
@@ -109,7 +98,7 @@ export default function ForeachStatement() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/foreach-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/foreach-statement",
                 "_blank"
               );
             }}
@@ -237,17 +226,55 @@ export default function ForeachStatement() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run foreach_statement.bal`}</span>
-              <span>{`v1:61.5 v2:61.5`}</span>
+              <span>{`Bob`}</span>
+              <span>{`Jo`}</span>
+              <span>{`Ann`}</span>
+              <span>{`Tom`}</span>
+              <span>{`Average :67`}</span>
+              <span>{`Name:Bob Grade:65`}</span>
+              <span>{`Name:Jo Grade:70`}</span>
+              <span>{`Name:Ann Grade:75`}</span>
+              <span>{`Name:Tom Grade:60`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/break-statement/">Break statement</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/continue-statement/">
+              Continue statement
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/while-statement/">While statement</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Provide function arguments by name"
-            href="/learn/by-example/provide-function-arguments-by-name"
+            title="Function closure"
+            href="/learn/by-example/function-closure"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -274,7 +301,7 @@ export default function ForeachStatement() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Provide function arguments by name
+                  Function closure
                 </span>
               </div>
             </div>

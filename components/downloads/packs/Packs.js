@@ -62,11 +62,6 @@ export default function Packs(props) {
                data-pack={swanlake['windows-installer']}>
                <div className={styles.cSize}>msi <span id="packWindowsName">{swanlake['windows-installer-size']}</span></div>
             </a>
-            <ul className={styles.downloadSubLinks}>
-               <li><a id="packWindowsMd5" href={`${distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.md5`}>md5</a></li>
-               <li><a id="packWindowsSha1" href={`${distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.sha1`}>SHA-1</a></li>
-               <li><a id="packWindowsAsc" href={`${distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}.asc`}>asc</a></li>
-            </ul>
          </Col>
          <Col xs={12} sm={12} md={12} lg={4}>
             <h3 className={styles.dLinux} style={linuxIcon}>Linux </h3>
@@ -78,11 +73,6 @@ export default function Packs(props) {
                      data-pack={swanlake['linux-installer']}>
                      <div className={styles.cSize}>deb <span id="packLinuxName">{swanlake['linux-installer-size']}</span></div>
                   </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packLinuxMd5" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.md5`}>md5</a></li>
-                     <li><a id="packLinuxSha1" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.sha1`}>SHA-1</a></li>
-                     <li><a id="packLinuxAsc" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}.asc`}>asc</a></li>
-                  </ul>
                </div>
                <div className={styles.dVersion}>
                   <a id="packLinux" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}`}
@@ -91,11 +81,6 @@ export default function Packs(props) {
                      data-pack={swanlake['rpm-installer']}>
                      <div className={styles.cSize}>rpm <span id="packLinuxName">{swanlake['rpm-installer-size']}</span></div>
                   </a>
-                  <ul className={styles.downloadSubLinks}>
-                     <li><a id="packLinuxMd5" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.md5`}>md5</a></li>
-                     <li><a id="packLinuxSha1" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.sha1`}>SHA-1</a></li>
-                     <li><a id="packLinuxAsc" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}.asc`}>asc</a></li>
-                  </ul>
                </div>
             </div>
          </Col>
@@ -108,11 +93,6 @@ export default function Packs(props) {
                data-pack={swanlake['macos-installer']}>
                <div className={styles.cSize}>pkg <span id="packWindowsName">{swanlake['macos-installer-size']}</span></div>
             </a>
-            <ul className={styles.downloadSubLinks}>
-               <li><a id="packMacMd5" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.md5`}>md5</a></li>
-               <li><a id="packMacSha1" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.sha1`}>SHA-1</a></li>
-               <li><a id="packMacAsc" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}.asc`}>asc</a></li>
-            </ul>
          </Col>
       </>
 

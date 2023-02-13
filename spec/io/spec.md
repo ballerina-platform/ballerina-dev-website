@@ -11,7 +11,7 @@ This is the specification for the I/O standard library of [Ballerina language](h
 
 The I/O library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 
-If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
+If you have any feedback or suggestions about the library, start a discussion via a GitHub issue or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
@@ -279,24 +279,27 @@ public isolated function fileWriteLinesFromStream(string path, stream<string, Er
 
 **Non-Streaming APIs**
 
-The following API reads the content of a given CSV file as a string array of arrays. Here, each CSV record represents as a string array.
+The following API reads the content of a given CSV file as a string array of arrays or array of ballerina records. Here, each CSV record represents as a string array or a record.
 
 ```ballerina
 # Read file content as a CSV.
+# When the expected data type is record[], the first entry of the csv file should contain matching headers.
 # ```ballerina
 # string[][]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
-# map<anydata>[]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
+# record[]|io:Error content = io:fileReadCsv("./resources/myfile.csv");
 # ```
 # + path - The CSV file path
 # + skipHeaders - Number of headers, which should be skipped prior to reading records
-# + return - The entire CSV content in the channel as an array of string arrays or an `io:Error`
+# + return - The entire CSV content in the channel as an array of string arrays, array of Ballerina records or an `io:Error`
 public isolated function fileReadCsv(string path, int skipHeaders = 0) returns string[][]|Error;
 ```
 
-The following API writes given CSV content to a given file.
+The following API writes given CSV content to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[][],` the order of ballerina record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 
 ```ballerina
-# Write CSV content to a file.
+# Write CSV content to a file. 
+# When the input is a record[] type in `OVERWRITE`,  headers will be written to the CSV file by default.
+# For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]
@@ -305,30 +308,34 @@ The following API writes given CSV content to a given file.
 # io:Error? resultRecord = io:fileWriteCsv("./resources/myfileRecord.csv", contentRecord);
 # ```
 # + path - The CSV file path
-# + content - CSV content as an array of string arrays
+# + content - CSV content as an array of string arrays or a array of Ballerina records.
 # + option - To indicate whether to overwrite or append the given content
 # + return - An `io:Error` or `()` when the writing was successful
 public isolated function fileWriteCsv(string path, string[][] content, FileWriteOption option = OVERWRITE) returns
 Error?;
 ```
 
-The following API reads the content of a given CSV file as a stream of string arrays. Here, each CSV record represents as a string array.
+The following API reads the content of a given CSV file as a stream of string arrays or ballerina records. Here, each CSV record represents as a string array or a ballerina record.
 
 ```ballerina
 # Read file content as a CSV.
+# When the expected data type is stream<record, io:Error?>,
+# the first entry of the csv file should contain matching headers.
 # ```ballerina
 # stream<string[], io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
-# stream<map<anydata>, io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
+# stream<record{}, io:Error?>|io:Error content = io:fileReadCsvAsStream("./resources/myfile.csv");
 # ```
 # + path - The CSV file path
-# + return - The entire CSV content in the channel a stream of string arrays or an `io:Error`
+# + return - The entire CSV content in the channel a stream of string arrays, Ballerina records or an `io:Error`
 public isolated function fileReadCsvAsStream(string path) returns stream<string[], Error?>|Error;
 ```
 
-The following API writes a given CSV stream to a given file.
+The following API writes a given CSV stream to a given file. When writing a `Record[]` content to a CSV file in `OVERWRITE`, by default, headers will be written to the CSV file as unlike `string[]` the order of record fields is not guaranteed. For `APPEND`, order of the existing csv file is inferred using the headers and used as the order
 
 ```ballerina
-# Write CSV record stream to a file.
+# Write CSV record stream to a file. 
+# When the input is a `stream<record, io:Error?>` in `OVERWRITE`,  headers will be written to the CSV file by default.
+# For `APPEND`, order of the existing csv file is inferred using the headers and used as the order.
 # ```ballerina
 # type Coord record {int x;int y;};
 # Coord[] contentRecord = [{x: 1,y: 2},{x: 1,y: 2}]

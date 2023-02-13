@@ -1,61 +1,49 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-type Employee record {|
-    string company = "WS02";
+type Student record {|
     string name;
-    string department;
+    int age;
+    // Specifies a default value for \`code\`.
+    string code = "Admitted";
 |};
 
-type ContractEmployee record {|
-    *Employee;
-    int duration;
+type PartTimeStudent record {|
+    *Student;
+    int studyHours;
 |};
 
 public function main() returns error? {
-    // Calling the \`value:cloneWithType()\` function with \`Employee\` will make use of default values
-    // in \`Employee\`.
-    json j = {name: "John", department: "IT"};
-    io:println(check j.cloneWithType(Employee));
+    // Creates a \`Student\` record without explicitly specifying a value for the \`code\` field.
+    Student s1 = {name: "Anne", age: 23};
+    io:println(s1);
 
-    // \`*Employee\` copies the default values.
-    ContractEmployee emp = {name: "Anne", department: "HR", duration: 12};
-    io:println(emp);
+    json j = {name: "Anne", age: 23};
+    // Calling the \`value:cloneWithType()\` function with \`Student\` will make use of the default values
+    // in \`Student\`.
+    Student s2 = check j.cloneWithType(Student);
+    io:println(s2);
+
+    // \`*Student\` copies the default values.
+    PartTimeStudent s3 = {name: "Anne", age: 23, studyHours: 6};
+    io:println(s3);
 }
 `,
 ];
 
-export default function DefaultValuesForRecordFields() {
+export function DefaultValuesForRecordFields({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -66,10 +54,10 @@ export default function DefaultValuesForRecordFields() {
         record's type descriptor. A default value is an expression. Default
         values do not affect static typing. They only affect the use of type
         descriptors to construct records. Calling the{" "}
-        <code>value:cloneWithType()</code> function with a record
-        type-descriptor <code>T</code> will make use of default values in{" "}
-        <code>T</code> if required. Similarly, using <code>*T</code> also copies
-        the default values.
+        <code>value:cloneWithType()</code> function with a record type
+        descriptor <code>T</code> will make use of the default values in{" "}
+        <code>T</code> if required. Similarly, using <code>*T</code> in type
+        inclusions also copies the default values.
       </p>
 
       <Row
@@ -82,7 +70,7 @@ export default function DefaultValuesForRecordFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=db7742d3abc184d2a37a1778e251fa05&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=b9a201f4c13ac0d34b70bc037d3e632d&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}
@@ -107,7 +95,7 @@ export default function DefaultValuesForRecordFields() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/default-values-for-record-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/default-values-for-record-fields",
                 "_blank"
               );
             }}
@@ -235,12 +223,43 @@ export default function DefaultValuesForRecordFields() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run default_values_for_record_fields.bal`}</span>
-              <span>{`{"company":"WS02","name":"John","department":"IT"}`}</span>
-              <span>{`{"duration":12,"company":"WS02","name":"Anne","department":"HR"}`}</span>
+              <span>{`{"name":"Anne","age":23,"code":"Admitted"}`}</span>
+              <span>{`{"name":"Anne","age":23,"code":"Admitted"}`}</span>
+              <span>{`{"studyHours":6,"name":"Anne","age":23,"code":"Admitted"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/type-inclusion-for-records/">
+              Type inclusion for records
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

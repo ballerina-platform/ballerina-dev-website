@@ -1,0 +1,22 @@
+{
+  "title": "Mapping binding pattern",
+  "description": "This BBE demonstrates the mapping binding pattern, record typed binding, record destructuring with binding patterns, and JSON destructuring.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "mapping binding pattern",
+    "mapping binding",
+    "record typed binding",
+    "record binding",
+    "record destructuring",
+    "json destructuring"
+  ],
+  "permalink": "/learn/by-example/mapping-binding-pattern",
+  "active": "mapping-binding-pattern",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mapping-binding-pattern",
+    "/swan-lake/learn/by-example/mapping-binding-pattern.html"
+  ]
+}

@@ -1,26 +1,18 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
-// A GraphQL listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The \`graphql:ListenerSecureSocket\` record provides the
-// SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
-listener graphql:Listener securedEP = new(4000,
+type Profile record {|
+    string name;
+    int age;
+|};
+
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -30,56 +22,37 @@ listener graphql:Listener securedEP = new(4000,
 );
 
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }
 `,
 ];
 
-export default function GraphqlServiceSslTls() {
+export function GraphqlServiceSslTls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - SSL/TLS</h1>
+      <h1>GraphQL service - SSL/TLS</h1>
 
       <p>
-        You can use the GraphQL listener to connect to or interact with an HTTPS
-        client. Provide the <code>graphql:ListenerSecureSocket</code>{" "}
-        configurations to the server to expose an HTTPS connection.
+        The <code>graphql:Listener</code> can be configured to communicate
+        through HTTPS by providing a certificate file and a private key file.
+        The certificate and the key can be provided through the{" "}
+        <code>secureSocket</code> field of the{" "}
+        <code>graphql:ListenerConfiguration</code>. Use this to secure the
+        communication and data transfer between the server and the client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -91,7 +64,7 @@ export default function GraphqlServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/graphql-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -226,9 +199,58 @@ export default function GraphqlServiceSslTls() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-security-ssl-tls/">
+            GraphQL client - SSL/TLS
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
+              <code>graphql:ListenerConfiguration</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
+              <code>graphql:ListenerSecureSocket</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#12311-ssltls">
+              GraphQL service SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Directives" href="/learn/by-example/graphql-directives">
+          <Link
+            title="Handle error response"
+            href="/learn/by-example/graphql-client-error-handling"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +276,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Directives
+                  Handle error response
                 </span>
               </div>
             </div>
@@ -262,7 +284,7 @@ export default function GraphqlServiceSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/graphql-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -273,7 +295,7 @@ export default function GraphqlServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

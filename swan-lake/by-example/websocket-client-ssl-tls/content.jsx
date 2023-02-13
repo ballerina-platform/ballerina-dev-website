@@ -1,82 +1,50 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/websocket;
 import ballerina/io;
 
-// A WebSocket client can be configured to communicate through WSS as well.
-// To secure a client using TLS/SSL, the client needs to be configured with
-// a certificate file of the listener.
-// The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/ClientSecureSocket.
-websocket:Client securedEP = check new("wss://localhost:9090/foo/bar",
-    secureSocket = {
-        cert: "../resource/path/to/public.crt"
-    }
-);
-
 public function main() returns error? {
-    check securedEP->writeMessage("Hello, World!");
-    string textMessage = check securedEP->readMessage();
-    io:println(textMessage);
+    // A WebSocket client can be configured to communicate through WSS as well.
+    // To secure a client using TLS/SSL, the client needs to be configured with
+    // a certificate file of the listener.
+    // The \`websocket:ClientSecureSocket\` record provides the SSL-related configurations of the client.
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
+        secureSocket = {
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    check chatClient->writeMessage("Hello, John!");
+    string chatMessage = check chatClient->readMessage();
+    io:println(chatMessage);
 }
 `,
 ];
 
-export default function WebsocketClientSslTls() {
+export function WebsocketClientSslTls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - SSL/TLS</h1>
+      <h1>WebSocket client - SSL/TLS</h1>
 
       <p>
-        You can use the WSS client to connect or interact with an WSS listener.
-        Provide the <code>websocket:ClientSecureSocket</code> configurations to
-        the client to initiate an WSS connection.
+        The <code>websocket:Client</code> secured with SSL/TLS connects to a
+        given SSL/TLS-secured WebSocket server (WSS). A{" "}
+        <code>websocket:Client</code> secured with SSL/TLS is created by
+        providing the <code>secureSocket</code> configurations which require the
+        server's public certificate as the <code>cert</code>. Use this to
+        interact with TLS-encrypted WebSocket servers.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the trusted certificate
-          file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -88,7 +56,7 @@ export default function WebsocketClientSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-client-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/websocket-client-ssl-tls",
                 "_blank"
               );
             }}
@@ -162,18 +130,20 @@ export default function WebsocketClientSslTls() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="/learn/by-example/websocket-service-ssl-tls/">
-            sample service secured with SSL/TLS
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-service-ssl-tls/">SSL/TLS</a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -229,16 +199,39 @@ export default function WebsocketClientSslTls() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_ssl_tls.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`Hello, How are you?`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#5-securing-the-websocket-connections">
+              WebSocket SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - OAuth2"
+            title="OAuth2"
             href="/learn/by-example/websocket-service-oauth2"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -266,7 +259,7 @@ export default function WebsocketClientSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - OAuth2
+                  OAuth2
                 </span>
               </div>
             </div>
@@ -274,7 +267,7 @@ export default function WebsocketClientSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/websocket-client-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -285,7 +278,7 @@ export default function WebsocketClientSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

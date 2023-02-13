@@ -1,73 +1,41 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
-service /fileUpload on new graphql:Listener(4000) {
+service /fileUpload on new graphql:Listener(9090) {
 
-    // Store the file information that need to be shared between the remote and resource functions.
-    string[] uploadedFiles = [];
-
-    // Remote functions can use the \`graphql:Upload\` type as an input parameter type.
-    remote function singleFileUpload(graphql:Upload file)
-        returns string|error {
-
-        // Access the file name from the \`graphql:Upload\` type parameter. Similarly, it can access
-        // the mime type as \`file.mimeType\` and encoding as \`file.encoding\`. Except the
-        // \`byteStream\` field, all other fields in the \`graphql:Upload\` are \`string\` values.
+    // Remote methods can use the \`graphql:Upload\` type as an input parameter type.
+    remote function fileUpload(graphql:Upload file) returns string|error {
+        // The uploaded file information can be accessed using the \`graphql:Upload\` type.
         string fileName = file.fileName;
-        string path = string\`./uploads/\${fileName}\`;
+        string path = string \`./uploads/\${fileName}\`;
 
-        // Access the byte stream of the file from the \`graphql:Upload\` type parameter. The type
-        // of the \`byteStream\` field is \`stream<byte[], io:Error?>\`.
+        // Accesses the byte stream of the file from the \`graphql:Upload\` type. The type of the
+        // \`byteStream\` field is \`stream<byte[], io:Error?>\`.
         stream<byte[], io:Error?> byteStream = file.byteStream;
 
-        // Store the received file using the ballerina \`io\` package. If any \`error\` occurred during
+        // Stores the received file using the ballerina \`io\` package. If any \`error\` occurred during
         // the file write, it can be returned as the resolver function output.
         check io:fileWriteBlocksFromStream(path, byteStream);
 
         // Returns the message if the uploading process is successful.
-        return "Successfully Uploaded";
-    }
-
-    // Remote functions in GraphQL services can use the \`graphql:Upload[]\` as an input parameter
-    // type. Therefore, remote functions can accept an array of \`graphql:Upload\` values. This can
-    // be used to store multiple files via a single request.
-    remote function multipleFileUpload(graphql:Upload[] files)
-        returns string[]|error {
-
-        // Iterates the \`graphql:Upload\` type array to store the files.
-        foreach int i in 0..< files.length() {
-            graphql:Upload file = files[i];
-            stream<byte[], io:Error?> byteStream = file.byteStream;
-            string fileName = file.fileName;
-            string path = string\`./uploads/\${fileName}\`;
-            check io:fileWriteBlocksFromStream(path, byteStream);
-            self.uploadedFiles.push(file.fileName);
-        }
-        return self.uploadedFiles;
+        return string \`File \${fileName} successfully uploaded\`;
     }
 
     resource function get getUploadedFileNames() returns string[] {
-        return self.uploadedFiles;
+        return ["image1.png", "image2.png"];
     }
 }
 `,
 ];
 
-export default function GraphqlFileUpload() {
+export function GraphqlFileUpload({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -75,42 +43,21 @@ export default function GraphqlFileUpload() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>File upload</h1>
+      <h1>GraphQL service - File upload</h1>
 
       <p>
-        GraphQL package provides a way to upload files through the GraphQL
-        endpoints with GraphQL mutations. To define an endpoint with the file
-        upload capability, the <code>graphql:Upload</code> type can be used as
-        the input parameter of resolver functions. The{" "}
-        <code>graphql:Upload</code> type can represent the details of the file
-        that needs to be uploaded and that can be used only with the remote
-        functions. The value of <code>graphql:Upload</code> type is extracted
-        from the HTTP multipart request, which will be received by the GraphQL
-        endpoints. This example shows how to implement a GraphQL endpoint that
-        can be used to upload files.
-      </p>
-
-      <p>
-        For more information on the underlying package, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          GraphQL package
-        </a>
-        .
+        The Ballerina <code>graphql</code> module allows uploading files to a
+        GraphQL schema. To enable file uploading in a GraphQL service, add the{" "}
+        <code>graphql:Upload</code> record as an input parameter of a{" "}
+        <code>remote</code> method inside a <code>graphql:Service</code>. The{" "}
+        <code>graphql:Upload</code> record includes the details of the file that
+        is being uploaded. The GraphQL file upload follows the{" "}
+        <em>Graphql Multipart Request Spec</em> to upload the files. Use this to
+        create a GraphQL API where users can upload files.
       </p>
 
       <Row
@@ -123,7 +70,7 @@ export default function GraphqlFileUpload() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/graphql-file-upload",
                 "_blank"
               );
             }}
@@ -258,7 +205,39 @@ export default function GraphqlFileUpload() {
         </Col>
       </Row>
 
-      <p>Invoke the service as follows.</p>
+      <p>
+        To upload a file, send an HTTP multipart request to the GraphQL endpoint
+        using the following cURL command.
+      </p>
+
+      <p>
+        The first part of the request is <code>operations</code> field that
+        includes a <code>JSON-encoded</code> map. This field is similar to a
+        standard HTTP POST request that being sent to a GraphQL endpoint, except
+        where the variable values related to the file upload should be{" "}
+        <code>null</code>.
+      </p>
+
+      <p>
+        The second part of the request is the <code>map</code> field, which is a{" "}
+        <code>JSON-encoded</code> map. It contains a mapping between the
+        variables defined in the first part of the request and the files that
+        are mentioned in the next part. The <code>key</code> is used to map a
+        file using the key provided in the next part of the request, and the
+        value is mapped to the variable name defined in the previous part.
+        Multiple variables can have the same file, so the value is an array.
+      </p>
+
+      <p>
+        Next part contains the unique key for each file and the path for each
+        file. The <code>key</code> in this part should be the same key used in
+        the previous part.
+      </p>
+
+      <p>
+        Following is a complete cURL request to send a multipart request to
+        upload files to the GraphQL service.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -313,58 +292,58 @@ export default function GraphqlFileUpload() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Send a HTTP multipart request to upload a single file via the GraphQL endpoint using a cURL command.`}</span>
-              <span>{`# The first part of the request is \`operations\` that includes a \`JSON-encoded\` map value.`}</span>
-              <span>{`# The \`operations\` map value is similar to a standard GraphQL POST request, in which all the variable values related to the file upload are \`null\`.`}</span>
-              <span>{`# \`operations\`: { "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": {"file": null} }`}</span>
-              <span>{`
-`}</span>
-              <span>{`# The second part of the request is a \`map\` field that includes a \`JSON-encoded\` map of files that occurred in the operations.`}</span>
-              <span>{`# The \`key\` is file field name and the \`value\` is an array of paths in which the files occurred in the \`operations\`.`}</span>
-              <span>{`# \`map\`: { “0”: ["variables.file"] }`}</span>
-              <span>{`
-`}</span>
-              <span>{`# A file can be added to the next part of the request with a unique, arbitrary field name.`}</span>
-              <span>{`# 0=@file1.png`}</span>
-              <span>{`
-`}</span>
-              <span>{` curl localhost:4000/fileUpload \\`}</span>
-              <span>{`  -F operations='{ "query": "mutation(\$file: Upload!) { singleFileUpload(file: \$file) }", "variables": { "file": null } }' \\`}</span>
-              <span>{`  -F map='{ "0": ["variables.file"] }' \\`}</span>
-              <span>{`  -F 0=@file1.png`}</span>
-              <span>{` {"data":{"singleFileUpload":"Successfully Uploaded"}}`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Now, send a request with multiple files.`}</span>
-              <span>{`# The variable value related to the files is an array of \`null\` values.`}</span>
-              <span>{`# \`operations\`: { "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Same as the single file upload, the \`map\` value is a JSON-encoded map of paths in which files occurred in the \`operations\`.`}</span>
-              <span>{`# Since the \`operations\` has an array of \`null\` values, an array index is included in the path value.`}</span>
-              <span>{`#  E.g., In \`file.0\`, \`0\` is the array index.`}</span>
-              <span>{`# \`map\`: { "0": ["variables.file.0"], "1": ["variables.file.1"]}`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Files can be added to the next fields of the request with a unique, arbitrary field name.`}</span>
-              <span>{`# 0=@file1.png`}</span>
-              <span>{`# 1=@file2.png`}</span>
-              <span>{`
-`}</span>
-              <span>{` curl localhost:4000/fileUpload \\`}</span>
-              <span>{`  -F operations='{ "query": "mutation(\$file: [Upload!]!) { multipleFileUpload(files: \$file) }", "variables": { "file": [null, null] } }' \\`}</span>
-              <span>{`  -F map='{ "0": ["variables.file.0"], "1": ["variables.file.1"]}' \\`}</span>
-              <span>{`  -F 0=@file1.png \\`}</span>
-              <span>{`  -F 1=@file2.png`}</span>
-              <span>{`  {"data":{"multipleFileUpload":["file1.png", "file2.png"]}}`}</span>
+              <span>{`\$ curl localhost:9090/fileUpload -F operations='{ "query": "mutation(\$file: Upload!) { fileUpload(file: \$file) }", "variables": { "file": null } }' -F map='{ "0": ["variables.file"] }' -F 0=@file1.png`}</span>
+              <span>{`{"data":{"fileUpload":"File file1.png successfully uploaded"}}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <p>
+        This will create a directory <code>uploads</code> where the service is
+        running, and then saves the <code>file1.png</code> inside it.
+      </p>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
+              <code>graphql:Upload</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/jaydenseric/graphql-multipart-request-spec">
+              GraphQL multipart request specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#6-file-upload">
+              GraphQL file upload - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Context" href="/learn/by-example/graphql-context">
+          <Link
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -390,7 +369,7 @@ export default function GraphqlFileUpload() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context
+                  Interceptors
                 </span>
               </div>
             </div>
@@ -398,8 +377,8 @@ export default function GraphqlFileUpload() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Documentation"
-            href="/learn/by-example/graphql-documentation"
+            title="Hierarchical resource paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -409,7 +388,7 @@ export default function GraphqlFileUpload() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Documentation
+                  Hierarchical resource paths
                 </span>
               </div>
               <svg

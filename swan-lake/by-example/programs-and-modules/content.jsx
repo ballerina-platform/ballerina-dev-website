@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `// This import declaration binds the prefix \`io\` to the \`ballerina/io\` module. 
 // The prefix by default comes form the last part of the module name.
 // The \`ballerina\` org name is reserved for the standard library modules.
@@ -26,24 +19,13 @@ public function main() {
 `,
 ];
 
-export default function ProgramsAndModules() {
+export function ProgramsAndModules({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -65,7 +47,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=11103b31e71fab28525efc28ef83a581&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=2733c2b710081485eec25cd42673d190&file=programs_and_modules.bal",
                 "_blank"
               );
             }}
@@ -90,7 +72,7 @@ export default function ProgramsAndModules() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/programs-and-modules",
                 "_blank"
               );
             }}
@@ -262,10 +244,7 @@ export default function ProgramsAndModules() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Variables and types"
-            href="/learn/by-example/variables-and-types"
-          >
+          <Link title="Main function" href="/learn/by-example/main-function">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +253,7 @@ export default function ProgramsAndModules() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Variables and types
+                  Main function
                 </span>
               </div>
               <svg

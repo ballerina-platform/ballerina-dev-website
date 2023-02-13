@@ -1,56 +1,36 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
+export const codeSnippetData = [
+  `// The host of the database server. The default value is \`localhost\`.
+configurable string dbHost = "localhost";
 
-const codeSnippetData = [
-  `// Port on which to run the service.
-configurable int port = 8080;
-
-//\`configurable string password = ?;\`
-//
 // This specifies that the password must be supplied in a configuration file.
+configurable string password = ?;
 `,
 ];
 
-export default function ConfigurableVariables() {
+export function ConfigurableVariables({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Configurable variables</h1>
 
       <p>
-        A module-level variable can be declared as <code>configurable</code>.
-        The initializer of a <code>configurable</code> variable can be
-        overridden at runtime (e.g., by a TOML file). A variable for which a
-        configuration is required can use an initializer of <code>?</code>. The
-        type of a <code>configurable</code> variable must be a subtype of{" "}
-        <code>anydata</code>.
+        A module-level variable can be declared as configurable. The initializer
+        of a configurable variable can be overridden at runtime (e.g., by a TOML
+        file). A variable for which a configuration is required can use an
+        initializer of <code>?</code>. The type of a configurable variable must
+        be a subtype of <code>anydata</code>.
       </p>
 
       <p>
@@ -71,32 +51,7 @@ export default function ConfigurableVariables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ddcc34ff03aed34d967e4db63946b5bb&file=configurable_variables.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/configurable-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/configurable-variables",
                 "_blank"
               );
             }}
@@ -268,8 +223,8 @@ export default function ConfigurableVariables() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Asynchronous function calls"
-            href="/learn/by-example/asynchronous-function-calls"
+            title="Configuring via TOML files"
+            href="/learn/by-example/configuring-via-toml"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -279,7 +234,7 @@ export default function ConfigurableVariables() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Asynchronous function calls
+                  Configuring via TOML files
                 </span>
               </div>
               <svg

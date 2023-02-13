@@ -1,25 +1,18 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-// An HTTP listener can be configured to communicate through HTTPS as well.
-// To secure a listener using HTTPS, the listener needs to be configured with
-// a certificate file and a private key file for the listener.
-// The \`http:ListenerSecureSocket\` record provides the SSL-related listener configurations of the listener.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket.
-listener http:Listener securedEP = new(9090,
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+listener http:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,15 +21,19 @@ listener http:Listener securedEP = new(9090,
     }
 );
 
-service /foo on securedEP {
-    resource function get bar() returns string {
-        return "Hello, World!";
+service / on securedEP {
+
+    resource function get albums() returns Album[] {
+        return [
+            {title: "Blue Train", artist: "John Coltrane"},
+            {title: "Jeru", artist: "Gerry Mulligan"}
+        ];
     }
 }
 `,
 ];
 
-export default function HttpServiceSslTls() {
+export function HttpServiceSslTls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -44,43 +41,20 @@ export default function HttpServiceSslTls() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - SSL/TLS</h1>
+      <h1>HTTP service - SSL/TLS</h1>
 
       <p>
-        You can use the HTTPS listener to connect to or interact with an HTTPS
-        client. Provide the <code>http:ListenerSecureSocket</code>{" "}
-        configurations to the server to expose an HTTPS connection.
+        The <code>http:Listener</code> can be configured to communicate through
+        HTTPS by providing a certificate file and a private key file. The
+        certificate and the key can be provided through the{" "}
+        <code>secureSocket</code> field of the listener configuration. Use this
+        to secure the communication and data transfer between the server and the
+        client.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -92,7 +66,7 @@ export default function HttpServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -229,17 +203,6 @@ export default function HttpServiceSslTls() {
 
       <p>Invoke the service by executing the cURL command below.</p>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Alternatively, you can invoke the above service
-          via the{" "}
-          <a href="/learn/by-example/http-client-ssl-tls/">
-            sample SSL/TLS client
-          </a>
-          .
-        </p>
-      </blockquote>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -293,16 +256,49 @@ export default function HttpServiceSslTls() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://localhost:9090/foo/bar --cacert /path/to/server-public.crt`}</span>
+              <span>{`\$ curl https://localhost:9090/albums --cacert /path/to/server-public.crt`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/http-client-ssl-tls/">SSL/TLS client</a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">
+              <code>http:ListenerSecureSocket</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#921-listener---ssltls">
+              HTTP service SSL/TLS - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Caching client"
+            title="Enable caching"
             href="/learn/by-example/http-caching-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -330,7 +326,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Caching client
+                  Enable caching
                 </span>
               </div>
             </div>
@@ -338,7 +334,7 @@ export default function HttpServiceSslTls() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Mutual SSL"
+            title="Mutual SSL"
             href="/learn/by-example/http-service-mutual-ssl"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -349,7 +345,7 @@ export default function HttpServiceSslTls() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Mutual SSL
+                  Mutual SSL
                 </span>
               </div>
               <svg

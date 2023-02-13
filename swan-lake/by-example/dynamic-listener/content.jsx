@@ -1,49 +1,31 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/lang.runtime;
-import ballerina/log;
 
-final http:Listener httpListener = check new (9090);
+http:Listener httpListener = check new (9090);
 
 http:Service helloService =  service object {
 
-    resource function get sayHello(http:Caller caller, http:Request req) {
+    resource function get greeting() returns string {
         // Send a response back to the caller.
-        var respondResult = caller->respond("Hello, World!");
-        if respondResult is error {
-            log:printError("Error occurred when responding.", 'error = respondResult);
-        }
+        return "Hello, World!";
     }
 
     // The resource function that will shutdown the server.
-    resource function get shutDownServer(http:Caller caller, http:Request req) {
+    resource function post shutdown(http:Caller caller) returns error? {
         // Send a response back to the caller.
-        var respondResult = caller->respond("Shutting down the server");
+        check caller->respond("Shutting down the server");
         // Stop the listener.
         // This will be called automatically if the program exits by means of a system call.
-        var stopResult = httpListener.gracefulStop();
+        check httpListener.gracefulStop();
         // Deregister the listener dynamically.
         runtime:deregisterListener(httpListener);
-        // Handle the errors at the end.
-        if respondResult is error {
-            log:printError("Error occurred when responding.", 'error = respondResult);
-        } 
-        if stopResult is error {
-            log:printError("Error occurred when stopping the listener. ", 'error = stopResult);
-        }
     }
 };
 
@@ -58,7 +40,7 @@ public function main() returns error? {
 `,
 ];
 
-export default function DynamicListener() {
+export function DynamicListener({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -66,18 +48,7 @@ export default function DynamicListener() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -99,7 +70,7 @@ export default function DynamicListener() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/dynamic-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/dynamic-listener",
                 "_blank"
               );
             }}
@@ -292,12 +263,12 @@ export default function DynamicListener() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/foo/bar/sayHello`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/greeting`}</span>
               <span>{`Hello, World!`}</span>
               <span>{`
 `}</span>
               <span>{`# Invoke the shutdown resource to deregister the listener.`}</span>
-              <span>{`\$ curl http://localhost:9090/foo/bar/shutDownServer`}</span>
+              <span>{`\$ curl http://localhost:9090/foo/bar/shutdown -X POST`}</span>
               <span>{`Shutting down the server`}</span>
             </code>
           </pre>
@@ -306,7 +277,10 @@ export default function DynamicListener() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Timeout" href="/learn/by-example/http-timeout">
+          <Link
+            title="Consume github events"
+            href="/learn/by-example/websub-webhook-sample"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +306,7 @@ export default function DynamicListener() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Timeout
+                  Consume github events
                 </span>
               </div>
             </div>

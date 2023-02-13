@@ -37,7 +37,7 @@ One of the key benefits of the diagram is that it acts as a documentation of the
 
 ### Get started
 
-The <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension for Visual Studio Code</a> can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank">download</a> the VSCode extension and launch the graphical viewer.
+The <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension for Visual Studio Code</a> can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="https://wso2.com/ballerina/vscode/docs/visual-programming/sequence-diagram-view/" target="_blank">download</a> the VS Code extension and launch the graphical viewer.
 
 
 ## Graphical representation

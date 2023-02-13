@@ -1,0 +1,20 @@
+{
+  "title": "Error handling",
+  "description": "This BBE demonstrates error handling in Kafka services.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "consumer",
+    "service",
+    "asynchronous",
+    "error handling"
+  ],
+  "permalink": "/learn/by-example/kafka-service-error-handling",
+  "active": "kafka-service-error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-service-error-handling",
+    "/swan-lake/learn/by-example/kafka-service-error-handling.html"
+  ]
+}

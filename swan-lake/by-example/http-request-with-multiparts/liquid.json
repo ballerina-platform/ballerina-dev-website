@@ -1,5 +1,5 @@
 {
-  "title": "Request With multiparts",
+  "title": "Request with multiparts",
   "description": "BBE on how Ballerina supports encoding and decoding multipart content in HTTP requests along with nested parts.",
   "keywords": [
     "ballerina",

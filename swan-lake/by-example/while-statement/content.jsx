@@ -1,72 +1,43 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
-    LinkedList link1 = {value: "link1", next: ()};
-    LinkedList link2 = {value: "link2", next: link1};
-    io:println(len(link2));
-}
 
-type LinkedList record {
-    string value;
-    LinkedList? next;
-};
-
-function len(LinkedList ll) returns int {
-    int n = 0;
-    LinkedList? v = ll;
-    // Executes the code block that is defined within the \`while\` block
-    // as long as the value of \`v\` is not \`nil\`.
-    while v != () {
-        n += 1;
-        v = v.next;
+    // Loop through a list
+    string[] names = ["Bob", "Jo", "Ann", "Tom"];
+    int i = 0;
+    while i < names.length() {
+        io:println(names[i]);
+        i += 1;
     }
-
-    return n;
 }
 `,
 ];
 
-export default function WhileStatement() {
+export function WhileStatement({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>While statement</h1>
 
       <p>
-        The <code>while</code> statement is a more flexible iteration than{" "}
-        <code>foreach</code>. <code>break</code> and <code>continue</code>{" "}
-        statements can be used within the loops to alter control flow.
+        The <code>while</code> statement can be used to repeat a block of
+        statements until a boolean condition is true. The parentheses{" "}
+        <code>( )</code> around the boolean expression are not required.
+        However, it is required to enclose the statement block using curly
+        braces <code>&#123; &#125;</code>.
       </p>
 
       <Row
@@ -79,7 +50,32 @@ export default function WhileStatement() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/while-statement",
+                "https://play.ballerina.io/?gist=499beb22aa349c3f824c3b1428085674&file=while_statement.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/while-statement",
                 "_blank"
               );
             }}
@@ -207,11 +203,44 @@ export default function WhileStatement() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run while_statement.bal`}</span>
-              <span>{`2`}</span>
+              <span>{`Bob`}</span>
+              <span>{`Jo`}</span>
+              <span>{`Ann`}</span>
+              <span>{`Tom`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/break-statement/">Break statement</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/continue-statement/">
+              Continue statement
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/foreach-statement/">Foreach statement</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -252,8 +281,8 @@ export default function WhileStatement() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Langlib functions"
-            href="/learn/by-example/langlib-functions"
+            title="Break statement"
+            href="/learn/by-example/break-statement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -263,7 +292,7 @@ export default function WhileStatement() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Langlib functions
+                  Break statement
                 </span>
               </div>
               <svg

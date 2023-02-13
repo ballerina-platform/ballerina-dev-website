@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 type Args record {|
@@ -19,21 +12,24 @@ type Args record {|
     decimal y;
 |};
 
-listener http:Listener h = new (9090);
+type Response record {|
+    decimal result;
+|};
 
-service /calc on h {
-    // Resource method arguments can use user-defined types.
-    // Annotations can be used to refine the mapping between the Ballerina-declared
-    // type and wire format.
-    resource function post add(@http:Payload Args args) 
-            returns decimal {
-        return args.x + args.y;
-    }
+listener http:Listener ln = new (9090);
+
+service /calc on ln {
+   // Resource method arguments can use user-defined types.
+   // Annotations can be used to refine the mapping between the Ballerina-declared
+   // type and wire format.
+   resource function post add(@http:Payload Args args) returns Response {
+      return {result: args.x + args.y};
+   }
 }
 `,
 ];
 
-export default function ResourceMethodTyping() {
+export function ResourceMethodTyping({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -41,35 +37,24 @@ export default function ResourceMethodTyping() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Resource method typing</h1>
 
       <p>
-        Resource method arguments can use user-defined types. Listener will use
-        introspection to map from protocol format (typically JSON) to
-        user-defined type, using <code>cloneWithType</code>. Return value that
-        is subtype of <code>anydata</code> will be mapped from user-defined type
-        to protocol format, typically JSON, using <code>toJson</code>.
+        Resource method arguments can use user-defined types. The listener will
+        use introspection to map the protocol format (typically JSON) to a
+        user-defined type using <code>cloneWithType</code>. The return value,
+        which is a subtype of anydata will be mapped from the user-defined type
+        to the protocol format typically JSON, using <code>toJson</code>.
       </p>
 
       <p>
-        Can generate API description (e.g. OpenAPI) from Ballerina service
-        declaration. Annotations can be used to refine the mapping between
-        Ballerina-declared type and wire format.
+        The API description (e.g. OpenAPI) can be generated from the Ballerina
+        service declaration. Annotations can be used to refine the mapping
+        between the Ballerina-declared type and wire format.
       </p>
 
       <Row
@@ -82,7 +67,7 @@ export default function ResourceMethodTyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/resource-method-typing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/resource-method-typing",
                 "_blank"
               );
             }}
@@ -274,18 +259,58 @@ export default function ResourceMethodTyping() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/calc/add -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
-              <span>{`3.0`}</span>
+              <span>{`\$ curl http://localhost:9090/calc/add -H 'content-type: application/json' -d "{\\"x\\": 1.0, \\"y\\": 2.0}"`}</span>
+              <span>{`{"result":3.0}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/casting-json-to-user-defined-type/">
+              Casting JSON to user-defined type
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/http-service-data-binding/">
+              Service data binding
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http">http module</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Convert to user-defined type"
-            href="/learn/by-example/converting-to-user-defined-type"
+            title="Casting JSON to user-defined type"
+            href="/learn/by-example/casting-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,7 +337,7 @@ export default function ResourceMethodTyping() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Convert to user-defined type
+                  Casting JSON to user-defined type
                 </span>
               </div>
             </div>

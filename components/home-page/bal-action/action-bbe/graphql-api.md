@@ -39,8 +39,7 @@ service / on new graphql:Listener(9000) {
     resource function get album(string id, Currency currency = USD) returns Album|error {
         Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
         if currency != self.baseCurrency {
-            string query = string `from=${self.baseCurrency}&to=${currency}`;
-            record {decimal rate;} exchange = check self.forex->get(string `/curerncyConversion?${query}`);
+            record {decimal rate;} exchange = check self.forex->/currencyConversion('from = self.baseCurrency, to = currency);
             album.price = album.price * exchange.rate;
             album.currency = currency;
         }

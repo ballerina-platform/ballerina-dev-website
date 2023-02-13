@@ -1,33 +1,25 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-// The \`absolute resource path\` can be omitted. Then, it defaults to \`/\`.
 service on new http:Listener(9090) {
 
-    // The \`default\` accessor name can be used to match with all methods including the standard HTTP methods
+    // The \`default\` accessor can be used to match with all methods including the standard HTTP methods
     // and custom methods. The rest param is used to represent the wildcard of the \`resource path\` in which any path
     // segment will get dispatched to the resource in the absence of an exact path match.
-    resource function 'default [string... paths](http:Request req) returns json {
-        return {method: req.method, path: paths};
+    resource function 'default [string... paths](http:Request req) returns string {
+        return string \`method: \${req.method}, path: \${paths.toString()}\`;
     }
 }
 `,
 ];
 
-export default function HttpDefaultResource() {
+export function HttpDefaultResource({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -35,35 +27,23 @@ export default function HttpDefaultResource() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Default resource</h1>
+      <h1>HTTP service - Default resource</h1>
 
       <p>
-        Ballerina provides rest params in the resource path and the default
-        resource method to help designing proxy services and default resources.
-        It can be used to handle unmatched requests.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The default resource slightly varies from the usual resource function as
+        it uses <code>rest parameters</code> as the <code>resource path</code>{" "}
+        and the <code>default</code> identifier as the{" "}
+        <code>resource accessor</code>. The <code>rest parameters</code> allow
+        any of the URL paths to be matched, and it supports <code>string</code>,{" "}
+        <code>int</code>, <code>float</code>, <code>boolean</code>, and{" "}
+        <code>decimal</code> as types. The <code>default</code> identifier also
+        allows any HTTP methods to be dispatched to the resource function. Use
+        it when designing a REST API to handle proxy services or as a default
+        location to get dispatched if none of the other resources are matched.
       </p>
 
       <Row
@@ -76,7 +56,32 @@ export default function HttpDefaultResource() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-default-resource",
+                "https://play.ballerina.io/?gist=7e818119ffbfbd6b721478fef438395f&file=http_default_resource.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-default-resource",
                 "_blank"
               );
             }}
@@ -269,19 +274,40 @@ export default function HttpDefaultResource() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/foo/bar" -X POST`}</span>
-              <span>{`{"method":"POST", "path":["foo", "bar"]}`}</span>
+              <span>{`\$ curl "http://localhost:9090/foo/bar"`}</span>
+              <span>{`method: GET, path: ["foo","bar"]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#233-path-parameter">
+              HTTP service default resource - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service data binding"
-            href="/learn/by-example/http-data-binding"
-          >
+          <Link title="Failover" href="/learn/by-example/http-failover">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -307,14 +333,17 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service data binding
+                  Failover
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Path parameter" href="/learn/by-example/http-path-param">
+          <Link
+            title="Request/Response object"
+            href="/learn/by-example/http-request-response"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -323,7 +352,7 @@ export default function HttpDefaultResource() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Path parameter
+                  Request/Response object
                 </span>
               </div>
               <svg

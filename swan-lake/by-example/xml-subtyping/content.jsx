@@ -1,65 +1,57 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// An \`xml\` value belongs to \`xml:Element\` if it consists of just an element item. 
-xml:Element element = xml \`<p>Hello</p>\`;
-
-// Similarly, a value belongs to \`xml:Comment\` or \`xml:ProcessingInstruction\` if it 
-// consists of just a comment item or a processing instruction item.
-xml:Comment comment = xml \`<!--This is a comment-->\`;
-xml:ProcessingInstruction procInst = xml \`<?target data?>\`;
-
-// An \`xml\` value belongs to \`xml:Text\` if it consists of only a text item or is empty.
-xml:Text empty = xml \`\`;
-xml:Text text = xml \`Hello World\`;
-
 public function main() {
+    // An \`xml\` value belongs to an \`xml:Element\` if it consists of just an element item.
+    xml:Element firstElement = xml \`<p>Hello</p>\`;
+
+    // Similarly, a value belongs to the \`xml:Comment\` or \`xml:ProcessingInstruction\` if it
+    // consists of just a comment item or a processing instruction item.
+    xml:Comment comment = xml \`<!--This is a comment-->\`;
+    io:println(comment);
+
+    xml:ProcessingInstruction procInst = xml \`<?target data?>\`;
+    io:println(procInst);
+
+    // An \`xml\` value belongs to the \`xml:Text\` if it consists of only a text item or is empty.
+    xml:Text empty = xml \`\`;
+    io:println(empty);
+    xml:Text text = xml \`Hello World\`;
+    io:println(text);
+
     string hello = "Hello";
     string world = "World";
 
-    // The return type of \`stringToXml\` is \`xml:Text\`, which indicates that it will
-    // return an XML text item.
-    xml:Text c = stringToXml(hello + " " + world);
-    io:println(c);
+    // \`xml:createText\` can be used to convert a string to \`xmlText\`.
+    xml:Text xmlString = xml:createText(hello + " " + world);
+    io:println(xmlString);
 
-    xml:Element otherElement = xml \`<q>World</q>\`;
+    xml:Element secondElement = xml \`<q>World</q>\`;
 
     // Concatenating multiple items results in a sequence of items (\`xml<T>\`).
     // The concatenation below will result in a sequence of XML elements (\`xml<xml:Element>\`).
-    xml d = element + otherElement;
+    xml resultElement = firstElement + secondElement;
+    io:println(resultElement is xml<xml:Element>);
 
-    xml e = xml \`<p>hello</p>World\`;
+    xml xmlHelloWorld = xml \`<p>hello</p>World\`;
 
     // An \`xml\` value belongs to the \`xml<T>\` type if each of its members belongs to type \`T\`.
-    io:println(element is xml<xml:Element>);
-    io:println(d is xml<xml:Element>);
-    io:println(e is xml<xml:Element>);
+    io:println(xmlHelloWorld is xml<xml:Element>);
 
-    io:println(d);
-    rename(d, "q", "r");
-    io:println(d);
+    io:println(resultElement);
+    rename(resultElement, "q", "r");
+    io:println(resultElement);
 }
 
-function stringToXml(string s) returns xml:Text {
-    return xml:createText(s);
-}
-
-// Functions in lang.xml use subtyping to provide safe and convenient typing.
-// For example, \`x.elements()\` returns element items in \`x\` as type 
-// \`xml<xml:Element>\` and \`e.getName()\` and \`e.setName()\` are defined when 
+// Functions in \`lang.xml\` use subtyping to provide safe and convenient typing.
+// For example, \`x.elements()\` returns element items in \`x\` as type
+// \`xml<xml:Element>\` and \`e.getName()\` and \`e.setName()\` are defined when
 // \`e\` has type \`xml:Element\`.
 function rename(xml x, string oldName, string newName) {
     foreach xml:Element e in x.elements() {
@@ -72,24 +64,13 @@ function rename(xml x, string oldName, string newName) {
 `,
 ];
 
-export default function XmlSubtyping() {
+export function XmlSubtyping({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -147,7 +128,32 @@ export default function XmlSubtyping() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/xml-subtyping",
+                "https://play.ballerina.io/?gist=a4c54e8d6400698681001d9257c1a207&file=xml_subtyping.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/xml-subtyping",
                 "_blank"
               );
             }}
@@ -275,8 +281,12 @@ export default function XmlSubtyping() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run xml_subtyping.bal`}</span>
+              <span>{`<!--This is a comment-->`}</span>
+              <span>{`<?target data?>`}</span>
+              <span>{`
+`}</span>
               <span>{`Hello World`}</span>
-              <span>{`true`}</span>
+              <span>{`Hello World`}</span>
               <span>{`true`}</span>
               <span>{`false`}</span>
               <span>{`<p>Hello</p><q>World</q>`}</span>
@@ -286,9 +296,39 @@ export default function XmlSubtyping() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-data-model/">XML data model</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-operations/">XML operations</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.xml/latest/">
+              <code>lang.xml</code> - Module documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="XML operations" href="/learn/by-example/xml-operations">
+          <Link title="XML mutation" href="/learn/by-example/xml-mutation">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +354,7 @@ export default function XmlSubtyping() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML operations
+                  XML mutation
                 </span>
               </div>
             </div>

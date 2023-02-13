@@ -43,7 +43,7 @@ export function PageContent(props) {
         redirectmsg
         :null
         }
-        <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`${prefix}/community/#ballerina-slack-community`}>Ballerina
+        <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`https://discord.gg/ballerinalang`}>Ballerina
           Team</a>.</p>
       </Col>
     </Row>

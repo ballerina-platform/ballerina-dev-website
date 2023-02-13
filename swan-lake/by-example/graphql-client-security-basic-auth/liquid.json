@@ -1,0 +1,19 @@
+{
+  "title": "Basic authentication",
+  "description": "A GraphQL client written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "client",
+    "basic auth",
+    "security"
+  ],
+  "permalink": "/learn/by-example/graphql-client-security-basic-auth",
+  "active": "graphql-client-security-basic-auth",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-security-basic-auth",
+    "/swan-lake/learn/by-example/graphql-client-security-basic-auth.html"
+  ]
+}

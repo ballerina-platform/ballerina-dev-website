@@ -1,44 +1,33 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
+import ballerina/regex;
 
-service on new http:Listener(9092) {
-    // The \`consumes\` and \`produces\` annotations of the resource configuration
-    // contain MIME types as an array of strings. The resource can only consume/accept \`text/json\` and
-    // \`application/json\` media types. Therefore, the \`Content-Type\` header
-    // of the request must be in one of these two types. The resource can produce
+service / on new http:Listener(9090) {
+    // The \`consumes\` and \`produces\` annotations of the resource configuration contains MIME types as
+    // an array of strings. The resource can only consume/accept \`text/plain\` media type. Therefore,
+    // the \`Content-Type\` header of the request must be \`text/plain\` types. The resource can produce
     // \`application/xml\` payloads. Therefore, you need to set the \`Accept\` header accordingly.
-    // For details, see https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig.
     @http:ResourceConfig {
-        consumes: ["text/json", "application/json"],
+        consumes: ["text/plain"],
         produces: ["application/xml"]
     }
-    resource function post infoService(@http:Payload json msg)
-            returns xml|http:InternalServerError {
-        json|error nameString = msg.name;
-        if nameString is json {
-            xml name = xml \`<name>\${<string>nameString}</name>\`;
-            return name;
+    resource function post transform(@http:Payload string msg) returns xml|http:InternalServerError {
+        if regex:matches(msg, "^[a-zA-Z]*\$") {
+            return xml \`<name>\${msg}</name>\`;
         }
-        return { body: "Invalid json: \`name\` not present"};
+        return { body: xml \`<name>invalid string</name>\`};
     }
 }
 `,
 ];
 
-export default function HttpRestrictByMediaType() {
+export function HttpRestrictByMediaType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -46,37 +35,23 @@ export default function HttpRestrictByMediaType() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Restrict by media type</h1>
+      <h1>HTTP service - Restrict by media type</h1>
 
       <p>
-        You can configure resources of HTTP services to restrict the types of
-        media they consume and produce. This is done through the{" "}
-        <code>consumes</code> and <code>produces</code> annotation attributes of
-        the <code>ResourceConfig</code> annotation, which is used with
-        resources.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The content negotiation for the REST API design is achieved via the{" "}
+        <code>consumes</code> and <code>produces</code> configurations. The
+        resource accepting request content type is defined under the{" "}
+        <code>consumes</code> and the resource producing response content type
+        is defined under the <code>produces</code> in the resource
+        configuration. Each configuration is checked against the{" "}
+        <code>Accept</code> header and the <code>Content-type</code> header of
+        the request. If the negotiation fails, the error response is returned
+        with <code>406 Not Acceptable</code> or <code>415 Unsupported</code>{" "}
+        status codes respectively.
       </p>
 
       <Row
@@ -89,7 +64,32 @@ export default function HttpRestrictByMediaType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-restrict-by-media-type",
+                "https://play.ballerina.io/?gist=111cf5ab3e1c73d32389a56d47f9efd8&file=http_restrict_by_media_type.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-restrict-by-media-type",
                 "_blank"
               );
             }}
@@ -282,20 +282,23 @@ export default function HttpRestrictByMediaType() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
+              <span>{`\$ curl -v http://localhost:9090/transform -H "Accept:application/xml" -H "Content-Type:text/plain" -d 'Ballerina'`}</span>
+              <span>{`*   Trying ::1...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> POST /transform HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept:application/xml`}</span>
-              <span>{`> Content-Type:application/json`}</span>
-              <span>{`> Content-Length: 20`}</span>
+              <span>{`> Content-Type:text/plain`}</span>
+              <span>{`> Content-Length: 9`}</span>
               <span>{`>`}</span>
-              <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`* upload completely sent off: 9 out of 9 bytes`}</span>
+              <span>{`< HTTP/1.1 201 Created`}</span>
               <span>{`< content-type: application/xml`}</span>
               <span>{`< content-length: 22`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:25:55 +0530`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 17:53:21 +0530`}</span>
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`<name>Ballerina</name>* Closing connection 0`}</span>
@@ -303,41 +306,47 @@ export default function HttpRestrictByMediaType() {
 `}</span>
               <span>{`# To invoke the service using an unsupported media type, execute the following cURL request. The content type of the`}</span>
               <span>{`# request is not listed under the \`consumes\` resource configuration.`}</span>
-              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:application/xml" -H "Content-Type:text/plain" -d "Hello ballerina"`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
+              <span>{`\$ curl -v http://localhost:9090/transform -H "Accept:application/xml" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
+              <span>{`*   Trying ::1...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> POST /transform HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept:application/xml`}</span>
-              <span>{`> Content-Type:text/plain`}</span>
-              <span>{`> Content-Length: 15`}</span>
-              <span>{`>`}</span>
-              <span>{`* upload completely sent off: 15 out of 15 bytes`}</span>
-              <span>{`< HTTP/1.1 415 Unsupported Media Type`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:26:50 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Closing connection 0`}</span>
-              <span>{`
-`}</span>
-              <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
-              <span>{`# in the \`Accept\` header is not listed under the \`produces\` resource configuration.`}</span>
-              <span>{`\$ curl -v http://localhost:9092/infoService -H "Accept:text/html" -H "Content-Type:application/json" -d '{"name":"Ballerina"}'`}</span>
-              <span>{`> POST /infoService HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9092`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept:text/html`}</span>
               <span>{`> Content-Type:application/json`}</span>
               <span>{`> Content-Length: 20`}</span>
               <span>{`>`}</span>
               <span>{`* upload completely sent off: 20 out of 20 bytes`}</span>
+              <span>{`< HTTP/1.1 415 Unsupported Media Type`}</span>
+              <span>{`< content-type: text/plain`}</span>
+              <span>{`< content-length: 48`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 17:56:40 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`content-type : application/json is not supported* Closing connection 0`}</span>
+              <span>{`
+`}</span>
+              <span>{`# To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned`}</span>
+              <span>{`# in the \`Accept\` header is not listed under the \`produces\` resource configuration.`}</span>
+              <span>{`\$ curl -v http://localhost:9090/transform -H "Accept:text/html" -H "Content-Type:text/plain" -d 'Ballerina'`}</span>
+              <span>{`*   Trying ::1...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> POST /transform HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept:text/html`}</span>
+              <span>{`> Content-Type:text/plain`}</span>
+              <span>{`> Content-Length: 9`}</span>
+              <span>{`>`}</span>
+              <span>{`* upload completely sent off: 9 out of 9 bytes`}</span>
               <span>{`< HTTP/1.1 406 Not Acceptable`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 23 Sep 2020 10:27:28 +0530`}</span>
+              <span>{`< date: Sat, 22 Oct 2022 17:58:28 +0530`}</span>
               <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
               <span>{`* Closing connection 0`}</span>
@@ -346,11 +355,35 @@ export default function HttpRestrictByMediaType() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/HttpResourceConfig">
+              <code>http:ResourceConfig</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#42-resource-configuration">
+              HTTP service resource configuration - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Typed resource responses"
-            href="/learn/by-example/http-resource-returns"
+            title="Matrix parameter"
+            href="/learn/by-example/http-matrix-param"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -377,14 +410,17 @@ export default function HttpRestrictByMediaType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Typed resource responses
+                  Matrix parameter
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/http-client-endpoint">
+          <Link
+            title="File upload"
+            href="/learn/by-example/http-service-file-upload"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -393,7 +429,7 @@ export default function HttpRestrictByMediaType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  File upload
                 </span>
               </div>
               <svg

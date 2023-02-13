@@ -22,7 +22,7 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2201.0.0 (Swan Lake) ](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
-    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Design the GraphQL endpoint
@@ -160,7 +160,7 @@ public distinct service class CovidData {
 ```
 
 In this code:
-- The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource function will return the original value
+- The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource method will return the original value
 divided by `1000`.
 - The `CovidData` service type represents the GraphQL `Object` type, which represents an entry in
 the data set. 
@@ -215,7 +215,7 @@ As per the design, there are two fields in the `Query` type and one field in the
 
 #### Create `Query` type 
 
-##### Create the `all` field resource function
+##### Create the `all` field resource method
 
 To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
 
@@ -233,7 +233,7 @@ In this code:
 - Then comes the name of the field. The return type is the type of the field.
 - The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
 
-##### Create the `filter` field resource function
+##### Create the `filter` field resource method
 
 To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the `service.bal` file.
 
@@ -253,7 +253,7 @@ In this code:
 
 #### Create `Mutation` type 
 
-##### Create the `add` field remote function
+##### Create the `add` field remote method
 
 As the `Query` type is completed now, define the `Mutation` type using remote methods.
 

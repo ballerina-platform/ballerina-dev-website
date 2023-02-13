@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerinax/awslambda;
 import ballerina/io;
 
@@ -42,7 +35,7 @@ public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) {
 `,
 ];
 
-export default function AwsLambdaDeployment() {
+export function AwsLambdaDeployment({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -54,18 +47,7 @@ export default function AwsLambdaDeployment() {
   const [outputClick4, updateOutputClick4] = useState(false);
   const ref4 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -84,7 +66,7 @@ export default function AwsLambdaDeployment() {
 
       <p>
         For more information, see the{" "}
-        <a href="https://ballerina.io/learn/deployment/aws-lambda/">
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
           AWS Lambda Deployment Guide
         </a>
         .
@@ -100,7 +82,7 @@ export default function AwsLambdaDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/aws-lambda-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/aws-lambda-deployment",
                 "_blank"
               );
             }}
@@ -322,7 +304,10 @@ export default function AwsLambdaDeployment() {
       <p>
         For instructions on getting the value for the
         <code>$LAMBDA_ROLE_ARN</code>, see{" "}
-        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+          AWS Lambda deployment
+        </a>
+        .
       </p>
 
       <Row
@@ -470,7 +455,10 @@ export default function AwsLambdaDeployment() {
 
       <p>
         For registration and execution details, see{" "}
-        <a href="/learn/deployment/aws-lambda/">AWS Lambda deployment</a>.
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+          AWS Lambda deployment
+        </a>
+        .
       </p>
 
       <Row className="mt-auto mb-5">

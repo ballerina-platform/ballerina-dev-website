@@ -1,0 +1,17 @@
+{
+  "title": "Binding patterns",
+  "description": "This BBE introduces extracting information from structured values and destructuring information using binding patterns",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "destructuring"
+  ],
+  "permalink": "/learn/by-example/binding-patterns",
+  "active": "binding-patterns",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/binding-patterns",
+    "/swan-lake/learn/by-example/binding-patterns.html"
+  ]
+}

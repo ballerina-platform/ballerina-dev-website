@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/log;
 import ballerina/observe;
@@ -76,7 +69,7 @@ service /hello on new http:Listener(9234) {
 `,
 ];
 
-export default function Tracing() {
+export function Tracing({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -84,18 +77,7 @@ export default function Tracing() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -103,37 +85,29 @@ export default function Tracing() {
 
       <p>
         Ballerina supports Observability out of the box, and Tracing is one of
-        the three important aspects of
-      </p>
-
-      <p>
-        Observability. To observe Ballerina code, the build time flag{" "}
-        <code>--observability-included</code> should be given along with the
-      </p>
-
-      <p>
-        <code>Config.toml</code> file when starting the service. The{" "}
-        <code>Config.toml</code> file contains the required runtime
+        the three important aspects of observability. To observe Ballerina code,
+        the <code>--observability-included</code> build time flag should be
+        given along with the <code>Config.toml</code> file when starting the
+        service. The <code>Config.toml</code> file contains the required runtime
         configurations related to observability.
       </p>
 
       <p>
-        The developers can trace their code blocks and measure the time incurred
-        during the actual runtime execution.
+        You can trace the code blocks and measure the time incurred during the
+        actual runtime execution. Also, you can choose to hook the measurement
+        with the default trace created or can create a completely new trace.
       </p>
 
-      <p>
-        They can choose to hook their measurement with the default trace created
-        or can create a completely new trace.
-      </p>
-
-      <p>
-        For more information about configs and observing applications, see{" "}
-        <a href="/learn/observe-ballerina-programs/">
-          Observe Ballerina programs
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Info:</strong> For more information about configs and
+          observing applications, see{" "}
+          <a href="/learn/observe-ballerina-programs/">
+            Observe Ballerina programs
+          </a>
+          .
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -145,7 +119,7 @@ export default function Tracing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/tracing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/tracing",
                 "_blank"
               );
             }}

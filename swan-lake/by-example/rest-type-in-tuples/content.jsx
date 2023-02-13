@@ -1,70 +1,53 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// Tuple type with zero or more strings.
-type Names [string...];
-
-// Tuple type with an integer followed by zero or more strings.
-type Id [int, string...];
-
 public function main() {
-    Names name = ["John", "Michal", "Carl"];
-    io:println(name);
+    // declare a tuple with zero or more \`int\` members after the first member of type \`string\`.
+    [string, int...] scoreList = ["John", 55, 43, 65, 65];
+    io:println(scoreList);
 
-    Id id = [1, "id 1", "0026"];
+    [string, int...] secondScoreList = ["Amy"];
+    io:println(secondScoreList);
 
-    // The individual elements of this tuple can be accessed using the \`id[index]\` 
-    // member access expression.
-    // Tuple indexing starts with zero.
-    io:println(id[2]);
+    // [T...] is equivalent to array T[].
+    [int...] scores = [];
+    io:println(scores);
+
+    scores = [23, 53];
+    io:println(scores);
+
+    // New members can be pushed to a tuple with rest type by using \`array:push()\` method
+    scores.push(43);
+    io:println(scores);
 }
 `,
 ];
 
-export default function RestTypeInTuples() {
+export function RestTypeInTuples({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Rest type in tuples</h1>
 
       <p>
-        Similar to how maps can be described as record types, arrays can also be
-        defined as tuple types using <code>...</code>. The <code>rest</code>{" "}
-        type in tuples can be described as <code>[T...]</code>, which is a tuple
-        containing zero or more members of type <code>T</code>. Tuples are not
-        open by default. A tuple type descriptor may or may not contain a rest
-        descriptor but if present, it should be the last member type descriptor
-        in the tuple.
+        A Tuple type descriptor can optionally contain a tuple rest descriptor.
+        It can be described as <code>[R...]</code>. This implies that the tuple
+        can contain zero or more members after the <code>nth</code> member where
+        the type of those members are <code>R</code>. Rest type descriptor
+        should be the last member type descriptor in the tuple. Tuples are not
+        open by default.
       </p>
 
       <Row
@@ -77,7 +60,7 @@ export default function RestTypeInTuples() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=21305eefc6e00794e2e95b9cfa827104&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=b6d7c94a9f8342baaae7f3ad4964f974&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}
@@ -98,9 +81,31 @@ export default function RestTypeInTuples() {
             </svg>
           </button>
 
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/rest-type-in-tuples",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -208,19 +213,75 @@ export default function RestTypeInTuples() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run rest_type_in_tuples.bal`}</span>
-              <span>{`["John","Michal","Carl"]`}</span>
-              <span>{`0026`}</span>
+              <span>{`["John",55,43,65,65]`}</span>
+              <span>{`["Amy"]`}</span>
+              <span>{`[]`}</span>
+              <span>{`[23,53]`}</span>
+              <span>{`[23,53,43]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/tuples">Tuples</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/arrays">Arrays</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.array">
+              Manipulating an array <code>(lang.array)</code>
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/filler-values-of-a-list">
+              Filler values of a list
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-subtyping">List sub typing</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/list-equality">List equality</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Destructure tuples"
-            href="/learn/by-example/destructure-tuples"
-          >
+          <Link title="Tuples" href="/learn/by-example/tuples">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -246,14 +307,17 @@ export default function RestTypeInTuples() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure tuples
+                  Tuples
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Binary data" href="/learn/by-example/binary-data">
+          <Link
+            title="Filler values of a list"
+            href="/learn/by-example/filler-values-of-a-list"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -262,7 +326,7 @@ export default function RestTypeInTuples() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binary data
+                  Filler values of a list
                 </span>
               </div>
               <svg

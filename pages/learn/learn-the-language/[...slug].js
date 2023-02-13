@@ -29,6 +29,19 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+import { highlight } from "../../../utils/highlighter";
+
+String.prototype.hashCode = function () {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -82,6 +95,8 @@ export async function getStaticProps({ params: { slug } }) {
   );
   const { data: frontmatter, content } = matter(fileName);
 
+  let codes = await highlight(content);
+
   return {
     props: {
       frontmatter,
@@ -90,6 +105,7 @@ export async function getStaticProps({ params: { slug } }) {
       sub,
       third,
       slug,
+      codes
     },
   };
 }
@@ -101,6 +117,7 @@ export default function PostPage({
   sub,
   third,
   slug,
+  codes
 }) {
 
 
@@ -115,9 +132,6 @@ export default function PostPage({
   const handleToc = (data) => {
     setShowToc(data)
   }
-
-  // Languages used in Learn the language section
-  const languages = ["ballerina"];
 
   return (
     <>
@@ -208,7 +222,7 @@ export default function PostPage({
             <MainContent
               content={content}
               handleToc={handleToc}
-              languages={languages} />
+              codes={codes} />
 
           </Container>
         </Col>

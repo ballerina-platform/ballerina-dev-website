@@ -151,7 +151,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a target='_blank' rel="noreferrer" href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" className={styles.titleLink}>
+                <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
                   Visual Studio Code extension</a>
               </p>
               <p className={styles.description}>Details of the Ballerina Visual Studio Code extension.</p>

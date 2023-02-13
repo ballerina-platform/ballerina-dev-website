@@ -26,17 +26,21 @@ import Image from 'next-image-export-optimizer';
 import rehypeRaw from 'rehype-raw';
 import Head from 'next/head';
 import Link from 'next/link';
-
-
-import { getHighlighter, setCDN } from "shiki";
-
-setCDN("https://unpkg.com/shiki/");
-
-
 import Layout from '../../layouts/LayoutSpec';
 import { prefix } from '../../utils/prefix';
+import { highlight } from "../../utils/highlighter";
 
-
+String.prototype.hashCode = function () {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -83,39 +87,19 @@ export async function getStaticProps({ params: { slug } }) {
   // slug = slug.join("/");
   const fileName = fs.readFileSync(`spec/${slug}/spec.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
+  let codeSnippets = await highlight(content);
 
   return {
     props: {
       frontmatter,
-      content
+      content,
+      codeSnippets
     },
   };
 }
 
-
-export default function PostPage({ frontmatter, content }) {
-
-  const HighlightSyntax = (code, language) => {
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-    if (language == 'proto') {
-      language = 'ballerina';
-    }
-    React.useEffect(() => {
-
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: ['bash', 'ballerina', 'toml', 'yaml', 'sh', 'json', 'graphql', 'sql']
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        })
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet]
-  }
-
+export default function PostPage({ frontmatter, content, codeSnippets }) {
+  const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
 
   // Add id attributes to headings
   const extractText = (value) => {
@@ -175,13 +159,18 @@ export default function PostPage({ frontmatter, content }) {
                   h5: ({ node, children, ...props }) => <h5 id={genrateId(children)} {...props}>{children}</h5>,
                   h6: ({ node, children, ...props }) => <h6 id={genrateId(children)} {...props}>{children}</h6>,
                   code({ node, inline, className, children, ...props }) {
+                    const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
+                    const highlightedCode = codes.get(key.hashCode());
+                    if (highlightedCode) {
+                      return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+                    }
                     const match = /language-(\w+)/.exec(className || '')
                     return inline ?
                       <code className={className} {...props}>
                         {children}
                       </code>
                       : match ?
-                        <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                        <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
                         : <pre className='default'>
                           <code className={className} {...props}>
                             {children}

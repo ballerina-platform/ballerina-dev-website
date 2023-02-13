@@ -1,36 +1,26 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `// This is the connection oriented client implementation of the UDP socket.
 import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
-  
     // Creates a new connection-oriented UDP client by providing the
     // \`remoteHost\` and the \`remotePort\`.
-    // Optionally, you can provide the interface that the socket needs to bind 
-    // and the timeout in milliseconds, which specifies the read timeout value.
-    // E.g.: \`udp:Client client = new ("www.ballerina.com", 80,
+    // Optionally, you can provide the interface that the socket needs to bind
+    // and the timeout in seconds, which specifies the read timeout value.
+    // E.g.: \`udp:ConnectClient socketClient = new ("www.ballerina.com", 80,
     // localHost = "localhost", timeout = 5);\`
-    udp:ConnectClient socketClient = check new("localhost", 8080);
-
-    string msg = "Hello Ballerina echo";
+    udp:ConnectClient socketClient = check new ("localhost", 9090);
 
     // Sends the data to the connected remote host.
     // The parameter is a \`byte[]\`, which contains the data to be sent.
-    check socketClient->writeBytes(msg.toBytes());
+    check socketClient->writeBytes("Hello Ballerina echo".toBytes());
     io:println("Data was sent to the remote host.");
 
     // Waits until the data is received from the connected host.
@@ -39,52 +29,34 @@ public function main() returns error? {
 
     // Closes the client and releases the bound port.
     check socketClient->close();
-
 }
 `,
 ];
 
-export default function UdpConnectClient() {
+export function UdpConnectClient({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Connection-oriented client</h1>
+      <h1>UDP client - Send/Receive datagram with connection</h1>
 
       <p>
-        The ConnectClient is configured so that it only receives data from, and
-        sends data to, the given remote peer address. Once connected, data may
-        not be received from or sent to any other address.
-      </p>
-
-      <p>
-        The client remains connected until it is explicitly disconnected or
-        until it is closed. This sample demonstrates how to send data to a
-        connected server and print the echoed response.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/udp/latest">
-          <code>udp</code> module
-        </a>
-        .
+        The <code>udp:ConnectClient</code> connects to a UDP socket, and then
+        sends and receives datagrams. When connected, data may not be received
+        from or sent to any other address. A <code>udp:ConnectClient</code> is
+        created by giving the <code>remoteHost</code> and{" "}
+        <code>remotePort</code>. Once connected, <code>writeBytes</code> and{" "}
+        <code>readBytes</code> synchronous methods are used to send and receive
+        byte streams. Since they are synchronous methods often used in two
+        different strands. The client remains connected until it is explicitly
+        disconnected or until it is closed. Use this to interact with UDP
+        servers or implement low latency connections for time-critical
+        transmissions where data loss is acceptable.
       </p>
 
       <Row
@@ -97,7 +69,7 @@ export default function UdpConnectClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/udp-connect-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/udp-connect-client",
                 "_blank"
               );
             }}
@@ -171,6 +143,21 @@ export default function UdpConnectClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the UDP service given in the{" "}
+            <a href="/learn/by-example/udp-listener/">Send/Receive datagram</a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -225,21 +212,39 @@ export default function UdpConnectClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run udp_connect_client.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# This will print the output below upon a successful write.`}</span>
               <span>{`Data was sent to the remote host.`}</span>
-              <span>{`# Print the response that is returned from the server as an echo.`}</span>
               <span>{`Received: Hello Ballerina echo`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
+              <code>udp:Client</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/udp/#3-client">UDP Client - Specification</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Connectionless client"
+            title="Send/Receive datagram"
             href="/learn/by-example/udp-client"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -267,14 +272,17 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Connectionless client
+                  Send/Receive datagram
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Listener" href="/learn/by-example/udp-listener">
+          <Link
+            title="Receive email"
+            href="/learn/by-example/receive-email-using-service"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -283,7 +291,7 @@ export default function UdpConnectClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Listener
+                  Receive email
                 </span>
               </div>
               <svg

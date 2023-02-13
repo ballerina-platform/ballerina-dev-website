@@ -1,104 +1,63 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/email;
-import ballerina/io;
+import ballerina/log;
 
 public function main() returns error? {
-    // Creates the client with the connection parameters, host, username, and password. 
-    // An error is returned in a failure. The default port number \`995\` is used over SSL with 
-    // these configurations.
-    email:PopClient popClient = check new ("pop.email.com", "reader@email.com", "pass456");
-
-    // Reads the first unseen email received by the POP3 server. \`()\` is returned when there are 
-    // no new unseen emails. In error cases, an error is returned.
-    email:Message? emailResponse = check popClient->receiveMessage();
-
-    if emailResponse is email:Message {
-        io:println("POP client received an email.");
-        io:println("Email Subject: ", emailResponse.subject);
-        io:println("Email Body: ", emailResponse?.body);
-    // When no emails are available in the server, \`()\` is returned.
-    } else {
-        io:println("There are no emails in the INBOX.");
+    email:ImapClient imapClient = check new ("imap.email.com", "reader@email.com", "pass456");
+    do {
+        while true {
+            // Reads the first unseen email received by the POP3 server. 
+            // \`()\` is returned when there are no new unseen emails. 
+            email:Message? email = check imapClient->receiveMessage(timeout = 30);
+            if email is email:Message {
+                log:printInfo("Received an email", subject = email.subject, body = email?.body);
+            }
+        }
+    } on fail var err {
+        log:printError(err.message(), stackTrace = err.stackTrace());
+        check imapClient->close();
     }
-
-    // Closes the POP3 store, which would close the TCP connection.
-    check popClient->close();
-
-    // Creates the client with the connection parameters, host, username, and password. 
-    // An error is received in a failure. The default port number \`993\` is used over SSL with 
-    // these configurations.
-    email:ImapClient imapClient = check new ("imap.email.com",
-        "reader@email.com", "pass456");
-
-    // Reads the first unseen email received by the IMAP4 server. \`()\` is returned when there are 
-    // no new unseen emails. In error cases, an error is returned.
-    emailResponse = check imapClient->receiveMessage();
-
-    if emailResponse is email:Message {
-        io:println("IMAP client received an email.");
-        io:println("Email Subject: ", emailResponse.subject);
-        io:println("Email Body: ", emailResponse?.body);
-    // When no emails are available in the server, \`()\` is returned.
-    } else {
-        io:println("There are no emails in the INBOX.");
-    }
-
-    // Closes the IMAP store which would close the TCP connection.
-    check imapClient->close();
-
 }
 `,
 ];
 
-export default function ReceiveEmailUsingClient() {
+export function ReceiveEmailUsingClient({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Receive emails using a client</h1>
+      <h1>Email client - Receive email</h1>
 
       <p>
-        The email client is used to receive (with POP3 or IMAP4) emails using
-        the SSL or STARTTLS protocols. This sample includes receiving emails
-        with default configurations over SSL using the default ports.
+        The <code>email:ImapClient</code> can receive emails from an email
+        server via IMAP protocol. An <code>email:ImapClient</code> can be
+        created by providing the hostname, username, and password. Once
+        connected, <code>receiveMessage</code> method is used to receive emails
+        from the server. It is a blocking method with a timeout. When the email
+        server supports both POP3 and IMAP, it is recommended to use the IMAP as
+        it provides the ability to manage emails using multiple devices or email
+        clients, while allowing access to emails that are already read.
       </p>
 
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/email/latest/">
-          <code>email</code> module
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The Ballerina <code>email</code> module also
+          provides an <code>email:PopClient</code> which can be used likewise.
+          The only difference is that the <code>email:PopClient</code> uses POP3
+          protocol for communication.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -110,7 +69,7 @@ export default function ReceiveEmailUsingClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/receive-email-using-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/receive-email-using-client",
                 "_blank"
               );
             }}
@@ -184,6 +143,15 @@ export default function ReceiveEmailUsingClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>The email server should be up and running.</span>
+        </li>
+      </ul>
+
       <p>Run the sample code by executing the following command.</p>
 
       <Row
@@ -240,17 +208,58 @@ export default function ReceiveEmailUsingClient() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run receive_email_using_client.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Subject and the content body of the received emails would be printed.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
+              <code>email:ImapClient</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/PopClient">
+              <code>email:PopClient</code> client object - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#33-imap-client">
+              IMAP client - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/email/#32-pop3-client">
+              POP3 client - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Send emails" href="/learn/by-example/send-email">
+          <Link title="Send email" href="/learn/by-example/send-email">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -276,17 +285,14 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send emails
+                  Send email
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Receive emails using a listener"
-            href="/learn/by-example/receive-email-using-listener"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/email-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -295,7 +301,7 @@ export default function ReceiveEmailUsingClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive emails using a listener
+                  SSL/TLS
                 </span>
               </div>
               <svg

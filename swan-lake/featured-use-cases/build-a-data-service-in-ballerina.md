@@ -22,7 +22,7 @@ To complete this tutorial, you need:
 1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Understand the implementation
@@ -393,10 +393,10 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-### Create the resource functions
+### Create the resource methods
 
-Within this service, you can define resource functions to provide access to the database. The code snippet below 
-demonstrates a resource function that can be used to create a new employee via a `POST` request.
+Within this service, you can define resource methods to provide access to the database. The code snippet below 
+demonstrates a resource method that can be used to create a new employee via a `POST` request.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
@@ -471,7 +471,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 ## Try the service
 
-Invoke the defined resource function by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
+Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
 curl -X POST http://localhost:8080/employees/

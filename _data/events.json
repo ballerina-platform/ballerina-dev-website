@@ -1,6 +1,54 @@
 {
     "events": [
         {
+            "date": "Mar 2, 2023",
+            "day": "Thur.",
+            "time": "12.00 p.m. CST",
+            "expire": "2023-03-02T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://prepare4vc.registration.goldcast.io/events/1c84a730-7b9f-42ab-a8b9-1dcdbb23f86e",
+            "eventType": "Webinar",
+            "eventName": "Ballerina: Programming Language Designed for Cloud Native Applications",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Jan 11, 2023",
+            "day": "Wed.",
+            "time": "6.00 p.m. GMT",
+            "expire": "2023-01-11T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.eventbrite.co.uk/e/the-role-of-modern-programming-languages-in-cloud-native-app-development-registration-496232694347",
+            "eventType": "Webinar",
+            "eventName": "The Role of Modern Programming Languages in Cloud Native App Development",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/Scl3lMIFUQk",
+            "buttonText": "Watch recording"
+        },
+        {
+            "date": "Dec 11, 2022",
+            "day": "Sun.",
+            "time": "9.00 a.m. IST",
+            "expire": "2022-12-12T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://icac.lk/event/compiler-design-a-case-study-with-ballerina/",
+            "eventType": "Workshop",
+            "eventName": "Compiler Design: A Case Study with Ballerina",
+            "presenterTwitter": "https://twitter.com/manurangaperera",
+            "presenter": "Manuranga Perera",
+            "presenterDesignation": "Senior Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Nov 9, 2022",
             "day": "Wed.",
             "time": "2.55 p.m. IST",
@@ -57,9 +105,9 @@
             "url": "https://www.developerweek.com/global/conference/cloud/",
             "eventType": "DeveloperWeek Cloud 2022",
             "eventName": "Ballerina: Programming Language Designed for Cloud Native Applications",
-            "presenterTwitter": "https://twitter.com/sameerajayasoma",
-            "presenter": "Sameera Jayasoma",
-            "presenterDesignation": "Senior Director, WSO2",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"
@@ -94,7 +142,7 @@
             "presenterDesignation": "Technical Lead, WSO2",
             "otherInfo": "",
             "videoURL": "https://www.youtube.com/watch?v=-wHFIPa1-3I",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Aug 11, 2022",
@@ -142,7 +190,7 @@
             "presenterDesignation": "Senior Director, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/rL_6LImpwD4",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "March 24, 2022",
@@ -158,7 +206,7 @@
             "presenterDesignation": "Senior Director, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/SJbbIYtxHDk",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "March 10, 2022",
@@ -174,7 +222,7 @@
             "presenterDesignation": "Senior Technical Lead, WSO2",
             "otherInfo": "",
             "videoURL": "https://www.youtube.com/watch?v=894DMRFQmI0",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "March 3, 2022",
@@ -190,7 +238,7 @@
             "presenterDesignation": "Senior Director, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/-hcHhQKJF3U?t=6047",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Feb 2, 2022",
@@ -206,7 +254,7 @@
             "presenterDesignation": "Associate Director/Architect, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/iWOX688L-D4",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Dec 15, 2021",
@@ -222,7 +270,7 @@
             "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/QlS_8-yaN68",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Oct 26, 2021",
@@ -238,7 +286,7 @@
             "presenterDesignation": "Chief Language Designer, Ballerina",
             "otherInfo": "",
             "videoURL": "https://youtu.be/_4x5v4rGUOw",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "June 15, 2021",
@@ -254,7 +302,7 @@
             "presenterDesignation": "Director - Developer Relations, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/htAwwgt86c0",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "April 27, 2021",
@@ -270,7 +318,7 @@
             "presenterDesignation": "Director - Developer Relations, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/NFFbSRnzg3k",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Feb 5, 2021",
@@ -286,7 +334,7 @@
             "presenterDesignation": "Director - Developer Relations, WSO2",
             "otherInfo": "",
             "videoURL": "https://www.youtube.com/watch?v=0pKOkMRODF0",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Oct 28, 2020",
@@ -302,7 +350,7 @@
             "presenterDesignation": "Senior Director Solutions Architecture, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/lkJs588zXxU",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Oct 19, 2020",
@@ -318,7 +366,7 @@
             "presenterDesignation": "Senior Director Solutions Architecture, WSO2",
             "otherInfo": "",
             "videoURL": "https://osad-munich.org/en/featured-speakers/code-to-kubernetes-deployment-shouldnt-be-an-afterthought/#",
-            "buttonText": "More Info"
+            "buttonText": "More info"
         },
         {
             "date": "Oct 7, 2020",
@@ -334,7 +382,7 @@
             "presenterDesignation": "Director - Developer Relations, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/OJUYOFds-s4",
-            "buttonText": "Watch Recording"
+            "buttonText": "Watch recording"
         },
         {
             "date": "Sep 29, 2020",
@@ -350,7 +398,7 @@
             "presenterDesignation": "Director - Developer Relations, WSO2",
             "otherInfo": "",
             "videoURL": "https://www.slideshare.net/BallerinaLang/code-to-kubernetes-languages-of-infrastructure",
-            "buttonText": "View Slides"
+            "buttonText": "View slides"
         },
         {
             "date": "Sep 26, 2020",
@@ -366,7 +414,7 @@
             "presenterDesignation": "Senior Lead Solutions Engineer, WSO2",
             "otherInfo": "",
             "videoURL": "https://youtu.be/OSaQK7K0fRM",
-            "buttonText": "Watch Recordings"
+            "buttonText": "Watch recordings"
         }
     ]
 }

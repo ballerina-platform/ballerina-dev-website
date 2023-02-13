@@ -1,5 +1,5 @@
 {
-  "title": "Return record values",
+  "title": "Record as output object",
   "description": "A GraphQL service endpoint written in Ballerina",
   "keywords": [
     "ballerina",

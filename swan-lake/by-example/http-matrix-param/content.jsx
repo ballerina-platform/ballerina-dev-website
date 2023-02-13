@@ -1,51 +1,44 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-service /sample on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get path/[string foo](http:Request req) returns json {
+table<Album> key(title) albums = table [
+    {title: "Blue-Train", artist: "John-Coltrane"},
+    {title: "Jeru", artist: "Gerry-Mulligan"}
+];
 
-        // Gets the \`MatrixParams\`.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams.
-        map<any> pathMParams = req.getMatrixParams("/sample/path");
-        var a = <string>pathMParams["a"];
-        var b = <string>pathMParams["b"];
-        string pathMatrixStr = string \`a=\${a}, b=\${b}\`;
+service / on new http:Listener(9090) {
 
-        map<any> fooMParams = req.getMatrixParams("/sample/path/" + foo);
-        var x = <string>fooMParams["x"];
-        var y = <string>fooMParams["y"];
-        string fooMatrixStr = string \`x=\${x}, y=\${y}\`;
-        json matrixJson = {"path": pathMatrixStr, "foo": fooMatrixStr};
+    resource function get albums/[string title](http:Request req) returns Album|http:NotFound|http:BadRequest {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        }
 
-        // Create a JSON payload with the extracted values.
-        json responseJson = {
-            "pathParam": foo,
-            "matrix": matrixJson
-        };
-        // Send a response with the JSON payload to the client.
-        return responseJson;
+        // Gets the \`MatrixParams\` of the path \`/albums\`.
+        map<any> pathMParams = req.getMatrixParams("/albums");
+        string artist = <string>pathMParams["artist"];
+
+        if album.artist != artist {
+            return http:BAD_REQUEST;
+        }
+        return album;
     }
 }
 `,
 ];
 
-export default function HttpMatrixParam() {
+export function HttpMatrixParam({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -53,34 +46,16 @@ export default function HttpMatrixParam() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Matrix parameter</h1>
+      <h1>HTTP service - Matrix parameter</h1>
 
       <p>
-        Ballerina supports extracting <code>MatrixParam</code> values using{" "}
-        <code>http:Request</code> support method.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The matrix parameter enhances the hierarchical structure of HTTP URIs.
+        The <code>http:Request</code> has the <code>getMatrixParams</code>{" "}
+        method to extract the matrix parameter map from the given path segment.
       </p>
 
       <Row
@@ -93,7 +68,32 @@ export default function HttpMatrixParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-matrix-param",
+                "https://play.ballerina.io/?gist=6060f48677e280ea18e4ae65f2929460&file=http_matrix_param.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-matrix-param",
                 "_blank"
               );
             }}
@@ -286,19 +286,40 @@ export default function HttpMatrixParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/sample/path;a=4;b=5/value1;x=10;y=15"`}</span>
-              <span>{`{"pathParam":"value1", "matrix":{"path":"a=4, b=5", "foo":"x=10, y=15"}}`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums;artist=John-Coltrane/Blue-Train"`}</span>
+              <span>{`{"title":"Blue-Train", "artist":"John-Coltrane"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams">
+              <code>getMatrixParams()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/spec/http/#53-matrix">
+              HTTP service matrix parameter - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Query parameter"
-            href="/learn/by-example/http-query-parameter"
-          >
+          <Link title="100 continue" href="/learn/by-example/http-100-continue">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -324,7 +345,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query parameter
+                  100 continue
                 </span>
               </div>
             </div>
@@ -332,8 +353,8 @@ export default function HttpMatrixParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Header parameter"
-            href="/learn/by-example/http-header-param"
+            title="Restrict by media type"
+            href="/learn/by-example/http-restrict-by-media-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -343,7 +364,7 @@ export default function HttpMatrixParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Header parameter
+                  Restrict by media type
                 </span>
               </div>
               <svg

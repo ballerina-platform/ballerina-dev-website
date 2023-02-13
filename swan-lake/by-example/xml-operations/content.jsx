@@ -1,20 +1,13 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     xml x1 = xml \`<name>Sherlock Holmes</name>\`;
     xml:Element x2 = 
         xml \`<details>
@@ -22,143 +15,39 @@ public function main() returns error? {
                 <language>English</language>
             </details>\`;
 
-    // \`+\` does concatenation.
+    //   '+' or \`x1.concat(x2)\` can be used for concatenation.
     xml x3 = x1 + x2;
-
     io:println(x3);
 
-    xml x4 = xml \`<name>Sherlock Holmes</name><details>
+    xml x4 = xml \`<name>Sherlock Holmes</name>
+                    <details>
                         <author>Sir Arthur Conan Doyle</author>
                         <language>English</language>
-                  </details>\`;
+                    </details>\`;
+
     // \`==\` does a deep equality check.
     boolean eq = x3 == x4;
-
     io:println(eq);
 
-    // \`foreach\` iterates over each item.
-    foreach var item in x4 {
-        io:println(item);
-    }
-
-    // \`x[i]\` gives the \`i-th\` item (empty sequence if none).
-    io:println(x3[0]);
-
-    // \`x.id\` accesses a required attribute named \`id\`: the result is \`error\` if there is no such 
-    // attribute or if \`x\` is not a singleton.
-    xml x5 = xml \`<para id="greeting">Hello</para>\`;
-    string id = check x5.id;
-
-    // Since an attribute named \`id\` exists in the \`xml\` value on which required attribute access 
-    // is done, the result of the access will be the value of the attribute (\`"greeting"\`).
-    io:println(id);
-
-    // \`x?.id\` accesses an optional attribute named \`id\`: the result is \`()\` if there is no such 
-    // attribute.
-    string? name = check x5?.name;
-
-    // Since an attribute named \`name\` does not exist in the \`xml\` value on which optional 
-    // attribute access is done, the result of the access is nil. Therefore, the following
-    // \`is\` check evaluates to \`true\`.
-    io:println(name is ());
-
-    // Mutate an element using \`e.setChildren(x)\`.
-    x2.setChildren(xml \`<language>French</language>\`);
-
-    // The \`xml\` value assigned to \`x2\` will now include \`<language>French</language>\` as a 
-    // child element.
-    io:println(x2);
-
-    // Since the value assigned to \`x3\` used \`x2\` in the concatenation, the change will also 
-    // be reflected in \`x3\`.
-    io:println(x3);
 }
 `,
 ];
 
-export default function XmlOperations() {
+export function XmlOperations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>XML operations</h1>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>+</code> does concatenation.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>==</code> does deep equals.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>foreach</code> iterates over each item.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>x[i]</code> gives i-th item (empty sequence if none).
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>x.id</code> accesses required attribute named <code>id</code>:
-            result is error if there is no such attribute or if x is not a
-            singleton.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <code>x?.id</code> accesses optional attribute named <code>id</code>
-            : result is <code>()</code> if there is no such attribute. Langlib{" "}
-            <code>lang.xml</code> provides other operations.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Mutate an element using <code>e.setChildren(x)</code>.
-          </span>
-        </li>
-      </ul>
+      <p>
+        In XML, It is possible to perform concatenation and deep equals checks.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -170,7 +59,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e09ab4ad1f123f4d02b93481c60ee438&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=0997b6afcce935c67e1f1c1bacf043f0&file=xml_operations.bal",
                 "_blank"
               );
             }}
@@ -195,7 +84,7 @@ export default function XmlOperations() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/xml-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/xml-operations",
                 "_blank"
               );
             }}
@@ -328,20 +217,32 @@ export default function XmlOperations() {
               <span>{`                <language>English</language>`}</span>
               <span>{`            </details>`}</span>
               <span>{`false`}</span>
-              <span>{`<name>Sherlock Holmes</name>`}</span>
-              <span>{`<details>`}</span>
-              <span>{`                        <author>Sir Arthur Conan Doyle</author>`}</span>
-              <span>{`                        <language>English</language>`}</span>
-              <span>{`                  </details>`}</span>
-              <span>{`<name>Sherlock Holmes</name>`}</span>
-              <span>{`greeting`}</span>
-              <span>{`true`}</span>
-              <span>{`<details><language>French</language></details>`}</span>
-              <span>{`<name>Sherlock Holmes</name><details><language>French</language></details>`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/xml-data-model/">XML data model</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/lang.xml/latest/">
+              <code>lang.xml</code> - Module documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -378,7 +279,7 @@ export default function XmlOperations() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="XML subtyping" href="/learn/by-example/xml-subtyping">
+          <Link title="XML iteration" href="/learn/by-example/xml-iteration">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -387,7 +288,7 @@ export default function XmlOperations() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  XML subtyping
+                  XML iteration
                 </span>
               </div>
               <svg

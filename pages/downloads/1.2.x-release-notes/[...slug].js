@@ -25,15 +25,25 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { getHighlighter, setCDN } from "shiki";
-
-setCDN("https://unpkg.com/shiki/");
 
 import Layout from "../../../layouts/LayoutRN";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
 import { prefix } from "../../../utils/prefix";
 import RNToc from "../../../utils/rl.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+import { highlight } from "../../../utils/highlighter";
+
+String.prototype.hashCode = function () {
+  var hash = 0,
+      i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+      chr = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0;
+  }
+  return hash;
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -80,43 +90,20 @@ export async function getStaticProps({ params: { slug } }) {
     "utf-8"
   );
   const { data: frontmatter, content } = matter(fileName);
+  let codeSnippets = await highlight(content);
+
   return {
     props: {
       frontmatter,
       content,
       id,
+      codeSnippets
     },
   };
 }
 
-export default function PostPage({ frontmatter, content, id }) {
-  // Synatax highlighting
-  const HighlightSyntax = (code, language) => {
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-
-    React.useEffect(() => {
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: [
-            "bash",
-            "ballerina",
-            "toml",
-            "yaml",
-            "sh",
-            "json",
-            "graphql",
-            "sql",
-          ],
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        });
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet];
-  };
+export default function PostPage({ frontmatter, content, id, codeSnippets }) {
+  const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
 
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
@@ -426,13 +413,18 @@ export default function PostPage({ frontmatter, content, id }) {
                   );
                 },
                 code({ node, inline, className, children, ...props }) {
+                  const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
+                  const highlightedCode = codes.get(key.hashCode());
+                  if (highlightedCode) {
+                    return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+                  }
                   const match = /language-(\w+)/.exec(className || '')
                   return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
                     : match ?
-                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
                       : <pre className='default'>
                         <code className={className} {...props}>
                           {children}

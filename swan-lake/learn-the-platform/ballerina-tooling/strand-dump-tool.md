@@ -94,34 +94,43 @@ $ kill -5 28845
 Then, the dump of the runtime strands will be emitted to the standard output stream of the Ballerina program. 
 For example, see the sample below.
 ```text
-Ballerina Strand Dump [2022/07/26 14:34:31]
+Ballerina Strand Dump [2022/10/12 12:08:02]
 ===========================================
- 
-Current no. of strand groups    :       2
-Current no. of strands          :       4
- 
+
+Total strand group count        :       5
+Total strand count              :       5
+Active strand group count       :       2
+Active strand count             :       4
+
 group 4 [QUEUED]: [1]
         strand 2 "main" [demo.strandDump.0:main] [WAITING]:
                 at      demo.strandDump.0.1.0:main(main.bal:6)
- 
+
 group 5 [QUEUED]: [3]
         strand 3 "addResult" [demo.strandDump.0:main][2] [WAITING]:
                 at      demo.strandDump.0.1.0:addnum(main.bal:22)
- 
+
         strand 4 "sender" [demo.strandDump.0:addnum][3] [BLOCKED]:
                 at      ballerina.lang.runtime.0.0.0:sleep(runtime.bal:61)
                         demo.strandDump.0.1.0:$lambda$_0(main.bal:13)
- 
+
         strand 5 "receiver" [demo.strandDump.0:addnum][3] [BLOCKED ON WORKER MESSAGE RECEIVE]:
                 at      demo.strandDump.0.1.0:$lambda$_1(main.bal:18)
- 
+
 ===========================================
 ```
 
 ### Output format and available details
 
-The strand dump contains the information on the date and the time when the strand dump was obtained and the current 
-number of strand groups and strands available. The details will be given in the following format.
+The strand dump contains the following information.
+
+- the date and the time when the strand dump was obtained
+
+- the total number of strand groups and strands created in the program
+
+- the active number of strand groups and strands in the program
+
+The details on the active strand groups and strands are given in the following format.
 
 ![Strand dump output format](/learn/images/strand-dump-output-format.svg "Strand dump output format")
 

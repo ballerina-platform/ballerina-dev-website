@@ -3,7 +3,7 @@
 _Owners_: @ldclakmal @shafreenAnfar  
 _Reviewers_: @shafreenAnfar  
 _Created_: 2021/10/01  
-_Updated_: 2022/02/17  
+_Updated_: 2023/01/05  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -38,7 +38,7 @@ The conforming implementation of the specification is released and included in t
     * 5.2. [Client Auth](#52-client-auth)
         * 5.2.1. [Declarative Approach (HTTP Client)](#521-declarative-approach-http-client)
             * 5.2.1.1. [Bearer Token](#5211-bearer-token)
-            * 5.2.1.2. [Grant TypesT](#5212-grant-types)
+            * 5.2.1.2. [Grant Types](#5212-grant-types)
         * 5.2.2. [Imperative Approach (HTTP Client)](#522-imperative-approach-http-client)
             * 5.2.2.1. [Bearer Token](#5221-bearer-token)
             * 5.2.2.2. [Grant Types](#5222-grant-types)
@@ -199,7 +199,7 @@ public type ClientCredentialsGrantConfig record {|
     string tokenUrl;
     string clientId;
     string clientSecret;
-    string[] scopes?;
+    string|string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -213,14 +213,8 @@ public type PasswordGrantConfig record {|
     string password;
     string clientId?;
     string clientSecret?;
-    string[] scopes?;
-    record {|
-        string refreshUrl;
-        string[] scopes?;
-        map<string> optionalParams?;
-        CredentialBearer credentialBearer = AUTH_HEADER_BEARER;
-        ClientConfiguration clientConfig = {};
-    |} refreshConfig?;
+    string|string[] scopes?;
+    RefreshConfig|INFER_REFRESH_CONFIG refreshConfig?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -233,7 +227,7 @@ public type RefreshTokenGrantConfig record {|
     string refreshToken;
     string clientId;
     string clientSecret;
-    string[] scopes?;
+    string|string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -246,7 +240,7 @@ public type JwtBearerGrantConfig record {|
     string assertion;
     string clientId?;
     string clientSecret?;
-    string[] scopes?;
+    string|string[] scopes?;
     decimal defaultTokenExpTime = 3600;
     decimal clockSkew = 0;
     map<string> optionalParams?;
@@ -379,7 +373,7 @@ import ballerina/http;
                     }
                 }
             },
-            scopes: ["admin"]
+            scopes: "admin"
         }
     ]
 }

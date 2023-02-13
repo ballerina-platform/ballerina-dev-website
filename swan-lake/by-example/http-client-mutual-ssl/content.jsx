@@ -1,91 +1,60 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-// An HTTP client can be configured to initiate new connections that are
-// secured via mutual SSL.
-// The \`http:ClientSecureSocket\` record provides the SSL-related configurations.
-// For details, see https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket.
-http:Client securedEP = check new("https://localhost:9090",
-    secureSocket = {
-        key: {
-            certFile: "../resource/path/to/public.crt",
-            keyFile: "../resource/path/to/private.key"
-        },
-        cert: "../resource/path/to/public.crt",
-        protocol: {
-            name: http:TLS
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
-    }
-);
+type Album readonly & record {
+    string title;
+    string artist;
+};
 
 public function main() returns error? {
-    string response = check securedEP->get("/foo/bar");
-    io:println(response);
+    // The HTTP client can be configured to initiate new connections that are secured via mutual SSL.
+    http:Client albumClient = check new ("localhost:9090",
+        secureSocket = {
+            key: {
+                certFile: "../resource/path/to/public.crt",
+                keyFile: "../resource/path/to/private.key"
+            },
+            cert: "../resource/path/to/public.crt"
+        }
+    );
+    Album[] payload = check albumClient->/albums;
+    io:println(payload);
 }
 `,
 ];
 
-export default function HttpClientMutualSsl() {
+export function HttpClientMutualSsl({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Mutual SSL</h1>
+      <h1>HTTP client - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>http:Client</code> allows opening up a connection secured with
+        mutual SSL (mTLS), which is a certificate-based authentication process
+        in which two parties (the client and server) authenticate each other by
+        verifying the digital certificates. It ensures that both parties are
+        assured of each other's identity. The <code>http:Client</code> secured
+        with mutual SSL is created by providing the <code>secureSocket</code>{" "}
+        configurations, which require the client's public certificate as the{" "}
+        <code>certFile</code>, the client's private key as the{" "}
+        <code>keyFile</code>, and the server's certificate as the{" "}
+        <code>cert</code>. Use this to interact with mTLS-encrypted HTTP
+        servers.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path in the
-          code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -97,7 +66,32 @@ export default function HttpClientMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-client-mutual-ssl",
+                "https://play.ballerina.io/?gist=5774779e8de1e6994cda2b087f63bbfb&file=http_client_mutual_ssl.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-mutual-ssl",
                 "_blank"
               );
             }}
@@ -171,18 +165,22 @@ export default function HttpClientMutualSsl() {
         </Col>
       </Row>
 
-      <p>Run the client program by executing the command below.</p>
+      <h2>Prerequisites</h2>
 
-      <blockquote>
-        <p>
-          <strong>Info:</strong> As a prerequisite to running the client, start
-          a{" "}
-          <a href="-example/http-service-mutual-ssl/">
-            sample service secured with mutual SSL
-          </a>
-          .
-        </p>
-      </blockquote>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-service-mutual-ssl/">
+              Mutual SSL service
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -238,18 +236,39 @@ export default function HttpClientMutualSsl() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_client_mutual_ssl.bal`}</span>
-              <span>{`Hello, World!`}</span>
+              <span>{`[{"title":"Blue Train","artist":"John Coltrane"},{"title":"Jeru","artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">
+              <code>http:ClientSecureSocket</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#924-client---mutual-ssl">
+              HTTP client mutual SSL - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Client - SSL/TLS"
-            href="/learn/by-example/http-client-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/http-client-ssl-tls">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -275,7 +294,7 @@ export default function HttpClientMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -283,8 +302,8 @@ export default function HttpClientMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client - Basic Auth"
-            href="/learn/by-example/http-client-basic-auth"
+            title="Basic authentication"
+            href="/learn/by-example/http-client-basic-authentication"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -294,7 +313,7 @@ export default function HttpClientMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Basic Auth
+                  Basic authentication
                 </span>
               </div>
               <svg

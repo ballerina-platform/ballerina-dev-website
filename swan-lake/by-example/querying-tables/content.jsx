@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 type Employee record {|
@@ -23,61 +16,48 @@ type Employee record {|
 
 public function main() {
     table<Employee> key(id) employees = table [
-        {id: 1, firstName: "John", lastName: "Smith", salary: 100},
-        {id: 2, firstName: "Jane", lastName: "Smith", salary: 150},
-        {id: 4, firstName: "Fred", lastName: "Bloggs", salary: 200},
-        {id: 7, firstName: "Bobby", lastName: "Clark", salary: 300},
-        {id: 9, firstName: "Cassie", lastName: "Smith", salary: 250}
-    ];
+            {id: 1, firstName: "John", lastName: "Smith", salary: 100},
+            {id: 2, firstName: "Jane", lastName: "Smith", salary: 150},
+            {id: 4, firstName: "Fred", lastName: "Bloggs", salary: 200},
+            {id: 7, firstName: "Bobby", lastName: "Clark", salary: 300},
+            {id: 9, firstName: "Cassie", lastName: "Smith", salary: 250}
+        ];
 
-    // The \`from\` clause iterates the \`employees\` table.
     // Since the contextually-expected type for the query expression is \`int[]\`,
     // the evaluation of the query expression will result in an integer array.
-    int[] salaries = from var {salary} in employees
-                     select salary;
-
+    int[] salaries = from var emp in employees
+                     select emp.salary;
     io:println(salaries);
 
-    // The \`from\` clause iterates the \`employees\` table and creates a table.
     // The query expression creates a table based on the contextually-expected type.
-    table<Employee> smiths = from Employee emp in employees
-                     where emp.lastName == "Smith" select emp;
+    table<Employee> highPaidEmployees = from Employee emp in employees
+                             where emp.salary > 180
+                             order by emp.firstName
+                             select emp;
 
-    foreach Employee emp in smiths {
+    foreach Employee emp in highPaidEmployees {
         io:println(emp.firstName, " ", emp.lastName);
     }
 }
 `,
 ];
 
-export default function QueryingTables() {
+export function QueryingTables({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Querying tables</h1>
 
       <p>
-        Tables can be nicely combined with <code>query expressions</code> unlike{" "}
-        <code>maps</code>. Basic type of the output of{" "}
-        <code>query expression</code> is determined by the contextually expected
-        type and the input type.
+        Tables can be combined with query expressions, unlike maps. The basic
+        type of the output of a query expression is determined by the
+        contextually expected type, and the input type.
       </p>
 
       <Row
@@ -90,7 +70,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=650c280d919b2e140d9baa048ce8ff9c&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=1705416a8429c92bb8991ab56bc147ab&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -115,7 +95,7 @@ export default function QueryingTables() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/querying-tables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/querying-tables",
                 "_blank"
               );
             }}
@@ -244,17 +224,122 @@ export default function QueryingTables() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run querying_tables.bal`}</span>
               <span>{`[100,150,200,300,250]`}</span>
-              <span>{`John Smith`}</span>
-              <span>{`Jane Smith`}</span>
+              <span>{`Bobby Clark`}</span>
               <span>{`Cassie Smith`}</span>
+              <span>{`Fred Bloggs`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-expressions">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/sort-iterable-objects">
+              Sort iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/let-clause">
+              Let clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/limit-clause">
+              Limit clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/joining-iterable-objects">
+              Joining iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-maps-with-query">
+              Create maps with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-tables-with-query">
+              Create tables with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/on-conflict-clause">
+              On conflict clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-query-expressions">
+              Nested query expressions
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Limit clause" href="/learn/by-example/limit-clause">
+          <Link
+            title="Joining iterable objects"
+            href="/learn/by-example/joining-iterable-objects"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +365,7 @@ export default function QueryingTables() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Limit clause
+                  Joining iterable objects
                 </span>
               </div>
             </div>
@@ -289,7 +374,7 @@ export default function QueryingTables() {
         <Col sm={6}>
           <Link
             title="Create tables with query"
-            href="/learn/by-example/creating-tables-with-query"
+            href="/learn/by-example/create-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">

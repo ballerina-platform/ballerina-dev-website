@@ -21,7 +21,7 @@ To run this tutorial, you need the following prerequisites:
 1. [Ballerina 2202.1.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 
 ## Prepare the AsyncAPI contract
 
@@ -138,7 +138,7 @@ bal asyncapi -i hello.yaml -o ./output_path
 
 Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it is easier to consider the below facts.
 
-- All the incoming requests are received by the resource function in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
+- All the incoming requests are received by the resource method in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
 - If more information is needed when initializing the listener such as secrets, endpoint URLs, tokens, refresh tokens, etc., update the `init` function in the `listener.bal` file.
 
 ## Execute the generated sources

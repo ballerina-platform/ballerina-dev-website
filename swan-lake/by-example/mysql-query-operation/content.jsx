@@ -1,150 +1,85 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
-  `import ballerina/io;
+export const codeSnippetData = [
+  `import ballerina/http;
+import ballerina/sql;
 import ballerinax/mysql;
+import ballerinax/mysql.driver as _;
 
-// Defines a record to load the query result.
-type Customer record {|
-    int customerId;
-    string lastName;
-    string firstName;
-    int registrationId;
-    float creditLimit;
-    string country;
+// The \`Album\` record to load records from \`albums\` table.
+type Album record {|
+    string id;
+    string title;
+    string artist;
+    float price;
 |};
 
-public function main() returns error? {
-    // Runs the prerequisite setup for the example.
-    check initialize();
+service / on new http:Listener(8080) {
+    private final mysql:Client db;
 
-    // Initializes the MySQL client. The \`mysqlClient\` can be reused to access the database throughout the application execution.
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123", database = "CUSTOMER");
+    function init() returns error? {
+        // Initiate the mysql client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
+    }
 
-    float creditLimit = 5000;
+    resource function get albums() returns Album[]|error {
+        // Execute simple query to retrieve all records from the \`albums\` table.
+        stream<Album, sql:Error?> albumStream = self.db->query(\`SELECT * FROM albums\`);
 
-    // Query table with a condition.
-    stream<Customer, error?> resultStream = mysqlClient->query(\`SELECT * FROM Customers
-                                                                WHERE creditLimit > \${creditLimit};\`);
-
-    // Iterates the result stream.
-    check from Customer customer in resultStream
-        do {
-            io:println(\`Customer Details: \${customer}\`);
-        };
-
-    // Closes the stream to release the resources.
-    check resultStream.close();
-
-    // Closes the MySQL client.
-    check mysqlClient.close();
-
-    // Performs the cleanup after the example.
-    check cleanup();
-}
-`,
-  `import ballerina/sql;
-import ballerinax/mysql;
-
-// Initializes the database as a prerequisite to the example.
-function initialize() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
-
-    // Creates a database.
-    _ = check mysqlClient->execute(\`CREATE DATABASE CUSTOMER\`);
-
-    // Creates a table in the database.
-    _ = check mysqlClient->execute(\`CREATE TABLE CUSTOMER.Customers
-            (customerId INTEGER NOT NULL AUTO_INCREMENT, firstName
-            VARCHAR(300), lastName  VARCHAR(300), registrationID INTEGER,
-            creditLimit DOUBLE, country  VARCHAR(300),
-            PRIMARY KEY (customerId))\`);
-
-    // Adds the records to the newly-created table.
-    _ = check mysqlClient->execute(\`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Peter','Stuart', 1, 5000.75, 'USA')\`);
-    _ = check mysqlClient->execute(\`INSERT INTO CUSTOMER.Customers
-            (firstName, lastName, registrationID,creditLimit,country) VALUES
-            ('Dan', 'Brown', 2, 10000, 'UK')\`);
-
-    check mysqlClient.close();
-}
-`,
-  `import ballerina/sql;
-import ballerinax/mysql;
-
-// Cleans up the database after running the example.
-function cleanup() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = "root", password = "Test@123");
-
-    // Cleans the database.
-    _ = check mysqlClient->execute(\`DROP DATABASE CUSTOMER\`);
-
-    check mysqlClient.close();
+        // Process the stream and convert results to Album[] or return error.
+        return from Album album in albumStream
+            select album;
+    }
 }
 `,
 ];
 
-export default function MysqlQueryOperation() {
+export function MysqlQueryOperation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
-  const [codeClick2, updateCodeClick2] = useState(false);
-  const [codeClick3, updateCodeClick3] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
+  const [outputClick2, updateOutputClick2] = useState(false);
+  const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Simple query</h1>
+      <h1>Database Access - Simple query</h1>
 
       <p>
-        This BBE demonstrates how to use the MySQL client select query
-        operations with the stream return type.
+        The <code>mysql:Client</code> allows querying the database with the use
+        of <code>query</code> method. This method requires a{" "}
+        <code>sql:ParameterizedQuery</code>-typed SQL statement as the argument.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> The MySQL database driver JAR should be defined
-          in the <code>Ballerina.toml</code> file as a dependency. The MySQL
-          connector uses database properties from MySQL version 8.0.13 onwards.
-          Therefore, it is recommended to use a MySQL driver version greater
-          than 8.0.13.
+          <strong>Tip</strong>: Checkout{" "}
+          <a href="https://central.ballerina.io/ballerinax/mssql">
+            <code>ballerinax/mssql</code>
+          </a>
+          ,{" "}
+          <a href="https://central.ballerina.io/ballerinax/postgresql">
+            <code>ballerinax/postgresql</code>
+          </a>
+          ,{" "}
+          <a href="https://central.ballerina.io/ballerinax/oracledb">
+            <code>ballerinax/oracledb</code>
+          </a>
+          ,{" "}
+          <a href="https://central.ballerina.io/ballerinax/java.jdbc">
+            <code>ballerinax/java.jdbc</code>
+          </a>{" "}
+          for other supported database clients.
         </p>
       </blockquote>
-
-      <p>
-        For a sample configuration and more information on the underlying
-        module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
-          <code>mysql</code> module
-        </a>
-        .
-      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -156,7 +91,7 @@ export default function MysqlQueryOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/mysql-query-operation",
                 "_blank"
               );
             }}
@@ -230,6 +165,23 @@ export default function MysqlQueryOperation() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            To set up the database, see the{" "}
+            <a href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/mysql-prerequisite">
+              Database Access Ballerina By Example - Prerequisites
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -283,56 +235,25 @@ export default function MysqlQueryOperation() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Create a Ballerina project.`}</span>
-              <span>{`# Copy the example to the project and add the relevant database driver JAR details to the \`Ballerina.toml\` file.`}</span>
-              <span>{`# Execute the command below to build and run the project.`}</span>
-              <span>{`\$ bal run`}</span>
-              <span>{`
-`}</span>
-              <span>{`Customer details: {"customerId":1,"firstName":"Peter","lastName":"Stuart","registrationId":1,"creditLimit":5000.75,"country":"USA"}`}</span>
-              <span>{`Customer details: {"customerId":2,"firstName":"Dan","lastName":"Brown","registrationId":2,"creditLimit":10000.0,"country":"UK"}`}</span>
+              <span>{`\$ bal run mysql_simple_query.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        The following util files will initialize the test database before
-        running the BBE and clean it up afterward.
+        Invoke the service by executing the following cURL command in a new
+        terminal.
       </p>
 
       <Row
-        className="bbeCode mx-0 py-0 rounded 
-      "
+        className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-operation",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick2 ? (
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
             >
               <svg
@@ -340,7 +261,7 @@ export default function MysqlQueryOperation() {
                 width="16"
                 height="16"
                 fill="#20b6b0"
-                className="bi bi-check"
+                className="output-btn bi bi-check"
                 viewBox="0 0 16 16"
               >
                 <title>Copied</title>
@@ -349,23 +270,24 @@ export default function MysqlQueryOperation() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
-                updateCodeClick2(true);
-                copyToClipboard(codeSnippetData[1]);
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
                 setTimeout(() => {
-                  updateCodeClick2(false);
+                  updateOutputClick2(false);
                 }, 3000);
               }}
-              aria-label="Copy to Clipboard"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
-                fill="#000"
-                className="bi bi-clipboard"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
                 viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
               >
                 <title>Copy to Clipboard</title>
                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
@@ -375,103 +297,45 @@ export default function MysqlQueryOperation() {
           )}
         </Col>
         <Col sm={12}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl http://localhost:8080/albums`}</span>
+              <span>{`[{"id":"A-123", "title":"Lemonade", "artist":"Beyonce", "price":18.98}, {"id":"A-321", "title":"Renaissance", "artist":"Beyonce", "price":24.98}]`}</span>
+            </code>
+          </pre>
         </Col>
       </Row>
 
-      <Row
-        className="bbeCode mx-0 py-0 rounded 
-      "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/mysql-query-operation",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick3 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              onClick={() => {
-                updateCodeClick3(true);
-                copyToClipboard(codeSnippetData[2]);
-                setTimeout(() => {
-                  updateCodeClick3(false);
-                }, 3000);
-              }}
-              aria-label="Copy to Clipboard"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#000"
-                className="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          {codeSnippets[2] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[2]),
-              }}
-            />
-          )}
-        </Col>
-      </Row>
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/mysql/latest/">
+              <code>mysql:Client</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-mysql/blob/master/docs/spec/spec.md#2-client">
+              <code>mysql:Client</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Listener" href="/learn/by-example/sftp-listener">
+          <Link
+            title="Send file"
+            href="/learn/by-example/sftp-client-send-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -497,7 +361,7 @@ export default function MysqlQueryOperation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Listener
+                  Send file
                 </span>
               </div>
             </div>

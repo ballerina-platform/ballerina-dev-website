@@ -166,7 +166,7 @@ Introduced 2 additional log levels: `DEBUG` and `WARN`. The  `printDebug` and `p
 
 To set the global log level, place the entry given below in the `Config.toml` file:
 ```toml
-[log] 
+[ballerina.log] 
 level = "[LOG_LEVEL]"
 ```
 

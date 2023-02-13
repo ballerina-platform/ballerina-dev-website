@@ -1,72 +1,51 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
-  `import ballerina/io;
-import ballerina/websocket;
+export const codeSnippetData = [
+  `import ballerina/websocket;
 
 public function main() returns error? {
-    websocket:Client wsClient = check new("ws://localhost:9090/foo", {
-        // Set the maximum retry count to 20 so that it will try 20 times with an interval of
-        // 1 second in between the retry attempts.
-        retryConfig: { maxCount: 20 }
+    websocket:Client chatRetryClient = check new ("ws://localhost:9090/chat", {
+        // Set the maximum retry count to 5 so that it will try 5 times with the interval of
+        // 5 second in between the retry attempts.
+        retryConfig: {
+            maxCount: 5,
+            interval: 5
+        }
     });
-    // Read the message sent from the server upon upgrading to a WebSocket connection.
-    string text = check wsClient->readMessage();
-    io:println(text);
-    io:println("Please shutdown the server now. And restart at least within 15 seconds");
-    // Client will retry 20 times(20 seconds in time) until the server gets started.
-    string retryMsg = check wsClient->readMessage();
-    io:println(retryMsg);
+    check chatRetryClient->writeMessage("Hey Sam!");
 }
 `,
 ];
 
-export default function WebsocketRetryClient() {
+export function WebsocketRetryClient({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Client - Retry</h1>
+      <h1>WebSocket client - Retry</h1>
 
       <p>
-        If the WebSocket client lost the connection due to some transient
-        failure, it automatically tries to reconnect to the given backend. If
-        the maximum reconnect attempt is reached it gives up on the connection.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
+        The <code>websocket:Client</code> with enabled <code>retry</code>{" "}
+        automatically tries to reconnect to the given backend. The client only
+        retries when there is a connection error at the handshake phase or if an
+        abnormal closure with the status code(1006) is received once the
+        connection is upgraded to a WebSocket connection. The connection
+        closures with mutual acknowledgments will not be retried. If the maximum
+        reconnect attempt is reached, it stops the connection. A{" "}
+        <code>websocket:Client</code> that retries upon failures is created by
+        providing the <code>retry</code> configurations to the client. Use this
+        to re-establish the connection, in cases like the WebSocket client lost
+        the connection due to some transient failure such as a momentary loss of
+        network connectivity or a temporary unavailability of a service.
       </p>
 
       <Row
@@ -79,7 +58,7 @@ export default function WebsocketRetryClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-retry-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/websocket-retry-client",
                 "_blank"
               );
             }}
@@ -153,6 +132,23 @@ export default function WebsocketRetryClient() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the WebSocket service given in the{" "}
+            <a href="/learn/by-example/websocket-basic-sample/">
+              Send/Receive message
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the client program by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -206,22 +202,31 @@ export default function WebsocketRetryClient() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# As a prerequisite, start a sample WebSocket service, which sends a message to the client upon upgrading to a WebSocket connection.`}</span>
-              <span>{`# If you are using a Ballerina WebSocket server, you can send a message to the client in the \`onOpen\` resource.`}</span>
-              <span>{`# The client will first connect to the server and then it will wait for 5 seconds to give time for the server to shut down.`}</span>
-              <span>{`# Start the server after 5 seconds so that the client will start retrying to connect to the server and read messages.`}</span>
               <span>{`\$ bal run websocket_retry_client.bal`}</span>
-              <span>{`Hello World!`}</span>
-              <span>{`Please shutdown the server now. And restart at least within 15 seconds`}</span>
-              <span>{`Hello World!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Client" href="/learn/by-example/websocket-client">
+          <Link
+            title="Timeout"
+            href="/learn/by-example/websocket-timeout-client"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -247,14 +252,17 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client
+                  Timeout
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Service" href="/learn/by-example/websocket-basic-sample">
+          <Link
+            title="Consume github events"
+            href="/learn/by-example/websub-webhook-sample"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -263,7 +271,7 @@ export default function WebsocketRetryClient() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service
+                  Consume github events
                 </span>
               </div>
               <svg

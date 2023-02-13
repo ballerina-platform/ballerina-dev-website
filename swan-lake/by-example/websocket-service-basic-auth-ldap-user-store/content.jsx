@@ -1,20 +1,13 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/websocket;
 
-listener websocket:Listener securedEP = new(9090,
+listener websocket:Listener chatListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -23,10 +16,9 @@ listener websocket:Listener securedEP = new(9090,
     }
 );
 
-// The service can be secured with Basic Auth and can be authorized optionally.
-// Basic Auth using the LDAP user store can be enabled by setting 
+// The service can be secured with Basic authentication and can be authorized optionally.
+// Basic authentication using the LDAP user store can be enabled by setting
 // the \`websocket:LdapUserStoreConfig\` configurations.
-// For details, see https://lib.ballerina.io/ballerina/websocket/latest/records/LdapUserStoreConfig.
 // Authorization is based on scopes. A scope maps to one or more groups.
 // Authorization can be enabled by setting the \`string|string[]\` type
 // configurations for \`scopes\` field.
@@ -58,74 +50,53 @@ listener websocket:Listener securedEP = new(9090,
         }
     ]
 }
-service /foo on securedEP {
-    resource function get bar() returns websocket:Service {
-        return new WsService();
-   }
+service /chat on chatListener {
+
+    resource function get .() returns websocket:Service {
+        return new ChatService();
+    }
 }
 
-service class WsService {
+service class ChatService {
     *websocket:Service;
-    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
-        check caller->writeMessage(text);
+
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
+        check caller->writeMessage("Hello, How are you?");
     }
 }
 `,
 ];
 
-export default function WebsocketServiceBasicAuthLdapUserStore() {
+export function WebsocketServiceBasicAuthLdapUserStore({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Basic Auth LDAP user store</h1>
+      <h1>WebSocket service - Basic authentication LDAP user store</h1>
 
       <p>
-        A WebSocket service can be secured with Basic Auth and by enforcing
-        authorization optionally. Then, it validates the Basic Auth token sent
-        in the <code>Authorization</code> header against the provided
-        configurations. This reads data from the configured LDAP. This stores
-        usernames, passwords for authentication, and scopes for authorization.
+        The <code>websocket:Service</code> can be secured with basic
+        authentication and additionally, scopes can be added to enforce
+        authorization. It validates the basic authentication token sent in the{" "}
+        <code>Authorization</code> header with the LDAP server. This server
+        stores the usernames and passwords for the authentication and the scopes
+        for the authorization. To engage authentication, set the LDAP related
+        configurations to the <code>ldapUserStoreConfig</code> field. To engage
+        authorization, set scopes to the <code>scopes</code> field. Both
+        configurations must be given as part of the service configuration.
       </p>
 
       <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). In the
-        authorization phase, the scopes of the service are compared against the
-        scope included in the user store for at least one match between the two
-        sets.
+        A <code>401 Unauthorized</code> response is sent to the client when the
+        authentication fails, and a <code>403 Forbidden</code> response is sent
+        to the client when the authorization fails. Use this to authenticate and
+        authorize requests based on LDAP user stores.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/auth/latest/">
-          <code>auth</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file path
-          and private key file path in the code below.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -137,7 +108,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-service-basic-auth-ldap-user-store",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/websocket-service-basic-auth-ldap-user-store",
                 "_blank"
               );
             }}
@@ -211,6 +182,15 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>Run the LDAP server.</span>
+        </li>
+      </ul>
+
       <p>Run the service by executing the command below.</p>
 
       <Row
@@ -272,10 +252,53 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/websocket-client-basic-auth">
+            Basic authentication client
+          </a>
+          .
+        </p>
+      </blockquote>
+
+      <h2>Related Links</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/auth/latest/">
+              <code>auth</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#52-authentication-and-authorization">
+              WebSocket authentication - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth File user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/websocket-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -303,7 +326,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth File user store
+                  Basic authentication file user store
                 </span>
               </div>
             </div>
@@ -311,7 +334,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - JWT Auth"
+            title="JWT authentication"
             href="/learn/by-example/websocket-service-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -322,7 +345,7 @@ export default function WebsocketServiceBasicAuthLdapUserStore() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - JWT Auth
+                  JWT authentication
                 </span>
               </div>
               <svg

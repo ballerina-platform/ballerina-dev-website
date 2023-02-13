@@ -24,7 +24,7 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Understand the implementation
@@ -258,7 +258,7 @@ public function main() returns error? {
 In this code:
 
 - The client declaration creates a connection to the remote server which is listening on port 9090. The generated client has remote methods that can use to talk to a remote server.
-- The `main` function contains the statements that call the `sayHello` remote function and prints the response to the console.
+- The `main` function contains the statements that call the `sayHello` remote method and prints the response to the console.
 
 ## Run the gRPC client
 

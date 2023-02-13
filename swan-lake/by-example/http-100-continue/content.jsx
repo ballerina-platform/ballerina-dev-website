@@ -1,39 +1,28 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/log;
 
 service / on new http:Listener(9090) {
 
-    resource function 'default hello(http:Caller caller, http:Request request)
+    resource function post greeting(http:Caller caller, http:Request request)
             returns error? {
         // Check if the client expects a 100-continue response.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue.
-        if (request.expects100Continue()) {
+        if request.expects100Continue() {
             string mediaType = request.getContentType();
             if mediaType.toLowerAscii() == "text/plain" {
-
                 // Send a \`100-continue\` response to the client.
                 check caller->continue();
-
-            // Send a \`417\` response to ignore the payload as the content type is mismatched
-            // with the expected content type.
             } else {
+                // Send a \`417\` response to ignore the payload as the content type is mismatched
+                // with the expected content type.
                 http:ExpectationFailed resp = {body: "Unprocessable Entity"};
-                check caller->respond(resp);
-                return;
+                return caller->respond(resp);
             }
         }
 
@@ -52,7 +41,7 @@ service / on new http:Listener(9090) {
 `,
 ];
 
-export default function Http100Continue() {
+export function Http100Continue({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -60,36 +49,21 @@ export default function Http100Continue() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>100 continue</h1>
+      <h1>HTTP service - 100 continue</h1>
 
       <p>
-        Convenience functions are provided in the HTTP library for ease of use
-        when handling <code>100-continue</code> scenarios.{" "}
+        Convenience functions are provided in the <code>http</code> module for
+        ease of use when handling <code>100-continue</code> scenarios. The{" "}
         <code>100-continue</code> indicates that the server has received the
-        request headers and the client can proceed with sending the request.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        request headers and the client can proceed with sending the request. It
+        is done by invoking the <code>continue</code> method of the{" "}
+        <code>http:Caller</code> which results in an interim response containing
+        the <code>100 Continue</code> status code if allowed. This is useful
+        when handling multipart or large request payloads.
       </p>
 
       <Row
@@ -102,7 +76,32 @@ export default function Http100Continue() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-100-continue",
+                "https://play.ballerina.io/?gist=04722a834d8b93af8a2fa09bc15c1c43&file=http_100_continue.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-100-continue",
                 "_blank"
               );
             }}
@@ -296,26 +295,26 @@ export default function Http100Continue() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
+              <span>{`\$ curl -v -d "TEST 100 CONTINUE" http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: text/plain'`}</span>
               <span>{`*   Trying 127.0.0.1...`}</span>
               <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> Expect:100-continue`}</span>
-              <span>{`> Content-Length: 17`}</span>
               <span>{`> Content-Type: text/plain`}</span>
+              <span>{`> Content-Length: 17`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 100 Continue`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:05 +0530`}</span>
               <span>{`* We are completely uploaded and fine`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< HTTP/1.1 201 Created`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 13`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:16:18 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:05 +0530`}</span>
               <span>{`<`}</span>
               <span>{`Hello World!`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
@@ -323,21 +322,21 @@ export default function Http100Continue() {
 `}</span>
               <span>{`# Use the following client to invoke the service using an unsupported media type. The service is supposed to ignore`}</span>
               <span>{`# the payload if the content type does not match.`}</span>
-              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/hello -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
-              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
-              <span>{`> POST /hello HTTP/1.1`}</span>
+              <span>{`\$ curl -v -d '{"TEST":"100 CONTINUE"}' http://localhost:9090/greeting -H 'Expect:100-continue' -H 'Content-Type: application/json'`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`> POST /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.58.0`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> Expect:100-continue`}</span>
               <span>{`> Content-Type: application/json`}</span>
-              <span>{`> Content-Length: 25`}</span>
+              <span>{`> Content-Length: 23`}</span>
               <span>{`>`}</span>
               <span>{`< HTTP/1.1 417 Expectation Failed`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 20`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Sep 2020 09:19:53 +0530`}</span>
+              <span>{`< date: Tue, 20 Dec 2022 17:01:59 +0530`}</span>
               <span>{`* HTTP error before end of send, stop sending`}</span>
               <span>{`<`}</span>
               <span>{`* Closing connection 0`}</span>
@@ -346,6 +345,20 @@ export default function Http100Continue() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue">
+              <code>expects100Continue()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -382,7 +395,10 @@ export default function Http100Continue() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Streaming" href="/learn/by-example/http-streaming">
+          <Link
+            title="Matrix parameter"
+            href="/learn/by-example/http-matrix-param"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -391,7 +407,7 @@ export default function Http100Continue() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Streaming
+                  Matrix parameter
                 </span>
               </div>
               <svg

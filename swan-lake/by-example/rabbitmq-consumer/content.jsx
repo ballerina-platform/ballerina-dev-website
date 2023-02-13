@@ -1,82 +1,55 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/log;
 import ballerinax/rabbitmq;
 
-listener rabbitmq:Listener channelListener = new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+public type Order record {
+    int orderId;
+    string productName;
+    decimal price;
+    boolean isValid;
+};
 
-// The consumer service listens to the "MyQueue" queue.
-// The \`ackMode\` is by default rabbitmq:AUTO_ACK where messages are acknowledged
-// immediately after consuming.
-@rabbitmq:ServiceConfig {
-    queueName: "MyQueue"
-}
-// Attaches the service to the listener.
-service on channelListener {
-    remote function onMessage(StringMessage message) returns error? {
-        log:printInfo("Received message: " + message.content);
+// The consumer service listens to the "OrderQueue" queue.
+service "OrderQueue" on new rabbitmq:Listener(rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT) {
+
+    remote function onMessage(Order 'order) returns error? {
+        if 'order.isValid {
+            log:printInfo(string \`Received valid order for \${'order.productName}\`);
+        }
     }
 }
-
-public type StringMessage record {|
-    *rabbitmq:AnydataMessage;
-    string content;
-|};
 `,
 ];
 
-export default function RabbitmqConsumer() {
+export function RabbitmqConsumer({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Consumer</h1>
+      <h1>RabbitMQ service - Consume message</h1>
 
       <p>
-        The messages are consumed from an existing queue using the Ballerina
-        RabbitMQ message listener. The Ballerina RabbitMQ connection used here
-        can be re-used to create multiple channels.
-      </p>
-
-      <p>
-        Multiple services consuming messages from the same queue or from
-        different queues can be attached to the same Listener.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
-          <code>rabbitmq</code> module
-        </a>
-        .
+        The <code>rabbitmq:Service</code> listens to the given queue for
+        incoming messages. When a publisher sends a message on a queue, any
+        active service listening on that queue receives the message. A{" "}
+        <code>rabbitmq:Listener</code> is created by passing the host and port
+        of the RabbiMQ broker. A <code>rabbitmq:Service</code> attached to the
+        listener is used to listen to a specific queue and consume incoming
+        messages. The queue to listen to should be given as the service name or
+        in the <code>queueName</code> field of the{" "}
+        <code>rabbitmq:ServiceConfig</code>. Use it to listen to messages sent
+        to a particular queue.
       </p>
 
       <Row
@@ -89,7 +62,7 @@ export default function RabbitmqConsumer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/rabbitmq-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/rabbitmq-consumer",
                 "_blank"
               );
             }}
@@ -163,6 +136,21 @@ export default function RabbitmqConsumer() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Start an instance of the{" "}
+            <a href="https://www.rabbitmq.com/download.html">RabbitMQ server</a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <p>Run the service by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -223,9 +211,43 @@ export default function RabbitmqConsumer() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/rabbitmq-producer/">RabbitMQ client</a>.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest">
+              <code>rabbitmq</code> package - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://github.com/ballerina-platform/module-ballerinax-rabbitmq/blob/master/docs/spec/spec.md#6-subscribing">
+              RabbitMQ subscribing - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Producer" href="/learn/by-example/rabbitmq-producer">
+          <Link
+            title="SASL authentication"
+            href="/learn/by-example/kafka-consumer-sasl"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -251,7 +273,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Producer
+                  SASL authentication
                 </span>
               </div>
             </div>
@@ -259,7 +281,7 @@ export default function RabbitmqConsumer() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Client acknowledgements"
+            title="Consume message with acknowledgement"
             href="/learn/by-example/rabbitmq-consumer-with-client-acknowledgement"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -270,7 +292,7 @@ export default function RabbitmqConsumer() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client acknowledgements
+                  Consume message with acknowledgement
                 </span>
               </div>
               <svg

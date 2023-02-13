@@ -215,7 +215,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 - Added the `Create variable with Type` code action.
 - Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions.
- >**Info:** This feature will be available from the [Ballerina VSCode plugin](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) version `4.0.0`.
+ >**Info:** This feature will be available from the [Ballerina VS Code extension](https://wso2.com/ballerina/vscode/docs/edit-the-code/code-actions/) version `4.0.0`.
 - Added quick pick support for selecting expressions in the `Extract to constant` code action.
 
 #### GraphQL Tool

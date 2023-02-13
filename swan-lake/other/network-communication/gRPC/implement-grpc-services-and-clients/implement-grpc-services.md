@@ -34,7 +34,7 @@ Successfully generated ballerina file.
 
 The `AdminService_sample_service.bal` file, which contains the service skeleton will be automatically generated in the default module directory of the service. 
 
-You can simply fill in the implementation of the service functions that are defined in it. For example, the following is the remote function generated for the `add` gRPC method. 
+You can simply fill in the implementation of the service functions that are defined in it. For example, the following is the remote method generated for the `add` gRPC method. 
 
 ```ballerina
 remote function add(AddRequest value) returns AddResponse|error {

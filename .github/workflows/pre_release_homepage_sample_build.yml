@@ -1,0 +1,55 @@
+# This builds the 'Ballerina.io' home page samples against the releasing distribution.
+
+on: 
+  pull_request:
+    paths:
+      - '_data/swanlake-latest/metadata.json'
+name: Homepage Sample Build
+
+jobs:
+  build_homepage_samples:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 3
+      matrix:
+        sample: ['consuming-services.md', 'graphql-api.md', 'kafka-consumer-producer.md', 'restful-api.md',
+                  'working-with-data.md', 'working-with-databases.md']
+    env:
+      GITHUB_TOKEN: ${{ secrets.BALLERINA_BOT_TOKEN }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install jq for json manipulation
+      run: sudo apt-get install jq
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Download the Ballerina distribution
+      run: |
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
+        sudo wget https://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip
+
+    - name: Use Ballerina zip version
+      run: sudo apt-get install -y unzip
+
+    - name: Unzip Ballerina
+      run: |
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
+        sudo unzip ballerina-$VERSION.zip
+      env: 
+          JAVA_HOME: /usr/lib/jvm/default-jvm
+          JAVA_OPTS: -DBALLERINA_DEV_COMPILE_BALLERINA_ORG=true 
+
+    - name: Build the home page samples
+      run: |
+        sample_name=${{ matrix.sample }}
+        bal_file_name="$(cut -d'.' -f1 <<< "$sample_name")".bal
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
+        export PATH=$PATH:/home/runner/work/ballerina-dev-website/ballerina-dev-website/ballerina-$VERSION/bin
+        python3 components/home-page/bal-action/generate-bal-script.py $sample_name
+        bal build $bal_file_name

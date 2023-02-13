@@ -1,72 +1,44 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
-
-function foo(json j) returns error? {
-    match j {
-        // A \`match\` statement can be used to match maps.
-        // Patterns on the left hand side in a match statement can have variable
-        // parts that can be captured.
-        // Match semantics are open (may have fields other than those specified
-        // in the pattern).
-        {command: "add", amount: var x} => {
-            decimal n = check x.ensureType(decimal);
-            add(n);
-            return;
-        }
-
-        _ => {
-            return error("invalid command");
-        }
-    }
+ 
+function execute(json j) {
+   	match j {
+   	    // A \`match\` statement can be used to match maps.
+   	    // Patterns on the left hand side in a match statement can have variable
+   	    // parts that can be captured.
+   	    {command: "print", amount: var x} => {
+   	        if x is int {
+   	            io:println("Int: ", x);
+   	        }
+   	    }
+	
+   	    _ => {
+   	        io:println("invalid command");
+   	    }
+   	}
 }
-
-decimal total = 0;
-
-function add(decimal amount) {
-    total += amount;
-    io:println("Total: ", total);
-}
-
-public function main() returns error? {
-    check foo({command: "add", amount: 100, status: "pending"});
-    check foo({command: "add", amount: 10});
-    check foo({command: "subtract", amount: 100});
-    return;
+ 
+public function main() {
+   	execute({command: "print", amount: 100, status: "pending"});
+   	execute({command: "print", amount: 10});
+   	execute({command: "subtract", amount: 100});
 }
 `,
 ];
 
-export default function MatchStatementWithMaps() {
+export function MatchStatementWithMaps({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -89,7 +61,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5cfd70ada533f229e91028adc0ca8048&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=62fa037350093113aa4f343e78f0d2b1&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -114,7 +86,7 @@ export default function MatchStatementWithMaps() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/match-statement-with-maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/match-statement-with-maps",
                 "_blank"
               );
             }}
@@ -242,19 +214,39 @@ export default function MatchStatementWithMaps() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run match_statement_with_maps.bal`}</span>
-              <span>{`Total: 100.0`}</span>
-              <span>{`Total: 110.0`}</span>
-              <span>{`error: invalid command`}</span>
+              <span>{`Int: 100`}</span>
+              <span>{`Int: 10`}</span>
+              <span>{`invalid command`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/json-type/">JSON type</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/match-statement/">Match statement</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Work directly with JSON"
-            href="/learn/by-example/working-directly-with-json"
+            title="Accessing optional JSON elements"
+            href="/learn/by-example/access-optional-json-elements"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -281,7 +273,7 @@ export default function MatchStatementWithMaps() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Work directly with JSON
+                  Accessing optional JSON elements
                 </span>
               </div>
             </div>

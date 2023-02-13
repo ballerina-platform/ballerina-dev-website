@@ -3,7 +3,7 @@
 _Owners_: @daneshk @kalaiyarasiganeshalingam @MadhukaHarith92                                       
 _Reviewers_: @daneshk  
 _Created_: 2021/12/10  
-_Updated_: 2022/06/07  
+_Updated_: 2022/12/06  
 _Edition_: Swan Lake
 
 ## Introduction
@@ -11,7 +11,7 @@ This is the specification for the Xmldata standard library of [Ballerina languag
 
 The Xmldata library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag.
 
-If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Slack channel](https://ballerina.io/community/). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in Github.
+If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in Github.
 
 The conforming implementation of the specification is released and included in the distribution. Any deviation from the specification is considered a bug.
 
@@ -494,7 +494,9 @@ When `attributePrefix` is `&` and `arrayEntryTag` is `list`, the XML representat
 
 ### 4.4. Ballerina record/Map to XML Conversion
 This conversion provides a mapping between the different forms of Ballerina record/Map, to a corresponding matching XML representation.
-The following API returns the XML data to the given Ballerina record/Map. The record has annotations to configure namespaces and attributes, but others don't have these.
+The following API returns the XML data to the given Ballerina record/Map. 
+The record has annotations to configure namespaces and attributes, 
+but other types(map<BALLERINA_PRIMITIVE_TYPE>|map<BALLERINA_PRIMITIVE_TYPE[]>|map<json>|map<xml>|map<json[]>|map<xml[]>|map<table<map<string>>>) don't have these.
 ```ballerina
 public isolated function toXml(map<anydata> mapValue) returns xml|Error
 ```
@@ -532,30 +534,27 @@ public annotation Attribute on record field;
 ```
 #### 4.4.1. Sample1
 ```ballerina
-@Name {
+@xmldata:Name {
     value: "Customers"
 }
-@Namespace {
+@xmldata:Namespace {
     prefix: "ns",
     uri: "http://sdf.com"
 }
 type Customer record {
 
-    @Name {
+    @xmldata:Name {
         value: "employeeName"
     }
-    @Namespace {
-        prefix: "ns"
-    }
-    @Attribute
-    string name;
+    @xmldata:Attribute
+    string ns\:name;
 
     int age;
 };
 
 Customer input = { name: "Asha", age: 10 };
 ```
-The XML representation of the above Record.
+The XML representation of the above Record:
 
 ```ballerina
 <ns:Customers xmlns:ns="http://sdf.com" ns:employeeName="Asha">
@@ -571,15 +570,12 @@ map<string> input = {
     genre: "Sci-Fi"
 };
 ```
-The XML representation of the above map.
+The XML representation of the above map:
 
 ```ballerina
 <root>
     <series>Dark</series>
     <genre>Sci-Fi</genre>
-    <language>German</language>
-    <seasons>3</seasons>
-    <id>3296</id>
 </root>;
 ```
 

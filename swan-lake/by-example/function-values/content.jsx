@@ -1,76 +1,45 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
-
-// Anonymous function syntax.
-var isOdd = function(int n) returns boolean {
-    return n % 2 != 0;
-};
-
-// Function type syntax.
-type IntFilter function (int n) returns boolean;
-
+ 
 // Module-level function definition.
 function isEven(int n) returns boolean {
-    return n % 2 == 0;
+   return n % 2 == 0;
 }
-
+ 
 public function main() {
-    // The \`isEven\` function  referred as a value.
-    IntFilter f = isEven;
-    int[] nums = [1, 2, 3];
+   // The \`isEven\` function is referred as a value.
+   function (int n) returns boolean f = isEven;
 
-    // Arrays provide the usual functional methods: 
-    // \`filter\`, \`map\`, \`forEach\`, and \`reduce\`.
-    int[] evenNums = nums.filter(f);
-    io:println(evenNums);
-
-    // Shorthand syntax when the type is inferred and the body is an expression.
-    int[] oddNums = nums.filter(n => n % 2 != 0);
-    io:println(oddNums);
+   // The function values can be executed like regular function calls.
+   io:println(f(5));
+   io:println(f(6));
 }
 `,
 ];
 
-export default function FunctionValues() {
+export function FunctionValues({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Function values</h1>
 
       <p>
-        Functions are values and work as closures. Function type is a separate
-        basic type. Anonymous function and type syntax look like function
-        definition without the name.
+        In Ballerina, a function is also a value implying that it can be stored
+        in variables and passed to or returned from the functions. A function
+        value can be executed by calling it. A function value cannot be assigned
+        to a defined function name.
       </p>
 
       <Row
@@ -83,7 +52,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f113af72aa2d9c217e8678822876a0e&file=function_values.bal",
+                "https://play.ballerina.io/?gist=4a01491930e2ca015a1b5a5e46c6c076&file=function_values.bal",
                 "_blank"
               );
             }}
@@ -108,7 +77,7 @@ export default function FunctionValues() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/function-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/function-values",
                 "_blank"
               );
             }}
@@ -236,16 +205,47 @@ export default function FunctionValues() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run function_values.bal`}</span>
-              <span>{`[2]`}</span>
-              <span>{`[1,3]`}</span>
+              <span>{`false`}</span>
+              <span>{`true`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/functions/">Functions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-pointers/">Function pointers</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-types/">Function types</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Functions" href="/learn/by-example/functions">
+          <Link
+            title="Function pointers"
+            href="/learn/by-example/function-pointers"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,17 +271,14 @@ export default function FunctionValues() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Functions
+                  Function pointers
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Included record parameters"
-            href="/learn/by-example/included-record-parameters"
-          >
+          <Link title="Function types" href="/learn/by-example/function-types">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -290,7 +287,7 @@ export default function FunctionValues() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Included record parameters
+                  Function types
                 </span>
               </div>
               <svg

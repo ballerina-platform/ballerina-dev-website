@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 type Employee record {
@@ -21,38 +14,35 @@ type Employee record {
 };
 
 public function main() {
-    // \`t\` has a key sequence with \`firstName\` and \`lastName\` fields.
-    table<Employee> key(firstName, lastName) t = table [
-        {firstName: "John", lastName: "Smith", salary: 100},
-        {firstName: "Fred", lastName: "Bloggs", salary: 200}
-    ];
+    // \`employees\` has a key sequence with the \`firstName\` and \`lastName\` fields.
+    table<Employee> key(firstName, lastName) employees = table [
+            {firstName: "John", lastName: "Smith", salary: 100},
+            {firstName: "John", lastName: "Bloggs", salary: 200}
+        ];
 
     // The key sequence provides keyed access to members of the \`table\`.
-    Employee? e = t["Fred", "Bloggs"];
+    Employee? e = employees["John", "Bloggs"];
+    io:println(e);
 
+    // \`employees\` has a key sequence with the \`firstName\` and \`lastName\` fields.
+    table<Employee> key<[string, string]> employees2 = table key(firstName, lastName) [
+            {firstName: "John", lastName: "Smith", salary: 100},
+            {firstName: "John", lastName: "Bloggs", salary: 200}
+        ];
+
+    e = employees2["John", "Smith"];
     io:println(e);
 }
 `,
 ];
 
-export default function MultipleKeyFields() {
+export function MultipleKeyFields({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -60,9 +50,9 @@ export default function MultipleKeyFields() {
 
       <p>
         A <code>table</code> provides access to its members using a key that
-        comes from the <code>read-only</code> fields of the member. It is a key
+        comes from the <code>readonly</code> fields of the member. It is a key
         sequence, which is used to provide keyed access to its members. The key
-        sequence is an ordered sequence of field names.
+        sequence is an ordered sequence of the field names.
       </p>
 
       <Row
@@ -75,7 +65,7 @@ export default function MultipleKeyFields() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=527a7d9fae4efd4e297c2d85475980aa&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=0740d95f3694ff825449b0762c9eb2f9&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}
@@ -100,7 +90,7 @@ export default function MultipleKeyFields() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/multiple-key-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/multiple-key-fields",
                 "_blank"
               );
             }}
@@ -228,15 +218,44 @@ export default function MultipleKeyFields() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run multiple_key_fields.bal`}</span>
-              <span>{`{"firstName":"Fred","lastName":"Bloggs","salary":200}`}</span>
+              <span>{`{"firstName":"John","lastName":"Bloggs","salary":200}`}</span>
+              <span>{`{"firstName":"John","lastName":"Smith","salary":100}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/table/">Table</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/multiple-key-fields/">Structured keys</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Table syntax" href="/learn/by-example/table-syntax">
+          <Link title="Table types" href="/learn/by-example/table-types">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -262,7 +281,7 @@ export default function MultipleKeyFields() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table syntax
+                  Table types
                 </span>
               </div>
             </div>

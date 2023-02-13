@@ -444,7 +444,7 @@ Extended the private key support for JWT signature generation and public cert su
 Introduced a configuration in the log module to set the output format to JSON. You need to add the entry below in the `Config.toml` file to set the output format to JSON.
 
 ```toml
-[log]
+[ballerina.log]
 format = "json"
 ```
 

@@ -1,34 +1,37 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
-import ballerina/log;
+import ballerina/mime;
+
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
+
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
 service / on new http:Listener(9090) {
-    // The \`clientKey\` method argument is considered as the value for the
-    // \`X-Client-Key\` HTTP header.
-    resource function get hello(@http:Header {name: "X-Client-Key"} string clientKey)
-            returns string {
 
-        log:printInfo("Received header value: " + clientKey);
-        return clientKey;
+    // The \`accept\` argument with \`@http:Header\` annotation takes the value of the \`Accept\` request header.
+    resource function get albums(@http:Header string accept) returns Album[]|http:NotAcceptable {
+        if !string:equalsIgnoreCaseAscii(accept, mime:APPLICATION_JSON) {
+            return http:NOT_ACCEPTABLE;
+        }
+        return albums.toArray();
     }
 }
 `,
 ];
 
-export default function HttpHeaderParam() {
+export function HttpHeaderParam({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -36,44 +39,24 @@ export default function HttpHeaderParam() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Header parameter</h1>
+      <h1>REST service - Header parameter</h1>
 
       <p>
-        The <code>http</code> module provides support for accessing inbound
-        request headers as resource method arguments. The header key can be
-        specified as a variable name along with the <code>@http:Header</code>{" "}
-        annotation. Else, it can be specified in the <code>name</code> field of
-        the annotation. The supported types are <code>string</code>,{" "}
-        <code>string[]</code>, and optional. The <code>string[]</code> type
-        returns all the values for a given header key while <code>string</code>{" "}
-        returns the first value. Unless the type is optional, the request will
-        be responded with a 400 Bad request in the absence of the mentioned
-        header. However, more header manipulations can be done via the{" "}
-        <code>http:Headers</code> header object, which also can be accessed as a
-        resource method argument without using the annotation.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The <code>@http:header</code> annotation allows reading header values
+        from the request. The annotation can be used to annotate a given
+        resource parameter. The name of the parameter must match the name of the
+        header. If there is a mismatch, then the header name must be given in
+        the annotation configuration. The resource parameter can be a simple
+        type or an array type (i.e., <code>string version</code> or{" "}
+        <code>string[] versions</code>). If there are many headers to read, a
+        record type can be used as the parameter. Unless the parameter is
+        optional (i.e., <code>string? version</code>), a{" "}
+        <code>400 Bad Request</code> response is sent to the client in the
+        absence of the mapping header.
       </p>
 
       <Row
@@ -86,7 +69,32 @@ export default function HttpHeaderParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-header-param",
+                "https://play.ballerina.io/?gist=c218c0776d826052a52159639f0e3374&file=http_header_param.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-header-param",
                 "_blank"
               );
             }}
@@ -216,7 +224,6 @@ export default function HttpHeaderParam() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run http_headers.bal`}</span>
-              <span>{`time = 2021-06-25T11:56:13.746+05:30 level = INFO module = "" message = "Received header value 0987654321"`}</span>
             </code>
           </pre>
         </Col>
@@ -280,18 +287,53 @@ export default function HttpHeaderParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/hello -H "X-Client-Key: 0987654321"`}</span>
-              <span>{`0987654321`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums" -H "Accept:application/json"`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-header-parameter/">
+            HTTP client - Header parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#2345-header-parameter">
+              HTTP service header parameter - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Matrix parameter"
-            href="/learn/by-example/http-matrix-param"
+            title="Query parameter"
+            href="/learn/by-example/http-query-parameter"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -318,7 +360,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Matrix parameter
+                  Query parameter
                 </span>
               </div>
             </div>
@@ -326,8 +368,8 @@ export default function HttpHeaderParam() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Typed resource responses"
-            href="/learn/by-example/http-resource-returns"
+            title="Send response"
+            href="/learn/by-example/http-send-response"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -337,7 +379,7 @@ export default function HttpHeaderParam() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Typed resource responses
+                  Send response
                 </span>
               </div>
               <svg

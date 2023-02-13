@@ -1,34 +1,14 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
-  `// This is the service definition for the scenario.
-syntax = "proto3";
-
-import "google/protobuf/empty.proto";
-import "google/protobuf/wrappers.proto";
-
-service HelloWorld {
-	rpc hello(google.protobuf.Empty) returns (google.protobuf.StringValue);
-}
-`,
+export const codeSnippetData = [
   `import ballerina/grpc;
 
-// A gRPC listener can be configured to accept new connections that are
-// secured via mutual SSL.
-// The [\`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-// For details, see https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket.
-listener grpc:Listener securedEP = new(9090,
+// The gRPC listener can be configured to accept new connections that are secured via mutual SSL.
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -38,97 +18,60 @@ listener grpc:Listener securedEP = new(9090,
         mutualSsl: {
             verifyClient: grpc:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: grpc:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-
+        }
     }
 );
 
-@grpc:ServiceDescriptor {
-    descriptor: GRPC_SERVICE_DESC
+@grpc:Descriptor {
+    value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
-    remote function hello() returns string {
-        return "Hello, World!";
+
+    remote function hello(string request) returns string {
+        return "Hello " + request;
     }
 }
 `,
 ];
 
-export default function GrpcServiceMutualSsl() {
+export function GrpcServiceMutualSsl({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
-  const [codeClick2, updateCodeClick2] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
-  const [outputClick2, updateOutputClick2] = useState(false);
-  const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>gRPC service - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>grpc:Listener</code> with mutual SSL (mTLS) enabled in it
+        allows exposing a connection secured with mutual SSL, which is a
+        certificate-based authentication process in which two parties (the
+        client and server) authenticate each other by verifying the digital
+        certificates. It ensures that both parties are assured of each other's
+        identity. The <code>grpc:Listener</code> secured with mutual SSL is
+        created by providing the <code>secureSocket</code> configurations, which
+        require <code>grpc:REQUIRE</code> as the <code>verifyClient</code>, the
+        server's public certificate as the <code>certFile</code>, the server's
+        private key as the <code>keyFile</code>, and the client's certificate as
+        the <code>cert</code>. Use this to secure the gRPC connection with
+        mutual SSL.
       </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on the underlying module,
-          see the{" "}
-          <a href="https://lib.ballerina.io/ballerina/grpc/latest/">
-            <code>grpc</code> module
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <h2>Generate the service definition</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Create a new Protocol Buffers definition file named{" "}
-            <code>grpc_service.proto</code> and add the service definition to
-            it.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
       indent"
-        style={{ marginLeft: "32px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
           <button
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/grpc-service-mutual-ssl",
                 "_blank"
               );
             }}
@@ -202,19 +145,21 @@ export default function GrpcServiceMutualSsl() {
         </Col>
       </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Run the command below in the Ballerina tools distribution for stub
-            generation.
-          </span>
-        </li>
-      </ul>
+      <p>
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
+        <a href="/learn/by-example/grpc-service-simple/">
+          gRPC service - Simple RPC
+        </a>
+        .
+      </p>
+
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "32px" }}
+        style={{ marginLeft: "24px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
           {outputClick1 ? (
@@ -265,218 +210,7 @@ export default function GrpcServiceMutualSsl() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal grpc --input grpc_service.proto --output stubs`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <p>
-        Once you run the command, the <code>grpc_service_pb.bal</code> file is
-        generated inside the stubs directory.
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> For more information on how to use the
-          Ballerina Protocol Buffers tool, see the{" "}
-          <a href="https://ballerina.io/learn/by-example/proto-to-ballerina.html">
-            Proto To Ballerina
-          </a>{" "}
-          example.
-        </p>
-      </blockquote>
-
-      <h2>Implement and run the service</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>Create a Ballerina package.</span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Copy the generated <code>grpc_secured_pb.bal</code> stub file to the
-            package. For example, if you create a package named{" "}
-            <code>service</code>, copy the stub file to the <code>service</code>{" "}
-            package.
-          </span>
-        </li>
-      </ul>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>
-            Create a new <code>grpc_service_mutual_ssl.bal</code> Ballerina file
-            inside the <code>service</code> package and add the service
-            implementation.
-          </span>
-        </li>
-      </ul>
-
-      <pre>
-        <code>
-          **Tip:** You may need to change the certificate file path, private key
-          file path, and trusted certificate file path in the code below.
-        </code>
-      </pre>
-
-      <Row
-        className="bbeCode mx-0 py-0 rounded 
-      indent"
-        style={{ marginLeft: "24px" }}
-      >
-        <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/grpc-service-mutual-ssl",
-                "_blank"
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
-          {codeClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              disabled
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2"
-              onClick={() => {
-                updateCodeClick2(true);
-                copyToClipboard(codeSnippetData[1]);
-                setTimeout(() => {
-                  updateCodeClick2(false);
-                }, 3000);
-              }}
-              aria-label="Copy to Clipboard"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#000"
-                className="bi bi-clipboard"
-                viewBox="0 0 16 16"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          {codeSnippets[1] != undefined && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(codeSnippets[1]),
-              }}
-            />
-          )}
-        </Col>
-      </Row>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>4.</span>
-          <span>
-            Execute the commands below to build and run the <code>service</code>{" "}
-            package.
-          </span>
-        </li>
-      </ul>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded indent"
-        style={{ marginLeft: "24px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick2(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref2}>
-            <code className="d-flex flex-column">
-              <span>{`\$ bal build service`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ bal run service/target/bin/service.jar`}</span>
+              <span>{`\$ bal run service`}</span>
             </code>
           </pre>
         </Col>
@@ -484,20 +218,41 @@ export default function GrpcServiceMutualSsl() {
 
       <blockquote>
         <p>
-          <strong>Info:</strong> You can invoke the above service via the{" "}
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/grpc-client-mutual-ssl/">
-            sample Mutual SSL client
+            gRPC client - Mutual SSL
           </a>
           .
         </p>
       </blockquote>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket">
+              <code>grpc:ListenerSecureSocket</code> record - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/grpc/#52-ssltls-and-mutual-ssl">
+              gRPC service mutual SSL - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/grpc-service-ssl-tls"
-          >
+          <Link title="SSL/TLS" href="/learn/by-example/grpc-service-ssl-tls">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -523,7 +278,7 @@ export default function GrpcServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -531,7 +286,7 @@ export default function GrpcServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/grpc-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -542,7 +297,7 @@ export default function GrpcServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
               <svg

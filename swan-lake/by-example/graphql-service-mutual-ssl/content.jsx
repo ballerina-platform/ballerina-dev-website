@@ -1,25 +1,20 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
 
-// An GraphQL listener can be configured to accept new connections that are
-// secured via mutual SSL.
-// The \`graphql:ListenerSecureSocket\` record provides the SSL-related listener configurations. 
-// For details, see https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket.
-listener graphql:Listener securedEP = new(4000,
+type Profile record {|
+    string name;
+    int age;
+|};
+
+// A GraphQL listener can be configured to accept new connections that are secured via mutual SSL.
+listener graphql:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -29,69 +24,48 @@ listener graphql:Listener securedEP = new(4000,
         mutualSsl: {
             verifyClient: http:REQUIRE,
             cert: "../resource/path/to/public.crt"
-        },
-        // Enables the preferred SSL protocol and its versions.
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        // Configures the preferred ciphers.
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
     }
 );
 
 service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+    
+    resource function get profile() returns Profile {
+        return {
+            name: "Walter White",
+            age: 50
+        };
     }
 }
 `,
 ];
 
-export default function GraphqlServiceMutualSsl() {
+export function GraphqlServiceMutualSsl({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service - Mutual SSL</h1>
+      <h1>GraphQL service - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>graphql:Listener</code> with mutual SSL (mTLS) enabled in it
+        allows exposing a connection secured with mutual SSL, which is a
+        certificate-based authentication process in which two parties (the
+        client and server) authenticate each other by verifying the digital
+        certificates. It ensures that both parties are assured of each other's
+        identity. The <code>graphql:Listener</code> secured with mutual SSL is
+        created by providing the <code>secureSocket</code> configurations, which
+        require the word <code>require</code> as the <code>verifyClient</code>,
+        the server's public certificate as the <code>certFile</code>, the
+        server's private key as the <code>keyFile</code>, and the client's
+        certificate as the <code>cert</code>. Use this to secure the GraphQL
+        connection over mutual SSL.
       </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/graphql/latest/">
-          <code>graphql</code> module
-        </a>
-        .
-      </p>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You may need to change the certificate file
-          path, private key file path, and trusted certificate file path.
-        </p>
-      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -103,7 +77,7 @@ export default function GraphqlServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/graphql-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/graphql-service-mutual-ssl",
                 "_blank"
               );
             }}
@@ -238,10 +212,56 @@ export default function GraphqlServiceMutualSsl() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/graphql-client-security-mutual-ssl/">
+            GraphQL client - Mutual SSL
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
+              <code>graphql:ListenerConfiguration</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
+              <code>graphql:ListenerSecureSocket</code> record - API
+              documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#12312-mutual-ssl">
+              GraphQL service mutual SSL - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
+            title="SSL/TLS"
             href="/learn/by-example/graphql-service-ssl-tls"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -269,7 +289,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  SSL/TLS
                 </span>
               </div>
             </div>
@@ -277,7 +297,7 @@ export default function GraphqlServiceMutualSsl() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - Basic Auth file user store"
+            title="Basic authentication file user store"
             href="/learn/by-example/graphql-service-basic-auth-file-user-store"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -288,7 +308,7 @@ export default function GraphqlServiceMutualSsl() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - Basic Auth file user store
+                  Basic authentication file user store
                 </span>
               </div>
               <svg

@@ -212,7 +212,7 @@ Furthermore, the line with the error would be replaced with a function call as s
 Grade grades = mapNameAndGradeToGrade(student);
 ```
 
-For more information, see [Code Actions](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
+For more information, see [Code Actions](https://wso2.com/ballerina/vscode/docs/edit-the-code/code-actions/).
 
 ##### Test framework
 

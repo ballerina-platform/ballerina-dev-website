@@ -1,60 +1,70 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// This function definition has two parameters of type \`int\`. 
-// \`returns\` clause specifies type of return value.
+// This function definition has two parameters of type \`int\`.
+// The \`returns\` clause specifies the type of the return value.
 function add(int x, int y) returns int {
     int sum = x + y;
-    // \`return\` statement returns a value.
+    // The \`return\` statement returns a value.
     return sum;
 }
 
+// The function parameters can have default values.
+function calculateWeight(decimal mass, decimal gForce = 9.8) returns decimal {
+    return mass * gForce;
+}
+
+// The function returns \`nil\`.
+function print(anydata data) {
+    io:println(data);
+}
+
 public function main() {
-    io:println(add(5, 11));
+    // Invoke the function \`add\` by passing the arguments.
+    int sum = add(5, 11);
+    // A function with no return type does not need a variable assignment.
+    print(sum);
+
+    // Invoke the \`calculateWeight\` function with the default arguments.
+    print(calculateWeight(5));
+
+    // Invoke the \`add\` function with the named arguments.
+    print(add(x = 5, y = 6));
+
+    // The return value of the function can be ignored by assigning it to \`_\`.
+    _ = calculateWeight(mass = 5, gForce = 10);
 }
 `,
 ];
 
-export default function Functions() {
+export function Functions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Functions</h1>
 
       <p>
-        A function accepts zero or more arguments and returns a single value.
-        Function parameters are declared as in C. You are not allowed to assign
-        to parameters in Ballerina.
+        Functions are declared using the <code>function</code> keyword. It
+        accepts zero or more arguments and returns a single value. The{" "}
+        <code>returns</code> keyword is used to indicate the return type of the
+        function.
+      </p>
+
+      <p>
+        Function parameters are final variables and cannot be modified within
+        the function.
       </p>
 
       <Row
@@ -67,7 +77,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f3fbe59d50664c06f832682276abf150&file=functions.bal",
+                "https://play.ballerina.io/?gist=543c45df25e42f0bea65d650c40470a5&file=functions.bal",
                 "_blank"
               );
             }}
@@ -92,7 +102,7 @@ export default function Functions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/functions",
                 "_blank"
               );
             }}
@@ -221,16 +231,102 @@ export default function Functions() {
             <code className="d-flex flex-column">
               <span>{`\$ bal run functions.bal`}</span>
               <span>{`16`}</span>
+              <span>{`49.0`}</span>
+              <span>{`11`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/included-record-parameters/">
+              Included record parameters
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rest-parameters/">Rest Parameters</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/default-values-for-function-parameters/">
+              Default values for function parameters
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/provide-function-arguments-by-name/">
+              Provide function arguments by name
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-pointers/">Function pointers</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-values/">Function values</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-types/">Function types</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/anonymous-function/">
+              Anonymous function
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/function-closure/">Function closure</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Match statement"
-            href="/learn/by-example/match-statement"
+            title="Binding patterns in match statement"
+            href="/learn/by-example/binding-patterns-in-match-statement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -257,7 +353,7 @@ export default function Functions() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Match statement
+                  Binding patterns in match statement
                 </span>
               </div>
             </div>
@@ -265,8 +361,8 @@ export default function Functions() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Function values"
-            href="/learn/by-example/function-values"
+            title="Included record parameters"
+            href="/learn/by-example/included-record-parameters"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -276,7 +372,7 @@ export default function Functions() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Function values
+                  Included record parameters
                 </span>
               </div>
               <svg

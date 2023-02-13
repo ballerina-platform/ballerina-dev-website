@@ -1,59 +1,52 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
     // Creates a \`map\` constrained by the \`int\` type.
-    map<int> m = {
-        "x": 1,
-        "y": 2
+    map<int> ages = {
+        "Tom": 23,
+        "Jack": 34
     };
 
-    // Gets the entry for \`x\`.
-    int? v = m["x"];
-
+    // Gets the entry for \`Tom\`.
+    int? v = ages["Tom"];
     io:println(v);
 
-    // Adds a new entry for \`z\`.
-    m["z"] = 5;
+    // As there exists an entry for \`Tom\`, it can be accessed using the \`map:get()\` method. 
+    // Using \`ages["Tom"]\` wouldn't work here because its type would be \`int?\` and  not \`int\`.
+    int age = ages.get("Tom");
+    io:println(age);
 
-    // Using \`m["x"]\` wouldn't work here because the type would be \`int?\` and not \`int\`.
-    m["z"] = m.get("x");
+    // Adds a new entry for \`Anne\`.
+    ages["Anne"] = 19;
 
+    // The \`map:hasKey()\` method checks whether the map \`age\` has a member with \`Jack\` as the key.
+    if ages.hasKey("Jack") {
+        // The member with the key \`Jack\` can be removed using \`map:remove()\`.
+        _ = ages.remove("Jack");
+    }
+
+    // \`map:keys()\` returns the keys as an array of strings.
+    foreach string name in ages.keys() {
+        io:println(name, " : ", ages[name]);
+    }
 }
 `,
 ];
 
-export default function Maps() {
+export function Maps({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -62,13 +55,12 @@ export default function Maps() {
       <p>
         The <code>map&lt;T&gt;</code> type is a mapping from strings to{" "}
         <code>T</code>. The map syntax is similar to JSON. Maps are mutable.{" "}
-        <code>m[k]</code> is an &quot;lvalue&quot;. <code>foreach</code> will
-        iterate over the values of the <code>map</code>. <code>m[k]</code> gets
-        entry for <code>k</code>; <code>nil</code> if missing. Use{" "}
+        <code>foreach</code> can be used to iterate over the values of the map{" "}
+        <code>m</code>, and <code>m.keys()</code>, which returns the keys as an
+        array of strings can be used to iterate over the keys. <code>m[k]</code>{" "}
+        gets the entry for <code>k</code>; <code>nil</code> if missing. Use{" "}
         <code>m.get(k)</code> when you know that there is an entry for{" "}
-        <code>k</code>. <code>m.keys()</code> can be used to iterate over keys
-        to get the keys as an <code>array</code> of strings. <code>==</code> and{" "}
-        <code>!=</code> on maps is deep. Two maps are equal if they have the
+        <code>k</code>. Two maps are equal (<code>==</code>) if they have the
         same set of keys and the values for each key are equal.
       </p>
 
@@ -82,7 +74,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a3e7421cf426e414f69e1ca9a15ba517&file=maps.bal",
+                "https://play.ballerina.io/?gist=369706c5b6844b36d3f69aa42490e541&file=maps.bal",
                 "_blank"
               );
             }}
@@ -107,7 +99,7 @@ export default function Maps() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/maps",
                 "_blank"
               );
             }}
@@ -235,11 +227,34 @@ export default function Maps() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run maps.bal`}</span>
-              <span>{`1`}</span>
+              <span>{`23`}</span>
+              <span>{`23`}</span>
+              <span>{`Tom : 23`}</span>
+              <span>{`Anne : 19`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/foreach-statement/">Foreach statement</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

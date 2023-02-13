@@ -3,7 +3,7 @@
 _Owners_: @TharmiganK @shafreenAnfar @chamil321  
 _Reviewers_: @shafreenAnfar @chamil321  
 _Created_: 2022/08/09  
-_Updated_: 2022/08/09   
+_Updated_: 2023/01/31   
 _Edition_: Swan Lake
 
 ## Introduction
@@ -164,16 +164,18 @@ public type StringConstraints record {|
     int length?;
     int minLength?;
     int maxLength?;
+    string:RegExp pattern?;
 |};
 ```
 
 All the supported constraints on `string` type are illustrated in the following table.
 
-| Constraint name   | Semantics (v is value being <br/>constrained, c is constraint value) |
-|-------------------|:--------------------------------------------------------------------:|
-| length            |                           v.length() == c                            |
-| minLength         |                           v.length() >= c                            |
-| maxLength         |                           v.length() <= c                            |
+| Constraint name | Semantics (v is value being <br/>constrained, c is constraint value) |
+|-----------------|:--------------------------------------------------------------------:|
+| length          |                           v.length() == c                            |
+| minLength       |                           v.length() >= c                            |
+| maxLength       |                           v.length() <= c                            |
+| pattern         |                     v is a full match of regex c                     |
 
 When defining constraints on `string` type, if the `length` constraint is present then `minLength` or `maxLength` are 
 not allowed.
@@ -182,7 +184,8 @@ Example :
 ```ballerina
 @constraint:String {
     minLength: 5,
-    maxLength: 10
+    maxLength: 10,
+    pattern: re `[a-z0-9](_?[a-z0-9])+`
 }
 type Username string;
 ```
@@ -223,8 +226,9 @@ type Names string[];
 ## 3. `validate` function
 
 The Constraint library has a public function : `validate` which should be explicitly called by the developer to 
-validate the constraints. If the validation is successful then this function returns the type descriptor of the 
-value which is validated, else a `constraint:Error` is returned.
+validate the constraints. If the validation is successful then this function returns the validated value, else
+a `constraint:Error` is returned. Additionally, if the type of the value is different from the expected return
+type then the value will be cloned with the contextually expected type before the validation.
 
 The following is the definition of the `validate` function.
 ```ballerina

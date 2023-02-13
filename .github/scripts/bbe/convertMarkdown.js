@@ -539,38 +539,23 @@ const generateContent = (
   outputClicks = outputClicks.trim();
 
   // outputFormat
-  output = `import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+  output = `import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
 import {
   copyToClipboard,
   extractOutput,
-  shikiTokenizer,
 } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
+export const codeSnippetData = [${codeContentArray.join(",")}];
 
-const codeSnippetData = [${codeContentArray.join(",")}]
-
-export default function ${kebabCaseToPascalCase(bbeName)}() {
+export function ${kebabCaseToPascalCase(bbeName)}({codeSnippets}) {
   ${codeClicks}
 
   ${outputClicks}
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -595,9 +580,9 @@ export default function ${kebabCaseToPascalCase(bbeName)}() {
 // generate index.jsx content
 const generateIndex = (bbeUrls) => {
   const importsArray = bbeUrls.map(
-    (url) => `import ${kebabCaseToPascalCase(url)} from "./${url}/content.jsx";`
+    (url) => `import { ${kebabCaseToPascalCase(url)}, codeSnippetData as ${kebabCaseToPascalCase(url)}CodeSnippetData } from "./${url}/content.jsx";`
   );
-  const objArray = bbeUrls.map((url) => kebabCaseToPascalCase(url));
+  const objArray = bbeUrls.map((url) => `${kebabCaseToPascalCase(url)}, ${kebabCaseToPascalCase(url)}CodeSnippetData`);
 
   const output = `${importsArray.join("\n")}
 
@@ -702,6 +687,7 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetLang,
                 codeSnippetArray = [],
                 listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
+                relatedLinks = false;
 
               for (const line of contentArray) {
                 let convertedLine;
@@ -716,6 +702,10 @@ const generate = async (examplesDir, outputDir) => {
 
                   if (line.match(/^\s+::: code/) || line.match(/^\s+::: out/)) {
                     isIndent = true;
+                  }
+
+                  if (line.includes("## Related links")) {
+                    relatedLinks = true;
                   }
 
                   if (line.includes("::: code")) {
@@ -764,12 +754,22 @@ const generate = async (examplesDir, outputDir) => {
                   } else if (listRegex.test(line)) {
                     let match = line.match(listRegex);
                     let listContent = md.render(match[3]);
-                    convertedLine = `<ul style={{ marginLeft: "${match[1].length * 8}px" }}>
-                    <li>
-                        <span>${match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`}</span>
-                        <span>${listContent.slice(3,listContent.length - 5)}</span>
-                    </li>
-                </ul>`;
+                    convertedLine = `<ul style={{ marginLeft: "${
+                      match[1].length * 8
+                        }px" 
+                      }} ${
+                        relatedLinks ? 'class="relatedLinks"' : ''
+                      }>
+                        <li>
+                            <span>${
+                              match[2] === "-" ? `&#8226;&nbsp;` : `${match[2]}.`
+                            }</span>
+                            <span>${listContent.slice(
+                              3,
+                              listContent.length - 5
+                            )}</span>
+                        </li>
+                    </ul>`;
                   } else {
                     convertedLine = escapeParagraphCharacters(md.render(line));
                   }
@@ -794,6 +794,9 @@ const generate = async (examplesDir, outputDir) => {
               }
 
               codeSection = updatedArray.join("\n");
+              if(relatedLinks) {
+                codeSection = codeSection + "<span style={{marginBottom:'20px'}}></span>";
+              }
             }
           }
         }

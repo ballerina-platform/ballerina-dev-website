@@ -552,23 +552,100 @@
       "api-docs":"ballerina-api-docs-2201.2.1.zip",
       "release-notes":"ballerina-release-notes-2201.2.1.md"
    },
-	 {
-			"version":"2201.2.2",
-			"short-version":"2201.2.2",
-			"display-version":"2201.2.2 (Swan Lake Update 2)",
-			"release-date":"2022-10-20",
-			"windows-installer":"ballerina-2201.2.2-swan-lake-windows-x64.msi",
-			"windows-installer-size":"163mb",
-			"linux-installer":"ballerina-2201.2.2-swan-lake-linux-x64.deb",
-			"linux-installer-size":"183mb",
-			"macos-installer":"ballerina-2201.2.2-swan-lake-macos-x64.pkg",
-			"macos-installer-size":"222mb",
-			"rpm-installer":"ballerina-2201.2.2-swan-lake-linux-x64.rpm",
-			"rpm-installer-size":"226mb",
-			"other-artefacts":[
-					"ballerina-2201.2.2-swan-lake.zip"
-			],
-			"api-docs":"ballerina-api-docs-2201.2.2.zip",
-			"release-notes":"ballerina-release-notes-2201.2.2.md"
-    }
+	{
+      "version":"2201.2.2",
+      "short-version":"2201.2.2",
+      "display-version":"2201.2.2 (Swan Lake Update 2)",
+      "release-date":"2022-10-20",
+      "windows-installer":"ballerina-2201.2.2-swan-lake-windows-x64.msi",
+      "windows-installer-size":"163mb",
+      "linux-installer":"ballerina-2201.2.2-swan-lake-linux-x64.deb",
+      "linux-installer-size":"183mb",
+      "macos-installer":"ballerina-2201.2.2-swan-lake-macos-x64.pkg",
+      "macos-installer-size":"222mb",
+      "rpm-installer":"ballerina-2201.2.2-swan-lake-linux-x64.rpm",
+      "rpm-installer-size":"226mb",
+      "other-artefacts":[
+            "ballerina-2201.2.2-swan-lake.zip"
+      ],
+      "api-docs":"ballerina-api-docs-2201.2.2.zip",
+      "release-notes":"ballerina-release-notes-2201.2.2.md"
+   },
+   {
+      "version":"2201.2.3",
+      "short-version":"2201.2.3",
+      "display-version":"2201.2.3 (Swan Lake Update 2)",
+      "release-date":"2022-11-04",
+      "windows-installer":"ballerina-2201.2.3-swan-lake-windows-x64.msi",
+      "windows-installer-size":"164mb",
+      "linux-installer":"ballerina-2201.2.3-swan-lake-linux-x64.deb",
+      "linux-installer-size":"183mb",
+      "macos-installer":"ballerina-2201.2.3-swan-lake-macos-x64.pkg",
+      "macos-installer-size":"222mb",
+      "rpm-installer":"ballerina-2201.2.3-swan-lake-linux-x64.rpm",
+      "rpm-installer-size":"226mb",
+      "other-artefacts":[
+         "ballerina-2201.2.3-swan-lake.zip"
+      ],
+      "api-docs":"ballerina-api-docs-2201.2.3.zip",
+      "release-notes":"ballerina-release-notes-2201.2.3.md"
+   },
+   {
+
+      "version":"2201.2.4",
+      "short-version":"2201.2.4",
+      "display-version":"2201.2.4 (Swan Lake Update 2)",
+      "release-date":"2022-12-14",
+      "windows-installer":"ballerina-2201.2.4-swan-lake-windows-x64.msi",
+      "windows-installer-size":"164mb",
+      "linux-installer":"ballerina-2201.2.4-swan-lake-linux-x64.deb",
+      "linux-installer-size":"184mb",
+      "macos-installer":"ballerina-2201.2.4-swan-lake-macos-x64.pkg",
+      "macos-installer-size":"221mb",
+      "rpm-installer":"ballerina-2201.2.4-swan-lake-linux-x64.rpm",
+      "rpm-installer-size":"225mb",
+      "other-artefacts":[
+         "ballerina-2201.2.4-swan-lake.zip"
+      ],
+      "api-docs":"ballerina-api-docs-2201.2.4.zip",
+      "release-notes":"ballerina-release-notes-2201.2.4.md"
+   },
+   {
+      "version":"2201.3.0",
+      "short-version":"2201.3.0",
+      "display-version":"2201.3.0 (Swan Lake Update 3)",
+      "release-date":"2022-12-05",
+      "windows-installer":"ballerina-2201.3.0-swan-lake-windows-x64.msi",
+      "windows-installer-size":"169mb",
+      "linux-installer":"ballerina-2201.3.0-swan-lake-linux-x64.deb",
+      "linux-installer-size":"193mb",
+      "macos-installer":"ballerina-2201.3.0-swan-lake-macos-x64.pkg",
+      "macos-installer-size":"231mb",
+      "rpm-installer":"ballerina-2201.3.0-swan-lake-linux-x64.rpm",
+      "rpm-installer-size":"234mb",
+      "other-artefacts":[
+         "ballerina-2201.3.0-swan-lake.zip"
+      ],
+      "api-docs":"ballerina-api-docs-2201.3.0.zip",
+      "release-notes":"ballerina-release-notes-2201.3.0.md"
+   },
+   {
+      "version":"2201.3.1",
+      "short-version":"2201.3.1",
+      "display-version":"2201.3.1 (Swan Lake Update 3)",
+      "release-date":"2023-01-03",
+      "windows-installer":"ballerina-2201.3.1-swan-lake-windows-x64.msi",
+      "windows-installer-size":"173mb",
+      "linux-installer":"ballerina-2201.3.1-swan-lake-linux-x64.deb",
+      "linux-installer-size":"192mb",
+      "macos-installer":"ballerina-2201.3.1-swan-lake-macos-x64.pkg",
+      "macos-installer-size":"231mb",
+      "rpm-installer":"ballerina-2201.3.1-swan-lake-linux-x64.rpm",
+      "rpm-installer-size":"234mb",
+      "other-artefacts":[
+         "ballerina-2201.3.1-swan-lake.zip"
+      ],
+      "api-docs":"ballerina-api-docs-2201.3.1.zip",
+      "release-notes":"ballerina-release-notes-2201.3.1.md"
+   }
 ]

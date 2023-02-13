@@ -1,80 +1,65 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// Defines a class called \`EvenNumberGenerator\`. Each class has its own \`next()\` method, which gets
-// invoked when the stream's \`next()\` function gets called.
+// Defines a class called \`EvenNumberGenerator\`, which implements the \`next()\` method.
+// This will be invoked when the \`next()\` method of the stream gets invoked.
 class EvenNumberGenerator {
     int i = 0;
-    public isolated function next() returns record {| int value; |}|error? {
+    public isolated function next() returns record {|int value;|}|error? {
         self.i += 2;
-        return { value: self.i };
+        return {value: self.i};
     }
 }
 
-type ResultValue record {|
-    int value;
-|};
-
 public function main() {
-    EvenNumberGenerator evenGen = new();
+    EvenNumberGenerator evenGen = new ();
 
     // Creates a \`stream\` passing an \`EvenNumberGenerator\` object to the \`stream\` constructor.
-    stream<int, error?> evenNumberStream = new(evenGen);
+    stream<int, error?> evenNumberStream = new (evenGen);
 
     var evenNumber = evenNumberStream.next();
-    
-    if (evenNumber is ResultValue) {
+
+    if (evenNumber !is error?) {
         io:println("Retrieved even number: ", evenNumber.value);
     }
 }
 `,
 ];
 
-export default function StreamType() {
+export function StreamType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Stream type</h1>
 
       <p>
-        A <code>stream</code> represents a sequence of values that are generated
-        as needed. The end of a <code>stream</code> is indicated with a
-        termination value, which is <code>error</code> or <code>nil</code>. The
-        type <code>stream&lt;T,E&gt;</code> is a <code>stream</code> where the
-        members of the sequence are type <code>T</code> and termination value is
-        type <code>E</code>. <code>stream&lt;T&gt;</code> means{" "}
-        <code>stream&lt;T,()&gt;</code>. The <code>stream</code> type is a
-        separate basic type, but like an object.
+        A stream represents a sequence of values that are generated as needed.
+        The end of a stream is indicated with a termination value, which is
+        error or nil. The type <code>stream&lt;T,E&gt;</code> is a stream of
+        which the members of the sequence are of the type <code>T</code>, and
+        the termination value is type <code>E</code>.{" "}
+        <code>stream&lt;T&gt;</code> means <code>stream&lt;T,()&gt;</code>.
+      </p>
+
+      <p>
+        The stream type is a separate basic type, However like an object, it can
+        be initialized with a <code>new</code> expression by passing an object,
+        which implements the{" "}
+        <code>next() returns record&#123;| T value; |&#125;|C</code> method
+        where <code>C</code> is either <code>()</code>, <code>error</code> or{" "}
+        <code>error?</code>.
       </p>
 
       <Row
@@ -87,7 +72,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f38fb16846b77d947abb7ac0278c0558&file=stream_type.bal",
+                "https://play.ballerina.io/?gist=a938edb84405f66c3355f745e38135af&file=stream_type.bal",
                 "_blank"
               );
             }}
@@ -112,7 +97,7 @@ export default function StreamType() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/stream-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/stream-type",
                 "_blank"
               );
             }}
@@ -246,9 +231,36 @@ export default function StreamType() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/querying-with-streams">
+              Querying with streams
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Join clause" href="/learn/by-example/join-clause">
+          <Link
+            title="Dependent types"
+            href="/learn/by-example/dependent-types"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -274,17 +286,14 @@ export default function StreamType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Join clause
+                  Dependent types
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Querying with streams"
-            href="/learn/by-example/querying-with-streams"
-          >
+          <Link title="Never type" href="/learn/by-example/never-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -293,7 +302,7 @@ export default function StreamType() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Querying with streams
+                  Never type
                 </span>
               </div>
               <svg

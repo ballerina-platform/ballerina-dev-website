@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 // This code is completely focused on the business logic and it does not specify anything related to the operations.
@@ -30,7 +23,7 @@ tag="v0.1.0"
 `,
 ];
 
-export default function C2cK8sDeployment() {
+export function C2cK8sDeployment({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -51,18 +44,7 @@ export default function C2cK8sDeployment() {
   const [outputClick8, updateOutputClick8] = useState(false);
   const ref8 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -79,7 +61,7 @@ export default function C2cK8sDeployment() {
 
       <p>
         For more information, see{" "}
-        <a href="/learn/run-ballerina-programs-in-the-cloud/code-to-cloud-deployment/">
+        <a href="/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment/">
           Code to Cloud Deployment
         </a>
         .
@@ -95,7 +77,7 @@ export default function C2cK8sDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/c2c-k8s-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/c2c-k8s-deployment",
                 "_blank"
               );
             }}
@@ -194,7 +176,7 @@ export default function C2cK8sDeployment() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/c2c-k8s-deployment",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/c2c-k8s-deployment",
                 "_blank"
               );
             }}

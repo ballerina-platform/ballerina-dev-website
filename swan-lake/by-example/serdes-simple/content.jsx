@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/serdes;
 
@@ -23,7 +16,6 @@ type Student record {
 };
 
 public function main() returns error? {
-
     // Assign the value to the variable.
     Student studentValue = {
         id: 7894,
@@ -47,41 +39,31 @@ public function main() returns error? {
 `,
 ];
 
-export default function SerdesSimple() {
+export function SerdesSimple({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Serialization and Deserialization</h1>
+      <h1>SerDes - Serialization/Deserialization</h1>
 
       <p>
-        The <code>serdes</code> module helps to serialize and deserialize
-        subtypes of Ballerina <code>anydata</code>. This sample demonstrates how
-        to serialize and deserialize a user defined record type.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/serdes/latest">
-          <code>serdes</code> module
-        </a>
-        .
+        The <code>serdes</code> module allows serializing and deserializing the
+        subtypes of Ballerina <code>anydata</code>. The{" "}
+        <code>serdes:Proto3Schema</code> object takes <code>typedesc</code> as
+        an argument when instantiating, and maps the given type to a Protocol
+        Buffer schema. The <code>serialize</code> and <code>deserialize</code>{" "}
+        methods of the <code>serdes:Proto3Schema</code> object serialize and
+        deserialize data using the generated Protocol Buffer schema. The{" "}
+        <code>serialize</code> method takes a value of the given type as an
+        argument whereas the <code>deserialize</code> method takes{" "}
+        <code>byte[]</code> as an argument and tries to bind the deserialized
+        value to the <code>typedesc</code> inferred from the
+        contextually-expected type.
       </p>
 
       <Row
@@ -94,7 +76,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ced3ff5ec8dec2ff6b96cd34c4b985cb&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=fbb4fdd6e9a5744680c4a39880ceb5e3&file=http_cookies_service.bal",
                 "_blank"
               );
             }}
@@ -119,7 +101,7 @@ export default function SerdesSimple() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/serdes-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/serdes-simple",
                 "_blank"
               );
             }}
@@ -193,6 +175,8 @@ export default function SerdesSimple() {
         </Col>
       </Row>
 
+      <p>Run the program by executing the following command.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -253,11 +237,35 @@ export default function SerdesSimple() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/serdes/latest">
+              <code>serdes</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/serdes">
+              <code>serdes</code> - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Atomic batch execute"
-            href="/learn/by-example/jdbc-atomic-batch-execute-operation"
+            title="Call stored procedures"
+            href="/learn/by-example/mysql-call-stored-procedures"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -284,7 +292,7 @@ export default function SerdesSimple() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Atomic batch execute
+                  Call stored procedures
                 </span>
               </div>
             </div>

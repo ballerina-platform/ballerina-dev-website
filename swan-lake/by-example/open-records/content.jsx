@@ -1,81 +1,89 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// \`Person\` type allows additional fields with \`anydata\` values.
-type Person record {
+// \`Student\` type allows additional fields with \`anydata\` values.
+type Student record {
     string name;
+    int age;
 };
 
-// \`Employee\` type allows additional fields with \`anydata\` values.
-type Employee record {
+type PartTimeStudent record {|
     string name;
-    int id;
-};
-
-// Adds an additional \`id\` field to \`e\`.
-Employee e = {
-    name: "James", id: 10
-};
-
-// You can assign an \`Employee\` type value to a \`Person\`.
-Person p = e;
-
-Person p2 = {
-    name: "John", "country": "UK"
-};
-
-// You can assign a \`Person\` type value to a \`map\`.
-map<anydata> m = p2;
+    int age;
+    // Rest descriptor allows additional fields with \`anydata\` values
+    // in the \`PartTimeStudent\` type.
+    anydata...;
+|};
 
 public function main() {
-    io:println(p);
-    io:println(m);
+    // Adds an additional \`country\` field to \`s1\`.
+    Student s1 = {
+        name: "John",
+        age: 25,
+        "country": "UK"
+    };
+    io:println(s1);
+
+    // Accesses the \`age\` field in \`s1\`.
+    int age = s1.age;
+    io:println(age);
+
+    // Accesses the \`country\` field in \`s1\`.
+    anydata country = s1["country"];
+    io:println(country);
+
+    // Adds an additional \`studyHours\` field to \`s2\`.
+    PartTimeStudent s2 = {
+        name: "Anne",
+        age: 23,
+        "studyHours": 6
+    };
+
+    // Accesses the \`studyHours\` field in \`s2\`.
+    anydata studyHours = s2["studyHours"];
+    io:println(studyHours);
+
+    // Adds an additional \`credits\` field to \`s2\`.
+    s2["credits"] = 120.5;
+    io:println(s2);
+
+    // You can assign a \`PartTimeStudent\` type value to a \`Student\`.
+    Student s3 = s2;
+    io:println(s3);
+
+    // You can assign a \`Person\` type value to a \`map\`.
+    map<anydata> s4 = s3;
+    io:println(s4);
 }
 `,
 ];
 
-export default function OpenRecords() {
+export function OpenRecords({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Open records</h1>
 
       <p>
-        Record types are open by default. They allow fields other than those
-        specified. The type of unspecified fields is <code>anydata</code>.
-        Records are <code>maps</code>. Open records belong to{" "}
-        <code>map&lt;anydata&gt;</code>. Use quoted keys for fields not
-        mentioned in the <code>record</code> type.
+        A record type that uses either the <code>&#123;</code> and{" "}
+        <code>&#125;</code> delimiters or the <code>&#123;|</code> and{" "}
+        <code>|&#125;</code> delimiters with a rest descriptor is considered
+        open. They allow fields other than those specified. The type of
+        unspecified fields is <code>anydata</code>. Open records belong to{" "}
+        <code>map&lt;anydata&gt;</code>. Quoted keys can be used to specify
+        fields that are not mentioned in the record type.
       </p>
 
       <Row
@@ -88,7 +96,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e62e6b2930e4f66916bbd27ded744fe&file=open_records.bal",
+                "https://play.ballerina.io/?gist=e54207cdf680ff25bba57e0c2fb8ec5e&file=open_records.bal",
                 "_blank"
               );
             }}
@@ -113,7 +121,7 @@ export default function OpenRecords() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/open-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/open-records",
                 "_blank"
               );
             }}
@@ -241,12 +249,47 @@ export default function OpenRecords() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run open_records.bal`}</span>
-              <span>{`{"name":"James","id":10}`}</span>
-              <span>{`{"name":"John","country":"UK"}`}</span>
+              <span>{`{"name":"John","age":25,"country":"UK"}`}</span>
+              <span>{`25`}</span>
+              <span>{`UK`}</span>
+              <span>{`6`}</span>
+              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
+              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
+              <span>{`{"name":"Anne","age":23,"studyHours":6,"credits":120.5}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/records/">Records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/controlling-openness/">
+              Controlling openness
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -287,7 +330,7 @@ export default function OpenRecords() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Control openness"
+            title="Controlling openness"
             href="/learn/by-example/controlling-openness"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -298,7 +341,7 @@ export default function OpenRecords() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Control openness
+                  Controlling openness
                 </span>
               </div>
               <svg

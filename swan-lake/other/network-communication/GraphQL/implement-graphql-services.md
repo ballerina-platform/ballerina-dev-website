@@ -30,7 +30,7 @@ service graphql:Service /query on new graphql:Listener(8080) {
 }
 ```
 
-This example code includes a single resource function `order`, which takes in the `id` parameter and returns an instance of the `Order` service class. The `loadOrder` function and the `Order` service class are implemented in the following way. 
+This example code includes a single resource method `order`, which takes in the `id` parameter and returns an instance of the `Order` service class. The `loadOrder` function and the `Order` service class are implemented in the following way. 
 
 ```ballerina
 function loadOrder(int id) returns Order|error {
@@ -77,7 +77,7 @@ Here, you execute the required SQL query to load the `Order` table data and popu
 
 >**Note:"** You do not load the `customer` and `shipper` information right away. Rather, these are loaded lazily if and when it’s required as expressed through the incoming GraphQL query. 
 
-The `loadCustomer` function shown below is used in the `customer` resource function to load the customer information from the database and populate a `Customer` object. 
+The `loadCustomer` function shown below is used in the `customer` resource method to load the customer information from the database and populate a `Customer` object. 
 
 ```ballerina
 function loadCustomer(int id) returns Customer|error {
@@ -111,7 +111,7 @@ service class Customer {
 }
 ```
 
-Similarly, the `shipper` resource function is implemented to query the corresponding GraphQL object field. 
+Similarly, the `shipper` resource method is implemented to query the corresponding GraphQL object field. 
 
 The complete Ballerina source code for our scenario is shown below.
 

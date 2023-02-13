@@ -1,39 +1,30 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-http:Client clientEP = check new ("http://postman-echo.com");
+type Album readonly & record {
+    string title;
+    string artist;
+};
 
-service / on new http:Listener(9090) {
+http:Client clientEP = check new ("localhost:9090");
 
-    // The passthrough resource allows all HTTP methods as the accessor is \`default\`.
-    resource function 'default passthrough(http:Request req)
-            returns http:Response|error? {
-        // When forward()\` is called on the backend client endpoint, it forwards the request that the passthrough
-        // resource received to the backend. When forwarding, the request is made using the same HTTP method that was
-        // used to invoke the passthrough resource. The \`forward()\` function returns the response from the backend if
-        // there are no errors.
-        // For details, see https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward.
-        http:Response response = check clientEP->forward("/get", req);
-        return response;
+service / on new http:Listener(9092) {
+
+    resource function 'default [string... path](http:Request req) returns Album[]|error {
+        Album[] payload = check clientEP->forward("/albums", req);
+        return payload;
     }
 }
 `,
 ];
 
-export default function HttpPassthrough() {
+export function HttpPassthrough({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -41,34 +32,24 @@ export default function HttpPassthrough() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Passthrough</h1>
+      <h1>HTTP service - Passthrough</h1>
 
       <p>
-        The passthrough sample exhibits the process of an HTTP client connector.
-        The 'Echo Service' is used as a sample backend.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The passthrough service forwards the inbound request to the backend and
+        returns the backend response. The passthrough resource is designed to
+        allow all HTTP methods as the accessor is the <code>default</code>. Also
+        the rest parameter in the resource path as it allows any request URI to
+        get dispatched. When <code>forward()</code> is called on the backend
+        client, it forwards the request that the passthrough resource received
+        to the backend. When forwarding, the request is made using the same HTTP
+        method that was used to invoke the passthrough resource. The{" "}
+        <code>forward()</code> function returns the response from the backend if
+        there are no errors. This is useful to delegate the functionality to the
+        downstream services.
       </p>
 
       <Row
@@ -81,7 +62,32 @@ export default function HttpPassthrough() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-passthrough",
+                "https://play.ballerina.io/?gist=fbb4fdd6e9a5744680c4a39880ceb5e3&file=http_cookies_service.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-passthrough",
                 "_blank"
               );
             }}
@@ -216,6 +222,21 @@ export default function HttpPassthrough() {
         </Col>
       </Row>
 
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>{" "}
+            example as the backend service.
+          </span>
+        </li>
+      </ul>
+
       <p>
         Invoke the service by executing the following cURL command in a new
         terminal.
@@ -274,18 +295,42 @@ export default function HttpPassthrough() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl http://localhost:9090/passthrough`}</span>
-              <span>{`{"args":{}, "headers":{"x-forwarded-proto":"http", "x-forwarded-port":"80", "host":"postman-echo.com", "x-amzn-trace-id":"Root=1-60b7255d-23ce05a61ad55a0164ca19d3", "accept":"*/*", "user-agent":"ballerina"}, "url":"http://postman-echo.com/get"}`}</span>
+              <span>{`\$ curl http://localhost:9092/passthrough`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]*`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward">
+              <code>forward()</code> - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#2424-forwardexecute-methods">
+              HTTP service forward method - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Request With multiparts"
-            href="/learn/by-example/http-request-with-multiparts"
+            title="Response with multiparts"
+            href="/learn/by-example/http-response-with-multiparts"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,7 +357,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request With multiparts
+                  Response with multiparts
                 </span>
               </div>
             </div>
@@ -320,8 +365,8 @@ export default function HttpPassthrough() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Request Interceptors"
-            href="/learn/by-example/http-request-interceptors"
+            title="HTTP/2 to HTTP/1.1 downgrade"
+            href="/learn/by-example/http-2-to-1-1-downgrade-service"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -331,7 +376,7 @@ export default function HttpPassthrough() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Request Interceptors
+                  HTTP/2 to HTTP/1.1 downgrade
                 </span>
               </div>
               <svg

@@ -9,9 +9,8 @@ Album[] albums = [
     {id: "3", title: "No Count Sarah", artist: "Sarah Vaughan", price: 39.99}
 ];
 
-@grpc:ServiceDescriptor {
-    descriptor: ROOT_DESCRIPTOR_RECORD_STORE,
-    descMap: getDescriptorMapRecordStore()
+@grpc:Descriptor {
+    value: DESCRIPTOR_RECORD_STORE
 }
 service "Albums" on new grpc:Listener(port) {
     remote function getAlbum(string id) returns Album|error {

@@ -1,72 +1,66 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
-service /echo on new websocket:Listener(9090) {
-   resource function get .() returns websocket:Service|websocket:Error {
-       // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
-       return new WsService();
-   }
+service /chat on new websocket:Listener(9090) {
+
+    resource function get .() returns websocket:Service {
+        // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
+        return new ChatService();
+    }
 }
 
-service class WsService {
+service class ChatService {
     *websocket:Service;
+
     // This \`remote function\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
-    // For more information on data binding, see https://github.com/ballerina-platform/module-ballerina-websocket/blob/main/docs/proposals/data-binding-api.md.
-    remote function onMessage(websocket:Caller caller, string text) returns websocket:Error? {
-        io:println("\\ntext message: " + text);
-        return caller->writeMessage("You said: " + text);
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
+        io:println(chatMessage);
+        check caller->writeMessage("Hello!, How are you?");
     }
 }
 `,
 ];
 
-export default function WebsocketBasicSample() {
+export function WebsocketBasicSample({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Service</h1>
-
-      <p>This explains the basic functions of a WebSocket server.</p>
+      <h1>WebSocket service - Send/Receive message</h1>
 
       <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/websocket/latest/">
-          <code>websocket</code> module
-        </a>
-        .
+        The <code>websocket:Service</code> allows opening up a port via a{" "}
+        <code>websocket:Listener</code>. A <code>websocket:Listener</code> is
+        created by giving the port number, to which{" "}
+        <code>websocket:Service</code> is attached. The listener accepts and
+        serves connections from WebSocket clients. The <code>onMessage</code>{" "}
+        remote method receives incoming WebSocket messages. There are a few
+        other remote methods to receive other types of WebSocket messages. The{" "}
+        <code>onOpen</code> remote method is dispatched as soon as the WebSocket
+        handshake is completed and the connection is established,{" "}
+        <code>onPing</code> and <code>onPong</code> remote methods are
+        dispatched upon receiving ping and pong messages respectively,{" "}
+        <code>onIdleTimeout</code> remote method is dispatched when the idle
+        timeout is reached, <code>onClose</code> is dispatched when a close
+        frame with a <code>statusCode</code> and a <code>reason</code> is
+        received and finally the <code>onError</code> is dispatched when an
+        error occurs in the WebSocket connection. Use this service to implement
+        user applications where you need to establish two-way communication over
+        the WebSocket protocol.
       </p>
 
       <Row
@@ -79,7 +73,7 @@ export default function WebsocketBasicSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/websocket-basic-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/websocket-basic-sample",
                 "_blank"
               );
             }}
@@ -153,6 +147,8 @@ export default function WebsocketBasicSample() {
         </Col>
       </Row>
 
+      <p>Run the service by executing the command below.</p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -212,11 +208,42 @@ export default function WebsocketBasicSample() {
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the{" "}
+          <a href="/learn/by-example/websocket-client/">WebSocket client</a>.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest">
+              <code>websocket</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/websocket/#3-service-types">
+              WebSocket service - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Client - Retry"
-            href="/learn/by-example/websocket-retry-client"
+            title="OAuth2 password grant type"
+            href="/learn/by-example/graphql-client-security-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -243,7 +270,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Client - Retry
+                  OAuth2 password grant type
                 </span>
               </div>
             </div>
@@ -251,8 +278,8 @@ export default function WebsocketBasicSample() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service - SSL/TLS"
-            href="/learn/by-example/websocket-service-ssl-tls"
+            title="Payload constraint validation"
+            href="/learn/by-example/websocket-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -262,7 +289,7 @@ export default function WebsocketBasicSample() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service - SSL/TLS
+                  Payload constraint validation
                 </span>
               </div>
               <svg

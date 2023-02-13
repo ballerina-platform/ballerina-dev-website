@@ -1,0 +1,19 @@
+{
+  "title": "Table",
+  "description": "This BBE demonstrates how to create a table, create a table with a key, add entries to a table, update entries in a table, iterate over a table, get entries from a table, and create a table without a key in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "table syntax",
+    "table",
+    "map",
+    "key"
+  ],
+  "permalink": "/learn/by-example/table",
+  "active": "table",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/table",
+    "/swan-lake/learn/by-example/table.html"
+  ]
+}

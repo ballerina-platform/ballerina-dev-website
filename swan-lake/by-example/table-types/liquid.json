@@ -1,0 +1,18 @@
+{
+  "title": "Table types",
+  "description": "This BBE demonstrates how to create a table with a key, create a table without a key, and create a table with a key as a type-descriptor in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "table",
+    "map",
+    "key"
+  ],
+  "permalink": "/learn/by-example/table-types",
+  "active": "table-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/table-types",
+    "/swan-lake/learn/by-example/table-types.html"
+  ]
+}

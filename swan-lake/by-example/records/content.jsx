@@ -1,82 +1,84 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-// Defines a \`record\` type named \`Coord\`.
-type Coord record {
-    int x;
-    string y;
+// Defines a \`closed record\` type named \`Student\`. It only allows fields that are specified.
+type Student record {|
+    string name;
+    int age;
+|};
+
+// Defines an \`open record\` type named \`Employee\`. It allows fields other than those specified.
+type Employee record {
+    string name;
+    int age;
 };
 
 public function main() {
-    // Creates a \`record\`, specifying values for its fields.
-    record { int x; string y; } r = {
-        x: 1,
-        y: "2"
+    // Creates an \`open record\` by specifying values for its fields.
+    record {string name; int age;} person = {
+        name: "Harry",
+        age: 12
     };
 
-    // Creates a \`Coord\` record.
-    Coord c = {
-        x: 1,
-        y: "2"
+    // Creates a record using the \`Student\` type definition.
+    Student student = {
+        name: "Harry",
+        age: 12
     };
 
-    string a = r.y;
-    io:println(a);
+    // Creates a record using the \`Employee\` type definition with an additional \`country\` field.
+    Employee employee = {
+        name: "Harry",
+        age: 12,
+        "country": "UK"
+    };
 
-    int b = c.x;
-    io:println(b);
+    // Accesses the \`name\` field in \`employee\`.
+    string name = employee.name;
+    io:println(name);
+
+    // The two \`person\` & \`student\` records are equal since they have the same set of fields 
+    // and values.
+    io:println(person == student);
+
+    // Record equality returns \`false\` on the following two records as \`employee\` has 
+    // an additional field called \`country\`.
+    io:println(person == employee);
 }
 `,
 ];
 
-export default function Records() {
+export function Records({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Records</h1>
 
       <p>
-        A <code>record</code> type has specific named fields. Fields can be
-        accessed with <code>r.x</code>. Records are mutable. <code>r.x</code> is
-        an <code>lvalue</code>. Records can be constructed using a similar
-        syntax to a <code>map</code>.
+        A <code>record</code> type is a collection of specific named fields
+        where each field has a type for its value. A field <code>f</code> of a
+        record value <code>r</code> can be accessed with <code>r.f</code>.
+        Records are mutable and can be constructed using a syntax similar to a
+        map.
       </p>
 
       <p>
-        Typically, a <code>record</code> type is combined with a type
-        definition. The name of the type is not significant. A{" "}
-        <code>record</code> is just a collection of fields. Record equality
-        works the same as <code>map</code> equality.
+        A <code>closed record</code> type only allows fields that are specified
+        whereas, an <code>open record</code> type allows additional fields other
+        than those specified. Typically, a <code>record</code> type is written
+        using a type definition.
       </p>
 
       <Row
@@ -89,7 +91,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bacc12b69b3da1e3f068e857b1f13d4b&file=records.bal",
+                "https://play.ballerina.io/?gist=8c03b61fc9363df7d7cd5d19cf4c9f74&file=records.bal",
                 "_blank"
               );
             }}
@@ -114,7 +116,7 @@ export default function Records() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/records",
                 "_blank"
               );
             }}
@@ -242,12 +244,53 @@ export default function Records() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run records.bal`}</span>
-              <span>{`2`}</span>
-              <span>{`1`}</span>
+              <span>{`Harry`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/open-records/">Open records</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/controlling-openness/">
+              Controlling openness
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/default-values-for-record-fields/">
+              Default values for record fields
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/maps/">Maps</a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

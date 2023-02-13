@@ -1,5 +1,5 @@
 {
-  "title": "Service - JWT Auth",
+  "title": "JWT authentication",
   "description": "BBE on how to secure WebSocket service with JWT Auth in Ballerina.",
   "keywords": [
     "ballerina",

@@ -1,35 +1,38 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-service /company on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The path param is defined as a part of the resource path along with the type and it is extracted from the
-    // request URI.
-    resource function get empId/[int id]() returns json {
-        return {empId: id};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    resource function get empName/[string first]/[string last]() returns json {
-        return {firstName: first, lastName: last};
+service / on new http:Listener(9090) {
+
+    // The path param is defined as a part of the resource path within brackets
+    // along with the type and it is extracted from the request URI.
+    resource function get albums/[string title]() returns Album|http:NotFound {
+        Album? album = albums[title];
+        if album is () {
+            return http:NOT_FOUND;
+        }
+        return album;
     }
 }
 `,
 ];
 
-export default function HttpPathParam() {
+export function HttpPathParam({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -37,36 +40,21 @@ export default function HttpPathParam() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Path parameter</h1>
+      <h1>REST service - Path parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for specifying{" "}
-        <code>Path parameters</code> in the resource path along with the type.
-        The supported types are string, int, float, boolean, and decimal (e.g.,
-        path/[string foo]).
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The <code>path parameter</code> is a mandatory but variable part of a
+        resource URL. <code>path parameters</code> can be added to a resource
+        method by specifying the parameter type and name in the resource path
+        (eg: <code>albums/[string name]</code>). The <code>http</code> module
+        supports <code>string</code>, <code>int</code>, <code>float</code>,{" "}
+        <code>boolean</code>, and <code>decimal</code> types as path parameter
+        types. Use it when designing REST API endpoints that require dynamic
+        path segments.
       </p>
 
       <Row
@@ -79,7 +67,32 @@ export default function HttpPathParam() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-path-param",
+                "https://play.ballerina.io/?gist=4f980b059e3880ee1be0bcf9332d3f43&file=http_path_param.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-path-param",
                 "_blank"
               );
             }}
@@ -208,7 +221,7 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run http_path_param.bal`}</span>
+              <span>{`\$ bal run path_param.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -272,22 +285,53 @@ export default function HttpPathParam() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/company/empId/23"`}</span>
-              <span>{`{"empId":23}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/company/empName/Adele/Ferguson"`}</span>
-              <span>{`{"firstName":"Adele", "lastName":"Ferguson"}`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums/Jeru"`}</span>
+              <span>{`{"title":"Jeru", "artist":"Gerry Mulligan"}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-path-parameter/">
+            HTTP client - Path parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#233-path-parameter">
+              HTTP service path parameter - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
+            title="Payload constraint validation"
+            href="/learn/by-example/http-service-payload-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -314,7 +358,7 @@ export default function HttpPathParam() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Payload constraint validation
                 </span>
               </div>
             </div>

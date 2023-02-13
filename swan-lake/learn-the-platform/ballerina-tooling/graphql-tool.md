@@ -110,9 +110,10 @@ bal graphql -i graphql.config.yaml
 
 This generates the Ballerina sources (i.e., the three Ballerina files below) from the given GraphQL config.
 
-1. `query_country_client.bal` - contains the Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document
+1. `client.bal` - contains the Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
+4. `config_types.bal` - contains all the Ballerina data types related to connector configuration
 
 The example above generates the client file below.
 
@@ -120,7 +121,7 @@ The example above generates the client file below.
 import ballerina/http;
 import ballerina/graphql;
 
-public isolated client class QuerycountryClient {
+public isolated client class GraphqlClient {
     final graphql:Client graphqlClient;
     public isolated function init(string serviceUrl, http:ClientConfiguration clientConfig = {}) returns graphql:ClientError? {
         graphql:Client clientEp = check new (serviceUrl, clientConfig);
@@ -158,7 +159,7 @@ Use the generated client to execute the queries/mutations on the GraphQL API. Th
    import ballerina/io;
 
    public function main() returns error? {
-      QuerycountryClient countryClient = check new ("https://countries.trevorblades.com/");
+      GraphqlClient countryClient = check new ("https://countries.trevorblades.com/");
       CountryByCodeResponse response = check countryClient->countryByCode("LK");
       io:println(response.country?.name);
    }
@@ -172,7 +173,7 @@ You can also use the `graphql` CLI tool to generate a Ballerina module. For more
 
 #### Generate multiple clients from a GraphQL config
 
-Follow the steps below to generate multiple Ballerina clients from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents using the `graphql` CLI tool. Each document generates a separate Ballerina client.
+Follow the steps below to generate a Ballerina client from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents using the `graphql` CLI tool. This client consists of all the remote operations related to the specified document files.
 
 1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-documentation/cli-commands/#package-commands).
 
@@ -187,13 +188,13 @@ Follow the steps below to generate multiple Ballerina clients from a GraphQL con
       - <Add more documents based on your requirement …>
    ```
 
-If you want to generate multiple Ballerina clients for a given set of GraphQL documents, use the command below.
+To generate the Ballerina client for a given set of GraphQL documents, use the command below.
 
 ```
 bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-This generates a separate Ballerina client for each GraphQL document with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources are written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For example,
+This generates a single Ballerina client to represent all the GraphQL documents with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources are written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For example,
 
 ```
 bal graphql -i graphql.config.yaml
@@ -201,11 +202,12 @@ bal graphql -i graphql.config.yaml
 
 This generates the Ballerina sources (i.e., the Ballerina files below) from the given GraphQL config.
 
-1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document generates a separate Ballerina client file.)
+1. `client.bal` - contains the Ballerina client to represent all the remote operations in each GraphQL document
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
+4. `config_types.bal` - contains all the Ballerina data types related to connector configuration
 
-The generated clients can be used to execute the queries/mutations on the GraphQL API. You can use the generated clients within a Ballerina program in the same Ballerina package.
+The generated clients can be used to execute the queries/mutations on the GraphQL API. You can use the generated client within a Ballerina program in the same Ballerina package.
 
 You can also use the `graphql` CLI command to generate a Ballerina module. For more information, see [Generate multiple modules from a GraphQL config](/learn/graphql-tool/#generate-multiple-modules-from-a-graphql-config).
 
@@ -253,9 +255,10 @@ bal graphql -i graphql.config.yaml
 
 This generates a separate Ballerina module (with the project name configured) for each GraphQL project in the GraphQL config. This also generates the Ballerina sources (i.e., the Ballerina files below) inside each module.
 
-1. `<document_name>_client.bal` - contains the Ballerina client corresponding to each GraphQL document (each GraphQL document generates a separate Ballerina client file.)
+1. `client.bal` - contains the Ballerina client to represent all the remote operations in each GraphQL document
 2. `utils.bal` - contains all the utility methods related to the client stub
 3. `types.bal`- contains all the Ballerina data types extracted from the GraphQL schema (SDL)
+4. `config_types.bal` - contains all the Ballerina data types related to connector configuration
 
 You can use the generated modules to work with multiple GraphQL APIs. Use the client that is generated within each module to execute the queries/mutations on the relevant GraphQL API. Also, use the clients that are generated **within** the same Ballerina package by importing the generated modules. For more information, see [Import a module from the same package](/learn/organize-ballerina-code/#import-a-module-from-the-same-package).
 

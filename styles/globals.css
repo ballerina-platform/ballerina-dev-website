@@ -733,9 +733,9 @@ ul.eventsTabs {
   padding: 15px 0px;
 }
 
-.releasesRow table {
+/* .releasesRow table {
   width: 100%;
-}
+} */
 
 .installers table tr td {
   padding: 3px 7px 3px 7px !important;
@@ -1195,6 +1195,10 @@ table.cTopControlsContainer tbody {
 
 .bbeTable li:hover > .categoryButton {
   visibility: visible;
+}
+
+.bbeBody .relatedLinks {
+  margin-bottom: 0 !important;
 }
 
 /* CSS for hard coded html content in mds. */

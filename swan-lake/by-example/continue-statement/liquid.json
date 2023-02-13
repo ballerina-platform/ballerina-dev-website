@@ -1,0 +1,23 @@
+{
+  "title": "Continue statement",
+  "description": "This BBE demonstrates how to use the `continue` statement to skip the current iteration in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "foreach",
+    "loops",
+    "iterate",
+    "iterable",
+    "break",
+    "skip loop",
+    "while",
+    "repeat"
+  ],
+  "permalink": "/learn/by-example/continue-statement",
+  "active": "continue-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/continue-statement",
+    "/swan-lake/learn/by-example/continue-statement.html"
+  ]
+}

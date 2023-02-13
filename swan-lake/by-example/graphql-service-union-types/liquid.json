@@ -1,0 +1,17 @@
+{
+  "title": "Union Types",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql union type"
+  ],
+  "permalink": "/learn/by-example/graphql-service-union-types",
+  "active": "graphql-service-union-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-service-union-types",
+    "/swan-lake/learn/by-example/graphql-service-union-types.html"
+  ]
+}

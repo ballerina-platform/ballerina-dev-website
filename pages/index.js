@@ -28,7 +28,7 @@ import styles from '../styles/Home.module.css';
 
 import fs from "fs";
 import matter from "gray-matter";
-
+import { getHighlighter } from "shiki";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -41,14 +41,17 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
+  const highlighter = await getHighlighter({
+    theme: 'github-light'
+  });
   const files = traverseFolder("components/home-page/bal-action/action-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md','');
+    const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = content;
+    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' });
   });
 
   return {
@@ -89,19 +92,19 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeBalAction}>
-          <BalAction samples={samples} getLink={getLink}/>
+          <BalAction samples={samples} getLink={getLink} />
         </Row>
 
         <Row className={styles.homeWhyBal}>
-          <WhyBal getLink={getLink}/>
+          <WhyBal getLink={getLink} />
         </Row>
 
         <Row className={styles.homeVideos}>
-          <Videos getLink={getLink}/>
+          <Videos getLink={getLink} />
         </Row>
 
         <Row className={styles.homeEvents}>
-          <Events getLink={getLink}/>
+          <Events getLink={getLink} />
         </Row>
 
       </Col>

@@ -22,7 +22,7 @@ public function main() returns error? {
         "Accept": "application/vnd.github.v3+json",
         "Authorization": "token " + githubPAT
     };
-    PR[] prs = check github->get(string `/${repository}/pulls`, headers);
+    PR[] prs = check github->/[repository]/pulls(headers);
 
     sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
     check gsheets->appendRowToSheet(spreadSheetId, sheetName,

@@ -34,6 +34,21 @@
         "isLearnByExample": true
       },
       {
+        "name": "Main function",
+        "url": "main-function",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Init function",
+        "url": "init-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Variables and types",
         "url": "variables-and-types",
         "verifyBuild": true,
@@ -81,6 +96,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Boolean",
+        "url": "boolean",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -104,8 +126,8 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Booleans and conditionals",
-        "url": "booleans",
+        "name": "If statement",
+        "url": "if-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -113,6 +135,20 @@
       {
         "name": "Match statement",
         "url": "match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match guard in match statement",
+        "url": "match-guard-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Binding patterns in match statement",
+        "url": "binding-patterns-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -127,13 +163,6 @@
       {
         "name": "Functions",
         "url": "functions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Function values",
-        "url": "function-values",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -165,6 +194,41 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Function pointers",
+        "url": "function-pointers",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function values",
+        "url": "function-values",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function types",
+        "url": "function-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Anonymous function",
+        "url": "anonymous-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function closure",
+        "url": "function-closure",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -185,7 +249,20 @@
         "url": "while-statement",
         "verifyBuild": true,
         "verifyOutput": true,
-        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Break statement",
+        "url": "break-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Continue statement",
+        "url": "continue-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       }
     ]
@@ -302,6 +379,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Stream type",
+        "url": "stream-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Never type",
         "url": "never-type",
         "verifyBuild": true,
@@ -337,6 +421,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Nested arrays",
+        "url": "nested-arrays",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Tuples",
         "url": "tuples",
         "verifyBuild": true,
@@ -344,15 +435,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure tuples",
-        "url": "destructure-tuples",
+        "name": "Rest type in tuples",
+        "url": "rest-type-in-tuples",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Rest type in tuples",
-        "url": "rest-type-in-tuples",
+        "name": "Filler values of a list",
+        "url": "filler-values-of-a-list",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List subtyping",
+        "url": "list-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List equality",
+        "url": "list-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -414,7 +519,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Control openness",
+        "name": "Controlling openness",
         "url": "controlling-openness",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -463,8 +568,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "Define classes",
+        "name": "Defining classes",
         "url": "defining-classes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Object constructor",
+        "url": "object-constructor",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Object value from class definition",
+        "url": "object-value-from-class-definition",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Visibility of object fields and methods",
+        "url": "visibility-of-object-fields-and-methods",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -496,6 +622,29 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Object closure",
+        "url": "object-closure",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Client class",
+        "url": "client-class",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Start service from service class definition",
+        "url": "start-service-from-service-class-definition",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -505,192 +654,106 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Binding patterns in assignment",
-        "url": "binding-patterns-in-assignment",
+        "name": "Binding patterns",
+        "url": "binding-patterns",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Spread in binding patterns",
-        "url": "spread-in-binding-patterns",
+        "name": "Typed binding pattern",
+        "url": "typed-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Binding patterns in match statement",
-        "url": "binding-patterns-in-match-statement",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "Error handling",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Error handling",
-        "url": "error-handling",
+        "name": "Wildcard binding pattern",
+        "url": "wildcard-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Check expression",
-        "url": "check-expression",
+        "name": "List binding patterns",
+        "url": "list-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Error subtyping",
-        "url": "error-subtyping",
+        "name": "Rest binding pattern in list binding pattern",
+        "url": "rest-binding-pattern-in-list-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Panics",
-        "url": "panics",
+        "name": "Mapping binding pattern",
+        "url": "mapping-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Type intersection for error types",
-        "url": "error-type-intersection",
+        "name": "Rest binding pattern in mapping binding pattern",
+        "url": "rest-binding-pattern-in-mapping-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Error detail",
-        "url": "error-detail",
+        "name": "Error binding pattern",
+        "url": "error-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Error cause",
-        "url": "error-cause",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "Ignore return values and errors",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Ignore return values and errors",
-        "url": "ignoring-return-values-and-errors",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "Mutability and identity",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Identity",
-        "url": "identity",
+        "name": "Rest binding pattern in error binding pattern",
+        "url": "rest-binding-pattern-in-error-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Const and final ",
-        "url": "const-and-final",
+        "name": "Single use of typed binding patterns",
+        "url": "single-use-of-typed-binding",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Enumerations",
-        "url": "enumerations",
+        "name": "Single use of typed binding patterns with on fail clause",
+        "url": "single-use-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Immutability",
-        "url": "immutability",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "JSON",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "JSON type",
-        "url": "json-type",
+        "name": "Iterative use of typed binding patterns",
+        "url": "iterative-use-of-typed-binding",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Work directly with JSON",
-        "url": "working-directly-with-json",
+        "name": "List binding pattern in match statement",
+        "url": "list-binding-pattern-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Match statement with maps",
-        "url": "match-statement-with-maps",
+        "name": "Mapping binding pattern in match statement",
+        "url": "mapping-binding-pattern-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Convert from user-defined type to JSON",
-        "url": "converting-from-user-defined-type-to-json",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert from JSON to user-defined type",
-        "url": "converting-from-json-to-user-defined-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert to user-defined type",
-        "url": "converting-to-user-defined-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Resource method typing",
-        "url": "resource-method-typing",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "JSON numbers",
-        "url": "json-numbers",
+        "name": "Error binding pattern in match statement",
+        "url": "error-binding-pattern-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -703,8 +766,15 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Table syntax",
-        "url": "table-syntax",
+        "name": "Table",
+        "url": "table",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Table types",
+        "url": "table-types",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -738,8 +808,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records",
-        "url": "destructuring-records",
+        "name": "Sort iterable objects",
+        "url": "sort-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -752,15 +822,15 @@
         "isLearnByExample": true
       },
       {
-        "name": "Ordering",
-        "url": "ordering",
+        "name": "Limit clause",
+        "url": "limit-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Limit clause",
-        "url": "limit-clause",
+        "name": "Joining iterable objects",
+        "url": "joining-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -774,21 +844,49 @@
       },
       {
         "name": "Create tables with query",
-        "url": "creating-tables-with-query",
+        "url": "create-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Join clause",
-        "url": "join-clause",
+        "name": "Create maps with query",
+        "url": "create-maps-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Stream type",
-        "url": "stream-type",
+        "name": "Create streams with query",
+        "url": "create-streams-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "On conflict clause",
+        "url": "on-conflict-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Iterating over xml with query",
+        "url": "iterating-over-xml-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Nested query expressions",
+        "url": "nested-query-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Destructure records using query",
+        "url": "destructure-records-using-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -810,6 +908,84 @@
       {
         "name": "Query actions",
         "url": "query-actions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "JSON",
+    "column": 2,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "JSON type",
+        "url": "json-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Access JSON elements",
+        "url": "access-json-elements",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Accessing optional JSON elements",
+        "url": "access-optional-json-elements",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match statement with maps",
+        "url": "match-statement-with-maps",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert from user-defined type to JSON",
+        "url": "converting-from-user-defined-type-to-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Converting from table and XML to JSON",
+        "url": "converting-from-table-and-xml-to-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Converting from JSON to user defined type with langlib functions",
+        "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Casting JSON to user-defined type",
+        "url": "casting-json-to-user-defined-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Resource method typing",
+        "url": "resource-method-typing",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON numbers",
+        "url": "json-numbers",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -866,11 +1042,31 @@
         "isLearnByExample": true
       },
       {
+        "name": "XML iteration",
+        "url": "xml-iteration",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML access",
+        "url": "xml-access",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML mutation",
+        "url": "xml-mutation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "XML subtyping",
         "url": "xml-subtyping",
         "verifyBuild": true,
         "verifyOutput": true,
-        "disablePlayground": true,
         "isLearnByExample": true
       },
       {
@@ -998,6 +1194,130 @@
         "url": "configurable-variables",
         "verifyBuild": true,
         "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configuring via TOML files",
+        "url": "configuring-via-toml",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configuring via CLI arguments",
+        "url": "configuring-via-cli",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Error handling",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Error handling",
+        "url": "error-handling",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Check expression",
+        "url": "check-expression",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error subtyping",
+        "url": "error-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Panics",
+        "url": "panics",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type intersection for error types",
+        "url": "error-type-intersection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error detail",
+        "url": "error-detail",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error cause",
+        "url": "error-cause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Ignore return values and errors",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Ignore return values and errors",
+        "url": "ignoring-return-values-and-errors",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Mutability and identity",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Identity",
+        "url": "identity",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Const and final ",
+        "url": "const-and-final",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Enumerations",
+        "url": "enumerations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Immutability",
+        "url": "immutability",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
         "isLearnByExample": true
       }
     ]
@@ -1360,32 +1680,36 @@
     ]
   },
   {
-    "title": "REST API",
+    "title": "REST service",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service path and resource path",
-        "url": "http-absolute-path-and-path",
+        "name": "Basic REST service",
+        "url": "http-basic-rest-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service data binding",
-        "url": "http-data-binding",
+        "name": "Service and resource paths",
+        "url": "http-service-and-resource-paths",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Default resource",
-        "url": "http-default-resource",
+        "name": "Payload data binding",
+        "url": "http-service-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "http-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1393,7 +1717,6 @@
         "url": "http-path-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1401,15 +1724,6 @@
         "url": "http-query-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Matrix parameter",
-        "url": "http-matrix-param",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1417,64 +1731,115 @@
         "url": "http-header-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Typed resource responses",
-        "url": "http-resource-returns",
+        "name": "Send response",
+        "url": "http-send-response",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Restrict by media type",
-        "url": "http-restrict-by-media-type",
+        "name": "Send different status codes",
+        "url": "http-send-different-status-codes",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send different status codes with payload",
+        "url": "http-send-different-status-codes-with-payload",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send cache response",
+        "url": "http-service-cache-response",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "REST client",
+    "title": "HTTP client",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "http-client-endpoint",
+        "name": "Send request/Receive response",
+        "url": "http-client-send-request-receive-response",
         "verifyBuild": false,
         "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
-        "name": "Client data binding",
+        "name": "Payload data binding",
         "url": "http-client-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
-        "name": "Caching client",
+        "name": "Payload constraint validation",
+        "url": "http-client-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Path parameter",
+        "url": "http-client-path-parameter",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Query parameter",
+        "url": "http-client-query-parameter",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Header parameter",
+        "url": "http-client-header-parameter",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Enable caching",
         "url": "http-caching-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "REST API security",
+    "title": "REST service security",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "http-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1482,7 +1847,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "http-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1490,104 +1855,32 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth file user store",
-        "url": "http-service-basic-auth-file-user-store",
+        "name": "Basic authentication file user store",
+        "url": "http-service-basic-authentication-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
-        "url": "http-service-basic-auth-ldap-user-store",
+        "name": "Basic authentication LDAP user store",
+        "url": "http-service-basic-authentication-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
-        "url": "http-service-jwt-auth",
+        "name": "JWT authentication",
+        "url": "http-service-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "OAuth2",
         "url": "http-service-oauth2",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - SSL/TLS",
-        "url": "http-client-ssl-tls",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - Mutual SSL",
-        "url": "http-client-mutual-ssl",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - Basic Auth",
-        "url": "http-client-basic-auth",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - Bearer Token Auth",
-        "url": "http-client-bearer-token-auth",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - self signed JWT Auth",
-        "url": "http-client-self-signed-jwt-auth",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - OAuth2 Client Credentials grant type",
-        "url": "http-client-oauth2-client-credentials-grant-type",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - OAuth2 Password grant type",
-        "url": "http-client-oauth2-password-grant-type",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - OAuth2 Refresh Token grant type",
-        "url": "http-client-oauth2-refresh-token-grant-type",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client - OAuth2 JWT Bearer grant type",
-        "url": "http-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1596,16 +1889,162 @@
     ]
   },
   {
-    "title": "REST API advanced",
+    "title": "HTTP client security",
     "column": 0,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Redirects",
-        "url": "http-redirects",
+        "name": "SSL/TLS",
+        "url": "http-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Mutual SSL",
+        "url": "http-client-mutual-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "http-client-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Bearer token authentication",
+        "url": "http-client-bearer-token-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Self signed JWT authentication",
+        "url": "http-client-self-signed-jwt-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 client credentials grant type",
+        "url": "http-client-oauth2-client-credentials-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 password grant type",
+        "url": "http-client-oauth2-password-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 refresh token grant type",
+        "url": "http-client-oauth2-refresh-token-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 JWT bearer grant type",
+        "url": "http-client-oauth2-jwt-bearer-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "HTTP client resiliency",
+    "column": 0,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Timeout",
+        "url": "http-timeout",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Retry",
+        "url": "http-retry",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Circuit breaker",
+        "url": "http-circuit-breaker",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Load balancer",
+        "url": "http-load-balancer",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Failover",
+        "url": "http-failover",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "HTTP service advanced",
+    "column": 0,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Default resource",
+        "url": "http-default-resource",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Request/Response object",
+        "url": "http-request-response",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Caller object",
+        "url": "http-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Redirects",
+        "url": "http-service-redirects",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1613,7 +2052,6 @@
         "url": "http-cors",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1621,15 +2059,28 @@
         "url": "http-100-continue",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Streaming",
-        "url": "http-streaming",
+        "name": "Matrix parameter",
+        "url": "http-matrix-param",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Restrict by media type",
+        "url": "http-restrict-by-media-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "File upload",
+        "url": "http-service-file-upload",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1637,55 +2088,51 @@
         "url": "http-compression",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
         "name": "Trace logs",
         "url": "http-trace-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
         "name": "Access logs",
         "url": "http-access-logs",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
         "name": "Cookies",
-        "url": "http-cookies",
+        "url": "http-cookies-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
         "name": "Chunking",
-        "url": "http-disable-chunking",
+        "url": "http-service-chunking",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Response With multiparts",
+        "name": "Sending headers",
+        "url": "http-send-header",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Response with multiparts",
         "url": "http-response-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Request With multiparts",
-        "url": "http-request-with-multiparts",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1693,38 +2140,122 @@
         "url": "http-passthrough",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP/2 to HTTP/1.1 downgrade",
+        "url": "http-2-to-1-1-downgrade-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP/2 server push",
+        "url": "http-2-0-server-push",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "REST API interceptors",
+    "title": "HTTP client advanced",
+    "column": 0,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Redirects",
+        "url": "http-client-redirects",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "File upload",
+        "url": "http-client-file-upload",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cookies",
+        "url": "http-cookies-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Chunking",
+        "url": "http-client-chunking",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Request with multiparts",
+        "url": "http-request-with-multiparts",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP/2 to HTTP/1.1 downgrade",
+        "url": "http-2-to-1-1-downgrade-client",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP/2 prior knowledge",
+        "url": "http-2-prior-knowledge-client",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP/2 server push",
+        "url": "http-2-0-client-server-push",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": false,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "HTTP service interceptors",
     "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Request Interceptors",
-        "url": "http-request-interceptors",
+        "name": "Request interceptor",
+        "url": "http-request-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Response Interceptors",
-        "url": "http-response-interceptors",
+        "name": "Response interceptor",
+        "url": "http-response-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Error Handling",
+        "name": "Error handling",
         "url": "http-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1732,36 +2263,12 @@
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "HTTP2",
-    "column": 1,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "HTTP 1.1 to 2.0 protocol switch",
-        "url": "http-1-1-to-2-0-protocol-switch",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "HTTP 2.0 server push",
-        "url": "http-2-0-server-push",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "GraphQL",
+    "title": "GraphQL service",
     "column": 1,
     "category": "Network libraries",
     "samples": [
@@ -1774,24 +2281,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Return record values",
-        "url": "graphql-returning-record-values",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Hierarchical resource paths",
-        "url": "graphql-hierarchical-resource-paths",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Return service objects",
+        "name": "Service as output object",
         "url": "graphql-returning-service-objects",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Record as output object",
+        "url": "graphql-returning-record-values",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1822,6 +2321,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Input objects",
+        "url": "graphql-input-objects",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Interfaces",
         "url": "graphql-interfaces",
         "verifyBuild": true,
@@ -1830,8 +2337,72 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context",
+        "name": "Interfaces implementing interfaces",
+        "url": "graphql-interfaces-implementing-interfaces",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Union Types",
+        "url": "graphql-service-union-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "GraphiQL client",
+        "url": "graphql-graphiql",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Documentation",
+        "url": "graphql-documentation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Directives",
+        "url": "graphql-directives",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Context object",
         "url": "graphql-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field object",
+        "url": "graphql-service-field-object",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptors",
+        "url": "graphql-interceptors",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1847,32 +2418,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Documentation",
-        "url": "graphql-documentation",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client",
-        "url": "graphql-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Directives",
-        "url": "graphql-directives",
+        "name": "Hierarchical resource paths",
+        "url": "graphql-hierarchical-resource-paths",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -1881,12 +2428,43 @@
     ]
   },
   {
-    "title": "GraphQL security",
+    "title": "GraphQL client",
     "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "Query GraphQL endpoint",
+        "url": "graphql-client-query-endpoint",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Handle partial response",
+        "url": "graphql-client-handle-partial-response",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Handle error response",
+        "url": "graphql-client-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "GraphQL service security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
         "url": "graphql-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1894,7 +2472,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "graphql-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1902,7 +2480,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth file user store",
+        "name": "Basic authentication file user store",
         "url": "graphql-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1910,7 +2488,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "graphql-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1918,7 +2496,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
+        "name": "JWT authentication",
         "url": "graphql-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1926,7 +2504,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "OAuth2",
         "url": "graphql-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1936,29 +2514,78 @@
     ]
   },
   {
-    "title": "WebSockets",
+    "title": "GraphQL client security",
     "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "websocket-client",
+        "name": "SSL/TLS",
+        "url": "graphql-client-security-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Client - Retry",
-        "url": "websocket-retry-client",
+        "name": "Mutual SSL",
+        "url": "graphql-client-security-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Service",
+        "name": "Basic authentication",
+        "url": "graphql-client-security-basic-auth",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Self signed JWT authentication",
+        "url": "graphql-client-security-self-signed-jwt-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "OAuth2 password grant type",
+        "url": "graphql-client-security-oauth2-password-grant-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "WebSocket service",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive message",
         "url": "websocket-basic-sample",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -1968,12 +2595,35 @@
     ]
   },
   {
-    "title": "WebSocket security",
+    "title": "WebSocket client",
     "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "Send/Receive message",
+        "url": "websocket-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Payload constraint validation",
+        "url": "websocket-client-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "WebSocket service security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
         "url": "websocket-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1981,7 +2631,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "websocket-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1989,7 +2639,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth File user store",
+        "name": "Basic authentication file user store",
         "url": "websocket-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -1997,7 +2647,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "websocket-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2005,7 +2655,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
+        "name": "JWT authentication",
         "url": "websocket-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2013,15 +2663,22 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "OAuth2",
         "url": "websocket-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "WebSocket client security",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
       {
-        "name": "Client - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "websocket-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2029,7 +2686,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "websocket-client-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2037,7 +2694,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Basic Auth",
+        "name": "Basic authentication",
         "url": "websocket-client-basic-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2045,7 +2702,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Bearer Token Auth",
+        "name": "Bearer token authentication",
         "url": "websocket-client-bearer-token-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2053,7 +2710,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - self signed JWT Auth",
+        "name": "Self signed JWT authentication",
         "url": "websocket-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2061,7 +2718,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Client Credentials grant type",
+        "name": "OAuth2 client credentials grant type",
         "url": "websocket-client-oauth2-client-cred-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2069,7 +2726,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Password grant type",
+        "name": "OAuth2 Password grant type",
         "url": "websocket-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2077,7 +2734,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Refresh Token grant type",
+        "name": "OAuth2 refresh token grant type",
         "url": "websocket-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2085,7 +2742,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT bearer grant type",
         "url": "websocket-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2095,13 +2752,21 @@
     ]
   },
   {
-    "title": "WebSub",
+    "title": "WebSocket client resiliency",
     "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "WebSub subscriber service",
-        "url": "websub-webhook-sample",
+        "name": "Timeout",
+        "url": "websocket-timeout-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Retry",
+        "url": "websocket-retry-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2110,45 +2775,13 @@
     ]
   },
   {
-    "title": "Resiliency",
-    "column": 2,
+    "title": "WebSub service",
+    "column": 1,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Circuit breaker",
-        "url": "http-circuit-breaker",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Load balancer",
-        "url": "http-load-balancer",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Failover",
-        "url": "http-failover",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Retry",
-        "url": "http-retry",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Timeout",
-        "url": "http-timeout",
+        "name": "Consume github events",
+        "url": "websub-webhook-sample",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2180,13 +2813,13 @@
     ]
   },
   {
-    "title": "gRPC",
+    "title": "gRPC service",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
         "name": "Simple RPC",
-        "url": "grpc-simple",
+        "url": "grpc-service-simple",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2194,8 +2827,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Simple RPC with headers",
-        "url": "grpc-simple-with-headers",
+        "name": "Server-side streaming RPC",
+        "url": "grpc-service-server-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2203,17 +2836,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Server streaming RPC",
-        "url": "grpc-server-streaming",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Has different naming convention",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Client streaming RPC",
-        "url": "grpc-client-streaming",
+        "name": "Client-side streaming RPC",
+        "url": "grpc-service-client-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2222,7 +2846,7 @@
       },
       {
         "name": "Bidirectional streaming RPC",
-        "url": "grpc-bidirectional-streaming",
+        "url": "grpc-service-bidirectional-streaming",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2230,8 +2854,26 @@
         "isLearnByExample": false
       },
       {
-        "name": "Proto to Ballerina",
-        "url": "proto-to-ballerina",
+        "name": "Send/Receive headers",
+        "url": "grpc-service-headers",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Server reflection",
+        "url": "grpc-server-reflection",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Check deadline",
+        "url": "grpc-service-check-deadline",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Has different naming convention",
@@ -2241,12 +2883,73 @@
     ]
   },
   {
-    "title": "gRPC security",
+    "title": "gRPC client",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Service - SSL/TLS",
+        "name": "Simple RPC",
+        "url": "grpc-client-simple",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Server-side streaming RPC",
+        "url": "grpc-client-server-streaming",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Client-side streaming RPC",
+        "url": "grpc-client-client-streaming",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Bidirectional streaming RPC",
+        "url": "grpc-client-bidirectional-streaming",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send/Receive headers",
+        "url": "grpc-client-headers",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Set deadline",
+        "url": "grpc-client-set-deadline",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Has different naming convention",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "gRPC service security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
         "url": "grpc-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2254,7 +2957,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "grpc-service-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2262,7 +2965,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth file user store",
+        "name": "Basic authentication file user store",
         "url": "grpc-service-basic-auth-file-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2270,7 +2973,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - Basic Auth LDAP user store",
+        "name": "Basic authentication LDAP user store",
         "url": "grpc-service-basic-auth-ldap-user-store",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2278,7 +2981,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - JWT Auth",
+        "name": "JWT authentication",
         "url": "grpc-service-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2286,15 +2989,22 @@
         "isLearnByExample": false
       },
       {
-        "name": "Service - OAuth2",
+        "name": "OAuth2",
         "url": "grpc-service-oauth2",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
-      },
+      }
+    ]
+  },
+  {
+    "title": "gRPC client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
       {
-        "name": "Client - SSL/TLS",
+        "name": "SSL/TLS",
         "url": "grpc-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2302,7 +3012,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Mutual SSL",
+        "name": "Mutual SSL",
         "url": "grpc-client-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2310,7 +3020,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Basic Auth",
+        "name": "Basic authentication",
         "url": "grpc-client-basic-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2318,7 +3028,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - Bearer Token Auth",
+        "name": "Bearer token authentication",
         "url": "grpc-client-bearer-token-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2326,7 +3036,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - self signed JWT Auth",
+        "name": "Self signed JWT authentication",
         "url": "grpc-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2334,7 +3044,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Client Credentials grant type",
+        "name": "OAuth2 client credentials grant type",
         "url": "grpc-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2342,7 +3052,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Password grant type",
+        "name": "OAuth2 password grant type",
         "url": "grpc-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2350,7 +3060,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 Refresh Token grant type",
+        "name": "OAuth2 refresh token grant type",
         "url": "grpc-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2358,7 +3068,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client - OAuth2 JWT Bearer grant type",
+        "name": "OAuth2 JWT bearer grant type",
         "url": "grpc-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2368,13 +3078,13 @@
     ]
   },
   {
-    "title": "NATS",
+    "title": "NATS service",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Publish/subscribe",
-        "url": "nats-basic-pub-sub",
+        "name": "Consume message",
+        "url": "nats-basic-sub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2382,8 +3092,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Request/reply",
-        "url": "nats-basic-request-reply",
+        "name": "Send reply to request message",
+        "url": "nats-basic-reply",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2391,8 +3101,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Secured connection",
-        "url": "nats-basic-secure-connection",
+        "name": "Constraint validation",
+        "url": "nats-service-constraint-validation",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2402,13 +3112,13 @@
     ]
   },
   {
-    "title": "STAN",
+    "title": "NATS client",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Publish/subscribe",
-        "url": "nats-streaming-pub-sub",
+        "name": "Publish message",
+        "url": "nats-basic-pub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2416,35 +3126,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Queue groups",
-        "url": "nats-streaming-queue-group",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Durable subscriptions",
-        "url": "nats-streaming-durable-subscriptions",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Historical message replay",
-        "url": "nats-streaming-start-position",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Secured connection",
-        "url": "nats-streaming-secure-connection",
+        "name": "Send request message",
+        "url": "nats-basic-request",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2454,13 +3137,13 @@
     ]
   },
   {
-    "title": "Kafka",
+    "title": "NATS service security",
     "column": 2,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer",
-        "url": "kafka-producer",
+        "name": "SSL/TLS",
+        "url": "nats-service-secure-connection",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2468,53 +3151,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Consumer service",
-        "url": "kafka-consumer-service",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer client - Poll Payload",
-        "url": "kafka-consumer-client-poll-payload",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer client - Poll ConsumerRecord",
-        "url": "kafka-consumer-client-poll-consumer-record",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Transactional producer",
-        "url": "kafka-producer-transactional",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SASL authentication - consumer",
-        "url": "kafka-authentication-sasl-plain-consumer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "SASL authentication - producer",
-        "url": "kafka-authentication-sasl-plain-producer",
+        "name": "Basic authentication",
+        "url": "nats-service-basic-auth",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2524,21 +3162,196 @@
     ]
   },
   {
-    "title": "RabbitMQ",
+    "title": "NATS client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "nats-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "nats-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka service",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "kafka-service-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Constraint validation",
+        "url": "kafka-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka producer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "kafka-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Payload data binding",
+        "url": "kafka-consumer-payload-data-binding",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consumer record data binding",
+        "url": "kafka-consumer-consumer-record-data-binding",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Constraint validation",
+        "url": "kafka-consumer-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka service security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "kafka-service-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SASL authentication",
+        "url": "kafka-service-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka producer security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "kafka-producer-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SASL authentication",
+        "url": "kafka-producer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kafka consumer security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "kafka-consumer-ssl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "SASL authentication",
+        "url": "kafka-consumer-sasl",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Producer",
-        "url": "rabbitmq-producer",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Consumer",
+        "name": "Consume message",
         "url": "rabbitmq-consumer",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2547,17 +3360,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Client acknowledgements",
+        "name": "Consume message with acknowledgement",
         "url": "rabbitmq-consumer-with-client-acknowledgement",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Transactional producer",
-        "url": "rabbitmq-transaction-producer",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2574,8 +3378,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Secured connection",
-        "url": "rabbitmq-secure-connection",
+        "name": "Constraint validation",
+        "url": "rabbitmq-service-constraint-validation",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2585,64 +3389,176 @@
     ]
   },
   {
-    "title": "TCP",
+    "title": "RabbitMQ client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "tcp-client",
-        "verifyBuild": true,
+        "name": "Declare a queue",
+        "url": "rabbitmq-queue-declare",
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Service not present",
+        "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Listener",
-        "url": "tcp-listener",
-        "verifyBuild": true,
+        "name": "Produce message",
+        "url": "rabbitmq-producer",
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Service cannot be stopped",
+        "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Transport security",
-        "url": "tcp-transport-security",
-        "verifyBuild": true,
+        "name": "Consume message",
+        "url": "rabbitmq-sync-consumer",
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Has different naming convention",
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactional producer",
+        "url": "rabbitmq-transaction-producer",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Constraint validation",
+        "url": "rabbitmq-client-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "UDP",
+    "title": "RabbitMQ service security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Connectionless client",
-        "url": "udp-client",
-        "verifyBuild": true,
+        "name": "SSL/TLS",
+        "url": "rabbitmq-service-secure-connection",
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Service cannot be reached",
+        "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Connection-oriented client",
-        "url": "udp-connect-client",
-        "verifyBuild": true,
+        "name": "Basic authentication",
+        "url": "rabbitmq-service-basic-auth",
+        "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Service cannot be reached",
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "RabbitMQ client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "rabbitmq-client-secure-connection",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
       },
       {
-        "name": "Listener",
+        "name": "Basic authentication",
+        "url": "rabbitmq-client-basic-auth",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "TCP service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive bytes",
+        "url": "tcp-listener",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "TCP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive bytes",
+        "url": "tcp-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service not present",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "TCP service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "tcp-service-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "TCP client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "tcp-client-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "UDP service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive datagram",
         "url": "udp-listener",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2653,12 +3569,53 @@
     ]
   },
   {
-    "title": "Email",
+    "title": "UDP client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Send emails",
+        "name": "Send/Receive datagram",
+        "url": "udp-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be reached",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send/Receive datagram with connection",
+        "url": "udp-connect-client",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be reached",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Email service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive email",
+        "url": "receive-email-using-service",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Email client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send email",
         "url": "send-email",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2667,42 +3624,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Receive emails using a client",
+        "name": "Receive email",
         "url": "receive-email-using-client",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "Receive emails using a listener",
-        "url": "receive-email-using-listener",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
     ]
   },
   {
-    "title": "FTP",
+    "title": "Email service security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "ftp-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Listener",
-        "url": "ftp-listener",
+        "name": "SSL/TLS",
+        "url": "email-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -2712,22 +3651,13 @@
     ]
   },
   {
-    "title": "SFTP",
+    "title": "Email client security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Client",
-        "url": "sftp-client",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Listener",
-        "url": "sftp-listener",
+        "name": "SSL/TLS",
+        "url": "email-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -2737,7 +3667,107 @@
     ]
   },
   {
-    "title": "MySQL",
+    "title": "FTP Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "ftp-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send file",
+        "url": "ftp-service-send-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "FTP Client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "ftp-client-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send file",
+        "url": "ftp-client-send-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SFTP Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "sftp-service-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send file",
+        "url": "sftp-service-send-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SFTP Client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "sftp-client-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send file",
+        "url": "sftp-client-send-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Database Access",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -2769,7 +3799,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "DML and DDL operation",
+        "name": "DML and DDL operations",
         "url": "mysql-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2778,7 +3808,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Batch execute",
+        "name": "Batch execution",
         "url": "mysql-batch-execute-operation",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -2787,8 +3817,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Atomic batch execute",
-        "url": "mysql-atomic-batch-execute-operation",
+        "name": "Atomic transactions",
+        "url": "mysql-atomic-transaction",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -2807,73 +3837,12 @@
     ]
   },
   {
-    "title": "JDBC",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Simple query",
-        "url": "jdbc-query-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with one result",
-        "url": "jdbc-query-row-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Query with advanced mapping",
-        "url": "jdbc-query-column-mapping",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "DML and DDL operation",
-        "url": "jdbc-execute-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Batch execute",
-        "url": "jdbc-batch-execute-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Atomic batch execute",
-        "url": "jdbc-atomic-batch-execute-operation",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "SerDes",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Serialization and Deserialization",
+        "name": "Serialization/Deserialization",
         "url": "serdes-simple",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -2913,7 +3882,7 @@
         "name": "Read/write CSV with data mapping",
         "url": "io-csv-datamapping",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -3136,7 +4105,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Manage sheduled jobs",
+        "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
         "verifyOutput": true,

@@ -1,0 +1,18 @@
+{
+  "title": "Self signed JWT authentication",
+  "description": "BBE on how to secure HTTP client with self-signed JWT Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "auth",
+    "jwt auth"
+  ],
+  "permalink": "/learn/by-example/graphql-client-security-self-signed-jwt-authentication",
+  "active": "graphql-client-security-self-signed-jwt-authentication",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-security-self-signed-jwt-authentication",
+    "/swan-lake/learn/by-example/graphql-client-security-self-signed-jwt-authentication.html"
+  ]
+}

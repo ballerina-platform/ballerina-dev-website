@@ -1,44 +1,35 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-service /product on new http:Listener(9090) {
+type Album readonly & record {|
+    string title;
+    string artist;
+|};
 
-    // The \`a\`, \`b\` method arguments are considered as query parameters.
-    resource function get count(int a, int b) returns json {
-        return { count : a + b};
-    }
+table<Album> key(title) albums = table [
+    {title: "Blue Train", artist: "John Coltrane"},
+    {title: "Jeru", artist: "Gerry Mulligan"}
+];
 
-    // The query param type is nilable, which means the URI may contain the param.
-    // In the absence of the query param \`id\`, the type is nil.
-    resource function get name(string? id) returns string {
-        if id is string {
-            return "product_" + id;
-        }
-        return "product_0000";
-    }
+service / on new http:Listener(9090) {
 
-    // The multiple query param values also can be accommodate to an array.
-    resource function get detail(string[]? colour) returns json {
-        return { product_colour : colour};
+    // The \`artist\` resource method argument is considered as the query parameter which is extracted from the request URI.
+    resource function get albums(string artist) returns Album[] {
+        return from Album album in albums
+            where album.artist == artist
+            select album;
     }
 }
 `,
 ];
 
-export default function HttpQueryParameter() {
+export function HttpQueryParameter({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -46,38 +37,26 @@ export default function HttpQueryParameter() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Query parameter</h1>
+      <h1>REST service - Query parameter</h1>
 
       <p>
-        The <code>http</code> module provides first class support for reading
-        URL query parameters as resource method argument. The supported types
-        are string, int, float, boolean, decimal, and the array types of the
-        aforementioned types. The query param type can be nilable (e.g.,
-        (string? bar)). The request also provide certain method to retrieve
-        query param at their convenience.
-      </p>
-
-      <p>
-        For more information on the underlying module, see the{" "}
-        <a href="https://lib.ballerina.io/ballerina/http/latest/">
-          <code>http</code> module
-        </a>
-        .
+        The query parameter in the resource argument represents the query
+        segment of the request URL. The argument name should be the key of the
+        query, and its value is mapped during the runtime by extracting it from
+        the URL. The query parameter does not need any additional annotation.
+        The supported types are <code>string</code>, <code>int</code>,{" "}
+        <code>float</code>, <code>boolean</code>, <code>decimal</code>, and{" "}
+        <code>array</code> types of the aforementioned types. The query
+        parameter type can be nilable (e.g., (<code>string? bar</code>)) and
+        defaultable (e.g., (<code>string bar = &quot;hello&quot;</code>)). When
+        a request contains query segments, retrieving them as resource arguments
+        is much simpler and well-recommended. Alternatively, the{" "}
+        <code>http:Request</code> also provides related methods to retrieve
+        query parameters.
       </p>
 
       <Row
@@ -90,7 +69,32 @@ export default function HttpQueryParameter() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.2.2/examples/http-query-parameter",
+                "https://play.ballerina.io/?gist=1ee39de5d7f1d2965a56d5ae3163b5e2&file=http_query_parameter.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-query-parameter",
                 "_blank"
               );
             }}
@@ -283,20 +287,47 @@ export default function HttpQueryParameter() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl "http://localhost:9090/product/count?a=315&b=585"`}</span>
-              <span>{`{"count":900}`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/product/name?id=432423"`}</span>
-              <span>{`product_432423`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ curl "http://localhost:9090/product/detail?colour=red&colour=green"`}</span>
-              <span>{`{"product_colour":["red", "green"]}`}</span>
+              <span>{`\$ curl "http://localhost:9090/albums?artist=John%20Coltrane"`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> You can invoke the above service via the client
+          given in the{" "}
+          <a href="/learn/by-example/http-client-query-parameter/">
+            HTTP client - Query parameter
+          </a>{" "}
+          example.
+        </p>
+      </blockquote>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://lib.ballerina.io/ballerina/http/latest/">
+              <code>http</code> module - API documentation
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/http/#2343-query-parameter">
+              HTTP service query parameter - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -334,8 +365,8 @@ export default function HttpQueryParameter() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Matrix parameter"
-            href="/learn/by-example/http-matrix-param"
+            title="Header parameter"
+            href="/learn/by-example/http-header-param"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -345,7 +376,7 @@ export default function HttpQueryParameter() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Matrix parameter
+                  Header parameter
                 </span>
               </div>
               <svg

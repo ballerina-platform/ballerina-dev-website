@@ -69,9 +69,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 #### Get the user-defined type name on Singleton types
 
-- Calling `getName()` on the runtime class `FiniteType` will return the user-defined type name if it is available.
+- Calling `getName()` on the `FiniteType` runtime class will return the user-defined type name if it is available.
 
-  For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the string `"OPEN"`.
+  For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the `"OPEN"` string.
 
   ```ballerina
   const OPEN = "open";
@@ -126,9 +126,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
   | **Runtime API call**                            | **Result**                                                       |
   |-------------------------------------------------|------------------------------------------------------------------|
-  | `arr.getType()`                                 | This will return a `ReferenceType` with the name `IntegerArray`. |
-  | `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with name `IntegerArray`.        |
-  | `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the name `Integer`.      |
+  | `arr.getType()`                                 | This will return a `ReferenceType` with the `IntegerArray` name. |
+  | `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with the `IntegerArray` name.        |
+  | `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the `Integer` name.      |
 
   <br>
 
@@ -153,8 +153,8 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### `oauth2` package
 
-- Allow the use of inferred values for refreshing tokens through the password grant type.
-- Allow the use of string values for the `scopes` field in the client grant configuration. 
+- Allowed the use of inferred values for refreshing tokens through the password grant type.
+- Allowed the use of string values for the `scopes` field in the client grant configuration. 
 
 #### `graphql` package
 
@@ -167,7 +167,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### `persist` package
 
-- Added support for Ballerina Persistent Layer. This functionality is provided with the newly introduced `persist` package.
+- Added support for the Ballerina persistent layer. This functionality is provided with the newly introduced `persist` package.
 
   The Ballerina persistent layer provides the functionality of storing and querying data conveniently.
   >**Info:** This is an experimental feature. APIs might change in future releases.
@@ -176,7 +176,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### `graphql` package
 
-- Removed the limitation on the GraphQL `context` object parameter order.
+- Removed the limitation on the parameter order of the GraphQL `context` object.
 
 ### Backward-incompatible changes
 
@@ -232,13 +232,13 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
   With this support, users can define an entity data model, validate the model, and generate `persist` clients. This provides convenient APIs to store and query data in a data store.
 
-  >**Info:** This is an experimental feature; the commands associated with the tool might change in future releases.
+  >**Info:** This is an experimental feature. The commands associated with the tool might change in future releases.
 
 ### Improvements
 
 #### CLI
 
-- Improved the `bal format` CLI command by introducing new command options to selectively format modules or single files with a provided Ballerina package. The updated format of the `bal format` command is shown below.
+- Improved the `bal format` CLI command by introducing new command options to format modules or single files selectively with a provided Ballerina package. The updated format of the `bal format` command is shown below.
 
     ```bash
     bal format [OPTIONS] [<package>|<module>|<source-file>]
@@ -269,10 +269,10 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 #### OpenAPI Tool
 
-- Added support for the `additionalProperties` attribute in OpenAPI object schemas. With this support, the generated Ballerina records can be either open or closed records, based on the `additionalProperties` details.
-  >**Info:** Thereby, some of your already generated open records may change into closed records, when re-generating using 2201.4.0 (and above) versions.
-- Improved support for `nullable:true` property OpenAPI schema, to generate record fields with default values (e.g. `string? name = ();`), instead of making the field both nilable and optional (e.g. `string? name?;`).
-- Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response`, respectively.
+- Added support for the `additionalProperties` attribute in OpenAPI object schemas. With this support, the generated Ballerina records can be either open or closed records based on the `additionalProperties` details.
+  >**Info:** Thereby, some of your already generated open records may change into closed records when re-generating using 2201.4.0 (and above) versions.
+- Improved the support for the `nullable:true` property OpenAPI schema to generate record fields with default values (e.g., `string? name = ();`) instead of making the field both nilable and optional (e.g., `string? name?;`).
+- Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response` respectively.
 
 
 ### Breaking changes

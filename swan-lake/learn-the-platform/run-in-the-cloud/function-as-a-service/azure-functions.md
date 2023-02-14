@@ -264,7 +264,7 @@ An Azure Functions package supports two build options. You can find the descript
 
 >**Note:** For the non native JVM based approach, both build options will behave the same as JVM is platform independent.
 
-We will be using these build options along with native build option while building the package. First, let's build the package for running locally. This will use the GraalVM you installed in your machine to build the native image and the generated executable be compatible with your machine.
+This sample uses these build options along with the native build option while building the package. First, let's build the package and run it locally. This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
 
 
 ```bash

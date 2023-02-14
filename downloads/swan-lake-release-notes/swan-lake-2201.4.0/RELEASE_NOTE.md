@@ -42,14 +42,13 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 Annotations are now supported on tuple members. Tuple members can be annotated using annotations declared with the `field` attachment point.
 
-  ```ballerina
-  annotation annot on field;
+```ballerina
+annotation annot on field;
 
-  type T [int, @annot
-      string ];
-  ```
+type T [int, @annot string];
+```
 
-  Annotations are not allowed on the tuple rest descriptor. 
+Annotations are not allowed on the tuple rest descriptor. 
 
 ### Bug fixes
 
@@ -135,7 +134,7 @@ the results of the runtime API calls will be as follows.
 > **Note:**
 > The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
 > ```java
->  Type getType();
+> Type getType();
 > ```
 
 ### Bug fixes

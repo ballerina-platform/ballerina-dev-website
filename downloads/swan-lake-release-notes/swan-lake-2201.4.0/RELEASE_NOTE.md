@@ -60,7 +60,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 #### Backward incompatible changes
 
 - A bug that incorrectly resolved the result type of query action that completes normally to `error?` has been fixed.
-  The result of a query action can be an `error` only when an error is thrown from the query-pipeline(`from-clause`/`join-clause`).
+  The result of a query action can be an `error` only when an error could be thrown from the query-pipeline(`from-clause`/`join-clause`).
 
 ```ballerina
 public function main() returns error? {
@@ -87,7 +87,8 @@ Now, if the execution of a statement within `do clause` fails with an error, it 
 public function main() {
     error? queryActResult = from int i in 1 ... 3
         do {
-            check validateAndGetError(); //error: invalid usage of the 'check' expression operator: no matching error return type(s) in the enclosing invokable
+            check validateAndGetError(); //error: invalid usage of the 'check' expression operator; 
+                                         // no matching error return type(s) in the enclosing invokable
         };
 }
 

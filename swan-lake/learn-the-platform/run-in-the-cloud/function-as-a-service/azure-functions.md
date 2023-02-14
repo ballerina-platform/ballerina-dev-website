@@ -370,7 +370,7 @@ Now, you can build the package for the Azure Functions cloud. This will perform 
 $ bal build --cloud="azure_functions" --native
 ```
 
-You can execute the following command to deploy the Azure Function to Azure Functions cloud.
+You can execute the following command to deploy the Azure Function to the Azure Functions cloud.
 
 ```bash
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions

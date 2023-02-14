@@ -73,7 +73,7 @@ export function RestBindingPatternInErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=75574fe3d761c3f80c37ebeb0463f47d&file=rest_binding_pattern_in_error_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=c5e2c84de3f9ec4ba62fb750f52379db&file=rest_binding_pattern_in_error_binding_pattern.bal",
                 "_blank"
               );
             }}

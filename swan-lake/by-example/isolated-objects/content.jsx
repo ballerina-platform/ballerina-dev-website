@@ -116,7 +116,7 @@ export function IsolatedObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ae3fe3030a3e645b26cc9a2b5c4d7833&file=isolated_objects.bal",
+                "https://play.ballerina.io/?gist=f5bc330e591e358b71beea4a4a00b3d4&file=isolated_objects.bal",
                 "_blank"
               );
             }}

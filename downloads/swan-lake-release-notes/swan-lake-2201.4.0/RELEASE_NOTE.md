@@ -67,7 +67,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 
 ### Improvements
 
-#### Get the user-defined type name on Singleton types
+#### Get the user-defined type name on singleton types
 
 - Calling `getName()` on the `FiniteType` runtime class will return the user-defined type name if it is available.
 

@@ -60,7 +60,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 #### Backward incompatible changes
 
 - A bug that incorrectly resolved the result type of query action that completes normally to `error?` has been fixed.
-  The result of a query action can be an `error` only when an error could be thrown from the query-pipeline(`from-clause`/`join-clause`).
+  Now, the result of a query action can be an `error` only when an error could be thrown from the query-pipeline(`from-clause`/`join-clause`).
 
 ```ballerina
 public function main() returns error? {
@@ -81,7 +81,7 @@ function iterateStream(stream<int, error?> numberStream) returns error? {
 ```
 
 - A bug where errors thrown from `do clause` in a query action were being propagated to query action result has been fixed.
-Now, if the execution of a statement within `do clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+  Now, if the execution of a statement within `do clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
 
 ```ballerina
 public function main() {
@@ -97,7 +97,8 @@ function validateAndGetError() returns error? {
 }
 ```
 
-- A bug where the use of `on fail` lead to uninitialized variables at runtime has been fixed. Now, compiler would emit errors for possible uninitialized variables.
+- A bug where the use of `on fail` lead to uninitialized variables at runtime has been fixed. 
+  Now, the compiler would emit errors for possible uninitialized variables.
 
 ```ballerina
 public function main() {

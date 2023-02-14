@@ -40,7 +40,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 #### Support for annotations on tuple members
 
-- Annotations are now supported on tuple members. Tuple members can be annotated using annotations declared with the `field` attachment point.
+Annotations are now supported on tuple members. Tuple members can be annotated using annotations declared with the `field` attachment point.
 
   ```ballerina
   annotation annot on field;

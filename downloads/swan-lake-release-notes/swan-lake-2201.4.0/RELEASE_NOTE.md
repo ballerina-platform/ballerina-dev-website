@@ -80,8 +80,8 @@ function iterateStream(stream<int, error?> numberStream) returns error? {
 }
 ```
 
-- A bug where errors thrown from `do clause` in a query action were being propagated to query action result has been fixed.
-  Now, if the execution of a statement within `do clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+- A bug where errors thrown from `do-clause` in a query action were being propagated to query action result has been fixed.
+  Now, if the execution of a statement within `do-clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
 
 ```ballerina
 public function main() {
@@ -97,7 +97,7 @@ function validateAndGetError() returns error? {
 }
 ```
 
-- A bug where the use of `on fail` lead to uninitialized variables at runtime has been fixed. 
+- A bug where the use of `on-fail-clause` lead to uninitialized variables at runtime has been fixed. 
   Now, the compiler would emit errors for possible uninitialized variables.
 
 ```ballerina

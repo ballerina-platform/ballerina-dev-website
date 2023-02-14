@@ -238,7 +238,7 @@ Didn't we add this as a prerequisite at the top also. Why is it repeated here?
 
 ### Write the function
 
-You can use any azure functions code in the native approach. We wil use the same code as in the [generic azure functions](#write-the-function) section for simplicity.
+You can use any Azure Functions code in the native approach. This sample uses the same code as in the [generic Azure Functions sample](#write-the-function) section for simplicity.
 
 Create a Ballerina package.
 ```

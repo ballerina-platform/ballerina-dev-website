@@ -340,7 +340,7 @@ Finished generating 'azure_functions_native' in 5m 44s.
         $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
 
-Execute the following command to run the azure function locally.
+Execute the following command to run the Azure Function locally.
 ```bash
 $ func start --script-root target/azure_functions
 

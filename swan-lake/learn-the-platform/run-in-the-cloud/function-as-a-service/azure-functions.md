@@ -364,7 +364,7 @@ Hello, Jack!
 
 ### Deploy the function
 
-Now you can build the package for azure functions cloud. This will perform the compilation inside docker image to make it compatible with azure functions cloud environment.
+Now, you can build the package for the Azure Functions cloud. This will perform the compilation inside the Docker image to make it compatible with the Azure Functions cloud environment.
 
 ```bash
 $ bal build --cloud="azure_functions" --native

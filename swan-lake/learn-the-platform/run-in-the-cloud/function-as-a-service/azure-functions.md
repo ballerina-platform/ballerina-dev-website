@@ -22,7 +22,7 @@ redirect_from:
 ---
 
 ## Prerequisites
-* Install the latest Ballerina distribution.
+* Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
 * Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 * Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
 * Login to the Azure CLI by executing the `az login` command.
@@ -222,7 +222,7 @@ Once the function is deployed, add an item to the collection.
 ## Azure Functions Native (Experimental)
 
 ### Prerequisites
-1. Install the latest Ballerina distribution.
+1. Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
 2. Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 3. Install and configure the [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
 
@@ -262,7 +262,7 @@ An Azure Functions package supports two build options. You can find the descript
 * cloud="azure_functions" - Builds the native executable to be compatible with the Azure Functions cloud.
 * cloud="azure_functions_local" - Builds the native executable to be compatible with your own machine for development purposes.
 
->**Note:** For the non native JVM based approach, both build options will behave the same as JVM is platform independent.
+>**Note:** Both build options for the non-native JVM-based approach will behave the same since the JVM is platform-independent.
 
 This sample uses these build options along with the native build option while building the package. First, let's build the package and run it locally. This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
 

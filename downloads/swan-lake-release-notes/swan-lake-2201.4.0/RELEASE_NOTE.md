@@ -209,12 +209,12 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 - Added support for executing tests using a GraalVM native image (experimental).
   
-  >**Info:** Introduced the `--native` flag to `bal test` command, which executes tests using a GraalVM native executable.
+  >**Info:** Introduced the `--native` flag to the `bal test` command, which executes tests using a GraalVM native executable.
 
 #### Language Server
 
 - Added the `Create variable with Type` code action.
-- Added rename popup support for `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions.
+- Added rename popup support to the `Extract to constant`, `Extract to local variable` , and `Extract to function` code actions.
  >**Info:** This feature will be available from the [Ballerina VS Code extension](https://wso2.com/ballerina/vscode/docs/edit-the-code/code-actions/) version `4.0.0`.
 - Added quick pick support for selecting expressions in the `Extract to constant` code action.
 

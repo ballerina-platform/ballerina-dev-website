@@ -333,7 +333,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
       </Row>
 
       <p>
-        To send the document, execute the following cURL command in a separate
+        To send the document, use the following cURL command in a separate
         terminal.
       </p>
 
@@ -423,7 +423,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11-interceptors">
+            <a href="/spec/graphql/#10-interceptors">
               GraphQL interceptors - Specification
             </a>
           </span>
@@ -433,10 +433,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Field object"
-            href="/learn/by-example/graphql-service-field-object"
-          >
+          <Link title="Context" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -462,7 +459,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Field object
+                  Context
                 </span>
               </div>
             </div>

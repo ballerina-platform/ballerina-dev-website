@@ -63,7 +63,7 @@ export function DecimalType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=709555214125bcf07cc133449a115286&file=decimal_type.bal",
+                "https://play.ballerina.io/?gist=32920883a19cb32554d347d5043667f7&file=decimal_type.bal",
                 "_blank"
               );
             }}

@@ -572,14 +572,6 @@ import {
   codeSnippetData as ConfigurableVariablesCodeSnippetData,
 } from "./configurable-variables/content.jsx";
 import {
-  ConfiguringViaToml,
-  codeSnippetData as ConfiguringViaTomlCodeSnippetData,
-} from "./configuring-via-toml/content.jsx";
-import {
-  ConfiguringViaCli,
-  codeSnippetData as ConfiguringViaCliCodeSnippetData,
-} from "./configuring-via-cli/content.jsx";
-import {
   ErrorHandling,
   codeSnippetData as ErrorHandlingCodeSnippetData,
 } from "./error-handling/content.jsx";
@@ -1139,10 +1131,6 @@ import {
   GraphqlContext,
   codeSnippetData as GraphqlContextCodeSnippetData,
 } from "./graphql-context/content.jsx";
-import {
-  GraphqlServiceFieldObject,
-  codeSnippetData as GraphqlServiceFieldObjectCodeSnippetData,
-} from "./graphql-service-field-object/content.jsx";
 import {
   GraphqlInterceptors,
   codeSnippetData as GraphqlInterceptorsCodeSnippetData,
@@ -2137,10 +2125,6 @@ const BBEs = {
   ResourcePathParametersCodeSnippetData,
   ConfigurableVariables,
   ConfigurableVariablesCodeSnippetData,
-  ConfiguringViaToml,
-  ConfiguringViaTomlCodeSnippetData,
-  ConfiguringViaCli,
-  ConfiguringViaCliCodeSnippetData,
   ErrorHandling,
   ErrorHandlingCodeSnippetData,
   CheckExpression,
@@ -2421,8 +2405,6 @@ const BBEs = {
   GraphqlDirectivesCodeSnippetData,
   GraphqlContext,
   GraphqlContextCodeSnippetData,
-  GraphqlServiceFieldObject,
-  GraphqlServiceFieldObjectCodeSnippetData,
   GraphqlInterceptors,
   GraphqlInterceptorsCodeSnippetData,
   GraphqlFileUpload,

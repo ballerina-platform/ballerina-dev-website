@@ -228,7 +228,7 @@ Once the function is deployed, add an item to the collection.
 
 Didn't we add this as a prerequisite at the top also. Why is it repeated here?
 4. Log in to the Azure CLI by executing the `az login` command.
-5. <a href="https://www.docker.com/" target="_blank">Docker</a> installed and configured in your machine
+5. Install and configure <a href="https://www.docker.com/" target="_blank">Docker</a> in your machine.
 6. GraalVM [installed and configured](https://ballerina.io/learn/build-a-native-executable/#set-up-the-prerequisites) in your machine
 7. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
 

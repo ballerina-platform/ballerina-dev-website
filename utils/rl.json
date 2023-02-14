@@ -324,6 +324,14 @@
             "id": "1.2.x-release-notes",
             "subDirectories": [
                 {
+                    "dirName": "1.2.35",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.35",
+                    "id": "1.2.35"
+                },
+                {
                     "dirName": "1.2.34",
                     "level": 2,
                     "position": 1,

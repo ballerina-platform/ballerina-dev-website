@@ -256,7 +256,7 @@ service / on new af:HttpListener() {
 }
 ```
 
-### Build and testing the function
+### Build and test the function
 
 Azure functions package supports two build options. You can find the description about each build option below.
 * cloud="azure_functions" - Builds the native executable to be compatible with azure functions cloud.

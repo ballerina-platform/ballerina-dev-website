@@ -271,7 +271,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 - Added support for the `additionalProperties` attribute in OpenAPI object schemas. With this support, the generated Ballerina records can be either open or closed records based on the `additionalProperties` details.
   >**Info:** Thereby, some of your already generated open records may change into closed records when re-generating using 2201.4.0 (and above) versions.
-- Improved the support for the `nullable:true` property OpenAPI schema to generate record fields with default values (e.g., `string? name = ();`) instead of making the field both nilable and optional (e.g., `string? name?;`).
+- Improved the behaviour for the `nullable:true` property in OpenAPI schemas, to generate record fields with default values (e.g., `string? name = ();`), instead of making the field both nilable and optional (e.g., `string? name?;`).
 - Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response` respectively.
 
 

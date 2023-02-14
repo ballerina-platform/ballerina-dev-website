@@ -63,6 +63,60 @@ Annotations are not allowed on the tuple rest descriptor.
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 
+#### Backward incompatible changes
+
+- A bug that incorrectly resolved the result type of query action that completes normally to `error?` has been fixed.
+  The result of a query action can be an `error` only when an error is thrown from the query-pipeline(`from-clause`/`join-clause`).
+
+```ballerina
+public function main() returns error? {
+    from int i in 1 ... 3
+    do {
+    };
+
+    check from int i in 1 ... 3 // warning: invalid usage of the 'check' expression operator: no expression type is equivalent to error type
+        do {
+        };
+}
+
+function iterateStream(stream<int, error?> numberStream) returns error? {
+    check from int num in numberStream
+        do {
+        };
+}
+```
+
+- A bug where errors thrown from `do clause` in a query action were being propagated to query action result has been fixed.
+Now, if the execution of a statement within `do clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+
+```ballerina
+public function main() {
+    error? queryActResult = from int i in 1 ... 3
+        do {
+            check validateAndGetError(); //error: invalid usage of the 'check' expression operator: no matching error return type(s) in the enclosing invokable
+        };
+}
+
+function validateAndGetError() returns error? {
+    return error("Invalid error");
+}
+```
+
+- A bug where the use of `on fail` lead to uninitialized variables at runtime has been fixed. Now, compiler would emit errors for possible uninitialized variables.
+
+```ballerina
+public function main() {
+   int resultInt;
+   transaction {
+       resultInt = check maybeProvideInt(true);
+       check commit;
+   } on fail {
+       io:println("Failed to initialize resultInt");
+   }
+   resultInt += 1; // error resultInt may not have been initialized
+}
+```
+
 ## Runtime updates
 
 ### New features

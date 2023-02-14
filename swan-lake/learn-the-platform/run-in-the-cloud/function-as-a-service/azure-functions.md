@@ -224,7 +224,9 @@ Once the function is deployed, add an item to the collection.
 ### Prerequisites
 1. Install the latest Ballerina distribution.
 2. Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
-3. Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
+3. Install and configure the [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
+
+Didn't we add this as a prerequisite at the top also. Why is it repeated here?
 4. Login to the Azure CLI by executing the `az login` command.
 5. <a href="https://www.docker.com/" target="_blank">Docker</a> installed and configured in your machine
 6. GraalVM [installed and configured](https://ballerina.io/learn/build-a-native-executable/#set-up-the-prerequisites) in your machine

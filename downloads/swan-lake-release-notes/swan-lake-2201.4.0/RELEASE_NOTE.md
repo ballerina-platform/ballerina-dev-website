@@ -87,7 +87,7 @@ Now, if the execution of a statement within `do clause` fails with an error, it 
 public function main() {
     error? queryActResult = from int i in 1 ... 3
         do {
-            check validateAndGetError(); //error: invalid usage of the 'check' expression operator; 
+            check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
                                          // no matching error return type(s) in the enclosing invokable
         };
 }
@@ -108,7 +108,7 @@ public function main() {
    } on fail {
        io:println("Failed to initialize resultInt");
    }
-   resultInt += 1; // error resultInt may not have been initialized
+   resultInt += 1; // error: resultInt may not have been initialized
 }
 ```
 

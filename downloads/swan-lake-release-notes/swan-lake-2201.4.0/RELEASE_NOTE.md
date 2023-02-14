@@ -59,18 +59,13 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 
 #### Backward incompatible changes
 
-- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`.
-  Now, resolution of the result type of a query action has been improved so that it is now set to `error` only in instances where an error can be generated during the execution of the query pipeline (`from-clause`/`join-clause`).
+- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
 
 ```ballerina
 public function main() returns error? {
-    from int i in 1 ... 3
+    from int i in 1 ... 3 // now valid
     do {
     };
-
-    check from int i in 1 ... 3 // warning: invalid usage of the 'check' expression operator: no expression type is equivalent to error type
-        do {
-        };
 }
 
 function iterateStream(stream<int, error?> numberStream) returns error? {
@@ -80,8 +75,7 @@ function iterateStream(stream<int, error?> numberStream) returns error? {
 }
 ```
 
-- Fixed a bug of propagating errors thrown from the `do-clause` in a query action to the result of the query action.
-  Now, if the execution of a statement within a `do-clause` fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+- Fixed a bug that incorrectly propagated errors returned from a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
 
 ```ballerina
 public function main() {
@@ -97,8 +91,7 @@ function validateAndGetError() returns error? {
 }
 ```
 
-- Fixed a bug where the use of `on-fail` led to uninitialized variables at runtime. 
-  Now, the compiler would emit errors for possible uninitialized variables.
+- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
 
 ```ballerina
 public function main() {

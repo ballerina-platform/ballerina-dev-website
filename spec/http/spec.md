@@ -813,12 +813,13 @@ Based on the return types respective header value is added as the `Content-type`
 | byte[]                                                                | application/octet-stream |
 | int, float, decimal, boolean                                          | application/json         |
 | map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json         |
-| http:StatusCodeResponse                                               | application/json         |
+| http:StatusCodeResponse                                               | derived from the body field  |
 
 ##### 2.3.5.1. Status Code Response
 
 The status code response records are defined in the HTTP module for every HTTP status code. It improves readability & 
-helps OpenAPI spec generation. 
+helps OpenAPI spec generation. By default, the content type of the response message is derived from the `body` field.
+This default content type can be overwritten by the `mediaType` field as shown below.
 
 ```ballerina
 type PersonCreated record {|

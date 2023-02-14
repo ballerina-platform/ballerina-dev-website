@@ -14,7 +14,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.4.0
 
-<em>2201.4.0 (Swan Lake) is the fourth major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
+<em>2201.4.0 (Swan Lake Update 4) is the fourth major release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -53,7 +53,7 @@ Annotations are now supported on tuple members. Tuple members can be annotated u
 
 ### Bug fixes
 
-- Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
+Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
 
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 
@@ -63,23 +63,23 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 
 #### Get the strand dump during `bal test`
 
-- When running the tests in a Ballerina package or a file using the `bal test` command, the strand dump can be obtained by sending the `SIGTRAP` signal to that process.
+When running the tests in a Ballerina package or a file using the `bal test` command, the strand dump can be obtained by sending the `SIGTRAP` signal to that process.
 
 ### Improvements
 
 #### Get the user-defined type name on singleton types
 
-- Calling `getName()` on the `FiniteType` runtime class will return the user-defined type name if it is available.
+Calling `getName()` on the `FiniteType` runtime class will return the user-defined type name if it is available.
 
-  For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the `"OPEN"` string.
+For example, if a constant is defined in the following way, the `getName()` method on the `FiniteType` will return the `"OPEN"` string.
 
-  ```ballerina
-  const OPEN = "open";
-  ```
+```ballerina
+const OPEN = "open";
+```
 
 #### Type-reference type support in runtime Java APIs
 
-- The following runtime APIs are now modified to return the type-reference type instances according to the type definitions.
+The following runtime APIs are now modified to return the type-reference type instances according to the type definitions.
 
   | **Runtime API**                                                          | **Java class**                                     |
   |--------------------------------------------------------------------------|----------------------------------------------------|
@@ -113,16 +113,16 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
   | `getType`                                                                | `io.ballerina.runtime.api.values.BValue`           |
   | `getType`                                                                | `io.ballerina.runtime.api.utils.TypeUtils`         |
 
-  For example, if the type-reference types are defined in the following way,
+For example, if the type-reference types are defined in the following way,
 
-  ```ballerina
-  type Integer int;
+```ballerina
+type Integer int;
 
-  type IntegerArray Integer[];
+type IntegerArray Integer[];
 
-  IntegerArray arr = [1, 2, 3, 4];
-  ```
-  the results of the runtime API calls will be as follows.
+IntegerArray arr = [1, 2, 3, 4];
+```
+the results of the runtime API calls will be as follows.
 
   | **Runtime API call**                            | **Result**                                                       |
   |-------------------------------------------------|------------------------------------------------------------------|
@@ -132,11 +132,11 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https
 
   <br>
 
-  > **Note:**
-  > The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
-  > ```java
-  >  Type getType();
-  > ```
+> **Note:**
+> The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
+> ```java
+>  Type getType();
+> ```
 
 ### Bug fixes
 
@@ -276,9 +276,9 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### Breaking changes
 
-- New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
 
-  >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
+>**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
 ### Bug fixes
 
@@ -293,4 +293,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 
 ### New features
 
-- Added support for maintaining generated code in a Ballerina package.
+Added support for maintaining generated code in a Ballerina package.

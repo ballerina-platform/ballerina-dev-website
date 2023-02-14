@@ -155,8 +155,9 @@ Now, the deployed Azure Function can be tested by invoking it using an HTTP clie
 ```bash
 $ curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"name":"Jack","age":21}' \   
-  https://<function_app_name>.azurewebsites.net/queue
+  --data '{"name":"Jack","age":21}' \
+  "https://<function_app_name>.azurewebsites.net/queue"
+Jack Added to the Queue!
 ```
 
 Refresh the queue page in the portal and view the added entry.
@@ -261,7 +262,7 @@ Azure functions package supports two build options. You can find the description
 
 >**Note:** For the non native JVM based approach, both build options will behave the same as JVM is platform independent.
 
-We will be using these build options along with native build option while building the package. First, let's build the package for running locally. This will use the GraalVM you installed in your machine to build the native image and will be compatible with your machine.
+We will be using these build options along with native build option while building the package. First, let's build the package for running locally. This will use the GraalVM you installed in your machine to build the native image and the generated executable be compatible with your machine.
 
 
 ```bash
@@ -361,7 +362,7 @@ Hello, Jack!
 
 ### Deploy the function
 
-Now you can build the package for azure functions cloud. This will use the GraalVM docker image to build the native image and will be compatible with azure functions cloud.
+Now you can build the package for azure functions cloud. This will perform the compilation inside docker image to make it compatible with azure functions cloud environment.
 
 ```bash
 $ bal build --cloud="azure_functions" --native

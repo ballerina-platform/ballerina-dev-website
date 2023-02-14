@@ -125,7 +125,7 @@ This section uses different types of triggers and bindings to build Azure functi
 
 ### HTTP Trigger -> queue output
 
-The following Ballerina code gives an example of using an HTTP trigger to invoke the function and uses multiple output bindings to return http response and queue output binding to write an entry to a queue.
+The following Ballerina code gives an example of using an HTTP trigger to invoke the function and uses multiple output bindings to return the HTTP response and queue output binding to write an entry to a queue.
 
 First, create a queue to hold the outputs of the function by accessing the storage account that was created alongside the function app in the prerequisites. Select **Queues** in the sidebar in the storage accounts. Click the **Add queue** button, and enter the same value as the value of the `queueName` property in the below `QueueOutput` annotation.
 

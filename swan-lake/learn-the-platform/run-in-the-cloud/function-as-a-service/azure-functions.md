@@ -259,7 +259,7 @@ service / on new af:HttpListener() {
 ### Build and test the function
 
 An Azure Functions package supports two build options. You can find the description of each build option below.
-* cloud="azure_functions" - Builds the native executable to be compatible with azure functions cloud.
+* cloud="azure_functions" - Builds the native executable to be compatible with the Azure Functions cloud.
 * cloud="azure_functions_local" - Builds the native executable to be compatible with your own machine for development purposes.
 
 >**Note:** For the non native JVM based approach, both build options will behave the same as JVM is platform independent.

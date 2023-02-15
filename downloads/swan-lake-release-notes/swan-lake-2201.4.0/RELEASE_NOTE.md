@@ -50,13 +50,7 @@ type T [int, @annot string];
 
 Annotations are not allowed on the tuple rest descriptor. 
 
-### Bug fixes
-
-Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
-
-To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
-
-#### Backward incompatible changes
+### Backward-incompatible changes
 
 - Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
 
@@ -104,6 +98,12 @@ public function main() {
    resultInt += 1; // error: resultInt may not have been initialized
 }
 ```
+
+### Bug fixes
+
+Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
+
+To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 

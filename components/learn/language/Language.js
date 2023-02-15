@@ -47,41 +47,48 @@ export default function Language(props) {
       </Row>
 
       <Row className="pageContentRow llanding">
-        <Col xs={12} lg={6}>
+        <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder} >
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/language-basics`} className={styles.linkText}>Language basics</a>
           </div>
-
+        </Col>
+        <Col xs={12}  lg={2} className={styles.newBox,styles.newBoxBorder}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.linkText}>Network interaction</a>
           </div>
+        </Col>
+          <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder}>
 
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.linkText}>Data</a>
           </div>
-
+        </Col>
+          <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.linkText}>Concurrency</a>
           </div>
-
+        </Col>
+          <Col xs={12} lg={2} className={styles.newBox}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.linkText}>Advanced general purpose language features</a>
           </div>
-
-
-          {/* <div className={styles.langRow}>
-          <a href={`${prefix}/learn/#`} className={styles.linkBtn}>Complete language guide slides</a>
-          <a href="https://www.youtube.com/watch?list=PL7JOecNWBb0KX8RGAjF-oRknb_YIYN-dR&v=My_uqtHvXV8" className={styles.linkBtn}>Watch video</a>
-          </div> */}
         </Col>
 
-        <Col xs={12} lg={6} className={styles.btnCol}>
+       
+      </Row>
+      <Row className="pageContentRow llanding">
+
+
+        <Col xs={12} lg={8} className={styles.cHighlightedText}>
           <div className={styles.btnWrapper}>
-          <a href={`${prefix}/learn/language-walkthrough/#watch-the-videos`} className={styles.linkBtn}>Watch videos</a>
-          <a href={`${prefix}/learn/language-walkthrough/#view-the-slides`} className={styles.linkBtn}>View slides</a>
+          <div className={styles.btnWrapper}>
+          Explore more on the above topics via the concise video and slide resources. &nbsp; <a href={`${prefix}/learn/language-walkthrough/#watch-the-videos`} className={styles.linkText}>Watch videos</a> &nbsp;&nbsp;<span className={styles.linkTextSpan}>|</span>&nbsp;&nbsp; <a href={`${prefix}/learn/language-walkthrough/#view-the-slides`} className={styles.linkText}>View slides</a>
+       </div>
           </div>
         </Col>
       </Row>
     </>
   );
 }
+
+

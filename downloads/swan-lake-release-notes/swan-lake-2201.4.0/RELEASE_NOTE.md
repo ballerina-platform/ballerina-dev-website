@@ -75,7 +75,7 @@ function iterateStream(stream<int, error?> numberStream) returns error? {
 }
 ```
 
-- Fixed a bug that incorrectly propagated errors returned from a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+- Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
 
 ```ballerina
 public function main() {

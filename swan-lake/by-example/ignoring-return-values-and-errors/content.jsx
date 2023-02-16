@@ -74,7 +74,7 @@ export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e9240e8282f56701f6ab0f909f3f398c&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=5d49688d706bb24e4b81fe098e5b44d7&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}

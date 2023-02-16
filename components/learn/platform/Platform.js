@@ -119,10 +119,6 @@ export default function Platform(props) {
               <p className={styles.description}>Generate documentation for the code.</p>
             </div>
           </div>
-
-
-        </Col>
-        <Col xs={12} lg={4} className={styles.contentCol}>
           <div className={styles.pGroup}>
             <h3>Run in the cloud</h3>
 
@@ -146,6 +142,79 @@ export default function Platform(props) {
           </div>
 
 
+        </Col>
+        <Col xs={12} lg={4} className={styles.contentCol}>
+
+          <div className={styles.pGroup}>
+            <h3>Configure and observe</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
+                  Configure Ballerina programs
+                </a>
+              </p>
+              <p className={styles.description}>The language support for configurability.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                  Observe Ballerina programs</a>
+              </p>
+              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
+            </div>
+          </div>
+          <div className={styles.pGroup}>
+            <h3>Java interoperability</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
+                  Call Java code from Ballerina
+                </a>
+              </p>
+              <p className={styles.description}>Calling Java code from Ballerina.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
+                  Java interoperability guide
+                </a>
+              </p>
+              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Native support</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
+                  [Experimental] Build a native executable
+                </a>
+              </p>
+              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
+            </div>
+          </div>
+          <div className={styles.pGroup}>
+            <h3>Ballerina Central</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/publish-packages-to-ballerina-central`} className={styles.titleLink}>
+                  Publish packages to Ballerina Central
+                </a>
+              </p>
+              <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
+            </div>
+          </div>
+
+          
+        </Col>
+        <Col xs={12} lg={4} className={styles.contentCol}>
           <div className={styles.pGroup}>
             <h3>Ballerina tooling</h3>
 
@@ -214,77 +283,7 @@ export default function Platform(props) {
 
 
         </Col>
-        <Col xs={12} lg={4} className={styles.contentCol}>
-
-          <div className={styles.pGroup}>
-            <h3>Configure and observe</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
-                  Configure Ballerina programs
-                </a>
-              </p>
-              <p className={styles.description}>The language support for configurability.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
-                  Observe Ballerina programs</a>
-              </p>
-              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Ballerina Central</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/publish-packages-to-ballerina-central`} className={styles.titleLink}>
-                  Publish packages to Ballerina Central
-                </a>
-              </p>
-              <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Java interoperability</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                  Call Java code from Ballerina
-                </a>
-              </p>
-              <p className={styles.description}>Calling Java code from Ballerina.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
-                  Java interoperability guide
-                </a>
-              </p>
-              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Native support</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
-                  [Experimental] Build a native executable
-                </a>
-              </p>
-              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
-            </div>
-          </div>
-        </Col>
+        
       </Row>
     </>
   );

@@ -32,6 +32,24 @@ service on orderListener {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
+
+    // When an error occurs before the \`onConsumerRecord\` gets invoked,
+    // \`onError\` function will get invoked.
+    remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
+        // Check whether the \`error\` is a \`kafka:PayloadValidationError\` and seek pass the
+        // erroneous record.
+        if 'error is kafka:PayloadValidationError {
+            log:printError("Payload validation failed", 'error);
+            // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+            // the \`kafka:PayloadValidationError\`.
+            check caller->seek({
+                partition: 'error.detail().partition,
+                offset: 'error.detail().offset + 1
+            });
+        } else {
+            log:printError("An error occured", 'error);
+        }
+    }
 }
 `,
 ];
@@ -53,14 +71,11 @@ export function KafkaServiceConstraintValidation({ codeSnippets }) {
         <code>kafka:Listener</code>, and then validates the received payloads by
         the defined constraints. The constraints are added as annotations to the
         payload record and when the payload is received from the broker, it is
-        validated internally and if validation fails, a{" "}
-        <code>kafka:PayloadBindingError</code> will be logged to the console and
-        the <code>kafka:Listener</code> will be automatically seeked to the next
-        record. This behaviour can be changed by setting{" "}
-        <code>autoSeekOnValidationFailure</code> configuration to{" "}
-        <code>false</code>. Then the <code>onError</code> remote method will be
-        invoked with the related error to be handled as needed. The{" "}
-        <code>validation</code> flag of the
+        validated internally and if validation fails, the <code>onError</code>{" "}
+        remote method will be invoked with a{" "}
+        <code>kafka:PayloadValidationError</code>. The <code>seek</code> method
+        of the <code>kafka:Caller</code> is used to seek past the erroneous
+        record and read the new records. The <code>validation</code> flag of the
         <code>kafka:ConsumerConfiguration</code> can be set to{" "}
         <code>false</code> to stop validating the payloads. Use this to validate
         the messages received from a Kafka server implicitly.
@@ -219,10 +234,9 @@ export function KafkaServiceConstraintValidation({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service_constraint_validation.bal`}</span>
-              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"`}</span>
-              <span>{`error: Failed to validate payload. {"partition":{"topic":"order-topic-4","partition":0},"offset":10}`}</span>
-              <span>{`cause: Validation failed for '\$.productName:maxLength' constraint(s).`}</span>
-              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport shoe"`}</span>
+              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"`}</span>
+              <span>{`time = 2022-11-28T14:19:43.346+05:30 level = ERROR module = "" message = "Payload validation failed" error = "Failed to validate payload. If needed, please seek past the record to continue consumption."`}</span>
+              <span>{`time = 2022-11-28T13:56:56.502+05:30 level = INFO module = "" message = "Received valid order for Sport"`}</span>
             </code>
           </pre>
         </Col>

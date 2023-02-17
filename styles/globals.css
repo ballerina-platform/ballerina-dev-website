@@ -461,7 +461,7 @@ a.cGreenLinkArrow:hover {
 }
 
 .pageContentRow {
-  margin-bottom: 35px;
+  margin-bottom: 45px;
 }
 
 .pageContentRow h2 {
@@ -689,7 +689,6 @@ ul.eventsTabs {
 .learnRow {
   margin-top: 20px;
   padding-top: 30px;
-  border-top: #a7a8ab solid 0.3px;
 }
 .cardBottomExtraMargin{margin-bottom: 5px;}
 

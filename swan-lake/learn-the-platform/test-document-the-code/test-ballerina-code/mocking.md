@@ -39,7 +39,7 @@ structurally equivalent to the real object via the mocking features in the test 
 
 ***Example:***
 
-Consider the following example where an http:Client interacts with an external endpoint to get a random joke.
+Consider the following example in which an `http:Client` interacts with an external endpoint to get a random joke.
 
 ***main.bal***
 
@@ -69,7 +69,7 @@ function getRandomJoke(string name) returns string|error {
 }
 ```
 
-Let's write tests for above `main.bal` to define a test double for the `clientEndpoint` object.
+Let's write tests for the above `main.bal` file to define a test double for the `clientEndpoint` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
  any other member function of the `clientEndpoint` will result in a runtime error. 
@@ -132,7 +132,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
         return createError(response);
     }
 
-    // Check if the provided category is available
+    // Check if the provided category is available.
     json[] categories = check response.getJsonPayload().ensureType();
 
     if !isCategoryAvailable(categories, category) {

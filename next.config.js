@@ -4,10 +4,6 @@ const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
   ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
   : "";
 
-const ContentSecurityPolicy = `
-frame-src 'self' 'https://resources.wso2.com/*';  
-`;
-
 const securityHeaders = [
   {
     key: 'X-Frame-Options',

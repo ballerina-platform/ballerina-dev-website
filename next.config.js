@@ -3,6 +3,19 @@
 const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
   ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
   : "";
+
+const securityHeaders = [
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: "frame-src 'self' https://resources.wso2.com; frame-ancestors 'self' https://resources.wso2.com;"
+  }
+]
+
+
 const nextConfig = {
   reactStrictMode: true,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
@@ -23,6 +36,15 @@ const nextConfig = {
     distServer: "https://dist.ballerina.io",
     gitHubPath:
       "https://github.com/ballerina-platform/ballerina-dev-website/blob/master/",
+  },
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
   },
   async rewrites() {
     return [

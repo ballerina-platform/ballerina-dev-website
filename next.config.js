@@ -5,13 +5,17 @@ const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
   : "";
 
 const ContentSecurityPolicy = `
-  frame-src 'https://resources.wso2.com/'; frame-ancestors 'https://resources.wso2.com/';  
+frame-src 'self' 'https://resources.wso2.com/*';  
 `;
 
 const securityHeaders = [
   {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+    value: "frame-src 'self' https://resources.wso2.com; frame-ancestors 'self' https://resources.wso2.com;"
   }
 ]
 

@@ -30,13 +30,13 @@ export default function UseCases(props) {
 
 
     const consumingServices = samples['consuming-services'];
-  const workingWithData = samples['working-with-data'];
-  const restfulApi = samples['restful-api'];
-  const grpcCode1 = samples['grpc-api'];
-  const grpcCode2 = samples['grpc-api-proto'];
-  const graphqlApi = samples['graphql-api'];
-  const kafkaConsumer = samples['kafka-consumer-producer'];
-  const workingWithDataBases = samples['working-with-databases'];
+    const workingWithData = samples['working-with-data'];
+    const restfulApi = samples['restful-api'];
+    const grpcCode1 = samples['grpc-api'];
+    const grpcCode2 = samples['grpc-api-proto'];
+    const graphqlApi = samples['graphql-api'];
+    const kafkaConsumer = samples['kafka-consumer-producer'];
+    const workingWithDataBases = samples['working-with-databases'];
 
     return (
         <>
@@ -66,16 +66,16 @@ export default function UseCases(props) {
                         <h3>Network Data == Program Data</h3>
                         <p>Data coming over the wire is seamlessly mapped to domain types without explicit data binding in Ballerina. Works with a wide range of data formats such as JSON, XML, and EDI.</p>
                         <div className={styles.dVersion}>
-                        <a href={`${prefix}/#/`} className={styles.cDownload}>
-                            <img src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                            View code on GitHub
-                        </a>
-                    </div>
+                            <a href={`${prefix}/#/`} className={styles.cDownload}>
+                                <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                View code on GitHub
+                            </a>
+                        </div>
                     </div>
                 </Col>
                 <Col xs={12} md={9} lg={9} className={styles.box}>
                     <div className={styles.codeSnippet}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />
+                        <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />
                     </div>
                 </Col>
             </Row>
@@ -86,16 +86,16 @@ export default function UseCases(props) {
                         <h3>Network Resiliency</h3>
                         <p>Use built-in network resiliency features to ensure reliable communication between services, including circuit breaker, failover, timeout, and retries. Ensure your critical integration flows continue to function even in the face of network disruptions or service failures.</p>
                         <div className={styles.dVersion}>
-                        <a href={`${prefix}/#/`} className={styles.cDownload}>
-                            <img src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                            View code on GitHub
-                        </a>
-                    </div>
+                            <a href={`${prefix}/#/`} className={styles.cDownload}>
+                                <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                View code on GitHub
+                            </a>
+                        </div>
                     </div>
                 </Col>
                 <Col xs={12} md={9} lg={9} className={styles.box}>
                     <div className={styles.codeSnippet}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: consumingServices }} />
+                        <div className="highlight" dangerouslySetInnerHTML={{ __html: consumingServices }} />
                     </div>
                 </Col>
             </Row>

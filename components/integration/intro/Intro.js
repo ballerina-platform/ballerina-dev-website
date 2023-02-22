@@ -18,6 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
@@ -39,7 +40,7 @@ export default function Intro() {
                     </div>
                 </Col>
                 <Col xs={12} lg={6} className={styles.introImg}>
-                    <img src='/images/maxresdefault.jpg' alt='Integration' width="100%" />
+                    <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} />
                 </Col>
             </Row>
 

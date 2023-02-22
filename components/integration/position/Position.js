@@ -18,6 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Position.module.css';
@@ -60,12 +61,12 @@ export default function Position(props) {
                 </Col>
                 <Col xs={12} md={4} lg={4} className={styles.boxGreen}>
                     <div>
-                        <div class={`${styles.icon} ${styles.triangleLeft}`}></div>
+                        <div className={`${styles.icon} ${styles.triangleLeft}`}></div>
                         <div className={styles.middle}>
-                            <img src={`${prefix}/images/ballerina-logo-white.svg`} alt="Ballerina" />
+                            <Image src={`${prefix}/images/ballerina-logo-white.svg`} alt="Ballerina" width={660} height={120}/>
                             <p>The Integration Language</p>
                         </div>
-                        <div class={`${styles.icon} ${styles.triangleRight}`}></div>
+                        <div className={`${styles.icon} ${styles.triangleRight}`}></div>
 
                     </div>
                 </Col>

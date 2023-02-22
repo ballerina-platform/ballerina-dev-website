@@ -166,14 +166,14 @@
          <meta
            property="og:image"
            itemProp="image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
  
          {/* LINKED IN */}
          <meta property="og:title" content="Ballerina" />
          <meta
            property="og:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="og:description"
@@ -193,7 +193,7 @@
          />
          <meta
            name="twitter:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="twitter:text:description"
@@ -201,7 +201,7 @@
          />
          <meta
            property="twitter:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
        </Head>
  

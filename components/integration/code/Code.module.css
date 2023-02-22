@@ -1,0 +1,31 @@
+/* .box div {
+    border: 1px solid #D9D9D9;
+    padding: 20px;
+} */
+
+.box h3 {
+    font-size: 20px;
+    color: #585a5e;
+}
+
+a.cDownload {
+    display: block;
+    transition: none !important;
+    font-weight: 400;
+    color: #20b6b0 !important;
+    text-decoration: none;
+}
+
+a.cDownload img {
+    margin-right: 10px;
+}
+
+.codeSnippet div pre {
+    margin-top: 0;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.box img {
+    border-radius: 4px;
+}

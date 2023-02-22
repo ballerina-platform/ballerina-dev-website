@@ -1,0 +1,9 @@
+.box div {
+    border: 1px solid #D9D9D9;
+    padding: 20px;
+}
+
+.box h3 {
+    font-size: 20px;
+    color: #585a5e;
+}

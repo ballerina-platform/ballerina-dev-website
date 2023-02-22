@@ -29,7 +29,7 @@ a {
   padding-right: 0.4rem !important; */
 }
 
-.llanding {
+.llanding, .integration {
   padding-left: 0.4rem !important;
   padding-right: 0.4rem !important;
 }
@@ -1214,4 +1214,8 @@ table.cTopControlsContainer tbody {
 .colorBlock {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.integration h2 {
+  margin-top: 50px;
 }

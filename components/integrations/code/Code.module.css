@@ -16,8 +16,8 @@ a.cDownload {
     text-decoration: none;
 }
 
-a.cDownload img {
-    margin-right: 10px;
+a.cDownload span {
+    margin-right: 10px !important;
 }
 
 .codeSnippet div pre {
@@ -28,4 +28,9 @@ a.cDownload img {
 
 .box img {
     border-radius: 4px;
+        width: -moz-available !important;         
+        width: -webkit-fill-available !important;  
+        width: fill-available !important;
 }
+
+

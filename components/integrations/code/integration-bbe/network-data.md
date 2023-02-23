@@ -1,4 +1,5 @@
 ---
+title: 'Edit, Debug, Run in VSCode'
 description: Data coming over the wire is seamlessly mapped to domain types without explicit data binding in Ballerina. Works with a wide range of data formats such as JSON, XML, and EDI.
 url: 'https://github.com/orgs/ballerina-platform/'
 ---

@@ -1218,4 +1218,9 @@ table.cTopControlsContainer tbody {
 
 .integration h2 {
   margin-top: 50px;
+  scroll-margin-top: 60px;
+}
+
+.integration h3 {
+  scroll-margin-top: 60px;
 }

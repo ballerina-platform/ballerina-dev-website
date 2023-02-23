@@ -51,12 +51,20 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/integrations/code/integration-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' });
+    samples[sampleName] = {
+      frontmatter: {
+        title: frontmatter.title,
+        description: frontmatter.description,
+        url: frontmatter.url ? frontmatter.url : '',
+        image: frontmatter.image ? frontmatter.image : '',
+      },
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' }) : ''
+    };
   });
 
   return {
     props: {
-      samples
+      samples,
     },
   };
 }
@@ -157,9 +165,9 @@ export default function Integrations({ samples }) {
           </Row>
 
           <Intro />
-          <Position getLink={getLink}/>
-          <UseCases getLink={getLink}/>
-          <Code samples={samples} getLink={getLink}/>
+          <Position getLink={getLink} />
+          <UseCases getLink={getLink} />
+          <Code samples={samples} getLink={getLink} />
 
         </Col>
       </Layout>

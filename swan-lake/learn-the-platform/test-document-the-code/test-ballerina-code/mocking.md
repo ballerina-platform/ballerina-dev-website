@@ -44,27 +44,20 @@ Consider the following example in which an `http:Client` interacts with an exter
 ***main.bal***
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
 import ballerina/regex;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
+type Joke readonly & record {|
+    string value;
+|};
+
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // with the name replaced by the provided name or an error if the API invocation fails.
 function getRandomJoke(string name) returns string|error {
-
-    http:Response response = check clientEndpoint->get("/random");
-
-    if response.statusCode != http:STATUS_OK {
-        string errorMsg = "error occurred while sending GET request";
-        io:println(errorMsg, ", status code: ", response.statusCode, ", payload: ", response.getJsonPayload());
-        return error(errorMsg);
-    }
-
-    json payload = check response.getJsonPayload().ensureType();
-    string joke = check payload.value;
-    string replacedText = regex:replaceAll(joke, "Chuck Norris", name);
+    Joke joke = check clientEndpoint->get("/random");
+    string replacedText = regex:replaceAll(joke.value, "Chuck Norris", name);
     return replacedText;
 }
 ```
@@ -84,11 +77,10 @@ import ballerina/http;
 public client class MockHttpClient {
 
     remote function get(string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns http:Response|anydata|http:ClientError {
-        http:Response response = new;
-        response.statusCode = 500;
-        response.setPayload({"reason" : "Internal Server Error"});
-        return response;
+        Joke joke = {"value": "Mock When Chuck Norris wants an egg, he cracks open a chicken."};
+        return joke;
     }
+
 }
 
 @test:Config {}
@@ -100,8 +92,8 @@ public function testGetRandomJoke() {
     // invoke the function to test
     string|error result = getRandomJoke("Sheldon");
 
-    // verify that the function returns an error
-    test:assertTrue(result is error);
+    // verify that the function returns the mock value after replacing the name
+    test:assertEquals(result, "Mock When Sheldon wants an egg, he cracks open a chicken.");
 }
 ```
 
@@ -117,23 +109,20 @@ Let’s make changes to the above example to get a random joke from a specific c
 ***main.bal***
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
 import ballerina/regex;
+import ballerina/lang.array;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
+
+type Joke readonly & record {|
+    string value;
+|};
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
 function getRandomJoke(string name, string category = "food") returns string|error {
-    http:Response response = check clientEndpoint->get("/categories");
-
-    if response.statusCode != http:STATUS_OK {
-        return createError(response);
-    }
-
-    // Check if the provided category is available.
-    json[] categories = check response.getJsonPayload().ensureType();
+    string[] categories = check clientEndpoint->get("/categories");
 
     if !isCategoryAvailable(categories, category) {
         string errorMsg = "'" + category + "' is not a valid category. ";
@@ -142,38 +131,11 @@ function getRandomJoke(string name, string category = "food") returns string|err
     }
 
     // Get a random joke from the provided category
-    response = check clientEndpoint->get("/random?category=" + category);
-
-    if response.statusCode != http:STATUS_OK {
-        return createError(response);
-    }
-    json payload = check response.getJsonPayload();
-    string joke = check payload.value;
-
-    return regex:replaceAll(joke, "Chuck Norris", name);
-
-}
-```
-
-***utils.bal***
-
-The util functions below are used to validate the categories and construct errors based on the HTTP response.
-
-```ballerina
-import ballerina/io;
-import ballerina/lang.array;
-import ballerina/http;
-
-// This function checks if the provided category is a valid one.
-function isCategoryAvailable(json[] categories, string category) returns boolean => array:some(categories, categoryVal => categoryVal.toString() == category);
-
-// Returns an error based on the HTTP response.
-function createError(http:Response response) returns error {
-    string msg = "error occurred while sending GET request";
-    io:println(msg, ", status code: ", response.statusCode);
-    return error(msg);
+    Joke joke = check clientEndpoint->get("/random?category=" + category);
+    return regex:replaceAll(joke.value, "Chuck Norris", name);
 }
 
+function isCategoryAvailable(string[] categories, string category) returns boolean => array:some(categories, categoryVal => categoryVal == category);
 ```
 
 ***test_utils.bal***
@@ -181,22 +143,16 @@ function createError(http:Response response) returns error {
 The util functions below are used to construct mock responses required for testing.
   
   ```ballerina
-import ballerina/http;
-
-// Returns a mock HTTP response to be used for the random joke API invocation.
-function getMockResponse() returns http:Response {
-    http:Response mockResponse = new;
-    mockResponse.setPayload({"value": "When Chuck Norris wants an egg, he cracks open a chicken."});
-    return mockResponse;
+// Returns a mock Joke to be used for the random joke API invocation.
+function getMockResponse() returns Joke {
+    Joke joke = {"value": "When Chuck Norris wants an egg, he cracks open a chicken."};
+    return joke;
 }
 
 // Returns a mock response to be used for the category API invocation.
-function getCategoriesResponse() returns http:Response {
-    http:Response categoriesRes = new;
-    categoriesRes.setJsonPayload(["animal", "food", "history", "money", "movie"]);
-    return categoriesRes;
+function getCategoriesResponse() returns string[] {
+    return ["animal", "food", "history", "money", "movie"];
 }
-
 ```
 
 #### Stub to return a specific value

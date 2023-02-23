@@ -21,10 +21,10 @@ import { Row, Col } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../layouts/LayoutLearn";
-import Intro from "../../components/integration/intro/Intro";
-import Position from "../../components/integration/position/Position";
-import UseCases from "../../components/integration/use-cases/UseCases";
-import Code from "../../components/integration/code/Code";
+import Intro from "../../components/integrations/intro/Intro";
+import Position from "../../components/integrations/position/Position";
+import UseCases from "../../components/integrations/use-cases/UseCases";
+import Code from "../../components/integrations/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -44,12 +44,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/code/integration-bbe");
+  const files = traverseFolder("components/integrations/code/integration-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/code/integration-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/integrations/code/integration-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' });
   });
@@ -62,7 +62,7 @@ export async function getStaticProps() {
 }
 
 
-export default function Integration({ samples }) {
+export default function Integrations({ samples }) {
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")

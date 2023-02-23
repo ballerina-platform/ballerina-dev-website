@@ -54,7 +54,7 @@ export default function Position(props) {
                         </div>
 
                         <div className={styles.introText2}>
-                            ESB, BPM, EAI
+                            ESB, BPMN, EAI
                         </div>
                         <div className={styles.introText3}><span>NOT AGILE</span></div>
                     </div>
@@ -63,8 +63,8 @@ export default function Position(props) {
                     <div>
                         <div className={`${styles.icon} ${styles.triangleLeft}`}></div>
                         <div className={styles.middle}>
-                            <Image src={`${prefix}/images/ballerina-logo-white.svg`} alt="Ballerina" width={660} height={120}/>
-                            <p>The Integration Language</p>
+                            {/* <Image src={`${prefix}/images/ballerina-logo-white.svg`} alt="Ballerina" width={660} height={120}/> */}
+                            <p>The<br/>Integration<br/>Gap</p>
                         </div>
                         <div className={`${styles.icon} ${styles.triangleRight}`}></div>
 

@@ -35,6 +35,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: Generate Ballerina Service from GraphQL Schema](https://github.com/ballerina-platform/ballerina-standard-library/issues/4127)|[chathuranga-jayanath-99](https://github.com/chathuranga-jayanath-99)|0|2023-02-23|N/A|
 |[Proposal: Introduce `bal protoc` command to generate source code from .proto files](https://github.com/ballerina-platform/ballerina-standard-library/issues/3778)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|6|2022-12-05|Active|
 |[Proposal: GraphQL client subscription support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3560)|[MohamedSabthar](https://github.com/MohamedSabthar)|4|2022-10-27|Active|
 |[Proposal: GraphQL Field-Level Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/3528)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2022-10-19|Active|

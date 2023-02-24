@@ -321,8 +321,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 - Improved the behaviour for the `nullable:true` property in OpenAPI schemas, to generate record fields with default values (e.g., `string? name = ();`), instead of making the field both nilable and optional (e.g., `string? name?;`).
 - Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response` respectively.
 
-
-### Breaking changes
+### Backward-incompatible changes
 
 New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
 

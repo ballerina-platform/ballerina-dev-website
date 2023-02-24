@@ -52,7 +52,7 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d7ad21816c58f33a0b40c30d7236275d&file=xml_mutation.bal",
+                "https://play.ballerina.io/?gist=bdf5cb40e1ca2e0129036b3b79b3a962&file=xml_mutation.bal",
                 "_blank"
               );
             }}

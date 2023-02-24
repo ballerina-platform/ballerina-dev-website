@@ -74,7 +74,7 @@ export function HttpSendHeader({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3d270bf97af6f98d7d7da73bbf709f17&file=http_send_header.bal",
+                "https://play.ballerina.io/?gist=88f6ae75e397087327443ac64d10f5ec&file=http_send_header.bal",
                 "_blank"
               );
             }}

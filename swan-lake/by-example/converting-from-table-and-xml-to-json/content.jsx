@@ -53,7 +53,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8760c8252d45862178dc87a3d717a600&file=converting_from_table_and_xml_to_json.bal",
+                "https://play.ballerina.io/?gist=d72803abd6101755e94a63bfcfe840cd&file=converting_from_table_and_xml_to_json.bal",
                 "_blank"
               );
             }}
@@ -254,8 +254,8 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Converting from JSON to user defined type with langlib functions"
-            href="/learn/by-example/converting-from-json-to-user-defined-type-with-langlib-functions"
+            title="Convert from JSON to user-defined type"
+            href="/learn/by-example/convert-from-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -265,8 +265,7 @@ export function ConvertingFromTableAndXmlToJson({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from JSON to user defined type with langlib
-                  functions
+                  Convert from JSON to user-defined type
                 </span>
               </div>
               <svg

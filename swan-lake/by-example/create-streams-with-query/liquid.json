@@ -1,5 +1,5 @@
 {
-  "title": "Create streams with query",
+  "title": "Create streams with a query",
   "description": "This BBE demonstrates creating a stream of values, loading values lazily, saving resources by loading values when needed, the stream construct type, and handling the termination value of a stream.",
   "keywords": [
     "ballerina",

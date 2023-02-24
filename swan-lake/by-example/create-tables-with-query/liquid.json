@@ -1,5 +1,5 @@
 {
-  "title": "Create tables with query",
+  "title": "Create tables with a query",
   "description": "This BBE demonstrates creating tables with a query in Ballerina, creating a table, filtering a table, and creating a sub table from a table.",
   "keywords": [
     "ballerina",

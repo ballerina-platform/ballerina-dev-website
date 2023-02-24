@@ -56,7 +56,7 @@ export function TesterinaDataDrivenTests({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Data driven tests</h1>
+      <h1>Data-driven tests</h1>
 
       <p>
         The Ballerina Test framework provides in-built support for data-driven

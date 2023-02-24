@@ -97,7 +97,7 @@ export function IsolatedVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf489cef2f6434b130a23962eab19b7b&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=6fa61f8cb97c7a60f01a3da1396ab363&file=isolated_variables.bal",
                 "_blank"
               );
             }}
@@ -261,7 +261,7 @@ export function IsolatedVariables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Combining Isolated Functions and Lock"
+            title="Combining isolated functions and lock"
             href="/learn/by-example/combining-isolated-functions-and-lock"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -289,7 +289,7 @@ export function IsolatedVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Combining Isolated Functions and Lock
+                  Combining isolated functions and lock
                 </span>
               </div>
             </div>

@@ -24,7 +24,7 @@ export function ProvidingServices({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Providing services</h1>
+      <h1>Provide services</h1>
 
       <p>Providing services involves the interaction of three main things.</p>
 

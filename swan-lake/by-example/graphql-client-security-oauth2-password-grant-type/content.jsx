@@ -269,7 +269,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11242-password-grant-type">
+            <a href="/spec/graphql/#12242-password-grant-type">
               GraphQL client OAuth2 password grant type - Specification
             </a>
           </span>
@@ -280,7 +280,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -308,7 +308,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
             </div>

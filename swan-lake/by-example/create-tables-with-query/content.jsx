@@ -69,7 +69,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=85531d21d3ff0cb55ed1acb82e78d2da&file=create_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=89dcf9ced564d849951add8033e76518&file=create_tables_with_query.bal",
                 "_blank"
               );
             }}
@@ -309,10 +309,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Querying tables"
-            href="/learn/by-example/querying-tables"
-          >
+          <Link title="Query tables" href="/learn/by-example/querying-tables">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +335,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Querying tables
+                  Query tables
                 </span>
               </div>
             </div>
@@ -346,7 +343,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Create maps with query"
+            title="Create maps with a query"
             href="/learn/by-example/create-maps-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -357,7 +354,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create maps with query
+                  Create maps with a query
                 </span>
               </div>
               <svg

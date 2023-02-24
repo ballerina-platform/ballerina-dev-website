@@ -250,7 +250,7 @@ export function WebsocketClientOauth2ClientCredGrantType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -278,7 +278,7 @@ export function WebsocketClientOauth2ClientCredGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
             </div>
@@ -286,7 +286,7 @@ export function WebsocketClientOauth2ClientCredGrantType({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="OAuth2 Password grant type"
+            title="OAuth2 password grant type"
             href="/learn/by-example/websocket-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -297,7 +297,7 @@ export function WebsocketClientOauth2ClientCredGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Password grant type
+                  OAuth2 password grant type
                 </span>
               </div>
               <svg

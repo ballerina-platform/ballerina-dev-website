@@ -284,7 +284,7 @@ export function GrpcClientBearerTokenAuth({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/grpc-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -295,7 +295,7 @@ export function GrpcClientBearerTokenAuth({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
               <svg

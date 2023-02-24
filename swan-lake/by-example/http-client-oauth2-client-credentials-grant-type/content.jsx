@@ -67,7 +67,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f8fc565d8f5ae96d502d0523ab2c9a65&file=http_client_oauth2_client_credentials_grant_type.bal",
+                "https://play.ballerina.io/?gist=6cf94140edcef5b4cb6704a32a7f3644&file=http_client_oauth2_client_credentials_grant_type.bal",
                 "_blank"
               );
             }}
@@ -279,7 +279,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/http-client-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -307,7 +307,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
             </div>

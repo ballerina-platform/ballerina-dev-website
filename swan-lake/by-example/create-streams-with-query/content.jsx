@@ -41,7 +41,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Create streams with a query</h1>
+      <h1>Create stream with query</h1>
 
       <p>
         A query expression can be used to create streams. The query expression
@@ -69,7 +69,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bda299f773f64238049cf9d76d72f7bc&file=create_streams_with_query.bal",
+                "https://play.ballerina.io/?gist=0930c0a5accbe562bdb8cb36d778bf15&file=create_streams_with_query.bal",
                 "_blank"
               );
             }}
@@ -314,7 +314,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Create maps with query"
+            title="Create maps with a query"
             href="/learn/by-example/create-maps-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -342,7 +342,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create maps with query
+                  Create maps with a query
                 </span>
               </div>
             </div>

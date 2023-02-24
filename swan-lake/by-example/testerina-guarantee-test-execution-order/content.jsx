@@ -235,7 +235,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Data driven tests"
+            title="Data-driven tests"
             href="/learn/by-example/testerina-data-driven-tests"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -263,7 +263,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Data driven tests
+                  Data-driven tests
                 </span>
               </div>
             </div>

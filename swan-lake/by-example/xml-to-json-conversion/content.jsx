@@ -62,7 +62,7 @@ export function XmlToJsonConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1b714dc1bee1f6525678525d9879759f&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=4694c73392913974aa05107e1dedb27e&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}
@@ -264,7 +264,7 @@ export function XmlToJsonConversion({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="JSON to XML conversion "
+            title="JSON to XML conversion"
             href="/learn/by-example/xml-from-json-conversion"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">

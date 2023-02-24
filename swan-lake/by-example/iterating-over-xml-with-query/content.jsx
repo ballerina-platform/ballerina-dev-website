@@ -51,7 +51,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Iterating over XML with query</h1>
+      <h1>Iterate over XML with query</h1>
 
       <p>
         An <code>XML</code> value can be iterated by using a query expression. A
@@ -68,7 +68,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=756baa7f7914247a5c7d9c7204f0e53d&file=iterating_over_xml_with_query.bal",
+                "https://play.ballerina.io/?gist=3fa77c06b74b10bda4c5e18ef6a2ddc5&file=iterating_over_xml_with_query.bal",
                 "_blank"
               );
             }}

@@ -603,7 +603,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Union Types"
+            title="Union types"
             href="/learn/by-example/graphql-service-union-types"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -631,7 +631,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Union Types
+                  Union types
                 </span>
               </div>
             </div>

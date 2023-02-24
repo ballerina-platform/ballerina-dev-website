@@ -62,7 +62,7 @@ export function AccessOptionalJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f78337154546003b70fbef128d8319fb&file=access_optional_json_elements.bal",
+                "https://play.ballerina.io/?gist=54a7b33c017ed1bba2049078472f00c0&file=access_optional_json_elements.bal",
                 "_blank"
               );
             }}

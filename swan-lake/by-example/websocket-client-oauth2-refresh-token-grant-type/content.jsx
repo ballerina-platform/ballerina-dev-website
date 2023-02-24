@@ -252,7 +252,7 @@ export function WebsocketClientOauth2RefreshTokenGrantType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="OAuth2 Password grant type"
+            title="OAuth2 password grant type"
             href="/learn/by-example/websocket-client-oauth2-password-grant-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -280,7 +280,7 @@ export function WebsocketClientOauth2RefreshTokenGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  OAuth2 Password grant type
+                  OAuth2 password grant type
                 </span>
               </div>
             </div>

@@ -61,7 +61,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d6187d3719cdeca84fd2b653165f260&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=d5fbcbc579b6cc15877a5483cea71c10&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}
@@ -245,7 +245,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Accessing optional JSON elements"
+            title="Access optional JSON elements"
             href="/learn/by-example/access-optional-json-elements"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -273,7 +273,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Accessing optional JSON elements
+                  Access optional JSON elements
                 </span>
               </div>
             </div>

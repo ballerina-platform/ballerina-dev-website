@@ -16,7 +16,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout code

@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -27,11 +27,11 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="author" content="WSO2 LLC"/>
         {/* <!--FB--> */}
-        <meta property="og:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />
+        <meta property="og:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Ballerina" />
-        <meta property="og:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />
+        <meta property="og:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:card" content="summary" />
@@ -39,8 +39,8 @@ export default function Document() {
         <meta name="twitter:creator" content="@ballerinalang" />
         <meta name="twitter:title" content="Ballerina" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />
-        <meta property="twitter:image" content={`${prefix}/images/ballerina-swan-lake-sm-banner-general.png`} />
+        <meta name="twitter:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
+        <meta property="twitter:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
 
         <link rel="shortcut icon" href={`${prefix}/images/favicon.ico`}></link>
 

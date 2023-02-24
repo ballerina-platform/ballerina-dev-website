@@ -451,8 +451,8 @@ See section [Request and Response](#6-request-and-response) to find out more.
 ##### 2.3.4.3. Query parameter
 
 The query param is a URL parameter which is available as a resource method parameter and it's not associated 
-with any annotation or additional detail. This parameter is not compulsory and not ordered. The type of query param 
-are as follows
+with any annotation or additional detail unless any default payload param is defined. This parameter is not compulsory 
+and not ordered. The type of query param are as follows
 
 ```ballerina
 type BasicType boolean|int|float|decimal|string|map<json>|enum;
@@ -467,6 +467,16 @@ Eg : “/hello?bar=hi&id=56”
 ```ballerina
 resource function get hello(string bar, int id) { 
     
+}
+```
+
+With the introduction of the default payload param support, the structured data types such as map<json> can be
+identified as payload param. To solve that ambiguity between the default payload and query param, the
+@http:Query annotation should be defined in front of the query param.
+
+```ballerina
+resource function post queryParamCheck(@http:Query map<json> q) returns map<json> {
+    return q; // q is payload param
 }
 ```
 
@@ -588,6 +598,26 @@ which retrieved by the `Content-type` header of the request. The data binding ha
 parameter type. The type of payload parameter can be one of the `anytype`. If the header is not present or not a 
 standard header, the binding type is inferred by the parameter type.
 
+When the following conditions are met, the listener identifies the default payload parameter, which is defined 
+without the @http:Payload annotation:
+- The default payload parameter rules are only applicable to POST, PUT, PATCH, DELETE, and DEFAULT accessors.
+- Parameters must contain only one structured(map/record/table/tuple/array) type or xml. However, byte[] is an exception,
+  and it is considered as a payload param.
+    - resource function post(Student[] p) {} -> Student[] is payload param type
+    - resource function post(int[] p) {} -> int[] is query param type
+    - resource function post(int p) {} -> int is query param type
+    - resource function post(Student p) {} -> Student is payload param type
+- If there's more than one structured type, the ambiguity must be resolved using the @http:Payload annotation.
+    - resource function post(@http:Payload Student p, map<json> q) {} -> p is payload, q is query
+- If there are no structured types, all parameters are considered query parameters.
+    - resource function post(@http:Payload string p, string q) {}
+- If the query parameter is structured, then the @http:Query annotation is required.
+    - resource function post(@http:Query map<json> p) {}
+- The only types allowed in the union for a parameter are structured types, xml, and nil.
+    - resource function post(Student|xml p) {} -> Student|xml is payload param type
+    - resource function post(map<json>|xml p) {} -> map<json>|xml is payload param type
+    - resource function post(Student? p) {} -> Student? is payload param type
+
 Following table explains the compatible `anydata` types with each common media type. In the absence of a standard media 
 type, the binding type is inferred by the payload parameter type itself. If the type is not compatible with the media 
 type, error is returned.
@@ -638,7 +668,7 @@ The error which may occur during the process will be returned to the caller with
 status code of 400 BAD REQUEST. The successful binding will proceed the resource execution with the built payload.
 
 ```ballerina
-resource function post hello(@http:Payload json payload) { 
+resource function post hello(json payload) { 
     
 }
 ```
@@ -650,7 +680,7 @@ the process will happen according to the type `xml`.
 If the given types of the union are not compatible with the media type, an error is returned.
 
 ```ballerina
-resource function post album(@http:Payload json|xml payload) { 
+resource function post album(json|xml payload) { 
     
 }
 
@@ -2063,34 +2093,54 @@ service class RequestInterceptor {
 ##### 8.1.1.1 Request context  
 Following is the rough definition of the interceptor context.
 ```ballerina
+# Request context attribute type.
+public type ReqCtxAttribute value:Cloneable|isolated object {};
+
+# Request context attribute type descriptor.
+public type ReqCtxAttributeType typedesc<ReqCtxAttribute>;
+
+# Represents an HTTP Context that allows user to pass data between interceptors.
 public isolated class RequestContext {
-    private final map<value:Cloneable|isolated object {}> attributes = {};
+    private final map<ReqCtxAttribute> attributes = {};
 
-    public isolated function add(string 'key, value:Cloneable|isolated object {} value) {
-        if value is value:Cloneable {
-            lock {
-                self.attributes['key] = value.clone();
-            }
-        }
-        else {
-            lock {
-                self.attributes['key] = value;
-            }   
-        }
-    }
+    # Sets an attribute to the request context object.
+    #
+    # + key - Represents the attribute key
+    # + value - Represents the attribute value
+    public isolated function set(string key, ReqCtxAttribute value) {}
 
-    public isolated function get(string 'key) returns value:Cloneable|isolated object {} {
-        lock {
-            return self.attributes.get('key);
-        }
-    }
+    # Gets an attribute value from the request context object.
+    #
+    # + key - Represents the attribute key
+    # + return - Attribute value
+    public isolated function get(string key) returns ReqCtxAttribute {}
 
-    public isolated function remove(string 'key) {
-        lock {
-            value:Cloneable|isolated object {} _ = self.attributes.remove('key);
-        }
-    }
+    # Checks whether the request context object has an attribute corresponds to the key.
+    #
+    # + key - Represents the attribute key
+    # + return - true if the attribute exists, else false
+    public isolated function hasKey(string key) returns boolean {}
 
+    # Returns the attribute keys of the request context object.
+    #
+    # + return - Array of attribute keys
+    public isolated function keys() returns string[] {}
+
+    # Gets an attribute value with type from the request context object.
+    #
+    # + key - Represents the attribute key
+    # + targetType - Represents the expected type of the attribute value
+    # + return - Attribute value or an error if the attribute value is not of the expected type
+    public isolated function getWithType(string key, ReqCtxAttributeType targetType = <>) returns targetType|ListenerError = external;
+
+    # Removes an attribute from the request context object. It panics if there is no such member.
+    #
+    # + key - Represents the attribute key
+    public isolated function remove(string key) {}
+
+    # Calls the next service in the interceptor pipeline.
+    #
+    # + return - The next service object in the pipeline. An error is returned, if the call fails
     public isolated function next() returns NextService|error? = external;
 }
 ```

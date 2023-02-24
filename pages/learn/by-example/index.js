@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -166,14 +166,14 @@
          <meta
            property="og:image"
            itemProp="image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
  
          {/* LINKED IN */}
          <meta property="og:title" content="Ballerina" />
          <meta
            property="og:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="og:description"
@@ -193,7 +193,7 @@
          />
          <meta
            name="twitter:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="twitter:text:description"
@@ -201,7 +201,7 @@
          />
          <meta
            property="twitter:image"
-           content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
          />
        </Head>
  

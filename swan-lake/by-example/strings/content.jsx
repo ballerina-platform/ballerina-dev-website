@@ -58,7 +58,7 @@ export function Strings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=32efd3affa6ef3d65126eb0b1204e5c7&file=strings.bal",
+                "https://play.ballerina.io/?gist=252612e167999d79c8353acca8c1c4e2&file=strings.bal",
                 "_blank"
               );
             }}

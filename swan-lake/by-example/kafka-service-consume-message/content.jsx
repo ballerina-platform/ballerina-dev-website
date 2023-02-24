@@ -30,6 +30,24 @@ service on orderListener {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
             };
     }
+
+    // When an error occurs before the \`onConsumerRecord\` gets invoked,
+    // \`onError\` function will get invoked.
+    remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
+        // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
+        // erroneous record.
+        if 'error is kafka:PayloadBindingError {
+            log:printError("Payload binding failed", 'error);
+            // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+            // the \`kafka:PayloadBindingError\`.
+            check caller->seek({
+                partition: 'error.detail().partition,
+                offset: 'error.detail().offset + 1
+            });
+        } else {
+            log:printError("An error occured", 'error);
+        }
+    }
 }
 `,
 ];
@@ -55,14 +73,12 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
         <code>onConsumerRecord</code> method, which is a subtype of{" "}
         <code>anydata[]</code>. When new messages are received, the{" "}
         <code>onConsumerRecord</code> method gets invoked. If the payload does
-        not match the defined type, a <code>kafka:PayloadBindingError</code>{" "}
-        will be logged to the console and the <code>kafka:Listener</code> will
-        be automatically seeked to the next record. This behaviour can be
-        changed by setting <code>autoSeekOnValidationFailure</code>{" "}
-        configuration to <code>false</code>. Then the <code>onError</code>{" "}
-        remote method will be invoked with the related error to be handled as
-        needed. Use this to listen to a set of topics in a Kafka server and
-        receive messages implicitly.
+        not match the defined type, the <code>onError</code> remote method will
+        be invoked with a <code>kafka:PayloadBindingError</code>. Then, the{" "}
+        <code>seek</code> method of the <code>kafka:Caller</code> can be used to
+        seek past the erroneous record and read the new records. Use this to
+        listen to a set of topics in a Kafka server and receive messages
+        implicitly.
       </p>
 
       <Row

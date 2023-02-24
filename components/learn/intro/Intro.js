@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,7 +26,7 @@ export default function Intro() {
 
     return (
         <>
-            <Row className="pageContentRow justify-content-md-center llanding">
+            <Row className=" justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/install-ballerina/set-up-ballerina`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.primary}`}>
@@ -46,7 +46,7 @@ export default function Intro() {
                 </Col>
             </Row>
 
-            <Row className="pageContentRow justify-content-md-center llanding">
+            <Row className="cardBottomExtraMargin justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/by-example/`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.secondary}`}>

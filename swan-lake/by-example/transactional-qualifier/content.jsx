@@ -79,7 +79,7 @@ export function TransactionalQualifier({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ccc4e19035dc184a3950509c30803990&file=transactional_qualifier.bal",
+                "https://play.ballerina.io/?gist=60c8bb3caf79879518d5e0a08404805e&file=transactional_qualifier.bal",
                 "_blank"
               );
             }}

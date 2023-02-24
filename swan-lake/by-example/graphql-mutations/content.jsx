@@ -324,7 +324,7 @@ export function GraphqlMutations({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>To send the document, execute the following cURL command.</p>
+      <p>To send the document, use the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "

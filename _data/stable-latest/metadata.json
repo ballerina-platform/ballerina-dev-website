@@ -1,18 +1,17 @@
 {
-	"version":"1.2.34",
-	"release-date":"2022-11-09",
-	"windows-installer":"ballerina-windows-installer-x64-1.2.34.msi",
-	"windows-installer-size":"152mb",
-	"linux-installer":"ballerina-linux-installer-x64-1.2.34.deb",
-	"linux-installer-size":"146mb",
-	"macos-installer":"ballerina-macos-installer-x64-1.2.34.pkg",
-	"macos-installer-size":"168mb",
-	"rpm-installer":"ballerina-linux-installer-x64-1.2.34.rpm",
-	"rpm-installer-size":"172mb",
+	"version":"1.2.36",
+	"release-date":"2023-02-16",
+	"windows-installer":"ballerina-windows-installer-x64-1.2.36.msi",
+	"windows-installer-size":"145mb",
+	"linux-installer":"ballerina-linux-installer-x64-1.2.36.deb",
+	"linux-installer-size":"141mb",
+	"macos-installer":"ballerina-macos-installer-x64-1.2.36.pkg",
+	"macos-installer-size":"161mb",
+	"rpm-installer":"ballerina-linux-installer-x64-1.2.36.rpm",
+	"rpm-installer-size":"164mb",
 	"other-artefacts":[  
-		"ballerina-1.2.34.zip",
-		"ballerina-1.2.34.vsix"
+		"ballerina-1.2.36.zip"
  	],
-	"api-docs":"ballerina-api-docs-1.2.34.zip",
-	"release-notes":"ballerina-release-notes-1.2.34.md"
+	"api-docs":"ballerina-api-docs-1.2.36.zip",
+	"release-notes":"ballerina-release-notes-1.2.36.md"
 }

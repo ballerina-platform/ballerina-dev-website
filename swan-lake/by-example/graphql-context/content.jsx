@@ -42,7 +42,8 @@ service /graphql on new graphql:Listener(9090) {
         self.profile = {name: "Walter White", age: 51, salary: 737000.00};
     }
 
-    // If the context is needed, it should be defined as a parameter of the resolver function.
+    // If the context is needed, it should be defined as the first parameter of the resolver
+    // function.
     resource function get profile(graphql:Context context) returns Profile|error {
         // Retrieves the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
         // the \`scope\` is not found in the context.
@@ -82,7 +83,7 @@ export function GraphqlContext({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Context object</h1>
+      <h1>GraphQL service - Context</h1>
 
       <p>
         The Ballerina <code>graphql</code> module allows defining and using a{" "}
@@ -90,27 +91,25 @@ export function GraphqlContext({ codeSnippets }) {
         in the <code>graphql:ServiceConfig</code> annotation can be used to pass
         the context initialization function. If it is not provided, a default,
         empty <code>context</code> object will be created per request. When the{" "}
-        <code>graphql:Context</code> is needed to be accessed, define it as a
-        parameter of the <code>resource</code>/<code>remote</code> method. Use
-        the <code>graphql:Context</code> to pass meta information between the{" "}
-        <code>resource</code>/<code>remote</code> methods used as GraphQL object
-        fields.
+        <code>graphql:Context</code> is needed to be accessed, define it as the
+        first parameter of the <code>resource</code>/<code>remote</code> method.
+        Use the <code>graphql:Context</code> to pass meta information between
+        the <code>resource</code>/<code>remote</code> methods used as GraphQL
+        object fields.
       </p>
 
       <blockquote>
         <p>
-          <strong>Hint:</strong> The <code>graphql:Context</code> is defined
-          before the other parameters of a function as a convention.
+          <strong>Note:</strong> If the <code>graphql:Context</code> is defined
+          as the first parameter of a resolver function, it will be accessible
+          inside the resolver. Passing down the context is not necessary.
         </p>
       </blockquote>
 
-      <blockquote>
-        <p>
-          <strong>Note:</strong> If the <code>graphql:Context</code> is defined
-          as a parameter of a resolver function, it will be accessible inside
-          the resolver. Passing it down is not necessary.
-        </p>
-      </blockquote>
+      <p>
+        This example shows how to initialize and access the context as well as
+        how to set/get attributes in the context.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -346,7 +345,7 @@ export function GraphqlContext({ codeSnippets }) {
       </Row>
 
       <p>
-        To send the document, execute the following cURL command in a separate
+        To send the document, use the following cURL command in a separate
         terminal. First, send the request with the <code>scope</code> header
         value set to <code>admin</code>.
       </p>
@@ -503,7 +502,7 @@ export function GraphqlContext({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#8-context-object">
+            <a href="/spec/graphql/#8-context">
               GraphQL context - Specification
             </a>
           </span>
@@ -547,8 +546,8 @@ export function GraphqlContext({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Field object"
-            href="/learn/by-example/graphql-service-field-object"
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -558,7 +557,7 @@ export function GraphqlContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Field object
+                  Interceptors
                 </span>
               </div>
               <svg

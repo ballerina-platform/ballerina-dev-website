@@ -35,11 +35,11 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: Generate Ballerina Service from GraphQL Schema](https://github.com/ballerina-platform/ballerina-standard-library/issues/4127)|[chathuranga-jayanath-99](https://github.com/chathuranga-jayanath-99)|0|2023-02-23|N/A|
 |[Proposal: Introduce `bal protoc` command to generate source code from .proto files](https://github.com/ballerina-platform/ballerina-standard-library/issues/3778)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|6|2022-12-05|Active|
-|[[Proposal] Dispatching to custom remote functions based on the message type](https://github.com/ballerina-platform/ballerina-standard-library/issues/3670)|[Bhashinee](https://github.com/Bhashinee)|6|2022-11-18|Active|
 |[Proposal: GraphQL client subscription support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3560)|[MohamedSabthar](https://github.com/MohamedSabthar)|4|2022-10-27|Active|
 |[Proposal: GraphQL Field-Level Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/3528)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2022-10-19|Active|
-|[Proposal:  Ballerina GraphQL Federation Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3504)|[MohamedSabthar](https://github.com/MohamedSabthar)|2|2022-10-13|Active|
+|[Proposal:  Ballerina GraphQL Federation Support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3504)|[MohamedSabthar](https://github.com/MohamedSabthar)|5|2022-10-13|Active|
 |[Proposal: Introduce DataLoader for Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/3391)|[ThisaruGuruge](https://github.com/ThisaruGuruge)|1|2022-09-22|Active|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|Draft|
 |[Proposal: Introduce a new API to wait until a given scheduled job is completed ](https://github.com/ballerina-platform/ballerina-standard-library/issues/3018)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|0|2022-06-20|Active|

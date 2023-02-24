@@ -66,7 +66,7 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=512341c118e7fef777053b1640859d17&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=ee040d4b8a57985f3fdc3e15fd292a8d&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}
@@ -263,7 +263,7 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Readonly Objects and Classes"
+            title="Readonly objects and classes"
             href="/learn/by-example/readonly-objects-and-classes"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -274,7 +274,7 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Readonly Objects and Classes
+                  Readonly objects and classes
                 </span>
               </div>
               <svg

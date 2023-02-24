@@ -45,7 +45,7 @@ export function QueryingWithStreams({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Querying with streams</h1>
+      <h1>Query streams</h1>
 
       <p>
         A query expression can be used to call the <code>next()</code> method of
@@ -65,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=97339fb690b8d3ff857c7ee073f481e5&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=42b4779d076f74db1878469785165e18&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -337,7 +337,7 @@ export function QueryingWithStreams({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Destructure records using query"
+            title="Destructure records using a query"
             href="/learn/by-example/destructure-records-using-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -365,7 +365,7 @@ export function QueryingWithStreams({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records using query
+                  Destructure records using a query
                 </span>
               </div>
             </div>

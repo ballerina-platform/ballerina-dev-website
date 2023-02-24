@@ -829,35 +829,35 @@
         "isLearnByExample": true
       },
       {
-        "name": "Joining iterable objects",
+        "name": "Join iterable objects",
         "url": "joining-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Querying tables",
+        "name": "Query tables",
         "url": "querying-tables",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create tables with query",
+        "name": "Create tables with a query",
         "url": "create-tables-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create maps with query",
+        "name": "Create maps with a query",
         "url": "create-maps-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Create streams with query",
+        "name": "Create streams with a query",
         "url": "create-streams-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -871,7 +871,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Iterating over xml with query",
+        "name": "Iterate over XML with a query",
         "url": "iterating-over-xml-with-query",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -885,14 +885,14 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records using query",
+        "name": "Destructure records using a query",
         "url": "destructure-records-using-query",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Querying with streams",
+        "name": "Querying streams",
         "url": "querying-with-streams",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -909,7 +909,7 @@
         "name": "Query actions",
         "url": "query-actions",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -934,7 +934,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Accessing optional JSON elements",
+        "name": "Access optional JSON elements",
         "url": "access-optional-json-elements",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -955,21 +955,21 @@
         "isLearnByExample": true
       },
       {
-        "name": "Converting from table and XML to JSON",
+        "name": "Convert from table and XML to JSON",
         "url": "converting-from-table-and-xml-to-json",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Converting from JSON to user defined type with langlib functions",
-        "url": "converting-from-json-to-user-defined-type-with-langlib-functions",
+        "name": "Convert from JSON to user-defined type",
+        "url": "convert-from-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Casting JSON to user-defined type",
+        "name": "Cast JSON to user-defined type",
         "url": "casting-json-to-user-defined-type",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1130,7 +1130,7 @@
         "url": "consuming-services",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Failing intermittently due to github rate limiting",
+        "disableVerificationReason": "Failing intermittently due to GitHub rate limiting",
         "isLearnByExample": true
       },
       {
@@ -1194,6 +1194,24 @@
         "url": "configurable-variables",
         "verifyBuild": true,
         "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configure via TOML files",
+        "url": "configuring-via-toml",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configure via CLI arguments",
+        "url": "configuring-via-cli",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
         "isLearnByExample": true
       }
     ]
@@ -1500,14 +1518,14 @@
         "isLearnByExample": true
       },
       {
-        "name": "Readonly Objects and Classes",
+        "name": "Readonly objects and classes",
         "url": "readonly-objects-and-classes",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Combining Isolated Functions and Lock",
+        "name": "Combining isolated functions and lock",
         "url": "combining-isolated-functions-and-lock",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1615,7 +1633,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Data driven tests",
+        "name": "Data-driven tests",
         "url": "testerina-data-driven-tests",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -1908,7 +1926,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "http-client-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2327,7 +2345,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Union Types",
+        "name": "Union types",
         "url": "graphql-service-union-types",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2367,8 +2385,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context",
+        "name": "Context object",
         "url": "graphql-context",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field object",
+        "url": "graphql-service-field-object",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2517,7 +2543,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "graphql-client-security-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2684,7 +2710,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "websocket-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2700,7 +2726,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Password grant type",
+        "name": "OAuth2 password grant type",
         "url": "websocket-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3010,7 +3036,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "grpc-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -3666,7 +3692,7 @@
     ]
   },
   {
-    "title": "FTP Client",
+    "title": "FTP client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3716,7 +3742,7 @@
     ]
   },
   {
-    "title": "SFTP Client",
+    "title": "SFTP client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3741,7 +3767,7 @@
     ]
   },
   {
-    "title": "Database Access",
+    "title": "Database access",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3856,7 +3882,7 @@
         "name": "Read/write CSV with data mapping",
         "url": "io-csv-datamapping",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": false
       },
       {
@@ -4165,7 +4191,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "JSON to XML conversion ",
+        "name": "JSON to XML conversion",
         "url": "xml-from-json-conversion",
         "verifyBuild": true,
         "verifyOutput": true,

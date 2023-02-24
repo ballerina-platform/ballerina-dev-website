@@ -58,7 +58,7 @@ export function XmlTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c3be2465ed587d0b83ce731cc28fa381&file=xml_templates.bal",
+                "https://play.ballerina.io/?gist=d90e0c10885d63c0c6c31bf43fd7735d&file=xml_templates.bal",
                 "_blank"
               );
             }}

@@ -88,7 +88,7 @@ export function AccessJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8ee8f64ac10d749a0903269eaf334dd7&file=access_json_elements.bal",
+                "https://play.ballerina.io/?gist=9566c95446cd20dd380cad26eb7d588a&file=access_json_elements.bal",
                 "_blank"
               );
             }}
@@ -294,7 +294,7 @@ export function AccessJsonElements({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Accessing optional JSON elements"
+            title="Access optional JSON elements"
             href="/learn/by-example/access-optional-json-elements"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -305,7 +305,7 @@ export function AccessJsonElements({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Accessing optional JSON elements
+                  Access optional JSON elements
                 </span>
               </div>
               <svg

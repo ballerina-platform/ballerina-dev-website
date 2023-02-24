@@ -66,7 +66,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Joining iterable objects</h1>
+      <h1>Join iterable objects</h1>
 
       <p>
         A <code>join</code> clause performs an inner or left outer equijoin. The
@@ -84,7 +84,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1b749a76463d0d433c0e9ca2f88ff29c&file=joining_iterable_objects.bal",
+                "https://play.ballerina.io/?gist=2dfe82ec2473cf3b92222ec6ec55fb5b&file=joining_iterable_objects.bal",
                 "_blank"
               );
             }}
@@ -357,10 +357,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Querying tables"
-            href="/learn/by-example/querying-tables"
-          >
+          <Link title="Query tables" href="/learn/by-example/querying-tables">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -369,7 +366,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Querying tables
+                  Query tables
                 </span>
               </div>
               <svg

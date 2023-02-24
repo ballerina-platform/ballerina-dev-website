@@ -18,7 +18,8 @@ public type Order readonly & record {
 
 listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: "order-topic"
+    topics: "order-topic",
+    autoSeekOnValidationFailure: false
 });
 
 service on orderListener {
@@ -34,9 +35,20 @@ service on orderListener {
 
     // When an error occurs before the \`onConsumerRecord\` gets invoked,
     // \`onError\` function will get invoked.
-    remote function onError(kafka:Error 'error) {
-        log:printError("An error occured", 'error);
-    }
+    remote function onError(kafka:Error 'error, kafka:Caller caller) returns error? {
+        // Check whether the \`error\` is a \`kafka:PayloadBindingError\` or a \`kafka:PayloadValidationError\`
+        // and seek past the erroneous record.
+        if 'error is kafka:PayloadBindingError || 'error is kafka:PayloadValidationError {
+            log:printError("Payload error occured", 'error);
+            // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
+            // the \`kafka:PayloadBindingError\`/\`kafka:PayloadValidationError\`.
+            check caller->seek({
+                partition: 'error.detail().partition,
+                offset: 'error.detail().offset + 1
+            });
+        } else {
+            log:printError("An error occured", 'error);
+        }
 }
 `,
 ];
@@ -57,13 +69,19 @@ export function KafkaServiceErrorHandling({ codeSnippets }) {
         The <code>kafka:Service</code> has an <code>onError</code> method which
         is invoked when <code>kafka:Listener</code> triggers errors before the{" "}
         <code>onConsumerRecord</code> method is invoked. These errors could
-        include payload binding errors or constraint validation errors. The{" "}
-        <code>onError</code> method allows the user to handle these errors as
-        needed. If there is no <code>onError</code> method in the{" "}
-        <code>kafka:Service</code>, these are logged to the console with the
-        stack-trace. In addition, <code>kafka:Service</code> allows returning
-        errors from the <code>onConsumerRecord</code> method. These errors are
-        also logged to the console and the next polling cycle will continue.
+        include payload binding errors or constraint validation errors. In the
+        default behaviour, <code>kafka:PayloadBindingError</code>s and{" "}
+        <code>kafka:PayloadValidationError</code>s are logged to the console and
+        automatically seeked to fetch the next record. To pass these errors to
+        the <code>onError</code> method,{" "}
+        <code>autoSeekOnValidationFailure</code> configuration can be set to{" "}
+        <code>false</code>. The <code>onError</code> method allows the user to
+        handle these errors as needed. If there is no <code>onError</code>{" "}
+        method in the <code>kafka:Service</code>, these are logged to the
+        console with the stack-trace. In addition, <code>kafka:Service</code>{" "}
+        allows returning errors from the <code>onConsumerRecord</code> method.
+        These errors are also logged to the console and the next polling cycle
+        will continue.
       </p>
 
       <Row
@@ -219,7 +237,7 @@ export function KafkaServiceErrorHandling({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run kafka_service.bal`}</span>
-              <span>{`time = 2022-12-22T00:15:38.188+05:30 level = ERROR module = "" message = "An error occured: " error = "Data binding failed: {ballerina/lang.value}ConversionError"`}</span>
+              <span>{`time = 2023-01-05T12:08:23.938+05:30 level = ERROR module = "" message = "Payload error occured" error = "Data binding failed. If needed, please seek past the record to continue consumption."`}</span>
             </code>
           </pre>
         </Col>

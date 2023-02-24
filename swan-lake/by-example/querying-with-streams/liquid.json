@@ -1,5 +1,5 @@
 {
-  "title": "Querying with streams",
+  "title": "Querying streams",
   "description": "This BBE demonstrates querying with streams in Ballerina, iterating a stream object, calling the next method of a stream, using a stream object, and handling the termination value of a stream.",
   "keywords": [
     "ballerina",

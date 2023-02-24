@@ -70,7 +70,7 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a2bfe7d7a5769afe6899be548c9ac67e&file=default_values_for_record_fields.bal",
+                "https://play.ballerina.io/?gist=66b3bb14ffb47eed437c972e06e88754&file=default_values_for_record_fields.bal",
                 "_blank"
               );
             }}

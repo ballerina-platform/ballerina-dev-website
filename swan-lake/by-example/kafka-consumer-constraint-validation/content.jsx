@@ -25,29 +25,12 @@ public function main() returns error? {
     });
 
     while true {
-        do {
-            Order[] orders = check orderConsumer->pollPayload(15);
-            check from Order 'order in orders
-                where 'order.isValid
-                do {
-                    io:println(string \`Received valid order for \${'order.productName}\`);
-                };
-        } on fail error orderError {
-            // Check whether the \`error\` is a \`kafka:PayloadValidationError\` and seek pass the
-            // erroneous record.
-            if orderError is kafka:PayloadValidationError {
-                io:println("Payload validation failed", orderError);
-                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
-                // the \`kafka:PayloadValidationError\`.
-                check orderConsumer->seek({
-                    partition: orderError.detail().partition,
-                    offset: orderError.detail().offset + 1
-                });
-            } else {
-                check orderConsumer->close();
-                return orderError;
-            }
-        }
+        Order[] orders = check orderConsumer->pollPayload(15);
+        check from Order 'order in orders
+            where 'order.isValid
+            do {
+                io:println(string \`Received valid order for \${'order.productName}\`);
+            };
     }
 }
 `,
@@ -70,10 +53,12 @@ export function KafkaConsumerConstraintValidation({ codeSnippets }) {
         then validates the received payloads by the defined constraints. The
         constraints are added as annotations to the payload record and when the
         payload is received from the broker, it is validated internally and if
-        validation fails, a <code>kafka:PayloadValidationError</code> is
-        returned. The <code>seek</code> method of the{" "}
-        <code>kafka:Consumer</code> is used to seek past the erroneous record
-        and read the new records. The <code>validation</code> flag of the
+        validation fails, an error will be logged to the console and the{" "}
+        <code>kafka:Consumer</code> will be automatically seeked to the next
+        record. This behaviour can be changed by setting{" "}
+        <code>autoSeekOnValidationFailure</code> configuration to{" "}
+        <code>false</code>. Then the related error is returned to be handled as
+        needed. The <code>validation</code> flag of the
         <code>kafka:ConsumerConfiguration</code> can be set to{" "}
         <code>false</code> to stop validating the payloads. Use this to validate
         the messages received from a Kafka server implicitly.

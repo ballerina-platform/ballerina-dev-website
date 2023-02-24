@@ -1,5 +1,5 @@
 {
-  "title": "Destructure records using query",
+  "title": "Destructure records using a query",
   "description": "This BBE demonstrates using binding patterns in a query expression, record destructuring in a query expression and accessing values in a query iteration.",
   "keywords": [
     "ballerina",

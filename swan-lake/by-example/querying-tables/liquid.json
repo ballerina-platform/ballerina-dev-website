@@ -1,5 +1,5 @@
 {
-  "title": "Querying tables",
+  "title": "Query tables",
   "description": "This BBE demonstrates querying tables in Ballerina, filtering tables, ordering tables rows, sorting a table, iterating a table, performing table operations, querying a table, and creating an array from a table.",
   "keywords": [
     "ballerina",

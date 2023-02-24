@@ -42,7 +42,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Create maps with query</h1>
+      <h1>Create maps with query expressions</h1>
 
       <p>
         A query expressions can be used to create a map from an iterable value.
@@ -66,7 +66,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=810b32dfc38d58b056f0414df70e08ea&file=create_maps_with_query.bal",
+                "https://play.ballerina.io/?gist=ba312b4685caf3d5f5b9928ef387dd82&file=create_maps_with_query.bal",
                 "_blank"
               );
             }}
@@ -306,7 +306,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Create tables with query"
+            title="Create tables with a query"
             href="/learn/by-example/create-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -334,7 +334,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create tables with query
+                  Create tables with a query
                 </span>
               </div>
             </div>
@@ -342,7 +342,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Create streams with query"
+            title="Create streams with a query"
             href="/learn/by-example/create-streams-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -353,7 +353,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create streams with query
+                  Create streams with a query
                 </span>
               </div>
               <svg

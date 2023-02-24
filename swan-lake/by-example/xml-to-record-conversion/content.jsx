@@ -86,7 +86,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3dde7556f8cd41572810a80ed2ad12be&file=xml_to_record_conversion.bal",
+                "https://play.ballerina.io/?gist=a140b6286844895e146cadbdf7a347ad&file=xml_to_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -252,7 +252,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="JSON to XML conversion "
+            title="JSON to XML conversion"
             href="/learn/by-example/xml-from-json-conversion"
           >
             <div className="btnContainer d-flex align-items-center me-auto">

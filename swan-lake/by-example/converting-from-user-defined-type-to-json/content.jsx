@@ -44,7 +44,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Converting from user-defined type to JSON</h1>
+      <h1>Convert from user-defined type to JSON</h1>
 
       <p>
         Conversion of a <code>json</code> value to JSON format is
@@ -72,7 +72,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=50cdab25133e5680ec889c83fd475135&file=converting_from_user_defined_type_to_json.bal",
+                "https://play.ballerina.io/?gist=ada675e39ec20c7bf66ed9e4a93a9428&file=converting_from_user_defined_type_to_json.bal",
                 "_blank"
               );
             }}
@@ -301,7 +301,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Converting from table and XML to JSON"
+            title="Convert from table and XML to JSON"
             href="/learn/by-example/converting-from-table-and-xml-to-json"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -312,7 +312,7 @@ export function ConvertingFromUserDefinedTypeToJson({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from table and XML to JSON
+                  Convert from table and XML to JSON
                 </span>
               </div>
               <svg

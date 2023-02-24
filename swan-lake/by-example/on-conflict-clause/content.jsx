@@ -57,7 +57,7 @@ export function OnConflictClause({ codeSnippets }) {
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>
-        The <code>on conflict</code> clause
+        <code>on conflict</code> clause
       </h1>
 
       <p>
@@ -85,7 +85,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7005d444e739f1634caf4b173f367b9d&file=on_conflict_clause.bal",
+                "https://play.ballerina.io/?gist=df8aa253e3bccd1eb582bb75a1ac25da&file=on_conflict_clause.bal",
                 "_blank"
               );
             }}
@@ -327,7 +327,7 @@ export function OnConflictClause({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Create streams with query"
+            title="Create streams with a query"
             href="/learn/by-example/create-streams-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -355,7 +355,7 @@ export function OnConflictClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create streams with query
+                  Create streams with a query
                 </span>
               </div>
             </div>
@@ -363,7 +363,7 @@ export function OnConflictClause({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Iterating over xml with query"
+            title="Iterate over XML with a query"
             href="/learn/by-example/iterating-over-xml-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -374,7 +374,7 @@ export function OnConflictClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Iterating over xml with query
+                  Iterate over XML with a query
                 </span>
               </div>
               <svg

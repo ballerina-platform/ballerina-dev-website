@@ -1,0 +1,17 @@
+{
+  "title": "Field object",
+  "description": "A GraphQL service endpoint written in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql field"
+  ],
+  "permalink": "/learn/by-example/graphql-service-field-object",
+  "active": "graphql-service-field-object",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-service-field-object",
+    "/swan-lake/learn/by-example/graphql-service-field-object.html"
+  ]
+}

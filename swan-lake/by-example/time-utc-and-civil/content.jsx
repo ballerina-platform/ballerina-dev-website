@@ -72,7 +72,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e048f622765aada7ec0f2be6282617b7&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=0a7836505329fca69e89deddc3308695&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}

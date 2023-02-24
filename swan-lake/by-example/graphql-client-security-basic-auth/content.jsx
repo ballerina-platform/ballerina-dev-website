@@ -250,7 +250,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1121-basic-authentication">
+            <a href="/spec/graphql/#1221-basic-authentication">
               GraphQL client basic authentication - Specification
             </a>
           </span>
@@ -297,7 +297,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/graphql-client-security-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -308,7 +308,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
               <svg

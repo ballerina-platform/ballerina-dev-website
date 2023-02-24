@@ -73,7 +73,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=64b7ee5f45b07cbeb1aa1b2e36b1d69c&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=f8ab594b70a936452fe29561cef1028a&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}
@@ -272,7 +272,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Combining Isolated Functions and Lock"
+            title="Combining isolated functions and lock"
             href="/learn/by-example/combining-isolated-functions-and-lock"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -283,7 +283,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Combining Isolated Functions and Lock
+                  Combining isolated functions and lock
                 </span>
               </div>
               <svg

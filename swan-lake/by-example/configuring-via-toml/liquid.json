@@ -1,0 +1,18 @@
+{
+  "title": "Configure via TOML files",
+  "description": "This BBE demonstrates how to configure configurable variables in Ballerina via a TOML file.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "configurable",
+    "variable",
+    "toml"
+  ],
+  "permalink": "/learn/by-example/configuring-via-toml",
+  "active": "configuring-via-toml",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/configuring-via-toml",
+    "/swan-lake/learn/by-example/configuring-via-toml.html"
+  ]
+}

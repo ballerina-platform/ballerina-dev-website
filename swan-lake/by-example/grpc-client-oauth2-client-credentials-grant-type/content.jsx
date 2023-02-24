@@ -262,7 +262,7 @@ export function GrpcClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/grpc-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -290,7 +290,7 @@ export function GrpcClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
             </div>

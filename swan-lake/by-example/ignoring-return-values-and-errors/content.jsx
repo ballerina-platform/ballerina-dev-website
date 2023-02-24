@@ -49,7 +49,7 @@ export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Ignoring return values and errors</h1>
+      <h1>Ignore return values and errors</h1>
 
       <p>
         Ballerina does not allow silently ignoring return values. To ignore a
@@ -74,7 +74,7 @@ export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5d49688d706bb24e4b81fe098e5b44d7&file=ignoring_return_values_and_errors.bal",
+                "https://play.ballerina.io/?gist=d2956a3a9c14e1a38eabdeab01965d52&file=ignoring_return_values_and_errors.bal",
                 "_blank"
               );
             }}

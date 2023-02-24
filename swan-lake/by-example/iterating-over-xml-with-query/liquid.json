@@ -1,5 +1,5 @@
 {
-  "title": "Iterating over xml with query",
+  "title": "Iterate over XML with a query",
   "description": "This BBE demonstrates iterating XML values, creating a table from XML, and filtering XML values.",
   "keywords": [
     "ballerina",

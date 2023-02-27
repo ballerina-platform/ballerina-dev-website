@@ -1236,6 +1236,19 @@ table.cTopControlsContainer tbody {
   padding-top: 50px;
 }
 
+.integration.code.odd {
+  background-color: #eeeeee;
+}
+
+.integration.code pre {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.integration.code pre.shiki {
+  background-color: #ffffff !important;
+}
+
 .pageContentRow.integration {
   margin-bottom: 0 !important;
   padding-bottom: 50px;

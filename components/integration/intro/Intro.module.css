@@ -40,14 +40,17 @@ a.cDownload {
     font-weight: 400;
     background-color: #57595d;
     color: #ffffff !important;
-    padding: 20px 20px 20px 60px;
+    /* padding: 20px 20px 20px 60px; */
+    padding: 10px 20px 10px 60px;
     text-decoration: none;
     min-height: 60px;
     line-height: 35px;
     background-image: url('/images/download-bg.svg');
     background-repeat: no-repeat;
-    background-position: left 20px top 22px;
+    /* background-position: left 20px top 22px; */
+    background-position: left 20px top 14px;
     width: fit-content;
+    border-radius: 4px;
 }
 
 a.cDownload:hover {
@@ -83,11 +86,11 @@ a.cDownload:hover {
     margin-bottom: 20px;
 }
 
-.introImg {
+/* .introImg {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .introImg img {
     width: -moz-available;         

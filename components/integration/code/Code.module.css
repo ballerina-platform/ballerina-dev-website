@@ -22,9 +22,14 @@ a.cDownload span {
 
 .codeSnippet div pre {
     margin-top: 0;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
 }
+
+/* .codeSnippet div pre.shiki {
+    padding-top: 0 !important;
+    background-color: #ffffff !important;
+} */
 
 .box img {
     border-radius: 4px;

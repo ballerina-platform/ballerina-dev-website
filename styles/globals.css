@@ -472,8 +472,9 @@ a.cGreenLinkArrow:hover {
 
 .community .pageContentRow h2 {
   color: #585a5e;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   scroll-margin-top: 120px;
+  font-size: 2rem;
 }
 
 .pageHeader h1 {
@@ -481,7 +482,8 @@ a.cGreenLinkArrow:hover {
   color: #464646;
   /* color: #585a5e; */
   font-weight: 500;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: 3rem;
 }
 
 /*--------downloads page -------*/
@@ -1223,4 +1225,17 @@ table.cTopControlsContainer tbody {
 
 .integration h3 {
   scroll-margin-top: 60px;
+}
+
+.integration.position {
+  background-color: #eeeeee;
+}
+
+.pageContentRow.integration {
+  margin-bottom: 0 !important;
+  padding-bottom: 50px;
+}
+
+.pageContentRow.integration #use-cases {
+  margin-bottom: 30px;
 }

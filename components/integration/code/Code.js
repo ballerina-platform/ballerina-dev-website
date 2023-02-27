@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
@@ -32,8 +32,9 @@ export default function UseCases(props) {
 
     return (
         <>
-
-            <Row className='pageContentRow integration'>
+<Col xs={12}>
+    <Container>
+            <Row>
                 <Col xs={12} md={3} lg={3} className={styles.box}>
                     <div className={styles.wrapper}>
                         <h3 id='network-data' className='section'>
@@ -84,7 +85,7 @@ export default function UseCases(props) {
 
 
 
-            <Row className='pageContentRow integration'>
+            <Row>
                 <Col xs={12} md={3} lg={3} className={styles.box}>
                     <div className={styles.wrapper}>
                         <h3 id='github-copilot' className='section'>
@@ -132,7 +133,8 @@ export default function UseCases(props) {
                     }
                 </Col>
             </Row>
-
+            </Container>
+            </Col>
         </>
     );
 }

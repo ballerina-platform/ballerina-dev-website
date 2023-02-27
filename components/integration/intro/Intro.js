@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
@@ -27,7 +27,9 @@ export default function Intro() {
 
     return (
         <>
-            <Row className='pageContentRow integration'>
+        <Col xs={12}>
+            <Container>
+            {/* <Row className='pageContentRow integration'>
                 <Col xs={12} lg={6} className={styles.introText}>
                     <div>
                         <p className={styles.introText1}>Probably the best language in the world
@@ -58,7 +60,36 @@ export default function Intro() {
                     </div>
 
                 </Col>
+            </Row> */}
+
+
+<Row>
+                <Col xs={12} lg={6} className={styles.introText}>
+                <div className={styles.introText3}>
+                        <p>Just write the code using the only language with integration friendly abstractions</p>
+                    </div>
+
+                    <div className={styles.dVersion}>
+                        <a href={`${prefix}/downloads/`}
+                            className={styles.cDownload}>
+                            Download Ballerina
+                        </a>
+                    </div>
+                </Col>
+                <Col xs={12} lg={6} className={styles.introImg}>
+                <div>
+                        <p className={styles.introText1}>Probably the best language in the world
+                            for writing all your integrations.
+                        </p>
+
+                        <p className={styles.introText2}>Integration is development. Why make life harder for developers to write integrations
+                            by giving them simple drag-n-drop tools or limited DSLs?
+                        </p>
+                    </div>
+                </Col>
             </Row>
+            </Container>
+            </Col>
         </>
     );
 }

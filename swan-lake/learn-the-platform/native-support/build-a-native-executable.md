@@ -54,7 +54,7 @@ From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compi
 >  - [`oracledb`](https://central.ballerina.io/ballerinax/oracledb)
 >  - [`postgresql`](https://central.ballerina.io/ballerinax/postgresql)
 
-## Build a native executable locally
+## Build the native executable locally
 
 ### Set up the prerequisites
 
@@ -82,7 +82,7 @@ To complete this part of the guide, you need:
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
 
-### Build a native executable
+### Build the native executable
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -182,12 +182,12 @@ To complete this part of the guide, you need:
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
-   >**Tip:** Since the GraalVM native build consumes a significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB and potentially add more CPUs as well. For more details, see [How to assign more memory to docker container](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437).
+   >**Tip:** Since the GraalVM native build consumes a significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB and potentially add more CPUs as well. For more details, see [How to assign more memory to Docker container](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437).
 4. A command terminal
 
 After the environment is set up, follow the steps below to build the native executable and pack it in a container.
 
-### Build a native executable in a container
+### Build the native executable in a container
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -205,7 +205,7 @@ After the environment is set up, follow the steps below to build the native exec
    }
    ```
 
-3. Execute `bal build --native --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see the [docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [k8s](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
+3. Execute `bal build --native --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [Kubernetes](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
     ```
    $ bal build --native --cloud=docker
    Compiling source
@@ -362,7 +362,7 @@ Also, native testing can be scheduled as a daily check within CI(Continuous Inte
 Follow the steps below to run the tests with the native image.
 
 
-1. Follow the steps 1 and 2 in [Build a native executable](#ballerina-native-image).
+1. Follow the steps 1 and 2 in [Build the native executable](#build-the-native-executable).
 
 2. Replace the content of the `service_test.bal` file with the following under the `tests` folder.  
    ```ballerina

@@ -254,7 +254,7 @@ P2's credit score: GOOD
 
 ## Network communication with data binding
 
-The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-data-binding">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
+The type system features for records in Ballerina can be used when implementing <a href="/learn/by-example/http-service-data-binding/">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina:
 
 ```ballerina
 final http:Client highCreditStoreCustomersDb = check new ("http://example.com/");

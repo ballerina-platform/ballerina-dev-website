@@ -58,7 +58,7 @@ export async function getStaticProps() {
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) : ''
     };
   });
 
@@ -176,9 +176,9 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
           </Row>
-          <Row className="pageContentRow integration code">
+          {/* <Row className="pageContentRow integration code"> */}
             <Code samples={samples} getLink={getLink} />
-          </Row>
+          {/* </Row> */}
         </Col>
       </Layout>
     </>

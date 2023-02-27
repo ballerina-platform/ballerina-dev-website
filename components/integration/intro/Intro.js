@@ -33,8 +33,7 @@ export default function Intro() {
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
 
-                        <p className={styles.introText2}>Integration is development. Why make life harder for developers to write integrations
-                            by giving them simple drag-n-drop tools or limited DSLs?
+                        <p className={styles.introText2}>Integration is development. Why make life harder for developers to write integrations by giving them restricted drag-n-drop tools / DSLs or generic languages?
                         </p>
 
                         <p className={styles.introText3}>Just write the code using the only language with integration-friendly abstractions.

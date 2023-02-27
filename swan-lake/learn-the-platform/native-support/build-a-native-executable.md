@@ -54,7 +54,7 @@ From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compi
 >  - [`oracledb`](https://central.ballerina.io/ballerinax/oracledb)
 >  - [`postgresql`](https://central.ballerina.io/ballerinax/postgresql)
 
-## Build a native executable locally
+## Build the native executable locally
 
 ### Set up the prerequisites
 
@@ -82,7 +82,7 @@ To complete this part of the guide, you need:
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
 
-### Build a native executable
+### Build the native executable
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -187,7 +187,7 @@ To complete this part of the guide, you need:
 
 After the environment is set up, follow the steps below to build the native executable and pack it in a container.
 
-### Build a native executable in a container
+### Build the native executable in a container
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -362,7 +362,7 @@ Also, native testing can be scheduled as a daily check within CI(Continuous Inte
 Follow the steps below to run the tests with the native image.
 
 
-1. Follow the steps 1 and 2 in [Build a native executable](#ballerina-native-image).
+1. Follow the steps 1 and 2 in [Build the native executable](#build-the-native-executable).
 
 2. Replace the content of the `service_test.bal` file with the following under the `tests` folder.  
    ```ballerina

@@ -73,7 +73,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=81bd636d1744087df521a81b546a4079&file=destructure_records_using_query.bal",
+                "https://play.ballerina.io/?gist=c5268a8b43b63ac316743ba15aa4db72&file=destructure_records_using_query.bal",
                 "_blank"
               );
             }}
@@ -361,7 +361,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Querying with streams"
+            title="Querying streams"
             href="/learn/by-example/querying-with-streams"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -372,7 +372,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Querying with streams
+                  Querying streams
                 </span>
               </div>
               <svg

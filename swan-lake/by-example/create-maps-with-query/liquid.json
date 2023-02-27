@@ -1,5 +1,5 @@
 {
-  "title": "Create maps with query",
+  "title": "Create maps with a query",
   "description": "This BBE demonstrates creating a map, filtering a map, creating a sub-map from a map, and creating a map from a table.",
   "keywords": [
     "ballerina",

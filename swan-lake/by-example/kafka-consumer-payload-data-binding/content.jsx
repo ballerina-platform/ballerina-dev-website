@@ -22,30 +22,13 @@ public function main() returns error? {
     });
 
     while true {
-        do {
-            // Polls the consumer for payload.
-            Order[] orders = check orderConsumer->pollPayload(15);
-            check from Order 'order in orders
-                where 'order.isValid
-                do {
-                    io:println(string \`Received valid order for \${'order.productName}\`);
-                };
-        } on fail error orderError {
-            // Check whether the \`error\` is a \`kafka:PayloadBindingError\` and seek pass the
-            // erroneous record.
-            if orderError is kafka:PayloadBindingError {
-                io:println("Payload binding failed", orderError);
-                // The \`kafka:PartitionOffset\` related to the erroneous record is provided inside
-                // the \`kafka:PayloadBindingError\`.
-                check orderConsumer->seek({
-                    partition: orderError.detail().partition,
-                    offset: orderError.detail().offset + 1
-                });
-            } else {
-                check orderConsumer->close();
-                return orderError;
-            }
-        }
+        // Polls the consumer for payload.
+        Order[] orders = check orderConsumer->pollPayload(15);
+        check from Order 'order in orders
+            where 'order.isValid
+            do {
+                io:println(string \`Received valid order for \${'order.productName}\`);
+            };
     }
 }
 `,
@@ -69,12 +52,13 @@ export function KafkaConsumerPayloadDataBinding({ codeSnippets }) {
         bytes deserializer for both the key and the value. To use this, directly
         assign the <code>pollPayload</code> method’s return value to the
         declared variable, which is a subtype of <code>anydata[]</code>. If the
-        payload does not match with the defined type, a{" "}
-        <code>kafka:PayloadBindingError</code> is returned. The{" "}
-        <code>seek</code> method of the <code>kafka:Consumer</code> can be used
-        to seek past the erroneous record and read the new records. Use this to
-        receive messages from a Kafka server without the metadata of the
-        messages like <code>kafka:PartitionOffset</code> and{" "}
+        payload does not match with the defined type, the related error will be
+        logged to the console and the <code>kafka:Consumer</code> will be
+        automatically seeked to the next record. This behaviour can be changed
+        by setting <code>autoSeekOnValidationFailure</code> configuration to{" "}
+        <code>false</code>. Then the related error is returned to be handled as
+        needed. Use this to receive messages from a Kafka server without the
+        metadata of the messages like <code>kafka:PartitionOffset</code> and{" "}
         <code>timestamp</code>. It is important to note that this only works
         when <code>kafka:Producer</code> also uses the built-in bytes serializer
         for Ballerina.

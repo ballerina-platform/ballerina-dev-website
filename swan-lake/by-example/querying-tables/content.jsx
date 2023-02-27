@@ -52,7 +52,7 @@ export function QueryingTables({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Querying tables</h1>
+      <h1>Query tables</h1>
 
       <p>
         Tables can be combined with query expressions, unlike maps. The basic
@@ -70,7 +70,7 @@ export function QueryingTables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=54ee8c5ec78a808b0e5ba3ab7855fbda&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=5a7920c6e54fc61a4e1786b6a502be87&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -337,7 +337,7 @@ export function QueryingTables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Joining iterable objects"
+            title="Join iterable objects"
             href="/learn/by-example/joining-iterable-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -365,7 +365,7 @@ export function QueryingTables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Joining iterable objects
+                  Join iterable objects
                 </span>
               </div>
             </div>
@@ -373,7 +373,7 @@ export function QueryingTables({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Create tables with query"
+            title="Create tables with a query"
             href="/learn/by-example/create-tables-with-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -384,7 +384,7 @@ export function QueryingTables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Create tables with query
+                  Create tables with a query
                 </span>
               </div>
               <svg

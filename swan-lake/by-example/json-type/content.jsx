@@ -54,7 +54,9 @@ export function JsonType({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>JSON type</h1>
+      <h1>
+        <code>json</code> type
+      </h1>
 
       <p>
         The <code>json</code> type can be explained as a union of the simple
@@ -86,7 +88,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d7b2ac4d5408d2a8bc5d140aad0a64a3&file=json_type.bal",
+                "https://play.ballerina.io/?gist=0d019d9ab14efe5dcd48086ca03841a6&file=json_type.bal",
                 "_blank"
               );
             }}

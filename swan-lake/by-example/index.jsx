@@ -464,9 +464,9 @@ import {
   codeSnippetData as ConvertingFromTableAndXmlToJsonCodeSnippetData,
 } from "./converting-from-table-and-xml-to-json/content.jsx";
 import {
-  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions,
-  codeSnippetData as ConvertingFromJsonToUserDefinedTypeWithLanglibFunctionsCodeSnippetData,
-} from "./converting-from-json-to-user-defined-type-with-langlib-functions/content.jsx";
+  ConvertFromJsonToUserDefinedType,
+  codeSnippetData as ConvertFromJsonToUserDefinedTypeCodeSnippetData,
+} from "./convert-from-json-to-user-defined-type/content.jsx";
 import {
   CastingJsonToUserDefinedType,
   codeSnippetData as CastingJsonToUserDefinedTypeCodeSnippetData,
@@ -571,6 +571,14 @@ import {
   ConfigurableVariables,
   codeSnippetData as ConfigurableVariablesCodeSnippetData,
 } from "./configurable-variables/content.jsx";
+import {
+  ConfiguringViaToml,
+  codeSnippetData as ConfiguringViaTomlCodeSnippetData,
+} from "./configuring-via-toml/content.jsx";
+import {
+  ConfiguringViaCli,
+  codeSnippetData as ConfiguringViaCliCodeSnippetData,
+} from "./configuring-via-cli/content.jsx";
 import {
   ErrorHandling,
   codeSnippetData as ErrorHandlingCodeSnippetData,
@@ -1131,6 +1139,10 @@ import {
   GraphqlContext,
   codeSnippetData as GraphqlContextCodeSnippetData,
 } from "./graphql-context/content.jsx";
+import {
+  GraphqlServiceFieldObject,
+  codeSnippetData as GraphqlServiceFieldObjectCodeSnippetData,
+} from "./graphql-service-field-object/content.jsx";
 import {
   GraphqlInterceptors,
   codeSnippetData as GraphqlInterceptorsCodeSnippetData,
@@ -2071,8 +2083,8 @@ const BBEs = {
   ConvertingFromUserDefinedTypeToJsonCodeSnippetData,
   ConvertingFromTableAndXmlToJson,
   ConvertingFromTableAndXmlToJsonCodeSnippetData,
-  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions,
-  ConvertingFromJsonToUserDefinedTypeWithLanglibFunctionsCodeSnippetData,
+  ConvertFromJsonToUserDefinedType,
+  ConvertFromJsonToUserDefinedTypeCodeSnippetData,
   CastingJsonToUserDefinedType,
   CastingJsonToUserDefinedTypeCodeSnippetData,
   ResourceMethodTyping,
@@ -2125,6 +2137,10 @@ const BBEs = {
   ResourcePathParametersCodeSnippetData,
   ConfigurableVariables,
   ConfigurableVariablesCodeSnippetData,
+  ConfiguringViaToml,
+  ConfiguringViaTomlCodeSnippetData,
+  ConfiguringViaCli,
+  ConfiguringViaCliCodeSnippetData,
   ErrorHandling,
   ErrorHandlingCodeSnippetData,
   CheckExpression,
@@ -2405,6 +2421,8 @@ const BBEs = {
   GraphqlDirectivesCodeSnippetData,
   GraphqlContext,
   GraphqlContextCodeSnippetData,
+  GraphqlServiceFieldObject,
+  GraphqlServiceFieldObjectCodeSnippetData,
   GraphqlInterceptors,
   GraphqlInterceptorsCodeSnippetData,
   GraphqlFileUpload,

@@ -80,9 +80,11 @@ export function HttpRequestInterceptor({ codeSnippets }) {
         request and execute some custom logic. A <code>RequestInterceptor</code>{" "}
         is a service object with only one resource method, which is executed
         before dispatching the request to the actual resource in the target
-        service. A <code>RequestInterceptor</code> can be created from a service
-        class, which includes the <code>http:RequestInterceptor</code> service
-        type. Then, this service object can be engaged at the listener level or
+        service. This resource method can have parameters just like a usual
+        resource method in an <code>http:Service</code>. A{" "}
+        <code>RequestInterceptor</code> can be created from a service class,
+        which includes the <code>http:RequestInterceptor</code> service type.
+        Then, this service object can be engaged at the listener level or
         service level by using the <code>interceptors</code> field in the
         configurations. This field accepts an array of interceptor service
         objects as an interceptor pipeline, and the interceptors are executed in
@@ -102,7 +104,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=95e481134fb92f0a4f426d9b1bc299ca&file=http_request_interceptor.bal",
+                "https://play.ballerina.io/?gist=fa2eb9c1474f91f248699f7e12a7e7a7&file=http_request_interceptor.bal",
                 "_blank"
               );
             }}

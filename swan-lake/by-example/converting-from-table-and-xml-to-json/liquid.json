@@ -1,5 +1,5 @@
 {
-  "title": "Converting from table and XML to JSON",
+  "title": "Convert from table and XML to JSON",
   "description": "This BBE demonstrates how to convert table to JSON and convert XML to JSON in Ballerina.",
   "keywords": [
     "ballerina",

@@ -7,48 +7,37 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
-type Coord record {
-    float x;
-    float y;
-};
+type UserInfo record {|
+   readonly string username;
+   string password;
+|};
 
-type Book record {
-    xml book;
-    float price;
-};
+type UserTable table<UserInfo> key(username);
 
-public function main() returns error? {
-    json j = {x: 1, y: 2};
-    
-    // Argument is a \`typedesc\` value.
-    // The static return type depends on the argument.
-    // Even if \`x\` and \`y\` are \`int\` in \`j\` they will automatically convert to \`float\`
-    Coord c = check j.cloneWithType(Coord);
-    io:println(c.x);
-    
-    // Argument defaulted from the context.
-    Coord d = check j.cloneWithType();
-    io:println(d.x);
-    
-    Book book = {book: xml \`<book> The Treasure Island </book>\`, price: 200.0};
-    
-    json bookJson = book.toJson();
-    io:println(bookJson);
-    
-    // \`fromJsonWithType()\` can be used to reverse conversions done by \`toJson()\`.
-    book = check bookJson.fromJsonWithType();
-    io:println(book);
-    
-    // Below will result in an error, because the type of the field \`book\` in \`bookJson\` is \`string\`.
-    Book|error result = bookJson.cloneWithType();
-    io:println(result);
+enum HttpVersion {
+   HTTP_1_0 = "1.0",
+   HTTP_1_1 = "1.1",
+   HTTP_2_0 = "2.0"
+}
+
+// The configurable variables of \`float\`, \`string[]\`, enum, \`record\`, and \`table\` types are initialized.
+configurable float maxPayload = 1.0;
+configurable string[] acceptTypes = ["text/plain"];
+configurable HttpVersion httpVersion = HTTP_1_0;
+configurable UserInfo & readonly admin = ?;
+configurable UserTable & readonly users = ?;
+
+public function main() {
+   io:println("maximum payload (in MB): ", maxPayload);
+   io:println("accepted content types: ", acceptTypes);
+   io:println("HTTP version: ", httpVersion);
+   io:println("admin details: ", admin);
+   io:println("users: ", users);
 }
 `,
 ];
 
-export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
-  codeSnippets,
-}) {
+export function ConfiguringViaToml({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -58,20 +47,34 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Converting from JSON to user defined type with langlib functions</h1>
+      <h1>Configure via TOML files</h1>
 
       <p>
-        The <code>cloneWithType()</code> langlib function can be used to convert
-        a value to a user-defined type. Result recursively uses specified type
-        as inherent type of new value. Automatically performs numeric
-        conversions as necessary.
+        The values of the configurable variables can be configured through the
+        configuration files in the TOML(v0.4) format.
       </p>
 
       <p>
-        Every part of the value is cloned including immutable structural values.
-        Also <code>fromJsonWithType()</code> langlib function can be used for
-        the same purpose and it also does the reverse of conversions done by
-        toJson.
+        The file location can be specified through an environment variable with
+        the name <code>BAL_CONFIG_FILES</code>. Specifying multiple
+        configuration files is supported using this environment variable with
+        the OS-specific separator. If an environment variable is not specified,
+        a file named <code>Config.toml</code> will be sought in the current
+        working directory.
+      </p>
+
+      <p>
+        An environment variable with the name <code>BAL_CONFIG_DATA</code> can
+        be used to provide the configuration file content instead of a separate
+        file.
+      </p>
+
+      <p>
+        For more information, see{" "}
+        <a href="/learn/configure-ballerina-programs/provide-values-to-configurable-variables/provide-via-toml-syntax/">
+          Configure via TOML syntax
+        </a>
+        .
       </p>
 
       <Row
@@ -80,31 +83,6 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=a55e5fd91d87c9d68e6e9497caf381fe&file=converting_from_json_to_user_defined_type_with_langlib_functions.bal",
-                "_blank"
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
           {codeClick1 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
@@ -125,7 +103,7 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -214,73 +192,22 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run converting_from_json_to_user_defined_type_with_langlib_functions.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`1.0`}</span>
-              <span>{`1.0`}</span>
-              <span>{`{"book":"<book> The Treasure Island </book>","price":200.0}`}</span>
-              <span>{`{"book":\`<book> The Treasure Island </book>\`,"price":200.0}`}</span>
-              <span>{`error("{ballerina/lang.value}ConversionError",message="'map<json>' value cannot be converted to 'Book': `}</span>
-              <span>{`		field 'book' in record 'Book' should be of type 'xml<(lang.xml:Element|lang.xml:Comment|lang.xml:ProcessingInstruction|lang.xml:Text)>', found '"<book> The Treasure...'")`}</span>
+              <span>{`\$ bal run configuring_via_toml.bal`}</span>
+              <span>{`maximum payload (in MB): 3.21`}</span>
+              <span>{`accepted content types: ["application/xml","application/json","text/plain"]`}</span>
+              <span>{`HTTP version: 1.0`}</span>
+              <span>{`admin details: {"username":"admin","password":"password"}`}</span>
+              <span>{`users: [{"username":"John","password":"abc123"},{"username":"Bob","password":"cde456"}]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/json-type/">JSON type</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/open-records/">Open records</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/controlling-openness">
-              Controlling openess
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/check">Check</a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/learn/by-example/casting-json-to-user-defined-type">
-              Casting JSON to user-defined type
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Converting from table and XML to JSON"
-            href="/learn/by-example/converting-from-table-and-xml-to-json"
+            title="Configurable variables"
+            href="/learn/by-example/configurable-variables"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -307,7 +234,7 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Converting from table and XML to JSON
+                  Configurable variables
                 </span>
               </div>
             </div>
@@ -315,8 +242,8 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
         </Col>
         <Col sm={6}>
           <Link
-            title="Casting JSON to user-defined type"
-            href="/learn/by-example/casting-json-to-user-defined-type"
+            title="Configure via CLI arguments"
+            href="/learn/by-example/configuring-via-cli"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -326,7 +253,7 @@ export function ConvertingFromJsonToUserDefinedTypeWithLanglibFunctions({
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Casting JSON to user-defined type
+                  Configure via CLI arguments
                 </span>
               </div>
               <svg

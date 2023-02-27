@@ -44,7 +44,9 @@ export function LimitClause({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Limit clause</h1>
+      <h1>
+        <code>limit</code> clause
+      </h1>
 
       <p>
         The <code>limit</code> clause limits the number of results from the
@@ -61,7 +63,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4e7f52b058c5b35413bcc57d5cda8709&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=76986d5e46bc7c301404cd18a0a65aff&file=limit_clause.bal",
                 "_blank"
               );
             }}
@@ -368,7 +370,7 @@ export function LimitClause({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Joining iterable objects"
+            title="Join iterable objects"
             href="/learn/by-example/joining-iterable-objects"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -379,7 +381,7 @@ export function LimitClause({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Joining iterable objects
+                  Join iterable objects
                 </span>
               </div>
               <svg

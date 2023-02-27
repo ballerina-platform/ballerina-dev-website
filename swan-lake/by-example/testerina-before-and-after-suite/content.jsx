@@ -275,7 +275,7 @@ export function TesterinaBeforeAndAfterSuite({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Data driven tests"
+            title="Data-driven tests"
             href="/learn/by-example/testerina-data-driven-tests"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -286,7 +286,7 @@ export function TesterinaBeforeAndAfterSuite({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Data driven tests
+                  Data-driven tests
                 </span>
               </div>
               <svg

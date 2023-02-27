@@ -54,7 +54,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60fafa87696b72819309214134ea6fb0&file=nested_query_expressions.bal",
+                "https://play.ballerina.io/?gist=b220b5d5e6d44eb0cfde97a61ed04ae6&file=nested_query_expressions.bal",
                 "_blank"
               );
             }}
@@ -294,7 +294,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Iterating over xml with query"
+            title="Iterate over XML with a query"
             href="/learn/by-example/iterating-over-xml-with-query"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -322,7 +322,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Iterating over xml with query
+                  Iterate over XML with a query
                 </span>
               </div>
             </div>
@@ -330,7 +330,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Destructure records using query"
+            title="Destructure records using a query"
             href="/learn/by-example/destructure-records-using-query"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -341,7 +341,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Destructure records using query
+                  Destructure records using a query
                 </span>
               </div>
               <svg

@@ -1,0 +1,18 @@
+{
+  "title": "Configure via CLI arguments",
+  "description": "This BBE demonstrates how to configure configurable variables in Ballerina via command-line arguments.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "configurable",
+    "variable",
+    "cli"
+  ],
+  "permalink": "/learn/by-example/configuring-via-cli",
+  "active": "configuring-via-cli",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/configuring-via-cli",
+    "/swan-lake/learn/by-example/configuring-via-cli.html"
+  ]
+}

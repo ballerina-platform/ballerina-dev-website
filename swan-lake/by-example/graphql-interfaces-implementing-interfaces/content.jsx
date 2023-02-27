@@ -339,7 +339,7 @@ export function GraphqlInterfacesImplementingInterfaces({ codeSnippets }) {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 
@@ -473,7 +473,7 @@ export function GraphqlInterfacesImplementingInterfaces({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Union Types"
+            title="Union types"
             href="/learn/by-example/graphql-service-union-types"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -484,7 +484,7 @@ export function GraphqlInterfacesImplementingInterfaces({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Union Types
+                  Union types
                 </span>
               </div>
               <svg

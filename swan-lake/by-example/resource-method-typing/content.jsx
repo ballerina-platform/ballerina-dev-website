@@ -309,7 +309,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Casting JSON to user-defined type"
+            title="Cast JSON to user-defined type"
             href="/learn/by-example/casting-json-to-user-defined-type"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -337,7 +337,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Casting JSON to user-defined type
+                  Cast JSON to user-defined type
                 </span>
               </div>
             </div>

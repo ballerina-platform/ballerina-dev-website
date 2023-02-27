@@ -51,7 +51,7 @@ export function LetClause({ codeSnippets }) {
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>
-        The <code>let</code> clause
+        <code>let</code> clause
       </h1>
 
       <p>
@@ -71,7 +71,7 @@ export function LetClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=38edc0dc5da796089da117b3f54c8a32&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=444850b95482efabbf9dc578d7cce7a5&file=let_clause.bal",
                 "_blank"
               );
             }}

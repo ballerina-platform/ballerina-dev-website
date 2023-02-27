@@ -1,5 +1,5 @@
 {
-  "title": "Data driven tests",
+  "title": "Data-driven tests",
   "description": "The Ballerina Test framework provides in-built support for data-driven tests. You can specify a function that returns a set of data values as a data-provider to a test function.",
   "keywords": [],
   "permalink": "/learn/by-example/testerina-data-driven-tests",

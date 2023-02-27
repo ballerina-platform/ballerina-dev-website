@@ -59,7 +59,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=65ec915374012c6c435ccee46fc09716&file=http_client_bearer_token_authentication.bal",
+                "https://play.ballerina.io/?gist=a3b029ca5e369a69dae86dc378a2fc7f&file=http_client_bearer_token_authentication.bal",
                 "_blank"
               );
             }}
@@ -304,7 +304,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/http-client-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -315,7 +315,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
               <svg

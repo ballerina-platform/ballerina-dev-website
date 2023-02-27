@@ -30,7 +30,7 @@ export function ConsumingServices({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Consuming services: client objects</h1>
+      <h1>Consume services: client objects</h1>
 
       <p>
         Ballerina has a language construct called client objects. They are a
@@ -54,7 +54,7 @@ export function ConsumingServices({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d4fa288802d2d8e93f49737def1cef45&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=5894057f138eb7e8f9cec3709280bb80&file=consuming_services.bal",
                 "_blank"
               );
             }}

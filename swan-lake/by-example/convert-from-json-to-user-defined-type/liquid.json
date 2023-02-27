@@ -1,0 +1,20 @@
+{
+  "title": "Convert from JSON to user-defined type",
+  "description": "This BBE demonstrates how to convert JSON to a user-defined type, do the numeric conversion on JSON elements, convert JSON to record, access JSON data, and manipulate JSON data in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json",
+    "record",
+    "cast",
+    "access",
+    "manipulate"
+  ],
+  "permalink": "/learn/by-example/convert-from-json-to-user-defined-type",
+  "active": "convert-from-json-to-user-defined-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/convert-from-json-to-user-defined-type",
+    "/swan-lake/learn/by-example/convert-from-json-to-user-defined-type.html"
+  ]
+}

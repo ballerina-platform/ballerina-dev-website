@@ -374,7 +374,7 @@ export function GraphqlDirectives({ codeSnippets }) {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 
@@ -527,7 +527,7 @@ export function GraphqlDirectives({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>To send the document, use the following cURL command.</p>
+      <p>To send the document, execute the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -678,7 +678,7 @@ export function GraphqlDirectives({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>To send the document, use the following cURL command.</p>
+      <p>To send the document, execute the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -812,7 +812,7 @@ export function GraphqlDirectives({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Context" href="/learn/by-example/graphql-context">
+          <Link title="Context object" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -821,7 +821,7 @@ export function GraphqlDirectives({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context
+                  Context object
                 </span>
               </div>
               <svg

@@ -1,5 +1,5 @@
 {
-  "title": "Casting JSON to user-defined type",
+  "title": "Cast JSON to user-defined type",
   "description": "This BBE demonstrates how to convert from JSON to record, convert JSON to user-defined type, cast mutable structures, do the numeric conversion on JSON elements, access JSON data, manipulate JSON data, and cast JSON to a user-defined type in Ballerina.",
   "keywords": [
     "ballerina",

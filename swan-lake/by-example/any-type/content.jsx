@@ -60,7 +60,7 @@ export function AnyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a607c1bf2af734b34cc030256fbb2352&file=any_type.bal",
+                "https://play.ballerina.io/?gist=5924b79935a76957f28cb0ccbd0cbd94&file=any_type.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function AnyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/any-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/any-type",
                 "_blank"
               );
             }}

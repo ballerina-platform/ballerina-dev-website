@@ -59,7 +59,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a3b029ca5e369a69dae86dc378a2fc7f&file=http_client_bearer_token_authentication.bal",
+                "https://play.ballerina.io/?gist=12b8a6d97f717fb1fa130e8e35dae6ce&file=http_client_bearer_token_authentication.bal",
                 "_blank"
               );
             }}
@@ -84,7 +84,7 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-client-bearer-token-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-bearer-token-authentication",
                 "_blank"
               );
             }}

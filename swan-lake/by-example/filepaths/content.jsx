@@ -79,7 +79,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=08c4c0b867c0ab7016d6d00f51aaf749&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=daf8af1e6c8a74f66f8ec03a57db721b&file=filepaths.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/filepaths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/filepaths",
                 "_blank"
               );
             }}

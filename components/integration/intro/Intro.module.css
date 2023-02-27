@@ -1,7 +1,7 @@
-.introText {
+/* .introText {
     display: flex;
     align-items: center;
-}
+} */
 
 .introText1 {
     font-size: 24px;
@@ -69,11 +69,12 @@ a.cDownload:hover {
     border-radius: 4px;
     color: #ffffff;
 }
-.introText {
+
+/* .introText {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+} */
 
 .introText3 {
     font-size: 20px;

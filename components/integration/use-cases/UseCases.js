@@ -60,7 +60,7 @@ export default function UseCases(props) {
 
                                 </div>
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Automation: GitHub to Google Sheets</p>
+                                    <p>See Sample Automation: GitHub to Google Sheets <a href='#'>VS Code</a> <a href='#'>GitHub</a></p>
                                 </div>
 
 
@@ -77,7 +77,8 @@ export default function UseCases(props) {
                                     <p>Be an event producer in any protocol you like.</p>
                                 </div>
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Event Integration: Google Calendar to Trello Card</p>
+                                    <p>See Sample Event Integration: Google Calendar to Trello Card <a href='#'>VS Code</a> <a href='#'>GitHub</a>
+                                    </p>
                                 </div>
                             </div>
 
@@ -94,7 +95,7 @@ export default function UseCases(props) {
                                 </div>
 
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Integration as an API:</p>
+                                    <p>See Sample Integration as an API: <a href='#'>VS Code</a> <a href='#'>GitHub</a></p>
                                 </div>
 
                             </div>

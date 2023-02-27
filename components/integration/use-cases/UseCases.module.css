@@ -22,3 +22,13 @@
 .sampleLinks {
     height: 50px;
 }
+
+.sampleLinks a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.sampleLinks a:hover {
+    color: #494949;
+}

@@ -176,7 +176,7 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
           </Row>
-          <Row className="pageContentRow integration">
+          <Row className="pageContentRow integration code">
             <Code samples={samples} getLink={getLink} />
           </Row>
         </Col>

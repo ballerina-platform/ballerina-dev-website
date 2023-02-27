@@ -1232,6 +1232,10 @@ table.cTopControlsContainer tbody {
   background-color: #eeeeee;
 }
 
+.integration.code {
+  padding-top: 50px;
+}
+
 .pageContentRow.integration {
   margin-bottom: 0 !important;
   padding-bottom: 50px;

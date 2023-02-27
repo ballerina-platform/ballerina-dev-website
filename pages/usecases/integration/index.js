@@ -170,10 +170,10 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          <Row className="pageContentRow integration position">
+          {/* <Row className="pageContentRow integration position">
             <Position getLink={getLink} />
-          </Row>
-          <Row className="pageContentRow integration">
+          </Row> */}
+          <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
           </Row>
           <Row className="pageContentRow integration">

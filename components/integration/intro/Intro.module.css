@@ -1,7 +1,7 @@
-/* .introText {
+.introText {
     display: flex;
     align-items: center;
-} */
+}
 
 .introText1 {
     font-size: 24px;
@@ -11,7 +11,9 @@
 
 .introText2 {
     font-size: 24px;
-    font-weight: 300;
+    /* font-weight: 300; */
+    font-weight: 400;
+    color: #20b6b0;
 }
 
 .introText3, .download {
@@ -34,7 +36,7 @@
 a.cDownload {
     display: block;
     transition: none !important;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     background-color: #57595d;
     color: #ffffff !important;
@@ -44,7 +46,7 @@ a.cDownload {
     line-height: 35px;
     background-image: url('/images/download-bg.svg');
     background-repeat: no-repeat;
-    background-position: left 20px top 20px;
+    background-position: left 20px top 22px;
     width: fit-content;
 }
 
@@ -52,7 +54,7 @@ a.cDownload:hover {
     background-image: url("/images/download-bg-white.svg");
     background-color: #20b6b0;
     background-repeat: no-repeat;
-    background-position: left 20px top 20px;
+    background-position: left 20px top 22px;
 }
 
 .introImg div {
@@ -70,8 +72,8 @@ a.cDownload:hover {
     justify-content: center;
 }
 
-.introText3 p {
-    font-size: 24px;
+.introText3 {
+    font-size: 20px;
     font-weight: 300;
     line-height: 1.5;
     margin-bottom: 0;
@@ -79,4 +81,16 @@ a.cDownload:hover {
 
 .introText3 {
     margin-bottom: 20px;
+}
+
+.introImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.introImg img {
+    width: -moz-available;         
+  width: -webkit-fill-available;  
+  width: fill-available;
 }

@@ -1220,6 +1220,7 @@ table.cTopControlsContainer tbody {
 
 .integration h2 {
   margin-top: 50px;
+  margin-bottom: 30px;
   scroll-margin-top: 60px;
 }
 
@@ -1227,7 +1228,7 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 60px;
 }
 
-.integration.position {
+.integration.usecases {
   background-color: #eeeeee;
 }
 

@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
@@ -27,24 +27,34 @@ export default function Intro() {
 
     return (
         <>
+        <Col xs={12}>
+            <Container>
             <Row className='pageContentRow integration'>
-                <Col xs={12} lg={6} className={styles.introText}>
+                <Col xs={12} lg={5} className={styles.introText}>
                     <div>
-                        <p className={styles.introText1}>Probably the best language in the world
-                            for writing all your integrations.
-                        </p>
 
                         <p className={styles.introText2}>Integration is development. Why make life harder for developers to write integrations
-                            by giving them simple <br />drag-n-drop tools or limited DSLs?
+                            by giving them simple drag-n-drop tools or limited DSLs?
                         </p>
+
+                        <p className={styles.introText3}>Just write the code using the only language with integration-friendly abstractions.
+                        </p>
+
+                        <p className={styles.dVersion}>
+                        <a href={`${prefix}/downloads/`}
+                            className={styles.cDownload}>
+                            Download Ballerina
+                        </a>
+                    </p>
                     </div>
                 </Col>
-                <Col xs={12} lg={6} className={styles.introImg}>
-                    <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} />
+                <Col xs={12} lg={7} className={styles.introImg}>
+                    {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
+                    <img src={`${prefix}/images/slide_diagram-v6.png`} alt="Position Ballerina" />
                 </Col>
             </Row>
 
-            <Row className='pageContentRow integration'>
+            {/* <Row className='pageContentRow integration'>
                 <Col xs={12}>
                     <div className={styles.introText3}>
                         <p>Just write the code using the only language with integration friendly abstractions</p>
@@ -58,7 +68,12 @@ export default function Intro() {
                     </div>
 
                 </Col>
-            </Row>
+            </Row> */}
+
+
+
+            </Container>
+            </Col>
         </>
     );
 }

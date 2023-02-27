@@ -86,7 +86,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a140b6286844895e146cadbdf7a347ad&file=xml_to_record_conversion.bal",
+                "https://play.ballerina.io/?gist=82a86e9c6e8722bb27caaf26bcbde46e&file=xml_to_record_conversion.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export function XmlToRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/xml-to-record-conversion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/xml-to-record-conversion",
                 "_blank"
               );
             }}

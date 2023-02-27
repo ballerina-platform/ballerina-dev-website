@@ -70,7 +70,7 @@ export function NamedWorkerReturnValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9087c2480cfc76eaad0125c4db24c52f&file=named_worker_return_values.bal",
+                "https://play.ballerina.io/?gist=2d631b8de8c3ae0a7b716fbbd6be8737&file=named_worker_return_values.bal",
                 "_blank"
               );
             }}
@@ -95,7 +95,7 @@ export function NamedWorkerReturnValues({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/named-worker-return-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/named-worker-return-values",
                 "_blank"
               );
             }}

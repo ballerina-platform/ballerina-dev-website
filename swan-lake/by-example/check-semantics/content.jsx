@@ -83,7 +83,7 @@ export function CheckSemantics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=45cc6677ebba54b315fd4ca708ce1c6a&file=check_semantics.bal",
+                "https://play.ballerina.io/?gist=bde01ab21e8b2e22f1aee347a3322ae3&file=check_semantics.bal",
                 "_blank"
               );
             }}
@@ -108,7 +108,7 @@ export function CheckSemantics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/check-semantics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/check-semantics",
                 "_blank"
               );
             }}

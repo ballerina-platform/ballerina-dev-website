@@ -85,7 +85,7 @@ export function XmlNavigation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92228dd8c00690244e9a21fdd530b9d4&file=xml_navigation.bal",
+                "https://play.ballerina.io/?gist=3a69f271558da1eef9c6d36b3b8cab80&file=xml_navigation.bal",
                 "_blank"
               );
             }}
@@ -110,7 +110,7 @@ export function XmlNavigation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/xml-navigation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/xml-navigation",
                 "_blank"
               );
             }}

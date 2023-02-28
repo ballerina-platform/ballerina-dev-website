@@ -55,7 +55,7 @@ export default function UseCases(props) {
                                 <div className={styles.description}>
                                     <p>Automation is just code after all - write a main() and do whatever you want.</p>
 
-                                    <p>Use Ballerina's extended standard library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
+                                    <p>Use Ballerina&apos;s extended standard library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
 
                                     <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
 
@@ -101,7 +101,7 @@ export default function UseCases(props) {
                             <div className={styles.wrapper}>
                                 <h3>Integrations as APIs</h3>
                                 <div className={styles.description}>
-                                    <p>Ballerina's service creation abstractions make it simple to take any integration and make it reusable as an API.</p>
+                                    <p>Ballerina&apos;s service creation abstractions make it simple to take any integration and make it reusable as an API.</p>
 
                                     <p>Use Ballerina service types for HTTP services, WebSockets, GraphQL, gRPC, and more to take your integration code, parameterize it and make it a reusable integration.</p>
 

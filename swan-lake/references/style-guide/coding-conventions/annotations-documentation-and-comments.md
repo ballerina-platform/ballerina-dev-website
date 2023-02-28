@@ -134,10 +134,10 @@ function func2() {
 
 ```ballerina
 
-type People record {}; // Inline comment
+type People record {}; // Inline comment.
 
 function func1() {
-    int a = 0; // Inline comment
+    int a = 0; // Inline comment.
 }
 
 ```
@@ -168,8 +168,8 @@ function getValue(int value) returns int {
 ```ballerina
 # Description.
 #
-# + value - Parameter description
-# + return - Return value description
+# + value - parameter description
+# + return - return value description
 function getValue(int value) returns int {
     ...
 }
@@ -178,8 +178,8 @@ function getValue(int value) returns int {
 service / on new http:Listener(8080) {
     # Description.
     #
-    # + caller - Parameter description.
-    # + request - Parameter description.
+    # + caller - parameter description
+    # + request - parameter description
     resource function get greeting(http:Caller caller, http:Request request) {
         ...
     }

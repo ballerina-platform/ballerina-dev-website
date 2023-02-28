@@ -58,8 +58,8 @@ const TopNav = (props) => {
               <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
               {(launcher === 'docs-learn') ?
                 <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
-                  <NavDropdown.Item href={`${prefix}/learn/`}>Swan Lake</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.2/learn/`}>v1.2</NavDropdown.Item>
+                  <NavDropdown.Item href={`${prefix}/learn/`} className={styles.dropDownItem}>Swan Lake</NavDropdown.Item>
+                  <NavDropdown.Item href={`${prefix}/1.2/learn/`} className={styles.dropDownItem}>v1.2</NavDropdown.Item>
                 </NavDropdown>
                 : null
               }

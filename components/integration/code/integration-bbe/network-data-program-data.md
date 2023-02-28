@@ -1,7 +1,7 @@
 ---
-title: 'Edit, Debug, Run in VSCode'
-description: Data coming over the wire is seamlessly mapped to domain types without explicit data binding in Ballerina. Works with a wide range of data formats such as JSON, XML, and EDI.
-url: 'https://github.com/orgs/ballerina-platform/'
+title: 'Network Data == Program Data'
+description: Processing data coming or going over the wire is a no-brainer with Ballerina. Seamlessly and selectively map network data into domain types for a range of formats including JSON, EDI and XML.
+url: 'https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-stdout/main.bal#L22'
 ---
 ```
 configurable string githubPAT = ?;
@@ -14,7 +14,6 @@ type PR record {
     string updated_at;
 };
 
-
 public function main() returns error? {
     http:Client github = check new ("https://api.github.com/repos");
     map<string> headers = {
@@ -23,7 +22,7 @@ public function main() returns error? {
     };
     
     // Network data == program data
-    PR[] prs = check github->/["octocat/Hello-World"]/pulls(headers);
+    PR[] prs = check github->/octocat/Hello\-World/pulls(headers);
     io:println(prs);
 }
 ```

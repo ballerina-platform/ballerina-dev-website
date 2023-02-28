@@ -9,7 +9,7 @@
 }
 
 a.cDownload {
-    display: block;
+    display: flex;
     transition: none !important;
     font-weight: 400;
     color: #20b6b0 !important;
@@ -22,8 +22,10 @@ a.cDownload span {
 
 .codeSnippet div pre {
     margin-top: 0;
-    /* padding-left: 30px;
-    padding-right: 30px; */
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 /* .codeSnippet div pre.shiki {

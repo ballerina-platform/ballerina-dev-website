@@ -18,6 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
+import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './UseCases.module.css';
@@ -59,8 +60,14 @@ export default function UseCases(props) {
                                     <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
 
                                 </div>
+                                {/* <div className={styles.sampleText}>
+                                    <p>See Sample Automation: GitHub to Google Sheets</p>
+                                </div> */}
+
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Automation: GitHub to Google Sheets <a href='#'>VS Code</a> <a href='#'>GitHub</a></p>
+                                    <a href="https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-gsheets/main.bal#L18" className={styles.cDownload}>
+                                    See Sample Automation: GitHub to Google Sheets
+                                    </a>
                                 </div>
 
 
@@ -76,9 +83,16 @@ export default function UseCases(props) {
 
                                     <p>Be an event producer in any protocol you like.</p>
                                 </div>
+
+                                {/* <div className={styles.sampleText}>
+                                    <p>See Sample Event Integration: Google Calendar to Trello Card</p>
+
+                                </div> */}
+
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Event Integration: Google Calendar to Trello Card <a href='#'>VS Code</a> <a href='#'>GitHub</a>
-                                    </p>
+                                    <a href="https://github.com/ballerina-guides/integration-samples/blob/main/gcalendar-new-event-to-trello-card/main.bal#L33" className={styles.cDownload}>
+                                    See Sample Event Integration: Google Calendar to Trello Card
+                                    </a>
                                 </div>
                             </div>
 
@@ -94,8 +108,14 @@ export default function UseCases(props) {
                                     <p>APIs are the new DLLs. Exposing your integrations as APIs is how your integrated capability adds new value to your business.</p>
                                 </div>
 
+                                {/* <div className={styles.sampleText}>
+                                    <p>See Sample Integration as an API</p>
+                                </div> */}
+
                                 <div className={styles.sampleLinks}>
-                                    <p>See Sample Integration as an API: <a href='#'>VS Code</a> <a href='#'>GitHub</a></p>
+                                    <a href="https://github.com/ballerina-guides/integration-samples/blob/main/azure-cosmosdb-data-as-rest-api/main.bal#L22" className={styles.cDownload}>
+                                    See Sample Integration as an API
+                                    </a>
                                 </div>
 
                             </div>

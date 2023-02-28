@@ -9,11 +9,12 @@
     font-size: 22px;
     /* color: #585a5e; */
     color: #fff;
+    height: auto;
 }
 
 .description {
     /* border:1px solid; */
-    height: 300px;
+    height: 400px;
     margin-top: 20px;
     color: #fff;
     font-weight: 400;
@@ -22,6 +23,13 @@
 .description p {
     /* font-weight: 400px !important; */
     font-size: 16px;
+}
+
+.sampleText {
+    height: 60px;
+    color: #fff;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .sampleLinks {
@@ -41,3 +49,61 @@
 .sampleLinks a:hover {
     color: #494949;
 }
+
+
+a.cDownload {
+    display: flex;
+    transition: none !important;
+    font-weight: 400;
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+a.cDownload:hover {
+    text-decoration: underline;
+}
+
+a.cDownload span {
+    margin-right: 10px !important;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    .description {
+      height: 580px;
+    }
+    .sampleLinks {
+        height: 60px;
+    }
+  }
+  
+  @media (min-width: 840px) {
+    .description {
+      height: 580px;
+    }
+    .sampleLinks {
+        height: 60px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .description {
+      /* height: 220px; */
+      height: 435px;
+    }
+    .box h3 {
+        height: 50px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .description {
+      height: 300px;
+    }
+    .box h3 {
+        height: auto;
+    }
+  }

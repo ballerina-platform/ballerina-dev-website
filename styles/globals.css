@@ -1232,21 +1232,22 @@ table.cTopControlsContainer tbody {
   background-color: #eeeeee;
 }
 
-.integration.code {
+/* .integration.code {
   padding-top: 50px;
-}
+} */
 
 .integration.code.odd {
   background-color: #eeeeee;
 }
 
-.integration.code pre {
+/* .integration.code pre {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
+} */
 
 .integration.code pre.shiki {
   background-color: #ffffff !important;
+  border: 1px solid #eeeeee;
 }
 
 .pageContentRow.integration {
@@ -1256,4 +1257,9 @@ table.cTopControlsContainer tbody {
 
 .pageContentRow.integration #use-cases {
   margin-bottom: 30px;
+}
+
+.usecases .wrap-page-content {
+  padding-bottom: 0 !important;
+  font-size: 18px;
 }

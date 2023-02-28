@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
         {/* CookiePro Cookies Consent Notice end for ballerina.io */}
       </Head>
       <Meta />
-      <Stack gap={0} className='main-wrapper community'>
+      <Stack gap={0} className='main-wrapper usecases'>
         <TopNav launcher='usecases' />
         <div className='wrap-page-content'>
           <Row className='community-wrap-row'>

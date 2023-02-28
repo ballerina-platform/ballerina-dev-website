@@ -26,6 +26,8 @@ a.cDownload span {
     padding-right: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+    font-size: 11.375px;
+    line-height: 18px;
 }
 
 /* .codeSnippet div pre.shiki {

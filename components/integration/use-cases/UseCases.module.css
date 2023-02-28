@@ -47,6 +47,7 @@
     /* color: #fff; */
     text-decoration: none;
     font-weight: 400;
+    font-size: 16px;
 }
 
 .sampleLinks a:hover {
@@ -54,22 +55,22 @@
 }
 
 
-a.cDownload {
+/* a.cDownload {
     display: flex;
     transition: none !important;
     font-weight: 400;
     color: #20b6b0 !important;
-    /* color: #ffffff !important; */
-    text-decoration: none;
-}
+    /* color: #ffffff !important; 
+    /* text-decoration: none;
+} */
 
-a.cDownload:hover {
+/* a.cDownload:hover {
     text-decoration: underline;
-}
+} */
 
-a.cDownload span {
+/* a.cDownload span {
     margin-right: 10px !important;
-}
+} */
 
 
 

@@ -72,7 +72,7 @@ export default function UseCases(props) {
                                     {
                                         (vscode.frontmatter.url && vscode.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={vscode.frontmatter.url} className={styles.cDownload}>
+                                                <a href={vscode.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -132,7 +132,7 @@ export default function UseCases(props) {
                                     {
                                         (network.frontmatter.url && network.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={network.frontmatter.url} className={styles.cDownload}>
+                                                <a href={network.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -192,7 +192,7 @@ export default function UseCases(props) {
                                     {
                                         (transformations.frontmatter.url && transformations.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={transformations.frontmatter.url} className={styles.cDownload}>
+                                                <a href={transformations.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -252,7 +252,7 @@ export default function UseCases(props) {
                                     {
                                         (github.frontmatter.url && github.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={github.frontmatter.url} className={styles.cDownload}>
+                                                <a href={github.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -312,7 +312,7 @@ export default function UseCases(props) {
                                     {
                                         (resilience.frontmatter.url && resilience.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={resilience.frontmatter.url} className={styles.cDownload}>
+                                                <a href={resilience.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -372,7 +372,7 @@ export default function UseCases(props) {
                                     {
                                         (transactions.frontmatter.url && transactions.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={transactions.frontmatter.url} className={styles.cDownload}>
+                                                <a href={transactions.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -432,7 +432,7 @@ export default function UseCases(props) {
                                     {
                                         (concurrent.frontmatter.url && concurrent.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={concurrent.frontmatter.url} className={styles.cDownload}>
+                                                <a href={concurrent.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -492,7 +492,7 @@ export default function UseCases(props) {
                                     {
                                         (picture.frontmatter.url && picture.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={picture.frontmatter.url} className={styles.cDownload}>
+                                                <a href={picture.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -552,7 +552,7 @@ export default function UseCases(props) {
                                     {
                                         (observability.frontmatter.url && observability.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={observability.frontmatter.url} className={styles.cDownload}>
+                                                <a href={observability.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -612,9 +612,9 @@ export default function UseCases(props) {
                                     {
                                         (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={ipaas.frontmatter.url} className={styles.cDownload}>
+                                                <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Choreo iPaaS for Free
+                                                    Get started with WSO2 Choreo iPaaS for free
                                                 </a>
                                             </div>
                                             : null

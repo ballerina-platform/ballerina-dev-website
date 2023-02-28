@@ -105,7 +105,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for Integration</title>
+        <title>Ballerina for integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -161,7 +161,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for Integration</h1>
+                <h1>Ballerina for integration</h1>
               </Container>
 
             </Col>

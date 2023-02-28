@@ -1,5 +1,5 @@
 ---
-title: 'Built-In Transactions'
+title: 'Built-in transactions'
 description: Data integration Eventually consistency is nice and all, but if you really need to make sure your distributed data integrations run transactionally, then Ballerina makes that effortless and mistake-free for developers with compile-time support.
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/mysql-client-with-transactions/main.bal#L22'
 ---

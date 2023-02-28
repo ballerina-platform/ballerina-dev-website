@@ -622,7 +622,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (ipaas.code && ipaas.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -632,7 +632,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (ipaas.frontmatter.image && ipaas.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${ipaas.frontmatter.image}`} alt={ipaas.frontmatter.title}/>
+                                        <img src={`${prefix}/${ipaas.frontmatter.image}`} alt={ipaas.frontmatter.title} className={styles.doNotFill} width='60%'/>
                                         : null
                                 }
                             </Col>

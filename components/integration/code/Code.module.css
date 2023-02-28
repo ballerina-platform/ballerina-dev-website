@@ -35,11 +35,13 @@ a.cDownload span {
     background-color: #ffffff !important;
 } */
 
-.box img {
+.box img:not(.doNotFill) {
     border-radius: 4px;
-        width: -moz-available !important;         
-        width: -webkit-fill-available !important;  
-        width: fill-available !important;
+    width: -moz-available !important;
+    width: -webkit-fill-available !important;
+    width: fill-available !important;
 }
 
-
+.box .ipaas {
+    text-align: center;
+}

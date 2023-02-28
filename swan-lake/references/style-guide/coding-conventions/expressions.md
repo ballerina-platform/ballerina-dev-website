@@ -59,7 +59,7 @@ Person p = {name: "john", age: 20};
 
 ```ballerina
 Person person = {
-    name: "john" // in this field key is the "name" and value is "john".
+    name: "john" // In this field, key is the "name" and value is "john".
 };
 ```
 

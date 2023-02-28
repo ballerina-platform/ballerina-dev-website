@@ -134,10 +134,10 @@ function func2() {
 
 ```ballerina
 
-type People record {}; // Inline comment
+type People record {}; // Inline comment.
 
 function func1() {
-    int a = 0; // Inline comment
+    int a = 0; // Inline comment.
 }
 
 ```

@@ -225,7 +225,7 @@ string s = "added " + People.name
 string s = person
     .getName();
   
-// Binary operations in if condition
+// Binary operations in if condition.
 if isNameAvailable
     && (i == 1) {
     ...

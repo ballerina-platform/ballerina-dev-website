@@ -54,7 +54,7 @@ string? name;
 **Do's**
 
 ```ballerina
-map<int|string> x;// Map reference type.
+map<int|string> x;// Map built-in type.
 ```
   
 **Don'ts**

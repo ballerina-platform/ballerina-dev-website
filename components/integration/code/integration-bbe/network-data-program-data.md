@@ -1,5 +1,5 @@
 ---
-title: 'Network Data == Program Data'
+title: 'Network data == program data'
 description: Processing data coming or going over the wire is a no-brainer with Ballerina. Seamlessly and selectively map network data into domain types for a range of formats, including JSON, EDI, and XML.
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-stdout/main.bal#L22'
 ---

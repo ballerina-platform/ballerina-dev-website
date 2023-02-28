@@ -48,8 +48,8 @@ const TopNav = (props) => {
               className={`${styles.topNav} ms-auto my-2 my-lg-0`}
               navbarScroll >
               <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
-              <NavDropdown title='Use Cases' id={styles.navbarScrollingDropdown} className={(launcher === 'usecases') ? `${styles.active}` : null} >
-                <NavDropdown.Item href={`${prefix}/usecases/integration`}>Integration</NavDropdown.Item>
+              <NavDropdown title='Use cases' id={styles.navbarScrollingDropdown} className={(launcher === 'usecases') ? `${styles.active}` : null} >
+                <NavDropdown.Item href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
               <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
@@ -58,8 +58,8 @@ const TopNav = (props) => {
               <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
               {(launcher === 'docs-learn') ?
                 <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
-                  <NavDropdown.Item href={`${prefix}/learn/`}>Swan Lake</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.2/learn/`}>v1.2</NavDropdown.Item>
+                  <NavDropdown.Item href={`${prefix}/learn/`} className={styles.dropDownItem}>Swan Lake</NavDropdown.Item>
+                  <NavDropdown.Item href={`${prefix}/1.2/learn/`} className={styles.dropDownItem}>v1.2</NavDropdown.Item>
                 </NavDropdown>
                 : null
               }

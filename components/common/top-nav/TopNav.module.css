@@ -29,7 +29,7 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     font-weight: 600 !important;
 }
 
-.topNav a.navItem.active {
+.topNav a.navItem.active, .topNav .active #navbarScrollingDropdown {
     color: #57595d !important;
 }
 
@@ -52,11 +52,13 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 .home .topNav #navbarScrollingDropdown::after {
     /* color: #20b6b0; */
     color: inherit !important;
+    vertical-align: middle !important;
 }
 
 .topNav #navbarScrollingDropdown::after {
     /* color: #20b6b0; */
     color: inherit;
+    vertical-align: middle !important;
 }
 
 .home .topNav #navbarScrollingDropdown::after {
@@ -150,4 +152,9 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 
 .hackathonBanner a:hover{
     color: #545454 !important;
+}
+
+a.dropDownItem:focus, a.dropDownItem:hover {
+    background-color: #20b6b0 !important;
+    color: #ffffff !important;
 }

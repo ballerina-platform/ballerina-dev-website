@@ -769,6 +769,10 @@ ul.eventsTabs {
   margin: 0 0 0 21px;
 }
 
+.archivedNote{
+  margin-top: 30px !important;
+}
+
 .DocSearch-Button-Placeholder {
   font-size: 1rem;
   font-weight: 300;

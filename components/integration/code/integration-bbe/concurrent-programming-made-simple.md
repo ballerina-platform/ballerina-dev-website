@@ -12,8 +12,8 @@ type Quote record {
 };
 
 function findBestQuote(QuoteRequest quoteReq) returns Quote {
-    // The fork statement starts one or more named workers, which run in parallel with each other, 
-    //   each in its own new strand 
+    // The fork statement starts with one or more named workers, 
+    //  which run in parallel with each other 
     fork {
         worker venderA returns Quote|error {
             http:Client venderAEP = check new (venderAURL);
@@ -31,7 +31,7 @@ function findBestQuote(QuoteRequest quoteReq) returns Quote {
         }
     }
 
-    // Wait for all the workers to finish and collects the results.
+    // Wait for all the workers to finish and collect the results.
     map<Quote|error> quotes = wait {venderA, venderB, venderC};
     return bestQuote(quotes);
 }

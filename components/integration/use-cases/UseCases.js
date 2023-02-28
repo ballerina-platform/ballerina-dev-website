@@ -65,7 +65,7 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.sampleLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-gsheets/main.bal#L18" className={styles.cDownload}>
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-gsheets/main.bal" className={styles.cDownload}>
                                     See sample automation: GitHub to Google Sheets
                                     </a>
                                 </div>
@@ -90,7 +90,7 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.sampleLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/gcalendar-new-event-to-trello-card/main.bal#L33" className={styles.cDownload}>
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/gcalendar-new-event-to-trello-card/main.bal" className={styles.cDownload}>
                                     See sample event integration: Google Calendar to Trello Card
                                     </a>
                                 </div>
@@ -113,8 +113,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.sampleLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/azure-cosmosdb-data-as-rest-api/main.bal#L22" className={styles.cDownload}>
-                                    See sample integration as an API
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/azure-cosmosdb-data-as-rest-api/main.bal" className={styles.cDownload}>
+                                    See sample integration as an API: Azure Cosmos DB data as a REST API
                                     </a>
                                 </div>
 

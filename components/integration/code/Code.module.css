@@ -42,6 +42,6 @@ a.cDownload span {
     width: fill-available !important;
 }
 
-.box .ipaas {
+.box.ipaas {
     text-align: center;
 }

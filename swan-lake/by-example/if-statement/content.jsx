@@ -73,7 +73,7 @@ export function IfStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=756c7ddeda8506dd9cb9ed25bfc4c1a7&file=if_statement.bal",
+                "https://play.ballerina.io/?gist=ea03d2eed8945a83e4cabc77876394c6&file=if_statement.bal",
                 "_blank"
               );
             }}

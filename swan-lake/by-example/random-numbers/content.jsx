@@ -55,7 +55,7 @@ export function RandomNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=537ce5f802cc83831ffb4570eb929c5a&file=random_numbers.bal",
+                "https://play.ballerina.io/?gist=66c8d0e10a03bde9c5a241c93c9d2ed1&file=random_numbers.bal",
                 "_blank"
               );
             }}

@@ -91,7 +91,7 @@ export function UuidGeneration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e60c014b992317b61d2aeaa02cde0837&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=47f11d97c921f8f8d91ff6c1b88c24b9&file=uuid_generation.bal",
                 "_blank"
               );
             }}

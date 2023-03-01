@@ -27,11 +27,11 @@ export default function Document() {
         <meta charSet="utf-8" />
         <meta name="author" content="WSO2 LLC"/>
         {/* <!--FB--> */}
-        <meta property="og:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Ballerina" />
-        <meta property="og:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:card" content="summary" />
@@ -39,8 +39,8 @@ export default function Document() {
         <meta name="twitter:creator" content="@ballerinalang" />
         <meta name="twitter:title" content="Ballerina" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
-        <meta property="twitter:image" content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`} />
+        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         <link rel="shortcut icon" href={`${prefix}/images/favicon.ico`}></link>
 

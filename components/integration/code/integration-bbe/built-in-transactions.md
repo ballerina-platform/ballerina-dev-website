@@ -17,8 +17,8 @@ function createOrder(Order 'order) returns error? {
     // Start a transaction.
     transaction {
         // Insert into `sales_order` table.
-        _ = check db->execute(`INSERT INTO sales_orders VALUES (${'order.id}, ${'order.orderDate},
-                ${'order.productId}, ${'order.quantity})`);
+        _ = check db->execute(`INSERT INTO sales_orders VALUES (${'order.id}, 
+                ${'order.orderDate}, ${'order.productId}, ${'order.quantity})`);
 
         // Update product quantity as per the order.
         sql:ExecutionResult inventoryUpdate = check db->execute(`UPDATE inventory SET 

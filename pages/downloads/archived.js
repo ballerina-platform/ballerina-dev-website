@@ -112,7 +112,7 @@ export default function AllArchived() {
             <Head>
 
                 <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
-                <meta name="author" content="WSO2, Inc." />
+                <meta name="author" content="WSO2 LLC." />
 
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 

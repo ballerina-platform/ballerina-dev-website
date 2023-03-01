@@ -25,6 +25,7 @@ import Intro from "../../../components/integration/intro/Intro";
 import Position from "../../../components/integration/position/Position";
 import UseCases from "../../../components/integration/use-cases/UseCases";
 import Code from "../../../components/integration/code/Code";
+import { prefix } from '../../../utils/prefix';
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -97,9 +98,9 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Write code with integration-friendly abstractions."
         />
-        <meta name="author" content="WSO2, Inc." />
+        <meta name="author" content="WSO2 LLC" />
         <meta
           name="keywords"
           content="ballerina, learn, documentation, docs, programming language"
@@ -109,27 +110,27 @@ export default function Integrations({ samples }) {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content="Ballerina - Ballerina for integration" />
         <meta
           property="og:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Write code with integration-friendly abstractions."
         />
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+          content={`${prefix}/images/ballerina-for-integration-sm-banner.png`}
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+          content={`${prefix}/images/ballerina-for-integration-sm-banner.png`}
         />
         <meta
           property="og:description"
           itemProp="image"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Write code with integration-friendly abstractions."
         />
 
         {/* TWITTER */}
@@ -140,19 +141,19 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Write code with integration-friendly abstractions."
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+          content={`${prefix}/images/ballerina-for-integration-sm-banner.png`}
         />
         <meta
           property="twitter:text:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Write code with integration-friendly abstractions."
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/img/ballerina-swan-lake-sm-banner-general.png"
+          content={`${prefix}/images/ballerina-for-integration-sm-banner.png`}
         />
       </Head>
 

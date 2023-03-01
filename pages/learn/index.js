@@ -26,6 +26,7 @@ import UseCases from "../../components/learn/use-cases/UseCases";
 import Platform from "../../components/learn/platform/Platform";
 import New from "../../components/learn/new/New";
 import Head from "next/head";
+import { prefix } from '../../utils/prefix';
 
 export default function Learn() {
 
@@ -56,7 +57,7 @@ export default function Learn() {
           name="description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
         />
-        <meta name="author" content="WSO2, Inc." />
+        <meta name="author" content="WSO2 LLC" />
         <meta
           name="keywords"
           content="ballerina, learn, documentation, docs, programming language"
@@ -74,14 +75,14 @@ export default function Learn() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
         />
         <meta
           property="og:description"
@@ -101,7 +102,7 @@ export default function Learn() {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
         />
         <meta
           property="twitter:text:description"
@@ -109,7 +110,7 @@ export default function Learn() {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
         />
       </Head>
 

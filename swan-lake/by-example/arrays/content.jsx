@@ -99,7 +99,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f5f33d433cd478e38499705c58b88ca1&file=arrays.bal",
+                "https://play.ballerina.io/?gist=f4a59c1ea7c957f325cd69fb92d319f9&file=arrays.bal",
                 "_blank"
               );
             }}

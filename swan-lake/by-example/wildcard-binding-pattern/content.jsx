@@ -53,7 +53,7 @@ export function WildcardBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c194202abdd3b580bbb2e364882e6ac3&file=wildcard_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=0ca51bc4502cc7230be994c3ace6ba5b&file=wildcard_binding_pattern.bal",
                 "_blank"
               );
             }}

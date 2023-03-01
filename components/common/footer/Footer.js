@@ -102,7 +102,6 @@
  
            <Col xs={12} sm={12} md={6} lg={6} className={styles.inspire}>
              <p>In the creation of Ballerina, we were inspired by many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub, and WSO2.</p>
-             <p>Copyright © WSO2 LLC (2018-2023)</p>
            </Col>
          </Row>
  
@@ -116,6 +115,7 @@
                <li><Link className="footerLink" href={`/cookie-policy`}>COOKIE POLICY</Link></li>
                <li><Link className="footerLink" href={`/security-policy`}>SECURITY POLICY</Link></li>
                <li><Link className="footerLink" href={`/trademark-usage-policy/`}>TRADEMARK USAGE POLICY</Link></li>
+               <li><span className="footerLink">© Copyright (2018-2023) WSO2 LLC</span></li>
              </ul>
            </Col>
          </Row>

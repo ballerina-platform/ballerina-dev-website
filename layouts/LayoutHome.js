@@ -50,7 +50,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
         <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
 
         <meta name="keywords" content="ballerina, ballerinalang, cloud native, microservices, integration, programming language" />
+        {/* <!--FB--> */}
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
+        {/* <!--LINKED IN  --> */}
+        <meta property="og:title" content="Ballerina" />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+
+        {/* <!--TWITTER--> */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ballerinalang" />
+        <meta name="twitter:creator" content="@ballerinalang" />
+        <meta name="twitter:title" content="Ballerina - Ballerina Home" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
         {/* <!--FB--> */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Ballerina - Ballerina Home" />

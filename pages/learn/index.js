@@ -75,14 +75,14 @@ export default function Learn() {
         <meta
           property="og:image"
           itemProp="image"
-          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="og:description"
@@ -102,7 +102,7 @@ export default function Learn() {
         />
         <meta
           name="twitter:image"
-          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="twitter:text:description"
@@ -110,7 +110,7 @@ export default function Learn() {
         />
         <meta
           property="twitter:image"
-          content={`${prefix}/images/ballerina-generic-social-media-image-2023.png`}
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
       </Head>
 

@@ -208,9 +208,9 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 ballerina/observe versions: 0.9.0, 1.0.0
 ```
 
-## Manage Platform Dependencies
+## Manage platform dependencies
 
-A Ballerina package can depend on JAVA code that are shipped with the JVM, from a remote package repository or from a JAR file located in the user’s machine. Libraries shipped with the JVM can be used seamlessly and libraries used from other locations must be specified in the `Ballerina.toml` as shown below.
+A Ballerina package can depend on JAVA code that is shipped with the JVM, from a remote package repository, or from a JAR file located in the user’s machine. Libraries shipped with the JVM can be used seamlessly and libraries used from other locations must be specified in the `Ballerina.toml` as shown below.
 
 ## Specify a Maven dependency
 
@@ -242,4 +242,4 @@ path = "<path-to-jar-file-1>"
 
 The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
 
-You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).
+>**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).

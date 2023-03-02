@@ -161,6 +161,8 @@ There are two ways to include the JAR dependency.
 
 **Use remote repositories**
 
+The following example shows how a dependency from a public Maven repository can be specified.
+
 ```toml
 [[platform.java11.dependency]]
 # Group ID of the Maven dependency.
@@ -173,7 +175,7 @@ version = "<version>"
 
 When building the package, these specified Maven dependencies will be resolved and can be found in the `target/platform-libs` directory. To specify a Maven dependency in the `Ballerina.toml` file, you can use the following format.
 
-It is possible to use a custom repository such as a private Maven repository or Github Package repository for your dependencies by specifying it in the `Ballerina.toml` file.
+It is also possible to use a custom repository such as a private Maven repository or Github Package repository for your dependencies by specifying it in the `Ballerina.toml` file.
 
 ```toml
 [[platform.java11.repository]]
@@ -190,6 +192,8 @@ By default, the `bal build` command will package all JAR files specified in the 
 
 **Provide the path of JAR file**
 
+You may also store the JAR files anywhere in your file system and provide the path as shown below. 
+
 ```toml
 [[platform.java11.dependency]]
 # Group ID of the dependency.
@@ -204,39 +208,53 @@ path = "<path-to-jar-file-1>"
 
 The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
 
-* Restrict usage to specific modules.
+**Restrict usage to specific modules**
 
-  ```toml
-  [[platform.java11.dependency]]
-  # Absolute or relative path of the JAR file.
-  path = "<path-to-jar-file-1>"
-  # An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
-  modules = ["<ballerina-module-1>"]
-  ```
+The following example shows how you can optionally restrict the visibility of a platform dependency to a selected set of modules.
+
+```toml
+[[platform.java11.dependency]]
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
+modules = ["<ballerina-module-1>"]
+```
 
   It is considered a best practice to provide the names of the modules that use the JAVA library as a comma-separated list. This ensures that the JAR library is only used in the specified modules.
 
-* Resolve multiple versions of the same JAR
+**Resolve multiple versions of the same JAR**
 
-  ```toml
-  [[platform.java11.dependency]]
-  # Absolute or relative path of the JAR file.
-  path = "<path-to-jar-file-1>"
-  # Optional details about the dependency (to handle conflicting JAR files).
-  groupId =  "<dependency-group-id>"
-  artifactId =  "<dependency-artifact-id>"
-  version =  "<dependency-version>"
-  ```
+There can be use cases where two different Ballerina dependencies may use the same platform library. Two platform dependency entries having the same `groupId` and the `artifactId` is considered to be the same where the latest out of the two will be picked by the compiler for creating the executable JAR. 
 
-  When a package has two dependencies that use different versions of the same Java library, the compiler picks the latest version. Two platform dependencies having the same `groupId` and the `artifactId` are considered to be the same where the latest out of the two will be picked for creating the executable JAR. 
+The following example shows the recommended way for specifying a platform dependency which will help with version resolution.
 
-For example, if you are using the `commons-logging-1.2.jar` in your package but there is another package in the dependency graph that uses the `commons-logging-1.1.1.jar`, the compiler will pick the `commons-logging-1.2.jar` since it is the latest version. 
+```toml
+[[platform.java11.dependency]]
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+# Optional details about the dependency (to handle conflicting JAR files).
+groupId =  "<dependency-group-id>"
+artifactId =  "<dependency-artifact-id>"
+version =  "<dependency-version>"
+```
 
-  ```bash
-  WARNING [pkg3] detected conflicting jar files. 'native-1.0.1.jar' dependency of 'platformlib/pkg2' conflicts with 'native-1.0.0.jar'  dependency of 'platformlib/pkg1'. Picking 'native-1.0.1.jar' over 'native-1.0.0.jar'.
-  ```
+With the above approach, for example, if you are using `commons-logging-1.2.jar` in your package but there is another package in the dependency graph that uses `commons-logging-1.1.1.jar`, the compiler will pick the `commons-logging-1.2.jar` since it is the latest version. A warning will be reported in addition as shown below.
 
-* Define the scope for a dependency
+```
+WARNING [mypackage] detected conflicting jar files. 'commons-logging-1.1.1.jar' dependency of 'myorg/pkg2' conflicts with 'commons-logging-1.2.jar'  dependency of 'myorg/pkg1'. Picking 'commons-logging-1.2.jar' over 'commons-logging-1.1.1.jar'.
+```
+
+Note: Ignoring the `groupId` and `artifactId` will result in picking a random jar with the following warning reported by the compiler.
+```bash
+warning: Detected conflicting jar files:
+        'commons-logging-1.1.1.jar' dependency of 'myorg/pkg1' conflict with 'commons-logging-1.2.jar' dependency of 'myorg/pkg2'
+```
+
+**Define the scope for a dependency**
+
+By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependncy to the test runtime but will avoid packing it into the final executable JAR file.
+
+The following example shows a platform dependency entry with the `scope`.
 
   ```toml
   [[platform.java11.dependency]]
@@ -245,9 +263,6 @@ For example, if you are using the `commons-logging-1.2.jar` in your package but 
   # Scope of the JAR file
   scope =  "<scope-of-the-jar-file>"
   ```
-
-  The default scope of a platform dependency includes the JAR file during compilation, testing, and when generating the executable/archive of the project. The `testOnly` scope can be used to restrict the scope to only include it during testing.
-
 
 ## The `Dependencies.toml` file
 

@@ -214,6 +214,8 @@ A Ballerina package can depend on JAVA code that is shipped with the JVM, from a
 
 ## Specify a Maven dependency
 
+The following example shows how a dependency from a public Maven repository can be specified.
+
 ```toml
 [[platform.java11.dependency]]
 # Group ID of the Maven dependency.
@@ -227,6 +229,8 @@ version = "<version>"
 When building the package, these specified Maven dependencies will be resolved and can be found in the `target/platform-libs` directory. 
 
 ### Specify a local JAR file path
+
+The following example uses a JAR file located in the user's machine as a platform dependency.
 
 ```toml
 [[platform.java11.dependency]]

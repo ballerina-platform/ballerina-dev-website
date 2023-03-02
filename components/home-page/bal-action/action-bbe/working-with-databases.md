@@ -14,7 +14,7 @@ type Album record {|
     string id;
     string title;
     string artist;
-    decimal price;
+    float price;
 |};
 
 service / on new http:Listener(8080) {

@@ -6,7 +6,7 @@ configurable string githubPAT = ?;
 configurable string repository = "ballerina-platform/ballerina-lang";
 configurable string sheetsAccessToken = ?;
 configurable string spreadSheetId = ?;
-configurable string sheetName = "Sheet1";
+configurable string sheetName = "pull-requests";
 
 type PR record {
     string url;

@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @chamil321 @ayeshLK    
 _Reviewers_: @shafreenAnfar    
 _Created_: 2021/11/23  
-_Updated_: 2022/02/17  
+_Updated_: 2022/12/08  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -90,7 +90,7 @@ public type ListenerConfiguration record {|
 |};
 ```
 
-For more details on the available configurations please refer [`http:ListenerConfiguration`](https://lib.ballerina.io/ballerina/http/latest/records/ListenerConfiguration).
+For more details on the available configurations please refer [`http:ListenerConfiguration`](https://lib.ballerina.io/ballerina/http/latest#ListenerConfiguration).
 
 #### 2.1.2. Initialization
 

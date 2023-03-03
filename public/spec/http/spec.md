@@ -2091,51 +2091,56 @@ service class RequestInterceptor {
 ```
 
 ##### 8.1.1.1 Request context  
-Following is the rough definition of the interceptor context.
+Following is the rough definition of the interceptor context. Request context can store non-error values, and these values 
+can be retrieved at the next services in the pipeline.  
 ```ballerina
-# Request context attribute type.
-public type ReqCtxAttribute value:Cloneable|isolated object {};
+// This is same as the `value:Cloneable`, except that it does not include `error` type.
+# Represents a non-error type that can be cloned.
+public type Cloneable (any & readonly)|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;
+ 
+# Request context member type.
+public type ReqCtxMember Cloneable|isolated object {};
 
-# Request context attribute type descriptor.
-public type ReqCtxAttributeType typedesc<ReqCtxAttribute>;
+# Request context member type descriptor.
+public type ReqCtxMemberType typedesc<ReqCtxMember>;
 
 # Represents an HTTP Context that allows user to pass data between interceptors.
 public isolated class RequestContext {
-    private final map<ReqCtxAttribute> attributes = {};
+    private final map<ReqCtxMember> members = {};
 
-    # Sets an attribute to the request context object.
+    # Sets an member to the request context object.
     #
-    # + key - Represents the attribute key
-    # + value - Represents the attribute value
-    public isolated function set(string key, ReqCtxAttribute value) {}
+    # + key - Represents the member key
+    # + value - Represents the member value
+    public isolated function set(string key, ReqCtxMember value) {}
 
-    # Gets an attribute value from the request context object.
+    # Gets an member value from the request context object.
     #
-    # + key - Represents the attribute key
-    # + return - Attribute value
-    public isolated function get(string key) returns ReqCtxAttribute {}
+    # + key - Represents the member key
+    # + return - Member value
+    public isolated function get(string key) returns ReqCtxMember {}
 
-    # Checks whether the request context object has an attribute corresponds to the key.
+    # Checks whether the request context object has an member corresponds to the key.
     #
-    # + key - Represents the attribute key
-    # + return - true if the attribute exists, else false
+    # + key - Represents the member key
+    # + return - true if the member exists, else false
     public isolated function hasKey(string key) returns boolean {}
 
-    # Returns the attribute keys of the request context object.
+    # Returns the member keys of the request context object.
     #
-    # + return - Array of attribute keys
+    # + return - Array of member keys
     public isolated function keys() returns string[] {}
 
     # Gets an attribute value with type from the request context object.
     #
-    # + key - Represents the attribute key
-    # + targetType - Represents the expected type of the attribute value
-    # + return - Attribute value or an error if the attribute value is not of the expected type
-    public isolated function getWithType(string key, ReqCtxAttributeType targetType = <>) returns targetType|ListenerError = external;
+    # + key - Represents the member key
+    # + targetType - Represents the expected type of the member value
+    # + return - Attribute value or an error if the member value is not of the expected type
+    public isolated function getWithType(string key, ReqCtxMemberType targetType = <>) returns targetType|ListenerError = external;
 
-    # Removes an attribute from the request context object. It panics if there is no such member.
+    # Removes an member from the request context object. It panics if there is no such member.
     #
-    # + key - Represents the attribute key
+    # + key - Represents the member key
     public isolated function remove(string key) {}
 
     # Calls the next service in the interceptor pipeline.

@@ -73,7 +73,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f59b9635ef89d020f6147d03dc31070e&file=http_basic_rest_service.bal",
+                "https://play.ballerina.io/?gist=a58de1739b16873f42a9e75e3e428c0f&file=http_basic_rest_service.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-basic-rest-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-basic-rest-service",
                 "_blank"
               );
             }}

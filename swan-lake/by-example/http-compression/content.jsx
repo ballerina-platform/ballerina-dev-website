@@ -66,7 +66,7 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=32e383902f41ad24d54d1f429fc77375&file=http_compression.bal",
+                "https://play.ballerina.io/?gist=f44857502d2b8d4ca00c64ef45048d47&file=http_compression.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-compression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-compression",
                 "_blank"
               );
             }}

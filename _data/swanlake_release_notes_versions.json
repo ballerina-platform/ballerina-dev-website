@@ -652,7 +652,7 @@
       "version":"2201.3.2",
       "short-version":"2201.3.2",
       "display-version":"2201.3.2 (Swan Lake Update 3)",
-      "release-date":"2023-01-17",
+      "release-date":"2023-01-15",
       "windows-installer":"ballerina-2201.3.2-swan-lake-windows-x64.msi",
       "windows-installer-size":"173mb",
       "linux-installer":"ballerina-2201.3.2-swan-lake-linux-x64.deb",

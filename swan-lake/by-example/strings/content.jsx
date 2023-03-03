@@ -58,7 +58,7 @@ export function Strings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8faccce34842a88d00cbbbfdcb2c3166&file=strings.bal",
+                "https://play.ballerina.io/?gist=f0bdcf1a91d33603e31b54fa937fa255&file=strings.bal",
                 "_blank"
               );
             }}
@@ -83,7 +83,7 @@ export function Strings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/strings",
                 "_blank"
               );
             }}

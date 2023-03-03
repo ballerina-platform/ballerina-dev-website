@@ -112,7 +112,7 @@ export default function AllArchived() {
             <Head>
 
                 <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
-                <meta name="author" content="WSO2, Inc." />
+                <meta name="author" content="WSO2 LLC." />
 
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 
@@ -230,8 +230,10 @@ export default function AllArchived() {
                                 <Row className='archivedCategory'>
                                     <div className='catTitleRow'>
                                         <h2 id='1.2.x-archived-versions'>1.2.x archived versions</h2>
-                                    </div>
-
+                                        </div>
+                                        <div className='archivedNote'>
+                                        <p>You can download the Visual Studio Code extension for Ballerina 1.2.x versions, from the <a target="_blank" rel="noreferrer" className="archivedReleaseNotesLink" href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina">VS Code marketpace.</a></p>
+                                        </div>
                                     {sortedRelease12x.map((item, index) => (
 
                                         <div className="installers" key={item.version}>

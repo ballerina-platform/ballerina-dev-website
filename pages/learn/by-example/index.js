@@ -148,7 +148,7 @@
            name="description"
            content="Ballerina by Example enables you to have complete coverage over the Ballerina language, while emphasizing incremental learning."
          />
-         <meta name="author" content="WSO2, Inc." />
+         <meta name="author" content="WSO2 LLC" />
          <meta
            name="keywords"
            content="hello world, basics, network interaction, working with data, concurrency, transactions, concurrency safety, testing, rest api, rest client, rest api security, rest api advanced, http2, graphql, graphql security, websockets, websocket security, websub, resiliency, listeners, grpc, nats, stan, kafka, rabbitmq, tcp, udp, email, mysql, jdbc, io, security, url, time, cache, log, file, random, task, uuid, xslt, regex, os, xml data, tracing, metrics, code to cloud, function as a service"
@@ -166,14 +166,14 @@
          <meta
            property="og:image"
            itemProp="image"
-           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
          />
  
          {/* LINKED IN */}
          <meta property="og:title" content="Ballerina" />
          <meta
            property="og:image"
-           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="og:description"
@@ -193,7 +193,7 @@
          />
          <meta
            name="twitter:image"
-           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
          />
          <meta
            property="twitter:text:description"
@@ -201,7 +201,7 @@
          />
          <meta
            property="twitter:image"
-           content="https://ballerina.io/img/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
          />
        </Head>
  

@@ -84,7 +84,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dc36ecadb575c7f27b2c04112dfbfaaf&file=http_2_0_client_server_push.bal",
+                "https://play.ballerina.io/?gist=8f6f82628e33af6109db21e2f0fcb6f7&file=http_2_0_client_server_push.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-2-0-client-server-push",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-2-0-client-server-push",
                 "_blank"
               );
             }}

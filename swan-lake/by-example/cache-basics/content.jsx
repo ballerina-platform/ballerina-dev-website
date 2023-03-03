@@ -74,7 +74,7 @@ export function CacheBasics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7b84d3ecb7d466c3906e1b8f216ac802&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=6513683c4ae16d1791b347b1c6f26f31&file=cache_basics.bal",
                 "_blank"
               );
             }}
@@ -99,7 +99,7 @@ export function CacheBasics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/cache-basics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/cache-basics",
                 "_blank"
               );
             }}

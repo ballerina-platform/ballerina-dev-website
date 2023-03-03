@@ -54,7 +54,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=44d8549243387f014287d81c32552ac9&file=http_service_redirects.bal",
+                "https://play.ballerina.io/?gist=68d7eaecabe371fca8108a5cd30640d6&file=http_service_redirects.bal",
                 "_blank"
               );
             }}
@@ -79,7 +79,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/http-service-redirects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-service-redirects",
                 "_blank"
               );
             }}

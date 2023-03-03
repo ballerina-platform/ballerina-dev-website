@@ -60,7 +60,7 @@ export function RestTypeInTuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9cd5fb995575144df7aebba6d2c1c139&file=rest_type_in_tuples.bal",
+                "https://play.ballerina.io/?gist=ae0de4915c1826130844749c30403920&file=rest_type_in_tuples.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function RestTypeInTuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.2/examples/rest-type-in-tuples",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/rest-type-in-tuples",
                 "_blank"
               );
             }}

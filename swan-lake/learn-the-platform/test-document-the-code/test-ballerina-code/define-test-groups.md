@@ -76,8 +76,6 @@ Running Tests
 I'm a test belonging to group g1!
 I'm a test belonging to groups g1 and g2!
 
-                [pass] testFunction1
-                [pass] testFunction2
 
                 2 passing
                 0 failing
@@ -104,9 +102,6 @@ I'm a test belonging to group g1!
 I'm a test belonging to groups g1 and g2!
 I'm a test belonging to group g2!
 
-                [pass] testFunction1
-                [pass] testFunction2
-                [pass] testFunction3
 
                 3 passing
                 0 failing
@@ -130,7 +125,6 @@ Running Tests
         Testing
 I'm a test belonging to group g1!
 
-                [pass] testFunction1
 
                 1 passing
                 0 failing

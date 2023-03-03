@@ -65,8 +65,6 @@ Running Tests
 
         dataproviders
 
-		[pass] fruitsDataProviderTest#'banana'
-		[pass] fruitsDataProviderTest#'cherry'
 
 		2 passing
 		0 failing
@@ -85,9 +83,9 @@ import ballerina/test;
     dataProvider: dataGen
 }
 function stringDataProviderTest (string fValue, string sValue, string result) returns error? {
-    int value1 = check 'int:fromString(fValue);
-    int value2 = check 'int:fromString(sValue);
-    int result1 = check 'int:fromString(result);
+    int value1 = check int:fromString(fValue);
+    int value2 = check int:fromString(sValue);
+    int result1 = check int:fromString(result);
     test:assertEquals(value1 + value2, result1, msg = "The sum is not correct");
     return;
 }
@@ -107,9 +105,6 @@ Running Tests
 
         dataproviders
 
-                [pass] stringDataProviderTest#0
-                [pass] stringDataProviderTest#1
-                [pass] stringDataProviderTest#2
 
                 3 passing
                 0 failing
@@ -136,7 +131,6 @@ Running Tests
 
 	dataproviders
 
-		[pass] fruitsDataProviderTest#'banana'
 
 		1 passing
 		0 failing
@@ -157,7 +151,6 @@ Running Tests
 
         dataproviders
 
-                [pass] stringDataProviderTest#1
                 
                 1 passing
                 0 failing

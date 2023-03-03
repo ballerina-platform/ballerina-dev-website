@@ -661,9 +661,9 @@
       "macos-installer-size":"231mb",
       "rpm-installer":"ballerina-2201.3.2-swan-lake-linux-x64.rpm",
       "rpm-installer-size":"234mb",
-      "other-artefacts":[  
+      "other-artefacts":[
          "ballerina-2201.3.2-swan-lake.zip"
-       ],
+      ],
       "api-docs":"ballerina-api-docs-2201.3.2.zip",
       "release-notes":"ballerina-release-notes-2201.3.2.md"
    },

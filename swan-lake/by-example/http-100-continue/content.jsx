@@ -76,7 +76,7 @@ export function Http100Continue({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b9730e022d7ab49b1a170b8d14004525&file=http_100_continue.bal",
+                "https://play.ballerina.io/?gist=77435bb2827c01aeae99e1b0b4b88f5a&file=http_100_continue.bal",
                 "_blank"
               );
             }}
@@ -352,7 +352,7 @@ export function Http100Continue({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#expects100Continue">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Request#expects100Continue">
               <code>expects100Continue()</code> - API documentation
             </a>
           </span>

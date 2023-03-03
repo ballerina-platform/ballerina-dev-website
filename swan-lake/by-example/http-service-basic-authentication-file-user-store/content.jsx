@@ -354,7 +354,7 @@ export function HttpServiceBasicAuthenticationFileUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/FileUserStoreConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#FileUserStoreConfig">
               <code>http:FileUserStoreConfig</code> record - API documentation
             </a>
           </span>

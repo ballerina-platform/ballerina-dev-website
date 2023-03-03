@@ -287,7 +287,7 @@ export function KafkaProducerProduceMessage({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Producer#send">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#Producer#send">
               <code>kafka:Producer-&gt;send</code> function - API documentation
             </a>
           </span>

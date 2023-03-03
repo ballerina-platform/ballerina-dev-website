@@ -63,7 +63,7 @@ export function HttpClientChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bd929eaacbd39059c837462c524bac34&file=http_client_chunking.bal",
+                "https://play.ballerina.io/?gist=72e06bd07d41588159fa42757084ac75&file=http_client_chunking.bal",
                 "_blank"
               );
             }}
@@ -244,7 +244,7 @@ export function HttpClientChunking({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#ClientHttp1Settings">
               <code>http1Settings</code> - API documentation
             </a>
           </span>
@@ -254,7 +254,9 @@ export function HttpClientChunking({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/http/#24-client">HTTP client - Specification</a>
+            <a href="https://ballerina.io/spec/http/#24-client">
+              HTTP client - Specification
+            </a>
           </span>
         </li>
       </ul>

@@ -62,7 +62,7 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a273a820d12072a3d1d763e5873d5a62&file=http_passthrough.bal",
+                "https://play.ballerina.io/?gist=3916e75a3801f84ffe620c8c70b2390b&file=http_passthrough.bal",
                 "_blank"
               );
             }}
@@ -308,7 +308,7 @@ export function HttpPassthrough({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Client#forward">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Client#forward">
               <code>forward()</code> - API documentation
             </a>
           </span>

@@ -54,7 +54,7 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c296cc8dea35ae07170bd1f493402e05&file=http_client_ssl_tls.bal",
+                "https://play.ballerina.io/?gist=dbd56e4272ade6b4f98f0b27f565bad1&file=http_client_ssl_tls.bal",
                 "_blank"
               );
             }}
@@ -236,7 +236,7 @@ export function HttpClientSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#ClientSecureSocket">
               <code>http:ClientSecureSocket</code> record - API documentation
             </a>
           </span>

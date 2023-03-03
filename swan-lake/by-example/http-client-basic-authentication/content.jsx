@@ -60,7 +60,7 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=62f187ced1333b5f100fcaa73099051b&file=http_client_basic_authentication.bal",
+                "https://play.ballerina.io/?gist=c86c2d1e3b6ff1e0b6447f33cf861f13&file=http_client_basic_authentication.bal",
                 "_blank"
               );
             }}
@@ -242,7 +242,7 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CredentialsConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#CredentialsConfig">
               <code>http:CredentialsConfig</code> - API documentation
             </a>
           </span>

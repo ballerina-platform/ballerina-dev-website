@@ -242,7 +242,7 @@ export function KafkaConsumerConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/errors#PayloadValidationError">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0#PayloadValidationError">
               <code>kafka:PayloadValidationError</code> error type - API
               documentation
             </a>
@@ -253,7 +253,7 @@ export function KafkaConsumerConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0/clients/Consumer#seek">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/3.4.0#Consumer#seek">
               <code>kafka:Consumer-&gt;seek</code> function - API documentation
             </a>
           </span>

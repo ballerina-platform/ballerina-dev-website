@@ -286,7 +286,7 @@ export function GrpcServerReflection({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerConfiguration">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ListenerConfiguration">
               <code>grpc:ListenerConfiguration</code> record - API documentation
             </a>
           </span>

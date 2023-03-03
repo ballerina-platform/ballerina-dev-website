@@ -65,7 +65,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5ea92352b36c5944ae2e3e6a1123927&file=http_service_cache_response.bal",
+                "https://play.ballerina.io/?gist=35f7ba142a1c997a9990bce3c9ec8b1e&file=http_service_cache_response.bal",
                 "_blank"
               );
             }}
@@ -241,7 +241,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/HttpCacheConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#HttpCacheConfig">
               <code>http:HttpCacheConfig</code> record - API documentation
             </a>
           </span>

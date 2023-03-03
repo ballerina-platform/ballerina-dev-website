@@ -204,7 +204,7 @@ export function RabbitmqQueueDeclare({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#Client">
               <code>rabbitmq:Client</code> client object - API documentation
             </a>
           </span>

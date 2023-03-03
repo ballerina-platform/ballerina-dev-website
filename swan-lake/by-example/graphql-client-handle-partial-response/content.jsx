@@ -240,7 +240,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Client">
               <code>graphql:Client</code> client object - API documentation
             </a>
           </span>
@@ -250,7 +250,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/1.4.4/records/GenericResponseWithErrors">
+            <a href="https://lib.ballerina.io/ballerina/graphql/1.4.4#GenericResponseWithErrors">
               <code>graphql:GenericResponseWithErrors</code> record - API
               documentation
             </a>
@@ -261,7 +261,7 @@ export function GraphqlClientHandlePartialResponse({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/1.5.0/errors#PayloadBindingError">
+            <a href="https://lib.ballerina.io/ballerina/graphql/1.5.0#PayloadBindingError">
               <code>graphql:PayloadBindingError</code> error - API documentation
             </a>
           </span>

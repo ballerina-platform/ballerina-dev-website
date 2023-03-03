@@ -252,7 +252,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
               <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
@@ -262,7 +262,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#OAuth2IntrospectionConfigWithScopes">
               <code>graphql:OAuth2IntrospectionConfigWithScopes</code> record -
               API documentation
             </a>

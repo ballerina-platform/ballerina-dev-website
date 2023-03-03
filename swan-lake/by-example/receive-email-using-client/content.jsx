@@ -219,7 +219,7 @@ export function ReceiveEmailUsingClient({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/ImapClient">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#ImapClient">
               <code>email:ImapClient</code> client object - API documentation
             </a>
           </span>
@@ -229,7 +229,7 @@ export function ReceiveEmailUsingClient({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/PopClient">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#PopClient">
               <code>email:PopClient</code> client object - API documentation
             </a>
           </span>

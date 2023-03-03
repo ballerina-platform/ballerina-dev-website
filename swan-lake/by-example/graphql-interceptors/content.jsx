@@ -413,7 +413,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/objectTypes/Interceptor">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Interceptor">
               <code>graphql:Interceptor</code> object - API documentation
             </a>
           </span>

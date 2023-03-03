@@ -251,7 +251,7 @@ export function SftpServiceSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Caller">
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Caller">
               <code>ftp:Caller</code> client object - API documentation
             </a>
           </span>

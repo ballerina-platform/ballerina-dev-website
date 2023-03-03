@@ -214,7 +214,7 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
               <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
@@ -224,7 +224,7 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Graphiql">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Graphiql">
               <code>graphql:GraphiQL</code> record - API documentation
             </a>
           </span>

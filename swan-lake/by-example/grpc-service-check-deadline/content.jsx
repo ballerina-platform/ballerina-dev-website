@@ -218,7 +218,7 @@ export function GrpcServiceCheckDeadline({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/functions#isCancelled">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#isCancelled">
               <code>grpc:isCancelled</code> function - API documentation
             </a>
           </span>

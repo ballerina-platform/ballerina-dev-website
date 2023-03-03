@@ -232,7 +232,7 @@ export function GrpcServiceMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ListenerSecureSocket">
               <code>grpc:ListenerSecureSocket</code> record - API documentation
             </a>
           </span>

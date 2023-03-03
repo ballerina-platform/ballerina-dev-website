@@ -836,6 +836,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Outer Join clause",
+        "url": "outer-join-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Query tables",
         "url": "querying-tables",
         "verifyBuild": true,

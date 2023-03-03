@@ -493,7 +493,7 @@ export function GraphqlContext({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Context">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Context">
               <code>graphql:Context</code> object - API documentation
             </a>
           </span>

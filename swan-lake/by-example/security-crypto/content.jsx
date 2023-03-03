@@ -15,7 +15,7 @@ function hash() returns error? {
     byte[] input = value.toBytes();
 
     // Hashing input value using the MD5 hashing algorithm, and printing the hash value using the Hex encoding.
-    // For details, see https://lib.ballerina.io/ballerina/crypto/latest/functions#hashMd5
+    // For details, see https://lib.ballerina.io/ballerina/crypto/latest#hashMd5
     byte[] output = crypto:hashMd5(input);
     io:println("Hex encoded hash with MD5: " + output.toBase16());
 

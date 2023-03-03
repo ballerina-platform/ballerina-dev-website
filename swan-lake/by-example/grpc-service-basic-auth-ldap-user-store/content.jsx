@@ -270,7 +270,7 @@ export function GrpcServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/LdapUserStoreConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#LdapUserStoreConfig">
               <code>grpc:LdapUserStoreConfig</code> record - API documentation
             </a>
           </span>

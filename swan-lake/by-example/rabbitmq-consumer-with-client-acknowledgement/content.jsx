@@ -230,7 +230,7 @@ export function RabbitmqConsumerWithClientAcknowledgement({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Caller">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#Caller">
               <code>rabbitmq:Caller</code> client object - API documentation
             </a>
           </span>

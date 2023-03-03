@@ -244,7 +244,7 @@ export function SftpClientReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#get">
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#get">
               <code>ftp:Client-&gt;get</code> method - API documentation
             </a>
           </span>

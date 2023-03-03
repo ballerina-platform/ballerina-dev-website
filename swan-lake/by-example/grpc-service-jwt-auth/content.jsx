@@ -238,7 +238,7 @@ export function GrpcServiceJwtAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#JwtValidatorConfig">
               <code>grpc:JwtValidatorConfig</code> record - API documentation
             </a>
           </span>

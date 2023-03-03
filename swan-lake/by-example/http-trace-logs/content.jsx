@@ -65,7 +65,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee09e887bc2a15d6de6d80584a772578&file=http_trace_logs.bal",
+                "https://play.ballerina.io/?gist=52b6c2ec6b94925215b243bb1ab86cd4&file=http_trace_logs.bal",
                 "_blank"
               );
             }}
@@ -388,7 +388,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c5b5ecfaf594303050f881b0ebe60dc7&file=Config.toml",
+                "https://play.ballerina.io/?gist=52534f9e2e74e7e78ddef5962aca6188&file=Config.toml",
                 "_blank"
               );
             }}
@@ -493,7 +493,7 @@ export function HttpTraceLogs({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/TraceLogAdvancedConfiguration">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#TraceLogAdvancedConfiguration">
               <code>http:TraceLogAdvancedConfiguration</code> record
             </a>
           </span>

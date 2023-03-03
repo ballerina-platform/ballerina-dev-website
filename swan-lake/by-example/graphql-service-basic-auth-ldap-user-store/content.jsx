@@ -265,7 +265,7 @@ export function GraphqlServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
               <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
@@ -275,7 +275,7 @@ export function GraphqlServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/LdapUserStoreConfigWithScopes">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#LdapUserStoreConfigWithScopes">
               <code>graphql:LdapUserStoreConfigWithScopes</code> record - API
               documentation
             </a>

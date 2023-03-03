@@ -245,7 +245,7 @@ export function KafkaServiceConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/errors#PayloadValidationError">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#PayloadValidationError">
               <code>kafka:PayloadValidationError</code> error type - API
               documentation
             </a>
@@ -256,7 +256,7 @@ export function KafkaServiceConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Caller#seek">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#Caller#seek">
               <code>kafka:Caller-&gt;seek</code> function - API documentation
             </a>
           </span>

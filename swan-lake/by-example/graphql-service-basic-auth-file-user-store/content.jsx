@@ -345,7 +345,7 @@ export function GraphqlServiceBasicAuthFileUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
               <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
@@ -355,7 +355,7 @@ export function GraphqlServiceBasicAuthFileUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/FileUserStoreConfigWithScopes">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#FileUserStoreConfigWithScopes">
               <code>graphql:FileUserStoreConfigWithScopes</code> record - API
               documentation
             </a>

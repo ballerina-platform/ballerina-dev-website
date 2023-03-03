@@ -216,7 +216,7 @@ export function GrpcClientSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ClientSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ClientSecureSocket">
               <code>grpc:ClientSecureSocket</code> record - API documentation
             </a>
           </span>

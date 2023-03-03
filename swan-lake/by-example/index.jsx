@@ -400,6 +400,10 @@ import {
   codeSnippetData as JoiningIterableObjectsCodeSnippetData,
 } from "./joining-iterable-objects/content.jsx";
 import {
+  OuterJoinClause,
+  codeSnippetData as OuterJoinClauseCodeSnippetData,
+} from "./outer-join-clause/content.jsx";
+import {
   QueryingTables,
   codeSnippetData as QueryingTablesCodeSnippetData,
 } from "./querying-tables/content.jsx";
@@ -2051,6 +2055,8 @@ const BBEs = {
   LimitClauseCodeSnippetData,
   JoiningIterableObjects,
   JoiningIterableObjectsCodeSnippetData,
+  OuterJoinClause,
+  OuterJoinClauseCodeSnippetData,
   QueryingTables,
   QueryingTablesCodeSnippetData,
   CreateTablesWithQuery,

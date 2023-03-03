@@ -232,7 +232,7 @@ export function GrpcClientSelfSignedJwtAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/JwtIssuerConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#JwtIssuerConfig">
               <code>grpc:JwtIssuerConfig</code> record - API documentation
             </a>
           </span>

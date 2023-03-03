@@ -66,7 +66,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=80e486f2dd89d4f3b8da85061cdb77f9&file=http_client_mutual_ssl.bal",
+                "https://play.ballerina.io/?gist=90cac4899ed32ee97673e3d58355e98e&file=http_client_mutual_ssl.bal",
                 "_blank"
               );
             }}
@@ -248,7 +248,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ClientSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#ClientSecureSocket">
               <code>http:ClientSecureSocket</code> record - API documentation
             </a>
           </span>

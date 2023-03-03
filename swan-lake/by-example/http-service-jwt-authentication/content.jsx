@@ -240,7 +240,7 @@ export function HttpServiceJwtAuthentication({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/JwtValidatorConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#JwtValidatorConfig">
               <code>http:JwtValidatorConfig</code> record - API documentation
             </a>
           </span>

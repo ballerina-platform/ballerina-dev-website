@@ -291,7 +291,7 @@ export function HttpServiceMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#ListenerSecureSocket">
               <code>http:ListenerSecureSocket</code> - API documentation
             </a>
           </span>

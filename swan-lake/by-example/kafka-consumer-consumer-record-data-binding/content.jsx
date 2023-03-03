@@ -248,7 +248,7 @@ export function KafkaConsumerConsumerRecordDataBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#poll">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#Consumer#poll">
               <code>kafka:Consumer-&gt;poll</code> function - API documentation
             </a>
           </span>

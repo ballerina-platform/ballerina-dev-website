@@ -301,7 +301,7 @@ export function KafkaProducerSasl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/AuthenticationConfiguration">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#AuthenticationConfiguration">
               <code>kafka:AuthenticationConfiguration</code> record - API
               documentation
             </a>

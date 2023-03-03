@@ -222,7 +222,7 @@ export function SendEmail({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/clients/SmtpClient">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#SmtpClient">
               <code>email:SmtpClient</code> client object - API documentation
             </a>
           </span>
@@ -232,7 +232,7 @@ export function SendEmail({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/records/Message">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#Message">
               <code>email:Message</code> record - API documentation
             </a>
           </span>

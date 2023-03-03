@@ -230,7 +230,7 @@ export function RabbitmqServiceSecureConnection({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#SecureSocket">
               <code>rabbitmq:SecureSocket</code> - API documentation
             </a>
           </span>

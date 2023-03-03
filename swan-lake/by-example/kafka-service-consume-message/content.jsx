@@ -240,7 +240,7 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Listener">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#Listener">
               <code>kafka:Listener</code> client object - API documentation
             </a>
           </span>

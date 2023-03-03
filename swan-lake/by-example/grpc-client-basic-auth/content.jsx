@@ -226,7 +226,7 @@ export function GrpcClientBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ClientAuthConfig">
               <code>grpc:ClientAuthConfig</code> type - API documentation
             </a>
           </span>

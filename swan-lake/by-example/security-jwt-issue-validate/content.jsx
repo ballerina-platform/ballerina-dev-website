@@ -18,7 +18,7 @@ public function main() returns error? {
         keyId: "NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ",
         expTime: 3600,
         // Signature can be created using either the private key configurations or keystore configurations.
-        // For details, see https://lib.ballerina.io/ballerina/jwt/latest/records/IssuerSignatureConfig.
+        // For details, see https://lib.ballerina.io/ballerina/jwt/latest#IssuerSignatureConfig.
         signatureConfig: {
             config: {
                 keyFile: "../resource/path/to/private.key"
@@ -37,7 +37,7 @@ public function main() returns error? {
         audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
         clockSkew: 60,
         // Signature can be validated using the public certificate file, truststore configurations, or JWKS configurations.
-        // For detials, see https://lib.ballerina.io/ballerina/jwt/latest/records/ValidatorSignatureConfig.
+        // For detials, see https://lib.ballerina.io/ballerina/jwt/latest#ValidatorSignatureConfig.
         signatureConfig: {
             certFile: "../resource/path/to/public.crt"
         }

@@ -230,7 +230,7 @@ export function GrpcClientOauth2JwtBearerGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2JwtBearerGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#OAuth2JwtBearerGrantConfig">
               <code>grpc:OAuth2JwtBearerGrantConfig</code> record - API
               documentation
             </a>

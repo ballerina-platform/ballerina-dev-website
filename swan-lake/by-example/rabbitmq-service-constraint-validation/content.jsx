@@ -239,7 +239,7 @@ export function RabbitmqServiceConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/errors#PayloadValidationError">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#PayloadValidationError">
               <code>rabbitmq:PayloadValidationError</code> error type - API
               documentation
             </a>

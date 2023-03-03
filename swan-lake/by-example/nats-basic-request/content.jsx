@@ -313,7 +313,7 @@ export function NatsBasicRequest({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/nats/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerinax/nats/latest#Client">
               <code>nats:Client</code> client object - API documentation
             </a>
           </span>

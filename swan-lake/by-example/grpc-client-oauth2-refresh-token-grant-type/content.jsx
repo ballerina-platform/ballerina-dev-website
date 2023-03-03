@@ -231,7 +231,7 @@ export function GrpcClientOauth2RefreshTokenGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2RefreshTokenGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#OAuth2RefreshTokenGrantConfig">
               <code>grpc:OAuth2RefreshTokenGrantConfig</code> record - API
               documentation
             </a>

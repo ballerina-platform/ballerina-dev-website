@@ -230,7 +230,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/CredentialsConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#CredentialsConfig">
               <code>graphql:CredentialsConfig</code> record - API documentation
             </a>
           </span>

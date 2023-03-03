@@ -235,7 +235,7 @@ export function RabbitmqServiceBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/records/Credentials">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#Credentials">
               <code>rabbitmq:Credentials</code> - API documentation
             </a>
           </span>

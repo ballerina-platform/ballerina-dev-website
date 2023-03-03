@@ -241,7 +241,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/nats/latest/errors#PayloadValidationError">
+            <a href="https://lib.ballerina.io/ballerinax/nats/latest#PayloadValidationError">
               <code>nats:PayloadValidationError</code> error type - API
               documentation
             </a>

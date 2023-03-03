@@ -52,7 +52,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7db186a832f663731a05b783482bb803&file=http_service_file_upload.bal",
+                "https://play.ballerina.io/?gist=36ea4e06442f04d6b34e4268c4b00d46&file=http_service_file_upload.bal",
                 "_blank"
               );
             }}
@@ -228,7 +228,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#getByteStream">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Request#getByteStream">
               <code>getByteStream()</code> - API documentation
             </a>
           </span>

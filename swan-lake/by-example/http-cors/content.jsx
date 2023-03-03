@@ -75,7 +75,7 @@ export function HttpCors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af6743dd17b2763515c30a99e05f5967&file=http_cors.bal",
+                "https://play.ballerina.io/?gist=1fe7b83ead954257ed780d7877bceaa8&file=http_cors.bal",
                 "_blank"
               );
             }}
@@ -342,7 +342,7 @@ export function HttpCors({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#CorsConfig">
               <code>http:CorsConfig</code> record - API documentation
             </a>
           </span>

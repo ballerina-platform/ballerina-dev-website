@@ -242,7 +242,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/JwtIssuerConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#JwtIssuerConfig">
               <code>graphql:JwtIssuerConfig</code> record - API documentation
             </a>
           </span>

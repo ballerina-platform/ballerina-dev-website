@@ -239,7 +239,7 @@ export function KafkaConsumerPayloadDataBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/clients/Consumer#pollPayload">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#Consumer#pollPayload">
               <code>kafka:Consumer-&gt;pollPayload</code> function - API
               documentation
             </a>

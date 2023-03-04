@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.3.4
 
-<em>Swan Lake 2201.3.4 is the fourth patch release of Ballerina 2201.3.0 (Swan Lake Update 3) and it includes a new set of bug fixes to the language, language server, and developer tooling.</em>
+<em>Swan Lake 2201.3.4 is the fourth patch release of Ballerina 2201.3.0 (Swan Lake Update 3) and it includes a new set of bug fixes to the debugger and xml components.</em>
 
 ## Update Ballerina
 

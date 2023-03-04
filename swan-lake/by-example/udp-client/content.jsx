@@ -227,7 +227,7 @@ export function UdpClient({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerina/udp/latest#Client">
               <code>udp:Client</code> client object - API documentation
             </a>
           </span>

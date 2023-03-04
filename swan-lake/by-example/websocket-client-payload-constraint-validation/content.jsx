@@ -217,7 +217,7 @@ export function WebsocketClientPayloadConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/websocket/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerina/websocket/latest#Client">
               <code>websocket:Client</code> client object - API documentation
             </a>
           </span>

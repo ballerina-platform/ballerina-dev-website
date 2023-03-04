@@ -229,7 +229,7 @@ export function GrpcClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2ClientCredentialsGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#OAuth2ClientCredentialsGrantConfig">
               <code>grpc:OAuth2ClientCredentialsGrantConfig</code> record - API
               documentation
             </a>

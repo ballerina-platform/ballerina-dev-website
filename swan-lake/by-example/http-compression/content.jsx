@@ -66,7 +66,7 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=46a60b905e3f8a03ac6d6f0595826c4d&file=http_compression.bal",
+                "https://play.ballerina.io/?gist=b3fbb27b083d26e2a414dfe9241e746b&file=http_compression.bal",
                 "_blank"
               );
             }}
@@ -314,7 +314,7 @@ export function HttpCompression({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#COMPRESSION_ALWAYS">
               <code>COMPRESSION_ALWAYS</code> - API documentation
             </a>
           </span>

@@ -83,7 +83,6 @@ To get started, let's set up the Ballerina package to run tests.
 
            hello
 
-                   [pass] intAddTest
 
                    1 passing
                    0 failing

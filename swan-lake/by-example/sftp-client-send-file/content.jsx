@@ -229,7 +229,7 @@ export function SftpClientSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/clients/Client#put">
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Client#put">
               <code>ftp:Client-&gt;put</code> method - API documentation
             </a>
           </span>

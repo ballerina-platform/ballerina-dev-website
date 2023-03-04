@@ -67,7 +67,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a7aa95feaf1938138823d99b3f894680&file=http_access_logs.bal",
+                "https://play.ballerina.io/?gist=164599901c39ea0a133b913282ac27cc&file=http_access_logs.bal",
                 "_blank"
               );
             }}
@@ -188,7 +188,7 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=890340873fcedfbd0191b08853b6fc7b&file=Config.toml",
+                "https://play.ballerina.io/?gist=0bd361fd01437a93ff7cf2f46ee52a38&file=Config.toml",
                 "_blank"
               );
             }}
@@ -431,7 +431,7 @@ export function HttpAccessLogs({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/AccessLogConfiguration">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#AccessLogConfiguration">
               <code>http:AccessLogConfiguration</code> record - API
               documentation
             </a>

@@ -224,7 +224,7 @@ export function GraphqlClientSecuritySslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ClientSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ClientSecureSocket">
               <code>graphql:ClientSecureSocket</code> record - API documentation
             </a>
           </span>

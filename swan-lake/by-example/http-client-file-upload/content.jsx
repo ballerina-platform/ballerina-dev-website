@@ -56,7 +56,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ed11a176f3b6e3d40999f93265245053&file=http_client_file_upload.bal",
+                "https://play.ballerina.io/?gist=d75f56a05088fdd9cc0ca9c505b70a63&file=http_client_file_upload.bal",
                 "_blank"
               );
             }}
@@ -238,7 +238,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/classes/Request#setFileAsPayload">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Request#setFileAsPayload">
               <code>setFileAsPayload()</code> - API documentation
             </a>
           </span>

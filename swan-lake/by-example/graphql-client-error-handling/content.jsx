@@ -240,7 +240,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/errors#ClientError">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ClientError">
               <code>graphql:ClientError</code> error - API documentation
             </a>
           </span>

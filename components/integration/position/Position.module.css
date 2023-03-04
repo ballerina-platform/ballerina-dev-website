@@ -1,0 +1,122 @@
+.box div {
+    background-color: #eeeeee;
+}
+
+.box .wrapper {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* .box div p {
+    margin-bottom: 0 !important;
+} */
+
+.boxGreen div {
+    background-color: #20b6b0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .boxGreen div div {
+    display: inline-block;
+} */
+
+/* .boxGreen div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
+
+.boxGreen .middle {
+    padding-left: 20px;
+    padding-right: 20px;
+    /* display: block; */
+    display: flex;
+    height: 300px;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boxGreen .middle img {
+    /* width: -moz-available;         
+  width: -webkit-fill-available;  
+  width: fill-available; */
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.boxGreen p {
+    display: block;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 20px;
+    border-radius: 2px solid #ffffff;
+}
+
+.triangleLeft {
+    background-color: #ffffff !important;
+    -webkit-mask: url('/images/play=button.svg') no-repeat center;
+    mask: url('/images/play=button.svg') no-repeat center;
+    /* margin-left: -2px; */
+}
+
+.triangleRight {
+    background-color: #ffffff !important;
+    -webkit-mask: url('/images/play=button.svg') no-repeat center;
+    mask: url('/images/play=button.svg') no-repeat center;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    /* margin-right: -1px; */
+}
+
+
+
+/* .colored {
+    background-color: orange !important; /* defines the background color of the image 
+    mask: url(https://img.icons8.com/stackoverflow) no-repeat center / contain;
+    -webkit-mask: url(https://img.icons8.com/stackoverflow) no-repeat center / contain;
+  } */
+
+
+.icon {
+    width: 24px;
+    height: 24px;
+    /* margin-top: 4px; */
+    margin: auto -3px;
+
+}
+
+.introText1,
+.introText3 {
+    font-weight: 500;
+    color: #585a5e;
+}
+
+.introText2,
+.introText3 {
+    text-align: center;
+}
+
+.introText3 span {
+    padding: 5px;
+    border: 2px solid #585a5e;
+}
+
+.positonImg img {
+    width: -moz-available;         
+  width: -webkit-fill-available;  
+  width: fill-available;
+}

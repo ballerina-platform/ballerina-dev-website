@@ -192,7 +192,7 @@ If the program runs without throwing an error, that indicates that the connectio
 
 >**Info:** The MySQL package provides additional connection options and the ability to configure connection pool 
 >properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
->see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest/clients/Client).
+>see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
 
 ### Execute the queries
 

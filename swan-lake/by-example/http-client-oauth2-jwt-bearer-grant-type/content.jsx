@@ -68,7 +68,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6036e62a8a02172dc3db5d46c6cd8b09&file=http_client_oauth2_jwt_bearer_grant_type.bal",
+                "https://play.ballerina.io/?gist=8532e79d38533069c51f0e33504aa40c&file=http_client_oauth2_jwt_bearer_grant_type.bal",
                 "_blank"
               );
             }}
@@ -248,7 +248,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2JwtBearerGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#OAuth2JwtBearerGrantConfig">
               <code>http:OAuth2JwtBearerGrantConfig</code> record - API
               documentation
             </a>

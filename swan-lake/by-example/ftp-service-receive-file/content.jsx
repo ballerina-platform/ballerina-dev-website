@@ -249,7 +249,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest/listeners/Listener">
+            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Listener">
               <code>ftp:Listener</code> client object - API documentation
             </a>
           </span>

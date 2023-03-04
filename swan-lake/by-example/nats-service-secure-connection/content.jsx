@@ -223,7 +223,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/nats/latest/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/nats/latest#SecureSocket">
               <code>nats:SecureSocket</code> - API documentation
             </a>
           </span>

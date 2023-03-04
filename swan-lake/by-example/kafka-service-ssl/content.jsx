@@ -244,7 +244,7 @@ export function KafkaServiceSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/kafka/latest/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerinax/kafka/latest#SecureSocket">
               <code>kafka:SecureSocket</code> record - API documentation
             </a>
           </span>

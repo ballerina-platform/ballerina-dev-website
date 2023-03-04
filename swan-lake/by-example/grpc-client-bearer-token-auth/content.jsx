@@ -217,7 +217,7 @@ export function GrpcClientBearerTokenAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#BearerTokenConfig">
               <code>grpc:BearerTokenConfig</code> record - API documentation
             </a>
           </span>

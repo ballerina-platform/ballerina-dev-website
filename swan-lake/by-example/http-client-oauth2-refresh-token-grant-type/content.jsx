@@ -69,7 +69,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bd557b00f1f1bad206d31cce81698ccc&file=http_client_oauth2_refresh_token_grant_type.bal",
+                "https://play.ballerina.io/?gist=e312b41810f6347f47d56028d0a02151&file=http_client_oauth2_refresh_token_grant_type.bal",
                 "_blank"
               );
             }}
@@ -249,7 +249,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2RefreshTokenGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#OAuth2RefreshTokenGrantConfig">
               <code>http:OAuth2RefreshTokenGrantConfig</code> - API
               documentation
             </a>

@@ -271,7 +271,7 @@ export function HttpServiceBasicAuthenticationLdapUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/LdapUserStoreConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#LdapUserStoreConfig">
               <code>http:LdapUserStoreConfig</code> - API documentation
             </a>
           </span>

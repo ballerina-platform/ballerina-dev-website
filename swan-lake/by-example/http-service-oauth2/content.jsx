@@ -254,7 +254,7 @@ export function HttpServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2IntrospectionConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#OAuth2IntrospectionConfig">
               <code>http:OAuth2IntrospectionConfig</code> - API documentation
             </a>
           </span>

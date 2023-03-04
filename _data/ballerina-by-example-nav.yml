@@ -361,32 +361,35 @@ sublinks:
           - title: Join iterable objects
             id: 5
             url: joining-iterable-objects
-          - title: Query tables
+          - title: Outer Join clause
             id: 6
+            url: outer-join-clause
+          - title: Query tables
+            id: 7
             url: querying-tables
           - title: Create tables with a query
-            id: 7
+            id: 8
             url: create-tables-with-query
           - title: Create maps with a query
-            id: 8
+            id: 9
             url: create-maps-with-query
           - title: Create streams with a query
-            id: 9
+            id: 10
             url: create-streams-with-query
           - title: On conflict clause
-            id: 10
+            id: 11
             url: on-conflict-clause
           - title: Iterate over XML with a query
-            id: 11
+            id: 12
             url: iterating-over-xml-with-query
           - title: Nested query expressions
-            id: 12
+            id: 13
             url: nested-query-expressions
           - title: Destructure records using a query
-            id: 13
+            id: 14
             url: destructure-records-using-query
           - title: Querying streams
-            id: 14
+            id: 15
             url: querying-with-streams
       - title: Query actions
         id: 19

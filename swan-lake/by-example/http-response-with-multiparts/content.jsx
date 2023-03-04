@@ -155,7 +155,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=995f44d3c233c658397224f888d281ec&file=http_response_with_multiparts.bal",
+                "https://play.ballerina.io/?gist=bffb1ebbd554a608d162850ca8e68f16&file=http_response_with_multiparts.bal",
                 "_blank"
               );
             }}
@@ -487,7 +487,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/mime/latest/classes/Entity#setBodyParts">
+            <a href="https://lib.ballerina.io/ballerina/mime/latest#Entity#setBodyParts">
               <code>setBodyParts()</code> - API documentation
             </a>
           </span>

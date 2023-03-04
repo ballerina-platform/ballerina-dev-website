@@ -195,7 +195,7 @@ export function Tracing({ codeSnippets }) {
 
       <p>
         Invoke the service using cURL and access{" "}
-        <a href="%60http://localhost:16686%60">Jaeger UI</a>.
+        <a href="http://localhost:16686">Jaeger UI</a>.
       </p>
 
       <Row

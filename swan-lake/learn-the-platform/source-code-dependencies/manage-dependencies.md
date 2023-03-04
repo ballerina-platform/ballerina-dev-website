@@ -208,3 +208,42 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 ballerina/observe versions: 0.9.0, 1.0.0
 ```
 
+## Manage platform dependencies
+
+A Ballerina package can depend on JAVA code that is shipped with the JVM, from a remote package repository, or from a JAR file located in the user’s machine. Libraries shipped with the JVM can be used seamlessly and libraries used from other locations must be specified in the `Ballerina.toml` as shown below.
+
+## Specify a Maven dependency
+
+The following example shows how a dependency from a public Maven repository can be specified.
+
+```toml
+[[platform.java11.dependency]]
+# Group ID of the Maven dependency.
+groupId = "<group-id>"
+# Artifact ID of the Maven dependency.
+artifactId = "<artifact-id>"
+# Version of the Maven dependency.
+version = "<version>"
+```
+
+When building the package, these specified Maven dependencies will be resolved and can be found in the `target/platform-libs` directory. 
+
+### Specify a local JAR file path
+
+The following example uses a JAR file located in the user's machine as a platform dependency.
+
+```toml
+[[platform.java11.dependency]]
+# Group ID of the dependency.
+groupId = "<group-id>"
+# Artifact ID of the dependency.
+artifactId = "<artifact-id>"
+# Version of the dependency.
+version = "<version>"
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+```
+
+The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
+
+>**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).

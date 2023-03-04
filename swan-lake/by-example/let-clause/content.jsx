@@ -71,7 +71,7 @@ export function LetClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=26a487665cf547a4d3a51fbd32e8866e&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=3090a0ae45007e781cea7f70b3f20b3f&file=let_clause.bal",
                 "_blank"
               );
             }}

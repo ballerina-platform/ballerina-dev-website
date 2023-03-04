@@ -725,7 +725,7 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Field">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Field">
               <code>graphql:Field</code> object - API documentation
             </a>
           </span>

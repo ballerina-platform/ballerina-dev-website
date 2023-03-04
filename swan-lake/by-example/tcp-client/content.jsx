@@ -216,7 +216,7 @@ export function TcpClient({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/tcp/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerina/tcp/latest#Client">
               <code>tcp:Client</code> client object - API documentation
             </a>
           </span>

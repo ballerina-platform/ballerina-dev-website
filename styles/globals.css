@@ -29,7 +29,7 @@ a {
   padding-right: 0.4rem !important; */
 }
 
-.llanding {
+.llanding, .integration {
   padding-left: 0.4rem !important;
   padding-right: 0.4rem !important;
 }
@@ -472,8 +472,9 @@ a.cGreenLinkArrow:hover {
 
 .community .pageContentRow h2 {
   color: #585a5e;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   scroll-margin-top: 120px;
+  font-size: 2rem;
 }
 
 .pageHeader h1 {
@@ -481,7 +482,8 @@ a.cGreenLinkArrow:hover {
   color: #464646;
   /* color: #585a5e; */
   font-weight: 500;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: 3rem;
 }
 
 /*--------downloads page -------*/
@@ -767,6 +769,10 @@ ul.eventsTabs {
 
 .archivedReleaseNotes {
   margin: 0 0 0 21px;
+}
+
+.archivedNote{
+  margin-top: 30px !important;
 }
 
 .DocSearch-Button-Placeholder {
@@ -1214,4 +1220,50 @@ table.cTopControlsContainer tbody {
 .colorBlock {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.integration h2 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  scroll-margin-top: 60px;
+}
+
+.integration h3 {
+  scroll-margin-top: 60px;
+}
+
+.integration.usecases {
+  background-color: #eeeeee;
+}
+
+/* .integration.code {
+  padding-top: 50px;
+} */
+
+.integration.code.odd {
+  background-color: #eeeeee;
+}
+
+/* .integration.code pre {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+} */
+
+.integration.code pre.shiki {
+  background-color: #ffffff !important;
+  border: 1px solid #eeeeee;
+}
+
+.pageContentRow.integration {
+  margin-bottom: 0 !important;
+  padding-bottom: 50px;
+}
+
+.pageContentRow.integration #use-cases {
+  margin-bottom: 30px;
+}
+
+.usecases .wrap-page-content {
+  padding-bottom: 0 !important;
+  font-size: 18px;
 }

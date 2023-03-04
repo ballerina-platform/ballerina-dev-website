@@ -228,7 +228,7 @@ export function GraphqlServiceMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ListenerConfiguration">
               <code>graphql:ListenerConfiguration</code> record - API
               documentation
             </a>
@@ -239,7 +239,7 @@ export function GraphqlServiceMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ListenerSecureSocket">
               <code>graphql:ListenerSecureSocket</code> record - API
               documentation
             </a>

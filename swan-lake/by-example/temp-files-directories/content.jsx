@@ -60,7 +60,7 @@ export function TempFilesDirectories({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=18bf14340b22cceaa5481a2de5bb9bef&file=temp_files_directories.bal",
+                "https://play.ballerina.io/?gist=34de23daf47f3ffb53221f6eff50f90e&file=temp_files_directories.bal",
                 "_blank"
               );
             }}

@@ -66,7 +66,7 @@ export function TransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4857a5aaa48fb0e84a1ab63d5468d761&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=d2e7e125235fe82fb112c64b70373afe&file=transaction_statement.bal",
                 "_blank"
               );
             }}

@@ -90,7 +90,7 @@ export function Http20ServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=49b080c4950904eaca5802a3d0a92d9c&file=http_2_0_server_push.bal",
+                "https://play.ballerina.io/?gist=df0c1556cac8102313e1c7955f9f5d88&file=http_2_0_server_push.bal",
                 "_blank"
               );
             }}
@@ -266,7 +266,7 @@ export function Http20ServerPush({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Caller#promise">
               <code>promise()</code> - API documentation
             </a>
           </span>
@@ -276,7 +276,7 @@ export function Http20ServerPush({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Caller#pushPromisedResponse">
               <code>pushPromisedResponse()</code> - API documentation
             </a>
           </span>

@@ -230,7 +230,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/records/SecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#SecureSocket">
               <code>email:SecureSocket</code> - API documentation
             </a>
           </span>
@@ -240,7 +240,7 @@ export function EmailServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/enums/Security">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#Security">
               <code>email:Security</code> enum - API documentation
             </a>
           </span>

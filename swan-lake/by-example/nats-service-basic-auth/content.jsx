@@ -226,7 +226,7 @@ export function NatsServiceBasicAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/nats/latest/records/Credentials">
+            <a href="https://lib.ballerina.io/ballerinax/nats/latest#Credentials">
               <code>nats:Credentials</code> - API documentation
             </a>
           </span>

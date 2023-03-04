@@ -310,7 +310,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Upload">
               <code>graphql:Upload</code> record - API documentation
             </a>
           </span>

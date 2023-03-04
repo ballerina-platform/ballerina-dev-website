@@ -59,7 +59,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cf3f1a0d2cdaf263d39fa5be22947620&file=http_service_data_binding.bal",
+                "https://play.ballerina.io/?gist=d862d1ce73bff16c1a60e76fe591cc00&file=http_service_data_binding.bal",
                 "_blank"
               );
             }}
@@ -300,8 +300,8 @@ export function HttpServiceDataBinding({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/annotations#Payload">
-              <code>@http:Payload</code> annotation - API documentation
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Payload">
+              <code>http:Payload</code> annotation - API documentation
             </a>
           </span>
         </li>

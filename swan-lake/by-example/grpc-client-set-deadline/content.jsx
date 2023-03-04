@@ -224,7 +224,7 @@ export function GrpcClientSetDeadline({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/functions#setDeadline">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#setDeadline">
               <code>grpc:setDeadline</code> function - API documentation
             </a>
           </span>

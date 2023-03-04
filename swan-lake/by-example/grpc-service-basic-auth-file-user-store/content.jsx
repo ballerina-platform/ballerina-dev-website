@@ -354,7 +354,7 @@ export function GrpcServiceBasicAuthFileUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/FileUserStoreConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#FileUserStoreConfig">
               <code>grpc:FileUserStoreConfig</code> record - API documentation
             </a>
           </span>

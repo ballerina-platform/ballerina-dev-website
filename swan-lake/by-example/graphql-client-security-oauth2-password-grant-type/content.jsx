@@ -248,7 +248,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2PasswordGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#OAuth2PasswordGrantConfig">
               <code>graphql:OAuth2PasswordGrantConfig</code> record - API
               documentation
             </a>

@@ -70,7 +70,7 @@ export function QueryingTables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=61d4344761d0ce2c52efd86bfb1122b7&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=eab80f704bec2a5c7ebf58617ee81130&file=querying_tables.bal",
                 "_blank"
               );
             }}
@@ -337,8 +337,8 @@ export function QueryingTables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Join iterable objects"
-            href="/learn/by-example/joining-iterable-objects"
+            title="Outer Join clause"
+            href="/learn/by-example/outer-join-clause"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -365,7 +365,7 @@ export function QueryingTables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Join iterable objects
+                  Outer Join clause
                 </span>
               </div>
             </div>

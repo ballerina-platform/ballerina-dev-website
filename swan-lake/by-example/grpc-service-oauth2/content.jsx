@@ -284,7 +284,7 @@ export function GrpcServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2IntrospectionConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#OAuth2IntrospectionConfig">
               <code>grpc:OAuth2IntrospectionConfig</code> record - API
               documentation
             </a>

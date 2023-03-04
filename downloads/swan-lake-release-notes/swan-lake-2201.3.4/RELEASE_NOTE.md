@@ -36,26 +36,5 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.3.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.3.4+label%3ATeam%2FCompilerFE).
+To view bug fixes, see the [GitHub milestone for 2201.3.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.4+is%3Aclosed).
 
-## Standard library updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.3.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.3.4+label%3AType%2FBug+is%3Aclosed+).
-
-## Developer tools updates
-
-### Bug fixes
-To view bug fixes, see the GitHub milestone for 2201.3.4 (Swan Lake) of the repositories below.
-
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.3.4%22+is%3Aclosed)
-- [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FCLI+is%3Aclosed+milestone%3A2201.3.4+label%3AType%2FBug+)
-- [Test framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FTestFramework+is%3Aclosed+milestone%3A2201.3.4+label%3AType%2FBug+)
-- [Project Design View](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectDesignTool+is%3Aclosed+milestone%3A2201.3.4+label%3AType%2FBug+)
-
-## Ballerina packages updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.3.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+is%3Aclosed+milestone%3A2201.3.4+label%3AType%2FBug+).

@@ -20,7 +20,6 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
-import { prefix } from '../../../utils/prefix';
 import styles from './UseCases.module.css';
 
 export default function UseCases(props) {
@@ -48,11 +47,13 @@ export default function UseCases(props) {
                             </h2>
                         </Col>
                     </Row>
+
                     <Row className='pageContentRow integration'>
-                        <Col xs={12} md={4} lg={4} className={styles.box}>
-                            <div className={styles.wrapper}>
+                        <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
+                            <div className={styles.cardWrapper}>
+                            <div>
                                 <h3>Automate anything</h3>
-                                <div className={styles.description}>
+                                <div className={styles.cardDescription}>
                                     <p>Automation is just code after all - write a main() and do whatever you want.</p>
 
                                     <p>Use Ballerina&apos;s extended standard library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
@@ -60,28 +61,30 @@ export default function UseCases(props) {
                                     <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
 
                                 </div>
+                                </div>
                                 {/* <div className={styles.sampleText}>
                                     <p>See Sample Automation: GitHub to Google Sheets</p>
                                 </div> */}
 
-                                <div className={styles.sampleLinks}>
+                                <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-gsheets/main.bal" className={styles.cDownload}>
-                                    See sample automation: GitHub to Google Sheets
+                                        See sample automation: GitHub to Google Sheets
                                     </a>
                                 </div>
-
-
                             </div>
                         </Col>
-                        <Col xs={12} md={4} lg={4} className={styles.box}>
-                            <div className={styles.wrapper}>
+
+                        <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
+                            <div className={styles.cardWrapper}>
+                                <div>
                                 <h3>Event-driven integrations</h3>
-                                <div className={styles.description}>
+                                <div className={styles.cardDescription}>
                                     <p>Events are core to the responsive enterprise. Ballerina makes it simple to consume or produce events.</p>
 
                                     <p>Subscribe to any kind of event source, including WebHooks, Kafka, GraphQL, gRPC, AMQP, email, or react to system events such as file upload and do whatever you want in a type-safe development model with subscription, data binding, and error handling is already taken care of for you.</p>
 
                                     <p>Be an event producer in any protocol you like.</p>
+                                </div>
                                 </div>
 
                                 {/* <div className={styles.sampleText}>
@@ -89,38 +92,39 @@ export default function UseCases(props) {
 
                                 </div> */}
 
-                                <div className={styles.sampleLinks}>
+                                <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/gcalendar-new-event-to-trello-card/main.bal" className={styles.cDownload}>
-                                    See sample event integration: Google Calendar to Trello Card
+                                        See sample event integration: Google Calendar to Trello Card
                                     </a>
                                 </div>
                             </div>
-
                         </Col>
-                        <Col xs={12} md={4} lg={4} className={styles.box}>
-                            <div className={styles.wrapper}>
+                        <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
+                            <div className={styles.cardWrapper}>
+                                <div>
                                 <h3>Integrations as APIs</h3>
-                                <div className={styles.description}>
+                                <div className={styles.cardDescription}>
                                     <p>Ballerina&apos;s service creation abstractions make it simple to take any integration and make it reusable as an API.</p>
 
                                     <p>Use Ballerina service types for HTTP services, WebSockets, GraphQL, gRPC, and more to take your integration code, parameterize it and make it a reusable integration.</p>
 
                                     <p>APIs are the new DLLs. Exposing your integrations as APIs is how your integrated capability adds new value to your business.</p>
                                 </div>
+                                </div>
 
                                 {/* <div className={styles.sampleText}>
                                     <p>See Sample Integration as an API</p>
                                 </div> */}
 
-                                <div className={styles.sampleLinks}>
+                                <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/azure-cosmosdb-data-as-rest-api/main.bal" className={styles.cDownload}>
-                                    See sample integration as an API: Azure Cosmos DB data as a REST API
+                                        See sample integration as an API: Azure Cosmos DB data as a REST API
                                     </a>
                                 </div>
-
                             </div>
                         </Col>
                     </Row>
+
                 </Container>
             </Col>
         </>

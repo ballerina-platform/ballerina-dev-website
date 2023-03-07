@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar  
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2023/02/16 
+_Updated_: 2023/03/07
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -156,8 +156,8 @@ The conforming implementation of the specification is released and included in t
         * 13.1.1 [The `@subgraph:Subgraph` Annotation](#1311-the-graphqlsubgraph-annotation)
         * 13.1.2 [The `@subgraph:Entity` Annotation](#1312-the-graphqlentity-annotation)
         * 13.1.3 [The `subgraph:ReferenceResolver`](#1311-the-referenceresolver)
-14. [Tools](#13-tools)
-    * 14.1 [GraphiQL Client](#131-graphiql-client)
+14. [Tools](#14-tools)
+    * 14.1 [GraphiQL Client](#141-graphiql-client)
 
 ## 1. Overview
 

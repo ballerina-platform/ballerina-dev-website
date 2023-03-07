@@ -106,7 +106,10 @@
          </Row>
  
          <Row className={styles.policyLinks}>
-           <Col xs={12}>
+         <Col xs={12} sm={2}>
+             <span className="footerLink">© 2018-2023 WSO2 LLC</span>
+           </Col>
+           <Col xs={12} sm={10}>
              <ul>
                <li><a className="footerLink" target='_blank' rel="noreferrer" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li>
                <li><Link className="footerLink" href={`/license-of-site`}>SITE LICENSE</Link></li>

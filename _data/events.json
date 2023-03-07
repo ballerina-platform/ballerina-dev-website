@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "Mar 30, 2023",
+            "day": "Thur.",
+            "time": "5.00 p.m. GMT",
+            "expire": "2023-03-31T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.conf42.com/Cloud_Native_2023_Anupama_Pathirage_ballerina_programming_language",
+            "eventType": "Conf42: Cloud Native 2023",
+            "eventName": "Ballerina - A Cloud Native Programming Language",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Mar 2, 2023",
             "day": "Thur.",
             "time": "12.00 p.m. CST",
@@ -13,8 +29,8 @@
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director of Engineering, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/78Eh9OfPQJA",
+            "buttonText": "Watch recording"
         },
         {
             "date": "Jan 11, 2023",

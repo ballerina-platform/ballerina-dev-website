@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar  
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2023/01/24  
+_Updated_: 2023/02/16 
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -151,8 +151,13 @@ The conforming implementation of the specification is released and included in t
         * 12.3.2 [Client](#1232-client)
             * 12.3.2.1 [SSL/TLS](#12321-ssltls)
             * 12.3.2.2 [Mutual SSL](#12322-mutual-ssl)
-13. [Tools](#13-tools)
-    * 13.1 [GraphiQL Client](#131-graphiql-client)
+13. [Federation](#13-federation)
+    * 13.1 [Federated Subgraph](#131-federated-subgraph)
+        * 13.1.1 [The `@subgraph:Subgraph` Annotation](#1311-the-graphqlsubgraph-annotation)
+        * 13.1.2 [The `@subgraph:Entity` Annotation](#1312-the-graphqlentity-annotation)
+        * 13.1.3 [The `subgraph:ReferenceResolver`](#1311-the-referenceresolver)
+14. [Tools](#13-tools)
+    * 14.1 [GraphiQL Client](#131-graphiql-client)
 
 ## 1. Overview
 
@@ -2758,9 +2763,217 @@ public function main() returns error? {
 }
 ```
 
-## 13. Tools
+## 13. Federation
 
-### 13.1 GraphiQL client
+### 13.1 Federated Subgraph
+
+The Ballerina GraphQL module provides the capability to expose a `graphql:Service` as a [federation2 subgraph](https://www.apollographql.com/docs/federation/subgraph-spec). To convert a Ballerina GraphQL service into a federation2 subgraph, the `graphql.subgraph` sub module must be imported.
+
+```ballerina
+import ballerina/graphql.subgraph;
+``` 
+
+> **Note:** The current implementation of the subgraph only supports dynamic schema composition through introspection.
+
+#### 13.1.1 The `@subgraph:Subgraph` Annotation
+
+To make a Ballerina GraphQL service a federation2 subgraph, it should be annotated with `@subgraph:Subgraph`. This annotation adds all the subgraph schema additions to the GraphQL schema as described in the [subgraph specification](https://www.apollographql.com/docs/federation/subgraph-spec/#subgraph-schema-additions). Moreover, this annotation automatically adds resolvers for the `_entities` and `_service` root Query fields.
+
+###### Example: Federated Subgraph
+
+```ballerina
+@subgraph:Subgraph
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+#### 13.1.2 The `@subgraph:Entity` Annotation
+
+In a federated graph, an entity is an object type that can resolve its fields across multiple subgraphs. Each subgraph can contribute different fields to the entity and is responsible for resolving only the fields that it contributes. The `@subgraph:Entity` designates an object type as an entity in Ballerina. The following type definition describes the shape of the `@subgraph:Entity` annotation.
+
+```ballerina
+# Describes the shape of the `subgraph:Entity` annotation
+# + key - GraphQL fields and subfields that contribute to the entity's primary key/keys
+# + resolveReference - Function pointer to resolve the entity
+public type FederatedEntity record {|
+    string|string[] key;
+    ReferenceResolver? resolveReference;
+|};
+
+# The annotation to designate a GraphQL object type as a federated entity.
+public annotation FederatedEntity Entity on class, type;
+```
+
+To fully define an entity within a Ballerina GraphQL subgraph, you must:
+
+1. Assign the `@subgraph:Entity` annotation to an object type.
+2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
+3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#133-the-referenceresolver).
+
+###### Example: Federated Entity Definition and Corresponding GraphQL Schema
+
+<table>
+    <tr>
+        <th>Example</th>
+        <th>Ballerina definition</th>
+        <th>GraphQL schema</th>
+    </tr>
+    <tr>
+        <td>
+            Simple key
+        </td>
+        <td>
+            <pre lang="ballerina">
+```ballerina
+@subgraph:Entity {
+    key: "id",
+    resolveReference: resolveProduct
+}
+type Product record {
+    string id;
+    string name;
+    int price;
+};
+```
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
+```graphql
+type Product @key(fields: "id") {
+    id: String!
+    name: String!
+    price: Int!
+}
+```
+            </pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mutiple keys
+        </td>
+        <td>
+            <pre lang="ballerina">
+```ballerina
+@subgraph:Entity {
+    key: ["id", "sku"],
+    resolveReference: resolveProduct
+}
+type Product record {
+    string id;
+    string sku;
+    string name;
+    int price;
+};
+```
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
+```graphql
+type Product @key(fields: "id") @key(fields: "sku") {
+    id: String!
+    sku: String!
+    name: String!
+    price: Int!
+}
+```
+            </pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Compound key
+        </td>
+        <td>
+            <pre lang="ballerina">
+```ballerina
+@subgraph:Entity {
+    key: "id organization { id }",
+    resolveReference: resolveUser
+}
+type User record {
+    string id;
+    Organization organization;
+}
+```
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
+```graphql
+type User @key(fields: "id organization { id }") {
+    id: String!
+    organization: Organization!
+}
+```
+            </pre>
+        </td>
+    </tr>
+      <tr>
+        <td>
+            Non resolvable
+        </td>
+        <td>
+            <pre lang="ballerina">
+```ballerina
+@subgraph:Entity {
+    key: "id"
+    resolveReference: ()
+}
+type Product record {
+  id: String!
+}
+```
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
+```graphql
+type Product @key(fields: "id", resolvable: false) {
+    id: ID!
+}
+```
+            </pre>
+        </td>
+    </tr>
+</table>
+
+#### 13.1.3 The `subgraph:ReferenceResolver`
+
+Reference resolver is a function that resolves an entity of a specific type using its primary key. When the router requires a particular entity to be resolved, it invokes the corresponding entity's reference resolver. Following is the type definition of a reference resolver defined in `graphql.subgraph` module.
+
+```ballerina
+public type ReferenceResolver function (subgraph:Representation representation) returns record {}|service object {}|error?;
+```
+Here, `subgraph:Representation` is a type definition of the entity representation outlined in the federation specification, which includes the GraphQL `__typename` field of the entity being resolved and its primary key.
+
+###### Example: A Product Entity Defined with Its Resolver
+
+```ballerina
+function resolveProduct(subgraph:Representation representation) returns Product|error? {
+    string id = check representation["id"].ensureType(); // obtain the primary key of the entity
+    return findProduct(id);
+}
+
+@subgraph:Entity {
+    key: "id", // primary key of the entity
+    resolveReference: resolveProduct
+}
+type Product record {
+    string id;
+    string name;
+    int price;
+};
+```
+
+>**Note:** If the reference resolver returns an entity of a different type than the entity being resolved, a runtime error will be returned to the router. For example, if the resolver returns a `User` for a `Product` entity, a runtime error will occur.
+
+## 14. Tools
+
+### 14.1 GraphiQL client
 
 The Ballerina GraphQL package provides an integrated GraphiQL client tool which is provided by the GraphQL Foundation. The client is implemented using CDN assets, and it provides a Graphical User Interface to execute the GraphQL queries. To enable the GraphiQL client, configuration should be provided as mentioned in the [GraphiQL configuration](#1015-graphiql-configurations) section.
 

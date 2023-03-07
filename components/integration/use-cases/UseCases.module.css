@@ -1,58 +1,46 @@
-.box .wrapper {
-    /* border: 1px solid #D9D9D9; */
-    padding: 20px;
-    /* background: #20b6b0; */
-    background-color: #ffffff;
-    border-radius: 4px;
-}
-
-.box {
+.useCaseCard {
+    display: flex;
+    flex-flow: row wrap;
     margin-top: 20px !important;
 }
 
 @media (min-width: 768px) {
-    .box {
+    .useCaseCard {
         margin-top: 0px !important;
     }
 }
 
-.box h3 {
+.useCaseCard .cardWrapper {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardWrapper h3 {
     font-size: 22px;
     color: #585a5e;
-    /* color: #fff; */
     height: auto;
 }
 
-.description {
-    /* border:1px solid; */
-    height: 400px;
+.cardWrapper .cardDescription {
+    height: auto;
     margin-top: 20px;
-    /* color: #fff; */
     color: #585a5e;
     font-weight: 400;
 }
 
-.description p {
-    /* font-weight: 400px !important; */
-    font-size: 16px;
-}
-
-.sampleText {
-    height: 60px;
-    color: #fff;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.sampleLinks {
+.cardLinks {
     height: 50px;
-    /* color: #fff; */
     color: #20b6b0;
     font-weight: 400;
     font-style: italic;
 }
 
-.sampleLinks a {
+.cardLinks a {
     color: #20b6b0;
     /* color: #fff; */
     text-decoration: none;
@@ -60,93 +48,42 @@
     font-size: 16px;
 }
 
-.sampleLinks a:hover {
+.cardLinks a:hover {
     color: #494949;
 }
 
-
-/* a.cDownload {
-    display: flex;
-    transition: none !important;
-    font-weight: 400;
-    color: #20b6b0 !important;
-    /* color: #ffffff !important; 
-    /* text-decoration: none;
-} */
-
-/* a.cDownload:hover {
-    text-decoration: underline;
-} */
-
-/* a.cDownload span {
-    margin-right: 10px !important;
-} */
-
 @media (min-width: 360px) {
-    .description {
-        height: 425px;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 70px;
     }
 }
 
 @media (min-width: 660px) {
-    .description {
-        height: 260px;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 40px;
     }
 }
 
 @media (min-width: 768px) {
-    .description {
-        height: 580px;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 100px;
     }
 }
 
 @media (min-width: 840px) {
-    .description {
-        height: 580px;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 100px;
     }
 }
 
 @media (min-width: 1024px) {
-    .description {
-        /* height: 220px; */
-        height: 435px;
-    }
-
-    .box h3 {
-        height: 50px;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 70px;
     }
 }
 
 @media (min-width: 1200px) {
-    .description {
-        height: 300px;
-    }
-
-    .box h3 {
-        height: auto;
-    }
-
-    .sampleLinks {
+    .cardLinks {
         height: 60px;
     }
 }

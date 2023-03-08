@@ -4,21 +4,48 @@ description: 'When you go beyond just toy GraphQL applications where you simply 
 url: 'https://github.com/ballerina-guides/integration-samples/tree/main/graphql_bookstore_service/main.bal'
 ---
 ```
-import ballerina/io;
+final http:Client bookEp = check new ("https://www.googleapis.com");
 
+service class Book {
+    private final readonly & BookData bookData;
 
-public function main() returns error? {
-   GraphqlClient profileClient = check new ("http://localhost:9090/graphql");
-   ProfilesQueryResponse profilesQueryResponse = check profileClient->ProfilesQuery();
+    function init(BookData bookData) {
+        self.bookData = bookData.cloneReadOnly();
+    }
 
+    resource function get isbn() returns string {
+        return self.bookData.isbn;
+    }
 
-   MeResponse meResponse = check profileClient->Me();
+    resource function get title() returns string {
+        return self.bookData.title;
+    }
 
+    resource function get reviews() returns Review|error {
+        string isbn = self.bookData.isbn;
+        GoogleBook googleBook = check bookEp->/books/v1/volumes.get(q=string `isbn:${isbn}`);
+        return let var volInfo = googleBook.items[0].volumeInfo in {
+                averageRating: volInfo.averageRating,
+                ratingsCount: volInfo.ratingsCount,
+                maturityRating: volInfo.maturityRating
+            };
+    }
+}
 
-   foreach var profile in profilesQueryResponse.profiles {
-       if profile.address.city == meResponse.me.address.city {
-           io:println("Close Profile: ", profile.name);
-       }
-   }
+service /graphql on new graphql:Listener(9090) {
+    resource function get book(string isbn) returns Book? {
+        BookData? data = books[isbn];
+        return data is BookData ? new Book(data) : ();
+    }
+
+    resource function get allBooks() returns Book[] {
+        return from var bookData in books
+            select new Book(bookData);
+    }
+
+    remote function addBook(BookData bookData) returns Book|error {
+        books.add(bookData);
+        return new Book(bookData);
+    }
 }
 ```

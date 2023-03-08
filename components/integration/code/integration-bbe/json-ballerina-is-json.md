@@ -10,12 +10,10 @@ type InvoiceItem record {
     boolean taxable;
 };
 
-
 type Customer record {
     string id;
     string name;
 };
-
 
 type Invoice record {
     string id;
@@ -23,24 +21,19 @@ type Invoice record {
     InvoiceItem[] items;
 };
 
-
 public function main() returns error?{
     json invoiceData = check io:fileReadJson("./invoice.json");
-
 
     // Enjoy lax static typing here!
     // Fails at runtime if the key is not present or the value is not a string.
     string id = check invoiceData.id;
 
-
     // Fails at runtime if the key is not present.
     json items = check invoiceData.items;
-
 
     // Converts to the domain type.
     // Fails at runtime if the json value does not match the type.
     Invoice invoice = check invoiceData.fromJsonWithType();
-
 
     // Enjoy type-safe handling of json values.
     id = invoice.id;

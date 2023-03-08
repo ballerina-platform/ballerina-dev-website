@@ -6,7 +6,6 @@ url: 'https://github.com/ballerina-guides/integration-samples/tree/main/restful_
 ```
 configurable int port = 8080;
 
-
 type Album readonly & record {|
     string id;
     string title;
@@ -14,12 +13,10 @@ type Album readonly & record {|
     decimal price;
 |};
 
-
 service / on new http:Listener(port) {
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
-
 
     resource function get albums/[string id]() returns Album|http:NotFound {
         Album? album = albums[id];
@@ -29,7 +26,6 @@ service / on new http:Listener(port) {
             return album;
         }
     }
-
 
     resource function post albums(@http:Payload Album album) returns Album {
         albums.add(album);

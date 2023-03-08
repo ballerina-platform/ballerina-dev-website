@@ -1,5 +1,5 @@
 ---
 title: 'Connect with Anything'
 description: Access thousands of connectors for HTTP APIs (OpenAPI), event APIs (AsyncAPI), GraphQL services, legacy systems, and data stores, allowing seamless data transfer to and from any system, anywhere.
-image: 'images/screenshots-collage-final-image-transparent-v5.png'
+image: 'images/powerful-connectivity.png'
 ---

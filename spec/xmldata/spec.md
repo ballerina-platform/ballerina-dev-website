@@ -3,7 +3,7 @@
 _Owners_: @daneshk @kalaiyarasiganeshalingam @MadhukaHarith92                                       
 _Reviewers_: @daneshk  
 _Created_: 2021/12/10  
-_Updated_: 2022/12/06  
+_Updated_: 2023/01/31  
 _Edition_: Swan Lake
 
 ## Introduction
@@ -370,24 +370,80 @@ The record representation of the above XML with the default configuration of thi
 }
 ```
 
-When `preserveNamespaces` is `false`, the JSON representation of the above XML.
+If `returnType` is configured for the above output, it must be specified in the following format with the open/closed record type.
+
+```ballerina
+type BookStores record {|
+    BookStore ns0\:bookStore;
+|};
+
+type BookStore record {|
+    string ns0\:storeName;
+    string ns0\:postalCode;
+    string ns0\:isOpen;
+    Address ns0\:address;
+    Codes ns0\:codes;
+    string _status;
+    string _xmlns\:ns0;
+|};
+
+type Address record {|
+    string ns0\:street;
+    string ns0\:city;
+    string ns0\:country;
+|};
+
+type Codes record {|
+    string[] ns0\:code;
+|};
+```
+
+When `preserveNamespaces` is `false`(without namespaces), the output of the above XML.
 
 ```ballerina
 {
-    "bookStore":{
-        "storeName":"foo",
-        "postalCode":"94",
-        "isOpen":"true",
-        "address":{
-            "street":"foo",
-            "city":"94",
-            "country":"true"
-        },
-        "codes":{
-            "code":["4","8","9"]
-        }
-    }
+   "bookStore":{
+      "storeName":"foo",
+      "postalCode":"94",
+      "isOpen":"true",
+      "address":{
+         "street":"foo",
+         "city":"94",
+         "country":"true"
+      },
+      "codes":{
+         "code":["4","8","9"]
+      },
+      "_status":"online"
+   }
 }
+```
+
+If `returnType` is configured for the above output(without namespaces), it must be specified in the following format with the open/closed record type.
+
+```ballerina
+type BookStores record {|
+    BookStore bookStore;
+|};
+
+type BookStore record {|
+    string storeName;
+    string postalCode;
+    string isOpen;
+    Address address;
+    Codes codes;
+    string _status;
+|};
+
+type Address record {|
+    string street;
+    string city;
+    string country;
+|};
+
+type Codes record {|
+    string[] code;
+|};
 ```
 
 ### 4.3. JSON to XML Conversion

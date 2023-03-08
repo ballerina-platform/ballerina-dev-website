@@ -1,7 +1,7 @@
 ---
 title: 'JSON? Ballerina is JSON'
 description: Javascript is JSON, and so is Ballerina. Plain data in Ballerina bear a natural resemblance to JSON values, simplifying the manipulation of JSON data. You can use the in-built `json` type if that’s your thing! Otherwise, convert to domain types for type-safe handling.
-url: 'https://github.com/ballerina-guides/integration-samples/tree/main/working_with_json'
+url: 'https://github.com/ballerina-guides/integration-samples/tree/main/working_with_json/main.bal'
 ---
 ```
 type InvoiceItem record {

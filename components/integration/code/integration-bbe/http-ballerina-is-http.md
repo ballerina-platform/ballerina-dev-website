@@ -1,7 +1,7 @@
 ---
 title: 'HTTP? Ballerina is HTTP'
 description: '“Ballerina is HTTP on steroids.” Network abstractions in Ballerina provide a natural way to describe and consume HTTP services, allowing developers to focus on a business log instead of boilerplate code.'
-url: 'xxxxxx'
+url: 'https://github.com/ballerina-guides/integration-samples/tree/main/restful_api/main.bal'
 ---
 ```
 configurable int port = 8080;

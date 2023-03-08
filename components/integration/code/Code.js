@@ -19,6 +19,9 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Code.module.css';
@@ -72,7 +75,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: vscode.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{vscode.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (vscode.frontmatter.url && vscode.frontmatter.url !== '') ?
@@ -132,7 +135,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: network.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{network.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (network.frontmatter.url && network.frontmatter.url !== '') ?
@@ -192,7 +195,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: transformations.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{transformations.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (transformations.frontmatter.url && transformations.frontmatter.url !== '') ?
@@ -252,7 +255,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: github.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{github.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (github.frontmatter.url && github.frontmatter.url !== '') ?
@@ -312,7 +315,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: resilience.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{resilience.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (resilience.frontmatter.url && resilience.frontmatter.url !== '') ?
@@ -372,7 +375,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: transactions.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{transactions.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (transactions.frontmatter.url && transactions.frontmatter.url !== '') ?
@@ -432,7 +435,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: concurrent.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{concurrent.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (concurrent.frontmatter.url && concurrent.frontmatter.url !== '') ?
@@ -492,7 +495,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: picture.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{picture.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (picture.frontmatter.url && picture.frontmatter.url !== '') ?
@@ -552,7 +555,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: observability.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{observability.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (observability.frontmatter.url && observability.frontmatter.url !== '') ?
@@ -612,7 +615,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: graphql.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{graphql.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (graphql.frontmatter.url && graphql.frontmatter.url !== '') ?
@@ -672,7 +675,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: httpBal.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{httpBal.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (httpBal.frontmatter.url && httpBal.frontmatter.url !== '') ?
@@ -732,7 +735,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: jsonBal.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{jsonBal.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (jsonBal.frontmatter.url && jsonBal.frontmatter.url !== '') ?
@@ -792,7 +795,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: anything.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{anything.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (anything.frontmatter.url && anything.frontmatter.url !== '') ?
@@ -852,7 +855,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: twelve.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{twelve.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (twelve.frontmatter.url && twelve.frontmatter.url !== '') ?
@@ -912,7 +915,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: zero.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{zero.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (zero.frontmatter.url && zero.frontmatter.url !== '') ?
@@ -972,7 +975,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <div className={styles.description} dangerouslySetInnerHTML={{ __html: ipaas.frontmatter.description }} />
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{ipaas.frontmatter.description}</ReactMarkdown>
 
                                     {
                                         (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?

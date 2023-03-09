@@ -621,7 +621,7 @@
         {
             "dirName": "Learn the language",
             "level": 1,
-            "position": 3,
+            "position": 4,
             "isDir": true,
             "url": "swan-lake/learn-the-language",
             "id": "learn-the-language",
@@ -704,47 +704,19 @@
         },
         {
             "dirName": "Get started",
-            "level": 1,
+            "level": 0,
             "position": 2,
             "isDir": true,
             "url": "swan-lake/get-started",
-            "id": "get-started",
-            "subDirectories": [
-                {
-                    "dirName": "Get started with Ballerina",
-                    "level": 2,
-                    "position": 2,
-                    "isDir": false,
-                    "url": "/learn/get-started-with-ballerina",
-                    "id": "get-started-with-ballerina"
-                },
-                {
-                    "dirName": "Install Ballerina",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": true,
-                    "url": "/learn/install-ballerina",
-                    "id": "install-ballerina",
-                    "subDirectories": [
-                        {
-                            "dirName": "Set up Ballerina",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/install-ballerina/set-up-ballerina",
-                            "id": "set-up-ballerina"
-                        },
-                        {
-                            "dirName": "Installation options",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/install-ballerina/installation-options",
-                            "id": "installation-options"
-                        }
-                    ]
-                }
-            ]
+            "id": "get-started"
+        },
+        {
+            "dirName": "Installation options",
+            "level": 0,
+            "position": 3,
+            "isDir": false,
+            "url": "/learn/install-ballerina/installation-options",
+            "id": "installation-options"
         },
         {
             "dirName": "other",

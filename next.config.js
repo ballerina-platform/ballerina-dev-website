@@ -57,8 +57,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/featured-use-cases/deploy-ballerina-on-kubernetes`,
       },
       {
-        source: `/${redirectBase}learn/get-started-with-ballerina`,
-        destination: `/${redirectBase}learn/get-started/get-started-with-ballerina`,
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/get-started/get-started`,
       },
       {
         source: `/${redirectBase}learn/language-basics`,

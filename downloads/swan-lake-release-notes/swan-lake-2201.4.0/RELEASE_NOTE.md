@@ -329,7 +329,7 @@ public function main() {
 
  >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
-- modified the definition of the `getType` API in the `BObject` runtime class to the following.
+- Modified the definition of the `getType` API in the `BObject` runtime class to the following.
 
   ```java
   Type getType();

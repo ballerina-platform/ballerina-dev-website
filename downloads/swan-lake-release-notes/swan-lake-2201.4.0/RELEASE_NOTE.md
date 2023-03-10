@@ -329,11 +329,13 @@ public function main() {
 
  >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
-- Modified the definition of the `getType` API in the `BObject` runtime class to the following.
+- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
 
   ```java
   Type getType();
   ```
   
-  >**Note:** The modules that use this API that are compiled with older Ballerina versions will break now due to this modification. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
+  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
+
+  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
  

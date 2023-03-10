@@ -276,50 +276,50 @@ Added support for maintaining generated code in a Ballerina package.
 
 - Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
 
-```ballerina
-public function main() returns error? {
-    from int i in 1 ... 3 // now valid
-    do {
-    };
-}
+  ```ballerina
+  public function main() returns error? {
+      from int i in 1 ... 3 // now valid
+      do {
+      };
+  }
 
-function iterateStream(stream<int, error?> numberStream) returns error? {
-    check from int num in numberStream
-        do {
-        };
-}
-```
+  function iterateStream(stream<int, error?> numberStream) returns error? {
+      check from int num in numberStream
+          do {
+          };
+  }
+  ```
 
 - Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
 
-```ballerina
-public function main() {
-    error? queryActResult = from int i in 1 ... 3
-        do {
-            check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
-                                         // no matching error return type(s) in the enclosing invokable
-        };
-}
+  ```ballerina
+  public function main() {
+      error? queryActResult = from int i in 1 ... 3
+          do {
+              check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
+                                          // no matching error return type(s) in the enclosing invokable
+          };
+  }
 
-function validateAndGetError() returns error? {
-    return error("Invalid error");
-}
-```
+  function validateAndGetError() returns error? {
+      return error("Invalid error");
+  }
+  ```
 
 - Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
 
-```ballerina
-public function main() {
-   int resultInt;
-   transaction {
-       resultInt = check maybeProvideInt(true);
-       check commit;
-   } on fail {
-       io:println("Failed to initialize resultInt");
-   }
-   resultInt += 1; // error: resultInt may not have been initialized
-}
-```
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check maybeProvideInt(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // error: resultInt may not have been initialized
+  }
+  ```
 
 - Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
 

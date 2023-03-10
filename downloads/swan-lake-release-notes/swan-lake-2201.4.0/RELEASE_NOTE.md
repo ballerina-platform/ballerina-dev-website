@@ -129,14 +129,6 @@ the results of the runtime API calls will be as follows.
   | `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with the `IntegerArray` name.        |
   | `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the `Integer` name.      |
 
-  <br>
-
-> **Note:**
-> The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
-> ```java
-> Type getType();
-> ```
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
@@ -282,8 +274,6 @@ Added support for maintaining generated code in a Ballerina package.
 
 ## Backward-incompatible changes
 
-### Language updates
-
 - Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
 
 ```ballerina
@@ -330,17 +320,20 @@ public function main() {
    resultInt += 1; // error: resultInt may not have been initialized
 }
 ```
-### Standard library updates
-
-#### `io` package
 
 - Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
+
 - Made the column headers automatically be written to the CSV file to ensure the order of fields while writing a `record[]` to a CSV.
 
-### Developer tools updates
+- Added new improvements to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
 
-#### CLI
+ >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
 
-New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+- modified the definition of the `getType` API in the `BObject` runtime class to the following.
 
->**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
+  ```java
+  Type getType();
+  ```
+  
+  >**Note:** The modules that use this API that are compiled with older Ballerina versions will break now due to this modification. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
+ 

@@ -64,7 +64,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/gmail/integrations/google-forms/11008/send-email-via-gmail-for-new-google-forms-submissions" className={styles.cDownload}>
-                                        Send email via Gmail for new Google Forms submissions
+                                        See Sample
                                     </a>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://blog.trello.com/multi-step-zaps-with-zapier-and-trello" className={styles.cDownload}>
-                                    When you’re creating your next MailChimp campaign you can set up a Multi-Step Zap that automatically creates a card for this campaign on your email marketing Trello board. This Trello card creation subsequently creates an automated message in your Email Marketing Slack channel that notifies everyone on your team in real time.
+                                        See Sample
                                     </a>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/schedule/integrations/slack/1523/get-weekly-reminders-in-slack" className={styles.cDownload}>
-                                        Send weekly reminders in Slack
+                                        See Sample
                                     </a>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/gmail/integrations/webhook/16625/create-google-sheets-rows-and-send-emails-in-gmail-with-new-caught-webhooks" className={styles.cDownload}>
-                                        Create Google Sheets rows and send emails in Gmail with new caught webhooks in Salesforce
+                                        See Sample
                                     </a>
                                 </div>
                             </div>

@@ -18,13 +18,15 @@ redirect_from:
 - /learn/getting-started/getting-started-with-ballerina
 ---
 
-## Set up the prerequisites
+## Install Ballerina
 
-To complete this tutorial, you need:
+[Download](/downloads/) Ballerina based on the operating system you are using and install it.
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
-2. A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+## Set up the editor
+
+Set up a text editor to write Ballerina code.
+
+>**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 
 ## Meet `bal`
 

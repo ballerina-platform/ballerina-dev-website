@@ -711,14 +711,6 @@
             "id": "get-started"
         },
         {
-            "dirName": "Installation options",
-            "level": 0,
-            "position": 3,
-            "isDir": false,
-            "url": "/learn/install-ballerina/installation-options",
-            "id": "installation-options"
-        },
-        {
             "dirName": "other",
             "level": 1,
             "position": 0,

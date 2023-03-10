@@ -34,7 +34,7 @@
 }
 
 .cardLinks {
-    height: 50px;
+    /* height: 50px; */
     color: #20b6b0;
     font-weight: 400;
     font-style: italic;
@@ -53,37 +53,37 @@
 }
 
 @media (min-width: 360px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 70px;
-    }
+    } */
 }
 
 @media (min-width: 660px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 40px;
-    }
+    } */
 }
 
 @media (min-width: 768px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 100px;
-    }
+    } */
 }
 
 @media (min-width: 840px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 100px;
-    }
+    } */
 }
 
 @media (min-width: 1024px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 70px;
-    }
+    } */
 }
 
 @media (min-width: 1200px) {
-    .cardLinks {
+    /* .cardLinks {
         height: 60px;
-    }
+    } */
 }

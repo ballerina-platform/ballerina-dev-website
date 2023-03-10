@@ -74,7 +74,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>Multi-step automations</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina's sequence diagrams and message-passing syntax make it easy to create multi-step automation workflows that involve data transformation, filtering, or formatting.</p>
+                                    <p>Ballerina&apos;s sequence diagrams and message-passing syntax make it easy to create multi-step automation workflows that involve data transformation, filtering, or formatting.</p>
                                 </div>
                                 </div>
 

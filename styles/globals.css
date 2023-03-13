@@ -252,6 +252,16 @@ a {
   border-left: 5px solid #eee;
 }
 
+.mdTable {
+  overflow-x: auto;
+}
+
+.mdContent table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
 .mdContent table td, .policyContent table td,
 .mdContent table th, .policyContent table th {
   border: 1px solid #e1e4e5 !important;

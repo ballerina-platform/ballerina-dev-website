@@ -50,55 +50,6 @@ type T [int, @annot string];
 
 Annotations are not allowed on the tuple rest descriptor. 
 
-### Backward-incompatible changes
-
-- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
-
-```ballerina
-public function main() returns error? {
-    from int i in 1 ... 3 // now valid
-    do {
-    };
-}
-
-function iterateStream(stream<int, error?> numberStream) returns error? {
-    check from int num in numberStream
-        do {
-        };
-}
-```
-
-- Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
-
-```ballerina
-public function main() {
-    error? queryActResult = from int i in 1 ... 3
-        do {
-            check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
-                                         // no matching error return type(s) in the enclosing invokable
-        };
-}
-
-function validateAndGetError() returns error? {
-    return error("Invalid error");
-}
-```
-
-- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
-
-```ballerina
-public function main() {
-   int resultInt;
-   transaction {
-       resultInt = check maybeProvideInt(true);
-       check commit;
-   } on fail {
-       io:println("Failed to initialize resultInt");
-   }
-   resultInt += 1; // error: resultInt may not have been initialized
-}
-```
-
 ### Bug fixes
 
 Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
@@ -178,14 +129,6 @@ the results of the runtime API calls will be as follows.
   | `getReferredType()` on `IntegerArray`           | This will return an `ArrayType` with the `IntegerArray` name.        |
   | `getElementType()` on `IntegerArray` array type | This will return a `ReferenceType` with the `Integer` name.      |
 
-  <br>
-
-> **Note:**
-> The definition of the `getType` API in the `BObject` runtime class is now modified to the following.
-> ```java
-> Type getType();
-> ```
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
@@ -224,13 +167,6 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 #### `graphql` package
 
 - Removed the limitation on the parameter order of the GraphQL `context` object.
-
-### Backward-incompatible changes
-
-#### `io` package
-
-- Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
-- Made the column headers automatically be written to the CSV file to ensure the order of fields while writing a `record[]` to a CSV.
 
 ### Bug fixes
 
@@ -321,12 +257,6 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 - Improved the behaviour for the `nullable:true` property in OpenAPI schemas, to generate record fields with default values (e.g., `string? name = ();`), instead of making the field both nilable and optional (e.g., `string? name?;`).
 - Changed the default request and response types of the generated Ballerina resource/remote methods from `json` to `http:Request` and `http:Response` respectively.
 
-### Backward-incompatible changes
-
-New improvements that were added to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
-
->**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
-
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the repositories below.
@@ -341,3 +271,70 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 ### New features
 
 Added support for maintaining generated code in a Ballerina package.
+
+## Backward-incompatible changes
+
+- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
+
+  ```java
+  Type getType();
+  ```
+  
+  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
+
+  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
+
+- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
+
+  ```ballerina
+  public function main() returns error? {
+      from int i in 1 ... 3 // now valid
+      do {
+      };
+  }
+
+  function iterateStream(stream<int, error?> numberStream) returns error? {
+      check from int num in numberStream
+          do {
+          };
+  }
+  ```
+
+- Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+
+  ```ballerina
+  public function main() {
+      error? queryActResult = from int i in 1 ... 3
+          do {
+              check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
+                                          // no matching error return type(s) in the enclosing invokable
+          };
+  }
+
+  function validateAndGetError() returns error? {
+      return error("Invalid error");
+  }
+  ```
+
+- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
+
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check maybeProvideInt(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // error: resultInt may not have been initialized
+  }
+  ```
+
+- Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
+
+- Made the column headers automatically be written to the CSV file to ensure the order of fields while writing a `record[]` to a CSV.
+
+- Added new improvements to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+
+ >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.

@@ -24,7 +24,7 @@ redirect_from:
 
 1. Run `bal update` to get the latest version of the Update Tool.
 
-2. Run `bal dist update` ( or `bal dist pull 2201.4.1`) to update your Ballerina version to 2201.3.4.
+2. Run `bal dist update` ( or `bal dist pull 2201.4.1`) to update your Ballerina version to 2201.4.1.
 
 However, if you are using a version below 2201.0.0 (Swan Lake) and if you already ran `bal dist update` (or `bal dist pull 2201.4.1`) before `bal update`, see [Troubleshooting](/downloads/swan-lake-release-notes/swan-lake-2201.0.0#troubleshooting) to recover your installation.
 

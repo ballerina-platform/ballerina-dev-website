@@ -327,7 +327,7 @@ Here the returned stream can consist of following types of records,
    stream<Student, sql:Error?> resultStream = dbClient->query(query);
    ```
    
-   `sql:Column` annotation can be used to map database columns to record fields of different name. This annotation should be attached to record fields.
+   `sql:Column` annotation can be used to map database columns to Typed record fields of different name. This annotation should be attached to record fields.
    ```ballerina
    type Student record {
        int id;

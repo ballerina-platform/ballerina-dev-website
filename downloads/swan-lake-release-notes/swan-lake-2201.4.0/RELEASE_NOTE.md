@@ -274,6 +274,16 @@ Added support for maintaining generated code in a Ballerina package.
 
 ## Backward-incompatible changes
 
+- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
+
+  ```java
+  Type getType();
+  ```
+  
+  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
+
+  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
+
 - Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
 
   ```ballerina
@@ -328,14 +338,3 @@ Added support for maintaining generated code in a Ballerina package.
 - Added new improvements to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
 
  >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
-
-- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
-
-  ```java
-  Type getType();
-  ```
-  
-  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
-
-  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
- 

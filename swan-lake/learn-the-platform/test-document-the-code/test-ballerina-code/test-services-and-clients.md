@@ -120,12 +120,12 @@ public function testGetRandomJoke() returns error? {
     http:Response result = check clientEndpoint->get("/random");
     json payload = check result.getJsonPayload();
 
-    test:assertEquals(payload, {"value":"When Chuck Norris wants an egg, he cracks open a chicken."});    
+    test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
 }
 
 function getMockResponse() returns http:Response {
     http:Response mockResponse = new;
-    mockResponse.setPayload({"value":"When Chuck Norris wants an egg, he cracks open a chicken."});
+    mockResponse.setPayload({"value": "When Chuck Norris wants an egg, he cracks open a chicken."});
     return mockResponse;
 }
 ```

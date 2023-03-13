@@ -123,7 +123,7 @@ To create the first resource of the first endpoint to get data, add the code bel
 **Info:** 
 
 ```ballerina
-service /covid/status on new http:Listener(9000){
+service /covid/status on new http:Listener(9000) {
 	resource function get countries() returns CovidEntry[] {
         return covidTable.toArray();
     }
@@ -172,12 +172,12 @@ To define the error records, add the code below to the API template file (i.e., 
 
 ```ballerina
 public type ConflictingIsoCodesError record {|
-   *http:Conflict;
-   ErrorMsg body;
+    *http:Conflict;
+    ErrorMsg body;
 |};
 
 public type ErrorMsg record {|
-   string errmsg;
+    string errmsg;
 |};
 ```
 

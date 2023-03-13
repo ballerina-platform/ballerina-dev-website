@@ -240,14 +240,14 @@ A resource of a service object is accessed by a listener object provided by a li
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
 };
 
 public function main() {
-    string result = clinetObj->/greeting/James;
+    string result = clientObj->/greeting/James;
     // Will print Hello, James
     io:println(result);
 }
@@ -262,18 +262,18 @@ The resource access action can specify the query parameters as arguments.
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting(string name) returns string {
         return "Hello, " + name;
     }
 };
 
 public function main() {
-    string result = clinetObj->/greeting.get("James");
+    string result = clientObj->/greeting.get("James");
     // Will print Hello, James
     io:println(result);
     // Default resource access method name will be `get` if not specified
-    result = clinetObj->/greeting("Ann");
+    result = clientObj->/greeting("Ann");
     // Will print Hello, Ann
     io:println(result);
 }
@@ -284,7 +284,7 @@ The resource access path segments can also be assigned dynamically using compute
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
@@ -296,12 +296,12 @@ var clinetObj = client object {
 
 public function main() {
     string name = "Mark";
-    string result = clinetObj->/greeting/[name];
+    string result = clientObj->/greeting/[name];
     // Will print Hello, Mark
     io:println(result);
 
     [string, int] gameDetails = ["Chess", 2];
-    result = clinetObj->/game/[...gameDetails].post;
+    result = clientObj->/game/[...gameDetails].post;
     // Will print Chess: 2
     io:println(result);
 }

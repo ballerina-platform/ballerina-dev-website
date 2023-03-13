@@ -154,15 +154,15 @@ Follow the steps below to execute the generated Ballerina sources.
 3\. Create a new Ballerina file inside the directory (e.g., `slack_service.bal` ) and copy the code below to it.
 
 ```ballerina
-listener Listener webhookListener = new(8090);
+listener Listener webhookListener = new (8090);
 
 service AppService on webhookListener {
-   remote function onAppMention(GenericEventWrapper event) returns error? {
-       //Implement the logic to use the received `event` here.
-   }
+    remote function onAppMention(GenericEventWrapper event) returns error? {
+        //Implement the logic to use the received `event` here.
+    }
 
     remote function onAppRateLimited(GenericEventWrapper event) returns error? {
-       //Implement the logic to use the received `event` here.
+        //Implement the logic to use the received `event` here.
     }
 }
 ```

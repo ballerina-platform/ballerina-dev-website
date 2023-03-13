@@ -132,7 +132,7 @@ public isolated client class GraphqlClient {
         string query = string `query countryByCode($code:ID!) {country(code:$code) {name}}`;
         map<anydata> variables = {"code": code};
         json graphqlResponse = check self.graphqlClient->executeWithType(query, variables);
-        return <CountryByCodeResponse> check performDataBinding(graphqlResponse, CountryByCodeResponse);
+        return <CountryByCodeResponse>check performDataBinding(graphqlResponse, CountryByCodeResponse);
     }
 }
 ```

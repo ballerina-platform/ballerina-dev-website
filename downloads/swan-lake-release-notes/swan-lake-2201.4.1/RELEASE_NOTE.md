@@ -36,5 +36,5 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.4.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.1+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for 2201.4.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.4.1+is%3Aclosed+label%3AType%2FBug).
 

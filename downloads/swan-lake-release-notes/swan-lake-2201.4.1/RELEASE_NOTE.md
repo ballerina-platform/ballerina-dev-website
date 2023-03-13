@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.4.1
 
-<em>Swan Lake 2201.4.1 is the first patch release of Ballerina 2201.4.0 (Swan Lake Update 4) and it includes a new set of bug fixes to the debugger and xml components.</em>
+<em>Swan Lake 2201.4.1 is the first patch release of Ballerina 2201.4.0 (Swan Lake Update 4) and it includes a new set of bug fixes to the language and tooling.</em>
 
 ## Update Ballerina
 

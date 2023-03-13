@@ -28,7 +28,6 @@ redirect_from:
 **Do's**
 
 ```ballerina
-
 import ballerina/http;
 
 const int MIN_AGE = 20;

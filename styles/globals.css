@@ -223,6 +223,10 @@ a {
   letter-spacing: 0.4px;
 }
 
+.mdContent li pre {
+  line-height: 18.375px !important;
+} 
+
 .mdContent a:hover,
 .policyContent a:hover {
   color: #464646 !important;

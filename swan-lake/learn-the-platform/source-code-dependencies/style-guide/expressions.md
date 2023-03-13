@@ -49,7 +49,7 @@ Person p = {};
       
 **Example,**
 
-```ballerina  
+```ballerina
 Person p = {name: "john", age: 20};
 ``` 
 

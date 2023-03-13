@@ -15,7 +15,7 @@ public type Album record {
     string id;
     string title;
     string artist;
-    decimal price;
+    float price;
     Currency currency = USD;
 };
 
@@ -39,7 +39,7 @@ service / on new graphql:Listener(9000) {
     resource function get album(string id, Currency currency = USD) returns Album|error {
         Album album = check self.db->queryRow(`SELECT * FROM Albums WHERE id=${id}`);
         if currency != self.baseCurrency {
-            record {decimal rate;} exchange = check self.forex->/currencyConversion('from = self.baseCurrency, to = currency);
+            record {float rate;} exchange = check self.forex->/currencyConversion('from = self.baseCurrency, to = currency);
             album.price = album.price * exchange.rate;
             album.currency = currency;
         }

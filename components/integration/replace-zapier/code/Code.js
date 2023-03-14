@@ -91,7 +91,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (opensource.frontmatter.image && opensource.frontmatter.image !== '') ?
-                                    <img src={`${prefix}/${opensource.frontmatter.image}`} alt={opensource.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${opensource.frontmatter.image}`} alt={opensource.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>
@@ -451,7 +451,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (community.frontmatter.image && community.frontmatter.image !== '') ?
-                                    <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                        <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

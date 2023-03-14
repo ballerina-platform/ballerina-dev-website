@@ -21,7 +21,8 @@ service github:IssuesService on new github:Listener() {
         if payload.issue.assignee?.login != githubUser {
             return;
         }
-        string message = string `Github new issue assigned!${"\n"}Title: ${payload.issue.title}${"\n"}URL: ${payload.issue.html_url}${"\n"}`;
+        string message = string `Github new issue assigned!
+        ${"\n"}Title: ${payload.issue.title}${"\n"}URL: ${payload.issue.html_url}${"\n"}`;
         _ = check twilio->sendSms(twilioFrom, twilioTo, message);
         
         trello:Cards card = transform(payload.issue.title, message);

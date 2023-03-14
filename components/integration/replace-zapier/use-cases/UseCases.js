@@ -63,8 +63,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/gmail/integrations/google-forms/11008/send-email-via-gmail-for-new-google-forms-submissions" className={styles.cDownload}>
-                                        See Sample
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/gdrive-new-event-to-slack-message" className={styles.cDownload}>
+                                        See Sample: GDrive events  to Slack
                                     </a>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>Multi-step automations</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina&apos;s sequence diagrams and message-passing syntax make it easy to create multi-step automation workflows that involve data transformation, filtering, or formatting.</p>
+                                    <p>Ballerina language capabilities make creating multi-step automation workflows that involve data transformation, filtering, or formatting easy.</p>
                                 </div>
                                 </div>
 
@@ -84,8 +84,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://blog.trello.com/multi-step-zaps-with-zapier-and-trello" className={styles.cDownload}>
-                                        See Sample
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/github-new-issue-assigned-to-trello-card-and-twilio-sms" className={styles.cDownload}>
+                                        See Sample: GitHub to Trello and Twilio
                                     </a>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>Schedule-based automations</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina provides built-in support for scheduling tasks, allowing developers to create custom automation workflows that are triggered at specific times.</p>
+                                    <p>Ballerina provides built-in support for scheduling tasks, allowing developers to create custom automation workflows triggered at specific times.</p>
                                 </div>
                                 </div>
 
@@ -104,8 +104,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/schedule/integrations/slack/1523/get-weekly-reminders-in-slack" className={styles.cDownload}>
-                                        See Sample
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/daily-github-pr-summary-to-gmail" className={styles.cDownload}>
+                                        See Sample: Daily GitHub summary to Gmail
                                     </a>
                                 </div>
                             </div>
@@ -113,9 +113,9 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Webhook automations</h3>
+                                <h3>Search-based automations</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina can be used to create custom webhook automations by creating custom connectors or using native connectors to integrate with external services.</p>
+                                    <p>Ballerina provides more control over the search process, allowing for greater customization and flexibility by writing custom code to search for specific data.</p>
                                 </div>
                                 </div>
 
@@ -124,8 +124,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://zapier.com/apps/gmail/integrations/webhook/16625/create-google-sheets-rows-and-send-emails-in-gmail-with-new-caught-webhooks" className={styles.cDownload}>
-                                        See Sample
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/search-weather-data-to-twilio-sms" className={styles.cDownload}>
+                                        See Sample: Search weather data and send as SMS
                                     </a>
                                 </div>
                             </div>

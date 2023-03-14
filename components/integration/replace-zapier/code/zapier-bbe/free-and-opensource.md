@@ -1,5 +1,5 @@
 ---
 title: 'Free and opensource'
-description: Tired of disjointed toolchains disrupting your workflow? Take control of your integration development with Ballerina. Realize your ideas in VSCode, use your favorite tools, and store them in Git.
+description: Ballerina is a free and open-source programming language, making it a more cost-effective option for businesses that want to build custom automation workflows without any expense.
 image: 'images/edit-debug-diagraam-v4.png'
 ---

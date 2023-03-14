@@ -37,7 +37,6 @@ export default function Intro() {
                                     Why stuck on limited pre-built
                                     integrations and actions?  <br />
                                     Are zap limits holding you back?<br />
-                                    Looking to create complex workflows and task automations?
                                 </p>
 
                                 <p className={styles.introText3}>

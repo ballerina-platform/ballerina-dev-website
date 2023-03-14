@@ -134,6 +134,8 @@ The Ballerina service implementation of a gRPC can be done in two ways.
 
 Directly returning the response is the most convenient implementation. However, for asynchronous RPC calls, directly returning is not suitable, and for such use cases, using a caller is the ideal approach. In addition, each RPC call (simple, server streaming, client streaming, and bidirectional streaming) can be implemented in both ways.
 
+It's important to note that, when a `panic` occurs inside a `grpc:Service`, immediate application termination is performed since `panic` is considered as a catastrophic error and non-recoverable.
+
 **RPC using direct return**
 
 Ballerina CLI generates the relevant service skeleton, and the implementation of the simple RPC call using direct return is as follows.
@@ -964,11 +966,6 @@ The following API sets a deadline for each request.
 
 ```ballerina
 # Enables the deadline by adding the `deadline` header to the given headers.
-# ```ballerina
-# time:Utc current = time:utcNow();
-# time:Utc deadline = time:utcAddSeconds(current, 300);
-# map<string|string[]> headers = grpc:setDeadline(deadline);
-# ```
 #
 # + deadline - The deadline time value (this should be a specific time and not a duration)
 # + headerMap - Optional header map (if this is not specified, it creates a new header set)
@@ -982,9 +979,6 @@ If a particular RPC exceeds the specified deadline, the response will be a `grpc
 The following API enables compression for gRPC calls. Currently, Gzip compression is supported by the Ballerina gRPC library.
 ```ballerina
 # Enables the compression support by adding the `grpc-encoding` header to the given headers.
-# ```ballerina
-# map<string|string[]> headers = grpc:setCompression(grpc:GZIP);
-# ```
 #
 # + compressionType - The compression type.
 # + headerMap - Optional header map (if this is not specified, it creates a new header set)

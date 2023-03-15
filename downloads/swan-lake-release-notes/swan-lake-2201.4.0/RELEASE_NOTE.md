@@ -34,6 +34,73 @@ However, if you are using a version below 2201.0.0 (Swan Lake) and if you alread
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+## Backward-incompatible changes
+
+- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
+
+  ```java
+  Type getType();
+  ```
+  
+  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
+
+  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
+
+- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
+
+  ```ballerina
+  public function main() returns error? {
+      from int i in 1 ... 3 // now valid
+      do {
+      };
+  }
+
+  function iterateStream(stream<int, error?> numberStream) returns error? {
+      check from int num in numberStream
+          do {
+          };
+  }
+  ```
+
+- Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
+
+  ```ballerina
+  public function main() {
+      error? queryActResult = from int i in 1 ... 3
+          do {
+              check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
+                                          // no matching error return type(s) in the enclosing invokable
+          };
+  }
+
+  function validateAndGetError() returns error? {
+      return error("Invalid error");
+  }
+  ```
+
+- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
+
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check maybeProvideInt(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // error: resultInt may not have been initialized
+  }
+  ```
+
+- Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
+
+- Made the column headers automatically be written to the CSV file to ensure the order of fields while writing a `record[]` to a CSV.
+
+- Added new improvements to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
+
+    >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.
+
 ## Language updates
 
 ### New features
@@ -271,70 +338,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the reposi
 ### New features
 
 Added support for maintaining generated code in a Ballerina package.
-
-## Backward-incompatible changes
-
-- Modified the definitions of the `getType` API in the `BObject` runtime class to the following.
-
-  ```java
-  Type getType();
-  ```
-  
-  Also, modified the behavior of the [runtime Java APIs to support the type-reference type](/downloads/swan-lake-release-notes/swan-lake-2201.4.0#type-reference-type-support-in-runtime-java-apis).
-
-  >**Note:** The modules that use these APIs that are compiled with older Ballerina versions will break now due to these modifications. Deleting the `Dependencies.toml` file, clearing the internal cache, and republishing these modules will be required to resolve this.
-
-- Fixed a bug that incorrectly resolved the result type of a query action that would complete normally to `error?` instead of `()`. Now, the result type includes `error` only in instances where an error can be generated during the execution of the query pipeline (`from` clause/`join` clause).
-
-  ```ballerina
-  public function main() returns error? {
-      from int i in 1 ... 3 // now valid
-      do {
-      };
-  }
-
-  function iterateStream(stream<int, error?> numberStream) returns error? {
-      check from int num in numberStream
-          do {
-          };
-  }
-  ```
-
-- Fixed a bug that incorrectly propagated errors returned in a `do` clause of a query action to the result of the query action. Now, if the execution of a statement within a `do` clause fails with an error, it will be propagated to the nearest enclosing failure-handling statement.
-
-  ```ballerina
-  public function main() {
-      error? queryActResult = from int i in 1 ... 3
-          do {
-              check validateAndGetError(); // error: invalid usage of the 'check' expression operator; 
-                                          // no matching error return type(s) in the enclosing invokable
-          };
-  }
-
-  function validateAndGetError() returns error? {
-      return error("Invalid error");
-  }
-  ```
-
-- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
-
-  ```ballerina
-  public function main() {
-    int resultInt;
-    transaction {
-        resultInt = check maybeProvideInt(true);
-        check commit;
-    } on fail {
-        io:println("Failed to initialize resultInt");
-    }
-    resultInt += 1; // error: resultInt may not have been initialized
-  }
-  ```
-
-- Made the column headers mandatory in CSV files to ensure the order of fields while mapping CSV files to records. This is only applicable for the case where the expected type is `record[]`.
-
-- Made the column headers automatically be written to the CSV file to ensure the order of fields while writing a `record[]` to a CSV.
-
-- Added new improvements to the `bal format` command to address some of the existing [limitations](https://github.com/ballerina-platform/ballerina-lang/issues/37868) may break the CLI usages of the `bal format <module-name>` option. 
-
-    >**Info:** In such instances, the `bal format <package-path> --module <module-name>` option can be used for the same purpose from the Swan Lake Update 4 release onwards.

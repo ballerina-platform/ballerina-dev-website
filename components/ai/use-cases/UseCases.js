@@ -51,11 +51,11 @@ export default function UseCases(props) {
                     <Row className='pageContentRow integration'>
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
-                            <div>
-                                <h3>Embed AI into your API</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                </div>
+                                <div>
+                                    <h3>Embed AI into your API</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                    </div>
                                 </div>
                                 {/* <div className={styles.sampleText}>
                                     <p>See Sample Automation: GitHub to Google Sheets</p>
@@ -72,10 +72,10 @@ export default function UseCases(props) {
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Use AI in your integration</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                </div>
+                                    <h3>Use AI in your integration</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                    </div>
                                 </div>
 
                                 {/* <div className={styles.sampleText}>
@@ -93,10 +93,10 @@ export default function UseCases(props) {
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Write an AI powered Slackbot</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                </div>
+                                    <h3>Write an AI powered Slackbot</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                    </div>
                                 </div>
 
                                 {/* <div className={styles.sampleText}>

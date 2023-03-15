@@ -658,11 +658,14 @@ ul.eventsTabs {
 }
 
 .eventsTabs .nav-link,
-.eventsTabs .nav-link:hover {
+.eventsTabs .nav-link:hover,
+.codeTabs .nav-link,
+.codeTabs .nav-link:hover {
   border: none;
 }
 
-.eventsTabs li button {
+.eventsTabs li button,
+.codeTabs li button {
   color: #20b6b0;
   cursor: default;
   background: none;
@@ -670,7 +673,9 @@ ul.eventsTabs {
 }
 
 .eventsTabs li button:focus,
-.eventsTabs li button:hover {
+.eventsTabs li button:hover,
+.codeTabs li button:focus,
+.codeTabs li button:hover {
   color: #57595d !important;
   border: none;
   background-color: none;
@@ -679,7 +684,10 @@ ul.eventsTabs {
 
 .eventsTabs li button[aria-selected="true"],
 .eventsTabs li button[aria-selected="true"]:focus,
-.eventsTabs li button[aria-selected="true"]:hover {
+.eventsTabs li button[aria-selected="true"]:hover,
+.codeTabs li button[aria-selected="true"],
+.codeTabs li button[aria-selected="true"]:focus,
+.codeTabs li button[aria-selected="true"]:hover {
   color: #57595d !important;
   cursor: default;
   background-color: none !important;
@@ -1263,7 +1271,7 @@ table.cTopControlsContainer tbody {
   padding-bottom: 0 !important;
 } */
 
-.integration.code pre.shiki {
+.integration.code pre.shiki, #code-container {
   background-color: #ffffff !important;
   border: 1px solid #eeeeee;
 }
@@ -1280,4 +1288,59 @@ table.cTopControlsContainer tbody {
 .usecases .wrap-page-content {
   padding-bottom: 0 !important;
   font-size: 18px;
+}
+
+/* ----------- draggable code blocks -------------- */
+#code-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  font-family: monospace;
+  /* display: flex;
+  flex-flow: row wrap; */
+}
+
+#left_panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 100px;
+  background-color: #ffffff;
+  /* background: grey; */
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+#right_panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  /* color: #fff;
+  background: black; */
+  background-color: #ffffff;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+#drag {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: w-resize;
+  background: #20b6b0
+}
+
+#code-container .title {
+  background-color: #20b6b0;
+  color: #fff;
+  padding: 10px;
+}
+
+#code-tab .tab-pane p {
+  font-family: monospace;
 }

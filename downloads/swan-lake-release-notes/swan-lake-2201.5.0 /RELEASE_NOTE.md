@@ -34,6 +34,8 @@ However, if you are using a version below 2201.0.0 (Swan Lake) and if you alread
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+## Backward-incompatible changes
+
 ## Language updates
 
 ### New features
@@ -114,5 +116,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 ### Improvements
 
 ### Bug fixes
-
-## Backward-incompatible changes

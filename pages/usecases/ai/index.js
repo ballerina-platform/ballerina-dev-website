@@ -44,12 +44,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/code/integration-bbe");
+  const files = traverseFolder("components/ai/code/ai-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/code/integration-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/ai/code/ai-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     samples[sampleName] = {
       frontmatter: {
@@ -170,11 +170,11 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          {/* <Row className="pageContentRow integration usecases">
+          <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
-          </Row> */}
+          </Row>
           {/* <Row className="pageContentRow integration code"> */}
-            {/* <Code samples={samples} getLink={getLink} /> */}
+            <Code samples={samples} getLink={getLink} />
           {/* </Row> */}
         </Col>
       </Layout>

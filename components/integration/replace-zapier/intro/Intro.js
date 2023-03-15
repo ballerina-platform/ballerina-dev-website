@@ -61,7 +61,7 @@ export default function Intro() {
                         </Col>
                         <Col xs={12} lg={7} className={styles.introImg}>
                             {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                            <img src={`${prefix}/images/slide_diagram-new-v5-final.png`} alt="Position Ballerina" />
+                            <img src={`${prefix}/images/Vectors-01.png`} alt="Ballerina vs. Zapier" />
                         </Col>
                     </Row>
 

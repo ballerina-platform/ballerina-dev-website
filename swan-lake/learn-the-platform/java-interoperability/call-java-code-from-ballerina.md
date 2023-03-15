@@ -263,14 +263,14 @@ import yaml_package.java.lang as javalang;
 import yaml_package.org.yaml.snakeyaml as snakeyaml;
  
 public function main(string... args) returns error? {
-   string filename = args[0];
-   javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
-   if fileInputStream is javaio:FileNotFoundException {
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
-   } else {
-       snakeyaml:Yaml yaml = snakeyaml:newYaml1();
-       javalang:Object mapObj = yaml.load(fileInputStream);
-       io:println(mapObj);
+    string filename = args[0];
+    javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
+    if fileInputStream is javaio:FileNotFoundException {
+        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
+    } else {
+        snakeyaml:Yaml yaml = snakeyaml:newYaml1();
+        javalang:Object mapObj = yaml.load(fileInputStream);
+        io:println(mapObj);
    }
 }
 ```

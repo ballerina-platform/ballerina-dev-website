@@ -98,7 +98,7 @@ public function main() {
 class ArrayDeque {
     private handle jObj;
 
-    function __init(){
+    function __init() {
         self.jObj = newArrayDeque();
     }
 }
@@ -163,7 +163,7 @@ public type ArrayType record {|
 # + paramTypes - An optional field, which describes the parameter types of the constructor
 public type ConstructorData record {|
     Class 'class;
-    (Class | ArrayType)[] paramTypes?;
+    (Class|ArrayType)[] paramTypes?;
 |};
 ```
 
@@ -190,12 +190,12 @@ import ballerina/jballerina.java;
 
 function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
     'class: "a.b.c.Builder",
-    paramTypes: [{'class: "a.b.c.Person", dimensions:2}, "int"]
+    paramTypes: [{'class: "a.b.c.Person", dimensions: 2}, "int"]
 } external;
 
 function builderWithStudentList(handle list, int index) returns handle = @java:Constructor {
     'class: "a.b.c.Builder",
-    paramTypes: [{'class: "a.b.c.Student", dimensions:2}, "int"]
+    paramTypes: [{'class: "a.b.c.Student", dimensions: 2}, "int"]
 } external;
 ```
 
@@ -337,7 +337,7 @@ This class presents a much clearer API compared to the previous API. The below i
 
 ```ballerina
 public function main() {
-    StringStack stack = new();
+    StringStack stack = new ();
     stack.push("Ballerina");
     string element = stack.pop();
 }
@@ -469,7 +469,7 @@ Since this Java constructor throws a checked exception,  the `newZipfile` Baller
 ```ballerina
 import ballerina/jballerina.java;
 
-function newZipFile(handle filename) returns handle | error = @java:Constructor {
+function newZipFile(handle filename) returns handle|error = @java:Constructor {
     'class: "java.util.zip.ZipFile",
     paramTypes: ["java.lang.String"]
 } external;
@@ -649,7 +649,7 @@ import ballerina/io;
 import ballerina/jballerina.java;
 
 public function main() {
-    int[] a = [1,2,3,4,5];
+    int[] a = [1, 2, 3, 4, 5];
     int[] b = arrayReverse(a);
     io:println(b);
 }
@@ -703,8 +703,8 @@ The `@java:FieldGet` and `@java:FieldSet` annotations allow you to read and upda
 import ballerina/jballerina.java;
 
 public function pi() returns float = @java:FieldGet {
-    name:"PI",
-    'class:"java/lang/Math"
+    name: "PI",
+    'class: "java/lang/Math"
 } external;
 
 public function main() {

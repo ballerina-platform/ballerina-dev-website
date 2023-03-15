@@ -171,17 +171,17 @@ E.g., the generated dependent class representing `java.util.List` is as follows.
 ```ballerina
 distinct class List {
 
-   *java:JObject;
+    *java:JObject;
 
-   public handle jObj;
+    public handle jObj;
 
-   function init(handle obj) {
-       self.jObj = obj;
-   }
+    function init(handle obj) {
+        self.jObj = obj;
+    }
 
-   function toString() returns string {
-       return java:toString(self.jObj) ?: "null";
-   }
+    function toString() returns string {
+        return java:toString(self.jObj) ?: "null";
+    }
 };
 ```
 

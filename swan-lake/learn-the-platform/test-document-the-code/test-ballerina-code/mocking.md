@@ -382,8 +382,8 @@ This is the initialization of the mock function, which should be called in place
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 ```
 
 After the initialization, the following options can be used to stub the behaviour of a function written in the module being tested.
@@ -398,8 +398,8 @@ After the initialization, the following options can be used to stub the behaviou
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
    
 @test:Config {}
 function testReturn() {
@@ -421,8 +421,8 @@ This test stubs the behaviour of the `intAdd` function to substitute it with a u
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 
 @test:Config {}
 function testCall() {
@@ -448,7 +448,7 @@ import ballerina/io;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-test:MockFunction printlnMockFn = new();
+test:MockFunction printlnMockFn = new ();
 
 int tally = 0;
 
@@ -474,8 +474,8 @@ This test calls the original `intAdd` function after it has been stubbed with a 
 ```ballerina
 import ballerina/test;
        
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 
 @test:Config {}
 function testCallOriginal() {

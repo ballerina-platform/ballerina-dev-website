@@ -44,24 +44,24 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 
 2. Replace the content of the file `main.bal` with the following.
 
-   ```ballerina
-   import ballerina/http;
-   
-   type Greeting record {|
-      string to;
-      string content;
-   |};
-   
-   configurable int port = 9090;
-   configurable Greeting greeting = ?;
-   
-   service http:Service / on new http:Listener(port) {
-      resource function post greeting() returns string {
-         string message = string `Hello ${greeting.to}! ${greeting.content}`;
-         return message;
-      }
-   }
-   ```
+```ballerina
+import ballerina/http;
+
+type Greeting record {|
+    string to;
+    string content;
+|};
+
+configurable int port = 9090;
+configurable Greeting greeting = ?;
+
+service http:Service / on new http:Listener(port) {
+    resource function post greeting() returns string {
+        string message = string `Hello ${greeting.to}! ${greeting.content}`;
+        return message;
+    }
+}
+```
 
    Here, we created a Ballerina package named `greetings` that contains configurable variables `port` and `greeting` with
    respective types `int` and  `Greeting`. These variables are used in the HTTP service where the resource method

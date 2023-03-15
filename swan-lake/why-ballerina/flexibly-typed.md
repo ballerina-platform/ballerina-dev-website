@@ -142,13 +142,13 @@ type Person record {|
 
 function filterResults(Person[] persons, map<int> grades) returns Result[] {
     Result[] results = from var person in persons
-                        let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
-                        where lgrade > 75
-                        select {
-                            name: person.name,
-                            college: targetCollege,
-                            grade: lgrade
-                        };
+        let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
+        where lgrade > 75
+        select {
+            name: person.name,
+            college: targetCollege,
+            grade: lgrade
+        };
     return results;
 }
 ```

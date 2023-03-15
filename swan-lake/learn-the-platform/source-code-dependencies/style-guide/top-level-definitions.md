@@ -32,7 +32,7 @@ import ballerina/http;
 
 const int MIN_AGE = 20;
 int repetitions = 0;
-    
+
 service / on ep1 {
     ...
 }

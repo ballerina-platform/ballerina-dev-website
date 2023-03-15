@@ -1,5 +1,5 @@
 ---
 title: 'Connect with Anything'
-description: 'Ballerina has pre-built connectors for different protocols, 3rd party SaaS apps, and customizable connectors for unique organizational needs, supporting various protocols, data formats, and authentication mechanisms.'
+description: 'Access thousands of connectors for HTTP APIs (OpenAPI), event APIs (AsyncAPI), GraphQL services, legacy systems, and data stores, allowing seamless data transfer to and from any system, anywhere.'
 image: 'images/powerful-connectivity.png'
 ---

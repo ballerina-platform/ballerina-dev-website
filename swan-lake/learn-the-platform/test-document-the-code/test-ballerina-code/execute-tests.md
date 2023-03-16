@@ -162,6 +162,23 @@ Also, dump the test results in the JSON format.
 $ bal test --test-report --code-coverage --coverage-format=xml
 ```
 
+Exclude files or modules from the code coverage report. The exclusion list can be provided as a comma-separated list of absolute or relative paths. Glob patterns such as `*` and `**` can be used in the paths.
+
+For an instance,
+```
+./  or ./**                                        --> All the source files in the package.
+./*                                                --> All the sources in the default module.
+./generated  or ./generated/**                     --> All the sources under generated directory.
+./modules or ./modules/**                          --> All the sources under module directory.
+./modules/*/util.bal                               --> All the util.bal sources under modules directory.
+*.bal                                              --> All the ballerina source files
+./*.bal                                            --> All the ballerina sources in the default module.
+/Home/User/package/main.bal                        --> Absolute path.
+```
+
+```
+$ bal test --test-report --code-coverage --coverage-format=xml --excludes='./generated'
+```
 
 For more options of the test command, run the following.
 

@@ -24,6 +24,7 @@ public function main() returns error? {
     };
     finetunes:FineTune fineTuneResponse = 
         check openaiFineTunes->/fine\-tunes.post(fineTuneRequest);
-    io:println(string `Fine-tune job started successfully with ID: ${fineTuneResponse.id}`);
+    io:println(string `Fine-tune job started successfully with ID: ${
+                       fineTuneResponse.id}`);
 }
 ```

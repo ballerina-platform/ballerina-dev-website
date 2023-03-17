@@ -18,8 +18,8 @@ audio:CreateTranscriptionResponse transcriptionRes =
 io:println("Audio text in English: ", transcriptionRes.text);
 
 // Creates a request to translate the text from English to other language
-string prmt = string `Translate the following text from English to 
-    ${TRANSLATINGLANGUAGE} : ${transcriptionRes.text}`;
+string prmt = string `Translate the following text from English to ${
+    TRANSLATINGLANGUAGE} : ${transcriptionRes.text}`;
 
 text:CreateCompletionRequest completionReq = {
     model: "text-davinci-003",

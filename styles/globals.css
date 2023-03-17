@@ -1313,6 +1313,7 @@ table.cTopControlsContainer tbody {
   display: inline-block;
   /* overflow-y: scroll; */
   white-space: nowrap;
+  /* overflow: hidden; */
 }
 
 #right_panel {
@@ -1413,7 +1414,16 @@ table.cTopControlsContainer tbody {
     line-height: 18px;
 }
 
+.code-panel.diagram {
+  overflow: hidden;
+  text-align: center;
+  padding: 30px;
+}
+
+/* .code-panel .diagram img {
+  width: 100%;
+} */
+
 .odd .nav-link.active {
   background-color: #eeeeee !important;
 }
-

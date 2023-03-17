@@ -141,9 +141,9 @@ export default function UseCases(props) {
 
                                 <div id="code-container" className='d-none d-sm-block'>
                                     <div id="left_panel">
-                                        <p className='title-old'>old code</p>
+                                        <p className='title-old'>Code</p>
                                         {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
-                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample1.code }} />
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: why.code }} />
                                         {/* <div className="code-panel">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                                             <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -154,8 +154,11 @@ export default function UseCases(props) {
                                             <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute button-wrap" ><circle cx="23" cy="23" r="23" fill="#20b6b0"></circle><path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path><path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path></svg>
                                         </div>
 
-                                        <p className='title-new'>new code</p>
-                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} />
+                                        <p className='title-new'>Diagram</p>
+                                        {/* <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} /> */}
+                                        <div className="code-panel diagram">
+                                            <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                        </div>
                                         {/* <div className="code-panel">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                                             <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -166,12 +169,14 @@ export default function UseCases(props) {
 
                                 {/* mobile view */}
                                 <div id="code-tab" className='d-block d-sm-none'>
-                                    <Tabs defaultActiveKey="Old" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="Old" title="Old code">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text</p>
+                                    <Tabs defaultActiveKey="code" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="code" title="Code">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: why.code }} />
+                                            </div>
                                         </Tab>
-                                        <Tab eventKey="New" title="New code">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text</p>
+                                        <Tab eventKey="diagram" title="Diagram">
+                                            <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
                                         </Tab>
                                     </Tabs>
                                 </div>

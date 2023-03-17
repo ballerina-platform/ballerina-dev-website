@@ -1301,6 +1301,7 @@ table.cTopControlsContainer tbody {
   /* display: flex;
   flex-flow: row wrap; */
   border-radius: 4px;
+  display: flex;
 }
 
 #left_panel {
@@ -1417,8 +1418,8 @@ table.cTopControlsContainer tbody {
 }
 
 .code-panel pre {
-  /* overflow-y: scroll; */
-  overflow-y: hidden;
+  overflow-y: scroll;
+  /* overflow-y: hidden; */
   /* white-space: nowrap; */
   /* height: 556px; */
   height: 621px;
@@ -1430,6 +1431,8 @@ table.cTopControlsContainer tbody {
     padding-bottom: 30px;
     font-size: 11.375px;
     line-height: 18px;
+
+    overflow-x: hidden;
 
 
 

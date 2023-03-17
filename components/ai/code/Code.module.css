@@ -54,3 +54,11 @@ a.cDownload span {
 #code-container .codeSnippet {
     overflow-y: scroll;
 }
+
+.dVersion {
+    font-size: 16px;
+}
+
+.dVersion span {
+    font-style: italic;
+}

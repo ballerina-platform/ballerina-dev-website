@@ -115,7 +115,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the repositories below.
 
-- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)
+- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.5.0+is%3Aclosed+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.5.0+is%3Aclosed+label%3AArea%2FDebugger+label%3AType%2FBug)
 - [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.5.0+%22+label%3AType%2FBug)
@@ -124,6 +124,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### New features
 
+- Introduced `bal deprecate`. With this command, now a package in the Ballerina Central can be deprecated and undeprecated by the owner.
+
 ### Improvements
 
+- Added support for maintaining generated test code in a Ballerina package
+- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases
+
 ### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)

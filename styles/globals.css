@@ -1293,11 +1293,13 @@ table.cTopControlsContainer tbody {
 /* ----------- draggable code blocks -------------- */
 #code-container {
   width: 100%;
-  height: 600px;
+  /* height: auto; */
+  min-height: 600px;
   position: relative;
   font-family: monospace;
   /* display: flex;
   flex-flow: row wrap; */
+  border-radius: 4px;
 }
 
 #left_panel {
@@ -1309,7 +1311,8 @@ table.cTopControlsContainer tbody {
   background-color: #ffffff;
   /* background: grey; */
   display: inline-block;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  white-space: nowrap;
 }
 
 #right_panel {
@@ -1322,8 +1325,16 @@ table.cTopControlsContainer tbody {
   background: black; */
   background-color: #ffffff;
   display: inline-block;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  white-space: nowrap;
 }
+
+/* .greenline {
+	background: #20b6b0;
+	height: 583px;
+	width: 4px;
+	margin: auto;
+} */
 
 #drag {
   position: absolute;
@@ -1333,14 +1344,69 @@ table.cTopControlsContainer tbody {
   width: 8px;
   cursor: w-resize;
   background: #20b6b0
+  /* position: absolute;
+	left: -4px;
+	top: 0;
+	bottom: 0;
+	width: 57px;
+	cursor: w-resize;
+	background: transparent; */
 }
 
-#code-container .title {
+#code-container .title-new {
   background-color: #20b6b0;
   color: #fff;
   padding: 10px;
+  margin-bottom: 0;
+}
+
+#code-container .title-old {
+  background-color: #464646;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+#code-tab li {
+  white-space: break-spaces;
 }
 
 #code-tab .tab-pane p {
   font-family: monospace;
 }
+
+#code-container .button-wrap {
+  /* background-color: #20b6b0;
+  border-radius: 50%;
+  position: absolute; */
+  /* left: 60px; */
+  /* border: 1px solid #000;
+  width: 50px;
+  height: 50px;
+  display: block; */
+  /* vertical-align: middle; */
+  top: calc(50% - 23px);
+    left: calc(50% - 23px);
+    position: absolute;
+    display: block;
+    vertical-align: middle;
+}
+
+.code-panel pre {
+  overflow-y: scroll;
+  /* white-space: nowrap; */
+  height: 556px;
+  margin-top: 0;
+
+  padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 11.375px;
+    line-height: 18px;
+}
+
+.odd .nav-link.active {
+  background-color: #eeeeee !important;
+}
+

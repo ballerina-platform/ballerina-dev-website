@@ -36,7 +36,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions, and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
+- Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates
 
@@ -64,7 +64,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `graphql` package
 
-- Added support for federation subgraph.
+- Added support for the federation subgraph.
 
 ### Improvements
 

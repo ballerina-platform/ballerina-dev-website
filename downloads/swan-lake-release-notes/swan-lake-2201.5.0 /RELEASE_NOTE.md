@@ -71,6 +71,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### `graphql` package
 
 - Added parallel execution support for GraphQL resolvers.
+- Allowed adding a single interceptor without creating an array.
 
 ### Bug fixes
 

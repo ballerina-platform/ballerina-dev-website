@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Language.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -26,7 +26,8 @@ export default function Language(props) {
 
   return (
     <>
-      <Row className="pageContentRow learnRow llanding">
+    <Container>
+    <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2 id="learn-the-language" className='section'>
             <svg
@@ -87,6 +88,8 @@ export default function Language(props) {
           </div>
         </Col>
       </Row>
+    </Container>
+      
     </>
   );
 }

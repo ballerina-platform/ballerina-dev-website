@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Intro.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -26,7 +26,8 @@ export default function Intro() {
 
     return (
         <>
-            <Row className=" justify-content-md-center llanding">
+       <Container>
+       <Row className=" justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/install-ballerina/set-up-ballerina`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.primary}`}>
@@ -74,6 +75,12 @@ export default function Intro() {
                     </a>
                 </Col>
             </Row>
+           
+       </Container>
+       
+            
+       
+           
         </>
     );
 }

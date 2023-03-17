@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Platform.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -26,7 +26,8 @@ export default function Platform(props) {
 
   return (
     <>
-      <Row className="pageContentRow learnRow llanding">
+    <Container>
+    <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2 id="learn-the-platform" className='section'>
             <svg
@@ -285,6 +286,8 @@ export default function Platform(props) {
         </Col>
         
       </Row>
+    </Container>
+     
     </>
   );
 }

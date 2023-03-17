@@ -4,8 +4,6 @@ description: "Built-in mathematical operations such as distance measures, optimi
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/compare_similarity_between_two_texts_using_openai/main.bal'
 ---
 ```
-configurable string openAIToken = ?;
-
 public function main() returns error? {
 
     final embeddings:Client openaiEmbeddings = check new ({auth: {token: openAIToken}});
@@ -16,8 +14,7 @@ public function main() returns error? {
     embeddings:CreateEmbeddingRequest embeddingRequest = {
         model: "text-embedding-ada-002",
         input: [text1, text2]
-    }; 
-
+    };
     embeddings:CreateEmbeddingResponse embeddingResponse = 
         check openaiEmbeddings->/embeddings.post(embeddingRequest);
 

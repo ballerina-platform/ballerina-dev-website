@@ -4,11 +4,7 @@ description: "Take on the unpredictable world of distributed systems with Baller
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal#L10'
 ---
 ```
-configurable string openAIToken = ?;
-
 public function main(string filePath) returns error? {
-    string content = check io:fileReadString(filePath);
-
     http:RetryConfig retryConfig = {
         interval: 5, // Initial retry interval in seconds.
         count: 3, // Number of retry attempts before stopping.
@@ -17,7 +13,7 @@ public function main(string filePath) returns error? {
     final text:Client openAIText = check new ({auth: {token: openAIToken}, retryConfig});
 
     text:CreateEditRequest editReq = {
-        input: content,
+        input: check io:fileReadString(filePath),
         instruction: "Fix grammar and spelling mistakes.",
         model: "text-davinci-edit-001"
     };

@@ -13,11 +13,13 @@ audio:CreateTranslationRequest translationsReq = {
 
 // Translates the audio file to text (English)
 audio:Client openAIAudio = check new ({auth: {token: openAIKey}});
-audio:CreateTranscriptionResponse transcriptionRes = check openAIAudio->/audio/translations.post(translationsReq);
+audio:CreateTranscriptionResponse transcriptionRes = 
+    check openAIAudio->/audio/translations.post(translationsReq);
 io:println("Audio text in English: ", transcriptionRes.text);
 
 // Creates a request to translate the text from English to other language
-string prmt = string `Translate the following text from English to ${TRANSLATINGLANGUAGE} : ${transcriptionRes.text}`;
+string prmt = string `Translate the following text from English to 
+    ${TRANSLATINGLANGUAGE} : ${transcriptionRes.text}`;
 text:CreateCompletionRequest completionReq = {
     model: "text-davinci-003",
     prompt: prmt,
@@ -30,7 +32,8 @@ text:CreateCompletionRequest completionReq = {
 
 // Translates the text from English to other language
 text:Client openAIText = check new ({auth: {token: openAIKey}});
-text:CreateCompletionResponse completionRes = check openAIText->/completions.post(completionReq);
+text:CreateCompletionResponse completionRes = 
+    check openAIText->/completions.post(completionReq);
 string translatedText = check completionRes.choices[0].text.ensureType();
 io:println("Translated text: ", translatedText);
 ```

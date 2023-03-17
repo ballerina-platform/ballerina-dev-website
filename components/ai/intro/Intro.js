@@ -38,7 +38,7 @@ export default function Intro() {
                         </p>
 
                         <p className={styles.introText3}>
-                            Ballerina is the best language to write your AI powered applications that consume LLMs and other generative models.
+                            Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models.
                         </p>
 
                         <p className={styles.dVersion}>

@@ -1294,7 +1294,8 @@ table.cTopControlsContainer tbody {
 #code-container {
   width: 100%;
   /* height: auto; */
-  min-height: 600px;
+  /* min-height: 600px; */
+  min-height: 670px;
   position: relative;
   font-family: monospace;
   /* display: flex;
@@ -1314,6 +1315,11 @@ table.cTopControlsContainer tbody {
   /* overflow-y: scroll; */
   white-space: nowrap;
   /* overflow: hidden; */
+  /* scroll-behavior: unset; */
+  /* touch-action: none !important;
+    -webkit-overflow-scrolling: none !important;
+    overflow: hidden !important;
+    overscroll-behavior: none !important; */
 }
 
 #right_panel {
@@ -1328,6 +1334,8 @@ table.cTopControlsContainer tbody {
   display: inline-block;
   /* overflow-y: scroll; */
   white-space: nowrap;
+
+  z-index: 999;
 }
 
 /* .greenline {
@@ -1344,7 +1352,7 @@ table.cTopControlsContainer tbody {
   bottom: 0;
   width: 8px;
   cursor: w-resize;
-  background: #20b6b0
+  background: #20b6b0;
   /* position: absolute;
 	left: -4px;
 	top: 0;
@@ -1352,6 +1360,7 @@ table.cTopControlsContainer tbody {
 	width: 57px;
 	cursor: w-resize;
 	background: transparent; */
+  z-index: 1000;
 }
 
 #code-container .title-new {
@@ -1359,6 +1368,7 @@ table.cTopControlsContainer tbody {
   color: #fff;
   padding: 10px;
   margin-bottom: 0;
+  overflow: hidden;
 }
 
 #code-container .title-old {
@@ -1398,12 +1408,20 @@ table.cTopControlsContainer tbody {
   white-space: nowrap;
   /* height: 556px;
   margin-top: 0; */
+
+
+
+  /* overflow-y: hidden;
+  height: 600px;
+  margin-top: 0; */
 }
 
 .code-panel pre {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow-y: hidden;
   /* white-space: nowrap; */
-  height: 556px;
+  /* height: 556px; */
+  height: 621px;
   margin-top: 0;
 
   padding-left: 30px;
@@ -1412,12 +1430,20 @@ table.cTopControlsContainer tbody {
     padding-bottom: 30px;
     font-size: 11.375px;
     line-height: 18px;
+
+
+
+    touch-action: none !important;
+    -webkit-overflow-scrolling: none !important;
+    /* overflow: hidden !important; */
+    overscroll-behavior: none !important;
 }
 
 .code-panel.diagram {
   overflow: hidden;
   text-align: center;
   padding: 30px;
+  /* width: iniauto tial; */
 }
 
 /* .code-panel .diagram img {

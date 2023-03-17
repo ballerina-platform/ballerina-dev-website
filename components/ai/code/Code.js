@@ -284,6 +284,7 @@ export default function UseCases(props) {
                                         </a>
                                     </div>
 
+
                                     <div className={styles.dVersion}> Sample 2: Create products in Shopify using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_products_in_shopify_using_sheets_data/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />

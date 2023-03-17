@@ -1,7 +1,7 @@
 ---
 title: 'Write robust API-powered AI applications'
 description: "Take on the unpredictable world of distributed systems with Ballerina's built-in language and standard library features. Writing robust API-powered AI applications is now a breeze for every developer, no matter the challenges!"
-iurl: 'https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal#L10'
+url: 'https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal#L10'
 ---
 ```
 configurable string openAIToken = ?;

@@ -21,7 +21,8 @@ service / on new http:Listener(9090) {
             ${benefits}, 
             ${features}`
         };
-        images:ImagesResponse imageRes = check openAIImages->/images/generations.post(imagePrmt);
+        images:ImagesResponse imageRes = 
+            check openAIImages->/images/generations.post(imagePrmt);
 
         // Create a product in Shopify.
         shopify:CreateProduct product = {

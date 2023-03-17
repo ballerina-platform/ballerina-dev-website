@@ -17,17 +17,20 @@ service / on new http:Listener(8080) {
             string title = <string>row[0];
             string content = <string>row[1];
             self.documents[title] = content;
-            self.docEmbeddings[title] = check getEmbedding(string `${title} ${"\n"} ${content}`);
+            self.docEmbeddings[title] = check getEmbedding(string `${title} ${"\n"} ${
+                                                                   content}`);
         }
     }
 
     resource function get answer(string question) returns string?|error {
-        string prompt = check constructPrompt(question, self.documents, self.docEmbeddings);
+        string prompt = check constructPrompt(question, self.documents, 
+                        self.docEmbeddings);
         text:CreateCompletionRequest prmt = {
             prompt: prompt,
             model: "text-davinci-003"
         };
-        text:CreateCompletionResponse completionRes = check openaiText->/completions.post(prmt);
+        text:CreateCompletionResponse completionRes = 
+            check openaiText->/completions.post(prmt);
         return completionRes.choices[0].text;
     }
 }

@@ -11,12 +11,14 @@ public function main() returns error? {
             prompt,
             response_format: "b64_json"
         };
-        images:ImagesResponse imageRes = check openAIImages->/images/generations.post(imagePrompt);
+        images:ImagesResponse imageRes = 
+            check openAIImages->/images/generations.post(imagePrompt);
         string encodedImage = check imageRes.data[0].b64_json.ensureType();
 
         // Decode the Base64 string and store image in Google Drive
         byte[] imageBytes = check array:fromBase64(encodedImage);
-        _ = check gDrive->uploadFileUsingByteArray(imageBytes, string `${prompt}.png`, gDriveFolderId);
+        _ = check gDrive->uploadFileUsingByteArray(imageBytes, 
+                          string `${prompt}.png`, gDriveFolderId);
     }
 }
 ```

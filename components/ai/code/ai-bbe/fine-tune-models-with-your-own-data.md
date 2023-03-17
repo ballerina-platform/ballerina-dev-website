@@ -4,34 +4,26 @@ description: "OpenAI’s Fine Tuning API lets you create a model that understand
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/finetune_openai_models/main.bal'
 ---
 ```
-configurable string openAIToken = ?;
-configurable string trainFilePath = ?;
-
 public function main() returns error? {
-
     finetunes:Client openaiFineTunes = check new ({auth: {token: openAIToken}});
 
-    byte[] fileContent = check io:fileReadBytes(trainFilePath);
-    string fileName = "train_prepared.jsonl";
-
     finetunes:CreateFileRequest fileRequest = {
-        file: {fileContent, fileName},
+        file: {
+            fileContent: check io:fileReadBytes(TRAIN_DATA_FILE_PATH),
+            fileName: TRAIN_DATA_FILE_NAME
+        },
         purpose: "fine-tune"
     };
-
     finetunes:OpenAIFile fileResponse = check openaiFineTunes->/files.post(fileRequest);
-
-    io:println("Training file uploaded successfully with ID " + fileResponse.id + ".");
+    io:println(string `Training file uploaded successfully with ID: ${fileResponse.id}`);
 
     finetunes:CreateFineTuneRequest fineTuneRequest = {
         training_file: fileResponse.id,
         model: "ada",
         n_epochs: 4
     };
-
     finetunes:FineTune fineTuneResponse = 
         check openaiFineTunes->/fine\-tunes.post(fineTuneRequest);
-
-    io:println("Fine-tune job started successfully with ID " + fineTuneResponse.id + ".");
+    io:println(string `Fine-tune job started successfully with ID: ${fineTuneResponse.id}`);
 }
 ```

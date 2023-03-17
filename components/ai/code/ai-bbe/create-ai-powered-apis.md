@@ -7,7 +7,7 @@ url: 'https://github.com/ballerina-guides/ai-samples/blob/main/question_answerin
 service / on new http:Listener(8080) {
 
     map<string> documents = {};
-    map<decimal[]> docEmbeddings = {};
+    map<float[]> docEmbeddings = {};
 
     function init() returns error? {
         sheets:Range range = check gSheets->getRange(sheetId, sheetName, "A2:B");
@@ -17,7 +17,7 @@ service / on new http:Listener(8080) {
             string title = <string>row[0];
             string content = <string>row[1];
             self.documents[title] = content;
-            self.docEmbeddings[title] = check getEmbedding(title + "\n" + content);
+            self.docEmbeddings[title] = check getEmbedding(string `${title} ${"\n"} ${content}`);
         }
     }
 

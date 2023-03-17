@@ -169,12 +169,14 @@ export default function UseCases(props) {
 
                                 {/* mobile view */}
                                 <div id="code-tab" className='d-block d-sm-none'>
-                                    <Tabs defaultActiveKey="Old" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="Old" title="Old code">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text</p>
+                                    <Tabs defaultActiveKey="code" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="code" title="Code">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: why.code }} />
+                                            </div>
                                         </Tab>
-                                        <Tab eventKey="New" title="New code">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text</p>
+                                        <Tab eventKey="diagram" title="Diagram">
+                                            <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
                                         </Tab>
                                     </Tabs>
                                 </div>

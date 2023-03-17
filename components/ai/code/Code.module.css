@@ -50,3 +50,7 @@ a.cDownload span {
 .description {
     margin-bottom: 20px;
 }
+
+#code-container .codeSnippet {
+    overflow-y: scroll;
+}

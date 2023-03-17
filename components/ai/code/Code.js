@@ -31,11 +31,23 @@ export default function UseCases(props) {
     const samples = props.samples;
 
     const why = samples['why-is-ballerina-the-way-you-should-write-ai-applications'];
+
     const chat = samples['bring-text-alive-with-openai-chats'];
+    const chat1 = samples['openai1'];
+    const chat2 = samples['openai2'];
+
+
     const dalle = samples['create-images-with-dall-e'];
+    const dalle1 = samples['dalle1'];
+    const dalle2 = samples['dalle2'];
+    const dalle3 = samples['dalle3'];
+
     const music = samples['transcribe-speech-or-music-with-whisper'];
+    const sample1 = samples['music1'];
+    const sample2 = samples['music2'];
+
     const tune = samples['fine-tune-models-with-your-own-data'];
-    const vector = samples['connectors-for-vector-databases'];
+    // const vector = samples['connectors-for-vector-databases'];
     const libraries = samples['libraries-for-ai-operations'];
     const powered = samples['create-ai-powered-apis'];
     const robust = samples['write-robust-api-powered-ai-applications'];
@@ -85,7 +97,7 @@ export default function UseCases(props) {
     return (
         <>
             {/* why */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -129,13 +141,26 @@ export default function UseCases(props) {
 
                                 <div id="code-container" className='d-none d-sm-block'>
                                     <div id="left_panel">
-                                        <p className='title'>old code</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text</p>
+                                        <p className='title-old'>old code</p>
+                                        {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample1.code }} />
+                                        {/* <div className="code-panel">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                            <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        </div> */}
                                     </div>
                                     <div id="right_panel">
-                                        <div id="drag"></div>
-                                        <p className='title'>new code</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        <div id="drag">
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute button-wrap" ><circle cx="23" cy="23" r="23" fill="#20b6b0"></circle><path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path><path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path></svg>
+                                        </div>
+
+                                        <p className='title-new'>new code</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} />
+                                        {/* <div className="code-panel">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                            <br/>Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                        </div> */}
+
                                     </div>
                                 </div>
 
@@ -158,7 +183,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* chat */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -184,33 +209,36 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{chat.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}> Sample 1 : Summarize text using OpenAI
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
 
-                                    {
-                                        (chat.frontmatter.url && chat.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={chat.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
+                                    <div className={styles.dVersion}> Sample 2 : Correct grammar and spelling in text using OpenAI
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (chat.code && chat.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: chat.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (chat.frontmatter.image && chat.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${chat.frontmatter.image}`} alt={chat.frontmatter.title} />
-                                        : null
-                                }
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="chat1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="chat1" title="Sample 1">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat1.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="chat2" title="Sample 2">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat2.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -218,7 +246,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* dalle */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -244,33 +272,48 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}> Sample 1 : Generate images using OpenAI and store in google drive
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
 
-                                    {
-                                        (dalle.frontmatter.url && dalle.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={dalle.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                    <div className={styles.dVersion}> Sample 2 : Create products in shopify using sheets data
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_products_in_shopify_using_sheets_data/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
 
+                                    <div className={styles.dVersion}> Sample 3 : Create and send customized greeting cards using OpenAI
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (dalle.code && dalle.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (dalle.frontmatter.image && dalle.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${dalle.frontmatter.image}`} alt={dalle.frontmatter.title} />
-                                        : null
-                                }
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="dalle1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="dalle1" title="Sample 1">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle1.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="dalle2" title="Sample 2">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle2.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="dalle3" title="Sample 3">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle3.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -278,7 +321,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* music */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -304,33 +347,36 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}> Sample 1 : Convert audio to text and translate using OpenAI
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
 
-                                    {
-                                        (music.frontmatter.url && music.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={music.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
+                                    <div className={styles.dVersion}> Sample 2 : Audio to text summarization using OpenAI
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (music.code && music.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: music.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (music.frontmatter.image && music.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${music.frontmatter.image}`} alt={music.frontmatter.title} />
-                                        : null
-                                }
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="sample1" title="Sample 1">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample1.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="sample2" title="Sample 2">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: sample2.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -338,7 +384,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* tune */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -398,7 +444,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* vector */}
-            <Row className="pageContentRow integration code odd">
+            {/* <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -455,7 +501,7 @@ export default function UseCases(props) {
                         </Row>
                     </Container>
                 </Col>
-            </Row>
+            </Row> */}
 
             {/* libraries */}
             <Row className="pageContentRow integration code">
@@ -548,7 +594,7 @@ export default function UseCases(props) {
                                     {
                                         (powered.frontmatter.url && powered.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={github.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>

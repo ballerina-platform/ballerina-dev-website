@@ -53,8 +53,8 @@ export async function getStaticProps() {
     const { data: frontmatter, content } = matter(filename);
     samples[sampleName] = {
       frontmatter: {
-        title: frontmatter.title,
-        description: frontmatter.description,
+        title: frontmatter.title? frontmatter.title : '',
+        description: frontmatter.description? frontmatter.description : '',
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
@@ -170,9 +170,9 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          <Row className="pageContentRow integration usecases">
+          {/* <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
-          </Row>
+          </Row> */}
           {/* <Row className="pageContentRow integration code"> */}
             <Code samples={samples} getLink={getLink} />
           {/* </Row> */}

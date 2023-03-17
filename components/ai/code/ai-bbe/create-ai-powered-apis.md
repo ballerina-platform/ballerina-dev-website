@@ -1,5 +1,34 @@
 ---
-title: 'Create AI powered APIs'
-description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-image: 'images/screenshots-collage-final-image-transparent-v5.png'
+title: 'Create AI powered APIs, Automations and Event Handlers'
+description: "Effortlessly tackle any API-powered AI integration by leveraging the network abstractions of Ballerina to create APIs, automations, and event handlers for your applications."
+url: 'https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai/main.bal'
 ---
+```
+service / on new http:Listener(8080) {
+
+    map<string> documents = {};
+    map<decimal[]> docEmbeddings = {};
+
+    function init() returns error? {
+        sheets:Range range = check gSheets->getRange(sheetId, sheetName, "A2:B");
+
+        //Populate the dictionaries with the content and embeddings for each doc.
+        foreach any[] row in range.values {
+            string title = <string>row[0];
+            string content = <string>row[1];
+            self.documents[title] = content;
+            self.docEmbeddings[title] = check getEmbedding(title + "\n" + content);
+        }
+    }
+
+    resource function get answer(string question) returns string?|error {
+        string prompt = check constructPrompt(question, self.documents, self.docEmbeddings);
+        text:CreateCompletionRequest prmt = {
+            prompt: prompt,
+            model: "text-davinci-003"
+        };
+        text:CreateCompletionResponse completionRes = check openaiText->/completions.post(prmt);
+        return completionRes.choices[0].text;
+    }
+}
+```

@@ -214,14 +214,14 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{chat.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1 : Summarize text using OpenAI
+                                    <div className={styles.dVersion}> Sample 1: Summarize text using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 2 : Correct grammar and spelling in text using OpenAI
+                                    <div className={styles.dVersion}> Sample 2: Correct grammar and spelling in text using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -277,21 +277,21 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1 : Generate images using OpenAI and store in google drive
+                                    <div className={styles.dVersion}> Sample 1: Generate images using OpenAI and store them in google drive
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 2 : Create products in shopify using sheets data
+                                    <div className={styles.dVersion}> Sample 2: Create products in Shopify using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_products_in_shopify_using_sheets_data/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 3 : Create and send customized greeting cards using OpenAI
+                                    <div className={styles.dVersion}> Sample 3: Create and send customized greeting cards using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -352,14 +352,14 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1 : Convert audio to text and translate using OpenAI
+                                    <div className={styles.dVersion}> Sample 1: Convert audio to text and translate using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 2 : Audio to text summarization using OpenAI
+                                    <div className={styles.dVersion}> Sample 2: Audio to text summarization using OpenAI
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub

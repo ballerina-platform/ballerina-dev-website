@@ -1,6 +1,6 @@
 ---
 title: 'Libraries for AI operations'
-description: "Built in mathematical operations such as distance measures, optimizations etc.  which are a common building block in AI use cases."
+description: "Built-in mathematical operations such as distance measures, optimizations, etc., which are a common building block in AI use cases."
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/compare_similarity_between_two_texts_using_openai/main.bal'
 ---
 ```

@@ -34,11 +34,11 @@ export default function Intro() {
                     <div>
 
                         <p className={styles.introText2}>
-                            AI is no longer about training models but rather invoking APIs with AI available as a Service from OpenAI, Microsoft, Google, Facebook and others.
+                            AI is no longer about training models but rather invoking APIs with AI available as a Service from OpenAI, Microsoft, Google, Facebook, and others.
                         </p>
 
                         <p className={styles.introText3}>
-                            Ballerina is the best language to write your AI powered applications that consume LLMs and other generative models.
+                            Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models.
                         </p>
 
                         <p className={styles.dVersion}>

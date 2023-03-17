@@ -12,7 +12,7 @@ audio:CreateTranscriptionResponse transcriptionRes =
     
 io:println("Audio text in English: ", transcriptionRes.text);
 
-// Creates a request to translate the text from English to other language
+// Creates a request to translate the text from English to another language
 string prmt = string `Translate the following text from English to ${TRANSLATINGLANGUAGE} 
     : ${transcriptionRes.text}`;
 

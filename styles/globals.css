@@ -1392,6 +1392,13 @@ table.cTopControlsContainer tbody {
     vertical-align: middle;
 }
 
+.code-panel {
+  /* overflow-y: scroll; */
+  white-space: nowrap;
+  /* height: 556px;
+  margin-top: 0; */
+}
+
 .code-panel pre {
   overflow-y: scroll;
   /* white-space: nowrap; */

@@ -36,6 +36,44 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Fixed a bug that resulted in invalid usage of additive expressions with operands of different incompatible basic types not resulting in a compilation error.
+
+    ```ballerina
+    public function main() {
+        "abc"|string:Char a = "a";
+        var b = a + 1; // compilation error now
+        var c = ["a","b","c"].map(s => s + 1); // compilation error now
+    } 
+    ```
+
+- Fixed a bug that previously resulted in incorrect type checking for an intersection with `readonly` against an incompatible union type as the expected type.
+
+    ```ballerina
+    type Employee record {|
+        string[] name;
+        int id;
+    |};
+
+    public function main() {
+        json & readonly v = {};
+        
+        string|error r = v; // compilation error now
+        Employee|string s = v.cloneReadOnly(); // compilation error now
+    }
+    ```
+
+- Fixed a bug in dependently-typed function analysis which previously resulted in compilation errors not being logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) where the basic types for `T` and `t` are not disjoint.
+
+    ```ballerina
+    public type TargetType typedesc<anydata>;
+
+    // already a compilation error
+    function f1(typedesc<anydata> targetType = <>) returns targetType|json = external;
+
+    // also a compilation error now
+    function f2(TargetType targetType = <>) returns targetType|json = external;
+    ```
+
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates

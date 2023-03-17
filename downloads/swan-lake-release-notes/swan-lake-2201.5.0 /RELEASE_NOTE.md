@@ -38,6 +38,18 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
+- Fixed a bug that previously possible to use the name of a field of an included record parameter as the name of the included record parameter in function definitions.
+    
+    ```ballerina
+    type Employee record {|
+        string[] name;
+        int id;
+    |};
+    
+    public function main(*Employee name) { // compilation error now
+    }
+    ```
+
 ## Language updates
 
 ### New features

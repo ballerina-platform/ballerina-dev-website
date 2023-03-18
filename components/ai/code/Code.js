@@ -76,10 +76,14 @@ export default function UseCases(props) {
 
                 var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
 
-                if (offsetRight <= 50 || offsetRight >= 690) {
+                //stop resizing if the left panel or right panel is too small
+                if (e.clientX - container.offsetLeft <=50 || offsetRight <= 50) {
+
                     isResizing = false;
                     return;
                 }
+
+                
 
                 left.style.right = offsetRight + "px";
                 right.style.width = offsetRight + "px";
@@ -137,9 +141,9 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
 
-                                <div id="code-container" className='d-none d-sm-block'>
+                            <div id="code-container" className='d-none d-lg-block'>
                                     <div id="left_panel">
                                         <p className='title-old'>Code</p>
                                         {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
@@ -158,6 +162,7 @@ export default function UseCases(props) {
                                         {/* <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} /> */}
                                         <div className="code-panel diagram">
                                             <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                            {/* <img src={`${prefix}/images/ai-diagram.png`} alt={why.frontmatter.title} className={styles.doNotFill} width='71%' /> */}
                                         </div>
                                         {/* <div className="code-panel">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -167,8 +172,11 @@ export default function UseCases(props) {
                                     </div>
                                 </div>
 
+
+
+
                                 {/* mobile view */}
-                                <div id="code-tab" className='d-block d-sm-none'>
+                                <div id="code-tab" className='d-block d-lg-none'>
                                     <Tabs defaultActiveKey="code" id="code" className="mb-3 codeTabs">
                                         <Tab eventKey="code" title="Code">
                                             <div className={styles.codeSnippet}>
@@ -214,15 +222,17 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{chat.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1: Summarize text using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 1: Summarize text using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 2: Correct grammar and spelling in text using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 2: Correct grammar and spelling in text using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -277,23 +287,26 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1: Generate images using OpenAI and store them in google drive
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 1: Generate images using OpenAI and store them in google drive</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
 
-                                    <div className={styles.dVersion}> Sample 2: Create products in Shopify using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_products_in_shopify_using_sheets_data/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 2: Create products in Shopify using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/tree/main/create_products_in_shopify_using_openai' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 3: Create and send customized greeting cards using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 3: Create and send customized greeting cards using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -353,15 +366,17 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}> Sample 1: Convert audio to text and translate using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 1: Convert audio to text and translate using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
-                                    <div className={styles.dVersion}> Sample 2: Audio to text summarization using OpenAI
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 2: Audio to text summarization using OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>

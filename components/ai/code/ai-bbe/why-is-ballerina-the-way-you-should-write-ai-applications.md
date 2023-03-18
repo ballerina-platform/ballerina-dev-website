@@ -1,8 +1,9 @@
 ---
 title: 'Why is Ballerina the way you should write AI applications?'
-description: "Looking to create AI-powered applications that can consume and exchange data from various APIs? Look no further than Ballerina! With its unique features, including network abstractions and support for native data types like JSON, and query expressions, Ballerina makes building applications that utilize LLMs and other generative models easy.
+description: "Looking to create AI-powered applications that can consume and exchange data from various APIs? Look no further than Ballerina! With its unique features, including network abstractions and support for native data types like JSON, and query expressions, Ballerina makes building applications that utilize LLMs and other generative models easy.<br/>
+<a href='https://central.ballerina.io/search?q=package%3Aopenai.' target='_blank' title='View our AI connectors'>View Ballerina AI connectors</a>
 "
-url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'
+url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/'
 ---
 ```
 public function main(string audioURL, string translatingLanguage) returns error? {

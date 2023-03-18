@@ -1417,8 +1417,8 @@ table.cTopControlsContainer tbody {
 }
 
 .code-panel pre {
-  /* overflow-y: scroll; */
-  overflow-y: hidden;
+  overflow-y: scroll;
+  /* overflow-y: hidden; */
   /* white-space: nowrap; */
   /* height: 556px; */
   height: 621px;
@@ -1433,10 +1433,23 @@ table.cTopControlsContainer tbody {
 
 
 
-    touch-action: none !important;
-    -webkit-overflow-scrolling: none !important;
+    /* touch-action: none !important; */
+    /* -webkit-overflow-scrolling: none !important; */
     /* overflow: hidden !important; */
-    overscroll-behavior: none !important;
+    /* overscroll-behavior: none !important; */
+    overflow-x: scroll;
+}
+
+@media (min-width: 1200px) {
+  .code-panel pre {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 1400px) {
+  .code-panel pre {
+    overflow-x: hidden;
+  }
 }
 
 .code-panel.diagram {
@@ -1445,10 +1458,6 @@ table.cTopControlsContainer tbody {
   padding: 30px;
   /* width: iniauto tial; */
 }
-
-/* .code-panel .diagram img {
-  width: 100%;
-} */
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;

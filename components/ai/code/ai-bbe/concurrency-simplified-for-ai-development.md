@@ -1,7 +1,7 @@
 ---
 title: 'Concurrency simplified for AI development'
 description: "Ballerina's concurrency model is ideal for writing API-powered AI applications. Its sequence diagrams and concurrency control capabilities make it easy to manage and visualize complex operations, leading to more efficient and reliable AI solutions."
-url: 'https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal#L25'
+url: 'https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/'
 ---
 ```
 fork {

@@ -62,3 +62,9 @@ a.cDownload span {
 .dVersion span {
     font-style: italic;
 }
+
+.box p a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+}

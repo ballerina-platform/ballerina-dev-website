@@ -224,7 +224,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{chat.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Summarize text using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -232,7 +232,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Correct grammar and spelling in text using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -289,7 +289,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Generate images using OpenAI and store them in google drive</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -298,7 +298,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Create products in Shopify using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_products_in_shopify_using_sheets_data/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/tree/main/create_products_in_shopify_using_openai' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -306,7 +306,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 3: Create and send customized greeting cards using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -368,7 +368,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{music.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Convert audio to text and translate using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -376,7 +376,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Audio to text summarization using OpenAI</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>

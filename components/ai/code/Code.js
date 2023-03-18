@@ -76,10 +76,14 @@ export default function UseCases(props) {
 
                 var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
 
-                if (offsetRight <= 50 || offsetRight >= 690) {
+                //stop resizing if the left panel or right panel is too small
+                if (e.clientX - container.offsetLeft <=50 || offsetRight <= 50) {
+
                     isResizing = false;
                     return;
                 }
+
+                
 
                 left.style.right = offsetRight + "px";
                 right.style.width = offsetRight + "px";
@@ -137,9 +141,9 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
 
-                                <div id="code-container" className='d-none d-sm-block'>
+                            <div id="code-container" className='d-none d-lg-block'>
                                     <div id="left_panel">
                                         <p className='title-old'>Code</p>
                                         {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
@@ -158,6 +162,7 @@ export default function UseCases(props) {
                                         {/* <div className="code-panel" dangerouslySetInnerHTML={{ __html: sample2.code }} /> */}
                                         <div className="code-panel diagram">
                                             <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                            {/* <img src={`${prefix}/images/ai-diagram.png`} alt={why.frontmatter.title} className={styles.doNotFill} width='71%' /> */}
                                         </div>
                                         {/* <div className="code-panel">
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -167,8 +172,11 @@ export default function UseCases(props) {
                                     </div>
                                 </div>
 
+
+
+
                                 {/* mobile view */}
-                                <div id="code-tab" className='d-block d-sm-none'>
+                                <div id="code-tab" className='d-block d-lg-none'>
                                     <Tabs defaultActiveKey="code" id="code" className="mb-3 codeTabs">
                                         <Tab eventKey="code" title="Code">
                                             <div className={styles.codeSnippet}>

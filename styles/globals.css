@@ -1301,7 +1301,6 @@ table.cTopControlsContainer tbody {
   /* display: flex;
   flex-flow: row wrap; */
   border-radius: 4px;
-  display: flex;
 }
 
 #left_panel {
@@ -1432,14 +1431,25 @@ table.cTopControlsContainer tbody {
     font-size: 11.375px;
     line-height: 18px;
 
-    overflow-x: hidden;
 
 
-
-    touch-action: none !important;
-    -webkit-overflow-scrolling: none !important;
+    /* touch-action: none !important; */
+    /* -webkit-overflow-scrolling: none !important; */
     /* overflow: hidden !important; */
-    overscroll-behavior: none !important;
+    /* overscroll-behavior: none !important; */
+    overflow-x: scroll;
+}
+
+@media (min-width: 1200px) {
+  .code-panel pre {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 1400px) {
+  .code-panel pre {
+    overflow-x: hidden;
+  }
 }
 
 .code-panel.diagram {
@@ -1448,10 +1458,6 @@ table.cTopControlsContainer tbody {
   padding: 30px;
   /* width: iniauto tial; */
 }
-
-/* .code-panel .diagram img {
-  width: 100%;
-} */
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;

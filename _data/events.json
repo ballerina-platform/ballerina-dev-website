@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "May 10, 2023",
+            "day": "Wed.",
+            "time": "12.05 p.m. PDT",
+            "expire": "2023-05-11T00:00:00.0000-00:00",
+            "location": "Vancouver, BC",
+            "url": "https://ossna2023.sched.com/event/1K56T",
+            "eventType": "Open Source Summit North America 2023",
+            "eventName": "Modern Programming Language Abstractions for Cloud-Native Application Development",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Senior Director, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Mar 30, 2023",
             "day": "Thur.",
             "time": "5.00 p.m. GMT",

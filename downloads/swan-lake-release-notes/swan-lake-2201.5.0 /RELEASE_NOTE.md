@@ -74,6 +74,19 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     function f2(TargetType targetType = <>) returns targetType|json = external;
     ```
 
+- Fixed a bug that allowed using an included record parameter of the same name as that of a field of the parameter record type.
+    
+    ```ballerina
+    type ErrorDetail record {|
+        string 'error;
+        int code;
+        int[] locations?;
+    |};
+    
+    function getError(*ErrorDetail 'error) { // compilation error now
+    }
+    ```
+
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates
@@ -153,7 +166,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the repositories below.
 
-- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)
+- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.5.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.5.0+is%3Aclosed+label%3AType%2FBug)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.5.0+is%3Aclosed+label%3AArea%2FDebugger+label%3AType%2FBug)
 - [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.5.0+%22+label%3AType%2FBug)
@@ -162,6 +175,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### New features
 
+- Introduced `bal deprecate`. With this command, now a package in the Ballerina Central can be deprecated and undeprecated by the owner.
+
 ### Improvements
 
+- Added support for maintaining generated test code in a Ballerina package
+- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases
+
 ### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)

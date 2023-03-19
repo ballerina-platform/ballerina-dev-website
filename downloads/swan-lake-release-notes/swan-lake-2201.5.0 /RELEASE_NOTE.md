@@ -36,6 +36,19 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Fixed a bug that allowed using an included record parameter of the same name as that of a field of the parameter record type.
+    
+    ```ballerina
+    type ErrorDetail record {|
+        string 'error;
+        int code;
+        int[] locations?;
+    |};
+    
+    function getError(*ErrorDetail 'error) { // compilation error now
+    }
+    ```
+
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates

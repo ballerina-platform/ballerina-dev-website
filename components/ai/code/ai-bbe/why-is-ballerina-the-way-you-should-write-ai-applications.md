@@ -1,7 +1,19 @@
 ---
 title: 'Why is Ballerina the way you should write AI applications?'
-description: "Looking to create AI-powered applications that can consume and exchange data from various APIs? Look no further than Ballerina! With its unique features, including network abstractions and support for native data types like JSON, and query expressions, Ballerina makes building applications that utilize LLMs and other generative models easy.<br/>
-<a href='https://central.ballerina.io/search?q=package%3Aopenai.' target='_blank' title='View our AI connectors'>View Ballerina AI connectors</a>
+description: "For many years Python, a wonderful language, has been the de facto choice for data analytics, data science and machine learning.  But using LLMs to add AI to business applications is not about those problems any more but more about prompt engineering, fine tuning, calling APIs offered by hosted LLMs and chaining LLMs & combining them with other APIs.<br/><br/>
+
+Ballerina is a modern programming language that has been designed specifically for cloud-native application development.<br/><br/>
+
+Ballerina has inherent support for network service consumption & production and a network friendly data-oriented programming model. Ballerina provides a statically typed environment that helps to prevent errors and improve code reliability. The ability to automatically visualize any Ballerina program as a sequence diagram makes it easy to see how applications use external APIs.<br/><br/>
+
+Ballerina is your best choice for writing modern cloud-native applications that incorporate LLM powered AI!
+<br/><br/>
+<a href='https://central.ballerina.io/search?q=package%3Aopenai.' target='_blank' title='Explore Ballerina’s OpenAI connectors'>Explore Ballerina’s OpenAI connectors</a>
+<br/>
+<a href='https://central.ballerina.io/ballerina/math.vector' target='_blank' title='EExplore Ballerina’s vector library'>Explore Ballerina’s vector library</a>
+<br/>
+<small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small>
+
 "
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/'
 ---

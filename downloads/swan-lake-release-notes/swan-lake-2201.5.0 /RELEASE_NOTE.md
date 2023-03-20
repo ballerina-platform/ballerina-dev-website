@@ -118,14 +118,11 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 The command-line arguments of Ballerina built-in subtypes are now supported to be parsed as operands.
 
 For the following `main` function,
-
 ```ballerina
 public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
 }
 ```
-
 the values can be passed through the command line arguments as follows.
-
 ```
 bal run -- 1 b 33
 ```
@@ -160,9 +157,7 @@ isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] 
         paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
     } external;
 ```
-
 can be bound to the following Java method.
-
 ```java
 public static void getResource(BObject client, BArray path, BString str) {
 }

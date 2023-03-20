@@ -161,7 +161,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### Persist Tool
 - Added following new arguments to `persist init` commands.
-    - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported..
+    - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
 
     e.g: `bal persist init --datastore mysql --module db`

@@ -134,7 +134,7 @@ bal run -- 1 b 33
 When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor, from which the value can be constructed.
 
 For example, given the following Ballerina code
-```bal
+```ballerina
 type Person record {|
     string name;
     string city;

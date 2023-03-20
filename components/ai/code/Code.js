@@ -435,6 +435,7 @@ export default function UseCases(props) {
                                     {
                                         (tune.frontmatter.url && tune.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Fine tune GPT-3 models</span>
                                                 <a href={tune.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -555,6 +556,7 @@ export default function UseCases(props) {
                                     {
                                         (libraries.frontmatter.url && libraries.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Text Similarity Comparison with OpenAI GPT-3 Embeddings</span>
                                                 <a href={libraries.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -615,6 +617,7 @@ export default function UseCases(props) {
                                     {
                                         (powered.frontmatter.url && powered.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Question Answering with OpenAI</span>
                                                 <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -675,6 +678,7 @@ export default function UseCases(props) {
                                     {
                                         (robust.frontmatter.url && robust.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Grammar and Spelling Correction in Text using OpenAI</span>
                                                 <a href={robust.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -735,6 +739,7 @@ export default function UseCases(props) {
                                     {
                                         (concurrency.frontmatter.url && concurrency.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Personalized Greetings with Custom Design using OpenAI</span>
                                                 <a href={concurrency.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub

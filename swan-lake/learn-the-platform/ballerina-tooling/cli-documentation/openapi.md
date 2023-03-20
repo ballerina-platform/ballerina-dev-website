@@ -23,6 +23,8 @@ bal openapi [-i | --input] <openapi-contract-file-path>
             [-n | --nullable]
             [--license] <license-file-path> 
             [--with-tests]
+            [--client-methods]
+            [--with-service-type]
 ```
 
 The command-line arguments below can be used with the command for each particular purpose as described below. 
@@ -38,6 +40,7 @@ The command-line arguments below can be used with the command for each particula
 | `-n \|--nullable` | This is an optional flag in the OpenAPI to Ballerina command. If your OpenAPI specification includes JSON schema properties that are not marked as `nullable:true`, they may return as null in some responses. It results in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.<br><br>**E.g.,** `bal openapi -i <openapi-contract> [-n \|--nullable]` |
 | `--with-tests`    | This is optional. It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                                                            |
 | `--client-methods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `remote`).                                                                                                                                                                                                                                                                                                                                                                            |
+| `--with-service-type`| This option can be used to generate the Ballerina service with a service-type object.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 ## Ballerina to OpenAPI 
 

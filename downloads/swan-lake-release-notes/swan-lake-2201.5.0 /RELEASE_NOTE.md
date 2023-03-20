@@ -149,6 +149,13 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### GraphQL Tool
 
 #### OpenAPI Tool
+- Added `--with-service-type` command option to generate a ballerina service with a service-type object. This is useful in validating the service implementation against the OpenAPI contract given.
+
+To generate a service with a service-type object, run the following command.
+
+```bash
+bal openapi -i <openapi-contract> --mode service --with-service-type
+```
 
 #### Persist Tool
 

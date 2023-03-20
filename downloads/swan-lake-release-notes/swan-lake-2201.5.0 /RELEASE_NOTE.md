@@ -93,26 +93,26 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### Add `int:range` function
+#### Introduction of the `int:range` lang library function
 
 The `int:range` lang library function returns an iterable object, which iterates over a range of integers.
 
-`int:range(start, end, step)` will return an iterable S from `start` to `end`, where `end` is exclusive, with a difference between each member of `step`.
+The function call `int:range(start, end, step)` will return an iterable object `S` that iterates over a range of integers from `start` (inclusive) to `end` (exclusive), with `step` being the difference successive integers.
 `start`, `end` and `step` are integer arguments.
 
-When `step` is greater than 0, the members of S that are less than `end` are returned in increasing order.
-When `step` is less than 0, the members of S that are greater than `end` are returned in decreasing order.
-When `step` is 0, the function panics.
+- when `step` is greater than `0`, the members of `S` that are less than `end` are returned in increasing order
+- when `step` is less than `0`, the members of `S` that are greater than `end` are returned in decreasing order
+- when `step` is `0`, the function panics.
     
 ```ballerina
-// Using `int:range(0, 5, 2)` in the `foreach` statement results in the iteration over a range of integers from 0 to 5 (excluding) with a step of 2 between each integer (i.e., 0, 2, 4).
+// Iterate over a range of integers from 0 (inclusive) to 5 (exclusive) with a step of 2 between each integer (i.e., 0, 2, 4).
 foreach int i in int:range(0, 5, 2) {
-    	io:println(i)
+    io:println(i);
 }
 
 // A negative step can be used to get a descending set of integers (i.e., 5, 3, 1).
 foreach int i in int:range(5, 0, -2) {
-    	io:println(i)
+    io:println(i);
 }    
 ```
 

@@ -146,6 +146,9 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### Language Server
 
+- Added quick pick support for `Extract to local variable` and `Extract to function` code actions.
+- Added completion support for regular expressions.
+
 #### GraphQL Tool
 
 #### OpenAPI Tool
@@ -159,6 +162,13 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### JSON-to-record converter
 
 #### Language Server
+
+- Updated LSP4J version to 0.15.0.
+- Added annotation completions for tuple member context.
+- Added snippet completions for `string` and `xml` templates.
+- Added code action support for regular expressions.
+- Added field access completions for template expressions.
+- 
 
 #### OpenAPI Tool
 

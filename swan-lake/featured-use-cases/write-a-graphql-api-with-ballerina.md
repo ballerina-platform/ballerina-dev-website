@@ -362,7 +362,7 @@ service /covid19 on new graphql:Listener(9000) {
  Execute the command below to run this service to serve a GraphQL API to the data source.
 
 ```
-bal run
+$ bal run
 ```
 
 You view the output below.

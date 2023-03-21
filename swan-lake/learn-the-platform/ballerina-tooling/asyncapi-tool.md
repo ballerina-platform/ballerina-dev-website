@@ -113,14 +113,14 @@ There are custom tags in this YAML starting with `x-ballerina`. It is very impor
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
 ```
-bal asyncapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
+$ bal asyncapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
 ```
 
 The generated service can be used as a code template to start the service implementation.
 For example,
 
 ```
-bal asyncapi -i hello.yaml
+$ bal asyncapi -i hello.yaml
 ```
 
 This generates a Ballerina source (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
@@ -133,7 +133,7 @@ This generates a Ballerina source (i.e., the four Ballerina files below) from th
 The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
 ```
-bal asyncapi -i hello.yaml -o ./output_path
+$ bal asyncapi -i hello.yaml -o ./output_path
 ```
 
 Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it is easier to consider the below facts.

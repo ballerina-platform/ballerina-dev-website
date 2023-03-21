@@ -473,7 +473,7 @@ Follow the steps below to try out the above language integrated query example.
 3. Execute the command below to start the HTTP service, which accepts product order requests.
 
 ```
-bal run order_service.bal
+$ bal run order_service.bal
 ```
 
 4. Execute the command below to invoke the HTTP service by sending the product order details in the payload. 

@@ -173,7 +173,7 @@ Using the `--sticky` flag with `bal build` will force the compiler to stick to t
 In other words, the CLI disables the automatic-update feature when you provide the `--sticky` flag.
    
 ```
-bal build --sticky
+$ bal build --sticky
 ```
 
 >**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds.

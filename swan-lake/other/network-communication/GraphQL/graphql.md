@@ -130,7 +130,7 @@ You can send the GraphQL query below to look up the exposed `name` field in the 
 Execute the command below to run the Ballerina GraphQL service above.
 
 ```
-bal run demo.bal
+$ bal run demo.bal
 ```
 
 You view the output below.

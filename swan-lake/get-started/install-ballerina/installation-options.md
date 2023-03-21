@@ -96,7 +96,7 @@ After installing Ballerina, run the following test to verify if Ballerina has be
 Execute the command below from the command shell of the operating system.
 
 ```
-bal version
+$ bal version
 ```
 
 Make certain the command output shows the version that you downloaded as shown below.

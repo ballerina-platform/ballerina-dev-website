@@ -101,7 +101,7 @@ Ballerina now provides a built-in type for regular expressions, enabling powerfu
 import ballerina/lang.regexp;
 import ballerina/io;
 
-public function main() returns error? {
+public function main() {
     string:RegExp reg = re `[bB].tt[a-z]*`;
     regexp:Span[] result = reg.findAll("Butter was bought by Betty.");
     io:println(result.length()); // 2

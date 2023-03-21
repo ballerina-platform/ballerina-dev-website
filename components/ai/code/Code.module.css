@@ -76,6 +76,7 @@ a.cDownload span {
 
 .dVersions, .comingSoon {
     margin-bottom: 20px !important;
+    font-weight: 400;
 }
 
 .dVersions .dVersion {

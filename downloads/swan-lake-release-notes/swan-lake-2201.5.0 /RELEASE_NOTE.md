@@ -126,33 +126,33 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 
 #### New Runtime Java APIs
 
-- To clone an `anydata` value with another subtype of `anydata` type, the following API is introduced in the `io.ballerina.runtime.api.utils.ValueUtils` class.
+- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to clone an `anydata` value with another subtype of the `anydata` type.
     ```java
     public static Object convert(Object value, Type targetType);
     ```
-- `getFunctionName()` and `getPathParameters()` APIs are introduced in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with an external Java method, respectively.
+- Introduced the `getFunctionName()` and `getPathParameters()` APIs in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with an external Java method respectively.
 
 ### Improvements
 
-#### Support for command line arguments of built-in subtypes
+#### Support for command-line arguments of built-in subtypes
 
-The command-line arguments of Ballerina built-in subtypes are now supported to be parsed as operands.
+The command-line arguments of the Ballerina built-in subtypes are now supported to be parsed as operands.
 
 For the following `main` function,
 ```ballerina
 public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
 }
 ```
-the values can be passed through the command line arguments as follows.
+the values can be passed through command-line arguments as follows.
 ```
 bal run -- 1 b 33
 ```
 
 #### Support ambiguous union type configurable variables
 
-When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor, from which the value can be constructed.
+When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor from which the value can be constructed.
 
-For example, given the following Ballerina code
+For example, in the following Ballerina code,
 ```ballerina
 type Person record {|
     string name;
@@ -161,15 +161,15 @@ type Person record {|
 
 configurable map<string>|Person configVar = ?;
 ```
-and the `Config.toml` file contents as follows,
+and when the `Config.toml` file contents are as follows,
 ```toml
 configVar = {name = "Jack", city = "Colombo"}
 ```
-`configVar` is instantiated with the inherent type `map<string>`.
+`configVar` is instantiated with the `map<string>` inherent type.
 
 #### Support binding of resource functions to a generic native method
 
-A new way has been introduced to support the binding of any resource function to a generic native method, regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all path parameters. To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
+A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 
 For example, the following Ballerina resource function
 ```ballerina
@@ -187,8 +187,7 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 #### Improvements in Runtime Java APIs
 
-- The `getType` runtime API which returns an `ObjectType` in `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new API `getOriginalType` which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type. We need to modify the previous `getType` API to return the `Type` after fixing the caching issue [#39850](https://github.com/ballerina-platform/ballerina-lang/issues/39850).
-
+- The `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
 - The java constant `XMLNS` in `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. The constant `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` needs to be used instead.
 
 ### Bug fixes

@@ -55,6 +55,11 @@ a.cDownload span {
     overflow-y: scroll;
 }
 
+.dVersions {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
 .dVersion {
     font-size: 16px;
 }
@@ -67,4 +72,28 @@ a.cDownload span {
     color: #20b6b0;
     text-decoration: none;
     font-weight: 400;
+}
+
+.dVersions, .comingSoon {
+    margin-bottom: 20px !important;
+}
+
+.dVersions .dVersion {
+    background-color: #20b6b0;
+    font-weight: 400;
+    padding: 10px;
+    /* min-height: 45px; */
+    height: auto;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.dVersions .dVersion a.cDownload {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    margin-bottom: 0 !important;
+}
+
+.dVersions .dVersion:hover {
+    background-color: #585a5e;
 }

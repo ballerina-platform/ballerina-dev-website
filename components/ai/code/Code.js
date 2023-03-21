@@ -128,6 +128,24 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{why.frontmatter.description}</ReactMarkdown>
 
+                                    <div className={styles.dVersions}>
+               <div className={styles.dVersion}>
+                  <a href={`https://central.ballerina.io/search?q=package%3Aopenai.`}
+                     className={styles.cDownload}
+                     data-download="downloads">
+                     <div className={styles.cSize}>OpenAI Connectors</div>
+                  </a>
+               </div>
+               <div className={styles.dVersion}>
+                  <a href={`https://central.ballerina.io/ballerina/math.vector`}
+                     className={styles.cDownload}
+                     data-download="downloads">
+                     <div className={styles.cSize}>Vector Math</div>
+                  </a>
+               </div>
+            </div>
+
+<div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small></div>
                                     {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>

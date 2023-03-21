@@ -89,6 +89,27 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
+- Fixed a bug that resulted in inconsistent error messages with `cloneWithType` operation.
+    
+    ```ballerina
+    type OpenRecord record {
+    };
+
+    public function main() {
+        [OpenRecord...] tupleVal = [{"nonJson": xml `<a>abc</a>`}];
+        json jsonVal = checkpanic tupleVal.cloneWithType();
+    }
+    ```
+
+- Improved the error message given in a failure of `fromJsonWithType` or `cloneWithType` operations, when the target type is a union type.
+    
+    ```ballerina
+    public function main() {
+        json j = [1, 1.2, "hello"];
+        int[]|float[] val = checkpanic j.fromJsonWithType();
+    }
+    ```
+
 ## Language updates
 
 ### New features

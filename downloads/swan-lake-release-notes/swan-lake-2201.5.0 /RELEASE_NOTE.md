@@ -109,7 +109,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
     ```java
     public static Object convert(Object value, Type targetType);
     ```
-- `getFunctionName()` and `getPathParameters()` APIs are introduced in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with Java interop methods, respectively.
+- `getFunctionName()` and `getPathParameters()` APIs are introduced in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with an external Java method, respectively.
 
 ### Improvements
 
@@ -126,6 +126,7 @@ the values can be passed through the command line arguments as follows.
 ```
 bal run -- 1 b 33
 ```
+
 #### Support ambiguous union type configurable variables
 
 When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor, from which the value can be constructed.
@@ -139,7 +140,7 @@ type Person record {|
 
 configurable map<string>|Person configVar = ?;
 ```
-and the `Config.toml` file contains the following,
+and the `Config.toml` file contents as follows,
 ```toml
 configVar = {name = "Jack", city = "Colombo"}
 ```
@@ -165,7 +166,7 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 #### Improvements in Runtime Java APIs
 
-- The `getType` runtime API which returns an `ObjectType` in `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new API `getOriginalType` which returns the Type is introduced to return both the `ObjectType` and the type-reference type. We need to modify the previous `getType` API to return the Type after fixing the caching issue [#39850](https://github.com/ballerina-platform/ballerina-lang/issues/39850).
+- The `getType` runtime API which returns an `ObjectType` in `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new API `getOriginalType` which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type. We need to modify the previous `getType` API to return the `Type` after fixing the caching issue [#39850](https://github.com/ballerina-platform/ballerina-lang/issues/39850).
 
 - The java constant `XMLNS` in `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. The constant `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` needs to be used instead.
 

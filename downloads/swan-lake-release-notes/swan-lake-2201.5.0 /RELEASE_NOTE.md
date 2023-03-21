@@ -157,24 +157,24 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### CLI
 
 ### Bindgen Tool 
-- Added `with-optional-types`, `with-optional-types-param` and, `with-optional-types-return` command options to `bal bindgen` command to support 
-  java null values via generated bindings. Therefore, these command options will generate optional(i.e. nilable) types 
+- Added the `with-optional-types`, `with-optional-types-param`, and `with-optional-types-return` command options to the `bal bindgen` command to support 
+  Java null values via generated bindings. Therefore, these command options will generate optional (i.e., nilable) types 
   for parameter or/and return types in generated Ballerina binding functions.
 
-    Consider the below java methods and, the corresponding Ballerina binding functions generated, with and without the new command options.
+    Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
     ```java
-    // parameters and return types having inbuilt object types (java.lang.String)
+    // Parameters and return types having inbuilt object types (`java.lang.String`).
     public String f1(String str)
         return str;
     }
     
-    // parameter and return types having external object arrays (Foo[])
+    // Parameter and return types having external object arrays (`Foo[]`).
     public Foo[] f2(Foo[] fooArray) {
         return fooArray;
     }
     ```
     
-    without optional types (i.e. `bal bindgen`)
+    **Without optional types (i.e. `bal bindgen`)**
     ```ballerina
     public function f1(string arg0) returns string {
         return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
@@ -193,7 +193,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
     }
     ```
     
-    With optional types (`bal bindgen --with-optional-types`)
+    **With optional types (`bal bindgen --with-optional-types`)**
     ```ballerina
     public function f1(string? arg0) returns string? {
         return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));

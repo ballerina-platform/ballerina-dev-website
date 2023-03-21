@@ -90,6 +90,7 @@ The conforming implementation of the specification is released and included in t
             * 8.1.1.1. [Request context](#8111-request-context)
             * 8.1.1.2. [Next method](#8112-next-method)
             * 8.1.1.3. [Return to respond](#8113-return-to-respond)
+            * 8.1.1.4 [Get JWT information](#8114-get-jwt-information)
         * 8.1.2. [Response interceptor](#812-response-interceptor)
             * 8.1.2.1. [Return to respond](#8121-return-to-respond)
         * 8.1.3. [Request error interceptor and response error interceptor](#813-request-error-interceptor-and-response-error-interceptor)
@@ -2142,12 +2143,6 @@ public isolated class RequestContext {
     #
     # + key - Represents the member key
     public isolated function remove(string key) {}
-    
-    # Provides the JWT information from the request.
-    #
-    # + return - `[jwt:Header, jwt:Payload]` if decoding the header is successful, `error` if any error occurs
-    #             while decoding, or `nil` if no jwt header found.
-    public function getJWTInfo() returns [jwt:Header, jwt:Payload]|error? {}
 
     # Calls the next service in the interceptor pipeline.
     #
@@ -2176,6 +2171,12 @@ In case of an error, interceptor pipeline execution jumps to the nearest `Reques
 used to handle errors, and they are not necessarily the last interceptor in the pipeline, they can be anywhere in the 
 chain. However, in the case of there is no error interceptors in the pipeline, pipeline returns the internal error 
 response to the client similar to any HTTP service resource.
+
+##### 8.1.1.4 Get JWT information
+If the JWT information of the request is required, it can be retrieved by using the `getWithType()` api.
+```ballerina
+[jwt:Header, jwt:Payload] jwtInformation = check ctx.getWithType(http:JWT_INFORMATION);
+```
 
 #### 8.1.2 Response interceptor
 

@@ -7,13 +7,6 @@ Ballerina is a modern programming language that has been designed specifically f
 Ballerina has inherent support for network service consumption & production and a network-friendly data-oriented programming model. Ballerina provides a statically typed environment that helps to prevent errors and improve code reliability. The ability to automatically visualize any Ballerina program as a sequence diagram makes it easy to see how applications use external APIs.
 <br/><br/>
 Ballerina is your best choice for writing modern cloud-native applications that incorporate LLM-powered AI!
-<br/><br/>
-<a href='https://central.ballerina.io/search?q=package%3Aopenai.' target='_blank' title='Explore Ballerina’s OpenAI connectors'>Explore Ballerina’s OpenAI connectors</a>
-<br/>
-<a href='https://central.ballerina.io/ballerina/math.vector' target='_blank' title='EExplore Ballerina’s vector library'>Explore Ballerina’s vector library</a>
-<br/>
-<small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small>
-
 "
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'
 ---

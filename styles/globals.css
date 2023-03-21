@@ -1320,6 +1320,7 @@ table.cTopControlsContainer tbody {
     -webkit-overflow-scrolling: none !important;
     overflow: hidden !important;
     overscroll-behavior: none !important; */
+    z-index: 1;
 }
 
 #right_panel {
@@ -1351,7 +1352,7 @@ table.cTopControlsContainer tbody {
   top: 0;
   bottom: 0;
   width: 8px;
-  cursor: w-resize;
+  /* cursor: w-resize; */
   background: #20b6b0;
   /* position: absolute;
 	left: -4px;
@@ -1363,12 +1364,14 @@ table.cTopControlsContainer tbody {
   z-index: 1000;
 }
 
+
 #code-container .title-new {
   background-color: #20b6b0;
   color: #fff;
   padding: 10px;
   margin-bottom: 0;
   overflow: hidden;
+  z-index: 999;
 }
 
 #code-container .title-old {
@@ -1401,6 +1404,8 @@ table.cTopControlsContainer tbody {
     position: absolute;
     display: block;
     vertical-align: middle;
+    z-index: 1001;
+    cursor: grabbing;
 }
 
 .code-panel {
@@ -1457,6 +1462,8 @@ table.cTopControlsContainer tbody {
   text-align: center;
   padding: 30px;
   /* width: iniauto tial; */
+  position: relative;
+  z-index: 999;
 }
 
 .odd .nav-link.active {

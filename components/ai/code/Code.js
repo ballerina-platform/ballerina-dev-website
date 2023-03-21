@@ -77,13 +77,13 @@ export default function UseCases(props) {
                 var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
 
                 //stop resizing if the left panel or right panel is too small
-                if (e.clientX - container.offsetLeft <=50 || offsetRight <= 50) {
+                if (e.clientX - container.offsetLeft <= 50 || offsetRight <= 50) {
 
                     isResizing = false;
                     return;
                 }
 
-                
+
 
                 left.style.right = offsetRight + "px";
                 right.style.width = offsetRight + "px";
@@ -129,23 +129,23 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{why.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersions}>
-               <div className={styles.dVersion}>
-                  <a href={`https://central.ballerina.io/search?q=package%3Aopenai.`}
-                     className={styles.cDownload}
-                     data-download="downloads">
-                     <div className={styles.cSize}>OpenAI Connectors</div>
-                  </a>
-               </div>
-               <div className={styles.dVersion}>
-                  <a href={`https://central.ballerina.io/ballerina/math.vector`}
-                     className={styles.cDownload}
-                     data-download="downloads">
-                     <div className={styles.cSize}>Vector Math</div>
-                  </a>
-               </div>
-            </div>
+                                        <div className={styles.dVersion}>
+                                            <a href={`https://central.ballerina.io/search?q=package%3Aopenai.`}
+                                                className={styles.cDownload}
+                                                data-download="downloads">
+                                                <div className={styles.cSize}>OpenAI Connectors</div>
+                                            </a>
+                                        </div>
+                                        <div className={styles.dVersion}>
+                                            <a href={`https://central.ballerina.io/ballerina/math.vector`}
+                                                className={styles.cDownload}
+                                                data-download="downloads">
+                                                <div className={styles.cSize}>Vector Math</div>
+                                            </a>
+                                        </div>
+                                    </div>
 
-<div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small></div>
+                                    <div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small></div>
                                     {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
@@ -161,7 +161,7 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
 
-                            <div id="code-container" className='d-none d-lg-block'>
+                                <div id="code-container" className='d-none d-lg-block'>
                                     <div id="left_panel">
                                         <p className='title-old'>Code</p>
                                         {/* < dangerouslySetInnerHTML={{ __html: sample1.code }} /> */}
@@ -195,7 +195,7 @@ export default function UseCases(props) {
 
                                 {/* mobile view */}
                                 <div id="code-tab" className='d-block d-lg-none'>
-                                    <Tabs defaultActiveKey="code" id="code" className="mb-3 codeTabs">
+                                    <Tabs defaultActiveKey="code" id="codeTab1" className="mb-3 codeTabs">
                                         <Tab eventKey="code" title="Code">
                                             <div className={styles.codeSnippet}>
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: why.code }} />

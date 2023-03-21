@@ -147,7 +147,7 @@ Running executable
 A GraphQL request can be executed by sending an HTTP request similar to the following.
 
 ```
-curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
+$ curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
 {"data":{"name":"Jack"}}
 ```
 

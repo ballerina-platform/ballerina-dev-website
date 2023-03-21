@@ -479,7 +479,7 @@ $ bal run order_service.bal
 4. Execute the command below to invoke the HTTP service by sending the product order details in the payload. 
 
 ```
-curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
+$ curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
 ```
 
 You will receive a response like below that gives the total grocery bill amount.

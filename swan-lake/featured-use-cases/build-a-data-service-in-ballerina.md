@@ -474,7 +474,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
-curl -X POST http://localhost:8080/employees/
+$ curl -X POST http://localhost:8080/employees/
     -H 'Content-Type: application/json'
     -d '{
         "employee_id": 6,

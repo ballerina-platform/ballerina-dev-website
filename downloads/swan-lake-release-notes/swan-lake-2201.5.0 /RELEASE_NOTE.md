@@ -87,8 +87,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
-
 - Fixed a bug that resulted in inconsistent error messages with `cloneWithType` operation.
     
     ```ballerina
@@ -109,6 +107,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         int[]|float[] val = checkpanic j.fromJsonWithType();
     }
     ```
+
+- Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates
 

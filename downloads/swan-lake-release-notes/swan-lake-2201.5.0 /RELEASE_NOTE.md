@@ -93,6 +93,27 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### Language support for regular expressions
+
+The language now supports regular expressions enabling powerful pattern-matching and text processing operations. A new type, named `RegExp`, has been introduced in the new `lang.regexp` module (it can also be referred to using the type alias `RegExp` defined in the `lang.string` module). The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
+
+```ballerina
+import ballerina/lang.regexp;
+import ballerina/io;
+
+public function main() {
+    string:RegExp reg = re `[bB].tt[a-z]*`;
+    regexp:Span[] result = reg.findAll("Butter was bought by Betty.");
+    io:println(result.length()); // 2
+
+    regexp:Span span1 = result[0];
+    io:println(span1.substring()); // Butter
+
+    regexp:Span span2 = result[1];
+    io:println(span2.substring()); // Betty
+}
+```
+
 ### Improvements
 
 ### Bug fixes

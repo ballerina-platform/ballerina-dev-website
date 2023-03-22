@@ -2,10 +2,6 @@
 title: 'Why is Ballerina the way you should write AI applications?'
 description: "For many years Python, a wonderful language, has been the de facto choice for data analytics, data science, and machine learning.  But using LLMs to add AI to business applications is not about those problems anymore but more about prompt engineering, fine-tuning, calling APIs offered by hosted LLMs, and chaining LLMs & combining them with other APIs.<br/><br/>
 
-Ballerina is a modern programming language that has been designed specifically for cloud-native application development.<br/><br/>
-
-Ballerina has inherent support for network service consumption & production and a network-friendly data-oriented programming model. Ballerina provides a statically typed environment that helps to prevent errors and improve code reliability. The ability to automatically visualize any Ballerina program as a sequence diagram makes it easy to see how applications use external APIs.
-<br/><br/>
 Ballerina is your best choice for writing modern cloud-native applications that incorporate LLM-powered AI!
 "
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'

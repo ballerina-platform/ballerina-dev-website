@@ -121,7 +121,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Ballerina - Ballerina for AI as a Service" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ai-sm-banner.png"
@@ -136,7 +136,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Ballerina - Ballerina for AI as a Service" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

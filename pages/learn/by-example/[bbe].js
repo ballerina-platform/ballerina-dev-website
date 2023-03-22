@@ -122,6 +122,7 @@ export default function BBEPage({ frontmatter, navContent, bbe, codes }) {
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
         <meta
           property="twitter:description"
           content={frontmatter.description}

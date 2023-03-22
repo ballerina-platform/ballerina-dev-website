@@ -95,6 +95,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                 <meta property="og:title" content="Ballerina" />
 
                 {/* <!--TWITTER--> */}
+                <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
                 <meta
                     property="twitter:description"
                     content="A programming language for the cloud that makes it easier to use, combine, and create network services."

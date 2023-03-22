@@ -1238,8 +1238,6 @@ When an error is returned from a GraphQL resolver, the error message is added as
 
 If a resolver execution results in an error, the stacktrace of the error will be logged to the stderr of the server.
 
->**Note:** Even if a `resource` or `remote` method signature does not have `error` or any subtype of the `error` type, but the execution results in a Ballerina runtime `error`, the resulting response will include an error field.
-
 ###### Example: Returning Errors
 ```ballerina
 service on new graphql:Listener(9090) {

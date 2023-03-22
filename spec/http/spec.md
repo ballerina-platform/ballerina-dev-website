@@ -33,8 +33,8 @@ The conforming implementation of the specification is released and included in t
         * 2.3.2. [Resource-name](#232-resource-name)
         * 2.3.3. [Path parameter](#233-path-parameter)
         * 2.3.4. [Signature parameters](#234-signature-parameters)
-            * 2.3.4.1. [Caller](#2341-httpcaller)
-            * 2.3.4.2. [Request](#2342-httprequest)
+            * 2.3.4.1. [Caller](#2341-http--caller)
+            * 2.3.4.2. [Request](#2342-http--request)
             * 2.3.4.3. [Query param](#2343-query-parameter)
             * 2.3.4.4. [Payload param](#2344-payload-parameter)
             * 2.3.4.5. [Header param](#2345-header-parameter)
@@ -88,7 +88,7 @@ The conforming implementation of the specification is released and included in t
     * 8.1. [Interceptor](#81-interceptor)
         * 8.1.1. [Request interceptor](#811-request-interceptor)
             * 8.1.1.1. [Request context](#8111-request-context)
-            * 8.1.1.2. [Next method](#8112-next-method)
+            * 8.1.1.2. [Next method](#8112-next---method)
             * 8.1.1.3. [Return to respond](#8113-return-to-respond)
             * 8.1.1.4 [Get JWT information](#8114-get-jwt-information)
         * 8.1.2. [Response interceptor](#812-response-interceptor)
@@ -596,72 +596,80 @@ See section [Query](#52-query) to understand accessing query param via the reque
 The payload parameter is used to access the request payload during the resource invocation. When the payload param is 
 defined with @http:Payload annotation, the listener deserialize the inbound request payload based on the media type 
 which retrieved by the `Content-type` header of the request. The data binding happens thereafter considering the 
-parameter type. The type of payload parameter can be one of the `anytype`. If the header is not present or not a 
+parameter type. The type of payload parameter can be one of the `anydata`. If the header is not present or not a 
 standard header, the binding type is inferred by the parameter type.
 
 When the following conditions are met, the listener identifies the default payload parameter, which is defined 
 without the @http:Payload annotation:
 - The default payload parameter rules are only applicable to POST, PUT, PATCH, DELETE, and DEFAULT accessors.
-- Parameters must contain only one structured(map/record/table/tuple/array) type or xml. However, byte[] is an exception,
-  and it is considered as a payload param.
-    - resource function post(Student[] p) {} -> Student[] is payload param type
-    - resource function post(int[] p) {} -> int[] is query param type
-    - resource function post(int p) {} -> int is query param type
-    - resource function post(Student p) {} -> Student is payload param type
-- If there's more than one structured type, the ambiguity must be resolved using the @http:Payload annotation.
-    - resource function post(@http:Payload Student p, map<json> q) {} -> p is payload, q is query
+- Parameters must contain only one structured(map/record/table/tuple/array) type or `xml`. However, the array types of 
+  basic types are considered as query parameters. But `byte[]` is an exception, and it is considered as a payload param.
+    - `resource function post(Student p) {}` -> `Student` is payload param type
+    - `resource function post(Student[] p) {}` -> `Student[]` is payload param type
+    - `resource function post(map<json> p) {}` -> `map<json>` is payload param type
+    - `resource function post(int[] p) {}` -> `int[]` is query param type
+    - `resource function post(byte[] p) {}` -> `byte[]` is payload param type
+    - `resource function post(int p) {}` -> `int` is query param type
+- If there's more than one structured type, the ambiguity must be resolved using either @http:Payload or @http:Query
+  annotation.
+    - `resource function post(Student p, map<json> q) {}` -> ambiguous types for payload
+    - `resource function post(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
+    - `resource function post(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is payload
 - If there are no structured types, all parameters are considered query parameters.
-    - resource function post(@http:Payload string p, string q) {}
+    - `resource function post(string p, string q) {}` -> `p` and `q` are query params
+    - `resource function post(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
 - If the query parameter is structured, then the @http:Query annotation is required.
-    - resource function post(@http:Query map<json> p) {}
-- The only types allowed in the union for a parameter are structured types, xml, and nil.
-    - resource function post(Student|xml p) {} -> Student|xml is payload param type
-    - resource function post(map<json>|xml p) {} -> map<json>|xml is payload param type
-    - resource function post(Student? p) {} -> Student? is payload param type
+    - `resource function post(Student p) {}` -> `p` is payload param type
+    - `resource function post(@http:Query Student p) {}` -> `p` is query param type
+- The only types allowed in the union for a parameter are structured types, `xml`, and `nil`.
+    - `resource function post(Student|xml p) {}` -> `Student|xml` is payload param type
+    - `resource function post(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
+    - `resource function post(Student? p) {}` -> `Student?` is payload param type
+    - `resource function post(Student|string p) {}` -> invalid union type for default payload param
 
 Following table explains the compatible `anydata` types with each common media type. In the absence of a standard media 
 type, the binding type is inferred by the payload parameter type itself. If the type is not compatible with the media 
 type, error is returned.
 
-|Ballerina Type | Structure|"text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream"|
-|---------------|----------|-------|-------|--------|-------------------------|---------------|
-|boolean| | ❌ | ❌ | ✅|❌|❌
-| |boolean[]| ❌ | ❌ | ✅|❌|❌
-| |map\<boolean\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<boolean\>\>| ❌ | ❌ | ✅|❌|❌
-|int| | ❌ | ❌ | ✅|❌|❌
-| |int[]| ❌ | ❌ | ✅|❌|❌
-| |map\<int\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<int\>\>| ❌ | ❌ | ✅|❌|❌
-float| | ❌ | ❌ | ✅|❌|❌
-| |float[]| ❌ | ❌ | ✅|❌|❌
-| |map\<float\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<float\>\>| ❌ | ❌ | ✅|❌|❌
-decimal| | ❌ | ❌ | ✅|❌|❌
-| |decimal[]| ❌ | ❌ | ✅|❌|❌
-| |map\<decimal\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<decimal\>\>| ❌ | ❌ | ✅|❌|❌
-byte[]| | ✅ | ❌ | ✅|❌|✅
-| |byte[][]| ❌ | ❌ | ✅|❌|❌
-| |map\<byte[]\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<byte[]\>\>| ❌ | ❌ | ✅|❌|❌
-string| |✅|❌|✅|✅|❌
-| |string[]| ❌ | ❌ | ✅|❌|❌
-| |map\<string\>| ❌ | ❌ | ✅|✅|❌
-| |table\<map\<string\>\>| ❌ | ❌ | ✅|❌|❌
-xml| | ❌ | ✅ | ❌|❌|❌
-json| | ❌ | ❌ | ✅|❌|❌
-| |json[]| ❌ | ❌ | ✅|❌|❌
-| |map\<json\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<json\>\>| ❌ | ❌ | ✅|❌|❌
-map| | ❌ | ❌ | ✅|❌|❌
-| |map[]| ❌ | ❌ | ✅|❌|❌
-| |map\<map\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<map\>\>| ❌ | ❌ | ✅|❌|❌
-record| |❌|❌|✅|❌|❌
-| |record[]| ❌ | ❌ | ✅|❌|❌
-| |map\<record\>| ❌ | ❌ | ✅|❌|❌
-| |table\<record\>| ❌ | ❌ | ✅|❌|❌
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
 
 The payload binding process begins soon after finding the correct resource for the given URL and before the 
 resource execution. 
@@ -836,15 +844,15 @@ resource function get greeting() returns @http:Payload {mediaType:"text/id+plain
 
 Based on the return types respective header value is added as the `Content-type` of the `http:Response`. 
 
-| Type                                                                  | Content Type             |
-|-----------------------------------------------------------------------|--------------------------|
-| ()                                                                    | -                        |
-| string                                                                | text/plain               |
-| xml                                                                   | application/xml          |
-| byte[]                                                                | application/octet-stream |
-| int, float, decimal, boolean                                          | application/json         |
-| map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json         |
-| http:StatusCodeResponse                                               | derived from the body field  |
+| Type                                                                  | Content Type                |
+|-----------------------------------------------------------------------|-----------------------------|
+| ()                                                                    | -                           |
+| string                                                                | text/plain                  |
+| xml                                                                   | application/xml             |
+| byte[]                                                                | application/octet-stream    |
+| int, float, decimal, boolean                                          | application/json            |
+| map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json            |
+| http:StatusCodeResponse                                               | derived from the body field |
 
 ##### 2.3.5.1. Status Code Response
 
@@ -892,34 +900,34 @@ resource function get greeting() returns http:Ok|http:InternalServerError {
 Return nil from the resource has few meanings. 
 
 1. If the resource wants to return nothing, the listener will return 202 ACCEPTED response.
-```ballerina
-resource function post person(@http:Payload Person p) {
-    int age = p.age;
-    io:println(string `Age is: ${age}`);
-}
-```   
+    ```ballerina
+    resource function post person(@http:Payload Person p) {
+        int age = p.age;
+        io:println(string `Age is: ${age}`);
+    }
+    ```   
 2. If the resource is dealt with the response via http:Caller, then returning () does not lead to subsequent response. 
    Listener aware that the request is already being served.
-```ballerina
-resource function get fruit(string? colour, http:Caller caller) {
-    if colour == "red" {
-        error? result = caller->respond("Sending apple");
-        return; // ending the flow, so not 202 response
+    ```ballerina
+    resource function get fruit(string? colour, http:Caller caller) {
+        if colour == "red" {
+            error? result = caller->respond("Sending apple");
+            return; // ending the flow, so not 202 response
+        }
+        error? result = caller->respond("Sending orange");
     }
-    error? result = caller->respond("Sending orange");
-}
-```   
+    ```   
 3. If the resource is dealt with the success response via http:Caller and return () in the else case, then the 
    response is 500 INTERNAL SERVER ERROR.
-```ballerina
-resource function get fruit(string? colour, http:Caller caller) {
-    if colour == "red" {
-        error? result = caller->respond("Sending apple");
-        return; // ending the flow
+    ```ballerina
+    resource function get fruit(string? colour, http:Caller caller) {
+        if colour == "red" {
+            error? result = caller->respond("Sending apple");
+            return; // ending the flow
+        }
+        return; // 500 internal Server Error
     }
-    return; // 500 internal Server Error
-}
-```
+    ```
 
 ##### 2.3.5.3. Default response status codes
 
@@ -1472,46 +1480,45 @@ to the required type. Similar to the service data binding following table explai
 each common media type. In the absence of a standard media type, the binding type is inferred by the payload parameter 
 type itself. If the type is not compatible with the media type, error is returned.
 
-|Ballerina Type | Structure|"text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream"|
-|---------------|----------|-------|-------|--------|-------------------------|---------------|
-|boolean| | ❌ | ❌ | ✅|❌|❌
-| |boolean[]| ❌ | ❌ | ✅|❌|❌
-| |map\<boolean\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<boolean\>\>| ❌ | ❌ | ✅|❌|❌
-|int| | ❌ | ❌ | ✅|❌|❌
-| |int[]| ❌ | ❌ | ✅|❌|❌
-| |map\<int\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<int\>\>| ❌ | ❌ | ✅|❌|❌
-float| | ❌ | ❌ | ✅|❌|❌
-| |float[]| ❌ | ❌ | ✅|❌|❌
-| |map\<float\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<float\>\>| ❌ | ❌ | ✅|❌|❌
-decimal| | ❌ | ❌ | ✅|❌|❌
-| |decimal[]| ❌ | ❌ | ✅|❌|❌
-| |map\<decimal\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<decimal\>\>| ❌ | ❌ | ✅|❌|❌
-byte[]| | ✅ | ❌ | ✅|❌|✅
-| |byte[][]| ❌ | ❌ | ✅|❌|❌
-| |map\<byte[]\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<byte[]\>\>| ❌ | ❌ | ✅|❌|❌
-string| |✅|❌|✅|✅|❌
-| |string[]| ❌ | ❌ | ✅|❌|❌
-| |map\<string\>| ❌ | ❌ | ✅|✅|❌
-| |table\<map\<string\>\>| ❌ | ❌ | ✅|❌|❌
-xml| | ❌ | ✅ | ❌|❌|❌
-json| | ❌ | ❌ | ✅|❌|❌
-| |json[]| ❌ | ❌ | ✅|❌|❌
-| |map\<json\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<json\>\>| ❌ | ❌ | ✅|❌|❌
-map| | ❌ | ❌ | ✅|❌|❌
-| |map[]| ❌ | ❌ | ✅|❌|❌
-| |map\<map\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<map\>\>| ❌ | ❌ | ✅|❌|❌
-record| |❌|❌|✅|❌|❌
-| |record[]| ❌ | ❌ | ✅|❌|❌
-| |map\<record\>| ❌ | ❌ | ✅|❌|❌
-| |table\<record\>| ❌ | ❌ | ✅|❌|❌
-
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
 
 ```ballerina
 http:Client httpClient = check new ("https://person.free.beeceptor.com");
@@ -2485,7 +2492,7 @@ path = "testAccessLog.txt"  # Optional
 
 #### 8.2.5 Panic inside resource
 
-Ballering consider panic as a catastrophic error and non recoverable. Hence immediate application termination is 
+Ballerina consider panic as a catastrophic error and non recoverable. Hence immediate application termination is 
 performed to fail fast after responding to the request. This behaviour will be more useful in cloud environments as 
 well.
 

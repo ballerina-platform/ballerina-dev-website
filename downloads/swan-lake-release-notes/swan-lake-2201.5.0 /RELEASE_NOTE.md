@@ -95,7 +95,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 #### Language support for regular expressions
 
-Ballerina now provides a built-in type for regular expressions, enabling powerful pattern-matching and text processing operations in their code. The new type, named `RegExp`, is defined in the `lang.regexp` module, and can also be referred to using the type alias `RegExp` defined in the `lang.string` module. The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
+The language now supports regular expressions enabling powerful pattern-matching and text processing operations. A new type, named `RegExp`, has been introduced in the new `lang.regexp` module (it can also be referred to using the type alias `RegExp` defined in the `lang.string` module). The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
 
 ```ballerina
 import ballerina/lang.regexp;

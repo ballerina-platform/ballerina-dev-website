@@ -128,7 +128,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.
 - Added support for setting multiple associations between the same entities. The relation owner should be the same for all associations.
-- Added support for specifying the relation owner in the one-to-one association. The associated entity field must be an optional value field in child entity.
+- Added support for specifying the relation owner in the one-to-one association. The associated entity field must be an optional value field in the child entity.
 - Added code actions to make write persist schema definitions easier.
 
   >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
@@ -160,16 +160,16 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### OpenAPI Tool
 
 #### Persist Tool
-- Added following new arguments to `persist init` commands.
+- Added the following new arguments to the `persist init` commands.
     - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
 
-    e.g: `bal persist init --datastore mysql --module db`
-- Changed the `persist init` command to create a `persist` directory in the Ballerina project and generate a new definition file(`model.bal`) in the `persist` directory if the file does not exist.
-- Restricted one persist model definition per Ballerina package.
+    E.g., `bal persist init --datastore mysql --module db`
+- Changed the `persist init` command to create a `persist` directory in the Ballerina project and generate a new definition file (`model.bal`) in the `persist` directory if the file does not exist.
+- Restricted to have only one persist model definition per Ballerina package.
 - Removed the support for `persist push` command and generate SQL script file in the `persist generate` command.
-- Changed the `persist generate` command to generate all the Ballerina client, types, db_config files and the SQL script file in the `generated/<module_name>` directory.
-- Renamed the generated files to the following names
+- Changed the `persist generate` command to generate all the Ballerina client, types, `db_config` files, and the SQL script files in the `generated/<module_name>` directory.
+- Renamed the generated files to the following.
   - `generated_client.bal` -> `persist_client.bal`
   - `generated_types.bal` -> `persist_types.bal`
   - `database_configuration.bal` -> `persist_db_config.bal`

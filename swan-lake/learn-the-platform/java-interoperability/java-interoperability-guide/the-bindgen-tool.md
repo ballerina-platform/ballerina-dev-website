@@ -20,7 +20,7 @@ The following sections explain how the Bindgen Tool works.
 ## The `bindgen` command
 
 ```sh
-$ ballerina bindgen [(-cp|--classpath) <classpath>...]
+$ bal bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output-path>]
                   [--public]

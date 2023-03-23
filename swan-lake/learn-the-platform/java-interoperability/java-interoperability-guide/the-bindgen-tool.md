@@ -218,7 +218,7 @@ InputStream inputStream = check newFileInputStream3("sample.txt");
 
 ## Support for handling Java null values
 Ballerina bindings provide the flexibility for the user to handle Java `null` values with the help of optional (i.e., nilable) types in the language.
-However, the tool ***will not** generate optional types by default (in order to reduce the complexity of handling nilable types) and the users can opt-in to generate optional types for the Ballerina function parameter and return types by passing the `--with-optional-types` flag. 
+However, the tool **will not** generate optional types by default (in order to reduce the complexity of handling nilable types) and the users can opt-in to generate optional types for the Ballerina function parameter and return types by passing the `--with-optional-types` flag. 
 In that way, users can populate null values to the underneath Java API by providing nil values to the generated Ballerina function and
 the generated functions will return nil values in case the counterpart Java method returns null.
 

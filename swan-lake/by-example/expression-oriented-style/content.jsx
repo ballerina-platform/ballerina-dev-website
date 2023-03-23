@@ -72,7 +72,7 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=28c5556a4ac4b681a953a06341dd8861&file=expression_oriented_style.bal",
+                "https://play.ballerina.io/?gist=3a80858609b48d44a8fd2ec31cd7a3d2&file=expression_oriented_style.bal",
                 "_blank"
               );
             }}

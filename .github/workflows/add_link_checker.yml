@@ -2,6 +2,15 @@ name: Link Checker
 
 on:
   workflow_dispatch: 
+    inputs:
+      deployment:
+        description: 'ballerina.io deployment environment'
+        required: true
+        default: 'live'
+        type: choice
+        options:
+        - live
+        - preprod
 
 jobs:
   linkChecker:
@@ -10,6 +19,15 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v3
     - name: Run link checker
+      env:
+        DEPLOYMENT: ${{ inputs.deployment }}
       run: |
         npm install broken-link-checker -g
-        blc https://ballerina.io/  -ro --exclude https://www.linkedin.com/company/79080790
+        
+        URL=https://ballerina.io/ 
+
+        if [ "$DEPLOYMENT" == "preprod" ]; then
+          URL=https://pre-prod.ballerina.io/
+        fi
+
+        blc $URL -ro --exclude https://www.linkedin.com/company/79080790

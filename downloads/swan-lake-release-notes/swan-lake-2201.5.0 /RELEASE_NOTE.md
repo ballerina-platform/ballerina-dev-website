@@ -97,8 +97,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 The `int:range` lang library function returns an iterable object, which iterates over a range of integers.
 
-The `int:range(start, end, step)` function call will return an `S` iterable object, which iterates over a range of integers from `start` (inclusive) to `end` (exclusive) with `step` being the difference successive integers.
-`start`, `end` and `step` are integer arguments.
+The `int:range(start, end, step)` function call will return an iterable object (`S`), which iterates over a range of integers from `start` (inclusive) to `end` (exclusive) with `step` being the difference between successive integers.
+`start`, `end`, and `step` are integer arguments.
 
 - When `step` is greater than `0`, the members of `S` that are less than `end` are returned in increasing order.
 - When `step` is less than `0`, the members of `S` that are greater than `end` are returned in decreasing order.

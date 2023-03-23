@@ -168,7 +168,6 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added snippet completions for the `string` and `xml` templates.
 - Added code action support for regular expressions.
 - Added field access completions for template expressions.
-- 
 
 #### OpenAPI Tool
 

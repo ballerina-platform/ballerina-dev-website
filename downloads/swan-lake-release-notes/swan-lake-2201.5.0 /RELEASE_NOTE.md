@@ -67,11 +67,12 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```ballerina
     int[] config = [];
 
-    // `config` is not an isolated expression, therefore,
-    // `configs` will not be inferred as an isolated variable.
+    // `configs` was previously inferred to be an `isolated` variable
+    // incorrectly. It will no longer be inferred to be an `isolated` 
+    // variable since `config` is not an isolated expression.
     int[][] configs = [[1, 2], config]; 
 
-    // Since `configs` is not inferred to be an `isolated` variable,
+    // Since `configs` is not inferred to be an `isolated` variable now,
     // `getConfig` is not inferred to be an `isolated` function.
     function getConfig(int index) returns int[] {
         lock {

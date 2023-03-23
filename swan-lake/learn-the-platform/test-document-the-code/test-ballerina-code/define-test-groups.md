@@ -61,7 +61,9 @@ function testFunction3() {
 ### Execute grouped tests
 To execute groups of tests, the `--groups` flag is used during test execution.
 
-```$bal test --groups g1```
+```
+$ bal test --groups g
+```
 
 The above results in an output of :
 
@@ -85,7 +87,7 @@ I'm a test belonging to groups g1 and g2!
 The `groups` flag supports executing multiple groups by using comma-separated arguments.
 
 ```
-$bal test --groups g1,g2
+$ bal test --groups g1,g2
 ```
 
 The above results in an output of :
@@ -112,7 +114,9 @@ I'm a test belonging to group g2!
 
 To skip the execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
 
-```bal test --disable-groups g2```
+```
+$ bal test --disable-groups g2
+```
 
 The above results in an output of :
 

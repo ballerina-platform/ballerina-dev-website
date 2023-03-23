@@ -29,8 +29,8 @@ $ bal new --template lib hello
 This creates the files below.
 
 ```
-> cd hello
-> tree .
+$ cd hello
+$ tree .
     .
     ├── Ballerina.toml
     ├── Module.md

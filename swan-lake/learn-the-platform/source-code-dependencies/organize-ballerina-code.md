@@ -112,8 +112,8 @@ Therefore, Ballerina allows subdividing the code into multiple modules as well.
 You can add more modules to the package using the `bal add` command:
 
 ```
-cd hello_world
-bal add util
+$ cd hello_world
+$ bal add util
 ```
 
 This will create the `modules` directory in the package root. The `modules/util` directory is the root of the `hello_world.util` module. 

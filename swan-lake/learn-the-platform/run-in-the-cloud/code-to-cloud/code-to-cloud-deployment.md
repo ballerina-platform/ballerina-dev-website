@@ -218,7 +218,7 @@ Follow the steps below to execute the Docker image separately.
 1. Execute the `docker images` command to verify if the Docker image is generated.
 
     ```
-    $> docker images
+    $ docker images
     REPOSITORY                    TAG                 IMAGE ID            CREATED              SIZE
     wso2inc/hello                 v0.1.0              60d95f0928b2        About a minute ago   228MB
     ```
@@ -227,17 +227,17 @@ Follow the steps below to execute the Docker image separately.
 
 >**Info:** Make sure to set the correct path of the created `Config.toml`. Using volume mount is one way of providing the `Config.toml` file into the runtime. For other ways of providing configurable values, see the [Ballerina specification](https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md#locating-toml-files).
 
-    ```
-    $ docker run -d -v /home/wso2/c2c-guide/hello_docker/Config.toml:/home/ballerina/Config.toml -p 9090:9090 wso2inc/hello:v0.1.0
-    c04194eb0b4d0d78cbc8ca55e0527d381d8ab4a1a68f8ea5dd3770a0845d5fbb
-    ```
+  ```
+  $ docker run -d -v /home/wso2/c2c-guide/hello_docker/Config.toml:/home/ballerina/Config.toml -p 9090:9090 wso2inc/hello:v0.1.0
+  c04194eb0b4d0d78cbc8ca55e0527d381d8ab4a1a68f8ea5dd3770a0845d5fbb
+  ```
 
 3. Execute the `curl http://localhost:9090/helloWorld/sayHello` command to access the service.
 
-    ```
-    $ curl http://localhost:9090/helloWorld/sayHello
-    Hello, Docker!
-    ```
+  ```
+  $ curl http://localhost:9090/helloWorld/sayHello
+  Hello, Docker!
+  ```
 
 ## Kubernetes deployment
 

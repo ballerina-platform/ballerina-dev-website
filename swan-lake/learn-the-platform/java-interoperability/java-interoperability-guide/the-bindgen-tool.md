@@ -20,7 +20,7 @@ The following sections explain how the Bindgen Tool works.
 ## The `bindgen` command
 
 ```sh
-ballerina bindgen [(-cp|--classpath) <classpath>...]
+$ ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output-path>]
                   [--public]
@@ -61,6 +61,7 @@ The generated bindings are inside the specified output directory as follows.
 A Java class is mapped to a Ballerina class. This Ballerina class has the same name as the Java class.
 
 E.g., the generated Ballerina class of the `java.util.ArrayDeque` class is as follows.
+
 ```ballerina
 @java:Binding {
     'class: "java.util.ArrayDeque"
@@ -84,8 +85,9 @@ If there are multiple classes with the same simple name, they need to be generat
 The format for specifying inner classes using the command is `<package-name>.ClassName$InnerClassName`. The dollar sign might have to be escaped using the backslash key.
 
 E.g., the command to generate bindings for `java.lang.Character.Subset` class is as follows.
+
 ```sh
-> bal bindgen java.lang.Character\$Subset
+$ bal bindgen java.lang.Character\$Subset
 ```
 
 When referring to Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these are not visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the generated Ballerina bindings.
@@ -94,6 +96,7 @@ When referring to Java code to figure out the imported classes, you should be ca
 Constructors of Java classes are mapped to functions outside the Ballerina class. These function names are comprised of the constructor name prefixed with the `new` keyword. If there are multiple constructors, they are suffixed with an auto-incremented number.
 
 E.g., generated constructors of the `java.util.ArrayDeque` class is as follows.
+
 ```ballerina
 function newArrayDeque1() returns ArrayDeque {
    ...
@@ -128,6 +131,7 @@ class ArrayDeque {
 Static methods would reside outside the Ballerina class as functions, which take the name of the Java method with the Java simple class name appended at the beginning as a prefix.
 
 E.g., a generated static method `randomUUID()` of the `java.util.UUID` class is as follows. Here, the Ballerina equivalent of calling `UUID.randomUUID()` in Java is `UUID_randomUUID()`.
+
 ```ballerina
 function UUID_randomUUID() returns UUID {
    ...
@@ -168,6 +172,7 @@ function read() returns int|IOException {
 When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the Bindgen Tool generates an empty Ballerina binding class to represent each one of these classes. This represents a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the Bindgen Tool could be re-run to generate the complete implementation of the Ballerina bindings.
 
 E.g., the generated dependent class representing `java.util.List` is as follows.
+
 ```ballerina
 distinct class List {
 
@@ -206,6 +211,7 @@ float, double | float
 Ballerina bindings provide support for Java subtyping with the aid of type inclusions in the language.
 
 E.g., a Ballerina binding class mapping the `java.io.FileInputStream` Java class could be assigned to a Ballerina binding class mapping the `java.io.InputStream` as follows.
+
 ```ballerina
 InputStream inputStream = check newFileInputStream3("sample.txt");
 ```
@@ -214,6 +220,7 @@ InputStream inputStream = check newFileInputStream3("sample.txt");
 The `ballerina/jballerina.java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.
 
 E.g., a Ballerina binding class instance mapping the `java.io.InputStream` Java class `inputStream` could be cast onto a Ballerina binding class mapping the `java.io.FileInputStream` Java class as follows.
+
 ```ballerina
 FileInputStream fileInputStream = check java:cast(inputStream);
 ```

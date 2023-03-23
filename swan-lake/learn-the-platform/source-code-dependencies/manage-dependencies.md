@@ -132,18 +132,18 @@ The local repository is useful to test a package in the development phase or to 
 1. Generate the Ballerina archive after editing the package source files as required.
 
    ```
-   bal pack
+   $ bal pack
    ```
 
 2. Publish to the local repository.
    ```
-   bal push --repository local
+   $ bal push --repository local
    ```
 
    If you already have the path of Ballerina archive, then you can simply execute the following command.
 
     ```
-    bal push --repository local <path-to-bala-archive>
+    $ bal push --repository local <path-to-bala-archive>
     ```
 
 3. Specify the dependency in the `Ballerina.toml` file.
@@ -164,7 +164,8 @@ At this point, the compiler resolves the latest version and ignores the dependen
 ## Achieve reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
- It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
+
+It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
  However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
 ### The sticky mode

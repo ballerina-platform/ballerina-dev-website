@@ -11,4 +11,4 @@ jobs:
       uses: actions/setup-node@v3
       run: |
         npm install broken-link-checker -g
-        blc https://pre-prod.ballerina.io/  -ro --exclude https://www.linkedin.com/company/79080790
+        blc https://ballerina.io/  -ro --exclude https://www.linkedin.com/company/79080790

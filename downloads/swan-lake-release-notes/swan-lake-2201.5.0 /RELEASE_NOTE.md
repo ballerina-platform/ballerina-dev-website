@@ -87,7 +87,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that resulted in inconsistent error messages with `cloneWithType` operation.
+- Fixed a bug that resulted in inconsistent error messages with the `cloneWithType` operation.
     
     ```ballerina
     type OpenRecord record {
@@ -206,6 +206,7 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 - The `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
 - The `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.5.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).

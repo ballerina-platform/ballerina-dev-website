@@ -18,7 +18,7 @@ redirect_from:
   - /learn/cli-documentation/update-tool
 ---
 
-### Understand Ballerina distributions 
+## Understand Ballerina distributions 
 
 The Ballerina compiler is a software program, which validates the Ballerina source code and translates it to an executable program. Ballerina has a stable and production-ready official compiler called jBallerina, which targets the JVM.
 
@@ -26,13 +26,13 @@ Also, there is a plan to develop a native compiler called nBallerina in the futu
 
 Ballerina distribution is a term, which refers to these jBallerina and nBallerina compilers.
 
-### Get to know the release channels
+## Get to know the release channels
 
 Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 
 Ballerina does not have a release channel yet for nightly builds that give you access to the latest perhaps unstable features.
 
-#### Patch releases
+### Patch releases
 
 Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 2201.0.x.
 

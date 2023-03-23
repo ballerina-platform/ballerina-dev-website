@@ -116,6 +116,27 @@ foreach int i in int:range(5, 0, -2) {
 }    
 ```
 
+#### Language support for regular expressions
+
+The language now supports regular expressions enabling powerful pattern-matching and text processing operations. A new type, named `RegExp`, has been introduced in the new `lang.regexp` module (it can also be referred to using the type alias `RegExp` defined in the `lang.string` module). The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
+
+```ballerina
+import ballerina/lang.regexp;
+import ballerina/io;
+
+public function main() {
+    string:RegExp reg = re `[bB].tt[a-z]*`;
+    regexp:Span[] result = reg.findAll("Butter was bought by Betty.");
+    io:println(result.length()); // 2
+
+    regexp:Span span1 = result[0];
+    io:println(span1.substring()); // Butter
+
+    regexp:Span span2 = result[1];
+    io:println(span2.substring()); // Betty
+}
+```
+
 ### Improvements
 
 ### Bug fixes
@@ -184,6 +205,9 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### Language Server
 
 #### OpenAPI Tool
+- Updated the tool to handle multiple media types with the same return code in the Ballerina service to OpenAPI contract generation. 
+- Added the support to handle the newly introduced `@http:Query` annotation of the `ballerina/http` module in the Ballerina service to OpenAPI contract generation.
+- Added the support to generate API documentation for the resource functions in the generated Ballerina service. 
 
 ### Bug fixes
 

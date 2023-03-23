@@ -1,22 +1,6 @@
 {
     "events": [
         {
-            "date": "April 12, 2023",
-            "day": "Wed.",
-            "time": "8.00 a.m. PDT",
-            "expire": "2023-04-13T00:00:00.0000-00:00",
-            "location": "Virtual",
-            "url": "https://assets.sdtimes.com/lcnc-devday",
-            "eventType": "Low-Code/No-Code Developer Day",
-            "eventName": "Building Enterprise Applications with Ballerina's Graphical View and Code",
-            "presenterTwitter": "https://twitter.com/asankama",
-            "presenter": "Asanka Abeysinghe",
-            "presenterDesignation": "Chief Technology Officer, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
-        },
-        {
             "date": "May 10, 2023",
             "day": "Wed.",
             "time": "12.05 p.m. PDT",
@@ -28,6 +12,22 @@
             "presenterTwitter": "https://twitter.com/sameerajayasoma",
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Senior Director, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "April 12, 2023",
+            "day": "Wed.",
+            "time": "8.00 a.m. PDT",
+            "expire": "2023-04-13T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://assets.sdtimes.com/lcnc-devday",
+            "eventType": "Low-Code/No-Code Developer Day",
+            "eventName": "Building Enterprise Applications with Ballerina's Graphical View and Code",
+            "presenterTwitter": "https://twitter.com/asankama",
+            "presenter": "Asanka Abeysinghe",
+            "presenterDesignation": "Chief Technology Officer, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

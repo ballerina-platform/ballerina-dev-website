@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7fc95d341d18fb0202f7442c859ddf3f&file=filler_values_of_a_list.bal",
+                "https://play.ballerina.io/?gist=d2148a743fc767a2240ac2a85263500a&file=filler_values_of_a_list.bal",
                 "_blank"
               );
             }}

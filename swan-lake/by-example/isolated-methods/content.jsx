@@ -76,7 +76,7 @@ export function IsolatedMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a5730c51194ba46c5134da5d43bc73ee&file=isolated_methods.bal",
+                "https://play.ballerina.io/?gist=7d1c317de0fb0f0f839f9ae6f95511be&file=isolated_methods.bal",
                 "_blank"
               );
             }}

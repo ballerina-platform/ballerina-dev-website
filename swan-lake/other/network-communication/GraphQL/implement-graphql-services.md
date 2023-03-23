@@ -319,7 +319,7 @@ Follow the steps below to do a test run using the full Ballerina service impleme
 >**Info:** Ballerina GraphQL services also support GraphQL introspection. For example, you can execute the query below to look up the types available in the service. 
 
 ```
-curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { types { name } } }" }' 'http://localhost:8080/query'
+$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ __schema { types { name } } }" }' 'http://localhost:8080/query'
 {
     "data": {
    	 "__schema": {

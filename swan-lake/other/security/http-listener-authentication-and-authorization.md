@@ -156,7 +156,7 @@ service /foo on securedEP {
 When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar
+$ curl -k -v https://localhost:9090/foo/bar
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -173,7 +173,7 @@ curl -k -v https://localhost:9090/foo/bar
 When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
+$ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -191,7 +191,7 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
 
 ```
-curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
+$ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 
 > GET /hello HTTP/1.1
 > Host: localhost:9091
@@ -318,7 +318,7 @@ service /foo on securedEP {
 When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar
+$ curl -k -v https://localhost:9090/foo/bar
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -335,7 +335,7 @@ curl -k -v https://localhost:9090/foo/bar
 When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
+$ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -353,7 +353,7 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Basic <token>"
 When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
 
 ```
-curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
+$ curl -k -v https://localhost:9091/hello -H 'Authorization: Basic <token>'
 
 > GET /hello HTTP/1.1
 > Host: localhost:9091
@@ -479,7 +479,7 @@ service /foo on securedEP {
 When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar
+$ curl -k -v https://localhost:9090/foo/bar
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -496,7 +496,7 @@ curl -k -v https://localhost:9090/foo/bar
 When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
+$ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -514,7 +514,7 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
 
 ```
-curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
+$ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 
 > GET /hello HTTP/1.1
 > Host: localhost:9091
@@ -630,7 +630,7 @@ service /foo on securedEP {
 When the service is invoked without authentication information or invalid authentication information, an authentication failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar
+$ curl -k -v https://localhost:9090/foo/bar
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -647,7 +647,7 @@ curl -k -v https://localhost:9090/foo/bar
 When a request is made with valid authentication information, if the authenticated user does not have the required permission, an authorization failure will occur.
 
 ```
-curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
+$ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 
 > GET /foo/bar HTTP/1.1
 > Host: localhost:9090
@@ -665,7 +665,7 @@ curl -k -v https://localhost:9090/foo/bar -H "Authorization: Bearer <token>"
 When a request is made with valid authentication information, if the authenticated user has the required permission, this will result in a successful invocation.
 
 ```
-curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
+$ curl -k -v https://localhost:9091/hello -H 'Authorization: Bearer <token>'
 
 > GET /hello HTTP/1.1
 > Host: localhost:9091

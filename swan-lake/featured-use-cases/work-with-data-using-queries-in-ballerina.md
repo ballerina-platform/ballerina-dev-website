@@ -134,7 +134,7 @@ public function main() {
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
 ```bash
-bal run
+$ bal run
 ```
 
 > **Info**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
@@ -215,7 +215,7 @@ public function main() {
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
 ```bash
-bal run
+$ bal run
 ```
 
 You view the output below.
@@ -307,7 +307,7 @@ public function main() {
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
 ```bash
-bal run
+$ bal run
 ```
 
 You view the output below.
@@ -418,7 +418,7 @@ public function main() {
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
 ```bash
-bal run
+$ bal run
 ```
 
 You view the output below.

@@ -324,7 +324,63 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### CLI
 
-#### JSON-to-record converter
+### Bindgen Tool 
+- Added the `with-optional-types`, `with-optional-types-param`, and `with-optional-types-return` command options to the `bal bindgen` command to support 
+  Java null values via generated bindings. Therefore, these command options will generate optional (i.e., nilable) types 
+  for parameter or/and return types in generated Ballerina binding functions.
+
+    Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
+    ```java
+    // Parameters and return types having inbuilt object types (`java.lang.String`).
+    public String f1(String str)
+        return str;
+    }
+    
+    // Parameter and return types having external object arrays (`Foo[]`).
+    public Foo[] f2(Foo[] fooArray) {
+        return fooArray;
+    }
+    ```
+    
+    **Without optional types (i.e. `bal bindgen`)**
+    ```ballerina
+    public function f1(string arg0) returns string {
+        return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
+    }
+
+    public function f2(Foo[] arg0) returns Foo[]|error {
+        handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0, "Foo"));
+        Foo[] newObj = [];
+        handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
+        int count = anyObj.length();
+        foreach int i in 0 ... count - 1 {
+            Foo element = new (anyObj[i]);
+            newObj[i] = element;
+        }
+        return newObj;
+    }
+    ```
+    
+    **With optional types (`bal bindgen --with-optional-types`)**
+    ```ballerina
+    public function f1(string? arg0) returns string? {
+        return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));
+    }
+
+    public function f2(Foo?[]? arg0) returns Foo?[]?|error {
+        handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0 ?: [], "Foo"));
+        Foo?[]? newObj = [];
+        handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
+        int count = anyObj.length();
+        foreach int i in 0 ... count - 1 {
+            Foo? element = new (anyObj[i]);
+            if (newObj is Foo?[]) {
+                newObj[i] = element;
+            }
+        }
+        return newObj;
+    }
+    ```
 
 #### Language Server
 
@@ -345,7 +401,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.5.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.5.0+is%3Aclosed+label%3AType%2FBug)
-- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.5.0+is%3Aclosed+label%3AArea%2FDebugger+label%3AType%2FBug)
 - [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.5.0+%22+label%3AType%2FBug)
 
 ## Ballerina packages updates

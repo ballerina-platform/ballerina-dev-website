@@ -106,6 +106,44 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
+- Fixed a bug that resulted in inconsistent error messages with the `cloneWithType` operation.
+    
+    ```ballerina
+    type OpenRecord record {
+    };
+
+    public function main() {
+        [OpenRecord...] tupleVal = [{"nonJson": xml `<a>abc</a>`}];
+        json jsonVal = checkpanic tupleVal.cloneWithType();
+    }
+    ```
+    now gives
+    ```
+    error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}
+        at ballerina.lang.value.0:cloneWithType(value.bal:114)
+           sample:main(sample.bal:6)
+    ```
+
+- Improved the error message given in a failure of `fromJsonWithType` or `cloneWithType` operations, when the target type is a union type.
+    
+    ```ballerina
+    public function main() {
+        json j = [1, 1.2, "hello"];
+        int[]|float[] val = checkpanic j.fromJsonWithType();
+    }
+    ```
+    now gives
+    ```
+    error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '(int[]|float[])': 
+                {
+                  array element '[2]' should be of type 'int', found '"hello"'
+                or
+                  array element '[2]' should be of type 'float', found '"hello"'
+                }"}
+        at ballerina.lang.value.0:fromJsonWithType(value.bal:370)
+           sample:main(sample.bal:3)
+    ```
+
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates
@@ -143,7 +181,71 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 
 ### New features
 
+#### New Runtime Java APIs
+
+- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to clone an `anydata` value with another subtype of the `anydata` type.
+    ```java
+    public static Object convert(Object value, Type targetType);
+    ```
+- Introduced the `getFunctionName()` and `getPathParameters()` APIs in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with an external Java method respectively.
+
 ### Improvements
+
+#### Support for command-line arguments of built-in subtypes
+
+The command-line arguments of the Ballerina built-in subtypes are now supported to be parsed as operands.
+
+For the following `main` function,
+```ballerina
+public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
+}
+```
+the values can be passed through command-line arguments as follows.
+```
+bal run -- 1 b 33
+```
+
+#### Support ambiguous union type configurable variables
+
+When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor from which the value can be constructed.
+
+For example, in the following Ballerina code,
+```ballerina
+type Person record {|
+    string name;
+    string city;
+|};
+
+configurable map<string>|Person configVar = ?;
+```
+and when the `Config.toml` file contents are as follows,
+```toml
+configVar = {name = "Jack", city = "Colombo"}
+```
+`configVar` is instantiated with the `map<string>` inherent type.
+
+#### Support binding of resource functions to a generic native method
+
+A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
+
+For example, the following Ballerina resource function
+```ballerina
+isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {
+        'class: "javalibs.app.App",
+        name: "getResource",
+        paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
+    } external;
+```
+can be bound to the following Java method.
+```java
+public static void getResource(BObject client, BArray path, BString str) {
+}
+```
+
+#### Improvements in Runtime Java APIs
+
+- The `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
+- The `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
 
 ### Bug fixes
 

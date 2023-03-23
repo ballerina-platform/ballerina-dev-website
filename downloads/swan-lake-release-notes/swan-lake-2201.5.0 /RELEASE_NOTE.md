@@ -161,8 +161,8 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 #### Language Server
 
 #### OpenAPI Tool
-- Updated the tool to handle multiple media types with same return code in the Ballerina service to OpenAPI contract generation. 
-- Added the support to handle the `ballerina/http` module's newly introduced `@http:Query` annotation in Ballerina service to OpenAPI contract generation.
+- Updated the tool to handle multiple media types with the same return code in the Ballerina service to OpenAPI contract generation. 
+- Added the support to handle the newly introduced `@http:Query` annotation of the `ballerina/http` module in the Ballerina service to OpenAPI contract generation.
 - Added the support to generate API documentation for the resource functions in the generated Ballerina service. 
 
 ### Bug fixes

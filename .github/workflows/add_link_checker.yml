@@ -7,8 +7,9 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
-    - name: Run link checker
+    - name: Setup node
       uses: actions/setup-node@v3
+    - name: Run link checker
       run: |
         npm install broken-link-checker -g
         blc https://ballerina.io/  -ro --exclude https://www.linkedin.com/company/79080790

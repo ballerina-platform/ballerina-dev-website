@@ -4,9 +4,9 @@ on:
   workflow_dispatch: 
     inputs:
       deployment:
-        description: 'ballerina.io deployment environment'
+        description: 'Select the deployment to check links in'
         required: true
-        default: 'live'
+        default: 'ballerina.io'
         type: choice
         options:
         - ballerina.io
@@ -28,6 +28,6 @@ jobs:
       run: |
         npm install --global @deptagency/octopus
         
-        URL=https://$DEPLOYMENT/ 
+        URL=https://$DEPLOYMENT/
         echo "Checking links in $URL"
         octopus $URL

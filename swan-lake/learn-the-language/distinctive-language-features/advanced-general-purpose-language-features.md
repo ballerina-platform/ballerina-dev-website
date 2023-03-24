@@ -87,10 +87,10 @@ type Options record {|
     string? outputFile = ();
 |};
 
-function foo(string inputFile, *Options options){ 
+function foo(string inputFile, *Options options) { 
 }   
 
-public function main(){
+public function main() {
     foo("file.txt", verbose = true);
 }
 ```
@@ -356,8 +356,8 @@ const X = "x";
 const Y = "y";
 
 map<int> m = {
-    [X]: 1,
-    [Y]: 2
+    [X] : 1,
+    [Y] : 2
 };
 ```
 
@@ -695,7 +695,7 @@ The **``ensureType()``** function is a lang library function that is similar to 
 
 ```ballerina
 function demo(anydata v)
-             returns float|error {
+            returns float|error {
     return v.ensureType(float);
 }
 ```
@@ -749,7 +749,7 @@ This can be used in another module, as follows.
 
 ```ballerina
 // In another module
-@m:ConstrainedInt { minInclusive: 1 }
+@m:ConstrainedInt {minInclusive: 1}
 type PositiveInt int;
 
 m:IntConstraints? c = PositiveInt.@m:ConstrainedInt;
@@ -763,10 +763,10 @@ Ballerina provides an option to trap panics. By trapping panics using the ``trap
 
 ```ballerina
 function safeAdd(int n1, int n2)
-                     returns int|error {
+                    returns int|error {
     // On overflow, get an error
     // rather than a panic  
-   return trap (n1 + n2);
+    return trap (n1 + n2);
 }
 ```
 

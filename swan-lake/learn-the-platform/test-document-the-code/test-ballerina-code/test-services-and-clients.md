@@ -80,6 +80,7 @@ The following is a simple example on how mocking can be used to stub responses t
 may not be able to access during the test execution.
 
 ***main.bal***
+
 ```ballerina
 import ballerina/io;
 import ballerina/http;
@@ -107,6 +108,7 @@ function getRandomJoke(string name) returns string|error {
 ```
 
 ***main_test.bal***
+
 ```ballerina
 import ballerina/test;
 import ballerina/http;
@@ -120,12 +122,12 @@ public function testGetRandomJoke() returns error? {
     http:Response result = check clientEndpoint->get("/random");
     json payload = check result.getJsonPayload();
 
-    test:assertEquals(payload, {"value":"When Chuck Norris wants an egg, he cracks open a chicken."});    
+    test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
 }
 
 function getMockResponse() returns http:Response {
     http:Response mockResponse = new;
-    mockResponse.setPayload({"value":"When Chuck Norris wants an egg, he cracks open a chicken."});
+    mockResponse.setPayload({"value": "When Chuck Norris wants an egg, he cracks open a chicken."});
     return mockResponse;
 }
 ```
@@ -139,8 +141,8 @@ This initialization function can then be mocked using the compile-time function 
 ***Example:***
 The following is a simple example on how to mock a `final` client.
 
-Initialize the client:
-```bal
+***Initialize the client:***
+```ballerina
 import ballerina/http;
 
 final http:Client clientEndpoint = check intializeClient();
@@ -150,8 +152,8 @@ function intializeClient() returns http:Client|error {
 }
 ```
 
-Mock the client for testing:
-```bal
+***Mock the client for testing:***
+```ballerina
 import ballerina/http;
 import ballerina/test;
 

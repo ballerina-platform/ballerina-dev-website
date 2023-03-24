@@ -40,9 +40,17 @@ Follow the instructions below to install the latest Ballerina version using the 
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/Library/Ballerina` directory.
 
->**Tip:** Alternatively, you can install Ballerina using Homebrew by executing the `brew install bal` command. Homebrew installs the Ballerina distribution in the <code class="language-plaintext highlighter-rouge">/usr/local/Cellar/ballerina/&lt;BALLERINA-VERSION&gt;/libexec</code> directory.
+The package automatically sets your `PATH` environment variable for you. You may need to restart any open terminal sessions for the change to take effect.
 
-The package automatically sets your PATH environment variable for you. You may need to restart any open terminal sessions for the change to take effect.
+#### Install via Homebrew
+
+Alternatively, you can install Ballerina using [Homebrew](https://brew.sh/) by executing the commands below.
+
+```bash
+$ brew install bal
+```
+
+Homebrew installs the Ballerina distribution in the <code class="language-plaintext highlighter-rouge">/usr/local/Cellar/ballerina/&lt;BALLERINA-VERSION&gt;/libexec</code> directory.
 
 ### Install on Windows
 
@@ -60,12 +68,12 @@ The installer sets the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` di
 
 For example, for the DEB file:
 ```
-dpkg -i ballerina-<VERSION>-swan-lake-linux-x64.deb 
+$ dpkg -i ballerina-<VERSION>-swan-lake-linux-x64.deb 
 ```
 
 For example, for the RPM file:
 ```
-rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm 
+$ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm 
 ```
 
 ## Install via the Ballerina language ZIP file
@@ -88,7 +96,7 @@ After installing Ballerina, run the following test to verify if Ballerina has be
 Execute the command below from the command shell of the operating system.
 
 ```
-bal version
+$ bal version
 ```
 
 Make certain the command output shows the version that you downloaded as shown below.
@@ -131,11 +139,11 @@ To remove:
 
 For example, for the DEB file:
 ```
-apt-get remove ballerina-<VERSION>-swan-lake
+$ apt-get remove ballerina-<VERSION>-swan-lake
 ```
 
 For example, for the RPM file:
 ```
-rpm -e ballerina-<VERSION>-swan-lake
+$ rpm -e ballerina-<VERSION>-swan-lake
 ```
 

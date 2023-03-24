@@ -315,7 +315,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 You can add other modules using the `bal add` command.
 
 ```
-bal add util
+$ bal add util
 ```
 
 ### The `.bal` source files

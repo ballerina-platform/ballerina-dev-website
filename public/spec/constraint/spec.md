@@ -164,6 +164,7 @@ public type StringConstraints record {|
     int length?;
     int minLength?;
     int maxLength?;
+    string:RegExp pattern?;
 |};
 ```
 
@@ -174,6 +175,7 @@ All the supported constraints on `string` type are illustrated in the following 
 | length          |                           v.length() == c                            |
 | minLength       |                           v.length() >= c                            |
 | maxLength       |                           v.length() <= c                            |
+| pattern         |                     v is a full match of regex c                     |
 
 When defining constraints on `string` type, if the `length` constraint is present then `minLength` or `maxLength` are 
 not allowed.
@@ -182,7 +184,8 @@ Example :
 ```ballerina
 @constraint:String {
     minLength: 5,
-    maxLength: 10
+    maxLength: 10,
+    pattern: re `[a-z0-9](_?[a-z0-9])+`
 }
 type Username string;
 ```

@@ -83,7 +83,7 @@ export default function Downloads() {
                            <tr> </tr>
                            <tr>
                               <td>Install via Homebrew (for macOS)
-                                 <a href={`${prefix}/learn/install-ballerina/installation-options/#install-on-macos`} className={styles.cDownloadLinkIcon}>
+                                 <a href={`${prefix}/learn/install-ballerina/installation-options/#install-using-homebrew`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via Homebrew (for macOS)"/>
                                  </a>
                               </td>

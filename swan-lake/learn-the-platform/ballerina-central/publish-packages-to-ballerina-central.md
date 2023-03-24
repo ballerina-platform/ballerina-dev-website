@@ -23,14 +23,14 @@ redirect_from:
 Execute the command below to create a new library package named `hello`.
 
 ```
-bal new --template lib hello
+$ bal new --template lib hello
 ```
 
 This creates the files below.
 
 ```
-> cd hello
-> tree .
+$ cd hello
+$ tree .
     .
     ├── Ballerina.toml
     ├── Module.md
@@ -52,7 +52,7 @@ For more information on these files, see [Package layout](/learn/package-referen
 To generate the Ballerina archive, execute the command below.
 
 ```
-bal pack
+$ bal pack
 ```
 You view the output below.
 
@@ -99,7 +99,7 @@ Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerin
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
 ```
-bal push
+$ bal push
 ```
 
 ### Publish a new version of a package

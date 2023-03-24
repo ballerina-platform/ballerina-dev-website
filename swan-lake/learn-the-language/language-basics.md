@@ -946,6 +946,7 @@ Ballerina supports a structured way to document code. Documentation lines start 
 
 ```ballerina
 # Adds two integers.
+# 
 # + x - an integer
 # + y - another integer
 # + return - the sum of `x` and `y`

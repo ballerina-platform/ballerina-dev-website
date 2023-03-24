@@ -1318,32 +1318,35 @@ In addition to the above remote method actions, HTTP client supports executing s
 methods. The following are the definitions of those resource methods :
 
 ```ballerina
+# Defines the path parameter types.
+public type PathParamType boolean|int|float|decimal|string;
+
 # The post resource method can be used to send HTTP POST requests to HTTP endpoints.
-resource function post [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function post [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The put resource method can be used to send HTTP PUT requests to HTTP endpoints.            
-resource function put [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function put [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The patch resource method can be used to send HTTP PATCH requests to HTTP endpoints.              
-resource function patch [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function patch [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The delete resource method can be used to send HTTP DELETE requests to HTTP endpoints.              
-resource function delete [string ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
+resource function delete [PathParamType ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The head resource method can be used to send HTTP HEAD requests to HTTP endpoints.              
-resource function head [string ...path](map<string|string[]>? headers = (), *QueryParams params)
+resource function head [PathParamType ...path](map<string|string[]>? headers = (), *QueryParams params)
             returns Response|ClientError; 
 
 # The get resource method can be used to send HTTP GET requests to HTTP endpoints.              
-resource function get [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function get [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;
 
 # The options resource method can be used to send HTTP OPTIONS requests to HTTP endpoints.              
-resource function options [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function options [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;                                               
 ```
 

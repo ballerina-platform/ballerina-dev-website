@@ -169,9 +169,9 @@ Now, let's add a function to the `math` module to be documented. Copy and paste 
 
 ```ballerina
 # Calculates the value of the 'a' raised to the power of 'b'.
-# 
-float aPowerB = math:pow(3.2, 2.4);
-# 
+# ```ballerina
+# float aPowerB = math:pow(3.2, 2.4);
+# ```
 # 
 # + a - Base value
 # + b - Exponential value

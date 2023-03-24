@@ -9,11 +9,12 @@ on:
         default: 'live'
         type: choice
         options:
-        - ballerina.io (live)
-        - ballerina.io (preprod)
-        - lib.ballerina.io (live)
-        - lib.ballerina.io (staging)
-        - lib.ballerina.io (dev)
+        - ballerina.io
+        - pre-prod.ballerina.io
+        - lib.ballerina.io
+        - staging-lib.ballerina.io
+        - dev-lib.ballerina.io
+        - blog.ballerina.io
 
 jobs:
   linkChecker:
@@ -27,22 +28,6 @@ jobs:
       run: |
         npm install --global @deptagency/octopus
         
-        URL=https://ballerina.io/ 
-
-        if [ "$DEPLOYMENT" == "ballerina.io (preprod)" ]; then
-          URL=https://pre-prod.ballerina.io/
-        fi
-
-        if [ "$DEPLOYMENT" == "lib.ballerina.io (live)" ]; then
-          URL=https://lib.ballerina.io/
-        fi
-
-        if [ "$DEPLOYMENT" == "lib.ballerina.io (staging)" ]; then
-          URL=https://staging-lib.ballerina.io/
-        fi
-
-        if [ "$DEPLOYMENT" == "lib.ballerina.io (dev)" ]; then
-          URL=https://dev-lib.ballerina.io/
-        fi
-
+        URL=https://$DEPLOYMENT/ 
+        echo "Checking links in $URL"
         octopus $URL

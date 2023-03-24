@@ -145,7 +145,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added parallel execution support for GraphQL resolvers.
 - Allowed adding a single interceptor without creating an array.
 - Skipped additional validation for unused operations in the GraphQL document.
-- Added support for exiting the listener when a panic occurs.
+- Improved the listener behavior to exit when a panic occurs.
 
 ### Bug fixes
 

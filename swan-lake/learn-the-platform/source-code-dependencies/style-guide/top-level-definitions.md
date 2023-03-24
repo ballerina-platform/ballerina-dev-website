@@ -182,14 +182,14 @@ Block indent each of the field definitions (including the rest field) in their o
 type Person record {
     string name;
     int...;
-};
+}
 
 // or
 
 type Person record {|
     int id;
     string name;
-|};
+|}
 ```
 
 ## Reference record or object

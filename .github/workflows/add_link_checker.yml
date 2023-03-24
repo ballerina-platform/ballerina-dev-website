@@ -22,7 +22,7 @@ jobs:
       env:
         DEPLOYMENT: ${{ inputs.deployment }}
       run: |
-        npm install broken-link-checker -g
+        npm install --global @deptagency/octopus
         
         URL=https://ballerina.io/ 
 
@@ -30,4 +30,4 @@ jobs:
           URL=https://pre-prod.ballerina.io/
         fi
 
-        blc $URL -ro --exclude https://www.linkedin.com/company/79080790
+        octopus $URL

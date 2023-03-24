@@ -2,6 +2,19 @@ name: Link Checker
 
 on:
   workflow_dispatch: 
+    inputs:
+      deployment:
+        description: 'Select the deployment to check links in'
+        required: true
+        default: 'ballerina.io'
+        type: choice
+        options:
+        - ballerina.io
+        - pre-prod.ballerina.io
+        - lib.ballerina.io
+        - staging-lib.ballerina.io
+        - dev-lib.ballerina.io
+        - blog.ballerina.io
 
 jobs:
   linkChecker:
@@ -10,6 +23,11 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v3
     - name: Run link checker
+      env:
+        DEPLOYMENT: ${{ inputs.deployment }}
       run: |
-        npm install broken-link-checker -g
-        blc https://ballerina.io/  -ro --exclude https://www.linkedin.com/company/79080790
+        npm install --global @deptagency/octopus
+        
+        URL=https://$DEPLOYMENT/
+        echo "Checking links in $URL"
+        octopus $URL

@@ -129,7 +129,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.
 - Added support for setting multiple associations between the same entities. The relation owner should be the same for all associations.
 - Added support for specifying the relation owner in the one-to-one association. The associated entity field must be an optional value field in the child entity.
-- Added code actions to make write persist schema definitions easier.
+- Added code actions to make defining the data model easier.
 
   >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
 
@@ -167,7 +167,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
     E.g., `bal persist init --datastore mysql --module db`
 - Changed the `persist init` command to create a `persist` directory in the Ballerina project and generate a new definition file (`model.bal`) in the `persist` directory if the file does not exist.
 - Restricted to have only one persist model definition per Ballerina package.
-- Removed the support for `persist push` command and generate SQL script file in the `persist generate` command.
+- Removed the `persist push` command support and generate SQL script file in the `persist generate` command. The generated SQL script file needs to be executed manually to create the database table.
 - Changed the `persist generate` command to generate all the Ballerina client, types, `db_config` files, and the SQL script files in the `generated/<module_name>` directory.
 - Renamed the generated files to the following.
   - `generated_client.bal` -> `persist_client.bal`

@@ -9,8 +9,11 @@ on:
         default: 'live'
         type: choice
         options:
-        - live
-        - preprod
+        - ballerina.io (live)
+        - ballerina.io (preprod)
+        - lib.ballerina.io (live)
+        - lib.ballerina.io (staging)
+        - lib.ballerina.io (dev)
 
 jobs:
   linkChecker:
@@ -26,8 +29,20 @@ jobs:
         
         URL=https://ballerina.io/ 
 
-        if [ "$DEPLOYMENT" == "preprod" ]; then
+        if [ "$DEPLOYMENT" == "ballerina.io (preprod)" ]; then
           URL=https://pre-prod.ballerina.io/
+        fi
+
+        if [ "$DEPLOYMENT" == "lib.ballerina.io (live)" ]; then
+          URL=https://lib.ballerina.io/
+        fi
+
+        if [ "$DEPLOYMENT" == "lib.ballerina.io (staging)" ]; then
+          URL=https://staging-lib.ballerina.io/
+        fi
+
+        if [ "$DEPLOYMENT" == "lib.ballerina.io (dev)" ]; then
+          URL=https://dev-lib.ballerina.io/
         fi
 
         octopus $URL

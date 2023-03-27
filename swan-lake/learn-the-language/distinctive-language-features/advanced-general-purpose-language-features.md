@@ -668,16 +668,16 @@ In the above code example, **``ch``** is of the ``string:Char`` type. You can al
 
 ## Regular Expressions
 
-Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same so that one can use either ``regexp:RegExp`` or  ``string:RegExp`` to create variables for regular expressions.
+Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same which allows you to use either ``regexp:RegExp`` or  ``string:RegExp`` to define variables for regular expressions.
 
 There are two ways to declare regular expressions:
 
-1. Using regular expression template literals:
+1. Using regular expression template expression:
 
 ```ballerina
 string:RegExp reg = re `abc+`;
 ```
-In this approach, you can use the ``re`` keyword to define a regular expression pattern using a template literal. This allows for easy expression of regular expressions in a way that is similar to other languages.
+In this approach, you specify the pattern between two backticks, followed by  ``re`` keyword to define a regular expression using a template literal. This allows for easy expression of regular expressions in a way that is similar to other languages.
 
 2. Using the ``fromString`` function from the ``lang.regexp`` module:
 
@@ -691,7 +691,7 @@ string:RegExp reg = check regexp:fromString(stringPattern);
 
 This approach allows for more dynamic construction of regular expressions using string manipulation techniques to create a pattern that can be compiled into a ``RegExp`` value.
 
-The template literal approach results in the compilation of the regular expression at compile-time, while the ``fromString`` function results in runtime compilation.
+The template expression approach results in the compilation of the regular expression at compile-time, while the ``fromString`` function results in runtime compilation.
 
 Ballerina regular expressions are based on the ECMAScript 2022 specification, with support for a subset of ECMAScript syntax. You can refer to the [Ballerina regular expression specification](https://ballerina.io/spec/lang/master/#section_10.1) to find the supported syntax.
 
@@ -707,13 +707,13 @@ In this example, the regular expression pattern includes the `name` parameter in
 
 ### Unicode property escape
 
-Unicode property escapes allow matching characters based on their Unicode properties.  For instance, Unicode property escapes can be used to match emojis, punctuations, letters from specific languages or scripts, etc. 
+Unicode property escapes allow matching characters based on their Unicode properties. For instance, Unicode property escapes can be used to match emojis, punctuations, letters from specific languages or scripts, etc. 
 
 ```ballerina
-// '\p' will match the property value.
+// `\p` will match the property value.
 string:RegExp lowerCaseLetter = re `\p{Ll}`;
 
-// '\P' will match the negation of the property value.
+// `\P` will match the negation of the property value.
 string:RegExp nonDigitChar = re `\P{N}`;
 
 // It is not mandatory to use the property name(`gc`) for General categories.
@@ -739,13 +739,13 @@ The ``RegExp`` values can be used with the [RegExp](https://lib.ballerina.io/bal
 
 Two constructs are utilized to provide the output of these lang library functions:
 - ``Span``: An object type that functions as a container for substrings.
-- ``Group``: A tuple comprising ``Span`` objects where the first member of the tuple always represents the entire match.
+- ``Groups``: A tuple comprising ``Span`` objects where the first member of the tuple always represents the entire match.
 
 ```ballerina
 import ballerina/io;
 import ballerina/lang.regexp;
 
-string[] names = re `,`.split("Bob,Frank,Will,Jack"); // ["Bob", "Frank", "Will", "Jack"]
+string[] names = re `,`.split("Bob,Frank,Will,Jack"); // ["Bob","Frank","Will","Jack"]
 
 int patternCount = re `[bB].tt[a-z]*`.findAll("Butter was bought by Betty but the butter was bitter.").length(); // 4
 

@@ -291,7 +291,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Made the `@http:Payload` annotation optional for `post`, `put`, and `patch` actions.
+- Made the `@http:Payload` annotation optional for the `post`, `put`, and `patch` actions.
 - Rewrote the compiler plugin to resolve inconsistencies.
 
 #### `graphql` package

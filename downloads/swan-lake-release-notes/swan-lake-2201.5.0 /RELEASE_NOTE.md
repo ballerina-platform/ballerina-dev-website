@@ -309,6 +309,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ### New features
 
 ### Improvements
+- Improved the Kubernetes Horizontal autoscaler to use `autoscaling/v2`.
 
 ### Bug fixes
 

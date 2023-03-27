@@ -350,7 +350,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### Test Framework
 
-- Added validations for incorrect use of the `@test` annotation (i.e. disallow usage on resource functions and object methods)
+- Added validations for the incorrect use of the `@test` annotation (i.e. disallowed the usage on resource functions and object methods).
 
 #### CLI
 

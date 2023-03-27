@@ -279,7 +279,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 ### New features
 
 #### `http` package
-- Introduced new HTTP status code error structure.
+- Introduced a new HTTP status code error structure.
 - Added support for allowing tuple type in the resource return type.
 - Added basic path parameter support for client resource methods.
 

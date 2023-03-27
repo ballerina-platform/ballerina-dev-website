@@ -280,7 +280,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `http` package
 - Introduced a new HTTP status code error structure.
-- Added support for allowing tuple type in the resource return type.
+- Added support for allowing the tuple type in the resource return type.
 - Added basic path parameter support for client resource methods.
 
 #### `graphql` package

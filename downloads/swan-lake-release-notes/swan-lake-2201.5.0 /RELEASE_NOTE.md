@@ -175,7 +175,7 @@ foreach int i in int:range(5, 0, -2) {
 
 #### Language support for regular expressions
 
-The language now supports regular expressions enabling powerful pattern-matching and text processing operations. A new type, named `RegExp`, has been introduced in the new `lang.regexp` module (it can also be referred to using the type alias `RegExp` defined in the `lang.string` module). The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
+The language now supports regular expressions enabling powerful pattern-matching and text-processing operations. A new type, named `RegExp`, has been introduced in the new `lang.regexp` module (it can also be referred to using the type alias `RegExp` defined in the `lang.string` module). The `RegExp` type conforms to a subset of the ECMAScript specification for regular expressions.
 
 ```ballerina
 import ballerina/lang.regexp;
@@ -226,7 +226,7 @@ the values can be passed through command-line arguments as follows.
 bal run -- 1 b 33
 ```
 
-#### Support ambiguous union type configurable variables
+#### Support ambiguous union-type configurable variables
 
 When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor from which the value can be constructed.
 
@@ -297,7 +297,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added parallel execution support for GraphQL resolvers.
 - Allowed adding a single interceptor without creating an array.
 - Skipped additional validation for unused operations in the GraphQL document.
-- Improved the listener behavior to exit when a panic occurs.
+- Improved the listener's behavior to exit when a panic occurs.
 
 #### `persist` package
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
@@ -412,7 +412,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### Test Framework
 
-- Added validations for the incorrect use of the `@test` annotation (i.e. disallowed the usage on resource functions and object methods).
+- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods).
 
 #### Language Server
 

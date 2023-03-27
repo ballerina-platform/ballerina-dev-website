@@ -194,8 +194,6 @@ public function main() {
 }
 ```
 
-### Improvements
-
 ### Bug fixes
 
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.5.0+is%3Aclosed+label%3AType%2FBug).
@@ -315,8 +313,6 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.5.0%22+label%3AType%2FBug).
 
 ### Code to Cloud updates
-
-### New features
 
 ### Improvements
 - Improved the Kubernetes Horizontal autoscaler to use `autoscaling/v2`.

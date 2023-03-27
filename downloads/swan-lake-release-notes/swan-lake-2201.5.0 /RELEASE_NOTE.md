@@ -318,8 +318,6 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 ### New features
 
-#### Test Framework
-
 #### Language Server
 
 - Added quick pick support for the `Extract to local variable` and `Extract to function` code actions.

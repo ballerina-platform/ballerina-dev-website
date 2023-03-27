@@ -318,8 +318,6 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 ### New features
 
-#### Test Framework
-
 #### Language Server
 
 - Added quick pick support for the `Extract to local variable` and `Extract to function` code actions.
@@ -349,6 +347,10 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 >**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
 
 ### Improvements
+
+#### Test Framework
+
+- Added validations for the incorrect use of the `@test` annotation (i.e. disallowed the usage on resource functions and object methods).
 
 #### CLI
 

@@ -668,7 +668,7 @@ In the above code example, **``ch``** is of the ``string:Char`` type. You can al
 
 ## Regular Expressions
 
-Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same so that one can use either ``regexp:RegExp`` or  ``string:RegExp` to create variables for regular expressions.
+Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same so that one can use either ``regexp:RegExp`` or  ``string:RegExp`` to create variables for regular expressions.
 
 There are two ways to declare regular expressions:
 

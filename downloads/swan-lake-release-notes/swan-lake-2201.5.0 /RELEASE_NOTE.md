@@ -278,11 +278,21 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `http` package
+- Introduced a new HTTP status code error structure.
+- Added support for allowing the tuple type in the resource return type.
+- Added basic path parameter support for client resource methods.
+
 #### `graphql` package
 
 - Added support for the federation subgraph.
 
 ### Improvements
+
+#### `http` package
+
+- Made the `@http:Payload` annotation optional for the `post`, `put`, and `patch` actions.
+- Rewrote the compiler plugin to resolve inconsistencies.
 
 #### `graphql` package
 

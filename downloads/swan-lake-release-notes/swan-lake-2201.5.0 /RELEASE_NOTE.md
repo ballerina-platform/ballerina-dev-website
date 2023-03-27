@@ -291,7 +291,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Made @http:Payload annotation optional for post, put and patch.
+- Made `@http:Payload` annotation optional for post, put and patch.
 - Rewrote compiler plugin to resolve inconsistencies.
 
 #### `graphql` package

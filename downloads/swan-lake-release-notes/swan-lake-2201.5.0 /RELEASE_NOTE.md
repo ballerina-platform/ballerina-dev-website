@@ -324,10 +324,6 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Added quick pick support for the `Extract to local variable` and `Extract to function` code actions.
 - Added completion support for regular expressions.
 
-#### GraphQL Tool
-
-#### OpenAPI Tool
-
 #### Persist Tool
 - Added the following new arguments to the `persist init` commands.
     - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
@@ -349,15 +345,10 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 ### Improvements
 
-#### Test Framework
+#### Bindgen Tool 
 
-- Added validations for the incorrect use of the `@test` annotation (i.e. disallowed the usage on resource functions and object methods).
-
-#### CLI
-
-### Bindgen Tool 
-- Added the `with-optional-types`, `with-optional-types-param`, and `with-optional-types-return` command options to the `bal bindgen` command to support 
-  Java null values via generated bindings. Therefore, these command options will generate optional (i.e., nilable) types 
+- Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support 
+  Java null values via generated bindings. These command options will generate optional (i.e., nilable) types 
   for parameter or/and return types in generated Ballerina binding functions.
 
     Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
@@ -412,6 +403,10 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
         return newObj;
     }
     ```
+
+#### Test Framework
+
+- Added validations for the incorrect use of the `@test` annotation (i.e. disallowed the usage on resource functions and object methods).
 
 #### Language Server
 

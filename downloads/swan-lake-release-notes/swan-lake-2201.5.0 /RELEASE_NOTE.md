@@ -317,10 +317,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ### Improvements
 - Improved the Kubernetes Horizontal autoscaler to use `autoscaling/v2`.
 
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.5.0%22+label%3AType%2FBug).
-
 ## Developer tools updates
 
 ### New features

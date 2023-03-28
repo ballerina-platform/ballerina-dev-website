@@ -94,6 +94,8 @@ When you push a package to Ballerina Central, the organizations are validated ag
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
+You can also choose who will have access to the package you are publishing by setting the package visibility in the `Ballerina.toml` file. If you set the visibility as `private`, it will only be visible and accessible to the members within the organization you are pushing the package into. Private packages will be visible on ballerina central only if you are logged in. Likewise, if you or a member of your organization wants to pull a private package, the `Settings.toml` file needs to be set up according to the previous section (if not set up already). 
+
 ### Publish the package
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.

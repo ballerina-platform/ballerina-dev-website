@@ -3,6 +3,22 @@
         {
             "date": "May 10, 2023",
             "day": "Wed.",
+            "time": "10.40 a.m. EDT",
+            "expire": "2023-05-11T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.womentech.net/speaker/Anupama/Pathirage/80802",
+            "eventType": "Women in Tech Global Conference 2023",
+            "eventName": "Ballerina - Open Source Cloud Native Programming Language",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 10, 2023",
+            "day": "Wed.",
             "time": "12.05 p.m. PDT",
             "expire": "2023-05-11T00:00:00.0000-00:00",
             "location": "Vancouver, BC",

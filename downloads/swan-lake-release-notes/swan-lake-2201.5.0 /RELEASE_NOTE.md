@@ -144,6 +144,22 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
            sample:main(sample.bal:3)
     ```
 
+- Fixed a bug that resulted in a compiler crash when attempting to ignore the error cause using `_` in an error binding pattern.
+
+  ```ballerina
+  type SampleErrorData record {|
+    int code;
+    string reason;
+  |};
+
+  type SampleError error<SampleErrorData>;
+
+  public function main() {
+    SampleError sampleErr = error("Transaction Failure", error("Database Error"), code = 20, reason = "deadlock condition");
+    var error(message1, _, code = code1, reason = reason1) = sampleErr // compilation error now
+  }
+  ```
+
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 
 ## Language updates

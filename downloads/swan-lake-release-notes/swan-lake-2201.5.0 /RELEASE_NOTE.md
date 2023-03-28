@@ -299,6 +299,12 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Skipped additional validation for unused operations in the GraphQL document.
 - Improved the listener's behavior to exit when a panic occurs.
 
+#### `nats` package
+- Improved the listener's behavior to exit when a panic occurs.
+
+#### `rabbitmq` package
+- Improved the listener's behavior to exit when a panic occurs.
+
 #### `persist` package
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.

@@ -82,7 +82,7 @@ export function IoCsvDatamapping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c109da28bdb13474cfe63d9b83564995&file=io_csv_datamapping.bal",
+                "https://play.ballerina.io/?gist=2cb95dbc57236b1fbaeaa5ec204a70cf&file=io_csv_datamapping.bal",
                 "_blank"
               );
             }}

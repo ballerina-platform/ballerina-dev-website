@@ -68,7 +68,7 @@ export function IoCsv({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6c121f0f582fbebb8fead0f12e7b9969&file=io_csv.bal",
+                "https://play.ballerina.io/?gist=f9b26e471c985bed2aad361aa6882545&file=io_csv.bal",
                 "_blank"
               );
             }}

@@ -172,12 +172,6 @@ sublinks:
           - title: Never type
             id: 15
             url: never-type
-          - title: RegExp type
-            id: 16
-            url: regexp-type
-          - title: RegExp operations
-            id: 17
-            url: regexp-operations
       - title: Expression-oriented style
         id: 10
         sublinks:

@@ -18,7 +18,7 @@ public function main() returns error? {
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"

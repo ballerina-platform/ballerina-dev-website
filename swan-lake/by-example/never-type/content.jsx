@@ -75,7 +75,7 @@ export function NeverType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ca8ce2dc2460cd26e6df5df5c66f809a&file=never_type.bal",
+                "https://play.ballerina.io/?gist=2aab3ffc365dca3724bb98a017189ae8&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -274,7 +274,10 @@ export function NeverType({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="RegExp type" href="/learn/by-example/regexp-type">
+          <Link
+            title="Expression-oriented style"
+            href="/learn/by-example/expression-oriented-style"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -283,7 +286,7 @@ export function NeverType({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  RegExp type
+                  Expression-oriented style
                 </span>
               </div>
               <svg

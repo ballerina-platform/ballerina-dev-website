@@ -21,7 +21,7 @@ public function main() returns error? {
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -68,7 +68,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1aeab7ca67702a22bdee35324f6d6dec&file=http_client_oauth2_jwt_bearer_grant_type.bal",
+                "https://play.ballerina.io/?gist=c1a3273a815c50216e0bbe98c830acca&file=http_client_oauth2_jwt_bearer_grant_type.bal",
                 "_blank"
               );
             }}

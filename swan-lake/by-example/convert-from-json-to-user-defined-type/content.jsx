@@ -82,7 +82,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=275f695afac9adc337c0751570038934&file=convert_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=110074cce9b2db27441e3a9f5a478c04&file=convert_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -280,7 +280,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/check">Check expression</a>
+            <a href="/learn/by-example/check-expression">Check expression</a>
           </span>
         </li>
       </ul>

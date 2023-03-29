@@ -145,7 +145,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```
 
 - Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
-- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously the annotation was ignored and compiled successfully.
+- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously, the annotation was ignored and compiled successfully.
     ```ballerina
     distinct service class Book {
         @test:Config //compilation error now

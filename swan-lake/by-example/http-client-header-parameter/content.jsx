@@ -71,7 +71,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a559d920806346fa475046562a8424d&file=http_client_header_parameter.bal",
+                "https://play.ballerina.io/?gist=50644c15646182f59753d43598fe797d&file=http_client_header_parameter.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-client-header-parameter",
                 "_blank"
               );
             }}
@@ -262,7 +262,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d46e1a933030c8d07c63b374da562d14&file=http_client_header_parameter_post.bal",
+                "https://play.ballerina.io/?gist=1adc1b2cc91dba8d9fb89c88b638d833&file=http_client_header_parameter_post.bal",
                 "_blank"
               );
             }}
@@ -287,7 +287,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-client-header-parameter",
                 "_blank"
               );
             }}

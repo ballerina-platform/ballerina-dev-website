@@ -76,7 +76,7 @@ export function Tuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=41b38ac1bf53b66f2251844d193b92af&file=tuples.bal",
+                "https://play.ballerina.io/?gist=0be879bb0e7848407dfc08597524fb46&file=tuples.bal",
                 "_blank"
               );
             }}
@@ -101,7 +101,7 @@ export function Tuples({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/tuples",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/tuples",
                 "_blank"
               );
             }}

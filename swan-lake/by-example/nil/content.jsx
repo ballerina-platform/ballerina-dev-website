@@ -58,7 +58,7 @@ export function Nil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=19bda8af035b3fc40f5592fd7cb4f21f&file=nil.bal",
+                "https://play.ballerina.io/?gist=a01f40ada011e324f6cf797970721ca9&file=nil.bal",
                 "_blank"
               );
             }}
@@ -83,7 +83,7 @@ export function Nil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/nil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/nil",
                 "_blank"
               );
             }}

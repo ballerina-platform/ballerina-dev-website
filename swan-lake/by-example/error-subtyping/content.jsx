@@ -64,7 +64,7 @@ export function ErrorSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60e3590d75cec2e863b2d36a06ff9761&file=error_subtyping.bal",
+                "https://play.ballerina.io/?gist=18fe5c9b0b91144298632d79d95e97ee&file=error_subtyping.bal",
                 "_blank"
               );
             }}
@@ -89,7 +89,7 @@ export function ErrorSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/error-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/error-subtyping",
                 "_blank"
               );
             }}

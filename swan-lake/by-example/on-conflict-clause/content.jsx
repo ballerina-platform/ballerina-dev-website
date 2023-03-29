@@ -85,7 +85,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f512ee3eb45e364d932218acd176adf7&file=on_conflict_clause.bal",
+                "https://play.ballerina.io/?gist=20498b22a07c9a15e545a9fc983964d8&file=on_conflict_clause.bal",
                 "_blank"
               );
             }}
@@ -110,7 +110,7 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/on-conflict-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/on-conflict-clause",
                 "_blank"
               );
             }}

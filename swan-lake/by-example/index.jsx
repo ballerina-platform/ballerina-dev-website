@@ -184,6 +184,14 @@ import {
   codeSnippetData as NeverTypeCodeSnippetData,
 } from "./never-type/content.jsx";
 import {
+  RegexpType,
+  codeSnippetData as RegexpTypeCodeSnippetData,
+} from "./regexp-type/content.jsx";
+import {
+  RegexpOperations,
+  codeSnippetData as RegexpOperationsCodeSnippetData,
+} from "./regexp-operations/content.jsx";
+import {
   ExpressionOrientedStyle,
   codeSnippetData as ExpressionOrientedStyleCodeSnippetData,
 } from "./expression-oriented-style/content.jsx";
@@ -1947,6 +1955,10 @@ const BBEs = {
   StreamTypeCodeSnippetData,
   NeverType,
   NeverTypeCodeSnippetData,
+  RegexpType,
+  RegexpTypeCodeSnippetData,
+  RegexpOperations,
+  RegexpOperationsCodeSnippetData,
   ExpressionOrientedStyle,
   ExpressionOrientedStyleCodeSnippetData,
   Arrays,

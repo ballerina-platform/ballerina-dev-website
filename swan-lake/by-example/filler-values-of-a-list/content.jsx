@@ -60,7 +60,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d2148a743fc767a2240ac2a85263500a&file=filler_values_of_a_list.bal",
+                "https://play.ballerina.io/?gist=59d7a45b801f7bf70d8b62d84eb3f262&file=filler_values_of_a_list.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function FillerValuesOfAList({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/filler-values-of-a-list",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/filler-values-of-a-list",
                 "_blank"
               );
             }}

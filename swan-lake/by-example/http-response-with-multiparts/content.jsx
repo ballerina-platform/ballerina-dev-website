@@ -155,7 +155,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7e0396f5422b6a2eb755fd4ac1445688&file=http_response_with_multiparts.bal",
+                "https://play.ballerina.io/?gist=99c77d0f9edfe8c265702397234bdf4b&file=http_response_with_multiparts.bal",
                 "_blank"
               );
             }}
@@ -180,7 +180,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-response-with-multiparts",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-response-with-multiparts",
                 "_blank"
               );
             }}

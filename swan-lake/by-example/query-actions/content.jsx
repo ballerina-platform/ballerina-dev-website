@@ -69,7 +69,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f635d02f73a392b53be69dc4f67287bc&file=query_actions.bal",
+                "https://play.ballerina.io/?gist=1c22cb15c762c2756e33fa11c75a00a2&file=query_actions.bal",
                 "_blank"
               );
             }}

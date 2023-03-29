@@ -67,7 +67,7 @@ export function MultipleWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2b62add57c9102cb2f600f1b814c2ad5&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=6141dc012ced54ae8f317e5198a36f18&file=multiple_wait.bal",
                 "_blank"
               );
             }}

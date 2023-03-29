@@ -391,20 +391,6 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
-      },
-      {
-        "name": "RegExp type",
-        "url": "regexp-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "RegExp operations",
-        "url": "regexp-operations",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
       }
     ]
   },

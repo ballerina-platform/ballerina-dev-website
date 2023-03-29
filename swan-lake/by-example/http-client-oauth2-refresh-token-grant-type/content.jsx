@@ -21,7 +21,7 @@ public function main() returns error? {
             refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -69,7 +69,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2e9c0044b2d4aa9e2cd6c6b01b2c2c38&file=http_client_oauth2_refresh_token_grant_type.bal",
+                "https://play.ballerina.io/?gist=69c4e33e57d9447b4048ac846894cb38&file=http_client_oauth2_refresh_token_grant_type.bal",
                 "_blank"
               );
             }}

@@ -62,7 +62,7 @@ export function AnonymousFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9029a2388bb08fd2ee229a14bb57b18d&file=anonymous_function.bal",
+                "https://play.ballerina.io/?gist=fdcefa96ed6edfdeaf9cc3d9cd1be52e&file=anonymous_function.bal",
                 "_blank"
               );
             }}

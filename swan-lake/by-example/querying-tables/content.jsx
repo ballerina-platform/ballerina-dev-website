@@ -70,7 +70,7 @@ export function QueryingTables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b144865106ad8602383fd400a32c72c2&file=querying_tables.bal",
+                "https://play.ballerina.io/?gist=71b3c86e9152be203e965aba2fbec74c&file=querying_tables.bal",
                 "_blank"
               );
             }}

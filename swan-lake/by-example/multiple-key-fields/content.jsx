@@ -65,7 +65,7 @@ export function MultipleKeyFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a43028c12dbe604fec50d0b75122291d&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=c28df5754da80151fd490ad94c7b72fe&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}

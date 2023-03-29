@@ -67,7 +67,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=529fecae27c73e019bc3c51c2474a05e&file=single_use_of_typed_binding.bal",
+                "https://play.ballerina.io/?gist=4b8129e0677745c5e5e99cf4dad982cf&file=single_use_of_typed_binding.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/single-use-of-typed-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/single-use-of-typed-binding",
                 "_blank"
               );
             }}

@@ -97,7 +97,7 @@ export function IsolatedVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8458a0db131f494c3d562c6082a6be56&file=isolated_variables.bal",
+                "https://play.ballerina.io/?gist=592ffd85ffdea260b8d7d4e292ccec89&file=isolated_variables.bal",
                 "_blank"
               );
             }}
@@ -122,7 +122,7 @@ export function IsolatedVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/isolated-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/isolated-variables",
                 "_blank"
               );
             }}

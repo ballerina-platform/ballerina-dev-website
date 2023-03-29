@@ -79,7 +79,7 @@ export function TransactionalQualifier({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=32e846bbd7de273ff22e24e0c7bcd3e8&file=transactional_qualifier.bal",
+                "https://play.ballerina.io/?gist=fb34cd2908cd52d54fc542e3cdc009e6&file=transactional_qualifier.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function TransactionalQualifier({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/transactional-qualifier",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/transactional-qualifier",
                 "_blank"
               );
             }}

@@ -1,0 +1,21 @@
+{
+  "title": "RegExp operations",
+  "description": "This BBE demonstrates how to use langlib functions defined in the regexp langlib module.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "regexp",
+    "RegExp",
+    "regex",
+    "regular expressions",
+    "ballerina regex functions",
+    "regexp langlib functions"
+  ],
+  "permalink": "/learn/by-example/regexp-operations",
+  "active": "regexp-operations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/regexp-operations",
+    "/swan-lake/learn/by-example/regexp-operations.html"
+  ]
+}

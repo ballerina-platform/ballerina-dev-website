@@ -70,7 +70,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8011ee896e309dba250c6e2193253c40&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=556bb32b6400118474d1a9f9372574c9&file=regular_expressions.bal",
                 "_blank"
               );
             }}
@@ -95,7 +95,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/regular-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/regular-expressions",
                 "_blank"
               );
             }}

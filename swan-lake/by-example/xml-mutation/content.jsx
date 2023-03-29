@@ -52,7 +52,7 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1c779d1e75af97c6c1ccbce3cc65d912&file=xml_mutation.bal",
+                "https://play.ballerina.io/?gist=497b3d20ec2682e0318da0d1f43d0b58&file=xml_mutation.bal",
                 "_blank"
               );
             }}
@@ -77,7 +77,7 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/xml-mutation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/xml-mutation",
                 "_blank"
               );
             }}

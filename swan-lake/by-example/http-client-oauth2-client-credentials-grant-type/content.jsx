@@ -20,7 +20,7 @@ public function main() returns error? {
             tokenUrl: "https://localhost:9445/oauth2/token",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -67,7 +67,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7df19c73deade0c79da82ab024dd4612&file=http_client_oauth2_client_credentials_grant_type.bal",
+                "https://play.ballerina.io/?gist=0f40073d34421dfd98d822ac7b9d155c&file=http_client_oauth2_client_credentials_grant_type.bal",
                 "_blank"
               );
             }}

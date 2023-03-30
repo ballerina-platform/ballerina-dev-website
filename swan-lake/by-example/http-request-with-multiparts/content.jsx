@@ -129,7 +129,7 @@ export function HttpRequestWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fbd0451eb92097b1eb24b6562722515f&file=http_request_with_multiparts.bal",
+                "https://play.ballerina.io/?gist=6b5641d93a30febc9b651773b3eb3e89&file=http_request_with_multiparts.bal",
                 "_blank"
               );
             }}

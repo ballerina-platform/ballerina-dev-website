@@ -364,6 +364,14 @@ import {
   codeSnippetData as ErrorBindingPatternInMatchStatementCodeSnippetData,
 } from "./error-binding-pattern-in-match-statement/content.jsx";
 import {
+  RegexpType,
+  codeSnippetData as RegexpTypeCodeSnippetData,
+} from "./regexp-type/content.jsx";
+import {
+  RegexpOperations,
+  codeSnippetData as RegexpOperationsCodeSnippetData,
+} from "./regexp-operations/content.jsx";
+import {
   Table,
   codeSnippetData as TableCodeSnippetData,
 } from "./table/content.jsx";
@@ -2037,6 +2045,10 @@ const BBEs = {
   MappingBindingPatternInMatchStatementCodeSnippetData,
   ErrorBindingPatternInMatchStatement,
   ErrorBindingPatternInMatchStatementCodeSnippetData,
+  RegexpType,
+  RegexpTypeCodeSnippetData,
+  RegexpOperations,
+  RegexpOperationsCodeSnippetData,
   Table,
   TableCodeSnippetData,
   TableTypes,

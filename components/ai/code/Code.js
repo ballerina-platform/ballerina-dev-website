@@ -646,7 +646,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <a href='/usecases/integration' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            Read more about integration with Ballerina
+                                        Take a Deeper Dive into Using Ballerina for Integration
                                         </a>
                                     </div>
 

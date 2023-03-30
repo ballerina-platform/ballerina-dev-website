@@ -761,6 +761,27 @@
     ]
   },
   {
+    "title": "Regular Expressions",
+    "column": 1,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "RegExp type",
+        "url": "regexp-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp operations",
+        "url": "regexp-operations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
     "title": "Tables",
     "column": 2,
     "category": "Language concepts",

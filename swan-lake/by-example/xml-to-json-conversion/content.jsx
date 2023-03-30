@@ -62,7 +62,7 @@ export function XmlToJsonConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=485721bdbb2a7827de1c046decfc8752&file=xml_to_json_conversion.bal",
+                "https://play.ballerina.io/?gist=344d0eaaf89039ce819602c9cf98e6af&file=xml_to_json_conversion.bal",
                 "_blank"
               );
             }}

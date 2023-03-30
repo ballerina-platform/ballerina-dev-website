@@ -73,7 +73,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b6460c801205051953d4f469fdcf41bf&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=bb91c2214c6221eee2b59969baf045e5&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}

@@ -35,6 +35,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|1|2023-03-29|Active|
 |[Proposal: GraphQL ID scalar type](https://github.com/ballerina-platform/ballerina-standard-library/issues/4202)|[aashikam](https://github.com/aashikam)|0|2023-03-14|Draft|
 |[Proposal: Introduce a new API to execute batch queries into multiple batches](https://github.com/ballerina-platform/ballerina-standard-library/issues/4141)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|4|2023-03-01|Active|
 |[Proposal: Generate Ballerina Service from GraphQL Schema](https://github.com/ballerina-platform/ballerina-standard-library/issues/4127)|[chathuranga-jayanath-99](https://github.com/chathuranga-jayanath-99)|0|2023-02-23|N/A|

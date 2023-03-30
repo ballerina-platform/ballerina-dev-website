@@ -644,6 +644,12 @@ export default function UseCases(props) {
                                             : null
                                     }
 
+                                    <div className={styles.dVersion}>
+                                        <a href='/usecases/integration' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            Read more about integration with ballerina
+                                        </a>
+                                    </div>
+
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>

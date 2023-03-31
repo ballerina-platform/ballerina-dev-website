@@ -35,12 +35,12 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|1|2023-03-29|Active|
+|[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|
 |[Proposal: GraphQL ID scalar type](https://github.com/ballerina-platform/ballerina-standard-library/issues/4202)|[aashikam](https://github.com/aashikam)|0|2023-03-14|Draft|
 |[Proposal: Introduce a new API to execute batch queries into multiple batches](https://github.com/ballerina-platform/ballerina-standard-library/issues/4141)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|4|2023-03-01|Active|
 |[Proposal: Generate Ballerina Service from GraphQL Schema](https://github.com/ballerina-platform/ballerina-standard-library/issues/4127)|[chathuranga-jayanath-99](https://github.com/chathuranga-jayanath-99)|0|2023-02-23|N/A|
 |[Proposal: Introduce `bal protoc` command to generate source code from .proto files](https://github.com/ballerina-platform/ballerina-standard-library/issues/3778)|[MadhukaHarith92](https://github.com/MadhukaHarith92)|6|2022-12-05|Active|
-|[Proposal: GraphQL client subscription support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3560)|[MohamedSabthar](https://github.com/MohamedSabthar)|4|2022-10-27|Active|
+|[Proposal: GraphQL client subscription support](https://github.com/ballerina-platform/ballerina-standard-library/issues/3560)|[MohamedSabthar](https://github.com/MohamedSabthar)|4|2022-10-27|Blocked|
 |[Proposal: GraphQL Field-Level Interceptors](https://github.com/ballerina-platform/ballerina-standard-library/issues/3528)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2022-10-19|Active|
 |[Proposal: Introduce DataLoader for Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/3391)|[ThisaruGuruge](https://github.com/ThisaruGuruge)|1|2022-09-22|Active|
 |[Proposal: Proto file generation for Protocol Buffers SerDes](https://github.com/ballerina-platform/ballerina-standard-library/issues/3217)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2022-08-04|Draft|

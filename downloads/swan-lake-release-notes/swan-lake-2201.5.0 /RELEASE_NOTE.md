@@ -49,8 +49,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public function main() {
         json & readonly v = {};
         
-        string|error r = v; // compilation error now
-        Employee|string s = v.cloneReadOnly(); // compilation error now
+        string|error r = v; // Gives a compilation error now.
+        Employee|string s = v.cloneReadOnly(); // Gives a compilation error now.
     }
     ```
 

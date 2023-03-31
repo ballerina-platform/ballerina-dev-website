@@ -33,8 +33,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```ballerina
     public function main() {
         "abc"|string:Char a = "a";
-        var b = a + 1; // Gives a compilation error now.
-        var c = ["a","b","c"].map(s => s + 1); // Gives a compilation error now.
+        var b = a + 1; // compilation error now
+        var c = ["a","b","c"].map(s => s + 1); // compilation error now
     } 
     ```
 
@@ -49,8 +49,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public function main() {
         json & readonly v = {};
         
-        string|error r = v; // Gives a compilation error now.
-        Employee|string s = v.cloneReadOnly(); // Gives a compilation error now.
+        string|error r = v; // compilation error now
+        Employee|string s = v.cloneReadOnly(); // compilation error now
     }
     ```
 
@@ -73,7 +73,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug in dependently-typed function analysis, which previously resulted in compilation errors not being logged, when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) (where the basic types for `T` and `t` are not disjoint).
+- Fixed a bug in dependently-typed function analysis which previously resulted in compilation errors not being logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) where the basic types for `T` and `t` are not disjoint.
 
     ```ballerina
     public type TargetType typedesc<anydata>;

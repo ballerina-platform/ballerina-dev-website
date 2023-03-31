@@ -33,8 +33,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```ballerina
     public function main() {
         "abc"|string:Char a = "a";
-        var b = a + 1; // compilation error now
-        var c = ["a","b","c"].map(s => s + 1); // compilation error now
+        var b = a + 1; // Gives a compilation error now.
+        var c = ["a","b","c"].map(s => s + 1); // Gives a compilation error now.
     } 
     ```
 

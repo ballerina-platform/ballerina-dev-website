@@ -110,6 +110,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
     Now, this gives the error below.
+    
     ```
     error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}
         at ballerina.lang.value.0:cloneWithType(value.bal:114)
@@ -124,7 +125,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         int[]|float[] val = checkpanic j.fromJsonWithType();
     }
     ```
-    now gives
+    Now, this gives the error below.
+    
     ```
     error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '(int[]|float[])': 
                 {

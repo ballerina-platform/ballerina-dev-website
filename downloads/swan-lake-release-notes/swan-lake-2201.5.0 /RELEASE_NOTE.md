@@ -116,7 +116,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
            sample:main(sample.bal:6)
     ```
 
-- Improved the error message given in a failure of `fromJsonWithType` or `cloneWithType` operations, when the target type is a union type.
+- Improved the error message given in a failure of the `fromJsonWithType` or `cloneWithType` operations when the target type is a union type.
     
     ```ballerina
     public function main() {

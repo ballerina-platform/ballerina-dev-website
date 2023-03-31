@@ -109,7 +109,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         json jsonVal = checkpanic tupleVal.cloneWithType();
     }
     ```
-    now gives
+    Now, this gives the error below.
     ```
     error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}
         at ballerina.lang.value.0:cloneWithType(value.bal:114)

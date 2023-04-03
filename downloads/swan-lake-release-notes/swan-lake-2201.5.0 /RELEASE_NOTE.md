@@ -98,7 +98,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that resulted in inconsistent error messages associated with the `cloneWithType` operation.
+- Fixed a bug that resulted in inconsistent error messages when using the `value:cloneWithType` function.
     
     ```ballerina
     type OpenRecord record {

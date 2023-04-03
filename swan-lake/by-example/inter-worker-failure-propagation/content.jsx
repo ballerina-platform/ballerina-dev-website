@@ -75,7 +75,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=07389cc7cfa698d738f24a357821055b&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=a89c1e8bc651493ec65684cd30534be0&file=inter_worker_failure_propagation.bal",
                 "_blank"
               );
             }}

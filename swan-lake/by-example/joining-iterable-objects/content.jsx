@@ -84,7 +84,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0e70d6bcfb348dd75ea8c58e86402ce0&file=joining_iterable_objects.bal",
+                "https://play.ballerina.io/?gist=1046c2695c0e2ab7821cf1a992d179db&file=joining_iterable_objects.bal",
                 "_blank"
               );
             }}

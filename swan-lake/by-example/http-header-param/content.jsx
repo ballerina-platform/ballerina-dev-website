@@ -69,7 +69,7 @@ export function HttpHeaderParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47b7bcbfba89cd9e83c1e0d86719cc16&file=http_header_param.bal",
+                "https://play.ballerina.io/?gist=77795945134c08e4aa8cdadefaad5cf1&file=http_header_param.bal",
                 "_blank"
               );
             }}

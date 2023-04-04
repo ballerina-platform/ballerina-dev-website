@@ -110,8 +110,8 @@ Let’s make changes to the above example to get a random joke from a specific c
 
 ```ballerina
 import ballerina/http;
-import ballerina/regex;
 import ballerina/lang.array;
+import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -132,7 +132,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
 
     // Get a random joke from the provided category
     Joke joke = check clientEndpoint->get("/random?category=" + category);
-    return regex:replaceAll(joke.value, "Chuck Norris", name);
+    return re `Chuck Norris`.replaceAll(joke.value, name);
 }
 
 function isCategoryAvailable(string[] categories, string category) returns boolean => array:some(categories, categoryVal => categoryVal == category);

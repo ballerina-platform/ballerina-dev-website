@@ -86,13 +86,31 @@ export default function Packs(props) {
          </Col>
          <Col xs={12} sm={12} md={12} lg={4}>
             <h3 className={styles.dMac} style={macIcon}>macOS</h3>
-            <a id="packMac"
+            {/* <a id="packMac"
                href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
                className={styles.cDownload}
                data-download="downloads"
                data-pack={swanlake['macos-installer']}>
                <div className={styles.cSize}>pkg <span id="packWindowsName">{swanlake['macos-installer-size']}</span></div>
-            </a>
+            </a> */}
+            <div className={styles.dVersions}>
+               <div className={styles.dVersion}>
+                  <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
+                     className={styles.cDownload}
+                     data-download="downloads"
+                     data-pack={swanlake['macos-installer']}>
+                     <div className={styles.cSize}>pkg(x64) <span id="packLinuxName">{swanlake['macos-installer-size']}</span></div>
+                  </a>
+               </div>
+               <div className={styles.dVersion}>
+                  <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
+                     className={styles.cDownload}
+                     data-download="downloads"
+                     data-pack={swanlake['macos-installer']}>
+                     <div className={styles.cSize}>pkg(ARM64) <span id="packLinuxName">{swanlake['macos-installer-size']}</span></div>
+                  </a>
+               </div>
+            </div>
          </Col>
       </>
 

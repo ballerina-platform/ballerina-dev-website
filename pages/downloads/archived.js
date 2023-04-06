@@ -196,6 +196,18 @@ export default function AllArchived() {
                                                                 </a>
                                                                 </td>
                                                             </tr>
+                                                            {
+                                                                item['macos-installer-arm64'] &&
+
+                                                                <tr>
+                                                                    <td>{item['macos-installer']}</td>
+                                                                    <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-installer']}`}
+                                                                        name={item['macos-installer']} data-pack={item['macos-installer']} target="">
+                                                                        <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-installer']} />
+                                                                    </a>
+                                                                    </td>
+                                                                </tr>
+                                                            }
 
                                                             {
                                                                 item['other-artefacts'].map((ot, index) => (

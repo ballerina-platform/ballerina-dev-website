@@ -682,7 +682,7 @@ In this approach, you specify the pattern between two backticks, followed by  ``
 2. Using the ``fromString`` function from the ``lang.regexp`` module:
 
 ```ballerina
-import lang.regexp;
+import ballerina/lang.regexp;
 
 string quantiferStr = "{2,3}";
 string stringPattern = string `abc${quantiferStr}`;
@@ -745,20 +745,20 @@ Two constructs are utilized to provide the output of these lang library function
 import ballerina/io;
 import ballerina/lang.regexp;
 
-string[] names = re `,`.split("Bob,Frank,Will,Jack"); // ["Bob","Frank","Will","Jack"]
+public function main() {
+    string[] names = re `,`.split("Bob,Frank,Will,Jack"); // ["Bob","Frank","Will","Jack"]
+    
+    int patternCount = re `[bB].tt[a-z]*`.findAll("Butter was bought by Betty but the butter was bitter.").length(); // 4
 
-int patternCount = re `[bB].tt[a-z]*`.findAll("Butter was bought by Betty but the butter was bitter.").length(); // 4
+    string result = re `0+`.replaceAll("10010011", "*"); // 1*1*11
 
-string result = re `0+`.replaceAll("10010011", "*"); // 1*1*11
-
-// Extract the username and domain name from an email
-regexp:Groups? emailGroups = re `([a-z]+)@([a-z]+\.[a-z]{2,})`.findGroups("bob@example.net");
-if emailGroups is regexp:Groups {
-    regexp:Span username = <regexp:Span>emailGroups[1];
-    // Prints the username, start index and end index of the username substring
-    io:println(username.substring());
-    io:println(username.startIndex);
-    io:println(username.endIndex);
+    // Extract the username and domain name from an email
+    regexp:Groups? emailGroups = re `([a-z]+)@([a-z]+\.[a-z]{2,})`.findGroups("bob@example.net");
+    if emailGroups is regexp:Groups {
+        regexp:Span username = <regexp:Span>emailGroups[1];
+        // Prints the matched substring, start index, and end index
+        io:println(string `substring: ${username.substring()} start: ${username.startIndex} end: ${username.endIndex}`);
+    }
 }
 ```
 

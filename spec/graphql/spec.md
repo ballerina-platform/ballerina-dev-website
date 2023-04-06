@@ -1238,6 +1238,8 @@ When an error is returned from a GraphQL resolver, the error message is added as
 
 If a resolver execution results in an error, the stacktrace of the error will be logged to the stderr of the server.
 
+>**Note:** Even if a `resource` or `remote` method signature does not have `error` or any subtype of the `error` type, but the execution results in a Ballerina runtime `error`, the resulting response will include an error field.
+
 ###### Example: Returning Errors
 ```ballerina
 service on new graphql:Listener(9090) {
@@ -1922,18 +1924,7 @@ service on new graphql:Listener(9090) {
 
 The `interceptors` field is used to provide the service level interceptors.
 
-###### Example: Single Service Level Interceptor
-
-```ballerina
-@graphql:ServiceConfig {
-    interceptors: new Interceptor1()
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
-###### Example: Array of Service Level Interceptors
+###### Example: Service Level Interceptors
 
 ```ballerina
 @graphql:ServiceConfig {
@@ -2031,7 +2022,7 @@ Following is the output of the server when a request is processed:
 ```
 
 #### 11.3.1 Service Level Interceptors
-The service level interceptors are applied to all the resolvers in the GraphQL service. The GraphQL module accepts a single service level interceptor or an array of service level interceptors, and it should be inserted as mentioned in the [Service Level Interceptor](#1016-service-level-interceptors) section.
+The service level interceptors are applied to all the resolvers in the GraphQL service. The GraphQL module accept an array of service level interceptors, and it should be inserted as mentioned in the [Service Level Interceptor](#1016-service-level-interceptors) section.
 
 >**Note:** The service level interceptors are applied to each event in response stream of subscription resolvers.
 
@@ -2243,7 +2234,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: new AuthInterceptor()
+    interceptors: [new AuthInterceptor()]
 }
 service on new graphql:Listener(9090) {
 
@@ -2327,7 +2318,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: new AuthInterceptor()
+    interceptors: [new AuthInterceptor()]
 }
 service on new graphql:Listener(9090) {
 
@@ -2386,7 +2377,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: new AuthInterceptor()
+    interceptors: [new AuthInterceptor()]
 }
 service on new graphql:Listener(9090) {
 
@@ -2437,7 +2428,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: new AuthInterceptor()
+    interceptors: [new AuthInterceptor()]
 }
 service on new graphql:Listener(9090) {
 
@@ -2823,16 +2814,17 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 
 <table>
-  <tr>
-    <th>Example</th>
+    <tr>
+        <th>Example</th>
         <th>Ballerina definition</th>
         <th>GraphQL schema</th>
-  </tr>
-  <tr>
-    <td>Simple key</td>
-    <td>
-    <pre lang='ballerina'>
-
+    </tr>
+    <tr>
+        <td>
+            Simple key
+        </td>
+        <td>
+            <pre lang="ballerina">
 ```ballerina
 @subgraph:Entity {
     key: "id",
@@ -2844,11 +2836,10 @@ type Product record {
     int price;
 };
 ```
-</pre>
-    </td>
-    <td>
-<pre lang='graphql'>
-
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
 ```graphql
 type Product @key(fields: "id") {
     id: String!
@@ -2856,14 +2847,15 @@ type Product @key(fields: "id") {
     price: Int!
 }
 ```
-</pre>
-    </td>
-  </tr>
-  <tr>
-    <td>Mutiple keys</td>
-    <td>
-    <pre lang='ballerina'>
-
+            </pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mutiple keys
+        </td>
+        <td>
+            <pre lang="ballerina">
 ```ballerina
 @subgraph:Entity {
     key: ["id", "sku"],
@@ -2876,11 +2868,10 @@ type Product record {
     int price;
 };
 ```
-</pre>
-    </td>
-    <td>
-    <pre lang='graphql'>
-
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
 ```graphql
 type Product @key(fields: "id") @key(fields: "sku") {
     id: String!
@@ -2889,14 +2880,15 @@ type Product @key(fields: "id") @key(fields: "sku") {
     price: Int!
 }
 ```
-</pre>
-    </td>
-  </tr>
-  <tr>
-    <td>Compound key</td>
-    <td>
-    <pre lang='ballerina'>
-
+            </pre>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Compound key
+        </td>
+        <td>
+            <pre lang="ballerina">
 ```ballerina
 @subgraph:Entity {
     key: "id organization { id }",
@@ -2907,25 +2899,25 @@ type User record {
     Organization organization;
 }
 ```
-</pre>
-    </td>
-    <td>
-    <pre lang='graphql'>
-
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
 ```graphql
 type User @key(fields: "id organization { id }") {
     id: String!
     organization: Organization!
 }
 ```
-</pre>
-    </td>
-  </tr>
-  <tr>
-    <td>Non resolvable</td>
-    <td>
-    <pre lang='ballerina'>
-
+            </pre>
+        </td>
+    </tr>
+      <tr>
+        <td>
+            Non resolvable
+        </td>
+        <td>
+            <pre lang="ballerina">
 ```ballerina
 @subgraph:Entity {
     key: "id"
@@ -2935,19 +2927,18 @@ type Product record {
   id: String!
 }
 ```
-</pre>
-    </td>
-    <td>
-    <pre lang='graphql'>
-
+            </pre>
+        </td>
+        <td>
+            <pre lang="graphql">
 ```graphql
 type Product @key(fields: "id", resolvable: false) {
     id: ID!
 }
 ```
-</pre>
-    </td>
-  </tr>
+            </pre>
+        </td>
+    </tr>
 </table>
 
 #### 13.1.3 The `subgraph:ReferenceResolver`

@@ -7,11 +7,11 @@ const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
 const securityHeaders = [
   {
     key: 'X-Frame-Options',
-    value: 'DENY',
+    value: 'SAMEORIGIN',
   },
   {
     key: 'Content-Security-Policy',
-    value: "frame-src 'self' https://resources.wso2.com; frame-ancestors 'self' https://resources.wso2.com;"
+    value: "frame-ancestors 'none';"
   }
 ]
 

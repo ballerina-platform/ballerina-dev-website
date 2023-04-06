@@ -101,7 +101,7 @@ export function CombiningIsolatedFunctionsAndLock({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f775038661b3681d8822e835ef40be9b&file=combining_isolated_functions_and_lock.bal",
+                "https://play.ballerina.io/?gist=4c13c38c459da191f783ca7e55a61c09&file=combining_isolated_functions_and_lock.bal",
                 "_blank"
               );
             }}

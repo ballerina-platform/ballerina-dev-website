@@ -69,7 +69,7 @@ export function CreateStreamsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c906db91f88aedb8c9b73ac677b83d97&file=create_streams_with_query.bal",
+                "https://play.ballerina.io/?gist=00dcb0b662dea49afe053b8d8207efcf&file=create_streams_with_query.bal",
                 "_blank"
               );
             }}

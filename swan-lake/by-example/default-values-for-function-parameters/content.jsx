@@ -54,7 +54,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=666ca23bb118d73c1ba3144d008a6dda&file=default_values_for_function_parameters.bal",
+                "https://play.ballerina.io/?gist=f72240aa9092081ae1b69d6fd87c40fe&file=default_values_for_function_parameters.bal",
                 "_blank"
               );
             }}

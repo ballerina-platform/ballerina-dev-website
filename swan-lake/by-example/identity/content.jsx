@@ -75,7 +75,7 @@ export function Identity({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=10659480480522425d6d5d9fbef83bf5&file=identity.bal",
+                "https://play.ballerina.io/?gist=6999d2f1e612abbe978571a38d61ccc5&file=identity.bal",
                 "_blank"
               );
             }}

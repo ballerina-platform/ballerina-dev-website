@@ -756,8 +756,12 @@ public function main() {
     regexp:Groups? emailGroups = re `([a-z]+)@([a-z]+\.[a-z]{2,})`.findGroups("bob@example.net");
     if emailGroups is regexp:Groups {
         regexp:Span username = <regexp:Span>emailGroups[1];
-        // Prints the matched substring, start index, and end index
+        // Prints the username and its, starting and ending
         io:println(string `substring: ${username.substring()} start: ${username.startIndex} end: ${username.endIndex}`);
+
+        regexp:Span domain = <regexp:Span>emailGroups[2];
+        // Prints the domain and its, starting and ending
+        io:println(string `substring: ${domain.substring()} start: ${domain.startIndex} end: ${domain.endIndex}`);
     }
 }
 ```

@@ -75,7 +75,7 @@ export function ErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=73ce2086f3f2f8c06aad868b04e27b4b&file=error_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=41ffbbe5b82ced317ff531360e84fc64&file=error_binding_pattern.bal",
                 "_blank"
               );
             }}

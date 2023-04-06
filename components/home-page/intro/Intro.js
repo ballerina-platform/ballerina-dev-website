@@ -72,7 +72,7 @@ export default function Intro() {
                 (hoverBtn ? buttonStyleHover : buttonStyle)
               }
               target="_blank"
-              href={`${prefix}/learn/get-started-with-ballerina/`}
+              href={`${prefix}/learn/get-started/`}
               rel="noreferrer">
               Get started
               <p>Install Ballerina, set it all up <br />and take it for a spin.</p>

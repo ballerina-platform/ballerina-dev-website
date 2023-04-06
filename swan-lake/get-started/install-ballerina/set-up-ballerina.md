@@ -123,13 +123,8 @@ ul.cDiwnloadSubLinks li {
   list-style: none;
   font-size: 13px !important;
 }
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-    @media only screen and (min-width: 1200px) {
-      .cMarginSmall{
-         /* padding: 0;
-         width: 48%; */
-         /* margin-right: 2px */
-         margin-top: 5px
-      }
-    }
+
+.cMarginSmall {
+  margin-top: 5px
+}
 </style>

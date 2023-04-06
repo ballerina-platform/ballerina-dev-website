@@ -78,6 +78,7 @@ To complete this part of the guide, you need:
 
 > **Note:** 
 > - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311).
+> - On Mac with arm64 architecture, the Ballerina native image build will work with the Mac arm installer which is available in Ballerina 2201.5.0(Swan Lake) or greater.
 > - The GraalVM native-image tool support for Apple M1 (darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
@@ -397,6 +398,5 @@ Now, you  tested a simple Ballerina HTTP server application for GraalVM compatib
 
 ## Known issues
 
-- [Native image build is not working on Mac with Apple M1 chip](https://github.com/ballerina-platform/ballerina-lang/issues/39003)
 - [Native image build is failing with `non-reducible loop requires too much duplication` error](https://github.com/ballerina-platform/ballerina-lang/issues/38072)
 - [Native image test fails on Windows without test report](https://github.com/ballerina-platform/ballerina-lang/issues/38882)

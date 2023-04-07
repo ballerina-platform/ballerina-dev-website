@@ -97,9 +97,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that chose the inherent type incorrectly when constructing a structural value in `value:cloneWithType` 
+- Fixed a bug that chose the inherent type incorrectly when constructing a structural value in the `value:cloneWithType` 
 and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor, 
-then the inherent type used will be the first (leftmost) such type descriptor such that a value belonging to that type 
+then, the inherent type used will be the first (leftmost) such type descriptor such that a value belonging to that type 
 can be constructed from the structural value.
     
     ```ballerina

@@ -355,7 +355,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ### New features
 
 #### Installers
-- Introduced a new installer with dependencies (custom JRE) compatible with the macOS-ARM architecture. 
+- Introduced a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) with dependencies (custom JRE) compatible with the macOS-ARM architecture. 
 
 #### Language Server
 

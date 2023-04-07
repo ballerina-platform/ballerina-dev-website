@@ -97,6 +97,26 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
+- Fixed a bug that chose the inherent type incorrectly when constructing a structural value in `value:cloneWithType` 
+and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor, 
+then the inherent type used will be the first (leftmost) such type descriptor such that a value belonging to that type 
+can be constructed from the structural value.
+    
+    ```ballerina
+    type FloatSubtype record {|
+        float value;
+    |};
+
+    type DecimalSubtype record {|
+        decimal value;
+    |};
+
+    public function main() {
+        FloatSubtype x = {value: 0.0};
+        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of y will be DecimalSubtype.
+    }
+    ```
+
 - Fixed a bug that resulted in inconsistent error messages with the `cloneWithType` operation.
     
     ```ballerina

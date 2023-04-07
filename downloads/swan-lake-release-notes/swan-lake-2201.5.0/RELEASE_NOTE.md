@@ -32,8 +32,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```ballerina
     public function main() {
         "abc"|string:Char a = "a";
-        var b = a + 1; // compilation error now
-        var c = ["a","b","c"].map(s => s + 1); // compilation error now
+        var b = a + 1; // Compilation error now.
+        var c = ["a","b","c"].map(s => s + 1); // Compilation error now.
     } 
     ```
 
@@ -48,23 +48,23 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public function main() {
         json & readonly v = {};
         
-        string|error r = v; // compilation error now
-        Employee|string s = v.cloneReadOnly(); // compilation error now
+        string|error r = v; // Compilation error now.
+        Employee|string s = v.cloneReadOnly(); // Compilation error now.
     }
     ```
 
-- Fixed a bug that previously resulted in variables that were initialized with non-isolated expressions being inferred to be `isolated` variables.
+- Fixed a bug that previously resulted in variables that were initialized with non-isolated expressions being inferred as `isolated` variables.
 
     ```ballerina
     int[] config = [];
 
-    // `configs` was previously inferred to be an `isolated` variable
-    // incorrectly. It will no longer be inferred to be an `isolated` 
+    // `configs` was previously inferred as an `isolated` variable
+    // incorrectly. It will no longer be inferred as an `isolated` 
     // variable since `config` is not an isolated expression.
     int[][] configs = [[1, 2], config]; 
 
-    // Since `configs` is not inferred to be an `isolated` variable now,
-    // `getConfig` is not inferred to be an `isolated` function.
+    // Since `configs` is not inferred as an `isolated` variable now,
+    // `getConfig` is not inferred as an `isolated` function.
     function getConfig(int index) returns int[] {
         lock {
             return configs[index].clone();
@@ -72,15 +72,15 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug in dependently-typed function analysis which previously resulted in compilation errors not being logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) where the basic types for `T` and `t` are not disjoint.
+- Fixed a bug in dependently-typed function analysis. Previously, compilation errors were not logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) in which basic types for `T` and `t` are not disjoint.
 
     ```ballerina
     public type TargetType typedesc<anydata>;
 
-    // already a compilation error
+    // Already a compilation error.
     function f1(typedesc<anydata> targetType = <>) returns targetType|json = external;
 
-    // also a compilation error now
+    // Also a compilation error now.
     function f2(TargetType targetType = <>) returns targetType|json = external;
     ```
 
@@ -158,6 +158,7 @@ can be constructed from the structural value.
     ```
 
 - Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously, the annotation was ignored and compiled successfully.
+
     ```ballerina
     distinct service class Book {
         @test:Config //compilation error now
@@ -176,8 +177,7 @@ can be constructed from the structural value.
 
 The `int:range` lang library function returns an iterable object, which iterates over a range of integers.
 
-The `int:range(start, end, step)` function call will return an iterable object (`S`), which iterates over a range of integers from `start` (inclusive) to `end` (exclusive) with `step` being the difference between successive integers.
-`start`, `end`, and `step` are integer arguments.
+The `int:range(start, end, step)` function call will return an iterable object (`S`), which iterates over a range of integers from `start` (inclusive) to `end` (exclusive) with `step` being the difference between successive integers. `start`, `end`, and `step` are integer arguments.
 
 - When `step` is greater than `0`, the members of `S` that are less than `end` are returned in increasing order.
 - When `step` is less than `0`, the members of `S` that are greater than `end` are returned in decreasing order.

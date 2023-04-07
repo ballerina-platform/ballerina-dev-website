@@ -25,6 +25,8 @@ Run either of the commands below to directly update to 2201.5.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+>**Note:** From the release 2201.5.0 onwards, a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) is introduced to support the macOS-ARM platform.
+
 ## Backward-incompatible changes
 
 - Fixed a bug that resulted in invalid usage of additive expressions with operands of different incompatible basic types not resulting in a compilation error.
@@ -353,9 +355,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ## Developer tools updates
 
 ### New features
-
-#### Installers
-- Introduced a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) with dependencies (custom JRE) compatible with the macOS-ARM architecture. 
 
 #### Language Server
 

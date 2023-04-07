@@ -604,28 +604,28 @@ without the @http:Payload annotation:
 - The default payload parameter rules are only applicable to POST, PUT, PATCH, DELETE, and DEFAULT accessors.
 - Parameters must contain only one structured(map/record/table/tuple/array) type or `xml`. However, the array types of 
   basic types are considered as query parameters. But `byte[]` is an exception, and it is considered as a payload param.
-    - `resource function post(Student p) {}` -> `Student` is payload param type
-    - `resource function post(Student[] p) {}` -> `Student[]` is payload param type
-    - `resource function post(map<json> p) {}` -> `map<json>` is payload param type
-    - `resource function post(int[] p) {}` -> `int[]` is query param type
-    - `resource function post(byte[] p) {}` -> `byte[]` is payload param type
-    - `resource function post(int p) {}` -> `int` is query param type
+    - `resource function post path(Student p) {}` -> `Student` is payload param type
+    - `resource function post path(Student[] p) {}` -> `Student[]` is payload param type
+    - `resource function post path(map<json> p) {}` -> `map<json>` is payload param type
+    - `resource function post path(int[] p) {}` -> `int[]` is query param type
+    - `resource function post path(byte[] p) {}` -> `byte[]` is payload param type
+    - `resource function post path(int p) {}` -> `int` is query param type
 - If there's more than one structured type, the ambiguity must be resolved using either @http:Payload or @http:Query
   annotation.
-    - `resource function post(Student p, map<json> q) {}` -> ambiguous types for payload
-    - `resource function post(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
-    - `resource function post(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is payload
+    - `resource function post path(Student p, map<json> q) {}` -> ambiguous types for payload
+    - `resource function post path(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is query
 - If there are no structured types, all parameters are considered query parameters.
-    - `resource function post(string p, string q) {}` -> `p` and `q` are query params
-    - `resource function post(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(string p, string q) {}` -> `p` and `q` are query params
+    - `resource function post path(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
 - If the query parameter is structured, then the @http:Query annotation is required.
-    - `resource function post(Student p) {}` -> `p` is payload param type
-    - `resource function post(@http:Query Student p) {}` -> `p` is query param type
+    - `resource function post path(Student p) {}` -> `p` is payload param type
+    - `resource function post path(@http:Query Student p) {}` -> `p` is query param type
 - The only types allowed in the union for a parameter are structured types, `xml`, and `nil`.
-    - `resource function post(Student|xml p) {}` -> `Student|xml` is payload param type
-    - `resource function post(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
-    - `resource function post(Student? p) {}` -> `Student?` is payload param type
-    - `resource function post(Student|string p) {}` -> invalid union type for default payload param
+    - `resource function post path(Student|xml p) {}` -> `Student|xml` is payload param type
+    - `resource function post path(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
+    - `resource function post path(Student? p) {}` -> `Student?` is payload param type
+    - `resource function post path(Student|string p) {}` -> invalid union type for default payload param
 
 Following table explains the compatible `anydata` types with each common media type. In the absence of a standard media 
 type, the binding type is inferred by the payload parameter type itself. If the type is not compatible with the media 

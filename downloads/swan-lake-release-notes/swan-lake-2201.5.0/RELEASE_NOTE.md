@@ -5,7 +5,6 @@ permalink: /downloads/swan-lake-release-notes/2201.5.0/
 active: 2201.5.0
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201.5.0
-    - /downloads/swan-lake-release-notes/2201.5.0/
     - /downloads/swan-lake-release-notes/2201.5.0-swan-lake/
     - /downloads/swan-lake-release-notes/2201.5.0-swan-lake
     - /downloads/swan-lake-release-notes/
@@ -98,7 +97,27 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that resulted in inconsistent error messages when using the `value:cloneWithType` function.
+- Fixed a bug that chose the inherent type incorrectly when constructing a structural value in the `value:cloneWithType` 
+and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor, 
+then, the inherent type used will be the first (leftmost) such type descriptor such that a value belonging to that type 
+can be constructed from the structural value.
+    
+    ```ballerina
+    type FloatSubtype record {|
+        float value;
+    |};
+
+    type DecimalSubtype record {|
+        decimal value;
+    |};
+
+    public function main() {
+        FloatSubtype x = {value: 0.0};
+        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of y will be DecimalSubtype.
+    }
+    ```
+
+- Fixed a bug that resulted in inconsistent error messages with the `cloneWithType` operation.
     
     ```ballerina
     type OpenRecord record {
@@ -138,7 +157,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
            sample:main(sample.bal:3)
     ```
 
-- Due to an internal API change, the GraphQL `1.7.0` package is not compatible with older Ballerina versions and older GraphQL versions are not compatible with Ballerina `2201.5.0`. When migrating to Ballerina `2201.5.0` from previous Ballerina distributions, the GraphQL version should be updated to `1.7.0` with this release.
 - Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously, the annotation was ignored and compiled successfully.
 
     ```ballerina
@@ -318,6 +336,9 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
   >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
 
+#### `regex` package
+- Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.5.0%22+label%3AType%2FBug).
@@ -435,6 +456,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.5.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.5.0+is%3Aclosed+label%3AType%2FBug)
+- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.5.0%22+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

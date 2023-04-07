@@ -60,7 +60,7 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=98c6a3f6c7047385a6d9e10c08f211c7&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=6819568ea30cd1f1fb3528fd30101686&file=check_expression.bal",
                 "_blank"
               );
             }}

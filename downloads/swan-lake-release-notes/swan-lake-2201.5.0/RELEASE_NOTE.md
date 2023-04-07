@@ -355,7 +355,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ### New features
 
 #### Installers
-- Introduced a new installer with dependencies (custom JRE) compatible with macos-arm architecture. 
+- Introduced a new installer with dependencies (custom JRE) compatible with the macOS-ARM architecture. 
 
 #### Language Server
 

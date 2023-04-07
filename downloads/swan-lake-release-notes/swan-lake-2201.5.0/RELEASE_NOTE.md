@@ -275,7 +275,7 @@ configVar = {name = "Jack", city = "Colombo"}
 
 A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 
-For example, the following Ballerina resource function
+For example, the following Ballerina resource function,
 
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {
@@ -371,10 +371,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 >**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
 
 - Added the following new arguments to the `persist init` commands.
-    - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
+    - `--datastore` - This is used to indicate the preferred database client. Currently, only `mysql` is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
 
-    E.g., `bal persist init --datastore mysql --module db`
+    For example, 
+    ```bash
+    $ bal persist init --datastore mysql --module db
+    ```
 - Changed the `persist init` command to create a `persist` directory in the Ballerina project and generate a new definition file (`model.bal`) in the `persist` directory if the file does not exist.
 - Restricted to have only one persist model definition per Ballerina package.
 - Removed the `persist push` command support and generate SQL script file in the `persist generate` command. The generated SQL script file needs to be executed manually to create the database table.

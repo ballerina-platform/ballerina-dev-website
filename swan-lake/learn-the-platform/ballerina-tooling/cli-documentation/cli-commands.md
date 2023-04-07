@@ -204,6 +204,11 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <td class="cDescription">Print the dependency graph in the console.
 </td>
 </tr>
+<tr>
+<td class="cCommand">deprecate</td>
+<td class="cDescription">Deprecate a Ballerina package.
+</td>
+</tr>
 </table>
 
 ## Other commands

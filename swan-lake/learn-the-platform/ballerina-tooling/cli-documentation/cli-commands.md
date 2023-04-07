@@ -206,7 +206,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </tr>
 <tr>
 <td class="cCommand">deprecate</td>
-<td class="cDescription">Deprecate a Ballerina package.
+<td class="cDescription">Deprecate a version of a package in Ballerina Central.
 </td>
 </tr>
 </table>

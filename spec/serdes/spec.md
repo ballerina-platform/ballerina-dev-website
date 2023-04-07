@@ -148,12 +148,16 @@ As specified before, the `Proto3Schema` dynamically generates proto3 message def
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 int age = 24;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message IntValue {
   sint64 atomicField = 1;
 }
@@ -165,12 +169,16 @@ message IntValue {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 float mass = 24.5;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message FloatValue {
   double atomicField = 1;
 }
@@ -182,12 +190,16 @@ message FloatValue {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 boolean isOpen = true;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message BooleanValue {
   bool atomicField = 1;
 }
@@ -199,12 +211,16 @@ message BooleanValue {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 byte count = 3;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ByteValue {
   bytes atomicField = 1;
 }
@@ -216,12 +232,16 @@ message ByteValue {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 string package = "serdes";
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message StringValue {
     string atomicField = 1;
 }
@@ -234,12 +254,16 @@ message StringValue {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 decimal salary = 2e5;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message DecimalValue {
     uint32 scale = 1;
     uint32 precision = 2;
@@ -263,12 +287,16 @@ message DecimalValue {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type IntArray int[];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ArrayBuilder {
     repeated sint64 arrayField = 1;
 }
@@ -280,12 +308,16 @@ message ArrayBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type FloatArray float[];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ArrayBuilder {
     repeated double arrayField = 1;
 }
@@ -297,12 +329,16 @@ message ArrayBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type DecimalArray decimal[];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ArrayBuilder {
   message DecimalValue {
      uint32 scale  = 1;
@@ -328,12 +364,16 @@ message ArrayBuilder {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type String2DArray string[][];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ArrayBuilder {
   message ArrayBuilder {
      repeated string arrayField  = 1;
@@ -348,12 +388,16 @@ message ArrayBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type Decimal3DArray decimal[][][];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message ArrayBuilder {
   message ArrayBuilder {
     message ArrayBuilder {
@@ -387,12 +431,16 @@ message ArrayBuilder {
 
 <tr>
 <td>
-<pre >
-type PrimitiveUnion  int|byte|float|decimal|string?; 
+<pre lang='ballerina'>
+
+```ballerina
+type PrimitiveUnion  int|byte|float|decimal|string?;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message UnionBuilder {
   message DecimalValue {
      uint32 scale  = 1;
@@ -425,12 +473,16 @@ message UnionBuilder {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type UnionWithArray int[][]|float[]|string[][][];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message UnionBuilder {
   message int___ArrayBuilder_1 {
      repeated sint64 arrayField  = 1;
@@ -470,18 +522,20 @@ Here `&lttype>`, `&ltdimension>` used to avoid name collision in protobuf schema
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type IntOrString int|string;
-</pre>
-<pre >
+
 type FloatOrNill float?;
-</pre>
-<pre >
-type <b>UnionArray</b> IntOrString[]|FloatOrNill[];
+
+type UnionArray IntOrString[]|FloatOrNill[];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message UnionBuilder {
   message IntOrString___UnionBuilder {
      sint64 int___unionField  = 1;
@@ -512,7 +566,9 @@ message UnionBuilder {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type Employee record {
     string name;
     byte age;
@@ -521,10 +577,12 @@ type Employee record {
     boolean isMarried;
     decimal salary;
 };
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message Employee {
   message DecimalValue {
      uint32 scale  = 1;
@@ -556,7 +614,9 @@ message Employee {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type RecordWithSimpleArrays record {
     string[] stringArray;
     int[] intArray;
@@ -564,10 +624,12 @@ type RecordWithSimpleArrays record {
     boolean[] boolArray;
     byte[] byteArray;
 };
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message RecordWithSimpleArrays {
    repeated string stringArray  = 1;
    repeated sint64 intArray  = 2;
@@ -581,15 +643,19 @@ message RecordWithSimpleArrays {
 <tr></tr>
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type RecordWithMultidimentionalArrays record {
     string[][][] string3DArray;
     decimal[][] decimal2DArray;
 };
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message RecordWithMultidimentionalArrays {
   message decimal2DArray___ArrayBuilder {
     message DecimalValue {
@@ -626,14 +692,18 @@ message RecordWithMultidimentionalArrays {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type RecordWithUnion record {
     int|string? data;
 };
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message RecordWithUnion {
   message data___UnionBuilder {
      bool nullField  = 1;
@@ -661,28 +731,30 @@ message RecordWithUnion {
 
 <tr>
 <td>
-<pre >
-type <b>Node1</b> record {
+<pre lang='ballerina'>
+
+```ballerina
+type Node1 record {
     string name;
     Nested2? nested;
 };
-</pre>
-<pre >
+
 type Node2 record {
     string name;
     Nested3? nested;
 };
-</pre>
-<pre >
+
 type Node3 record {
     string name;
     Nested1? nested;
 };
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>Node1</b> {
+<pre lang='proto'>
+message Node1 {
   message nested___UnionBuilder {
     message Node2 {
       message nested___UnionBuilder {
@@ -724,12 +796,16 @@ message <b>Node1</b> {
 
 <tr>
 <td>
-<pre >
-type MapInt map&lt;int>;
+<pre lang='ballerina'>
+
+```ballerina
+type MapInt map<int>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message MapBuilder {
   message MapFieldEntry {
      string key  = 1;
@@ -745,12 +821,16 @@ message MapBuilder {
 
 <tr>
 <td>
-<pre >
-type MapDecimal map&lt;decimal>;
+<pre lang='ballerina'>
+
+```ballerina
+type MapDecimal map<decimal>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message MapBuilder {
   message MapFieldEntry {
     message DecimalValue {
@@ -779,19 +859,22 @@ message MapBuilder {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type Status record {
     int code;
     string message?;
 };
-</pre>
-<pre >
-type <b>MapRecord</b> map&lt;Status>;
+
+type MapRecord map<Status>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>MapBuilder</b> {
+<pre lang='proto'>
+message MapBuilder {
   message MapFieldEntry {
     message Status {
        sint64 code  = 1;
@@ -818,16 +901,19 @@ message <b>MapBuilder</b> {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type IntMatrix int[][];
-</pre>
-<pre >
-type <b>MapArray</b> map&lt;IntMatrix>;
+
+type MapArray <IntMatrix>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>MapBuilder</b> {
+<pre lang='proto'>
+message MapBuilder {
   message MapFieldEntry {
     message ArrayBuilder {
        repeated sint64 arrayField  = 1;
@@ -853,22 +939,23 @@ message <b>MapBuilder</b> {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type Status record {
     int code;
     string message?;
 };
-</pre>
-<pre >
+
 type IntMatrix int[][];
-</pre>
-<pre >
-type <b>MapUnion</b> map&lt;Status|IntMatrix>;
-</pre>
+
+type MapUnion map<Status|IntMatrix>;
+```
+
 </td>
 <td>
-<pre>
-message <b>MapBuilder</b> {
+<pre lang='proto'>
+message MapBuilder {
   message MapFieldEntry {
     message value___UnionBuilder {
       message Status {
@@ -902,25 +989,26 @@ message <b>MapBuilder</b> {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type Status record {
     int code;
     string message?;
 };
-</pre>
-<pre >
+
 type IntMatrix int[][];
-</pre>
-<pre >
-type MapUnion map&lt;Status|IntMatrix>;
-</pre>
-<pre>
-type <b>MapOfMaps</b> map&lt;MapUnion>;
+
+type MapUnion map<Status|IntMatrix>;
+
+type MapOfMaps map<MapUnion>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>MapBuilder</b> {
+<pre lang='proto'>
+message MapBuilder {
   message MapFieldEntry {
     message MapBuilder {
       message MapFieldEntry {
@@ -964,16 +1052,19 @@ message <b>MapBuilder</b> {
 
 <tr>
 <td>
-<pre >
+<pre lang='ballerina'>
+
+```ballerina
 type Score map<int>;
-</pre>
-<pre>
-type <b>ScoreTable</b> table&lt;Score>;
+
+type ScoreTable table<Score>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>TableBuilder</b> {
+<pre lang='proto'>
+message TableBuilder {
   message MapBuilder {
     message MapFieldEntry {
        string key  = 1;
@@ -987,31 +1078,36 @@ message <b>TableBuilder</b> {
 </td>
 </tr>
 <table>
+
+
 2. Table with record constraint
-<table >
-<tr>
-<th> Ballerina </th>
-<th> Proto message </th>
- </tr>
 
-<tr></tr>
+<table>
+  <tr>
+  <th> Ballerina </th>
+  <th> Proto message </th>
+  </tr>
 
-<tr>
-<td>
+  <tr></tr>
 
-<pre >
+  <tr>
+  <td>
+<pre lang='ballerina'>
+
+```ballerina
 type Row record {
     int id;
     string name;
 };
-</pre>
-<pre>
-type <b>RecordTable</b> table&lt;Row>;
+
+type RecordTable table<Row>;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>TableBuilder</b> {
+<pre lang='proto'>
+message TableBuilder {
   message Row {
      sint64 id  = 1;
      string name  = 2;
@@ -1035,12 +1131,16 @@ message <b>TableBuilder</b> {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type PrimitiveTuple [byte, int, float, boolean, string ,decimal];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message TupleBuilder {
   message DecimalValue {
      uint32 scale  = 1;
@@ -1070,12 +1170,16 @@ message TupleBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type TupleWithUnion [byte|string, decimal|boolean];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message TupleBuilder {
   message element_1___UnionBuilder {
      bytes byte___unionField  = 1;
@@ -1109,15 +1213,23 @@ message TupleBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type UnionTupleElement byte|string;
+```
+
 </pre>
-<pre>
-type <b>TupleWithArray</b> [string[], boolean[][], int[][][], UnionTupleElement[]];
+<pre lang='ballerina'>
+
+```ballerina
+type TupleWithArray [string[], boolean[][], int[][][], UnionTupleElement[]];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message TupleBuilder {
   message int___ArrayBuilder_2 {
     message ArrayBuilder {
@@ -1154,27 +1266,29 @@ message TupleBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type Student record {
     string name;
     int courseId;
     decimal fees;
 };
-</pre>
-<pre>
+
 type Teacher record {
     string name;
     int courseId;
     decimal salary;
 };
-</pre>
-<pre>
-type <b>TupleWithRecord</b> [Student, Teacher];
+
+type TupleWithRecord [Student, Teacher];
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>TupleBuilder</b> {
+<pre lang='proto'>
+message TupleBuilder {
   message Teacher {
     message DecimalValue {
        uint32 scale  = 1;
@@ -1214,18 +1328,20 @@ message <b>TupleBuilder</b> {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 type PrimitiveTuple [byte, int, float, boolean, string ,decimal];
-</pre>
-<pre>
+
 type TupleWithUnion [byte|string, decimal|boolean];
-</pre>
-<pre>
-type <b>TupleOfTuples</b> [PrimitiveTuple, TupleWithUnion];
+
+type TupleOfTuples [PrimitiveTuple, TupleWithUnion];
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message TupleBuilder {
   message element_2___TupleBuilder {
     message element_1___UnionBuilder {
@@ -1277,16 +1393,20 @@ Ballerina enum is a syntactic sugar of union of constant strings thus enum is ha
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 enum Color {
     RED=”red”,
     GREEN,
     BLUE
 }
+```
+
 </pre>
 </td>
 <td>
-<pre>
+<pre lang='proto'>
 message UnionBuilder {
    string string___unionField  = 1;
 }
@@ -1297,15 +1417,19 @@ message UnionBuilder {
 
 <tr>
 <td>
-<pre>
+<pre lang='ballerina'>
+
+```ballerina
 const OPEN = "open";
 const CLOSE = "close";
-type <b>STATE</b> OPEN|CLOSE;
+type STATE OPEN|CLOSE;
+```
+
 </pre>
 </td>
 <td>
-<pre>
-message <b>UnionBuilder</b> {
+<pre lang='proto'>
+message UnionBuilder {
    string string___unionField  = 1;
 }
 </pre>

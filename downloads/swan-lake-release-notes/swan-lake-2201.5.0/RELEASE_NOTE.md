@@ -389,7 +389,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
     ```java
     // Parameters and return types having inbuilt object types (`java.lang.String`).
-    public String f1(String str)
+    public String f1(String str) {
         return str;
     }
     

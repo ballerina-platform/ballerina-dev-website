@@ -356,7 +356,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 #### Language Server
 
-- Added quick pick support for the `Extract to local variable` and `Extract to function` code actions.
+- Added quick fix support for the `Extract to local variable` and `Extract to function` code actions.
 - Added completion support for regular expressions.
 
 #### Persist Tool
@@ -382,8 +382,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 #### Bindgen Tool 
 
-- Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support 
-  Java null values via generated bindings. These command options will generate optional (i.e., nilable) types 
+- Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support handling Java null values via generated bindings. These command options will generate optional (i.e., nilable) types 
   for parameter or/and return types in generated Ballerina binding functions.
 
     Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.

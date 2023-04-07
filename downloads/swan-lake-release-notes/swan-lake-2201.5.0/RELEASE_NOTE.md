@@ -464,7 +464,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### New features
 
-- Introduced `bal deprecate`. With this command, now a package in the Ballerina Central can be deprecated and undeprecated by the owner.
+- Introduced `bal deprecate`. With this command, now, a version of a package in Ballerina Central can be deprecated and undeprecated by the owner.
 
 ### Improvements
 

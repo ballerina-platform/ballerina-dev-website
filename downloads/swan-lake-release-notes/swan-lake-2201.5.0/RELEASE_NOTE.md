@@ -33,8 +33,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public function main() {
         "abc"|string:Char a = "a";
         var b = a + 1; // Compilation error now.
-        var c = ["a","b","c"].map(s => s + 1); // Compilation error now.
-    } 
+        var c = ["a", "b", "c"].map(s => s + 1); // Compilation error now.
+    }
     ```
 
 - Fixed a bug that previously resulted in incorrect type checking for an intersection with `readonly` against an incompatible union type as the expected type.
@@ -47,7 +47,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
     public function main() {
         json & readonly v = {};
-        
+
         string|error r = v; // Compilation error now.
         Employee|string s = v.cloneReadOnly(); // Compilation error now.
     }
@@ -61,7 +61,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     // `configs` was previously inferred as an `isolated` variable
     // incorrectly. It will no longer be inferred as an `isolated` 
     // variable since `config` is not an isolated expression.
-    int[][] configs = [[1, 2], config]; 
+    int[][] configs = [[1, 2], config];
 
     // Since `configs` is not inferred as an `isolated` variable now,
     // `getConfig` is not inferred as an `isolated` function.
@@ -93,7 +93,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         int[] locations?;
     |};
     
-    function getError(*ErrorDetail 'error) { // compilation error now
+    function getError(*ErrorDetail 'error) { // Compilation error now.
     }
     ```
 
@@ -113,7 +113,7 @@ can be constructed from the structural value.
 
     public function main() {
         FloatSubtype x = {value: 0.0};
-        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of y will be DecimalSubtype.
+        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
     }
     ```
 
@@ -161,7 +161,7 @@ can be constructed from the structural value.
 
     ```ballerina
     distinct service class Book {
-        @test:Config //compilation error now
+        @test:Config // Compilation error now.
         resource function get id() {
         }
         resource function get title() {
@@ -206,17 +206,17 @@ import ballerina/io;
 public function main() {
     string:RegExp reg = re `[bB].tt[a-z]*`;
     regexp:Span[] result = reg.findAll("Butter was bought by Betty.");
-    io:println(result.length()); // 2
+    io:println(result.length()); // Prints "2".
 
     regexp:Span span1 = result[0];
-    io:println(span1.substring()); // Butter
+    io:println(span1.substring()); // Prints "Butter".
 
     regexp:Span span2 = result[1];
-    io:println(span2.substring()); // Betty
+    io:println(span2.substring()); // Prints "Betty".
 }
 ```
 
-For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 
@@ -245,9 +245,11 @@ For the following `main` function,
 public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
 }
 ```
+
 the values can be passed through command-line arguments as follows.
+
 ```
-bal run -- 1 b 33
+$ bal run -- 1 b 33
 ```
 
 #### Support ambiguous union-type configurable variables
@@ -339,7 +341,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
   >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
 
 #### `regex` package
-- Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+- Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 

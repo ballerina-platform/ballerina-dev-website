@@ -328,8 +328,17 @@ sublinks:
           - title: Error binding pattern in match statement
             id: 15
             url: error-binding-pattern-in-match-statement
-      - title: Tables
+      - title: Regular Expressions
         id: 17
+        sublinks:
+          - title: RegExp type
+            id: 1
+            url: regexp-type
+          - title: RegExp operations
+            id: 2
+            url: regexp-operations
+      - title: Tables
+        id: 18
         sublinks:
           - title: Table
             id: 1
@@ -344,7 +353,7 @@ sublinks:
             id: 4
             url: structured-keys
       - title: Query expressions
-        id: 18
+        id: 19
         sublinks:
           - title: Query expressions
             id: 1
@@ -392,13 +401,13 @@ sublinks:
             id: 15
             url: querying-with-streams
       - title: Query actions
-        id: 19
+        id: 20
         sublinks:
           - title: Query actions
             id: 1
             url: query-actions
       - title: JSON
-        id: 20
+        id: 21
         sublinks:
           - title: JSON type
             id: 1
@@ -431,7 +440,7 @@ sublinks:
             id: 10
             url: json-numbers
       - title: Backtick templates
-        id: 21
+        id: 22
         sublinks:
           - title: Raw templates
             id: 1
@@ -443,7 +452,7 @@ sublinks:
             id: 3
             url: xml-templates
       - title: XML
-        id: 22
+        id: 23
         sublinks:
           - title: XML data model
             id: 1
@@ -476,7 +485,7 @@ sublinks:
             id: 10
             url: xmlns-declarations
       - title: Metadata
-        id: 23
+        id: 24
         sublinks:
           - title: Documentation
             id: 1
@@ -485,7 +494,7 @@ sublinks:
             id: 2
             url: annotations
       - title: Network interaction
-        id: 24
+        id: 25
         sublinks:
           - title: 'Consume services: client objects'
             id: 1
@@ -509,7 +518,7 @@ sublinks:
             id: 7
             url: resource-path-parameters
       - title: Configurability
-        id: 25
+        id: 26
         sublinks:
           - title: Configurable variables
             id: 1
@@ -521,7 +530,7 @@ sublinks:
             id: 3
             url: configuring-via-cli
       - title: Error handling
-        id: 26
+        id: 27
         sublinks:
           - title: Error handling
             id: 1
@@ -545,13 +554,13 @@ sublinks:
             id: 7
             url: error-cause
       - title: Ignore return values and errors
-        id: 27
+        id: 28
         sublinks:
           - title: Ignore return values and errors
             id: 1
             url: ignoring-return-values-and-errors
       - title: Mutability and identity
-        id: 28
+        id: 29
         sublinks:
           - title: Identity
             id: 1
@@ -566,7 +575,7 @@ sublinks:
             id: 4
             url: immutability
       - title: Concurrency
-        id: 29
+        id: 30
         sublinks:
           - title: Asynchronous function calls
             id: 1
@@ -611,7 +620,7 @@ sublinks:
             id: 14
             url: flush
       - title: Transactions
-        id: 30
+        id: 31
         sublinks:
           - title: Transaction statement
             id: 1
@@ -635,7 +644,7 @@ sublinks:
             id: 7
             url: commit-rollback-handlers
       - title: Concurrency safety
-        id: 31
+        id: 32
         sublinks:
           - title: Lock statement
             id: 1
@@ -671,13 +680,13 @@ sublinks:
             id: 11
             url: run-strands-safely-on-separate-threads
       - title: Interface to external code
-        id: 32
+        id: 33
         sublinks:
           - title: Interface to external code
             id: 1
             url: interface-to-external-code
       - title: Testing
-        id: 33
+        id: 34
         sublinks:
           - title: Assertions
             id: 1

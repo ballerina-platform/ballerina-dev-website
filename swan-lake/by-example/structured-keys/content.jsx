@@ -64,7 +64,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4a10a1aac29ad4569c0de033e1611ebb&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=23e3456664a4046ceadf1f5dd8a3f6cb&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -230,7 +230,7 @@ export function StructuredKeys({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/table/">Table syntax</a>
+            <a href="/learn/by-example/table-syntax/">Table</a>
           </span>
         </li>
       </ul>

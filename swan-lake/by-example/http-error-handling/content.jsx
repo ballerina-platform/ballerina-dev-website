@@ -101,7 +101,7 @@ export function HttpErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=53a8ee11feef6ef4642905655b05b6ec&file=http_error_handling.bal",
+                "https://play.ballerina.io/?gist=75429714dd0e54038f5a82e3dd2e74a1&file=http_error_handling.bal",
                 "_blank"
               );
             }}

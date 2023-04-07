@@ -17,7 +17,7 @@ public function main() returns error? {
             tokenUrl: "https://localhost:9445/oauth2/token",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"

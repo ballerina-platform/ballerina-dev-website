@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/http;
-import ballerina/regex;
 
 service / on new http:Listener(9090) {
     // The \`consumes\` and \`produces\` annotations of the resource configuration contains MIME types as
@@ -18,7 +17,7 @@ service / on new http:Listener(9090) {
         produces: ["application/xml"]
     }
     resource function post transform(@http:Payload string msg) returns xml|http:InternalServerError {
-        if regex:matches(msg, "^[a-zA-Z]*\$") {
+        if re \`^[a-zA-Z]*\$\`.isFullMatch(msg) {
             return xml \`<name>\${msg}</name>\`;
         }
         return { body: xml \`<name>invalid string</name>\`};
@@ -64,7 +63,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=42571a1e5cd2011b3119778d52b9e7e4&file=http_restrict_by_media_type.bal",
+                "https://play.ballerina.io/?gist=ceb1a3503657d54ab99f6d42a5c27988&file=http_restrict_by_media_type.bal",
                 "_blank"
               );
             }}

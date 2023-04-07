@@ -47,7 +47,7 @@ export function Documentation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=da624332536a2a5363f0d87c0f150b0a&file=documentation.bal",
+                "https://play.ballerina.io/?gist=08765a02a3f483e41ec77a73e2b22006&file=documentation.bal",
                 "_blank"
               );
             }}

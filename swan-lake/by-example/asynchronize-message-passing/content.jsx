@@ -63,7 +63,7 @@ export function AsynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=97d84aaef0112809efb50366633e2b76&file=asynchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=97f3dbb2a88d5e7e552a8cc3227323cb&file=asynchronize_message_passing.bal",
                 "_blank"
               );
             }}

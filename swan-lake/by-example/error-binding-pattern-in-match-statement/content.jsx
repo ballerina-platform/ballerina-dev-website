@@ -88,7 +88,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=523eb14702f83dc668fd61fe03df3197&file=error_binding_pattern_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=02e836ac154181afd397ede5e3fe9c28&file=error_binding_pattern_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -309,7 +309,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Table" href="/learn/by-example/table">
+          <Link title="RegExp type" href="/learn/by-example/regexp-type">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -318,7 +318,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Table
+                  RegExp type
                 </span>
               </div>
               <svg

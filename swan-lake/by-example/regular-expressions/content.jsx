@@ -60,6 +60,29 @@ export function RegularExpressions({ codeSnippets }) {
         .
       </p>
 
+      <p>
+        <strong>Deprecation Notice:</strong> This library is deprecated and will
+        no longer be maintained or updated. Instead, it is recommended to use
+        the{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest">
+          <code>ballerina/lang.regexp</code>
+        </a>{" "}
+        library for continued support and updates. For more information, see the
+        new{" "}
+        <a href="https://ballerina.io/by-example/regexp-type">
+          RegExp type example
+        </a>
+        ,{" "}
+        <a href="https://ballerina.io/by-example/regexp-operations">
+          RegExp operations example
+        </a>
+        , and{" "}
+        <a href="https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
+          Regular expressions feature guide
+        </a>
+        .
+      </p>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -70,7 +93,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1343869a1adfa4a5e0653c33220f61ee&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=75acb8efa67846e215f85a8ec6f07854&file=regular_expressions.bal",
                 "_blank"
               );
             }}

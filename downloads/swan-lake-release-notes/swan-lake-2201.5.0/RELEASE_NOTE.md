@@ -216,7 +216,7 @@ public function main() {
 }
 ```
 
-For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 

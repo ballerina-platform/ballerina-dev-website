@@ -482,13 +482,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### New features
 
-- Introduced `bal deprecate`. With this command, now, a version of a package in Ballerina Central can be deprecated and undeprecated by the owner.
+- Introduced the `bal deprecate` command. With this, now, a version of a package in Ballerina Central can be deprecated and undeprecated by the owner.
 
 ### Improvements
 
-- Added support for maintaining generated test code in a Ballerina packag.e
+- Added support for maintaining generated test code in a Ballerina package.
 - Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases.
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI).

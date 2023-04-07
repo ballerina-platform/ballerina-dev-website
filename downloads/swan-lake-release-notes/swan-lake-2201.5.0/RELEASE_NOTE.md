@@ -161,7 +161,7 @@ can be constructed from the structural value.
 
     ```ballerina
     distinct service class Book {
-        @test:Config //compilation error now
+        @test:Config // Compilation error now.
         resource function get id() {
         }
         resource function get title() {

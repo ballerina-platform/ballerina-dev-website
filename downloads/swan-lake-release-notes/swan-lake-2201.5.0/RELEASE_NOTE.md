@@ -399,7 +399,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     }
     ```
     
-    **Without optional types (i.e. `bal bindgen`)**
+    **Without optional types (i.e., `bal bindgen`)**
     ```ballerina
     public function f1(string arg0) returns string {
         return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";

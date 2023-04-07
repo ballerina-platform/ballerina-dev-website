@@ -276,14 +276,17 @@ configVar = {name = "Jack", city = "Colombo"}
 A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 
 For example, the following Ballerina resource function
+
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {
         'class: "javalibs.app.App",
         name: "getResource",
         paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
-    } external;
+} external;
 ```
+
 can be bound to the following Java method.
+
 ```java
 public static void getResource(BObject client, BArray path, BString str) {
 }
@@ -291,8 +294,8 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 #### Improvements in Runtime Java APIs
 
-- The `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
-- The `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
+- Deprecated the `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class. Instead, a new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
+- Deprecated the `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
 
 ### Bug fixes
 
@@ -332,15 +335,17 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Improved the listener's behavior to exit when a panic occurs.
 
 #### `persist` package
+
+>**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
+
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.
 - Added support for setting multiple associations between the same entities. The relation owner should be the same for all associations.
 - Added support for specifying the relation owner in the one-to-one association. The associated entity field must be an optional value field in the child entity.
 - Added code actions to make defining the data model easier.
 
-  >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
-
 #### `regex` package
+
 - Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
@@ -358,10 +363,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 #### Language Server
 
-- Added quick pick support for the `Extract to local variable` and `Extract to function` code actions.
+- Added quick fix support for the `Extract to local variable` and `Extract to function` code actions.
 - Added completion support for regular expressions.
 
 #### Persist Tool
+
+>**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
+
 - Added the following new arguments to the `persist init` commands.
     - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
@@ -377,8 +385,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
   - `database_configuration.bal` -> `persist_db_config.bal`
   - `<schema_name>_db_script.sql` -> `script.sql`
 - Changed the code in the generated Ballerina client and types files to support the new changes.
-
->**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
 
 ### Improvements
 
@@ -401,7 +407,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     }
     ```
     
-    **Without optional types (i.e., `bal bindgen`)**
+    **Without optional types** 
+    
+    ```bash
+    $ bal bindgen
+    ```
+    
     ```ballerina
     public function f1(string arg0) returns string {
         return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
@@ -420,7 +431,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     }
     ```
     
-    **With optional types (`bal bindgen --with-optional-types`)**
+    **With optional types**
+
+    ```bash
+    $ bal bindgen --with-optional-types
+    ``` 
+    
     ```ballerina
     public function f1(string? arg0) returns string? {
         return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));
@@ -470,8 +486,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### Improvements
 
-- Added support for maintaining generated test code in a Ballerina package
-- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases
+- Added support for maintaining generated test code in a Ballerina packag.e
+- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases.
 
 ### Bug fixes
 

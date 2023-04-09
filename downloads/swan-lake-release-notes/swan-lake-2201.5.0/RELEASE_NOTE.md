@@ -275,7 +275,7 @@ configVar = {name = "Jack", city = "Colombo"}
 
 A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 
-For example, the following Ballerina resource function,
+For example, the following Ballerina resource method,
 
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {

@@ -336,7 +336,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `persist` package
 
->**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
+>**Info:** The Ballerina persistence feature is an experimental feature. APIs might change in future releases.
 
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.
@@ -368,7 +368,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 #### Persist Tool
 
->**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
+>**Info:** The Ballerina persistence feature is an experimental feature. The commands associated with the tool might change in future releases.
 
 - Added the following new arguments to the `persist init` commands.
     - `--datastore` - This is used to indicate the preferred database client. Currently, only `mysql` is supported.

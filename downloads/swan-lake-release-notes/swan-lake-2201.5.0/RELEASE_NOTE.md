@@ -278,10 +278,10 @@ A new way has been introduced to support the binding of any resource method to a
 For example, the following Ballerina resource method,
 
 ```ballerina
-isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {
-        'class: "javalibs.app.App",
-        name: "getResource",
-        paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
+isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int... p4](string s) = @java:Method {
+    'class: "javalibs.app.App",
+    name: "getResource",
+    paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
 } external;
 ```
 

@@ -35,8 +35,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public function main() {
         "abc"|string:Char a = "a";
         var b = a + 1; // Compilation error now.
-        var c = ["a","b","c"].map(s => s + 1); // Compilation error now.
-    } 
+        var c = ["a", "b", "c"].map(s => s + 1); // Compilation error now.
+    }
     ```
 
 - Fixed a bug that previously resulted in incorrect type checking for an intersection with `readonly` against an incompatible union type as the expected type.
@@ -49,7 +49,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
     public function main() {
         json & readonly v = {};
-        
+
         string|error r = v; // Compilation error now.
         Employee|string s = v.cloneReadOnly(); // Compilation error now.
     }
@@ -63,7 +63,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     // `configs` was previously inferred as an `isolated` variable
     // incorrectly. It will no longer be inferred as an `isolated` 
     // variable since `config` is not an isolated expression.
-    int[][] configs = [[1, 2], config]; 
+    int[][] configs = [[1, 2], config];
 
     // Since `configs` is not inferred as an `isolated` variable now,
     // `getConfig` is not inferred as an `isolated` function.
@@ -95,7 +95,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         int[] locations?;
     |};
     
-    function getError(*ErrorDetail 'error) { // compilation error now
+    function getError(*ErrorDetail 'error) { // Compilation error now.
     }
     ```
 
@@ -115,7 +115,7 @@ can be constructed from the structural value.
 
     public function main() {
         FloatSubtype x = {value: 0.0};
-        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of y will be DecimalSubtype.
+        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
     }
     ```
 
@@ -208,17 +208,17 @@ import ballerina/io;
 public function main() {
     string:RegExp reg = re `[bB].tt[a-z]*`;
     regexp:Span[] result = reg.findAll("Butter was bought by Betty.");
-    io:println(result.length()); // 2
+    io:println(result.length()); // Prints "2".
 
     regexp:Span span1 = result[0];
-    io:println(span1.substring()); // Butter
+    io:println(span1.substring()); // Prints "Butter".
 
     regexp:Span span2 = result[1];
-    io:println(span2.substring()); // Betty
+    io:println(span2.substring()); // Prints "Betty".
 }
 ```
 
-For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 
@@ -247,9 +247,11 @@ For the following `main` function,
 public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
 }
 ```
+
 the values can be passed through command-line arguments as follows.
+
 ```
-bal run -- 1 b 33
+$ bal run -- 1 b 33
 ```
 
 #### Support ambiguous union-type configurable variables
@@ -273,17 +275,20 @@ configVar = {name = "Jack", city = "Colombo"}
 
 #### Support binding of resource functions to a generic native method
 
-A new way has been introduced to support the binding of any resource function to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
+A new way has been introduced to support the binding of any resource method to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 
-For example, the following Ballerina resource function
+For example, the following Ballerina resource method,
+
 ```ballerina
-isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s) = @java:Method {
-        'class: "javalibs.app.App",
-        name: "getResource",
-        paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
-    } external;
+isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int... p4](string s) = @java:Method {
+    'class: "javalibs.app.App",
+    name: "getResource",
+    paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
+} external;
 ```
+
 can be bound to the following Java method.
+
 ```java
 public static void getResource(BObject client, BArray path, BString str) {
 }
@@ -291,8 +296,8 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 #### Improvements in Runtime Java APIs
 
-- The `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class is now deprecated. A new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
-- The `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class is now deprecated. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
+- Deprecated the `getType` runtime API, which returns an `ObjectType` in the `io.ballerina.runtime.api.values.BObject` class. Instead, a new `getOriginalType` API, which returns the `Type` is introduced to return both the `ObjectType` and the type-reference type.
+- Deprecated the `XMLNS` Java constant in the `io.ballerina.runtime.api.values.BXmlItem` runtime class. Instead, the `javax.xml.XMLConstants.XMLNS_ATTRIBUTE` constant needs to be used.
 
 ### Bug fixes
 
@@ -332,16 +337,18 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Improved the listener's behavior to exit when a panic occurs.
 
 #### `persist` package
+
+>**Info:** The Ballerina persistence feature is an experimental feature. APIs might change in future releases.
+
 - Added support for specifying the fields to be retrieved from the database table in the `get` function. This allows the user to retrieve only the required fields by setting up the target type of the `get` function.
 - Added support for retrieving associated records from the database table in the `get` function. This allows the user to retrieve associated records along with the main record.
 - Added support for setting multiple associations between the same entities. The relation owner should be the same for all associations.
 - Added support for specifying the relation owner in the one-to-one association. The associated entity field must be an optional value field in the child entity.
 - Added code actions to make defining the data model easier.
 
-  >**Info:** The Ballerina persistent is an experimental feature. APIs might change in future releases.
-
 #### `regex` package
-- Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](https://ballerina.io/by-example/regexp-type), [RegExp operations example](https://ballerina.io/by-example/regexp-operations), and [Regular expressions feature guide](https://ballerina.io/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+
+- The `regex` package has been deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 
@@ -362,11 +369,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 - Added completion support for regular expressions.
 
 #### Persist Tool
+
+>**Info:** The Ballerina persistence feature is an experimental feature. The commands associated with the tool might change in future releases.
+
 - Added the following new arguments to the `persist init` commands.
-    - `--datastore` - This is used to indicate the preferred database client. Currently, only 'mysql' is supported.
+    - `--datastore` - This is used to indicate the preferred database client. Currently, only `mysql` is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
 
-    E.g., `bal persist init --datastore mysql --module db`
+    For example, 
+    ```bash
+    $ bal persist init --datastore mysql --module db
+    ```
 - Changed the `persist init` command to create a `persist` directory in the Ballerina project and generate a new definition file (`model.bal`) in the `persist` directory if the file does not exist.
 - Restricted to have only one persist model definition per Ballerina package.
 - Removed the `persist push` command support and generate SQL script file in the `persist generate` command. The generated SQL script file needs to be executed manually to create the database table.
@@ -377,8 +390,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
   - `database_configuration.bal` -> `persist_db_config.bal`
   - `<schema_name>_db_script.sql` -> `script.sql`
 - Changed the code in the generated Ballerina client and types files to support the new changes.
-
->**Info:** The Ballerina persistent is an experimental feature. The commands associated with the tool might change in future releases.
 
 ### Improvements
 
@@ -400,7 +411,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     }
     ```
     
-    **Without optional types (i.e., `bal bindgen`)**
+    **Without optional types** 
+    
+    ```bash
+    $ bal bindgen
+    ```
+    
     ```ballerina
     public function f1(string arg0) returns string {
         return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
@@ -419,7 +435,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     }
     ```
     
-    **With optional types (`bal bindgen --with-optional-types`)**
+    **With optional types**
+
+    ```bash
+    $ bal bindgen --with-optional-types
+    ``` 
+    
     ```ballerina
     public function f1(string? arg0) returns string? {
         return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));
@@ -465,13 +486,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.5.0 of the reposi
 
 ### New features
 
-- Introduced `bal deprecate`. With this command, now, a version of a package in Ballerina Central can be deprecated and undeprecated by the owner.
+- Introduced the `bal deprecate` command. With this, now, a version of a package in Ballerina Central can be deprecated and undeprecated by the owner.
 
 ### Improvements
 
-- Added support for maintaining generated test code in a Ballerina package
-- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases
+- Added support for maintaining generated test code in a Ballerina package.
+- Improved the dependency resolution to minimize the impact of essential incompatible changes added with new Update releases.
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI)
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI).

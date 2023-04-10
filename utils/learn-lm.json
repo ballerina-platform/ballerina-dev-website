@@ -706,8 +706,8 @@
             "dirName": "Get started",
             "level": 0,
             "position": 2,
-            "isDir": true,
-            "url": "swan-lake/get-started",
+            "isDir": false,
+            "url": "/learn/get-started",
             "id": "get-started"
         },
         {

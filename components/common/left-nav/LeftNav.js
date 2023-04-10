@@ -59,20 +59,40 @@ export default function LeftNav(props) {
   function MainDir(props) {
     let category = props.category;
 
+    //if (category.isDir && category.position > 0) {
+
     return <Accordion.Item eventKey={category.id} className={styles.acItem}>
-      <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} item-id={category.id}>{category.dirName}</Accordion.Header>
-      <Accordion.Body className={styles.accordionBody}>
-        <ul className={styles.firstTier}>
-          {
-            (category.subDirectories) ?
-              <Accordion defaultActiveKey={sub}>
-                <SubDir directories={category.subDirectories} activeKey={sub} />
-              </Accordion>
-              : null
-          }
-        </ul>
-      </Accordion.Body>
+      
+      {
+        (category.isDir) ?
+          <>
+          <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} item-id={category.id}>{category.dirName}</Accordion.Header> 
+          <Accordion.Body className={styles.accordionBody}>
+            <ul className={styles.firstTier}>
+              {
+                (category.subDirectories) ?
+                  <Accordion defaultActiveKey={sub}>
+                    <SubDir directories={category.subDirectories} activeKey={sub} />
+                  </Accordion>
+                  : null
+              }
+            </ul>
+          </Accordion.Body>
+          </>
+        : <div className="accordion-item">
+            <h2 item-id="why-ballerina" className="accordion-header">
+              <button className={styles.nonAcBtn} onclick="window.location.href='https://w3docs.com';">
+                {category.dirName}
+              </button>
+            </h2>
+          </div>
+      }
+      
     </Accordion.Item>;
+    // } else {
+    //   return <button type="button" aria-expanded="true" class="accordion-button"
+    //               href={(`${prefix}`) ? `${prefix}` + category.url : category.url}>{category.id}</button>;
+    // }
   }
 
   function SubDir(props) {

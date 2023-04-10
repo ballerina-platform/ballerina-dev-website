@@ -62,7 +62,7 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7fdf6e6e9ed8353322fc0dc22165e875&file=http_passthrough.bal",
+                "https://play.ballerina.io/?gist=e6aa3683d7dec8c106911badae35db7e&file=http_passthrough.bal",
                 "_blank"
               );
             }}

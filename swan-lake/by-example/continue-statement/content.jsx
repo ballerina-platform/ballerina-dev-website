@@ -60,7 +60,7 @@ export function ContinueStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c33503a3c55720b613ec17ab3d976613&file=continue_statement.bal",
+                "https://play.ballerina.io/?gist=4e5971812c0798b28c6cb89e85db4ee8&file=continue_statement.bal",
                 "_blank"
               );
             }}
@@ -294,10 +294,7 @@ export function ContinueStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Langlib functions"
-            href="/learn/by-example/langlib-functions"
-          >
+          <Link title="Range function" href="/learn/by-example/int-range">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -306,7 +303,7 @@ export function ContinueStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Langlib functions
+                  Range function
                 </span>
               </div>
               <svg

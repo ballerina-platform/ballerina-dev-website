@@ -91,7 +91,7 @@ export function XmlAccess({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4cc86bcd7a48a17e711ab60cb2e28044&file=xml_access.bal",
+                "https://play.ballerina.io/?gist=eb29faca21b7ad2c2cf82088584504e7&file=xml_access.bal",
                 "_blank"
               );
             }}

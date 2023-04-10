@@ -84,7 +84,7 @@ export function Http20ClientServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=496500ae1b80852b5a61c1284d39a3dc&file=http_2_0_client_server_push.bal",
+                "https://play.ballerina.io/?gist=00e06c91b45f1fcc9ad502f9c8f24dcc&file=http_2_0_client_server_push.bal",
                 "_blank"
               );
             }}

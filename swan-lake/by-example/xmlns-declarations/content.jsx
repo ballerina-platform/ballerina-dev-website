@@ -69,7 +69,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d58553912c6b18beab04b6ade4050008&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=e109708c41aa221d21f01f4e8d876182&file=xmlns_declarations.bal",
                 "_blank"
               );
             }}

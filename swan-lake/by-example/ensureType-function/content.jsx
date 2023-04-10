@@ -54,7 +54,7 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2a62a0b21e25e8fbec5e6ec21a7fc212&file=ensureType_function.bal",
+                "https://play.ballerina.io/?gist=0c0e09b5d08c444d09f029e47e780685&file=ensureType_function.bal",
                 "_blank"
               );
             }}

@@ -346,7 +346,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `regex` package
 
-- Deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library for continued support and updates. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+- The `regex` package has been deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 

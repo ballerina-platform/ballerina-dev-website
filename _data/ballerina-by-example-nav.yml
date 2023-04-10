@@ -118,6 +118,9 @@ sublinks:
           - title: Continue statement
             id: 4
             url: continue-statement
+          - title: Range function
+            id: 5
+            url: int-range
       - title: Lang library
         id: 8
         sublinks:

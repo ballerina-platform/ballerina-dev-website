@@ -112,7 +112,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bb6b8fa1b5ca81b6e1a40632a00d8f38&file=http_interceptor_error_handling.bal",
+                "https://play.ballerina.io/?gist=75a7e8980a0026f79cd7b58a23b6edad&file=http_interceptor_error_handling.bal",
                 "_blank"
               );
             }}

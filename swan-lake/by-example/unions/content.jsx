@@ -74,7 +74,7 @@ export function Unions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6f69520985cfcc063984086d954bf68d&file=unions.bal",
+                "https://play.ballerina.io/?gist=64577d068a20752d9b5a78cee24d005e&file=unions.bal",
                 "_blank"
               );
             }}

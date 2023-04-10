@@ -65,7 +65,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=91b4ba81a209bf115a724fee2fd209fd&file=list_subtyping.bal",
+                "https://play.ballerina.io/?gist=c1739c6200083a08f76b397572024b64&file=list_subtyping.bal",
                 "_blank"
               );
             }}

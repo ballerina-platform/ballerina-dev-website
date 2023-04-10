@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=afeda3e742e994eba0818880c6f209a3&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=001070d08b9535bfe5568cc96ef7eba6&file=constraint_validations.bal",
                 "_blank"
               );
             }}

@@ -52,6 +52,11 @@ export default function LeftNav(props) {
     }
   }
 
+  function goto(url) {
+    window.location.href=url;
+    //document.querySelectorAll('[item-id=' + "\'" + id + "\'" + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+  }
+
 
 
   const SortedDir = Elements.sort(comparePositions);
@@ -79,20 +84,16 @@ export default function LeftNav(props) {
             </ul>
           </Accordion.Body>
           </>
-        : <div className="accordion-item">
-            <h2 item-id="why-ballerina" className="accordion-header">
-              <button className={styles.nonAcBtn} onclick="window.location.href='https://w3docs.com';">
-                {category.dirName}
-              </button>
-            </h2>
-          </div>
+        : <h2 item-id={category.id} className={`${styles.mainDir} accordion-header`}>
+            <button  
+              className={(id === category.id) ? `${styles.nonAcBtn} ${styles.active}` : `${styles.nonAcBtn}`} 
+              onClick={() => goto(category.url)}>
+              {category.dirName}
+            </button>
+          </h2>
       }
       
     </Accordion.Item>;
-    // } else {
-    //   return <button type="button" aria-expanded="true" class="accordion-button"
-    //               href={(`${prefix}`) ? `${prefix}` + category.url : category.url}>{category.id}</button>;
-    // }
   }
 
   function SubDir(props) {

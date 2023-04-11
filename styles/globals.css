@@ -714,7 +714,10 @@ ul.eventsTabs {
   margin-top: 20px;
   padding-top: 30px;
 }
-.cardBottomExtraMargin{margin-bottom: 5px;}
+
+.cardBottomExtraMargin{
+  margin-bottom: 5px;
+}
 
 .useRow {
   margin-bottom: 15px;

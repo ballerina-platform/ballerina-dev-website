@@ -26,8 +26,8 @@ export default function Intro() {
 
     return (
         <>
-       <Container>
-       <Row className=" justify-content-md-center llanding">
+            <Container>
+                {/* <Row className=" justify-content-md-center llanding">
                 <Col xs={12} lg={4} className={styles.introCard}>
                     <a href={`${prefix}/learn/install-ballerina/set-up-ballerina`} className={styles.cardLink}>
                         <div className={`${styles.cardContent} ${styles.primary}`}>
@@ -74,13 +74,58 @@ export default function Intro() {
                         </div>
                     </a>
                 </Col>
-            </Row>
-           
-       </Container>
-       
-            
-       
-           
+            </Row> */}
+
+                <Row className='pageContentRow llanding'>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/get-started`} className={`${styles.cardWrapper} ${styles.primary}`}>
+                            <div>
+                                <h3>Get started with Ballerina</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>A series of guided examples to learn the language</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/by-example`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina by Example</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>A series of guided examples to learn the language</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`https://lib.ballerina.io/`} target='_blank' rel="noreferrer" className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina API Docs</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Library API documentation</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/ballerina-specifications`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina specifications</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Language, library, and platform specifications</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                </Row>
+
+            </Container>
+
+
+
+
         </>
     );
 }

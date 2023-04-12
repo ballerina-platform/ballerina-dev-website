@@ -55,7 +55,7 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d5f5df80694d5b43618e3778e08c7a3&file=xml_templates_and_query.bal",
+                "https://play.ballerina.io/?gist=aebee6d773949b69b7a81f523552c28a&file=xml_templates_and_query.bal",
                 "_blank"
               );
             }}
@@ -80,7 +80,7 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/xml-templates-and-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xml-templates-and-query",
                 "_blank"
               );
             }}

@@ -106,7 +106,7 @@ export function XsltTransformation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c57100ead50b87779dc90dbe19d50d46&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=5f74cd9beb58824f16cb0989361f4767&file=xslt_transformation.bal",
                 "_blank"
               );
             }}
@@ -131,7 +131,7 @@ export function XsltTransformation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/xslt-transformation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xslt-transformation",
                 "_blank"
               );
             }}

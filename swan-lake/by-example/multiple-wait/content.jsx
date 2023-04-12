@@ -67,7 +67,7 @@ export function MultipleWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=610390b906574bdac37f35dc6142ca96&file=multiple_wait.bal",
+                "https://play.ballerina.io/?gist=8a045ebf7dd2e059a35fd11297fe8a01&file=multiple_wait.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function MultipleWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/multiple-wait",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/multiple-wait",
                 "_blank"
               );
             }}

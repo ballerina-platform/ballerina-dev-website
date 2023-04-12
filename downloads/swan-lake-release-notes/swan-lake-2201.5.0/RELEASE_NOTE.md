@@ -99,8 +99,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Improved how the inherent type is chosen when constructing a structural value in the `value:cloneWithType` 
-and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor.
+- Improved how the inherent type is chosen when constructing a structural value in the `value:cloneWithType` and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor. Hence, the inherent type of the constructed value may differ from what it was previously.
     
     ```ballerina
     type FloatSubtype record {|
@@ -227,7 +226,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 
 #### New Runtime Java APIs
 
-- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to convert an `anydata` value to another subtype of the `anydata` type.
+- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to clone and convert an `anydata` value to another subtype of the `anydata` type.
 
     ```java
     public static Object convert(Object value, Type targetType);

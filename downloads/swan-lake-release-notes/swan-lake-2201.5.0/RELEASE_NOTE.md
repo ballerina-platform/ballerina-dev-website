@@ -19,7 +19,7 @@ redirect_from:
 
 Run either of the commands below to directly update to 2201.5.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
 
-`bal dist update` (or `bal dist pull 2201.5.0`)
+`bal dist pull 2201.5.0`
 
 ## Install Ballerina
 

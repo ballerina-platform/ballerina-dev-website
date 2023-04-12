@@ -17,7 +17,7 @@ table<Album> key(title) albums = table [];
 service / on new http:Listener(9090) {
 
     // The \`album\` parameter in the payload annotation represents the entity body of the inbound request.
-    resource function post albums(@http:Payload Album album) returns Album {
+    resource function post albums(Album album) returns Album {
         albums.add(album);
         return album;
     }
@@ -41,12 +41,19 @@ export function HttpServiceDataBinding({ codeSnippets }) {
 
       <p>
         HTTP service payload data binding allows accessing the request payload
-        using a resource signature parameter. The resource parameter which is
-        bound to the request payload should be annotated with{" "}
-        <code>@http:Payload</code> annotation. The resource parameter type
-        should be <code>anydata</code>. If the data binding fails, a{" "}
-        <code>400 Bad Request</code> response is sent to the client. Use this to
-        access the request payload directly from the resource.
+        using a resource signature parameter. The resource parameter type should
+        be a sub type of <code>anydata</code>. By default, parameters with the{" "}
+        <code>map </code>, <code>array</code>, <code>tuple</code>,{" "}
+        <code>table</code>, <code>record</code> and <code>xml</code> types are
+        mapped to the payload. For other types, the <code>@http:Payload</code>{" "}
+        annotation is required and If the signature includes more than one of
+        the aforementioned types, the <code>@http:Payload</code> should be used
+        to resolve the ambiguity. This behaviour is limited to the{" "}
+        <code>POST</code>, <code>PUT</code>, <code>PATCH</code>,{" "}
+        <code>DELETE</code>, and <code>DEFAULT</code> accessors. If the data
+        binding process fails, the client receives a{" "}
+        <code>400 Bad Request</code> response. This feature allows direct access
+        to the request payload from the resource.
       </p>
 
       <Row
@@ -59,7 +66,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b31aeff91ec21d03a4e5fd057cf33a3a&file=http_service_data_binding.bal",
+                "https://play.ballerina.io/?gist=ad78ea5a130bb547246436a4ed521eef&file=http_service_data_binding.bal",
                 "_blank"
               );
             }}

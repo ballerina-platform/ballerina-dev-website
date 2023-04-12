@@ -30,7 +30,7 @@ service / on new http:Listener(9092) {
         self.orderClient = check new (nats:DEFAULT_URL);
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
     
         // Sends a request and returns the reply.
         StringMessage reply = check self.orderClient->requestMessage({

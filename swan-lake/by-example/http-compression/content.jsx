@@ -66,7 +66,7 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8e448a355fa1c5dc256e949c3eb64bd4&file=http_compression.bal",
+                "https://play.ballerina.io/?gist=ca24796468f2b68509877926c949c89a&file=http_compression.bal",
                 "_blank"
               );
             }}

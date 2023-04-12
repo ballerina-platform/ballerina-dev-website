@@ -27,8 +27,8 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse.
-    resource function post albums(@http:Payload Album album) returns Album|AlbumConflict {
+    // The resource returns the \`409 Conflict\` status code as the error response status code using the built-in \`StatusCodeResponse\`.
+    resource function post albums(Album album) returns Album|AlbumConflict {
         if albums.hasKey(album.title) {
             return {body: { message: "album already exists" }};
         }
@@ -79,7 +79,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=000481f3ead488d149793d3f27388126&file=http_send_different_status_codes_with_payload.bal",
+                "https://play.ballerina.io/?gist=00b740554215112209bed9eeb38ec6f3&file=http_send_different_status_codes_with_payload.bal",
                 "_blank"
               );
             }}

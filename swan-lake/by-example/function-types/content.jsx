@@ -76,7 +76,7 @@ export function FunctionTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a798c73fab3f47925d9c1f156bb3ecf6&file=function_types.bal",
+                "https://play.ballerina.io/?gist=9524fdecf78cbb31a543131f1339763b&file=function_types.bal",
                 "_blank"
               );
             }}

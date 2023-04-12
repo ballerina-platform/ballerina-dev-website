@@ -79,7 +79,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9ddf93d112735dcbaf3262ab86920a13&file=http_send_different_status_codes_with_payload.bal",
+                "https://play.ballerina.io/?gist=a5a763221fde77773358e11d66aa56a5&file=http_send_different_status_codes_with_payload.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-send-different-status-codes-with-payload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-send-different-status-codes-with-payload",
                 "_blank"
               );
             }}

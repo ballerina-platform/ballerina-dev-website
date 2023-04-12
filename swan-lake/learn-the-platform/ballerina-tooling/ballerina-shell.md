@@ -233,8 +233,8 @@ public function main() {
     int a = 5;
     int b = 10;
     
-    io:println(add(a,b));
-    io:println(subtract(a,b));
+    io:println(add(a, b));
+    io:println(subtract(a, b));
     io:println(multiply);
 }    
 ```

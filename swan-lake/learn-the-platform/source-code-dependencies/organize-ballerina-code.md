@@ -35,7 +35,7 @@ It is common in small projects to have only one (default) module in a package. A
 The `bal new` command below creates a package with the default module. 
 
 ```
-bal new hello_world
+$ bal new hello_world
 ```
 
 This creates a new Ballerina package  in the default module with the `Ballerina.toml` file, which identifies a directory as a package and a sample source file (i.e., `main.bal`) with a main function.
@@ -57,7 +57,7 @@ tree .
 ## Create a Ballerina service package
 
 ```
-bal new -t service hello_service
+$ bal new -t service hello_service
 ```
 
 This creates a Ballerina source containing a service declaration with Ballerina tests to test the service. It creates the following file structure with the service template.  
@@ -76,7 +76,7 @@ cd hello_service
 ## Create a library package
 
 ```
-bal new -t lib hello_lib
+$ bal new -t lib hello_lib
 ```
 
 This creates a Ballerina source file containing a function that prints `Hello, world!` along with a test file to test the function. Additionally, it creates the `Package.md` file, which is required to [publish a package to Ballerina Central](/learn/publish-packages-to-ballerina-central).
@@ -112,8 +112,8 @@ Therefore, Ballerina allows subdividing the code into multiple modules as well.
 You can add more modules to the package using the `bal add` command:
 
 ```
-cd hello_world
-bal add util
+$ cd hello_world
+$ bal add util
 ```
 
 This will create the `modules` directory in the package root. The `modules/util` directory is the root of the `hello_world.util` module. 

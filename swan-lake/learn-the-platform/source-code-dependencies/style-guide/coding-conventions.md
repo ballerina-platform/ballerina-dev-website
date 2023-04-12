@@ -150,12 +150,10 @@ function setName(string name)
 **Example,**
 
 ```ballerina
-
 function func1() {
     if true {
     }
 }
-
 ```
 
 * If an inline block is empty, do not keep spaces in between the opening and closing braces.
@@ -196,7 +194,7 @@ function setValue(string value) {
 }
 
 public function main() {
-   setValue("value");
+    setValue("value");
 }
 ```
 

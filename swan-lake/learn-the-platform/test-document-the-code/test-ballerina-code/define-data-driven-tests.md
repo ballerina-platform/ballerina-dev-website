@@ -79,10 +79,10 @@ Running Tests
 ```ballerina
 import ballerina/test;
 
-@test:Config{
+@test:Config {
     dataProvider: dataGen
 }
-function stringDataProviderTest (string fValue, string sValue, string result) returns error? {
+function stringDataProviderTest(string fValue, string sValue, string result) returns error? {
     int value1 = check int:fromString(fValue);
     int value2 = check int:fromString(sValue);
     int result1 = check int:fromString(result);

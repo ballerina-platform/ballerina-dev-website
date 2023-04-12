@@ -362,7 +362,7 @@ service /covid19 on new graphql:Listener(9000) {
  Execute the command below to run this service to serve a GraphQL API to the data source.
 
 ```
-bal run
+$ bal run
 ```
 
 You view the output below.
@@ -427,7 +427,7 @@ type Mutation {
 Execute the cURL command below to retrieve all the data from the endpoint.
 
 ```
-curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
+$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
 ```
 
 In this request:

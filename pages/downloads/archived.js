@@ -244,7 +244,7 @@ export default function AllArchived() {
                                         <h2 id='1.2.x-archived-versions'>1.2.x archived versions</h2>
                                         </div>
                                         <div className='archivedNote'>
-                                        <p>You can download the Visual Studio Code extension for Ballerina 1.2.x versions, from the <a target="_blank" rel="noreferrer" className="archivedReleaseNotesLink" href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina">VS Code marketpace.</a></p>
+                                        <p>You can download the Visual Studio Code extension for Ballerina 1.2.x versions, from the <a target="_blank" rel="noreferrer" className="archivedReleaseNotesLink" href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina">VS Code marketplace.</a></p>
                                         </div>
                                     {sortedRelease12x.map((item, index) => (
 

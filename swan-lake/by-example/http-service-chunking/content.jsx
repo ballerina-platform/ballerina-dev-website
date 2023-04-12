@@ -65,7 +65,7 @@ export function HttpServiceChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5bb2d8ae1e9688130d887c552027d7c1&file=http_service_chunking.bal",
+                "https://play.ballerina.io/?gist=a4e3aad7efd2fc26430721a45857a20c&file=http_service_chunking.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function HttpServiceChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-service-chunking",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-service-chunking",
                 "_blank"
               );
             }}

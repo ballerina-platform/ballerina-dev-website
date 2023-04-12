@@ -120,6 +120,10 @@ import {
   codeSnippetData as ContinueStatementCodeSnippetData,
 } from "./continue-statement/content.jsx";
 import {
+  IntRange,
+  codeSnippetData as IntRangeCodeSnippetData,
+} from "./int-range/content.jsx";
+import {
   LanglibFunctions,
   codeSnippetData as LanglibFunctionsCodeSnippetData,
 } from "./langlib-functions/content.jsx";
@@ -1923,6 +1927,8 @@ const BBEs = {
   BreakStatementCodeSnippetData,
   ContinueStatement,
   ContinueStatementCodeSnippetData,
+  IntRange,
+  IntRangeCodeSnippetData,
   LanglibFunctions,
   LanglibFunctionsCodeSnippetData,
   StructuralTyping,

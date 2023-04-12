@@ -71,7 +71,7 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
 ```
-bal new data_service
+$ bal new data_service
 ``` 
 
 This creates a directory named `data_service` with the files below.
@@ -185,7 +185,7 @@ final mysql:Client dbClient = check new(
 Execute the command below to run the client.
 
 ```
-bal run
+$ bal run
 ```
 
 If the program runs without throwing an error, that indicates that the connection has been established successfully. This client can be defined globally and be used across all parts of the program.
@@ -461,7 +461,7 @@ service /employees on new http:Listener(8080) {
 Execute the command below to run the service.
 
 ```
-bal run
+$ bal run
 ```
 
 You view the output below.
@@ -474,7 +474,7 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
-curl -X POST http://localhost:8080/employees/
+$ curl -X POST http://localhost:8080/employees/
     -H 'Content-Type: application/json'
     -d '{
         "employee_id": 6,

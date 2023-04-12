@@ -1,0 +1,19 @@
+{
+  "title": "Range function",
+  "description": "This BBE demonstrates the `int:range` langlib function in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "foreach",
+    "loops",
+    "int:range",
+    "range"
+  ],
+  "permalink": "/learn/by-example/int-range",
+  "active": "int-range",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/int-range",
+    "/swan-lake/learn/by-example/int-range.html"
+  ]
+}

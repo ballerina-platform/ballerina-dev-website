@@ -52,7 +52,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1ab412a2e8b4ff8a96bac9f93405b5f4&file=http_service_file_upload.bal",
+                "https://play.ballerina.io/?gist=0db97baca16bfb9307cb8524090f72e5&file=http_service_file_upload.bal",
                 "_blank"
               );
             }}
@@ -77,7 +77,7 @@ export function HttpServiceFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-service-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-service-file-upload",
                 "_blank"
               );
             }}

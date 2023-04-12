@@ -11,11 +11,11 @@ public function main() {
     string name = "James";
 
     // Concatenates \`Hello, \` strings with the \`name\` value.
-    string s1 = string\`Hello, \${name}\`;
+    string s1 = string \`Hello, \${name}\`;
     io:println(s1);
 
     // Concatenates \`Backtick:\` strings with \`.
-    string s2 = string\`Backtick:\${"\`"}\`;
+    string s2 = string \`Backtick:\${"\`"}\`;
     io:println(s2);
 }
 `,
@@ -73,7 +73,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9830466140a8c7985b306a1eb800691b&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=42e82496c455caea03d361489f9441ea&file=backtick_templates.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/backtick-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/backtick-templates",
                 "_blank"
               );
             }}

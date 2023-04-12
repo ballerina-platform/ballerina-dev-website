@@ -71,7 +71,7 @@ export function RetryTransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c526caf7273eee504712a79e60aa247d&file=retry_transaction_statement.bal",
+                "https://play.ballerina.io/?gist=b88b5566d56e2589b03e714c7904296c&file=retry_transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export function RetryTransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/retry-transaction-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/retry-transaction-statement",
                 "_blank"
               );
             }}

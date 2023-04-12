@@ -25,7 +25,7 @@ service / on new http:Listener(8080) {
         self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
-    resource function post album(@http:Payload Album album) returns Album|error {
+    resource function post album(Album album) returns Album|error {
         _ = check self.db->execute(\`
             INSERT INTO Albums (id, title, artist, price)
             VALUES (\${album.id}, \${album.title}, \${album.artist}, \${album.price});\`);

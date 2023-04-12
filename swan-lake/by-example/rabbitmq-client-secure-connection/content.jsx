@@ -30,8 +30,8 @@ service / on new http:Listener(9092) {
         );
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
-        // Publishes the message using newClient and the routing key named OrderQueue.
+    resource function post orders(Order newOrder) returns http:Accepted|error {
+        // Publishes the message using the \`newClient\` and the routing key named \`OrderQueue\`.
         check self.orderClient->publishMessage({
             content: newOrder,
             routingKey: "OrderQueue"

@@ -58,7 +58,7 @@ export function HttpClientRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa714c507db3b335525029eaa78748d8&file=http_client_redirects.bal",
+                "https://play.ballerina.io/?gist=8c11c25b68088d6fad855637d966def3&file=http_client_redirects.bal",
                 "_blank"
               );
             }}

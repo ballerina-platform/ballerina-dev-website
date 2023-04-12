@@ -27,9 +27,9 @@ service / on new http:Listener(8080) {
         self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
-    resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {
+    resource function post 'order(Order salesOrder) returns http:Created|error {
         transaction {
-            // Insert into \`sales_order\` table.
+            // Insert into the \`sales_order\` table.
             _ = check self.db->execute(\`INSERT INTO MUSIC_STORE.sales_order VALUES 
                                         (\${salesOrder.id}, \${salesOrder.orderDate},
                                          \${salesOrder.productId}, \${salesOrder.quantity});\`);

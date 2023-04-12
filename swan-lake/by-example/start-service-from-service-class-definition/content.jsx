@@ -29,7 +29,7 @@ public service class Service {
         return self.albums.toArray();
     }
 
-    resource function post albums(@http:Payload Album album) {
+    resource function post albums(Album album) {
         self.albums.add(album);
     }
 }

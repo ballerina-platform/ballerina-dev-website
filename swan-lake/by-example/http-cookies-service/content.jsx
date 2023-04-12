@@ -11,7 +11,7 @@ listener http:Listener serverEP = new (9095);
 
 service /cookieDemo on serverEP {
 
-    resource function post login(@http:Payload json details) returns http:Response|http:Unauthorized|error {
+    resource function post login(map<json> details) returns http:Response|http:Unauthorized|error {
 
         // Retrieve the username and password.
         json name = check details.name;
@@ -89,7 +89,7 @@ export function HttpCookiesService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=175362d8248cc3d0e8969e05b7fbe490&file=http_cookies_service.bal",
+                "https://play.ballerina.io/?gist=7222bafc060e5c9735154727f989372f&file=http_cookies_service.bal",
                 "_blank"
               );
             }}

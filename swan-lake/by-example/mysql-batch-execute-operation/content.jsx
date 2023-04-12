@@ -27,7 +27,7 @@ service / on new http:Listener(8080) {
         self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
-    resource function post albums(@http:Payload Album[] albums) returns http:Created|error {
+    resource function post albums(Album[] albums) returns http:Created|error {
         // Create a batch parameterized query.
         sql:ParameterizedQuery[] insertQueries = from Album album in albums
             select \`INSERT INTO albums (id, title, artist, price)

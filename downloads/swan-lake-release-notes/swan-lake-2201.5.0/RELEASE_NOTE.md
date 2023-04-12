@@ -133,12 +133,12 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}    
     ```
 
-- Improved the error message given in a failure of the `fromJsonWithType` or `cloneWithType` operations when the target type is a union type.
+- Improved the message given by an error returned from the `value:cloneWithType` and `value:fromJsonWithType` functions when the target type is a union type.
     
     ```ballerina
-    public function main() {
+    public function main() returns error? {
         json j = [1, 1.2, "hello"];
-        int[]|float[] val = checkpanic j.fromJsonWithType();
+        int[]|float[] val = check j.fromJsonWithType();
     }
     ```
     Now, this gives the error below.
@@ -150,8 +150,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
                 or
                   array element '[2]' should be of type 'float', found '"hello"'
                 }"}
-        at ballerina.lang.value.0:fromJsonWithType(value.bal:370)
-           sample:main(sample.bal:3)
     ```
 
 - Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource methods and object methods). Previously, the annotation was ignored and the code compiled successfully.

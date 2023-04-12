@@ -18,7 +18,7 @@ redirect_from:
   - /learn/cli-documentation/update-tool
 ---
 
-### Understand Ballerina distributions 
+## Understand Ballerina distributions 
 
 The Ballerina compiler is a software program, which validates the Ballerina source code and translates it to an executable program. Ballerina has a stable and production-ready official compiler called jBallerina, which targets the JVM.
 
@@ -26,13 +26,13 @@ Also, there is a plan to develop a native compiler called nBallerina in the futu
 
 Ballerina distribution is a term, which refers to these jBallerina and nBallerina compilers.
 
-### Get to know the release channels
+## Get to know the release channels
 
 Ballerina distributions are released via two different release channels at the moment. Swan Lake release channel is the primary release channel and the other one is the 1.x release channel. It is recommended to use Swan Lake release channel, if you are new to Ballerina.
 
 Ballerina does not have a release channel yet for nightly builds that give you access to the latest perhaps unstable features.
 
-#### Patch releases
+### Patch releases
 
 Patch releases of Ballerina distributions contain bug fixes and fixes for critical stability and security related issues. Occasionally, you would see on-demand patch releases for 2201.0.x.
 
@@ -73,7 +73,7 @@ You can [change this active distribution](#change-the-active-distribution) at an
 The `bal update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent of the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 
 ```sh
-→ bal update
+$ bal update
 Fetching the latest tool version from the remote server...
 Downloading ballerina-command-1.3.3 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00) 
 Updating environment variables
@@ -93,7 +93,7 @@ If you want to update the Ballerina distribution, use 'bal dist update'
 After updating the Ballerina Tool, you can use the `bal dist` command to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `bal dist` command.
 
 ```sh
-→ bal help dist
+$ bal help dist
 NAME
        bal dist - Manage Ballerina distributions
 
@@ -140,7 +140,7 @@ Most of these subcommands are self-explanatory. Therefore, the sections below in
 The `bal dist list` command lists the installed distributions in your local environment. It also lists the distributions available for you to download.
 
 ```sh
-→ bal dist list
+$ bal dist list
 Distributions available locally: 
 
   slalpha4 
@@ -179,7 +179,7 @@ Use 'bal help dist' for more information on specific commands.
 The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you have been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ bal dist remove slalpha5
+$ bal dist remove slalpha5
 Distribution 'slalpha5' successfully removed
 ```
 
@@ -188,7 +188,7 @@ Distribution 'slalpha5' successfully removed
 The `bal dist update` command updates your active distribution to the latest patch version.
 
 ```sh
-→ sudo bal dist update
+$ sudo bal dist update
 Fetching the latest patch distribution for 'ballerina-slalpha4' from the remote server...
 Fetching the 'slalpha5' distribution from the remote server...
 Downloading slalpha5 100% [================================================================================================================================================================================] 319/319 MB (0:01:21 / 0:00:00) 
@@ -205,7 +205,7 @@ Successfully set the latest patch distribution 'slalpha5' as the active distribu
 The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
-→ bal dist pull slalpha4
+$ bal dist pull slalpha4
 Fetching the 'slalpha4' distribution from the remote server...
 Downloading slalpha4 100% [================================================================================================================================================================================] 287/287 MB (0:01:26 / 0:00:00) 
   
@@ -219,6 +219,6 @@ Dependency 'jdk-11.0.8+10-jre' is already available locally
 The `bal dist use <distribution>` command sets a particular distribution version as the active one.
 
 ```sh
-→ bal dist use slalpha3
+$ bal dist use slalpha3
 'slalpha3' successfully set as the active distribution
 ```

@@ -76,7 +76,7 @@ public function main() returns error? {
 The Ballerina source file is compiled and executed in the following manner.
 
 ```
-bal run xml_json_sample.bal
+$ bal run xml_json_sample.bal
 ```
 
 Output:
@@ -119,7 +119,7 @@ service on new http:Listener(9090) {
 The Ballerina source file is compiled and executed in the following manner.
 
 ```
-bal run hello.bal
+$ bal run hello.bal
 ```
 
 You view the output below.

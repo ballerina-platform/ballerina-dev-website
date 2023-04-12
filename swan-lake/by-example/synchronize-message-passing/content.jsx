@@ -70,7 +70,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=75d3f8382243f281fec9aeb1deac0440&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=e225c693dfcbcbfec079e7ff8a91f755&file=synchronize_message_passing.bal",
                 "_blank"
               );
             }}
@@ -95,7 +95,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/synchronize-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/synchronize-message-passing",
                 "_blank"
               );
             }}

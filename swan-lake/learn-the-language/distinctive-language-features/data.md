@@ -46,7 +46,7 @@ function floatSurprise() {
     io:println(f);
 }
 
-decimal nanos = 1d/1000000000d;
+decimal nanos = 1d / 1000000000d;
 ```
 
 A decimal number represents a decimal fraction exactly. That means that the precisions are preserved, unlike ``float`` values. For example, a ``decimal`` value of 2.1 kg is not the same as 2.10 kg. 
@@ -129,11 +129,11 @@ You can define a record with an optional field.
 
 ```ballerina
 type Headers record {
-   string 'from;
-   string to;
+    string 'from;
+    string to;
 
-   // Records can have optional fields
-   string subject?;
+    // Records can have optional fields
+    string subject?;
 };
 ```
 
@@ -677,7 +677,7 @@ table<Employee> key(id) employees = table [
 ];
 
 int[] salaries = from var {salary} in employees
-                    select salary;
+    select salary;
 ```
   
 In the above code example, **``salaries``** is an array constructed from a query that selects the salary of each **``Employee``** record within the table **``employees``**. The query returns the list of all salary figures, which are of the integer type.
@@ -856,7 +856,7 @@ XML templates are used to create ``xml`` values.
 ```ballerina
 string url = "https://ballerina.io";
 
-xml content = xml`<a href="${url}">Ballerina</a> is an <em>exciting</em> new language!`;
+xml content = xml `<a href="${url}">Ballerina</a> is an <em>exciting</em> new language!`;
 
 xml p = xml `<p>${content}</p>`;
 ```
@@ -931,7 +931,7 @@ Ballerina also supports built-in subtypes of the ``xml`` type. This is beneficia
 You can define an XML element value that belongs to the **``xml:Element``** subtype of ``xml``.  
 
 ```ballerina
-xml:Element p = xml`<p>Hello</p>`;
+xml:Element p = xml `<p>Hello</p>`;
 ```
 
 In this case, ``xml:Element`` is a subtype of ``xml`` and **``p``** comprises sequences of length one containing one element. Similarly, ``xml:Comment`` and ``xml:ProcessingInstruction`` subtypes are also available.
@@ -939,7 +939,7 @@ In this case, ``xml:Element`` is a subtype of ``xml`` and **``p``** comprises se
 An ``xml`` value belongs to the ``xml:Text`` type if it consists of a text item or is empty. You can create a value of the  ``xml:Text`` type from a ``string`` value, and if the string is empty, then the ``xml:Text`` value is also empty.
 
 ```ballerina
-function stringToXml(string s) returns xml:Text  {
+function stringToXml(string s) returns xml:Text {
     return xml:createText(s);
 }
 ```
@@ -992,8 +992,8 @@ You can also use query expressions to query XML.
 ```ballerina
 function paraByLang(xml x, string lang) returns xml {
     return from var para in x.<para>
-            where para?.lang == lang
-            select para;
+        where para?.lang == lang
+        select para;
 }
 ```
 
@@ -1013,7 +1013,7 @@ type Person record {|
 
 function personsToXml(Person[] persons) returns xml {
     return xml `<data>${from var {name, country} in persons
-           select xml`<person country="${country}">${name}</person>`}</data>`;
+        select xml`<person country="${country}">${name}</person>`}</data>`;
 }
 ```
 
@@ -1034,7 +1034,7 @@ Ballerina supports XML namespaces without adding another level of complexity to 
 When you see an XML element ``x`` prefixed with a namespace as **``ns:x``**, under the covers, Ballerina expands the prefix and the colon into a **``{url}x``** notation where ``url`` is the namespace name bound to ``ns``.
 
 ```ballerina
-xml:Element e = xml`<p:e xmlns:p="http://example.com/"/>`;
+xml:Element e = xml `<p:e xmlns:p="http://example.com/"/>`;
 string name = e.getName();
 ```
 
@@ -1046,7 +1046,7 @@ Overall, to make the XML work in Ballerina, you need XML namespace declarations 
 
 ```ballerina
 xmlns "http://example.com" as eg;
-xml x = xml`<eg:doc>Hello</eg:doc>`;
+xml x = xml `<eg:doc>Hello</eg:doc>`;
 ```
 
 In the above code example, the **``eg``** is bound as a prefix to a namespace URL. You can use that prefix in the ``xml`` template, and it will get expanded to the correct representation with the namespace.

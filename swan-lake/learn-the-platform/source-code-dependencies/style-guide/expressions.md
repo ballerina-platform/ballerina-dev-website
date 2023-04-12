@@ -49,7 +49,7 @@ Person p = {};
       
 **Example,**
 
-```ballerina  
+```ballerina
 Person p = {name: "john", age: 20};
 ``` 
 
@@ -108,7 +108,7 @@ map<string> mapOfString1 = {name: "john", id: "0"};
 map<string> mapOfString2 = {
     name: "john",
     id: "0"
-}
+};
 ```
 
 ## Tuple

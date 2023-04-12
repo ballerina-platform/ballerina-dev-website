@@ -82,7 +82,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d37b345cda395caaab7b639309d48321&file=convert_from_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=ae4463890e9bcc1112b07465d7fcbc34&file=convert_from_json_to_user_defined_type.bal",
                 "_blank"
               );
             }}
@@ -107,7 +107,7 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/convert-from-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/convert-from-json-to-user-defined-type",
                 "_blank"
               );
             }}
@@ -280,7 +280,11 @@ export function ConvertFromJsonToUserDefinedType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+<<<<<<< HEAD
             <a href="/learn/by-example/check">Check expression</a>
+=======
+            <a href="/learn/by-example/check-expression">Check expression</a>
+>>>>>>> 518ffcb3f0d549e2de0014f9ecef9f337948972a
           </span>
         </li>
       </ul>

@@ -6,11 +6,11 @@ configurable int port = 9090;
 Album[] albums = [
     {id: "1", title: "Blue Train", artist: "John Coltrane", price: 56.99},
     {id: "2", title: "Jeru", artist: "Gerry Mulligan", price: 17.99},
-    {id: "3", title: "No Count Sarah", artist: "Sarah Vaughan", price: 39.99}
+    {id: "3", title: "Sarah Vaughan and Clifford Brown", artist: "Sarah Vaughan", price: 39.99}
 ];
 
 @grpc:Descriptor {
-    value: DESCRIPTOR_RECORD_STORE
+    value: DESCRIPTOR_RECORD_STORE_DESC
 }
 service "Albums" on new grpc:Listener(port) {
     remote function getAlbum(string id) returns Album|error {

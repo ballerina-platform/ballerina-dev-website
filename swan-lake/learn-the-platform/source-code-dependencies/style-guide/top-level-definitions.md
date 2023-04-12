@@ -28,12 +28,11 @@ redirect_from:
 **Do's**
 
 ```ballerina
-
 import ballerina/http;
 
 const int MIN_AGE = 20;
 int repetitions = 0;
-    
+
 service / on ep1 {
     ...
 }
@@ -183,14 +182,14 @@ Block indent each of the field definitions (including the rest field) in their o
 type Person record {
     string name;
     int...;
-}
+};
 
 // or
 
 type Person record {|
     int id;
     string name;
-|}
+|};
 ```
 
 ## Reference record or object

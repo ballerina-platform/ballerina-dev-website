@@ -67,7 +67,7 @@ export function Flush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=42f96c3c92bdf297bb0842a5391c0479&file=flush.bal",
+                "https://play.ballerina.io/?gist=7ed62552501748dcb3253675f3fcf256&file=flush.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function Flush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/flush",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/flush",
                 "_blank"
               );
             }}

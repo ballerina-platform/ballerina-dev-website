@@ -59,8 +59,8 @@ import ballerinax/awslambda;
 
 @awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json {
-   log:printInfo(input.toJsonString());
-   return input;
+    log:printInfo(input.toJsonString());
+    return input;
 }
 ```
 
@@ -164,9 +164,9 @@ import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
-public function notifyS3(awslambda:Context ctx, 
-                         awslambda:S3Event event) returns json {
-                            io:println (event.Records[0].s3.'object.key);
+public function notifyS3(awslambda:Context ctx,
+        awslambda:S3Event event) returns json {
+    io:println(event.Records[0].s3.'object.key);
     return event.Records[0].s3.'object.key;
 }
 ```
@@ -187,9 +187,9 @@ import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
-public function notifyDynamoDB(awslambda:Context ctx, 
-                               awslambda:DynamoDBEvent event) returns json {
-                                  io:println (event.Records[0].dynamodb.Keys.toString());
+public function notifyDynamoDB(awslambda:Context ctx,
+        awslambda:DynamoDBEvent event) returns json {
+    io:println(event.Records[0].dynamodb.Keys.toString());
     return event.Records[0].dynamodb.Keys.toString();
 }
 ```

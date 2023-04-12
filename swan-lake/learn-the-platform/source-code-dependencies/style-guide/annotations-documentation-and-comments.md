@@ -133,13 +133,11 @@ function func2() {
 **Example,**
 
 ```ballerina
-
 type People record {}; // Inline comment
 
 function func1() {
     int a = 0; // Inline comment
 }
-
 ```
 
 

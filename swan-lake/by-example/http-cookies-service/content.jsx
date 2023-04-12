@@ -89,7 +89,7 @@ export function HttpCookiesService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=15f0d5ba6a51fcadc510dfb54b068e03&file=http_cookies_service.bal",
+                "https://play.ballerina.io/?gist=345bfa4deedea48bf71f642976a75214&file=http_cookies_service.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export function HttpCookiesService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-cookies-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-cookies-service",
                 "_blank"
               );
             }}

@@ -65,7 +65,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e18714f3ddce576944b29ee002386d00&file=http_trace_logs.bal",
+                "https://play.ballerina.io/?gist=360d4f3ed98da0a93e7a2714cd68a2c1&file=http_trace_logs.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-trace-logs",
                 "_blank"
               );
             }}
@@ -388,7 +388,11 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=260787cc62ad76142051530dfb7d72a7&file=Config.toml",
+=======
+                "https://play.ballerina.io/?gist=44188ac4e4849af3b42ecfec24f16552&file=Config.toml",
+>>>>>>> 518ffcb3f0d549e2de0014f9ecef9f337948972a
                 "_blank"
               );
             }}
@@ -413,7 +417,7 @@ export function HttpTraceLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-trace-logs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-trace-logs",
                 "_blank"
               );
             }}

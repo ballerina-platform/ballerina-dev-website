@@ -163,7 +163,7 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. The last four commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. The last five commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>
@@ -182,6 +182,11 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
+<td class="cCommand">graph</td>
+<td class="cDescription">Print the dependency graph in the console.
+</td>
+</tr>
+<tr>
 <td class="cCommand">search</td>
 <td class="cDescription">Search Ballerina Central for packages.
 </td>
@@ -189,11 +194,6 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <tr>
 <td class="cCommand">semver</td>
 <td class="cDescription">Validate <a href="https://semver.org/">SemVer</a> compatibility of the local package changes against any previously published version(s) in Ballerina Central.
-</td>
-</tr>
-<tr>
-<td class="cCommand">graph</td>
-<td class="cDescription">Print the dependency graph in the console.
 </td>
 </tr>
 <tr>

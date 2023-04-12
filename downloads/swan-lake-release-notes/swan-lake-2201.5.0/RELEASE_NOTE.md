@@ -166,6 +166,7 @@ can be constructed from the structural value.
         @test:Config // Compilation error now.
         resource function get id() {
         }
+        
         resource function get title() {
         }
     }

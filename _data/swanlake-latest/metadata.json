@@ -14,8 +14,8 @@
 	"rpm-installer":"ballerina-2201.5.0-swan-lake-linux-x64.rpm",
 	"rpm-installer-size":"251mb",
 	"other-artefacts":[
-			"ballerina-2201.5.0-swan-lake.zip"
+		"ballerina-2201.5.0-swan-lake.zip"
 	],
 	"api-docs":"ballerina-api-docs-2201.5.0.zip",
 	"release-notes":"ballerina-release-notes-2201.5.0.md"
-	}
+}

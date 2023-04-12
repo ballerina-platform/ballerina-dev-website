@@ -54,7 +54,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d666159e241af67312d94e7c5e18f168&file=default_values_for_function_parameters.bal",
+                "https://play.ballerina.io/?gist=401849429f99e76d023b61b84bab514d&file=default_values_for_function_parameters.bal",
                 "_blank"
               );
             }}
@@ -79,7 +79,7 @@ export function DefaultValuesForFunctionParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/default-values-for-function-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/default-values-for-function-parameters",
                 "_blank"
               );
             }}

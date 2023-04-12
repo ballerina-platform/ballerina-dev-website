@@ -65,7 +65,7 @@ export function TypedBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d5b23c86deb215bc5a55506bdd1325aa&file=typed_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=90b50aa6dcb4027c7cccbba362b69e66&file=typed_binding_pattern.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function TypedBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/typed-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/typed-binding-pattern",
                 "_blank"
               );
             }}

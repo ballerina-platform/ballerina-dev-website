@@ -31,7 +31,7 @@ It also enables you to easily install, update, and switch among Ballerina distri
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
 ```sh
-→ bal help
+$ bal help
 NAME
        The build system and package manager of Ballerina
 
@@ -93,12 +93,14 @@ COMMANDS
 
 You can use it in the following format.
 
-> `bal <COMMAND> <ARGUMENTS>`
+```
+$ bal <COMMAND> <ARGUMENTS>
+```
 
 > **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
 ```sh
-→ bal help pull
+$ bal help pull
 NAME
        ballerina-pull - Fetch packages from Ballerina Central
 

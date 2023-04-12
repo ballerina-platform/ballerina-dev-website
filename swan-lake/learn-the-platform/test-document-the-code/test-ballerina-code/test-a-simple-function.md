@@ -36,7 +36,7 @@ To get started, let's set up the Ballerina package to run tests.
 1. Create a Ballerina package with the `bal new` command as follows.
 
    ```
-   bal new hello_world
+   $ bal new hello_world
    ```
 
 2. Create a directory in the root directory of the package named `tests` in which the test files will be stored.

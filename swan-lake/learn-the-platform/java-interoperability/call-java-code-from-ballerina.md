@@ -91,28 +91,31 @@ Now, you create an environment for your Ballerina program.
 
 #### Create a Ballerina package
 ```sh
-> bal new yaml_package
+$ bal new yaml_package
 Created new Ballerina package 'yaml_package' at yaml_package.
 ```
 
 #### Verify the package
 ```sh
-> cd yaml_package
-> bal build
+$ cd yaml_package
+$ bal build
 Compiling source
 	sameera/yaml_package:0.1.0
 
 Generating executable
 	target/bin/yaml_package.jar
 ```
+
 ```sh
-> bal run target/bin/yaml_package.jar
+$ bal run target/bin/yaml_package.jar
 Hello World!
 ```
+
 Great! You are all set for the next step.
 
 #### Add a sample YAML file 
 Copy the content below to a file named `invoice.yml` in the package root directory.
+
 ```yaml
 invoice: 34843
 date   : 2001-01-23
@@ -148,7 +151,7 @@ comments: >
 In this step, you will use the `bindgen` tool to generate Ballerina bindings for the four classes that were listed in [Step 1](/learn/call-java-code-from-ballerina/#step-1---write-the-java-code). If you want more information about the tool, see [Bindgen Tool](/learn/java-interoperability-guide/the-bindgen-tool/).
 
 ```sh
-> bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+$ bal bindgen -mvn org.yaml:snakeyaml:1.25 org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
 Ballerina package detected at: /Users/sameera/yaml_package
 
@@ -183,14 +186,14 @@ The Bindgen Tool generates bindings for:
 
 Before you move on to the next step, verify the generated code.
 ```sh
-> bal build
+$ bal build
 ... 
 ...
 
 Generating executable
 	target/bin/yaml_package.jar
 
-> bal run target/bin/yaml_package.jar
+$ bal run target/bin/yaml_package.jar
 Hello World!
 ```
 
@@ -235,9 +238,11 @@ if fileInputStream is javaio:FileNotFoundException {
 ```
 #### Create the SnakeYAML entry point
 The `org.yaml.snakeyaml.Yaml` class is the entry point to the SnakeYAML API. The generated corresponding Ballerina class is `Yaml`. The `newYaml1()` function is mapped to the default constructor of the Java class. Import the `org.yaml.snakeyaml` Ballerina module as `snakeyaml`.
+
 ```ballerina
 snakeyaml:Yaml yaml = snakeyaml:newYaml1();
 ```
+
 ####  Load the YAML document
 Use the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a `java.util.Map` Java instance from the given `java.io.InputStream`. Since the `Object` Ballerina class (the mapping of `java.lang.Object` class) resides inside the `java.lang` module, import it as `javalang`.
 
@@ -254,8 +259,10 @@ You can print the content of the `java.util.Map` instance in the standard out as
 ```ballerina
 io:println(mapObj);
 ```
+
 #### Complete the code 
 Below is the complete code. You can replace the contents in `main.bal` with the following code.
+
 ```ballerina
 import ballerina/io;
 import yaml_package.java.io as javaio;
@@ -263,21 +270,22 @@ import yaml_package.java.lang as javalang;
 import yaml_package.org.yaml.snakeyaml as snakeyaml;
  
 public function main(string... args) returns error? {
-   string filename = args[0];
-   javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
-   if fileInputStream is javaio:FileNotFoundException {
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
-   } else {
-       snakeyaml:Yaml yaml = snakeyaml:newYaml1();
-       javalang:Object mapObj = yaml.load(fileInputStream);
-       io:println(mapObj);
+    string filename = args[0];
+    javaio:FileInputStream | javaio:FileNotFoundException fileInputStream = javaio:newFileInputStream3(filename);
+    if fileInputStream is javaio:FileNotFoundException {
+        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
+    } else {
+        snakeyaml:Yaml yaml = snakeyaml:newYaml1();
+        javalang:Object mapObj = yaml.load(fileInputStream);
+        io:println(mapObj);
    }
 }
 ```
 
 Build and run this code.
+
 ```sh
-> bal build
+$ bal build
 Compiling source
 	sameera/yaml_package:0.1.0
 
@@ -286,8 +294,9 @@ Generating executable
 ```
 
 Now, you need to pass the YAML file name as the first argument.
+
 ```sh
-> bal run target/bin/yaml_package.jar invoice.yml
+$ bal run target/bin/yaml_package.jar invoice.yml
 {invoice=34843, date=Mon Jan 22 16:00:00 PST 2001, bill-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, ship-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.

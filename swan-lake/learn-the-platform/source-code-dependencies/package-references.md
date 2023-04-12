@@ -58,7 +58,11 @@ icon = "icon.png"
 observabilityIncluded = true
 ```
 
-The `[package]` table contains the meta information about the package.
+The `[package]` table contains the meta information about the package. If you wish to publish a private package, you can set the following line to the table to set the package visibility.
+
+```toml
+visibility = "private"
+```
 
 ### The `org` field
 
@@ -315,7 +319,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 You can add other modules using the `bal add` command.
 
 ```
-bal add util
+$ bal add util
 ```
 
 ### The `.bal` source files

@@ -71,7 +71,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9d479200d9c64607a023291b3ce0c4a4&file=http_client_header_parameter.bal",
+                "https://play.ballerina.io/?gist=9a2ce1e07e6891e79966629171003956&file=http_client_header_parameter.bal",
                 "_blank"
               );
             }}
@@ -96,7 +96,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-client-header-parameter",
                 "_blank"
               );
             }}
@@ -262,7 +262,11 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=6e3ae769f671360ee8cf74e0191b7280&file=http_client_header_parameter_post.bal",
+=======
+                "https://play.ballerina.io/?gist=f308a4a1014b496a92811a585712a04e&file=http_client_header_parameter_post.bal",
+>>>>>>> 518ffcb3f0d549e2de0014f9ecef9f337948972a
                 "_blank"
               );
             }}
@@ -287,7 +291,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-client-header-parameter",
                 "_blank"
               );
             }}

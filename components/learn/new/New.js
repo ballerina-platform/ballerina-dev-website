@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './New.module.css';
 
@@ -25,8 +25,8 @@ export default function New(props) {
 
   return (
     <>
-
-        <Row className="pageContentRow learnRow llanding">
+     <Container>
+     <Row className="pageContentRow learnRow llanding">
           <Col xs={12} md={12}>
             <h2 id="whats-new" className='section'>
             <svg
@@ -52,6 +52,8 @@ export default function New(props) {
             <p className={styles.description}>Read and contribute to open proposals.</p>
           </Col>
         </Row>
+     </Container>
+        
     </>
   );
 }

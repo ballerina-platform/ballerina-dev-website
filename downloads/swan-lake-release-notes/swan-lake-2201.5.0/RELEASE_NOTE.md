@@ -274,7 +274,7 @@ configVar = {name = "Jack", city = "Colombo"}
 ```
 `configVar` is instantiated with the `map<string>` inherent type.
 
-#### Support binding of resource functions to a generic native method
+#### Support binding of resource methods to a generic native method
 
 A new way has been introduced to support the binding of any resource method to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 

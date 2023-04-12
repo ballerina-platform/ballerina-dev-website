@@ -99,7 +99,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that chose the inherent type incorrectly when constructing a structural value in the `value:cloneWithType` and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor.
+- Improved how the inherent type is chosen when constructing a structural value in the `value:cloneWithType` 
+and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor.
     
     ```ballerina
     type FloatSubtype record {|
@@ -116,23 +117,21 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that resulted in inconsistent error messages with the `cloneWithType` operation.
+- Fixed a bug that resulted in inconsistent error messages with the `value:cloneWithType` function.
     
     ```ballerina
     type OpenRecord record {
     };
 
-    public function main() {
+    public function main() returns error? {
         [OpenRecord...] tupleVal = [{"nonJson": xml `<a>abc</a>`}];
-        json jsonVal = checkpanic tupleVal.cloneWithType();
+        json jsonVal = check tupleVal.cloneWithType();
     }
     ```
     Now, this gives the error below.
     
     ```
-    error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}
-        at ballerina.lang.value.0:cloneWithType(value.bal:114)
-           sample:main(sample.bal:6)
+    error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}    
     ```
 
 - Improved the error message given in a failure of the `fromJsonWithType` or `cloneWithType` operations when the target type is a union type.
@@ -228,10 +227,12 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 
 #### New Runtime Java APIs
 
-- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to clone an `anydata` value with another subtype of the `anydata` type.
+- Introduced the following API in the `io.ballerina.runtime.api.utils.ValueUtils` class to convert an `anydata` value to another subtype of the `anydata` type.
+
     ```java
     public static Object convert(Object value, Type targetType);
     ```
+    
 - Introduced the `getFunctionName()` and `getPathParameters()` APIs in the runtime `io.ballerina.runtime.api.Environment` class. They provide the Ballerina function name and path parameters associated with an external Java method respectively.
 
 ### Improvements

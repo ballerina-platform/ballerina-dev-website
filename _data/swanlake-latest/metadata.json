@@ -9,6 +9,8 @@
 	"linux-installer-size":"206mb",
 	"macos-installer":"ballerina-2201.5.0-swan-lake-macos-x64.pkg",
 	"macos-installer-size":"248mb",
+	"macos-arm-installer":"ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg",
+	"macos-arm-installer-size":"236mb",
 	"rpm-installer":"ballerina-2201.5.0-swan-lake-linux-x64.rpm",
 	"rpm-installer-size":"251mb",
 	"other-artefacts":[

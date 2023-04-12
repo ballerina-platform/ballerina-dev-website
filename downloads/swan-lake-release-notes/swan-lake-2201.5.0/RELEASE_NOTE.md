@@ -19,7 +19,7 @@ redirect_from:
 
 Run either of the commands below to directly update to 2201.5.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
 
-`bal dist update` (or `bal dist pull 2201.5.0`)
+`bal dist pull 2201.5.0`
 
 ## Install Ballerina
 
@@ -155,13 +155,14 @@ and `value:fromJsonWithType` functions. Now, if the target type is a union that 
            sample:main(sample.bal:3)
     ```
 
-- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously, the annotation was ignored and compiled successfully.
+- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource methods and object methods). Previously, the annotation was ignored and the code compiled successfully.
 
     ```ballerina
     distinct service class Book {
         @test:Config // Compilation error now.
         resource function get id() {
         }
+        
         resource function get title() {
         }
     }
@@ -271,7 +272,7 @@ configVar = {name = "Jack", city = "Colombo"}
 ```
 `configVar` is instantiated with the `map<string>` inherent type.
 
-#### Support binding of resource functions to a generic native method
+#### Support binding of resource methods to a generic native method
 
 A new way has been introduced to support the binding of any resource method to a generic native method regardless of the resource path parameters. The generic native method should be defined with a `BArray` parameter, which represents all the path parameters. To avoid errors due to overloaded methods, it is recommended to define the parameter type constraints as well.
 

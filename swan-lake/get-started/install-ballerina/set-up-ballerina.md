@@ -74,8 +74,8 @@ redirect_from:
               </a>
             </div>
             <div class="col-xs-12 cMarginSmall">
-              <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ macos-installer }}">
-                <div class="cSize">pkg(ARM64) <span id="packLinuxName">{{ macos-installer-size }}</span></div>
+              <a id="packLinux" href="{{ dist_server }}/downloads/{{ version }}/{{ macos-arm-installer }}" class="cGTMDownload cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ macos-arm-installer }}">
+                <div class="cSize">pkg(ARM64) <span id="packLinuxName">{{ macos-arm-installer-size }}</span></div>
               </a>
             </div>
           </div>

@@ -156,7 +156,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
            sample:main(sample.bal:3)
     ```
 
-- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource functions and object methods). Previously, the annotation was ignored and compiled successfully.
+- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource methods and object methods). Previously, the annotation was ignored and the code compiled successfully.
 
     ```ballerina
     distinct service class Book {

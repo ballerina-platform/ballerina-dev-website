@@ -17,9 +17,10 @@ redirect_from:
 
 ## Update Ballerina
 
-Run either of the commands below to directly update to 2201.5.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
+Update your currrent Ballerina installation directly to 2201.5.0 by using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
 
-`bal dist pull 2201.5.0`
+1. Run `bal update` to get the latest version of the Update Tool.
+2. Run `bal dist pull 2201.5.0` to update to this latest distribution.
 
 ## Install Ballerina
 
@@ -239,6 +240,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https
 The command-line arguments of the Ballerina built-in subtypes are now supported to be parsed as operands.
 
 For the following `main` function,
+
 ```ballerina
 public function main(byte byteVal, string:Char charVal, int:Signed8 int8Val) {
 }
@@ -255,6 +257,7 @@ $ bal run -- 1 b 33
 When a structural value is provided for a configurable variable of a union type that includes more than one type descriptor, the inherent type used will be the first (leftmost) type descriptor from which the value can be constructed.
 
 For example, in the following Ballerina code,
+
 ```ballerina
 type Person record {|
     string name;
@@ -264,9 +267,11 @@ type Person record {|
 configurable map<string>|Person configVar = ?;
 ```
 and when the `Config.toml` file contents are as follows,
+
 ```toml
 configVar = {name = "Jack", city = "Colombo"}
 ```
+
 `configVar` is instantiated with the `map<string>` inherent type.
 
 #### Support binding of resource methods to a generic native method
@@ -304,6 +309,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 ### New features
 
 #### `http` package
+
 - Introduced a new HTTP status code error structure.
 - Added support for allowing the tuple type in the resource return type.
 - Added basic path parameter support for client resource methods.
@@ -327,9 +333,11 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 - Improved the listener's behavior to exit when a panic occurs.
 
 #### `nats` package
+
 - Improved the listener's behavior to exit when a panic occurs.
 
 #### `rabbitmq` package
+
 - Improved the listener's behavior to exit when a panic occurs.
 
 #### `persist` package
@@ -353,6 +361,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 ## Code to Cloud updates
 
 ### Improvements
+
 - Improved the Kubernetes Horizontal autoscaler to use `autoscaling/v2`.
 
 ## Developer tools updates
@@ -372,7 +381,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
     - `--datastore` - This is used to indicate the preferred database client. Currently, only `mysql` is supported.
     - `--module` - This is used to indicate the module in which the files are generated.
 
-    For example, 
+    For example,
+
     ```bash
     $ bal persist init --datastore mysql --module db
     ```
@@ -391,10 +401,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 #### Bindgen Tool 
 
-- Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support handling Java null values via generated bindings. These command options will generate optional (i.e., nilable) types 
-  for parameter or/and return types in generated Ballerina binding functions.
+- Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support handling Java null values via generated bindings. These command options will generate optional (i.e., nilable) types for parameter or/and return types in generated Ballerina binding functions.
 
-    Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
+Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
+
     ```java
     // Parameters and return types having inbuilt object types (`java.lang.String`).
     public String f1(String str) {
@@ -466,6 +476,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 - Added field access completions for template expressions.
 
 #### OpenAPI Tool
+
 - Updated the tool to handle multiple media types with the same return code in the Ballerina service to OpenAPI contract generation. 
 - Added support to handle the newly introduced `@http:Query` annotation of the `ballerina/http` module in the Ballerina service to OpenAPI contract generation.
 - Added support to generate API documentation for the resource methods in the generated Ballerina service. 

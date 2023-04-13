@@ -25,7 +25,7 @@ Run either of the commands below to directly update to 2201.5.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
->**Note:** From the release 2201.5.0 onwards, a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) is introduced to support the macOS-ARM platform.
+>**Note:** From the 2201.5.0 release onwards, a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) is introduced to support the macOS-ARM platform.
 
 ## Backward-incompatible changes
 

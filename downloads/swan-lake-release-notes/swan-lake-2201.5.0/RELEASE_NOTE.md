@@ -479,7 +479,7 @@ Consider the below Java methods and the corresponding Ballerina binding function
 
 - Updated the tool to handle multiple media types with the same return code in the Ballerina service to OpenAPI contract generation. 
 - Added support to handle the newly introduced `@http:Query` annotation of the `ballerina/http` module in the Ballerina service to OpenAPI contract generation.
-- Added support to generate API documentation for the resource methods in the generated Ballerina service. 
+- Added support to generate API documentation for resource methods when generating Ballerina services using openAPI contracts.
 
 ### Bug fixes
 

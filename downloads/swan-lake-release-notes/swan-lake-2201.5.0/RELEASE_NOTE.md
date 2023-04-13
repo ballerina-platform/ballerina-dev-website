@@ -110,9 +110,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         decimal value;
     |};
 
-    public function main() {
+    public function main() returns error? {
         FloatSubtype x = {value: 0.0};
-        DecimalSubtype|FloatSubtype y = checkpanic x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
+        DecimalSubtype|FloatSubtype y = check x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
     }
     ```
 

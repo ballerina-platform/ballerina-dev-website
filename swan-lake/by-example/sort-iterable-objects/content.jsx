@@ -77,7 +77,7 @@ export function SortIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e7ff2d735bc59ff479899d52cf4733a9&file=sort_iterable_objects.bal",
+                "https://play.ballerina.io/?gist=4de556e66e87ea3a1294f40c3b17e31e&file=sort_iterable_objects.bal",
                 "_blank"
               );
             }}
@@ -102,7 +102,7 @@ export function SortIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/sort-iterable-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/sort-iterable-objects",
                 "_blank"
               );
             }}

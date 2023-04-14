@@ -19,9 +19,9 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns \`409 Conflict\` status code as the error response status code using 
-    // \`StatusCodeResponse\` constants. This constant does not have a body or headers.
-    resource function post albums(@http:Payload Album album) returns Album|http:Conflict {
+    // The resource returns the \`409 Conflict\` status code as the error response status code using 
+    // the \`StatusCodeResponse\` constants. This constant does not have a body or headers.
+    resource function post albums(Album album) returns Album|http:Conflict {
         if albums.hasKey(album.title) {
             return http:CONFLICT;
         }
@@ -67,7 +67,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f559557914db11e1379e87b4434374e2&file=http_send_different_status_codes.bal",
+                "https://play.ballerina.io/?gist=4a71d7b9a82c81bc72bdc77e8401618f&file=http_send_different_status_codes.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-send-different-status-codes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-send-different-status-codes",
                 "_blank"
               );
             }}

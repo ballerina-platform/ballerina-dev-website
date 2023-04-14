@@ -50,7 +50,7 @@ export function Integers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c86fd9de8389c74d5e1a592b6e5a14aa&file=integers.bal",
+                "https://play.ballerina.io/?gist=73b44b2c7c0d6899172bc66c5ac202d5&file=integers.bal",
                 "_blank"
               );
             }}
@@ -75,7 +75,7 @@ export function Integers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/integers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/integers",
                 "_blank"
               );
             }}

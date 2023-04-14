@@ -75,7 +75,7 @@ export function NeverType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ffc60a29e996b127a94710aa478388b8&file=never_type.bal",
+                "https://play.ballerina.io/?gist=32d1294a9f5cb8c47f9fc9170a2698a8&file=never_type.bal",
                 "_blank"
               );
             }}
@@ -100,7 +100,7 @@ export function NeverType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/never-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/never-type",
                 "_blank"
               );
             }}

@@ -72,7 +72,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0a5148f6548adf8230c63c4306d472e3&file=time_utc_and_civil.bal",
+                "https://play.ballerina.io/?gist=a1500e47df50dd2b66839e0aa6222737&file=time_utc_and_civil.bal",
                 "_blank"
               );
             }}
@@ -97,7 +97,7 @@ export function TimeUtcAndCivil({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/time-utc-and-civil",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/time-utc-and-civil",
                 "_blank"
               );
             }}

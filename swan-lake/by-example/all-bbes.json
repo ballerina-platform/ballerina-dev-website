@@ -264,6 +264,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Range function",
+        "url": "int-range",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -754,6 +761,27 @@
       {
         "name": "Error binding pattern in match statement",
         "url": "error-binding-pattern-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Regular Expressions",
+    "column": 1,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "RegExp type",
+        "url": "regexp-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "RegExp operations",
+        "url": "regexp-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

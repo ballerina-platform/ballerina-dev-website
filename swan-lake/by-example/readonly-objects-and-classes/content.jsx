@@ -73,7 +73,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0f2057e70101807093a4fb34aa50847b&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=aa6bb614ea33df97e27bb36675bfc0b2&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function ReadonlyObjectsAndClasses({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/readonly-objects-and-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/readonly-objects-and-classes",
                 "_blank"
               );
             }}

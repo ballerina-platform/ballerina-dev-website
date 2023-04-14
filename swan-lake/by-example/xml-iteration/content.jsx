@@ -53,7 +53,7 @@ export function XmlIteration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=537b99094aa7bf1ab6e0e913aa18e818&file=xml_iteration.bal",
+                "https://play.ballerina.io/?gist=47029da8c192860de9ebe966ade7cb88&file=xml_iteration.bal",
                 "_blank"
               );
             }}
@@ -78,7 +78,7 @@ export function XmlIteration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/xml-iteration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xml-iteration",
                 "_blank"
               );
             }}

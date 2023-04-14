@@ -79,7 +79,7 @@ export function Table({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a17b527efd85237791885cd20888e7e1&file=table.bal",
+                "https://play.ballerina.io/?gist=b5204c1ce45bf64e07a8a2e3177d4240&file=table.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function Table({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/table",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/table",
                 "_blank"
               );
             }}
@@ -284,8 +284,8 @@ export function Table({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Error binding pattern in match statement"
-            href="/learn/by-example/error-binding-pattern-in-match-statement"
+            title="RegExp operations"
+            href="/learn/by-example/regexp-operations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -312,7 +312,7 @@ export function Table({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Error binding pattern in match statement
+                  RegExp operations
                 </span>
               </div>
             </div>

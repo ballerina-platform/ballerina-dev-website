@@ -63,7 +63,7 @@ export function ReadonlyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=44d3ad8dc6ba308fd41ac61dd1cee8dc&file=readonly_type.bal",
+                "https://play.ballerina.io/?gist=29681eb175324db3212d00c99588d1ac&file=readonly_type.bal",
                 "_blank"
               );
             }}
@@ -88,7 +88,7 @@ export function ReadonlyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/readonly-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/readonly-type",
                 "_blank"
               );
             }}

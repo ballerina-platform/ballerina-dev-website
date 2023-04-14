@@ -137,6 +137,8 @@ export default function PostPage({
         "rpm-installer-size": SwanLake["rpm-installer-size"],
         "macos-installer": SwanLake["macos-installer"],
         "macos-installer-size": SwanLake["macos-installer-size"],
+        "macos-arm-installer": SwanLake["macos-arm-installer"],
+        "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
         "other-artefacts": SwanLake["other-artefacts"],
       })
       .then((md) => {

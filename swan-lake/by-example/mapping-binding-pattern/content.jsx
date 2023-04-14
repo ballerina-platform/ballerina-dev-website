@@ -79,7 +79,7 @@ export function MappingBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=61ca28c4fce43e1a627527e96c7a439f&file=mapping_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=35845ce1da1a923915966479763659b9&file=mapping_binding_pattern.bal",
                 "_blank"
               );
             }}

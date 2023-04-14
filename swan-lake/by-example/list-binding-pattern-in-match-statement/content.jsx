@@ -65,7 +65,7 @@ export function ListBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bc7f98753dc09bd79134c69649fea838&file=list_binding_pattern_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=9dc36ccdf8e29deff64c43d6f1234b91&file=list_binding_pattern_in_match_statement.bal",
                 "_blank"
               );
             }}

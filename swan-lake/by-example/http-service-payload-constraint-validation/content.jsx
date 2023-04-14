@@ -67,7 +67,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0226b8d041e6f4d1c58f0f99a311af53&file=http_service_payload_constraint_validation.bal",
+                "https://play.ballerina.io/?gist=ad5ae41df3685a9fe1ef3e7142d8d182&file=http_service_payload_constraint_validation.bal",
                 "_blank"
               );
             }}

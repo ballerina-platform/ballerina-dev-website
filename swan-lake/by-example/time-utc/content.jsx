@@ -58,7 +58,7 @@ export function TimeUtc({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3330823802347008bf24aaaf905bc1e4&file=time_utc.bal",
+                "https://play.ballerina.io/?gist=f31d2ec067fdad6b00c102d0fe21a865&file=time_utc.bal",
                 "_blank"
               );
             }}

@@ -54,7 +54,7 @@ export function FloatingPointNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=357e8eb297ce998b8aa2cf4d2e8d563b&file=floating_point_numbers.bal",
+                "https://play.ballerina.io/?gist=2798ad015b25c7e0723f08d652cd1c82&file=floating_point_numbers.bal",
                 "_blank"
               );
             }}

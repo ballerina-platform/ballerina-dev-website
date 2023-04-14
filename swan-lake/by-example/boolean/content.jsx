@@ -51,7 +51,7 @@ export function Boolean({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d6f8f0140481ae51e6f81d6e85c2fbb1&file=boolean.bal",
+                "https://play.ballerina.io/?gist=3a1465d115f78dd6bc40892db7bd42c5&file=boolean.bal",
                 "_blank"
               );
             }}

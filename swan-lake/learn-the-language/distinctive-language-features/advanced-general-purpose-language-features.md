@@ -670,40 +670,43 @@ In the above code example, **``ch``** is of the ``string:Char`` type. You can al
 
 Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same which allows you to use either ``regexp:RegExp`` or  ``string:RegExp`` to define variables for regular expressions.
 
+Ballerina regular expressions are based on the ECMAScript 2022 specification, with support for a subset of ECMAScript syntax. You can refer to the [Ballerina regular expression specification](https://ballerina.io/spec/lang/master/#section_10.1) to find the supported syntax.
+
 There are two ways to declare regular expressions:
 
 1. Using regular expression template expression:
 
-```ballerina
-string:RegExp reg = re `abc+`;
-```
-In this approach, you specify the pattern between two backticks, followed by  ``re`` keyword to define a regular expression using a template literal. This allows for easy expression of regular expressions in a way that is similar to other languages.
+    ```ballerina
+    string:RegExp reg = re `abc+`;
+    ```
+
+    In this approach, you specify the pattern between two backticks, followed by  ``re`` keyword to define a regular expression using a template literal. This allows for easy expression of regular expressions in a way that is similar to other languages.
 
 2. Using the ``fromString`` function from the ``lang.regexp`` module:
 
-```ballerina
-import ballerina/lang.regexp;
+    ```ballerina
+    import ballerina/lang.regexp;
 
-string quantiferStr = "{2,3}";
-string stringPattern = string `abc${quantiferStr}`;
-string:RegExp reg = check regexp:fromString(stringPattern);
-```
+    string quantiferStr = "{2,3}";
+    string stringPattern = string `abc${quantiferStr}`;
+    string:RegExp reg = check regexp:fromString(stringPattern);
+    ```
 
-This approach allows for more dynamic construction of regular expressions using string manipulation techniques to create a pattern that can be compiled into a ``RegExp`` value.
+    This approach allows for more dynamic construction of regular expressions using string manipulation techniques to create a pattern that can be compiled into a ``RegExp`` value.
 
 The template expression approach results in the compilation of the regular expression at compile-time, while the ``fromString`` function results in runtime compilation.
-
-Ballerina regular expressions are based on the ECMAScript 2022 specification, with support for a subset of ECMAScript syntax. You can refer to the [Ballerina regular expression specification](https://ballerina.io/spec/lang/master/#section_10.1) to find the supported syntax.
 
 Regular expression templates support interpolation, which allows you to dynamically insert values into a regular expression pattern at specific sub-syntax contexts defined by the regular expression grammar.
 
 For example:
+
+In this example, the regular expression pattern includes the `name` parameter interpolated into the pattern. This allows for dynamic patterns that can change based on the input.
+
 ```ballerina
 function createPattern(string name) {
     string:RegExp pattern = re `[a-z]{3}|${name}`;
 }
 ```
-In this example, the regular expression pattern includes the `name` parameter interpolated into the pattern. This allows for dynamic patterns that can change based on the input.
 
 ### Unicode property escape
 
@@ -731,7 +734,7 @@ Ballerina regex supports non-capturing groups and flags to control the behavior 
 string:RegExp nonCapturingGrpPattern = re `(?im-s:hello.+world)`;
 ```
 
-In this example, a non-capturing group pattern have multiple flags inside the parentheses. The ``i`` flag makes the pattern case-insensitive. The ``m`` flag makes ``^`` and ``$`` match the beginning and end of each line. The ``s`` flag makes the ``.`` metacharacters match any character including line terminators. The pattern will match strings like ``hello\nworld``, ``hello world``, and ``HELLO \n WORld``.
+In the above example, a non-capturing group pattern have multiple flags inside the parentheses. The ``i`` flag makes the pattern case-insensitive. The ``m`` flag makes ``^`` and ``$`` match the beginning and end of each line. The ``s`` flag makes the ``.`` metacharacters match any character including line terminators. The pattern will match strings like ``hello\nworld``, ``hello world``, and ``HELLO \n WORld``.
 
 ### Using regexp values
 

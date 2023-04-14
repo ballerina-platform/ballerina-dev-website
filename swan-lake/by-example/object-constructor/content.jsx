@@ -62,7 +62,7 @@ export function ObjectConstructor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=61baa6275e3e1fa73c2d9a9946a9a06a&file=object_constructor.bal",
+                "https://play.ballerina.io/?gist=89e149fd881f9151382e29712bd7c0eb&file=object_constructor.bal",
                 "_blank"
               );
             }}

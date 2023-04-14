@@ -62,7 +62,7 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac0cfe871b1b881575e3808110e5319c&file=http_failover.bal",
+                "https://play.ballerina.io/?gist=7bdce7f4c072e8923f2c1a666eebf5da&file=http_failover.bal",
                 "_blank"
               );
             }}

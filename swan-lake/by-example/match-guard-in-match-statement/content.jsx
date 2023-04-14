@@ -82,7 +82,7 @@ export function MatchGuardInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dbbca835907aa57d1ae4eff4d907c4e1&file=match_guard_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=bebb2f869334eb52f5f4e5d2ff32583a&file=match_guard_in_match_statement.bal",
                 "_blank"
               );
             }}

@@ -104,7 +104,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af3ead94bae7cdb03e52b3abc6f7f6b6&file=http_request_interceptor.bal",
+                "https://play.ballerina.io/?gist=5b9d84d02553dd16c5f410918b2dae5b&file=http_matrix_param.bal",
                 "_blank"
               );
             }}

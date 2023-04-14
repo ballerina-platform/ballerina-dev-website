@@ -52,7 +52,7 @@ export function ListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d29214c156ee169d6325ee62837d5c25&file=list_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=3ed571df65555ba39665fb07f6735acb&file=list_binding_pattern.bal",
                 "_blank"
               );
             }}

@@ -117,7 +117,7 @@ export function Rollback({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=03f5fa6c853146743045f83bab844631&file=rollback.bal",
+                "https://play.ballerina.io/?gist=995edf25b0781679e698913bab55901d&file=rollback.bal",
                 "_blank"
               );
             }}

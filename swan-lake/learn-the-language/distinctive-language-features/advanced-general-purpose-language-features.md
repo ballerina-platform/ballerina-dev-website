@@ -700,7 +700,7 @@ Regular expression templates support interpolation, which allows you to dynamica
 
 For example:
 
-In this example, the regular expression pattern includes the `name` parameter interpolated into the pattern. This allows for dynamic patterns that can change based on the input.
+In the example below, the regular expression pattern includes the `name` parameter interpolated into the pattern. This allows for dynamic patterns that can change based on the input.
 
 ```ballerina
 function createPattern(string name) {

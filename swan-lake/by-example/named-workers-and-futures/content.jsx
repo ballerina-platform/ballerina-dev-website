@@ -66,7 +66,7 @@ export function NamedWorkersAndFutures({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d83f12ae58713e6fd5f2ae8d3d4e69e4&file=named_workers_and_futures.bal",
+                "https://play.ballerina.io/?gist=991c23cdbdc7eb4cf6ffc52dbf7213c5&file=named_workers_and_futures.bal",
                 "_blank"
               );
             }}

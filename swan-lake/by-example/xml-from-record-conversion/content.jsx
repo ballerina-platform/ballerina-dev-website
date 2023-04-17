@@ -84,7 +84,7 @@ export function XmlFromRecordConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=408037e4a5b634925995c268628dcd02&file=xml_from_record_conversion.bal",
+                "https://play.ballerina.io/?gist=757e102fc857db8e58b8bd64e66861a8&file=xml_from_record_conversion.bal",
                 "_blank"
               );
             }}

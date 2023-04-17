@@ -72,7 +72,7 @@ export function ListEquality({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fbc6a0e572dfadaadf51d23c98b535fb&file=list_equality.bal",
+                "https://play.ballerina.io/?gist=e7dc15194393c9ffaed75d2386d32545&file=list_equality.bal",
                 "_blank"
               );
             }}

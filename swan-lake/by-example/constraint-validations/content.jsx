@@ -16,11 +16,11 @@ type Age int;
 type Student record {|
     // Constraint on the \`string\`-typed record field.
     @constraint:String {
-        length: 7
+        pattern: re\`[0-9]{6}[A-Z|a-z]\`
     }
     string id;
     string name;
-    // Constrainted type used as a record field.
+    // Constrained type used as a record field.
     Age age;
     // Constraint on the \`string[]\`-typed record field.
     @constraint:Array {
@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8232350b47fe2d7f95704fb1f9aa979c&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=910ae461e6aa0afa0a66c7ae944abc84&file=constraint_validations.bal",
                 "_blank"
               );
             }}

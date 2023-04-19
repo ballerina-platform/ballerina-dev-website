@@ -403,69 +403,69 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.5.0](https://git
 
 - Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support handling Java null values via generated bindings. These command options will generate optional (i.e., nilable) types for parameter or/and return types in generated Ballerina binding functions.
 
-Consider the below Java methods and the corresponding Ballerina binding functions generated with and without the new command options.
+Consider the Java methods below and the corresponding Ballerina binding functions generated with and without the new command options.
 
-    ```java
-    // Parameters and return types having inbuilt object types (`java.lang.String`).
-    public String f1(String str) {
-        return str;
-    }
+```java
+// Parameters and return types having inbuilt object types (`java.lang.String`).
+public String f1(String str) {
+    return str;
+}
     
-    // Parameter and return types having external object arrays (`Foo[]`).
-    public Foo[] f2(Foo[] fooArray) {
-        return fooArray;
-    }
-    ```
+// Parameter and return types having external object arrays (`Foo[]`).
+public Foo[] f2(Foo[] fooArray) {
+    return fooArray;
+}
+```
     
-    **Without optional types** 
+**Without optional types** 
     
-    ```bash
-    $ bal bindgen
-    ```
+```bash
+$ bal bindgen
+```
     
-    ```ballerina
-    public function f1(string arg0) returns string {
-        return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
-    }
+```ballerina
+public function f1(string arg0) returns string {
+    return java:toString(Foo_strParamReturns(self.jObj, java:fromString(arg0))) ?: "";
+}
 
-    public function f2(Foo[] arg0) returns Foo[]|error {
-        handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0, "Foo"));
-        Foo[] newObj = [];
-        handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
-        int count = anyObj.length();
-        foreach int i in 0 ... count - 1 {
-            Foo element = new (anyObj[i]);
+public function f2(Foo[] arg0) returns Foo[]|error {
+    handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0, "Foo"));
+    Foo[] newObj = [];
+    handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
+    int count = anyObj.length();
+    foreach int i in 0 ... count - 1 {
+        Foo element = new (anyObj[i]);
+        newObj[i] = element;
+    }
+    return newObj;
+}
+```
+    
+**With optional types**
+
+```bash
+$ bal bindgen --with-optional-types
+``` 
+    
+```ballerina
+public function f1(string? arg0) returns string? {
+    return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));
+}
+
+public function f2(Foo?[]? arg0) returns Foo?[]?|error {
+    handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0 ?: [], "Foo"));
+    Foo?[]? newObj = [];
+    handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
+    int count = anyObj.length();
+    foreach int i in 0 ... count - 1 {
+        Foo? element = new (anyObj[i]);
+        if (newObj is Foo?[]) {
             newObj[i] = element;
         }
-        return newObj;
     }
-    ```
-    
-    **With optional types**
-
-    ```bash
-    $ bal bindgen --with-optional-types
-    ``` 
-    
-    ```ballerina
-    public function f1(string? arg0) returns string? {
-        return java:toString(Foo_strParamReturns(self.jObj, arg0 is () ? java:createNull() : java:fromString(arg0)));
-    }
-
-    public function f2(Foo?[]? arg0) returns Foo?[]?|error {
-        handle externalObj = Foo_objArrayParamReturns(self.jObj, check jarrays:toHandle(arg0 ?: [], "Foo"));
-        Foo?[]? newObj = [];
-        handle[] anyObj = <handle[]>check jarrays:fromHandle(externalObj, "handle");
-        int count = anyObj.length();
-        foreach int i in 0 ... count - 1 {
-            Foo? element = new (anyObj[i]);
-            if (newObj is Foo?[]) {
-                newObj[i] = element;
-            }
-        }
-        return newObj;
-    }
-    ```
+    return newObj;
+}
+```
 
 #### Language Server
 

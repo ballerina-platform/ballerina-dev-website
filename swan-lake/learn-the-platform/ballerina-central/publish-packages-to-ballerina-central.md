@@ -115,3 +115,24 @@ By default, running the `bal semver` command on the root directory of the packag
 After publishing your first package, you can create a second package and use the already published package in it.
 Any package published in Ballerina Central is public and can be used in other packages.
  For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
+
+### Deprecate a published version of a package
+
+If you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
+
+To deprecate a particular version of a package on Ballerina Central, the package owner can run the following command. 
+An optional deprecation message can also be included, which will be displayed to current users of the package.
+
+```
+$ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
+```
+
+A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
+resolution unless it is already a part of a sticky build or no other compatible package version exists.
+If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
+
+To reverse the deprecation of a package, execute the same command with the `--undo` flag.
+
+```
+$ bal deprecate <org-name>/<package-name>:<version> --undo
+```

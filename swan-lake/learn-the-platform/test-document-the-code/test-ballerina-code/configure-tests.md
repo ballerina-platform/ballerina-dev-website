@@ -256,6 +256,22 @@ function testFunction2() {
 }
 ```
 
+## Ensure test execution order
+
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
+upon.
+This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+
+***Example:***
+
+```ballerina
+@test:Config {dependsOn: [testFunction4]}
+function testFunction5() {
+    io:println("I'm in test function 5!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
 ## Define test-specific configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests

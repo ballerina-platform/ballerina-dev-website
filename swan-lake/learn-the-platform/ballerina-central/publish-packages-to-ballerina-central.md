@@ -138,8 +138,8 @@ $ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-messa
 ```
 
 A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be be used for dependency 
-resolution unless it is already part of a sticky build or no other compatible package version exists.
-If the deprecated version is in use, a warning message containing the provided deprecation message will be shown to the user during project build.
+resolution unless it is already a part of a sticky build or no other compatible package version exists.
+If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
 
 To reverse the deprecation of a package, execute the same command with the `--undo` flag.
 

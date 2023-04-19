@@ -666,6 +666,108 @@ int cp = ch.toCodePointInt();
 
 In the above code example, **``ch``** is of the ``string:Char`` type. You can also extract the code point of the character by calling the **``toCodePointInt()``** function. This ``string:Char`` subtype is analogous to the XML subtypes like XML elements or text.
 
+## Regular Expressions
+
+Ballerina provides first-class support for regular expressions, represented by the built-in ``RegExp`` type defined in the ``lang.regexp`` module. Additionally, the ``lang.string`` module has a type alias named the same which allows you to use either ``regexp:RegExp`` or  ``string:RegExp`` to define variables for regular expressions.
+
+Ballerina regular expressions are based on the ECMAScript 2022 specification, with support for a subset of ECMAScript syntax. You can refer to the [Ballerina regular expression specification](https://ballerina.io/spec/lang/master/#section_10.1) to find the supported syntax.
+
+There are two ways to declare regular expressions:
+
+1. Using regular expression template expression:
+
+    ```ballerina
+    string:RegExp reg = re `abc+`;
+    ```
+
+    In this approach, you specify the pattern between two backticks, followed by  ``re`` keyword to define a regular expression using a template literal. This allows for easy expression of regular expressions in a way that is similar to other languages.
+
+2. Using the ``fromString`` function from the ``lang.regexp`` module:
+
+    ```ballerina
+    import ballerina/lang.regexp;
+
+    string quantiferStr = "{2,3}";
+    string stringPattern = string `abc${quantiferStr}`;
+    string:RegExp reg = check regexp:fromString(stringPattern);
+    ```
+
+    This approach allows for more dynamic construction of regular expressions using string manipulation techniques to create a pattern that can be compiled into a ``RegExp`` value.
+
+The template expression approach results in the compilation of the regular expression at compile-time, while the ``fromString`` function results in runtime compilation.
+
+Regular expression templates support interpolation, which allows you to dynamically insert values into a regular expression pattern at specific sub-syntax contexts defined by the regular expression grammar.
+
+For example:
+
+In the example below, the regular expression pattern includes the `name` parameter interpolated into the pattern. This allows for dynamic patterns that can change based on the input.
+
+```ballerina
+function createPattern(string name) {
+    string:RegExp pattern = re `[a-z]{3}|${name}`;
+}
+```
+
+### Unicode property escape
+
+Unicode property escapes allow matching characters based on their Unicode properties. For instance, Unicode property escapes can be used to match emojis, punctuations, letters from specific languages or scripts, etc. 
+
+```ballerina
+// `\p` will match the property value.
+string:RegExp lowerCaseLetter = re `\p{Ll}`;
+
+// `\P` will match the negation of the property value.
+string:RegExp nonDigitChar = re `\P{N}`;
+
+// It is not mandatory to use the property name(`gc`) for General categories.
+string:RegExp punctuation = re `\p{gc=P}`;
+
+// Using `sc` to specify the Script property.
+string:RegExp latin = re `\p{sc=Latin}`;
+```
+
+### Non-capturing groups
+
+Ballerina regex supports non-capturing groups and flags to control the behavior of regular expression patterns. These allow you to group a set of regular expression constructs without capturing the matched text.
+
+```ballerina
+string:RegExp nonCapturingGrpPattern = re `(?im-s:hello.+world)`;
+```
+
+In the above example, a non-capturing group pattern have multiple flags inside the parentheses. The ``i`` flag makes the pattern case-insensitive. The ``m`` flag makes ``^`` and ``$`` match the beginning and end of each line. The ``s`` flag makes the ``.`` metacharacters match any character including line terminators. The pattern will match strings like ``hello\nworld``, ``hello world``, and ``HELLO \n WORld``.
+
+### Using regexp values
+
+The ``RegExp`` values can be used with the [RegExp](https://lib.ballerina.io/ballerina/lang.regexp) methods (``split``, ``findAll``, ``findAllGroups``, etc.) and with the [string](https://lib.ballerina.io/ballerina/lang.string) methods [includesMatch](https://lib.ballerina.io/ballerina/lang.string/latest#includesMatch) and [matches](https://lib.ballerina.io/ballerina/lang.string/latest#matches).
+
+Two constructs are utilized to provide the output of these lang library functions:
+- ``Span``: An object type that functions as a container for substrings.
+- ``Groups``: A tuple comprising ``Span`` objects where the first member of the tuple always represents the entire match.
+
+```ballerina
+import ballerina/io;
+import ballerina/lang.regexp;
+
+public function main() {
+    string[] names = re `,`.split("Bob,Frank,Will,Jack"); // ["Bob","Frank","Will","Jack"]
+    
+    int patternCount = re `[bB].tt[a-z]*`.findAll("Butter was bought by Betty but the butter was bitter.").length(); // 4
+
+    string result = re `0+`.replaceAll("10010011", "*"); // 1*1*11
+
+    // Extract the username and domain name from an email
+    regexp:Groups? emailGroups = re `([a-z]+)@([a-z]+\.[a-z]{2,})`.findGroups("bob@example.net");
+    if emailGroups is regexp:Groups {
+        regexp:Span username = <regexp:Span>emailGroups[1];
+        // Prints the matched substring with its starting and ending indexes
+        io:println(string `substring: ${username.substring()} start: ${username.startIndex} end: ${username.endIndex}`);
+
+        regexp:Span domain = <regexp:Span>emailGroups[2];
+        io:println(string `substring: ${domain.substring()} start: ${domain.startIndex} end: ${domain.endIndex}`);
+    }
+}
+```
+
 ## ``typedesc`` Type
 
 The ``typedesc`` type is a built-in type representing a type descriptor and is immutable. It has a type parameter that describes the types that are described by the type descriptors that belong to that type descriptor. A ``typedesc`` value belongs to type ``typedesc<T>`` if the type descriptor describes a type that is a subtype of ``T``.

@@ -86,7 +86,7 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb0ebcaf9f5a85f370b26a8724113cc4&file=cache_invalidation.bal",
+                "https://play.ballerina.io/?gist=5e202c83c7ed50e5ceadca2c1888a1ea&file=cache_invalidation.bal",
                 "_blank"
               );
             }}
@@ -111,7 +111,7 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/cache-invalidation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/cache-invalidation",
                 "_blank"
               );
             }}

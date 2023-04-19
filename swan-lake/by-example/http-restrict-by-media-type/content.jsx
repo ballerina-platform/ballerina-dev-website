@@ -6,7 +6,6 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/http;
-import ballerina/regex;
 
 service / on new http:Listener(9090) {
     // The \`consumes\` and \`produces\` annotations of the resource configuration contains MIME types as
@@ -18,7 +17,7 @@ service / on new http:Listener(9090) {
         produces: ["application/xml"]
     }
     resource function post transform(@http:Payload string msg) returns xml|http:InternalServerError {
-        if regex:matches(msg, "^[a-zA-Z]*\$") {
+        if re \`^[a-zA-Z]*\$\`.isFullMatch(msg) {
             return xml \`<name>\${msg}</name>\`;
         }
         return { body: xml \`<name>invalid string</name>\`};
@@ -64,7 +63,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a42c7965222bc318b735872c72dd75c&file=http_restrict_by_media_type.bal",
+                "https://play.ballerina.io/?gist=d7d67a1431c9af68f13c1258b62c6a1e&file=http_restrict_by_media_type.bal",
                 "_blank"
               );
             }}
@@ -89,7 +88,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-restrict-by-media-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-restrict-by-media-type",
                 "_blank"
               );
             }}

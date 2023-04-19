@@ -84,7 +84,6 @@ may not be able to access during the test execution.
 ```ballerina
 import ballerina/io;
 import ballerina/http;
-import ballerina/regex;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -102,7 +101,7 @@ function getRandomJoke(string name) returns string|error {
 
     json payload = check response.getJsonPayload().ensureType();
     string joke = check payload.value;
-    string replacedText = regex:replaceAll(joke, "Chuck Norris", name);
+    string replacedText = re `Chuck Norris`.replaceAll(joke, name);
     return replacedText;
 }
 ```

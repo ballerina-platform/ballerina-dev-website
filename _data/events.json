@@ -3,6 +3,22 @@
         {
             "date": "May 10, 2023",
             "day": "Wed.",
+            "time": "1.50 p.m. GMT",
+            "expire": "2023-05-11T00:00:00.0000-00:00",
+            "location": "London",
+            "url": "https://www.devoxx.co.uk/talks-by-tracks/?id=1401",
+            "eventType": "Devoxx UK",
+            "eventName": "Busy Developer's Guide to Ballerina",
+            "presenterTwitter": "https://twitter.com/tedneward",
+            "presenter": "Ted Neward",
+            "presenterDesignation": "Co-founder, Solidify",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 10, 2023",
+            "day": "Wed.",
             "time": "10.40 a.m. EDT",
             "expire": "2023-05-11T00:00:00.0000-00:00",
             "location": "Virtual",

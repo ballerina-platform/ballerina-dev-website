@@ -24,7 +24,7 @@ service / on new http:Listener(9090, httpVersion = http:HTTP_1_1) {
         return albums.toArray();
     }
 
-    resource function post albums(@http:Payload Album album) returns Album {
+    resource function post albums(Album album) returns Album {
         albums.add(album);
         return album;
     }
@@ -67,7 +67,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fd3e16251c858a4c6db2a9d5e4934c67&file=http_2_to_1_1_downgrade_service.bal",
+                "https://play.ballerina.io/?gist=17321acad8c0e104fe3a0564c7903565&file=http_2_to_1_1_downgrade_service.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function Http2To11DowngradeService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/http-2-to-1-1-downgrade-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-2-to-1-1-downgrade-service",
                 "_blank"
               );
             }}

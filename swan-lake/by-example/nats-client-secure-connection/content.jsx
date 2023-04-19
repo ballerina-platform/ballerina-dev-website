@@ -30,7 +30,7 @@ service / on new http:Listener(9092) {
         );
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
         check self.orderClient->publishMessage({
             content: newOrder,
@@ -75,7 +75,7 @@ export function NatsClientSecureConnection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/nats-client-secure-connection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/nats-client-secure-connection",
                 "_blank"
               );
             }}

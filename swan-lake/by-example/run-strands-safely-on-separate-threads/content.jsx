@@ -97,7 +97,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1cef7b76eea9885f2de7439e0f9a9274&file=run_strands_safely_on_separate_threads.bal",
+                "https://play.ballerina.io/?gist=c8954c4b5ff6a5723cc8fb09ba13d004&file=run_strands_safely_on_separate_threads.bal",
                 "_blank"
               );
             }}
@@ -122,7 +122,7 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/run-strands-safely-on-separate-threads",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/run-strands-safely-on-separate-threads",
                 "_blank"
               );
             }}

@@ -117,7 +117,7 @@ export function Rollback({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bab4d8bcacba25f431d9ea8d36fcf44a&file=rollback.bal",
+                "https://play.ballerina.io/?gist=a6b97a7cc3a6e04a53db3d0a33f09293&file=rollback.bal",
                 "_blank"
               );
             }}
@@ -142,7 +142,7 @@ export function Rollback({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/rollback",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/rollback",
                 "_blank"
               );
             }}

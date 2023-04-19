@@ -68,6 +68,7 @@ COMMANDS
         semver          Show SemVer compatibility and local package changes against
                         published packages in Ballerina Central
         graph           Print the dependency graph in the console
+        deprecate       Deprecate a package in Ballerina Central
 
    Other Commands:
         clean           Clean the artifacts generated during the build
@@ -162,7 +163,7 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. The last 3 commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. The last five commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>
@@ -181,13 +182,8 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">pull</td>
-<td class="cDescription">Pull a package from Ballerina Central.
-</td>
-</tr>
-<tr>
-<td class="cCommand">push</td>
-<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
+<td class="cCommand">graph</td>
+<td class="cDescription">Print the dependency graph in the console.
 </td>
 </tr>
 <tr>
@@ -201,8 +197,18 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">graph</td>
-<td class="cDescription">Print the dependency graph in the console.
+<td class="cCommand">pull</td>
+<td class="cDescription">Pull a package from Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">push</td>
+<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
+</td>
+</tr>
+<tr>
+<td class="cCommand">deprecate</td>
+<td class="cDescription">Deprecate a version of a package in Ballerina Central.
 </td>
 </tr>
 </table>

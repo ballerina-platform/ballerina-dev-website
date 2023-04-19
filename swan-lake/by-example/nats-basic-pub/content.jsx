@@ -24,7 +24,7 @@ service / on new http:Listener(9092) {
         self.orderClient = check new (nats:DEFAULT_URL);
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         // Produces a message to the specified subject.
         check self.orderClient->publishMessage({
             content: newOrder,
@@ -69,7 +69,7 @@ export function NatsBasicPub({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/nats-basic-pub",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/nats-basic-pub",
                 "_blank"
               );
             }}

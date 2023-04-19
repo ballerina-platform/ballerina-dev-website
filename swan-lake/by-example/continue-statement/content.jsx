@@ -60,7 +60,7 @@ export function ContinueStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e625b411a7e233e8b944e70ad2735fa&file=continue_statement.bal",
+                "https://play.ballerina.io/?gist=6e2da24a38570dca0dcb3167b09264d1&file=continue_statement.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function ContinueStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.1/examples/continue-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/continue-statement",
                 "_blank"
               );
             }}
@@ -294,10 +294,7 @@ export function ContinueStatement({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Langlib functions"
-            href="/learn/by-example/langlib-functions"
-          >
+          <Link title="Range function" href="/learn/by-example/int-range">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -306,7 +303,7 @@ export function ContinueStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Langlib functions
+                  Range function
                 </span>
               </div>
               <svg

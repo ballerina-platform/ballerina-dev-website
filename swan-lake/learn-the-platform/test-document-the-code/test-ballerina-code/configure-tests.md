@@ -275,7 +275,7 @@ function testFunction2() {
 
 ## Ensure test execution order
 
-The test config annotation makes use of ‘dependsOn’ to indicate the specific test cases that the current test relies 
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
 upon.
 This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
 

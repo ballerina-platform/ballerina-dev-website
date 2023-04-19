@@ -41,10 +41,6 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
-  // Set headers
-  const myHeaders = new Headers();
-  myHeaders.append("X-Frame-Options", "SAMEORIGIN");
-  myHeaders.append( "Content-Security-Policy", "frame-ancestors 'none';");
 
   const highlighter = await getHighlighter({
     theme: 'github-light'

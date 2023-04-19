@@ -71,7 +71,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=36a33fc661827b6370a7b3a9136af799&file=http_client_header_parameter.bal",
+                "https://play.ballerina.io/?gist=ea1d787a8cee59c7c032dc9189ce5b3f&file=http_client_header_parameter.bal",
                 "_blank"
               );
             }}
@@ -262,7 +262,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fd73650a7272909cb099f15696a89a9c&file=http_client_header_parameter_post.bal",
+                "https://play.ballerina.io/?gist=90365829f1bca7936c8490c68ad7fe67&file=http_client_header_parameter_post.bal",
                 "_blank"
               );
             }}

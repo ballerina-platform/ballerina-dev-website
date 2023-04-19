@@ -199,7 +199,13 @@ $ bal dist update
 ```
 
 ```bash
+Fetching the latest patch distribution for 'ballerina-2201.4.0' from the remote server...
+Fetching the '2201.4.1' distribution from the remote server...
+Downloading 2201.4.1 100% [================================================================================================================================================================================] 188/188 MB (0:01:21 / 0:00:00) 
 
+Fetching the dependencies for '2201.4.1' from the remote server...
+Dependency 'jdk-11.0.15+10-jre' is already available locally
+Successfully set the latest patch distribution '2201.4.1' as the active distribution
 ```
 
 >**Note:** If the active distribution in your environment is `2201.4.0`, it bumps to the next Swan Lake version, which is `2201.4.1`, and updates to it.

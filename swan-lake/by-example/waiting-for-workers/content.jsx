@@ -56,7 +56,7 @@ export function WaitingForWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=385052059e609d49fc5c0f990e72ec41&file=waiting_for_workers.bal",
+                "https://play.ballerina.io/?gist=50b9692ccafb09651df26dc2a013801a&file=waiting_for_workers.bal",
                 "_blank"
               );
             }}

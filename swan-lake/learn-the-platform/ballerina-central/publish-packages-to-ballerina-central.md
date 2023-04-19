@@ -137,7 +137,7 @@ An optional deprecation message can also be included, which will be displayed to
 $ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
 ```
 
-A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be be used for dependency 
+A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
 resolution unless it is already a part of a sticky build or no other compatible package version exists.
 If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
 

@@ -165,7 +165,7 @@ $ bal test --test-report --code-coverage --coverage-format=xml
 Exclude files or modules from the code coverage report. The exclusion list can be provided as a comma-separated list of absolute or relative paths. Glob patterns such as `*` and `**` can be used in the paths.
 
 The formats below can be used for excluding.
-|Format | Corresponding Path|
+|Format | Corresponding path|
 ------  | -----------------
 |./  or ./**                                        | All the source files in the package.|
 |./*                                                | All the source files in the default module.|

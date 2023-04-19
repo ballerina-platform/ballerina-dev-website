@@ -6,34 +6,6 @@ keywords: ballerina, programming language, security, secure ballerina code, auth
 permalink: /learn/user-guide/security/http-listener-authentication-and-authorization/
 active: http-listener-authentication-and-authorization
 intro: Ballerina HTTP services/resources can be configured to enforce authentication and authorization.
-redirect_from:
-- /learn/authentication-and-authorization
-- /learn/authentication-and-authorization/
-- /swan-lake/learn/security/authentication-and-authorization/
-- /swan-lake/learn/security/authentication-and-authorization
-- /learn/security/authentication-and-authorization/
-- /learn/security/authentication-and-authorization
-- /learn/user-guide/security/authentication-and-authorization
-- /learn/user-guide/authentication-and-authorization/
-- /learn/user-guide/authentication-and-authorization
-- /learn/how-to-write-secure-ballerina-code
-- /learn/how-to-write-secure-ballerina-code/
-- /learn/writing-secure-ballerina-code/
-- /learn/writing-secure-ballerina-code
-- /learn/security/
-- /learn/security
-- /swan-lake/learn/security/writing-secure-ballerina-code/
-- /swan-lake/learn/security/writing-secure-ballerina-code
-- /learn/security/writing-secure-ballerina-code/
-- /learn/security/writing-secure-ballerina-code
-- /learn/user-guide/security/writing-secure-ballerina-code
-- /learn/user-guide/security/writing-secure-ballerina-code/
-- /learn/user-guide/security/
-- /learn/user-guide/security
-- /learn/user-guide/security/authentication-and-authorization/
-- /learn/user-guide/security/authentication-and-authorization
-redirect_to:
-    - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 The Ballerina HTTP services/resources can be configured to authenticate and authorize the inbound requests. Ballerina has built-in support for the following listener authentication mechanisms.

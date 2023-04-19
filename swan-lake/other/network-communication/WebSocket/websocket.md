@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/websocket/
 active: websocket
 intro: WebSocket is a low-latency communication protocol used for efficient full-duplex communication between web browsers and servers over TCP. The topics below explain how to implement WebSocket-based services using Ballerina.  
-redirect_from:
-  - /learn/network-communication/websocket
-  - /swan-lake/learn/network-communication/websocket/
-  - /swan-lake/learn/network-communication/websocket
-  - /learn/network-communication/websocket/
-  - /learn/network-communication/websocket
-  - /learn/user-guide/network-communication/websocket
-redirect_to:
-  - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
 ## Upgrading the WebSocket 

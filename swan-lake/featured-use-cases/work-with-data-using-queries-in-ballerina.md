@@ -6,14 +6,6 @@ keywords: query expressions, language integrated queries, programming language, 
 description: Learn how to use Ballerina query expressions to filter, sort, and join different iterable collections.
 active: work-with-data-using-queries-in-ballerina
 intro: This guide walks you through using query expressions (a.k.a. language integrated queries) on data to filter, sort, and join with different data sets to produce new data.
-redirect_from:
-  - /learn/working-with-data-in-ballerina
-  - /learn/working-with-data-in-ballerina/
-  - /learn/work-with-data-in-ballerina
-  - /learn/work-with-data-in-ballerina/
-  - /learn/getting-started/working-with-data-in-ballerina/
-  - /learn/getting-started/working-with-data-in-ballerina
-  - /learn/work-with-data-using-queries-in-ballerina
 ---
 
 Ballerina has first-class support for writing SQL-like queries to process data. Language-integrated queries can process any Ballerina iterable.

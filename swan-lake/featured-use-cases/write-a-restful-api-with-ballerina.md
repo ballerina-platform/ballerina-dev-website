@@ -6,12 +6,6 @@ description: This guide helps you understand the basics of Ballerina constructs,
 keywords: ballerina, programming language, restful-api, ballerina packages, language-guide
 active: write-a-restful-api-with-ballerina
 intro: This guide helps you understand the basics of Ballerina constructs, which allow you to write RESTful APIs.
-redirect_from:
-  - /learn/writing-a-restful-api-with-ballerina
-  - /learn/writing-a-restful-api-with-ballerina/
-  - /learn/write-a-restful-api-with-ballerina
-  - /learn/getting-started/writing-a-restful-api-with-ballerina/
-  - /learn/getting-started/writing-a-restful-api-with-ballerina
 ---
 
 ## Set up the prerequisites

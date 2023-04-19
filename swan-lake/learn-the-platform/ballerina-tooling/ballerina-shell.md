@@ -6,10 +6,6 @@ description: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Baller
 keywords: ballerina shell, REPL, ballerina, programming language
 active: ballerina-shell
 intro: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
-redirect_from:
-  - /learn/tooling-guide/ballerina-shell
-  - /learn/tooling-guide/ballerina-shell/
-  - /learn/ballerina-shell
 ---
 
 The Ballerina shell allows you to evaluate code snippets, eliminating the need to write complete programs.

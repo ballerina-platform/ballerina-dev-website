@@ -5,35 +5,6 @@ description: Describes debugging functionalities provided by Ballerina in Visual
 keywords: ballerina debugging, ballerina debug, ballerina debugger, ballerina vscode
 permalink: /learn/debug-ballerina-programs/
 active: debug-ballerina-programs
-redirect_from:
-  - /learn/tools-ides/vscode-plugin/run-and-debug
-  - /learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
-  - /learn/setting-up-visual-studio-code/run-and-debug
-  - /learn/setting-up-visual-studio-code/run-and-debug/
-  - /learn/run-and-debug
-  - /learn/run-and-debug/
-  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug/
-  - /swan-lake/learn/getting-started/setting-up-visual-studio-code/run-and-debug
-  - /learn/tooling-guide/vs-code-extension/run-and-debug
-  - /learn/tooling-guide/vs-code-extension/run-and-debug/
-  - /learn/tooling-guide/visual-studio-code-extension/debugging
-  - /learn/tooling-guide/visual-studio-code-extension/debugging/
-  - /learn/tooling-guide/visual-studio-code-extension/debugging
-  - /learn/getting-started/visual-studio-code-extension/debugging
-  - /learn/getting-started/visual-studio-code-extension/debugging/
-  - /learn/visual-studio-code-extension
-  - /learn/visual-studio-code-extension/
-  - /learn/visual-studio-code-extension/debugging
-  - /learn/visual-studio-code-extension/debugging/
-  - /learn/debugging-ballerina-programs
-  - /learn/debugging-ballerina-programs/
-  - /learn/debug-ballerina-programs
-  - /learn/guides/debugging-ballerina-programs/
-  - /learn/guides/debugging-ballerina-programs
 ---
 
 When writing large-scale applications with complex logic, it is quite possible to have syntax, semantic, 

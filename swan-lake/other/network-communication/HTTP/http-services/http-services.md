@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/
 active: http-services
 intro: The topics below cover details on the HTTP services support in Ballerina. They explore the basics of creating an HTTP service and how Ballerina provides a convenient abstraction for defining complex operations. 
-redirect_from:
-  - /learn/network-communication/http/http-services
-  - /swan-lake/learn/network-communication/http/http-services/
-  - /swan-lake/learn/network-communication/http/http-services
-  - /learn/network-communication/http/http-services/
-  - /learn/network-communication/http/http-services
-  - /learn/user-guide/network-communication/http/http-services
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Structuring an HTTP service

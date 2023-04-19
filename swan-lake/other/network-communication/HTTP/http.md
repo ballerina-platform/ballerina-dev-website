@@ -6,19 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/
 active: http
 intro: The topics below explain how to process HTTP requests and responses using Ballerina. 
-redirect_from:
-  - /learn/network-communication/http
-  - /learn/network-communication/
-  - /learn/network-communication
-  - /swan-lake/learn/network-communication/http/
-  - /swan-lake/learn/network-communication/http
-  - /learn/network-communication/http/
-  - /learn/network-communication/http
-  - /learn/user-guide/network-communication/http
-  - /learn/user-guide/network-communication/
-  - /learn/user-guide/network-communication
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Working with HTTP clients

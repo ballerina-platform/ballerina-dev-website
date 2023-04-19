@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/cli-documentation/asyncapi/
 active: asyncapi
 intro: The sections below include information about the usages of the Ballerina AsyncAPI tool.
-redirect_from:
-  - /learn/cli-documentation/asyncapi
 ---
 
 ## AsyncAPI to Ballerina 

@@ -6,10 +6,6 @@ keywords: ballerina, programming language, asyncapi, contract
 permalink: /learn/asyncapi-tool/
 active: asyncapi-tool
 intro: AsyncAPI is a specification, which is used to describe and document message-driven APIs in a machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x.
-redirect_from:
-  - /learn/ballerina-asyncapi-support
-  - /learn/ballerina-asyncapi-support/
-  - /learn/asyncapi-tool
 ---
 
 The Ballerina AsyncAPI tool makes it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.

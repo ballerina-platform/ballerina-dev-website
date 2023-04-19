@@ -6,10 +6,6 @@ keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/java-interoperability/
 active: java-interoperability
 intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina. Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
-redirect_from:
-  - /learn/java-interoperability
-  - /swan-lake/learn/java-interoperability/
-  - /swan-lake/learn/java-interoperability
 ---
 
 ## Ballerina bindings to Java code

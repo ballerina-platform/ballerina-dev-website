@@ -6,26 +6,6 @@ keywords: ballerina, programming language, cloud, kubernetes, docker
 permalink: /why-ballerina/cloud-native/
 active: cloud-native
 intro: See how the Ballerina programming language has constructs that seamlessly map to network programming concepts such as services and network resources. It also comes with built-in language support to deploy Ballerina applications on the cloud using Docker and Kubernetes.
-redirect_from:
-  - /why/from-code-to-cloud/
-  - /why/from-code-to-cloud
-  - /why-ballerina/from-code-to-cloud/
-  - /why-ballerina/from-code-to-cloud
-  - /learn/user-guide/why-ballerina/from-code-to-cloud
-  - /learn/user-guide/why-ballerina/from-code-to-cloud/
-  - /learn/user-guide/why-ballerina/
-  - /learn/user-guide/why-ballerina
-  - /learn/user-guide/why-ballerina/cloud-native
-  - /learn/user-guide/why-ballerina/cloud-native/
-  - /learn/why-ballerina/
-  - /learn/why-ballerina
-  - /learn/why-ballerina/cloud-native/
-  - /learn/why-ballerina/cloud-native
-  - /why-ballerina/cloud-native
-  - /why-ballerina/
-  - /why-ballerina
-  - /why-ballerina/the-network-in-the-language/
-  - /why-ballerina/the-network-in-the-language
 ---
 
 In a microservice architecture, smaller services are developed, deployed, and scaled individually. These disaggregated services communicate with each other over the network forcing developers to deal with the 

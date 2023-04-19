@@ -4,8 +4,6 @@ description: Check out how you can dump and inspect the currently available stra
 keywords: ballerina runtime, troubleshoot, strand dump, thread dump
 permalink: /learn/strand-dump-tool/
 active: strand-dump-tool
-redirect_from:
-  - /learn/strand-dump-tool
 ---
 
 The Ballerina runtime can have unexpected behaviors due to user code errors, bugs, or issues with the running environment. 

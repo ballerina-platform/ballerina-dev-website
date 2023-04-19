@@ -6,33 +6,6 @@ keywords: ballerina, quick tour, programming language, http service
 permalink: /learn/install-ballerina/set-up-ballerina/
 active: set-up-ballerina
 intro: Let's get started.
-redirect_from:
-  - /learn/quick-tour
-  - /learn/quick-tour/
-  - /swan-lake/learn/getting-started/quick-tour/
-  - /swan-lake/learn/getting-started/quick-tour
-  - /learn/getting-started/quick-tour/
-  - /learn/getting-started/quick-tour
-  - /learn/getting-started/
-  - /learn/getting-started
-  - /learn/user-guide/getting-started
-  - /learn/user-guide/getting-started/
-  - /learn/user-guide/getting-started/setting-up-ballerina
-  - /learn/user-guide/
-  - /learn/user-guide
-  - /learn/user-guide/getting-started/setting-up-ballerina
-  - /learn/user-guide/getting-started/setting-up-ballerina/
-  - /learn/getting-started/installing-ballerina/setting-up-ballerina
-  - /learn/getting-started/installing-ballerina/setting-up-ballerina/
-  - /learn/installing-ballerina/setting-up-ballerina
-  - /learn/installing-ballerina/setting-up-ballerina/
-  - /learn/installing-ballerina/
-  - /learn/installing-ballerina
-  - /learn/install-ballerina/set-up-ballerina
-  - /learn/install-ballerina/
-  - /learn/install-ballerina
-  - /learn/get-started/install-ballerina/set-up-ballerina/
-  - /learn/get-started/install-ballerina/set-up-ballerina
 ---
 
 ## Download Ballerina

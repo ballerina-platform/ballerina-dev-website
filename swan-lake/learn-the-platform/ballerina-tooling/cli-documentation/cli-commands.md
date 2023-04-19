@@ -6,20 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/cli-documentation/cli-commands/
 active: cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
-redirect_from:
-  - /learn/cli-commands
-  - /learn/cli-commands/
-  - /learn/using-the-cli-tools/
-  - /learn/using-the-cli-tools
-  - /swan-lake/learn/using-the-cli-tools/
-  - /swan-lake/learn/using-the-cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands
-  - /learn/tooling-guide/cli-tools/
-  - /learn/tooling-guide/cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands/
-  - /learn/cli-documentation/cli-commands
-  - /learn/cli-documentation
-  - /learn/cli-documentation/
 ---
 
 ## Use the Ballerina tool

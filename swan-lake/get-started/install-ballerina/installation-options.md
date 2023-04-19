@@ -6,28 +6,6 @@ keywords: ballerina, installing ballerina, programming language, ballerina insta
 permalink: /learn/install-ballerina/installation-options/
 active: installation-options
 intro: The sections below include information about installing Ballerina.
-redirect_from:
-  - /learn/install-ballerina/
-  - /learn/install-ballerina
-  - /learn/installing-ballerina
-  - /learn/installing-ballerina/
-  - /learn/installing-ballerina/#installing-from-source
-  - /learn/installing-ballerina/#installing-from-source/
-  - /swan-lake/learn/getting-started/installing-ballerina/
-  - /swan-lake/learn/getting-started/installing-ballerina
-  - /learn/getting-started/installing-ballerina/
-  - /learn/getting-started/installing-ballerina
-  - /learn/user-guide/getting-started/setting-up-ballerina/installation-options
-  - /learn/user-guide/getting-started/setting-up-ballerina/installation-options/
-  - /learn/user-guide/getting-started/installation-options
-  - /learn/user-guide/getting-started/installation-options/
-  - /learn/getting-started/installing-ballerina/installation-options
-  - /learn/getting-started/installing-ballerina/installation-options/
-  - /learn/installing-ballerina/installation-options
-  - /learn/installing-ballerina/installation-options/
-  - /learn/instal-ballerina/installation-options
-  - /learn/get-started/install-ballerina/Installation-options/
-  - /learn/get-started/install-ballerina/Installation-options
 ---
 
 ## Install Ballerina via installers

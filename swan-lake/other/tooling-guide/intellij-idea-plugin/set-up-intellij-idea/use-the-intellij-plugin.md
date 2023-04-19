@@ -4,23 +4,6 @@ title: Using the IntelliJ Ballerina plugin
 permalink: /learn/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
 intro: The sections below include information to start using the IntelliJ Ballerina plugin after installing it.
-redirect_from:
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
-  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /learn/intellij-plugin/using-the-intellij-plugin
-  - /learn/intellij-plugin/using-the-intellij-plugin/
-  - /learn/set-up-ballerina-sdk/
-  - /learn/set-up-ballerina-sdk
-  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
-  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
-  - /learn/setting-up-intellij-idea/using-the-intellij-plugin
-  - /learn/setting-up-intellij-idea/using-the-intellij-plugin/
-  - /learn/using-the-intellij-plugin
-  - /learn/using-the-intellij-plugin/
-  - /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin/
-  - /swan-lake/learn/setting-up-intellij-idea/using-the-intellij-plugin
-redirect_to:
-  - /learn/
 ---
 
 ## Creating a new Ballerina project

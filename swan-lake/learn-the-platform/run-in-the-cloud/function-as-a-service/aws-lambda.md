@@ -6,23 +6,6 @@ keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
-redirect_from:
-  - /learn/deployment/aws-lambda
-  - /swan-lake/learn/deployment/aws-lambda/
-  - /swan-lake/learn/deployment/aws-lambda
-  - /learn/deployment/aws-lambda/
-  - /learn/deployment/aws-lambda
-  - /learn/user-guide/deployment/aws-lambda
-  - /learn/user-guide/deployment/aws-lambda/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
 ## Prerequisites

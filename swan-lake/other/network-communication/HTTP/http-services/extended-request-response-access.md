@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/extended-request-response-access/
 active: extended-request-response-access
 intro: The service resources have the functionality of handling request and response data manually  without binding them to resource parameters or the return value. 
-redirect_from:
-  - /learn/network-communication/http/http-services/extended-request-response-access
-  - /swan-lake/learn/network-communication/http/http-services/extended-request-response-access/
-  - /swan-lake/learn/network-communication/http/http-services/extended-request-response-access
-  - /learn/network-communication/http/http-services/extended-request-response-access/
-  - /learn/network-communication/http/http-services/extended-request-response-access
-  - /learn/user-guide/network-communication/http/http-services
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Interacting with the remote client

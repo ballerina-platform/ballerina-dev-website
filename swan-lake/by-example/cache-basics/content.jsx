@@ -74,7 +74,7 @@ export function CacheBasics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c6fee37f419a2457c1e82f3be7fadde6&file=cache_basics.bal",
+                "https://play.ballerina.io/?gist=6d4e1607c3879c05c7709934bd6c614d&file=cache_basics.bal",
                 "_blank"
               );
             }}

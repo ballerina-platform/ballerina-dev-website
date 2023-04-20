@@ -61,7 +61,7 @@ export function MatchStatementWithMaps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cdf42b18167e3b5eb40632d687bf7fb8&file=match_statement_with_maps.bal",
+                "https://play.ballerina.io/?gist=bb9f439dd95ee45593ff3afefa108f4f&file=match_statement_with_maps.bal",
                 "_blank"
               );
             }}

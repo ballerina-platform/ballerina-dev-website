@@ -12,7 +12,11 @@ public function main(string filePath) returns error? {
     };
     text:CreateCompletionResponse completionRes = 
         check openaiText->/completions.post(textPrompt);
-    string summary = <string>completionRes.choices[0].text;
+    string? summary = completionRes.choices[0].text;
+
+    if summary is () { 
+        return error("Failed to summarize the given text.");    
+    } 
     io:println(string `Summary: ${summary}`);
 }
 ```

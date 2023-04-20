@@ -30,7 +30,7 @@ service / on new http:Listener(8080) {
             model: "text-davinci-003"
         };
         text:CreateCompletionResponse completionRes = 
-            check openaiText->/completions.post(prmt);
+            check openAIText->/completions.post(prmt);
         return completionRes.choices[0].text;
     }
 }

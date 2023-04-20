@@ -184,42 +184,6 @@ Use 'bal help dist' for more information on specific commands.
 
 > **Note:** The star (*) indicates the active distribution.
 
-### Remove a distribution
-
-The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you have been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
-
-```bash
-$ bal dist remove 2201.4.1
-```
-
-You view the output below.
-
-```bash
-Distribution '2201.4.1' successfully removed
-```
-
-### Update to the latest preview/patch version
-
-The `bal dist update` command updates your active distribution to the latest patch version.
-
-```bash
-$ bal dist update
-```
-
-You view the output below.
-
-```bash
-Fetching the latest patch distribution for 'ballerina-2201.4.0' from the remote server...
-Fetching the '2201.4.1' distribution from the remote server...
-Downloading 2201.4.1 100% [================================================================================================================================================================================] 188/188 MB (0:01:21 / 0:00:00) 
-
-Fetching the dependencies for '2201.4.1' from the remote server...
-Dependency 'jdk-11.0.15+10-jre' is already available locally
-Successfully set the latest patch distribution '2201.4.1' as the active distribution
-```
-
->**Note:** If the active distribution in your environment is `2201.4.0`, it bumps to the next Swan Lake version, which is `2201.4.1`, and updates to it.
-
 ### Pull a specific distribution
 
 The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
@@ -240,6 +204,49 @@ Dependency 'jdk-11.0.15+10-jre' is already available locally
 '2201.4.1' successfully set as the active distribution
 ```
 
+#### Pull the latest distribution
+
+The `bal dist pull latest` command updates your active distribution to the latest Swan Lake version that.
+
+```bash
+$ bal dist pull latest
+```
+
+You view the output below.
+
+```bash
+Checking for newer versions of the update tool...
+Fetching the latest distribution from the remote server...
+Fetching the '2201.5.0' distribution from the remote server...
+Downloading 2201.5.0 100% [================================================================================================================================] 189/189 MB (0:00:20 / 0:00:00) 
+
+Fetching the dependencies for '2201.5.0' from the remote server...
+Dependency 'jdk-11.0.18+10-jre' is already available locally
+'2201.5.0' successfully set as the active distribution
+```
+
+### Update to the latest patch version
+
+The `bal dist update` command updates your active distribution to the latest patch version (of the active Swan lake update version).
+
+```bash
+$ bal dist update
+```
+
+You view the output below.
+
+```bash
+Fetching the latest patch distribution for 'ballerina-2201.4.0' from the remote server...
+Fetching the '2201.4.1' distribution from the remote server...
+Downloading 2201.4.1 100% [================================================================================================================================================================================] 188/188 MB (0:01:21 / 0:00:00) 
+
+Fetching the dependencies for '2201.4.1' from the remote server...
+Dependency 'jdk-11.0.15+10-jre' is already available locally
+Successfully set the latest patch distribution '2201.4.1' as the active distribution
+```
+
+>**Note:** If the active distribution in your environment is `2201.4.0`, it bumps to the next Swan Lake version, which is `2201.4.1`, and updates to it.
+
 ### Change the active distribution
 
 The `bal dist use <distribution>` command sets a particular distribution version as the active one.
@@ -252,4 +259,18 @@ You view the output below.
 
 ```bash
 '2201.4.0' successfully set as the active distribution
+```
+
+### Remove a distribution
+
+The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you have been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
+
+```bash
+$ bal dist remove 2201.4.1
+```
+
+You view the output below.
+
+```bash
+Distribution '2201.4.1' successfully removed
 ```

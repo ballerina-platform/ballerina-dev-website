@@ -31,7 +31,7 @@ public function main(string audioURL, string translatingLanguage) returns error?
     };
 
     // Translates the text from English to another language
-    text:Client openAIText = check new ({auth: {token: openAIKey}});
+    text:Client openAIText = check new ({auth: {token: openAIToken}});
     text:CreateCompletionResponse completionRes = 
         check openAIText->/completions.post(completionReq);
     string? translatedText = completionRes.choices[0].text;

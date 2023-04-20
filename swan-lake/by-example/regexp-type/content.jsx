@@ -96,7 +96,7 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=68473edaa4aa8399005dbf942fe7c31e&file=regexp_type.bal",
+                "https://play.ballerina.io/?gist=35e9925918b8c5ec75faf6c227864a7d&file=regexp_type.bal",
                 "_blank"
               );
             }}

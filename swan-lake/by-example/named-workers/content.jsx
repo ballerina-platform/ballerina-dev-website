@@ -64,7 +64,7 @@ export function NamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=707fde786e650f4ec7c14c9d63915fee&file=named_workers.bal",
+                "https://play.ballerina.io/?gist=8b103238899a87801796cfd690cd3bc6&file=named_workers.bal",
                 "_blank"
               );
             }}

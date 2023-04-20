@@ -50,7 +50,7 @@ export function SingleUseWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b68af32b8a3a695d5075adb9f7e25d67&file=single_use_with_on_fail_clause.bal",
+                "https://play.ballerina.io/?gist=7a461480d42765c699c7663d12f14bc6&file=single_use_with_on_fail_clause.bal",
                 "_blank"
               );
             }}

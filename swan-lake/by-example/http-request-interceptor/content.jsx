@@ -54,7 +54,7 @@ listener http:Listener interceptorListener = new (9090);
 }
 service / on interceptorListener {
 
-    resource function get albums(http:Request req) returns Album[] {
+    resource function get albums() returns Album[] {
         return albums.toArray();
     }
 }
@@ -104,7 +104,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e9a75db049df9a9e6c513a3564fec851&file=http_request_interceptor.bal",
+                "https://play.ballerina.io/?gist=a507c633917136442ca803bafcf1c52a&file=http_request_interceptor.bal",
                 "_blank"
               );
             }}

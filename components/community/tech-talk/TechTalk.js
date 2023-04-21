@@ -57,10 +57,6 @@ export default function TechTalk() {
             <p>
               We host a public tech talk, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your questions live.
             </p>
-
-            <p>
-              If you would like to suggest a topic for our next talk or give feedback on tech talks, please fill this <a id="techTalkFormButton" className={styles.formLink} onClick={handleShow}>form</a>.
-            </p>
           </Col>
 
           <Col sm={12} md={6} lg={6}>

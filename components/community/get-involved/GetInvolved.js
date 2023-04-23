@@ -23,11 +23,6 @@ import styles from './GetInvolved.module.css';
 
 export default function GetInvolved() {
 
-  const [show, setShow] = React.useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <Col xs={12}>
       <Container>

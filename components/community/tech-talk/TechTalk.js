@@ -25,10 +25,6 @@ import { prefix } from '../../../utils/prefix';
 export default function TechTalk() {
 
   const [hoverBtn, setHoverBtn] = React.useState(false);
-  const [show, setShow] = React.useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   let linkArrowPath = prefix + '/images/toc-bg.svg';
   let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';

@@ -79,15 +79,6 @@ export default function GetInvolved() {
             <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a className={styles.getStartLinks} href="mailto:contact@ballerina.io">contact@ballerina.io</a>.</p>
           </Col>
           
-
-          <Modal show={show} onHide={handleClose} id="submitUseCaseForm" className={styles.customModal}>
-            <Modal.Header closeButton>
-              <Modal.Title>Submit a use case</Modal.Title>
-            </Modal.Header>
-            <Modal.Body className={styles.customModalBody}>
-              <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x743" frameBorder="0" className={styles.formEmbedded} />
-            </Modal.Body>
-          </Modal>
         </Row>
       </Container>
     </Col>

@@ -75,15 +75,6 @@ export default function TechTalk() {
           </Col>
         </Row>
 
-
-        <Modal show={show} onHide={handleClose} id="techTalkForm" className={styles.customModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Suggest topics or give feedback</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className={styles.customModalBody}>
-            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameBorder="0" className={styles.formEmbedded} />
-          </Modal.Body>
-        </Modal>
       </Container>
     </Col>
   );

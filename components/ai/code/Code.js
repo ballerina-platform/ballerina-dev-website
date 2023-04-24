@@ -147,7 +147,7 @@ export default function UseCases(props) {
                                         </div>
                                     </div>
 
-                                    <div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small></div>
+                                    <div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases, and more.</i></small></div>
                                     {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
@@ -334,7 +334,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <span>Sample 1: Generate images using OpenAI and store them in google drive</span>
+                                        <span>Sample 1: Generate images using OpenAI and store them in Google Drive</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -421,7 +421,7 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 2: Audio to text summarization using OpenAI</span>
+                                        <span>Sample 2: Audio-to-text summarization using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -481,7 +481,7 @@ export default function UseCases(props) {
                                     {
                                         (tune.frontmatter.url && tune.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Fine tune GPT-3 models</span>
+                                                <span>Fine-tune GPT-3 models</span>
                                                 <a href={tune.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -603,7 +603,7 @@ export default function UseCases(props) {
                                     {
                                         (libraries.frontmatter.url && libraries.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Text Similarity Comparison with OpenAI GPT-3 Embeddings</span>
+                                                <span>Text similarity comparison with OpenAI GPT-3 embeddings</span>
                                                 <a href={libraries.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -664,7 +664,7 @@ export default function UseCases(props) {
                                     {
                                         (powered.frontmatter.url && powered.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Question Answering with OpenAI</span>
+                                                <span>Question answering with OpenAI</span>
                                                 <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -675,7 +675,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <a href='/usecases/integration' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            Take a deeper dive into using Ballerina for integration
+                                            Take a deeper dive into using Ballerina for integration.
                                         </a>
                                     </div>
 
@@ -731,7 +731,7 @@ export default function UseCases(props) {
                                     {
                                         (robust.frontmatter.url && robust.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Grammar and Spelling Correction in Text using OpenAI</span>
+                                                <span>Grammar and spelling correction in text using OpenAI</span>
                                                 <a href={robust.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -792,7 +792,7 @@ export default function UseCases(props) {
                                     {
                                         (concurrency.frontmatter.url && concurrency.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Personalized Greetings with Custom Design using OpenAI</span>
+                                                <span>Personalized greetings with custom design using OpenAI</span>
                                                 <a href={concurrency.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub

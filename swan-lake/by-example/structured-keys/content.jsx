@@ -64,7 +64,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa2711518d34cef2867bcc53d3d5b640&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=c44734a515e69840db2af1dabb76354d&file=structured_keys.bal",
                 "_blank"
               );
             }}

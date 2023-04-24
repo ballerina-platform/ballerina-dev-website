@@ -61,7 +61,7 @@ export function Enumerations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ba5074e7456cdc2805cc5c42ea2cf84d&file=enumerations.bal",
+                "https://play.ballerina.io/?gist=29b9e025c85edfc7272a0175e30b3fea&file=enumerations.bal",
                 "_blank"
               );
             }}

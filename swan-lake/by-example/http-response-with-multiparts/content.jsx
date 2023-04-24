@@ -155,7 +155,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4424345fbf2fb5ecf3ce9d1549124d0f&file=http_response_with_multiparts.bal",
+                "https://play.ballerina.io/?gist=ff7e13a20d4e9f29a42258b6354056f8&file=http_response_with_multiparts.bal",
                 "_blank"
               );
             }}

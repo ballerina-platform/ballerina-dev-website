@@ -73,7 +73,7 @@ export function HttpClientSelfSignedJwtAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7f540adccbfd650d9fb710a4e92987e8&file=http_client_self_signed_jwt_authentication.bal",
+                "https://play.ballerina.io/?gist=3e74cbc87425d9418e086bb2f1c6d6cb&file=http_client_self_signed_jwt_authentication.bal",
                 "_blank"
               );
             }}

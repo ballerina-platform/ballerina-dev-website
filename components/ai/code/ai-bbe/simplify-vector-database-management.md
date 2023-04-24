@@ -1,6 +1,6 @@
 ---
 title: 'Simplify vector database management'
-description: "Ballerina comes with built-in connectors for vector databases that support the storage and retrieval of high-dimensional vectors, which are a common building block in AI use cases."
+description: "Ballerina comes with built-in connectors for vector databases, which are a common building block in AI use cases that support the storage and retrieval of high-dimensional vectors."
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/answer_questions_using_vector_search_weaviate/main.bal'
 ---
 ```

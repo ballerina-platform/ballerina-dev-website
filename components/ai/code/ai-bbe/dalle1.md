@@ -6,19 +6,22 @@ public function main() returns error? {
 
     sheets:Column range = check gSheets->getColumn(sheetId, sheetName, "A");
     foreach var cell in range.values {
-        string prompt = check cell.ensureType();
+        string prompt = cell.toString();
         images:CreateImageRequest imagePrompt = {
             prompt,
             response_format: "b64_json"
         };
         images:ImagesResponse imageRes = 
             check openAIImages->/images/generations.post(imagePrompt);
-        string encodedImage = check imageRes.data[0].b64_json.ensureType();
-
+        string? encodedImage = imageRes.data[0].b64_json;
+        if encodedImage is () {
+            return error(string `Failed to generate image for prompt: ${prompt}`);
+        }
+        
         // Decode the Base64 string and store image in Google Drive
         byte[] imageBytes = check array:fromBase64(encodedImage);
         _ = check gDrive->uploadFileUsingByteArray(imageBytes, 
-                          string `${prompt}.png`, gDriveFolderId);
+                            string `${cell}.png`, gDriveFolderId);
     }
 }
 ```

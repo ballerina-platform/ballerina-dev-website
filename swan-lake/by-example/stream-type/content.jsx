@@ -72,7 +72,7 @@ export function StreamType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1f9e80e5587a3374b0c8a130e6bf05d2&file=stream_type.bal",
+                "https://play.ballerina.io/?gist=3d0268450a4e62594bf92f20df66a246&file=stream_type.bal",
                 "_blank"
               );
             }}

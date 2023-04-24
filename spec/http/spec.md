@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/02/01   
+_Updated_: 2023/04/17   
 _Edition_: Swan Lake
 
 
@@ -33,8 +33,8 @@ The conforming implementation of the specification is released and included in t
         * 2.3.2. [Resource-name](#232-resource-name)
         * 2.3.3. [Path parameter](#233-path-parameter)
         * 2.3.4. [Signature parameters](#234-signature-parameters)
-            * 2.3.4.1. [Caller](#2341-http--caller)
-            * 2.3.4.2. [Request](#2342-http--request)
+            * 2.3.4.1. [Caller](#2341-httpcaller)
+            * 2.3.4.2. [Request](#2342-httprequest)
             * 2.3.4.3. [Query param](#2343-query-parameter)
             * 2.3.4.4. [Payload param](#2344-payload-parameter)
             * 2.3.4.5. [Header param](#2345-header-parameter)
@@ -88,7 +88,7 @@ The conforming implementation of the specification is released and included in t
     * 8.1. [Interceptor](#81-interceptor)
         * 8.1.1. [Request interceptor](#811-request-interceptor)
             * 8.1.1.1. [Request context](#8111-request-context)
-            * 8.1.1.2. [Next method](#8112-next---method)
+            * 8.1.1.2. [Next method](#8112-next-method)
             * 8.1.1.3. [Return to respond](#8113-return-to-respond)
             * 8.1.1.4 [Get JWT information](#8114-get-jwt-information)
         * 8.1.2. [Response interceptor](#812-response-interceptor)
@@ -161,7 +161,7 @@ public type ListenerConfiguration record {|
     decimal timeout = DEFAULT_LISTENER_TIMEOUT;
     string? server = ();
     RequestLimitConfigs requestLimits = {};
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
 |};
 ```
 
@@ -1092,7 +1092,7 @@ public type ClientConfiguration record {|
 Based on the config, the client object will be accompanied by following client behaviours. Following clients cannot be
 instantiated calling `new`, instead user have to enable the config in the `ClientConfiguration`.
 
-##### 2.4.1.1 Security 
+##### 2.4.1.1 Security
 Provides secure HTTP remote methods for interacting with HTTP endpoints. This will make use of the authentication
 schemes configured in the HTTP client endpoint to secure the HTTP requests.
 ```ballerina
@@ -1628,7 +1628,7 @@ public type HttpServiceConfig record {|
     ListenerAuthConfig[] auth?;
     string mediaTypeSubtypePrefix?;
     boolean treatNilableAsOptional = true;
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
     byte[] openApiDefinition = [];
 |};
 
@@ -2101,7 +2101,7 @@ service class RequestInterceptor {
 }
 ```
 
-##### 8.1.1.1 Request context  
+##### 8.1.1.1 Request context
 Following is the rough definition of the interceptor context. Request context can store non-error values, and these values 
 can be retrieved at the next services in the pipeline.  
 ```ballerina
@@ -2161,7 +2161,7 @@ public isolated class RequestContext {
 }
 ```
 
-##### 8.1.1.2 next() method  
+##### 8.1.1.2 next() method
 However, there is an addition when it comes to `RequestContext`. A new method namely, `next()` is introduced to control 
 the execution flow. Users must invoke `next()` method in order to trigger the next interceptor in the pipeline. Then 
 the reference of the retrieved interceptor must be returned from the resource method. Pipeline use this reference to
@@ -2205,7 +2205,7 @@ service class ResponseInterceptor {
 ```
 
 `ResponseInterceptor` is different from `RequestInterceptor`. Since it has nothing to do with HTTP methods and paths, 
-remote method is used instead of resource method.
+remote method is used instead of resource method. The `ResponseInterceptor` can access the request as a function parameter.
 
 ##### 8.1.2.1 Return to respond
 The remote method : `interceptResposne()` allows returning values other than `NextService|error?`. Anyway this will
@@ -2216,7 +2216,7 @@ In case of an error, interceptor pipeline execution jumps to the nearest `Respon
 pipeline. . However, in the case of there is no `ResponseInterceptor` in the pipeline, pipeline returns the internal 
 error response to the client.
 
-#### 8.1.3 Request error interceptor and response error interceptor 
+#### 8.1.3 Request error interceptor and response error interceptor
 As mentioned above, these are special kinds of interceptor designed to handle errors. These interceptors can  
 be placed anywhere in the request or response interceptor chain. The framework automatically adds default 
 `RequestErrorInterceptor` and `ResponseErrorInterceptor` which basically prints the error message to the console.
@@ -2238,7 +2238,7 @@ service class RequestErrorInterceptor {
 ```
 
 The same works for `ResponseErrorInterceptor`, the difference is it has a remote method : `interceptResponseError()`
-and deals with response object.
+and deals with response object. In addition, the `ResponseErrorInterceptor` can access the request as a function parameter.
 
 ```ballerina
 service class ResponseErrorInterceptor {

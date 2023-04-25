@@ -176,7 +176,7 @@ name = "sql"
 version = "1.6.0"
 ```
 
-With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
+With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
 
 ### Platform dependencies
 

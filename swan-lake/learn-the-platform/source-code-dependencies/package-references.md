@@ -147,6 +147,37 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
+### Dependencies
+
+While the Ballerina compiler resolves dependencies automatically based on the import statements, the `[[dependency]]` array can be used to specify a dependency from the local repository or to specify the minimum required version of a dependency.
+
+#### Specify a dependency from the local repository
+
+The following example shows how a dependency from the local repository can be specified:
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "mysql"
+version = "1.5.0"
+repository = "local"
+```
+
+This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies] (learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+
+#### Specify the minimum version for a dependency
+
+The following example shows how the minimum version for a dependency can be specified:
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "sql"
+version = "1.6.0"
+```
+
+With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
+
 ### Platform dependencies
 
 When using the "bal build" command to compile a Ballerina package, the resulting output will either be an executable JAR file or a non-executable JAR file (library package) depending on whether the package contains an entry point. These archives created by the Ballerina compiler are self-contained, meaning that they include all necessary dependencies. It may also be necessary to package external JAR files with these archives.

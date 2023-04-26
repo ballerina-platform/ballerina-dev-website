@@ -188,6 +188,26 @@ Use 'bal help dist' for more information on specific commands.
 
 You can pull and update to a preferred (latest or any) Ballerina distribution as follows. 
 
+#### Pull a specific distribution
+
+The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
+
+```bash
+$ bal dist pull 2201.4.1
+```
+
+You view the output below.
+
+```bash
+Checking for newer versions of the update tool...
+Fetching the '2201.4.1' distribution from the remote server...
+Downloading 2201.4.1 100% [================================================================================================================================] 187/187 MB (0:00:18 / 0:00:00) 
+
+Fetching the dependencies for '2201.4.1' from the remote server...
+Dependency 'jdk-11.0.15+10-jre' is already available locally
+'2201.4.1' successfully set as the active distribution
+```
+
 #### Pull the latest distribution
 
 The `bal dist pull latest` command updates your active distribution to the latest Swan Lake version.
@@ -207,26 +227,6 @@ Downloading 2201.5.0 100% [=====================================================
 Fetching the dependencies for '2201.5.0' from the remote server...
 Dependency 'jdk-11.0.18+10-jre' is already available locally
 '2201.5.0' successfully set as the active distribution
-```
-
-#### Pull a specific distribution
-
-The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
-
-```bash
-$ bal dist pull 2201.4.1
-```
-
-You view the output below.
-
-```bash
-Checking for newer versions of the update tool...
-Fetching the '2201.4.1' distribution from the remote server...
-Downloading 2201.4.1 100% [================================================================================================================================] 187/187 MB (0:00:18 / 0:00:00) 
-
-Fetching the dependencies for '2201.4.1' from the remote server...
-Dependency 'jdk-11.0.15+10-jre' is already available locally
-'2201.4.1' successfully set as the active distribution
 ```
 
 ### Update to the latest patch version

@@ -49,4 +49,8 @@
     font-weight: 400;
 }
 
+.cardDescription p {
+    margin-bottom: 0px;
+}
+
 

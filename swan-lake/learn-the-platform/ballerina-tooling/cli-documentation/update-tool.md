@@ -184,7 +184,11 @@ Use 'bal help dist' for more information on specific commands.
 
 > **Note:** The star (*) indicates the active distribution.
 
-### Pull a specific distribution
+### Pull a distribution
+
+You can pull and update to a preferred (latest or any) Ballerina distribution as follows. 
+
+#### Pull a specific distribution
 
 The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
@@ -206,7 +210,7 @@ Dependency 'jdk-11.0.15+10-jre' is already available locally
 
 #### Pull the latest distribution
 
-The `bal dist pull latest` command updates your active distribution to the latest Swan Lake version that.
+The `bal dist pull latest` command updates your active distribution to the latest Swan Lake version.
 
 ```bash
 $ bal dist pull latest

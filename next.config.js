@@ -85,8 +85,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/featured-use-cases/write-a-restful-api-with-ballerina`,
       },
       {
-        source: `/${redirectBase}learn/install-ballerina/:slug`,
-        destination: `/${redirectBase}learn/get-started/install-ballerina/:slug`,
+        source: `/${redirectBase}learn/installation-options`,
+        destination: `/${redirectBase}learn/get-started/installation-options`,
       },
       {
         source: "/learn",

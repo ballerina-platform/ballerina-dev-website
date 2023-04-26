@@ -134,3 +134,20 @@ ul.secondTier li a.active, ul.secondTier li a:hover {
 /* .accordion + .accordion {
     margin-top:50px;
 } */
+
+.nonAcBtn {
+    border: none !important;
+    background: none !important;
+    color: #212529 !important;
+    font-weight: 400 !important;
+}
+
+.nonAcBtn:hover {
+    color: #20b6b0 !important;
+}
+
+.nonAcBtn.active {
+    background: none !important;
+    color: #20b6b0 !important;
+    border: none !important;
+}

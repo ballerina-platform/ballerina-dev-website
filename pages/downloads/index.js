@@ -113,7 +113,7 @@ export default function Downloads() {
                   <p>
                      To <a href={`${prefix}/learn/install-ballerina/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/learn/install-ballerina/installation-options/`} className={styles.instructions}>Installation options</a>.
+                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/`} className={styles.instructions}>Installation options</a>.
                   </p>
                </Col>
             </Row>

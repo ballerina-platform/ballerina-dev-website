@@ -21,19 +21,33 @@ import { Row, Col, Modal, Container } from 'react-bootstrap';
 
 import styles from './GetInvolved.module.css';
 
-export default function GetInvolved() {
+export default function GetInvolved(props) {
 
   return (
     <Col xs={12}>
       <Container>
         <Row>
           <Col xs={12}>
-            <h2 id='get-involved'>Get involved</h2>
+            <h2 id='get-involved' className='section'>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-link-45deg mdButton pe-2"
+                viewBox="0 0 16 16"
+                onClick={(e) => props.getLink(e.target, 'get-involved')}
+              >
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+              Get involved
+            </h2>
           </Col>
         </Row>
 
         <Row>
-        <Col xs={12} md={4} lg={4} className={styles.card}>
+          <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="report-issues"></span>
             <h4 id="report-issues-title">
               Report issues
@@ -59,7 +73,7 @@ export default function GetInvolved() {
 
 
         <Row>
-        <Col xs={12} md={4} lg={4} className={styles.card}>
+          <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="join-dev-google-group"></span>
             <h4 id="join-dev-google-group-title">
               Active proposals for Ballerina
@@ -73,7 +87,7 @@ export default function GetInvolved() {
             </h4>
             <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a className={styles.getStartLinks} href="mailto:contact@ballerina.io">contact@ballerina.io</a>.</p>
           </Col>
-          
+
         </Row>
       </Container>
     </Col>

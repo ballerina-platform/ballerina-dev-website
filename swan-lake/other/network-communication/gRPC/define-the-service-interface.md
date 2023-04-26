@@ -6,17 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/defining-the-service-interface/ 
 active: defining-the-service-interface
 intro: gRPC is an open-source remote procedure call (RPC) technology, which uses HTTP/2 for transport and is based on Google’s Protocol Buffers. It promises high performance, efficient network communication, features such as schema evolution, blocking and non-blocking communication, and bidirectional streaming. The topics below explain how gRPC works and the tools and techniques that are required to implement it using Ballerina. 
-redirect_from:
-  - /learn/network-communication/grpc
-  - /swan-lake/learn/network-communication/grpc/
-  - /swan-lake/learn/network-communication/grpc
-  - /learn/network-communication/grpc/
-  - /learn/network-communication/grpc
-  - /learn/user-guide/network-communication/grpc
-  - /learn/user-guide/network-communication/grpc/
-  - /learn/user-guide/network-communication/grpc/defining-the-service-interface
-redirect_to:
-  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 In an RPC service, the first step is to define the interface of the service. This is done using an IDL (Interface Definition Language) file. The IDL file of a gRPC service is provided using Protocol Buffers. Protobuf is a standard for serializing structured data. It provides the structures required for defining services, operations, and messages used in the service communication. 

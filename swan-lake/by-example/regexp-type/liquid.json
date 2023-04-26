@@ -1,0 +1,18 @@
+{
+  "title": "RegExp type",
+  "description": "This BBE demonstrates how to define a regular expression and the different patterns supported by the Ballerina RegExp type.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "regex",
+    "regexp",
+    "regular expression"
+  ],
+  "permalink": "/learn/by-example/regexp-type",
+  "active": "regexp-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/regexp-type",
+    "/swan-lake/learn/by-example/regexp-type.html"
+  ]
+}

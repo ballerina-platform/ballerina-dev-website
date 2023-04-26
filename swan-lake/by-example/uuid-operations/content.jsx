@@ -92,7 +92,7 @@ export function UuidOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=41bc706aa92aa741e13f3743b9775b31&file=uuid_operations.bal",
+                "https://play.ballerina.io/?gist=4a2daed70c06ebdbcc6a2856b1adc028&file=uuid_operations.bal",
                 "_blank"
               );
             }}
@@ -117,7 +117,7 @@ export function UuidOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/uuid-operations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/uuid-operations",
                 "_blank"
               );
             }}

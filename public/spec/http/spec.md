@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/02/01   
+_Updated_: 2023/04/17   
 _Edition_: Swan Lake
 
 
@@ -33,8 +33,8 @@ The conforming implementation of the specification is released and included in t
         * 2.3.2. [Resource-name](#232-resource-name)
         * 2.3.3. [Path parameter](#233-path-parameter)
         * 2.3.4. [Signature parameters](#234-signature-parameters)
-            * 2.3.4.1. [Caller](#2341-http--caller)
-            * 2.3.4.2. [Request](#2342-http--request)
+            * 2.3.4.1. [Caller](#2341-httpcaller)
+            * 2.3.4.2. [Request](#2342-httprequest)
             * 2.3.4.3. [Query param](#2343-query-parameter)
             * 2.3.4.4. [Payload param](#2344-payload-parameter)
             * 2.3.4.5. [Header param](#2345-header-parameter)
@@ -88,7 +88,7 @@ The conforming implementation of the specification is released and included in t
     * 8.1. [Interceptor](#81-interceptor)
         * 8.1.1. [Request interceptor](#811-request-interceptor)
             * 8.1.1.1. [Request context](#8111-request-context)
-            * 8.1.1.2. [Next method](#8112-next---method)
+            * 8.1.1.2. [Next method](#8112-next-method)
             * 8.1.1.3. [Return to respond](#8113-return-to-respond)
             * 8.1.1.4 [Get JWT information](#8114-get-jwt-information)
         * 8.1.2. [Response interceptor](#812-response-interceptor)
@@ -161,7 +161,7 @@ public type ListenerConfiguration record {|
     decimal timeout = DEFAULT_LISTENER_TIMEOUT;
     string? server = ();
     RequestLimitConfigs requestLimits = {};
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
 |};
 ```
 
@@ -604,28 +604,28 @@ without the @http:Payload annotation:
 - The default payload parameter rules are only applicable to POST, PUT, PATCH, DELETE, and DEFAULT accessors.
 - Parameters must contain only one structured(map/record/table/tuple/array) type or `xml`. However, the array types of 
   basic types are considered as query parameters. But `byte[]` is an exception, and it is considered as a payload param.
-    - `resource function post(Student p) {}` -> `Student` is payload param type
-    - `resource function post(Student[] p) {}` -> `Student[]` is payload param type
-    - `resource function post(map<json> p) {}` -> `map<json>` is payload param type
-    - `resource function post(int[] p) {}` -> `int[]` is query param type
-    - `resource function post(byte[] p) {}` -> `byte[]` is payload param type
-    - `resource function post(int p) {}` -> `int` is query param type
+    - `resource function post path(Student p) {}` -> `Student` is payload param type
+    - `resource function post path(Student[] p) {}` -> `Student[]` is payload param type
+    - `resource function post path(map<json> p) {}` -> `map<json>` is payload param type
+    - `resource function post path(int[] p) {}` -> `int[]` is query param type
+    - `resource function post path(byte[] p) {}` -> `byte[]` is payload param type
+    - `resource function post path(int p) {}` -> `int` is query param type
 - If there's more than one structured type, the ambiguity must be resolved using either @http:Payload or @http:Query
   annotation.
-    - `resource function post(Student p, map<json> q) {}` -> ambiguous types for payload
-    - `resource function post(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
-    - `resource function post(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is payload
+    - `resource function post path(Student p, map<json> q) {}` -> ambiguous types for payload
+    - `resource function post path(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is query
 - If there are no structured types, all parameters are considered query parameters.
-    - `resource function post(string p, string q) {}` -> `p` and `q` are query params
-    - `resource function post(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(string p, string q) {}` -> `p` and `q` are query params
+    - `resource function post path(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
 - If the query parameter is structured, then the @http:Query annotation is required.
-    - `resource function post(Student p) {}` -> `p` is payload param type
-    - `resource function post(@http:Query Student p) {}` -> `p` is query param type
+    - `resource function post path(Student p) {}` -> `p` is payload param type
+    - `resource function post path(@http:Query Student p) {}` -> `p` is query param type
 - The only types allowed in the union for a parameter are structured types, `xml`, and `nil`.
-    - `resource function post(Student|xml p) {}` -> `Student|xml` is payload param type
-    - `resource function post(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
-    - `resource function post(Student? p) {}` -> `Student?` is payload param type
-    - `resource function post(Student|string p) {}` -> invalid union type for default payload param
+    - `resource function post path(Student|xml p) {}` -> `Student|xml` is payload param type
+    - `resource function post path(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
+    - `resource function post path(Student? p) {}` -> `Student?` is payload param type
+    - `resource function post path(Student|string p) {}` -> invalid union type for default payload param
 
 Following table explains the compatible `anydata` types with each common media type. In the absence of a standard media 
 type, the binding type is inferred by the payload parameter type itself. If the type is not compatible with the media 
@@ -1092,7 +1092,7 @@ public type ClientConfiguration record {|
 Based on the config, the client object will be accompanied by following client behaviours. Following clients cannot be
 instantiated calling `new`, instead user have to enable the config in the `ClientConfiguration`.
 
-##### 2.4.1.1 Security 
+##### 2.4.1.1 Security
 Provides secure HTTP remote methods for interacting with HTTP endpoints. This will make use of the authentication
 schemes configured in the HTTP client endpoint to secure the HTTP requests.
 ```ballerina
@@ -1318,32 +1318,35 @@ In addition to the above remote method actions, HTTP client supports executing s
 methods. The following are the definitions of those resource methods :
 
 ```ballerina
+# Defines the path parameter types.
+public type PathParamType boolean|int|float|decimal|string;
+
 # The post resource method can be used to send HTTP POST requests to HTTP endpoints.
-resource function post [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function post [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The put resource method can be used to send HTTP PUT requests to HTTP endpoints.            
-resource function put [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function put [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The patch resource method can be used to send HTTP PATCH requests to HTTP endpoints.              
-resource function patch [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function patch [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The delete resource method can be used to send HTTP DELETE requests to HTTP endpoints.              
-resource function delete [string ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
+resource function delete [PathParamType ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The head resource method can be used to send HTTP HEAD requests to HTTP endpoints.              
-resource function head [string ...path](map<string|string[]>? headers = (), *QueryParams params)
+resource function head [PathParamType ...path](map<string|string[]>? headers = (), *QueryParams params)
             returns Response|ClientError; 
 
 # The get resource method can be used to send HTTP GET requests to HTTP endpoints.              
-resource function get [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function get [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;
 
 # The options resource method can be used to send HTTP OPTIONS requests to HTTP endpoints.              
-resource function options [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function options [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;                                               
 ```
 
@@ -1625,7 +1628,7 @@ public type HttpServiceConfig record {|
     ListenerAuthConfig[] auth?;
     string mediaTypeSubtypePrefix?;
     boolean treatNilableAsOptional = true;
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
     byte[] openApiDefinition = [];
 |};
 
@@ -2098,7 +2101,7 @@ service class RequestInterceptor {
 }
 ```
 
-##### 8.1.1.1 Request context  
+##### 8.1.1.1 Request context
 Following is the rough definition of the interceptor context. Request context can store non-error values, and these values 
 can be retrieved at the next services in the pipeline.  
 ```ballerina
@@ -2158,7 +2161,7 @@ public isolated class RequestContext {
 }
 ```
 
-##### 8.1.1.2 next() method  
+##### 8.1.1.2 next() method
 However, there is an addition when it comes to `RequestContext`. A new method namely, `next()` is introduced to control 
 the execution flow. Users must invoke `next()` method in order to trigger the next interceptor in the pipeline. Then 
 the reference of the retrieved interceptor must be returned from the resource method. Pipeline use this reference to
@@ -2202,7 +2205,7 @@ service class ResponseInterceptor {
 ```
 
 `ResponseInterceptor` is different from `RequestInterceptor`. Since it has nothing to do with HTTP methods and paths, 
-remote method is used instead of resource method.
+remote method is used instead of resource method. The `ResponseInterceptor` can access the request as a function parameter.
 
 ##### 8.1.2.1 Return to respond
 The remote method : `interceptResposne()` allows returning values other than `NextService|error?`. Anyway this will
@@ -2213,7 +2216,7 @@ In case of an error, interceptor pipeline execution jumps to the nearest `Respon
 pipeline. . However, in the case of there is no `ResponseInterceptor` in the pipeline, pipeline returns the internal 
 error response to the client.
 
-#### 8.1.3 Request error interceptor and response error interceptor 
+#### 8.1.3 Request error interceptor and response error interceptor
 As mentioned above, these are special kinds of interceptor designed to handle errors. These interceptors can  
 be placed anywhere in the request or response interceptor chain. The framework automatically adds default 
 `RequestErrorInterceptor` and `ResponseErrorInterceptor` which basically prints the error message to the console.
@@ -2235,7 +2238,7 @@ service class RequestErrorInterceptor {
 ```
 
 The same works for `ResponseErrorInterceptor`, the difference is it has a remote method : `interceptResponseError()`
-and deals with response object.
+and deals with response object. In addition, the `ResponseErrorInterceptor` can access the request as a function parameter.
 
 ```ballerina
 service class ResponseErrorInterceptor {

@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/multipart-message-handling/
 active: multipart-message-handling
 intro: You can carry out multipart message handling in Ballerina HTTP services.
-redirect_from:
-  - /learn/network-communication/http/http-services/multipart-message-handling
-  - /swan-lake/learn/network-communication/http/http-services/multipart-message-handling/
-  - /swan-lake/learn/network-communication/http/http-services/multipart-message-handling
-  - /learn/network-communication/http/http-services/multipart-message-handling/
-  - /learn/network-communication/http/http-services/multipart-message-handling
-  - /learn/user-guide/network-communication/http/http-services/multipart-message-handling
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Using MIME entities

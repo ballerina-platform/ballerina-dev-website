@@ -6,16 +6,6 @@ keywords: ballerina, programming language, ballerina packages, getting started
 permalink: /learn/get-started/
 active: get-started
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
-redirect_from:
-- /learn/getting-started-with-ballerina/
-- /learn/getting-started-with-ballerina
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package/
-- /learn/getting-started/hello-world/writing-your-first-ballerina-program
-- /learn/getting-started/hello-world/writing-your-first-ballerina-program/
-- /learn/get-started-with-ballerina
-- /learn/getting-started/getting-started-with-ballerina/
-- /learn/getting-started/getting-started-with-ballerina
 ---
 
 ## Install Ballerina
@@ -170,4 +160,3 @@ Hello Ballerina
 ## Learn more
 
 In this guide, you set up your development environment and wrote two Ballerina programs. For more learning resources, see [Learn](/learn/).
-

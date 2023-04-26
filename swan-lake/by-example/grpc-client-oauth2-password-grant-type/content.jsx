@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/io;
+import ballerina/oauth2;
 
 public function main() returns error? {
     // Defines the gRPC client to call the OAuth2-secured APIs.
@@ -16,16 +17,8 @@ public function main() returns error? {
             password: "admin",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            refreshConfig: {
-                refreshUrl: "https://localhost:9445/oauth2/token",
-                scopes: ["hello"],
-                clientConfig: {
-                    secureSocket: {
-                        cert: "../resource/path/to/public.crt"
-                    }
-                }
-            },
+            scopes: "admin",
+            refreshConfig: oauth2:INFER_REFRESH_CONFIG,
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -74,7 +67,7 @@ export function GrpcClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/grpc-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/grpc-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}

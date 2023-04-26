@@ -62,7 +62,7 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a23419908042f15a11ad59731948c7f3&file=http_passthrough.bal",
+                "https://play.ballerina.io/?gist=9939622a91a07b2fda0608602e95be21&file=http_passthrough.bal",
                 "_blank"
               );
             }}
@@ -87,7 +87,7 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-passthrough",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-passthrough",
                 "_blank"
               );
             }}

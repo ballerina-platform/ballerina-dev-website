@@ -63,7 +63,7 @@ export function HttpClientChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b981247ffffae3db89094a26b2fc167c&file=http_client_chunking.bal",
+                "https://play.ballerina.io/?gist=0118dfa60b54ca0b241d8b7b87fbf743&file=http_client_chunking.bal",
                 "_blank"
               );
             }}
@@ -88,7 +88,7 @@ export function HttpClientChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-chunking",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-chunking",
                 "_blank"
               );
             }}

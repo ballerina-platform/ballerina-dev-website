@@ -68,7 +68,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fc6b19a638754ece34bd775d2eecd388&file=http_client_query_parameter.bal",
+                "https://play.ballerina.io/?gist=de4425897f4e4a76de298946cafe7ae9&file=http_client_query_parameter.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-query-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-query-parameter",
                 "_blank"
               );
             }}
@@ -259,7 +259,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=377ad2aaee2036b956d8305d1fc6cd91&file=http_client_query_parameter_post.bal",
+                "https://play.ballerina.io/?gist=550321f310111149bc70f1cfeefaccf4&file=http_client_query_parameter_post.bal",
                 "_blank"
               );
             }}
@@ -284,7 +284,7 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-query-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-query-parameter",
                 "_blank"
               );
             }}

@@ -64,7 +64,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f9bc06c4055add9ff0972731912f63e9&file=structured_keys.bal",
+                "https://play.ballerina.io/?gist=c44734a515e69840db2af1dabb76354d&file=structured_keys.bal",
                 "_blank"
               );
             }}
@@ -89,7 +89,7 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/structured-keys",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/structured-keys",
                 "_blank"
               );
             }}
@@ -230,7 +230,7 @@ export function StructuredKeys({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/by-example/table/">Table</a>
+            <a href="/learn/by-example/table-syntax/">Table</a>
           </span>
         </li>
       </ul>

@@ -55,7 +55,7 @@ export function ObjectClosure({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=02d1a2dd847cf6517635a1251a2493aa&file=object_closure.bal",
+                "https://play.ballerina.io/?gist=6b193633a5983a0a22eb4bcfa12e979f&file=object_closure.bal",
                 "_blank"
               );
             }}
@@ -80,7 +80,7 @@ export function ObjectClosure({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/object-closure",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/object-closure",
                 "_blank"
               );
             }}

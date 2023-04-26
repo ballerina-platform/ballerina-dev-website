@@ -50,7 +50,7 @@ export function SingleUseWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac0cfbf5a4f5ecf48b7e0f8b339dafea&file=single_use_with_on_fail_clause.bal",
+                "https://play.ballerina.io/?gist=9a2b65b9348566b26ccfbc9fb59b732b&file=single_use_with_on_fail_clause.bal",
                 "_blank"
               );
             }}
@@ -75,7 +75,7 @@ export function SingleUseWithOnFailClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/single-use-with-on-fail-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/single-use-with-on-fail-clause",
                 "_blank"
               );
             }}

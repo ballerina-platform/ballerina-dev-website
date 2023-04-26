@@ -67,7 +67,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=840a66ae0e7295dcafad137326891df9&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=c48495c98cd52c38b5d8fe1f2fe2cc5f&file=type_inclusion_for_records.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/type-inclusion-for-records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/type-inclusion-for-records",
                 "_blank"
               );
             }}

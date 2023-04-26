@@ -68,7 +68,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d35a03fb11b3e23b87b7ef0bcacf4f08&file=iterating_over_xml_with_query.bal",
+                "https://play.ballerina.io/?gist=338d6dc253f7f0277155ed0ef62d896e&file=iterating_over_xml_with_query.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/iterating-over-xml-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/iterating-over-xml-with-query",
                 "_blank"
               );
             }}

@@ -54,7 +54,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4b5c055f8f1392186d1af7d172510862&file=rest_binding_pattern_in_list_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=bc0f3ed1ffaf2e5e678cfa789396a8ea&file=rest_binding_pattern_in_list_binding_pattern.bal",
                 "_blank"
               );
             }}
@@ -79,7 +79,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/rest-binding-pattern-in-list-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/rest-binding-pattern-in-list-binding-pattern",
                 "_blank"
               );
             }}

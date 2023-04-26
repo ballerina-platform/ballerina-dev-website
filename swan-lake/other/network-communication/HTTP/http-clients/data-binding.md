@@ -6,17 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/data-binding/
 active: data-binding
 intro: The sections below explain the how to perform data binding with HTTP clients.  
-redirect_from:
-  - /learn/network-communication/http/http-clients/data-binding
-  - /swan-lake/learn/network-communication/http/http-clients/data-binding/
-  - /swan-lake/learn/network-communication/http/http-clients/data-binding
-  - /learn/network-communication/http/http-clients/data-binding/
-  - /learn/network-communication/http/http-clients/data-binding
-  - /learn/user-guide/network-communication/http/http-clients/data-binding
-  - /learn/network-communication/http/data-binding/
-  - /learn/network-communication/http/data-binding
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient) data binding happens automatically based on the left hand side type. The left hand side type could be any type such as `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types. 

@@ -59,7 +59,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a6720bfca2c3aecbaa7334259a06bf15&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=98c03e92aa5f57fdda37f6ae6b0dc5bb&file=environment_variables.bal",
                 "_blank"
               );
             }}
@@ -84,7 +84,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/environment-variables",
                 "_blank"
               );
             }}

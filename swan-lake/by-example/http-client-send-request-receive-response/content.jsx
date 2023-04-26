@@ -68,7 +68,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c59dd027fa8b24d24bf4c968ddb7cf98&file=http_client_send_request_receive_response.bal",
+                "https://play.ballerina.io/?gist=37ea14a459db9926b1c9b7741dd6b8ec&file=http_client_send_request_receive_response.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export function HttpClientSendRequestReceiveResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-send-request-receive-response",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-send-request-receive-response",
                 "_blank"
               );
             }}

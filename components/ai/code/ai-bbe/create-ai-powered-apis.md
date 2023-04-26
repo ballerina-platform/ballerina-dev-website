@@ -1,6 +1,6 @@
 ---
 title: 'Create AI-powered APIs, automations, and event handlers'
-description: "Effortlessly tackle any API-powered AI integration by leveraging the network abstractions of Ballerina to create APIs, automations, and event handlers for your applications."
+description: "Effortlessly tackle any AI-powered API integration by leveraging the network abstractions of Ballerina to create APIs, automations, and event handlers for your applications."
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai/main.bal'
 ---
 ```
@@ -30,7 +30,7 @@ service / on new http:Listener(8080) {
             model: "text-davinci-003"
         };
         text:CreateCompletionResponse completionRes = 
-            check openaiText->/completions.post(prmt);
+            check openAIText->/completions.post(prmt);
         return completionRes.choices[0].text;
     }
 }

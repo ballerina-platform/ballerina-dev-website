@@ -6,19 +6,6 @@ keywords: ballerina, programming language, serverless, cloud, azure, functions, 
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
 active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
-redirect_from:
-  - /learn/deployment/azure-functions
-  - /swan-lake/learn/deployment/azure-functions/
-  - /swan-lake/learn/deployment/azure-functions
-  - /learn/deployment/azure-functions/
-  - /learn/deployment/azure-functions
-  - /learn/user-guide/deployment/azure-functions
-  - /learn/user-guide/deployment/azure-functions/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions/
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/azure-functions
 ---
 
 ## Prerequisites

@@ -23,7 +23,7 @@ service / on new http:Listener(9090) {
         return albums.toArray();
     }
 
-    resource function post albums(@http:Payload Album album) returns Album {
+    resource function post albums(Album album) returns Album {
         albums.add(album);
         return album;
     }
@@ -73,7 +73,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b724a46fa96cdbcdef97c5950cc0d501&file=http_basic_rest_service.bal",
+                "https://play.ballerina.io/?gist=ccfd4ba234e39a83b5b34cbd194e3ca6&file=http_basic_rest_service.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-basic-rest-service",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-basic-rest-service",
                 "_blank"
               );
             }}

@@ -6,13 +6,6 @@ keywords: ballerina, programming language, java, interoperability, bindgen
 permalink: /learn/java-interoperability/the-bindgen-tool/
 active: the-bindgen-tool
 intro: The Bindgen Tool is a CLI tool that generates Ballerina bindings for Java classes.
-redirect_from:
-  - /learn/tooling-guide/cli-tools/bindgen-tool/
-  - /learn/tooling-guide/cli-tools/bindgen-tool
-  - /learn/cli-documentation/bindgen-tool/
-  - /learn/cli-documentation/bindgen-tool
-  - /learn/cli-documentation/the-bindgen-tool/
-  - /learn/cli-documentation/the-bindgen-tool
 ---
 
 The following sections explain how the Bindgen Tool works.
@@ -24,16 +17,22 @@ $ bal bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output-path>]
                   [--public]
+                  [--with-optional-types]
+                  [--with-optional-types-param]
+                  [--with-optional-types-return]
                   (<class-name>...)
 ```
 
-| Parameter                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type      |
-|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| Parameter                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type      |
+|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
 | `(-cp\|--classpath) <classpath>...`                | This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the Java libraries required for the generation of the Ballerina bindings. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK, or a platform library specified in the `Ballerina.toml` file, then, you need not specify the classpath explicitly. | Optional  |
-| (-mvn\|--maven) `<groupId>:<artifactId>:<version>` | Specifies a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies gets resolved into the `target/platform-libs` directory of the Ballerina package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure gets created in the output path to store the Maven dependencies. The tool updates the `Ballerina.toml`  file with the platform libraries if the command is executed inside a Ballerina package. | Optional  |
+| `(-mvn\|--maven) <groupId>:<artifactId>:<version>` | Specifies a Maven dependency required for the generation of the Ballerina bindings. Here, the specified library and its transitive dependencies get resolved into the `target/platform-libs` directory of the Ballerina package. If the tool is not executed inside a package or if the output path does not point to a package, the `target/platform-libs` directory structure gets created in the output path to store the Maven dependencies. The tool updates the `Ballerina.toml`  file with the platform libraries if the command is executed inside a Ballerina package.                | Optional  |
 | `(-o\|--output) <output>`                          | Generates all the bindings inside a single directory instead of generating module-level mappings. This option could be used in instances where all the mappings are required inside a single module. The specified directory doesn't always have to be inside a Ballerina package.                                                                                                                                                                                                                                                                                                              | Optional  |
-| `--public`                                         | Sets the visibility modifier of the generated binding classes to public. This flag is applicable only if the bindings are generated inside a single directory.                                                                                                                                                                                                                                                                                                                                                                                                                             | Mandatory |
-| `<class-name>...`                                  | One or more space-separated fully-qualified Java class names for which the Ballerina bridge code is to be generated. These class names should be provided at the end of the command.                                                                                                                                                                                                                                                                                                                                                                                                            | Mandatory |
+| `--public`                                            | Sets the visibility modifier of the generated binding classes to public. This flag is applicable only if the bindings are generated inside a single directory.                                                                                                                                                                                                                                                                                                                                                                                                                                  | Mandatory |
+| `--with-optional-types`                               | Generate the optional (i.e., nilable) types for the function parameter and return types to pass and retrieve Java null values to/from the underneath Java API.                                                                                                                                                                                                                                                                                                                                                                                                                                           | Optional  |
+| `--with-optional-types-param`                         | Generate the optional (i.e., nilable) types for the function parameter types to pass Java null values to the underneath Java API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Optional  |
+| `--with-optional-types-return`                        | Generate the optional (i.e., nilable) types for the function return types to retrieve Java null values from the underneath Java API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Optional  |
+| `<class-name>...`                                     | One or more space-separated, fully-qualified Java class names for which the Ballerina bridge code is to be generated. These class names should be provided at the end of the command.                                                                                                                                                                                                                                                                                                                                                                                                            | Mandatory |
 
 ## Generated bridge code
 
@@ -200,12 +199,12 @@ The Ballerina binding classes store a handle reference of the Java object using 
 
 The following table summarizes how Java primitive types are mapped to the corresponding Ballerina primitive types. This is applicable when mapping a return type of a Java method to a Ballerina type.
 
-Java type | Ballerina type
----------- | --------------
-boolean | boolean
-byte | byte
-int, short, char, long | int
-float, double | float
+| Java type              | Ballerina type |
+|------------------------|----------------|
+| boolean                | boolean        |
+| byte                   | byte           |
+| int, short, char, long | int            |
+| float, double          | float          |
 
 ## Support for Java subtyping
 Ballerina bindings provide support for Java subtyping with the aid of type inclusions in the language.
@@ -215,6 +214,12 @@ E.g., a Ballerina binding class mapping the `java.io.FileInputStream` Java class
 ```ballerina
 InputStream inputStream = check newFileInputStream3("sample.txt");
 ```
+
+## Support for handling Java null values
+Ballerina bindings provide the flexibility for the user to handle Java `null` values with the help of optional (i.e., nilable) types in the language.
+However, the tool **will not** generate optional types by default (in order to reduce the complexity of handling nilable types) and the users can opt-in to generate optional types for the Ballerina function parameter and return types by passing the `--with-optional-types` flag. 
+In that way, users can populate null values to the underneath Java API by providing nil values to the generated Ballerina function and
+the generated functions will return nil values in case the counterpart Java method returns null.
 
 ## Support for Java casting
 The `ballerina/jballerina.java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.

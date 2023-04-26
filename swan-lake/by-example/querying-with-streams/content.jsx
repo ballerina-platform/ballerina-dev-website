@@ -65,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e546be84bc3d6388da73442aa36a37ba&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=ca0987cf716a428b22dc0b6640388e3b&file=querying_with_streams.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/querying-with-streams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/querying-with-streams",
                 "_blank"
               );
             }}

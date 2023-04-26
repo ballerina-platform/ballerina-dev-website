@@ -54,7 +54,7 @@ export function ConsumingServices({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a2d4c7ed7a38630ff2f1ac72524b110b&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=70a5f3b9be2ffe4d64eef510fc360233&file=consuming_services.bal",
                 "_blank"
               );
             }}
@@ -79,7 +79,7 @@ export function ConsumingServices({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/consuming-services",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/consuming-services",
                 "_blank"
               );
             }}

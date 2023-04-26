@@ -120,6 +120,10 @@ import {
   codeSnippetData as ContinueStatementCodeSnippetData,
 } from "./continue-statement/content.jsx";
 import {
+  IntRange,
+  codeSnippetData as IntRangeCodeSnippetData,
+} from "./int-range/content.jsx";
+import {
   LanglibFunctions,
   codeSnippetData as LanglibFunctionsCodeSnippetData,
 } from "./langlib-functions/content.jsx";
@@ -363,6 +367,14 @@ import {
   ErrorBindingPatternInMatchStatement,
   codeSnippetData as ErrorBindingPatternInMatchStatementCodeSnippetData,
 } from "./error-binding-pattern-in-match-statement/content.jsx";
+import {
+  RegexpType,
+  codeSnippetData as RegexpTypeCodeSnippetData,
+} from "./regexp-type/content.jsx";
+import {
+  RegexpOperations,
+  codeSnippetData as RegexpOperationsCodeSnippetData,
+} from "./regexp-operations/content.jsx";
 import {
   Table,
   codeSnippetData as TableCodeSnippetData,
@@ -1915,6 +1927,8 @@ const BBEs = {
   BreakStatementCodeSnippetData,
   ContinueStatement,
   ContinueStatementCodeSnippetData,
+  IntRange,
+  IntRangeCodeSnippetData,
   LanglibFunctions,
   LanglibFunctionsCodeSnippetData,
   StructuralTyping,
@@ -2037,6 +2051,10 @@ const BBEs = {
   MappingBindingPatternInMatchStatementCodeSnippetData,
   ErrorBindingPatternInMatchStatement,
   ErrorBindingPatternInMatchStatementCodeSnippetData,
+  RegexpType,
+  RegexpTypeCodeSnippetData,
+  RegexpOperations,
+  RegexpOperationsCodeSnippetData,
   Table,
   TableCodeSnippetData,
   TableTypes,

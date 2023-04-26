@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/
 active: http-clients
 intro: The topics below explain how to process HTTP requests and responses using Ballerina. It provides in-depth details on how HTTP clients are created and how their functionality can be used effectively.  
-redirect_from:
-  - /learn/network-communication/http/http-clients
-  - /swan-lake/learn/network-communication/http/http-clients/
-  - /swan-lake/learn/network-communication/http/http-clients
-  - /learn/network-communication/http/http-clients/
-  - /learn/network-communication/http/http-clients
-  - /learn/user-guide/network-communication/http/http-clients
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Creating HTTP clients

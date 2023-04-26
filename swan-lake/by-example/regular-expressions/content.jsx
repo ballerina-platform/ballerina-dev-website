@@ -60,6 +60,28 @@ export function RegularExpressions({ codeSnippets }) {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Deprecation Notice:</strong> This library is deprecated and
+          will no longer be maintained or updated. Instead, it is recommended to
+          use the{" "}
+          <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest">
+            <code>ballerina/lang.regexp</code>
+          </a>{" "}
+          library for continued support and updates. For more information, see
+          the new{" "}
+          <a href="/learn/by-example/regexp-type">RegExp type example</a>,{" "}
+          <a href="/learn/by-example/regexp-operations">
+            RegExp operations example
+          </a>
+          , and{" "}
+          <a href="/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
+            Regular expressions feature guide
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -70,7 +92,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8011ee896e309dba250c6e2193253c40&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=c6db797b5077db8f16dd9fd07969ea22&file=regular_expressions.bal",
                 "_blank"
               );
             }}
@@ -95,7 +117,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/regular-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/regular-expressions",
                 "_blank"
               );
             }}

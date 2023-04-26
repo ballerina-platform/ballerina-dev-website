@@ -5,18 +5,6 @@ description: See why the support for a graphical model lays the foundation for d
 keywords: ballerina, programming language, sequence diagram, graphical, diagram editor, why ballerina
 permalink: /why-ballerina/graphical/
 active: graphical
-redirect_from:
-  - /why/sequence-diagrams-for-programming/
-  - /why/sequence-diagrams-for-programming
-  - /why-ballerina/sequence-diagrams-for-programming/
-  - /why-ballerina/sequence-diagrams-for-programming
-  - /learn/user-guide/why-ballerina/sequence-diagrams-for-programming
-  - /learn/user-guide/why-ballerina/sequence-diagrams-for-programming/
-  - /learn/user-guide/why-ballerina/graphical
-  - /learn/user-guide/why-ballerina/graphical/
-  - /learn/why-ballerina/graphical
-  - /learn/why-ballerina/graphical/
-  - /why-ballerina/graphical
 ---
 
 In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.

@@ -91,7 +91,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a49d9fe3e8fdfbb22cb16f6f569ca0fa&file=object_type_inclusion.bal",
+                "https://play.ballerina.io/?gist=bc87c2d644aeb8d24d6d9a5a5c4ef093&file=object_type_inclusion.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/object-type-inclusion",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/object-type-inclusion",
                 "_blank"
               );
             }}

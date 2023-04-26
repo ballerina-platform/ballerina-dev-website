@@ -7,16 +7,6 @@ keywords: ballerina, programming language, testing, mocking, object mocking
 permalink: /learn/test-ballerina-code/mocking/
 active: mocking
 intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
-redirect_from:
-  - /learn/testing-ballerina-code/mocking
-  - /learn/testing-ballerina-code/mocking/
-  - /swan-lake/learn/testing-ballerina-code/mocking/
-  - /swan-lake/learn/testing-ballerina-code/mocking
-  - /learn/user-guide/testing-ballerina-code/mocking
-  - /learn/user-guide/testing-ballerina-code/mocking/
-  - /learn/test-ballerina-code/mocking
-  - /learn/guides/testing-ballerina-code/mocking/
-  - /learn/guides/testing-ballerina-code/mocking
 ---
 
 ## Mock objects
@@ -102,6 +92,11 @@ public function testGetRandomJoke() {
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return 
 a specific value or to do nothing.
 
+>**Note:** It is important to ensure that all member functions of the object being tested are properly stubbed. 
+> If any function is called within the implementation that hasn't been stubbed, the test framework will generate an 
+> error message in the following format: 
+> `no cases registered for member function '<member_function_name>' of object type '<object_type>'.`
+
 ***Example:***
 
 Let’s make changes to the above example to get a random joke from a specific category (e.g., food or movies).
@@ -110,8 +105,8 @@ Let’s make changes to the above example to get a random joke from a specific c
 
 ```ballerina
 import ballerina/http;
-import ballerina/regex;
 import ballerina/lang.array;
+import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -132,7 +127,7 @@ function getRandomJoke(string name, string category = "food") returns string|err
 
     // Get a random joke from the provided category
     Joke joke = check clientEndpoint->get("/random?category=" + category);
-    return regex:replaceAll(joke.value, "Chuck Norris", name);
+    return re `Chuck Norris`.replaceAll(joke.value, name);
 }
 
 function isCategoryAvailable(string[] categories, string category) returns boolean => array:some(categories, categoryVal => categoryVal == category);

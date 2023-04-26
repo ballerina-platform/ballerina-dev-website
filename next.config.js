@@ -57,8 +57,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/featured-use-cases/deploy-ballerina-on-kubernetes`,
       },
       {
-        source: `/${redirectBase}learn/get-started-with-ballerina`,
-        destination: `/${redirectBase}learn/get-started/get-started-with-ballerina`,
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/get-started/get-started`,
       },
       {
         source: `/${redirectBase}learn/language-basics`,
@@ -85,8 +85,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/featured-use-cases/write-a-restful-api-with-ballerina`,
       },
       {
-        source: `/${redirectBase}learn/install-ballerina/:slug`,
-        destination: `/${redirectBase}learn/get-started/install-ballerina/:slug`,
+        source: `/${redirectBase}learn/installation-options`,
+        destination: `/${redirectBase}learn/get-started/installation-options`,
       },
       {
         source: "/learn",

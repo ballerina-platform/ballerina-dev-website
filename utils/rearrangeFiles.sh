@@ -1,5 +1,4 @@
 #Rearrange files to match the urls
-cp -r ./out/learn/get-started/* ./out/learn
 cp -r ./out/learn/featured-use-cases/* ./out/learn
 cp -r ./out/learn/learn-the-language/* ./out/learn
 cp -r ./out/learn/learn-the-platform/* ./out/learn
@@ -16,12 +15,11 @@ cp -r ./out/learn/source-code-dependencies/* ./out/learn
 cp ./out/404/index.html ./out/404.html
 
 #Remove duplicated files
-rm -rf ./out/learn/get-started/ ./out/learn/featured-use-cases/ ./out/learn/learn-the-language/ ./out/learn/learn-the-platform/ ./out/policies/
+rm -rf ./out/learn/featured-use-cases/ ./out/learn/learn-the-language/ ./out/learn/learn-the-platform/ ./out/policies/
 rm -rf ./out/learn/native-support/ ./out/learn/ballerina-central/ ./out/learn/ballerina-tooling/ ./out/learn/configure-observe/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/
 
 
 #Edit the sitemap
-sed -i 's/get-started\///g' ./out/sitemap.xml
 sed -i 's/featured-use-cases\///g' ./out/sitemap.xml
 sed -i 's/learn-the-language\///g' ./out/sitemap.xml
 sed -i 's/learn-the-platform\///g' ./out/sitemap.xml

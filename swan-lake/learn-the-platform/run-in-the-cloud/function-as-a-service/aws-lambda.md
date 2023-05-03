@@ -34,11 +34,11 @@ Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-st
 
 Follow the steps below to set up an AWS account.
 
-1. [Create an AWS account](https://aws.amazon.com/getting-started/guides/setup-environment/module-one/).
+1. Create an <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">AWS account</a>.
 
     >**Info:** For detailed instrucitons on creating an AWS account, see []().
 
-2. [Sign in to the AWS account](https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-prereqs-instructions.html) you created.
+2. <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-prereqs-instructions.html" target="_blank">Sign in</a> to the AWS account you created.
 
     >**Info:** For detailed instrucitons on creating an AWS account, see []().
 
@@ -46,13 +46,15 @@ Follow the steps below to set up an AWS account.
 
 Follow the steps below to create a new user in your AWS account.
 
-1. [Create a new AWS user and set the permissions](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-create). 
+1. Create a <a href="" target="_blank">new AWS user</a>.
+
+2. <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-create" target="_blank">Set the permissions</a> to the created user.
 
     >**Info:** Enter the username, enable programmatic access, and make sure the user has the `AWSLambda_FullAccess` or higher permissions. For detailed instrucitons on creating an AWS account, see []().
 
-2. [Obtain the access keys](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get).
+3. Obtain the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get" target="_blank">access keys</a>.
 
-3. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html" target="_blank">AWS CLI</a> using the access key and secret generated in the user creation.
+4. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html" target="_blank">AWS CLI</a> using the access key and secret generated in the user creation.
 
     >**Info:** For detailed instrucitons on creating an AWS account, see [](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-configure.title).
 
@@ -60,11 +62,13 @@ Follow the steps below to create a new user in your AWS account.
 
 Follow the steps below to create a new role in your AWS account.
 
-1. [Create the role and set the permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console).
+1. Create a <a href="" target="_blank">new role</a>.
 
-    >**Info:** The role should have the `AWSLambdaBasicExecutionRole` or higher permissions. For detailed instrucitons on creating an AWS account, see []().
+2. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console" target="_blank">Set the permissions</a> to the created role.
 
-2. Access the newly created role in the AWS Console, and copy the role ARN to use when the Lambda function is being deployed.
+    >**Info:** The role should have the `AWSLambda_FullAccess` or higher permissions. For detailed instrucitons on creating an AWS account, see <a href="" target="_blank"></a>.
+
+3. Access the newly created role in the AWS Console, and copy the role ARN to use when the Lambda function is being deployed.
 
 ## Write the function
 
@@ -93,7 +97,17 @@ The AWS Lambda functionality is implemented as a compiler extension. Thus, artif
 
 Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. This information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html" target="_blank">AWS CLI</a> to deploy the functions. 
 
-**Info:** When you are deploying, make sure to replace the `$FREGION`, `$FUNCTION_NAME` and `$LAMBDA_ROLE_ARN` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
+To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For example, see the sample command below.
+
+**Info:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
+
+```bash
+	Run the following command to deploy each Ballerina AWS Lambda function:
+	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///Users/user1/Desktop/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
+
+	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
+	aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
+```
 
 >**Info:**  For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
@@ -101,11 +115,9 @@ Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer
 
 The deployed AWS Lambda function can be tested by invoking it directly using the CLI. 
 
->**Info:** To check the logs of the execution, navigate the AWS Lambda function in the portal, and then click on the **Monitor** tab and the **Logs** button.
-
 ## Learn more
 
->**Note:** In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
+In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
 
 For examples on using AWS Lambda functions, see the below.
 

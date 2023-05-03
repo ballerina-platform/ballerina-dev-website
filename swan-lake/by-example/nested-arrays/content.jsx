@@ -66,7 +66,7 @@ export function NestedArrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=17b0ae91fdf5d0e44ddbc97ac1862ff8&file=nested_arrays.bal",
+                "https://play.ballerina.io/?gist=f0e3ff195f65e9b9f995b3d45d70e504&file=nested_arrays.bal",
                 "_blank"
               );
             }}

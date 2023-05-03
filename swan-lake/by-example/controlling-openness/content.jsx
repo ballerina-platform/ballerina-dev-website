@@ -75,7 +75,7 @@ export function ControllingOpenness({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3e3494607b50a750ec953579eea23ac3&file=controlling_openness.bal",
+                "https://play.ballerina.io/?gist=de08033656ee3c659945f8f5b8d957e1&file=controlling_openness.bal",
                 "_blank"
               );
             }}

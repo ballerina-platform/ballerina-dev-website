@@ -513,22 +513,13 @@
                     "id": "run-in-the-cloud",
                     "subDirectories": [
                         {
-                            "dirName": "Code to cloud",
+                            "dirName": "Code to cloud deployment",
                             "level": 3,
                             "position": 1,
-                            "isDir": true,
-                            "url": "/learn/run-in-the-cloud/code-to-cloud",
-                            "id": "code-to-cloud",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Code to Cloud deployment",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment",
-                                    "id": "code-to-cloud-deployment"
-                                }
-                            ]
+                            "isDir": false,
+                            "url": "/learn/run-in-the-cloud/code-to-cloud-deployment",
+                            "id": "code-to-cloud-deployment"
+            
                         },
                         {
                             "dirName": "Function as a service",

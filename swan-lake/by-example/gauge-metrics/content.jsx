@@ -449,7 +449,7 @@ export function GaugeMetrics({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Docker" href="/learn/by-example/c2c-docker-deployment">
+          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -458,7 +458,7 @@ export function GaugeMetrics({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Docker
+                  Hello world
                 </span>
               </div>
               <svg

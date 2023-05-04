@@ -264,13 +264,6 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
-      },
-      {
-        "name": "Range function",
-        "url": "int-range",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
       }
     ]
   },
@@ -2436,8 +2429,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
+        "name": "Service interceptors",
+        "url": "graphql-service-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field interceptors",
+        "url": "graphql-field-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -4304,22 +4313,13 @@
     ]
   },
   {
-    "title": "Code to Cloud",
+    "title": "Docker",
     "column": 0,
     "category": "Deployment",
     "samples": [
       {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
+        "name": "Hello world",
+        "url": "docker-hello-world",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4329,13 +4329,29 @@
     ]
   },
   {
-    "title": "Function as a Service",
+    "title": "Kubernetes",
     "column": 1,
     "category": "Deployment",
     "samples": [
       {
-        "name": "Azure Functions",
-        "url": "azure-functions-deployment",
+        "name": "Hello world",
+        "url": "kubernetes-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "AWS Lambda",
+    "column": 2,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "aws-lambda-hello-world",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4343,8 +4359,42 @@
         "isLearnByExample": false
       },
       {
-        "name": "AWS Lambda",
-        "url": "aws-lambda-deployment",
+        "name": "Context execution",
+        "url": "aws-lambda-context-execution",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "S3 trigger",
+        "url": "aws-lambda-s3-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "DynamoDB trigger",
+        "url": "aws-lambda-dynamodb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Azure Functions",
+    "column": 3,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "azure-functions-hello-world",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

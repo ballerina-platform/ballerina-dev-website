@@ -60,27 +60,24 @@ export function RegularExpressions({ codeSnippets }) {
         .
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Deprecation Notice:</strong> This library is deprecated and
-          will no longer be maintained or updated. Instead, it is recommended to
-          use the{" "}
-          <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest">
-            <code>ballerina/lang.regexp</code>
-          </a>{" "}
-          library for continued support and updates. For more information, see
-          the new{" "}
-          <a href="/learn/by-example/regexp-type">RegExp type example</a>,{" "}
-          <a href="/learn/by-example/regexp-operations">
-            RegExp operations example
-          </a>
-          , and{" "}
-          <a href="/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
-            Regular expressions feature guide
-          </a>
-          .
-        </p>
-      </blockquote>
+      <p>
+        <strong>Deprecation Notice:</strong> This library is deprecated and will
+        no longer be maintained or updated. Instead, it is recommended to use
+        the{" "}
+        <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest">
+          <code>ballerina/lang.regexp</code>
+        </a>{" "}
+        library for continued support and updates. For more information, see the
+        new <a href="/learn/by-example/regexp-type">RegExp type example</a>,{" "}
+        <a href="/learn/by-example/regexp-operations">
+          RegExp operations example
+        </a>
+        , and{" "}
+        <a href="/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
+          Regular expressions feature guide
+        </a>
+        .
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -92,7 +89,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=05cadae561f1b82c296da12291e99078&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=76f3684751fe060432e918e01c0b4a1c&file=regular_expressions.bal",
                 "_blank"
               );
             }}

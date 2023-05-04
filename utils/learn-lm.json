@@ -17,7 +17,7 @@
                 {
                     "dirName": "[Experimental] Build a native executable",
                     "level": 2,
-                    "position": 1,
+                    "position": 9,
                     "isDir": false,
                     "url": "/learn/build-a-native-executable",
                     "id": "build-a-native-executable"
@@ -33,7 +33,7 @@
                 {
                     "dirName": "Publish packages to Ballerina Central",
                     "level": 2,
-                    "position": 1,
+                    "position": 7,
                     "isDir": false,
                     "url": "/learn/publish-packages-to-ballerina-central",
                     "id": "publish-packages-to-ballerina-central"

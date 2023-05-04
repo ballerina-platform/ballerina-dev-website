@@ -135,7 +135,7 @@ Let's take a moment to digest the new constructs in this code:
 
 >**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
-## Running the simple REST API
+## Run the simple REST API
 
 Let's run this package in your terminal:
 

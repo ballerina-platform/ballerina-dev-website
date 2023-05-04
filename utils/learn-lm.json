@@ -15,22 +15,12 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
-                    "dirName": "Native support",
+                    "dirName": "[Experimental] Build a native executable",
                     "level": 2,
-                    "position": 9,
-                    "isDir": true,
-                    "url": "/learn/native-support",
-                    "id": "native-support",
-                    "subDirectories": [
-                        {
-                            "dirName": "[Experimental] Build a native executable",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/build-a-native-executable",
-                            "id": "build-a-native-executable"
-                        }
-                    ]
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/build-a-native-executable",
+                    "id": "build-a-native-executable"
                 },
                 {
                     "dirName": "Ballerina specifications",
@@ -41,22 +31,12 @@
                     "id": "ballerina-specifications"
                 },
                 {
-                    "dirName": "Ballerina Central",
+                    "dirName": "Publish packages to Ballerina Central",
                     "level": 2,
-                    "position": 7,
-                    "isDir": true,
-                    "url": "/learn/ballerina-central",
-                    "id": "ballerina-central",
-                    "subDirectories": [
-                        {
-                            "dirName": "Publish packages to Ballerina Central",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/publish-packages-to-ballerina-central",
-                            "id": "publish-packages-to-ballerina-central"
-                        }
-                    ]
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/publish-packages-to-ballerina-central",
+                    "id": "publish-packages-to-ballerina-central"
                 },
                 {
                     "dirName": "Configure & observe",

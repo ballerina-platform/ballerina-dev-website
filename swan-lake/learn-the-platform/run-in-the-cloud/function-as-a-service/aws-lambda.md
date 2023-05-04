@@ -34,29 +34,27 @@ Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-st
 
 Follow the steps below to set up an AWS account.
 
-1. Create an <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">AWS account</a>.
+1. Create an <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-AWSsignup.html" target="_blank">AWS account</a>.
 
-    >**Info:** For detailed instrucitons on creating an AWS account, see []().
+    >**Info:** For detailed instrucitons on creating an AWS account, see <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">Module 1: Create Your AWS Account</a>.
 
-2. <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-prereqs-instructions.html" target="_blank">Sign in</a> to the AWS account you created.
-
-    >**Info:** For detailed instrucitons on creating an AWS account, see []().
+2. <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-rootuser.html" target="_blank">Sign in</a> to the AWS account you created.
 
 ### Create a user
 
 Follow the steps below to create a new user in your AWS account.
 
-1. Create a <a href="" target="_blank">new AWS user</a>.
+1. Create a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">new AWS user</a> by providing access to the AWS Management Console.
 
-2. <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-create" target="_blank">Set the permissions</a> to the created user.
+    >**Info:** Enter a username and enable access to the AWS Management Console.
 
-    >**Info:** Enter the username, enable programmatic access, and make sure the user has the `AWSLambda_FullAccess` or higher permissions. For detailed instrucitons on creating an AWS account, see []().
+2. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">Set the permissions</a> to the created user.
+
+    >**Info:** Enable `AWSLambda_FullAccess` or higher permissions. 
 
 3. Obtain the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get" target="_blank">access keys</a>.
 
-4. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html" target="_blank">AWS CLI</a> using the access key and secret generated in the user creation.
-
-    >**Info:** For detailed instrucitons on creating an AWS account, see [](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-configure.title).
+4. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-configure.title" target="_blank">AWS CLI</a> for the user by providing the access key and secret generated in the user creation.
 
 ### Create a role
 
@@ -66,7 +64,7 @@ Follow the steps below to create a new role in your AWS account.
 
 2. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console" target="_blank">Set the permissions</a> to the created role.
 
-    >**Info:** The role should have the `AWSLambda_FullAccess` or higher permissions. For detailed instrucitons on creating an AWS account, see <a href="" target="_blank"></a>.
+    >**Info:** Enable `AWSLambda_FullAccess` or higher permissions. 
 
 3. Access the newly created role in the AWS Console, and copy the role ARN to use when the Lambda function is being deployed.
 

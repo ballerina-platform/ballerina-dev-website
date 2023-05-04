@@ -120,7 +120,7 @@ export function ArrayMapSymmetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92baac26d7f2b50701d9657c5c96c2ed&file=array_map_symmetry.bal",
+                "https://play.ballerina.io/?gist=34a98e61979f108e5bdb4c53205312f7&file=array_map_symmetry.bal",
                 "_blank"
               );
             }}

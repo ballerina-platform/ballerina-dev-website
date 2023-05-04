@@ -50,7 +50,7 @@ export function Integers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d69271df70e94ab26a62fd5470cad99&file=integers.bal",
+                "https://play.ballerina.io/?gist=4039ab93b99d9220ae7c069ed03f4448&file=integers.bal",
                 "_blank"
               );
             }}

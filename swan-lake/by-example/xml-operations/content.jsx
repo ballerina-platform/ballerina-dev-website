@@ -59,7 +59,7 @@ export function XmlOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=11f617abbd61865b25dcf4679840e1e1&file=xml_operations.bal",
+                "https://play.ballerina.io/?gist=09b9479f1b41ea5ee96c0c2c3325fcd6&file=xml_operations.bal",
                 "_blank"
               );
             }}

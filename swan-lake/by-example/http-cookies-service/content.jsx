@@ -89,7 +89,7 @@ export function HttpCookiesService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f45469b30915b339568ec5fe3ccfd846&file=http_cookies_service.bal",
+                "https://play.ballerina.io/?gist=ea835465f15ba847768d146e812a59f2&file=http_cookies_service.bal",
                 "_blank"
               );
             }}

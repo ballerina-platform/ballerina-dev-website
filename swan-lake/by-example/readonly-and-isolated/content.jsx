@@ -66,7 +66,7 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4b39dd7efceaff59780f2166598e0641&file=readonly_and_isolated.bal",
+                "https://play.ballerina.io/?gist=4f4b7e382bbe451092dda1f3c895e57f&file=readonly_and_isolated.bal",
                 "_blank"
               );
             }}

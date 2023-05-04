@@ -61,7 +61,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b7ab06110a4551bd7d06fba3cae55848&file=logging.bal",
+                "https://play.ballerina.io/?gist=b0b53cb55ccc61f77de0cabb957a6300&file=logging.bal",
                 "_blank"
               );
             }}

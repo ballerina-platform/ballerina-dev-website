@@ -44,7 +44,7 @@ Follow the steps below to set up an AWS account.
 
 Follow the steps below to create a new user in your AWS account.
 
-1. Create a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">new AWS user</a> by providing access to the AWS Management Console.
+1. Create a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">new AWS user</a>.
 
     >**Info:** Enter a username and enable access to the AWS Management Console.
 

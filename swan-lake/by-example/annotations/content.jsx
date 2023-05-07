@@ -72,7 +72,7 @@ export function Annotations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8431142ed3b5232c113df4abaf875ee1&file=annotations.bal",
+                "https://play.ballerina.io/?gist=fb4f643b108dd598c2fd14cc29f82c37&file=annotations.bal",
                 "_blank"
               );
             }}

@@ -4359,8 +4359,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context execution",
-        "url": "aws-lambda-context-execution",
+        "name": "Execution context",
+        "url": "aws-lambda-execution-context",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -4395,6 +4395,42 @@
       {
         "name": "Hello world",
         "url": "azure-functions-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Timer trigger",
+        "url": "azure-functions-timer-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger",
+        "url": "azure-functions-http-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger",
+        "url": "azure-functions-cosmosdb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger",
+        "url": "azure-functions-native",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

@@ -14,7 +14,7 @@ intro: This guide walks you through writing a simple GraphQL service to serve a 
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake) ](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake) ](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal

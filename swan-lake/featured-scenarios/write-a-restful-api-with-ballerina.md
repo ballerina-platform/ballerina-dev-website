@@ -127,7 +127,7 @@ service /covid/status on new http:Listener(9000) {
 In this code:
 
 - Unlike normal functions, resource methods can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
-- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Creted`. 
+- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Created`. 
 
 ### Create the second resource to add data
 

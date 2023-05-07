@@ -30,7 +30,7 @@ Patch releases of Ballerina distributions contain bug fixes and fixes for critic
 
 ## Use the update tool
 
-If you haven’t installed Ballerina yet, see [Install Ballerina](/learn/install-ballerina/set-up-ballerina) for the instructions.
+If you haven’t installed Ballerina yet, [install it](/downloads/).
 
 Once the installation is complete, you would see the following directory structure inside the installation directory.
 

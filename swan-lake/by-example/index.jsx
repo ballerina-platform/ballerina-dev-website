@@ -1864,9 +1864,9 @@ import {
   codeSnippetData as AwsLambdaHelloWorldCodeSnippetData,
 } from "./aws-lambda-hello-world/content.jsx";
 import {
-  AwsLambdaContextExecution,
-  codeSnippetData as AwsLambdaContextExecutionCodeSnippetData,
-} from "./aws-lambda-context-execution/content.jsx";
+  AwsLambdaExecutionContext,
+  codeSnippetData as AwsLambdaExecutionContextCodeSnippetData,
+} from "./aws-lambda-execution-context/content.jsx";
 import {
   AwsLambdaS3Trigger,
   codeSnippetData as AwsLambdaS3TriggerCodeSnippetData,
@@ -1879,6 +1879,22 @@ import {
   AzureFunctionsHelloWorld,
   codeSnippetData as AzureFunctionsHelloWorldCodeSnippetData,
 } from "./azure-functions-hello-world/content.jsx";
+import {
+  AzureFunctionsTimerTrigger,
+  codeSnippetData as AzureFunctionsTimerTriggerCodeSnippetData,
+} from "./azure-functions-timer-trigger/content.jsx";
+import {
+  AzureFunctionsHttpTrigger,
+  codeSnippetData as AzureFunctionsHttpTriggerCodeSnippetData,
+} from "./azure-functions-http-trigger/content.jsx";
+import {
+  AzureFunctionsCosmosdbTrigger,
+  codeSnippetData as AzureFunctionsCosmosdbTriggerCodeSnippetData,
+} from "./azure-functions-cosmosdb-trigger/content.jsx";
+import {
+  AzureFunctionsNative,
+  codeSnippetData as AzureFunctionsNativeCodeSnippetData,
+} from "./azure-functions-native/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -2815,14 +2831,22 @@ const BBEs = {
   KubernetesHelloWorldCodeSnippetData,
   AwsLambdaHelloWorld,
   AwsLambdaHelloWorldCodeSnippetData,
-  AwsLambdaContextExecution,
-  AwsLambdaContextExecutionCodeSnippetData,
+  AwsLambdaExecutionContext,
+  AwsLambdaExecutionContextCodeSnippetData,
   AwsLambdaS3Trigger,
   AwsLambdaS3TriggerCodeSnippetData,
   AwsLambdaDynamodbTrigger,
   AwsLambdaDynamodbTriggerCodeSnippetData,
   AzureFunctionsHelloWorld,
   AzureFunctionsHelloWorldCodeSnippetData,
+  AzureFunctionsTimerTrigger,
+  AzureFunctionsTimerTriggerCodeSnippetData,
+  AzureFunctionsHttpTrigger,
+  AzureFunctionsHttpTriggerCodeSnippetData,
+  AzureFunctionsCosmosdbTrigger,
+  AzureFunctionsCosmosdbTriggerCodeSnippetData,
+  AzureFunctionsNative,
+  AzureFunctionsNativeCodeSnippetData,
 };
 
 export default BBEs;

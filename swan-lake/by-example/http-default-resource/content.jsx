@@ -56,7 +56,7 @@ export function HttpDefaultResource({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fe49c716c08f6a62e8cc21b6567d4b6a&file=http_default_resource.bal",
+                "https://play.ballerina.io/?gist=bc91f6f717c6102d4d4e9a5b2e314608&file=http_default_resource.bal",
                 "_blank"
               );
             }}

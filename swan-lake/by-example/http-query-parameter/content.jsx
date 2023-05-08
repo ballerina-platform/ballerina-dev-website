@@ -69,7 +69,7 @@ export function HttpQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9701b35c3a1c5aae1c8fb1bd8e4ba7ae&file=http_query_parameter.bal",
+                "https://play.ballerina.io/?gist=9421016e4a8deecc984f31cc57d00a50&file=http_query_parameter.bal",
                 "_blank"
               );
             }}

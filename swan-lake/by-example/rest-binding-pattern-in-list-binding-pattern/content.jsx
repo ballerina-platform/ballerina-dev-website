@@ -54,7 +54,7 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=802572f20eed007626b39131794053dd&file=rest_binding_pattern_in_list_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=c1f5a649003269dc3657cd216fc79a0d&file=rest_binding_pattern_in_list_binding_pattern.bal",
                 "_blank"
               );
             }}

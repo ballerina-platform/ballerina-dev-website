@@ -33,7 +33,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>AWS Lambda</h1>
+      <h1>AWS Lambda - Hello world</h1>
 
       <p>
         AWS Lambda is an event driven, serverless computing platform. Ballerina
@@ -452,8 +452,8 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Context execution"
-            href="/learn/by-example/aws-lambda-context-execution"
+            title="Execution context"
+            href="/learn/by-example/aws-lambda-execution-context"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -463,7 +463,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context execution
+                  Execution context
                 </span>
               </div>
               <svg

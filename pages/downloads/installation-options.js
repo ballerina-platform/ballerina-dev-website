@@ -22,11 +22,13 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
+import { Liquid } from "liquidjs";
 
 import Layout from "../../layouts/LayoutOther";
 import MainContent from "../../components/common/main-content/MainContent";
 import { prefix } from "../../utils/prefix";
 import Toc from "../../components/common/pg-toc/Toc";
+import SwanLake from "../../_data/swanlake-latest/metadata.json";
 
 
 export async function getStaticProps() {
@@ -52,6 +54,34 @@ export default function PostPage({ frontmatter, content, id }) {
     const handleToc = (data) => {
         setShowToc(data)
     }
+
+    // Update values in markdown files
+  const engine = new Liquid();
+  const AddLiquid = (content) => {
+    const [newContent, setNewContent] = React.useState("");
+    const md = engine.parse(content);
+    engine
+      .render(md, {
+        v: "Liquid",
+        "windows-installer-size": SwanLake["windows-installer-size"],
+        dist_server: process.env.distServer,
+        version: SwanLake.version,
+        "windows-installer": SwanLake["windows-installer"],
+        "linux-installer": SwanLake["linux-installer"],
+        "linux-installer-size": SwanLake["linux-installer-size"],
+        "rpm-installer": SwanLake["rpm-installer"],
+        "rpm-installer-size": SwanLake["rpm-installer-size"],
+        "macos-installer": SwanLake["macos-installer"],
+        "macos-installer-size": SwanLake["macos-installer-size"],
+        "macos-arm-installer": SwanLake["macos-arm-installer"],
+        "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
+        "other-artefacts": SwanLake["other-artefacts"],
+      })
+      .then((md) => {
+        setNewContent(md);
+      });
+    return newContent;
+  };
 
     return (
         <>
@@ -118,7 +148,7 @@ export default function PostPage({ frontmatter, content, id }) {
                     <Row className="pageContentRow innerRow">
                         <Col xs={12}>
                             <MainContent
-                                content={content}
+                                content={AddLiquid(content)}
                                 handleToc={handleToc} />
                         </Col>
                     </Row>

@@ -69,7 +69,7 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0da4161740d1bbe6a0229c9e2471d771&file=error_type_intersection.bal",
+                "https://play.ballerina.io/?gist=14bc3a504b4589683b6147432de0dfee&file=error_type_intersection.bal",
                 "_blank"
               );
             }}

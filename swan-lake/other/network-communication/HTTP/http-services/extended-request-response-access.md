@@ -10,9 +10,9 @@ intro: The service resources have the functionality of handling request and resp
 
 ## Interacting with the remote client
 
-This is done by optionally taking in the [`http:Caller`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller) and [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) typed parameters, which represent calling the remote client and the current request information respectively. 
+This is done by optionally taking in the [`http:Caller`](https://lib.ballerina.io/ballerina/http/latest/clients/Caller) and [`http:Request`](https://lib.ballerina.io/ballerina/http/latest/classes/Request) typed parameters, which represent calling the remote client and the current request information respectively. 
 
-The [`http:Caller`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller) contains functionality to interact with the remote client such as responding to the client using the [`respond`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#respond) remote method. The [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) object contains operations to look up information regarding the current incoming HTTP request such as the request payload, [query](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams/[matrix](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams) parameters, [cookies](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getCookies), and [headers](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#getHeaders).
+The [`http:Caller`](https://lib.ballerina.io/ballerina/http/latest/clients/Caller) contains functionality to interact with the remote client such as responding to the client using the [`respond`](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#respond) remote method. The [`http:Request`](https://lib.ballerina.io/ballerina/http/latest/classes/Request) object contains operations to look up information regarding the current incoming HTTP request such as the request payload, [query](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getQueryParams/[matrix](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getMatrixParams) parameters, [cookies](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getCookies), and [headers](https://lib.ballerina.io/ballerina/http/latest/classes/Request#getHeaders).
 
 ## Example
 
@@ -49,7 +49,7 @@ Hello, Jack!
 
 Using this approach, you can also execute additional logic even after the response is sent back to the client. For example, in the case of a network issue when responding back to the client, you can do custom operations for failure-recovery or do extended logging operations. 
 
-The [`respond`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Caller#respond) remote method also takes in an [`http:Response`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response) object if you need finer control in the response such as setting the status code or overriding the default [content type](https://docs.central.ballerina.io/ballerina/http/latest/classes/Response#setContentType). 
+The [`respond`](https://lib.ballerina.io/ballerina/http/latest/clients/Caller#respond) remote method also takes in an [`http:Response`](https://lib.ballerina.io/ballerina/http/latest/classes/Response) object if you need finer control in the response such as setting the status code or overriding the default [content type](https://lib.ballerina.io/ballerina/http/latest/classes/Response#setContentType). 
 
 ### Example
 

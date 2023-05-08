@@ -90,7 +90,7 @@ export function XsltTransformation({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/xslt/latest/">
+        <a href="https://lib.ballerina.io/ballerina/xslt/latest/">
           <code>xslt</code> module
         </a>
         .

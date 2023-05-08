@@ -8,9 +8,9 @@ active: data-binding
 intro: The sections below explain the how to perform data binding with HTTP clients.  
 ---
 
-[`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/HttpClient) data binding happens automatically based on the left hand side type. The left hand side type could be any type such as `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types. 
+[`http:Client`](https://lib.ballerina.io/ballerina/http/latest/clients/HttpClient) data binding happens automatically based on the left hand side type. The left hand side type could be any type such as `string`, `json`, `xml`, `map<json>`, `byte[]`, custom record, and record array types. 
 
-In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://docs.central.ballerina.io/ballerina/http/latest/errors#ClientError) type. 
+In the data binding, any HTTP response that returns the 4xx or 5xx status codes are considered as error situations. Therefore, the [`get`](https://lib.ballerina.io/ballerina/http/latest/clients/Client#get) remote method will return the error value of the [`http:ClientError`](https://lib.ballerina.io/ballerina/http/latest/errors#ClientError) type. 
 
 ## Using JSON and XML in data binding
 

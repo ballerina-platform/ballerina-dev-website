@@ -1,11 +1,1 @@
-{
-  "title": "Send email",
-  "description": "This BBE is about sending emails.",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "email", "SMTP"],
-  "permalink": "/learn/by-example/send-email",
-  "active": "send-email",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/send-email",
-    "/swan-lake/learn/by-example/send-email.html"
-  ]
-}
+{"title":"Send email","keywords":[],"permalink":"/learn/by-example/send-email","active":"send-email","redirect_from":["/swan-lake/learn/by-example/send-email","/swan-lake/learn/by-example/send-email.html"]}

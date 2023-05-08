@@ -1,11 +1,1 @@
-{
-  "title": "Read/write bytes",
-  "description": "BBE on how to read/write from/to a bytes file.",
-  "keywords": ["ballerina", "ballerina by examples", "bbe", "bytes"],
-  "permalink": "/learn/by-example/io-bytes",
-  "active": "io-bytes",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/io-bytes",
-    "/swan-lake/learn/by-example/io-bytes.html"
-  ]
-}
+{"title":"Read/write bytes","keywords":[],"permalink":"/learn/by-example/io-bytes","active":"io-bytes","redirect_from":["/swan-lake/learn/by-example/io-bytes","/swan-lake/learn/by-example/io-bytes.html"]}

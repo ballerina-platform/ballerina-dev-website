@@ -1,17 +1,1 @@
-{
-  "title": "Module lifecycle",
-  "description": "This BBE explains module lifecycle and its various phases.",
-  "keywords": [
-    "ballerina",
-    "ballerina by example",
-    "bbe",
-    "module initialization",
-    "listener"
-  ],
-  "permalink": "/learn/by-example/module-lifecycle",
-  "active": "module-lifecycle",
-  "redirect_from": [
-    "/swan-lake/learn/by-example/module-lifecycle",
-    "/swan-lake/learn/by-example/module-lifecycle.html"
-  ]
-}
+{"title":"Module lifecycle","keywords":[],"permalink":"/learn/by-example/module-lifecycle","active":"module-lifecycle","redirect_from":["/swan-lake/learn/by-example/module-lifecycle","/swan-lake/learn/by-example/module-lifecycle.html"]}

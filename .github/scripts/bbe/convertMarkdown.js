@@ -673,8 +673,8 @@ const generate = async (examplesDir, outputDir) => {
               const match = metaReg.exec(
                 fs.readFileSync(fileRelPath, "utf-8").trim()
               );
-              description = match.groups.description;
-              keywords = match.groups.keywords;
+              // description = match.groups.description;
+              // keywords = match.groups.keywords;
 
               // markdown file
             } else if (file.includes(".md")) {
@@ -715,13 +715,13 @@ const generate = async (examplesDir, outputDir) => {
 
                     let { fileName, codeContent } = extractCode(relPath, m[2]);
 
-                    if (playground) {
-                      playgroundLink = await generatePlaygroundLink(
-                        codeContent,
-                        relPath,
-                        fileName
-                      );
-                    }
+                    // if (playground) {
+                    //   playgroundLink = await generatePlaygroundLink(
+                    //     codeContent,
+                    //     relPath,
+                    //     fileName
+                    //   );
+                    // }
 
                     convertedLine = md.render(m[2], {
                       codeCount,

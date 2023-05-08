@@ -22,7 +22,7 @@ public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
 `,
 ];
 
-export function AwsLambdaContextExecution({ codeSnippets }) {
+export function AwsLambdaExecutionContext({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -38,7 +38,7 @@ export function AwsLambdaContextExecution({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Context execution</h1>
+      <h1>AWS Lambda execution context</h1>
 
       <p>
         The example below demonstrates how context information of an AWS
@@ -112,7 +112,7 @@ export function AwsLambdaContextExecution({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal new aws-lambda-context-execution`}</span>
+              <span>{`\$ bal new aws-lambda-execution-context`}</span>
             </code>
           </pre>
         </Col>
@@ -246,7 +246,7 @@ export function AwsLambdaContextExecution({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
-              <span>{`        wso2/aws-lambda-context-execution:0.1.0`}</span>
+              <span>{`        wso2/aws-lambda-execution-context:0.1.0`}</span>
               <span>{`
 `}</span>
               <span>{`Generating executable`}</span>
@@ -254,7 +254,7 @@ export function AwsLambdaContextExecution({ codeSnippets }) {
               <span>{`
 `}</span>
               <span>{`        Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
-              <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws-lambda-context-execution/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws-lambda-execution-context/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
               <span>{`
 `}</span>
               <span>{`        Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
@@ -333,7 +333,7 @@ export function AwsLambdaContextExecution({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws-lambda-context-execution.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`\$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws-lambda-execution-context.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
             </code>
           </pre>
         </Col>

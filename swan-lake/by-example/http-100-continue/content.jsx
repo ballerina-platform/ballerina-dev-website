@@ -76,7 +76,7 @@ export function Http100Continue({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4d1c2c948a307f40e6ade3191119070f&file=http_100_continue.bal",
+                "https://play.ballerina.io/?gist=daab9e03b4943d0360cc7a44f125488b&file=http_100_continue.bal",
                 "_blank"
               );
             }}

@@ -1738,9 +1738,9 @@ sublinks:
           - title: Hello world
             id: 1
             url: aws-lambda-hello-world
-          - title: Context execution
+          - title: Execution context
             id: 2
-            url: aws-lambda-context-execution
+            url: aws-lambda-execution-context
           - title: S3 trigger
             id: 3
             url: aws-lambda-s3-trigger
@@ -1753,3 +1753,15 @@ sublinks:
           - title: Hello world
             id: 1
             url: azure-functions-hello-world
+          - title: Timer trigger
+            id: 2
+            url: azure-functions-timer-trigger
+          - title: HTTP trigger
+            id: 3
+            url: azure-functions-http-trigger
+          - title: HTTP trigger
+            id: 4
+            url: azure-functions-cosmosdb-trigger
+          - title: HTTP trigger
+            id: 5
+            url: azure-functions-native

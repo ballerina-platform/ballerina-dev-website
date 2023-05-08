@@ -35,7 +35,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>AWS Lambda</h1>
+      <h1>AWS Lambda DynamoDB trigger</h1>
 
       <p>
         AWS Lambda is an event driven, serverless computing platform. Ballerina

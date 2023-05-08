@@ -10,17 +10,17 @@ intro: HTTP data streaming can be attained using chunked transfer encoding.
 
 ## Data streaming modes
 
-In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client) object’s [`http1Settings.chunking`](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO). The fully supported modes are as follows.
+In Ballerina, the clients automatically switch between the chunked or non-chunked modes based on the size of the content provided as the payload. This is controlled by the [`http:ClientConfiguration`](https://lib.ballerina.io/ballerina/http/latest/clients/Client) object’s [`http1Settings.chunking`](https://lib.ballerina.io/ballerina/http/latest/records/ClientHttp1Settings) property, which has a default value of [`AUTO`](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO). The fully supported modes are as follows.
 
-- [`AUTO:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO): If the payload is less than 8KB, the client will not use chunking. It will load the full content to the memory, set the “Content-Length” header with the content size, and send out the request. Otherwise, it will use chunking to stream the data to the remote endpoint. 
-- [`ALWAYS:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS): The client will always use chunking to stream the payload to the remote endpoint. 
-- [`NEVER:`](https://docs.central.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER): The client will never use chunking, and it will fully read in the payload to memory and send out the request. 
+- [`AUTO:`](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_AUTO): If the payload is less than 8KB, the client will not use chunking. It will load the full content to the memory, set the “Content-Length” header with the content size, and send out the request. Otherwise, it will use chunking to stream the data to the remote endpoint. 
+- [`ALWAYS:`](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_ALWAYS): The client will always use chunking to stream the payload to the remote endpoint. 
+- [`NEVER:`](https://lib.ballerina.io/ballerina/http/latest/constants#CHUNKING_NEVER): The client will never use chunking, and it will fully read in the payload to memory and send out the request. 
 
 ## Creating the input data stream
 
-To use the HTTP streaming feature effectively, you need to create an HTTP request with a stream of byte[]. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](https://docs.central.ballerina.io/ballerina/io/latest/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
+To use the HTTP streaming feature effectively, you need to create an HTTP request with a stream of byte[]. For example, if you want to stream the content of a large file to a remote endpoint and read its content using a function such as [`io:fileReadBytes`](https://lib.ballerina.io/ballerina/io/latest/functions#fileReadBytes) to read in the full content as a byte array to memory, then you lose the benefit of streaming the data. 
 
-Therefore, you should use a stream of byte[] by using an API such as the [`io:fileReadBlocksAsStream`](https://docs.central.ballerina.io/ballerina/io/latest/functions#fileReadBlocksAsStream), which returns a `stream<byte[], io:Error>`. This stream can be used in places that accept a stream of byte[] such as the [`http:Request`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request) object’s [`setByteStream`](https://docs.central.ballerina.io/ballerina/http/latest/classes/Request#setByteStream). 
+Therefore, you should use a stream of byte[] by using an API such as the [`io:fileReadBlocksAsStream`](https://lib.ballerina.io/ballerina/io/latest/functions#fileReadBlocksAsStream), which returns a `stream<byte[], io:Error>`. This stream can be used in places that accept a stream of byte[] such as the [`http:Request`](https://lib.ballerina.io/ballerina/http/latest/classes/Request) object’s [`setByteStream`](https://lib.ballerina.io/ballerina/http/latest/classes/Request#setByteStream). 
 
 The `data_streaming.bal` example below opens a file with a stream and uses it to create an HTTP request to stream its data to a remote endpoint.
 

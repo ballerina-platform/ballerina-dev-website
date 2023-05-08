@@ -10,7 +10,7 @@ intro: The HTTP client supports numerous secure communication features such as T
 
 ## Configuring secure communication
 
-The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
+The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://lib.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://lib.ballerina.io/ballerina/http/latest/clients/Client).
 
 ### Communicating with an HTTPS endpoint
 

@@ -8,7 +8,7 @@ active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 ---
 
-## Prerequisites
+## Set up the prerequisites
 * Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
 * Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 * Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
@@ -45,14 +45,14 @@ service / on new af:HttpListener() {
 }
 ```
 
-### Build the function
+## Build the function
 
 The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. 
 
-### Deploy the function
+## Deploy the function
 
 The created function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
 
-### Invoke the function
+## Invoke the function
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:

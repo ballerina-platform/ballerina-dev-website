@@ -28,7 +28,7 @@ Set up the prerequisites below to work with AWS Lambda functions using Ballerina
 
 Install the [latest Ballerina distribution](https://ballerina.io/downloads/).
 
-### Set up AWS 
+### Set up the AWS CLI
 
 Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">AWS CLI</a>.
 

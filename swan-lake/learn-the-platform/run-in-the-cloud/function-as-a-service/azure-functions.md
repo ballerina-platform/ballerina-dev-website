@@ -35,12 +35,6 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 The following Ballerina code gives an example of using an HTTP trigger to invoke the function, and an HTTP output binding to respond to the caller with a message based on the query parameter sent from the request. 
 
-Create a Ballerina package.
-```
-$ bal new azure_functions_deployment
-```
-Replace the contents of the generated BAL file with the following content.
-
 ```ballerina
 import ballerinax/azure_functions as af;
 
@@ -49,7 +43,6 @@ service / on new af:HttpListener() {
         return "Hello, " + name + "!";
     }
 }
-
 ```
 
 ### Build the function

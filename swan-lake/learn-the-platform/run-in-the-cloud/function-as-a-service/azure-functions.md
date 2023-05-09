@@ -70,4 +70,13 @@ The created function app name should be provided to the placeholders shown in th
 
 ## Invoke the function
 
-The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
+The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL.
+
+## Learn more
+
+For examples on using AWS Lambda functions, see the below.
+
+- [Hello world](/learn/by-example/azure-functions-hello-world/)
+- [Context execution](/learn/by-example/azure-functions-timer-trigger/)
+- [S3 trigger](/learn/by-example/azure-functions-http-trigger/)
+- [DynamoDB trigger](/learn/by-example/azure-functions-cosmosdb-trigger/)

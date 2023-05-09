@@ -8,18 +8,7 @@ active: azure-functions
 intro: The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 ---
 
-## Set up the prerequisites
-* Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
-* Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
-* Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
-* Login to the Azure CLI by executing the `az login` command.
-* Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
-
->**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
-   - Runtime stack - `Java 11`
-   - Hosting operating system - `Windows` (By default, Linux is not supported in Azure for custom handlers at the moment.)
-
-## Triggers and bindings
+## Supported triggers and bindings
 
 An Azure Function consists of a trigger and optional bindings. A trigger defines how a function is invoked. A binding is an approach in which you can declaratively connect other resources to the function. There are *input* and *output* bindings. An input binding is a source of data into the function. An output binding allows outputting data from the function to an external resource. For more information, go to <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings" target="_blank">Azure Functions triggers and bindings concepts</a>.
 
@@ -30,6 +19,18 @@ The following Azure Functions triggers and bindings are currently supported in B
 - Twilio SMS <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TwilioSmsOutput" target="_blank">output</a> binding
 - CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
 - Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
+
+
+## Set up the prerequisites
+* Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
+* Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
+* Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
+* Login to the Azure CLI by executing the `az login` command.
+* Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
+
+>**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
+   - Runtime stack - `Java 11`
+   - Hosting operating system - `Windows` (By default, Linux is not supported in Azure for custom handlers at the moment.)
 
 ## Write the function
 

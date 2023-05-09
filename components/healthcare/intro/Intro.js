@@ -48,29 +48,9 @@ export default function Intro() {
                     </div>
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
-                    {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
                     <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" />
                 </Col>
             </Row>
-
-            {/* <Row className='pageContentRow integration'>
-                <Col xs={12}>
-                    <div className={styles.introText3}>
-                        <p>Just write the code using the only language with integration friendly abstractions</p>
-                    </div>
-
-                    <div className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </div>
-
-                </Col>
-            </Row> */}
-
-
-
             </Container>
             </Col>
         </>

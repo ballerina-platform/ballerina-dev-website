@@ -60,7 +60,7 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3e7bcc6e81f0cd0c2cd76ab768753091&file=http_client_basic_authentication.bal",
+                "https://play.ballerina.io/?gist=7110912278cc565f50064a57c5d55f11&file=http_client_basic_authentication.bal",
                 "_blank"
               );
             }}

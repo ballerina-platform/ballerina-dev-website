@@ -4420,17 +4420,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "HTTP trigger",
+        "name": "Cosmos DB trigger",
         "url": "azure-functions-cosmosdb-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "HTTP trigger",
-        "url": "azure-functions-native",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",

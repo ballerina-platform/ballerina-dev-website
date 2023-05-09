@@ -5,8 +5,10 @@ description: Learn how to write and deploy AWS Lambda functions using Ballerina.
 keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud native
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
-intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
+intro: AWS Lambda is an event driven, serverless computing platform.
 ---
+
+The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the `function (awslambda:Context, json|EventType) returns json|error` function signature.
 
 ## Supported triggers
 An AWS Lambda function can be triggered by various AWS services. You can find the list of supported notification types below.

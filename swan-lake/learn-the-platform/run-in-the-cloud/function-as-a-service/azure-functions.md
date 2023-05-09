@@ -47,49 +47,12 @@ service / on new af:HttpListener() {
 
 ### Build the function
 
-The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. Let's see how this works by building the above code. 
-
-```
-$ bal build --cloud="azure_functions"
-Compiling source
-        wso2/azure_functions_deployment:0.1.0
-
-Generating executable
-        @azure_functions:Function: get-hello
-
-        Execute the command below to deploy the function locally.
-        func start --script-root target/azure_functions --java
-
-        Execute the command below to deploy Ballerina Azure Functions.
-        func azure functionapp publish <function_app_name> --script-root target/azure_functions 
-
-        target/bin/azure_functions_deployment.jar
-```
+The Azure Functions functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module. 
 
 ### Deploy the function
 
 The created function app name should be provided to the placeholders shown in the above-generated usage instructions from the compiler. 
 
-A sample execution to deploy the functions to Azure Functions is shown below. 
-
-```bash
-$ func azure functionapp publish <function_app_name> --script-root target/azure_functions 
-Getting site publishing info...
-Creating archive for current directory...
-Uploading 28.64 MB [##############################################################################]
-Upload completed successfully.
-Deployment completed successfully.
-Syncing triggers...
-Functions in bal-learn-1:
-    get-hello - [httpTrigger]
-        Invoke url: https://bal-learn-1.azurewebsites.net/hello
-```
-
 ### Invoke the function
 
 The deployed Azure Function can be tested by invoking it using an HTTP client such as cURL:
-
-```
-$ curl https://<function_app_name>.azurewebsites.net/hello\?name\=Jack
-Hello, Jack!
-```

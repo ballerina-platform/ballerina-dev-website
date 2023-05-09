@@ -1,6 +1,6 @@
 {
   "title": "Hello world",
-  "description": "Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.",
+  "description": "This example demonstrates how to expose a simple echo function in Azure Functions.",
   "keywords": [],
   "permalink": "/learn/by-example/azure-functions-hello-world",
   "active": "azure-functions-hello-world",

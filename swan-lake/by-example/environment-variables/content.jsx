@@ -59,7 +59,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d8f8cff20982eacfdd1c1737b3741a9&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=8144fc020c4e137578e5035f6bb91beb&file=environment_variables.bal",
                 "_blank"
               );
             }}

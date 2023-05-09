@@ -79,7 +79,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9649bcb1c7f173c067822d92281434ab&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=580acc1bfba02a255e3b193006c0e1cd&file=filepaths.bal",
                 "_blank"
               );
             }}

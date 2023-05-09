@@ -74,7 +74,7 @@ export function QueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ee2b4de92c0b4b63f1df8ec627fff63a&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=abcab2f15d870d0fb663d4c9ac8d95b7&file=query_expressions.bal",
                 "_blank"
               );
             }}

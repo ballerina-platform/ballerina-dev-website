@@ -1,6 +1,6 @@
 {
   "title": "Execution context",
-  "description": "The example below demonstrates how context information of an AWS function are executed.",
+  "description": "The example below demonstrates how the execution context information of an AWS function can be retrieved.",
   "keywords": [],
   "permalink": "/learn/by-example/aws-lambda-execution-context",
   "active": "aws-lambda-execution-context",

@@ -1,6 +1,6 @@
 {
   "title": "Timer trigger",
-  "description": "Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.",
+  "description": "This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app. Once the function is executed, the timer details will be stored in the selected queue storage for every invocation.",
   "keywords": [],
   "permalink": "/learn/by-example/azure-functions-timer-trigger",
   "active": "azure-functions-timer-trigger",

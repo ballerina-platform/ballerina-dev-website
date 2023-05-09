@@ -66,7 +66,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=621f0719624e005db75eba0598f865bb&file=http_client_mutual_ssl.bal",
+                "https://play.ballerina.io/?gist=d44c2072561a9314f13f5cb634b575e6&file=http_client_mutual_ssl.bal",
                 "_blank"
               );
             }}

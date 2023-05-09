@@ -86,7 +86,7 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d8134d443fac0898549979debbd86c83&file=cache_invalidation.bal",
+                "https://play.ballerina.io/?gist=5454503eb2cdfbe1153b35c01642f6ca&file=cache_invalidation.bal",
                 "_blank"
               );
             }}

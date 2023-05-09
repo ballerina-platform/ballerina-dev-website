@@ -98,7 +98,7 @@ export function IsolatedFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=08b332504856a1b9a6f2b654c19a09d5&file=isolated_functions.bal",
+                "https://play.ballerina.io/?gist=fe889d3107601ab3ef90c576f4e64fec&file=isolated_functions.bal",
                 "_blank"
               );
             }}

@@ -67,7 +67,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=30320830608e722dbdb1d75c0e5cfb53&file=http_client_oauth2_client_credentials_grant_type.bal",
+                "https://play.ballerina.io/?gist=3f07dc635e6a13f33f8022845a9c66db&file=http_client_oauth2_client_credentials_grant_type.bal",
                 "_blank"
               );
             }}

@@ -26,17 +26,25 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
 - Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
 
-
 ## Set up the prerequisites
-* Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
-* Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
-* Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
-* Login to the Azure CLI by executing the `az login` command.
-* Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
 
+Set up the prerequisites below to work with Azure Functions using Ballerina.
+
+### Set up Ballerina
+
+Install the [latest Ballerina distribution](https://ballerina.io/downloads/).
+
+### Set up Azure Functions 
+
+Follow the steps below to set up the Azure Functions.
+
+1. Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
+2. Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools).
+3. Login to the Azure CLI by executing the `az login` command on CLI.
+4. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
-   - Hosting operating system - `Windows` (By default, Linux is not supported in Azure for custom handlers at the moment.)
+   - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
 
 ## Write the function
 

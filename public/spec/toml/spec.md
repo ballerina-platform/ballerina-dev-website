@@ -9,7 +9,7 @@ _Edition_: Swan Lake
 ## Introduction
 This is the specification for the Toml standard library of [Ballerina language](https://ballerina.io/), which provides APIs to convert a TOML configuration file to `map<json>`, and vice-versa.
 
-Since the parser is following LL(1) grammar, it follows a non-recursive predictive parsing algorithm which operates in a linear time complexity.
+Since the parser is following LL(1) grammar, it follows a non-recursive predictive parsing algorithm that operates in a linear time complexity.
 
 If you have any feedback or suggestions about the library, start a discussion via a [GitHub issue](https://github.com/ballerina-platform/ballerina-standard-library/issues) or in the [Discord server](https://discord.gg/ballerinalang). Based on the outcome of the discussion, the specification and implementation can be updated. Community feedback is always welcome. Any accepted proposal, which affects the specification is stored under `/docs/proposals`. Proposals under discussion can be found with the label `type/proposal` in GitHub.
 
@@ -27,7 +27,7 @@ The conforming implementation of the specification is released and included in t
 ## 1. Overview
 This specification elaborates on the functions available in the Toml library.
 
-Since the parser is following LL(1) grammar, it follows a non-recursive predictive parsing algorithm which operates in a linear time complexity.
+Since the parser is following LL(1) grammar, it follows a non-recursive predictive parsing algorithm that operates in a linear time complexity.
 
 ## 2. Compatibility
 
@@ -40,7 +40,7 @@ The parser follows the grammar rules particularized in the [TOML specification 1
 
 ## 3. Parsing a TOML Document
 
-The module supports to parse either a TOML file or a TOML string.
+The module supports parsing either a TOML file or a TOML string.
 
 ```ballerina
 // Parsing a TOML file
@@ -96,7 +96,7 @@ key = "value"
 
 ## 5. Supported Data Types
 
-The following TOML primitives are mapped to the Ballerina types as follow.
+The following TOML primitives are mapped to the Ballerina types as follows.
 
 | TOML                                        | Ballerina                       |
 | ------------------------------------------- | ------------------------------- |
@@ -113,7 +113,7 @@ The following TOML primitives are mapped to the Ballerina types as follow.
 
 ## 6. Example
 
-The following example illustrates on how a TOML content is converted to a Ballerina record and write it back after processing it.
+The following example illustrates how TOML content is converted to a Ballerina record and written it back after processing it.
 
 ```ballerina
 import ballerina/io;

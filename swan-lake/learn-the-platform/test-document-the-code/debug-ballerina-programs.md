@@ -17,6 +17,8 @@ The VS Code extension provides the three types of sessions below to debug your B
 - Test debug sessions - debug a test function
 - Remote debug dessions - debug a Ballerina program that is running remotely 
 
+>**Info:** For more information on the debug sessions, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
+
 ## Debug methods
 
 There are two ways to debug the above sessions. 
@@ -27,8 +29,11 @@ You can either click on the **Debug** CodeLens, which appear at the top of a com
 - **Ballerina Test**
 - **Ballerina Remote**  
 
+
+>**Info:** For more information on the debug sessions, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
+
 ## Debug features
 
 The Ballerina VScode extension currently supports many debugging features that are available in the VS Code editor.
 
->**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/" target="_blank">Debug the code</a>.
+>**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/use-the-debugging-features" target="_blank">Use the debugging features</a>.

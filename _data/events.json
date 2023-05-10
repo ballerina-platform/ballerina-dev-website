@@ -1,21 +1,5 @@
 {
     "events": [
-      {
-            "date": "May 18, 2023",
-            "day": "Thur.",
-            "time": "4.30 p.m. UTC",
-            "expire": "2023-05-19T00:00:00.0000-00:00",
-            "location": "Virtual",
-            "url": "https://www.twitch.tv/exercismlive",
-            "eventType": "Exercism - #12in23 Challenge",
-            "eventName": "Ballerina Livestream for Mind-shifting May",
-            "presenterTwitter": "https://twitter.com/Imesha94",
-            "presenter": "Imesha Sudasingha",
-            "presenterDesignation": "Associate Technical Lead, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
-        },
         {
             "date": "May 23, 2023",
             "day": "Tue.",
@@ -28,6 +12,22 @@
             "presenterTwitter": "https://twitter.com/manuj_malintha",
             "presenter": "Malintha Ranasinghe",
             "presenterDesignation": "Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "Subscribe"
+        },
+        {
+            "date": "May 18, 2023",
+            "day": "Thur.",
+            "time": "4.30 p.m. UTC",
+            "expire": "2023-05-19T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.twitch.tv/exercismlive",
+            "eventType": "Exercism - #12in23 Challenge",
+            "eventName": "Ballerina Livestream for Mind-shifting May",
+            "presenterTwitter": "https://twitter.com/Imesha94",
+            "presenter": "Imesha Sudasingha",
+            "presenterDesignation": "Associate Technical Lead, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "Subscribe"

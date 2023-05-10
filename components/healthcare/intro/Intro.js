@@ -33,8 +33,7 @@ export default function Intro() {
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
 
-                        <p className={styles.introText2}>Looking to make a difference in the world of digital healthcare? Look no further than Ballerina - the only integration language built for healthcare! With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
-
+                        <p className={styles.introText2}>Ballerina is the only integration language built for healthcare.  With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
                         </p>
 
                         <p className={styles.introText3}>Build with Ballerina and make a difference in the world today.

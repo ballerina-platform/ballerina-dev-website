@@ -104,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for Healthcare</title>
+        <title>Ballerina for healthcare</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for Healthcare" />
+        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
         <meta
           property="og:description"
           content="Write code with healthcare-friendly abstractions."
@@ -116,14 +116,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner-v3.png"
+          content="https://ballerina.io/images/health-intro.png"
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for Healthcare" />
+        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner-v3.png"
+          content="https://ballerina.io/images/health-intro.png"
         />
         <meta
           property="og:description"
@@ -135,7 +135,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for Healthcare" />
+        <meta name="twitter:title" content="Ballerina - Ballerina for healthcare" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -143,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner-v3.png"
+          content="https://ballerina.io/images/health-intro.png"
         />
         <meta
           property="twitter:text:description"
@@ -151,7 +151,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner-v3.png"
+          content="https://ballerina.io/images/health-intro.png"
         />
       </Head>
 
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for helathcare</h1>
+                <h1>Ballerina for healthcare</h1>
               </Container>
 
             </Col>
@@ -169,10 +169,7 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          {/* <Row className="pageContentRow integration usecases">
-            <UseCases getLink={getLink} />
-          </Row> */}
-            <Code samples={samples} getLink={getLink} />
+          <Code samples={samples} getLink={getLink} />
         </Col>
       </Layout>
     </>

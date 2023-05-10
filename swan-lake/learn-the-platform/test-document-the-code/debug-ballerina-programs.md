@@ -29,8 +29,7 @@ You can either click on the **Debug** CodeLens, which appear at the top of a com
 - **Ballerina Test**
 - **Ballerina Remote**  
 
-
->**Info:** For more information on the debug sessions, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
+>**Info:** For more information on the debug methods, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
 
 ## Debug features
 

@@ -22,7 +22,6 @@ import Head from "next/head";
 
 import Layout from "../../../layouts/LayoutUseCase";
 import Intro from "../../../components/healthcare/intro/Intro";
-import UseCases from "../../../components/healthcare/use-cases/UseCases";
 import Code from "../../../components/healthcare/code/Code";
 import { prefix } from '../../../utils/prefix';
 
@@ -97,7 +96,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with integration-friendly abstractions."
+          content="Write code with healthcare-friendly abstractions."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -105,14 +104,14 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for integration</title>
+        <title>Ballerina for Healthcare</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for integration" />
+        <meta property="og:title" content="Ballerina - Ballerina for Healthcare" />
         <meta
           property="og:description"
-          content="Write code with integration-friendly abstractions."
+          content="Write code with healthcare-friendly abstractions."
         />
         <meta
           property="og:image"
@@ -121,7 +120,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for integration" />
+        <meta property="og:title" content="Ballerina - Ballerina for Healthcare" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-for-integration-sm-banner-v3.png"
@@ -129,18 +128,18 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with integration-friendly abstractions."
+          content="Write code with healthcare-friendly abstractions."
         />
 
         {/* TWITTER */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for integration" />
+        <meta name="twitter:title" content="Ballerina - Ballerina for Healthcare" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with integration-friendly abstractions."
+          content="Write code with healthcare-friendly abstractions."
         />
         <meta
           name="twitter:image"
@@ -148,7 +147,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with integration-friendly abstractions."
+          content="Write code with healthcare-friendly abstractions."
         />
         <meta
           property="twitter:image"
@@ -170,9 +169,9 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          <Row className="pageContentRow integration usecases">
+          {/* <Row className="pageContentRow integration usecases">
             <UseCases getLink={getLink} />
-          </Row>
+          </Row> */}
             <Code samples={samples} getLink={getLink} />
         </Col>
       </Layout>

@@ -471,8 +471,8 @@ export function DockerHelloWorld({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Gauge-based metrics"
-            href="/learn/by-example/gauge-metrics"
+            title="Constraint validations"
+            href="/learn/by-example/constraint-validations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -499,7 +499,7 @@ export function DockerHelloWorld({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Gauge-based metrics
+                  Constraint validations
                 </span>
               </div>
             </div>

@@ -5,26 +5,22 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerinax/azure_functions as af;
+  `import ballerina/http;
+import ballerinax/azure_functions as af;
 
-// This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
+public type Person record {
+    string name;
+    int age;
+};
+
 service / on new af:HttpListener() {
-    resource function azure-functions-timer-trigger(string name) returns string {
-        return "Hello, " + name + "!";
+    resource function post queue(@http:Payload Person person) returns [@af:HttpOutput http:Created, @af:QueueOutput {queueName: "people"} string] {
+        http:Created httpRes = {
+            body: person.name + " Added to the Queue!"
+        };
+        return [httpRes, person.name + " is " + person.age.toString() + " years old."];
     }
-}
-
-// This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
-// details will be stored in the selected queue storage for every invocation.
-@af:TimerTrigger {schedule: "*/10 * * * * *"}
-listener af:TimerListener timerListener = new af:TimerListener();
-
-service "timer" on timerListener {
-    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
-        return "Message Status, " + metadata.IsPastDue.toString();
-    }
-}
-`,
+}`,
 ];
 
 export function AzureFunctionsHttpTrigger({ codeSnippets }) {
@@ -36,8 +32,6 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
   const ref2 = createRef();
   const [outputClick3, updateOutputClick3] = useState(false);
   const ref3 = createRef();
-  const [outputClick4, updateOutputClick4] = useState(false);
-  const ref4 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -46,19 +40,148 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
       <h1>Azure Functions- HTTP trigger</h1>
 
       <p>
-        Azure Functions is an event driven, serverless computing platform. Azure
-        Functions can be written from Ballerina using the listeners and services
-        provided by Azure Functions package. You can view the code examples
-        below.
+        This example demonstrates using an HTTP trigger to invoke an Azure
+        function with multiple output bindings to return the HTTP response and
+        queue output binding to write an entry to a queue.
       </p>
 
       <p>
         For more information, see the{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
-          Azure deployment guide
+        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
+          Azure Functions deployment guide
         </a>
         .
       </p>
+
+      <h2>Set up the prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Set up the{" "}
+            <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites">
+              general prerequisites
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Accessing the storage account that was created alongside the
+            function app in step 1, and create a queue to hold the outputs of
+            the function.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>3.</span>
+          <span>
+            Select <strong>Queues</strong> in the sidebar in the storage
+            accounts.
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>4.</span>
+          <span>
+            Click the <strong>Add queue</strong> button, and enter the same
+            value as the value of the <code>queueName</code> property in the{" "}
+            <code>QueueOutput</code> annotation in the{" "}
+            <a href="https://ballerina.io/learn/by-example/azure-functions-trigger/#write-the-function">
+              Ballerina source below
+            </a>
+            .
+          </span>
+        </li>
+      </ul>
+
+      <h2>Write the function</h2>
+
+      <p>Follow the steps below to write the function.</p>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>1.</span>
+          <span>
+            Execute the command below to create a new Ballerina package.
+          </span>
+        </li>
+      </ul>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick1(true);
+                const extractedText = extractOutput(ref1.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick1(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal new azure-functions-timer-trigger`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>2.</span>
+          <span>
+            Replace the content of the generated Ballerina file with the content
+            below.
+          </span>
+        </li>
+      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -122,72 +245,10 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        Create a Ballerina package and replace the content of the generated BAL
-        file with the content above.
-      </p>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick1 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick1(true);
-                const extractedText = extractOutput(ref1.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick1(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`\$ bal new azure-functions-timer-trigger`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
+      <h2>Build the function</h2>
 
       <p>
-        Build the Ballerina program to generate the Azure Functions artifacts.
+        Execute the command below to generate the Azure Functions artifacts.
       </p>
 
       <Row
@@ -266,11 +327,28 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
+      <h2>Deploy the function</h2>
+
       <p>
-        Execute the Azure CLI command given by the compiler to publish the
-        functions (replace the sample app name given in the command with your
-        respective Azure <code>&lt;function_app_name&gt;</code>).
+        Execute the Azure CLI command given by the compiler to create and
+        publish the functions by replacing the sample app name given in the
+        command with your respective Azure{" "}
+        <code>&lt;function_app_name&gt;</code>.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> For instructions on getting the values, see{" "}
+          <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites">
+            Set up the prerequisites
+          </a>
+          .
+        </p>
+      </blockquote>
+
+      <h2>Invoke the function</h2>
+
+      <p>Execute the commands below to invoke the function.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -325,97 +403,22 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ func azure functionapp publish bal-bbe --script-root target/azure_functions`}</span>
-              <span>{`Getting site publishing info...`}</span>
-              <span>{`Creating archive for current directory...`}</span>
-              <span>{`Uploading 28.67 MB [##############################################################################]`}</span>
-              <span>{`Upload completed successfully.`}</span>
-              <span>{`Deployment completed successfully.`}</span>
-              <span>{`Syncing triggers...`}</span>
-              <span>{`Functions in bal-bbe:`}</span>
-              <span>{`    get-hello - [httpTrigger]`}</span>
-              <span>{`        Invoke url: https://bal-bbe.azurewebsites.net/hello`}</span>
-              <span>{`
-`}</span>
-              <span>{`    timer - [timerTrigger]`}</span>
+              <span>{`\$ curl --header "Content-Type: application/json" \\`}</span>
+              <span>{`  --request POST \\`}</span>
+              <span>{`  --data '{"name":"Jack","age":21}' \\`}</span>
+              <span>{`  "https://<function_app_name>.azurewebsites.net/queue"`}</span>
+              <span>{`Jack Added to the Queue!`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>
-        Invoke the <code>HTTP Trigger</code> functions.
-      </p>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick4 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick4(true);
-                const extractedText = extractOutput(ref4.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick4(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref4}>
-            <code className="d-flex flex-column">
-              <span>{`\$ curl https://bal-bbe.azurewebsites.net/hello\\?name\\=Jack`}</span>
-              <span>{`Hello, Jack!`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <p>
-        The <code>timer</code> function is triggered by the Azure Functions app
-        from a timer. You can check the queue storage to see the output. For
-        more information on the infrastructure, see{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
-          Azure Functions deployment
-        </a>
-        .
-      </p>
+      <blockquote>
+        <p>
+          <strong>Tip:</strong> Refresh the queue page in the portal and view
+          the added entry.
+        </p>
+      </blockquote>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -456,7 +459,7 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="HTTP trigger"
+            title="Cosmos DB trigger"
             href="/learn/by-example/azure-functions-cosmosdb-trigger"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -467,7 +470,7 @@ export function AzureFunctionsHttpTrigger({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP trigger
+                  Cosmos DB trigger
                 </span>
               </div>
               <svg

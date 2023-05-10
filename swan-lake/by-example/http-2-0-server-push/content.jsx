@@ -90,7 +90,7 @@ export function Http20ServerPush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d63556763c9cfbb9d7c6bb2f2e28493e&file=http_2_0_server_push.bal",
+                "https://play.ballerina.io/?gist=03cb9623958787bd50c53e1e439b89c2&file=http_2_0_server_push.bal",
                 "_blank"
               );
             }}

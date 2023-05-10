@@ -108,6 +108,7 @@ The conforming implementation of the specification is released and included in t
         * 9.1.3 [Get Field Path](#913-get-field-path)
         * 9.1.4 [Get Subfield Names](#914-get-subfield-names)
         * 9.1.5 [Get Field Type](#915-get-field-type)
+        * 9.1.6 [Get Subfields](#916-get-subfields)
     * 9.2 [Accessing the Field Object](#92-accessing-the-field-object)
 10. [Annotations](#10-annotations)
     * 10.1 [Service Configuration](#101-service-configuration)
@@ -1696,6 +1697,20 @@ service on new graphql:Listener(9090) {
     resource function get profile(graphql:Field 'field) returns Profile {
         graphql:__Type type = 'field.getType();
         // ...
+    }
+}
+```
+
+#### 9.1.6 Get Subfields
+
+This method returns the subfields of the currently executing field as an array of `graphql:Field` objects. It will return `nil` if the field is not an `INTERFACE` or an `OBJECT`, i.e. if it does not have subfields.
+
+#### Example: Get Subfields
+
+```ballerina
+service on new graphql:Listener(9090) {
+    resource function get profile(graphql:Field 'field) returns Profile {
+        graphql:Field[] subfields = 'field.getSubfields();
     }
 }
 ```

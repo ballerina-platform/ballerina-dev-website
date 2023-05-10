@@ -34,7 +34,7 @@ export default function Intro() {
                             <div>
                                 <h3>Get started with Ballerina</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Write your first Ballerina program and create your first Ballerina package</p>
+                                    <p>Install Ballerina, set it all up, and take it for a spin. </p>
                                 </div>
                             </div>
                         </a>
@@ -55,7 +55,7 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina API Docs</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Library API documentation</p>
+                                    <p>Ballerina library (API) documentation</p>
                                 </div>
                             </div>
                         </a>

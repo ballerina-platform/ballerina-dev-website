@@ -30,80 +30,23 @@ export default function UseCases(props) {
 
     const samples = props.samples;
 
-    const vscode = samples['edit-debug-run-in-vscode'];
-    const network = samples['network-data-program-data'];
-    const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
-
-
+    const fhir = samples['ballerina-is-fhir'];
+    const hl7 = samples['ballerina-is-hl7'];
+    const dataMap = samples['powerful-health-data-mapping'];
+    const emrs = samples['connect-to-emrs'];
+    const edis = samples['powerful-edi-for-claims'];
+    const aiPair = samples['ai-pair-programming'];
+    const apisNewDll = samples['apis-are-new-dll'];
+    
     return (
         <>
-            {/* vscode */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='edit-debug-run-in-vscode' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'edit-debug-run-in-vscode')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {vscode.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{vscode.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (vscode.frontmatter.url && vscode.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={vscode.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (vscode.code && vscode.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: vscode.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (vscode.frontmatter.image && vscode.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${vscode.frontmatter.image}`} alt={vscode.frontmatter.title} />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* network */}
+            {/* fhir */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='network-data-program-data' className='section'>
+                                <h2 id='ballerina-is-fhir' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -111,24 +54,24 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'network-data-program-data')}
+                                        onClick={(e) => props.getLink(e.target, 'ballerina-is-fhir')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {network.frontmatter.title}
+                                    {fhir.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{network.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{fhir.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (network.frontmatter.url && network.frontmatter.url !== '') ?
+                                        (fhir.frontmatter.url && fhir.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={network.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={fhir.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -140,15 +83,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (network.code && network.code !== '') ?
+                                    (fhir.code && fhir.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: network.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: fhir.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (network.frontmatter.image && network.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${network.frontmatter.image}`} alt={network.frontmatter.title} />
+                                    (fhir.frontmatter.image && fhir.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${fhir.frontmatter.image}`} alt={fhir.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -157,13 +100,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* ipaas */}
+            {/* hl7 */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='trivial-hosting-in-wso2-choreo-ipaas' className='section'>
+                                <h2 id='ballerina-is-hl7' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -171,26 +114,26 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'trivial-hosting-in-wso2-choreo-ipaas')}
+                                        onClick={(e) => props.getLink(e.target, 'ballerina-is-hl7')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {ipaas.frontmatter.title}
+                                    {hl7.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{ipaas.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{hl7.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
+                                        (hl7.frontmatter.url && hl7.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Choreo iPaaS for free
+                                                <a href={hl7.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
                                                 </a>
                                             </div>
                                             : null
@@ -198,17 +141,17 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (ipaas.code && ipaas.code !== '') ?
+                                    (hl7.code && hl7.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: ipaas.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: hl7.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (ipaas.frontmatter.image && ipaas.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${ipaas.frontmatter.image}`} alt={ipaas.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                    (hl7.frontmatter.image && hl7.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${hl7.frontmatter.image}`} alt={hl7.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -216,6 +159,307 @@ export default function UseCases(props) {
                     </Container>
                 </Col>
             </Row>
+
+            {/* dataMap */}
+            <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='powerful-data-mapping' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'powerful-data-mapping')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {dataMap.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataMap.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (dataMap.frontmatter.url && dataMap.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={dataMap.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                                    Get started with WSO2 Choreo dataMap for free
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (dataMap.code && dataMap.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: dataMap.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (dataMap.frontmatter.image && dataMap.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${dataMap.frontmatter.image}`} alt={dataMap.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* emr connectors */}
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='connect-to-emrs' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'connect-to-emrs')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {emrs.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{emrs.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (emrs.frontmatter.url && emrs.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={emrs.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (emrs.code && emrs.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: emrs.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (emrs.frontmatter.image && emrs.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${emrs.frontmatter.image}`} alt={emrs.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* edis */}
+            <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='powerful-edi-for-claims' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'powerful-edi-for-claims')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {edis.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edis.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (edis.frontmatter.url && edis.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={edis.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (edis.code && edis.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: edis.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (edis.frontmatter.image && edis.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${edis.frontmatter.image}`} alt={edis.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* ai pair programming */}
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='ai-pair-programming' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'ai-pair-programming')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {aiPair.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{aiPair.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (aiPair.frontmatter.url && aiPair.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={aiPair.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (aiPair.code && aiPair.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: aiPair.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (aiPair.frontmatter.image && aiPair.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${aiPair.frontmatter.image}`} alt={aiPair.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* apisNewDll */}
+            <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='apis-are-new-dll' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'apis-are-new-dll')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {apisNewDll.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{apisNewDll.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (apisNewDll.frontmatter.url && apisNewDll.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={apisNewDll.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (apisNewDll.code && apisNewDll.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: apisNewDll.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (apisNewDll.frontmatter.image && apisNewDll.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
 
         </>
     );

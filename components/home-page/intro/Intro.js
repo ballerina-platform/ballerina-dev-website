@@ -83,7 +83,7 @@ export default function Intro() {
               href={`${prefix}/learn/by-example/`}
               rel="noreferrer">
               Examples
-              <p>Explore and try Ballerina examples.<br /> &nbsp;</p>
+              <p>Explore and try out a series of guided Ballerina examples.<br /> &nbsp;</p>
             </a>
           </Col>
         </Row>

@@ -54,6 +54,8 @@ export default function UseCases(props) {
     const robust = samples['write-robust-api-powered-ai-applications'];
     const concurrency = samples['concurrency-simplified-for-ai-development'];
     const effortlessly = samples['effortlessly-create-impactful-business'];
+    const effort1 = samples['effort1'];
+    const effort2 = samples['effort2'];
     const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
 
 
@@ -658,7 +660,7 @@ export default function UseCases(props) {
                     </Container>
                 </Col>
             </Row>
-            
+
             {/* effortlessly */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
@@ -687,33 +689,39 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{effortlessly.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (effortlessly.frontmatter.url && effortlessly.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <span>Chatbot service for Slack using Azure OpenAI</span>
-                                                <a href={effortlessly.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 1: Chatbot service for Slack using Azure OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/slackbot_using_azure_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
 
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 2: Question Answering based on Context using OpenAI GPT-3 and Pinecone</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai_and_pinecone/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (effortlessly.code && effortlessly.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: effortlessly.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (effortlessly.frontmatter.image && effortlessly.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${effortlessly.frontmatter.image}`} alt={effortlessly.frontmatter.title} />
-                                        : null
-                                }
+
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="sample1" title="Sample 1">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort1.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="sample2" title="Sample 2">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort2.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>

@@ -35,4 +35,4 @@ You can either click on the **Debug** CodeLens, which appear at the top of a com
 
 The Ballerina VScode extension currently supports many debugging features that are available in the VS Code editor.
 
->**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/use-the-debugging-features" target="_blank">Use the debugging features</a>.
+>**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/debugging-features" target="_blank">Debugging features</a>.

@@ -1,6 +1,8 @@
 ---
-title: 'Healthcare accelerators to kick start app dev'
-description: Ballerina Central is your go to location for healthcare accelerators in Ballerina. Pick from healthcare data standards like FHIR and HL7, FHIR connectors and validators, Use case templates (e.g expose EPIC as a FHIR API), health models, Capability Statement template, Smart configuration template, FHIR client, EMR connectors,  Implementation Guide based templates and pre-built APIs such as a Patient API.  
+title: 'Why is Ballerina the way to write healthcare applications?'
+description: 'Java and HAPI have long been the de facto for health app development. However, cloud native healthcare application development goes beyond dealing with objects and frameworks. This domain needs a fresh architecture and technology that treats concepts like FHIR and HL7 as first class citizens in the language, alongside concepts like JSON and APIs.<br/><br/>
+
+Ballerina is a language built from ground up for building healthcare applications, quickly, easily and securely. Alongside its powerful integration capabilities, Ballerina natively understands health data standards like FHIR and HL7, and includes FHIR connectors and validators, use case templates (e.g expose EPIC as a FHIR API), health models, Capability Statement template, SMART configuration template, FHIR client, EMR connectors, Implementation Guide based templates and pre-built APIs such as a Patient API.'
 image: 'images/health-bal-pkgs.png'
 url: 'https://central.ballerina.io/search?q=ballerinax%2Fhealth&sort=created_date%2CASC&page=1'
 ---

@@ -7,12 +7,12 @@ url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/working_w
 public function main() returns error? {
 
     // The following example is a simple serialized Patient resource to parse
-    string input = "{" +
-    "\"resourceType\" : \"Patient\"," +
-    "  \"name\" : [{" +
-    "    \"family\": \"Simpson\"" +
-    "  }]" +
-    "}";
+    json input = {
+        "resourceType" : "Patient",
+        "name" : [{
+            "family": "Simpson"
+        }]
+    };
 
     // Parse it - you can pass the input (as a string or a json) and the
     // type of the resource you want to parse.

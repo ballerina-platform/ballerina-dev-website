@@ -25,9 +25,9 @@ There are two ways to debug the above sessions.
 
 You can either click on the **Debug** CodeLens, which appear at the top of a complete Ballerina program or a test function or create a `launch.json` file with the required configuration attributes (use the defualt configurations or edit them as required) and use either of the options below.
 
-- **Ballerina Debug**
-- **Ballerina Test**
-- **Ballerina Remote**  
+- Ballerina Debug
+- Ballerina Test
+- Ballerina Remote 
 
 >**Info:** For more information on the debug methods, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
 

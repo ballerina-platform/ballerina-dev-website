@@ -34,7 +34,7 @@ export default function Intro() {
                             <div>
                                 <h3>Get started with Ballerina</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Write your first Ballerina program and create your first Ballerina package</p>
+                                    <p>Install Ballerina, set it all up, and take it for a spin. </p>
                                 </div>
                             </div>
                         </a>
@@ -45,7 +45,7 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina by Example</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>A series of guided examples to learn the language</p>
+                                    <p>Explore and try out a series of guided Ballerina examples.</p>
                                 </div>
                             </div>
                         </a>
@@ -55,7 +55,7 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina API Docs</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Library API documentation</p>
+                                    <p>Refer Ballerina library (API) documentation.</p>
                                 </div>
                             </div>
                         </a>
@@ -66,7 +66,7 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina specifications</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Language, library, and platform specifications</p>
+                                    <p>Refer language, library, and platform specifications.</p>
                                 </div>
                             </div>
                         </a>

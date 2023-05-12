@@ -4,5 +4,5 @@ description: 'Java and HAPI have long been the de facto for health app developme
 
 Ballerina is a language built from ground up for building healthcare applications, quickly, easily and securely. Alongside its powerful integration capabilities, Ballerina natively understands health data standards like FHIR and HL7, and includes FHIR connectors and validators, use case templates (e.g expose EPIC as a FHIR API), health models, Capability Statement template, SMART configuration template, FHIR client, EMR connectors, Implementation Guide based templates and pre-built APIs such as a Patient API.'
 image: 'images/health-bal-pkgs.png'
-url: 'https://central.ballerina.io/search?q=ballerinax%2Fhealth&sort=created_date%2CASC&page=1'
+url: 'https://central.ballerina.io/ballerinax?q=health&page=1'
 ---

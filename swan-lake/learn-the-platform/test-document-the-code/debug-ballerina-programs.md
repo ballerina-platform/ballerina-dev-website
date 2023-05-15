@@ -9,29 +9,19 @@ active: debug-ballerina-programs
 
 The Ballerina compiler comes in handy to detect syntax and semantic issues that occur in your code when developing large-scale applications with complex logic. However, it is difficult for the compiler to detect runtime errors like logical errors because they occur during the program execution after a successful compilation. This is where the dedicated debugging tooling support of Ballerina becomes important.
 
-## Debug sessions
+## Debugging sessions
 
-The VS Code extension provides the three types of sessions below to debug your Ballerina code.
+The VS Code extension provides three types of sessions to debug your Ballerina code.
 
-- **Program debug sessions** - debug a complete Ballerina program
-- **Test debug sessions** - debug a test function
-- **Remote debug sessions** - debug a Ballerina program that is running remotely 
+>**Info:** For more information on the debug sessions, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/debugging-overview/#debugging-sessions" target="_blank">Debug sessions</a>.
 
->**Info:** For more information on the debug sessions, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
+## Debugging methods
 
-## Debug methods
+The VS Code extension provides three types of methods to execute the above debug sessions.
 
-There are two ways to debug the above sessions. 
+>**Info:** For more information on the debug methods, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/debugging-overview/#debugging-methods" target="_blank">Debug methods</a>.
 
-You can either click on the **Debug** CodeLens, which appears at the top of a complete Ballerina program or a test function, or create a `launch.json` file with the required configuration attributes (use the default configurations or edit them as required) and use either of the options below.
-
-- **Ballerina Debug**
-- **Ballerina Test**
-- **Ballerina Remote** 
-
->**Info:** For more information on the debug methods, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/perform-debugging/" target="_blank">Perform debugging</a>.
-
-## Debug features
+## Debugging features
 
 The Ballerina VScode extension currently supports many debugging features that are available in the VS Code editor.
 

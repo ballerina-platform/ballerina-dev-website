@@ -46,7 +46,7 @@ Follow the steps below to set up the Azure Functions.
 Follow the steps below to create the Azure function app.
 
 1. Log in to the Azure CLI by executing the `az login` command on CLI.
-2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
+2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`
    - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
@@ -97,7 +97,7 @@ Follow the steps below to set up the prerequisites that are specifically require
 Follow the steps below to create the Azure function app.
 
 1. Log in to the Azure CLI by executing the `az login` command on CLI.
-2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with following requirements.
+2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
    - Runtime stack - `Java 11`
    - Hosting operating system - `Linux` (As of now, Ballerina Azure functions native support is only available for Linux.)
 
@@ -157,6 +157,6 @@ $ func azure functionapp publish <function_app_name> --script-root target/azure_
 For examples of using AWS Lambda functions, see the below.
 
 - [Hello world](/learn/by-example/azure-functions-hello-world/)
-- [Context execution](/learn/by-example/azure-functions-timer-trigger/)
-- [S3 trigger](/learn/by-example/azure-functions-http-trigger/)
-- [DynamoDB trigger](/learn/by-example/azure-functions-cosmosdb-trigger/)
+- [Timer trigger](/learn/by-example/azure-functions-timer-trigger/)
+- [HTTP trigger](/learn/by-example/azure-functions-http-trigger/)
+- [Cosmos DB trigger](/learn/by-example/azure-functions-cosmosdb-trigger/)

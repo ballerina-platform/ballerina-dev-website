@@ -48,6 +48,12 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `graphql` package
+
+- Added support for GraphQL field interceptors.
+- Added support for GraphQL interceptor configurations.
+- Added support to access subfields of a GraphQL field from the `graphql:Field` object.
+
 ### Improvements
 
 ### Bug fixes

@@ -436,9 +436,9 @@ Found erroneous entries for countries: ["Sri Lanka","India"]
 ```
 ## Group COVID-19 data by continent
 
-### Create the groupDeathsByContinent function
+### Create the `groupDeathsByContinent` function
 
-To difine a function to group the data by continent and get the total number of deaths by continent, add the code below to the `main.bal` file.
+To define a function that groups the data by continent and retrieves the total number of deaths per continent, add the following code to the `main.bal` file.
 
 ```ballerina
 public function groupDeathsByContinent(table<CovidEntry> dataTable) returns record {|string continent; decimal deaths;|}[] {
@@ -449,14 +449,14 @@ public function groupDeathsByContinent(table<CovidEntry> dataTable) returns reco
 ```
 
 In this code,
-1. You use `group by` clause to group the input.
-2. Since the `grouping-key` is `continent` the input table is grouped by `continent` in the function `groupDeathsByContinent`.
-3. After creating groups based on `continent`, `deaths` becomes a sequence value for each `continent`.
-4. In order to get the total number of deaths per `continent`, you can call the `sum` function.
+- You use the `group by` clause to group the input. After the `group by` you can find the `grouping-key`, in this example `continent` is the `grouping-key`. The `grouping-key` is used to group the input and for each group, the `grouping-key` is unique.
+- Since the `grouping-key` is `continent`, the input table is grouped by the `continent` in the `groupDeathsByContinent` function.
+- After creating groups based on the `continent`, `deaths` becomes a sequence value for each `continent`.
+- You can call the `sum` function to get the total number of deaths per `continent`.
 
 ### Update the main function for grouping
 
-To call the `groupDeathsByContinent` function within the main function to find the number of total deaths per `continent`, add the code below to the main function of the `main.bal` file.
+To call the `groupDeathsByContinent` function within the main function and find the number of total deaths per `continent`, add the code below to the main function of the `main.bal` file.
 
 ### The complete code with the grouping function
 
@@ -503,7 +503,6 @@ public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, st
 }
 
 public function printErroneousData(table<CovidEntry> dataTable) {
-
     string[] countries = from CovidEntry entry in dataTable
         let decimal sum = entry.recovered + entry.deaths + entry.active
         where entry.cases != sum
@@ -525,11 +524,11 @@ public function main() {
     io:println("Countries with more than 10 million cases: ", countries);
 
     [string, decimal][] countriesWithDeaths = findCountriesByHighestNoOfDeaths(covidTable, 3);
-    io:println("Countries with highest deaths:", countriesWithDeaths);
+    io:println("Countries with highest deaths: ", countriesWithDeaths);
 
     string[] c = ["USA", "India", "Afghanistan"];
     [string, decimal][] countriesWithRecovered = findRecoveredPatientsOfCountries(covidTable, c);
-    io:println("Countries with number of Recovered patients:", countriesWithRecovered);
+    io:println("Countries with number of Recovered patients: ", countriesWithRecovered);
 
     printErroneousData(covidTable);
 
@@ -566,9 +565,9 @@ Found erroneous entries for countries: ["Sri Lanka","India"]
 Total number of deaths by continent: [{"continent":"Asia","deaths":993605},{"continent":"North America","deaths":880976}]
 ```
 
-## Get total COVID-19 deaths
+## Get the total COVID-19 deaths
 
-### Create the getTotalNumberOfDeaths function
+### Create the `getTotalNumberOfDeaths` function
 
 To define a function to get total number of deaths, add the code below to the `main.bal` file.
 
@@ -580,14 +579,14 @@ public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns deci
 ```
 
 In this code,
-1. You use `collect` clause to collect all input frames into one group.
-2. Since `deaths` becomes a sequence value, you can call the `sum` function in order to get the total number of deaths.
+- The `collect` clause collects all input frames into one group.
+- Since `deaths` becomes a sequence value, you can call the `sum` function in order to get the total number of deaths.
 
-### Update the main function for collect
+### Update the main function for collecting
 
 To call the `getTotalNumberOfDeaths` function within the main function to find the total number of deaths, add the code below to the main function of the `main.bal` file.
 
-### The complete code with the collect function
+### The complete code with the collecting function
 
 ```ballerina
 import ballerina/io;
@@ -675,7 +674,7 @@ public function main() {
 }
 ```
 
-### Run the package for collect
+### Run the package for collecting
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
@@ -692,10 +691,9 @@ Compiling source
 Running executable
 
 Countries with more than 10 million cases: ["USA","India"]
-Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",7386]]
-Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
+Countries with highest deaths: [["India",980976],["USA",880976],["Afghanistan",7386]]
+Countries with number of Recovered patients: [["Afghanistan",146084],["USA",43892277],["India",33892279]]
 Found erroneous entries for countries: ["Sri Lanka","India"]
 Total number of deaths by continent: [{"continent":"Asia","deaths":993605},{"continent":"North America","deaths":880976}]
 Total number of deaths: 1874581
-
 ```

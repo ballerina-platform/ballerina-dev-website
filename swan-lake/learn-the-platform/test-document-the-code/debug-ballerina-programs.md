@@ -17,7 +17,7 @@ The Ballerina VS Code extension offers three types of debugging sessions (i.e., 
 
 ## Debugging configurations
 
-You can define configuration attributes in the `launch.json` file to apply them on the above debug sessions.
+The Ballerina debugger allows you to create a `launch.json` file with default configurations for debugging Ballerina programs. By following a few steps, you can generate the file and then modify the configurations to suit your needs. These configurations have specific attributes that can be edited to customize the debugging process, so that you can set program arguments, command options, environment variables, run in a separate terminal, etc. Additionally, you can configure remote debugging by specifying the host address and port number. These configurations provide flexibility and control when debugging Ballerina code in VS Code.
 
 >**Info:** For more information on the debugging configurations, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/debugging-configurations/" target="_blank">Debug methods</a>.
 

@@ -11,7 +11,7 @@ The Ballerina compiler comes in handy to detect syntax and semantic issues that 
 
 ## Debugging overview
 
-The Ballerina VS Code extension offers three types of sessions (i.e., program, test, and remote). Debugging can be done using CodeLens or configurations in a `launch.json file`. It also provides a **Debug Console** to view the output and perform various debugging scenarios.
+The Ballerina VS Code extension offers three types of debugging sessions (i.e., program debugging, test debugging, and remote debugging). Debugging sessions can be initiated using CodeLens or configurations in a `launch.json file`. It also provides a **Debug Console** to view the output and perform various debugging scenarios.
 
 >**Info:** For more information on the debugging sessions and methods, go to <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/debugging-overview/" target="_blank">Debug sessions</a>.
 

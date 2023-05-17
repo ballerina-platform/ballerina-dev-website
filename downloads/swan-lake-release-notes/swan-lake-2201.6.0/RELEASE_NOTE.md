@@ -26,6 +26,49 @@ Update your currrent Ballerina installation directly to 2201.6.0 by using the [B
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+## Backward-incompatible changes
+
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix "failed to create xml" is now changed to "failed to parse xml", to have a single prefix for all the XML parsing error messages.
+
+    For example, consider the following `invalid_xml.txt` file contents.
+
+    ```
+    <!-- comments cannot have -- in it -->
+    ```
+
+    When the following Ballerina code is run,
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() returns error? {
+        xml readResult = check io:fileReadXml("invalid_xml.txt");
+    }
+    ```
+
+    it gives
+
+    ```
+    error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
+     at [row,col {unknown-source}]: [1,4]
+    ```
+
+- The `Environment`, `Future` and `Runtime` classes in the `io.ballerina.runtime.api` package are made abstract classes. Creating an instance of those classes is not correct.
+
+- A typedesc value returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions is changed to give the correct type-reference type.
+
+    ```ballerina
+    import ballerina/io;
+
+    type IntArray int[];
+
+    public function main() returns error? {
+        float[] arr = [1.0, 2.0];
+        IntArray result = check arr.cloneWithType();
+        io:println(typeof result); // Prints 'typedesc IntArray'.
+    }
+    ```
+
 ## Language updates
 
 ### New features
@@ -38,7 +81,30 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 ### New features
 
+#### New Runtime Java APIs
+
+Introduced `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+
 ### Improvements
+
+#### Improvements in Runtime Java APIs
+
+The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
+
+- `Runtime.getCurrentRuntime()`
+- `creators.ValueCreator.createDecimalValue(String, DecimalValueKind)`
+- `creators.ValueCreator.createStreamingJsonValue(JsonDataSource)`
+- `utils.JsonUtils.convertToJson(Object, List<TypeValuePair>)`
+- `utils.StringUtils.getStringValue(Object, BLink)`
+- `utils.StringUtils.getExpressionStringValue(Object, BLink)`
+- `utils.StringUtils.parseExpressionStringValue(String, BLink)`
+- `values.BDecimal.getValueKind()`
+- `values.BFuture.getStrand()`
+- `values.BObject.call(Strand, String, Object...)`
+- `values.BObject.start(Strand, String, Object...)`
+- `values.BRegexpValue.getRegExpDisjunction()`
+- `values.BTypedesc.instantiate(Strand)`
+- `values.BTypedesc.instantiate(Strand, BInitialValueEntry[])`
 
 ### Bug fixes
 

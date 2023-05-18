@@ -88,7 +88,19 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 
 ### New features
 
+#### Language Server
+
+- Added completions for the `group by` clause.
+- Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
+
 ### Improvements
+
+#### Language Server
+
+- Removed service template initialization from the lightweight mode.
+- Improved completions in the client resource access action node context.
+- Improved the main function completion item.
+- improved completions in the named argument context.
 
 ### Bug fixes
 

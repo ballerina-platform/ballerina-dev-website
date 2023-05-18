@@ -40,6 +40,8 @@ $ bal new hello_world
 
 This creates a new Ballerina package  in the default module with the `Ballerina.toml` file, which identifies a directory as a package and a sample source file (i.e., `main.bal`) with a main function.
 
+>**Info:** You can provide a directory path with `bal new` to create a package in a specific directory of your choice. Eg: `bal new <package-path>`.
+
 The `bal new` command generates the following file structure.
 
 ```

@@ -172,11 +172,6 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">init</td>
-<td class="cDescription">Create a new Ballerina package in the current directory.
-</td>
-</tr>
-<tr>
 <td class="cCommand">add</td>
 <td class="cDescription">Add a new module to the current package.
 </td>

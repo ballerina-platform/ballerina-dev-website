@@ -14,7 +14,7 @@ Ballerina has first-class support for writing SQL-like queries to process data. 
 
 To run this guide, you need the following prerequisites:
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
@@ -104,7 +104,7 @@ In this code,
 - The `filterCountriesByCases` function is called and `covidTable` and `10000000` are provided as parameters so that the function will filter the countries, which have more than 10000000 COVID-19 cases. 
 - The next line prints the result of the function. 
 
-## The complete code of the filtering function
+### The complete code of the filtering function
 
 Below is the complete code after adding the filtering function.
 
@@ -121,7 +121,7 @@ public function main() {
     io:println("Countries with more than 10 million cases: ", countries);
 }
 ```
-## Run the package for filtering
+### Run the package for filtering
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
@@ -174,7 +174,7 @@ To call the `findCountriesByHighestNoOfDeaths` function from within the `main` f
     io:println("Countries with highest deaths:", countriesWithDeaths);
 ```
 
-## The complete code with the sorting function 
+### The complete code with the sorting function 
 
 Below is the complete code after adding the sorting function.
 
@@ -202,7 +202,7 @@ public function main() {
 }
 ```
 
-## Run the package for sorting
+### Run the package for sorting
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
@@ -254,7 +254,7 @@ To call the `findRecoveredPatientsOfCountries` function at the end to get the nu
     io:println("Countries with number of Recovered patients:", countriesWithRecovered);
 ```
 
-## The complete code with the joining function
+### The complete code with the joining function
 
 Below is the complete code after adding the joining function.
 
@@ -294,7 +294,7 @@ public function main() {
 }
 ```
 
-## Run the package for joining
+### Run the package for joining
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 
@@ -351,7 +351,7 @@ To call the `findRecoveredPatientsOfCountries` function at the end to get the nu
 printErroneousData(covidTable);
 ```
 
-## The complete code 
+### The complete code 
 
 Below is the complete code after adding the finding function.
 
@@ -405,7 +405,7 @@ public function main() {
 }
 ```
 
-## Run the package
+### Run the package
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 

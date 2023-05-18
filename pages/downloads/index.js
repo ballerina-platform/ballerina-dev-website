@@ -83,21 +83,21 @@ export default function Downloads() {
                            <tr> </tr>
                            <tr>
                               <td>Install via Homebrew (for macOS)
-                                 <a href={`${prefix}/learn/install-ballerina/installation-options/#install-using-homebrew`} className={styles.cDownloadLinkIcon}>
+                                 <a href={`${prefix}/downloads/installation-options/#install-using-homebrew`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via Homebrew (for macOS)"/>
                                  </a>
                               </td>
                            </tr>
                            <tr>
                               <td>Install via the ZIP archive
-                                 <a href={`${prefix}/learn/install-ballerina/installation-options/#install-via-the-ballerina-language-zip-file`} className={styles.cDownloadLinkIcon}>
+                                 <a href={`${prefix}/downloads/installation-options/#install-via-the-ballerina-language-zip-file`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install via the ZIP archive"/>
                                  </a>
                               </td>
                            </tr>
                            <tr>
                               <td>Install from source
-                                 <a href={`${prefix}/learn/install-ballerina/installation-options/#build-from-source`} className={styles.cDownloadLinkIcon}>
+                                 <a href={`${prefix}/downloads/installation-options/#build-from-source`} className={styles.cDownloadLinkIcon}>
                                     <Image src={`${prefix}/images/right-bg-green-fill.svg`} width={13} height={13} alt="Install from source"/>
                                  </a>
                               </td>
@@ -111,7 +111,7 @@ export default function Downloads() {
             <Row className={`${styles.donwloadVersion} pageContentRow`}>
                <Col xs={12}>
                   <p>
-                     To <a href={`${prefix}/learn/install-ballerina/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
+                     To <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
                      in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/`} className={styles.instructions}>Installation options</a>.
                   </p>
@@ -143,7 +143,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} pageContentRow`}>
                <Col xs={12} sm={12} md={12} lg={4}>
-                  <p>Now, you are all set to <a href={`${prefix}/learn/get-started-with-ballerina/`}>get started with Ballerina.</a></p>
+                  <p>Now, you are all set to <a href={`${prefix}/learn/get-started/`}>get started with Ballerina.</a></p>
                </Col>
             </Row>
          </Col>

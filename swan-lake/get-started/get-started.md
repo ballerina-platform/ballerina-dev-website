@@ -12,6 +12,8 @@ intro: Let’s set up a Ballerina development environment and write a simple Bal
 
 [Download](/downloads/) Ballerina based on the operating system you are using and install it.
 
+>**Tip:** For more information on installing Ballerina, see [Installation options](/downloads/installation-options/).
+
 ## Set up the editor
 
 Set up a text editor to write Ballerina code.
@@ -135,7 +137,7 @@ Let's take a moment to digest the new constructs in this code:
 
 >**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
-## Running the simple REST API
+## Run the simple REST API
 
 Let's run this package in your terminal:
 

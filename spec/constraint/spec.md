@@ -81,7 +81,7 @@ The following table illustrates all the supported annotations with respect to th
 | Ballerina Type                    | Annotation           |
 |-----------------------------------|----------------------|
 | `int`                             | `@constraint:Int`    |
-| `float`                           | `@constraint:float`  |
+| `float`                           | `@constraint:Float`  |
 | `int`&#124;`float`&#124;`decimal` | `@constraint:Number` |
 | `string`                          | `@constraint:String` |
 | `any[]`                           | `@constraint:Array`  |

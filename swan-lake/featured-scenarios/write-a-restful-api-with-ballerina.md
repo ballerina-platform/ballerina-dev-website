@@ -12,7 +12,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
@@ -127,7 +127,7 @@ service /covid/status on new http:Listener(9000) {
 In this code:
 
 - Unlike normal functions, resource methods can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
-- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Creted`. 
+- The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Created`. 
 
 ### Create the second resource to add data
 

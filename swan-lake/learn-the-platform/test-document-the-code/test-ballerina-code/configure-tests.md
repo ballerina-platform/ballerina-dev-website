@@ -278,7 +278,7 @@ Configurations for testing can be provided using configurable variables. The val
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
 
-Configurable variables can also be provided as command line arguments when running the tests. The configurable values can be passed with `bal test` in the format `-Ckey=value` where `key` is the configurable variable name and `value` is the value to be assigned to the configurable variable.
+Configurable variables can also be provided as command-line arguments when running the tests. The configurable values can be passed with `bal test` in the format `-Ckey=value` where `key` is the configurable variable name and `value` is the value to be assigned to the configurable variable.
 
 ***Example:***
 

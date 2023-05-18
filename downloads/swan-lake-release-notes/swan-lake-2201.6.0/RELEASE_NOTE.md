@@ -76,6 +76,14 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 ### Improvements
 
+#### Support providing paths with `bal new` command
+
+Added support to provide a directory path with `bal new` to create a package in a specific directory. E.g., `bal new <package-path>`. 
+
+#### Deprecation of the `bal init` command 
+
+`bal init` is deprecated and will be removed in a future version. `bal new .` can be used instead.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the repositories below.

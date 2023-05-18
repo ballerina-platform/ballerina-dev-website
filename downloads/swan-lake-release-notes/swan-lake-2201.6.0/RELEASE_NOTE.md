@@ -28,9 +28,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix "failed to create xml" is now changed to "failed to parse xml", to have a single prefix for all the XML parsing error messages.
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml`, to have a single prefix for all the XML-parsing error messages.
 
-    For example, consider the following `invalid_xml.txt` file contents.
+    For example, consider the content below of the `invalid_xml.txt` file.
 
     ```
     <!-- comments cannot have -- in it -->
@@ -46,16 +46,16 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-    it gives
+    it gives the error below.
 
     ```
     error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
      at [row,col {unknown-source}]: [1,4]
     ```
 
-- The `Environment`, `Future` and `Runtime` classes in the `io.ballerina.runtime.api` package are made abstract classes. Creating an instance of those classes is not correct.
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are abstract classes. Creating an instance of those classes is not correct.
 
-- A typedesc value returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions is changed to give the correct type-reference type.
+- A typedesc value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
 
     ```ballerina
     import ballerina/io;
@@ -83,7 +83,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 #### New Runtime Java APIs
 
-Introduced `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
 
 ### Improvements
 

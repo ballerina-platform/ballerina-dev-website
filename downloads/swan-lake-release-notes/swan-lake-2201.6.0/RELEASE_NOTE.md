@@ -54,7 +54,23 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for GraphQL interceptor configurations.
 - Added support to access subfields of a GraphQL field from the `graphql:Field` object.
 
+#### `persist` package
+
+- Added support for `in-memory` data store.
+- Added support for `Google Sheets` data store. The support for Google Sheets data store is currently an experimental feature, and its behavior may be subject to change in future releases.
+- Added support for defining enums and adding `enum` fields to the data model.
+
 ### Improvements
+
+#### `persist` package
+
+- Renamed the error types to the following:
+    - `InvalidKeyError` to `NotFoundError`
+    - `DuplicateKeyError` to `AlreadyExistsError`
+    - `ForeignKeyConstraintViolationError` to `ForeignKeyViolationError`
+- Removed the `FieldDoesNotExistError` error type as the `NotFoundError` error type can be used instead.
+- Marked the generated client object as `isolated`.
+- Added support for transactions in the `MySQL` data store.
 
 ### Bug fixes
 
@@ -74,7 +90,17 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Persist Tool
+
+- Added support for `in-memory` data store. Set as the default data store.
+- Added support for `Google Sheets` data store. The support for Google Sheets data store is currently an experimental feature, and its behavior may be subject to change in future releases.
+- Added `persist migrate` command to migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
+
 ### Improvements
+
+#### Persist Tool
+- Added support for additional DB configurations in MySQL generated client objects.
+- Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in MySQL generated script file.
 
 #### Support for providing paths with `bal new`
 

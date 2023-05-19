@@ -85,26 +85,32 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
 
+```java
+MethodType getInitMethod();
+```
+
 ### Improvements
 
 #### Improvements in Runtime Java APIs
 
 The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
 
-- `Runtime.getCurrentRuntime()`
-- `creators.ValueCreator.createDecimalValue(String, DecimalValueKind)`
-- `creators.ValueCreator.createStreamingJsonValue(JsonDataSource)`
-- `utils.JsonUtils.convertToJson(Object, List<TypeValuePair>)`
-- `utils.StringUtils.getStringValue(Object, BLink)`
-- `utils.StringUtils.getExpressionStringValue(Object, BLink)`
-- `utils.StringUtils.parseExpressionStringValue(String, BLink)`
-- `values.BDecimal.getValueKind()`
-- `values.BFuture.getStrand()`
-- `values.BObject.call(Strand, String, Object...)`
-- `values.BObject.start(Strand, String, Object...)`
-- `values.BRegexpValue.getRegExpDisjunction()`
-- `values.BTypedesc.instantiate(Strand)`
-- `values.BTypedesc.instantiate(Strand, BInitialValueEntry[])`
+  | **Runtime API**                                  | **Java class**                                     |
+  |--------------------------------------------------|----------------------------------------------------|
+  | `getCurrentRuntime()`                            | `io.ballerina.runtime.api.Runtime`                 |
+  | `createDecimalValue(String, DecimalValueKind)`   | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `createStreamingJsonValue(JsonDataSource)`       | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `convertToJson(Object, List<TypeValuePair>)`     | `io.ballerina.runtime.api.utils.JsonUtils`         |
+  | `getStringValue(Object, BLink)`                  | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getExpressionStringValue(Object, BLink)`        | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `parseExpressionStringValue(String, BLink)`      | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getValueKind()`                                 | `io.ballerina.runtime.api.values.BDecimal`         |
+  | `getStrand()`                                    | `io.ballerina.runtime.api.values.BFuture`          |
+  | `call(Strand, String, Object...)`                | `io.ballerina.runtime.api.values.BObject`          |
+  | `start(Strand, String, Object...)`               | `io.ballerina.runtime.api.values.BObject`          |
+  | `getRegExpDisjunction()`                         | `io.ballerina.runtime.api.values.BRegexpValue`     |
+  | `instantiate(Strand)`                            | `io.ballerina.runtime.api.values.BTypedesc`        |
+  | `instantiate(Strand, BInitialValueEntry[])`      | `io.ballerina.runtime.api.values.BTypedesc`        |
 
 ### Bug fixes
 

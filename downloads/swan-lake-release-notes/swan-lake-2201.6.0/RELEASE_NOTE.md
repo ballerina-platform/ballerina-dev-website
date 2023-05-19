@@ -53,7 +53,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
      at [row,col {unknown-source}]: [1,4]
     ```
 
-- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are refactored to abstract classes. Creating an instance of those classes is not correct.
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are refactored to abstract classes. Creating an instance of those classes is incorrect.
 
 - A typedesc value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
 

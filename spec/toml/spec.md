@@ -81,7 +81,7 @@ The following options can be set to further format the output TOML file.
 
 | Option                      | Default | Description                                                                                                                                  |
 | --------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `int indentationPolicy`     | `2`     | The number of whitespaces considered to a indent. An indentation is made once a standard or an array table is defined under the current one. |
+| `int indentationPolicy`     | `2`     | The number of whitespaces considered for an indent. An indentation is made once a standard or an array table is defined under the current one. |
 | `boolean allowedDottedKeys` | `true`  | If set, dotted keys are used instead of standard tables.                                                                                     |
 
 Consider the `map<json>` structure of  `{table: key = "value"}`. The output TOML document of this can be diverted based on the `allowedDottedKeys` property as follow.
@@ -117,7 +117,7 @@ The following example illustrates how TOML content is converted to a Ballerina r
 
 ```ballerina
 import ballerina/io;
-import nipunayf/toml;
+import ballerina/toml;
 
 type Package record {|
     string name;

@@ -84,6 +84,10 @@ Added support to provide a directory path with `bal new` to create a package in 
 
 `bal init` is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
+#### Architecture Model Generator
+
+To view improvements, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the repositories below.
@@ -91,6 +95,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.6.0%22+label%3AType%2FBug)
+- [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

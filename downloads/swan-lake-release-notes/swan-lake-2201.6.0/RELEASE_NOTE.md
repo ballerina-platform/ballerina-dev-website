@@ -26,6 +26,81 @@ Update your currrent Ballerina installation directly to 2201.6.0 by using the [B
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+## Backward-incompatible changes
+
+- `self` of an object is now implicitly final and cannot be assigned to.
+
+    ```ballerina
+    class Counter {
+        private int i = 0;
+
+        function updateSelf() {
+            self = new; // Compilation error now.
+        }
+
+        function increment() {
+            lock {
+                self.i += 1;
+            }
+        }
+    }    
+    ```
+
+  This also allows using `self` of an object that is a subtype of `readonly` or `isolated object {}` as a captured variable within an `isolated` anonymous function.
+
+    ```ballerina
+    isolated class Filter {
+        final string[] & readonly words;
+        private int length;
+
+        isolated function init(string[] & readonly words, int length) {
+            self.words = words;
+            self.length = length;
+        }
+
+        isolated function setLength(int length) {
+            lock {
+                self.length = length;
+            }
+        }
+
+        isolated function getCount() returns int =>
+            self.words.filter(
+                // Allowed now.
+                word => word.length() == self.length).length();
+    }
+    ```
+
+- A bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types has been fixed. This previously resulted in a runtime panic if the value was nil.
+
+    ```ballerina
+    type Employee record {|
+        string id;
+        string name;
+    |};
+
+    public function main() {
+        Employee employee = {
+            name: "Jo",
+            id: "E12321"
+        };
+
+        string key = "name";
+        employee[key] = (); // Compilation error now.
+
+        map<string> data = {
+            name: "Jo Doe",
+            dept: "IT"
+        };
+
+        foreach string mkey in employee.keys() {
+            // `data[key]` will be nil if the key is not present in `data`.
+            // E.g., `data[key]` is nil when `key` is `name`.
+            employee[mkey] = data[mkey]; // Compilation error now.
+        }
+    }
+    ```
+
 ## Language updates
 
 ### New features

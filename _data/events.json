@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "May 30, 2023",
+            "day": "Tue.",
+            "time": "3.30 p.m. UTC",
+            "expire": "2023-05-31T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.twitch.tv/exercismlive",
+            "eventType": "Exercism - #12in23 Challenge",
+            "eventName": "Ballerina Livestream for Mind-shifting May",
+            "presenterTwitter": "https://www.linkedin.com/in/lakshan-weerasinghe/",
+            "presenter": "Lakshan Weerasinghe",
+            "presenterDesignation": "Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "Subscribe"
+        },
+        {
             "date": "May 23, 2023",
             "day": "Tue.",
             "time": "4.30 p.m. UTC",
@@ -22,15 +38,15 @@
             "time": "4.30 p.m. UTC",
             "expire": "2023-05-19T00:00:00.0000-00:00",
             "location": "Virtual",
-            "url": "https://www.twitch.tv/exercismlive",
+            "url": "https://www.twitch.tv/videos/1823130419",
             "eventType": "Exercism - #12in23 Challenge",
             "eventName": "Ballerina Livestream for Mind-shifting May",
             "presenterTwitter": "https://twitter.com/Imesha94",
             "presenter": "Imesha Sudasingha",
             "presenterDesignation": "Associate Technical Lead, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
+            "videoURL": "https://www.twitch.tv/videos/1823130419",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 10, 2023",

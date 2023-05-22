@@ -86,11 +86,12 @@ Added support to provide a directory path with `bal new` to create a package in 
 
 #### OpenAPI Tool
 
-- Added support for the `string` pattern with a subset of ECMA-flavored regexes that support the Ballerina regex in OpenAPI contracts using the Ballerina constraint module.
+- Added support for openAPI regular expression templates (pattern property) defined on `string` type in Ballerina client and service generation.
+  With this support, the aforementioned regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
 - Added support for the openAPI enums in client and service generation. 
 - Added support for query parameters with referenced schema in Ballerina service generation. 
 - Added support for header parameters with referenced schema in Ballerina service generation. 
-- Added support for integer, float, decimal, and boolean type header parameters in Ballerina service generation.
+- Added support for integer, float, decimal, and boolean header parameter types in Ballerina service generation.
 
 ### Bug fixes
 

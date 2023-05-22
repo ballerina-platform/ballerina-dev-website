@@ -304,7 +304,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 
 #### Language Server
 
-- Added completions for the `group by` clause.
 - Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
 ### Improvements

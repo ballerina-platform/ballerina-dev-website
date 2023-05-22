@@ -100,6 +100,47 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         }
     }
     ```
+    
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml`, to have a single prefix for all the XML-parsing error messages.
+
+    For example, consider the content below of the `invalid_xml.txt` file.
+
+    ```
+    <!-- comments cannot have -- in it -->
+    ```
+
+    When the following Ballerina code is run,
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() returns error? {
+        xml readResult = check io:fileReadXml("invalid_xml.txt");
+    }
+    ```
+
+    it gives the error below.
+
+    ```
+    error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
+     at [row,col {unknown-source}]: [1,4]
+    ```
+
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are refactored to abstract classes. Creating an instance of those classes is incorrect.
+
+- A typedesc value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
+
+    ```ballerina
+    import ballerina/io;
+
+    type IntArray int[];
+
+    public function main() returns error? {
+        float[] arr = [1.0, 2.0];
+        IntArray result = check arr.cloneWithType();
+        io:println(typeof result); // Prints 'typedesc IntArray'.
+    }
+    ```
 
 ## Language updates
 
@@ -113,7 +154,92 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 ### New features
 
+#### New Runtime Java APIs
+
+Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+
+```java
+MethodType getInitMethod();
+```
+
 ### Improvements
+
+#### Improvements in Runtime Java APIs
+
+The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
+
+<style>
+  table {
+    font-size: 15px;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Runtime API</strong></th>
+      <th><strong>Java class</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>getCurrentRuntime()</code></td>
+      <td><code>io.ballerina.runtime.api.Runtime</code></td>
+    </tr>
+    <tr>
+      <td><code>createDecimalValue(String, DecimalValueKind)</code></td>
+      <td><code>io.ballerina.runtime.api.creators.ValueCreator</code></td>
+    </tr>
+    <tr>
+      <td><code>createStreamingJsonValue(JsonDataSource)</code></td>
+      <td><code>io.ballerina.runtime.api.creators.ValueCreator</code></td>
+    </tr>
+    <tr>
+      <td><code>convertToJson(Object, List&lt;TypeValuePair&gt;)</code></td>
+      <td><code>io.ballerina.runtime.api.utils.JsonUtils</code></td>
+    </tr>
+    <tr>
+      <td><code>getStringValue(Object, BLink)</code></td>
+      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
+    </tr>
+    <tr>
+      <td><code>getExpressionStringValue(Object, BLink)</code></td>
+      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
+    </tr>
+    <tr>
+      <td><code>parseExpressionStringValue(String, BLink)</code></td>
+      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
+    </tr>
+    <tr>
+      <td><code>getValueKind()</code></td>
+      <td><code>io.ballerina.runtime.api.values.BDecimal</code></td>
+    </tr>
+    <tr>
+      <td><code>getStrand()</code></td>
+      <td><code>io.ballerina.runtime.api.values.BFuture</code></td>
+    </tr>
+    <tr>
+      <td><code>call(Strand, String, Object...)</code></td>
+      <td><code>io.ballerina.runtime.api.values.BObject</code></td>
+    </tr>
+    <tr>
+      <td><code>start(Strand, String, Object...)</code></td>
+      <td><code>io.ballerina.runtime.api.values.BObject</code></td>
+    </tr>
+    <tr>
+      <td><code>getRegExpDisjunction()</code></td>
+      <td><code>io.ballerina.runtime.api.values.BRegexpValue</code></td>
+    </tr>
+    <tr>
+      <td><code>instantiate(Strand)</code></td>
+      <td><code>io.ballerina.runtime.api.values.BTypedesc</code></td>
+    </tr>
+    <tr>
+      <td><code>instantiate(Strand, BInitialValueEntry[])</code></td>
+      <td><code>io.ballerina.runtime.api.values.BTypedesc</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Bug fixes
 

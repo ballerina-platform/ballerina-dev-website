@@ -70,7 +70,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
     - `ForeignKeyConstraintViolationError` to `ForeignKeyViolationError`
 - Removed the `FieldDoesNotExistError` error type as the `NotFoundError` error type can be used instead.
 - Marked the generated client object as `isolated`.
-- Added support for transactions in the `MySQL` data store.
+- Added support for transactions in the `mysql` data store.
 
 ### Bug fixes
 

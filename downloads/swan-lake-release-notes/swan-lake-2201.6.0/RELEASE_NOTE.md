@@ -26,6 +26,122 @@ Update your currrent Ballerina installation directly to 2201.6.0 by using the [B
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+## Backward-incompatible changes
+
+- `self` of an object is now implicitly final and cannot be assigned to.
+
+    ```ballerina
+    class Counter {
+        private int i = 0;
+
+        function updateSelf() {
+            self = new; // Compilation error now.
+        }
+
+        function increment() {
+            lock {
+                self.i += 1;
+            }
+        }
+    }    
+    ```
+
+  This also allows using `self` of an object that is a subtype of `readonly` or `isolated object {}` as a captured variable within an `isolated` anonymous function.
+
+    ```ballerina
+    isolated class Filter {
+        final string[] & readonly words;
+        private int length;
+
+        isolated function init(string[] & readonly words, int length) {
+            self.words = words;
+            self.length = length;
+        }
+
+        isolated function setLength(int length) {
+            lock {
+                self.length = length;
+            }
+        }
+
+        isolated function getCount() returns int =>
+            self.words.filter(
+                // Allowed now.
+                word => word.length() == self.length).length();
+    }
+    ```
+
+- A bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types has been fixed. This previously resulted in a runtime panic if the value was nil.
+
+    ```ballerina
+    type Employee record {|
+        string id;
+        string name;
+    |};
+
+    public function main() {
+        Employee employee = {
+            name: "Jo",
+            id: "E12321"
+        };
+
+        string key = "name";
+        employee[key] = (); // Compilation error now.
+
+        map<string> data = {
+            name: "Jo Doe",
+            dept: "IT"
+        };
+
+        foreach string mkey in employee.keys() {
+            // `data[key]` will be nil if the key is not present in `data`.
+            // E.g., `data[key]` is nil when `key` is `name`.
+            employee[mkey] = data[mkey]; // Compilation error now.
+        }
+    }
+    ```
+    
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml`, to have a single prefix for all the XML-parsing error messages.
+
+    For example, consider the content below of the `invalid_xml.txt` file.
+
+    ```
+    <!-- comments cannot have -- in it -->
+    ```
+
+    When the following Ballerina code is run,
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() returns error? {
+        xml readResult = check io:fileReadXml("invalid_xml.txt");
+    }
+    ```
+
+    it gives the error below.
+
+    ```
+    error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
+     at [row,col {unknown-source}]: [1,4]
+    ```
+
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are refactored to abstract classes. Creating an instance of those classes is incorrect.
+
+- A typedesc value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
+
+    ```ballerina
+    import ballerina/io;
+
+    type IntArray int[];
+
+    public function main() returns error? {
+        float[] arr = [1.0, 2.0];
+        IntArray result = check arr.cloneWithType();
+        io:println(typeof result); // Prints 'typedesc IntArray'.
+    }
+    ```
+
 ## Language updates
 
 ### New features
@@ -38,7 +154,36 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 ### New features
 
+#### New Runtime Java APIs
+
+Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+
+```java
+MethodType getInitMethod();
+```
+
 ### Improvements
+
+#### Improvements in Runtime Java APIs
+
+The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
+
+  | **Runtime API**                                  | **Java class**                                     |
+  |--------------------------------------------------|----------------------------------------------------|
+  | `getCurrentRuntime()`                            | `io.ballerina.runtime.api.Runtime`                 |
+  | `createDecimalValue(String, DecimalValueKind)`   | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `createStreamingJsonValue(JsonDataSource)`       | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `convertToJson(Object, List<TypeValuePair>)`     | `io.ballerina.runtime.api.utils.JsonUtils`         |
+  | `getStringValue(Object, BLink)`                  | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getExpressionStringValue(Object, BLink)`        | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `parseExpressionStringValue(String, BLink)`      | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getValueKind()`                                 | `io.ballerina.runtime.api.values.BDecimal`         |
+  | `getStrand()`                                    | `io.ballerina.runtime.api.values.BFuture`          |
+  | `call(Strand, String, Object...)`                | `io.ballerina.runtime.api.values.BObject`          |
+  | `start(Strand, String, Object...)`               | `io.ballerina.runtime.api.values.BObject`          |
+  | `getRegExpDisjunction()`                         | `io.ballerina.runtime.api.values.BRegexpValue`     |
+  | `instantiate(Strand)`                            | `io.ballerina.runtime.api.values.BTypedesc`        |
+  | `instantiate(Strand, BInitialValueEntry[])`      | `io.ballerina.runtime.api.values.BTypedesc`        |
 
 ### Bug fixes
 
@@ -47,6 +192,17 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 ## Standard library updates
 
 ### New features
+
+#### `constraint` package
+
+- Introduced the `@constriant:Date` annotation to validate date record structures.
+- Allowed constraint annotations on subtypes.
+
+#### `http` package
+
+- Added constraint validation support for query, path, and header parameters.
+- Exposed the `http:Request` object in the response interceptors as a remote method parameter.
+- Added finite type support for query, path, and header parameters.
 
 #### `graphql` package
 
@@ -71,6 +227,11 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Removed the `FieldDoesNotExistError` error type as the `NotFoundError` error type can be used instead.
 - Marked the generated client object as `isolated`.
 - Added support for transactions in the `mysql` data store.
+
+#### `http` package
+
+- Allowed a single interceptor service object to be configured as the interceptor pipeline.
+- Allowed the subtypes of one of `string`, `int`, `float`, `boolean`, or `decimal` as path parameters.
 
 ### Bug fixes
 
@@ -102,6 +263,11 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for additional DB configurations in MySQL generated client objects.
 - Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in MySQL generated script file.
 
+#### Ballerina Update Tool
+
+- Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
+- Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
+
 #### Support for providing paths with `bal new`
 
 Added support to provide a directory path with `bal new` to create a package in a specific directory. E.g., `bal new <package-path>`. 
@@ -110,6 +276,10 @@ Added support to provide a directory path with `bal new` to create a package in 
 
 `bal init` is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
+#### Architecture Model Generator
+
+To view improvements, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the repositories below.
@@ -117,6 +287,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.6.0%22+label%3AType%2FBug)
+- [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
 
@@ -124,7 +295,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 
 #### Language Server
 
-- Added completions for the `group by` clause.
 - Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
 ### Improvements
@@ -135,6 +305,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - Improved the completion support and signature help for client resource access actions.
 - Improved the main function completion item.
 - improved completions in the named argument context.
+- Added support to rename parameter documentation for record fields and required parameters.
 
 ### Bug fixes
 

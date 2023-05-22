@@ -216,7 +216,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 - Allowed a single interceptor service object to be configured as the interceptor pipeline.
 - Allowed the subtypes of one of `string`, `int`, `float`, `boolean`, or `decimal` as path parameters.
-- Introduced support for service level interceptors using `http:InterceptableService` and deprecated the use of `interceptors` in `http:HttpServiceConfig`.
+- Added support for `http:InterceptableService` to enable engaging service level interceptors and deprecated the usage of interceptors in `http:HttpServiceConfig`.
 
     For a example, consider the following implementation of the `http:InterceptableService`.
     ```ballerina

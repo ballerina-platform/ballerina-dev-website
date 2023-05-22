@@ -232,6 +232,23 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 - Allowed a single interceptor service object to be configured as the interceptor pipeline.
 - Allowed the subtypes of one of `string`, `int`, `float`, `boolean`, or `decimal` as path parameters.
+- Added support for `http:InterceptableService` to enable engaging service level interceptors and deprecated the usage of interceptors in `http:HttpServiceConfig`.
+
+    For a example, consider the following implementation of the `http:InterceptableService`.
+    ```ballerina
+    import ballerina/http;
+    
+    service http:InterceptableService / on new http:Listener(9090) {
+
+        public function createInterceptors() returns RequestInterceptor {
+            return new RequestInterceptor();
+        }
+
+        resource function get user() returns string {
+            return "John, Doe";
+        }
+    }
+    ```
 
 ### Bug fixes
 

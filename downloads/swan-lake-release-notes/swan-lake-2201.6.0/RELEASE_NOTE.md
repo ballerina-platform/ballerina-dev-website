@@ -98,7 +98,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 
 #### Language Server
 
-- Added completions for the `group by` clause.
 - Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
 ### Improvements
@@ -109,6 +108,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - Improved the completion support and signature help for client resource access actions.
 - Improved the main function completion item.
 - improved completions in the named argument context.
+- Added support to rename parameter documentation for record fields and required parameters.
 
 ### Bug fixes
 

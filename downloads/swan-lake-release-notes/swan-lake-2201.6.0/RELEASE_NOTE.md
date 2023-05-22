@@ -168,78 +168,23 @@ MethodType getInitMethod();
 
 The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
 
-<style>
-  table {
-    font-size: 15px;
-  }
-</style>
+| **Runtime API**                                  | **Java class**                                     |
+  |--------------------------------------------------|----------------------------------------------------|
+  | `getCurrentRuntime()`                            | `io.ballerina.runtime.api.Runtime`                 |
+  | `createDecimalValue(String, DecimalValueKind)`   | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `createStreamingJsonValue(JsonDataSource)`       | `io.ballerina.runtime.api.creators.ValueCreator`   |
+  | `convertToJson(Object, List<TypeValuePair>)`     | `io.ballerina.runtime.api.utils.JsonUtils`         |
+  | `getStringValue(Object, BLink)`                  | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getExpressionStringValue(Object, BLink)`        | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `parseExpressionStringValue(String, BLink)`      | `io.ballerina.runtime.api.utils.StringUtils`       |
+  | `getValueKind()`                                 | `io.ballerina.runtime.api.values.BDecimal`         |
+  | `getStrand()`                                    | `io.ballerina.runtime.api.values.BFuture`          |
+  | `call(Strand, String, Object...)`                | `io.ballerina.runtime.api.values.BObject`          |
+  | `start(Strand, String, Object...)`               | `io.ballerina.runtime.api.values.BObject`          |
+  | `getRegExpDisjunction()`                         | `io.ballerina.runtime.api.values.BRegexpValue`     |
+  | `instantiate(Strand)`                            | `io.ballerina.runtime.api.values.BTypedesc`        |
+  | `instantiate(Strand, BInitialValueEntry[])`      | `io.ballerina.runtime.api.values.BTypedesc`        |
 
-<table>
-  <thead>
-    <tr>
-      <th><strong>Runtime API</strong></th>
-      <th><strong>Java class</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>getCurrentRuntime()</code></td>
-      <td><code>io.ballerina.runtime.api.Runtime</code></td>
-    </tr>
-    <tr>
-      <td><code>createDecimalValue(String, DecimalValueKind)</code></td>
-      <td><code>io.ballerina.runtime.api.creators.ValueCreator</code></td>
-    </tr>
-    <tr>
-      <td><code>createStreamingJsonValue(JsonDataSource)</code></td>
-      <td><code>io.ballerina.runtime.api.creators.ValueCreator</code></td>
-    </tr>
-    <tr>
-      <td><code>convertToJson(Object, List&lt;TypeValuePair&gt;)</code></td>
-      <td><code>io.ballerina.runtime.api.utils.JsonUtils</code></td>
-    </tr>
-    <tr>
-      <td><code>getStringValue(Object, BLink)</code></td>
-      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
-    </tr>
-    <tr>
-      <td><code>getExpressionStringValue(Object, BLink)</code></td>
-      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
-    </tr>
-    <tr>
-      <td><code>parseExpressionStringValue(String, BLink)</code></td>
-      <td><code>io.ballerina.runtime.api.utils.StringUtils</code></td>
-    </tr>
-    <tr>
-      <td><code>getValueKind()</code></td>
-      <td><code>io.ballerina.runtime.api.values.BDecimal</code></td>
-    </tr>
-    <tr>
-      <td><code>getStrand()</code></td>
-      <td><code>io.ballerina.runtime.api.values.BFuture</code></td>
-    </tr>
-    <tr>
-      <td><code>call(Strand, String, Object...)</code></td>
-      <td><code>io.ballerina.runtime.api.values.BObject</code></td>
-    </tr>
-    <tr>
-      <td><code>start(Strand, String, Object...)</code></td>
-      <td><code>io.ballerina.runtime.api.values.BObject</code></td>
-    </tr>
-    <tr>
-      <td><code>getRegExpDisjunction()</code></td>
-      <td><code>io.ballerina.runtime.api.values.BRegexpValue</code></td>
-    </tr>
-    <tr>
-      <td><code>instantiate(Strand)</code></td>
-      <td><code>io.ballerina.runtime.api.values.BTypedesc</code></td>
-    </tr>
-    <tr>
-      <td><code>instantiate(Strand, BInitialValueEntry[])</code></td>
-      <td><code>io.ballerina.runtime.api.values.BTypedesc</code></td>
-    </tr>
-  </tbody>
-</table>
 
 ### Bug fixes
 

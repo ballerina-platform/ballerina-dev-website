@@ -185,7 +185,6 @@ The following APIs in the `io.ballerina.runtime.api` package are deprecated and 
   | `instantiate(Strand)`                            | `io.ballerina.runtime.api.values.BTypedesc`        |
   | `instantiate(Strand, BInitialValueEntry[])`      | `io.ballerina.runtime.api.values.BTypedesc`        |
 
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.6.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).

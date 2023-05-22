@@ -101,7 +101,7 @@ In addition to the `Fail-Safe Schema`, the `JSON Schema` defines the following t
 
 ## 6. Custom YAML Types
 
-A custom tag support can be added to the YAML parser by writing a record of the type `YAMLType`. All the custom YAML tags must be provided as an array to the `yamlTypes` property in the config. The following code segment demonstrates an example of adding a custom tag to the parser.
+A custom tag support can be added to the YAML parser by writing a record of the type `YamlType`. All the custom YAML tags must be provided as an array to the `yamlTypes` property in the config. The following code segment demonstrates an example of adding a custom tag to the parser.
 
 ```ballerina
 import ballerina/yaml;
@@ -126,7 +126,7 @@ function constructRGB(json data) returns json|yaml:SchemaError {
 }
 
 public function main() returns error? {
-    yaml:YAMLType rgbType = {
+    yaml:YamlType rgbType = {
         tag: "!rgb",
         ballerinaType: RGB,
         kind: yaml:SEQUENCE,

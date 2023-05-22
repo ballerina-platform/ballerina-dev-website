@@ -231,7 +231,7 @@ Dependency 'jdk-11.0.18+10-jre' is already available locally
 
 ### Update to the latest patch version
 
-The `bal dist update` command updates your active distribution to the latest patch version (of the active Swan lake update version).
+The `bal dist update` command updates your active distribution to the latest patch version (of the active Swan Lake update version).
 
 ```bash
 $ bal dist update

@@ -277,6 +277,11 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 ### Improvements
 
+#### Ballerina Update Tool
+
+- Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
+- Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
+
 #### Support for providing paths with `bal new`
 
 Added support to provide a directory path with `bal new` to create a package in a specific directory. E.g., `bal new <package-path>`. 

@@ -92,7 +92,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### Persist Tool
 
-- Added support for the `In-Memory` data store. Set as the default data store.
+- Added support for the `In-Memory` data store. This is set as the default data store.
 - Added support for the `Google Sheets` data store. The support for Google Sheets data store is currently an experimental feature, and its behavior may be subject to change in future releases.
 - Added `persist migrate` command to migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
 

@@ -168,7 +168,7 @@ MethodType getInitMethod();
 
 The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
 
-| **Runtime API**                                  | **Java class**                                     |
+  | **Runtime API**                                  | **Java class**                                     |
   |--------------------------------------------------|----------------------------------------------------|
   | `getCurrentRuntime()`                            | `io.ballerina.runtime.api.Runtime`                 |
   | `createDecimalValue(String, DecimalValueKind)`   | `io.ballerina.runtime.api.creators.ValueCreator`   |

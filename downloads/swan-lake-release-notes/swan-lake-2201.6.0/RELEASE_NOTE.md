@@ -213,7 +213,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 #### `persist` package
 
 - Added support for the `in-memory` data store.
-- Added support for the `Google Sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
+- Added support for the `google-sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
 - Added support for defining enums and adding `enum` fields to the data model.
 
 ### Improvements
@@ -253,15 +253,15 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### Persist Tool
 
-- Added support for the `In-Memory` data store. This is set as the default data store.
-- Added support for the `Google Sheets` data store. The support for Google Sheets data store is currently an experimental feature, and its behavior may be subject to change in future releases.
-- Added `persist migrate` command to migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
+- Added support for the `in-memory` data store. This is set as the default data store.
+- Added support for the `google-sheets` data store. This is currently an experimental feature, and its behavior may be subject to change in future releases.
+- Added `persist migrate` command to generate migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
 
 ### Improvements
 
 #### Persist Tool
-- Added support for additional DB configurations in MySQL generated client objects.
-- Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in the MySQL generated script file.
+- Added support for additional DB configurations in the generated client objects for `mysql` data store.
+- Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in the generated SQL script file.
 
 #### Ballerina Update Tool
 

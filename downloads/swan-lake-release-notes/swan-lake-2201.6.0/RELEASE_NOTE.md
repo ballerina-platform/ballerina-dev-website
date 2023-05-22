@@ -78,7 +78,8 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### Ballerina Update Tool
 
-- Improved ballerina distribution update commands (`bal dist update`, `bal dist pull latest`).
+- Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
+- Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
 
 #### Support for providing paths with `bal new`
 

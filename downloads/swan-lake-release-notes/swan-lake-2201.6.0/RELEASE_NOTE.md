@@ -195,14 +195,14 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### `constraint` package
 
-- Introduced `@constriant:Date` annotation to validate date record structures.
+- Introduced the `@constriant:Date` annotation to validate date record structures.
 - Allowed constraint annotations on subtypes.
 
 #### `http` package
 
-- Added constraint validation support for query, path and header parameters.
+- Added constraint validation support for query, path, and header parameters.
 - Exposed the `http:Request` object in the response interceptors as a remote method parameter.
-- Added finite type support for query, path and header parameters.
+- Added finite type support for query, path, and header parameters.
 
 #### `graphql` package
 
@@ -215,7 +215,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 #### `http` package
 
 - Allowed a single interceptor service object to be configured as the interceptor pipeline.
-- Allowed the subtypes of one of `string`, `int`, `float`, `boolean` or `decimal` as path parameters.
+- Allowed the subtypes of one of `string`, `int`, `float`, `boolean`, or `decimal` as path parameters.
 
 ### Bug fixes
 

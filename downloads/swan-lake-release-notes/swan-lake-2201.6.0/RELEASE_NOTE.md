@@ -280,13 +280,22 @@ Added support to provide a directory path with `bal new` to create a package in 
 
 To view improvements, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
 
+#### OpenAPI Tool
+
+- Added support for openAPI regular expression templates (pattern property) defined on `string` type in Ballerina client and service generation.
+  With this support, the aforementioned regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
+- Added support for the openAPI enums in client and service generation. 
+- Added support for query parameters with referenced schema in Ballerina service generation. 
+- Added support for header parameters with referenced schema in Ballerina service generation. 
+- Added support for integer, float, decimal, and boolean header parameter types in Ballerina service generation.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the repositories below.
 
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.6.0%22+label%3AType%2FBug)
+- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.0+%22+label%3AType%2FBug+is%3Aclosed)
 - [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates

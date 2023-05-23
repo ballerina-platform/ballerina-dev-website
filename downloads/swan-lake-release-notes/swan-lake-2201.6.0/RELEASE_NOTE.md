@@ -144,8 +144,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
-### New features
-
 ### Bug fixes
 
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug).
@@ -256,10 +254,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 ## Code to Cloud updates
 
-### New features
-
-### Improvements
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.6.0%22+label%3AType%2FBug).
@@ -274,11 +268,24 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for the `google-sheets` data store. This is currently an experimental feature, and its behavior may be subject to change in future releases.
 - Added `persist migrate` command to generate migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
 
+#### Language Server
+
+- Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
+
 ### Improvements
 
 #### Persist Tool
+
 - Added support for additional DB configurations in the generated client objects for `mysql` data store.
 - Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in the generated SQL script file.
+
+#### Language Server
+
+- Removed service template initialization from the lightweight mode.
+- Improved the completion support and signature help for client resource access actions.
+- Improved the main function completion item.
+- Improved completions in the named argument context.
+- Added support to rename parameter documentation for record fields and required parameters.
 
 #### Ballerina Update Tool
 
@@ -293,7 +300,7 @@ Added support to provide a directory path with `bal new` to create a package in 
 
 `bal init` is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
-#### Architecture Model Generator
+#### Architecture model generator
 
 To view improvements, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
 
@@ -313,25 +320,17 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.0+%22+label%3AType%2FBug+is%3Aclosed)
-- [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
+- [Architecture model generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
 
 ### New features
 
-#### Language Server
 
-- Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
 ### Improvements
 
-#### Language Server
 
-- Removed service template initialization from the lightweight mode.
-- Improved the completion support and signature help for client resource access actions.
-- Improved the main function completion item.
-- improved completions in the named argument context.
-- Added support to rename parameter documentation for record fields and required parameters.
 
 ### Bug fixes
 

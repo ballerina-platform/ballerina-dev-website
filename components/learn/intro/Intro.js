@@ -27,8 +27,7 @@ export default function Intro() {
     return (
         <>
             <Container>
-
-                <Row className='pageContentRow llanding'>
+            <Row className='pageContentRow llanding justify-content-center'>
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`${prefix}/learn/get-started`} className={`${styles.cardWrapper} ${styles.secondary}`}>
                             <div>
@@ -50,6 +49,21 @@ export default function Intro() {
                             </div>
                         </a>
                     </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/by-example`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>VS Code extension</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Design and develop Ballerina code via its graphical representation.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+    
+                </Row>
+
+                <Row className='pageContentRow llanding justify-content-center'>
+     
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`https://lib.ballerina.io/`} target='_blank' rel="noreferrer" className={`${styles.cardWrapper} ${styles.secondary}`}>
                             <div>

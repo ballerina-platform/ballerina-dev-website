@@ -18,7 +18,7 @@ intro: Let’s set up a Ballerina development environment and write a simple Bal
 
 Set up a text editor to write Ballerina code.
 
->**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina VS Code extension</a> installed. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code Extension Documentation</a>.
+>**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina VS Code extension</a> installed. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
 
 ## Meet `bal`
 

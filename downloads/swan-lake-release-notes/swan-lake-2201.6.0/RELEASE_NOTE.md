@@ -214,6 +214,14 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for the `google-sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
 - Added support for defining enums and adding `enum` fields to the data model.
 
+#### `toml` package
+
+- Introduced the `toml` module to convert a TOML configuration file to `map<json>` and vice-versa.
+
+#### `yaml` package
+
+- Introduced the `yaml` module to convert a YAML configuration file to JSON and vice-versa.
+
 ### Improvements
 
 #### `persist` package
@@ -323,14 +331,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Architecture model generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
-
-### New features
-
-
-
-### Improvements
-
-
 
 ### Bug fixes
 

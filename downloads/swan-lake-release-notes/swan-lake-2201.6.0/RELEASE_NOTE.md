@@ -101,7 +101,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
     
-- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml`, to have a single prefix for all the XML-parsing error messages.
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml` to have a single prefix for all the XML-parsing error messages.
 
     For example, consider the content below of the `invalid_xml.txt` file.
 
@@ -198,9 +198,9 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Added constraint validation support for query, path, and header parameters.
+- Added constraint validation support for `query`, `path`, and `header` parameters.
 - Exposed the `http:Request` object in the response interceptors as a remote method parameter.
-- Added finite type support for query, path, and header parameters.
+- Added finite type support for `query`, `path`, and `header` parameters.
 
 #### `graphql` package
 
@@ -238,9 +238,9 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 - Allowed a single interceptor service object to be configured as the interceptor pipeline.
 - Allowed the subtypes of one of `string`, `int`, `float`, `boolean`, or `decimal` as path parameters.
-- Added support for `http:InterceptableService` to enable engaging service level interceptors and deprecated the usage of interceptors in `http:HttpServiceConfig`.
+- Added support for `http:InterceptableService` to enable engaging service-level interceptors and deprecated the usage of interceptors in the `http:HttpServiceConfig`.
 
-    For a example, consider the following implementation of the `http:InterceptableService`.
+    For example, consider the following implementation of the `http:InterceptableService`.
     ```ballerina
     import ballerina/http;
     
@@ -260,12 +260,6 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.6.0%22+label%3AType%2FBug).
 
-## Code to Cloud updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/module-ballerina-c2c/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.6.0%22+label%3AType%2FBug).
-
 ## Developer tools updates
 
 ### New features
@@ -273,8 +267,8 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 #### Persist Tool
 
 - Added support for the `in-memory` data store. This is set as the default data store.
-- Added support for the `google-sheets` data store. This is currently an experimental feature, and its behavior may be subject to change in future releases.
-- Added `persist migrate` command to generate migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature, and its behavior may be subject to change in future releases.
+- Added support for the `google-sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
+- Added the `persist migrate` command to generate migration scripts for data model changes in the `mysql` data store. The support for migrations is currently an experimental feature and its behavior may be subject to change in future releases.
 
 #### Language Server
 
@@ -284,7 +278,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### Persist Tool
 
-- Added support for additional DB configurations in the generated client objects for `mysql` data store.
+- Added support for additional DB configurations in the generated client objects for the `mysql` data store.
 - Changed the Ballerina `byte[]` type mapping to `LONGBLOB` in the generated SQL script file.
 
 #### Language Server
@@ -300,26 +294,28 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
 - Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
 
-#### Support for providing paths with `bal new`
+#### OpenAPI Tool
 
-Added support to provide a directory path with `bal new` to create a package in a specific directory. E.g., `bal new <package-path>`. 
-
-#### Deprecation of the `bal init` command 
-
-`bal init` is deprecated and will be removed in a future version. `bal new .` can be used instead.
+- Added support for OpenAPI regular expression templates (the pattern property) defined on the `string` type in Ballerina client and service generation.
+  With this support, the aforementioned Regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to Regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
+- Added support for OpenAPI enums in the client and service generation. 
+- Added support for query parameters with referenced schema in the Ballerina service generation. 
+- Added support for header parameters with referenced schema in the Ballerina service generation. 
+- Added support for `integer`, `float`, `decimal`, and `boolean` header parameter types in the Ballerina service generation.
 
 #### Architecture model generator
 
-To view improvements, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
+To view improvements of the architecture model generator, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
 
-#### OpenAPI Tool
+#### CLI commands
 
-- Added support for openAPI regular expression templates (pattern property) defined on `string` type in Ballerina client and service generation.
-  With this support, the aforementioned regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
-- Added support for the openAPI enums in client and service generation. 
-- Added support for query parameters with referenced schema in Ballerina service generation. 
-- Added support for header parameters with referenced schema in Ballerina service generation. 
-- Added support for integer, float, decimal, and boolean header parameter types in Ballerina service generation.
+##### Support for providing paths with `bal new`
+
+Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
+
+##### Deprecation of `bal init`
+
+The `bal init` coomand is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
 ### Bug fixes
 

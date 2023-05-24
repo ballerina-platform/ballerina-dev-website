@@ -276,6 +276,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 ### Improvements
 
+#### Test Framework
+
+- Added support for excluding source files from code coverage.
 #### Persist Tool
 
 - Added support for additional DB configurations in the generated client objects for the `mysql` data store.

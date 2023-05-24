@@ -6,14 +6,6 @@ keywords: ballerina, programming language, ballerina packages, dependencies, imp
 permalink: /learn/manage-dependencies/
 active: manage-dependencies
 intro: The sections below include information about dependencies, imports, and how they can be used in your package.
-redirect_from:
-- /learn/user-guide/ballerina-packages/dependencies
-- /learn/user-guide/ballerina-packages/dependencies/
-- /learn/managing-dependencies
-- /learn/managing-dependencies/
-- /learn/manage-dependencies
-- /learn/guides/managing-dependencies/
-- /learn/guides/managing-dependencies
 ---
 
 ## Specify dependencies

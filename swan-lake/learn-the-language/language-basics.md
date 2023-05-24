@@ -6,10 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/language-basics/
 active: language-basics
 intro: This guide introduces the Ballerina language to help you get started with basics that are common to all C-Family programming languages.
-redirect_from:
-- /learn/language-basics
-- /learn/getting-started/language-basics/
-- /learn/getting-started/language-basics
 ---
 
 ## Familiar subset of Ballerina

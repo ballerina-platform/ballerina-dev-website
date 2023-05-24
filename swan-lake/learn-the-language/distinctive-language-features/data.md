@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/data/
 active: data
 intro: In this part, you will learn about some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.
-redirect_from:
-- /learn/distinctive-language-features/data
 ---
 
 ## Plain data

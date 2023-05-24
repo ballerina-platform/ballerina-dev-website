@@ -21,7 +21,7 @@ service / on new http:Listener(8080) {
                     max_tokens: 100
                 };
                 text:CreateCompletionResponse completionRes = 
-                    check openaiText->/completions.post(textPrompt);
+                    check openAIText->/completions.post(textPrompt);
                 return completionRes.choices[0].text;
             }
             worker imageWorker returns string|error? {
@@ -30,7 +30,7 @@ service / on new http:Listener(8080) {
                                     specialNotes}`
                 };
                 images:ImagesResponse imageRes = 
-                    check openaiImages->/images/generations.post(imagePrompt);
+                    check openAIImages->/images/generations.post(imagePrompt);
                 return imageRes.data[0].url;
             }
         }

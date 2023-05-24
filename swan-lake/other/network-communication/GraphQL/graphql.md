@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/graphql/
 active: graphql
 intro:  GraphQL has become a prominent technology for implementing data APIs because it provides a convenient and intuitive approach for querying data. It solves potential problems such as data over-fetching and high-latency that you may notice in traditional data services. This guide illustrates a sample GraphQL use case using Ballerina. 
-redirect_from:
-  - /learn/network-communication/graphql
-  - /swan-lake/learn/network-communication/graphql/
-  - /swan-lake/learn/network-communication/graphql
-  - /learn/network-communication/graphql/
-  - /learn/network-communication/graphql
-  - /learn/user-guide/network-communication/graphql
-redirect_to:
-  - https://lib.ballerina.io/ballerina/graphql/latest/
 ---
 
 ## Introducing the use case

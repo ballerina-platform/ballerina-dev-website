@@ -35,23 +35,27 @@ export default function UseCases(props) {
     const chat = samples['bring-text-alive-with-openai-chats'];
     const chat1 = samples['openai1'];
     const chat2 = samples['openai2'];
-
+    const chat3 = samples['openai3'];
 
     const dalle = samples['create-images-with-dall-e'];
     const dalle1 = samples['dalle1'];
     const dalle2 = samples['dalle2'];
     const dalle3 = samples['dalle3'];
+    const dalle4 = samples['dalle4'];
 
     const music = samples['transcribe-speech-or-music-with-whisper'];
     const sample1 = samples['music1'];
     const sample2 = samples['music2'];
 
     const tune = samples['fine-tune-models-with-your-own-data'];
-    // const vector = samples['connectors-for-vector-databases'];
+    const vector = samples['simplify-vector-database-management'];
     const libraries = samples['libraries-for-ai-operations'];
     const powered = samples['create-ai-powered-apis'];
     const robust = samples['write-robust-api-powered-ai-applications'];
     const concurrency = samples['concurrency-simplified-for-ai-development'];
+    const effortlessly = samples['effortlessly-create-impactful-business'];
+    const effort1 = samples['effort1'];
+    const effort2 = samples['effort2'];
     const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
 
 
@@ -106,7 +110,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='connectors-for-openai-apis' className='section'>
+                                <h2 id='why-is-ballerina-the-way-you-should-write-ai-applications' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -114,7 +118,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'connectors-for-openai-apis')}
+                                        onClick={(e) => props.getLink(e.target, 'why-is-ballerina-the-way-you-should-write-ai-applications')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -137,6 +141,33 @@ export default function UseCases(props) {
                                             </a>
                                         </div>
                                         <div className={styles.dVersion}>
+                                            <a href={`https://central.ballerina.io/search?q=package%3Aazure.openai.&sort=pull_count%2CDESC&page=1`}
+                                                className={styles.cDownload}
+                                                data-download="downloads">
+                                                <div className={styles.cSize}>Azure OpenAI connectors</div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.dVersions}>
+                                        <div className={styles.dVersion}>
+                                            <a href={`https://central.ballerina.io/search/keywords?q=Embedding+Search&page=1`}
+                                                className={styles.cDownload}
+                                                data-download="downloads">
+                                                <div className={styles.cSize}>Vector DB connectors</div>
+                                            </a>
+                                        </div>
+                                        <div className={styles.dVersion}>
+                                            <a href={`https://central.ballerina.io/search/keywords?q=AI%2FImages&page=1`}
+                                                className={styles.cDownload}
+                                                data-download="downloads">
+                                                <div className={styles.cSize}>Images</div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.dVersions}>
+                                        <div className={styles.dVersion}>
                                             <a href={`https://central.ballerina.io/ballerina/math.vector`}
                                                 className={styles.cDownload}
                                                 data-download="downloads">
@@ -145,7 +176,6 @@ export default function UseCases(props) {
                                         </div>
                                     </div>
 
-                                    <div className={styles.comingSoon}><small><i>Coming soon: Support for Azure AI APIs, Google AI APIs, vector databases and more.</i></small></div>
                                     {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
@@ -255,6 +285,14 @@ export default function UseCases(props) {
                                             View code on GitHub
                                         </a>
                                     </div>
+
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 3: Tweet on upcoming and recently released movies using Azure OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/tweet_on_upcoming_and_recently_released_movies_using_azure_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -268,6 +306,11 @@ export default function UseCases(props) {
                                         <Tab eventKey="chat2" title="Sample 2">
                                             <div className={styles.codeSnippet}>
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: chat2.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="chat3" title="Sample 3">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: chat3.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -306,7 +349,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dalle.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <span>Sample 1: Generate images using OpenAI and store them in google drive</span>
+                                        <span>Sample 1: Generate images using OpenAI and store them in Google Drive</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -329,6 +372,14 @@ export default function UseCases(props) {
                                             View code on GitHub
                                         </a>
                                     </div>
+
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 4: Generate a poem and an image on a topic using OpenAI and Stable Diffusion and email both of them</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_and_send_a_creative_email_using_openai_and_stability_ai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -347,6 +398,11 @@ export default function UseCases(props) {
                                         <Tab eventKey="dalle3" title="Sample 3">
                                             <div className={styles.codeSnippet}>
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle3.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="dalle4" title="Sample 4">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: dalle4.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -393,7 +449,7 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 2: Audio to text summarization using OpenAI</span>
+                                        <span>Sample 2: Audio-to-text summarization using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -453,7 +509,7 @@ export default function UseCases(props) {
                                     {
                                         (tune.frontmatter.url && tune.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Fine tune GPT-3 models</span>
+                                                <span>Fine-tune GPT-3 models</span>
                                                 <a href={tune.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -484,12 +540,12 @@ export default function UseCases(props) {
             </Row>
 
             {/* vector */}
-            {/* <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='connectors-for-vector-databases' className='section'>
+                                <h2 id='simplify-vector-database-management' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -497,7 +553,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'connectors-for-vector-databases')}
+                                        onClick={(e) => props.getLink(e.target, 'simplify-vector-database-management')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -514,6 +570,7 @@ export default function UseCases(props) {
                                     {
                                         (vector.frontmatter.url && vector.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
+                                                <span>Answer questions by performing a similarity search on embedding vectors stored in Weaviate</span>
                                                 <a href={vector.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -541,10 +598,10 @@ export default function UseCases(props) {
                         </Row>
                     </Container>
                 </Col>
-            </Row> */}
+            </Row>
 
             {/* libraries */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -574,7 +631,7 @@ export default function UseCases(props) {
                                     {
                                         (libraries.frontmatter.url && libraries.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Text Similarity Comparison with OpenAI GPT-3 Embeddings</span>
+                                                <span>Text similarity comparison with OpenAI GPT-3 embeddings</span>
                                                 <a href={libraries.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -598,6 +655,73 @@ export default function UseCases(props) {
                                         <img src={`${prefix}/${libraries.frontmatter.image}`} alt={libraries.frontmatter.title} />
                                         : null
                                 }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* effortlessly */}
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='effortlessly-create-impactful-business-use-cases' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'effortlessly-create-impactful-business-use-cases')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {effortlessly.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{effortlessly.frontmatter.description}</ReactMarkdown>
+
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 1: Chatbot service for Slack using Azure OpenAI</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/slackbot_using_azure_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
+
+                                    <div className={styles.dVersion}>
+                                        <span>Sample 2: Question Answering based on Context using OpenAI GPT-3 and Pinecone</span>
+                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai_and_pinecone/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+
+                                <div id="code-tab">
+                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
+                                        <Tab eventKey="sample1" title="Sample 1">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort1.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="sample2" title="Sample 2">
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: effort2.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -635,7 +759,7 @@ export default function UseCases(props) {
                                     {
                                         (powered.frontmatter.url && powered.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Question Answering with OpenAI</span>
+                                                <span>Question answering with OpenAI</span>
                                                 <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -646,7 +770,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <a href='/usecases/integration' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            Take a deeper dive into using Ballerina for integration
+                                            Take a deeper dive into using Ballerina for integration.
                                         </a>
                                     </div>
 
@@ -702,7 +826,7 @@ export default function UseCases(props) {
                                     {
                                         (robust.frontmatter.url && robust.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Grammar and Spelling Correction in Text using OpenAI</span>
+                                                <span>Grammar and spelling correction in text using OpenAI</span>
                                                 <a href={robust.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -763,7 +887,7 @@ export default function UseCases(props) {
                                     {
                                         (concurrency.frontmatter.url && concurrency.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <span>Personalized Greetings with Custom Design using OpenAI</span>
+                                                <span>Personalized greetings with custom design using OpenAI</span>
                                                 <a href={concurrency.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
@@ -794,7 +918,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* ipaas */}
-            {/* <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -850,7 +974,7 @@ export default function UseCases(props) {
                         </Row>
                     </Container>
                 </Col>
-            </Row> */}
+            </Row>
 
         </>
     );

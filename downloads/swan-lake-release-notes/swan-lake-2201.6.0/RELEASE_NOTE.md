@@ -300,7 +300,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 #### OpenAPI Tool
 
-- Added support for regular expression templates (i.e. `pattern` property) defined on OpenAPI `string` types in Ballerina client and service generation.
+- Added support for regular expression templates (i.e., the `pattern` property) defined on OpenAPI `string` types in the Ballerina client and service generation.
   With this support, the aforementioned Regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to Regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
 - Added support for OpenAPI enums in the client and service generation. 
 - Added support for query parameters with referenced schema in the Ballerina service generation. 

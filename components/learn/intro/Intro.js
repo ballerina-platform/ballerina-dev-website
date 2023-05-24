@@ -50,21 +50,6 @@ export default function Intro() {
                         </a>
                     </Col>
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
-                        <a href={`${prefix}/learn/by-example`} className={`${styles.cardWrapper} ${styles.secondary}`}>
-                            <div>
-                                <h3>VS Code extension</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Design and develop Ballerina code via its graphical representation.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </Col>
-    
-                </Row>
-
-                <Row className='pageContentRow llanding justify-content-center'>
-     
-                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`https://lib.ballerina.io/`} target='_blank' rel="noreferrer" className={`${styles.cardWrapper} ${styles.secondary}`}>
                             <div>
                                 <h3>Ballerina API Docs</h3>
@@ -74,6 +59,11 @@ export default function Intro() {
                             </div>
                         </a>
                     </Col>
+  
+    
+                </Row>
+
+                <Row className='pageContentRow llanding justify-content-center'>
 
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`${prefix}/learn/ballerina-specifications`} className={`${styles.cardWrapper} ${styles.secondary}`}>
@@ -81,6 +71,16 @@ export default function Intro() {
                                 <h3>Ballerina specifications</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Refer language, library, and platform specifications.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`https://wso2.com/ballerina/vscode/docs/`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>VS Code extension</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Design and develop Ballerina code via its graphical representation.</p>
                                 </div>
                             </div>
                         </a>

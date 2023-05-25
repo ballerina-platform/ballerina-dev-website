@@ -214,13 +214,18 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for the `google-sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
 - Added support for defining enums and adding `enum` fields to the data model.
 
+#### `edi` package
+
+- Introduced the `edi` module to convert EDI to JSON and vice versa based on a given schema.
+
 #### `toml` package
 
-- Introduced the `toml` module to convert a TOML configuration file to `map<json>` and vice-versa.
+- Introduced the `toml` module to convert a TOML configuration file to `map<json>` and vice versa.
 
 #### `yaml` package
 
-- Introduced the `yaml` module to convert a YAML configuration file to JSON and vice-versa.
+- Introduced the `yaml` module to convert a YAML configuration file to JSON and vice 
+versa.
 
 ### Improvements
 

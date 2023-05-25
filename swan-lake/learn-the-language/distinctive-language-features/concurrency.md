@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/concurrency/
 active: concurrency
 intro: Let’s now look at how concurrency and transactions are handled in Ballerina. 
-redirect_from:
-- /learn/distinctive-language-features/concurrency
 ---
 
 ## Sequence diagram-based concurrency
@@ -151,7 +149,7 @@ function multiFetch(string urlA, string urlB) returns Result {
 
 }
 
-Result res =  multiFetch("https://…..",
+Result res = multiFetch("https://…..",
                              "https://…..");
 ```
 
@@ -489,8 +487,8 @@ type R record {
 };
 
 isolated function set(R r) returns R {
-   r.v = 1;
-   return r;
+    r.v = 1;
+    return r;
 }
 ```
 
@@ -527,6 +525,7 @@ If the ``readonly`` keyword is used within a structured type, it makes both the 
 
 ```ballerina
 type Entry map<json>;
+
 type RoMap readonly & map<Entry>;
 
 final RoMap m = loadMap();

@@ -24,9 +24,9 @@ service / on new http:Listener(9092) {
         self.orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         transaction {
-            // Publishes the message using newClient and the routing key named OrderQueue.
+            // Publishes the message using the \`newClient\` and the routing key named \`OrderQueue\`.
             check self.orderClient->publishMessage({
                 content: newOrder,
                 routingKey: "OrderQueue"
@@ -72,7 +72,7 @@ export function RabbitmqTransactionProducer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/rabbitmq-transaction-producer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/rabbitmq-transaction-producer",
                 "_blank"
               );
             }}

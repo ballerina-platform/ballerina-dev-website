@@ -76,7 +76,7 @@ export function SerdesSimple({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d47edca0ae809e72ec471224af64e1b&file=serdes_simple.bal",
+                "https://play.ballerina.io/?gist=3f2249a6c8c6f33f80ecdee9c584ed7a&file=serdes_simple.bal",
                 "_blank"
               );
             }}
@@ -101,7 +101,7 @@ export function SerdesSimple({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/serdes-simple",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/serdes-simple",
                 "_blank"
               );
             }}

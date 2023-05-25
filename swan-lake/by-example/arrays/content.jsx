@@ -99,7 +99,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=642c6969f3b2b323d0955b93f50fff30&file=arrays.bal",
+                "https://play.ballerina.io/?gist=2d93002f7f8087ba3465f26ec6377cc4&file=arrays.bal",
                 "_blank"
               );
             }}
@@ -124,7 +124,7 @@ export function Arrays({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/arrays",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/arrays",
                 "_blank"
               );
             }}

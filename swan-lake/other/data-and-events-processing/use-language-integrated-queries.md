@@ -6,19 +6,6 @@ keywords: ballerina, programming language, queries, query expression, query acti
 permalink: /learn/user-guide/data-and-events-processing/using-language-integrated-queries/
 active: using-language-integrated-queries
 intro: Language integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. The sections below will explore Ballerina’s first-class support for writing queries that process data with examples.
-redirect_from:
-  - /learn/data-and-events-processing/using-language-integrated-queries
-  - /learn/data-and-events-processing/
-  - /learn/data-and-events-processing
-  - /swan-lake/learn/data-and-events-processing/using-language-integrated-queries/
-  - /swan-lake/learn/data-and-events-processing/using-language-integrated-queries
-  - /learn/data-and-events-processing/using-language-integrated-queries/
-  - /learn/data-and-events-processing/using-language-integrated-queries
-  - /learn/user-guide/data-and-events-processing/using-language-integrated-queries
-  - /learn/user-guide/data-and-events-processing/
-  - /learn/user-guide/data-and-events-processing
-redirect_to:
-  - /learn/by-example/
 ---
 
 ## Using language-integrated queries
@@ -473,13 +460,13 @@ Follow the steps below to try out the above language integrated query example.
 3. Execute the command below to start the HTTP service, which accepts product order requests.
 
 ```
-bal run order_service.bal
+$ bal run order_service.bal
 ```
 
 4. Execute the command below to invoke the HTTP service by sending the product order details in the payload. 
 
 ```
-curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
+$ curl -v http://localhost:9090/emart/orderProduct -d '[{ "Name": "Flour", "Id": 2345, "Quantity": 2, "ShoppingCardId": "AXYN34523", "Category": "Grocery"}, { "Name": "Carrot", "Id": 3234, "Quantity": 1, "ShoppingCardId": "AXYN34523", "Category": "Vegetable"}]' -H "Content-Type:application/json"
 ```
 
 You will receive a response like below that gives the total grocery bill amount.

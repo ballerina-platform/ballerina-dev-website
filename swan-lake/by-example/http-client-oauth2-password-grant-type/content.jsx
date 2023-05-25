@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/http;
+import ballerina/oauth2;
 import ballerina/io;
 
 type Album readonly & record {
@@ -22,16 +23,8 @@ public function main() returns error? {
             password: "admin",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            refreshConfig: {
-                refreshUrl: "https://localhost:9445/oauth2/token",
-                scopes: ["hello"],
-                clientConfig: {
-                    secureSocket: {
-                        cert: "../resource/path/to/public.crt"
-                    }
-                }
-            },
+            scopes: "admin",
+            refreshConfig: oauth2:INFER_REFRESH_CONFIG,
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -79,7 +72,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b18fb675201c8b413b433127375f7c5c&file=http_client_oauth2_password_grant_type.bal",
+                "https://play.ballerina.io/?gist=d2c78d30a8d81557ec3d0d51af759b5f&file=http_client_oauth2_password_grant_type.bal",
                 "_blank"
               );
             }}
@@ -104,7 +97,7 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}

@@ -17,7 +17,7 @@
  */
 
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 import Layout from "../../layouts/LayoutLearn";
 import Intro from "../../components/learn/intro/Intro";
@@ -115,20 +115,29 @@ export default function Learn() {
       </Head>
 
       <Layout>
+        
         <Col sm={12}>
           <Row className="pageHeader pageContentRow llanding">
+           
             <Col xs={12}>
+            <Container>
               <h1>Learn Ballerina</h1>
+            </Container>
             </Col>
+            
+           
           </Row>
 
           <Row className="pageContentRow llanding">
+            
             <Col xs={12} md={12}>
+            <Container>
               <p>
                 Ballerina is a comprehensive language that is easy to grasp for
                 anyone with prior programming experience. Let&apos;s start
                 learning Ballerina.
               </p>
+              </Container>
             </Col>
           </Row>
 
@@ -138,6 +147,8 @@ export default function Learn() {
           <Platform getLink={getLink}/>
           {/* <New getLink={getLink}/> */}
         </Col>
+        
+        
       </Layout>
     </>
   );

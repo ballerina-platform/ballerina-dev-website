@@ -33,7 +33,7 @@ service / on new http:Listener(9090) {
         });
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         check self.orderProducer->send({
             topic: "order-topic",
             value: newOrder
@@ -79,7 +79,7 @@ export function KafkaProducerSasl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/kafka-producer-sasl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/kafka-producer-sasl",
                 "_blank"
               );
             }}

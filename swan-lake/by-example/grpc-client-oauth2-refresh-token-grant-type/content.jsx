@@ -15,7 +15,7 @@ public function main() returns error? {
             refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -64,7 +64,7 @@ export function GrpcClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/grpc-client-oauth2-refresh-token-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/grpc-client-oauth2-refresh-token-grant-type",
                 "_blank"
               );
             }}

@@ -6,12 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/network-interaction/
 active: network-interaction
 intro: In this part, you will learn about the features of the Ballerina programming language that are distinctive. These features revolve around key design considerations that make Ballerina suitable for cloud application programming using small and medium-sized programs.
-redirect_from:
-- /learn/distinctive-language-features/what-makes-ballerina-distinctive
-- /learn/distinctive-language-features/what-makes-ballerina-distinctive/
-- /learn/distinctive-language-features/
-- /learn/distinctive-language-features
-- /learn/distinctive-language-features/network-interaction
 ---
 
 Ballerina aims to be as pragmatic as possible by taking cues from existing patterns used in programming. It models cloud-era applications that make heavy use of network interaction, network data, and concurrency. In addition, Ballerina focuses on providing integration that acts like glue for orchestrating other programs and ensures reliability and maintainability while also assuring moderate cognitive load on programmers.
@@ -240,14 +234,14 @@ A resource of a service object is accessed by a listener object provided by a li
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
 };
 
 public function main() {
-    string result = clinetObj->/greeting/James;
+    string result = clientObj->/greeting/James;
     // Will print Hello, James
     io:println(result);
 }
@@ -262,18 +256,18 @@ The resource access action can specify the query parameters as arguments.
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting(string name) returns string {
         return "Hello, " + name;
     }
 };
 
 public function main() {
-    string result = clinetObj->/greeting.get("James");
+    string result = clientObj->/greeting.get("James");
     // Will print Hello, James
     io:println(result);
     // Default resource access method name will be `get` if not specified
-    result = clinetObj->/greeting("Ann");
+    result = clientObj->/greeting("Ann");
     // Will print Hello, Ann
     io:println(result);
 }
@@ -284,7 +278,7 @@ The resource access path segments can also be assigned dynamically using compute
 ```ballerina
 import ballerina/io;
 
-var clinetObj = client object {
+var clientObj = client object {
     resource function get greeting/[string name]() returns string {
         return "Hello, " + name;
     }
@@ -296,12 +290,12 @@ var clinetObj = client object {
 
 public function main() {
     string name = "Mark";
-    string result = clinetObj->/greeting/[name];
+    string result = clientObj->/greeting/[name];
     // Will print Hello, Mark
     io:println(result);
 
     [string, int] gameDetails = ["Chess", 2];
-    result = clinetObj->/game/[...gameDetails].post;
+    result = clientObj->/game/[...gameDetails].post;
     // Will print Chess: 2
     io:println(result);
 }

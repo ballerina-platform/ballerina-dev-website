@@ -27,8 +27,8 @@ table<Album> key(title) albums = table [
 
 service / on new http:Listener(9090) {
 
-    // The resource returns \`409 Conflict\` status code as the error response status code using build in StatusCodeResponse.
-    resource function post albums(@http:Payload Album album) returns Album|AlbumConflict {
+    // The resource returns the \`409 Conflict\` status code as the error response status code using the built-in \`StatusCodeResponse\`.
+    resource function post albums(Album album) returns Album|AlbumConflict {
         if albums.hasKey(album.title) {
             return {body: { message: "album already exists" }};
         }
@@ -79,7 +79,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=10f9c33eb8e948562b6582d21f4985e2&file=http_send_different_status_codes_with_payload.bal",
+                "https://play.ballerina.io/?gist=481627715979c976c3d1ab8f7790fe65&file=http_send_different_status_codes_with_payload.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function HttpSendDifferentStatusCodesWithPayload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-send-different-status-codes-with-payload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-send-different-status-codes-with-payload",
                 "_blank"
               );
             }}

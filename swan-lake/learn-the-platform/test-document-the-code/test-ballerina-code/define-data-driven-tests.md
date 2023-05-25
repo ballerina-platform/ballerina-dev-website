@@ -6,21 +6,6 @@ keywords: ballerina, programming language, testing, data-driven, data providers
 permalink: /learn/test-ballerina-code/define-data-driven-tests/
 active: define-data-driven-tests
 intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data-provider.
-redirect_from:
-- /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests/
-- /swan-lake/learn/testing-ballerina-code/defining-data-driven-tests
-- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests
-- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/defining-data-driven-tests/
-- /learn/testing-ballerina-code/defining-data-driven-tests/
-- /learn/testing-ballerina-code/defining-data-driven-tests
-- /learn/testing-ballerina-code/define-data-driven-tests/
-- /learn/testing-ballerina-code/define-data-driven-tests
-- /learn/test-ballerina-code/define-data-driven-tests
-- /learn/guides/testing-ballerina-code/defining-data-driven-tests/
-- /learn/guides/testing-ballerina-code/defining-data-driven-tests
 ---
 
 ## Use data providers
@@ -79,10 +64,10 @@ Running Tests
 ```ballerina
 import ballerina/test;
 
-@test:Config{
+@test:Config {
     dataProvider: dataGen
 }
-function stringDataProviderTest (string fValue, string sValue, string result) returns error? {
+function stringDataProviderTest(string fValue, string sValue, string result) returns error? {
     int value1 = check int:fromString(fValue);
     int value2 = check int:fromString(sValue);
     int result1 = check int:fromString(result);

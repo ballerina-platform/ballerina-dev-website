@@ -30,7 +30,7 @@ service / on new http:Listener(9092) {
         self.orderClient = check new (nats:DEFAULT_URL);
     }
 
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
     
         // Sends a request and returns the reply.
         StringMessage reply = check self.orderClient->requestMessage({
@@ -80,7 +80,7 @@ export function NatsBasicRequest({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/nats-basic-request",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/nats-basic-request",
                 "_blank"
               );
             }}

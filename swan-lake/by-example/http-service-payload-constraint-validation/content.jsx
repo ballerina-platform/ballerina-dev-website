@@ -21,7 +21,7 @@ service / on new http:Listener(9090) {
     private Album[] albums = [];
 
     // The \`album\` parameter in the payload annotation will get validated according to the constraints added.
-    resource function post albums(@http:Payload Album album) returns http:Created {
+    resource function post albums(Album album) returns http:Created {
         self.albums.push(album);
         return http:CREATED;
     }
@@ -67,7 +67,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2c6814ae8769f0f3267a4976f0bd285&file=http_service_payload_constraint_validation.bal",
+                "https://play.ballerina.io/?gist=ab58b7961cb4208a5ab93ec29480725a&file=http_service_payload_constraint_validation.bal",
                 "_blank"
               );
             }}
@@ -92,7 +92,7 @@ export function HttpServicePayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-service-payload-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-service-payload-constraint-validation",
                 "_blank"
               );
             }}

@@ -6,16 +6,6 @@ keywords: ballerina, programming language, ballerina packages, libraries, publis
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central
 intro: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
-redirect_from:
- - /learn/user-guide/ballerina-packages/sharing-a-library-package
- - /learn/user-guide/ballerina-packages/sharing-a-library-package/
- - /learn/publishing-packages-to-ballerina-central
- - /learn/publishing-packages-to-ballerina-central/
- - /learn/user-guide/publishing-packages-to-ballerina-central
- - /learn/user-guide/publishing-packages-to-ballerina-central/
- - /learn/publish-packages-to-ballerina-central
- - /learn/guides/publishing-packages-to-ballerina-central/
- - /learn/guides/publishing-packages-to-ballerina-central
 ---
 
 ## Create a library package
@@ -23,14 +13,14 @@ redirect_from:
 Execute the command below to create a new library package named `hello`.
 
 ```
-bal new --template lib hello
+$ bal new --template lib hello
 ```
 
 This creates the files below.
 
 ```
-> cd hello
-> tree .
+$ cd hello
+$ tree .
     .
     ├── Ballerina.toml
     ├── Module.md
@@ -52,7 +42,7 @@ For more information on these files, see [Package layout](/learn/package-referen
 To generate the Ballerina archive, execute the command below.
 
 ```
-bal pack
+$ bal pack
 ```
 You view the output below.
 
@@ -94,12 +84,14 @@ When you push a package to Ballerina Central, the organizations are validated ag
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
+You can also choose who will have access to the package you are publishing by setting the package visibility in the `Ballerina.toml` file. If you set the visibility as `private`, it will only be visible and accessible to the members within the organization you are pushing the package into. Private packages will be visible on Ballerina Central only if you are logged in. Likewise, if you or a member of your organization wants to pull a private package, the `Settings.toml` file needs to be set up according to the previous section (if not set up already). 
+
 ### Publish the package
 
 Now, that you are ready to publish, execute the command below to publish the package to Ballerina Central.
 
 ```
-bal push
+$ bal push
 ```
 
 ### Publish a new version of a package
@@ -123,3 +115,24 @@ By default, running the `bal semver` command on the root directory of the packag
 After publishing your first package, you can create a second package and use the already published package in it.
 Any package published in Ballerina Central is public and can be used in other packages.
  For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
+
+### Deprecate a published version of a package
+
+If you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
+
+To deprecate a particular version of a package on Ballerina Central, the package owner can run the following command. 
+An optional deprecation message can also be included, which will be displayed to current users of the package.
+
+```
+$ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
+```
+
+A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
+resolution unless it is already a part of a sticky build or no other compatible package version exists.
+If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
+
+To reverse the deprecation of a package, execute the same command with the `--undo` flag.
+
+```
+$ bal deprecate <org-name>/<package-name>:<version> --undo
+```

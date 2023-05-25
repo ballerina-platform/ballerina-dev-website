@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/02/01   
+_Updated_: 2023/04/17   
 _Edition_: Swan Lake
 
 
@@ -90,6 +90,7 @@ The conforming implementation of the specification is released and included in t
             * 8.1.1.1. [Request context](#8111-request-context)
             * 8.1.1.2. [Next method](#8112-next-method)
             * 8.1.1.3. [Return to respond](#8113-return-to-respond)
+            * 8.1.1.4 [Get JWT information](#8114-get-jwt-information)
         * 8.1.2. [Response interceptor](#812-response-interceptor)
             * 8.1.2.1. [Return to respond](#8121-return-to-respond)
         * 8.1.3. [Request error interceptor and response error interceptor](#813-request-error-interceptor-and-response-error-interceptor)
@@ -160,7 +161,7 @@ public type ListenerConfiguration record {|
     decimal timeout = DEFAULT_LISTENER_TIMEOUT;
     string? server = ();
     RequestLimitConfigs requestLimits = {};
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
 |};
 ```
 
@@ -595,72 +596,80 @@ See section [Query](#52-query) to understand accessing query param via the reque
 The payload parameter is used to access the request payload during the resource invocation. When the payload param is 
 defined with @http:Payload annotation, the listener deserialize the inbound request payload based on the media type 
 which retrieved by the `Content-type` header of the request. The data binding happens thereafter considering the 
-parameter type. The type of payload parameter can be one of the `anytype`. If the header is not present or not a 
+parameter type. The type of payload parameter can be one of the `anydata`. If the header is not present or not a 
 standard header, the binding type is inferred by the parameter type.
 
 When the following conditions are met, the listener identifies the default payload parameter, which is defined 
 without the @http:Payload annotation:
 - The default payload parameter rules are only applicable to POST, PUT, PATCH, DELETE, and DEFAULT accessors.
-- Parameters must contain only one structured(map/record/table/tuple/array) type or xml. However, byte[] is an exception,
-  and it is considered as a payload param.
-    - resource function post(Student[] p) {} -> Student[] is payload param type
-    - resource function post(int[] p) {} -> int[] is query param type
-    - resource function post(int p) {} -> int is query param type
-    - resource function post(Student p) {} -> Student is payload param type
-- If there's more than one structured type, the ambiguity must be resolved using the @http:Payload annotation.
-    - resource function post(@http:Payload Student p, map<json> q) {} -> p is payload, q is query
+- Parameters must contain only one structured(map/record/table/tuple/array) type or `xml`. However, the array types of 
+  basic types are considered as query parameters. But `byte[]` is an exception, and it is considered as a payload param.
+    - `resource function post path(Student p) {}` -> `Student` is payload param type
+    - `resource function post path(Student[] p) {}` -> `Student[]` is payload param type
+    - `resource function post path(map<json> p) {}` -> `map<json>` is payload param type
+    - `resource function post path(int[] p) {}` -> `int[]` is query param type
+    - `resource function post path(byte[] p) {}` -> `byte[]` is payload param type
+    - `resource function post path(int p) {}` -> `int` is query param type
+- If there's more than one structured type, the ambiguity must be resolved using either @http:Payload or @http:Query
+  annotation.
+    - `resource function post path(Student p, map<json> q) {}` -> ambiguous types for payload
+    - `resource function post path(@http:Payload Student p, map<json> q) {}` -> `p` is payload, `q` is query
+    - `resource function post path(Student p, @http:Query map<json> q) {}` -> `p` is payload, `q` is query
 - If there are no structured types, all parameters are considered query parameters.
-    - resource function post(@http:Payload string p, string q) {}
+    - `resource function post path(string p, string q) {}` -> `p` and `q` are query params
+    - `resource function post path(@http:Payload string p, string q) {}` -> `p` is payload, `q` is query
 - If the query parameter is structured, then the @http:Query annotation is required.
-    - resource function post(@http:Query map<json> p) {}
-- The only types allowed in the union for a parameter are structured types, xml, and nil.
-    - resource function post(Student|xml p) {} -> Student|xml is payload param type
-    - resource function post(map<json>|xml p) {} -> map<json>|xml is payload param type
-    - resource function post(Student? p) {} -> Student? is payload param type
+    - `resource function post path(Student p) {}` -> `p` is payload param type
+    - `resource function post path(@http:Query Student p) {}` -> `p` is query param type
+- The only types allowed in the union for a parameter are structured types, `xml`, and `nil`.
+    - `resource function post path(Student|xml p) {}` -> `Student|xml` is payload param type
+    - `resource function post path(map<json>|xml p) {}` -> `map<json>|xml` is payload param type
+    - `resource function post path(Student? p) {}` -> `Student?` is payload param type
+    - `resource function post path(Student|string p) {}` -> invalid union type for default payload param
 
 Following table explains the compatible `anydata` types with each common media type. In the absence of a standard media 
 type, the binding type is inferred by the payload parameter type itself. If the type is not compatible with the media 
 type, error is returned.
 
-|Ballerina Type | Structure|"text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream"|
-|---------------|----------|-------|-------|--------|-------------------------|---------------|
-|boolean| | ❌ | ❌ | ✅|❌|❌
-| |boolean[]| ❌ | ❌ | ✅|❌|❌
-| |map\<boolean\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<boolean\>\>| ❌ | ❌ | ✅|❌|❌
-|int| | ❌ | ❌ | ✅|❌|❌
-| |int[]| ❌ | ❌ | ✅|❌|❌
-| |map\<int\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<int\>\>| ❌ | ❌ | ✅|❌|❌
-float| | ❌ | ❌ | ✅|❌|❌
-| |float[]| ❌ | ❌ | ✅|❌|❌
-| |map\<float\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<float\>\>| ❌ | ❌ | ✅|❌|❌
-decimal| | ❌ | ❌ | ✅|❌|❌
-| |decimal[]| ❌ | ❌ | ✅|❌|❌
-| |map\<decimal\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<decimal\>\>| ❌ | ❌ | ✅|❌|❌
-byte[]| | ✅ | ❌ | ✅|❌|✅
-| |byte[][]| ❌ | ❌ | ✅|❌|❌
-| |map\<byte[]\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<byte[]\>\>| ❌ | ❌ | ✅|❌|❌
-string| |✅|❌|✅|✅|❌
-| |string[]| ❌ | ❌ | ✅|❌|❌
-| |map\<string\>| ❌ | ❌ | ✅|✅|❌
-| |table\<map\<string\>\>| ❌ | ❌ | ✅|❌|❌
-xml| | ❌ | ✅ | ❌|❌|❌
-json| | ❌ | ❌ | ✅|❌|❌
-| |json[]| ❌ | ❌ | ✅|❌|❌
-| |map\<json\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<json\>\>| ❌ | ❌ | ✅|❌|❌
-map| | ❌ | ❌ | ✅|❌|❌
-| |map[]| ❌ | ❌ | ✅|❌|❌
-| |map\<map\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<map\>\>| ❌ | ❌ | ✅|❌|❌
-record| |❌|❌|✅|❌|❌
-| |record[]| ❌ | ❌ | ✅|❌|❌
-| |map\<record\>| ❌ | ❌ | ✅|❌|❌
-| |table\<record\>| ❌ | ❌ | ✅|❌|❌
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
 
 The payload binding process begins soon after finding the correct resource for the given URL and before the 
 resource execution. 
@@ -835,15 +844,15 @@ resource function get greeting() returns @http:Payload {mediaType:"text/id+plain
 
 Based on the return types respective header value is added as the `Content-type` of the `http:Response`. 
 
-| Type                                                                  | Content Type             |
-|-----------------------------------------------------------------------|--------------------------|
-| ()                                                                    | -                        |
-| string                                                                | text/plain               |
-| xml                                                                   | application/xml          |
-| byte[]                                                                | application/octet-stream |
-| int, float, decimal, boolean                                          | application/json         |
-| map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json         |
-| http:StatusCodeResponse                                               | derived from the body field  |
+| Type                                                                  | Content Type                |
+|-----------------------------------------------------------------------|-----------------------------|
+| ()                                                                    | -                           |
+| string                                                                | text/plain                  |
+| xml                                                                   | application/xml             |
+| byte[]                                                                | application/octet-stream    |
+| int, float, decimal, boolean                                          | application/json            |
+| map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json            |
+| http:StatusCodeResponse                                               | derived from the body field |
 
 ##### 2.3.5.1. Status Code Response
 
@@ -891,34 +900,34 @@ resource function get greeting() returns http:Ok|http:InternalServerError {
 Return nil from the resource has few meanings. 
 
 1. If the resource wants to return nothing, the listener will return 202 ACCEPTED response.
-```ballerina
-resource function post person(@http:Payload Person p) {
-    int age = p.age;
-    io:println(string `Age is: ${age}`);
-}
-```   
+    ```ballerina
+    resource function post person(@http:Payload Person p) {
+        int age = p.age;
+        io:println(string `Age is: ${age}`);
+    }
+    ```   
 2. If the resource is dealt with the response via http:Caller, then returning () does not lead to subsequent response. 
    Listener aware that the request is already being served.
-```ballerina
-resource function get fruit(string? colour, http:Caller caller) {
-    if colour == "red" {
-        error? result = caller->respond("Sending apple");
-        return; // ending the flow, so not 202 response
+    ```ballerina
+    resource function get fruit(string? colour, http:Caller caller) {
+        if colour == "red" {
+            error? result = caller->respond("Sending apple");
+            return; // ending the flow, so not 202 response
+        }
+        error? result = caller->respond("Sending orange");
     }
-    error? result = caller->respond("Sending orange");
-}
-```   
+    ```   
 3. If the resource is dealt with the success response via http:Caller and return () in the else case, then the 
    response is 500 INTERNAL SERVER ERROR.
-```ballerina
-resource function get fruit(string? colour, http:Caller caller) {
-    if colour == "red" {
-        error? result = caller->respond("Sending apple");
-        return; // ending the flow
+    ```ballerina
+    resource function get fruit(string? colour, http:Caller caller) {
+        if colour == "red" {
+            error? result = caller->respond("Sending apple");
+            return; // ending the flow
+        }
+        return; // 500 internal Server Error
     }
-    return; // 500 internal Server Error
-}
-```
+    ```
 
 ##### 2.3.5.3. Default response status codes
 
@@ -1083,7 +1092,7 @@ public type ClientConfiguration record {|
 Based on the config, the client object will be accompanied by following client behaviours. Following clients cannot be
 instantiated calling `new`, instead user have to enable the config in the `ClientConfiguration`.
 
-##### 2.4.1.1 Security 
+##### 2.4.1.1 Security
 Provides secure HTTP remote methods for interacting with HTTP endpoints. This will make use of the authentication
 schemes configured in the HTTP client endpoint to secure the HTTP requests.
 ```ballerina
@@ -1309,32 +1318,35 @@ In addition to the above remote method actions, HTTP client supports executing s
 methods. The following are the definitions of those resource methods :
 
 ```ballerina
+# Defines the path parameter types.
+public type PathParamType boolean|int|float|decimal|string;
+
 # The post resource method can be used to send HTTP POST requests to HTTP endpoints.
-resource function post [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function post [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The put resource method can be used to send HTTP PUT requests to HTTP endpoints.            
-resource function put [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function put [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The patch resource method can be used to send HTTP PATCH requests to HTTP endpoints.              
-resource function patch [string ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
+resource function patch [PathParamType ...path](RequestMessage message, map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The delete resource method can be used to send HTTP DELETE requests to HTTP endpoints.              
-resource function delete [string ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
+resource function delete [PathParamType ...path](RequestMessage message = (), map<string|string[]>? headers = (), string? mediaType = (),
             TargetType targetType = <>, *QueryParams params) returns targetType|ClientError;
 
 # The head resource method can be used to send HTTP HEAD requests to HTTP endpoints.              
-resource function head [string ...path](map<string|string[]>? headers = (), *QueryParams params)
+resource function head [PathParamType ...path](map<string|string[]>? headers = (), *QueryParams params)
             returns Response|ClientError; 
 
 # The get resource method can be used to send HTTP GET requests to HTTP endpoints.              
-resource function get [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function get [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;
 
 # The options resource method can be used to send HTTP OPTIONS requests to HTTP endpoints.              
-resource function options [string ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
+resource function options [PathParamType ...path](map<string|string[]>? headers = (), TargetType targetType = <>,
             *QueryParams params) returns targetType|ClientError;                                               
 ```
 
@@ -1471,46 +1483,45 @@ to the required type. Similar to the service data binding following table explai
 each common media type. In the absence of a standard media type, the binding type is inferred by the payload parameter 
 type itself. If the type is not compatible with the media type, error is returned.
 
-|Ballerina Type | Structure|"text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream"|
-|---------------|----------|-------|-------|--------|-------------------------|---------------|
-|boolean| | ❌ | ❌ | ✅|❌|❌
-| |boolean[]| ❌ | ❌ | ✅|❌|❌
-| |map\<boolean\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<boolean\>\>| ❌ | ❌ | ✅|❌|❌
-|int| | ❌ | ❌ | ✅|❌|❌
-| |int[]| ❌ | ❌ | ✅|❌|❌
-| |map\<int\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<int\>\>| ❌ | ❌ | ✅|❌|❌
-float| | ❌ | ❌ | ✅|❌|❌
-| |float[]| ❌ | ❌ | ✅|❌|❌
-| |map\<float\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<float\>\>| ❌ | ❌ | ✅|❌|❌
-decimal| | ❌ | ❌ | ✅|❌|❌
-| |decimal[]| ❌ | ❌ | ✅|❌|❌
-| |map\<decimal\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<decimal\>\>| ❌ | ❌ | ✅|❌|❌
-byte[]| | ✅ | ❌ | ✅|❌|✅
-| |byte[][]| ❌ | ❌ | ✅|❌|❌
-| |map\<byte[]\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<byte[]\>\>| ❌ | ❌ | ✅|❌|❌
-string| |✅|❌|✅|✅|❌
-| |string[]| ❌ | ❌ | ✅|❌|❌
-| |map\<string\>| ❌ | ❌ | ✅|✅|❌
-| |table\<map\<string\>\>| ❌ | ❌ | ✅|❌|❌
-xml| | ❌ | ✅ | ❌|❌|❌
-json| | ❌ | ❌ | ✅|❌|❌
-| |json[]| ❌ | ❌ | ✅|❌|❌
-| |map\<json\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<json\>\>| ❌ | ❌ | ✅|❌|❌
-map| | ❌ | ❌ | ✅|❌|❌
-| |map[]| ❌ | ❌ | ✅|❌|❌
-| |map\<map\>| ❌ | ❌ | ✅|❌|❌
-| |table\<map\<map\>\>| ❌ | ❌ | ✅|❌|❌
-record| |❌|❌|✅|❌|❌
-| |record[]| ❌ | ❌ | ✅|❌|❌
-| |map\<record\>| ❌ | ❌ | ✅|❌|❌
-| |table\<record\>| ❌ | ❌ | ✅|❌|❌
-
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
 
 ```ballerina
 http:Client httpClient = check new ("https://person.free.beeceptor.com");
@@ -1617,7 +1628,7 @@ public type HttpServiceConfig record {|
     ListenerAuthConfig[] auth?;
     string mediaTypeSubtypePrefix?;
     boolean treatNilableAsOptional = true;
-    Interceptor[] interceptors?;
+    Interceptor|Interceptor[] interceptors?;
     byte[] openApiDefinition = [];
 |};
 
@@ -2090,7 +2101,7 @@ service class RequestInterceptor {
 }
 ```
 
-##### 8.1.1.1 Request context  
+##### 8.1.1.1 Request context
 Following is the rough definition of the interceptor context. Request context can store non-error values, and these values 
 can be retrieved at the next services in the pipeline.  
 ```ballerina
@@ -2142,12 +2153,6 @@ public isolated class RequestContext {
     #
     # + key - Represents the member key
     public isolated function remove(string key) {}
-    
-    # Provides the JWT information from the request.
-    #
-    # + return - `[jwt:Header, jwt:Payload]` if decoding the header is successful, `error` if any error occurs
-    #             while decoding, or `nil` if no jwt header found.
-    public function getJWTInfo() returns [jwt:Header, jwt:Payload]|error? {}
 
     # Calls the next service in the interceptor pipeline.
     #
@@ -2156,7 +2161,7 @@ public isolated class RequestContext {
 }
 ```
 
-##### 8.1.1.2 next() method  
+##### 8.1.1.2 next() method
 However, there is an addition when it comes to `RequestContext`. A new method namely, `next()` is introduced to control 
 the execution flow. Users must invoke `next()` method in order to trigger the next interceptor in the pipeline. Then 
 the reference of the retrieved interceptor must be returned from the resource method. Pipeline use this reference to
@@ -2177,6 +2182,12 @@ used to handle errors, and they are not necessarily the last interceptor in the 
 chain. However, in the case of there is no error interceptors in the pipeline, pipeline returns the internal error 
 response to the client similar to any HTTP service resource.
 
+##### 8.1.1.4 Get JWT information
+If the JWT information of the request is required, it can be retrieved by using the `getWithType()` api.
+```ballerina
+[jwt:Header, jwt:Payload] jwtInformation = check ctx.getWithType(http:JWT_INFORMATION);
+```
+
 #### 8.1.2 Response interceptor
 
 Following is an example of `ResponseInterceptor` written in Ballerina swan-lake. `ResponseInterceptor` can only have one
@@ -2194,7 +2205,7 @@ service class ResponseInterceptor {
 ```
 
 `ResponseInterceptor` is different from `RequestInterceptor`. Since it has nothing to do with HTTP methods and paths, 
-remote method is used instead of resource method.
+remote method is used instead of resource method. The `ResponseInterceptor` can access the request as a function parameter.
 
 ##### 8.1.2.1 Return to respond
 The remote method : `interceptResposne()` allows returning values other than `NextService|error?`. Anyway this will
@@ -2205,7 +2216,7 @@ In case of an error, interceptor pipeline execution jumps to the nearest `Respon
 pipeline. . However, in the case of there is no `ResponseInterceptor` in the pipeline, pipeline returns the internal 
 error response to the client.
 
-#### 8.1.3 Request error interceptor and response error interceptor 
+#### 8.1.3 Request error interceptor and response error interceptor
 As mentioned above, these are special kinds of interceptor designed to handle errors. These interceptors can  
 be placed anywhere in the request or response interceptor chain. The framework automatically adds default 
 `RequestErrorInterceptor` and `ResponseErrorInterceptor` which basically prints the error message to the console.
@@ -2227,7 +2238,7 @@ service class RequestErrorInterceptor {
 ```
 
 The same works for `ResponseErrorInterceptor`, the difference is it has a remote method : `interceptResponseError()`
-and deals with response object.
+and deals with response object. In addition, the `ResponseErrorInterceptor` can access the request as a function parameter.
 
 ```ballerina
 service class ResponseErrorInterceptor {
@@ -2249,9 +2260,24 @@ interceptors.
 Interceptors could get engaged at service level. One reason for this is that users may want to engage two different 
 interceptor chains for each service even though it is attached to the same Listener. At the service level resource 
 function paths are relative to the service base path.
+
+In order to engage interceptors at service level, the service should be marked as `http:InterceptableService`. Then, the 
+interceptor pipeline can be defined by implementing the `createInterceptors` function.
 ```ballerina
-@http:ServiceConfig{
-   interceptors: [requestInterceptor, responseInterceptor]
+public function createInterceptors() returns Interceptor|Interceptor[];
+```
+Internally, this function is used to create the interceptor pipeline when the service gets initialised. An example 
+implementation is shown below,
+```ballerina
+service http:InterceptableService / on new http:Listener(9099) {
+
+    public function createInterceptors() returns [RequestInterceptor, ResponseInterceptor] {
+        return [new RequestInterceptor(), new ResponseInterceptor()];
+    }
+
+    resource function get hello() returns string {
+        return "Hello, World!";
+    }
 }
 ```
 
@@ -2484,7 +2510,7 @@ path = "testAccessLog.txt"  # Optional
 
 #### 8.2.5 Panic inside resource
 
-Ballering consider panic as a catastrophic error and non recoverable. Hence immediate application termination is 
+Ballerina consider panic as a catastrophic error and non recoverable. Hence immediate application termination is 
 performed to fail fast after responding to the request. This behaviour will be more useful in cloud environments as 
 well.
 

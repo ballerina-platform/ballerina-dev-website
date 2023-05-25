@@ -76,7 +76,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=555fc48d3481ee3932eef30dda2f8d19&file=http_default_error_handling.bal",
+                "https://play.ballerina.io/?gist=384fbec944b75fc9d3a5a97a3682a31f&file=http_default_error_handling.bal",
                 "_blank"
               );
             }}
@@ -101,7 +101,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-default-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-default-error-handling",
                 "_blank"
               );
             }}
@@ -307,7 +307,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`> `}</span>
-              <span>{`< HTTP/1.1 500 Internal Server Error`}</span>
+              <span>{`< HTTP/1.1 502 Bad Gateway`}</span>
               <span>{`< content-type: text/plain`}</span>
               <span>{`< content-length: 35`}</span>
               <span>{`< server: ballerina`}</span>

@@ -6,18 +6,6 @@ keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/test-services-and-clients/
 active: testing-services-and-clients
 intro: Testing Ballerina services involves sending specific requests to the service using a client and verifying the responses using the assertion functions. The aim is to make sure that the service and client behave as expected when sending and recieving both expected requests and malformed ones.
-redirect_from:
-- /learn/testing-ballerina-code/testing-services-and-clients
-- /learn/testing-ballerina-code/testing-services-and-clients/
-- /swan-lake/learn/testing-ballerina-code/testing-services-and-clients/
-- /swan-lake/learn/testing-ballerina-code/testing-services-and-clients
-- /learn/user-guide/testing-ballerina-code/testing-services-and-clients
-- /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
-- /learn/testing-ballerina-code/test-services-and-clients/
-- /learn/testing-ballerina-code/test-services-and-clients
-- /learn/test-ballerina-code/test-services-and-clients
-- /learn/guides/testing-ballerina-code/testing-services-and-clients/
-- /learn/guides/testing-ballerina-code/testing-services-and-clients
 ---
 
 ## Test services
@@ -80,10 +68,10 @@ The following is a simple example on how mocking can be used to stub responses t
 may not be able to access during the test execution.
 
 ***main.bal***
+
 ```ballerina
 import ballerina/io;
 import ballerina/http;
-import ballerina/regex;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -101,12 +89,13 @@ function getRandomJoke(string name) returns string|error {
 
     json payload = check response.getJsonPayload().ensureType();
     string joke = check payload.value;
-    string replacedText = regex:replaceAll(joke, "Chuck Norris", name);
+    string replacedText = re `Chuck Norris`.replaceAll(joke, name);
     return replacedText;
 }
 ```
 
 ***main_test.bal***
+
 ```ballerina
 import ballerina/test;
 import ballerina/http;
@@ -120,12 +109,12 @@ public function testGetRandomJoke() returns error? {
     http:Response result = check clientEndpoint->get("/random");
     json payload = check result.getJsonPayload();
 
-    test:assertEquals(payload, {"value":"When Chuck Norris wants an egg, he cracks open a chicken."});    
+    test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
 }
 
 function getMockResponse() returns http:Response {
     http:Response mockResponse = new;
-    mockResponse.setPayload({"value":"When Chuck Norris wants an egg, he cracks open a chicken."});
+    mockResponse.setPayload({"value": "When Chuck Norris wants an egg, he cracks open a chicken."});
     return mockResponse;
 }
 ```
@@ -139,8 +128,8 @@ This initialization function can then be mocked using the compile-time function 
 ***Example:***
 The following is a simple example on how to mock a `final` client.
 
-Initialize the client:
-```bal
+***Initialize the client:***
+```ballerina
 import ballerina/http;
 
 final http:Client clientEndpoint = check intializeClient();
@@ -150,8 +139,8 @@ function intializeClient() returns http:Client|error {
 }
 ```
 
-Mock the client for testing:
-```bal
+***Mock the client for testing:***
+```ballerina
 import ballerina/http;
 import ballerina/test;
 

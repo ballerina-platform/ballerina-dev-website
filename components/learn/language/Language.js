@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Language.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -26,7 +26,8 @@ export default function Language(props) {
 
   return (
     <>
-      <Row className="pageContentRow learnRow llanding">
+    <Container>
+    <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2 id="learn-the-language" className='section'>
             <svg
@@ -47,23 +48,23 @@ export default function Language(props) {
       </Row>
 
       <Row className="pageContentRow llanding">
-        <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder} >
+        <Col xs={12} lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`} >
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/language-basics`} className={styles.linkText}>Language basics</a>
           </div>
         </Col>
-        <Col xs={12}  lg={2} className={styles.newBox,styles.newBoxBorder}>
+        <Col xs={12}  lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.linkText}>Network interaction</a>
           </div>
         </Col>
-          <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder}>
+          <Col xs={12} lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
 
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.linkText}>Data</a>
           </div>
         </Col>
-          <Col xs={12} lg={2} className={styles.newBox,styles.newBoxBorder}>
+          <Col xs={12} lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
           <div className={styles.langRow}>
             <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.linkText}>Concurrency</a>
           </div>
@@ -87,6 +88,8 @@ export default function Language(props) {
           </div>
         </Col>
       </Row>
+    </Container>
+      
     </>
   );
 }

@@ -66,7 +66,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=90cac4899ed32ee97673e3d58355e98e&file=http_client_mutual_ssl.bal",
+                "https://play.ballerina.io/?gist=d3088f2782a61b2b7bf7a0d9345d8485&file=http_client_mutual_ssl.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export function HttpClientMutualSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-mutual-ssl",
                 "_blank"
               );
             }}

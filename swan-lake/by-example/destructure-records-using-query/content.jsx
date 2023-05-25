@@ -73,7 +73,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=374ddcab423435f7c65da002c18de9ad&file=destructure_records_using_query.bal",
+                "https://play.ballerina.io/?gist=3653c64d4d7456b3c7766c2e171e858e&file=destructure_records_using_query.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/destructure-records-using-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/destructure-records-using-query",
                 "_blank"
               );
             }}

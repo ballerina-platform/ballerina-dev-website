@@ -65,7 +65,7 @@ export function MultipleKeyFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a37cd14cc2634c380cc200c992080e1d&file=multiple_key_fields.bal",
+                "https://play.ballerina.io/?gist=acfc31a018028a51b1077fa3c97fd509&file=multiple_key_fields.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function MultipleKeyFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/multiple-key-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/multiple-key-fields",
                 "_blank"
               );
             }}

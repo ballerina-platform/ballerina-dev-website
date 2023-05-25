@@ -6,18 +6,6 @@ keywords: ballerina, programming lanaguage, type system, data binding
 permalink: /why-ballerina/flexibly-typed/
 active: flexibly-typed
 intro: See how the Ballerina programming language's flexible type system helps developers work with networked resources in their code.
-redirect_from:
-- /why/the-network-in-the-language/
-- /why/the-network-in-the-language
-- /learn/user-guide/why-ballerina/network-aware-type-system
-- /learn/user-guide/why-ballerina/network-aware-type-system/
-- /learn/user-guide/why-ballerina/flexibly-typed
-- /learn/user-guide/why-ballerina/flexibly-typed/
-- /learn/why-ballerina/flexibly-typed
-- /learn/why-ballerina/flexibly-typed/
-- /why-ballerina/flexibly-typed
-- /why-ballerina/network-aware-type-system/
-- /why-ballerina/network-aware-type-system
 ---
 
 In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.
@@ -142,13 +130,13 @@ type Person record {|
 
 function filterResults(Person[] persons, map<int> grades) returns Result[] {
     Result[] results = from var person in persons
-                        let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
-                        where lgrade > 75
-                        select {
-                            name: person.name,
-                            college: targetCollege,
-                            grade: lgrade
-                        };
+        let int lgrade = (grades[person.name] ?: 0), string targetCollege = "Stanford"
+        where lgrade > 75
+        select {
+            name: person.name,
+            college: targetCollege,
+            grade: lgrade
+        };
     return results;
 }
 ```

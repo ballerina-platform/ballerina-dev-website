@@ -14,14 +14,6 @@ ${"\r"}NK1|1|NUCLEAR^NELDA^W|SPO^SPOUSE||||NK^NEXT OF KIN${"\r"}PV1|1|I|2000^201
 004777^ATTEND^AARON^A|||SUR||||ADM|A0|`;
 
 public function main(string input = msg) returns error? {
-    // Parse it
-    hl7:HL7Parser parser = new ();
-    hl7:Message|hl7:HL7Error parsedMsg = parser.parse(msg);
-
-    if parsedMsg is hl7:HL7Error {
-        return error("Error occurred while parsing the message", parsedMsg);
-    }
-
     // This message, ADT^A01 is an HL7 data type consisting of several components, so we
     // will cast it as such. The ADT_A01 class extends from Message, providing specialized
     // accessors for ADT^A01's segments.
@@ -29,7 +21,7 @@ public function main(string input = msg) returns error? {
     // Ballerina HL7 provides several versions of the ADT_A01 record type, each in a
     // different package (note the import statement above) corresponding to the HL7
     // version for the message.
-    hl7v23:ADT_A01 adtMsg = <hl7v23:ADT_A01>parsedMsg;
+    hl7v23:ADT_A01 adtMsg = check hl7:parse(msg).ensureType(hl7v23:ADT_A01);
     hl7v23:XPN[] patientName = adtMsg.pid.pid5;
     io:println("Family Name: ", patientName[0].xpn1);
 }

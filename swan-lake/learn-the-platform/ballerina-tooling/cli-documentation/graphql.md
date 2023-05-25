@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/cli-documentation/graphql/
 active: graphql
 intro: The sections below include information about the usages of the Ballerina GraphQL tool.
-redirect_from:
-  - /learn/cli-documentation/graphql
 ---
 
 ## GraphQL to Ballerina 
@@ -15,7 +13,7 @@ redirect_from:
 The GraphQL to Ballerina command supports several usages in the Ballerina GraphQL tool as follows.
 
 ```
-bal graphql [-i | --input] <graphql-configuration-file-path>
+$ bal graphql [-i | --input] <graphql-configuration-file-path>
             [-o | --output] <output-location>
 ```
 
@@ -31,7 +29,7 @@ The command-line arguments below can be used with the command for each particula
 The Ballerina to GraphQL command supports several usages in the Ballerina GraphQL tool as follows.
 
 ```
-bal graphql [-i | --input] <ballerina-graphql-service-file-path>
+$ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
             [-o | --output] <output-location>
             [-s | --service] <service-base-path>
 ```

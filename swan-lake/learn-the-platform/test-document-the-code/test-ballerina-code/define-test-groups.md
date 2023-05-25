@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing, test groups
 permalink: /learn/test-ballerina-code/define-test-groups/
 active: test-groups
 intro: The Ballerina test framework allows grouping of tests.
-redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/defining-test-groups/
-- /swan-lake/learn/testing-ballerina-code/defining-test-groups
-- /learn/user-guide/testing-ballerina-code/defining-test-groups
-- /learn/user-guide/testing-ballerina-code/defining-test-groups/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/defining-test-groups/
-- /learn/testing-ballerina-code/defining-test-groups/
-- /learn/testing-ballerina-code/defining-test-groups
-- /learn/testing-ballerina-code/define-test-groups/
-- /learn/testing-ballerina-code/define-test-groups
-- /learn/test-ballerina-code/define-test-groups
-- /learn/guides/testing-ballerina-code/defining-test-groups/
-- /learn/guides/testing-ballerina-code/defining-test-groups
 ---
 
 ## Group tests
@@ -37,19 +20,19 @@ A test is assigned to a group via the test configuration `groups` key, which acc
 import ballerina/io;
 import ballerina/test;
 
-@test:Config { groups: ["g1"] }
+@test:Config {groups: ["g1"]}
 function testFunction1() {
     io:println("I'm a test belonging to group g1!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-@test:Config { groups: ["g1", "g2"] }
+@test:Config {groups: ["g1", "g2"]}
 function testFunction2() {
     io:println("I'm a test belonging to groups g1 and g2!");
     test:assertTrue(true, msg = "Failed!");
 }
 
-@test:Config { groups: ["g2"] }
+@test:Config {groups: ["g2"]}
 function testFunction3() {
     io:println("I'm a test belonging to group g2!");
     test:assertTrue(true, msg = "Failed!");
@@ -61,7 +44,9 @@ function testFunction3() {
 ### Execute grouped tests
 To execute groups of tests, the `--groups` flag is used during test execution.
 
-```$bal test --groups g1```
+```
+$ bal test --groups g
+```
 
 The above results in an output of :
 
@@ -85,7 +70,7 @@ I'm a test belonging to groups g1 and g2!
 The `groups` flag supports executing multiple groups by using comma-separated arguments.
 
 ```
-$bal test --groups g1,g2
+$ bal test --groups g1,g2
 ```
 
 The above results in an output of :
@@ -112,7 +97,9 @@ I'm a test belonging to group g2!
 
 To skip the execution of certain groups of tests, the `--disable-groups` flag is used during test execution.
 
-```bal test --disable-groups g2```
+```
+$ bal test --disable-groups g2
+```
 
 The above results in an output of :
 

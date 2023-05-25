@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/graphql/
 active: graphql
 intro:  GraphQL has become a prominent technology for implementing data APIs because it provides a convenient and intuitive approach for querying data. It solves potential problems such as data over-fetching and high-latency that you may notice in traditional data services. This guide illustrates a sample GraphQL use case using Ballerina. 
-redirect_from:
-  - /learn/network-communication/graphql
-  - /swan-lake/learn/network-communication/graphql/
-  - /swan-lake/learn/network-communication/graphql
-  - /learn/network-communication/graphql/
-  - /learn/network-communication/graphql
-  - /learn/user-guide/network-communication/graphql
-redirect_to:
-  - https://lib.ballerina.io/ballerina/graphql/latest/
 ---
 
 ## Introducing the use case
@@ -130,7 +121,7 @@ You can send the GraphQL query below to look up the exposed `name` field in the 
 Execute the command below to run the Ballerina GraphQL service above.
 
 ```
-bal run demo.bal
+$ bal run demo.bal
 ```
 
 You view the output below.
@@ -147,7 +138,7 @@ Running executable
 A GraphQL request can be executed by sending an HTTP request similar to the following.
 
 ```
-curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
+$ curl -X POST -H "Content-type: application/json" -d '{"query":"{name}"}' http://localhost:8080/query
 {"data":{"name":"Jack"}}
 ```
 

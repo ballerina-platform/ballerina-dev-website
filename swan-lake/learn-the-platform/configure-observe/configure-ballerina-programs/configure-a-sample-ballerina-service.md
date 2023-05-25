@@ -6,32 +6,6 @@ keywords: ballerina, programming language, configurable, variables
 permalink: /learn/configure-ballerina-programs/configure-a-sample-ballerina-service/
 active: configure-a-sample-ballerina-service/
 intro: Configurability enables users to modify the system behavior through external user inputs. Ballerina Language provides an in-built functionality to configure values at runtime through configurable  module-level variables.
-redirect_from:
-- /learn/user-guide/configurability/defining-configurable-variables
-- /learn/user-guide/configurability/defining-configurable-variables/
-- /learn/user-guide/configurability/
-- /learn/user-guide/configurability
-- /learn/making-ballerina-programs-configurable/
-- /learn/making-ballerina-programs-configurable
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables
-- /learn/user-guide/configurability/trying-it-out
-- /learn/user-guide/configurability/trying-it-out/
-- /learn/making-ballerina-programs-configurable/trying-it-out
-- /learn/making-ballerina-programs-configurable/trying-it-out/
-- /learn/making-ballerina-programs-configurable/trying-out-configurability
-- /learn/configuring-ballerina-programs
-- /learn/configuring-ballerina-programs/
-- /learn/configure-ballerina-programs/
-- /learn/configure-ballerina-programs
-- /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
-- /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables/
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables
-- /learn/configure-ballerina-programs/quick-start-on-configurable-variables/ 
-- /learn/configure-ballerina-programs/quick-start-on-configurable-variables
-- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables/
-- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables
-- /learn/configure-ballerina-programs/configure-a-sample-ballerina-service
 ---
 
 Consider the following step-by-step guide to configuring a Ballerina package that contains an HTTP service.
@@ -39,29 +13,29 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 1. Create a Ballerina package using the following command.
 
     ```
-    bal new greetings
+    $ bal new greetings
     ```
 
 2. Replace the content of the file `main.bal` with the following.
 
-   ```ballerina
-   import ballerina/http;
-   
-   type Greeting record {|
-      string to;
-      string content;
-   |};
-   
-   configurable int port = 9090;
-   configurable Greeting greeting = ?;
-   
-   service http:Service / on new http:Listener(port) {
-      resource function post greeting() returns string {
-         string message = string `Hello ${greeting.to}! ${greeting.content}`;
-         return message;
-      }
-   }
-   ```
+```ballerina
+import ballerina/http;
+
+type Greeting record {|
+    string to;
+    string content;
+|};
+
+configurable int port = 9090;
+configurable Greeting greeting = ?;
+
+service http:Service / on new http:Listener(port) {
+    resource function post greeting() returns string {
+        string message = string `Hello ${greeting.to}! ${greeting.content}`;
+        return message;
+    }
+}
+```
 
    Here, we created a Ballerina package named `greetings` that contains configurable variables `port` and `greeting` with
    respective types `int` and  `Greeting`. These variables are used in the HTTP service where the resource method
@@ -84,7 +58,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 
 4. Execute the following command to build and execute the program.
    ```
-   bal run
+   $ bal run
    ```
 
    The output will be as follows.
@@ -100,7 +74,7 @@ Consider the following step-by-step guide to configuring a Ballerina package tha
 
 6. To verify the configuration, execute the following command.
    ```
-   curl http://localhost:8080/greeting -X POST
+   $ curl http://localhost:8080/greeting -X POST
    ```
    The response will be similar to the following.
    ```

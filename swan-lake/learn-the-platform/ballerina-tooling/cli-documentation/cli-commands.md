@@ -6,20 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/cli-documentation/cli-commands/
 active: cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
-redirect_from:
-  - /learn/cli-commands
-  - /learn/cli-commands/
-  - /learn/using-the-cli-tools/
-  - /learn/using-the-cli-tools
-  - /swan-lake/learn/using-the-cli-tools/
-  - /swan-lake/learn/using-the-cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands
-  - /learn/tooling-guide/cli-tools/
-  - /learn/tooling-guide/cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands/
-  - /learn/cli-documentation/cli-commands
-  - /learn/cli-documentation
-  - /learn/cli-documentation/
 ---
 
 ## Use the Ballerina tool
@@ -31,7 +17,7 @@ It also enables you to easily install, update, and switch among Ballerina distri
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
 ```sh
-→ bal help
+$ bal help
 NAME
        The build system and package manager of Ballerina
 
@@ -68,6 +54,7 @@ COMMANDS
         semver          Show SemVer compatibility and local package changes against
                         published packages in Ballerina Central
         graph           Print the dependency graph in the console
+        deprecate       Deprecate a package in Ballerina Central
 
    Other Commands:
         clean           Clean the artifacts generated during the build
@@ -92,12 +79,14 @@ COMMANDS
 
 You can use it in the following format.
 
-> `bal <COMMAND> <ARGUMENTS>`
+```
+$ bal <COMMAND> <ARGUMENTS>
+```
 
 > **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
 ```sh
-→ bal help pull
+$ bal help pull
 NAME
        ballerina-pull - Fetch packages from Ballerina Central
 
@@ -133,12 +122,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/get-started/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/get-started/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
@@ -160,12 +149,12 @@ These everyday commands are your best friends! They address the very basics of p
 
 ## Package commands
 
-Ballerina packages are the way to organize real-world Ballerina development tasks. The last 3 commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
+Ballerina packages are the way to organize real-world Ballerina development tasks. The last five commands given below allow you to work with the Ballerina Central and also to share Ballerina packages with others in a safe, secure, and dependable way.
 
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started-with-ballerina/#create-a-new-package">Create a new package</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started/#create-a-new-package">Create a new package</a>.
 </td>
 </tr>
 <tr>
@@ -179,13 +168,8 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">pull</td>
-<td class="cDescription">Pull a package from Ballerina Central.
-</td>
-</tr>
-<tr>
-<td class="cCommand">push</td>
-<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
+<td class="cCommand">graph</td>
+<td class="cDescription">Print the dependency graph in the console.
 </td>
 </tr>
 <tr>
@@ -199,8 +183,18 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">graph</td>
-<td class="cDescription">Print the dependency graph in the console.
+<td class="cCommand">pull</td>
+<td class="cDescription">Pull a package from Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">push</td>
+<td class="cDescription">Publish a package to Ballerina Central. For more information, see <a href="/learn/publish-packages-to-ballerina-central">Publish packages to Ballerina Central</a>.
+</td>
+</tr>
+<tr>
+<td class="cCommand">deprecate</td>
+<td class="cDescription">Deprecate a version of a package in Ballerina Central.
 </td>
 </tr>
 </table>

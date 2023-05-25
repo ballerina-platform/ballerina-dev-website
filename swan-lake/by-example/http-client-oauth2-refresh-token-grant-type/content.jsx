@@ -21,7 +21,7 @@ public function main() returns error? {
             refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -69,7 +69,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e312b41810f6347f47d56028d0a02151&file=http_client_oauth2_refresh_token_grant_type.bal",
+                "https://play.ballerina.io/?gist=09bd264ecf90f65e79d02d8ef3d87925&file=http_client_oauth2_refresh_token_grant_type.bal",
                 "_blank"
               );
             }}
@@ -94,7 +94,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-oauth2-refresh-token-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-oauth2-refresh-token-grant-type",
                 "_blank"
               );
             }}

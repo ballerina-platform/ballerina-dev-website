@@ -60,7 +60,7 @@ export function TempFilesDirectories({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=34de23daf47f3ffb53221f6eff50f90e&file=temp_files_directories.bal",
+                "https://play.ballerina.io/?gist=acac908cbcd825c0a41deedff12f1d6b&file=temp_files_directories.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function TempFilesDirectories({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/temp-files-directories",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/temp-files-directories",
                 "_blank"
               );
             }}

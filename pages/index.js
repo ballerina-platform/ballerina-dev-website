@@ -41,6 +41,7 @@ var traverseFolder = function (dir) {
 };
 
 export async function getStaticProps() {
+
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });

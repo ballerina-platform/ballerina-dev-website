@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/cli-documentation/openapi/
 active: openapi
 intro: The sections below include information about the usages of the Ballerina OpenAPI tool.
-redirect_from:
-  - /learn/cli-documentation/openapi
 ---
 
 ## OpenAPI to Ballerina 
@@ -15,7 +13,7 @@ redirect_from:
 The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.
 
 ```
-bal openapi [-i | --input] <openapi-contract-file-path> 
+$ bal openapi [-i | --input] <openapi-contract-file-path> 
             [-o | --output] <output-location>
             [--mode] <mode-type>
             [--tags] <tag-names> 
@@ -44,7 +42,7 @@ The command-line arguments below can be used with the command for each particula
 The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
 
 ```
-bal openapi [-i | --input] <ballerina-service-file-path> [--json]
+$ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
             [-s | --service] <current-service-name>
             [-o | --output] <output-location>
 ```

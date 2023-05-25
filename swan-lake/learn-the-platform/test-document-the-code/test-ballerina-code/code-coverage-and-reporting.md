@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing, code coverage, test report
 permalink: /learn/test-ballerina-code/code-coverage-and-reporting/
 active: code-coverage-and-reporting
 intro: The Ballerina Test Framework allows you to generate test reports and code coverage reports for the executed tests.
-redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
-- /learn/test-ballerina-code/
-- /learn/test-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/code-coverage-and-reporting/
-- /swan-lake/learn/testing-ballerina-code/code-coverage-and-reporting
-- /learn/user-guide/testing-ballerina-code/code-coverage-and-reporting
-- /learn/user-guide/testing-ballerina-code/code-coverage-and-reporting/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/code-coverage-and-reporting/
-- /learn/testing-ballerina-code/code-coverage-and-reporting
-- /learn/testing-ballerina-code/code-coverage-and-reporting/
-- /learn/test-ballerina-code/code-coverage-and-reporting
-- /learn/guides/testing-ballerina-code/code-coverage-and-reporting/
-- /learn/guides/testing-ballerina-code/code-coverage-and-reporting
 ---
 
 ## Generate a test report

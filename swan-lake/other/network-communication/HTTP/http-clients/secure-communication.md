@@ -6,22 +6,11 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-clients/secure-communication/
 active: secure-communication
 intro: The HTTP client supports numerous secure communication features such as Transport Level Security (TLS) and mutual authentication.   
-redirect_from:
-  - /learn/network-communication/http/http-clients/secure-communication
-  - /swan-lake/learn/network-communication/http/http-clients/secure-communication/
-  - /swan-lake/learn/network-communication/http/http-clients/secure-communication
-  - /learn/network-communication/http/http-clients/secure-communication/
-  - /learn/network-communication/http/http-clients/secure-communication
-  - /learn/user-guide/network-communication/http/http-clients/secure-communication
-  - /learn/network-communication/http/secure-communication/
-  - /learn/network-communication/http/secure-communication
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Configuring secure communication
 
-The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://docs.central.ballerina.io/ballerina/http/latest/clients/Client).
+The TLS features are used with the HTTP client by using the `https` protocol in the endpoint URL. Optionally, you can provide the information on the truststore or server public certificate location to use for validating the server certificates received when creating an HTTP connection over TLS. This is provided using the `secureSocket` property in the [HTTP client configuration](https://lib.ballerina.io/ballerina/http/latest/records/ClientConfiguration) instance when creating the [`http:Client`](https://lib.ballerina.io/ballerina/http/latest/clients/Client).
 
 ### Communicating with an HTTPS endpoint
 

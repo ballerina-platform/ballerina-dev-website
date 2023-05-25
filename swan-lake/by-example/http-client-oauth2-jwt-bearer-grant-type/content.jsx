@@ -21,7 +21,7 @@ public function main() returns error? {
             assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -68,7 +68,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8532e79d38533069c51f0e33504aa40c&file=http_client_oauth2_jwt_bearer_grant_type.bal",
+                "https://play.ballerina.io/?gist=f4b2257a8ccf3abe2dfec5e737ee1c44&file=http_client_oauth2_jwt_bearer_grant_type.bal",
                 "_blank"
               );
             }}
@@ -93,7 +93,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/http-client-oauth2-jwt-bearer-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-oauth2-jwt-bearer-grant-type",
                 "_blank"
               );
             }}

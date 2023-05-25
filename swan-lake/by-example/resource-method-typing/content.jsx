@@ -22,7 +22,7 @@ service /calc on ln {
    // Resource method arguments can use user-defined types.
    // Annotations can be used to refine the mapping between the Ballerina-declared
    // type and wire format.
-   resource function post add(@http:Payload Args args) returns Response {
+   resource function post add(Args args) returns Response {
       return {result: args.x + args.y};
    }
 }
@@ -67,7 +67,7 @@ export function ResourceMethodTyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/resource-method-typing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/resource-method-typing",
                 "_blank"
               );
             }}

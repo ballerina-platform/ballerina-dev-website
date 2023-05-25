@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar  
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2023/03/07
+_Updated_: 2023/04/03
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -108,6 +108,7 @@ The conforming implementation of the specification is released and included in t
         * 9.1.3 [Get Field Path](#913-get-field-path)
         * 9.1.4 [Get Subfield Names](#914-get-subfield-names)
         * 9.1.5 [Get Field Type](#915-get-field-type)
+        * 9.1.6 [Get Subfields](#916-get-subfields)
     * 9.2 [Accessing the Field Object](#92-accessing-the-field-object)
 10. [Annotations](#10-annotations)
     * 10.1 [Service Configuration](#101-service-configuration)
@@ -116,13 +117,18 @@ The conforming implementation of the specification is released and included in t
         * 10.1.3 [Context Initializer Function](#1013-context-initializer-function)
         * 10.1.4 [CORS Configurations](#1014-cors-configurations)
         * 10.1.5 [GraphiQL Configurations](#1015-graphiql-configurations)
-        * 10.1.6 [Service Level Interceptors](#1016-service-level-interceptors)
+        * 10.1.6 [Service Interceptors](#1016-service-interceptors)
         * 10.1.7 [Introspection Configurations](#1017-introspection-configurations)
+    * 10.2 [Resource Configuration](#102-resource-configuration)
+        * 10.2.1 [Field Interceptors](#1021-field-interceptors)
+    * 10.3 [Interceptor Configuration](#103-interceptor-configuration)
+        * 10.3.1 [Scope Configuration](#1031-scope-configuration)
 11. [Interceptors](#11-interceptors)
     * 11.1 [Interceptor Service Object](#111-interceptor-service-object)
     * 11.2 [Writing an Interceptor](#112-writing-an-interceptor)
     * 11.3 [Execution](#113-execution)
-        * 11.3.1 [Service Level Interceptors](#1131-service-level-interceptors)
+        * 11.3.1 [Service Interceptors](#1131-service-interceptors)
+        * 11.3.2 [Field Interceptors](#1132-field-interceptors)
 12. [Security](#12-security)
     * 12.1 [Service Authentication and Authorization](#121-service-authentication-and-authorization)
         * 12.1.1 [Declarative Approach](#1211-declarative-approach)
@@ -1238,8 +1244,6 @@ When an error is returned from a GraphQL resolver, the error message is added as
 
 If a resolver execution results in an error, the stacktrace of the error will be logged to the stderr of the server.
 
->**Note:** Even if a `resource` or `remote` method signature does not have `error` or any subtype of the `error` type, but the execution results in a Ballerina runtime `error`, the resulting response will include an error field.
-
 ###### Example: Returning Errors
 ```ballerina
 service on new graphql:Listener(9090) {
@@ -1697,6 +1701,20 @@ service on new graphql:Listener(9090) {
 }
 ```
 
+#### 9.1.6 Get Subfields
+
+This method returns the subfields of the currently executing field as an array of `graphql:Field` objects. It will return `nil` if the field is not an `INTERFACE` or an `OBJECT`, i.e. if it does not have subfields.
+
+#### Example: Get Subfields
+
+```ballerina
+service on new graphql:Listener(9090) {
+    resource function get profile(graphql:Field 'field) returns Profile {
+        graphql:Field[] subfields = 'field.getSubfields();
+    }
+}
+```
+
 ### 9.2 Accessing the Field Object
 
 The `graphql:Field` can be accessed inside any resolver. When needed, the `graphql:Field` should be added as a parameter of the `resource` or `remote` method representing a GraphQL field.
@@ -1772,7 +1790,7 @@ service class Profile {
 
 The configurations stated in the `graphql:ServiceConfig`, are used to change the behavior of a particular GraphQL service. These configurations are applied to the service.
 
-This annotation consists of four fields.
+This annotation consists of the following fields.
 
 #### 10.1.1 Max Query Depth
 
@@ -1920,11 +1938,22 @@ service on new graphql:Listener(9090) {
 ```
 >**Note:** The field enabled accepts a `boolean` that denotes whether the client is enabled or not. By default, it has been set to `false`. The optional field `path` accepts a valid `string` for the GraphiQL service. If the path is not given in the configuration, `/graphiql` is set as the default path.
 
-#### 10.1.6 Service Level Interceptors
+#### 10.1.6 Service Interceptors
 
-The `interceptors` field is used to provide the service level interceptors.
+The `interceptors` field is used to provide the service interceptors.
 
-###### Example: Service Level Interceptors
+###### Example: Single Service Interceptor
+
+```ballerina
+@graphql:ServiceConfig {
+    interceptors: new Interceptor1()
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+###### Example: Array of Service Interceptors
 
 ```ballerina
 @graphql:ServiceConfig {
@@ -1951,7 +1980,71 @@ service on new graphql:Listener(9090) {
 ```
 >**Note:** It is recommended to disable introspection in production environments until it is required.
 
+### 10.2 Resource Configuration
+
+The configurations stated in the `graphql:ResourceConfig`, are used to change the behavior of a particular GraphQL resolver. These configurations are applied to the resolver functions.
+
+This annotation consists of the following field.
+
+#### 10.2.1 Field Interceptors
+
+The `interceptors` field is used to provide the field interceptors.
+
+###### Example: Single Field Interceptor
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        interceptors: new Interceptor1()
+    }
+    resource function get name(int id) returns string {
+      // ...
+   }
+}
+```
+
+###### Example: Array of Field Interceptors
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        interceptors: [new Interceptor1(), new Interceptor2()]
+    }
+    resource function get name(int id) returns string {
+      // ...
+   }
+}
+```
+
+### 10.3 Interceptor Configuration
+
+The configurations stated in the `graphql:InterceptorConfig`, are used to change the behavior of a particular GraphQL interceptor.
+
+#### 10.3.1 Scope Configuration
+
+The field `global` is used to configure the scope of the interceptor. If the `global` field is set as `true`, the interceptor will be applied to each field and subfield of the service. If the flag is set as `false`, the interceptor will be applied only to the fields of the type, but not to the subfields of the type. By default, the `global` flag is set as `true`.
+
+>**Note:** The scope configuration is applied only to the GraphQL [service interceptors](#1131-service-interceptors).
+
+###### Example: Scope Configuration
+
+```ballerina
+@graphql:InterceptorConfig {
+    global:false
+}
+readonly service class LogInterceptor {
+   *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        // ...
+    }
+}
+```
+
 ## 11. Interceptors
+
 The GraphQL interceptors can be used to execute a custom code before and after a resolver gets invoked.
 
 ### 11.1 Interceptor Service Object
@@ -1965,6 +2058,7 @@ public type Interceptor distinct service object {
 ```
 
 ### 11.2 Writing an Interceptor
+
 Interceptors can be defined as a readonly service class that infers the Interceptor object provided by the GraphQL package. A user-specific name can be used as the service class name.
 
 ```ballerina
@@ -1985,32 +2079,35 @@ The Interceptor service class should have the implementation of the `execute()` 
 
 When it comes to interceptor execution, it follows the `onion principle`. Each interceptor adds a layer before and after the actual resolver invocation. Therefore, the order of the interceptor array in the configuration will be important. In an Interceptor `execute()` method, all the code lines that are placed before the `context.resolve()` will be executed before the resolver execution, and the code lines placed after the `context.resolve()` will be executed after the resolver execution. The [`context.resolve()`](#85-resolving-field-value) method invokes the next interceptor.
 
->**Note:** The inserting order of the interceptors into the array, will be the execution order of Interceptors.
+>**Note:** The inserting order of the interceptors into the array, will be the execution order of Interceptors. The interceptors are applied to each event in response stream of subscription resolvers.
 
-###### Example: GraphQL Interceptor
+#### 11.3.1 Service Interceptors
+The service interceptors are applied to all the resolvers in the GraphQL service. A GraphQL service accepts a single service interceptor or an array of service interceptors, and it should be inserted as mentioned in the [Service Interceptor](#1016-service-interceptors) section. The scope of the interceptor can be configured as defined in the [scope configuration](#1031-scope-configuration) section.
+
+###### Example: GraphQL Service Interceptor
 
 ```ballerina
 import ballerina/graphql;
 import ballerina/log;
 
 readonly service class ServiceInterceptor {
-  *graphql:Interceptor;
-  isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-     log:printInfo(string `Service Interceptor execution!`);
-     var output = context.resolve('field);
-     log:printInfo("Connection closed!");
-     return output;
-  }
+    *graphql:Interceptor;
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        log:printInfo(string `Service Interceptor execution!`);
+        var output = context.resolve('field);
+        log:printInfo("Connection closed!");
+        return output;
+    }
 }
 
 @graphql:ServiceConfig {
-   interceptors: [new ServiceInterceptor()]
+    interceptors: [new ServiceInterceptor()]
 }
 service /graphql on new graphql:Listener(9000) {
-   resource function get name(int id) returns string {
-      log:printInfo("Resolver: name");
-      return "Ballerina";
-   }
+    resource function get name(int id) returns string {
+        log:printInfo("Resolver: name");
+        return "Ballerina";
+    }
 }
 ```
 
@@ -2021,10 +2118,42 @@ Following is the output of the server when a request is processed:
 5. Connection closed!
 ```
 
-#### 11.3.1 Service Level Interceptors
-The service level interceptors are applied to all the resolvers in the GraphQL service. The GraphQL module accept an array of service level interceptors, and it should be inserted as mentioned in the [Service Level Interceptor](#1016-service-level-interceptors) section.
+#### 11.3.2 Field Interceptors
+The field interceptors are applied to a specific resolver in the GraphQL service. A GraphQL resolver accepts a single field interceptor or an array of field interceptors, and it should be inserted as mentioned in the [Field Interceptor](#1021-field-interceptors) section.
 
->**Note:** The service level interceptors are applied to each event in response stream of subscription resolvers.
+###### Example: GraphQL Field Interceptor
+
+```ballerina
+import ballerina/graphql;
+import ballerina/log;
+
+readonly service class FieldInterceptor {
+    *graphql:Interceptor;
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        log:printInfo(string `Field Interceptor execution!`);
+        var output = context.resolve('field);
+        log:printInfo("Connection closed!");
+        return output;
+    }
+}
+
+service /graphql on new graphql:Listener(9000) {
+    @graphql:ResourceConfig {
+        interceptors: new FieldInterceptor()
+    }
+    resource function get name(int id) returns string {
+        log:printInfo("Resolver: name");
+        return "Ballerina";
+    }
+}
+```
+
+Following is the output of the server when a request is processed:
+```shell
+1. Field Interceptor execution!
+3. Resolver: name
+5. Connection closed!
+```
 
 ## 12. Security
 
@@ -2234,7 +2363,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: [new AuthInterceptor()]
+    interceptors: new AuthInterceptor()
 }
 service on new graphql:Listener(9090) {
 
@@ -2318,7 +2447,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: [new AuthInterceptor()]
+    interceptors: new AuthInterceptor()
 }
 service on new graphql:Listener(9090) {
 
@@ -2377,7 +2506,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: [new AuthInterceptor()]
+    interceptors: new AuthInterceptor()
 }
 service on new graphql:Listener(9090) {
 
@@ -2428,7 +2557,7 @@ readonly service class AuthInterceptor {
 
 @graphql:ServiceConfig {
     contextInit: contextInit,
-    interceptors: [new AuthInterceptor()]
+    interceptors: new AuthInterceptor()
 }
 service on new graphql:Listener(9090) {
 
@@ -2814,17 +2943,16 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 
 <table>
-    <tr>
-        <th>Example</th>
+  <tr>
+    <th>Example</th>
         <th>Ballerina definition</th>
         <th>GraphQL schema</th>
-    </tr>
-    <tr>
-        <td>
-            Simple key
-        </td>
-        <td>
-            <pre lang="ballerina">
+  </tr>
+  <tr>
+    <td>Simple key</td>
+    <td>
+    <pre lang='ballerina'>
+
 ```ballerina
 @subgraph:Entity {
     key: "id",
@@ -2836,10 +2964,11 @@ type Product record {
     int price;
 };
 ```
-            </pre>
-        </td>
-        <td>
-            <pre lang="graphql">
+</pre>
+    </td>
+    <td>
+<pre lang='graphql'>
+
 ```graphql
 type Product @key(fields: "id") {
     id: String!
@@ -2847,15 +2976,14 @@ type Product @key(fields: "id") {
     price: Int!
 }
 ```
-            </pre>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Mutiple keys
-        </td>
-        <td>
-            <pre lang="ballerina">
+</pre>
+    </td>
+  </tr>
+  <tr>
+    <td>Mutiple keys</td>
+    <td>
+    <pre lang='ballerina'>
+
 ```ballerina
 @subgraph:Entity {
     key: ["id", "sku"],
@@ -2868,10 +2996,11 @@ type Product record {
     int price;
 };
 ```
-            </pre>
-        </td>
-        <td>
-            <pre lang="graphql">
+</pre>
+    </td>
+    <td>
+    <pre lang='graphql'>
+
 ```graphql
 type Product @key(fields: "id") @key(fields: "sku") {
     id: String!
@@ -2880,15 +3009,14 @@ type Product @key(fields: "id") @key(fields: "sku") {
     price: Int!
 }
 ```
-            </pre>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Compound key
-        </td>
-        <td>
-            <pre lang="ballerina">
+</pre>
+    </td>
+  </tr>
+  <tr>
+    <td>Compound key</td>
+    <td>
+    <pre lang='ballerina'>
+
 ```ballerina
 @subgraph:Entity {
     key: "id organization { id }",
@@ -2899,25 +3027,25 @@ type User record {
     Organization organization;
 }
 ```
-            </pre>
-        </td>
-        <td>
-            <pre lang="graphql">
+</pre>
+    </td>
+    <td>
+    <pre lang='graphql'>
+
 ```graphql
 type User @key(fields: "id organization { id }") {
     id: String!
     organization: Organization!
 }
 ```
-            </pre>
-        </td>
-    </tr>
-      <tr>
-        <td>
-            Non resolvable
-        </td>
-        <td>
-            <pre lang="ballerina">
+</pre>
+    </td>
+  </tr>
+  <tr>
+    <td>Non resolvable</td>
+    <td>
+    <pre lang='ballerina'>
+
 ```ballerina
 @subgraph:Entity {
     key: "id"
@@ -2927,18 +3055,19 @@ type Product record {
   id: String!
 }
 ```
-            </pre>
-        </td>
-        <td>
-            <pre lang="graphql">
+</pre>
+    </td>
+    <td>
+    <pre lang='graphql'>
+
 ```graphql
 type Product @key(fields: "id", resolvable: false) {
     id: ID!
 }
 ```
-            </pre>
-        </td>
-    </tr>
+</pre>
+    </td>
+  </tr>
 </table>
 
 #### 13.1.3 The `subgraph:ReferenceResolver`

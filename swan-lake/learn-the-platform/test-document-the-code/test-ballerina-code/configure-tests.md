@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing, test setup
 permalink: /learn/test-ballerina-code/configure-tests/
 active: configure-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.
-redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/configuring-tests/
-- /swan-lake/learn/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-test/
-- /learn/test-ballerina-code/configure-tests
-- /learn/guides/testing-ballerina-code/configuring-tests/
-- /learn/guides/testing-ballerina-code/configuring-tests
 ---
 
 ## Set up and tearing down
@@ -80,7 +63,7 @@ function testFunction1() {
 }
 
 // The `AfterSuite` function is executed after all the test functions in this module.
-@test:AfterSuite  {}
+@test:AfterSuite {}
 function afterFunc() {
     io:println("I'm the after suite function!");
 }
@@ -100,27 +83,27 @@ import ballerina/test;
 
 // The `beforeGroups1` function is executed before running all the test functions
 // belonging to the `g1` group.
-@test:BeforeGroups { value:["g1"] }
+@test:BeforeGroups {value: ["g1"]}
 function beforeGroups1() {
     io:println("I'm the before groups function!");
 }
 
 // Another `beforeGroups2` function is executed before running all the test functions
 // belonging to the `g1` and `g2` groups.
-@test:BeforeGroups { value:["g1", "g2"] }
+@test:BeforeGroups {value: ["g1", "g2"]}
 function beforeGroups2() {
     io:println("I'm another before groups function!");
 }
 
 // A test function that belongs to the `g1` group.
-@test:Config { groups:["g1"] }
+@test:Config {groups: ["g1"]}
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // A test function that belongs to the `g2` group.
-@test:Config { groups:["g2"] }
+@test:Config {groups: ["g2"]}
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
@@ -137,14 +120,14 @@ import ballerina/io;
 import ballerina/test;
 
 // A test function that belongs to the `g1` group.
-@test:Config { groups:["g1"] }
+@test:Config {groups: ["g1"]}
 function testFunction1() {
     io:println("I belong to group g1!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // A test function that belongs to the `g2` group.
-@test:Config { groups:["g2"] }
+@test:Config {groups: ["g2"]}
 function testFunction2() {
     io:println("I belong to group g2 ");
     test:assertTrue(true, msg = "Failed");
@@ -152,14 +135,14 @@ function testFunction2() {
 
 // The `afterGroupsFunc1` function is executed before running all the test functions
 // belonging to the `g1` group.
-@test:AfterGroups { value:["g1"] }
+@test:AfterGroups {value: ["g1"]}
 function afterGroupsFunc1() {
     io:println("I'm the after groups function!");
 }
 
 // The `afterGroupsFunc2` function is executed before running all the test functions
 // belonging to the `g1` and `g2` groups.
-@test:AfterGroups { value:["g1", "g2"] }
+@test:AfterGroups {value: ["g1", "g2"]}
 function afterGroupsFunc2() {
     io:println("I'm another after groups function!");
 }
@@ -252,7 +235,7 @@ test is run.
 ***Example:***
 
 ```ballerina
-@test:Config { before : testFunction1 }
+@test:Config {before: testFunction1}
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
@@ -266,9 +249,25 @@ test is run.
 ***Example:***
 
 ```ballerina
-@test:Config { after : testFunction3 }
+@test:Config {after: testFunction3}
 function testFunction2() {
     io:println("I'm in test function 2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
+## Ensure test execution order
+
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
+upon.
+This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+
+***Example:***
+
+```ballerina
+@test:Config {dependsOn: [testFunction4]}
+function testFunction5() {
+    io:println("I'm in test function 5!");
     test:assertTrue(true, msg = "Failed!");
 }
 ```

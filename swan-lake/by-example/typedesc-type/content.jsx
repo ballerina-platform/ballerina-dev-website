@@ -61,7 +61,7 @@ export function TypedescType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d343ef9be36f7f9e697849de1b0a85ac&file=typedesc_type.bal",
+                "https://play.ballerina.io/?gist=171c3f3f57eb70dfb7002fafcf9a0f7e&file=typedesc_type.bal",
                 "_blank"
               );
             }}
@@ -86,7 +86,7 @@ export function TypedescType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/typedesc-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/typedesc-type",
                 "_blank"
               );
             }}

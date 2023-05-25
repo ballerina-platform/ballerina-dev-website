@@ -6,17 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/
 active: implementing-grpc-services
 intro: The topics below explain how to implement a gRPC service and write a client to invoke it. 
-redirect_from:
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/
-  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients/
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients
-  - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/
-  - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services
-redirect_to:
-  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 Execute the `bal new service` command to create a Ballerina package to implement the service. You view the output below.

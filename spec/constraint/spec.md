@@ -3,7 +3,7 @@
 _Owners_: @TharmiganK @shafreenAnfar @chamil321  
 _Reviewers_: @shafreenAnfar @chamil321  
 _Created_: 2022/08/09  
-_Updated_: 2023/01/31   
+_Updated_: 2023/05/18   
 _Edition_: Swan Lake
 
 ## Introduction
@@ -29,6 +29,7 @@ specification is considered a bug.
    * 2.1. [Constraint annotation on number types](#21-constraint-annotation-on-number-types)
    * 2.2. [Constraint annotation on `string` type](#22-constraints-annotation-on-string-type)
    * 2.3. [Constraint annotation on array types](#23-constraint-annotation-on-array-types)
+   * 2.4. [Constraint annotation on `Date` record types](#24-constraint-annotation-on-date-record-types)
 3. [`validate` function](#3-validate-function)
 
 ## 1. Overview
@@ -81,7 +82,7 @@ The following table illustrates all the supported annotations with respect to th
 | Ballerina Type                    | Annotation           |
 |-----------------------------------|----------------------|
 | `int`                             | `@constraint:Int`    |
-| `float`                           | `@constraint:float`  |
+| `float`                           | `@constraint:Float`  |
 | `int`&#124;`float`&#124;`decimal` | `@constraint:Number` |
 | `string`                          | `@constraint:String` |
 | `any[]`                           | `@constraint:Array`  |
@@ -164,6 +165,7 @@ public type StringConstraints record {|
     int length?;
     int minLength?;
     int maxLength?;
+    string:RegExp pattern?;
 |};
 ```
 
@@ -174,6 +176,7 @@ All the supported constraints on `string` type are illustrated in the following 
 | length          |                           v.length() == c                            |
 | minLength       |                           v.length() >= c                            |
 | maxLength       |                           v.length() <= c                            |
+| pattern         |                     v is a full match of regex c                     |
 
 When defining constraints on `string` type, if the `length` constraint is present then `minLength` or `maxLength` are 
 not allowed.
@@ -182,7 +185,8 @@ Example :
 ```ballerina
 @constraint:String {
     minLength: 5,
-    maxLength: 10
+    maxLength: 10,
+    pattern: re `[a-z0-9](_?[a-z0-9])+`
 }
 type Username string;
 ```
@@ -218,6 +222,84 @@ Example :
     maxLength: 10
 }
 type Names string[];
+```
+
+### 2.4. Constraint annotation on `Date` record types
+
+The Constraint library offers the `@constraint:Date` annotation on Ballerina `record` types which are structurally 
+equivalent to the following record type.
+
+```ballerina
+type Date record {
+    int year; // Allowed -999999999 to 999999999
+    int month; // Allowed 1 to 12
+    int day; // Allowed 1 to 31
+};
+```
+
+The annotation validates the date according to the Gregorian calendar rules. The following is a sample usage of this
+annotation.
+
+```ballerina
+// Can be applied on a refernced type
+@constraint:Date
+time:Date MyDate;
+
+// Can be applied on a record type
+@constraint:Date
+type DateTime record {|
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
+    int second;
+|};
+
+// Can be applied to a record field
+type User record {
+    int id;
+    string name;
+    @constraint:Date
+    time:Date lastLogin;
+};
+```
+
+Other than validating the date, it provides an `option` field to specify additional constraints. The following is the
+associated record type definition.
+
+```ballerina
+enum DateOption {
+   PAST,
+   PAST_OR_PRESENT,
+   FUTURE,
+   FUTURE_OR_PRESENT
+}
+
+public type DateConstraints record {|
+    DateOption option?;
+|};
+```
+
+All the supported date constraint options are illustrated in the following table.
+
+| Date option       | Semantics (v is value being <br/>constrained) |
+|-------------------|:---------------------------------------------:|
+| PAST              |                   v < today                   |
+| PAST_OR_PRESENT   |                  v <= today                   |
+| FUTURE            |                   v > today                   |
+| FUTURE_OR_PRESENT |                  v >= today                   |
+
+Example :
+```ballerina
+type Person record {|
+   string name;
+   string address;
+    @constraint:Date {
+         option: constraint:PAST
+    }
+    time:Date dob;
+|};
 ```
 
 ## 3. `validate` function

@@ -97,7 +97,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5b464fb973aa6911ca74a15dc7fe5a39&file=binding_patterns_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=5e9de75b491ab931a21ef01de2a3c863&file=binding_patterns_in_match_statement.bal",
                 "_blank"
               );
             }}
@@ -122,7 +122,7 @@ export function BindingPatternsInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.4.0/examples/binding-patterns-in-match-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/binding-patterns-in-match-statement",
                 "_blank"
               );
             }}

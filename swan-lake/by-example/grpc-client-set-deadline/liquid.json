@@ -1,0 +1,19 @@
+{
+  "title": "Set deadline",
+  "description": "This Ballerina by Example has a gRPC client with a configured deadline.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "unary",
+    "client",
+    "deadline"
+  ],
+  "permalink": "/learn/by-example/grpc-client-set-deadline",
+  "active": "grpc-client-set-deadline",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-set-deadline",
+    "/swan-lake/learn/by-example/grpc-client-set-deadline.html"
+  ]
+}

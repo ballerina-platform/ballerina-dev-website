@@ -1,0 +1,18 @@
+{
+  "title": "Outer Join clause",
+  "description": "This BBE demonstrates the outer join clause in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "outer join clause",
+    "query",
+    "query expression"
+  ],
+  "permalink": "/learn/by-example/outer-join-clause",
+  "active": "outer-join-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/outer-join-clause",
+    "/swan-lake/learn/by-example/outer-join-clause.html"
+  ]
+}

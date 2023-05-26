@@ -1,0 +1,19 @@
+{
+  "title": "Logging with context",
+  "description": "BBE on how to log messages in Ballerina with context values.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "log",
+    "function pointer",
+    "context",
+    "dynamic"
+  ],
+  "permalink": "/learn/by-example/logging-with-context",
+  "active": "logging-with-context",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/logging-with-context",
+    "/swan-lake/learn/by-example/logging-with-context.html"
+  ]
+}

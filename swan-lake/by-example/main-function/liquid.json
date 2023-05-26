@@ -1,0 +1,18 @@
+{
+  "title": "Main function",
+  "description": "This BBE demonstrates passing comand-line arguments to the main function, returning errors from the main function, and constructing custom errors in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "main function",
+    "error",
+    "comand-line arguments"
+  ],
+  "permalink": "/learn/by-example/main-function",
+  "active": "main-function",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/main-function",
+    "/swan-lake/learn/by-example/main-function.html"
+  ]
+}

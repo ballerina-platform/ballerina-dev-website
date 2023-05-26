@@ -1,0 +1,17 @@
+{
+  "title": "Resource path parameters",
+  "description": "This BBE introduces how you can specify resource path parameters.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "path parameters",
+    "resources"
+  ],
+  "permalink": "/learn/by-example/resource-path-parameters",
+  "active": "resource-path-parameters",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/resource-path-parameters",
+    "/swan-lake/learn/by-example/resource-path-parameters.html"
+  ]
+}

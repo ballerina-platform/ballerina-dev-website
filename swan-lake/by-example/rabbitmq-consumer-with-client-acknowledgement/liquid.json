@@ -1,0 +1,18 @@
+{
+  "title": "Consume message with acknowledgement",
+  "description": "BBE on manually acknowledging the messages consumed from a RabbitMQ queue using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "consumer",
+    "bbe",
+    "acknowledgment"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-consumer-with-client-acknowledgement",
+  "active": "rabbitmq-consumer-with-client-acknowledgement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement",
+    "/swan-lake/learn/by-example/rabbitmq-consumer-with-client-acknowledgement.html"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Start service from service class definition",
+  "description": "This BBE demonstrates creating a listener object, starting a service from the service class definition, and attaching a listener to a service object in Ballerina. ",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "service class",
+    "listener",
+    "runtime",
+    "object type inclusion"
+  ],
+  "permalink": "/learn/by-example/start-service-from-service-class-definition",
+  "active": "start-service-from-service-class-definition",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/start-service-from-service-class-definition",
+    "/swan-lake/learn/by-example/start-service-from-service-class-definition.html"
+  ]
+}

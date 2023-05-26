@@ -1,0 +1,19 @@
+{
+  "title": "Nested query expressions",
+  "description": "This BBE demonstrates multiple query expressions, nested query expressions, and inner query expressions.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "nested",
+    "query",
+    "join",
+    "inner"
+  ],
+  "permalink": "/learn/by-example/nested-query-expressions",
+  "active": "nested-query-expressions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nested-query-expressions",
+    "/swan-lake/learn/by-example/nested-query-expressions.html"
+  ]
+}

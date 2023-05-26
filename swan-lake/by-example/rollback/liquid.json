@@ -1,0 +1,17 @@
+{
+  "title": "Rollback",
+  "description": "This BBE demonstrates `rollback` operation in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "rollback",
+    "rollback transaction"
+  ],
+  "permalink": "/learn/by-example/rollback",
+  "active": "rollback",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rollback",
+    "/swan-lake/learn/by-example/rollback.html"
+  ]
+}

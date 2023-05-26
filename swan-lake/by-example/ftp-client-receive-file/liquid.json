@@ -1,0 +1,11 @@
+{
+  "title": "Receive file",
+  "description": "This is a BBE on getting file content from a remote FTP server.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "FTP"],
+  "permalink": "/learn/by-example/ftp-client-receive-file",
+  "active": "ftp-client-receive-file",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ftp-client-receive-file",
+    "/swan-lake/learn/by-example/ftp-client-receive-file.html"
+  ]
+}

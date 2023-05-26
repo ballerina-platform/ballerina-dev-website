@@ -1,0 +1,19 @@
+{
+  "title": "Function values",
+  "description": "This BBE demonstrates creating a variable with the function type and creating a function. ",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "functions",
+    "function type",
+    "function defintion",
+    "function value"
+  ],
+  "permalink": "/learn/by-example/function-values",
+  "active": "function-values",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/function-values",
+    "/swan-lake/learn/by-example/function-values.html"
+  ]
+}

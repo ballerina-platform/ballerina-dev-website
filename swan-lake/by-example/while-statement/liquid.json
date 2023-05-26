@@ -1,0 +1,19 @@
+{
+  "title": "While statement",
+  "description": "This BBE demonstrates how to use the `while` statement to loop through a list in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "while",
+    "loop",
+    "repeat",
+    "iterate"
+  ],
+  "permalink": "/learn/by-example/while-statement",
+  "active": "while-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/while-statement",
+    "/swan-lake/learn/by-example/while-statement.html"
+  ]
+}

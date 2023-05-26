@@ -1,0 +1,18 @@
+{
+  "title": "Compression",
+  "description": "BBE demonstrates how the Ballerina HTTP service is configured to change the compression behavior.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "compression",
+    "accept-encoding"
+  ],
+  "permalink": "/learn/by-example/http-compression",
+  "active": "http-compression",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-compression",
+    "/swan-lake/learn/by-example/http-compression.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Hierarchical resource paths",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql service"
+  ],
+  "permalink": "/learn/by-example/graphql-hierarchical-resource-paths",
+  "active": "graphql-hierarchical-resource-paths",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-hierarchical-resource-paths",
+    "/swan-lake/learn/by-example/graphql-hierarchical-resource-paths.html"
+  ]
+}

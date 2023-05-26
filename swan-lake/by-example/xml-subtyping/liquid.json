@@ -1,0 +1,17 @@
+{
+  "title": "XML subtyping",
+  "description": "This BBE demonstrates XML subtyping in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "xml subtyping"
+  ],
+  "permalink": "/learn/by-example/xml-subtyping",
+  "active": "xml-subtyping",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-subtyping",
+    "/swan-lake/learn/by-example/xml-subtyping.html"
+  ]
+}

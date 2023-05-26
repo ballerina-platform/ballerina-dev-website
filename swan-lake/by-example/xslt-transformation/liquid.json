@@ -1,0 +1,20 @@
+{
+  "title": "XSLT transformation",
+  "description": "This BBE demonstrates how the XML content can be transformed into HTML using a given XSL transformation.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xslt",
+    "xml",
+    "html",
+    "xsl",
+    "transformation"
+  ],
+  "permalink": "/learn/by-example/xslt-transformation",
+  "active": "xslt-transformation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xslt-transformation",
+    "/swan-lake/learn/by-example/xslt-transformation.html"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Array/Map symmetry",
+  "description": "This BBE demonstrates array map symmetry in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "array",
+    "map",
+    "array map symmetry"
+  ],
+  "permalink": "/learn/by-example/array-map-symmetry",
+  "active": "array-map-symmetry",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/array-map-symmetry",
+    "/swan-lake/learn/by-example/array-map-symmetry.html"
+  ]
+}

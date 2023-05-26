@@ -1,0 +1,18 @@
+{
+  "title": "Integers",
+  "description": "This BBE introduces Ballerina int type.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "integers",
+    "int",
+    "int type"
+  ],
+  "permalink": "/learn/by-example/integers",
+  "active": "integers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/integers",
+    "/swan-lake/learn/by-example/integers.html"
+  ]
+}

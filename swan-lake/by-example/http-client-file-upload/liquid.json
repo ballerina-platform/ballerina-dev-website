@@ -1,0 +1,19 @@
+{
+  "title": "File upload",
+  "description": "This BBE demonstrates the file upload capability through Ballerina streams.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "streaming",
+    "client",
+    "file upload"
+  ],
+  "permalink": "/learn/by-example/http-client-file-upload",
+  "active": "http-client-file-upload",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-file-upload",
+    "/swan-lake/learn/by-example/http-client-file-upload.html"
+  ]
+}

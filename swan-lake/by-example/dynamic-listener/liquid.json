@@ -1,0 +1,18 @@
+{
+  "title": "Dynamic listener",
+  "description": "Registering/deregistering a module listener dynamically.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "listener",
+    "dynamic listener",
+    "bbe",
+    "service"
+  ],
+  "permalink": "/learn/by-example/dynamic-listener",
+  "active": "dynamic-listener",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/dynamic-listener",
+    "/swan-lake/learn/by-example/dynamic-listener.html"
+  ]
+}

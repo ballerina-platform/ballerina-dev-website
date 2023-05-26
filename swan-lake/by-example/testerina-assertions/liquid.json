@@ -1,0 +1,11 @@
+{
+  "title": "Assertions",
+  "description": "BBE on how to use assertions for unit testing.",
+  "keywords": ["ballerina", "programming language", "testing", "assertion"],
+  "permalink": "/learn/by-example/testerina-assertions",
+  "active": "testerina-assertions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/testerina-assertions",
+    "/swan-lake/learn/by-example/testerina-assertions.html"
+  ]
+}

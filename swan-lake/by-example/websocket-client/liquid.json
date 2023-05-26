@@ -1,0 +1,18 @@
+{
+  "title": "Send/Receive message",
+  "description": "This BBE demonstrates how a WebSocket client can be used to connect to and interact with a WebSocket server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "sync",
+    "client"
+  ],
+  "permalink": "/learn/by-example/websocket-client",
+  "active": "websocket-client",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client",
+    "/swan-lake/learn/by-example/websocket-client.html"
+  ]
+}

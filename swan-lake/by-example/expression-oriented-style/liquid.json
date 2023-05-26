@@ -1,0 +1,17 @@
+{
+  "title": "Expression-oriented style",
+  "description": "This BBE demonstrates the expression-oriented style in ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "expression",
+    "expression-bodied"
+  ],
+  "permalink": "/learn/by-example/expression-oriented-style",
+  "active": "expression-oriented-style",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/expression-oriented-style",
+    "/swan-lake/learn/by-example/expression-oriented-style.html"
+  ]
+}

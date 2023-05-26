@@ -1,0 +1,20 @@
+{
+  "title": "Distinct object types",
+  "description": "This BBE demonstrates distinct object types, defining nominal typing, object subtyping, and defining a class in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object",
+    "class",
+    "distinct",
+    "self",
+    "new"
+  ],
+  "permalink": "/learn/by-example/distinct-object-types",
+  "active": "distinct-object-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/distinct-object-types",
+    "/swan-lake/learn/by-example/distinct-object-types.html"
+  ]
+}

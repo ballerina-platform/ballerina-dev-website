@@ -1,0 +1,19 @@
+{
+  "title": "Structured keys",
+  "description": "This BBE demonstrates how to set a record as key in table, create record key table, make immutable clone.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "structured keys",
+    "keys",
+    "table",
+    "map"
+  ],
+  "permalink": "/learn/by-example/structured-keys",
+  "active": "structured-keys",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/structured-keys",
+    "/swan-lake/learn/by-example/structured-keys.html"
+  ]
+}

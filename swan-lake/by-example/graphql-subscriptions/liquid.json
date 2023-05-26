@@ -1,0 +1,17 @@
+{
+  "title": "Subscriptions",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "subscription"
+  ],
+  "permalink": "/learn/by-example/graphql-subscriptions",
+  "active": "graphql-subscriptions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-subscriptions",
+    "/swan-lake/learn/by-example/graphql-subscriptions.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Caller object",
+  "description": "This BBE demonstrates the HTTP caller and its usage with an HTTP service in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http caller",
+    "service"
+  ],
+  "permalink": "/learn/by-example/http-caller",
+  "active": "http-caller",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-caller",
+    "/swan-lake/learn/by-example/http-caller.html"
+  ]
+}

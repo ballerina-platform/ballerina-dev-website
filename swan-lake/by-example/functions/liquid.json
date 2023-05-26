@@ -1,0 +1,20 @@
+{
+  "title": "Functions",
+  "description": "This BBE demonstrates creating functions with defaultable parameters and passing named arguments to the function in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "functions",
+    "function defintion",
+    "parameters",
+    "default parameters",
+    "returns"
+  ],
+  "permalink": "/learn/by-example/functions",
+  "active": "functions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/functions",
+    "/swan-lake/learn/by-example/functions.html"
+  ]
+}

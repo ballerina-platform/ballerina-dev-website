@@ -1,0 +1,21 @@
+{
+  "title": "Single use of typed binding patterns",
+  "description": "This BBE demonstrates the single use of typed binding patterns, single use of list binding, single use of mapping binding, single use of error binding, typed binding followed by `=`, list binding followed by `=`, mapping binding followed by `=`, and error binding followed by `=`.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "typed binding",
+    "single use",
+    "list binding",
+    "mapping binding",
+    "error binding"
+  ],
+  "permalink": "/learn/by-example/single-use-of-typed-binding",
+  "active": "single-use-of-typed-binding",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/single-use-of-typed-binding",
+    "/swan-lake/learn/by-example/single-use-of-typed-binding.html"
+  ]
+}

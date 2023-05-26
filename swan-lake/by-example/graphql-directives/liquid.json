@@ -1,0 +1,17 @@
+{
+  "title": "Directives",
+  "description": "BBE on how to use graphql directives",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "directives"
+  ],
+  "permalink": "/learn/by-example/graphql-directives",
+  "active": "graphql-directives",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-directives",
+    "/swan-lake/learn/by-example/graphql-directives.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Named workers and futures",
+  "description": "This BBE demonstrates futures",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "future"],
+  "permalink": "/learn/by-example/named-workers-and-futures",
+  "active": "named-workers-and-futures",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/named-workers-and-futures",
+    "/swan-lake/learn/by-example/named-workers-and-futures.html"
+  ]
+}

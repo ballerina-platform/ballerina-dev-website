@@ -1,0 +1,17 @@
+{
+  "title": "Errors",
+  "description": "This BBE demonstrates how errors are reported in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "error",
+    "error reporting"
+  ],
+  "permalink": "/learn/by-example/error-reporting",
+  "active": "error-reporting",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-reporting",
+    "/swan-lake/learn/by-example/error-reporting.html"
+  ]
+}

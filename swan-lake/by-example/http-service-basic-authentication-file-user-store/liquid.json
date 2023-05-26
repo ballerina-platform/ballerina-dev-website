@@ -1,0 +1,18 @@
+{
+  "title": "Basic authentication file user store",
+  "description": "BBE on how to secure HTTP service with Basic Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "auth",
+    "basic auth"
+  ],
+  "permalink": "/learn/by-example/http-service-basic-authentication-file-user-store",
+  "active": "http-service-basic-authentication-file-user-store",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-service-basic-authentication-file-user-store",
+    "/swan-lake/learn/by-example/http-service-basic-authentication-file-user-store.html"
+  ]
+}

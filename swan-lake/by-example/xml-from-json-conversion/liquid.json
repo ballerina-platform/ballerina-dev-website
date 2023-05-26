@@ -1,0 +1,11 @@
+{
+  "title": "JSON to XML conversion",
+  "description": "This BBE demonstrates the conversion from JSON to XML in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "BBE", "json", "xml"],
+  "permalink": "/learn/by-example/xml-from-json-conversion",
+  "active": "xml-from-json-conversion",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-from-json-conversion",
+    "/swan-lake/learn/by-example/xml-from-json-conversion.html"
+  ]
+}

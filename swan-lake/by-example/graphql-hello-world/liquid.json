@@ -1,0 +1,17 @@
+{
+  "title": "Hello world",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql service"
+  ],
+  "permalink": "/learn/by-example/graphql-hello-world",
+  "active": "graphql-hello-world",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-hello-world",
+    "/swan-lake/learn/by-example/graphql-hello-world.html"
+  ]
+}

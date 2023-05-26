@@ -1,0 +1,19 @@
+{
+  "title": "Match guard in match statement",
+  "description": "This BBE demonstrates match guards in `match` statements of Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "match",
+    "default",
+    "value match",
+    "match guard"
+  ],
+  "permalink": "/learn/by-example/match-guard-in-match-statement",
+  "active": "match-guard-in-match-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/match-guard-in-match-statement",
+    "/swan-lake/learn/by-example/match-guard-in-match-statement.html"
+  ]
+}

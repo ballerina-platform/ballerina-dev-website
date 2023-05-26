@@ -1,0 +1,11 @@
+{
+  "title": "Any type",
+  "description": "This BBE demonstrates the any type in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "any", "any type"],
+  "permalink": "/learn/by-example/any-type",
+  "active": "any-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/any-type",
+    "/swan-lake/learn/by-example/any-type.html"
+  ]
+}

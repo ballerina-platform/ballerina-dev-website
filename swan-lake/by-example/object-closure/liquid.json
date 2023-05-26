@@ -1,0 +1,18 @@
+{
+  "title": "Object closure",
+  "description": "This BBE demonstrates object closures in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object closure",
+    "object constructor",
+    "self"
+  ],
+  "permalink": "/learn/by-example/object-closure",
+  "active": "object-closure",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-closure",
+    "/swan-lake/learn/by-example/object-closure.html"
+  ]
+}

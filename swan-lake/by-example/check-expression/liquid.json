@@ -1,0 +1,11 @@
+{
+  "title": "Check expression",
+  "description": "This BBE demonstrates how the check expression is used in Ballerina to handle errors",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "error", "check"],
+  "permalink": "/learn/by-example/check-expression",
+  "active": "check-expression",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/check-expression",
+    "/swan-lake/learn/by-example/check-expression.html"
+  ]
+}

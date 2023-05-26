@@ -1,0 +1,18 @@
+{
+  "title": "Default values for function parameters",
+  "description": "This BBE demonstrates defining default parameter values in a function using the preceding parameter value as the default parameter value in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "default parameter",
+    "default value",
+    "functions"
+  ],
+  "permalink": "/learn/by-example/default-values-for-function-parameters",
+  "active": "default-values-for-function-parameters",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/default-values-for-function-parameters",
+    "/swan-lake/learn/by-example/default-values-for-function-parameters.html"
+  ]
+}

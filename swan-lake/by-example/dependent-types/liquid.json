@@ -1,0 +1,11 @@
+{
+  "title": "Dependent types",
+  "description": "This BBE demonstrates dependent types in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "dependent type"],
+  "permalink": "/learn/by-example/dependent-types",
+  "active": "dependent-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/dependent-types",
+    "/swan-lake/learn/by-example/dependent-types.html"
+  ]
+}

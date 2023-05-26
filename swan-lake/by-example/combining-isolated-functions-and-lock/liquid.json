@@ -1,0 +1,17 @@
+{
+  "title": "Combining isolated functions and lock",
+  "description": "This BBE demonstrates combining isolated functions and lock in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "isolated functions",
+    "lock"
+  ],
+  "permalink": "/learn/by-example/combining-isolated-functions-and-lock",
+  "active": "combining-isolated-functions-and-lock",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/combining-isolated-functions-and-lock",
+    "/swan-lake/learn/by-example/combining-isolated-functions-and-lock.html"
+  ]
+}

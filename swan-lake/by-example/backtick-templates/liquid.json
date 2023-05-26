@@ -1,0 +1,16 @@
+{
+  "title": "Backtick templates",
+  "description": "This BBE demonstrates backtick templates in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "backtick templates"
+  ],
+  "permalink": "/learn/by-example/backtick-templates",
+  "active": "backtick-templates",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/backtick-templates",
+    "/swan-lake/learn/by-example/backtick-templates.html"
+  ]
+}

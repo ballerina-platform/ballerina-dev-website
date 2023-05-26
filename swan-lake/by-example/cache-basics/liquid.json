@@ -1,0 +1,20 @@
+{
+  "title": "Cache basics",
+  "description": "This BBE shows how to perform basic in-memory caching operations with the \"Least Recently Used\" algorithm in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "cache",
+    "put",
+    "get",
+    "size",
+    "hasKey"
+  ],
+  "permalink": "/learn/by-example/cache-basics",
+  "active": "cache-basics",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/cache-basics",
+    "/swan-lake/learn/by-example/cache-basics.html"
+  ]
+}

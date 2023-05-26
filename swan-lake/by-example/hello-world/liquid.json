@@ -1,0 +1,11 @@
+{
+  "title": "Hello world main",
+  "description": "The classic \"Hello, World\" program in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe"],
+  "permalink": "/learn/by-example/hello-world",
+  "active": "hello-world",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/hello-world",
+    "/swan-lake/learn/by-example/hello-world.html"
+  ]
+}

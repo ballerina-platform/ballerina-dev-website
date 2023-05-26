@@ -1,0 +1,18 @@
+{
+  "title": "Sending headers",
+  "description": "This BBE demonstrates sending a custom HTTP header from a service in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http service",
+    "header",
+    "response"
+  ],
+  "permalink": "/learn/by-example/http-send-header",
+  "active": "http-send-header",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-send-header",
+    "/swan-lake/learn/by-example/http-send-header.html"
+  ]
+}

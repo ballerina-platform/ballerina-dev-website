@@ -1,0 +1,19 @@
+{
+  "title": "File paths",
+  "description": "This BBE shows how to manipulate file paths in a way that is compatible with the target Operating System in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "file",
+    "directory",
+    "path",
+    "filepath"
+  ],
+  "permalink": "/learn/by-example/filepaths",
+  "active": "filepaths",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/filepaths",
+    "/swan-lake/learn/by-example/filepaths.html"
+  ]
+}

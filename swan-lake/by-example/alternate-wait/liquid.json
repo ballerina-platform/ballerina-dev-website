@@ -1,0 +1,17 @@
+{
+  "title": "Alternate wait",
+  "description": "This BBE demonstrates the alternate wait action",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "worker",
+    "alternate wait"
+  ],
+  "permalink": "/learn/by-example/alternate-wait",
+  "active": "alternate-wait",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/alternate-wait",
+    "/swan-lake/learn/by-example/alternate-wait.html"
+  ]
+}

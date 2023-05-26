@@ -1,0 +1,18 @@
+{
+  "title": "Variables and types",
+  "description": "This BBE introduces variables and types in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "variables",
+    "types",
+    "type system"
+  ],
+  "permalink": "/learn/by-example/variables-and-types",
+  "active": "variables-and-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/variables-and-types",
+    "/swan-lake/learn/by-example/variables-and-types.html"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Function types",
+  "description": "This BBE demonstrates defining function types, creating the function definition, and assigning the function value to the function variable in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "functions",
+    "function types",
+    "function defintion",
+    "default parameters"
+  ],
+  "permalink": "/learn/by-example/function-types",
+  "active": "function-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/function-types",
+    "/swan-lake/learn/by-example/function-types.html"
+  ]
+}

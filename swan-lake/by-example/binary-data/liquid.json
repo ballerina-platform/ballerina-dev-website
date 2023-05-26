@@ -1,0 +1,20 @@
+{
+  "title": "Binary data",
+  "description": "Byte array literal, binary data, base16 data format, base64 data format.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binary data",
+    "byte",
+    "Base16",
+    "Base64",
+    "literal"
+  ],
+  "permalink": "/learn/by-example/binary-data",
+  "active": "binary-data",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/binary-data",
+    "/swan-lake/learn/by-example/binary-data.html"
+  ]
+}

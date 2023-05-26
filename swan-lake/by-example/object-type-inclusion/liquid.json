@@ -1,0 +1,22 @@
+{
+  "title": "Object type inclusion",
+  "description": "This BBE demonstrates including an object type into another object type, a class implementing an interface, and defining a class in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object types",
+    "type inclusion",
+    "object type descriptor",
+    "class",
+    "methods",
+    "inheritance",
+    "interface"
+  ],
+  "permalink": "/learn/by-example/object-type-inclusion",
+  "active": "object-type-inclusion",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-type-inclusion",
+    "/swan-lake/learn/by-example/object-type-inclusion.html"
+  ]
+}

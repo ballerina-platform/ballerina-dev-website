@@ -1,0 +1,18 @@
+{
+  "title": "Basic authentication file user store",
+  "description": "BBE on how to secure WebSocket service with Basic Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "auth",
+    "basic auth"
+  ],
+  "permalink": "/learn/by-example/websocket-service-basic-auth-file-user-store",
+  "active": "websocket-service-basic-auth-file-user-store",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-service-basic-auth-file-user-store",
+    "/swan-lake/learn/by-example/websocket-service-basic-auth-file-user-store.html"
+  ]
+}

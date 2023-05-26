@@ -1,0 +1,18 @@
+{
+  "title": "Error handling",
+  "description": "This BBE demonstrates error handling in WebSocket services.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "service",
+    "error handling"
+  ],
+  "permalink": "/learn/by-example/websocket-service-error-handling",
+  "active": "websocket-service-error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-service-error-handling",
+    "/swan-lake/learn/by-example/websocket-service-error-handling.html"
+  ]
+}

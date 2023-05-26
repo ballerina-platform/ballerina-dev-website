@@ -1,0 +1,11 @@
+{
+  "title": "Unions",
+  "description": "This BBE demonstrates unions in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "unions"],
+  "permalink": "/learn/by-example/unions",
+  "active": "unions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/unions",
+    "/swan-lake/learn/by-example/unions.html"
+  ]
+}

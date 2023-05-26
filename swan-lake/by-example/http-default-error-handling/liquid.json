@@ -1,0 +1,18 @@
+{
+  "title": "Error handling",
+  "description": "This BBE demonstrates how HTTP error handling is done in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "interceptor",
+    "error"
+  ],
+  "permalink": "/learn/by-example/http-default-error-handling",
+  "active": "http-default-error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-default-error-handling",
+    "/swan-lake/learn/by-example/http-default-error-handling.html"
+  ]
+}

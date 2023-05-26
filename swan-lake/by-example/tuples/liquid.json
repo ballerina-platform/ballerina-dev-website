@@ -1,0 +1,22 @@
+{
+  "title": "Tuples",
+  "description": "This BBE demonstrates how to create a tuple, create a collection, create list with different member types, returning multiple values from a function, Accessing a tuple, Updating a tuple.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "tuples",
+    "collection",
+    "size",
+    "list",
+    "multiple",
+    "tuple type",
+    "access"
+  ],
+  "permalink": "/learn/by-example/tuples",
+  "active": "tuples",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/tuples",
+    "/swan-lake/learn/by-example/tuples.html"
+  ]
+}

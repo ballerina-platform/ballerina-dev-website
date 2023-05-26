@@ -5,29 +5,37 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerinax/azure_functions as af;
+  `import ballerinax/awslambda;
+import ballerina/io;
 
-// This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
-service / on new af:HttpListener() {
-    resource function azure-functions-cosmosdb-trigger(string name) returns string {
-        return "Hello, " + name + "!";
-    }
+// The \`@awslambda:Function\` annotation marks a function to generate an AWS Lambda function.
+@awslambda:Function
+public function echo(awslambda:Context ctx, json input) returns json {
+    return input;
 }
 
-// This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
-// details will be stored in the selected queue storage for every invocation.
-@af:TimerTrigger {schedule: "*/10 * * * * *"}
-listener af:TimerListener timerListener = new af:TimerListener();
+// The \`awslambda:Context\` object contains request execution context information.
+@awslambda:Function
+public function ctxinfo(awslambda:Context ctx, json input) returns json|error {
+    return {
+        RequestID: ctx.getRequestId(),
+        DeadlineMS: ctx.getDeadlineMs(),
+        InvokedFunctionArn: ctx.getInvokedFunctionArn(),
+        TraceID: ctx.getTraceId(),
+        RemainingExecTime: ctx.getRemainingExecutionTime()
+    };
+}
 
-service "timer" on timerListener {
-    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
-        return "Message Status, " + metadata.IsPastDue.toString();
-    }
+// If you know the external service that's being used for the function, you can use the built-in types such as 
+// \`S3Event\`, \`DynamoDBEvent\`, \`SESEvent\` etc. for data binding.
+@awslambda:Function
+public function notifyS3(awslambda:Context ctx, awslambda:S3Event event) {
+    io:println(event.Records[0].s3.'object.key);
 }
 `,
 ];
 
-export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
+export function AwsLambdaDeployment({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -43,19 +51,23 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Azure Functions Cosmos DB trigger</h1>
+      <h1>AWS Lambda</h1>
 
       <p>
-        Azure Functions is an event driven, serverless computing platform. Azure
-        Functions can be written from Ballerina using the listeners and services
-        provided by Azure Functions package. You can view the code examples
-        below.
+        AWS Lambda is an event driven, serverless computing platform. Ballerina
+        functions can be deployed in AWS Lambda by annotating a Ballerina
+        function with &quot;@awslambda:Function&quot;, which should have the
+        function signature{" "}
+        <code>
+          function (awslambda:Context, json|EventType) returns json|error
+        </code>
+        .
       </p>
 
       <p>
         For more information, see the{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
-          Azure deployment guide
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+          AWS Lambda Deployment Guide
         </a>
         .
       </p>
@@ -66,9 +78,31 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/aws-lambda-deployment",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -86,7 +120,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -123,8 +157,8 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       </Row>
 
       <p>
-        Create a Ballerina package and replace the content of the generated BAL
-        file with the content above.
+        Create a ballerina package and replace the content of the generated
+        ballerina file with the content above.
       </p>
 
       <Row
@@ -180,15 +214,13 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal new azure-functions-cosmosdb-trigger`}</span>
+              <span>{`\$ bal new aws_lambda_deployment`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>
-        Build the Ballerina program to generate the Azure Functions artifacts.
-      </p>
+      <p>Build the Ballerina program to generate the AWS Lambda artifacts</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -243,33 +275,39 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal build --cloud="azure_functions"`}</span>
+              <span>{`\$ bal build`}</span>
               <span>{`Compiling source`}</span>
-              <span>{`        wso2/azure-functions-cosmosdb-trigger:0.1.0`}</span>
+              <span>{`        wso2/aws_lambda_deployment:0.1.0`}</span>
               <span>{`
 `}</span>
               <span>{`Generating executable`}</span>
-              <span>{`        @azure_functions:Function: timer, get-hello`}</span>
+              <span>{`        @awslambda:Function: echo, ctxinfo, notifyS3`}</span>
               <span>{`
 `}</span>
-              <span>{`        Execute the command below to deploy the function locally.`}</span>
-              <span>{`        func start --script-root target/azure_functions --java`}</span>
+              <span>{`        Run the following command to deploy each Ballerina AWS Lambda function:`}</span>
+              <span>{`        aws lambda create-function --function-name \$FUNCTION_NAME --zip-file fileb://<project-dir>/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.\$FUNCTION_NAME --runtime provided --role \$LAMBDA_ROLE_ARN --layers arn:aws:lambda:\$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
               <span>{`
 `}</span>
-              <span>{`        Execute the command below to deploy Ballerina Azure Functions.`}</span>
-              <span>{`        func azure functionapp publish <function_app_name> --script-root target/azure_functions `}</span>
-              <span>{`
-`}</span>
-              <span>{`        target/bin/azure_functions_deployment.jar`}</span>
+              <span>{`        Run the following command to re-deploy an updated Ballerina AWS Lambda function:`}</span>
+              <span>{`        aws lambda update-function-code --function-name \$FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        Execute the Azure CLI command given by the compiler to publish the
-        functions (replace the sample app name given in the command with your
-        respective Azure <code>&lt;function_app_name&gt;</code>).
+        Execute the AWS CLI commands to create and publish the functions; and
+        set your respective AWS <code>$LAMBDA_ROLE_ARN</code>,{" "}
+        <code>$REGION_ID</code>, and <code>$FUNCTION_NAME</code> values.
+      </p>
+
+      <p>
+        For instructions on getting the value for the
+        <code>$LAMBDA_ROLE_ARN</code>, see{" "}
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+          AWS Lambda deployment
+        </a>
+        .
       </p>
 
       <Row
@@ -325,27 +363,15 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ func azure functionapp publish bal-bbe --script-root target/azure_functions`}</span>
-              <span>{`Getting site publishing info...`}</span>
-              <span>{`Creating archive for current directory...`}</span>
-              <span>{`Uploading 28.67 MB [##############################################################################]`}</span>
-              <span>{`Upload completed successfully.`}</span>
-              <span>{`Deployment completed successfully.`}</span>
-              <span>{`Syncing triggers...`}</span>
-              <span>{`Functions in bal-bbe:`}</span>
-              <span>{`    get-hello - [httpTrigger]`}</span>
-              <span>{`        Invoke url: https://bal-bbe.azurewebsites.net/hello`}</span>
-              <span>{`
-`}</span>
-              <span>{`    timer - [timerTrigger]`}</span>
+              <span>{`\$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role--layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`\$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role--layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
+              <span>{`\$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role --layers arn:aws:lambda:us-west-1:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <p>
-        Invoke the <code>HTTP Trigger</code> functions.
-      </p>
+      <p>Invoke the functions.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -400,19 +426,37 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref4}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl https://bal-bbe.azurewebsites.net/hello\\?name\\=Jack`}</span>
-              <span>{`Hello, Jack!`}</span>
+              <span>{`\$ echo '{"MESSAGE":"HELLO"}' > input.json`}</span>
+              <span>{`\$ aws lambda invoke --function-name echo --payload fileb://input.json echo-response.txt`}</span>
+              <span>{`{`}</span>
+              <span>{`"ExecutedVersion": "\$LATEST",`}</span>
+              <span>{`"StatusCode": 200`}</span>
+              <span>{`}`}</span>
+              <span>{`\$ cat echo-response.txt`}</span>
+              <span>{`{"MESSAGE":"HELLO"}`}</span>
+              <span>{`
+`}</span>
+              <span>{`\$ aws lambda invoke --function-name ctxinfo ctxinfo-response.txt`}</span>
+              <span>{`{`}</span>
+              <span>{`"ExecutedVersion": "\$LATEST",`}</span>
+              <span>{`"StatusCode": 200`}</span>
+              <span>{`}`}</span>
+              <span>{`\$ cat ctxinfo-response.txt`}</span>
+              <span>{`{"RequestID":"d55f7d06-f2ab-4b6e-8606-482607785a91", "DeadlineMS":1548069389978, "InvokedFunctionArn":"arn:aws:lambda:us-west-2:908363916138:function:ctxinfo", "TraceID":"Root=1-5c45aa03-f8aff4c9e24dc4fbf48f2990;Parent=17ad3b290def98fd;Sampled=0", "RemainingExecTime":9946}`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
       <p>
-        The <code>timer</code> function is triggered by the Azure Functions app
-        from a timer. You can check the queue storage to see the output. For
-        more information on the infrastructure, see{" "}
-        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
-          Azure Functions deployment
+        To invoke the <code>notifyS3</code> function, it needs to be registered
+        in the S3 bucket.
+      </p>
+
+      <p>
+        For registration and execution details, see{" "}
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+          AWS Lambda deployment
         </a>
         .
       </p>
@@ -420,8 +464,8 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="HTTP trigger"
-            href="/learn/by-example/azure-functions-http-trigger"
+            title="Azure Functions"
+            href="/learn/by-example/azure-functions-deployment"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -448,45 +492,9 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  HTTP trigger
+                  Azure Functions
                 </span>
               </div>
-            </div>
-          </Link>
-        </Col>
-        <Col sm={6}>
-          <Link
-            title="HTTP trigger"
-            href="/learn/by-example/azure-functions-native"
-          >
-            <div className="btnContainer d-flex align-items-center ms-auto">
-              <div className="d-flex flex-column me-4">
-                <span className="btnNext">Next</span>
-                <span
-                  className={btnHover[1] ? "btnTitleHover" : "btnTitle"}
-                  onMouseEnter={() => updateBtnHover([false, true])}
-                  onMouseOut={() => updateBtnHover([false, false])}
-                >
-                  HTTP trigger
-                </span>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="#3ad1ca"
-                className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
-                viewBox="0 0 16 16"
-                onMouseEnter={() => updateBtnHover([false, true])}
-                onMouseOut={() => updateBtnHover([false, false])}
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-                />
-              </svg>
             </div>
           </Link>
         </Col>

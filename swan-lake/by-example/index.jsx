@@ -120,6 +120,10 @@ import {
   codeSnippetData as ContinueStatementCodeSnippetData,
 } from "./continue-statement/content.jsx";
 import {
+  IntRange,
+  codeSnippetData as IntRangeCodeSnippetData,
+} from "./int-range/content.jsx";
+import {
   LanglibFunctions,
   codeSnippetData as LanglibFunctionsCodeSnippetData,
 } from "./langlib-functions/content.jsx";
@@ -1156,17 +1160,9 @@ import {
   codeSnippetData as GraphqlServiceFieldObjectCodeSnippetData,
 } from "./graphql-service-field-object/content.jsx";
 import {
-  GraphqlServiceInterceptors,
-  codeSnippetData as GraphqlServiceInterceptorsCodeSnippetData,
-} from "./graphql-service-interceptors/content.jsx";
-import {
-  GraphqlFieldInterceptors,
-  codeSnippetData as GraphqlFieldInterceptorsCodeSnippetData,
-} from "./graphql-field-interceptors/content.jsx";
-import {
-  GraphqlInterceptorConfigurations,
-  codeSnippetData as GraphqlInterceptorConfigurationsCodeSnippetData,
-} from "./graphql-interceptor-configurations/content.jsx";
+  GraphqlInterceptors,
+  codeSnippetData as GraphqlInterceptorsCodeSnippetData,
+} from "./graphql-interceptors/content.jsx";
 import {
   GraphqlFileUpload,
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
@@ -1852,49 +1848,21 @@ import {
   codeSnippetData as GaugeMetricsCodeSnippetData,
 } from "./gauge-metrics/content.jsx";
 import {
-  DockerHelloWorld,
-  codeSnippetData as DockerHelloWorldCodeSnippetData,
-} from "./docker-hello-world/content.jsx";
+  C2cDockerDeployment,
+  codeSnippetData as C2cDockerDeploymentCodeSnippetData,
+} from "./c2c-docker-deployment/content.jsx";
 import {
-  KubernetesHelloWorld,
-  codeSnippetData as KubernetesHelloWorldCodeSnippetData,
-} from "./kubernetes-hello-world/content.jsx";
+  C2cK8sDeployment,
+  codeSnippetData as C2cK8sDeploymentCodeSnippetData,
+} from "./c2c-k8s-deployment/content.jsx";
 import {
-  AwsLambdaHelloWorld,
-  codeSnippetData as AwsLambdaHelloWorldCodeSnippetData,
-} from "./aws-lambda-hello-world/content.jsx";
+  AzureFunctionsDeployment,
+  codeSnippetData as AzureFunctionsDeploymentCodeSnippetData,
+} from "./azure-functions-deployment/content.jsx";
 import {
-  AwsLambdaExecutionContext,
-  codeSnippetData as AwsLambdaExecutionContextCodeSnippetData,
-} from "./aws-lambda-execution-context/content.jsx";
-import {
-  AwsLambdaS3Trigger,
-  codeSnippetData as AwsLambdaS3TriggerCodeSnippetData,
-} from "./aws-lambda-s3-trigger/content.jsx";
-import {
-  AwsLambdaDynamodbTrigger,
-  codeSnippetData as AwsLambdaDynamodbTriggerCodeSnippetData,
-} from "./aws-lambda-dynamodb-trigger/content.jsx";
-import {
-  AzureFunctionsHelloWorld,
-  codeSnippetData as AzureFunctionsHelloWorldCodeSnippetData,
-} from "./azure-functions-hello-world/content.jsx";
-import {
-  AzureFunctionsTimerTrigger,
-  codeSnippetData as AzureFunctionsTimerTriggerCodeSnippetData,
-} from "./azure-functions-timer-trigger/content.jsx";
-import {
-  AzureFunctionsHttpTrigger,
-  codeSnippetData as AzureFunctionsHttpTriggerCodeSnippetData,
-} from "./azure-functions-http-trigger/content.jsx";
-import {
-  AzureFunctionsCosmosdbTrigger,
-  codeSnippetData as AzureFunctionsCosmosdbTriggerCodeSnippetData,
-} from "./azure-functions-cosmosdb-trigger/content.jsx";
-import {
-  AzureFunctionsNative,
-  codeSnippetData as AzureFunctionsNativeCodeSnippetData,
-} from "./azure-functions-native/content.jsx";
+  AwsLambdaDeployment,
+  codeSnippetData as AwsLambdaDeploymentCodeSnippetData,
+} from "./aws-lambda-deployment/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -1959,6 +1927,8 @@ const BBEs = {
   BreakStatementCodeSnippetData,
   ContinueStatement,
   ContinueStatementCodeSnippetData,
+  IntRange,
+  IntRangeCodeSnippetData,
   LanglibFunctions,
   LanglibFunctionsCodeSnippetData,
   StructuralTyping,
@@ -2477,12 +2447,8 @@ const BBEs = {
   GraphqlContextCodeSnippetData,
   GraphqlServiceFieldObject,
   GraphqlServiceFieldObjectCodeSnippetData,
-  GraphqlServiceInterceptors,
-  GraphqlServiceInterceptorsCodeSnippetData,
-  GraphqlFieldInterceptors,
-  GraphqlFieldInterceptorsCodeSnippetData,
-  GraphqlInterceptorConfigurations,
-  GraphqlInterceptorConfigurationsCodeSnippetData,
+  GraphqlInterceptors,
+  GraphqlInterceptorsCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
   GraphqlHierarchicalResourcePaths,
@@ -2825,28 +2791,14 @@ const BBEs = {
   CounterMetricsCodeSnippetData,
   GaugeMetrics,
   GaugeMetricsCodeSnippetData,
-  DockerHelloWorld,
-  DockerHelloWorldCodeSnippetData,
-  KubernetesHelloWorld,
-  KubernetesHelloWorldCodeSnippetData,
-  AwsLambdaHelloWorld,
-  AwsLambdaHelloWorldCodeSnippetData,
-  AwsLambdaExecutionContext,
-  AwsLambdaExecutionContextCodeSnippetData,
-  AwsLambdaS3Trigger,
-  AwsLambdaS3TriggerCodeSnippetData,
-  AwsLambdaDynamodbTrigger,
-  AwsLambdaDynamodbTriggerCodeSnippetData,
-  AzureFunctionsHelloWorld,
-  AzureFunctionsHelloWorldCodeSnippetData,
-  AzureFunctionsTimerTrigger,
-  AzureFunctionsTimerTriggerCodeSnippetData,
-  AzureFunctionsHttpTrigger,
-  AzureFunctionsHttpTriggerCodeSnippetData,
-  AzureFunctionsCosmosdbTrigger,
-  AzureFunctionsCosmosdbTriggerCodeSnippetData,
-  AzureFunctionsNative,
-  AzureFunctionsNativeCodeSnippetData,
+  C2cDockerDeployment,
+  C2cDockerDeploymentCodeSnippetData,
+  C2cK8sDeployment,
+  C2cK8sDeploymentCodeSnippetData,
+  AzureFunctionsDeployment,
+  AzureFunctionsDeploymentCodeSnippetData,
+  AwsLambdaDeployment,
+  AwsLambdaDeploymentCodeSnippetData,
 };
 
 export default BBEs;

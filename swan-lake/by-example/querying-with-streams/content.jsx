@@ -65,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c2a6b5c6c96cd5e5d8a106f3706c716b&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=4d313400c79dae3f4733d6c617fb0ced&file=querying_with_streams.bal",
                 "_blank"
               );
             }}

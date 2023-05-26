@@ -1,0 +1,17 @@
+{
+  "title": "Interceptors",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql service"
+  ],
+  "permalink": "/learn/by-example/graphql-interceptors",
+  "active": "graphql-interceptors",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-interceptors",
+    "/swan-lake/learn/by-example/graphql-interceptors.html"
+  ]
+}

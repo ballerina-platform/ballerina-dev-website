@@ -81,7 +81,7 @@ export function OptionalFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=03b152f6541f79a07f9b6d3bcf0035fa&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=658ba3228503d307b654d52f122dc8dd&file=optional_fields.bal",
                 "_blank"
               );
             }}

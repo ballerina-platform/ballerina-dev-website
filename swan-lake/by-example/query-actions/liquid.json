@@ -1,0 +1,22 @@
+{
+  "title": "Query actions",
+  "description": "This BBE demonstrates query actions in Ballerina, executing a set of code segments iteratively, a `foreach` statement, using a query expression to execute a set of code segments iteratively.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "query",
+    "query action",
+    "iterable",
+    "foreach",
+    "action",
+    "do",
+    "check"
+  ],
+  "permalink": "/learn/by-example/query-actions",
+  "active": "query-actions",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/query-actions",
+    "/swan-lake/learn/by-example/query-actions.html"
+  ]
+}

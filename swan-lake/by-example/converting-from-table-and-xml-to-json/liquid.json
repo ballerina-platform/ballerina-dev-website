@@ -1,0 +1,20 @@
+{
+  "title": "Convert from table and XML to JSON",
+  "description": "This BBE demonstrates how to convert table to JSON and convert XML to JSON in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "conversion",
+    "json",
+    "table",
+    "toJson",
+    "xml"
+  ],
+  "permalink": "/learn/by-example/converting-from-table-and-xml-to-json",
+  "active": "converting-from-table-and-xml-to-json",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/converting-from-table-and-xml-to-json",
+    "/swan-lake/learn/by-example/converting-from-table-and-xml-to-json.html"
+  ]
+}

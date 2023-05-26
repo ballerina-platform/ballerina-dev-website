@@ -1,0 +1,20 @@
+{
+  "title": "Call stored procedures",
+  "description": "This BBE demonstrates how to use the MySQL client to execute a stored procedure in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mysql",
+    "call",
+    "stored procedure",
+    "delete",
+    "procedure"
+  ],
+  "permalink": "/learn/by-example/mysql-call-stored-procedures",
+  "active": "mysql-call-stored-procedures",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-call-stored-procedures",
+    "/swan-lake/learn/by-example/mysql-call-stored-procedures.html"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Create streams with a query",
+  "description": "This BBE demonstrates creating a stream of values, loading values lazily, saving resources by loading values when needed, the stream construct type, and handling the termination value of a stream.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "stream",
+    "lazy",
+    "value",
+    "next",
+    "while"
+  ],
+  "permalink": "/learn/by-example/create-streams-with-query",
+  "active": "create-streams-with-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/create-streams-with-query",
+    "/swan-lake/learn/by-example/create-streams-with-query.html"
+  ]
+}

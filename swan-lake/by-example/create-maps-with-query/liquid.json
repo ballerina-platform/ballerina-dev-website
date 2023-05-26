@@ -1,0 +1,19 @@
+{
+  "title": "Create maps with a query",
+  "description": "This BBE demonstrates creating a map, filtering a map, creating a sub-map from a map, and creating a map from a table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "map",
+    "table",
+    "query",
+    "var"
+  ],
+  "permalink": "/learn/by-example/create-maps-with-query",
+  "active": "create-maps-with-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/create-maps-with-query",
+    "/swan-lake/learn/by-example/create-maps-with-query.html"
+  ]
+}

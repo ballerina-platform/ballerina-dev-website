@@ -1,0 +1,11 @@
+{
+  "title": "Const and final ",
+  "description": "This BBE demonstrates how const and final values are used in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "const", "final"],
+  "permalink": "/learn/by-example/const-and-final",
+  "active": "const-and-final",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/const-and-final",
+    "/swan-lake/learn/by-example/const-and-final.html"
+  ]
+}

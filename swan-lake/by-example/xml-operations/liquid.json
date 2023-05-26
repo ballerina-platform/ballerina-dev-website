@@ -1,0 +1,17 @@
+{
+  "title": "XML operations",
+  "description": "This BBE demonstrates XML concatenation and how to use deep equality checks for XML in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "xml operations"
+  ],
+  "permalink": "/learn/by-example/xml-operations",
+  "active": "xml-operations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-operations",
+    "/swan-lake/learn/by-example/xml-operations.html"
+  ]
+}

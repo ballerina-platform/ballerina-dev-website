@@ -1,0 +1,18 @@
+{
+  "title": "Object types",
+  "description": "This BBE demonstrates object types in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object types",
+    "object",
+    "type"
+  ],
+  "permalink": "/learn/by-example/object-types",
+  "active": "object-types",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-types",
+    "/swan-lake/learn/by-example/object-types.html"
+  ]
+}

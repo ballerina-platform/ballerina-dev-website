@@ -1,0 +1,11 @@
+{
+  "title": "Read/write strings",
+  "description": "BBE on how to read/write from/to a text file.",
+  "keywords": ["ballerina", "ballerina by examples", "bbe", "text", "strings"],
+  "permalink": "/learn/by-example/io-strings",
+  "active": "io-strings",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/io-strings",
+    "/swan-lake/learn/by-example/io-strings.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Group tests",
+  "description": "You can tag your test cases with a single group name or multiple group names (one or more). This allows you to control the execution of selected tests.",
+  "keywords": [],
+  "permalink": "/learn/by-example/testerina-group-tests",
+  "active": "testerina-group-tests",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/testerina-group-tests",
+    "/swan-lake/learn/by-example/testerina-group-tests.html"
+  ]
+}

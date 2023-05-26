@@ -1,0 +1,18 @@
+{
+  "title": "Retry",
+  "description": "BBE on how to use an HTTP retry in Ballerina. The retry client can be used to automatically retry when an erroneous response is received.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "resiliency",
+    "retry"
+  ],
+  "permalink": "/learn/by-example/http-retry",
+  "active": "http-retry",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-retry",
+    "/swan-lake/learn/by-example/http-retry.html"
+  ]
+}

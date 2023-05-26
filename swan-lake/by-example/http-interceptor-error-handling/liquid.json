@@ -1,0 +1,20 @@
+{
+  "title": "Interceptor error handling",
+  "description": "This BBE demonstrates how HTTP interceptor error handling is done in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "interceptor",
+    "error",
+    "request",
+    "filter"
+  ],
+  "permalink": "/learn/by-example/http-interceptor-error-handling",
+  "active": "http-interceptor-error-handling",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-interceptor-error-handling",
+    "/swan-lake/learn/by-example/http-interceptor-error-handling.html"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Create tables with a query",
+  "description": "This BBE demonstrates creating tables with a query in Ballerina, creating a table, filtering a table, and creating a sub table from a table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "creating table",
+    "query expression",
+    "query",
+    "where",
+    "key",
+    "var"
+  ],
+  "permalink": "/learn/by-example/create-tables-with-query",
+  "active": "create-tables-with-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/create-tables-with-query",
+    "/swan-lake/learn/by-example/create-tables-with-query.html"
+  ]
+}

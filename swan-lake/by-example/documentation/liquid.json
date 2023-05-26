@@ -1,0 +1,18 @@
+{
+  "title": "Documentation",
+  "description": "This BBE demonstrates documentation in Ballerina, which is a Markdown format with additional conventions to write structured documentations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "documentation",
+    "Ballerina-flavored Markdown",
+    "BFM"
+  ],
+  "permalink": "/learn/by-example/documentation",
+  "active": "documentation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/documentation",
+    "/swan-lake/learn/by-example/documentation.html"
+  ]
+}

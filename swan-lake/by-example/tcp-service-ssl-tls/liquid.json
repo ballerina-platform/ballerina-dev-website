@@ -1,0 +1,18 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to secure TCP listener with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "ssl",
+    "tls",
+    "tcp listener"
+  ],
+  "permalink": "/learn/by-example/tcp-service-ssl-tls",
+  "active": "tcp-service-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/tcp-service-ssl-tls",
+    "/swan-lake/learn/by-example/tcp-service-ssl-tls.html"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Computed field key",
+  "description": "This BBE demonstrates the use of computed field keys in mapping constructors, computed values as keys, and constants for key values in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "computed key",
+    "mapping constructor",
+    "map",
+    "record",
+    "computed field key",
+    "computed name field"
+  ],
+  "permalink": "/learn/by-example/computed-field-key",
+  "active": "computed-field-key",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/computed-field-key",
+    "/swan-lake/learn/by-example/computed-field-key.html"
+  ]
+}

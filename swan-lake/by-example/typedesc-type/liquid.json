@@ -1,0 +1,11 @@
+{
+  "title": "Typedesc type",
+  "description": "This BBE demonstrates the typedesc type in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "typedesc type"],
+  "permalink": "/learn/by-example/typedesc-type",
+  "active": "typedesc-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/typedesc-type",
+    "/swan-lake/learn/by-example/typedesc-type.html"
+  ]
+}

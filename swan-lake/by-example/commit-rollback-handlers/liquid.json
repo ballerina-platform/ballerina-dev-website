@@ -1,0 +1,21 @@
+{
+  "title": "Commit/rollback handlers",
+  "description": "This BBE introduces commit/rollback handlers in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "transactions",
+    "commit",
+    "rollback",
+    "handlers",
+    "commit handlers",
+    "rollback handlers"
+  ],
+  "permalink": "/learn/by-example/commit-rollback-handlers",
+  "active": "commit-rollback-handlers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/commit-rollback-handlers",
+    "/swan-lake/learn/by-example/commit-rollback-handlers.html"
+  ]
+}

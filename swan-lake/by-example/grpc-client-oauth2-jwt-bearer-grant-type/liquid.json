@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 JWT bearer grant type",
+  "description": "BBE on how to secure gRPC client with OAuth2 JWT bearer grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "oauth2",
+    "jwt bearer grant type"
+  ],
+  "permalink": "/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type",
+  "active": "grpc-client-oauth2-jwt-bearer-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type",
+    "/swan-lake/learn/by-example/grpc-client-oauth2-jwt-bearer-grant-type.html"
+  ]
+}

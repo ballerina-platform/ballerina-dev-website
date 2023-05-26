@@ -1,0 +1,11 @@
+{
+  "title": "Isolated objects",
+  "description": "This BBE introduces isolated objects in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "isolated objects"],
+  "permalink": "/learn/by-example/isolated-objects",
+  "active": "isolated-objects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/isolated-objects",
+    "/swan-lake/learn/by-example/isolated-objects.html"
+  ]
+}

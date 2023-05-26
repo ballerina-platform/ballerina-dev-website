@@ -1,0 +1,19 @@
+{
+  "title": "Simple RPC",
+  "description": "This Ballerina by Example has a gRPC client for Simple RPC.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "unary",
+    "simple",
+    "client"
+  ],
+  "permalink": "/learn/by-example/grpc-client-simple",
+  "active": "grpc-client-simple",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-simple",
+    "/swan-lake/learn/by-example/grpc-client-simple.html"
+  ]
+}

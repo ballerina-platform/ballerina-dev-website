@@ -1,0 +1,19 @@
+{
+  "title": "Transactional named workers",
+  "description": "This BBE introduces the transactional named workers in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "workers",
+    "transactions",
+    "transactional workers",
+    "transactional named workers"
+  ],
+  "permalink": "/learn/by-example/transactional-named-workers",
+  "active": "transactional-named-workers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/transactional-named-workers",
+    "/swan-lake/learn/by-example/transactional-named-workers.html"
+  ]
+}

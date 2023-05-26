@@ -1,0 +1,28 @@
+{
+  "title": "Arrays",
+  "description": "Create a collection in Ballerina, Create an array, Create fixed length collection, Create a variable length array, Create array without length, Get array size from the context, Accessing an array, Iterating an array, Updating an array.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "arrays",
+    "mutable list",
+    "collection",
+    "length",
+    "size",
+    "list",
+    "array type",
+    "list type",
+    "infer length",
+    "access",
+    "remove",
+    "push",
+    "delete"
+  ],
+  "permalink": "/learn/by-example/arrays",
+  "active": "arrays",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/arrays",
+    "/swan-lake/learn/by-example/arrays.html"
+  ]
+}

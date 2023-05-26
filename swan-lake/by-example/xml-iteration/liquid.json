@@ -1,0 +1,17 @@
+{
+  "title": "XML iteration",
+  "description": "This BBE demonstrates how to iterate over each item in XML in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml iteration",
+    "forEach"
+  ],
+  "permalink": "/learn/by-example/xml-iteration",
+  "active": "xml-iteration",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-iteration",
+    "/swan-lake/learn/by-example/xml-iteration.html"
+  ]
+}

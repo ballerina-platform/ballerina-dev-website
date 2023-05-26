@@ -1,0 +1,17 @@
+{
+  "title": "Never type",
+  "description": "This BBE demonstrates the `never` type in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "never",
+    "never type"
+  ],
+  "permalink": "/learn/by-example/never-type",
+  "active": "never-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/never-type",
+    "/swan-lake/learn/by-example/never-type.html"
+  ]
+}

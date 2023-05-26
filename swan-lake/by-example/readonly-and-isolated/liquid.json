@@ -1,0 +1,17 @@
+{
+  "title": "Readonly and isolated",
+  "description": "This BBE introduces readonly and isolated in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "readonly",
+    "isolated"
+  ],
+  "permalink": "/learn/by-example/readonly-and-isolated",
+  "active": "readonly-and-isolated",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/readonly-and-isolated",
+    "/swan-lake/learn/by-example/readonly-and-isolated.html"
+  ]
+}

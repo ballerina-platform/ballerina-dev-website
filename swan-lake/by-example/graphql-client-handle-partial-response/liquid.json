@@ -1,0 +1,19 @@
+{
+  "title": "Handle partial response",
+  "description": "A GraphQL client written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "client",
+    "query",
+    "partial response"
+  ],
+  "permalink": "/learn/by-example/graphql-client-handle-partial-response",
+  "active": "graphql-client-handle-partial-response",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-handle-partial-response",
+    "/swan-lake/learn/by-example/graphql-client-handle-partial-response.html"
+  ]
+}

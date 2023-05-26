@@ -1,0 +1,17 @@
+{
+  "title": "JWT issue/validate",
+  "description": "BBE on how to issue and validate a JSON Web Token (JWT) in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "jwt",
+    "jwt issuer",
+    "jwt validator"
+  ],
+  "permalink": "/learn/by-example/security-jwt-issue-validate",
+  "active": "security-jwt-issue-validate",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/security-jwt-issue-validate",
+    "/swan-lake/learn/by-example/security-jwt-issue-validate.html"
+  ]
+}

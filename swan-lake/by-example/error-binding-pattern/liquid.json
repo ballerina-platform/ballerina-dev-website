@@ -1,0 +1,20 @@
+{
+  "title": "Error binding pattern",
+  "description": "This BBE demonstrates the error binding pattern, error typed binding, and error destructuring with binding patterns.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "error binding pattern",
+    "error binding",
+    "error typed binding",
+    "error destructuring"
+  ],
+  "permalink": "/learn/by-example/error-binding-pattern",
+  "active": "error-binding-pattern",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-binding-pattern",
+    "/swan-lake/learn/by-example/error-binding-pattern.html"
+  ]
+}

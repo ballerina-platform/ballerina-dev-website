@@ -1,0 +1,21 @@
+{
+  "title": "Send/Receive headers",
+  "description": "This Ballerina by Example has a gRPC simple service sends and receives messages and headers through a remote call.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "unary",
+    "simple",
+    "service",
+    "headers",
+    "metadata"
+  ],
+  "permalink": "/learn/by-example/grpc-service-headers",
+  "active": "grpc-service-headers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-service-headers",
+    "/swan-lake/learn/by-example/grpc-service-headers.html"
+  ]
+}

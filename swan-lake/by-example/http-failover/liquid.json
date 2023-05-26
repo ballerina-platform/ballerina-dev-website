@@ -1,0 +1,18 @@
+{
+  "title": "Failover",
+  "description": "BBE on how to use an HTTP failover client in Ballerina. The Failover client can be used to handle network-related issues gracefully.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "resiliency",
+    "failover"
+  ],
+  "permalink": "/learn/by-example/http-failover",
+  "active": "http-failover",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-failover",
+    "/swan-lake/learn/by-example/http-failover.html"
+  ]
+}

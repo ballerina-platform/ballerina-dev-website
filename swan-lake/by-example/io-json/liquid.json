@@ -1,0 +1,11 @@
+{
+  "title": "Read/write JSON",
+  "description": "BBE on how to read/write from/to a JSON file.",
+  "keywords": ["ballerina", "ballerina by examples", "bbe", "json"],
+  "permalink": "/learn/by-example/io-json",
+  "active": "io-json",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/io-json",
+    "/swan-lake/learn/by-example/io-json.html"
+  ]
+}

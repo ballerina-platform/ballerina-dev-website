@@ -1,0 +1,11 @@
+{
+  "title": "Readonly type",
+  "description": "This BBE introduces readonly type in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "readonly type"],
+  "permalink": "/learn/by-example/readonly-type",
+  "active": "readonly-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/readonly-type",
+    "/swan-lake/learn/by-example/readonly-type.html"
+  ]
+}

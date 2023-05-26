@@ -1,0 +1,11 @@
+{
+  "title": "Panics",
+  "description": "This BBE demonstrates how abnormal errors are handled using panics in Ballerina",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "error", "panic"],
+  "permalink": "/learn/by-example/panics",
+  "active": "panics",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/panics",
+    "/swan-lake/learn/by-example/panics.html"
+  ]
+}

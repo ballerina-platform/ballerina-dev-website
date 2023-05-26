@@ -1,0 +1,18 @@
+{
+  "title": "JWT authentication",
+  "description": "BBE on how to secure gRPC service with JWT Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "jwt auth"
+  ],
+  "permalink": "/learn/by-example/grpc-service-jwt-auth",
+  "active": "grpc-service-jwt-auth",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-service-jwt-auth",
+    "/swan-lake/learn/by-example/grpc-service-jwt-auth.html"
+  ]
+}

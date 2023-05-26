@@ -1,0 +1,18 @@
+{
+  "title": "Send/Receive message",
+  "description": "This BBE demonstrates the basic functions of a WebSocket server.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "basic sample",
+    "server"
+  ],
+  "permalink": "/learn/by-example/websocket-basic-sample",
+  "active": "websocket-basic-sample",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-basic-sample",
+    "/swan-lake/learn/by-example/websocket-basic-sample.html"
+  ]
+}

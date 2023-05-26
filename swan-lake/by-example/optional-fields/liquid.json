@@ -1,0 +1,18 @@
+{
+  "title": "Optional fields",
+  "description": "This BBE demonstrates optional record fields by defining a field without a value, destructuring a record with optional fields, and removing the optional field value from a record in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "optional",
+    "fields",
+    "record"
+  ],
+  "permalink": "/learn/by-example/optional-fields",
+  "active": "optional-fields",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/optional-fields",
+    "/swan-lake/learn/by-example/optional-fields.html"
+  ]
+}

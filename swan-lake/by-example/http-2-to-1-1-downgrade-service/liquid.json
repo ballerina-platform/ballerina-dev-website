@@ -1,0 +1,18 @@
+{
+  "title": "HTTP/2 to HTTP/1.1 downgrade",
+  "description": "This BBE shows how the Ballerina HTTP service can be configured to accept only message over the HTTP/1.1 protocol.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "http",
+    "http/1.1",
+    "http/2"
+  ],
+  "permalink": "/learn/by-example/http-2-to-1-1-downgrade-service",
+  "active": "http-2-to-1-1-downgrade-service",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-service",
+    "/swan-lake/learn/by-example/http-2-to-1-1-downgrade-service.html"
+  ]
+}

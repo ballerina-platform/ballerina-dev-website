@@ -1,0 +1,18 @@
+{
+  "title": "Included record parameters",
+  "description": "This BBE demonstrates included record parameters in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "record",
+    "included record parameters",
+    "record parameters"
+  ],
+  "permalink": "/learn/by-example/included-record-parameters",
+  "active": "included-record-parameters",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/included-record-parameters",
+    "/swan-lake/learn/by-example/included-record-parameters.html"
+  ]
+}

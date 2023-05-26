@@ -1,0 +1,19 @@
+{
+  "title": "Boolean",
+  "description": "This BBE introduces the boolean type.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "boolean",
+    "bool",
+    "true",
+    "false"
+  ],
+  "permalink": "/learn/by-example/boolean",
+  "active": "boolean",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/boolean",
+    "/swan-lake/learn/by-example/boolean.html"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Basic authentication LDAP user store",
+  "description": "BBE on how to secure gRPC service with Basic Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "basic auth"
+  ],
+  "permalink": "/learn/by-example/grpc-service-basic-auth-ldap-user-store",
+  "active": "grpc-service-basic-auth-ldap-user-store",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-service-basic-auth-ldap-user-store",
+    "/swan-lake/learn/by-example/grpc-service-basic-auth-ldap-user-store.html"
+  ]
+}

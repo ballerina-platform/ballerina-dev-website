@@ -1,0 +1,11 @@
+{
+  "title": "XML namespaces",
+  "description": "This BBE demonstrates xml namespaces in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "xml namespace"],
+  "permalink": "/learn/by-example/xml-namespaces",
+  "active": "xml-namespaces",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-namespaces",
+    "/swan-lake/learn/by-example/xml-namespaces.html"
+  ]
+}

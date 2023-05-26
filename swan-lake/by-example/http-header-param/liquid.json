@@ -1,0 +1,17 @@
+{
+  "title": "Header parameter",
+  "description": "BBE on how to use `@http:Header` annotation to retrieve HTTP headers.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "http-headers"
+  ],
+  "permalink": "/learn/by-example/http-header-param",
+  "active": "http-header-param",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-header-param",
+    "/swan-lake/learn/by-example/http-header-param.html"
+  ]
+}

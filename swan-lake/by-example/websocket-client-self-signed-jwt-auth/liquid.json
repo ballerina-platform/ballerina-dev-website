@@ -1,0 +1,18 @@
+{
+  "title": "Self-signed JWT authentication",
+  "description": "BBE on how to secure WebSocket client with self-signed JWT Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "auth",
+    "jwt auth"
+  ],
+  "permalink": "/learn/by-example/websocket-client-self-signed-jwt-auth",
+  "active": "websocket-client-self-signed-jwt-auth",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client-self-signed-jwt-auth",
+    "/swan-lake/learn/by-example/websocket-client-self-signed-jwt-auth.html"
+  ]
+}

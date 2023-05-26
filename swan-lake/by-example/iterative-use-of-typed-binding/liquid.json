@@ -1,0 +1,25 @@
+{
+  "title": "Iterative use of typed binding patterns",
+  "description": "This BBE demonstrates the iterative use of typed binding patterns, iterative use of the list binding, iterative use of mapping binding, iterative use of error binding, typed binding followed by `in`, list binding followed by `in`, mapping binding followed by `in`, error binding followed by `in`, binding pattern in the `from` clause, binding pattern in `join` clause, binding pattern in `let`, and binding pattern in `foreach`.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "typed binding",
+    "iterative",
+    "list binding",
+    "mapping binding",
+    "error binding",
+    "from",
+    "join",
+    "let",
+    "foreach"
+  ],
+  "permalink": "/learn/by-example/iterative-use-of-typed-binding",
+  "active": "iterative-use-of-typed-binding",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/iterative-use-of-typed-binding",
+    "/swan-lake/learn/by-example/iterative-use-of-typed-binding.html"
+  ]
+}

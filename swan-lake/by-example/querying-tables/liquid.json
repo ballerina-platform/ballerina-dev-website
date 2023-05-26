@@ -1,0 +1,25 @@
+{
+  "title": "Query tables",
+  "description": "This BBE demonstrates querying tables in Ballerina, filtering tables, ordering tables rows, sorting a table, iterating a table, performing table operations, querying a table, and creating an array from a table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "querying tables",
+    "table",
+    "query",
+    "query expression",
+    "filter",
+    "order",
+    "sort",
+    "iterate",
+    "array",
+    "where"
+  ],
+  "permalink": "/learn/by-example/querying-tables",
+  "active": "querying-tables",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/querying-tables",
+    "/swan-lake/learn/by-example/querying-tables.html"
+  ]
+}

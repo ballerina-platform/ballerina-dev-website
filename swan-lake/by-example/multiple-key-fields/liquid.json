@@ -1,0 +1,19 @@
+{
+  "title": "Multiple key fields",
+  "description": "This BBE demonstrates how to create table with multiple keys, get entry from multiple key table.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "multiple key fields",
+    "keys",
+    "table",
+    "map"
+  ],
+  "permalink": "/learn/by-example/multiple-key-fields",
+  "active": "multiple-key-fields",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/multiple-key-fields",
+    "/swan-lake/learn/by-example/multiple-key-fields.html"
+  ]
+}

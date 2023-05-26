@@ -1,0 +1,17 @@
+{
+  "title": "Init return type",
+  "description": "This BBE demonstrates init function in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "init",
+    "return type"
+  ],
+  "permalink": "/learn/by-example/init-return-type",
+  "active": "init-return-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/init-return-type",
+    "/swan-lake/learn/by-example/init-return-type.html"
+  ]
+}

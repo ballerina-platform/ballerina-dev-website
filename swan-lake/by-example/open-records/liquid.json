@@ -1,0 +1,22 @@
+{
+  "title": "Open records",
+  "description": "This BBE demonstrates open records, creating an open record, inclusive record type, creating a record with unspecified fields, and accesing rest fields in a record.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "open record",
+    "record",
+    "record type",
+    "rest type",
+    "rest field",
+    "inclusive record",
+    "unspecified fields"
+  ],
+  "permalink": "/learn/by-example/open-records",
+  "active": "open-records",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/open-records",
+    "/swan-lake/learn/by-example/open-records.html"
+  ]
+}

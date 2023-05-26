@@ -1,0 +1,11 @@
+{
+  "title": "Nil",
+  "description": "This BBE introduces the nil type in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "nil", "null"],
+  "permalink": "/learn/by-example/nil",
+  "active": "nil",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/nil",
+    "/swan-lake/learn/by-example/nil.html"
+  ]
+}

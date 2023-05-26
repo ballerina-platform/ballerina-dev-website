@@ -1,0 +1,23 @@
+{
+  "title": "Error binding pattern in match statement",
+  "description": "This BBE demonstrates matching error values in a match statement and using the error binding pattern in a match statement",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "error binding pattern",
+    "error binding",
+    "error typed binding",
+    "error",
+    "error value",
+    "match statement",
+    "match"
+  ],
+  "permalink": "/learn/by-example/error-binding-pattern-in-match-statement",
+  "active": "error-binding-pattern-in-match-statement",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/error-binding-pattern-in-match-statement",
+    "/swan-lake/learn/by-example/error-binding-pattern-in-match-statement.html"
+  ]
+}

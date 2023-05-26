@@ -1,0 +1,19 @@
+{
+  "title": "Records",
+  "description": "This BBE demonstrates how to define a record, access record fields, record type definition, and record equality.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "records",
+    "record field",
+    "open record",
+    "closed record"
+  ],
+  "permalink": "/learn/by-example/records",
+  "active": "records",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/records",
+    "/swan-lake/learn/by-example/records.html"
+  ]
+}

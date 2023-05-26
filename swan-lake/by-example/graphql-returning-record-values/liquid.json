@@ -1,0 +1,17 @@
+{
+  "title": "Record as output object",
+  "description": "A GraphQL service endpoint written in Ballerina",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "graphql service"
+  ],
+  "permalink": "/learn/by-example/graphql-returning-record-values",
+  "active": "graphql-returning-record-values",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-returning-record-values",
+    "/swan-lake/learn/by-example/graphql-returning-record-values.html"
+  ]
+}

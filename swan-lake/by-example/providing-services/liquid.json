@@ -1,0 +1,19 @@
+{
+  "title": "Provide services",
+  "description": "This BBE explains various constructs that are related to proving services.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "Listener",
+    "Service",
+    "Service Object",
+    "Module"
+  ],
+  "permalink": "/learn/by-example/providing-services",
+  "active": "providing-services",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/providing-services",
+    "/swan-lake/learn/by-example/providing-services.html"
+  ]
+}

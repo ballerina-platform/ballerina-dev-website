@@ -1,0 +1,19 @@
+{
+  "title": "Resource methods",
+  "description": "This BBE introduces the resource concept in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "resources",
+    "resource methods",
+    "HTTP",
+    "GraphQL"
+  ],
+  "permalink": "/learn/by-example/resource-methods",
+  "active": "resource-methods",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/resource-methods",
+    "/swan-lake/learn/by-example/resource-methods.html"
+  ]
+}

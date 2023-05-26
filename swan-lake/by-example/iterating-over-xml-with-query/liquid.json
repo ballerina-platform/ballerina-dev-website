@@ -1,0 +1,19 @@
+{
+  "title": "Iterate over XML with a query",
+  "description": "This BBE demonstrates iterating XML values, creating a table from XML, and filtering XML values.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml",
+    "filter",
+    "iterate",
+    "query"
+  ],
+  "permalink": "/learn/by-example/iterating-over-xml-with-query",
+  "active": "iterating-over-xml-with-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/iterating-over-xml-with-query",
+    "/swan-lake/learn/by-example/iterating-over-xml-with-query.html"
+  ]
+}

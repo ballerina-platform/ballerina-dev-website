@@ -1,0 +1,21 @@
+{
+  "title": "JSON type",
+  "description": "This BBE demonstrates how to define JSON, create JSON from basic value, access JSON elements, convert JSON to user-defined type, convert user-defined type to a JSON, and convert string to a JSON in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json type",
+    "json",
+    "json array",
+    "fromJsonString",
+    "check",
+    "cloneWithType"
+  ],
+  "permalink": "/learn/by-example/json-type",
+  "active": "json-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/json-type",
+    "/swan-lake/learn/by-example/json-type.html"
+  ]
+}

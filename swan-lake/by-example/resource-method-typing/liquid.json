@@ -1,0 +1,21 @@
+{
+  "title": "Resource method typing",
+  "description": "This BBE demonstrates how to accept JSON in rest API, return JSON in rest API, payload binding, data binding, access payload.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "resource",
+    "service",
+    "data binding",
+    "json",
+    "record",
+    "http"
+  ],
+  "permalink": "/learn/by-example/resource-method-typing",
+  "active": "resource-method-typing",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/resource-method-typing",
+    "/swan-lake/learn/by-example/resource-method-typing.html"
+  ]
+}

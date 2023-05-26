@@ -1,0 +1,18 @@
+{
+  "title": "Payload data binding",
+  "description": "BBE demonstrates the data-binding capability of an HTTP client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "http",
+    "client",
+    "data binding"
+  ],
+  "permalink": "/learn/by-example/http-client-data-binding",
+  "active": "http-client-data-binding",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/http-client-data-binding",
+    "/swan-lake/learn/by-example/http-client-data-binding.html"
+  ]
+}

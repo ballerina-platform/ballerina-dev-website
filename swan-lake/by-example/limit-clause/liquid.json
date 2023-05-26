@@ -1,0 +1,21 @@
+{
+  "title": "Limit clause",
+  "description": "This BBE demonstrates the `limit` clause in Ballerina, selecting the top `n` elements in a collection, limiting the results to a given number, and selecting a set of elements in a collection.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "limit clause",
+    "query",
+    "query expression",
+    "limit",
+    "collection",
+    "filter"
+  ],
+  "permalink": "/learn/by-example/limit-clause",
+  "active": "limit-clause",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/limit-clause",
+    "/swan-lake/learn/by-example/limit-clause.html"
+  ]
+}

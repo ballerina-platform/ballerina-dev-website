@@ -1,0 +1,19 @@
+{
+  "title": "Provide function arguments by name",
+  "description": "This BBE demonstrates calling functions with named arguments and creating functions in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "named arguments",
+    "functions",
+    "function definition",
+    "parameters"
+  ],
+  "permalink": "/learn/by-example/provide-function-arguments-by-name",
+  "active": "provide-function-arguments-by-name",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/provide-function-arguments-by-name",
+    "/swan-lake/learn/by-example/provide-function-arguments-by-name.html"
+  ]
+}

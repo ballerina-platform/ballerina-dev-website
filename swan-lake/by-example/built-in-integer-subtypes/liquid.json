@@ -1,0 +1,19 @@
+{
+  "title": "Built-in integer subtypes",
+  "description": "This BBE demonstrates built-in integer subtypes in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "int",
+    "int subtypes",
+    "signed",
+    "unsigned"
+  ],
+  "permalink": "/learn/by-example/built-in-integer-subtypes",
+  "active": "built-in-integer-subtypes",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/built-in-integer-subtypes",
+    "/swan-lake/learn/by-example/built-in-integer-subtypes.html"
+  ]
+}

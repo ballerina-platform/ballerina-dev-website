@@ -1,0 +1,18 @@
+{
+  "title": "Time with zone offset",
+  "description": "BBE on how to convert a given UTC time to a civil record vice versa.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "time",
+    "utc",
+    "civil"
+  ],
+  "permalink": "/learn/by-example/time-utc-and-civil",
+  "active": "time-utc-and-civil",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/time-utc-and-civil",
+    "/swan-lake/learn/by-example/time-utc-and-civil.html"
+  ]
+}

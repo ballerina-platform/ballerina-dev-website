@@ -1,0 +1,17 @@
+{
+  "title": "Init function",
+  "description": "This BBE demonstrates returning error from an init function and constructing custom errors in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "init function",
+    "error"
+  ],
+  "permalink": "/learn/by-example/init-function",
+  "active": "init-function",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/init-function",
+    "/swan-lake/learn/by-example/init-function.html"
+  ]
+}

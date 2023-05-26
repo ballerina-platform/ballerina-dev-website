@@ -1,0 +1,24 @@
+{
+  "title": "Rest type in tuples",
+  "description": "This BBE demonstrates how to create variable length tuple, create tuple with rest type descriptor.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "rest type",
+    "tuple rest type",
+    "collection",
+    "length",
+    "size",
+    "list",
+    "rest",
+    "list binding pattern",
+    "push"
+  ],
+  "permalink": "/learn/by-example/rest-type-in-tuples",
+  "active": "rest-type-in-tuples",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rest-type-in-tuples",
+    "/swan-lake/learn/by-example/rest-type-in-tuples.html"
+  ]
+}

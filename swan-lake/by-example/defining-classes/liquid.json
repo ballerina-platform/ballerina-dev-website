@@ -1,0 +1,19 @@
+{
+  "title": "Defining classes",
+  "description": "This BBE demonstrates defining classses, invoking object methods, and initializing object fields in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "class",
+    "object",
+    "init method",
+    "new"
+  ],
+  "permalink": "/learn/by-example/defining-classes",
+  "active": "defining-classes",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/defining-classes",
+    "/swan-lake/learn/by-example/defining-classes.html"
+  ]
+}

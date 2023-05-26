@@ -1,0 +1,17 @@
+{
+  "title": "Enumerations",
+  "description": "This BBE demonstrates enumerations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "enum",
+    "enumerations"
+  ],
+  "permalink": "/learn/by-example/enumerations",
+  "active": "enumerations",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/enumerations",
+    "/swan-lake/learn/by-example/enumerations.html"
+  ]
+}

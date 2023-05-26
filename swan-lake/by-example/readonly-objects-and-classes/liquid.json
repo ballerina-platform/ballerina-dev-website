@@ -1,0 +1,19 @@
+{
+  "title": "Readonly objects and classes",
+  "description": "This BBE introduces read-only objects and classes in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "readonly type",
+    "final",
+    "object",
+    "class"
+  ],
+  "permalink": "/learn/by-example/readonly-objects-and-classes",
+  "active": "readonly-objects-and-classes",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/readonly-objects-and-classes",
+    "/swan-lake/learn/by-example/readonly-objects-and-classes.html"
+  ]
+}

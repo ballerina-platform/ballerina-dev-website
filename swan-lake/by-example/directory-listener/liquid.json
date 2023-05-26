@@ -1,0 +1,18 @@
+{
+  "title": "Directory listener",
+  "description": "This BBE shows how the Ballerina directory service monitors any modifications done to files inside a specific directory.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "file",
+    "directory",
+    "directory listener"
+  ],
+  "permalink": "/learn/by-example/directory-listener",
+  "active": "directory-listener",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/directory-listener",
+    "/swan-lake/learn/by-example/directory-listener.html"
+  ]
+}

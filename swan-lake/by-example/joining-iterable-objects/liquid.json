@@ -1,0 +1,22 @@
+{
+  "title": "Join iterable objects",
+  "description": "This BBE demonstrates the `join` clause in Ballerina, joining two tables, joining two lists, joining two maps, the query join, inner join, outer join, and left outer join.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "join clause",
+    "query",
+    "query expression",
+    "join clause",
+    "inner join",
+    "left outer join",
+    "table"
+  ],
+  "permalink": "/learn/by-example/joining-iterable-objects",
+  "active": "joining-iterable-objects",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/joining-iterable-objects",
+    "/swan-lake/learn/by-example/joining-iterable-objects.html"
+  ]
+}

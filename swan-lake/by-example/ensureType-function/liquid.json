@@ -1,0 +1,11 @@
+{
+  "title": "ensureType function",
+  "description": "This BBE demonstrates ensureType function in Ballerina.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "ensureType"],
+  "permalink": "/learn/by-example/ensureType-function",
+  "active": "ensureType-function",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/ensureType-function",
+    "/swan-lake/learn/by-example/ensureType-function.html"
+  ]
+}

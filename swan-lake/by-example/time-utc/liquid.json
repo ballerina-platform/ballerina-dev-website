@@ -1,0 +1,19 @@
+{
+  "title": "UTC time",
+  "description": "BBE on how to get the current timestamp in seconds.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "bbe",
+    "time",
+    "current",
+    "epoch",
+    "utc"
+  ],
+  "permalink": "/learn/by-example/time-utc",
+  "active": "time-utc",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/time-utc",
+    "/swan-lake/learn/by-example/time-utc.html"
+  ]
+}

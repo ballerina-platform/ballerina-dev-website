@@ -34,7 +34,7 @@ export function AwsLambdaS3Trigger({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>AWS Lambda S3 trigger</h1>
+      <h1>AWS Lambda</h1>
 
       <p>
         AWS Lambda is an event driven, serverless computing platform. Ballerina
@@ -453,8 +453,8 @@ export function AwsLambdaS3Trigger({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Execution context"
-            href="/learn/by-example/aws-lambda-execution-context"
+            title="Context execution"
+            href="/learn/by-example/aws-lambda-context-execution"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -481,7 +481,7 @@ export function AwsLambdaS3Trigger({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Execution context
+                  Context execution
                 </span>
               </div>
             </div>

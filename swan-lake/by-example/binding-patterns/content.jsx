@@ -55,7 +55,7 @@ export function BindingPatterns({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=087211f9f1ad6f378c5ad9fb20823c96&file=binding_patterns.bal",
+                "https://play.ballerina.io/?gist=891d7df0bbd9d283ff285152dc3731cc&file=binding_patterns.bal",
                 "_blank"
               );
             }}

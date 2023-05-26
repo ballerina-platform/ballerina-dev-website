@@ -67,7 +67,7 @@ export function HttpPathParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eafcabae0772b71267610177b0c723c1&file=http_path_param.bal",
+                "https://play.ballerina.io/?gist=38c7eb566ce41af750d1eee204b1fc53&file=http_path_param.bal",
                 "_blank"
               );
             }}

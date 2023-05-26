@@ -5,7 +5,7 @@ description: The sections gives details on the generated Persist Client API.
 keywords: ballerina, programming language, ballerina packages, persist, persist client, persist client api
 permalink: /learn/ballerina-persist/persist-client-api/
 active: persist_overview
-intro: Persist client is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. Persist CLI tool will generate the derived Entity Types and the clients from the model definition.
+intro: Persist client is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. Persist CLI tool will generate the derived Entity Types and the Clients from the model definition.
 redirect_from:
 - /learn/ballerina-persist/persist-client-api
 ---
@@ -136,7 +136,7 @@ you can perform CRUD operations on the `Workspace` table in the data store using
 ```ballerina
 // Create a new workspace record
 WorkspaceInsert workspace = {id: "WK001", workspaceType: "Host Desk", locationCode: "B001"};
-string[] workspaceId = sClient->/workspaces.post([workspace]);
+string[]|error workspaceId = sClient->/workspaces.post([workspace]);
 
 // Get the workspace record with id WK001
 Workspace|error workspace = sClient->/workspaces/WK001;

@@ -1,11 +1,11 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
 title: Bal Persist Overview
-description: The sections gives an overview of the Bal Persist feature.
+description: The sections gives an overview of the bal persist feature.
 keywords: ballerina, programming language, ballerina packages, persist, persist model, persist cli, persist client api
 permalink: /learn/ballerina-persist/overview/
 active: persist_overview
-intro: The Bal persist feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database, a in-memory cache, or a file system. Ballerina supports the following data stores: In-memory table, MySQL, Google Sheets. The important point is you can use the same syntax to access data in all these data stores. So you don't need to learn different syntaxes to access data in different data stores.
+intro: The bal persist feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database, a in-memory cache, or a file system. Ballerina supports the following data stores: In-memory table, MySQL, Google Sheets. The important point is you can use the same syntax to access data in all these data stores. So you don't need to learn different syntaxes to access data in different data stores.
 redirect_from:
 - /learn/ballerina-persist/overview
 ---
@@ -48,7 +48,7 @@ For example if you have a `Employee` entity record in the Ballerina project, you
 ```ballerina
 // Create a new employee record
 EmployeeInsert employee = {id: 1, name: "John", age: 30, salary: 3000.0};
-int[] employeeId = sClient->/employees.post([employee]);
+int[]|error employeeId = sClient->/employees.post([employee]);
 
 // Get the employee record with id 1
 Employee|error employee = sClient->/employees/1;
@@ -65,4 +65,4 @@ stream<Employee, error?> employees = sClient->/employees;
 
 Learn more about the Persist Client API in the [Persist Client API](persist-client-api.md) section.
 
-If you want to get started with a practical introduction and learn about the Ballerina persistence, head over to the [Quick Start Guide](quick-tour.md) section.
+If you want to get started with a practical introduction and learn about the bal persist, head over to the [Quick Start Guide](quick-tour.md) section.

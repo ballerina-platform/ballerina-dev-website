@@ -137,11 +137,11 @@ rainier
    └── main.bal
 ```
 
-This command will new directory for the migration with the timestamp and the label provided by the user. The directory will contain the model definition file and the script file. The script file will contain the SQL script to update the database schema. The model definition file will be the snapshot of the model definition file at the time of executing the command. The next time the user executes the command, it will compare the model definition file with the latest snapshot file and generate the SQL script to update the database schema. So the user should not modify the snapshot file.
+This command will create a new directory for the migration with the timestamp and the label provided by the user. The directory will contain the model definition file and the script file. The script file will contain the SQL script to update the database schema. The model definition file will be the snapshot of the model definition file at the time of executing the command. The next time the user executes the command, it will compare the model definition file with the latest snapshot file and generate the SQL script to update the database schema. So the user should not modify the snapshot file.
 
 Behaviour of the `migrate` command,
 - User should invoke the command within a Ballerina project
 - User should provide a valid label for the migration.
 - The user should have initiated the persistence layer in the project and update the model definition file.
 - The user can execute the command multiple times. It will generate the migration scripts based on the changes in the model definition file.
-- Once the migration is generated, the user can't change the data store type in the `Ballerina.toml` file. If the user wants to change the data store type, the user needs to remove the migration directory and reinitialize the project.
+- Once the migration is generated, the user cannot change the data store type in the `Ballerina.toml` file. If the user wants to change the data store type, the user needs to remove the migration directory and reinitialize the project.

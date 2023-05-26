@@ -190,9 +190,15 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 ## Standard library updates
 
 ### Deprecations
-- Deprectaed the `stan` module.
+
+#### `stan` package
+
+- Deprectaed the `stan` package.
     > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library. For more information, see the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
-- Deprectaed the `serdes` module.
+
+#### `serdes` package
+
+- Deprectaed the `serdes` package.
 
 ### New features
 

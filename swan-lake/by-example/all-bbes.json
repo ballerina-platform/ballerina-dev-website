@@ -4272,6 +4272,47 @@
     ]
   },
   {
+    "title": "Tracing",
+    "column": 0,
+    "category": "Observability",
+    "samples": [
+      {
+        "name": "Distributed tracing",
+        "url": "tracing",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Counter-based metrics",
+        "url": "counter-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Metrics",
+    "column": 1,
+    "category": "Observability",
+    "samples": [
+      {
+        "name": "Gauge-based metrics",
+        "url": "gauge-metrics",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "Docker",
     "column": 0,
     "category": "Deployment",
@@ -4379,52 +4420,20 @@
         "isLearnByExample": false
       },
       {
-        "name": "Cosmos DB trigger",
+        "name": "HTTP trigger",
         "url": "azure-functions-cosmosdb-trigger",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Tracing",
-    "column": 0,
-    "category": "Observability",
-    "samples": [
-      {
-        "name": "Distributed tracing",
-        "url": "tracing",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
       },
       {
-        "name": "Counter-based metrics",
-        "url": "counter-metrics",
+        "name": "HTTP trigger",
+        "url": "azure-functions-native",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Metrics",
-    "column": 1,
-    "category": "Observability",
-    "samples": [
-      {
-        "name": "Gauge-based metrics",
-        "url": "gauge-metrics",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Includes ballerinax components",
+        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       }

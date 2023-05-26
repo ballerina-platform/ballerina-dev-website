@@ -335,8 +335,8 @@ export function Tracing({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Cosmos DB trigger"
-            href="/learn/by-example/azure-functions-cosmosdb-trigger"
+            title="Constraint validations"
+            href="/learn/by-example/constraint-validations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -363,7 +363,7 @@ export function Tracing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Cosmos DB trigger
+                  Constraint validations
                 </span>
               </div>
             </div>

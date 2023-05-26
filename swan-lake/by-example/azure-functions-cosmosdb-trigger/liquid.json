@@ -1,14 +1,7 @@
 {
-  "title": "Cosmos DB trigger",
-  "description": "This example demonstrates using a Cosmos DB trigger to invoke an AWS Lambda function and a queue output binding to write an entry to a queue.",
-  "keywords": [
-    "ballerina",
-    "ballerina by example",
-    "bbe",
-    "aws lambda",
-    "cosmos db",
-    "trigger"
-  ],
+  "title": "HTTP trigger",
+  "description": "Azure Functions is an event driven, serverless computing platform. Azure Functions can be written from Ballerina using the listeners and services provided by Azure Functions package. You can view the code examples below.",
+  "keywords": [],
   "permalink": "/learn/by-example/azure-functions-cosmosdb-trigger",
   "active": "azure-functions-cosmosdb-trigger",
   "redirect_from": [

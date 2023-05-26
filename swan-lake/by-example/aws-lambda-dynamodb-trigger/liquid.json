@@ -1,13 +1,7 @@
 {
   "title": "DynamoDB trigger",
-  "description": "This example creates a function, which will be executed for each entry added to a database in the DynamoDB.",
-  "keywords": [
-    "ballerina",
-    "ballerina by example",
-    "bbe",
-    "aws lambda",
-    "dynamodb"
-  ],
+  "description": "AWS Lambda is an event driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the `function (awslambda:Context, json|EventType) returns json|error` function signature. For more information, see the [AWS Lambda learn guide](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).",
+  "keywords": [],
   "permalink": "/learn/by-example/aws-lambda-dynamodb-trigger",
   "active": "aws-lambda-dynamodb-trigger",
   "redirect_from": [

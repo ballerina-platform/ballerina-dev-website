@@ -36,13 +36,14 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
       <h1>AWS Lambda - Hello world</h1>
 
       <p>
-        This example demonstrates how to expose a simple echo function in AWS
-        Lambda.
-      </p>
-
-      <p>
-        For more information, see the{" "}
-        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+        AWS Lambda is an event driven, serverless computing platform. Ballerina
+        functions can be deployed in AWS Lambda by annotating a Ballerina
+        function with <code>@awslambda:Function</code>, which should have the{" "}
+        <code>
+          function (awslambda:Context, json|EventType) returns json|error
+        </code>{" "}
+        function signature. For more information, see the{" "}
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
           AWS Lambda learn guide
         </a>
         .
@@ -52,24 +53,15 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
 
       <p>
         For instructions, see{" "}
-        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites">
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites">
           Set up the prerequisites
         </a>
         .
       </p>
 
-      <h2>Write the function</h2>
+      <h2>Create a Ballerina package</h2>
 
-      <p>Follow the steps below to write the function.</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Execute the command below to create a new Ballerina package.
-          </span>
-        </li>
-      </ul>
+      <p>Execute the command below to create a new Ballerina package.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -130,15 +122,12 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
         </Col>
       </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Replace the content of the generated Ballerina file with the content
-            below.
-          </span>
-        </li>
-      </ul>
+      <h2>Replace the code</h2>
+
+      <p>
+        Replace the content of the generated Ballerina file with the content
+        below.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -202,7 +191,7 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Build the function</h2>
+      <h2>Build the Ballerina program</h2>
 
       <p>Execute the command below to generate the AWS Lambda artifacts.</p>
 
@@ -282,22 +271,18 @@ export function AwsLambdaHelloWorld({ codeSnippets }) {
       <h2>Deploy the function</h2>
 
       <p>
-        Execute the AWS CLI command given by the compiler to create and publish
-        the functions by replacing the respective AWS{" "}
-        <code>$LAMBDA_ROLE_ARN</code>, <code>$REGION_ID</code>, and{" "}
-        <code>$FUNCTION_NAME</code> values given in the command with your
-        values.
+        Execute the AWS CLI commands to create and publish the functions by
+        setting your respective AWS <code>$LAMBDA_ROLE_ARN</code>,{" "}
+        <code>$REGION_ID</code>, and <code>$FUNCTION_NAME</code> values.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> For instructions on getting the values, see{" "}
-          <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-an-aws-account">
-            Set up an AWS account
-          </a>
-          .
-        </p>
-      </blockquote>
+      <pre>
+        <code>
+          &gt;**Tip:** For instructions on getting the value for
+          the`$LAMBDA_ROLE_ARN`, see [AWS Lambda
+          deployment](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
+        </code>
+      </pre>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "

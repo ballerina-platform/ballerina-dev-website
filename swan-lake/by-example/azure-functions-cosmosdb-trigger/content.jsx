@@ -5,24 +5,26 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/log;
-import ballerinax/azure_functions as af;
+  `import ballerinax/azure_functions as af;
 
-public type DBEntry record {
-    string id;
-    string name;
-};
-
-@af:CosmosDBTrigger {connectionStringSetting: "CosmosDBConnection", databaseName: "db1", collectionName: "c1"}
-listener af:CosmosDBListener cosmosEp = new ();
-
-service "cosmos" on cosmosEp {
-    remote function onUpdate(DBEntry[] entries) returns @af:QueueOutput {queueName: "people"} string {
-        string name = entries[0].name;
-        log:printInfo(entries.toJsonString());
-        return "Hello, " + name;
+// This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
+service / on new af:HttpListener() {
+    resource function azure-functions-cosmosdb-trigger(string name) returns string {
+        return "Hello, " + name + "!";
     }
-}`,
+}
+
+// This function gets executed every 10 seconds by the Azure Functions app. Once the function is executed, the timer 
+// details will be stored in the selected queue storage for every invocation.
+@af:TimerTrigger {schedule: "*/10 * * * * *"}
+listener af:TimerListener timerListener = new af:TimerListener();
+
+service "timer" on timerListener {
+    remote function onTrigger(af:TimerMetadata metadata) returns @af:QueueOutput {queueName: "queue3"} string|error {
+        return "Message Status, " + metadata.IsPastDue.toString();
+    }
+}
+`,
 ];
 
 export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
@@ -32,6 +34,10 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
+  const [outputClick4, updateOutputClick4] = useState(false);
+  const ref4 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -40,236 +46,19 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
       <h1>Azure Functions Cosmos DB trigger</h1>
 
       <p>
-        This example demonstrates using a Cosmos DB trigger to invoke an AWS
-        Lambda function and a queue output binding to write an entry to a queue.
+        Azure Functions is an event driven, serverless computing platform. Azure
+        Functions can be written from Ballerina using the listeners and services
+        provided by Azure Functions package. You can view the code examples
+        below.
       </p>
 
       <p>
         For more information, see the{" "}
-        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
-          Azure Functions deployment guide
+        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
+          Azure deployment guide
         </a>
         .
       </p>
-
-      <h2>Set up the prerequisites</h2>
-
-      <p>
-        Follow the steps below to create a Cosmos DB and a queue to make use of
-        those services later in this example.
-      </p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Set up the{" "}
-            <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites">
-              general prerequisites
-            </a>
-            .
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Create the queue in the{" "}
-            <a href="/learn/by-example/azure-functions/http-trigger/">
-              HTTP trigger
-            </a>{" "}
-            example to resue it in this one.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>
-            Create an{" "}
-            <a href="https://portal.azure.com/#create/Microsoft.DocumentDB">
-              Azure Cosmos DB account
-            </a>{" "}
-            and select <strong>Cosmos DB Core</strong>.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>4.</span>
-          <span>
-            Once the database is created, go to the{" "}
-            <strong>Data Explorer</strong>, and select{" "}
-            <strong>Create Container</strong>.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>5.</span>
-          <span>
-            Enter <code>db1</code> as the Database ID, <code>c1</code> as the
-            collection ID, and click <strong>Ok</strong>.
-          </span>
-        </li>
-      </ul>
-      <blockquote>
-        <p>
-          <strong>Note:</strong> If you want to change these values, change them
-          in the code as well.
-        </p>
-      </blockquote>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>6.</span>
-          <span>
-            Go to the <strong>Keys</strong> tab of the Cosmos DB page.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>7.</span>
-          <span>
-            Copy the value of the <code>PRIMARY CONNECTION STRING</code>.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>8.</span>
-          <span>
-            Click the <strong>Configuration</strong> tab on the function app
-            page.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>9.</span>
-          <span>
-            Select <strong>New Application Setting</strong>, and paste the data
-            you copied above as the value.
-          </span>
-        </li>
-      </ul>
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> For the key, use the value of the{" "}
-          <code>connectionStringSetting</code> key and save.
-        </p>
-      </blockquote>
-
-      <p>Example application settings are as follows.</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Name - <code>CosmosDBConnection</code>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Value -{" "}
-            <code>
-              AccountEndpoint=https://db-cosmos.documents.azure.com:443/;AccountKey=12345asda;
-            </code>
-          </span>
-        </li>
-      </ul>
-
-      <p>
-        Now, as all the infrastructure required are up and running and
-        configured, start building and deploying the Azure function.
-      </p>
-
-      <h2>Write the function</h2>
-
-      <p>Follow the steps below to write the function.</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Execute the command below to create a new Ballerina package.
-          </span>
-        </li>
-      </ul>
-
-      <Row
-        className="bbeOutput mx-0 py-0 rounded "
-        style={{ marginLeft: "0px" }}
-      >
-        <Col sm={12} className="d-flex align-items-start">
-          {outputClick1 ? (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              aria-label="Copy to Clipboard Check"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#20b6b0"
-                className="output-btn bi bi-check"
-                viewBox="0 0 16 16"
-              >
-                <title>Copied</title>
-                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
-              onClick={() => {
-                updateOutputClick1(true);
-                const extractedText = extractOutput(ref1.current.innerText);
-                copyToClipboard(extractedText);
-                setTimeout(() => {
-                  updateOutputClick1(false);
-                }, 3000);
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="#EEEEEE"
-                className="output-btn bi bi-clipboard"
-                viewBox="0 0 16 16"
-                aria-label="Copy to Clipboard"
-              >
-                <title>Copy to Clipboard</title>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-              </svg>
-            </button>
-          )}
-        </Col>
-        <Col sm={12}>
-          <pre ref={ref1}>
-            <code className="d-flex flex-column">
-              <span>{`\$ bal new azure-functions-cosmosdb-trigger`}</span>
-            </code>
-          </pre>
-        </Col>
-      </Row>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Replace the content of the generated Ballerina file with the content
-            below.
-          </span>
-        </li>
-      </ul>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -333,10 +122,72 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Build the function</h2>
+      <p>
+        Create a Ballerina package and replace the content of the generated BAL
+        file with the content above.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick1(true);
+                const extractedText = extractOutput(ref1.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick1(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal new azure-functions-cosmosdb-trigger`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <p>
-        Execute the command below to generate the Azure Functions artifacts.
+        Build the Ballerina program to generate the Azure Functions artifacts.
       </p>
 
       <Row
@@ -415,59 +266,156 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Deploy the function</h2>
-
       <p>
-        Execute the Azure CLI command given by the compiler to create and
-        publish the functions by replacing the sample app name given in the
-        command with your respective Azure{" "}
-        <code>&lt;function_app_name&gt;</code>.
+        Execute the Azure CLI command given by the compiler to publish the
+        functions (replace the sample app name given in the command with your
+        respective Azure <code>&lt;function_app_name&gt;</code>).
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> For instructions on getting the values, see{" "}
-          <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/azure-functions/#set-up-the-prerequisites">
-            Set up the prerequisites
-          </a>
-          .
-        </p>
-      </blockquote>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick3 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick3(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref3}>
+            <code className="d-flex flex-column">
+              <span>{`\$ func azure functionapp publish bal-bbe --script-root target/azure_functions`}</span>
+              <span>{`Getting site publishing info...`}</span>
+              <span>{`Creating archive for current directory...`}</span>
+              <span>{`Uploading 28.67 MB [##############################################################################]`}</span>
+              <span>{`Upload completed successfully.`}</span>
+              <span>{`Deployment completed successfully.`}</span>
+              <span>{`Syncing triggers...`}</span>
+              <span>{`Functions in bal-bbe:`}</span>
+              <span>{`    get-hello - [httpTrigger]`}</span>
+              <span>{`        Invoke url: https://bal-bbe.azurewebsites.net/hello`}</span>
+              <span>{`
+`}</span>
+              <span>{`    timer - [timerTrigger]`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
-      <h2>Invoke the function</h2>
+      <p>
+        Invoke the <code>HTTP Trigger</code> functions.
+      </p>
 
-      <p>Once the function is deployed, add an item to the collection.</p>
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick4 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick4(true);
+                const extractedText = extractOutput(ref4.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick4(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref4}>
+            <code className="d-flex flex-column">
+              <span>{`\$ curl https://bal-bbe.azurewebsites.net/hello\\?name\\=Jack`}</span>
+              <span>{`Hello, Jack!`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Navigate to the collection created in the{" "}
-            <strong>Data Explorer</strong>.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Click <strong>New Item</strong> to add a new item to the collection.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>3.</span>
-          <span>Go to the queue page and observe the added new entry.</span>
-        </li>
-      </ul>
-
-      <blockquote>
-        <p>
-          <strong>Info:</strong> Additionally, for debugging purposes, view the
-          logs under the <strong>Logs stream</strong> in the function app.
-        </p>
-      </blockquote>
+      <p>
+        The <code>timer</code> function is triggered by the Azure Functions app
+        from a timer. You can check the queue storage to see the output. For
+        more information on the infrastructure, see{" "}
+        <a href="/learn/run-in-the-cloud/function-as-a-service/azure-functions/">
+          Azure Functions deployment
+        </a>
+        .
+      </p>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
@@ -507,7 +455,10 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Distributed tracing" href="/learn/by-example/tracing">
+          <Link
+            title="HTTP trigger"
+            href="/learn/by-example/azure-functions-native"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -516,7 +467,7 @@ export function AzureFunctionsCosmosdbTrigger({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distributed tracing
+                  HTTP trigger
                 </span>
               </div>
               <svg

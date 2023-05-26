@@ -1840,6 +1840,18 @@ import {
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
 import {
+  Tracing,
+  codeSnippetData as TracingCodeSnippetData,
+} from "./tracing/content.jsx";
+import {
+  CounterMetrics,
+  codeSnippetData as CounterMetricsCodeSnippetData,
+} from "./counter-metrics/content.jsx";
+import {
+  GaugeMetrics,
+  codeSnippetData as GaugeMetricsCodeSnippetData,
+} from "./gauge-metrics/content.jsx";
+import {
   DockerHelloWorld,
   codeSnippetData as DockerHelloWorldCodeSnippetData,
 } from "./docker-hello-world/content.jsx";
@@ -1880,17 +1892,9 @@ import {
   codeSnippetData as AzureFunctionsCosmosdbTriggerCodeSnippetData,
 } from "./azure-functions-cosmosdb-trigger/content.jsx";
 import {
-  Tracing,
-  codeSnippetData as TracingCodeSnippetData,
-} from "./tracing/content.jsx";
-import {
-  CounterMetrics,
-  codeSnippetData as CounterMetricsCodeSnippetData,
-} from "./counter-metrics/content.jsx";
-import {
-  GaugeMetrics,
-  codeSnippetData as GaugeMetricsCodeSnippetData,
-} from "./gauge-metrics/content.jsx";
+  AzureFunctionsNative,
+  codeSnippetData as AzureFunctionsNativeCodeSnippetData,
+} from "./azure-functions-native/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -2815,6 +2819,12 @@ const BBEs = {
   XmlFromRecordConversionCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  Tracing,
+  TracingCodeSnippetData,
+  CounterMetrics,
+  CounterMetricsCodeSnippetData,
+  GaugeMetrics,
+  GaugeMetricsCodeSnippetData,
   DockerHelloWorld,
   DockerHelloWorldCodeSnippetData,
   KubernetesHelloWorld,
@@ -2835,12 +2845,8 @@ const BBEs = {
   AzureFunctionsHttpTriggerCodeSnippetData,
   AzureFunctionsCosmosdbTrigger,
   AzureFunctionsCosmosdbTriggerCodeSnippetData,
-  Tracing,
-  TracingCodeSnippetData,
-  CounterMetrics,
-  CounterMetricsCodeSnippetData,
-  GaugeMetrics,
-  GaugeMetricsCodeSnippetData,
+  AzureFunctionsNative,
+  AzureFunctionsNativeCodeSnippetData,
 };
 
 export default BBEs;

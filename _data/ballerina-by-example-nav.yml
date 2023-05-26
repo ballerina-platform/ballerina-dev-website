@@ -1699,8 +1699,26 @@ sublinks:
           - title: Constraint validations
             id: 1
             url: constraint-validations
-  - title: Deployment
+  - title: Observability
     id: 4
+    sublinks:
+      - title: Tracing
+        id: 1
+        sublinks:
+          - title: Distributed tracing
+            id: 1
+            url: tracing
+          - title: Counter-based metrics
+            id: 2
+            url: counter-metrics
+      - title: Metrics
+        id: 2
+        sublinks:
+          - title: Gauge-based metrics
+            id: 1
+            url: gauge-metrics
+  - title: Deployment
+    id: 5
     sublinks:
       - title: Docker
         id: 1
@@ -1741,24 +1759,9 @@ sublinks:
           - title: HTTP trigger
             id: 3
             url: azure-functions-http-trigger
-          - title: Cosmos DB trigger
+          - title: HTTP trigger
             id: 4
             url: azure-functions-cosmosdb-trigger
-  - title: Observability
-    id: 5
-    sublinks:
-      - title: Tracing
-        id: 1
-        sublinks:
-          - title: Distributed tracing
-            id: 1
-            url: tracing
-          - title: Counter-based metrics
-            id: 2
-            url: counter-metrics
-      - title: Metrics
-        id: 2
-        sublinks:
-          - title: Gauge-based metrics
-            id: 1
-            url: gauge-metrics
+          - title: HTTP trigger
+            id: 5
+            url: azure-functions-native

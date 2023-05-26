@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=984c66fcc88559c9b5ec8783937f611c&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=65e9ae4962a21598649a6ff6bee7a5aa&file=constraint_validations.bal",
                 "_blank"
               );
             }}
@@ -290,7 +290,7 @@ export function ConstraintValidations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Hello world" href="/learn/by-example/docker-hello-world">
+          <Link title="Distributed tracing" href="/learn/by-example/tracing">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -299,7 +299,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
+                  Distributed tracing
                 </span>
               </div>
               <svg

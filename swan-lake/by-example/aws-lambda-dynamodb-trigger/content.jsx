@@ -28,6 +28,8 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
   const ref2 = createRef();
   const [outputClick3, updateOutputClick3] = useState(false);
   const ref3 = createRef();
+  const [outputClick4, updateOutputClick4] = useState(false);
+  const ref4 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -36,13 +38,14 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       <h1>AWS Lambda DynamoDB trigger</h1>
 
       <p>
-        This example creates a function, which will be executed for each entry
-        added to a database in the DynamoDB.
-      </p>
-
-      <p>
-        For more information, see the{" "}
-        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
+        AWS Lambda is an event driven, serverless computing platform. Ballerina
+        functions can be deployed in AWS Lambda by annotating a Ballerina
+        function with <code>@awslambda:Function</code>, which should have the{" "}
+        <code>
+          function (awslambda:Context, json|EventType) returns json|error
+        </code>{" "}
+        function signature. For more information, see the{" "}
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/">
           AWS Lambda learn guide
         </a>
         .
@@ -52,24 +55,15 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
 
       <p>
         For instructions, see{" "}
-        <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites">
+        <a href="/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites">
           Set up the prerequisites
         </a>
         .
       </p>
 
-      <h2>Write the function</h2>
+      <h2>Create a Ballerina package</h2>
 
-      <p>Follow the steps below to write the function.</p>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>1.</span>
-          <span>
-            Execute the command below to create a new Ballerina package.
-          </span>
-        </li>
-      </ul>
+      <p>Execute the command below to create a new Ballerina package.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -130,15 +124,12 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>2.</span>
-          <span>
-            Replace the content of the generated Ballerina file with the content
-            below.
-          </span>
-        </li>
-      </ul>
+      <h2>Replace the code</h2>
+
+      <p>
+        Replace the content of the generated Ballerina file with the content
+        below.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -202,7 +193,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Build the function</h2>
+      <h2>Build the Ballerina program</h2>
 
       <p>Execute the command below to generate the AWS Lambda artifacts.</p>
 
@@ -282,22 +273,18 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       <h2>Deploy the function</h2>
 
       <p>
-        Execute the AWS CLI command given by the compiler to create and publish
-        the functions by replacing the respective AWS{" "}
-        <code>$LAMBDA_ROLE_ARN</code>, <code>$REGION_ID</code>, and{" "}
-        <code>$FUNCTION_NAME</code> values given in the command with your
-        values.
+        Execute the AWS CLI commands to create and publish the functions by
+        setting your respective AWS <code>$LAMBDA_ROLE_ARN</code>,{" "}
+        <code>$REGION_ID</code>, and <code>$FUNCTION_NAME</code> values.
       </p>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> For instructions on getting the values, see{" "}
-          <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-an-aws-account">
-            Set up an AWS account
-          </a>
-          .
-        </p>
-      </blockquote>
+      <pre>
+        <code>
+          &gt;**Tip:** For instructions on getting the value for
+          the`$LAMBDA_ROLE_ARN`, see [AWS Lambda
+          deployment](/learn/run-in-the-cloud/function-as-a-service/aws-lambda/).
+        </code>
+      </pre>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -360,25 +347,17 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
 
       <h2>Invoke the function</h2>
 
-      <p>
-        Follow the instructions below to create a DynamoDB table for invoking
-        this function.
-      </p>
+      <p>To invoke this function, create a DynamoDB table.</p>
 
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>1.</span>
           <span>
-            Navigate to{" "}
-            <a href="https://console.aws.amazon.com/iamv2/home#/roles">
-              <strong>roles</strong>
-            </a>
-            , and add <code>AWSLambdaDynamoDBExecutionRole</code> to the role
-            you created in{" "}
-            <a href="https://ballerina.io/learn/run-in-the-cloud/function-as-a-service/aws-lambda/#set-up-the-prerequisites">
-              Set up the prerequisites
-            </a>
-            .
+            Go to &lt;a
+            href=&quot;https://console.aws.amazon.com/iamv2/home#/roles&quot;
+            target=&quot;_blank&quot;&gt;<strong>roles</strong>&lt;/a&gt;, and
+            add <code>AWSLambdaDynamoDBExecutionRole</code> to the created role
+            in the prerequisites.
           </span>
         </li>
       </ul>
@@ -386,11 +365,9 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         <li>
           <span>2.</span>
           <span>
-            Go to{" "}
-            <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2">
-              DynamoDB
-            </a>
-            .
+            Go to the &lt;a
+            href=&quot;https://us-west-1.console.aws.amazon.com/dynamodbv2&quot;
+            target=&quot;_blank&quot;&gt;DynamoDB&lt;/a&gt;.
           </span>
         </li>
       </ul>
@@ -398,9 +375,9 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         <li>
           <span>3.</span>
           <span>
-            Click <strong>Create Table</strong>, enter the table name and
-            partition key, and create the table (if you already have a table
-            created, you can skip this step).
+            Click <strong>Create Table</strong>, enter the table name, partition
+            key, and create the table (If you already have a table created, you
+            can skip this step).
           </span>
         </li>
       </ul>
@@ -408,7 +385,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         <li>
           <span>4.</span>
           <span>
-            Click on the DynamoDB table you created, and then click the{" "}
+            Click on the DynamoDB table, and then click the{" "}
             <strong>Exports and streams</strong> tab.
           </span>
         </li>
@@ -426,35 +403,88 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
         <li>
           <span>6.</span>
           <span>
-            Once it is enabled, click <strong>Create a trigger</strong>, select
+            Once it's enabled, click <strong>Create a trigger</strong>, select
             the <code>notifyDynamoDB</code> from the dropdown, and create a
             trigger.
           </span>
         </li>
       </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>7.</span>
-          <span>
-            Go to{" "}
-            <a href="https://us-west-1.console.aws.amazon.com/dynamodbv2">
-              <strong>Items</strong>
-            </a>{" "}
-            in the DynamoDB, select the table, and click{" "}
-            <strong>Create item</strong> to add an entry to the DynamoDB table
-            to invoke the Lambda function.
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>8.</span>
-          <span>
-            Go to the AWS Lambda function and check the logs via CloudWatch to
-            see the object identifier in the logs.
-          </span>
-        </li>
-      </ul>
+
+      <p>
+        Now, add an entry to the DynamoDB table to invoke the Lambda function.
+        For this, go to &lt;a
+        href=&quot;https://us-west-1.console.aws.amazon.com/dynamodbv2&quot;
+        target=&quot;_blank&quot;&gt;<strong>Items</strong>&lt;/a&gt; in the
+        DynamoDB, select the table, and click <strong>Create item</strong>. Once
+        the item is entered into the table, go to the Lambda function, and check
+        the logs via CloudWatch to see the object identifier in the logs.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick4 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick4(true);
+                const extractedText = extractOutput(ref4.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick4(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref4}>
+            <code className="d-flex flex-column">
+              <span>{`\$ echo '{"MESSAGE":"HELLO"}' > input.json`}</span>
+              <span>{`\$ aws lambda invoke --function-name notifysDynamoDB --payload fileb://input.json echo-response.txt`}</span>
+              <span>{`{`}</span>
+              <span>{`"ExecutedVersion": "\$LATEST",`}</span>
+              <span>{`"StatusCode": 200`}</span>
+              <span>{`}`}</span>
+              <span>{`\$ cat echo-response.txt`}</span>
+              <span>{`{"MESSAGE":"HELLO"}`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

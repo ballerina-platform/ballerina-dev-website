@@ -67,7 +67,7 @@ export function SequenceDiagrams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cca462c63399669fdad64038c091d762&file=sequence_diagrams.bal",
+                "https://play.ballerina.io/?gist=0118a7f9fc734d6bb51c8a758445bd4f&file=sequence_diagrams.bal",
                 "_blank"
               );
             }}

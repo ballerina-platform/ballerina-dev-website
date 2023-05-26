@@ -9,7 +9,7 @@ export const codeSnippetData = [
 
 // This function gets triggered by an HTTP call with the name query parameter and returns a processed HTTP output to the caller.
 service / on new af:HttpListener() {
-    resource function azure-functions-http-trigger(string name) returns string {
+    resource function azure-functions-native(string name) returns string {
         return "Hello, " + name + "!";
     }
 }
@@ -27,7 +27,7 @@ service "timer" on timerListener {
 `,
 ];
 
-export function AzureFunctionsTimerTrigger({ codeSnippets }) {
+export function AzureFunctionsNative({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -43,7 +43,7 @@ export function AzureFunctionsTimerTrigger({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Azure Functions timer trigger</h1>
+      <h1>Azure Functions native</h1>
 
       <p>
         Azure Functions is an event driven, serverless computing platform. Azure
@@ -180,7 +180,7 @@ export function AzureFunctionsTimerTrigger({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal new azure-functions-http-trigger`}</span>
+              <span>{`\$ bal new azure-functions-native`}</span>
             </code>
           </pre>
         </Col>
@@ -245,7 +245,7 @@ export function AzureFunctionsTimerTrigger({ codeSnippets }) {
             <code className="d-flex flex-column">
               <span>{`\$ bal build --cloud="azure_functions"`}</span>
               <span>{`Compiling source`}</span>
-              <span>{`        wso2/azure-functions-http-trigger:0.1.0`}</span>
+              <span>{`        wso2/azure-functions-native:0.1.0`}</span>
               <span>{`
 `}</span>
               <span>{`Generating executable`}</span>
@@ -420,8 +420,8 @@ export function AzureFunctionsTimerTrigger({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Hello world"
-            href="/learn/by-example/azure-functions-hello-world"
+            title="HTTP trigger"
+            href="/learn/by-example/azure-functions-cosmosdb-trigger"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -448,45 +448,9 @@ export function AzureFunctionsTimerTrigger({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hello world
-                </span>
-              </div>
-            </div>
-          </Link>
-        </Col>
-        <Col sm={6}>
-          <Link
-            title="HTTP trigger"
-            href="/learn/by-example/azure-functions-http-trigger"
-          >
-            <div className="btnContainer d-flex align-items-center ms-auto">
-              <div className="d-flex flex-column me-4">
-                <span className="btnNext">Next</span>
-                <span
-                  className={btnHover[1] ? "btnTitleHover" : "btnTitle"}
-                  onMouseEnter={() => updateBtnHover([false, true])}
-                  onMouseOut={() => updateBtnHover([false, false])}
-                >
                   HTTP trigger
                 </span>
               </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="#3ad1ca"
-                className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
-                viewBox="0 0 16 16"
-                onMouseEnter={() => updateBtnHover([false, true])}
-                onMouseOut={() => updateBtnHover([false, false])}
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-                />
-              </svg>
             </div>
           </Link>
         </Col>

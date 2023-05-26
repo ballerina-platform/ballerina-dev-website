@@ -54,7 +54,7 @@ export function Http2PriorKnowledgeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c3bcf6c5b5f77c9fbc6013d4e2cb905b&file=http_2_prior_knowledge_client.bal",
+                "https://play.ballerina.io/?gist=6cefd7a9369356ee21602f2cbe64c19a&file=http_2_prior_knowledge_client.bal",
                 "_blank"
               );
             }}

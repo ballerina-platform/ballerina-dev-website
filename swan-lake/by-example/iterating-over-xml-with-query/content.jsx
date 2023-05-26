@@ -68,7 +68,7 @@ export function IteratingOverXmlWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b6ffc378753b363432a16da8fb1e1fcd&file=iterating_over_xml_with_query.bal",
+                "https://play.ballerina.io/?gist=d4ccf1595edf27558716be002fc7b39e&file=iterating_over_xml_with_query.bal",
                 "_blank"
               );
             }}

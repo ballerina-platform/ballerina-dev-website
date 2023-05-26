@@ -341,8 +341,8 @@ export function GraphqlFileUpload({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interceptor configurations"
-            href="/learn/by-example/graphql-interceptor-configurations"
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -369,7 +369,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor configurations
+                  Interceptors
                 </span>
               </div>
             </div>

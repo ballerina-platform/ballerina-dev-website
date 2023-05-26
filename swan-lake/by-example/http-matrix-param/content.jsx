@@ -68,7 +68,7 @@ export function HttpMatrixParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b2dec563b579a2ebfa9bce3afa1af9ea&file=http_matrix_param.bal",
+                "https://play.ballerina.io/?gist=3175a8caa26e2cc84b18f940cb3586a8&file=http_matrix_param.bal",
                 "_blank"
               );
             }}

@@ -118,6 +118,9 @@ sublinks:
           - title: Continue statement
             id: 4
             url: continue-statement
+          - title: Range function
+            id: 5
+            url: int-range
       - title: Lang library
         id: 8
         sublinks:
@@ -1006,20 +1009,14 @@ sublinks:
           - title: Field object
             id: 16
             url: graphql-service-field-object
-          - title: Service interceptors
+          - title: Interceptors
             id: 17
-            url: graphql-service-interceptors
-          - title: Field interceptors
-            id: 18
-            url: graphql-field-interceptors
-          - title: Interceptor configurations
-            id: 19
-            url: graphql-interceptor-configurations
+            url: graphql-interceptors
           - title: File upload
-            id: 20
+            id: 18
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 21
+            id: 19
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -1720,36 +1717,21 @@ sublinks:
   - title: Deployment
     id: 5
     sublinks:
-      - title: Docker
+      - title: Code to Cloud
         id: 1
         sublinks:
-          - title: Hello world
+          - title: Docker
             id: 1
-            url: docker-hello-world
-      - title: Kubernetes
+            url: c2c-docker-deployment
+          - title: Kubernetes
+            id: 2
+            url: c2c-k8s-deployment
+      - title: Function as a Service
         id: 2
         sublinks:
-          - title: Hello world
+          - title: Azure Functions
             id: 1
-            url: kubernetes-hello-world
-      - title: AWS Lambda
-        id: 3
-        sublinks:
-          - title: Hello world
-            id: 1
-            url: aws-lambda-hello-world
-          - title: Context execution
+            url: azure-functions-deployment
+          - title: AWS Lambda
             id: 2
-            url: aws-lambda-context-execution
-          - title: S3 trigger
-            id: 3
-            url: aws-lambda-s3-trigger
-          - title: DynamoDB trigger
-            id: 4
-            url: aws-lambda-dynamodb-trigger
-      - title: Azure Functions
-        id: 4
-        sublinks:
-          - title: Hello world
-            id: 1
-            url: azure-functions-hello-world
+            url: aws-lambda-deployment

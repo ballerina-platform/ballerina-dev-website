@@ -779,8 +779,8 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Service interceptors"
-            href="/learn/by-example/graphql-service-interceptors"
+            title="Interceptors"
+            href="/learn/by-example/graphql-interceptors"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -790,7 +790,7 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Service interceptors
+                  Interceptors
                 </span>
               </div>
               <svg

@@ -231,7 +231,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### `toml` package
 
-- Introduced the `toml` module to convert a TOML configuration file to `map<json>` and vice versa.
+- Introduced the pre-release version of the `toml` module to convert a TOML configuration file to `map<json>` and vice versa.
 
 #### `yaml` package
 

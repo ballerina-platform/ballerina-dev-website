@@ -13,11 +13,12 @@ cp -r ./out/learn/configure-observe/* ./out/learn
 cp -r ./out/learn/java-interoperability/* ./out/learn
 cp -r ./out/learn/test-document-the-code/* ./out/learn
 cp -r ./out/learn/source-code-dependencies/* ./out/learn
+cp -r ./out/learn/ballerina-persist/* ./out/learn
 cp ./out/404/index.html ./out/404.html
 
 #Remove duplicated files
 rm -rf ./out/learn/get-started/ ./out/learn/featured-use-cases/ ./out/learn/learn-the-language/ ./out/learn/learn-the-platform/ ./out/policies/
-rm -rf ./out/learn/native-support/ ./out/learn/ballerina-central/ ./out/learn/ballerina-tooling/ ./out/learn/configure-observe/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/
+rm -rf ./out/learn/native-support/ ./out/learn/ballerina-central/ ./out/learn/ballerina-tooling/ ./out/learn/configure-observe/ ./out/learn/java-interoperability/ ./out/learn/test-document-the-code/ ./out/learn/source-code-dependencies/ ./out/learn/ballerina-persist/
 
 
 #Edit the sitemap

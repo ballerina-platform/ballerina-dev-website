@@ -200,6 +200,7 @@ export default function Platform(props) {
               <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
             </div>
           </div>
+          
           <div className={styles.pGroup}>
             <h3>Ballerina Central</h3>
 
@@ -212,9 +213,8 @@ export default function Platform(props) {
               <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
             </div>
           </div>
-
-          
         </Col>
+        
         <Col xs={12} lg={4} className={styles.contentCol}>
           <div className={styles.pGroup}>
             <h3>Ballerina tooling</h3>
@@ -278,6 +278,55 @@ export default function Platform(props) {
                 </a>
               </p>
               <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Ballerina persist</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/overview`} className={styles.titleLink}>
+                  Overview
+                </a>
+              </p>
+              <p className={styles.description}>xxxxxxxx.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
+                  Persist model
+                </a>
+              </p>
+              <p className={styles.description}>xxxxxxxxx.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-cli`} className={styles.titleLink}>
+                  Persist CLI
+                </a>
+              </p>
+              <p className={styles.description}>xxxxxxxxxx.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
+                  Persist client API
+                </a>
+              </p>
+              <p className={styles.description}>xxxxxxxxxxxx.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/supported-data-stores`} className={styles.titleLink}>
+                  Supported data stores
+                </a>
+              </p>
+              <p className={styles.description}>xxxxxxxxxxxx.</p>
             </div>
           </div>
 

@@ -1,15 +1,14 @@
 ---
-layout: ballerina-persist-documentation-left-nav-pages-swanlake
+layout: ballerina-asyncapi-support-left-nav-pages-swanlake
 title: Bal Persist Overview
 description: The sections gives an overview of the bal persist feature.
 keywords: ballerina, programming language, ballerina packages, persist, persist model, persist cli, persist client api
 permalink: /learn/ballerina-persist/overview/
 active: persist_overview
-intro: The bal persist feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database, a in-memory cache, or a file system. Ballerina supports the following data stores: In-memory table, MySQL, Google Sheets. The important point is you can use the same syntax to access data in all these data stores. So you don't need to learn different syntaxes to access data in different data stores.
+intro: "The bal persist feature allows you to store data in different data stores and retrieve them when needed. A data store can be a database, a in-memory cache, or a file system. Ballerina supports the following data stores: In-memory table, MySQL, Google Sheets. The important point is you can use the same syntax to access data in all these data stores. So you don't need to learn different syntaxes to access data in different data stores."
 redirect_from:
-- /learn/ballerina-persist/overview
+  - /learn/ballerina-persist/overview
 ---
-
 This feature has three main sections: Persist Model, Persist CLI and Persist Client API. The Persist Model is used to define the data model. The Persist CLI is used to generate the client API for the data model. The Persist Client API is used to access the data in the data store.
 
 ## Persist Model

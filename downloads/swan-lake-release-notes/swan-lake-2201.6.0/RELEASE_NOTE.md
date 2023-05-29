@@ -198,7 +198,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### `serdes` package
 
-- Deprectaed the `serdes` package.
+- Deprecated the `serdes` package.
 
 ### New features
 

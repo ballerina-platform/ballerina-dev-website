@@ -1,6 +1,6 @@
 ---
 title: 'Why is Ballerina the way you should write AI applications?'
-description: "For many years Python, a wonderful language, has been the de facto choice for data analytics, data science, and machine learning.  But using LLMs to add AI to business applications is not about those problems anymore but more about prompt engineering, fine-tuning, calling APIs offered by hosted LLMs, and chaining LLMs & combining them with other APIs.<br/><br/>
+description: "For many years Python, a wonderful language, has been the de facto choice for data analytics, data science, and machine learning. But using LLMs to add AI to business applications is not about those problems anymore but more about prompt engineering, fine-tuning, calling APIs offered by hosted LLMs, chaining LLMs, and combining them with other APIs.<br/><br/>
 
 Ballerina is your best choice for writing modern cloud-native applications that incorporate LLM-powered AI!
 "

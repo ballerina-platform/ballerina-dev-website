@@ -6,20 +6,11 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/secure-communication/
 active: secure-communication
 intro: The HTTP listener can be configured to enable transport security to restrict to HTTPS clients for communication. 
-redirect_from:
-  - /learn/network-communication/http/http-services/secure-communication
-  - /swan-lake/learn/network-communication/http/http-services/secure-communication/
-  - /swan-lake/learn/network-communication/http/http-services/secure-communication
-  - /learn/network-communication/http/http-services/secure-communication/
-  - /learn/network-communication/http/http-services/secure-communication/
-  - /learn/user-guide/network-communication/http/http-services/secure-communication
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Configuring secure communication
 
-This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](https://docs.central.ballerina.io/ballerina/http/latest/listeners/Listener).
+This is done by providing the optional `secureSocket` property in the [HTTP Listener Configuration](https://lib.ballerina.io/ballerina/http/latest/records/ListenerConfiguration) instance when creating the [`http:Listener`](https://lib.ballerina.io/ballerina/http/latest/listeners/Listener).
 
 ## Example of HTTPS endpoint configured public certificate and private key
 

@@ -6,12 +6,6 @@ keywords: ballerina, graphql, ballerina packages, language-guide, standard libra
 permalink: /learn/write-a-graphql-api-with-ballerina/
 active: write-a-graphql-api-with-ballerina
 intro: This guide walks you through writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
-redirect_from:
-    - /learn/writing-a-graphql-api-with-ballerina/
-    - /learn/writing-a-graphql-api-with-ballerina
-    - /learn/write-a-graphql-api-with-ballerina
-    - /learn/getting-started/writing-a-graphql-api-with-ballerina/
-    - /learn/getting-started/writing-a-graphql-api-with-ballerina
 ---
 
 >**Info:** Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. 
@@ -20,7 +14,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake) ](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake) ](/downloads/) or greater
 2. A text editor
     >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal

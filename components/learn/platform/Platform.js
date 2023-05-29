@@ -105,7 +105,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/debug-ballerina-programs`} className={styles.titleLink}>
-                  Debug Ballerina Programs
+                  Debug Ballerina programs
                 </a>
               </p>
               <p className={styles.description}>Details of tooling support for troubleshooting Ballerina applications.</p>
@@ -126,7 +126,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment`} className={styles.titleLink}>
-                  Code to cloud
+                  Code to Cloud
                 </a>
               </p>
               <p className={styles.description}>Generating cloud deployment artifacts.</p>

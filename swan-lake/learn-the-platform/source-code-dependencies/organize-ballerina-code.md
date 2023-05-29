@@ -6,18 +6,6 @@ keywords: ballerina, programming language, ballerina packages, dependencies, imp
 permalink: /learn/organize-ballerina-code/
 active: organize-ballerina-code
 intro: The sections below include information about packages and how you can manage the growth of your source code.
-redirect_from:
-- /learn/user-guide/ballerina-packages/organizing-ballerina-code
-- /learn/user-guide/ballerina-packages/organizing-ballerina-code/
-- /learn/organizing-ballerina-code
-- /learn/organizing-ballerina-code/
-- /learn/user-guide/structuring-ballerina-code/
-- /learn/user-guide/structuring-ballerina-code
-- /learn/user-guide/ballerina-packages/
-- /learn/user-guide/ballerina-packages
-- /learn/organize-ballerina-code
-- /learn/guides/organizing-ballerina-code/
-- /learn/guides/organizing-ballerina-code
 ---
 
 ## Package structure

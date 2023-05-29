@@ -50,15 +50,19 @@ const nextConfig = {
     return [
       {
         source: `/learn/build-a-data-service-in-ballerina`,
-        destination: `/learn/featured-use-cases/build-a-data-service-in-ballerina`,
+        destination: `/learn/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
-        destination: `/${redirectBase}learn/featured-use-cases/deploy-ballerina-on-kubernetes`,
+        destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
-        source: `/${redirectBase}learn/get-started-with-ballerina`,
-        destination: `/${redirectBase}learn/get-started/get-started-with-ballerina`,
+        source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
+        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
+      },
+      {
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/get-started/get-started`,
       },
       {
         source: `/${redirectBase}learn/language-basics`,
@@ -70,23 +74,23 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/work-with-data-using-queries-in-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-graphql-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-graphql-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-graphql-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-grpc-service-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-grpc-service-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-grpc-service-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-restful-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-restful-api-with-ballerina`,
       },
       {
-        source: `/${redirectBase}learn/install-ballerina/:slug`,
-        destination: `/${redirectBase}learn/get-started/install-ballerina/:slug`,
+        source: `/${redirectBase}learn/installation-options`,
+        destination: `/${redirectBase}learn/get-started/installation-options`,
       },
       {
         source: "/learn",

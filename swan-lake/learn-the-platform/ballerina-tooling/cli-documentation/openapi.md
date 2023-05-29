@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/cli-documentation/openapi/
 active: openapi
 intro: The sections below include information about the usages of the Ballerina OpenAPI tool.
-redirect_from:
-  - /learn/cli-documentation/openapi
 ---
 
 ## OpenAPI to Ballerina 

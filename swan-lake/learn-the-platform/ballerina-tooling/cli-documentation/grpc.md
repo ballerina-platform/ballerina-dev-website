@@ -6,15 +6,6 @@ keywords: ballerina, protocol buffers, programming language
 permalink: /learn/cli-documentation/grpc/
 active: grpc
 intro: Protocol Buffers is an open-source cross-platform data format used to serialize structured data. gRPC uses Protocol Buffers as Interface Definition Language to create service contracts, detailing all of its remote methods and message formats. The `Protocol Buffers to Ballerina` tooling makes it easy for users to develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.
-redirect_from:
-  - /learn/how-to-generate-code-for-protocol-buffers
-  - /learn/how-to-generate-code-for-protocol-buffers/
-  - /learn/generating-ballerina-code-for-protocol-buffer-definitions
-  - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions/
-  - /swan-lake/learn/generating-ballerina-code-for-protocol-buffer-definitions
-  - /learn/tooling-guide/cli-tools/grpc
-  - /learn/tooling-guide/cli-tools/grpc/
-  - /learn/cli-documentation/grpc
 ---
 
 ## Usage of the tool

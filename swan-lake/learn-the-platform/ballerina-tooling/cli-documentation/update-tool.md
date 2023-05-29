@@ -113,7 +113,7 @@ OPTIONS
 BALLERINA COMMANDS
        The below is a list of available subcommands:
 
-       update     Update to the latest patch version of the active distribution
+       update     Update to the latest Ballerina version
        pull       Fetch a distribution and set it as the active version
        use        Set a distribution as the active distribution
        list       List locally and remotely available distributions
@@ -140,7 +140,11 @@ The `bal dist list` command lists the installed distributions in your local envi
 
 ```bash
 $ bal dist list
+<<<<<<< HEAD
 ``` 
+=======
+```
+>>>>>>> 54995eb6128cbbca3e33f2edd9306aee5b314cf8
 
 You view the output below.
 

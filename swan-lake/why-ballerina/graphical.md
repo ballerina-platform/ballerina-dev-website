@@ -7,7 +7,7 @@ permalink: /why-ballerina/graphical/
 active: graphical
 ---
 
-In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
+In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case, you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
 
 That’s why sequence diagrams are the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model and visualize solutions based on higher-level abstractions derived from sequence diagrams.
 

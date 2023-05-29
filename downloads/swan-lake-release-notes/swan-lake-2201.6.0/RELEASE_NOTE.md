@@ -160,9 +160,9 @@ Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.Obje
 MethodType getInitMethod();
 ```
 
-### Improvements
+### Deprecations
 
-#### Improvements in Runtime Java APIs
+#### Deprecations in Runtime Java APIs
 
 The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
 

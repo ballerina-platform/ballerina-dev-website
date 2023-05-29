@@ -235,7 +235,7 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 #### `yaml` package
 
-- Introduced the `yaml` module to convert a YAML configuration file to JSON and vice 
+- Introduced the pre-release version of the `yaml` module to convert a YAML configuration file to JSON and vice 
 versa.
 
 ### Improvements

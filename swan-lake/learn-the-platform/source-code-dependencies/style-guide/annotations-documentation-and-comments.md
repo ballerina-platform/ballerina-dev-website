@@ -6,19 +6,6 @@ keywords: ballerina, programming language, ballerina style guide, annotations, c
 permalink: /learn/style-guide/annotations-documentation-and-comments/
 active: annotations-documentation-and-comments
 intro: The sections below include the coding conventions with respect to annotations, documentation, and comments.
-redirect_from:
-  - /learn/style-guide/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments/
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
 ---
 
 ## Annotations

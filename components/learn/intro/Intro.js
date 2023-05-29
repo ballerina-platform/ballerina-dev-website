@@ -26,61 +26,72 @@ export default function Intro() {
 
     return (
         <>
-       <Container>
-       <Row className=" justify-content-md-center llanding">
-                <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/install-ballerina/set-up-ballerina`} className={styles.cardLink}>
-                        <div className={`${styles.cardContent} ${styles.primary}`}>
-                            <p className={styles.title}>Install Ballerina</p>
-                            <p className={styles.description}>Set up the Ballerina development environment</p>
-                        </div>
-                    </a>
-                </Col>
+            <Container>
+            <Row className='pageContentRow llanding justify-content-center'>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/get-started`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Get started with Ballerina</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Install Ballerina, set it all up, and take it for a spin. </p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
 
-                <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/get-started-with-ballerina`} className={`${styles.cardLink} ${styles.primary}`}>
-                        <div className={`${styles.cardContent} ${styles.primary}`}>
-                            <p className={styles.title}>Get started with Ballerina</p>
-                            <p className={styles.description}>Write your first Ballerina program and create your first Ballerina package</p>
-                        </div>
-                    </a>
-                </Col>
-            </Row>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/by-example`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina by Example</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Explore and try out a series of guided Ballerina examples.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`https://lib.ballerina.io/`} target='_blank' rel="noreferrer" className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina API Docs</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Refer Ballerina library (API) documentation.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+  
+    
+                </Row>
 
-            <Row className="cardBottomExtraMargin justify-content-md-center llanding">
-                <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/by-example/`} className={styles.cardLink}>
-                        <div className={`${styles.cardContent} ${styles.secondary}`}>
-                            <p className={styles.title}>Ballerina by Example</p>
-                            <p className={styles.description}>A series of guided examples to learn the language</p>
-                        </div>
-                    </a>
-                </Col>
+                <Row className='pageContentRow llanding justify-content-center'>
 
-                <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href="https://lib.ballerina.io/" className={styles.cardLink}>
-                        <div className={`${styles.cardContent} ${styles.secondary}`}>
-                            <p className={styles.title}>Ballerina API Docs</p>
-                            <p className={styles.description}>Library API documentation</p>
-                        </div>
-                    </a>
-                </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`${prefix}/learn/ballerina-specifications`} className={`${styles.cardWrapper} ${styles.secondary}`}>
+                            <div>
+                                <h3>Ballerina specifications</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Refer language, library, and platform specifications.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`https://wso2.com/ballerina/vscode/docs/`} className={`${styles.cardWrapper} ${styles.secondary}`} target='_blank' rel="noreferrer">
+                            <div>
+                                <h3>VS Code extension</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Design and develop Ballerina code via its graphical representation.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                </Row>
 
-                <Col xs={12} lg={4} className={styles.introCard}>
-                    <a href={`${prefix}/learn/ballerina-specifications`} className={styles.cardLink}>
-                        <div className={`${styles.cardContent} ${styles.secondary}`}>
-                            <p className={styles.title}>Ballerina specifications</p>
-                            <p className={styles.description}>Language, library, and platform specifications</p>
-                        </div>
-                    </a>
-                </Col>
-            </Row>
-           
-       </Container>
-       
-            
-       
-           
+            </Container>
+
+
+
+
         </>
     );
 }

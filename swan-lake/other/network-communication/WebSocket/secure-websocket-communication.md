@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/websocket/securing-websocket-communication/
 active: securing-websocket-communication
 intro: Whenever possible, you should use WebSocket with TLS. This makes sure that your data communication is secure through the network. 
-redirect_from:
-  - /learn/network-communication/websocket/using-primary-events
-  - /swan-lake/learn/network-communication/websocket/securing-websocket-communication/
-  - /swan-lake/learn/network-communication/websocket/securing-websocket-communication
-  - /learn/network-communication/websocket/securing-websocket-communication/
-  - /learn/network-communication/websocket/securing-websocket-communication
-  - /learn/user-guide/network-communication/websocket/securing-websocket-communication
-redirect_to:
-  - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
 ## Configuring a secure socket 
@@ -73,7 +64,7 @@ var ws = new WebSocket("wss://localhost:8443/ws");
     [ballerina/websocket] started WSS listener 0.0.0.0:9090
     ```
 
-    In the code above, you simply created a WebSocket listener by providing the [`websocket:ListenerConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/records/ListenerConfiguration), which contains the secure socket parameters. 
+    In the code above, you simply created a WebSocket listener by providing the [`websocket:ListenerConfiguration`](https://lib.ballerina.io/ballerina/http/latest/records/ListenerConfiguration), which contains the secure socket parameters. 
 
 
 3. Write a Ballerina WebSocket client (`wss_client.bal`) below to make a connection and send requests to the service above.
@@ -113,6 +104,6 @@ var ws = new WebSocket("wss://localhost:8443/ws");
     Response: Echo: Hello, World!
     ```
 
-    In the code above, you created a [`websocket:Client`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://docs.central.ballerina.io/ballerina/websocket/latest/clients/Client) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
+    In the code above, you created a [`websocket:Client`](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client) by providing the [`websocket:ClientConfiguration`](https://lib.ballerina.io/ballerina/websocket/latest/clients/Client) value containing the secure socket parameters. From here onwards, any communication done from the client to the WebSocket server will be done with TLS.
 
 <style> #tree-expand-all, #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

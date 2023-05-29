@@ -6,13 +6,6 @@ keywords: ballerina, programming language, java, interoperability, bindgen
 permalink: /learn/java-interoperability/the-bindgen-tool/
 active: the-bindgen-tool
 intro: The Bindgen Tool is a CLI tool that generates Ballerina bindings for Java classes.
-redirect_from:
-  - /learn/tooling-guide/cli-tools/bindgen-tool/
-  - /learn/tooling-guide/cli-tools/bindgen-tool
-  - /learn/cli-documentation/bindgen-tool/
-  - /learn/cli-documentation/bindgen-tool
-  - /learn/cli-documentation/the-bindgen-tool/
-  - /learn/cli-documentation/the-bindgen-tool
 ---
 
 The following sections explain how the Bindgen Tool works.

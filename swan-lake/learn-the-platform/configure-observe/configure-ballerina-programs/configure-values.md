@@ -6,16 +6,6 @@ intro: Below are a few advanced usecases in which you configure values using con
 keywords: ballerina, programming language, configurable, variables, kubernetes, pod
 permalink: /learn/configure-ballerina-programs/configure-values/
 active: configure-values
-redirect_from:
-    - /learn/making-ballerina-programs-configurable/configuring-values-in-kubernetes-environment
-    - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
-    - /learn/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
-    - /learn/configure-ballerina-programs/configure-values-in-kubernetes-environment
-    - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment/
-    - /learn/guides/configuring-ballerina-programs/configuring-values-in-kubernetes-environment
-    - /learn/configure-ballerina-programs/configure-values
-    - /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable/
-    - /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#providing-module-information-of-the-configurable-variable
 ---
 
 ## Configure in multiple modules

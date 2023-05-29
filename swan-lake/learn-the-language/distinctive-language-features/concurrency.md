@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/distinctive-language-features/concurrency/
 active: concurrency
 intro: Let’s now look at how concurrency and transactions are handled in Ballerina. 
-redirect_from:
-- /learn/distinctive-language-features/concurrency
 ---
 
 ## Sequence diagram-based concurrency

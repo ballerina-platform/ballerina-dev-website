@@ -6,26 +6,6 @@ keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/call-java-code-from-ballerina/
 active: call-java-code-from-ballerina
 intro: Ballerina offers a straightforward way to call existing Java code from Ballerina. Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
-redirect_from:
-  - /learn/how-to-use-java-interoperability
-  - /learn/how-to-use-java-interoperability/
-  - /learn/how-to-call-java-code-from-ballerina
-  - /learn/how-to-call-java-code-from-ballerina/
-  - /learn/calling-java-code-from-ballerina
-  - /learn/calling-java-code-from-ballerina/
-  - /swan-lake/learn/calling-java-code-from-ballerina
-  - /swan-lake/learn/calling-java-code-from-ballerina/
-  - /learn/user-guide/calling-java-code-from-ballerina
-  - /learn/user-guide/calling-java-code-from-ballerina/
-  - /learn/user-guide/interoperability/calling-java-code-from-ballerina
-  - /learn/user-guide/interoperability/calling-java-code-from-ballerina/
-  - /learn/user-guide/interoperability/
-  - /learn/user-guide/interoperability
-  - /learn/calling-java-code-from-ballerina-and-vice-versa
-  - /learn/calling-java-code-from-ballerina-and-vice-versa/
-  - /learn/call-java-code-from-ballerina
-  - /learn/guides/calling-java-code-from-ballerina/
-  - /learn/guides/calling-java-code-from-ballerina
 ---
 
 ## Write Ballerina bindings

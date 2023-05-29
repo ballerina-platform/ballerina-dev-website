@@ -15,22 +15,12 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
-                    "dirName": "Native support",
+                    "dirName": "[Experimental] Build a native executable",
                     "level": 2,
                     "position": 10,
-                    "isDir": true,
-                    "url": "/learn/native-support",
-                    "id": "native-support",
-                    "subDirectories": [
-                        {
-                            "dirName": "[Experimental] Build a native executable",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/build-a-native-executable",
-                            "id": "build-a-native-executable"
-                        }
-                    ]
+                    "isDir": false,
+                    "url": "/learn/build-a-native-executable",
+                    "id": "build-a-native-executable"
                 },
                 {
                     "dirName": "Ballerina specifications",
@@ -41,22 +31,12 @@
                     "id": "ballerina-specifications"
                 },
                 {
-                    "dirName": "Ballerina central",
+                    "dirName": "Publish packages to Ballerina Central",
                     "level": 2,
                     "position": 8,
-                    "isDir": true,
-                    "url": "/learn/ballerina-central",
-                    "id": "ballerina-central",
-                    "subDirectories": [
-                        {
-                            "dirName": "Publish packages to Ballerina Central",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/publish-packages-to-ballerina-central",
-                            "id": "publish-packages-to-ballerina-central"
-                        }
-                    ]
+                    "isDir": false,
+                    "url": "/learn/publish-packages-to-ballerina-central",
+                    "id": "publish-packages-to-ballerina-central"
                 },
                 {
                     "dirName": "Configure & observe",
@@ -513,7 +493,7 @@
                     "id": "run-in-the-cloud",
                     "subDirectories": [
                         {
-                            "dirName": "Code to cloud",
+                            "dirName": "Code to Cloud",
                             "level": 3,
                             "position": 1,
                             "isDir": true,
@@ -608,16 +588,15 @@
                         }
                     ]
                 }
-
             ]
         },
         {
-            "dirName": "Featured use cases",
+            "dirName": "Featured scenarios",
             "level": 1,
             "position": 4,
             "isDir": true,
-            "url": "swan-lake/featured-use-cases",
-            "id": "featured-use-cases",
+            "url": "swan-lake/featured-scenarios",
+            "id": "featured-scenarios",
             "subDirectories": [
                 {
                     "dirName": "Write a gRPC service with Ballerina",
@@ -666,6 +645,14 @@
                     "isDir": false,
                     "url": "/learn/deploy-ballerina-on-kubernetes",
                     "id": "deploy-ballerina-on-kubernetes"
+                },
+                {
+                    "dirName": "Manage data persistence with bal persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/manage-data-persistence-with-bal-persist",
+                    "id": "manage-data-persistence-with-bal-persist"
                 }
             ]
         },
@@ -755,47 +742,11 @@
         },
         {
             "dirName": "Get started",
-            "level": 1,
+            "level": 0,
             "position": 2,
-            "isDir": true,
-            "url": "swan-lake/get-started",
-            "id": "get-started",
-            "subDirectories": [
-                {
-                    "dirName": "Get started with Ballerina",
-                    "level": 2,
-                    "position": 2,
-                    "isDir": false,
-                    "url": "/learn/get-started-with-ballerina",
-                    "id": "get-started-with-ballerina"
-                },
-                {
-                    "dirName": "Install Ballerina",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": true,
-                    "url": "/learn/install-ballerina",
-                    "id": "install-ballerina",
-                    "subDirectories": [
-                        {
-                            "dirName": "Set up Ballerina",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/install-ballerina/set-up-ballerina",
-                            "id": "set-up-ballerina"
-                        },
-                        {
-                            "dirName": "Installation options",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/install-ballerina/installation-options",
-                            "id": "installation-options"
-                        }
-                    ]
-                }
-            ]
+            "isDir": false,
+            "url": "/learn/get-started",
+            "id": "get-started"
         },
         {
             "dirName": "other",

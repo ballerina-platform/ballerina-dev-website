@@ -189,17 +189,6 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 ## Standard library updates
 
-### Deprecations
-
-#### `stan` package
-
-- Deprecated the `stan` package.
-    > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library. For more information, see the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
-
-#### `serdes` package
-
-- Deprecated the `serdes` package.
-
 ### New features
 
 #### `constraint` package
@@ -237,6 +226,17 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 
 - Introduced the pre-release version of the `yaml` module to convert a YAML configuration file to JSON and vice 
 versa.
+
+### Deprecations
+
+#### `stan` package
+
+- Deprecated the `stan` package.
+    > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library. For more information, see the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
+
+#### `serdes` package
+
+- Deprecated the `serdes` package.
 
 ### Improvements
 
@@ -290,6 +290,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 - Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
+### Deprecations
+
+#### CLI Commands
+
+##### Deprecation of `bal init`
+
+The `bal init` command is deprecated and will be removed in a future version. `bal new .` can be used instead.
+
 ### Improvements
 
 #### Test Framework
@@ -327,10 +335,6 @@ To view improvements of the architecture model generator, see the [GitHub milest
 ##### Support for providing paths with `bal new`
 
 Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
-
-##### Deprecation of `bal init`
-
-The `bal init` command is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
 ### Bug fixes
 

@@ -335,7 +335,7 @@ Added support to provide a directory path with the `bal new` command to create a
 
 ##### Deprecation of `bal init`
 
-The `bal init` coomand is deprecated and will be removed in a future version. `bal new .` can be used instead.
+The `bal init` command is deprecated and will be removed in a future version. `bal new .` can be used instead.
 
 ### Bug fixes
 

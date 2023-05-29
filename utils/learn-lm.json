@@ -17,7 +17,7 @@
                 {
                     "dirName": "Native support",
                     "level": 2,
-                    "position": 9,
+                    "position": 10,
                     "isDir": true,
                     "url": "/learn/native-support",
                     "id": "native-support",
@@ -35,7 +35,7 @@
                 {
                     "dirName": "Ballerina specifications",
                     "level": 2,
-                    "position": 8,
+                    "position": 9,
                     "isDir": false,
                     "url": "/learn/ballerina-specifications",
                     "id": "ballerina-specifications"
@@ -43,7 +43,7 @@
                 {
                     "dirName": "Ballerina central",
                     "level": 2,
-                    "position": 7,
+                    "position": 8,
                     "isDir": true,
                     "url": "/learn/ballerina-central",
                     "id": "ballerina-central",
@@ -557,7 +557,58 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "dirName": "Ballerina persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": true,
+                    "url": "/learn/ballerina-persist",
+                    "id": "ballerina-persist",
+                    "subDirectories": [
+                        {
+                            "dirName": "Overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/overview",
+                            "id": "overview"
+                        },
+                        {
+                            "dirName": "Persist model",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/persist-model",
+                            "id": "persist-model"
+                        },
+                        {
+                            "dirName": "Persist CLI",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/persist-cli",
+                            "id": "persist-cli"
+                        },
+                        {
+                            "dirName": "Persist Client API",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-client-api",
+                            "id": "persist-client-api"
+                        },
+                        {
+                            "dirName": "Supported data stores",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/supported-data-stores",
+                            "id": "supported-data-stores"
+                        }
+                    ]
                 }
+
             ]
         },
         {

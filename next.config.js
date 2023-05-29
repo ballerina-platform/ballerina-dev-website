@@ -114,6 +114,26 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
       },
       {
+        source: `/${redirectBase}learn/overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/overview`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-cli`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-model`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-model`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-client-api`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-client-api`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-data-stores`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/supported-data-stores`,
+      },
+      {
         source: `/${redirectBase}learn/call-java-code-from-ballerina`,
         destination: `/${redirectBase}learn/learn-the-platform/java-interoperability/call-java-code-from-ballerina`,
       },

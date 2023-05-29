@@ -183,7 +183,7 @@ type User record {|
    string name;
 |};
 ```
-- 
+
 The entity that contains the field of type `EntityType` is taken as the owner in the 1-n relationship and will include the foreign key.
 
 The default foreign key field name will be `ownerId` in the `Car` table, which refers to the identity field of the `User` table by default.
@@ -191,8 +191,6 @@ The default foreign key field name will be `ownerId` in the `Car` table, which r
 ### Many-to-Many (n-n)
 
 A n-n relationship is defined by two 1-n relationships. The joining entity is used to map the two entities. The joining entity should contain two fields of type `EntityType` that refer to the two entities in the relationship. For example, consider Car and User entities assume that a car can have multiple owners and a user can own multiple cars.
-
-```ballerina
 
 ```ballerina
 type Car record {|

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-asyncapi-support-left-nav-pages-swanlake
+layout: ballerina-persist-documentation-left-nav-pages-swanlake
 title: Bal Persist Overview
 description: The sections gives an overview of the bal persist feature.
 keywords: ballerina, programming language, ballerina packages, persist, persist model, persist cli, persist client api

@@ -242,7 +242,7 @@ versa.
 
 #### `persist` package
 
-- Renamed the error types to the following:
+- Renamed the error types to the following.
     - `InvalidKeyError` to `NotFoundError`
     - `DuplicateKeyError` to `AlreadyExistsError`
     - `ForeignKeyConstraintViolationError` to `ForeignKeyViolationError`
@@ -296,7 +296,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 ##### Deprecation of `bal init`
 
-The `bal init` command is deprecated and will be removed in a future version. `bal new .` can be used instead.
+The `bal init` command is deprecated and will be removed in a future version. The `bal new .` command can be used instead.
 
 ### Improvements
 
@@ -326,7 +326,7 @@ The `bal init` command is deprecated and will be removed in a future version. `b
 - Added support for header parameters with referenced schema in the Ballerina service generation. 
 - Added support for `integer`, `float`, `decimal`, and `boolean` header parameter types in the Ballerina service generation.
 
-#### Architecture model generator
+#### Architecture Model Generator
 
 To view improvements of the architecture model generator, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
 
@@ -343,7 +343,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.0+%22+label%3AType%2FBug+is%3Aclosed)
-- [Architecture model generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
+- [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

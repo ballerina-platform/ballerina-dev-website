@@ -309,11 +309,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 - Improved completions in the named argument context.
 - Added support to rename parameter documentation for record fields and required parameters.
 
-#### Ballerina Update Tool
-
-- Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
-- Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
-
 #### OpenAPI Tool
 
 - Added support for regular expression templates (i.e., the `pattern` property) defined on OpenAPI `string` types in the Ballerina client and service generation.

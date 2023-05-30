@@ -71,7 +71,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Fixed a bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
+- Fixed a bug that allowed assigning `nil` to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
 
     ```ballerina
     type Employee record {|
@@ -347,7 +347,7 @@ versa.
 
 #### `persist` package
 
-- Renamed the error types to the following.
+- Renamed the error types as follows.
     - `InvalidKeyError` to `NotFoundError`
     - `DuplicateKeyError` to `AlreadyExistsError`
     - `ForeignKeyConstraintViolationError` to `ForeignKeyViolationError`

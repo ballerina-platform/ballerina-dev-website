@@ -144,6 +144,111 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
+### New features
+
+#### New lang library functions
+
+##### New `lang.int:avg()` function
+
+- Introduced the `lang.int:avg()` function, which returns the average of its integer arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(int:avg(10, 20, 30, 40)); // 25.0
+    }
+    ```
+
+##### New `lang.float:avg()` function
+
+- Introduced the `lang.float:avg()` function, which returns the average of its float arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(float:avg(2, 2)); // 2.0
+    }
+    ```
+
+##### New `lang.decimal:avg()` function
+
+- Introduced the `lang.decimal:avg()` function, which returns the average of its decimal arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(decimal:avg(10, 20, 30, 40)); // 25.0
+    }
+    ```
+
+##### New `lang.boolean:some()` function
+
+- Introduced the `lang.boolean:some()` function, which returns true if one or more of its arguments are `true`, and `false` otherwise.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(boolean:some(true, false)); // true
+        io:println(boolean:some(false, false)); // false
+    }
+    ```
+
+##### New `lang.boolean:every()` function
+
+- Introduced the `lang.boolean:every()` function, which returns `true` if all of its arguments are true, and `false` otherwise.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(boolean:every(true, false)); // false
+        io:println(boolean:every(true, true)); // true
+    }
+    ```
+
+##### New `lang.value:count()` function
+
+- Introduced the `lang.value:count()` function, which returns the number of arguments.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:count(1, 2, 3)); // 3
+    }
+    ```
+
+##### New `lang.value:first()` function
+
+- Introduced the `lang.value:first()` function, which returns the first argument.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:first(1, 2, 3)); // 1
+    }
+    ```
+
+##### New `lang.value:last()` function
+
+- Introduced the `lang.value:last()` function, which returns the last argument.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:last(1, 2, 3)); // 3
+    }
+    ```
+
 ### Bug fixes
 
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug).
@@ -154,11 +259,11 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 #### New Runtime Java APIs
 
-Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+- Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
 
-```java
-MethodType getInitMethod();
-```
+    ```java
+    MethodType getInitMethod();
+    ```
 
 ### Deprecations
 
@@ -334,7 +439,7 @@ To view improvements of the architecture model generator, see the [GitHub milest
 
 ##### Support for providing paths with `bal new`
 
-Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
+- Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
 
 ### Bug fixes
 

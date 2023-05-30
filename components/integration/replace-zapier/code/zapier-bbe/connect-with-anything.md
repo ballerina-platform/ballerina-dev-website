@@ -1,5 +1,5 @@
 ---
 title: 'Connect with anything'
-description: 'Access thousands of connectors for HTTP APIs (OpenAPI), event APIs (AsyncAPI), GraphQL services, legacy systems, and data stores, allowing seamless data transfer to and from any system, anywhere.'
+description: 'Ballerina has pre-built connectors and triggers for different protocols, 3rd party SaaS apps, etc., supporting various protocols, data formats, and authentication mechanisms. Ballerina Central, a globally hosted package management system, enables sharing and discovering packages, including those developed for unique organizational needs.'
 image: 'images/usecases/integration/zapier/connect-with-anything.png'
 ---

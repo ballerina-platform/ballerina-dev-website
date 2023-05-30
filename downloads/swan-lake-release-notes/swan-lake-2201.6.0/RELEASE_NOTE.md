@@ -71,7 +71,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- A bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types has been fixed. This previously resulted in a runtime panic if the value was nil.
+- Fixed a bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
 
     ```ballerina
     type Employee record {|
@@ -269,7 +269,7 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 #### Deprecations in Runtime Java APIs
 
-The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
+- Deprecated the following APIs in the `io.ballerina.runtime.api` package and marked for removal in a future release.
 
   | **Runtime API**                                  | **Java class**                                     |
   |--------------------------------------------------|----------------------------------------------------|
@@ -401,7 +401,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 ##### Deprecation of `bal init`
 
-The `bal init` command is deprecated and will be removed in a future version. The `bal new .` command can be used instead.
+- Deprecated the `bal init` command. It will be removed in a future version. The `bal new .` command can be used instead.
 
 ### Improvements
 

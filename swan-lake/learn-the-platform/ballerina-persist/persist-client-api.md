@@ -242,4 +242,4 @@ WHERE w.workspaceId = 'WK001';
 
 The persist client will automatically perform the join and projection operations on the data source and return the result.
 
-You can also refer to bal persist examples for learn about client API usage.
+You can also refer to `bal persist` examples for learn about client API usage.

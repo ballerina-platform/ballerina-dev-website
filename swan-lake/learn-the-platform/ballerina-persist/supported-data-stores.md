@@ -5,7 +5,7 @@ description: The sections gives details on the Supported Data Stores.
 keywords: ballerina, programming language, ballerina packages, persist, data store, in-memory, mysql, google sheets
 permalink: /learn/ballerina-persist/supported-datastores/
 active: persist_overview
-intro: In the realm of bal persist feature, selecting the right data store is crucial for ensuring the reliable storage and retrieval of data. Various data stores exist, each with its strengths and weaknesses. The bal persist currently supports three data stores. Depending on the data store you selected for your application, configuration and supported types are varied.
+intro: In the realm of `bal persist` feature, selecting the right data store is crucial for ensuring the reliable storage and retrieval of data. Various data stores exist, each with its strengths and weaknesses. The `bal persist` currently supports three data stores. Depending on the data store you selected for your application, configuration and supported types are varied.
 redirect_from:
 - /learn/ballerina-persist/supported-datastores/
 ---
@@ -33,7 +33,7 @@ The following sections describe the configuration and supported types for each d
 
 ## In-Memory
 
-The In-Memory data store is a simple data store that stores data in memory. This data store is useful for testing purposes. The In-Memory data store is the default data store for Ballerina Persistence. Therefore, you do not need to explicitly specify the data store when you are using the In-Memory data store.
+The In-Memory data store is a simple data store that stores data in memory. This data store is useful for testing purposes. The In-Memory data store is the default data store for `bal persist`. Therefore, you do not need to explicitly specify the data store when you are using the In-Memory data store.
 
 ### Supported Ballerina Types
 
@@ -48,7 +48,7 @@ The In-Memory data store does not require any configuration.
 
 ## MySQL
 
-The MySQL data store is a relational database management system that stores data in tables. The MySQL data store is useful for storing data in a relational format. The MySQL data store is not the default data store for Ballerina Persistence. Therefore, you need to explicitly specify the data store when initializing Ballerina Persistence in your application. like below,
+The MySQL data store is a relational database management system that stores data in tables. The MySQL data store is useful for storing data in a relational format. The MySQL data store is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application. like below,
 
 ```shell
 $ bal persist init --datastore mysql
@@ -120,7 +120,7 @@ The `persist generate` command generates a `script.sql` file in the generated di
 
 ## Google Sheets
 
-The Google Sheets data store is a cloud-based spreadsheet application that stores data in tables. The Google Sheets data store is useful for storing data in a spreadsheet format. The Google Sheets data store is not the default data store for Ballerina Persistence. Therefore, you need to explicitly specify the data store when initializing Ballerina Persistence in your application. like below,
+The Google Sheets data store is a cloud-based spreadsheet application that stores data in tables. The Google Sheets data store is useful for storing data in a spreadsheet format. The Google Sheets data store is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application. like below,
 
 ```shell
 $ bal persist init --datastore googlesheets

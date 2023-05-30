@@ -1,5 +1,5 @@
 ---
-title: 'Language Built for Integrations'
+title: 'Language built for integrations'
 description: 'Ballerina excels with its first-class services, listeners, and clients, making integration capabilities central to its design. Build scalable integrations effortlessly, thanks to its strong type system and native support for JSON and XML. Experience the simplicity and readability of Ballerina for seamless integration development.'
 url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/gdrive-new-event-to-slack-message'
 ---

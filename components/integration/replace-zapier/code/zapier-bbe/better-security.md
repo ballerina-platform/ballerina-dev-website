@@ -1,11 +1,9 @@
 ---
 title: 'Better security'
 description: 'Ballerina provides robust security features such as encryption, authentication, and authorization, which are essential for businesses dealing with sensitive data.'
-url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/github-summary-via-secure-service'
+url: 'https://github.com/anupama-pathirage/ballerina-scenarios/blob/main/ballerina-zapier-samples/github-summary-via-secure-service/main.bal'
 ---
 ```
-import ballerina/http;
-
 // Configurability enables users to modify the system behavior through
 // external inputs in a secure way.
 configurable string githubPAT = ?;

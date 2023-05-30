@@ -4,10 +4,6 @@ description: 'Bid farewell to DSL complexities, XML, and workarounds. Embrace a 
 url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/github-new-issue-assigned-to-trello-card-and-twilio-sms'
 ---
 ```
-import ballerina/file;
-import ballerina/io;
-import ballerina/log;
-
 public function main() returns error? {
     file:MetaData[] inputDirectory = check file:readDir("data");
     string outputDirectory = "target/messages/";

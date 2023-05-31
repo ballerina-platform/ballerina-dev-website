@@ -66,7 +66,6 @@ COMMANDS
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
-        persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL
         version         Print the Ballerina version
@@ -223,10 +222,6 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">asyncapi</td>
 <td class="cDescription">Tool to generate Ballerina sources for a given AsyncAPI definition. For more information, see <a href="/learn/asyncapi-tool">Ballerina AsyncAPI support</a>.</td>
-</tr>
-<tr>
-<td class="cCommand">persist</td>
-<td class="cDescription">Manage data persistence. For more information, see <a href="/learn/asyncapi-tool">Ballerina Persist support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

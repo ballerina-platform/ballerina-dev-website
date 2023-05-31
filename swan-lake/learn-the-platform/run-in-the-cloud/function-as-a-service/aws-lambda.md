@@ -41,7 +41,7 @@ Follow the steps below to set up an AWS account.
 
 1. Create an <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-AWSsignup.html" target="_blank">AWS account</a>.
 
-    >**Info:** For detailed instrucitons on creating an AWS account, see <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">Module 1: Create Your AWS Account</a>.
+    >**Info:** For detailed instructions on creating an AWS account, see <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">Module 1: Create Your AWS Account</a>.
 
 2. <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-rootuser.html" target="_blank">Sign in</a> to the AWS account you created.
 
@@ -116,7 +116,7 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 ## Invoke the function
 
-The deployed AWS Lambda function can be tested by invoking it directly using the CLI. 
+You can invoke the deployed AWS Lambda function based on the function trigger. 
 
 ## Learn more
 

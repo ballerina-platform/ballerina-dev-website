@@ -1009,14 +1009,20 @@ sublinks:
           - title: Field object
             id: 16
             url: graphql-service-field-object
-          - title: Interceptors
+          - title: Service interceptors
             id: 17
-            url: graphql-interceptors
-          - title: File upload
+            url: graphql-service-interceptors
+          - title: Field interceptors
             id: 18
+            url: graphql-field-interceptors
+          - title: Interceptor configurations
+            id: 19
+            url: graphql-interceptor-configurations
+          - title: File upload
+            id: 20
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 19
+            id: 21
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -1534,12 +1540,6 @@ sublinks:
           - title: Call stored procedures
             id: 7
             url: mysql-call-stored-procedures
-      - title: SerDes
-        id: 53
-        sublinks:
-          - title: Serialization/Deserialization
-            id: 1
-            url: serdes-simple
   - title: Common libraries
     id: 3
     sublinks:

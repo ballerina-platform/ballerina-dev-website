@@ -73,7 +73,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5f451acacd634209a6eeb6b2104e0725&file=http_basic_rest_service.bal",
+                "https://play.ballerina.io/?gist=5d602c17d32a3bf37a92fd685eaa4f6e&file=http_basic_rest_service.bal",
                 "_blank"
               );
             }}

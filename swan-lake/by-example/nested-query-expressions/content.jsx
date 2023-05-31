@@ -54,7 +54,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a76d0b69f1c7a538f3d6913462f942e5&file=nested_query_expressions.bal",
+                "https://play.ballerina.io/?gist=b5cbf018071e30cf5b10b8a73bfd7bf7&file=nested_query_expressions.bal",
                 "_blank"
               );
             }}

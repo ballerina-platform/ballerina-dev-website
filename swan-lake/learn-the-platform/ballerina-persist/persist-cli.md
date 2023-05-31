@@ -5,14 +5,14 @@ description: The sections gives details on the Persist CLI Tool.
 keywords: ballerina, programming language, ballerina packages, persist, persist cli tool, persist init, persist generate, persist migrate
 permalink: /learn/ballerina-persist/persist-cli/
 active: persist_overview
-intro: One of the main components of the `persist` module is the CLI tool. This tool is used to initialize the project with the persistence layer and generate the required files.
+intro: One of the main components of the `bal persist` feature is the CLI tool. This tool is used to initialize the project with bal persist and generate the required files.
 redirect_from:
 - /learn/ballerina-persist/persist-cli/
 ---
 
-## Initialize the Project with Persistence.
+## Initialize bal persist in the project.
 
-The Ballerina project should be initialized with the persistence layer before generating the persistence derived types, clients, and script files. This can be done using the `init` command. You can specify the preferred data store and the module which you need to generate files. If you do not specify the data store and the module, the default values will be used.
+The Ballerina project should be initialized with `bal persist` before generating the derived types, clients, and script files. This can be done using the `init` command. You can specify the preferred data store and the module which you need to generate files. If you do not specify the data store and the module, the default values will be used.
 
 ```bash
 $ bal persist init --datastore="mysql" --module="store"
@@ -24,7 +24,7 @@ $ bal persist init --datastore="mysql" --module="store"
 |       module       |                    used to indicate the persist enabled module in which the files are generated.                     |     No     |       <root_module>        |
 
 
-The command initializes bal persist feature in the project. This command will do the following,
+The command initializes `bal persist` feature in the project. This command will do the following,
 
 1. Create persist directory in the project root directory.
    This directory contains the data model definition file(model.bal) of the project.
@@ -54,7 +54,7 @@ Behaviour of the `init` command,
 - User can use the optional arguments to indicate the preferred module name and data store, otherwise default values will be used.
 - User cannot execute the command multiple times within the same project. User needs to remove the Ballerina.toml configurations, if the user wants to reinitialize the project.
 
-## 3. Generating Persistence Derived Types, Client, and Script Files
+## 3. Generating derived Types, client, and script files
 
 This command is used to generate the derived types, clients, and script files based on the data model definition file. This command is executed in the project root directory, as follows,
 
@@ -101,7 +101,7 @@ Additionally, this command will create/update `Config.toml` file with configurab
 
 Behaviour of the `generate` command,
 - User should invoke the command within a Ballerina project
-- The user should have initiated the bal persist feature in the project and update the model definition file.
+- The user should have initiated `bal persist` feature in the project and update the model definition file.
 - The model definition file should contain the `persist` module import (`import ballerina/persist as _;`)
 - The Model definition file should contain at least one entity
 - If the user invokes the command twice, it will not fail. It will regenerate the files again.
@@ -142,6 +142,6 @@ This command will create a new directory for the migration with the timestamp an
 Behaviour of the `migrate` command,
 - User should invoke the command within a Ballerina project
 - User should provide a valid label for the migration.
-- The user should have initiated the persistence layer in the project and update the model definition file.
+- The user should have initiated `bal persist` in the project and update the model definition file.
 - The user can execute the command multiple times. It will generate the migration scripts based on the changes in the model definition file.
 - Once the migration is generated, the user cannot change the data store type in the `Ballerina.toml` file. If the user wants to change the data store type, the user needs to remove the migration directory and reinitialize the project.

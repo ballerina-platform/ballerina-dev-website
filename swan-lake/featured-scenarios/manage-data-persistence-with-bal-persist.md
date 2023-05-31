@@ -86,7 +86,7 @@ The next step is to define your data model in the schema file at `persist/model.
 
 ## Model your data
 
-The data model can be defined in the schema file inside persist directory. You can use the empty file added by the `persist init` command for this.
+The data model can be defined in the schema file inside the `persist` directory. You can use the empty file added by the `persist init` command for this.
 
 For more information on defining a data model, refer to the [Data Model Definition](learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
 Once defined, the schema file looks like this.

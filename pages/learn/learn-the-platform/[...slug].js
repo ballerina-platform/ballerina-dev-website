@@ -22,7 +22,6 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -218,7 +217,7 @@ export default function PostPage({
               </Col>
             </div>
 
-            <ReactMarkdown className="intro">{frontmatter.intro}</ReactMarkdown>
+            <p className="intro">{frontmatter.intro}</p>
 
             <MainContent
               content={content}

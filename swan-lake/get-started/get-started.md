@@ -1,30 +1,24 @@
 ---
 layout: ballerina-getting-started-left-nav-pages-swanlake
-title: Get started with Ballerina
+title: Get started 
 description: Let’s set up a Ballerina development environment and write a simple Ballerina program.
 keywords: ballerina, programming language, ballerina packages, getting started
-permalink: /learn/get-started-with-ballerina/
-active: get-started-with-ballerina
+permalink: /learn/get-started/
+active: get-started
 intro: Let’s set up a Ballerina development environment and write a simple Ballerina program.
-redirect_from:
-- /learn/getting-started-with-ballerina/
-- /learn/getting-started-with-ballerina
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package
-- /learn/getting-started/hello-world/creating-your-first-ballerina-package/
-- /learn/getting-started/hello-world/writing-your-first-ballerina-program
-- /learn/getting-started/hello-world/writing-your-first-ballerina-program/
-- /learn/get-started-with-ballerina
-- /learn/getting-started/getting-started-with-ballerina/
-- /learn/getting-started/getting-started-with-ballerina
 ---
 
-## Set up the prerequisites
+## Install Ballerina
 
-To complete this tutorial, you need:
+[Download](/downloads/) Ballerina based on the operating system you are using and install it.
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
-2. A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+>**Tip:** For more information on installing Ballerina, see [Installation options](/downloads/installation-options/).
+
+## Set up the editor
+
+Set up a text editor to write Ballerina code.
+
+>**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina VS Code extension</a> installed. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
 
 ## Meet `bal`
 
@@ -143,7 +137,7 @@ Let's take a moment to digest the new constructs in this code:
 
 >**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
-## Running the simple REST API
+## Run the simple REST API
 
 Let's run this package in your terminal:
 
@@ -168,4 +162,3 @@ Hello Ballerina
 ## Learn more
 
 In this guide, you set up your development environment and wrote two Ballerina programs. For more learning resources, see [Learn](/learn/).
-

@@ -6,22 +6,6 @@ keywords: ballerina, programming language, ballerina style guide
 permalink: /learn/style-guide/coding-conventions/
 active: coding-conventions
 intro: This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
-redirect_from:
-  - /learn/style-guide/
-  - /learn/style-guide
-  - /swan-lake/learn/coding-conventions/
-  - /swan-lake/learn/coding-conventions
-  - /learn/coding-conventions/
-  - /learn/coding-conventions
-  - /learn/user-guide/coding-conventions
-  - /learn/user-guide/coding-conventions/
-  - /learn/user-guide/code-organization/coding-conventions
-  - /learn/user-guide/code-organization/coding-conventions/
-  - /learn/user-guide/style-guide/coding-conventions
-  - /learn/user-guide/style-guide/coding-conventions/
-  - /learn/user-guide/style-guide/
-  - /learn/user-guide/style-guide
-  - /learn/style-guide/coding-conventions
 ---
 
 ## Indentation and line length

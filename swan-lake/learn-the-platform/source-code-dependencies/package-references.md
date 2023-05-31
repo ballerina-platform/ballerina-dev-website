@@ -6,12 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/organize-ballerina-code/package-references/
 active: package-references
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
-redirect_from:
-  - /learn/package-layout
-  - /learn/package-layout/
-  - /learn/package-references/
-  - /learn/package-references/
-  - /learn/organize-ballerina-code/package-references
 ---
 
 ## Package layout
@@ -152,6 +146,37 @@ testReport = true
 codeCoverage = true
 cloud = "k8s"
 ```
+
+### Dependencies
+
+While the Ballerina compiler resolves dependencies automatically based on the import statements, the `[[dependency]]` array can be used to specify a dependency from the local repository or to specify the minimum required version of a dependency.
+
+#### Specify a dependency from the local repository
+
+The following example shows how a dependency from the local repository can be specified:
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "mysql"
+version = "1.5.0"
+repository = "local"
+```
+
+This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies] (learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+
+#### Specify the minimum version for a dependency
+
+The following example shows how the minimum version for a dependency can be specified:
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "sql"
+version = "1.6.0"
+```
+
+With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
 
 ### Platform dependencies
 

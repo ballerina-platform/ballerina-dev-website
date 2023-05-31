@@ -6,20 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/cli-documentation/cli-commands/
 active: cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
-redirect_from:
-  - /learn/cli-commands
-  - /learn/cli-commands/
-  - /learn/using-the-cli-tools/
-  - /learn/using-the-cli-tools
-  - /swan-lake/learn/using-the-cli-tools/
-  - /swan-lake/learn/using-the-cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands
-  - /learn/tooling-guide/cli-tools/
-  - /learn/tooling-guide/cli-tools
-  - /learn/tooling-guide/cli-tools/cli-commands/
-  - /learn/cli-documentation/cli-commands
-  - /learn/cli-documentation
-  - /learn/cli-documentation/
 ---
 
 ## Use the Ballerina tool
@@ -136,12 +122,12 @@ These everyday commands are your best friends! They address the very basics of p
 <table class="cComandTable">
 <tr>
 <td class="cCommand">build</td>
-<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Compile a standalone <code>.bal</code> file, or an entire package into an executable JAR file. For more information, see <a href="/learn/get-started/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/get-started-with-ballerina/">Getting started with Ballerina</a>.
+<td class="cDescription">Build and run a standalone <code>.bal</code> file, an entire package, or a previously-built program. For more information, see <a href="/learn/get-started/">Getting started with Ballerina</a>.
 </td>
 </tr>
 <tr>
@@ -168,7 +154,7 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started-with-ballerina/#create-a-new-package">Create a new package</a>.
+<td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started/#create-a-new-package">Create a new package</a>.
 </td>
 </tr>
 <tr>

@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/structure-tests/
 active: structure-tests
 intro: The Ballerina Test Framework follows a general, organized structure that allows testing code under various conditions by making use of resources and configurations. 
-redirect_from:
-    - /swan-lake/learn/testing-ballerina-code/structuring-tests/
-    - /swan-lake/learn/testing-ballerina-code/structuring-tests
-    - /learn/user-guide/testing-ballerina-code/structuring-tests
-    - /learn/user-guide/testing-ballerina-code/structuring-tests/
-    - /learn/user-guide/testing-ballerina-code/
-    - /learn/user-guide/testing-ballerina-code
-    - /learn/user-guide/testing-ballerina-code/structuring-tests/
-    - /learn/testing-ballerina-code/structuring-tests/
-    - /learn/testing-ballerina-code/structuring-tests
-    - /learn/testing-ballerina-code/structure-tests/
-    - /learn/testing-ballerina-code/structure-tests
-    - /learn/testing-ballerina-code/structure-the-tests/
-    - /learn/testing-ballerina-code/structure-the-tests
-    - /learn/test-ballerina-code/structure-tests
-    - /learn/guides/testing-ballerina-code/structuring-the-tests/
-    - /learn/guides/testing-ballerina-code/structuring-the-tests
 ---
 
 ## Test source files

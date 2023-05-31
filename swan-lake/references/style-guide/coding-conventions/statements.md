@@ -6,20 +6,6 @@ keywords: ballerina, programming language, ballerina style guide, statements
 active: statements
 permalink: /learn/style-guide/statements/
 intro: The sections below include the coding conventions with respect to statements.
-redirect_from:
-  - /learn/style-guide/statements
-  - /learn/coding-conventions/statements
-  - /swan-lake/learn/coding-conventions/statements/
-  - /swan-lake/learn/coding-conventions/statements
-  - /learn/coding-conventions/statements/
-  - /learn/coding-conventions/statements
-  - /learn/user-guide/coding-conventions/statements
-  - /learn/user-guide/coding-conventions/statements/
-  - /learn/user-guide/code-organization/coding-conventions/statements/
-  - /learn/user-guide/code-organization/coding-conventions/statements
-  - /learn/user-guide/style-guide/coding-conventions/statements
-  - /learn/user-guide/style-guide/coding-conventions/statements/
-
 ---
 
 ## If statement

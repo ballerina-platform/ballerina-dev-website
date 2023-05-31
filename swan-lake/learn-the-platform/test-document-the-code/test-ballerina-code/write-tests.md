@@ -6,18 +6,6 @@ keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/write-tests/
 active: write-tests
 intro: The sections below include information about writing tests in Ballerina.
-redirect_from:
-  - /learn/testing-ballerina-code/writing-tests
-  - /learn/testing-ballerina-code/writing-tests/
-  - /swan-lake/learn/testing-ballerina-code/writing-tests/
-  - /swan-lake/learn/testing-ballerina-code/writing-tests
-  - /learn/user-guide/testing-ballerina-code/writing-tests
-  - /learn/user-guide/testing-ballerina-code/writing-tests/
-  - /learn/testing-ballerina-code/write-tests/
-  - /learn/testing-ballerina-code/write-tests
-  - /learn/test-ballerina-code/write-tests
-  - /learn/guides/testing-ballerina-code/writing-tests/
-  - /learn/guides/testing-ballerina-code/writing-tests
 ---
 
 ## Define a test

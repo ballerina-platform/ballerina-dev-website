@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-clients/
 active: implementing-grpc-clients
 intro: The topics below explain how to implement a gRPC service and write a client to invoke it. 
-redirect_from:
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients/
-  - /swan-lake/learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients/
-  - /learn/network-communication/grpc/implementing-grpc-services-and-clients
-  - /learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients
-redirect_to:
-  - https://lib.ballerina.io/ballerina/grpc/latest/
 ---
 
 After completing the [gRPC service implementation](/learn/user-guide/network-communication/grpc/implementing-grpc-services-and-clients/implementing-grpc-services/), you can call these service methods using a client as follows. 

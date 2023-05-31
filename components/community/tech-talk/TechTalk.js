@@ -22,13 +22,9 @@ import { Row, Col, Modal, Container } from 'react-bootstrap';
 import styles from './TechTalk.module.css';
 import { prefix } from '../../../utils/prefix';
 
-export default function TechTalk() {
+export default function TechTalk(props) {
 
   const [hoverBtn, setHoverBtn] = React.useState(false);
-  const [show, setShow] = React.useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   let linkArrowPath = prefix + '/images/toc-bg.svg';
   let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
@@ -48,7 +44,21 @@ export default function TechTalk() {
       <Container>
         <Row>
           <Col xs={12}>
-            <h2 id='monthly-tech-talk'>Ballerina Tech Talk</h2>
+            <h2 id='monthly-tech-talk' className='section'>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-link-45deg mdButton pe-2"
+                viewBox="0 0 16 16"
+                onClick={(e) => props.getLink(e.target, 'monthly-tech-talk')}
+              >
+                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+              </svg>
+              Ballerina Tech Talk
+            </h2>
           </Col>
         </Row>
 
@@ -56,10 +66,6 @@ export default function TechTalk() {
           <Col sm={12} md={6} lg={6}>
             <p>
               We host a public tech talk, where our engineers discuss different technical topics, show you how Ballerina can be leveraged to implement related use cases, present upcoming features, and answer all your questions live.
-            </p>
-
-            <p>
-              If you would like to suggest a topic for our next talk or give feedback on tech talks, please fill this <a id="techTalkFormButton" className={styles.formLink} onClick={handleShow}>form</a>.
             </p>
           </Col>
 
@@ -79,15 +85,6 @@ export default function TechTalk() {
           </Col>
         </Row>
 
-
-        <Modal show={show} onHide={handleClose} id="techTalkForm" className={styles.customModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Suggest topics or give feedback</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className={styles.customModalBody}>
-            <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x767" frameBorder="0" className={styles.formEmbedded} />
-          </Modal.Body>
-        </Modal>
       </Container>
     </Col>
   );

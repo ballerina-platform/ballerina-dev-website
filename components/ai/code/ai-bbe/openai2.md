@@ -13,7 +13,11 @@ public function main(string filePath) returns error? {
         model: "text-davinci-edit-001"
     };
     text:CreateEditResponse editRes = check openAIText->/edits.post(editReq);
-    string text = check editRes.choices[0].text.ensureType();
+    string? text = editRes.choices[0].text;
+
+    if text is () { 
+        return error("Failed to correct grammar and spelling in the given text.");
+    }
     io:println(string `Corrected: ${text}`);
 }
 ```

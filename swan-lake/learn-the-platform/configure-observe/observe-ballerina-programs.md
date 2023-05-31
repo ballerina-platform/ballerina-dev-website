@@ -6,31 +6,6 @@ keywords: ballerina, observability, metrics, tracing, logs, prometheus, grafana,
 permalink: /learn/observe-ballerina-programs/
 active: observe-ballerina-programs
 intro: Observability is a measure of how well the internal states of a system can be inferred from the knowledge of its external outputs.
-redirect_from:
-  - /learn/how-to-observe-ballerina-code
-  - /learn/how-to-observe-ballerina-code/
-  - /learn/how-to-observe-ballerina-services/
-  - /learn/how-to-observe-ballerina-services
-  - /learn/observing-ballerina-code
-  - /swan-lake/learn/observing-ballerina-code/
-  - /swan-lake/learn/observing-ballerina-code
-  - /learn/observing-ballerina-code/
-  - /learn/observing-ballerina-code
-  - /learn/user-guide/observing-ballerina-code
-  - /learn/user-guide/observing-ballerina-code/
-  - /learn/user-guide/observability/
-  - /learn/user-guide/observability
-  - /learn/user-guide/observability/observing-ballerina-code/
-  - /learn/user-guide/observability/observing-ballerina-code
-  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger/
-  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-and-jaeger
-  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack
-  - /learn/observing-ballerina-programs/observing-your-application-with-prometheus-grafana-jaeger-and-the-elastic-stack/
-  - /learn/observing-ballerina-programs/
-  - /learn/observing-ballerina-programs
-  - /learn/observe-ballerina-programs
-  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack/
-  - /learn/guides/observing-your-application-with-prometheus-grafana-jaeger-and-elastic-the-stack
 ---
 
 It consists of the three major pillars below.

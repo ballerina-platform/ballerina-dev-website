@@ -7,7 +7,7 @@ active: build-a-native-executable
 intro: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 ---
 
-This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
+This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official in the upcoming releases. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
 
 The key aspects below help you understand the native executable generating process better.
 

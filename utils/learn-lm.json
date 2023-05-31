@@ -17,7 +17,7 @@
                 {
                     "dirName": "[Experimental] Build a native executable",
                     "level": 2,
-                    "position": 9,
+                    "position": 10,
                     "isDir": false,
                     "url": "/learn/build-a-native-executable",
                     "id": "build-a-native-executable"
@@ -25,7 +25,7 @@
                 {
                     "dirName": "Ballerina specifications",
                     "level": 2,
-                    "position": 8,
+                    "position": 9,
                     "isDir": false,
                     "url": "/learn/ballerina-specifications",
                     "id": "ballerina-specifications"
@@ -33,7 +33,7 @@
                 {
                     "dirName": "Publish packages to Ballerina Central",
                     "level": 2,
-                    "position": 7,
+                    "position": 8,
                     "isDir": false,
                     "url": "/learn/publish-packages-to-ballerina-central",
                     "id": "publish-packages-to-ballerina-central"
@@ -537,6 +537,56 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "dirName": "Ballerina persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": true,
+                    "url": "/learn/ballerina-persist",
+                    "id": "ballerina-persist",
+                    "subDirectories": [
+                        {
+                            "dirName": "Overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/overview",
+                            "id": "overview"
+                        },
+                        {
+                            "dirName": "Persist model",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/persist-model",
+                            "id": "persist-model"
+                        },
+                        {
+                            "dirName": "Persist CLI",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/persist-cli",
+                            "id": "persist-cli"
+                        },
+                        {
+                            "dirName": "Persist Client API",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-client-api",
+                            "id": "persist-client-api"
+                        },
+                        {
+                            "dirName": "Supported data stores",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/supported-data-stores",
+                            "id": "supported-data-stores"
+                        }
+                    ]
                 }
             ]
         },
@@ -595,6 +645,14 @@
                     "isDir": false,
                     "url": "/learn/deploy-ballerina-on-kubernetes",
                     "id": "deploy-ballerina-on-kubernetes"
+                },
+                {
+                    "dirName": "Manage data persistence with bal persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/manage-data-persistence-with-bal-persist",
+                    "id": "manage-data-persistence-with-bal-persist"
                 }
             ]
         },

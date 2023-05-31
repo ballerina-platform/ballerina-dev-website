@@ -433,7 +433,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 #### Architecture Model Generator
 
-To view improvements of the architecture model generator, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
+- Added a new language server extension to retrieve Ballerina persist models.
+- Added support to retrieve dependencies of the main function entry points.
 
 #### CLI commands
 

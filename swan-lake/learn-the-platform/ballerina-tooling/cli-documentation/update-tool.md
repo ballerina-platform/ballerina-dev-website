@@ -173,7 +173,8 @@ Swan Lake channel
 
 1.* channel
 
-  1.2.38 - latest
+  1.2.39 - latest
+  1.2.38
   1.2.37
   1.2.36
   1.2.35

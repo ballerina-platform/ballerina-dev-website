@@ -286,11 +286,11 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/overview`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/persist-overview`} className={styles.titleLink}>
                   Overview
                 </a>
               </p>
-              <p className={styles.description}>xxxxxxxx.</p>
+              <p className={styles.description}>Details on how to simplify data persistence with `bal persist`.</p>
             </div>
 
             <div className={styles.content}>
@@ -299,7 +299,7 @@ export default function Platform(props) {
                   Persist model
                 </a>
               </p>
-              <p className={styles.description}>xxxxxxxxx.</p>
+              <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
             </div>
 
             <div className={styles.content}>
@@ -308,7 +308,7 @@ export default function Platform(props) {
                   Persist CLI
                 </a>
               </p>
-              <p className={styles.description}>xxxxxxxxxx.</p>
+              <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
             </div>
 
             <div className={styles.content}>
@@ -317,7 +317,7 @@ export default function Platform(props) {
                   Persist client API
                 </a>
               </p>
-              <p className={styles.description}>xxxxxxxxxxxx.</p>
+              <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>
             </div>
 
             <div className={styles.content}>
@@ -326,7 +326,7 @@ export default function Platform(props) {
                   Supported data stores
                 </a>
               </p>
-              <p className={styles.description}>xxxxxxxxxxxx.</p>
+              <p className={styles.description}>Details on the data stores supported for managing data persistence.</p>
             </div>
           </div>
 

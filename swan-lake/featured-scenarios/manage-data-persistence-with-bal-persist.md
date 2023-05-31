@@ -495,7 +495,7 @@ $ curl -X POST http://localhost:8080/employees/
 
 ## References
 
-- [Bal Persist Overview](/learn/overview/)
+- [Bal Persist Overview](/learn/persist-overview/)
 - [Data Model](/learn/persist-model/)
 - [Persist Client API](/learn/persist-client-api/)
 - [Persist CLI Tool](/learn/persist-cli/)

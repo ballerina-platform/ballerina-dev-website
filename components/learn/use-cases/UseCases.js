@@ -88,7 +88,7 @@ export default function UseCases(props) {
                   <Row>
                     <Col xs={12} lg={8}>
                       <p className={styles.title}>Manage data persistence with bal persist</p>
-                      <p className={styles.description}>xxxxxxxxx</p>
+                      <p className={styles.description}>Use `bal persist` to simplify data persistence management.</p>
 
                     </Col>
                     <Col xs={12} lg={4}>

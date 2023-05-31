@@ -1160,9 +1160,17 @@ import {
   codeSnippetData as GraphqlServiceFieldObjectCodeSnippetData,
 } from "./graphql-service-field-object/content.jsx";
 import {
-  GraphqlInterceptors,
-  codeSnippetData as GraphqlInterceptorsCodeSnippetData,
-} from "./graphql-interceptors/content.jsx";
+  GraphqlServiceInterceptors,
+  codeSnippetData as GraphqlServiceInterceptorsCodeSnippetData,
+} from "./graphql-service-interceptors/content.jsx";
+import {
+  GraphqlFieldInterceptors,
+  codeSnippetData as GraphqlFieldInterceptorsCodeSnippetData,
+} from "./graphql-field-interceptors/content.jsx";
+import {
+  GraphqlInterceptorConfigurations,
+  codeSnippetData as GraphqlInterceptorConfigurationsCodeSnippetData,
+} from "./graphql-interceptor-configurations/content.jsx";
 import {
   GraphqlFileUpload,
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
@@ -1687,10 +1695,6 @@ import {
   MysqlCallStoredProcedures,
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
-import {
-  SerdesSimple,
-  codeSnippetData as SerdesSimpleCodeSnippetData,
-} from "./serdes-simple/content.jsx";
 import {
   IoBytes,
   codeSnippetData as IoBytesCodeSnippetData,
@@ -2447,8 +2451,12 @@ const BBEs = {
   GraphqlContextCodeSnippetData,
   GraphqlServiceFieldObject,
   GraphqlServiceFieldObjectCodeSnippetData,
-  GraphqlInterceptors,
-  GraphqlInterceptorsCodeSnippetData,
+  GraphqlServiceInterceptors,
+  GraphqlServiceInterceptorsCodeSnippetData,
+  GraphqlFieldInterceptors,
+  GraphqlFieldInterceptorsCodeSnippetData,
+  GraphqlInterceptorConfigurations,
+  GraphqlInterceptorConfigurationsCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
   GraphqlHierarchicalResourcePaths,
@@ -2711,8 +2719,6 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
-  SerdesSimple,
-  SerdesSimpleCodeSnippetData,
   IoBytes,
   IoBytesCodeSnippetData,
   IoStrings,

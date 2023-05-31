@@ -2436,8 +2436,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
+        "name": "Service interceptors",
+        "url": "graphql-service-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field interceptors",
+        "url": "graphql-field-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3867,21 +3883,6 @@
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "SerDes",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Serialization/Deserialization",
-        "url": "serdes-simple",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]

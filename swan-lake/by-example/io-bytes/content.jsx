@@ -214,8 +214,8 @@ export function IoBytes({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Serialization/Deserialization"
-            href="/learn/by-example/serdes-simple"
+            title="Call stored procedures"
+            href="/learn/by-example/mysql-call-stored-procedures"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -242,7 +242,7 @@ export function IoBytes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialization/Deserialization
+                  Call stored procedures
                 </span>
               </div>
             </div>

@@ -60,7 +60,7 @@ export function AnyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3589e4e65456e322ebdfac88144df620&file=any_type.bal",
+                "https://play.ballerina.io/?gist=2089c2b76b7faf2276f2a702dbe6e12f&file=any_type.bal",
                 "_blank"
               );
             }}

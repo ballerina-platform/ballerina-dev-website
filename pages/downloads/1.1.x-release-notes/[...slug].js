@@ -463,9 +463,6 @@ export default function PostPage({ frontmatter, content, id }) {
                           {children}
                         </code>
                       </pre>
-                },
-                table({node, className, children, ...props}) { 
-                  return <div className='mdTable'><table {...props}>{children}</table></div>
                 }
               }}
               remarkPlugins={[remarkGfm]}

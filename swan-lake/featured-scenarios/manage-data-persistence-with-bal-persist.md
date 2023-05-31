@@ -31,7 +31,7 @@ This tutorial describes how to interact with the data store and perform operatio
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
->**Info:** In this tutorial, we use an in-memory data store for simplicity. However, the methodology described here can also be applied to work with MySQL and Google Sheets as the Ballerina persist currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
+>**Info:** In this tutorial, we use an in-memory data store for simplicity. However, the methodology described here can also be applied to work with MySQL and Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
 
 ## Create a Ballerina package
 

@@ -4,7 +4,7 @@ title: Supported Data Stores
 description: The sections gives details on the Supported Data Stores.
 keywords: ballerina, programming language, ballerina packages, persist, data store, in-memory, mysql, google sheets
 permalink: /learn/ballerina-persist/supported-datastores/
-active: persist_overview
+active: persist_supported_datastores
 intro: In the realm of `bal persist` feature, selecting the right data store is crucial for ensuring the reliable storage and retrieval of data. Various data stores exist, each with its strengths and weaknesses. The `bal persist` currently supports three data stores. Depending on the data store you selected for your application, configuration and supported types are varied.
 redirect_from:
 - /learn/ballerina-persist/supported-datastores/

@@ -4,7 +4,7 @@ title: Persist Model
 description: The sections gives details on the Persist Model.
 keywords: ballerina, programming language, ballerina packages, persist, persist model, persist data model, persist entity type, persist simple type
 permalink: /learn/ballerina-persist/persist-model/
-active: persist_overview
+active: persist_model
 intro: The Persist module defines a mechanism to express the application's data model using the Ballerina record type. Any record type that is a subtype of the `EntityType` will be an entity in the model.
 redirect_from:
 - /learn/ballerina-persist/persist-model/

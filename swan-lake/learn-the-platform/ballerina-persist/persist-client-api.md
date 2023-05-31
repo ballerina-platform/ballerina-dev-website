@@ -4,7 +4,7 @@ title: Persist Client API
 description: The sections gives details on the generated Persist Client API.
 keywords: ballerina, programming language, ballerina packages, persist, persist client, persist client api
 permalink: /learn/ballerina-persist/persist-client-api/
-active: persist_overview
+active: persist_client_api
 intro: Persist client is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. Persist CLI tool will generate the derived Entity Types and the Clients from the model definition.
 redirect_from:
 - /learn/ballerina-persist/persist-client-api

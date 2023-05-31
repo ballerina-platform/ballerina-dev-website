@@ -17,10 +17,10 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your currrent Ballerina installation directly to 2201.6.0 by using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.6.0 by using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
-2. Run `bal dist pull 2201.6.0` to update to this latest distribution.
+2. Run `bal dist update` to update to this latest distribution.
 
 ## Install Ballerina
 
@@ -71,7 +71,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- A bug that allowed assigning nil to a record field with member access expressions when there are no fields of optional types has been fixed. This previously resulted in a runtime panic if the value was nil.
+- Fixed a bug that allowed assigning `nil` to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
 
     ```ballerina
     type Employee record {|
@@ -126,9 +126,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
      at [row,col {unknown-source}]: [1,4]
     ```
 
-- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package are refactored to abstract classes. Creating an instance of those classes is incorrect.
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package, are refactored to abstract classes. Creating an instance of those classes is incorrect.
 
-- A typedesc value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
+- A `typedesc` value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
 
     ```ballerina
     import ballerina/io;
@@ -144,6 +144,111 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
+### New features
+
+#### New lang library functions
+
+##### New `lang.int:avg()` function
+
+- Introduced the `lang.int:avg()` function, which returns the average of its integer arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(int:avg(10, 20, 30, 40)); // 25.0
+    }
+    ```
+
+##### New `lang.float:avg()` function
+
+- Introduced the `lang.float:avg()` function, which returns the average of its float arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(float:avg(2, 2)); // 2.0
+    }
+    ```
+
+##### New `lang.decimal:avg()` function
+
+- Introduced the `lang.decimal:avg()` function, which returns the average of its decimal arguments.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(decimal:avg(10, 20, 30, 40)); // 25.0
+    }
+    ```
+
+##### New `lang.boolean:some()` function
+
+- Introduced the `lang.boolean:some()` function, which returns true if one or more of its arguments are `true`, and `false` otherwise.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(boolean:some(true, false)); // true
+        io:println(boolean:some(false, false)); // false
+    }
+    ```
+
+##### New `lang.boolean:every()` function
+
+- Introduced the `lang.boolean:every()` function, which returns `true` if all of its arguments are true, and `false` otherwise.
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() {
+        io:println(boolean:every(true, false)); // false
+        io:println(boolean:every(true, true)); // true
+    }
+    ```
+
+##### New `lang.value:count()` function
+
+- Introduced the `lang.value:count()` function, which returns the number of arguments.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:count(1, 2, 3)); // 3
+    }
+    ```
+
+##### New `lang.value:first()` function
+
+- Introduced the `lang.value:first()` function, which returns the first argument.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:first(1, 2, 3)); // 1
+    }
+    ```
+
+##### New `lang.value:last()` function
+
+- Introduced the `lang.value:last()` function, which returns the last argument.
+
+    ```ballerina
+    import ballerina/io;
+    import ballerina/lang.value;
+
+    public function main() {
+        io:println(value:last(1, 2, 3)); // 3
+    }
+    ```
+
 ### Bug fixes
 
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug).
@@ -154,17 +259,17 @@ To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https
 
 #### New Runtime Java APIs
 
-Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
+- Introduced the `getInitMethod()` API in the `io.ballerina.runtime.api.types.ObjectType` class to get the method type of the initializer method of Ballerina objects.
 
-```java
-MethodType getInitMethod();
-```
+    ```java
+    MethodType getInitMethod();
+    ```
 
-### Improvements
+### Deprecations
 
-#### Improvements in Runtime Java APIs
+#### Deprecations in Runtime Java APIs
 
-The following APIs in the `io.ballerina.runtime.api` package are deprecated and marked for removal in a future release.
+- Deprecated the following APIs in the `io.ballerina.runtime.api` package and marked for removal in a future release.
 
   | **Runtime API**                                  | **Java class**                                     |
   |--------------------------------------------------|----------------------------------------------------|
@@ -214,19 +319,35 @@ To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://g
 - Added support for the `google-sheets` data store. This is currently an experimental feature and its behavior may be subject to change in future releases.
 - Added support for defining enums and adding `enum` fields to the data model.
 
+#### `edi` package
+
+- Introduced the `edi` module to convert EDI to JSON and vice versa based on a given schema.
+
 #### `toml` package
 
-- Introduced the `toml` module to convert a TOML configuration file to `map<json>` and vice-versa.
+- Introduced the pre-release version of the `toml` module to convert a TOML configuration file to `map<json>` and vice versa.
 
 #### `yaml` package
 
-- Introduced the `yaml` module to convert a YAML configuration file to JSON and vice-versa.
+- Introduced the pre-release version of the `yaml` module to convert a YAML configuration file to JSON and vice 
+versa.
+
+### Deprecations
+
+#### `stan` package
+
+- Deprecated the `stan` package.
+    > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library. For more information, see the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
+
+#### `serdes` package
+
+- Deprecated the `serdes` package.
 
 ### Improvements
 
 #### `persist` package
 
-- Renamed the error types to the following:
+- Renamed the error types as follows.
     - `InvalidKeyError` to `NotFoundError`
     - `DuplicateKeyError` to `AlreadyExistsError`
     - `ForeignKeyConstraintViolationError` to `ForeignKeyViolationError`
@@ -274,7 +395,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 
 - Added inlay hint support for function call expressions and method call expressions to provide information about parameters.
 
+### Deprecations
+
+#### CLI Commands
+
+##### Deprecation of `bal init`
+
+- Deprecated the `bal init` command. It will be removed in a future version. The `bal new .` command can be used instead.
+
 ### Improvements
+
+#### Test Framework
+
+- Added support for excluding source files from code coverage.
 
 #### Persist Tool
 
@@ -289,33 +422,25 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.6.0](https://git
 - Improved completions in the named argument context.
 - Added support to rename parameter documentation for record fields and required parameters.
 
-#### Ballerina Update Tool
-
-- Improved the `bal dist update` command to update the active distribution to the latest patch version (of the active Swan Lake version). 
-- Improved the `bal dist pull latest` command to update the active distribution to the latest Swan Lake version.
-
 #### OpenAPI Tool
 
-- Added support for OpenAPI regular expression templates (the pattern property) defined on the `string` type in Ballerina client and service generation.
+- Added support for regular expression templates (i.e., the `pattern` property) defined on OpenAPI `string` types in the Ballerina client and service generation.
   With this support, the aforementioned Regex templates will be represented as `ballerina/constraint` module annotations in the generated code. This support applies to Regex patterns that satisfy [the Ballerina regular expression grammar](https://ballerina.io/spec/lang/2022R4/#section_10.1).
 - Added support for OpenAPI enums in the client and service generation. 
 - Added support for query parameters with referenced schema in the Ballerina service generation. 
 - Added support for header parameters with referenced schema in the Ballerina service generation. 
 - Added support for `integer`, `float`, `decimal`, and `boolean` header parameter types in the Ballerina service generation.
 
-#### Architecture model generator
+#### Architecture Model Generator
 
-To view improvements of the architecture model generator, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-dev-tools/pulls?q=is%3Apr+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FImprovement+milestone%3A2201.6.0).
+- Added a new language server extension to retrieve Ballerina persist models.
+- Added support to retrieve dependencies of the main function entry points.
 
 #### CLI commands
 
 ##### Support for providing paths with `bal new`
 
-Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
-
-##### Deprecation of `bal init`
-
-The `bal init` coomand is deprecated and will be removed in a future version. `bal new .` can be used instead.
+- Added support to provide a directory path with the `bal new` command to create a package in a specific directory (e.g., `bal new <package-path>`). 
 
 ### Bug fixes
 
@@ -324,7 +449,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.0 of the reposi
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.6.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.6.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.0+%22+label%3AType%2FBug+is%3Aclosed)
-- [Architecture model generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
+- [Architecture Model Generator](https://github.com/ballerina-platform/ballerina-dev-tools/issues?q=is%3Aissue+milestone%3A2201.6.0+is%3Aclosed+label%3AArea%2FArchitectureModelGenerator+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

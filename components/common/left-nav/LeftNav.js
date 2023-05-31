@@ -52,6 +52,11 @@ export default function LeftNav(props) {
     }
   }
 
+  function goto(url) {
+    window.location.href=url;
+    //document.querySelectorAll('[item-id=' + "\'" + id + "\'" + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
+  }
+
 
 
   const SortedDir = Elements.sort(comparePositions);
@@ -59,19 +64,35 @@ export default function LeftNav(props) {
   function MainDir(props) {
     let category = props.category;
 
+    //if (category.isDir && category.position > 0) {
+
     return <Accordion.Item eventKey={category.id} className={styles.acItem}>
-      <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} item-id={category.id}>{category.dirName}</Accordion.Header>
-      <Accordion.Body className={styles.accordionBody}>
-        <ul className={styles.firstTier}>
-          {
-            (category.subDirectories) ?
-              <Accordion defaultActiveKey={sub}>
-                <SubDir directories={category.subDirectories} activeKey={sub} />
-              </Accordion>
-              : null
-          }
-        </ul>
-      </Accordion.Body>
+      
+      {
+        (category.isDir) ?
+          <>
+          <Accordion.Header className={styles.mainDir} onClick={() => CheckActive(category.id)} item-id={category.id}>{category.dirName}</Accordion.Header> 
+          <Accordion.Body className={styles.accordionBody}>
+            <ul className={styles.firstTier}>
+              {
+                (category.subDirectories) ?
+                  <Accordion defaultActiveKey={sub}>
+                    <SubDir directories={category.subDirectories} activeKey={sub} />
+                  </Accordion>
+                  : null
+              }
+            </ul>
+          </Accordion.Body>
+          </>
+        : <h2 item-id={category.id} className={`${styles.mainDir} accordion-header`}>
+            <button  
+              className={(id === category.id) ? `${styles.nonAcBtn} ${styles.active}` : `${styles.nonAcBtn}`} 
+              onClick={() => goto(category.url)}>
+              {category.dirName}
+            </button>
+          </h2>
+      }
+      
     </Accordion.Item>;
   }
 

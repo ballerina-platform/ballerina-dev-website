@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing, test setup
 permalink: /learn/test-ballerina-code/configure-tests/
 active: configure-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.
-redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/configuring-tests/
-- /swan-lake/learn/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-test/
-- /learn/test-ballerina-code/configure-tests
-- /learn/guides/testing-ballerina-code/configuring-tests/
-- /learn/guides/testing-ballerina-code/configuring-tests
 ---
 
 ## Set up and tearing down
@@ -269,6 +252,22 @@ test is run.
 @test:Config {after: testFunction3}
 function testFunction2() {
     io:println("I'm in test function 2!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
+## Ensure test execution order
+
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
+upon.
+This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+
+***Example:***
+
+```ballerina
+@test:Config {dependsOn: [testFunction4]}
+function testFunction5() {
+    io:println("I'm in test function 5!");
     test:assertTrue(true, msg = "Failed!");
 }
 ```

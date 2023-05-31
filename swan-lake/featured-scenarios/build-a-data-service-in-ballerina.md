@@ -6,20 +6,13 @@ keywords: ballerina, data service, mysql, database, REST, API
 permalink: /learn/build-a-data-service-in-ballerina/
 active: build-a-data-service
 intro: This guide helps you understand the basics of Ballerina constructs, which allow you to work with data services.
-
-redirect_from:
- - /learn/building-a-data-service-in-ballerina
- - /learn/building-a-data-service-in-ballerina/
- - /learn/build-a-data-service-in-ballerina
- - /learn/getting-started/building-a-data-service-in-ballerina/
- - /learn/getting-started/building-a-data-service-in-ballerina
 ---
 
 ## Set up the prerequisites
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
 2. A text editor
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
   <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.

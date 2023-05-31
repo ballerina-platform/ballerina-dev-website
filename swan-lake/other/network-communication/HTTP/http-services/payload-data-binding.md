@@ -6,20 +6,11 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/payload-data-binding/
 active: payload-data-binding
 intro: The HTTP service resource payloads can be directly data bound to the resource method parameters.
-redirect_from:
-  - /learn/network-communication/http/http-services/payload-data-binding
-  - /swan-lake/learn/network-communication/http/http-services/payload-data-binding/
-  - /swan-lake/learn/network-communication/http/http-services/payload-data-binding
-  - /learn/network-communication/http/http-services/payload-data-binding/
-  - /learn/network-communication/http/http-services/payload-data-binding
-  - /learn/user-guide/network-communication/http/http-services/payload-data-binding
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Using the annotation
 
-To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://docs.central.ballerina.io/ballerina/http/latest/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
+To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://lib.ballerina.io/ballerina/http/latest/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
 
 ## Example
 

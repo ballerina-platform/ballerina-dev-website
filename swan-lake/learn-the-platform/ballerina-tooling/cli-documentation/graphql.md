@@ -6,8 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/cli-documentation/graphql/
 active: graphql
 intro: The sections below include information about the usages of the Ballerina GraphQL tool.
-redirect_from:
-  - /learn/cli-documentation/graphql
 ---
 
 ## GraphQL to Ballerina 

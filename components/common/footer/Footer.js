@@ -47,11 +47,6 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a className={styles.footerLinkSM} href="https://groups.google.com/g/ballerina-dev" target="_blank" rel="noreferrer" passHref title="Google Groups">
-                          <Image src={`${prefix}/images/google-group-grey.svg`} width={17} height={17} alt="Google Groups" />
-                        </a>
-                      </li>
-                      <li>
                         <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
                           <Image src={`${prefix}/images/discord-grey.svg`} width={17} height={17} alt="Discord" />
                         </a>

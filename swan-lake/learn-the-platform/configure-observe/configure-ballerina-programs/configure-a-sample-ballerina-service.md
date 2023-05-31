@@ -6,32 +6,6 @@ keywords: ballerina, programming language, configurable, variables
 permalink: /learn/configure-ballerina-programs/configure-a-sample-ballerina-service/
 active: configure-a-sample-ballerina-service/
 intro: Configurability enables users to modify the system behavior through external user inputs. Ballerina Language provides an in-built functionality to configure values at runtime through configurable  module-level variables.
-redirect_from:
-- /learn/user-guide/configurability/defining-configurable-variables
-- /learn/user-guide/configurability/defining-configurable-variables/
-- /learn/user-guide/configurability/
-- /learn/user-guide/configurability
-- /learn/making-ballerina-programs-configurable/
-- /learn/making-ballerina-programs-configurable
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables
-- /learn/user-guide/configurability/trying-it-out
-- /learn/user-guide/configurability/trying-it-out/
-- /learn/making-ballerina-programs-configurable/trying-it-out
-- /learn/making-ballerina-programs-configurable/trying-it-out/
-- /learn/making-ballerina-programs-configurable/trying-out-configurability
-- /learn/configuring-ballerina-programs
-- /learn/configuring-ballerina-programs/
-- /learn/configure-ballerina-programs/
-- /learn/configure-ballerina-programs
-- /learn/configuring-ballerina-programs/quick-start-on-configurable-variables
-- /learn/configuring-ballerina-programs/quick-start-on-configurable-variables/
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables/
-- /learn/making-ballerina-programs-configurable/defining-configurable-variables
-- /learn/configure-ballerina-programs/quick-start-on-configurable-variables/ 
-- /learn/configure-ballerina-programs/quick-start-on-configurable-variables
-- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables/
-- /learn/guides/configuring-ballerina-programs/quick-start-on-configurable-variables
-- /learn/configure-ballerina-programs/configure-a-sample-ballerina-service
 ---
 
 Consider the following step-by-step guide to configuring a Ballerina package that contains an HTTP service.

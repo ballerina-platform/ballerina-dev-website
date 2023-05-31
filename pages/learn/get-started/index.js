@@ -22,7 +22,6 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { Liquid } from "liquidjs";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -30,7 +29,6 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import Toc from "../../../components/common/pg-toc/Toc";
 import LearnToc from "../../../utils/learn-lm.json";
-import SwanLake from "../../../_data/swanlake-latest/metadata.json";
 import { highlight } from "../../../utils/highlighter";
 
 String.prototype.hashCode = function () {
@@ -45,55 +43,12 @@ String.prototype.hashCode = function () {
   return hash;
 }
 
-var traverseFolder = function (dir) {
-  var results = [];
-  var list = fs.readdirSync(dir);
-  list.forEach(function (file) {
-    var filex = dir + "/" + file;
-    var stat = fs.statSync(filex);
-    if (stat && stat.isDirectory()) {
-      /* Recurse into a subdirectory */
-      results = results.concat(traverseFolder(filex));
-    } else {
-      /* Is a file */
-      filex = filex.replace(/swan-lake\/get-started\//g, "");
-      results.push(filex);
-    }
-  });
-  return results;
-};
 
-export async function getStaticPaths() {
-  // Retrieve all our slugs
-  const files = traverseFolder("swan-lake/get-started");
-  const paths = files.map((fileName) => ({
-    params: {
-      slug: fileName.replace(".md", "").split("/"),
-    },
-  }));
+export async function getStaticProps() {
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
-  const id = slug[slug.length - 1];
-  let sub = "";
-  let third = "";
-  if (slug.length == 2) {
-    sub = slug[slug.length - 2];
-  }
-  if (slug.length == 3) {
-    sub = slug[slug.length - 3];
-    third = slug[slug.length - 2];
-  }
-
-  slug = slug.join("/");
-  const fileName = fs.readFileSync(`swan-lake/get-started/${slug}.md`, "utf-8");
+  const fileName = fs.readFileSync(`swan-lake/get-started/get-started.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-
+  const id = "get-started";
   let codes = await highlight(content);
 
   return {
@@ -101,9 +56,6 @@ export async function getStaticProps({ params: { slug } }) {
       frontmatter,
       content,
       id,
-      sub,
-      third,
-      slug,
       codes
     },
   };
@@ -115,38 +67,10 @@ export default function PostPage({
   id,
   sub,
   third,
-  slug,
   codes
 }) {
 
-  // Update values in markdown files
-  const engine = new Liquid();
-  const AddLiquid = (content) => {
-    const [newContent, setNewContent] = React.useState("");
-    const md = engine.parse(content);
-    engine
-      .render(md, {
-        v: "Liquid",
-        "windows-installer-size": SwanLake["windows-installer-size"],
-        dist_server: process.env.distServer,
-        version: SwanLake.version,
-        "windows-installer": SwanLake["windows-installer"],
-        "linux-installer": SwanLake["linux-installer"],
-        "linux-installer-size": SwanLake["linux-installer-size"],
-        "rpm-installer": SwanLake["rpm-installer"],
-        "rpm-installer-size": SwanLake["rpm-installer-size"],
-        "macos-installer": SwanLake["macos-installer"],
-        "macos-installer-size": SwanLake["macos-installer-size"],
-        "macos-arm-installer": SwanLake["macos-arm-installer"],
-        "macos-arm-installer-size": SwanLake["macos-arm-installer-size"],
-        "other-artefacts": SwanLake["other-artefacts"],
-      })
-      .then((md) => {
-        setNewContent(md);
-      });
-    return newContent;
-  };
-
+  
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
@@ -229,7 +153,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/get-started/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/get-started/get-started.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"
@@ -247,7 +171,7 @@ export default function PostPage({
             <p className="intro">{frontmatter.intro}</p>
 
             <MainContent
-              content={AddLiquid(content)}
+              content={content}
               handleToc={handleToc}
               codes={codes} />
 

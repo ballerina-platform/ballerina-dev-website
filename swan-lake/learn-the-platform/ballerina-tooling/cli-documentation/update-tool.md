@@ -183,7 +183,8 @@ Swan Lake channel
 
 1.* channel
 
-  1.2.38 - latest
+  1.2.39 - latest
+  1.2.38
   1.2.37
   1.2.36
   1.2.35
@@ -218,7 +219,7 @@ Downloading 2201.6.0 100% [=====================================================
 Fetching the dependencies for '2201.6.0' from the remote server...
 Dependency 'jdk-11.0.18+10-jre' is already available locally
 Successfully set the distribution '2201.6.0' as the active distribution
-```
+```git
 
 ### Pull a specific distribution
 

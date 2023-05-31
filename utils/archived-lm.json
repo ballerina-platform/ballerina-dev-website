@@ -23,6 +23,17 @@
                     "id": "swan-lake-api-docs"
                 },
                 {
+<<<<<<< HEAD
+=======
+                    "dirName": "2201.5.0",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.5.0",
+                    "id": "2201.5.0v"
+                },
+                {
+>>>>>>> 6dca06cc00f7c814a9e62a3bc49d21b95e225469
                     "dirName": "2201.4.2",
                     "level": 2,
                     "position": 1,
@@ -376,6 +387,14 @@
                     "isDir": false,
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
+                },
+                {
+                    "dirName": "1.2.39",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.39",
+                    "id": "1.2.39v"
                 },
                 {
                     "dirName": "1.2.38",

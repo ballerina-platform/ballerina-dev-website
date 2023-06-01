@@ -143,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/eda-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -151,7 +151,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/eda-sm-banner.png"
         />
       </Head>
 

@@ -5,8 +5,7 @@ description: Describe how to model your application data and use the tool to gen
 keywords: ballerina, data service, data store, database, in-memory, google sheets, REST, API
 permalink: /learn/manage_data_persistence-with-bal-persist/
 active: manage_data_persistence-with-bal-persist
-intro: This guide helps you understand the basics of the bal persist, which allows you to manage data persistence easily. This same data service is also written using the Ballerina SQL connectors, which required you to write SQL queries to perform CRUD operations against the DB servers. With the Bal persist feature, you only need to write the `Data Model`. Based on the model, the client object and record types are generated to interact with the data store.
-
+intro: This guide helps you understand the basics of the `bal persist` feature, which allows you to manage data persistence easily. This same data service is also written using the Ballerina SQL connectors, which require you to write SQL queries to perform CRUD operations against the DB servers. With the `bal persist` feature, you only need to write the `Data Model`. Based on the model, the client object and record types are generated to interact with the data store.
 redirect_from:
 - /learn/manage-data-persistence-with-bal-persist/
 - /learn/manage-data-persistence-with-bal-persist
@@ -31,7 +30,7 @@ This tutorial describes how to interact with the data store and perform operatio
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
->**Info:** In this tutorial, we use an in-memory data store for simplicity. However, the methodology described here can also be applied to work with MySQL and Google Sheets as the Ballerina persist currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
+>**Info:** In this tutorial, we use an in-memory data store for simplicity. However, the methodology described here can also be applied to work with MySQL and Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
 
 ## Create a Ballerina package
 
@@ -80,13 +79,14 @@ datastore = "inmemory"
 module = "rainier.store"
 ```
 
-These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change it, remove these configurations from the Ballerina.toml file and reinitialize the bal persist.
+
+These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change it, remove these configurations from the `Ballerina.toml` file and reinitialize the `bal persist`.
 
 The next step is to define your data model in the schema file at `persist/model.bal`.
 
 ## Model your data
 
-The data model can be defined in the schema file inside persist directory. You can use the empty file added by the `persist init` command for this.
+The data model can be defined in the schema file inside the `persist` directory. You can use the empty file added by the `persist init` command for this.
 
 For more information on defining a data model, refer to the [Data Model Definition](learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
 Once defined, the schema file looks like this.
@@ -107,8 +107,7 @@ public type Employee record {|
 |};
 ```
 
-This model is used to set up the underline datastore (e.g.: set up the tables in the underlying database), and also as the base for the generated client APIs
-The next step is to generate the Ballerina Client Object, Types, and Scripts. You can then start querying your database.
+This model is used to set up the underline datastore (e.g., set up the tables in the underlying database) and also as the base for the generated client APIs
 
 ## Generate the client object, types, and scripts
 
@@ -118,7 +117,7 @@ Now you can generate the client objects, types, and SQL scripts for your model b
 $ bal persist generate
 ```
 
-This changes the Ballerina package like below,
+This changes the Ballerina package as follows.
 
 ```
 ├── rainier
@@ -133,7 +132,7 @@ This changes the Ballerina package like below,
     
 ```
 
-The `persist generate` will parse the `persist/model.bal` definition file and generate the following
+The `persist generate` will parse the `persist/model.bal` definition file and generate the following.
 
 |         File          |                                         Description                                         |
 |:---------------------:|:-------------------------------------------------------------------------------------------:|
@@ -144,7 +143,7 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 > Note: All of the above auto-generated bal files should not be modified.
 
-> Note: If you use other data stores like MySQL or Google Sheets, additional files is created to handle runtime configurations and script to setup the database/worksheet. Since we are using `in-memory`, we don’t need any configuration and pre-setting up to run the application.
+> Note: If you use other data stores like MySQL or Google Sheets, additional files are created to handle runtime configurations and scripts to set up the database/worksheet. Since we are using `in-memory`, we don’t need any configuration and pre-setting up to run the application.
 
 ## Query your database with Persist Client
 
@@ -264,8 +263,8 @@ Running executable
 {"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
 ```
 
-You may notice that even there is a single `Employee` record, resource method returns a Ballerina stream object and we need to iterate through the stream to access the records.
-The client also provides the `get by key` method which returns only one record. Let’s explore that method.
+You may notice that even if there is a single `Employee` record, the resource method returns a Ballerina stream object and we need to iterate through the stream to access the records.
+The client also provides the `get by key` method, which returns only one record. Let’s explore that method.
 
 ### Retrieve the `Employee` record by key
 

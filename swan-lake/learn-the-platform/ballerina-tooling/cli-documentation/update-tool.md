@@ -86,9 +86,9 @@ You view the output below.
 
 ```bash
 Fetching the latest tool version from the remote server...
-Downloading ballerina-command-1.3.14 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00) 
+Downloading ballerina-command-1.3.15 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00) 
 Updating environment variables
-Update tool version updated to the latest version: 1.3.14
+Update tool version updated to the latest version: 1.3.15
 Cleaning old files...
 Update successfully completed
 
@@ -170,7 +170,8 @@ Distributions available remotely:
 
 Swan Lake channel
 
-* 2201.5.0 - latest
+* 2201.6.0 - latest
+  2201.5.0
   2201.4.2
   2201.4.1
   2201.4.0
@@ -179,7 +180,6 @@ Swan Lake channel
   2201.3.3
   2201.3.2
   2201.3.1
-  2201.3.0
 
 1.* channel
 

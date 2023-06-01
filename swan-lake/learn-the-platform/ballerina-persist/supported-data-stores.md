@@ -182,7 +182,7 @@ The `script.gs` file generated from the `persist generate` command can initiate 
 
 API tokens for the Google sheets can be obtained using the following procedure.
 1. Get the clientID and client secret using the [guidelines](https://developers.google.com/identity/protocols/oauth2).
-2. If you want to use [OAuth 2.0 playground](https://developers.google.com/oauthplayground) to receive the authorization code and obtain the access token and refresh token, Follow below steps.
+2. Follow the steps below to use the [OAuth 2.0 playground](https://developers.google.com/oauthplayground) to obtain an authorization code, an access token, and a refresh token.
    1. Go to the [OAuth 2.0 playground](https://developers.google.com/oauthplayground).
    2. Click the **Settings** icon ![settings icon](https://developers.google.com/oauthplayground/assets/images/settings.png) on the top right corner of the page.
    3. Select **Use your own OAuth credentials**.

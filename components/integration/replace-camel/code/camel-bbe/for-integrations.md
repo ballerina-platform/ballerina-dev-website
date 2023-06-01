@@ -1,32 +1,46 @@
 ---
 title: 'Language built for integrations'
 description: 'Ballerina excels with its first-class services, listeners, and clients, making integration capabilities central to its design. Build scalable integrations effortlessly, thanks to its strong type system and native support for JSON and XML. Experience the simplicity and readability of Ballerina for seamless integration development.'
-url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/gdrive-new-event-to-slack-message'
+url: 'https://github.com/xlight05/ballerina-scenarios/blob/main/blog_app/main.bal'
 ---
 ```
-service drive:DriveService on driveListener {
+configurable string slackToken = ?;
 
-    remote function onFileCreate(drive:Change changeInfo) returns error? {
-        slack:Message message = transform(changeInfo);
-        _ = check slackClient->postMessage(message);
+type Blog record {
+    string title;
+    string content;
+};
+
+Blog[] blogs = [];
+
+service /blog on new http:Listener(9090) {
+    slack:Client slackClient;
+
+    public function init() returns error? {
+        slack:ConnectionConfig slackConfig = {
+            auth: {
+                token: slackToken
+            }
+        };
+        self.slackClient = check new(slackConfig);
     }
 
-    remote function onFolderCreate(drive:Change changeInfo) returns error? {
+    resource function get .() returns Blog[] {
+        return blogs;
     }
 
-    remote function onFileUpdate(drive:Change changeInfo) returns error? {
+    resource function post .(@http:Payload Blog blog) returns error? {
+        future<error?> slackFuture = start self.notifySlack(blog);
+        blogs.push(blog);
+        check wait slackFuture;
     }
 
-    remote function onFolderUpdate(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onDelete(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFileTrash(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFolderTrash(drive:Change changeInfo) returns error? {
+    function notifySlack(Blog blog) returns error? {
+        slack:Message messageParams = {
+            channelName: "ss",
+            text: blog.title
+        };
+        _ = check self.slackClient->postMessage(messageParams);
     }
 }
 ```

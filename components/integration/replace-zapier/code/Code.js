@@ -472,7 +472,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* ipaas */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

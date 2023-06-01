@@ -82,7 +82,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (opensource.code && opensource.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -442,7 +442,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (community.code && community.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -562,7 +562,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (choreo.code && choreo.code !== '') ?
                                         <div className={styles.codeSnippet}>

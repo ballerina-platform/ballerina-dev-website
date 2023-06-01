@@ -388,7 +388,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (community.code && community.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -398,7 +398,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (community.frontmatter.image && community.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title} />
+                                        <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>
@@ -449,7 +449,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>    
                                 {
                                     (choreo.code && choreo.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -459,7 +459,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (choreo.frontmatter.image && choreo.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${choreo.frontmatter.image}`} alt={choreo.frontmatter.title} />
+                                        <img src={`${prefix}/${choreo.frontmatter.image}`} alt={choreo.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

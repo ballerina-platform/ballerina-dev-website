@@ -57,6 +57,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
+        source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
+        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
+      },
+      {
         source: `/${redirectBase}learn/get-started`,
         destination: `/${redirectBase}learn/get-started/get-started`,
       },
@@ -112,6 +116,26 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/ballerina-shell`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
+      },
+      {
+        source: `/${redirectBase}learn/overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/overview`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-cli`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-model`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-model`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-client-api`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-client-api`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-data-stores`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/supported-data-stores`,
       },
       {
         source: `/${redirectBase}learn/call-java-code-from-ballerina`,

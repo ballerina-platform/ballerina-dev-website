@@ -1,7 +1,7 @@
 ---
 title: 'Overcome DSL and XML hurdles with ease'
 description: 'Bid farewell to DSL complexities, XML, and workarounds. Embrace a programming language built for integrations, tailored for C-style language developers. With Ballerina, you can easily build custom components, unlocking even greater flexibility. Seamlessly build efficient integration solutions with confidence and ease, while experiencing effortless learning in the process.'
-url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/github-new-issue-assigned-to-trello-card-and-twilio-sms'
+url: 'https://github.com/xlight05/ballerina-scenarios/blob/main/xml_file_routing/main.bal'
 ---
 ```
 public function main() returns error? {

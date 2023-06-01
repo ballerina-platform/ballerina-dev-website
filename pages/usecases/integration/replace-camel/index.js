@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Next-Generation Integration: Elevating Integration to New Heights Beyond Apache Camel</title>
+        <title>Next-generation integration: elevating integration to new heights beyond apache camel</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />

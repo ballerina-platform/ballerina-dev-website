@@ -282,7 +282,7 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Ballerina persist</h3>
+            <h3>Bal persist</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>

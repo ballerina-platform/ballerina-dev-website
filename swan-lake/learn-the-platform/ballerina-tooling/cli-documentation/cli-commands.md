@@ -46,6 +46,7 @@ COMMANDS
 
    Package Commands:
         new             Create a new Ballerina package
+        init            Create a new Ballerina package in an existing directory
         add             Add a new Ballerina module to the current package
         pull            Pull a package from Ballerina Central
         push            Publish a package to Ballerina Central
@@ -155,6 +156,11 @@ Ballerina packages are the way to organize real-world Ballerina development task
 <tr>
 <td class="cCommand">new</td>
 <td class="cDescription">Create a Ballerina package. For more information, see <a href="/learn/get-started/#create-a-new-package">Create a new package</a>.
+</td>
+</tr>
+<tr>
+<td class="cCommand">init</td>
+<td class="cDescription">Create a new Ballerina package in the current directory.
 </td>
 </tr>
 <tr>

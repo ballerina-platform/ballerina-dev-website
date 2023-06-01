@@ -290,7 +290,7 @@ export default function Platform(props) {
                   Overview
                 </a>
               </p>
-              <p className={styles.description}>Details on how to simplify data persistence with `bal persist`.</p>
+              <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>
             </div>
 
             <div className={styles.content}>

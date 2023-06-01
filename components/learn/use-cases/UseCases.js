@@ -88,11 +88,10 @@ export default function UseCases(props) {
                   <Row>
                     <Col xs={12} lg={8}>
                       <p className={styles.title}>Manage data persistence with bal persist</p>
-                      <p className={styles.description}>Use `bal persist` to simplify data persistence management.</p>
-
+                      <p className={styles.description}>Use <code>bal persist</code> to simplify data persistence management.</p>
                     </Col>
                     <Col xs={12} lg={4}>
-                      <img src={`${prefix}/images/grpc.svg`} alt="Position Ballerina" />
+                      <img src={`${prefix}/images/data-persistent-icon.svg`} alt="Position Ballerina" />
                     </Col>
 
                   </Row>

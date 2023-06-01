@@ -125,7 +125,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/search-weather-data-to-twilio-sms" className={styles.cDownload}>
-                                        See Sample: Search weather data and send as SMS
+                                        See Sample: Search weather data and send it as SMS
                                     </a>
                                 </div>
                             </div>

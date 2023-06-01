@@ -1,50 +1,50 @@
 ---
 title: 'Better security'
 description: 'Ballerina provides robust security features such as encryption, authentication, and authorization, which are essential for businesses dealing with sensitive data.'
-url: 'https://github.com/anupama-pathirage/ballerina-scenarios/tree/main/ballerina-zapier-samples/gdrive-new-event-to-slack-message'
+url: 'https://github.com/anupama-pathirage/ballerina-scenarios/blob/main/ballerina-zapier-samples/github-summary-via-secure-service/main.bal'
 ---
 ```
-import ballerinax/trigger.google.drive;
-import ballerinax/slack;
-
 // Configurability enables users to modify the system behavior through
-// external user inputs in a secure way.
-// Clients and services supports different authentication mechanisms.
-configurable string slackToken = ?;
-configurable string slackChannel = ?;
-final slack:Client slackClient = check new ({auth: {token: slackToken}});
+// external inputs in a secure way.
+configurable string githubPAT = ?;
+configurable string githubRepo = "ballerina-platform/ballerina-lang";
+configurable string pulicCertPath = ?;
+configurable string privateKeyPath = ?;
 
-configurable drive:ListenerConfig driveListenerConfig = ?;
-listener drive:Listener driveListener = new (driveListenerConfig);
+type PR record {
+    string url;
+    string title;
+    string state;
+};
 
-service drive:DriveService on driveListener {
+type PRSummary record {|
+    string url;
+    string title;
+|};
 
-    remote function onFileCreate(drive:Change changeInfo) returns error? {
-        slack:Message message = transform(changeInfo);
-        _ = check slackClient->postMessage(message);
+final http:Client github = check new ("https://api.github.com/repos");
+final map<string> headers = {
+    "Accept": "application/vnd.github.v3+json",
+    "Authorization": "token " + githubPAT
+};
+
+//The http:Listener can be configured to communicate through 
+//HTTPS by providing a certificate file and a private key file.
+listener http:Listener securedEP = new (9090,
+    secureSocket = {
+        key: {
+            certFile: pulicCertPath,
+            keyFile: privateKeyPath
+        }
     }
+);
 
-    remote function onFolderCreate(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFileUpdate(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFolderUpdate(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onDelete(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFileTrash(drive:Change changeInfo) returns error? {
-    }
-
-    remote function onFolderTrash(drive:Change changeInfo) returns error? {
+service / on securedEP {
+    resource function get pr(string status) returns PRSummary[]|error {
+        PR[] prs = check github->/[githubRepo]/pulls(headers);
+        return from var {url, title, state} in prs
+            where state == status
+            select {url, title};
     }
 }
-
-function transform(drive:Change change) returns slack:Message => {
-    channelName: slackChannel,
-    text: string `New file ${change.file?.name ?: ""} added at ${change.time ?: ""} .`
-};
 ```

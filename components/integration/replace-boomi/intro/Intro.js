@@ -34,7 +34,7 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                    Why hassle with Integration Editions or sales representatives to get started?
+                                    Why hassle with integration editions or sales representatives to get started?
                                 </p>
 
                                 <p className={styles.introText3}>

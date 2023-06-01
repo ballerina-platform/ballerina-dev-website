@@ -104,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Unleash Integration Excellence, Your Way - Ballerina, the Smart Choice Over Dell Boomi</title>
+        <title>Unleash integration excellence, your way - Ballerina, the smart choice over Dell Boomi</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Unleash Integration Excellence, Your Way - Ballerina, the Smart Choice Over Dell Boomi" />
+        <meta property="og:title" content="Unleash integration excellence, your way - Ballerina, the smart choice over Dell Boomi" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Unleash Integration Excellence, Your Way - Ballerina, the Smart Choice Over Dell Boomi</h1>
+                <h1>Unleash integration excellence, your way - Ballerina, the smart choice over Dell Boomi</h1>
               </Container>
 
             </Col>

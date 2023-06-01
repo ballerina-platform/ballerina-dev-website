@@ -30,14 +30,15 @@ export default function UseCases(props) {
 
     const samples = props.samples;
     const opensource = samples['free-and-opensource'];
-    const edi = samples['edi_integration'];
+    const edi = samples['edi-integration'];
     const workflow = samples['seamless-workflow'];
     const anything = samples['connect-with-anything'];
     const diagram = samples['diagram-when-you-need'];
-    const cloud = samples['cloud-language'];
+    const cloud = samples['cloud-integration-made-easy'];
     const scalability = samples['greater-scalability-flexibility-and-customization'];
     const community = samples['community-driven-development'];
     const choreo = samples['effortless-host'];
+
     return (
         <>
             {/* opensource */}
@@ -81,7 +82,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
                                 {
                                     (opensource.code && opensource.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -106,7 +107,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='edi_integration' className='section'>
+                                <h2 id='edi-integration' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -114,7 +115,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'edi_integration')}
+                                        onClick={(e) => props.getLink(e.target, 'edi-integration')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -141,7 +142,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
                                 {
                                     (edi.code && edi.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -286,7 +287,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='cloud-language' className='section'>
+                                <h2 id='cloud-integration-made-easy' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -294,7 +295,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'cloud-language')}
+                                        onClick={(e) => props.getLink(e.target, 'cloud-integration-made-easy')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -321,7 +322,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
                                 {
                                     (cloud.code && cloud.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -441,7 +442,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
                                 {
                                     (community.code && community.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -551,9 +552,9 @@ export default function UseCases(props) {
                                     {
                                         (choreo.frontmatter.url && choreo.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={transactions.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
+                                                <a href={choreo.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                                    Get started with WSO2 Choreo iPaaS for free
                                                 </a>
                                             </div>
                                             : null
@@ -561,7 +562,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
                                 {
                                     (choreo.code && choreo.code !== '') ?
                                         <div className={styles.codeSnippet}>

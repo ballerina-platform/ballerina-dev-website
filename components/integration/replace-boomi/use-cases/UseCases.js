@@ -52,7 +52,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                             <div>
-                                <h3>Application Integration</h3>
+                                <h3>Application integration</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina offers an extensive array of connectors and triggers, enabling effortless interaction with various cloud applications and platforms.</p>
 
@@ -69,7 +69,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Data Integration</h3>
+                                <h3>Data integration</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina encompasses robust tools for efficient data transformation, filtering, and manipulation, enabling seamless data integration.</p>
                                 </div>
@@ -85,7 +85,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>API Integration</h3>
+                                <h3>API integration</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina provides a powerful and intuitive framework for creating, testing and launching APIs leveraging the concept of services.</p>
                                 </div>

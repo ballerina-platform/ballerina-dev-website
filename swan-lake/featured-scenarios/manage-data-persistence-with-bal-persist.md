@@ -6,7 +6,6 @@ keywords: ballerina, data service, data store, database, in-memory, google sheet
 permalink: /learn/manage_data_persistence-with-bal-persist/
 active: manage_data_persistence-with-bal-persist
 intro: This guide helps you understand the basics of the bal persist, which allows you to manage data persistence easily. This same data service is also written using the Ballerina SQL connectors, which require you to write SQL queries to perform CRUD operations against the DB servers. With the Bal persist feature, you only need to write the `Data Model`. Based on the model, the client object and record types are generated to interact with the data store.
-
 redirect_from:
 - /learn/manage-data-persistence-with-bal-persist/
 - /learn/manage-data-persistence-with-bal-persist
@@ -80,6 +79,7 @@ datastore = "inmemory"
 module = "rainier.store"
 ```
 
+
 These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change it, remove these configurations from the `Ballerina.toml` file and reinitialize the bal persist.
 
 The next step is to define your data model in the schema file at `persist/model.bal`.
@@ -108,7 +108,6 @@ public type Employee record {|
 ```
 
 This model is used to set up the underline datastore (e.g., set up the tables in the underlying database) and also as the base for the generated client APIs
-The next step is to generate the Ballerina Client Object, Types, and Scripts. You can then start querying your database.
 
 ## Generate the client object, types, and scripts
 

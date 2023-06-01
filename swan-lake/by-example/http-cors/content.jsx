@@ -75,7 +75,7 @@ export function HttpCors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c6a3515198eef00bec9e0b4f3e83945&file=http_cors.bal",
+                "https://play.ballerina.io/?gist=4ddd73010b342f9fec4c61f0bf209cac&file=http_cors.bal",
                 "_blank"
               );
             }}

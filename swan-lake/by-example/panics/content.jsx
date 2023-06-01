@@ -71,7 +71,7 @@ export function Panics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=570e7503dcbc2c09a193f3cb46a6be90&file=panics.bal",
+                "https://play.ballerina.io/?gist=af0c5c05d6e83cdc692baeca246fdd72&file=panics.bal",
                 "_blank"
               );
             }}

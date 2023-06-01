@@ -39,7 +39,7 @@ export function HelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9d05d9a24b5cc09cd8df574ba0a0e71b&file=hello_world.bal",
+                "https://play.ballerina.io/?gist=5dde1508d35d1417083be83104e0ec2b&file=hello_world.bal",
                 "_blank"
               );
             }}

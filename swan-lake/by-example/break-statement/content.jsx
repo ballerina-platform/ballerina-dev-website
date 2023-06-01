@@ -59,7 +59,7 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b78078ed01a0e4a12757ee46ad141dd9&file=break_statement.bal",
+                "https://play.ballerina.io/?gist=1af5551ff5c3b4df17efdc6edb859913&file=break_statement.bal",
                 "_blank"
               );
             }}

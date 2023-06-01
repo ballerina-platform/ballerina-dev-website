@@ -63,7 +63,7 @@ export function HttpClientChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d9881773ae4cff99d3e193609c0c8d1&file=http_restrict_by_media_type.bal",
+                "https://play.ballerina.io/?gist=4c7b9ca212885784875ffbc4dd9bd0dd&file=http_client_chunking.bal",
                 "_blank"
               );
             }}

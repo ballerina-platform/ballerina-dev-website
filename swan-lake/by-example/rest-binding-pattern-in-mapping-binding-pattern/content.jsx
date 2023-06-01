@@ -72,7 +72,7 @@ export function RestBindingPatternInMappingBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=85e119c0f9634947b0186a470e1f96b8&file=rest_binding_pattern_in_mapping_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=8b9174a8f1447da5310e27237f118771&file=rest_binding_pattern_in_mapping_binding_pattern.bal",
                 "_blank"
               );
             }}

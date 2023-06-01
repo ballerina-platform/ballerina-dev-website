@@ -64,7 +64,7 @@ export function ObjectTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8543627ae14c99eaca608ad075cb2985&file=object_types.bal",
+                "https://play.ballerina.io/?gist=20eb32c57bcda725dad42502146dff78&file=object_types.bal",
                 "_blank"
               );
             }}

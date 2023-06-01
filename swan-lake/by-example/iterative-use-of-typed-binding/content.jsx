@@ -78,7 +78,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3dbbea7a8578e11c6c6fc08884b3d067&file=iterative_use_of_typed_binding.bal",
+                "https://play.ballerina.io/?gist=bc2d9896f417239b589c6f1c0ba1f7b2&file=iterative_use_of_typed_binding.bal",
                 "_blank"
               );
             }}

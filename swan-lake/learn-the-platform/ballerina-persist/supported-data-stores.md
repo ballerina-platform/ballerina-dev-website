@@ -178,7 +178,7 @@ The `script.gs` file generated from the `persist generate` command can initiate 
 4. Click the Deploy button to Deploy the project as a Web Application.
 5. Click on the Run button to execute the selected function.
 
-### How to obtain Google API tokens
+#### How to obtain Google API tokens
 
 API tokens for the Google sheets can be obtained using the following procedure.
 1. Get the clientID, and client secret using the code following [guidelines](https://developers.google.com/identity/protocols/oauth2).

@@ -59,7 +59,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b1437db3ec25a79f9c9deac0e2258305&file=http_load_balancer.bal",
+                "https://play.ballerina.io/?gist=f44b9d22807c73ae892cc307e20e5c92&file=http_load_balancer.bal",
                 "_blank"
               );
             }}

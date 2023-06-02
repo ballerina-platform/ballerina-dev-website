@@ -1,0 +1,20 @@
+{
+  "title": "Update",
+  "description": "This BBE demonstrates the usage of put resource method in generated persistence client to update the record in the data store.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "put",
+    "select",
+    "entity"
+  ],
+  "permalink": "/learn/by-example/persist-update",
+  "active": "persist-update",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-update",
+    "/swan-lake/learn/by-example/persist-update.html"
+  ]
+}

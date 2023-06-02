@@ -410,10 +410,7 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Serialization/Deserialization"
-            href="/learn/by-example/serdes-simple"
-          >
+          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -422,7 +419,7 @@ export function MysqlCallStoredProcedures({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Serialization/Deserialization
+                  Read/write bytes
                 </span>
               </div>
               <svg

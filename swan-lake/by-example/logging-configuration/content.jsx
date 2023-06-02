@@ -265,7 +265,10 @@ export function LoggingConfiguration({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="File paths" href="/learn/by-example/filepaths">
+          <Link
+            title="EDI to record conversion"
+            href="/learn/by-example/edi-to-record"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +277,7 @@ export function LoggingConfiguration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File paths
+                  EDI to record conversion
                 </span>
               </div>
               <svg

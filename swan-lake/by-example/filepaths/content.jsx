@@ -79,7 +79,7 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=28f4200d528b51953ec58356514e0484&file=filepaths.bal",
+                "https://play.ballerina.io/?gist=a69f00e102de8dbffbf4a6969cd0da00&file=http_failover.bal",
                 "_blank"
               );
             }}
@@ -264,8 +264,8 @@ export function Filepaths({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Configure logging"
-            href="/learn/by-example/logging-configuration"
+            title="Record to EDI conversion"
+            href="/learn/by-example/record-to-edi"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -292,7 +292,7 @@ export function Filepaths({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Configure logging
+                  Record to EDI conversion
                 </span>
               </div>
             </div>

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
 title: Persist Client API
-description: The sections gives details on the generated Persist Client API.
+description: The sections give details on the generated Persist Client API.
 keywords: ballerina, programming language, ballerina packages, persist, persist client, persist client api
 permalink: /learn/ballerina-persist/persist-client-api/
 active: persist_client_api
@@ -14,7 +14,7 @@ redirect_from:
 
 Ballerina record types used in the generated clients are derived from the entity types defined in the data model.
 
-Example of a defined entity,
+Below is an example of a defined entity.
 ```ballerina
 type Workspace record {|
     readonly string id;
@@ -24,7 +24,7 @@ type Workspace record {|
 |};
 ```
 
-There are six types of derived entity types:
+There are six derived entity types as follows
 1. Entity Types  
     These are the types defined in the data model. These are used to indicate the data structure in the data source. The entity who is the association parent will include the foreign key field(s).
     ```ballerina

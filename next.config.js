@@ -118,12 +118,12 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
       },
       {
-        source: `/${redirectBase}learn/overview`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/overview`,
+        source: `/${redirectBase}learn/bal-persist-overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/bal-persist-overview`,
       },
       {
-        source: `/${redirectBase}learn/persist-cli`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli`,
+        source: `/${redirectBase}learn/persist-cli-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli-tool`,
       },
       {
         source: `/${redirectBase}learn/persist-model`,

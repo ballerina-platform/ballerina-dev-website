@@ -286,8 +286,8 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/overview`} className={styles.titleLink}>
-                  Overview
+                <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
+                  Bal persist overview
                 </a>
               </p>
               <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>
@@ -296,7 +296,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
-                  Persist model
+                  Persist Model
                 </a>
               </p>
               <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
@@ -304,8 +304,8 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/persist-cli`} className={styles.titleLink}>
-                  Persist CLI
+                <a href={`${prefix}/learn/persist-cli-tool`} className={styles.titleLink}>
+                  Persist CLI tool
                 </a>
               </p>
               <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
@@ -314,7 +314,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
-                  Persist client API
+                  Persist Client API
                 </a>
               </p>
               <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>

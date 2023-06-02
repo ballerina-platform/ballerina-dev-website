@@ -63,5 +63,3 @@ stream<Employee, error?> employees = sClient->/employees;
 ```
 
 Learn more about persist client APIs in the [Persist Client API](/learn/persist-client-api/) section.
-
-If you want to get started with a practical introduction and learn about `bal persist`, head over to the [Quick Start Guide](quick-tour.md) section.

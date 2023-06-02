@@ -282,11 +282,11 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Ballerina persist</h3>
+            <h3>Bal persist</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/persist-overview`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/overview`} className={styles.titleLink}>
                   Overview
                 </a>
               </p>

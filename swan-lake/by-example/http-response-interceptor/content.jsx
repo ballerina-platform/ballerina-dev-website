@@ -68,18 +68,26 @@ export function HttpResponseInterceptor({ codeSnippets }) {
 
       <p>
         The <code>http:ResponseInterceptor</code> is used to intercept the
-        response and execute some custom logic. A{" "}
-        <code>ResponseInterceptor</code> is a service object with a remote
-        method called <code>interceptResponse</code>, which is executed before
-        dispatching the response to the client. A{" "}
-        <code>ResponseInterceptor</code> can be created from a service class,
-        which includes the <code>http:ResponseInterceptor</code> service type.
-        Then, this service object can be engaged at the listener level or
-        service level by using the <code>interceptors</code> field in the
-        configurations. This field accepts an array of interceptor service
-        objects as an interceptor pipeline, and the interceptors are executed in
-        the order in which they are placed in the pipeline. Use{" "}
-        <code>ResponseInterceptors</code> to execute some common logic such as
+        response and execute custom logic. A <code>ResponseInterceptor</code> is
+        a service object with a remote method called{" "}
+        <code>interceptResponse</code>, which is executed before dispatching the
+        response to the client. A <code>ResponseInterceptor</code> can be
+        created from a service class, which includes the{" "}
+        <code>http:ResponseInterceptor</code> service type.
+      </p>
+
+      <p>
+        This service object can be engaged at the listener level by using the{" "}
+        <code>interceptors</code> field in the{" "}
+        <code>http:ListenerConfiguration</code> or at the service level by
+        declaring a <code>http:InterceptableService</code> object. These accept
+        an interceptor service object or an array of interceptor service objects
+        as an interceptor pipeline and the interceptors are executed in the
+        order in which they are placed in the pipeline.
+      </p>
+
+      <p>
+        Use <code>ResponseInterceptors</code> to execute common logic such as
         logging, header manipulation, state publishing, etc., for all outbound
         responses.
       </p>
@@ -94,7 +102,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1b157cbdece1c3aadc674f347b0e760b&file=http_response_interceptor.bal",
+                "https://play.ballerina.io/?gist=a69f00e102de8dbffbf4a6969cd0da00&file=http_failover.bal",
                 "_blank"
               );
             }}

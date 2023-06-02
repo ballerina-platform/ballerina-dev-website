@@ -1,0 +1,19 @@
+{
+  "title": "Delete",
+  "description": "This BBE demonstrates the usage of delete resource method in the generated persistence client to delete record from the data store.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "delete",
+    "entity"
+  ],
+  "permalink": "/learn/by-example/persist-delete",
+  "active": "persist-delete",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-delete",
+    "/swan-lake/learn/by-example/persist-delete.html"
+  ]
+}

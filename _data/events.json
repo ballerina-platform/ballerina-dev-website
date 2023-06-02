@@ -17,22 +17,6 @@
             "buttonText": "RSVP today"
         },
         {
-            "date": "May 31, 2023",
-            "day": "Wed.",
-            "time": "5.00 p.m. UTC",
-            "expire": "2023-06-01T00:00:00.0000-00:00",
-            "location": "Virtual",
-            "url": "https://www.twitch.tv/exercismlive",
-            "eventType": "Exercism - #12in23 Challenge",
-            "eventName": "Concurrency Abstractions in Ballerina",
-            "presenterTwitter": "https://twitter.com/B_Hinduja",
-            "presenter": "Hinduja Balasubramaniyam",
-            "presenterDesignation": "Senior Software Engineer, WSO2",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
-        },
-        {
             "date": "May 30, 2023",
             "day": "Tue.",
             "time": "3.30 p.m. UTC",
@@ -45,8 +29,8 @@
             "presenter": "Lakshan Weerasinghe",
             "presenterDesignation": "Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
+            "videoURL": "https://www.twitch.tv/videos/1833235135?t=0h1m13s",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 23, 2023",

@@ -286,7 +286,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/persist-overview`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/overview`} className={styles.titleLink}>
                   Overview
                 </a>
               </p>

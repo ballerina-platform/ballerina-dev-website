@@ -56,7 +56,7 @@ export function HttpClientPathParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d97eb789729e1d9de76001b14ee2646e&file=http_client_path_parameter.bal",
+                "https://play.ballerina.io/?gist=a2ed53a19eee5c99b070e53c7edffa68&file=http_client_path_parameter.bal",
                 "_blank"
               );
             }}
@@ -81,7 +81,7 @@ export function HttpClientPathParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-path-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-path-parameter",
                 "_blank"
               );
             }}

@@ -51,7 +51,7 @@ export function Boolean({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7113f1d9e8ee73fb5095e7e1bc0196b3&file=boolean.bal",
+                "https://play.ballerina.io/?gist=ed61fc68e429a573aecf9f72a05e63ee&file=boolean.bal",
                 "_blank"
               );
             }}
@@ -76,7 +76,7 @@ export function Boolean({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/boolean",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/boolean",
                 "_blank"
               );
             }}

@@ -82,7 +82,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=682605a089e53bc3611489f38467df7a&file=object_value_from_class_definition.bal",
+                "https://play.ballerina.io/?gist=121e6aafe976020f6e64f04d6af0c2e6&file=object_value_from_class_definition.bal",
                 "_blank"
               );
             }}
@@ -107,7 +107,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/object-value-from-class-definition",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/object-value-from-class-definition",
                 "_blank"
               );
             }}

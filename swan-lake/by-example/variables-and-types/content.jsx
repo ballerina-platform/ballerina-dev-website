@@ -48,7 +48,7 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=58ff3722cb215a9ed865e0f08b98f95e&file=variables_and_types.bal",
+                "https://play.ballerina.io/?gist=da69ac38b53bebb923469295ccdc54df&file=variables_and_types.bal",
                 "_blank"
               );
             }}
@@ -73,7 +73,7 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/variables-and-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/variables-and-types",
                 "_blank"
               );
             }}

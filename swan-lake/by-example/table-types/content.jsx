@@ -88,7 +88,7 @@ export function TableTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=136508950b1a1e5a7c6c95df67bdde05&file=table_types.bal",
+                "https://play.ballerina.io/?gist=742be34d9e5462524e9dc6be5af4e5b6&file=table_types.bal",
                 "_blank"
               );
             }}
@@ -113,7 +113,7 @@ export function TableTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/table-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/table-types",
                 "_blank"
               );
             }}

@@ -66,7 +66,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3920408b1700051782a43ac8b9f74551&file=http_service_data_binding.bal",
+                "https://play.ballerina.io/?gist=ea795dd7e26fd06f36e9a6c9fc9f7b2e&file=http_service_data_binding.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export function HttpServiceDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-service-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-data-binding",
                 "_blank"
               );
             }}

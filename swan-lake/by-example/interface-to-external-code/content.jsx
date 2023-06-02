@@ -64,7 +64,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ef99005b68decf323adb32980b88af8e&file=interface_to_external_code.bal",
+                "https://play.ballerina.io/?gist=aff2b4f6c0d8becd2a43069d64266b4e&file=interface_to_external_code.bal",
                 "_blank"
               );
             }}
@@ -89,7 +89,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/interface-to-external-code",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/interface-to-external-code",
                 "_blank"
               );
             }}

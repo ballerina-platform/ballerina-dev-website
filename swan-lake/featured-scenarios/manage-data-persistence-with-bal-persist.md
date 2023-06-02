@@ -51,7 +51,7 @@ This creates a directory named `rainier` with the files below.
 │   └── main.bal
 ```
 
-## Initialize bal persist in the project
+## Initialize `bal persist` in the project
 
 The `bal persist` initialization takes care of the basics needed to start the development. In the terminal, execute the command below to initialize `bal persist` in the Ballerina package.
 
@@ -61,7 +61,7 @@ $ bal persist init --module store
 
 Along with the `bal persist init` command, you can specify the `datastore` that you are going to use in the application and also the `module` that you need to add the generated code to. Both these parameters are optional. If you don’t provide them, the datastore will be set to `inmemory`, and the module will be set to `root` module by default.
 
-This changes the Ballerina package as follows,
+This changes the Ballerina package as follows.
 
 ```
 ├── rainier
@@ -71,7 +71,7 @@ This changes the Ballerina package as follows,
 │   └── main.bal
 
 ```
-And adds the following configuration to the `Ballerina.toml` file.
+it also adds the following configuration to the `Ballerina.toml` file.
 
 ```toml
 [persist]
@@ -80,16 +80,16 @@ module = "rainier.store"
 ```
 
 
-These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change it, remove these configurations from the `Ballerina.toml` file and reinitialize the `bal persist`.
+These configurations are referred to when generating client objects for the data model. The recommendation is not to change these values. If you want to change them, remove them from the `Ballerina.toml` file and reinitialize `bal persist`.
 
-The next step is to define your data model in the schema file at `persist/model.bal`.
+The next step is to define your data model in the schema file in the`persist/model.bal` file.
 
 ## Model your data
 
 The data model can be defined in the schema file inside the `persist` directory. You can use the empty file added by the `persist init` command for this.
 
-For more information on defining a data model, refer to the [Data Model Definition](learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
-Once defined, the schema file looks like this.
+For more information on defining a data model, see the [Data Model Definition](learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
+Once defined, the schema file will be as follows.
 
 ```ballerina
 import ballerina/persist as _;
@@ -107,11 +107,11 @@ public type Employee record {|
 |};
 ```
 
-This model is used to set up the underline datastore (e.g., set up the tables in the underlying database) and also as the base for the generated client APIs
+This model is used to set up the underlying datastore (e.g., set up the tables in the underlying database) and also as the base for the generated client APIs.
 
 ## Generate the client object, types, and scripts
 
-Now you can generate the client objects, types, and SQL scripts for your model by running the command in your terminal,
+Now, you can generate the client objects, types, and SQL scripts for your model by running the command in your terminal.
 
 ```
 $ bal persist generate
@@ -136,18 +136,18 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 |         File          |                                         Description                                         |
 |:---------------------:|:-------------------------------------------------------------------------------------------:|
-| `persist_client.bal`  |               This is the client that is used to persist and retrieve data..                |
+| `persist_client.bal`  |               This is the client that is used to persist and retrieve data.               |
 |  `persist_types.bal`  |       This contains the record types that will be used to persist and retrieve data.        |
 
 
 
-> Note: All of the above auto-generated bal files should not be modified.
+> Note: All of the above auto-generated BAL files should not be modified.
 
-> Note: If you use other data stores like MySQL or Google Sheets, additional files are created to handle runtime configurations and scripts to set up the database/worksheet. Since we are using `in-memory`, we don’t need any configuration and pre-setting up to run the application.
+> Note: If you use other data stores like MySQL or Google Sheets, additional files are created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need any configuration and pre setting up to run the application.
 
 ## Query your database with Persist Client
 
-You first need to instantiate the generated client object inside the `rainier.store` module like below,
+First, you need to instantiate the generated client object inside the `rainier.store` module like below.
 
 ```ballerina
 import rainier.store;
@@ -155,11 +155,11 @@ import rainier.store;
 store:Client sClient = check new();
 ```
 
-Now you can use this `sClient` as the client to query your database. The client provides five resource methods to query. Let’s explore each of these clients’ methods separately. You can use the `main.bal` file created inside your project to explore the functionalities.
+You can use this `sClient` as the client to query your database. It provides five resource methods to query. Let’s explore each of the methods of the client separately. You can use the `main.bal` file created inside your project to explore the functionalities.
 
 ### Create a new `Employee` record
 
-Let’s start with a small query to create a new `Employee` record in the database and log the results to the console. Update the following in your `main.bal` file.
+Let’s start with a query to create a new `Employee` record in the database and log the results to the console. Update the following in your `main.bal` file.
 
 ```ballerina
 import ballerina/io;
@@ -192,7 +192,7 @@ public function main() returns error? {
 }
 ```
 
-You can run your Ballerina project with the following command:
+You can run your Ballerina project with the following command.
 
 ```
 $ bal run
@@ -205,13 +205,13 @@ Running executable
 Inserted employee id: 16c6553a-373c-4b29-b1c8-c282f444248c
 ```
 
-Congratulations!! You created your first database record with the Persist Client. In the next sections, you will learn how to read data from the database.
+This creates the first database record with the Persist Client. The next sections describe how to read data from the database.
 
 ### Retrieve all `Employee` records
 
-Let’s try to fetch all the records we inserted in the database. Persist client offers get resource method which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
+Let’s try to fetch all the records inserted into the database. The Persist Client offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
 
-Replace the previous code and add the new get call instead,
+Replace the previous code and add the new `get` call instead.
 
 ```ballerina
 import ballerina/io;
@@ -223,7 +223,7 @@ final store:Client sClient = check new ();
 
 
 public function main() returns error? {
-   // Get complete Employee record
+   // Get the complete `Employee` record.
    stream<store:Employee, persist:Error?> employees = sClient->/employees;
    check from var employee in employees
        do {
@@ -231,7 +231,7 @@ public function main() returns error? {
        };
 
 
-   // Get only the employee_id, first_name and last_name fields
+   // Get only the `employee_id`, `first_name`, and `last_name` fields.
    stream<EmployeeName, persist:Error?> empNames = sClient->/employees;
    check from var name in empNames
        do {
@@ -247,7 +247,7 @@ type EmployeeName record {|
 |};
 ```
 
-Run the Ballerina project again,
+Run the Ballerina project again.
 
 ```
 $ bal run
@@ -263,7 +263,7 @@ Running executable
 {"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
 ```
 
-You may notice that even if there is a single `Employee` record, the resource method returns a Ballerina stream object and we need to iterate through the stream to access the records.
+>**Note:** Even if there is a single `Employee` record, the resource method returns a Ballerina stream object and you need to iterate through the stream to access the records.
 The client also provides the `get by key` method, which returns only one record. Let’s explore that method.
 
 ### Retrieve the `Employee` record by key

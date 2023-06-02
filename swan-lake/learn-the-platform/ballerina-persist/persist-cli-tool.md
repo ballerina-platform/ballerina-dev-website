@@ -30,7 +30,7 @@ The command initializes the `bal persist` feature in the project. This command w
    This directory contains the data model definition file (`model.bal`) of the project.
    
 2. Create a model definition file in the `persist` directory.
-   This file is used to model the data, which need to be persisted in the project. You can have only one data model definition file in the project and the file name can be anything with the `.bal` extension. The default file name is `model.bal`. Entities defined in this file should be based on the [`persist model` specification](persist_model.md).
+   This file is used to model the data, which need to be persisted in the project. You can have only one data model definition file in the project and the file name can be anything with the `.bal` extension. The default file name is `model.bal`. Entities defined in this file should be based on the [`persist model` specification](/learn/persist-model).
 
 3. Update the `Ballerina.toml` file with the `persist` module configurations.
    It will update the `Ballerina.toml` file with `persist` configurations as follows.

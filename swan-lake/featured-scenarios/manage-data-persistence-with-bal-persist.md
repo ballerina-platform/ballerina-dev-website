@@ -18,7 +18,7 @@ redirect_from:
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.6.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.6.0 (Swan Lake)](/learn/get-started/) or greater
 2. A text editor
 >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the
 <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
@@ -88,7 +88,7 @@ The next step is to define your data model in the schema file in the`persist/mod
 
 The data model can be defined in the schema file inside the `persist` directory. You can use the empty file added by the `persist init` command for this.
 
-For more information on defining a data model, see the [Data Model Definition](learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
+For more information on defining a data model, see the [Data Model Definition](/learn/persist-model/) documentation. In order to simplify this demonstration, only the `Employee` entity is added to the schema file. You can add as many as you want for your application and add relationships between entities.
 Once defined, the schema file will be as follows.
 
 ```ballerina

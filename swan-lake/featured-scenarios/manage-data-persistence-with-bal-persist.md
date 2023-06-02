@@ -26,11 +26,11 @@ To complete this tutorial, you need:
 
 ## Understand the implementation
 
-This tutorial describes how to interact with the data store and perform operations against it using bal persist. This will cover the basic use case of creating, reading, updating, and deleting records on a data store in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the data store.
+This guide describes how to interact with the data store and perform operations against it using `bal persist`. This will cover the basic use case of creating, reading, updating, and deleting records on a data store in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the data store.
 
 ![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
 
->**Info:** In this tutorial, we use an in-memory data store for simplicity. However, the methodology described here can also be applied to work with MySQL and Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
+>**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL and Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
 
 ## Create a Ballerina package
 
@@ -282,12 +282,12 @@ final store:Client sClient = check new ();
 
 public function main() returns error? {
    string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
-   // Get complete Employee record
+   // Get the complete `Employee` record.
    store:Employee employee = check sClient->/employees/[empId];
    io:println(employee);
 
 
-   // Get only the employee_id, first_name, and last_name fields
+   // Get only the `employee_id`, `first_name`, and `last_name` fields.
    EmployeeName employeeName = check sClient->/employees/[empId];
    io:println(employeeName);
 }
@@ -300,7 +300,7 @@ type EmployeeName record {|
 |};
 ```
 
-Run the Ballerina project again,
+Run the Ballerina project again.
 
 ```
 $ bal run
@@ -316,13 +316,13 @@ Running executable
 {"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
 ```
 
-You will get the same results as you have only one record. Let’s explore the update function.
+You will get the same results as you have only one record. Let’s explore the `update` function.
 
 ### Update the `Employee` record
 
-With the Persist Client, we can easily update the record with the given id. You only need to pass the fields that need to be updated with the new values. In this case, The Job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
+With the Persist Client, you can easily update the record with the given ID. You only need to pass the fields that need to be updated with the new values. In this case, The job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
 
-Replace the previous code and add the new update call instead,
+Replace the previous code and add the new `update` call instead.
 
 ```ballerina
 import ballerina/io;
@@ -336,7 +336,7 @@ public function main() returns error? {
    string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
 
 
-   // Update the job title of the employee with the given id
+   // Update the job title of the employee with the given ID.
    store:Employee employee = check sClient->/employees/[empId].put({
        job_title: "Senior Software Engineer"
    });
@@ -344,7 +344,7 @@ public function main() returns error? {
 }
 ```
 
-Run the Ballerina project again,
+Run the Ballerina project again.
 
 ```
 $ bal run
@@ -358,13 +358,13 @@ Running executable
 {"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe","email":"johnd@xyz.com","phone":"1234567890","hire_date":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Senior Software Engineer"}
 ```
 
-Now you have successfully execute CREATE, READ and UPDATE queries against your database. Let’s explore the final DELETE query in the next section.
+Now, you have successfully executed the `CREATE`, `READ`, and `UPDATE` queries against your database. Let’s explore the final `DELETE` query in the next section.
 
 ### Delete the `Employee` record
 
-Similar to the client update call, you can use the `delete` action to delete the record with the given id.
+Similar to the client `update` call, you can use the `delete` action to delete the record with the given ID.
 
-Replace the previous code and add the new delete call instead,
+Replace the previous code and add the new `delete` call instead.
 
 ```ballerina
 import ballerina/io;
@@ -379,11 +379,11 @@ public function main() returns error? {
    string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
 
 
-   // Delete employee with the given id
+   // Delete the employee with the given ID.
    _ = check sClient->/employees/[empId].delete();
 
 
-   // check if the employee is deleted
+   // Check if the employee is deleted.
    store:Employee|persist:Error result = sClient->/employees/[empId].get();
    if result is persist:NotFoundError {
        io:println("Employee not found");
@@ -393,7 +393,7 @@ public function main() returns error? {
 }
 ```
 
-Run the Ballerina project again,
+Run the Ballerina project again.
 
 ```
 $ bal run
@@ -407,15 +407,15 @@ Running executable
 Employee not found
 ```
 
-Great Job, you just run all the queries against your database successfully. Your next task is to expose the database queries via an HTTP RESTful API to build a data service.
+You just run all the queries against your database successfully. Your next task is to expose the database queries via an HTTP RESTful API to build a data service.
 
 ## Expose the database via an HTTP RESTful API
 
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP RESTful API.
 
-For this, you need to create an HTTP service, and within the service, you can define resource methods to provide access to the database. The complete code of the service will be as follows,
+For this, you need to create an HTTP service, and within the service, you can define resource methods to provide access to the database. The complete code of the service will be as follows.
 
-Replace the previous code and add the service code instead,
+Replace the previous code and add the service code instead.
 
 ```ballerina
 import ballerina/http;
@@ -467,7 +467,7 @@ Compiling source
 Running executable
 ```
 
-> Info: This creates an /employees endpoint on port 8080, which can be accessed via a browser by visiting http://locahost:8080/employees.
+> **Info:** This creates an `/employees` endpoint on port 8080, which can be accessed via a browser at http://locahost:8080/employees.
 
 ### Try the service
 
@@ -494,8 +494,8 @@ $ curl -X POST http://localhost:8080/employees/
 
 ## References
 
-- [Bal Persist Overview](/learn/persist-overview/)
-- [Data Model](/learn/persist-model/)
+- [`bal persist` overview](/learn/persist-overview/)
+- [Data model](/learn/persist-model/)
 - [Persist Client API](/learn/persist-client-api/)
 - [Persist CLI Tool](/learn/persist-cli/)
-- [Supported Data Stores](/learn/supported-data-stores/)
+- [Supported data stores](/learn/supported-data-stores/)

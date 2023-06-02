@@ -183,7 +183,8 @@ Swan Lake channel
 
 1.* channel
 
-  1.2.38 - latest
+  1.2.39 - latest
+  1.2.38 
   1.2.37
   1.2.36
   1.2.35
@@ -192,7 +193,6 @@ Swan Lake channel
   1.2.32
   1.2.31
   1.2.30
-  1.2.29
 
 Use 'bal dist list -a' to list all the distributions under each channel.
 Use 'bal help dist' for more information on specific commands.

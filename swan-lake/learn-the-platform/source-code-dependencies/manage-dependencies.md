@@ -117,6 +117,8 @@ name = "mysql"
 version = "1.5.0”
 ```
 
+However, when a project is built with a new minor distribution version than what is specified in `distribution-version` field of `Dependencies.toml`, the `Dependencies.toml` will be updated with the latest compatible minor versions of the dependencies.
+
 ## Use dependencies from the local repository
 
 The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.

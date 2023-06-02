@@ -65,7 +65,7 @@ export function HttpClientDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ef66366f1832eebbb3fbda7ef3aac2b9&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=5b73eed1cde71588fc2ef72f5e2b289c&file=http_client_data_binding.bal",
                 "_blank"
               );
             }}

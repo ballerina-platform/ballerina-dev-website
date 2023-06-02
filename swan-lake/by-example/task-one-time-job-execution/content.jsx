@@ -79,7 +79,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d0b808ffd56816c56185d2d7e27c0ab4&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=c1aa73908fc7a5e9d357ebc417884a52&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}

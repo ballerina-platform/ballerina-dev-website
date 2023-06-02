@@ -1,7 +1,7 @@
 ---
 layout: ballerina-building-a-data-service-with-bal-persist-left-nav-pages-swanlake
 title: Manage data persistence with bal persist
-description: Describe how to model your application data and use the tool to generate client APIs to access the data store.
+description: This guide describes how to model your application data and use a tool to generate client APIs to access the data store in Ballerina.
 keywords: Ballerina, data service, data store, database, in-memory, Google Sheets, REST, API
 permalink: /learn/manage_data_persistence-with-bal-persist/
 active: manage_data_persistence-with-bal-persist

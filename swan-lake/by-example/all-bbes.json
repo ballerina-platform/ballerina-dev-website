@@ -2436,8 +2436,24 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
+        "name": "Service interceptors",
+        "url": "graphql-service-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field interceptors",
+        "url": "graphql-field-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -3872,21 +3888,6 @@
     ]
   },
   {
-    "title": "SerDes",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Serialization/Deserialization",
-        "url": "serdes-simple",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": false,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "IO",
     "column": 0,
     "category": "Common libraries",
@@ -4053,6 +4054,29 @@
         "verifyOutput": false,
         "disableVerificationReason": "Includes varying output",
         "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "EDI",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "EDI to record conversion",
+        "url": "edi-to-record",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      },
+      {
+        "name": "Record to EDI conversion",
+        "url": "record-to-edi",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
         "isLearnByExample": false
       }
     ]
@@ -4258,6 +4282,92 @@
         "url": "constraint-validations",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Query data",
+    "column": 0,
+    "category": "Bal persist",
+    "samples": [
+      {
+        "name": "Get all",
+        "url": "persist-get-all",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Get by key",
+        "url": "persist-get-by-key",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Select fields",
+        "url": "persist-select-fields",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Filter and sort",
+        "url": "persist-filtering",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Relation queries",
+        "url": "persist-relation-queries",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Write data",
+    "column": 1,
+    "category": "Bal persist",
+    "samples": [
+      {
+        "name": "Create/Create many",
+        "url": "persist-create",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Update",
+        "url": "persist-update",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Delete",
+        "url": "persist-delete",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]

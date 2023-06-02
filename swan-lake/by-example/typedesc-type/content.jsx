@@ -61,7 +61,7 @@ export function TypedescType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=171c3f3f57eb70dfb7002fafcf9a0f7e&file=typedesc_type.bal",
+                "https://play.ballerina.io/?gist=5e1a452c01886b76e82a21e6558a2197&file=typedesc_type.bal",
                 "_blank"
               );
             }}

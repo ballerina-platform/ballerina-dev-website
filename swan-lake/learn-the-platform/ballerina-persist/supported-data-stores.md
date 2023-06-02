@@ -35,7 +35,7 @@ The following sections describe the configurations and supported types for each 
 
 The `in-memory` data store is a simple data store that stores data in memory. This data store is useful for testing purposes. It is the default data store for `bal persist`. Therefore, you do not need to explicitly specify the data store when you are using it.
 
-### Supported Ballerina Types
+### Supported Ballerina types
 
 The `in-memory` data store supports the following Ballerina types.
 
@@ -54,7 +54,7 @@ The MySQL data store is a relational database management system that stores data
 $ bal persist init --datastore mysql
 ```
 
-### Supported Ballerina Types
+### Supported Ballerina types
 
 The following table lists the Ballerina types supported by the MySQL data store and the corresponding SQL types used to store the data in the database.
 
@@ -101,7 +101,7 @@ database = ""
 
 Additionally, you can set values for the following advanced configuration parameters in the `Config.toml` file in your project to use the MySQL data store. Please refer to the [MySQL Connector documentation](https://lib.ballerina.io/ballerinax/mysql/1.8.0#Options) for more information on these parameters.
 
-### How to Set up
+### How to set up
 
 #### Set up a MySQL server instance
 
@@ -127,7 +127,7 @@ The Google Sheets data store is a cloud-based spreadsheet application that store
 $ bal persist init --datastore googlesheets
 ```
 
-### Supported Ballerina Types
+### Supported Ballerina types
 
 The following table lists the Ballerina types supported by the Google Sheets data store and the corresponding Google Sheets types used to store the data in the spreadsheet.
 
@@ -167,7 +167,7 @@ refreshToken = ""
 
 Please refer to the [Google API documentation](https://developers.google.com/identity/protocols/oauth2) for more information on how to obtain the client ID, client secret, and refresh token.
 
-### How to Set up
+### How to set up
 
 #### How to run `script.gs` in the worksheet
 

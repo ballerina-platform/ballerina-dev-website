@@ -60,11 +60,11 @@ type Employee record {|
 ```
 `Simple` types are mapped to native data source types. Depending on the data store, the mapping may vary. Refer to the [Supported Datasources](#supported-datastores) documents to learn more about the mapping.
 
-## Entity Attributes Definition
+## Entity attributes definition
 
 Ballerina record fields are used to model the attributes of an entity. The type of the field should be a subtype of `SimpleType`.
 
-### Identity Field(s)
+### Identity field(s)
 
 The entity must contain at least one identity field. This field's value is used to identify each record uniquely. The identity field(s) is indicated by the `readonly` flag.
 
@@ -84,7 +84,7 @@ type EntityType record {|
 |} 
 ```
 
-### Nullable Field(s)
+### Nullable field(s)
 
 Say type T is a subtype of `SimpleType`, and T does not contain (),
 
@@ -95,7 +95,7 @@ Say type T is a subtype of `SimpleType`, and T does not contain (),
 |     T field?      |                Not allowed                 |           -           |  
 |     T? field?     |                Not allowed                 |           -           |  
 
-## Relationship Definition
+## Relationship definition
 
 Ballerina record fields are used to model a connection between two entities. The type of the field should be a subtype of `EntityType|EntityType?|EntityType[]`.
 
@@ -147,7 +147,7 @@ In the first record (`Car`), the `EntityType` field `owner` is taken as the owne
 The default foreign key field name will be `ownerId` in the `Car` table, which refers to the identity field of the `User` table by default.
 
 
-### One-to-Many (1-n)
+### One-to-many (1-n)
 
 A 1-n relationship is defined by a field of the `EntityType` in one entity and `EntityType[]` in the other. For example, consider the `Car` and `User` entities. Assume that a car can have only one owner and a user can own multiple cars.
 
@@ -188,7 +188,7 @@ The entity that contains the field of the `EntityType` is taken as the owner in 
 
 The default foreign key field name will be `ownerId` in the `Car` table, which refers to the identity field of the `User` table by default.
 
-### Many-to-Many (`n-n`)
+### Many-to-many (`n-n`)
 
 An `n-n` relationship is defined by two `1-n` relationships. The joining entity is used to map the two entities. The joining entity should contain two fields of the`EntityType` that refer to the two entities in the relationship. For example, consider `Car` and `User` entities. Assume that a car can have multiple owners and a user can own multiple cars.
 

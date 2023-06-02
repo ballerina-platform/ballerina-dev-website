@@ -54,7 +54,7 @@ Behaviour of the `init` command,
 - You can use the optional arguments to indicate the preferred module name and data store. Otherwise, the default values will be used.
 - You cannot execute the command multiple times within the same project. You need to remove the `Ballerina.toml` configurations if the user wants to reinitialize the project.
 
-## 3. Generate the derived types, client, and script files
+## Generate the derived types, client, and script files
 
 The command below is used to generate the derived types, clients, and script files based on the data model definition file. This command is executed from within the project root directory as follows.
 

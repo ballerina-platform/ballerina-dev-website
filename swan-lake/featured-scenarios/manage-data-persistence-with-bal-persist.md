@@ -491,11 +491,3 @@ $ curl -X POST http://localhost:8080/employees/
         "job_title": "Sales Manager"
     }'
 ```
-
-## References
-
-- [`bal persist` overview](/learn/persist-overview/)
-- [Data model](/learn/persist-model/)
-- [Persist Client API](/learn/persist-client-api/)
-- [Persist CLI Tool](/learn/persist-cli/)
-- [Supported data stores](/learn/supported-data-stores/)

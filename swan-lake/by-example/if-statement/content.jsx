@@ -73,7 +73,7 @@ export function IfStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d71234a00484b84ce1a8162f7a867c43&file=if_statement.bal",
+                "https://play.ballerina.io/?gist=2d143da168ab00b09f9f501a1e68cb79&file=if_statement.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function IfStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/if-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/if-statement",
                 "_blank"
               );
             }}

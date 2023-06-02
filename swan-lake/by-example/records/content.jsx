@@ -91,7 +91,7 @@ export function Records({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7266510fcee0afaf612cc619baf7ff0e&file=records.bal",
+                "https://play.ballerina.io/?gist=05e47d7047a837c585a51ad1eb270056&file=records.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export function Records({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/records",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/records",
                 "_blank"
               );
             }}

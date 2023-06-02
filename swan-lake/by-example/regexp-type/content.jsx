@@ -96,7 +96,7 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b5b2f0e94719acd414708f8355a29a83&file=regexp_type.bal",
+                "https://play.ballerina.io/?gist=7d213508abcac29d7d0711b39ec0a451&file=regexp_type.bal",
                 "_blank"
               );
             }}
@@ -121,7 +121,7 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/regexp-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/regexp-type",
                 "_blank"
               );
             }}

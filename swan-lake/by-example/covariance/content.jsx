@@ -53,7 +53,7 @@ export function Covariance({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=92c39962b13282b77e39bab3a5827bd6&file=covariance.bal",
+                "https://play.ballerina.io/?gist=afd0755a5abd26b88d3ecdb34947cf54&file=covariance.bal",
                 "_blank"
               );
             }}
@@ -78,7 +78,7 @@ export function Covariance({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/covariance",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/covariance",
                 "_blank"
               );
             }}

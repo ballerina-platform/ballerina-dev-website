@@ -89,7 +89,7 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9ec5438579e19d30cb13658a8ff1e09d&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=5191933b04639a5a7109c081d255c3fc&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -114,7 +114,7 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/langlib-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/langlib-functions",
                 "_blank"
               );
             }}

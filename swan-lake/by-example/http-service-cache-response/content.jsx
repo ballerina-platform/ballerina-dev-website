@@ -65,7 +65,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4876c7f876c517561c66be53b49dc3ac&file=http_service_cache_response.bal",
+                "https://play.ballerina.io/?gist=91b8248f94bad6ac805813ce9c556f20&file=http_service_cache_response.bal",
                 "_blank"
               );
             }}
@@ -90,7 +90,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-service-cache-response",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-cache-response",
                 "_blank"
               );
             }}

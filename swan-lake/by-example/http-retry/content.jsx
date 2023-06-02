@@ -64,7 +64,7 @@ export function HttpRetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ad7ef796522a6f31e91153d1fbce5880&file=http_retry.bal",
+                "https://play.ballerina.io/?gist=6be614f6fbf917390b0825f3bb739d40&file=http_retry.bal",
                 "_blank"
               );
             }}
@@ -89,7 +89,7 @@ export function HttpRetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-retry",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-retry",
                 "_blank"
               );
             }}

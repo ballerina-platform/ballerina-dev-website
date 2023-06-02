@@ -62,7 +62,7 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a69f00e102de8dbffbf4a6969cd0da00&file=http_failover.bal",
+                "https://play.ballerina.io/?gist=a42fb3208e5571d15f0595de79d19b93&file=http_failover.bal",
                 "_blank"
               );
             }}
@@ -87,7 +87,7 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-failover",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-failover",
                 "_blank"
               );
             }}

@@ -66,7 +66,7 @@ export function TransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=59d2fb092cb490c26a97e927db928fdd&file=transaction_statement.bal",
+                "https://play.ballerina.io/?gist=3a3371e9926011c688bd5b955ab0b9e5&file=transaction_statement.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export function TransactionStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/transaction-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/transaction-statement",
                 "_blank"
               );
             }}

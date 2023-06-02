@@ -84,7 +84,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a0acd4b5c352e6f798ab2ac777d5c9fb&file=joining_iterable_objects.bal",
+                "https://play.ballerina.io/?gist=62f55135ca7e9d9ea318cf2fc11fa55d&file=joining_iterable_objects.bal",
                 "_blank"
               );
             }}
@@ -109,7 +109,7 @@ export function JoiningIterableObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/joining-iterable-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/joining-iterable-objects",
                 "_blank"
               );
             }}

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
-title: Supported Data Stores
+title: Supported data stores
 description: The sections give details on the Supported Data Stores.
 keywords: ballerina, programming language, ballerina packages, persist, data store, in-memory, mysql, google sheets
 permalink: /learn/ballerina-persist/supported-datastores/

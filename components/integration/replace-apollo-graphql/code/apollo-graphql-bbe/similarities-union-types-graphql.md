@@ -1,0 +1,3 @@
+```
+union SearchResult = Human | Droid
+```

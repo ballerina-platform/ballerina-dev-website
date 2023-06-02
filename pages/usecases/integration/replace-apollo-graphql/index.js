@@ -49,15 +49,24 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/integration/replace-apollo-graphql/code/apollo-graphql-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
+    const regex = /```(\w+)([\s\S]*?)```/g;
+    let match = [];
+    let lang = 'ballerina';
+    while (match = regex.exec(content)) {
+      let code = match[2];
+      const firstLine = code.split('/n')[0];
+      const indent = firstLine.length - firstLine.trimStart().length;
+      lang = (match[1]).toLowerCase();
+    }
     samples[sampleName] = {
       frontmatter: {
-        title: frontmatter.title,
-        description: frontmatter.description,
+        title: frontmatter.title? frontmatter.title : '',
+        description: frontmatter.description? frontmatter.description : '',
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
       content: content,
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang }) : ''
     };
   });
 

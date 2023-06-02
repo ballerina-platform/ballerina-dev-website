@@ -1,0 +1,5 @@
+```
+type Profile {
+   name: String
+}
+```

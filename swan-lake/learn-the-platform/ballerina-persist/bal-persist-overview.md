@@ -36,7 +36,7 @@ The `bal persist` CLI is used to generate the client API for the data model. Bas
 
 The `bal persist` has two main built-in CLI commands: `persist init` and `persist generate`. The `persist init` command is used to initialize `bal persist` in the Ballerina project. The `persist generate` command is used to generate the client API for the data model. Additionally, there is an experimental `persist migrate` command to generate the SQL scripts for changing the table structure in the database when the data model is changed.
 
-Learn more about `bal persist` CLI in the [Persist CLI](/learn/persist-cli/) section.
+Learn more about `bal persist` CLI in the [Persist CLI](/learn/persist-cli-tool/) section.
 
 ## Persist Client API
 

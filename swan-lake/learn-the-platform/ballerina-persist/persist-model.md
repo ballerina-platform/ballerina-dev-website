@@ -22,11 +22,12 @@ type EntityType record {|
    SimpleType|EntityType|EntityType[]...;
 |};
 ```
+
 ### `Simple` type:  
    From the data source perspective, a field of `SimpleType` contains only one value (i.e., each `SimpleType` field maps to a field of data).
    > *Note*: This does not support the union type of `SimpleType`( i.e., `int|string` is not supported).
 
-2. Entity Type:  
+### `Entity` type  
    An entity can contain fields of the `SimpleType`, `EntityType`, or `EntityType[]`. This design uses fields of type `EntityType` or `EntityType[]` to define associations between two entities.
 
 Below are some examples of subtypes of the entity type:
@@ -58,7 +59,7 @@ type Employee record {|
    Department department; // EntityType
 |};
 ```
-`Simple` types are mapped to native data source types. Depending on the data store, the mapping may vary. Refer to the [Supported Datasources](#supported-datastores) documents to learn more about the mapping.
+`Simple` types are mapped to native data source types. Depending on the data store, the mapping may vary. Refer to the [Supported data stores](/learn/supported-data-stores/) to learn more about the mapping.
 
 ## Entity attributes definition
 

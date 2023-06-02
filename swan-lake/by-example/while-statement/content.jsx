@@ -50,7 +50,7 @@ export function WhileStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e7da6958cd6b9a279530427b265a7464&file=while_statement.bal",
+                "https://play.ballerina.io/?gist=3980807aa919c4cc2784d856918df3fb&file=while_statement.bal",
                 "_blank"
               );
             }}

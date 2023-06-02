@@ -52,6 +52,8 @@ export function RecordToEdi({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
@@ -75,7 +77,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d716350eae31efbff7756a2f4b72bc6&file=schema.json",
+                "https://play.ballerina.io/?gist=ff3bd171802c6510d6bd9280bd34df80&file=schema.json",
                 "_blank"
               );
             }}
@@ -190,7 +192,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8d716350eae31efbff7756a2f4b72bc6&file=schema.json",
+                "https://play.ballerina.io/?gist=ff3bd171802c6510d6bd9280bd34df80&file=schema.json",
                 "_blank"
               );
             }}
@@ -295,13 +297,6 @@ export function RecordToEdi({ codeSnippets }) {
         structure of the project would look like below:
       </p>
 
-      <p>::: package_stricture.out :::</p>
-
-      <p>
-        Run the below command from the project root directory to generate the
-        Ballerina parser for the above schema.
-      </p>
-
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -355,6 +350,82 @@ export function RecordToEdi({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
+              <span>{`└── record_to_edi`}</span>
+              <span>{`    ├── Ballerina.toml`}</span>
+              <span>{`    ├── Dependencies.toml`}</span>
+              <span>{`    ├── main.bal`}</span>
+              <span>{`    ├── modules`}</span>
+              <span>{`    │   └── sorder`}</span>
+              <span>{`    │       ├── Module.md`}</span>
+              <span>{`    │       ├── resources`}</span>
+              <span>{`    │       ├── sorder.bal`}</span>
+              <span>{`    │       └── tests`}</span>
+              <span>{`    │           └── lib_test.bal`}</span>
+              <span>{`    └── resources`}</span>
+              <span>{`        └── simple_order_schema.json`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <p>
+        Run the below command from the project root directory to generate the
+        Ballerina parser for the above schema.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick2 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick2(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref2}>
+            <code className="d-flex flex-column">
               <span>{`\$ bal edi codegen resources/simple_order_schema.json modules/sorder/sorder.bal`}</span>
             </code>
           </pre>
@@ -383,7 +454,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e026490c1e5a541393ce828675d2b279&file=record_to_edi.bal",
+                "https://play.ballerina.io/?gist=29d9111bd4141780850b4dea3d6c231c&file=record_to_edi.bal",
                 "_blank"
               );
             }}
@@ -489,7 +560,7 @@ export function RecordToEdi({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
+          {outputClick3 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
@@ -510,11 +581,11 @@ export function RecordToEdi({ codeSnippets }) {
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
                 copyToClipboard(extractedText);
                 setTimeout(() => {
-                  updateOutputClick2(false);
+                  updateOutputClick3(false);
                 }, 3000);
               }}
             >
@@ -535,7 +606,7 @@ export function RecordToEdi({ codeSnippets }) {
           )}
         </Col>
         <Col sm={12}>
-          <pre ref={ref2}>
+          <pre ref={ref3}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run`}</span>
               <span>{`HDR*ORDER_200*HMart*17-05-2023~`}</span>

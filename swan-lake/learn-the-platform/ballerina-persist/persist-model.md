@@ -10,11 +10,11 @@ redirect_from:
 - /learn/ballerina-persist/persist-model/
 ---
 
-Within a Ballerina project, the data model should be defined in a separate bal file under the `persist` directory. This file is not considered part of the Ballerina project and is used only for the data model definition.
+Within a Ballerina project, the data model should be defined in a separate BAL file under the `persist` directory. This file is not considered as a part of the Ballerina project and is used only for the data model definition.
 
-## EntityType Definition
+## The `EntityType` definition
 
-An EntityType is defined using `SimpleType` and `EntityType` fields. 
+An `EntityType` is defined using the `SimpleType` and `EntityType` fields. 
 
 ```ballerina
 type SimpleType ()|boolean|int|float|decimal|string|byte[]|time:Date|time:TimeOfDay|time:Utc|time:Civil;
@@ -22,17 +22,17 @@ type EntityType record {|
    SimpleType|EntityType|EntityType[]...;
 |};
 ```
-1. Simple Type:  
-   From the data source perspective, a field of `SimpleType` contains only one value. i.e., Each `SimpleType` field maps to a field of data.
-   > *Note*: This does not support the union type of `SimpleType`. i.e., `int|string` is not supported.
+### `Simple` type:  
+   From the data source perspective, a field of `SimpleType` contains only one value (i.e., each `SimpleType` field maps to a field of data).
+   > *Note*: This does not support the union type of `SimpleType`( i.e., `int|string` is not supported).
 
 2. Entity Type:  
-   An entity can contain fields of `SimpleType`, `EntityType`, or `EntityType[]`. This design uses fields of type `EntityType` or `EntityType[]` to define associations between two entities.
+   An entity can contain fields of the `SimpleType`, `EntityType`, or `EntityType[]`. This design uses fields of type `EntityType` or `EntityType[]` to define associations between two entities.
 
-Here are some examples of subtypes of the entity type:
+Below are some examples of subtypes of the entity type:
 
 ```ballerina
-// Valid 
+// Valid.
 type Employee record {|
    int id; // SimpleType
    string fname; // SimpleType
@@ -41,7 +41,7 @@ type Employee record {|
 |};
 
 
-// Valid 
+// This is valid.
 type Department record {|
    int id;
    string name;
@@ -58,7 +58,7 @@ type Employee record {|
    Department department; // EntityType
 |};
 ```
-Simple Types are mapped to native data source types. Depending on the data store, the mapping may vary. Refer to the [Supported Datasources](#supported-datastores) documents to learn more about the mapping.
+`Simple` types are mapped to native data source types. Depending on the data store, the mapping may vary. Refer to the [Supported Datasources](#supported-datastores) documents to learn more about the mapping.
 
 ## Entity Attributes Definition
 
@@ -75,7 +75,7 @@ type EntityType record {|
     readonly T <fieldName>;
 |} 
 ```
-The identity field can be a single field or a combination of multiple fields. 
+The identity field can be a single field or a combination of multiple fields as follows.
 
 ```ballerina
 type EntityType record {|
@@ -90,7 +90,7 @@ Say type T is a subtype of `SimpleType`, and T does not contain (),
 
 | Field definition  |                 Semantics                  |       Examples        |   
 |:-----------------:|:------------------------------------------:|:---------------------:|
-|      T field      | Mapped to a non-nullable column in the DB  |        int id;        |  
+|      `T`     | Mapped to a non-nullable column in the DB  |        `int id;`        |  
 |     T? field      |   Mapped to a nullable column in the DB    | string? description;  |  
 |     T field?      |                Not allowed                 |           -           |  
 |     T? field?     |                Not allowed                 |           -           |  
@@ -99,15 +99,15 @@ Say type T is a subtype of `SimpleType`, and T does not contain (),
 
 Ballerina record fields are used to model a connection between two entities. The type of the field should be a subtype of `EntityType|EntityType?|EntityType[]`.
 
-This design supports the following cardinalities:
-1. One-to-one (1-1)
-2. One-to-many (1-n)
+This design supports the following cardinalities.
+1. One-to-one (`1-1`)
+2. One-to-many (`1-n`)
 
 The relation field is mandatory in both entities.
 
 ### One-to-one (1-1)
 
-A 1-1 relationship is defined by a field of type `EntityType` in one entity and `EntityType?` in the other. For example, consider Car and User entities assume that a car can have only one owner and a user can own at most one car.
+A 1-1 relationship is defined by a field of the `EntityType` in one entity and `EntityType?` in the other. For example, consider the `Car` and `User` entities. Assume that a car can have only one owner and a user can own at most one car.
 
 ```ballerina
 type Car record {|
@@ -123,11 +123,11 @@ type User record {|
 |};
 ```
 
-The above entities explains the following,
+The above entities explain the following.
  - A `Car` must have a `User` as the owner.
  - A `User` may or may not own a `Car`.
 
-The Ballerina record type generated from the above entities will be as follows,
+The Ballerina record type generated from the above entities will be as follows.
 
 ```ballerina
 type Car record {|
@@ -142,14 +142,14 @@ type User record {|
 |};
 ```
 
-In first record, `Car`, the `EntityType` field `owner` is taken as the owner in the 1-1 relationship and will include the foreign key of the second record, `User`.
+In the first record (`Car`), the `EntityType` field `owner` is taken as the owner in the 1-1 relationship and will include the foreign key of the second record (`User`).
 
 The default foreign key field name will be `ownerId` in the `Car` table, which refers to the identity field of the `User` table by default.
 
 
 ### One-to-Many (1-n)
 
-A 1-n relationship is defined by a field of type `EntityType` in one entity and `EntityType[]` in the other. For example consider Car and User entities assume that a car can have only one owner and a user can own multiple cars.
+A 1-n relationship is defined by a field of the `EntityType` in one entity and `EntityType[]` in the other. For example, consider the `Car` and `User` entities. Assume that a car can have only one owner and a user can own multiple cars.
 
 ```ballerina
 type Car record {|
@@ -165,11 +165,11 @@ type User record {|
 |};
 ```
 
-The above entities explains the following,
+The above entities explain the following.
 - A `Car` must have a `User` as the owner.
-- A `User` may own multiple `Car`s or do not own one. (Represented with empty array `[]`)
+- A `User` may own multiple `Car`s or do not own one (represented with an empty array `[]`).
 
-The Ballerina record type generated from the above entities will be as follows,
+The Ballerina record type generated from the above entities will be as follows.
 
 ```ballerina
 type Car record {|
@@ -184,13 +184,13 @@ type User record {|
 |};
 ```
 
-The entity that contains the field of type `EntityType` is taken as the owner in the 1-n relationship and will include the foreign key.
+The entity that contains the field of the `EntityType` is taken as the owner in the `1-n` relationship and will include the foreign key.
 
 The default foreign key field name will be `ownerId` in the `Car` table, which refers to the identity field of the `User` table by default.
 
-### Many-to-Many (n-n)
+### Many-to-Many (`n-n`)
 
-A n-n relationship is defined by two 1-n relationships. The joining entity is used to map the two entities. The joining entity should contain two fields of type `EntityType` that refer to the two entities in the relationship. For example, consider Car and User entities assume that a car can have multiple owners and a user can own multiple cars.
+An `n-n` relationship is defined by two `1-n` relationships. The joining entity is used to map the two entities. The joining entity should contain two fields of the`EntityType` that refer to the two entities in the relationship. For example, consider `Car` and `User` entities. Assume that a car can have multiple owners and a user can own multiple cars.
 
 ```ballerina
 type Car record {|
@@ -213,12 +213,12 @@ type CarUser record {|
 
 ```
 
-The above entities explains the following,
+The above entities explain the following.
 
 - A `Car` may have multiple `User`s as owners.
 - A `User` may own multiple `Car`s.
 
-The Ballerina record type generated from the above entities will be as follows,
+The Ballerina record type generated from the above entities will be as follows.
 
 ```ballerina
 type Car record {|
@@ -238,4 +238,5 @@ type CarUser record {|
 |};
 ```
 
-The join entity `CarUser` contains two fields of type `EntityType` that refer to the two entities in the relationship. The join entity should contain two fields of type `EntityType` that refer to the two entities in the relationship. The foreign key field names will be `userId`, `carId` in the `CarUser` table, which refers to the identity field of the `User` table and `Car` table.
+The `CarUser` `join` entity contains two fields of the EntityType` that refer to the two entities in the relationship. 
+ The foreign key field names will be `userId`, and `carId` in the `CarUser` table, which refer to the identity field of the `User` and `Car` tables.

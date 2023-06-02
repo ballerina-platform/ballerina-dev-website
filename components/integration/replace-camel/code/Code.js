@@ -30,24 +30,22 @@ export default function UseCases(props) {
 
     const samples = props.samples;
 
-    const opensource = samples['free-and-opensource'];
-    const workflow = samples['git-based-workflow'];
+    const langIntegrations = samples['for-integrations'];
+    const dsl = samples['replace-dsl'];
     const anything = samples['connect-with-anything'];
     const diagram = samples['diagram-when-you-need'];
-    const scalability = samples['greater-scalability-flexibility-and-customization'];
-    const security = samples['better-security'];
-    const community = samples['community-driven-development'];
-    const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
-
+    const data = samples['data-manipulation'];
+    const cloud = samples['cloud-language'];
+    const choreo = samples['effortless-host'];
     return (
         <>
-            {/* opensource */}
+            {/* integrations language */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='free-and-opensource' className='section'>
+                                <h2 id='for-integrations' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -55,34 +53,24 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'free-and-opensource')}
+                                        onClick={(e) => props.getLink(e.target, 'for-integrations')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {opensource.frontmatter.title}
+                                    {langIntegrations.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{opensource.frontmatter.description}</ReactMarkdown>
-                                    
-                                    <div className={styles.dVersions}>
-                                        <div className={styles.dVersion}>
-                                            <a href={`https://github.com/ballerina-platform`}
-                                                className={styles.cDownload}
-                                                data-download="downloads">
-                                                <div className={styles.cSize}>Ballerina platform source code</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{langIntegrations.frontmatter.description}</ReactMarkdown>
+
                                     {
-                                        (opensource.frontmatter.url && opensource.frontmatter.url !== '') ?
+                                        (langIntegrations.frontmatter.url && langIntegrations.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={opensource.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={langIntegrations.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -92,17 +80,17 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
                                 {
-                                    (opensource.code && opensource.code !== '') ?
+                                    (langIntegrations.code && langIntegrations.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: opensource.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: langIntegrations.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (opensource.frontmatter.image && opensource.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${opensource.frontmatter.image}`} alt={opensource.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                    (langIntegrations.frontmatter.image && langIntegrations.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${langIntegrations.frontmatter.image}`} alt={langIntegrations.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>
@@ -111,13 +99,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* workflow */}
+            {/* dsl-replacements */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='git-based-workflow' className='section'>
+                                <h2 id='replace-dsl' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -125,24 +113,24 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'git-based-workflow')}
+                                        onClick={(e) => props.getLink(e.target, 'replace-dsl')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {workflow.frontmatter.title}
+                                    {dsl.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{workflow.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dsl.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (workflow.frontmatter.url && workflow.frontmatter.url !== '') ?
+                                        (dsl.frontmatter.url && dsl.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={workflow.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={dsl.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -154,15 +142,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (workflow.code && workflow.code !== '') ?
+                                    (dsl.code && dsl.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: workflow.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: dsl.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (workflow.frontmatter.image && workflow.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title} />
+                                    (dsl.frontmatter.image && dsl.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${dsl.frontmatter.image}`} alt={dsl.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -291,13 +279,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* scalability */}
+            {/* cloud */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='greater-scalability-flexibility-and-customization' className='section'>
+                                <h2 id='cloud-language' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -305,24 +293,24 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'greater-scalability-flexibility-and-customization')}
+                                        onClick={(e) => props.getLink(e.target, 'cloud-language')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {scalability.frontmatter.title}
+                                    {cloud.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{scalability.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{cloud.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (scalability.frontmatter.url && scalability.frontmatter.url !== '') ?
+                                        (cloud.frontmatter.url && cloud.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={scalability.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={cloud.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -332,17 +320,17 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
-                                    (scalability.code && scalability.code !== '') ?
+                                    (cloud.code && cloud.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: scalability.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: cloud.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (scalability.frontmatter.image && scalability.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${scalability.frontmatter.image}`} alt={scalability.frontmatter.title} />
+                                    (cloud.frontmatter.image && cloud.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${cloud.frontmatter.image}`} alt={cloud.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -351,13 +339,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* security */}
+            {/* data */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='better-security' className='section'>
+                                <h2 id='data-manipulation' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -365,24 +353,24 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'better-security')}
+                                        onClick={(e) => props.getLink(e.target, 'data-manipulation')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {security.frontmatter.title}
+                                    {data.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{security.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{data.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (security.frontmatter.url && security.frontmatter.url !== '') ?
+                                        (data.frontmatter.url && data.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={security.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={data.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -392,17 +380,17 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
-                                    (security.code && security.code !== '') ?
+                                    (data.code && data.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: security.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: data.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (security.frontmatter.image && security.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${security.frontmatter.image}`} alt={security.frontmatter.title} />
+                                    (data.frontmatter.image && data.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${data.frontmatter.image}`} alt={data.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -411,13 +399,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* community*/}
+            {/* choreo */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='community-driven-development' className='section'>
+                                <h2 id='effortless-host' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -425,22 +413,22 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'community-driven-development')}
+                                        onClick={(e) => props.getLink(e.target, 'effortless-host')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {community.frontmatter.title}
+                                    {choreo.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{community.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{choreo.frontmatter.description}</ReactMarkdown>
 
                                     {
-                                        (community.frontmatter.url && community.frontmatter.url !== '') ?
+                                        (choreo.frontmatter.url && choreo.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={transactions.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -454,75 +442,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
-                                    (community.code && community.code !== '') ?
+                                    (choreo.code && choreo.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: community.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: choreo.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (community.frontmatter.image && community.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${community.frontmatter.image}`} alt={community.frontmatter.title} className={styles.doNotFill} width='60%' />
-                                        : null
-                                }
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-
-            {/* ipaas */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
-                        <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='trivial-hosting-in-wso2-choreo-ipaas' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'trivial-hosting-in-wso2-choreo-ipaas')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {ipaas.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{ipaas.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Choreo iPaaS for free
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
-                                </div>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
-                                {
-                                    (ipaas.code && ipaas.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: ipaas.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (ipaas.frontmatter.image && ipaas.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${ipaas.frontmatter.image}`} alt={ipaas.frontmatter.title} className={styles.doNotFill} width='60%' />
+                                    (choreo.frontmatter.image && choreo.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${choreo.frontmatter.image}`} alt={choreo.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

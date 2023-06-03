@@ -242,4 +242,6 @@ WHERE w.workspaceId = 'WK001';
 
 The Persist Client will automatically perform the `join` and `projection` operations on the data source and return the result.
 
-*For more information on the client API usage, see the `bal persist` examples.
+## Learn more
+
+For more information on the client API usage, see the [`bal persist` examples](https://ballerina.io/learn/by-example/persist-get-all/).

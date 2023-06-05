@@ -113,11 +113,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina as an Appollo Alternative - Integration wasn't easier</title>
+        <title>Ballerina as an Appollo Alternative - The simpler solution over Apollo</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina as an Appollo Alternative - Integration wasn't easier" />
+        <meta property="og:title" content="Ballerina as an Appollo Alternative - The simpler solution over Apollo" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."

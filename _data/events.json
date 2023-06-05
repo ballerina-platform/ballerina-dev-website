@@ -1,6 +1,22 @@
 {
     "events": [
-       {
+      {
+            "date": "June 8, 2023",
+            "day": "Thur.",
+            "time": "8.00 p.m. IST",
+            "expire": "2023-06-09T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.twitch.tv/exercismlive",
+            "eventType": "Exercism - #12in23 Challenge",
+            "eventName": "Concurrency Abstractions in Ballerina",
+            "presenterTwitter": "https://twitter.com/B_Hinduja",
+            "presenter": "Hinduja Balasubramaniyam",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "Subscribe"
+        },
+        {
             "date": "June 7, 2023",
             "day": "Wed.",
             "time": "8.30 a.m. IST",

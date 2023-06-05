@@ -1,6 +1,6 @@
 ---
 title: 'Designed for failure'
-description: By incorporating proven patterns and best practices, Ballerina equips you with the tools to proactively address failure scenarios, ensuring system stability and minimizing downtime and offering a revolutionary approach to microservices development that is inherently 'designed for failure.' With its built-in fault-tolerance mechanisms and circuit-breaking capabilities. 
+description: By incorporating proven patterns and best practices, Ballerina equips you with the tools to proactively address failure scenarios, ensuring system stability and minimizing downtime and offering a revolutionary approach to microservices development that is inherently 'designed for failure' with its built-in fault-tolerance mechanisms and circuit-breaking capabilities. 
 url: https://github.com/ballerina-platform/ballerina-distribution/blob/v2201.5.0/examples/http-circuit-breaker/http_circuit_breaker.bal
 ---
 ```type Album readonly & record {

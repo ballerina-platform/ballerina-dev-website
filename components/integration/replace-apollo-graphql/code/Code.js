@@ -30,24 +30,36 @@ export default function UseCases(props) {
 
     const samples = props.samples;
 
-    const workflow = samples['git-based-workflow'];
-    const anything = samples['connect-with-anything'];
-    const diagram = samples['diagram-when-you-need'];
+    // Ballerina is GraphQL - GraphQL is Ballerina
+    // Each code snippet in a separate md file.
+    // The md file with Ballerina code has the frontmatter, "title" and "description"
+    const similarities = samples['similarities'];
+    const similaritiesObjectTypeBallerina = samples['similarities-object-types-ballerina'];
+    const similaritiesObjectTypeGraphQL = samples['similarities-object-types-graphql'];
+    const similaritiesNullabilityBallerina = samples['similarities-nullability-ballerina'];
+    const similaritiesNullabilityGraphQL = samples['similarities-nullability-graphql'];
+    const similaritiesUnionTypesBallerina = samples['similarities-union-types-ballerina'];
+    const similaritiesUnionTypesGraphQL = samples['similarities-union-types-graphql'];
+    const similaritiesDefaultValuesBallerina = samples['similarities-default-values-ballerina'];
+    const similaritiesDefaultValuesGraphQL = samples['similarities-default-values-graphql'];
 
-    const codeFirst = samples['code-first'];
-    const codeFirstGraphQL = samples['code-first-graphql'];
-    const codeFirstBallerina = samples['code-first-ballerina'];
-
-    const similaraties = samples['ballerina-is-graphql-graphql-is-ballerina'];
-
+    // Clean and simple code
     const clean = samples['clean-and-simple-code'];
     const cleanApollo = samples['clean-and-simple-code-apollo'];
     const cleanBallerina = samples['clean-and-simple-code-ballerina'];
+
+    // Ballerina is code-first
+    const codeFirst = samples['code-first'];
+    const codeFirstGraphQL = samples['code-first-graphql'];
+    const codeFirstBallerina = samples['code-first-ballerina'];
 
     const subscription = samples['subscription-support'];
     const designer = samples['designer-tool'];
     const cli = samples['cli-tool'];
     const security = samples['better-security'];
+    const workflow = samples['git-based-workflow'];
+    const anything = samples['connect-with-anything'];
+    const diagram = samples['diagram-when-you-need'];
     const community = samples['community-driven-development'];
     const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
 
@@ -111,19 +123,84 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {similaraties.frontmatter.title}
+                                    {similarities.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{similaraties.frontmatter.description}</ReactMarkdown>
+                            <Col xs={12} md={3} lg={3} className={styles.box}>
+                                <div className={`${styles.wrapper} ${styles.spacing}`}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{similarities.frontmatter.description}</ReactMarkdown>
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{similaraties.content}</ReactMarkdown>
+                            <Col xs={12} md={9} lg={9} className={styles.box}>
+                                <div className={`${styles.box} ${styles.tableBox}`}>
+                                    <div className={styles.codeSnippet}>
+                                        <div className='highlight'>
+                                            <table className={styles.codeTable} cellSpacing={30}>
+                                                <tr>
+                                                    <td colSpan={2} className={styles.descriptionTd}>
+                                                        <b>{similaritiesObjectTypeBallerina.frontmatter.title}: </b> {similaritiesObjectTypeBallerina.frontmatter.description}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.graph}>GraphQL</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesObjectTypeGraphQL.code }} />
+                                                    </td>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.ballerina}>Ballerina</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesObjectTypeBallerina.code }} />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colSpan={2} className={styles.descriptionTd}>
+                                                        <b>{similaritiesNullabilityBallerina.frontmatter.title}:</b> {similaritiesNullabilityBallerina.frontmatter.description}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.graph}>GraphQL</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesNullabilityGraphQL.code }} />
+                                                    </td>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.ballerina}>Ballerina</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesNullabilityBallerina.code }} />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colSpan={2} className={styles.descriptionTd}>
+                                                        <b>{similaritiesUnionTypesBallerina.frontmatter.title}:</b> {similaritiesUnionTypesBallerina.frontmatter.description}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.graph}>GraphQL</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesUnionTypesGraphQL.code }} />
+                                                    </td>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.ballerina}>Ballerina</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesUnionTypesBallerina.code }} />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colSpan={2} className={styles.descriptionTd}>
+                                                        <b>{similaritiesDefaultValuesBallerina.frontmatter.title}:</b> {similaritiesDefaultValuesBallerina.frontmatter.description}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.graph}>GraphQL</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesDefaultValuesGraphQL.code }} />
+                                                    </td>
+                                                    <td className={styles.codeTd}>
+                                                        <span className={styles.ballerina}>Ballerina</span>
+                                                        <div className="highlightx" dangerouslySetInnerHTML={{ __html: similaritiesDefaultValuesBallerina.code }} />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </Col>
                         </Row>

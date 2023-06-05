@@ -31,6 +31,10 @@ a.cDownload span {
     line-height: 18px;
 }
 
+.wrapper.spacing {
+    padding-right: 25px;
+}
+
 /* .codeSnippet div pre.shiki {
     padding-top: 0 !important;
     background-color: #ffffff !important;
@@ -74,7 +78,8 @@ a.cDownload span {
     font-weight: 400;
 }
 
-.dVersions, .comingSoon {
+.dVersions,
+.comingSoon {
     margin-bottom: 20px !important;
     font-weight: 400;
 }
@@ -97,4 +102,63 @@ a.cDownload span {
 
 .dVersions .dVersion:hover {
     background-color: #585a5e;
+}
+
+.tableBox {
+    overflow-x: auto;
+}
+
+.codeTable {
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border-spacing: 30px;
+
+}
+
+.codeTable pre.shiki {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.codeSnippet table div pre {
+    margin-top: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 11.375px;
+    line-height: 18px;
+}
+
+.codeTd {
+    border: 1px solid #eeeeee;
+    vertical-align: top;
+}
+
+.descriptionTd {
+    padding-bottom: 5px;
+}
+
+.descriptionTd.spacing {
+    padding-top: 20px;
+}
+
+.graph {
+    background-color: #e10098;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.ballerina {
+    background-color: #20b6b0;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 4px;
 }

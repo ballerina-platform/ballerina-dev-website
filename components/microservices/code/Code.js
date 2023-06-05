@@ -104,7 +104,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* network-aware */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -221,7 +221,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* powerful integration capabilities */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -337,7 +337,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* devops-agility */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -453,7 +453,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* graalvm */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -569,7 +569,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* tracing */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -685,7 +685,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* http2 */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>

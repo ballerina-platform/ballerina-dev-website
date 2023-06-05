@@ -50,7 +50,6 @@ export async function getStaticProps() {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/microservices/code/microservices-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    console.log(frontmatter.title);
     samples[sampleName] = {
       frontmatter: {
         title: frontmatter.title,

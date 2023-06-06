@@ -162,6 +162,7 @@ public type ListenerConfiguration record {|
     string? server = ();
     RequestLimitConfigs requestLimits = {};
     Interceptor|Interceptor[] interceptors?;
+    int http2InitialWindowSize = 65535;
 |};
 ```
 
@@ -1087,6 +1088,18 @@ public type ClientConfiguration record {|
     ProxyConfig? proxy = ();
     boolean validation = true;
 |};
+
+public type ClientHttp1Settings record {|
+    KeepAlive keepAlive = KEEPALIVE_AUTO;
+    Chunking chunking = CHUNKING_AUTO;
+    ProxyConfig? proxy = ();
+|};
+
+public type ClientHttp2Settings record {|
+    boolean http2PriorKnowledge = false;
+    int http2InitialWindowSize = 65535;
+|};
+
 ```
 
 Based on the config, the client object will be accompanied by following client behaviours. Following clients cannot be

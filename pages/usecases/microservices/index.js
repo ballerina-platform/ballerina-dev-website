@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina: The Ultimate Toolset for Seamless Microservices Development</h1>
+                <h1>Ballerina: The ultimate toolset for seamless microservices development</h1>
               </Container>
 
             </Col>

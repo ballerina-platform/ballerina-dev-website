@@ -25,12 +25,12 @@ public function main() returns error? {
     PR[] prs = check github->/[repository]/pulls(headers);
 
     sheets:Client gsheets = check new ({auth: {token: sheetsAccessToken}});
-    check gsheets->appendRowToSheet(spreadSheetId, sheetName,
-            ["Issue", "Title", "State", "Created At", "Updated At"]);
+    _ = check gsheets->appendValue(spreadSheetId, ["Issue", "Title", "State", "Created At", "Updated At"],
+                {sheetName: sheetName});
 
     foreach var {url, title, state, created_at, updated_at} in prs {
-        check gsheets->appendRowToSheet(spreadSheetId, sheetName,
-                [url, title, state, created_at, updated_at]);
+        _ = check gsheets->appendValue(spreadSheetId, [url, title, state, created_at, updated_at],
+                    {sheetName: sheetName});
     }
 }
 ```

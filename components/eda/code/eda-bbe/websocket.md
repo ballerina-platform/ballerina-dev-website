@@ -1,7 +1,7 @@
 ---
 title: 'WebSocket, TCP socket for the Web'
 description: WebSocket is an excellent choice for message transmission, particularly on the Web. With Ballerina, you not only have the capability to utilize WebSocket as-is but also the flexibility to develop custom subprotocols that align with your organization's specific requirements.
-url: 'https://github.com/ballerina-guides/integration-samples/tree/eda_examples/taxi-service-management'
+url: 'https://github.com/ballerina-platform/module-ballerina-websocket/tree/main/examples/taxi-service-management'
 ---
 ```
 // This service is for drivers to register and send locations.

@@ -1,6 +1,6 @@
 ---
 title: 'Passing around events has never been easier'
-description: Producing and consuming events from message brokers and then exposing them to others using WebHook, WebSocket, GraphQL, gRPC, etc is just a piece of cake.You focus on the business logic and let Ballerina focus on the network logic.
+description: Producing and consuming events from message brokers and then exposing them to others using WebHook, WebSocket, GraphQL, gRPC, etc., is just a piece of cake. You focus on the business logic and let Ballerina focus on the network logic.
 url: 'https://github.com/ballerina-platform/ballerina-distribution/blob/v2201.5.0/examples/kafka-service-consume-message/kafka_service_consume_message.bal'
 ---
 ```

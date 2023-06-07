@@ -1,9 +1,8 @@
 ---
-title: "Generated Schema:"
-description: null
+title: "Generated schema"
 ---
 
-```
+```graphql
 type Query {
    profile: Profile!
 }

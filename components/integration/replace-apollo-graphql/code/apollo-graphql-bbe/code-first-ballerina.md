@@ -1,9 +1,8 @@
 ---
-title: "Ballerina Code:"
-description: null
+title: "Ballerina code"
 ---
 
-```
+```ballerina
 import ballerina/graphql;
 
 service on new graphql:Listener(9090) {

@@ -70,13 +70,11 @@ export default function UseCases(props) {
             containerId: "code-container-1",
             leftId: "left-panel-1",
             rightId: "right-panel-1",
-            handleId: "drag-1"
         },
         "draggable-circle-2": {
             containerId: "code-container-2",
             leftId: "left-panel-2",
             rightId: "right-panel-2",
-            handleId: "drag-2"
         }
     };
 
@@ -85,16 +83,14 @@ export default function UseCases(props) {
             var container = null;
             var left = null;
             var right = null;
-            var handle = null;
 
             document.addEventListener("mousedown", function (e) {
                 if (e.target.classList.contains("draggable")) {
                     isResizing = true;
-                    const { containerId, leftId, rightId, handleId } = draggableElements[e.target.id];
+                    const { containerId, leftId, rightId } = draggableElements[e.target.id];
                     container = document.getElementById(containerId);
                     left = document.getElementById(leftId);
                     right = document.getElementById(rightId);
-                    handle = document.getElementById(handleId);
                 }
             });
 

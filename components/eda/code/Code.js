@@ -247,7 +247,7 @@ export default function UseCases(props) {
                                     {
                                         (websocket.frontmatter.url && websocket.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={websub.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={websocket.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
@@ -518,7 +518,7 @@ export default function UseCases(props) {
                                     {
                                         (email.frontmatter.url && email.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
-                                                <a href={websub.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={email.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>

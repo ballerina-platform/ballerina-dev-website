@@ -1,5 +1,5 @@
 ---
-title: 'Smart Endpoints'
+title: 'Smart endpoints'
 description: Ballerina's support for smart endpoints enhances data-oriented programming by providing a declarative and intuitive way to define endpoints and handle data transformations and routing. With smart endpoints, you can easily handle different data formats, such as Records, JSON, XML, and more, and perform operations on the data within the endpoints themselves. This approach simplifies the code and makes it easier to reason about the data flow. 
 ---
 ```

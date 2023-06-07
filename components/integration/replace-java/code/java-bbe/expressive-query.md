@@ -1,5 +1,5 @@
 ---
-title: 'Expressive Query Language'
+title: 'Expressive query language'
 description: Ballerina provides an expressive query language that simplifies data retrieval and manipulation tasks. This query language allows developers to perform complex operations on data collections, such as filtering, grouping, sorting, and aggregating, using a familiar and intuitive syntax. 
 url: 'https://ballerina.io/learn/by-example/query-expressions/'
 ---

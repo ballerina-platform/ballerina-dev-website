@@ -715,7 +715,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* smart endpoints */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -776,7 +776,7 @@ export default function UseCases(props) {
 
 
             {/* flexible typing */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -842,7 +842,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* expressive query syntax */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -902,7 +902,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* pattern matching */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

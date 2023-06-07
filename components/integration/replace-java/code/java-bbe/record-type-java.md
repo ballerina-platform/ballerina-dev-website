@@ -11,6 +11,7 @@ record Customer(UUID id, String name) {
         this(UUID.randomUUID(), name);
     }
 }
+
 public class RecordType {
     public static void main(String[] args) {
         Customer customer = new Customer("John Doe");

@@ -1,11 +1,11 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
-title: Persist Client API
-description: The sections give details on the generated Persist Client API.
-keywords: ballerina, programming language, ballerina packages, persist, persist client, persist client api
+title: Type-safe client API
+description: The sections give details on the generated Client API.
+keywords: ballerina, programming language, ballerina packages, persist, type-safe client API
 permalink: /learn/ballerina-persist/persist-client-api/
 active: persist_client_api
-intro: Persist client is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. Persist CLI tool will generate the derived Entity Types and the Clients from the model definition.
+intro: The generated client API is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are get, get(get by identity), post, put, and delete. The CLI tool will generate the derived Entity Types and the Clients from the model definition.
 redirect_from:
 - /learn/ballerina-persist/persist-client-api
 ---
@@ -78,11 +78,11 @@ There are six derived entity types as follows
     public type WorkspaceTargetType typedesc<WorkspaceWithRelations>;
     ```
     
-## Persist Clients
+## Client Object
 
-Persist Clients are derived for each data model definition file. The client is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`.
+The client object is derived for each data model definition file, and it is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`.
 
-The skeleton of the Persist client is as follows.
+The skeleton of the client object is as follows.
 ```ballerina
 public client class Client {
     *persist:AbstractPersistClient;
@@ -110,7 +110,7 @@ public client class Client {
 }
 ```
 
-The conventions used in deriving the Persist client are as follows.
+The conventions used in deriving the client object is as follows.
 1. Since there can be only one generated client in a Ballerina package, the client name is always `Client`.
 2. The client should be of the `persist:AbstractPersistClient` type.
 3. It should contain the `init()` and `close()` functions.
@@ -119,7 +119,7 @@ The conventions used in deriving the Persist client are as follows.
 6. The resource method should return the derived entity types.
 7. Resource methods with path parameters will support composite identity fields by having multiple path parameters.
 
-### Persist Client usage
+### Client usage
 
 #### Client initialization
 
@@ -240,7 +240,7 @@ INNER JOIN building b ON w.locationCode = b.code
 WHERE w.workspaceId = 'WK001';
 ```
 
-The Persist Client will automatically perform the `join` and `projection` operations on the data source and return the result.
+The client will automatically perform the `join` and `projection` operations on the data source and return the result.
 
 ## Learn more
 

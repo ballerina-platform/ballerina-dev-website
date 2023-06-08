@@ -1,11 +1,11 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
-title: Persist CLI tool
-description: The sections give details on the Persist CLI tool.
+title: CLI tool
+description: The sections give details on the CLI tool.
 keywords: ballerina, programming language, ballerina packages, persist, persist cli tool, persist init, persist generate, persist migrate
 permalink: /learn/ballerina-persist/persist-cli/
 active: persist_cli
-intro: One of the main components of the bal persist feature is the CLI tool. This tool is used to initialize the project with the bal persist command and generate the required files.
+intro: The CLI tool is used to initialize the project with the bal persist command and generate the required files.
 redirect_from:
 - /learn/ballerina-persist/persist-cli/
 ---

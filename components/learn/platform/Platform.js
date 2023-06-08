@@ -296,7 +296,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
-                  Persist Model
+                  Data model
                 </a>
               </p>
               <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
@@ -305,7 +305,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/persist-cli-tool`} className={styles.titleLink}>
-                  Persist CLI tool
+                  CLI tool
                 </a>
               </p>
               <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
@@ -314,7 +314,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
-                  Persist Client API
+                  Type-safe client API
                 </a>
               </p>
               <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>

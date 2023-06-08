@@ -539,7 +539,7 @@
                     ]
                 },
                 {
-                    "dirName": "Ballerina persist",
+                    "dirName": "Bal persist",
                     "level": 2,
                     "position": 7,
                     "isDir": true,
@@ -547,7 +547,7 @@
                     "id": "ballerina-persist",
                     "subDirectories": [
                         {
-                            "dirName": "Bal persist overview",
+                            "dirName": "Overview",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
@@ -555,7 +555,7 @@
                             "id": "bal-persist-overview"
                         },
                         {
-                            "dirName": "Persist Model",
+                            "dirName": "Data model",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
@@ -563,7 +563,7 @@
                             "id": "persist-model"
                         },
                         {
-                            "dirName": "Persist CLI tool",
+                            "dirName": "CLI tool",
                             "level": 3,
                             "position": 3,
                             "isDir": false,
@@ -571,7 +571,7 @@
                             "id": "persist-cli-tool"
                         },
                         {
-                            "dirName": "Persist Client API",
+                            "dirName": "Type-safe client API",
                             "level": 3,
                             "position": 4,
                             "isDir": false,

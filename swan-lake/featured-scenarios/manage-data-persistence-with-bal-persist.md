@@ -145,7 +145,7 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 > Note: If you use other data stores like MySQL or Google Sheets, additional files are created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need any configuration and pre setting up to run the application.
 
-## Query your database with Persist Client
+## Query your database with client API
 
 First, you need to instantiate the generated client object inside the `rainier.store` module like below.
 
@@ -205,11 +205,11 @@ Running executable
 Inserted employee id: 16c6553a-373c-4b29-b1c8-c282f444248c
 ```
 
-This creates the first database record with the Persist Client. The next sections describe how to read data from the database.
+This creates the first database record with the client API. The next sections describe how to read data from the database.
 
 ### Retrieve all `Employee` records
 
-Let’s try to fetch all the records inserted into the database. The Persist Client offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
+Let’s try to fetch all the records inserted into the database. The client API offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
 
 Replace the previous code and add the new `get` call instead.
 
@@ -320,7 +320,7 @@ You will get the same results as you have only one record. Let’s explore the `
 
 ### Update the `Employee` record
 
-With the Persist Client, you can easily update the record with the given ID. You only need to pass the fields that need to be updated with the new values. In this case, The job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
+With the client API, you can easily update the record with the given ID. You only need to pass the fields that need to be updated with the new values. In this case, The job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
 
 Replace the previous code and add the new `update` call instead.
 

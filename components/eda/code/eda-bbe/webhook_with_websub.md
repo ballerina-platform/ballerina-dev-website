@@ -1,7 +1,7 @@
 ---
 title: 'WebHooks with WebSub'
 description: Ballerina combines HTTP and event-driven development, leveraging the power of the HTTP ecosystem with WebSub for constructing event-driven applications effortlessly.
-url: 'https://github.com/ballerina-guides/integration-samples/blob/eda_examples/websub/websub_subscriber.bal'
+url: 'https://ballerina.io/learn/by-example/websub-webhook-sample/'
 ---
 ```
 @websub:SubscriberServiceConfig {

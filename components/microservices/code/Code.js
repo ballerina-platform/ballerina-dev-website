@@ -103,7 +103,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* type-safe and concurrent */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -219,7 +219,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* Test framework */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -277,7 +277,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* network-aware */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -393,7 +393,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* http2 */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -451,7 +451,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* smart endpoints */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -509,7 +509,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* graalvm */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -567,7 +567,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* bottom up top down */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -625,7 +625,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* devops-agility */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

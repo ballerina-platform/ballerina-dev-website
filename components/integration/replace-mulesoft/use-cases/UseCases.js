@@ -115,7 +115,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>B2B/EDI integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina supports  seamless B2B/EDI integration facilitated by  EDI support that includes parsing EDI schema and generating representative Ballerina records which facilitates working with corresponding data in an intuitive manner while also taking advantage of features available with/expect records.</p>
+                                    <p>Ballerina supports  seamless B2B/EDI integration facilitated by  EDI support that includes parsing EDI schema and generating representative Ballerina records, which facilitates working with corresponding data in an intuitive manner while also taking advantage of features available with/expect records.</p>
                                 </div>
                                 </div>
 

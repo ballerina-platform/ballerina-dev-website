@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Unleash integration excellence, your way - Ballerina, the smart choice over Dell Boomi</title>
+        <title>Unleash integration excellence your way - Ballerina, the smart choice over Dell Boomi</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Unleash integration excellence, your way - Ballerina, the smart choice over Dell Boomi</h1>
+                <h1>Unleash integration excellence your way - Ballerina, the smart choice over Dell Boomi</h1>
               </Container>
 
             </Col>

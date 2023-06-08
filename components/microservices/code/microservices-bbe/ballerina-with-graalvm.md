@@ -1,5 +1,6 @@
 ---
 title: Ballerina and GraalVM fuel microservices with lightning-fast performance
 description: With this duo, your microservices will reach new heights of efficiency and responsiveness, leaving competitors in the dust. Ballerina's seamless integration with GraalVM harnesses the power of just-in-time compilation and native image generation, resulting in optimized execution and unparalleled performance. Stay ahead of the game with Ballerina and GraalVM, and experience microservices performance like never before. 
-image: 'images/graalvm-github.png'
+url: https://ballerina.io/learn/build-a-native-executable/
+image: 'images/graalvm-ballerina.png'
 ---

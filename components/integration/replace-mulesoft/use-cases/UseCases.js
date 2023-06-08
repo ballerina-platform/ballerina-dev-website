@@ -63,8 +63,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com" className={styles.cDownload}>
-                                        See Sample: A
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/MaryamZi/ballerina-samples/tree/master/ballerina-mulesoft-samples/rest-api" className={styles.cDownload}>
+                                        See Sample: REST API
                                     </a>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>Data integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina being data-oriented knows data and provides rich functionality to work with and transform data from one format/structure to another.</p>
+                                    <p>Ballerina is data-oriented and provides rich functionality to query data and transform data from one format/structure to another. These features include data types, a powerful SQL-like query syntax, a persistence layer, graphical data mapping, etc.</p>
                                 </div>
                                 </div>
 
@@ -104,8 +104,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com" className={styles.cDownload}>
-                                        See Sample: C
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/MaryamZi/ballerina-samples/tree/master/ballerina-mulesoft-samples/data" className={styles.cDownload}>
+                                        See Sample: Querying and transforming data
                                     </a>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 ---
 title: 'Files, files as events?'
 description: Ballerina enhances file transfer with FTP listeners, reacting to events on servers. SFTP and FTPS options ensure security. Seamlessly integrate file transfer with Ballerina's secure functionality.
-url: 'https://github.com/ballerina-platform/ballerina-distribution/blob/v2201.5.0/examples/ftp-service-send-file/ftp_service_send_file.bal'
+url: 'https://ballerina.io/learn/by-example/ftp-service-send-file/'
 ---
 ```
 listener ftp:Listener fileListener = check new ({

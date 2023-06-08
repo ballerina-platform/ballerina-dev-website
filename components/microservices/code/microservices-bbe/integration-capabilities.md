@@ -1,7 +1,7 @@
 ---
 title: 'Powerful integration capabilities'
 description: Unlocking the power of seamless integration, Ballerina shines with its exceptional capability to connect and interact with a vast array of external systems and services. With an extensive range of connectors at its disposal, Ballerina effortlessly integrates with databases, message brokers, web services, and more.
-url: 'https://github.com/ballerina-platform/ballerina-distribution/blob/v2201.5.0/examples/kafka-service-consume-message/kafka_service_consume_message.bal'
+url: 'https://ballerina.io/learn/by-example/kafka-service-consume-message/'
 ---
 ```
 public type Order readonly & record {

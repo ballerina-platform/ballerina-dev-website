@@ -16,7 +16,7 @@ type Country record {|
 
 public function main() {
     // Perform data transformation using Ballerina's query language
-    json summary = from var {country, continent, population, cases, deaths} in covidClient->/countries
+    json summary = from var {country, continent, population, cases, deaths} in check covidClient->/countries
                    where population >= 100000 && deaths >= 100
                    let decimal caseFatalityRatio = (decimal) deaths / (decimal) cases * 100
                    order by caseFatalityRatio descending

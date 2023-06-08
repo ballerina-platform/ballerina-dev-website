@@ -262,7 +262,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}> 
                                 {
                                     (workflow.code && workflow.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -272,7 +272,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (workflow.frontmatter.image && workflow.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title} />
+                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title} className={styles.doNotFill} width='60%'/>
                                         : null
                                 }
                             </Col>
@@ -322,7 +322,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.choreo}`}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (cloud.code && cloud.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -332,7 +332,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (cloud.frontmatter.image && cloud.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${cloud.frontmatter.image}`} alt={cloud.frontmatter.title} />
+                                        <img src={`${prefix}/${cloud.frontmatter.image}`} alt={cloud.frontmatter.title} className={styles.doNotFill} width='60%'/>
                                         : null
                                 }
                             </Col>

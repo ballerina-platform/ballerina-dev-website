@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Next-Generation Integration: Elevating Integration to New Heights Beyond Apache Camel</h1>
+                <h1>Next-generation integration: Elevating integration to new heights beyond Apache Camel</h1>
               </Container>
 
             </Col>

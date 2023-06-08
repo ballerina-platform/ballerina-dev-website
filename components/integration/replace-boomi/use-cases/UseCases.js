@@ -87,7 +87,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>API integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina provides a powerful and intuitive framework for creating, testing and launching APIs leveraging the concept of services.</p>
+                                    <p>Ballerina provides a powerful and intuitive framework for creating, testing, and launching APIs leveraging the concept of services.</p>
                                 </div>
                                 </div>
 

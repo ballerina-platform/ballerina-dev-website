@@ -514,18 +514,7 @@ export default function UseCases(props) {
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (cli.code && cli.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: cli.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (cli.frontmatter.image && cli.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} />
-                                        : null
-                                }
+                                <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} />
                             </Col>
                         </Row>
                     </Container>

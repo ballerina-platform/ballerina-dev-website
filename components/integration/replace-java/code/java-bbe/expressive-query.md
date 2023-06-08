@@ -14,7 +14,7 @@ type Country record {|
     int deaths;
 |};
 
-public function main() {
+public function main() returns error? {
     // Perform data transformation using Ballerina's query language
     json summary = from var {country, continent, population, cases, deaths} in check covidClient->/countries
                    where population >= 100000 && deaths >= 100

@@ -38,7 +38,7 @@ export default function Intro() {
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Its time to break free and unlock the power of Ballerina, a purpose-built language designed to simplify integration challenges. With its elegant simplicity, modern architecture, and native support for cloud-native environments, Ballerina emerges as the preferred choice, paving the way for the future of integration with ease and efficiency.
+                                    It is time to break free and unlock the power of Ballerina, a purpose-built language designed to simplify integration challenges. With its elegant simplicity, modern architecture, and native support for cloud-native environments, Ballerina emerges as the preferred choice, paving the way for the future of integration with ease and efficiency.
                                 </p>
 
                                 <p className={styles.dVersion}>

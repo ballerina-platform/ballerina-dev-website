@@ -167,7 +167,7 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
+                                {/* <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{websub.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -181,6 +181,27 @@ export default function UseCases(props) {
                                             : null
                                     }
 
+
+
+                                </div> */}
+
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{websub.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}>
+                                        <span>WebSub Subscriber</span>
+                                        <a href='https://ballerina.io/learn/by-example/websub-webhook-sample/' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
+
+                                    <div className={styles.dVersion}>
+                                        <span>WebSub Hub</span>
+                                        <a href='https://github.com/ballerina-platform/module-ballerina-websubhub/tree/main/examples/kafka-hub' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>

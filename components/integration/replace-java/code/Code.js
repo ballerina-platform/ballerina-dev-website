@@ -46,6 +46,10 @@ export default function UseCases(props) {
     const tableTypeJava = samples['table-type-java'];
     const tableTypeBallerina = samples['table-type-ballerina'];
 
+    const streamType = samples['stream-type'];
+    const streamTypeJava = samples['stream-type-java'];
+    const streamTypeBallerina = samples['stream-type-ballerina'];
+
     const typeAnnotation = samples['type-annotation-n-inference'];
     const typeAnnotationJava = samples['type-annotation-n-inference-java'];
     const typeAnnotationBallerina = samples['type-annotation-n-inference-ballerina'];
@@ -67,6 +71,8 @@ export default function UseCases(props) {
     const anyTypeBallerina = samples['any-type-ballerina'];
 
     const smartEndpoints = samples['smart-endpoints'];
+    const smartEndpointsJava = samples['smart-endpoints-java'];
+    const smartEndpointsBallerina = samples['smart-endpoints-ballerina'];
 
     const flexibleTyping = samples['flexible-typing'];
     const flexibleTypingJava = samples['flexible-typing-java'];
@@ -383,8 +389,74 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* type annotation and inference */}
+            {/* stream type */}
             <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='stream-type' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'stream-type')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {streamType.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{streamType.frontmatter.description}</ReactMarkdown>
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
+
+                                <div id="code-container" className='d-none d-lg-block'>
+                                    <div id="left_panel">
+                                        <p className='title-old'>{streamTypeJava.frontmatter.title}</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: streamTypeJava.code }} />
+                                    </div>
+                                    <div id="right_panel">
+                                        <div id="drag">
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute button-wrap" ><circle cx="23" cy="23" r="23" fill="#20b6b0"></circle><path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path><path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path></svg>
+                                        </div>
+                                        <p className='title-new'>{streamTypeBallerina.frontmatter.title}</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: streamTypeBallerina.code }} />
+                                    </div>
+                                </div>
+
+                                {/* mobile view */}
+                                <div id="code-tab" className='d-block d-lg-none'>
+                                    <Tabs defaultActiveKey="ballerina-code" id="codeTab1" className="mb-3 codeTabs">
+                                        <Tab eventKey="java-code" title={streamTypeJava.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: streamTypeJava.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="ballerina-code" title={streamTypeBallerina.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: streamTypeBallerina.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* type annotation and inference */}
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -450,7 +522,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* type constraint */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -516,7 +588,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* json and xml */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -583,7 +655,7 @@ export default function UseCases(props) {
 
 
             {/* data-immutability */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -649,7 +721,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* any type */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -715,7 +787,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* smart endpoints */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -741,33 +813,39 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{smartEndpoints.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (smartEndpoints.frontmatter.url && smartEndpoints.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={smartEndpoints.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (smartEndpoints.code && languageQuery.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: smartEndpoints.code }} />
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
+
+                                <div id="code-container" className='d-none d-lg-block'>
+                                    <div id="left_panel">
+                                        <p className='title-old'>{smartEndpointsJava.frontmatter.title}</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: smartEndpointsJava.code }} />
+                                    </div>
+                                    <div id="right_panel">
+                                        <div id="drag">
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute button-wrap" ><circle cx="23" cy="23" r="23" fill="#20b6b0"></circle><path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path><path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path></svg>
                                         </div>
-                                        : null
-                                }
-                                {
-                                    (smartEndpoints.frontmatter.image && smartEndpoints.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${languageQuery.frontmatter.image}`} alt={smartEndpoints.frontmatter.title} />
-                                        : null
-                                }
+                                        <p className='title-new'>{smartEndpointsBallerina.frontmatter.title}</p>
+                                        <div className="code-panel" dangerouslySetInnerHTML={{ __html: smartEndpointsBallerina.code }} />
+                                    </div>
+                                </div>
+
+                                {/* mobile view */}
+                                <div id="code-tab" className='d-block d-lg-none'>
+                                    <Tabs defaultActiveKey="ballerina-code" id="codeTab1" className="mb-3 codeTabs">
+                                        <Tab eventKey="java-code" title={smartEndpointsJava.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: smartEndpointsJava.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="ballerina-code" title={smartEndpointsBallerina.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: smartEndpointsBallerina.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -776,7 +854,7 @@ export default function UseCases(props) {
 
 
             {/* flexible typing */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -842,7 +920,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* expressive query syntax */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -902,7 +980,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* pattern matching */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>

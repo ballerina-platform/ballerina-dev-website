@@ -48,7 +48,7 @@ export default function Intro() {
                 
                                     <br />
                                     <br />
-                                    Switch to Ballerina to enhance data oriented programming.
+                                    Switch to Ballerina to enhance data-oriented programming.
                                 </p>
 
                                 <p className={styles.dVersion}>

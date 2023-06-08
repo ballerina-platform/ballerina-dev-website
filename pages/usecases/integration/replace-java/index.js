@@ -118,7 +118,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Enhancing Data-Oriented Programming with Ballerina: A Comparative Analysis</title>
+        <title>Enhancing data-oriented programming with Ballerina: a comparative analysis</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -174,7 +174,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Enhancing Data-Oriented Programming with Ballerina: A Comparative Analysis</h1>
+                <h1>Enhancing data-oriented programming with Ballerina: a comparative analysis</h1>
               </Container>
 
             </Col>

@@ -501,7 +501,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (apisNewDll.code && apisNewDll.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -511,7 +511,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (apisNewDll.frontmatter.image && apisNewDll.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title} />
+                                        <img src={`${prefix}/${apisNewDll.frontmatter.image}`} alt={apisNewDll.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

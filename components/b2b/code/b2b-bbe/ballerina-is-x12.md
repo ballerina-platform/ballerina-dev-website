@@ -3,8 +3,8 @@ title: 'X12? Ballerina is X12'
 description: Ballerina's built-in support for X12 messages empowers organizations to seamlessly work with their partner networks using the widely adopted X12 standard. Developers can easily process, parse, and generate X12 messages, ensuring efficient data exchange between partner systems.
 ---
 ```
-import ballerinax/x12.supplychain.v004010.m850;
 import ballerina/io;
+import ballerinax/x12.supplychain.v004010.m850;
 
 public function main() returns error? {
     string ediText = check io:fileReadString("resources/messages/850_sample1.edi");

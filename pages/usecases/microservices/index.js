@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language, microservices"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for hethcare</title>
+        <title>Ballerina for microservices</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />

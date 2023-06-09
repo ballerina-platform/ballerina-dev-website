@@ -26,7 +26,7 @@ public function main() {
     // personTable.add({name: "Jane", age: 45});
 
     // Putting duplicate table key, overrides the existing value
-    personTable.add({name: "Jane", age: 45});
+    personTable.put({name: "Jane", age: 45});
 
     // Print the retrieved records
     io:println(john.name + ": " + john.age.toString());

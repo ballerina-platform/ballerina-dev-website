@@ -22,8 +22,8 @@ public function main() {
         skills
     };
 
-    io:println("Name: " + employee.name);
-    io:println("Age: " + employee.age.toString());
-    io:println("Skills: " + employee.skills.toString());
+    io:println("Name: ", employee.name);
+    io:println("Age: ", employee.age.toString());
+    io:println("Skills: ", employee.skills.toString());
 }
 ```

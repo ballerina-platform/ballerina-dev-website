@@ -68,15 +68,6 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
 3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
-   If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
-
-```toml
-[proxy]
-host = "localhost"
-port = "3128"
-username = ""
-password = ""
-```
 
 ### Define the organization
 

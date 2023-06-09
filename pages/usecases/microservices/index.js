@@ -96,22 +96,22 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The ultimate toolset for seamless microservices development."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
           name="keywords"
-          content="ballerina, learn, documentation, docs, programming language"
+          content="ballerina, learn, documentation, docs, programming language, microservices"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for hethcare</title>
+        <title>Ballerina for microservices</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
+        <meta property="og:title" content="Ballerina - Ballerina for microservices" />
         <meta
           property="og:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The ultimate toolset for seamless microservices development."
         />
         <meta
           property="og:image"
@@ -120,7 +120,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
+        <meta property="og:title" content="Ballerina - Ballerina for microservices" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/health-sm-banner.png"
@@ -128,18 +128,18 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with healthcare-friendly abstractions."
+          content="The ultimate toolset for seamless microservices development."
         />
 
         {/* TWITTER */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for healthcare" />
+        <meta name="twitter:title" content="Ballerina - Ballerina for microservices" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The ultimate toolset for seamless microservices development."
         />
         <meta
           name="twitter:image"
@@ -147,7 +147,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The ultimate toolset for seamless microservices development."
         />
         <meta
           property="twitter:image"

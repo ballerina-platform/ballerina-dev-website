@@ -513,8 +513,8 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{cli.frontmatter.description}</ReactMarkdown>
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} />
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
+                                <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} className={styles.doNotFill} width='60%'  />
                             </Col>
                         </Row>
                     </Container>
@@ -610,7 +610,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (workflow.code && workflow.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -620,7 +620,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (workflow.frontmatter.image && workflow.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title} />
+                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title}  className={styles.doNotFill} width='60%'/>
                                         : null
                                 }
                             </Col>

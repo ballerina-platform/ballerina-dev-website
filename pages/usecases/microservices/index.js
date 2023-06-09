@@ -108,7 +108,7 @@ export default function Integrations({ samples }) {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
+        <meta property="og:title" content="Ballerina - Ballerina for microservices" />
         <meta
           property="og:description"
           content="The ultimate toolset for seamless microservices development."

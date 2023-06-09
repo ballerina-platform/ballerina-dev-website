@@ -15,7 +15,7 @@ public function main() {
     // Creates a variable explicitly stating the type
     string[] skills = ["Java", "Python", "SQL"];
 
-    // Creates a variable using the type inference
+    // Creates a variable using type inference
     var employee = {
         name: "John Doe",
         age: 30,

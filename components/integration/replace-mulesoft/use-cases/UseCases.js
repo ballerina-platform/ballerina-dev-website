@@ -63,8 +63,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/MaryamZi/ballerina-samples/tree/master/ballerina-mulesoft-samples/rest-api" className={styles.cDownload}>
-                                        See Sample: REST API
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/tree/main/produce_and_consume_services" className={styles.cDownload}>
+                                        See Sample: Produce and consume services
                                     </a>
                                 </div>
                             </div>
@@ -84,8 +84,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com" className={styles.cDownload}>
-                                        See Sample: B
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/tree/main/github-pull-requests-to-gsheets" className={styles.cDownload}>
+                                        See Sample: GitHub pull requests to Google Sheets
                                     </a>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/MaryamZi/ballerina-samples/tree/master/ballerina-mulesoft-samples/data" className={styles.cDownload}>
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/tree/main/data_integration" className={styles.cDownload}>
                                         See Sample: Querying and transforming data
                                     </a>
                                 </div>
@@ -124,8 +124,8 @@ export default function UseCases(props) {
                                 </div> */}
 
                                 <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com" className={styles.cDownload}>
-                                        See Sample: D
+                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/tree/main/" className={styles.cDownload}>
+                                        See Sample: EDI transformation for retail
                                     </a>
                                 </div>
                             </div>

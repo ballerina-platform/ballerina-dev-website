@@ -54,7 +54,7 @@ export default function UseCases(props) {
                             <div>
                                 <h3>API and microservices integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina&apos;s understanding of service and the platform surrounding it provides a powerful and intuitive approach to develop, test, and deploy APIs and microservices.</p>
+                                    <p>Ballerina&apos;s understanding of services and the features and platform built around it provide a powerful and intuitive approach to develop, test, and deploy APIs and microservices.</p>
 
                                 </div>
                                 </div>

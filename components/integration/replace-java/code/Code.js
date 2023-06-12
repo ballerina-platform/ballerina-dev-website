@@ -320,7 +320,7 @@ export default function UseCases(props) {
                                 {/* mobile view */}
                                 <div id="code-tab-2" className={`${styles["code-tab"]} d-block d-lg-none`}>
                                     <Tabs defaultActiveKey="ballerina-code" id="codeTab2" className="mb-3 codeTabs">
-                                        <Tab eventKey="java-code" title={recordsJava.frontmatter.title}>
+                                        <Tab eventKey="java-code" title={unionsJava.frontmatter.title}>
                                             <div className={styles.codeSnippet}>
                                                 <div className="highlight" dangerouslySetInnerHTML={{ __html: unionsJava.code }} />
                                             </div>
@@ -364,7 +364,7 @@ export default function UseCases(props) {
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{records.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{optionals.frontmatter.description}</ReactMarkdown>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>

@@ -174,7 +174,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Enhancing data-oriented programming with Ballerina: a comparative analysis</h1>
+                <h1>Enhancing data-oriented programming with Ballerina:  <br/>A comparative analysis</h1>
               </Container>
 
             </Col>

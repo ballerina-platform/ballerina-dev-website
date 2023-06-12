@@ -74,7 +74,7 @@ export function HttpSendHeader({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=57553e9ca7b0c90d6fce3ef217f2a20a&file=http_send_header.bal",
+                "https://play.ballerina.io/?gist=e6f6dc8da87081c5f00fadfc0d1bf772&file=http_send_header.bal",
                 "_blank"
               );
             }}
@@ -99,7 +99,7 @@ export function HttpSendHeader({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-send-header",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-send-header",
                 "_blank"
               );
             }}

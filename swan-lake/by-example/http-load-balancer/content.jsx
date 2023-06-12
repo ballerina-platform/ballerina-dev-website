@@ -59,7 +59,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c6e10b4cf9f34cad7686c64bc453a12b&file=http_load_balancer.bal",
+                "https://play.ballerina.io/?gist=232496905cad1926f4a8e5f40a5055b6&file=http_load_balancer.bal",
                 "_blank"
               );
             }}
@@ -84,7 +84,7 @@ export function HttpLoadBalancer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-load-balancer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-load-balancer",
                 "_blank"
               );
             }}

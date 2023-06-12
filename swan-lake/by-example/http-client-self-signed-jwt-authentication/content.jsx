@@ -73,7 +73,7 @@ export function HttpClientSelfSignedJwtAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=150a09b0b6a57e0f1f52389bd5a5aed8&file=http_client_self_signed_jwt_authentication.bal",
+                "https://play.ballerina.io/?gist=ebbb04d4e86df25e625712ee60566090&file=http_client_self_signed_jwt_authentication.bal",
                 "_blank"
               );
             }}
@@ -98,7 +98,7 @@ export function HttpClientSelfSignedJwtAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-self-signed-jwt-authentication",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-self-signed-jwt-authentication",
                 "_blank"
               );
             }}

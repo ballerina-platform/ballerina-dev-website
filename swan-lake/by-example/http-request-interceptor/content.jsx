@@ -45,16 +45,16 @@ service class RequestInterceptor {
 // can have only the default path.
 listener http:Listener interceptorListener = new (9090);
 
-// Engage interceptors at the service level. Request interceptor services will be executed from
-// head to tail.
-@http:ServiceConfig {
-    // The interceptor pipeline. The base path of the interceptor services is the same as
-    // the target service. Hence, they will be executed only for this particular service.
-    interceptors: [new RequestInterceptor()]
-}
-service / on interceptorListener {
+// Engage interceptors at the service level using \`http:InterceptableService\`. The base path of the
+// interceptor services is the same as the target service. Hence, they will be executed only for
+// this particular service.
+service http:InterceptableService / on interceptorListener {
 
-    resource function get albums(http:Request req) returns Album[] {
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then the request interceptor services will be executed from head to tail.
+    public function createInterceptors() returns RequestInterceptor {
+        return new RequestInterceptor();
+    }
+    resource function get albums() returns Album[] {
         return albums.toArray();
     }
 }
@@ -77,19 +77,27 @@ export function HttpRequestInterceptor({ codeSnippets }) {
 
       <p>
         The <code>http:RequestInterceptor</code> is used to intercept the
-        request and execute some custom logic. A <code>RequestInterceptor</code>{" "}
-        is a service object with only one resource method, which is executed
-        before dispatching the request to the actual resource in the target
-        service. This resource method can have parameters just like a usual
-        resource method in an <code>http:Service</code>. A{" "}
-        <code>RequestInterceptor</code> can be created from a service class,
+        request and execute custom logic. A <code>RequestInterceptor</code> is a
+        service object with only one resource method, which is executed before
+        dispatching the request to the actual resource in the target service.
+        This resource method can have parameters just like a usual resource
+        method in an <code>http:Service</code>.
+      </p>
+
+      <p>
+        A <code>RequestInterceptor</code> can be created from a service class,
         which includes the <code>http:RequestInterceptor</code> service type.
-        Then, this service object can be engaged at the listener level or
-        service level by using the <code>interceptors</code> field in the
-        configurations. This field accepts an array of interceptor service
-        objects as an interceptor pipeline, and the interceptors are executed in
-        the order in which they are placed in the pipeline. Use{" "}
-        <code>RequestInterceptors</code> to execute some common logic such as
+        Then, this service object can be engaged at the listener level by using
+        the <code>interceptors</code> field in the{" "}
+        <code>http:ListenerConfiguration</code> or at the service level by
+        declaring a <code>http:InterceptableService</code> object.
+      </p>
+
+      <p>
+        These accept an interceptor service object or an array of interceptor
+        service objects as an interceptor pipeline, and the interceptors are
+        executed in the order in which they are placed in the pipeline. Use{" "}
+        <code>RequestInterceptors</code> to execute common logic such as
         logging, header manipulation, state publishing, etc., for inbound
         requests.
       </p>
@@ -104,7 +112,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e9a75db049df9a9e6c513a3564fec851&file=http_request_interceptor.bal",
+                "https://play.ballerina.io/?gist=7cff034011dad19163683387a46c9d2a&file=http_request_interceptor.bal",
                 "_blank"
               );
             }}
@@ -129,7 +137,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-request-interceptor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-request-interceptor",
                 "_blank"
               );
             }}

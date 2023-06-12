@@ -6,23 +6,6 @@ keywords: ballerina, programming language, testing, test setup
 permalink: /learn/test-ballerina-code/configure-tests/
 active: configure-tests
 intro: The Ballerina Test framework has configurations at various levels to streamline the testing process and ensure that the tests are written with a comprehensible structure.
-redirect_from:
-- /learn/testing-ballerina-code/
-- /learn/testing-ballerina-code
-- /swan-lake/learn/testing-ballerina-code/configuring-tests/
-- /swan-lake/learn/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/user-guide/testing-ballerina-code/
-- /learn/user-guide/testing-ballerina-code
-- /learn/user-guide/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests/
-- /learn/testing-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-tests
-- /learn/test-ballerina-code/configuring-test/
-- /learn/test-ballerina-code/configure-tests
-- /learn/guides/testing-ballerina-code/configuring-tests/
-- /learn/guides/testing-ballerina-code/configuring-tests
 ---
 
 ## Set up and tearing down
@@ -273,10 +256,34 @@ function testFunction2() {
 }
 ```
 
+## Ensure test execution order
+
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies 
+upon.
+This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+
+***Example:***
+
+```ballerina
+@test:Config {dependsOn: [testFunction4]}
+function testFunction5() {
+    io:println("I'm in test function 5!");
+    test:assertTrue(true, msg = "Failed!");
+}
+```
+
 ## Define test-specific configurations
 Configurations for testing can be provided using configurable variables. The values for configurable variables can be
 provided in a file named `Config.toml` located in the `tests` directory, which will only be initialized when the tests
 are run. 
+
+Configurable variables can also be provided as command line arguments when running the tests. The configurable values can be passed with `bal test` in the format `-Ckey=value` where `key` is the configurable variable name and `value` is the value to be assigned to the configurable variable.
+
+***Example:***
+
+```
+$ bal test -Cval1=add -Cval2=10 -Cval3=5
+```
 
 Configurable variables are useful when you require separate configurations that cannot be feasibly used outside of 
 testing. This is particularly useful when testing services and clients where you may need different host values when you

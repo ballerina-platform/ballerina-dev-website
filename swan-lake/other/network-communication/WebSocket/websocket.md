@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/websocket/
 active: websocket
 intro: WebSocket is a low-latency communication protocol used for efficient full-duplex communication between web browsers and servers over TCP. The topics below explain how to implement WebSocket-based services using Ballerina.  
-redirect_from:
-  - /learn/network-communication/websocket
-  - /swan-lake/learn/network-communication/websocket/
-  - /swan-lake/learn/network-communication/websocket
-  - /learn/network-communication/websocket/
-  - /learn/network-communication/websocket
-  - /learn/user-guide/network-communication/websocket
-redirect_to:
-  - https://lib.ballerina.io/ballerina/websocket/latest/
 ---
 
 ## Upgrading the WebSocket 
@@ -142,7 +133,7 @@ Sub-protocols are given in the WebSocket constructor’s second parameter, which
 
 The server-side will be configured to handle zero or multiple sub-protocols. The server will check the client’s sub-protocol list in the priority order to see if it is supported in the given service. If it finds a match, it will return this single first-matched protocol to the client.
 
-The server-side configuration of sub-protocols is done using the [`websocket:ServiceConfig`](https://docs.central.ballerina.io/ballerina/websocket/latest/annotations#ServiceConfig) annotation using its `subProtocols` field.
+The server-side configuration of sub-protocols is done using the [`websocket:ServiceConfig`](https://lib.ballerina.io/ballerina/websocket/latest/annotations#ServiceConfig) annotation using its `subProtocols` field.
 
 #### Sub-protocol handling example
 

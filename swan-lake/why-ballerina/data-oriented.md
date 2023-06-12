@@ -6,12 +6,6 @@ keywords: ballerina, networking, microservices, programming language, distribute
 permalink: /why-ballerina/data-oriented/
 active: data-oriented
 intro: Language-integrated queries specify the logic in SQL-like syntax to process data and events. They are easy to write and understand due to the simplicity of the syntax. See how Ballerina provides first-class support for writing queries that process data.
-redirect_from:
-    - /learn/user-guide/why-ballerina/data-oriented/
-    - /learn/user-guide/why-ballerina/data-oriented
-    - /learn/why-ballerina/data-oriented
-    - /learn/why-ballerina/data-oriented/
-    - /why-ballerina/data-oriented
 ---
 
 As of now, language-integrated queries are supported for iterator implementations such as an array, map, stream, and table. There are two kinds of integrated queries that can be written in Ballerina:

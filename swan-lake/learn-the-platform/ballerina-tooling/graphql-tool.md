@@ -6,11 +6,6 @@ keywords: ballerina, programming language, graphql, sdl, schema definition langu
 permalink: /learn/graphql-tool/
 active: graphql-tool
 intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL client. It generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document. In addition, the GraphQL tool supports generating the GraphQL schema for a given Ballerina GraphQL service and writing it to a file in GraphQL schema definition language (SDL).
-redirect_from:
-  - /learn/ballerina-graphql-support
-  - /learn/ballerina-graphql-support/
-  - /learn/graphql-tool
-  - /learn/graphql-tool/
 --- 
 
 The Ballerina GraphQL tooling support provides the following capabilities.

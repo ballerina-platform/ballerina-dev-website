@@ -93,7 +93,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9c72b60677936e37df25c463eedfe1c6&file=constraint_validations.bal",
+                "https://play.ballerina.io/?gist=599f326fb7c82110492abffff1e279a6&file=constraint_validations.bal",
                 "_blank"
               );
             }}
@@ -118,7 +118,7 @@ export function ConstraintValidations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/constraint-validations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/constraint-validations",
                 "_blank"
               );
             }}
@@ -290,7 +290,7 @@ export function ConstraintValidations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Distributed tracing" href="/learn/by-example/tracing">
+          <Link title="Get all" href="/learn/by-example/persist-get-all">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -299,7 +299,7 @@ export function ConstraintValidations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Distributed tracing
+                  Get all
                 </span>
               </div>
               <svg

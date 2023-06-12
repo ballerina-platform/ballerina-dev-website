@@ -88,7 +88,7 @@ export function AccessJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=51b41f9661e9dd9ee2768840319eb62e&file=access_json_elements.bal",
+                "https://play.ballerina.io/?gist=cac67ade1c21f9f0a7a41bb34c329f90&file=access_json_elements.bal",
                 "_blank"
               );
             }}
@@ -113,7 +113,7 @@ export function AccessJsonElements({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/access-json-elements",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/access-json-elements",
                 "_blank"
               );
             }}

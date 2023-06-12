@@ -69,7 +69,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=70744b1a1f4e3b4455ee7f8486eebcd8&file=http_client_oauth2_refresh_token_grant_type.bal",
+                "https://play.ballerina.io/?gist=63360c4687d9f91979e84d5f67551262&file=http_client_oauth2_refresh_token_grant_type.bal",
                 "_blank"
               );
             }}
@@ -94,7 +94,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-oauth2-refresh-token-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-oauth2-refresh-token-grant-type",
                 "_blank"
               );
             }}

@@ -60,7 +60,7 @@ export function ModuleLifecycle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b439bfb453256e4b069c9a9f61afd99d&file=module_lifecycle.bal",
+                "https://play.ballerina.io/?gist=7f21c4b554badd6e42754ae23f21c36e&file=module_lifecycle.bal",
                 "_blank"
               );
             }}
@@ -85,7 +85,7 @@ export function ModuleLifecycle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/module-lifecycle",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/module-lifecycle",
                 "_blank"
               );
             }}

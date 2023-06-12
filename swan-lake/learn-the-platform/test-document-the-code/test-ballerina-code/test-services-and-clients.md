@@ -6,18 +6,6 @@ keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/test-services-and-clients/
 active: testing-services-and-clients
 intro: Testing Ballerina services involves sending specific requests to the service using a client and verifying the responses using the assertion functions. The aim is to make sure that the service and client behave as expected when sending and recieving both expected requests and malformed ones.
-redirect_from:
-- /learn/testing-ballerina-code/testing-services-and-clients
-- /learn/testing-ballerina-code/testing-services-and-clients/
-- /swan-lake/learn/testing-ballerina-code/testing-services-and-clients/
-- /swan-lake/learn/testing-ballerina-code/testing-services-and-clients
-- /learn/user-guide/testing-ballerina-code/testing-services-and-clients
-- /learn/user-guide/testing-ballerina-code/testing-services-and-clients/
-- /learn/testing-ballerina-code/test-services-and-clients/
-- /learn/testing-ballerina-code/test-services-and-clients
-- /learn/test-ballerina-code/test-services-and-clients
-- /learn/guides/testing-ballerina-code/testing-services-and-clients/
-- /learn/guides/testing-ballerina-code/testing-services-and-clients
 ---
 
 ## Test services

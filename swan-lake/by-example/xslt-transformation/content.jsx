@@ -90,7 +90,7 @@ export function XsltTransformation({ codeSnippets }) {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/xslt/latest/">
+        <a href="https://lib.ballerina.io/ballerina/xslt/latest/">
           <code>xslt</code> module
         </a>
         .
@@ -106,7 +106,7 @@ export function XsltTransformation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b6000226d1351eb2e50d8a83c6280592&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=5ce6f1b041d0412819ad87e3d0d531b2&file=xslt_transformation.bal",
                 "_blank"
               );
             }}
@@ -131,7 +131,7 @@ export function XsltTransformation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xslt-transformation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xslt-transformation",
                 "_blank"
               );
             }}

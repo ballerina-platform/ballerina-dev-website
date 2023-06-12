@@ -50,7 +50,7 @@ export function TypeDefinitions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c3d624f2c8f25d0983dd2dc7840802f&file=type_definitions.bal",
+                "https://play.ballerina.io/?gist=0206e7b6b5ff7bb0ce9efc04158d09e5&file=type_definitions.bal",
                 "_blank"
               );
             }}
@@ -75,7 +75,7 @@ export function TypeDefinitions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/type-definitions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/type-definitions",
                 "_blank"
               );
             }}

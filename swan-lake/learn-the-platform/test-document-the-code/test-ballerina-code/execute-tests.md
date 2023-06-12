@@ -6,18 +6,6 @@ keywords: ballerina, programming language, testing, test execution
 permalink: /learn/test-ballerina-code/execute-tests/
 active: execute-tests
 intro: The sections below include information about executing tests in Ballerina.
-redirect_from:
-  - /swan-lake/learn/testing-ballerina-code/executing-tests/
-  - /swan-lake/learn/testing-ballerina-code/executing-tests
-  - /learn/user-guide/testing-ballerina-code/executing-tests
-  - /learn/user-guide/testing-ballerina-code/executing-tests/
-  - /learn/testing-ballerina-code/executing-tests/
-  - /learn/testing-ballerina-code/executing-tests
-  - /learn/testing-ballerina-code/execute-tests/
-  - /learn/testing-ballerina-code/execute-tests
-  - /learn/test-ballerina-code/execute-tests
-  - /learn/guides/testing-ballerina-code/executing-tests/
-  - /learn/guides/testing-ballerina-code/executing-tests
 ---
 
 ## Understand the test execution behavior
@@ -160,24 +148,6 @@ Also, dump the test results in the JSON format.
 
 ```
 $ bal test --test-report --code-coverage --coverage-format=xml
-```
-
-Exclude files or modules from the code coverage report. The exclusion list can be provided as a comma-separated list of absolute or relative paths. Glob patterns such as `*` and `**` can be used in the paths.
-
-The formats below can be used for excluding.
-|Format | Corresponding path|
-------  | -----------------
-|./  or ./**                                        | All the source files in the package.|
-|./*                                                | All the source files in the default module.|
-|./generated  or ./generated/**                     | All the source files under the `generated` directory.|
-|./modules or ./modules/**                          | All the source files under the `modules` directory.|
-|./modules/*/util.bal                               | All the `util.bal` source files under the `modules` directory.|
-|*.bal                                              | All the Ballerina source files.|
-|./*.bal                                            | All the Ballerina source files in the default module.|
-|/Home/User/package/main.bal                        | Absolute path.|
-
-```
-$ bal test --test-report --code-coverage --coverage-format=xml --excludes='./generated'
 ```
 
 

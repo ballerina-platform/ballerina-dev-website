@@ -66,7 +66,7 @@ export function NamedWorkersAndFutures({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=5a4f92ba309b3a2f50958ff22ed6dc5c&file=named_workers_and_futures.bal",
+                "https://play.ballerina.io/?gist=2c7a21a0682b7ba83f5c24882b3e43e1&file=named_workers_and_futures.bal",
                 "_blank"
               );
             }}
@@ -91,7 +91,7 @@ export function NamedWorkersAndFutures({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/named-workers-and-futures",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/named-workers-and-futures",
                 "_blank"
               );
             }}

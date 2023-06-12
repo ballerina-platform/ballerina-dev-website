@@ -70,7 +70,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=af03ee4315f512bb3b1e350ed0a72e2c&file=http_client_payload_constraint_validation.bal",
+                "https://play.ballerina.io/?gist=c1f81e64f30d8d87a080f61cc735344a&file=http_client_payload_constraint_validation.bal",
                 "_blank"
               );
             }}
@@ -95,7 +95,7 @@ export function HttpClientPayloadConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-payload-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-payload-constraint-validation",
                 "_blank"
               );
             }}

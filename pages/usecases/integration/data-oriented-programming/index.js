@@ -21,9 +21,8 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../../../layouts/LayoutUseCase";
-import Intro from "../../../../components/integration/replace-java/intro/Intro";
-import UseCases from "../../../../components/integration/replace-java/use-cases/UseCases";
-import Code from "../../../../components/integration/replace-java/code/Code";
+import Intro from "../../../../components/integration/data-oriented-programming/intro/Intro";
+import Code from "../../../../components/integration/data-oriented-programming/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -43,12 +42,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/replace-java/code/java-bbe");
+  const files = traverseFolder("components/integration/data-oriented-programming/code/java-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/replace-java/code/java-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/integration/data-oriented-programming/code/java-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     const regex = /```(\w+)([\s\S]*?)```/g;
     let match = [];
@@ -118,7 +117,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Enhancing data-oriented programming with Ballerina: a comparative analysis</title>
+        <title>Data-oriented programming with Ballerina: a comparative analysis</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -174,7 +173,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Enhancing data-oriented programming with Ballerina:  <br/>A comparative analysis</h1>
+                <h1>Data-oriented programming with Ballerina:  <br/>A comparative analysis</h1>
               </Container>
 
             </Col>

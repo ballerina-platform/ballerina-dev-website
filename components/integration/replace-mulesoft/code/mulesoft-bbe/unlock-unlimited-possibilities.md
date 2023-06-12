@@ -1,7 +1,7 @@
 ---
 title: 'Unlock unlimited possibilities with the flexibility of a programming language'
-description: Ballerina, being a full-fledged programming language, provides greater flexibility and intuitiveness to developers to create custom solutions to meet their requirements.<br/><br/> Ballerina is data-oriented and knows JSON, XML, tabular, stream, etc., data. JSON and XML syntax is compatible with Ballerina syntax, enabling usage of relevant syntax with compile-time validation. Ballerina understands JSON and XML values and supports numerous features to efficiently manipulate JSON and XML data. Ballerina also supports a powerful SQL-like query syntax which facilitates working with data easily and intuitively.
-url: 'https://github.com/MaryamZi/ballerina-samples/tree/master/population_service'
+description: Ballerina, a full-fledged programming language, provides greater flexibility and intuitiveness to developers to create custom solutions to meet their requirements, unlike a domain-specific language (DSL).<br/><br/> Ballerina is data-oriented and knows JSON, XML, tabular data, streams, etc. JSON and XML syntax is compatible with Ballerina syntax, enabling using natural and familiar syntax with compile-time validation. Ballerina understands data and supports numerous features that allow efficient and intuitive data transformation. Ballerina also supports a powerful SQL-like query syntax which facilitates working with data easily and intuitively.
+url: 'https://github.com/ballerina-guides/integration-samples/tree/main/population_service'
 ---
 ```
 import ballerina/http;

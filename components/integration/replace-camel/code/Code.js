@@ -330,7 +330,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (cloud.frontmatter.image && cloud.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${cloud.frontmatter.image}`} alt={cloud.frontmatter.title} />
+                                        <img src={`${prefix}/${cloud.frontmatter.image}`} alt={cloud.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

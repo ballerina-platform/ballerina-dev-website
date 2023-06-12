@@ -52,7 +52,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                             <div>
-                                <h3>Application Integration</h3>
+                                <h3>Application integration</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina can be used to write any complex application integration in a simple manner using its native constructs and using native connectors or custom code.</p>
 
@@ -61,7 +61,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/xlight05/ballerina-scenarios/tree/main/inventory_store" className={styles.cDownload}>
-                                        See Sample: Inventory manager with Mysql
+                                        See Sample: Inventory manager with MySQL
                                     </a>
                                 </div>
                             </div>
@@ -69,7 +69,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Data Transformation</h3>
+                                <h3>Data transformation</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina contains powerful tools to transform, filter and manipulate the data according to your use cases with ease and optimal performance.</p>
                                 </div>
@@ -85,7 +85,7 @@ export default function UseCases(props) {
                         <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Event Driven Architecture</h3>
+                                <h3>Event-driven architecture</h3>
                                 <div className={styles.cardDescription}>
                                     <p>Ballerina provides extensive support for consuming and producing events in diverse ways. It has support for major message brokers and makes distributed architectures a whole lot less complicated.</p>
                                 </div>
@@ -93,7 +93,7 @@ export default function UseCases(props) {
 
                                 <div className={styles.cardLinks}>
                                     <a target="_blank" rel="noreferrer" href="https://github.com/xlight05/ballerina-scenarios/tree/main/order_events" className={styles.cDownload}>
-                                        See Sample: Async Order Proccessor
+                                        See Sample: Async Order Processor
                                     </a>
                                 </div>
                             </div>

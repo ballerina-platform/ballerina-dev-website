@@ -76,6 +76,7 @@ export default function UseCases(props) {
                                         (purposefulBuild.frontmatter.url && purposefulBuild.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={purposefulBuild.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -94,7 +95,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (purposefulBuild.frontmatter.image && purposefulBuild.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${purposefulBuild.frontmatter.image}`} alt={purposefulBuild.frontmatter.title} />
+                                        <img src={`${prefix}/${purposefulBuild.frontmatter.image}`} alt={purposefulBuild.frontmatter.title}  />
                                         : null
                                 }
                             </Col>
@@ -308,6 +309,7 @@ export default function UseCases(props) {
                                         (networkAware.frontmatter.url && networkAware.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={networkAware.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -316,7 +318,7 @@ export default function UseCases(props) {
 
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                            <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 {
                                     (networkAware.code && networkAware.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -326,7 +328,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (networkAware.frontmatter.image && networkAware.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${networkAware.frontmatter.image}`} alt={networkAware.frontmatter.title} />
+                                        <img src={`${prefix}/${networkAware.frontmatter.image}`} alt={networkAware.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>
@@ -366,7 +368,7 @@ export default function UseCases(props) {
                                         (integration.frontmatter.url && integration.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={integration.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    View code on GitHub
+                                                    Learn how to consume messages with Kafka
                                                 </a>
                                             </div>
                                             : null
@@ -482,6 +484,7 @@ export default function UseCases(props) {
                                         (smartEndpoints.frontmatter.url && smartEndpoints.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={smartEndpoints.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -598,7 +601,7 @@ export default function UseCases(props) {
                                         (bottomUp.frontmatter.url && bottomUp.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={bottomUp.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Go to the documentation of architecture view
+                                                    Go to the documentation of Architecture View
                                                 </a>
                                             </div>
                                             : null
@@ -656,6 +659,7 @@ export default function UseCases(props) {
                                         (devopsAgility.frontmatter.url && devopsAgility.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={devopsAgility.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>

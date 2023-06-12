@@ -114,8 +114,7 @@ export default function UseCases(props) {
                                         (pam.frontmatter.url && pam.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={pam.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
+                                                    Learn how to consume messages with Kafka
                                                 </a>
                                             </div>
                                             : null
@@ -480,8 +479,7 @@ export default function UseCases(props) {
                                         (file.frontmatter.url && file.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={file.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
+                                                    Learn how to receive events from FTP server
                                                 </a>
                                             </div>
                                             : null
@@ -540,8 +538,7 @@ export default function UseCases(props) {
                                         (email.frontmatter.url && email.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={email.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
+                                                    Learn how to receive email
                                                 </a>
                                             </div>
                                             : null

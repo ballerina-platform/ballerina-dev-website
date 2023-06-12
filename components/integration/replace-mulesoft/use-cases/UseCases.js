@@ -54,7 +54,7 @@ export default function UseCases(props) {
                             <div>
                                 <h3>API and microservices integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina&apos;s understanding of services and the features and platform built around it provide a powerful and intuitive approach to develop, test, and deploy APIs and microservices.</p>
+                                    <p>Ballerina&apos;s understanding of services and the features and platform built around it provide a powerful and intuitive approach for developing, testing, and deploying APIs and microservices. </p>
 
                                 </div>
                                 </div>
@@ -74,7 +74,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>Application and cloud integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina supports a large number of connectors and triggers that can be used to develop application integration solutions and connect and work with different cloud applications and platforms easily.</p>
+                                    <p>Ballerina supports numerous connectors and triggers that allow connecting and working with different cloud applications and platforms easily.</p>
                                 </div>
                                 </div>
 
@@ -115,7 +115,7 @@ export default function UseCases(props) {
                                 <div>
                                 <h3>B2B/EDI integration</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Ballerina supports  seamless B2B/EDI integration facilitated by  EDI support that includes parsing EDI schema and generating representative Ballerina records, which facilitates working with corresponding data in an intuitive manner while also taking advantage of features available with/expect records.</p>
+                                    <p>Ballerina supports seamless B2B/EDI integration facilitated by  EDI support that includes parsing EDI schema and generating representative Ballerina records, which allows working with corresponding data intuitively while taking advantage of features available with/expect records.</p>
                                 </div>
                                 </div>
 

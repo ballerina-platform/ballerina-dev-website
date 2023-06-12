@@ -40,12 +40,11 @@ export default function Intro() {
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Ballerina is a free and open-source programming language built for 
-                                    integration and is a cost-effective alternative to develop 
-                                    integration solutions. 
-                                    Ballerina has network primitives built into the language 
-                                    and supports numerous connectors and triggers, also free, making 
-                                    it powerful and intuitive for integration developers.<br/><br/>
+                                    Ballerina, a free and open-source programming language built for integration, 
+                                    is a cost-effective alternative for developing integration solutions. 
+                                    Ballerina has network primitives built into the language and supports numerous 
+                                    connectors and triggers (also free), making Ballerina powerful and intuitive 
+                                    for integration developers.<br/><br/>
 
                                     Switch to Ballerina to build your solution and host it 
                                     wherever you want without having to worry about licensing 

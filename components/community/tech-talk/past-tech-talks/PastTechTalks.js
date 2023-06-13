@@ -37,7 +37,7 @@ export default function PastTechTalks() {
             <p className="eventName">Monthly Tech Talk</p>
           </a>
           <h5>Unleash the Power of AI with Ballerina</h5>
-          <a target="_blank" rel="noreferrer" href="https://twitter.com/JayaniHewa">Jayani Hewavitharana</a>, Machine Learning Engineer, WSO2<br />
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/JayaniHewa">Jayani Hewavitharana</a>, Ballerina AI Team<br />
         </Col>
         <Col sm={12} md={3} className={styles.eventURL}>
           <a className={styles.eventRegistration} href="https://youtu.be/qflhlNQg18c" target="_blank" rel="noreferrer">Watch Tech Talk</a>

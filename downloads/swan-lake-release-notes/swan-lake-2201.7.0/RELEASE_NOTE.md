@@ -68,6 +68,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 ### Improvements
 
+#### CLI commands
+
+- Renamed the `--native` argument `--graalvm`
+
+- Added support to pass additional native-image arguments with `--graalvm-build-options`.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.7.0 of the repositories below.

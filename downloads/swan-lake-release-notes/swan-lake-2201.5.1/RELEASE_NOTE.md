@@ -36,3 +36,11 @@ To view bug fixes, see the [GitHub milestone for 2201.5.1 (Swan Lake)](https://g
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.5.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.5.1+label%3AType%2FBug+is%3Aclosed+).
+
+## Developer tools updates
+
+### Improvements
+
+#### OpenAPI Tool
+- Added object type query parameter support in OpenAPI to Ballerina service generation
+- Added the flag `--without-data-binding` to generate a low-level service without data binding in OpenAPI to Ballerina service generation

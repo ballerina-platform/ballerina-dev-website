@@ -28,6 +28,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+## Language updates
+
 ### New features
 
 ### Improvements

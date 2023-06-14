@@ -35,7 +35,6 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Add Constraints Validation Support for GraphQL Package](https://github.com/ballerina-platform/ballerina-standard-library/issues/4375)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2023-04-24|Active|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-standard-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|
 |[Proposal: GraphQL Federation Gateway in Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/4298)|[Ishad-M-I-M](https://github.com/Ishad-M-I-M)|0|2023-04-03|N/A|
 |[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|

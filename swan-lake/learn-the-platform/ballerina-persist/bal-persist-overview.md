@@ -19,6 +19,8 @@ The data model is the source of truth for the data model in your application. Ev
 The Ballerina VSCode plugin supports to validation of the data model, provides code actions to create the data model, and visualizes the data model in an ER diagram.
 The client API is generated using the `bal persist` CLI tool. The client API is generated as a Ballerina source file. Therefore, you can easily import the client API into your Ballerina source files and use it in your business logic to access the data in the data store.
 
+The following sections describe the data model, CLI tool, and client API in detail.
+
 ## Data Model
 
 The data model is defined in a Ballerina source file inside the `persist` directory in the project root directory. The data model is defined using the Ballerina record type. The following example shows how to define a data model for a table named `Employee` with the fields `id`, `name`, `age`, and `salary`.

@@ -430,7 +430,7 @@ Found erroneous entries for countries: ["Sri Lanka","India"]
 
 ### Create the `groupDeathsByContinent` function
 
-To define a function that groups the data by continent and retrieves the total number of deaths per continent, add the following code to the `main.bal` file.
+To define a function that groups the data by continent and to retrieve the total number of deaths per continent, add the following code to the `main.bal` file.
 
 ```ballerina
 public function groupDeathsByContinent(table<CovidEntry> dataTable) returns record {|string continent; decimal deaths;|}[] {

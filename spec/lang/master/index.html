@@ -8087,15 +8087,16 @@ A <code>type-cast-action-or-expr</code>, <code>checking-action-or-expr</code> or
 <span class="ntdfn" id="intermediate-action-clause">intermediate-action-clause</span> :=
    <a href="#from-action-clause"><span class="ntref">from-action-clause</span></a>
    | <a href="#let-action-clause"><span class="ntref">let-action-clause</span></a>
+   | <a href="#join-action-clause"><span class="ntref">join-action-clause</span></a>
    | <a href="#where-clause"><span class="ntref">where-clause</span></a>
    | <a href="#limit-clause"><span class="ntref">limit-clause</span></a>
-   | <a href="#join-clause"><span class="ntref">join-clause</span></a>
    | <a href="#order-by-clause"><span class="ntref">order-by-clause</span></a>
    | <a href="#group-by-clause"><span class="ntref">group-by-clause</span></a>
 
 <span class="ntdfn" id="from-action-clause">from-action-clause</span> := <code>from</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 <span class="ntdfn" id="let-action-clause">let-action-clause</span> := <code>let</code> <a href="#let-action-var-decl"><span class="ntref">let-action-var-decl</span></a> [<code>,</code> <a href="#let-action-var-decl"><span class="ntref">let-action-var-decl</span></a>]*
 <span class="ntdfn" id="let-action-var-decl">let-action-var-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
+<span class="ntdfn" id="join-action-clause">join-action-clause</span> := [<code>outer</code>] <code>join</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
 <span class="ntdfn" id="select-action-clause">select-action-clause</span> := <code>select</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 <span class="ntdfn" id="collect-action-clause">collect-action-clause</span> := <code>collect</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 </pre>

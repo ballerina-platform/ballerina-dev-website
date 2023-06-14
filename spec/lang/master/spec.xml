@@ -7540,15 +7540,16 @@ class="grammar"><dfn>query-action-or-expr</dfn> := <abbr>query-select-action-or-
 <dfn>intermediate-action-clause</dfn> :=
    <abbr>from-action-clause</abbr>
    | <abbr>let-action-clause</abbr>
+   | <abbr>join-action-clause</abbr>
    | <abbr>where-clause</abbr>
    | <abbr>limit-clause</abbr>
-   | <abbr>join-clause</abbr>
    | <abbr>order-by-clause</abbr>
    | <abbr>group-by-clause</abbr>
 
 <dfn>from-action-clause</dfn> := <code>from</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>action-or-expr</abbr>
 <dfn>let-action-clause</dfn> := <code>let</code> <abbr>let-action-var-decl</abbr> [<code>,</code> <abbr>let-action-var-decl</abbr>]*
 <dfn>let-action-var-decl</dfn> := [<abbr>annots</abbr>] <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>action-or-expr</abbr>
+<dfn>join-action-clause</dfn> := [<code>outer</code>] <code>join</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>action-or-expr</abbr> <abbr>join-on-condition</abbr>
 <dfn>select-action-clause</dfn> := <code>select</code> <abbr>action-or-expr</abbr>
 <dfn>collect-action-clause</dfn> := <code>collect</code> <abbr>action-or-expr</abbr>
 </pre>

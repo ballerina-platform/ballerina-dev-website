@@ -12238,6 +12238,13 @@ public isolated function max(decimal x, decimal... xs) returns decimal = externa
 # + return - minimum value of `x` and all the `xs`.
 public isolated function min(decimal x, decimal... xs) returns decimal = external;
 
+# Average of one or more decimal values.
+# 
+# + x - first decimal value
+# + xs - other decimal values
+# + return - average value of `x` and all the `xs`.
+public isolated function avg(decimal x, decimal... xs) returns decimal = external;
+
 # IEEE abs operation.
 #
 # + x - decimal value to operate on
@@ -12456,6 +12463,13 @@ public isolated function max(float... xs) returns float = external;
 # + xs - float values to operate on
 # + return - minimum value of all the `xs`
 public isolated function min(float... xs) returns float = external;
+
+# Average of zero or more float values.
+# Result is NaN if there are no arguments
+# 
+# + xs - float values to operate on
+# + return - average of all the `xs`
+public isolated function avg(float... xs) returns float = external;
 
 # IEEE abs operation.
 #
@@ -12825,6 +12839,15 @@ public isolated function max(int n, int... ns) returns int = external;
 # + ns - other int values
 # + return - minimum value of `n` and all the `ns`
 public isolated function min(int n, int... ns) returns int = external;
+
+# Average of one or more int values.
+# The average is computed using the decimal type.
+# This function panics if the sum of the arguments overflows the decimal type.
+#
+# + n - first int value
+# + ns - other int values
+# + return - minimum value of `n` and all the `ns`
+public isolated function avg(int n, int... ns) returns decimal = external;
 
 # Returns the integer that `s` represents in decimal.
 # Returns error if `s` is not the decimal representation of an integer.

@@ -32,6 +32,34 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### Introduction of the `group by` and `collect` clauses
+
+The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique for each group. The `collect` clause is used to group a collection into one group. 
+
+```ballerina
+import ballerina/io;
+public type CovidEntry record {|
+    string district;
+    string province;
+    decimal deaths;
+|};
+public final table<CovidEntry> covidTable = table [
+    {district: "Colombo", province: "Western", deaths: 21},
+    {district: "Kandy", province: "Central", deaths: 14},
+    {district: "Kaluthara", province: "Western", deaths: 18},
+    {district: "Jaffna", province: "North", deaths: 10}
+];
+public function main() {
+    record {|string province; decimal deaths;|}[] deathsByProvince = from var {province, deaths} in covidTable
+        group by province
+        select {province, deaths: sum(deaths)};
+    io:println(deathsByProvince);
+    decimal totalDeaths = from var {deaths} in covidTable
+            collect sum(deaths);
+    io:println(totalDeaths);
+}
+```
+
 ### Improvements
 
 ### Bug fixes

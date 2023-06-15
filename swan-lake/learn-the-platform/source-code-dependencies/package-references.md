@@ -145,6 +145,7 @@ skipTests = true
 testReport = true
 codeCoverage = true
 cloud = "k8s"
+graalvmBuildOptions = "--option1 --option2"        # additional native-image options
 ```
 
 ### Dependencies

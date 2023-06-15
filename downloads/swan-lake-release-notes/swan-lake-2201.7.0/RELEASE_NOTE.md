@@ -101,6 +101,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 ### Improvements
 
+#### CLI commands
+
+- Renamed the `--native` argument to `--graalvm`
+- Added the support to pass additional native-image arguments with `--graalvm-build-options`.
+
 #### Language Server
 
 - Improved the order of completion items in the client resource access action context.

@@ -89,7 +89,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 ### Improvements
 
 #### `graphql` package
-- Improved validation of duplicate fields with different arguments.
+- Improved the validation of duplicate fields with different arguments.
 
 ### Bug fixes
 

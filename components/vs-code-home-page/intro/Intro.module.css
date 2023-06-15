@@ -1,0 +1,177 @@
+/* .introText {
+    display: flex;
+    align-items: center;
+} */
+
+.introText1 {
+    font-size: 24px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.introText2 {
+    font-size: 24px;
+    /* font-weight: 300; */
+    font-weight: 400;
+    color: #20b6b0;
+}
+
+.introText3, .download {
+    display: block;
+}
+
+/* a.cDownload {
+    display: block;
+    transition: none !important;
+    font-weight: 400;
+    color: #20b6b0 !important;
+    padding: 20px 8px 20px 40px;
+    text-decoration: none;
+    background-image: url('/images/download-bg.svg');
+    background-repeat: no-repeat;
+    background-position: left 0 top 20px;
+} */
+
+a.cVideoBtn {
+    display: flex;
+    transition: none !important;
+    font-weight: 400;
+    color: #20b6b0 !important;
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+
+a.cVideoBtn span {
+    margin-right: 10px !important;
+}
+
+a.cDownload {
+    display: inline-block;
+    transition: none !important;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #57595d;
+    color: #ffffff !important;
+    padding: 10px 20px 10px 60px;
+    text-decoration: none;
+    min-height: 60px;
+    line-height: 35px;
+    background-image: url('/images/main-right-arrow-home-hover.svg');
+    background-repeat: no-repeat;
+    background-position: left 20px top 13px;
+    width: 245px;
+    border-radius: 4px;
+    background-size: 40px 30px;
+    margin-right:20px;
+}
+
+a.cDownloadOutlined {
+    display: inline-block;
+    transition: none !important;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #57595d !important;
+    border: 1px solid #57595d;
+    padding: 10px 20px 10px 60px;
+    text-decoration: none;
+    min-height: 60px;
+    line-height: 35px;
+    background-image: url('/images/you-tube-play.svg');
+    background-repeat: no-repeat;
+    background-position: left 15px top 13px;
+    width: 200px;
+    border-radius: 4px;
+    background-size: 40px 30px;
+    
+}
+a.cDownloadOutlined:hover {
+    background-image: url("/images/ballerina-play-btn-white.svg");
+    background-color: #20b6b0;
+    background-repeat: no-repeat;
+    background-position: left 15px top 13px;
+    background-size: 40px 30px;
+}
+
+
+a.cDownload:hover {
+    background-image: url("/images/main-right-arrow-home.svg");
+    background-color: #20b6b0;
+    background-repeat: no-repeat;
+    background-position: left 20px top 13px;
+    background-size: 40px 30px;
+}
+
+.introImg div {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    background-color: #20b6b0;
+    padding: 40px;
+    border-radius: 4px;
+    color: #ffffff;
+}
+
+/* .introText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.introText3 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.introText3 {
+    margin-bottom: 20px;
+}
+
+/* .introImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.introImg img {
+    width: -moz-available;         
+  width: -webkit-fill-available;  
+  width: fill-available;
+}
+
+.Code_cDownload__bc7ZJ {
+    display: flex;
+    transition: none!important;
+    font-weight: 400;
+    color: #20b6b0!important;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.Code_cDownload__bc7ZJ:hover {
+    display: flex;
+    transition: none!important;
+    font-weight: 400;
+    color: #000!important;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.viewAll {
+    color: #20b6b0;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.viewAll:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.linkWrap {
+    text-align: right;
+}

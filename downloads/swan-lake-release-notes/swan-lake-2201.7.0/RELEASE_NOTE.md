@@ -108,7 +108,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 #### CLI commands
 
 - Renamed the `--native` flag to `--graalvm`.
-- Introduced the build option `--graalvm-build-options` to support passing additional arguments for GraalVM native image generation.
+- Introduced the `--graalvm-build-options` build option to support passing additional arguments for GraalVM native image generation.
 
 #### Language Server
 

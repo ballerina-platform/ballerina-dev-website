@@ -28,6 +28,26 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
+
+    ```ballerina
+    type Employee record {|
+        string name;
+        int id;
+        string department;
+    |};
+
+    isolated function createEmployee(string[] name, 
+                                    function () returns int idFunction,
+                                    string department) 
+            returns Employee => {
+        name: string:'join(" ", ...name),
+        // Compilation error now, since `idFunction` is not `isolated`.
+        id: idFunction(),
+        department
+    };
+    ```
+
 ## Language updates
 
 ### New features

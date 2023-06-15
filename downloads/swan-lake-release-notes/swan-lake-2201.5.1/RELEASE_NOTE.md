@@ -42,5 +42,5 @@ To view bug fixes, see the [GitHub milestone for 2201.5.1 (Swan Lake)](https://g
 ### Improvements
 
 #### OpenAPI Tool
-- Added object type query parameter support in OpenAPI to Ballerina service generation
-- Added the flag `--without-data-binding` to generate a low-level service without data binding in OpenAPI to Ballerina service generation
+- Added support for query parameters with object type in the OpenAPI to Ballerina service generation.
+- Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding `--without-data-binding` flag to the OpenAPI to Ballerina service generation command.

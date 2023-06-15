@@ -13719,6 +13719,12 @@ more than one basic type..</p>
 
 <pre class="langlib"><![CDATA[
 
+# A type parameter that is a subtype of `any|error`.
+# Has the special semantic that when used in a declaration
+# all uses in the declaration must refer to same type.
+@typeParam
+type Type any|error;
+
 # The type of value to which `clone` and `cloneReadOnly` can be applied.
 public type Cloneable readonly|xml|Cloneable[]|map<Cloneable>|table<map<Cloneable>>;
 
@@ -13908,6 +13914,29 @@ public isolated function fromJsonStringWithType(string str, typedesc<anydata> t 
 # - otherwise, the merge fails
 # If the merge fails, then `j1` is unchanged.
 public isolated function mergeJson(json j1, json j2) returns json|error = external;
+
+# Returns the number of arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + vs - the arguments
+# + return - the number of arguments
+public isolated function count(any|error... vs) returns int = external;
+
+# Returns the first of its arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + v - first argument
+# + vs - other arguments
+# + return - the first argument v
+public isolated function first(Type v, any|error... vs) returns Type = external;
+
+# Returns the last of its arguments.
+# This is useful with aggregated variables created by `collect` and `group by` clauses.
+#
+# + v - first argument
+# + vs - other arguments
+# + return - the last argument
+public isolated function last(Type v, Type... vs) returns Type = external;
 ]]></pre>
 
 </section>
@@ -13934,8 +13963,12 @@ public isolated function mergeJson(json j1, json j2) returns json|error = extern
 <ol>
 <li>Query expressions now support grouping and aggregation, using new
 <code>group by</code> and <code>collect</code> clauses.</li>
-<li>A join> clause in a query expression can contain remote method calls
-and other actions.</li>
+<li>Functions useful for aggregation have been added to langlib:
+<code>int:avg</code>, <code>float:avg</code>, <code>decimal:avg</code>,
+<code>boolean:some</code>, <code>boolean:every</code>, <code>value:count</code>,
+<code>value:first</code>, <code>value:last</code>.</li>
+<li>A <code>join</code> clause in a query expression can contain remote method
+calls and other actions.</li>
 <li>Clarify that the <code>self</code> variable in a method is implicitly
 final.</li>
 </ol>

@@ -80,6 +80,10 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `persist` package
+
+- Added support for the `mssql` data store.
+
 ### Deprecations
 
 ### Improvements

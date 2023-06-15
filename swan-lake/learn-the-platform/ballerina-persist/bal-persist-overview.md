@@ -9,13 +9,16 @@ intro: The `bal persist` feature allows you to store data in different data stor
 redirect_from:
 - /learn/ballerina-persist/persist-overview/
 ---
-This feature has three main components: Data Model, CLI tool, and Type-safe client API. The data model is used to define the data model. The CLI tool is used to generate the client API for the data model. The type-safe client API is used to access the data in the data store.
+This feature has three main components: Data Model, CLI tool, and Type-safe client API. 
+* The data model definition is used to define the data model. 
+* The CLI tool is used to generate the client API for the data model. 
+* The type-safe client API is used to access the data in the data store.
 
 The following diagram illustrates how the `bal persist` feature works.
 
 ![bal persist diagram](/learn/images/bal-persist-diagram.png "bal persist diagram")
 
-The data model definition shown in the above diagram is the source of truth for the data model of your application. The data model definition is used only to generate the client API, which contains the Ballerina client class and types. It cannot be used directly in your applications. It is used to generate the client API.
+The data model definition shown in the above diagram is the source of truth for the data model of your application. The data model definition is used only to generate the client API, which contains the Ballerina client class and types. It cannot be used directly in your applications.
 The Ballerina VS Code extension facilitates the validation, development (via code actions), and visualization (in an Entity Relationship diagram) of the data model definition when creating it.
 The created data model definition will be used to generate the client API via the `bal persist` CLI tool as a Ballerina source file. You can import this generated client API into your Ballerina source files and use it in your business logic to access the data in the data store.
 

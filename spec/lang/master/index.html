@@ -749,7 +749,10 @@ and is not a disallowed character;</li>
 <code>x..y</code> means any single Unicode character whose code point is
 greater than or equal to that of x and less than or equal to that of y</li>
 <li>
-<code class="grammar">str</code> means the characters <code>str</code> literally</li>
+<code class="grammar">xyz</code> means the characters <code>xyz</code> literally</li>
+<li>
+<code class="grammar">xyz</code><sub>NR</sub> means the characters <code>xyz</code> literally,
+and <code>xyz</code> is not a reserved keyword</li>
 <li>
 <code>symbol </code>means a reference to production for the nonterminal
 <code>symbol</code>
@@ -7418,7 +7421,7 @@ resulting from binding typed-binding-pattern to <var>v</var>.</li>
 
 <section>
 <h4 id="section_6.35.2">6.35.2 Where clause</h4>
-<pre class="grammar"><span class="ntdfn" id="where-clause">where-clause</span> := <code>where</code> <a href="#expression"><span class="ntref">expression</span></a>
+<pre class="grammar"><span class="ntdfn" id="where-clause">where-clause</span> := <code>where</code><sub>NR</sub> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 A <code>where</code> clause is executed as follows:
@@ -7461,7 +7464,7 @@ E<sub>2</sub></code>.
 
 <section>
 <h4 id="section_6.35.4">6.35.4 Join clause</h4>
-<pre class="grammar"><span class="ntdfn" id="join-clause">join-clause</span> := [<code>outer</code>] <code>join</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
+<pre class="grammar"><span class="ntdfn" id="join-clause">join-clause</span> := [<code>outer</code><sub>NR</sub>] <code>join</code><sub>NR</sub> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#expression"><span class="ntref">expression</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
 <span class="ntdfn" id="join-on-condition">join-on-condition</span> := <code>on</code> <a href="#expression"><span class="ntref">expression</span></a> <code>equals</code> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
@@ -7539,7 +7542,7 @@ if the type that would be inferred usually for the variable would be
 <section>
 <h4 id="section_6.35.5">6.35.5 Limit clause</h4>
 <pre class="grammar">
-<span class="ntdfn" id="limit-clause">limit-clause</span> := <code>limit</code> <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="limit-clause">limit-clause</span> := <code>limit</code><sub>NR</sub> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 A <code>limit</code> clause limits the number of frames emitted by a query pipeline.
@@ -7568,7 +7571,7 @@ The static type of expression must be a subtype of <code>int</code>.
 <section>
 <h4 id="section_6.35.6">6.35.6 Order by clause</h4>
 <pre class="grammar">
-<span class="ntdfn" id="order-by-clause">order-by-clause</span> := <code>order</code> <code>by</code> <a href="#order-key"><span class="ntref">order-key</span></a> [<code>,</code> <a href="#order-key"><span class="ntref">order-key</span></a>]*
+<span class="ntdfn" id="order-by-clause">order-by-clause</span> := <code>order</code><sub>NR</sub> <code>by</code><sub>NR</sub> <a href="#order-key"><span class="ntref">order-key</span></a> [<code>,</code> <a href="#order-key"><span class="ntref">order-key</span></a>]*
 <span class="ntdfn" id="order-key">order-key</span> := <a href="#expression"><span class="ntref">expression</span></a> [<a href="#order-direction"><span class="ntref">order-direction</span></a>]
 <span class="ntdfn" id="order-direction">order-direction</span> := <code>ascending</code> | <code>descending</code>
 </pre>
@@ -7680,7 +7683,7 @@ variable-reference-expr, and then rejected as semantically incorrect.
 
 <section>
 <h4 id="section_6.35.8">6.35.8 Group by clause</h4>
-<pre class="grammar"><span class="ntdfn" id="group-by-clause">group-by-clause</span> := <code>group</code> <code>by</code> <a href="#grouping-key"><span class="ntref">grouping-key</span></a> (<code>,</code> <a href="#grouping-key"><span class="ntref">grouping-key</span></a>)*
+<pre class="grammar"><span class="ntdfn" id="group-by-clause">group-by-clause</span> := <code>group</code><sub>NR</sub> <code>by</code><sub>NR</sub> <a href="#grouping-key"><span class="ntref">grouping-key</span></a> (<code>,</code> <a href="#grouping-key"><span class="ntref">grouping-key</span></a>)*
 <span class="ntdfn" id="grouping-key">grouping-key</span> :=
    <a href="#variable-name"><span class="ntref">variable-name</span></a>
    | <a href="#inferable-type-descriptor"><span class="ntref">inferable-type-descriptor</span></a> <a href="#variable-name"><span class="ntref">variable-name</span></a> <code>=</code> <a href="#expression"><span class="ntref">expression</span></a>
@@ -7729,7 +7732,7 @@ for every other variable is <a href="#aggregated_variables">aggregated from</a>
 
 <section>
 <h4 id="section_6.35.9">6.35.9 Collect clause</h4>
-<pre class="grammar"><span class="ntdfn" id="collect-clause">collect-clause</span> := <code>collect</code> <a href="#expression"><span class="ntref">expression</span></a>
+<pre class="grammar"><span class="ntdfn" id="collect-clause">collect-clause</span> := <code>collect</code><sub>NR</sub> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 
 <p>
@@ -7761,7 +7764,7 @@ contextually expected type for the query-collect-expr.
 <h4 id="section_6.35.10">6.35.10 Select clause</h4>
 
 <pre class="grammar">
-<span class="ntdfn" id="select-clause">select-clause</span> := <code>select</code> <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="select-clause">select-clause</span> := <code>select</code><sub>NR</sub> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 When a query-select expression is evaluated, the <code>select</code> clause is
@@ -7863,7 +7866,7 @@ a subtype of readonly.
 <section>
 <h4 id="section_6.35.11">6.35.11 On conflict clause</h4>
 <pre class="grammar">
-<span class="ntdfn" id="on-conflict-clause">on-conflict-clause</span> := <code>on</code> <code>conflict</code> <a href="#expression"><span class="ntref">expression</span></a>
+<span class="ntdfn" id="on-conflict-clause">on-conflict-clause</span> := <code>on</code><sub>NR</sub> <code>conflict</code><sub>NR</sub> <a href="#expression"><span class="ntref">expression</span></a>
 </pre>
 <p>
 During the execution of the select clause of query-select-expr that is
@@ -8096,9 +8099,9 @@ A <code>type-cast-action-or-expr</code>, <code>checking-action-or-expr</code> or
 <span class="ntdfn" id="from-action-clause">from-action-clause</span> := <code>from</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 <span class="ntdfn" id="let-action-clause">let-action-clause</span> := <code>let</code> <a href="#let-action-var-decl"><span class="ntref">let-action-var-decl</span></a> [<code>,</code> <a href="#let-action-var-decl"><span class="ntref">let-action-var-decl</span></a>]*
 <span class="ntdfn" id="let-action-var-decl">let-action-var-decl</span> := [<a href="#annots"><span class="ntref">annots</span></a>] <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>=</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
-<span class="ntdfn" id="join-action-clause">join-action-clause</span> := [<code>outer</code>] <code>join</code> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
-<span class="ntdfn" id="select-action-clause">select-action-clause</span> := <code>select</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
-<span class="ntdfn" id="collect-action-clause">collect-action-clause</span> := <code>collect</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
+<span class="ntdfn" id="join-action-clause">join-action-clause</span> := [<code>outer</code><sub>NR</sub>] <code>join</code><sub>NR</sub> <a href="#typed-binding-pattern"><span class="ntref">typed-binding-pattern</span></a> <code>in</code> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a> <a href="#join-on-condition"><span class="ntref">join-on-condition</span></a>
+<span class="ntdfn" id="select-action-clause">select-action-clause</span> := <code>select</code><sub>NR</sub> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
+<span class="ntdfn" id="collect-action-clause">collect-action-clause</span> := <code>collect</code><sub>NR</sub> <a href="#action-or-expr"><span class="ntref">action-or-expr</span></a>
 </pre>
 <p>
 A <code>query-action-or-expr</code> is a <code>query-expr</code> in which
@@ -14456,6 +14459,9 @@ public isolated function last(Type v, Type... vs) returns Type = external;
 <ol>
 <li>Query expressions now support grouping and aggregation, using new
 <code>group by</code> and <code>collect</code> clauses.</li>
+<li>Keywords that start clauses of a query expression, except for
+<code>from</code> and <code>let</code>, are no longer reserved (and so can be
+used as identifier names).</li>
 <li>Functions useful for aggregation have been added to langlib:
 <code>int:avg</code>, <code>float:avg</code>, <code>decimal:avg</code>,
 <code>boolean:some</code>, <code>boolean:every</code>, <code>value:count</code>,

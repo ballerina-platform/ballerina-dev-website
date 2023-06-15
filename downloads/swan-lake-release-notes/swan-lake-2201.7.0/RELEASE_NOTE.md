@@ -88,6 +88,9 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### Improvements
 
+#### `graphql` package
+- Improved validation of duplicate fields with different arguments.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.7.0%22+label%3AType%2FBug).

@@ -1,7 +1,7 @@
 ---
 title: 'EDIFACT? Ballerina is EDIFACT'
 description: With Ballerina's built-in support for EDIFACT, organizations can easily handle EDIFACT messages, process complex data structures, and exchange information with partner networks. By leveraging Ballerina's intuitive features, developers can streamline EDIFACT integration, ensuring smooth communication with trading partners.
-url: 'https://github.com/chathurace/b2b-samples/blob/main/simple-edi-schema/main.bal'
+url: 'https://github.com/chathurace/b2b-samples-fork/blob/main/ballerina-edifact/main.bal'
 ---
 ```
 import ballerina/io;

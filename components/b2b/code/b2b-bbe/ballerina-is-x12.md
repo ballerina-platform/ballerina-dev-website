@@ -1,6 +1,7 @@
 ---
 title: 'X12? Ballerina is X12'
 description: Ballerina's built-in support for X12 messages empowers organizations to seamlessly work with their partner networks using the widely adopted X12 standard. Developers can easily process, parse, and generate X12 messages, ensuring efficient data exchange between partner systems.
+url: 'https://github.com/chathurace/b2b-samples-fork/blob/main/ballerina-x12/main.bal'
 ---
 ```
 import ballerina/io;

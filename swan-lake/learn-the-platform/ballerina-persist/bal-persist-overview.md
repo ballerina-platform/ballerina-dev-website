@@ -15,9 +15,9 @@ The following diagram illustrates how the `bal persist` feature works.
 
 ![bal persist diagram](/learn/images/bal-persist-diagram.png "bal persist diagram")
 
-The data model is the source of truth for the data model in your application. Even though the data model is defined in Ballerina, it is not a Ballerina source file. It is a file that contains the data model definition. The data model is used to generate the client API which contains Ballerina client class and Ballerina types.
-The Ballerina VSCode plugin supports to validation of the data model, provides code actions to create the data model, and visualizes the data model in an ER diagram.
-The client API is generated using the `bal persist` CLI tool. The client API is generated as a Ballerina source file. Therefore, you can easily import the client API into your Ballerina source files and use it in your business logic to access the data in the data store.
+The data model definition shown in the above diagram is the source of truth for the data model of your application. The data model definition is used only to generate the client API, which contains the Ballerina client class and types. It cannot be used directly in your applications. It is used to generate the client API.
+The Ballerina VS Code extension facilitates the validation, development (via code actions), and visualization (in an Entity Relationship diagram) of the data model definition when creating it.
+The created data model definition will be used to generate the client API via the `bal persist` CLI tool as a Ballerina source file. You can import this generated client API into your Ballerina source files and use it in your business logic to access the data in the data store.
 
 The following sections describe the data model, CLI tool, and client API in detail.
 

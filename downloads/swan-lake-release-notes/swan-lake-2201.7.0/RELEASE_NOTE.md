@@ -108,7 +108,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 - Improved the placeholder support provided for the completion items of the service-template snippets.
 
 #### OpenAPI tool
-- Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations.
+- Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations. Also, the users will have the option to  replace the auto generated headers with their own license, using the `--license <license-file-path>` command option.
 
 ### Bug fixes
 

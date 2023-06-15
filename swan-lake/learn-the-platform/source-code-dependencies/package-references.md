@@ -145,7 +145,7 @@ skipTests = true
 testReport = true
 codeCoverage = true
 cloud = "k8s"
-graalvm = true        # Enable the graalvm image generation
+graalvm = true        # Enable the GraalVM image generation
 graalvmBuildOptions = "--option1 --option2"        # Additional native-image options
 ```
 

@@ -27,6 +27,29 @@ Update your current Ballerina installation directly to 2201.7.0 by using the [Ba
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
 ## Backward-incompatible changes
+- Fixed a bug that sets broad type for constants instead of singleton type.
+
+  ```ballerina
+  const int CONST = 1 + 7;
+  CONST num = 2;
+  ```
+  Now, the code produces an error: `incompatible types: expected '8', found 'int'`. Similarly, the following assignment in the function scope also results in an error: `incompatible types: expected 'SingletonType', found 'int'`.
+
+  ```ballerina
+  const int CONST = 3 + 5;
+  type SingletonType CONST;
+  
+  public function main() {
+    SingletonType num = 3;
+  }
+  ```
+  
+- Fixed a bug that caused a runtime error instead of a compile-time error for constant declarations containing duplicate keys in computed fields in mapping constructor expressions.
+  ```ballerina
+  const NAME = "name";
+  const map<string> person = {name : "Joe", [NAME] : "Jack"};
+  ```
+  Now, this produces an error: `invalid usage of finite literal: duplicate key 'name'`.
 
 ## Language updates
 
@@ -61,6 +84,22 @@ public function main() {
 ```
 
 ### Improvements
+- Made the type node in module-level constant declarations optional. Both of the following cases are valid.
+    ```ballerina
+    const map<string> personA = {FirstName : "Emily", LastName : "Johnson"};
+    const personB = {FirstName : "David", LastName : "Thompson"};
+    ```
+  
+- Allowed union types as valid type nodes for constant declarations.
+    ```ballerina
+    const float|decimal total = 1 + 2.0;
+    ```
+  
+- Revamped the logic for resolving module type definitions to properly handle cyclic type definitions as shown below.
+    ```ballerina
+    type A [A];
+    type B [B] & readonly;
+    ```
 
 ### Bug fixes
 

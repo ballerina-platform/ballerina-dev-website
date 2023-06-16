@@ -6,19 +6,19 @@ url: "https://ballerina.io/learn/bal-persist-overview"
 
 ```
 service /social\-media on new http:Listener(9090) {
-    final mysql:Client socialMediaDb;
+    // This client is a generated using Ballerina persist module
+    final persistMysql:Client socialMediaDb;
 
     public function init() returns error? {
-        self.socialMediaDb = check new (
-            host = host, port = port, user = database_user, password = database_password);
+        // All MySQL client configurations are passed 
+        // as configurations in the `Config.toml`
+        self.socialMediaDb = check new ();
     }
 
     resource function post users(@http:Payload User newUser)
         returns http:Created|http:InternalServerError {
         
-        sql:ExecutionResult|sql:Error execResult = self.socialMediaDb->execute(`
-                INSERT INTO social_media_database.user_details(id, birth_date, name)
-                VALUES (${newUser.id}, ${newUser.birthDate}, ${newUser.name});`);
+        int|persist:Error result = socialMediaDb->/users.post(newUser);
 
         // ...
     }

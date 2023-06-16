@@ -45,7 +45,7 @@ Learn about how to define relationships between entity records and more about da
 
 ## CLI tool
 
-The `bal persist` CLI is used to generate the client API for the data model. Based on the data store, additional configurable files and setup scripts are generated. For example, if you are using relational database as the data store, the `persist_db_config.bal` file and the `script.sql` script are generated. The `persist_db_config.bal` file is used to configure the relational database connection. The `script.sql` file is used to create the table in the relational database. The client API is generated in the `generated` directory in the project root directory.
+The `bal persist` CLI is used to generate the client API for the data model. Based on the data store, additional configurable files and setup scripts are generated. For example, if you are using a relational database as the data store, the `persist_db_config.bal` file and the `script.sql` script are generated. The `persist_db_config.bal` file is used to configure the relational database connection. The `script.sql` file is used to create the tables in the relational database. The client API is generated in the `generated` directory in the project root directory.
 
 The `bal persist` has two main built-in CLI commands: `persist init` and `persist generate`. The `persist init` command is used to initialize `bal persist` in the Ballerina project. The `persist generate` command is used to generate the client API for the data model. Additionally, there is an experimental `persist migrate` command to generate the SQL scripts for changing the table structure in the database when the data model is changed.
 

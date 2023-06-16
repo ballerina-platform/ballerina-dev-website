@@ -196,7 +196,7 @@ type WorkspaceWithEmployee record {|
 |};
 ```
 
-This same as writing the following SQL query to retrieve data from relational database,
+This is the same as writing the following SQL query to retrieve data from a relational database,
 ```sql
 SELECT * 
 FROM workspace w

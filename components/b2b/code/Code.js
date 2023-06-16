@@ -253,8 +253,8 @@ export default function UseCases(props) {
                                         (x12.frontmatter.url && x12.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={x12.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Choreo x12 for free
+                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on Github
                                                 </a>
                                             </div>
                                             : null

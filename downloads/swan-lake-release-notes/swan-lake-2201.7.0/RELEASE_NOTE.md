@@ -127,7 +127,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 #### Language Server
 
 - Added a new API named `workspaceProjects` to the workspace manager to get the projects loaded in the workspace.
-- Added completion items for the ballerinax modules queried from Ballerina Central in the import statement context.
 
 ### Deprecations
 

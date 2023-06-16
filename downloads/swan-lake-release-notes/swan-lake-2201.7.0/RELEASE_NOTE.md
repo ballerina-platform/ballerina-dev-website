@@ -48,6 +48,22 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     };
     ```
 
+- Fixed a bug in the configurable TOML syntax validation for the model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
+
+    For example, consider a non-default module `foo.bar`, which contains the following configurable variables.
+
+    ```ballerina
+    configurable int intVar = ?;
+    configurable string stringVar = ?;
+    ```
+
+    If an invalid TOML structure is found for the module `foo.bar` in the `Config.toml` file, it throws an error with the following message.
+
+    ```
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module ’foo.bar’. with variable 'intVar'. Please provide the module name as '[foo.bar]'
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module ‘foo’.bar. with variable 'stringVar'. Please provide the module name as ‘[foo.bar]’
+    ```
+
 ## Language updates
 
 ### New features
@@ -87,10 +103,6 @@ public function main() {
 To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
-
-### New features
-
-### Improvements
 
 ### Bug fixes
 

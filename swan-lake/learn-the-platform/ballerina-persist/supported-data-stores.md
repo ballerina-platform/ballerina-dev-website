@@ -13,7 +13,7 @@ redirect_from:
 Following are the supported data stores.
 
 * In-memory
-* Relational Databases(MySQL, MSSQL)
+* Relational Databases (MySQL, MSSQL)
 * Google Sheets [Experimental]
 
 The data store is passed as a parameter to the `persist init` command. If you do not specify a data store, the in-memory data store is used by default. 

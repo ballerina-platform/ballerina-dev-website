@@ -102,7 +102,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Introduced `httpscerr` module which contains http status code errors.
+- Introduced the `httpscerr` module, which contains HTTP status code errors.
 
 #### `graphql` package
 
@@ -117,7 +117,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Deprecated the usage of adding interceptors in `http:ListenerConfiguration`.
+- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration`.
 
 ### Improvements
 

@@ -102,7 +102,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Introduced the `httpscerr` module, which contains HTTP status code errors.
+- Introduced the `httpscerr` module, which contains the HTTP status code errors.
 
 #### `graphql` package
 

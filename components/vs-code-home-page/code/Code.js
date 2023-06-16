@@ -32,6 +32,7 @@ export default function UseCases(props) {
     const architectureView = samples['design-the-project'];
     const serviceDesigning = samples['design-the-services'];
     const codeEditing = samples['develop-the-code'];
+    const notebooks = samples['notebooks'];
     const runAndDebug = samples['run-and-debug'];
     const tryIt = samples['try-the-services'];
     const tests = samples['test-the-code'];
@@ -110,11 +111,11 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{architectureView.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                          {/* <span>Sample 1: Summarize text using OpenAI</span>  */}
-                                        <a href='https://wso2.com/ballerina/vscode/docs/design-your-application/' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://wso2.com/ballerina/vscode/docs/design-the-project/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                              {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />  */}
                                             
                                             <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Design your project" />
-                                            Design your project
+                                            Design the project
                                         </a>
                                         <a href='https://github.com/ballerina-guides/gcp-microservices-demo' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -193,20 +194,20 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{serviceDesigning.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/design-services/http-api-designer/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="HTTP API designer" />
                                             HTTP API designer
                                         </a>
-                                        <a href='https://github.com/wso2/docs-ballerina-vscode-extension/blob/revamp-vs-code-docs/en/docs/home-page-sources/service-designing' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/http-api-designer' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/design-services/graphql-designer/" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL designer" />
-                                        GraphQL designer
+                                        <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/graphql-service-designer/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL service designer" />
+                                        GraphQL service designer
                                         </a>
                                         <a href='https://github.com/ballerina-platform/module-ballerina-graphql/tree/master/examples/starwars' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -220,12 +221,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="serviceDesigning1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="serviceDesigning1" title="HTTP API Designer">
+                                        <Tab eventKey="serviceDesigning1" title="HTTP API designer">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/http-designer.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="serviceDesigning2" title="GraphQL Designer">
+                                        <Tab eventKey="serviceDesigning2" title="GraphQL service designer">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/graphql-designer.png`}/>
                                             </div>
@@ -308,6 +309,67 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
+            {/* Notebooks */}
+
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='test-the-code' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'notebooks')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {notebooks.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{notebooks.frontmatter.description}</ReactMarkdown>
+
+                                    <div className={styles.dVersion}>
+                                        <a href="https://wso2.com/ballerina/vscode/docs/notebooks/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Notebooks" />
+                                            Notebooks
+                                        </a>
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/notebooks' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (notebooks.code && notebooks.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: notebooks.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (notebooks.frontmatter.image && notebooks.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${notebooks.frontmatter.image}`} alt={notebooks.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
             {/* Run & Debug */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
@@ -348,7 +410,7 @@ export default function UseCases(props) {
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Debug the code" />
                                         Debug the code
                                         </a>
-                                        <a href='https://github.com/wso2/docs-ballerina-vscode-extension/tree/revamp-vs-code-docs/en/docs/home-page-sources/run-and-debug' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/run-and-debug' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -358,20 +420,18 @@ export default function UseCases(props) {
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                <div id="code-tab">
-                                    <Tabs defaultActiveKey="sample1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="sample1" title="Run and debug">
-                                            <div className={styles.codeSnippet}>
-                                            <img src={`${prefix}/images/run-and-debug.png`}/>
-                                            </div>
-                                        </Tab>
-                                        <Tab eventKey="sample2" title="Notebooks">
-                                            <div className={styles.codeSnippet}>
-                                            <img src={`${prefix}/images/vs-code-notebooks.png`}/>
-                                            </div>
-                                        </Tab>
-                                    </Tabs>
-                                </div>
+                                {
+                                    (runAndDebug.code && runAndDebug.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: runAndDebug.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (runAndDebug.frontmatter.image && runAndDebug.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${runAndDebug.frontmatter.image}`} alt={runAndDebug.frontmatter.title} />
+                                        : null
+                                }
                             </Col>
                         </Row>
                     </Container>
@@ -406,18 +466,18 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{tryIt.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-code/try-http-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="HTTP API designer" />
                                             Try HTTP services
                                         </a>
-                                        <a href='https://github.com/wso2/docs-ballerina-vscode-extension/blob/revamp-vs-code-docs/en/docs/home-page-sources/try-services' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/try-http-services ' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-code/try-graphql-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-services/try-graphql-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL designer" />
                                         Try GraphQL services
                                         </a>
@@ -484,7 +544,7 @@ export default function UseCases(props) {
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Test the code" />
                                             Test the code
                                         </a>
-                                        <a href='https://github.com/wso2/docs-ballerina-vscode-extension/blob/revamp-vs-code-docs/en/docs/home-page-sources/test-the-code/test-the-code.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/write-tests/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -540,11 +600,11 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataMapper.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/data-mapper/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href="https://wso2.com/ballerina/vscode/docs/implement-the-code/data-mapper/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Data Mapper" />
                                             Data Mapper
                                         </a>
-                                        <a href='https://github.com/wso2/docs-ballerina-vscode-extension/blob/revamp-vs-code-docs/en/docs/home-page-sources/data-mapper/data-mapper.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/data-mapper' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -601,7 +661,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <a href="https://wso2.com/ballerina/vscode/docs/deploy-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Deploy the code" />
-                                            Deploy the code
+                                            Deploy with WSO2 Choreo
                                         </a>
                                     </div>
 

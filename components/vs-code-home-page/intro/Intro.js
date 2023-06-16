@@ -62,16 +62,16 @@ export default function Intro() {
                         <p className={styles.dVersion}>
                         <br/>
                         <a href={`https://ballerina.io/downloads/`}
-                            className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
+                            className={styles.cVideoBtn} target="_blank"> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
                             Get Ballerina
                         </a>
                         <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
-                            className={styles.cDownload} target="_blank" rel="noreferrer">
+                            className={styles.cDownload} target="_blank">
                             Install the extension
                         </a>
                         <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
-                            className={styles.cDownloadOutlined} target="_blank" rel="noreferrer">
+                            className={styles.cDownloadOutlined} target="_blank">
                             See it in action
                         </a>
                     </p>

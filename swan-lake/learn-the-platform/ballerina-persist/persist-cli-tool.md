@@ -20,7 +20,7 @@ $ bal persist init --datastore="mysql" --module="store"
 
 | Command parameter  |                                                     Description                                                      | Mandatory  |       Default value        |
 |:------------------:|:--------------------------------------------------------------------------------------------------------------------:|:----------:|:--------------------------:|
-|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, and `googlesheets` |     No     |          `inmemory`          |
+|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, `mssql` and `googlesheets` |     No     |          `inmemory`          |
 |       `module`       |                    Used to indicate the persist-enabled module in which the files are generated.                     |     No     |       `<root_module>`        |
 
 

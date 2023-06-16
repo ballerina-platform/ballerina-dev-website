@@ -104,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for AI as a Service</title>
+        <title>Ballerina VS Code extension</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for AI as a Service" />
+        <meta property="og:title" content="Ballerina - Ballerina VS Code extension" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."
@@ -116,14 +116,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ai-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-thumbnail.png"
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for AI as a Service" />
+        <meta property="og:title" content="Ballerina - Ballerina VS Code extension" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ai-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-thumbnail.png"
         />
         <meta
           property="og:description"
@@ -135,7 +135,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for AI as a Service" />
+        <meta name="twitter:title" content="Ballerina - Ballerina VS Code extension" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -143,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ai-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-thumbnail.png"
         />
         <meta
           property="twitter:text:description"
@@ -151,7 +151,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ai-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-thumbnail.png"
         />
       </Head>
 

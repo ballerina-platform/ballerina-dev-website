@@ -48,9 +48,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     };
     ```
 
-- Fixed a bug in the configurable TOML syntax validation for model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
+- Fixed a bug in the configurable TOML syntax validation for the model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
 
-    For example, consider a non-default module `foo.bar` that contains the following configurable variables.
+    For example, consider a non-default module `foo.bar`, which contains the following configurable variables.
 
     ```ballerina
     configurable int intVar = ?;

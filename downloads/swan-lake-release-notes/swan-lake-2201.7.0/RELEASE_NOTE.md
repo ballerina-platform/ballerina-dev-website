@@ -171,9 +171,3 @@ To view bug fixes, see the GitHub milestone for Swan Lake 2201.7.0 of the reposi
 
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.7.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug)
-
-## Ballerina packages updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.7.0+label%3AArea%2FProjectAPI).

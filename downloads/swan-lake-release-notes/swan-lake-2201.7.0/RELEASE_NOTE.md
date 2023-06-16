@@ -27,29 +27,25 @@ Update your current Ballerina installation directly to 2201.7.0 by using the [Ba
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
 ## Backward-incompatible changes
-- Fixed a bug that sets broad type for constants instead of singleton type.
 
-  ```ballerina
-  const int CONST = 1 + 7;
-  CONST num = 2;
-  ```
-  Now, the code produces an error: `incompatible types: expected '8', found 'int'`. Similarly, the following assignment in the function scope also results in an error: `incompatible types: expected 'SingletonType', found 'int'`.
+- A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed. 
 
-  ```ballerina
-  const int CONST = 3 + 5;
-  type SingletonType CONST;
+  This may result in compilation errors that were previously not identified.
+
+    ```ballerina
+    const int CONST = 1 + 7;
+    CONST num = 2;
+    ```
   
-  public function main() {
-    SingletonType num = 3;
-  }
-  ```
+  This results in a compilation error now since `num` can only be integer `8`.
+
   
-- Fixed a bug that caused a runtime error instead of a compile-time error for constant declarations containing duplicate keys in computed fields in mapping constructor expressions.
-  ```ballerina
-  const NAME = "name";
-  const map<string> person = {name : "Joe", [NAME] : "Jack"};
-  ```
-  Now, this produces an error: `invalid usage of finite literal: duplicate key 'name'`.
+- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a map constant declaration has been fixed. This previously resulted in a runtime panic instead.
+
+    ```ballerina
+    const NAME = "name";
+    const map<string> PERSON = {name : "Joe", [NAME] : "Jack"}; // Compilation error.
+    ```
 
 ## Language updates
 
@@ -84,18 +80,26 @@ public function main() {
 ```
 
 ### Improvements
-- Made the type node in module-level constant declarations optional. Both of the following cases are valid.
+
+#### Improved resolving logic of module level constructs.
+
+With this new feature,
+
+- Made the type node in constant declarations optional. Both of the following cases are valid.
+
     ```ballerina
-    const map<string> personA = {FirstName : "Emily", LastName : "Johnson"};
-    const personB = {FirstName : "David", LastName : "Thompson"};
+    const map<string> PERSONA = {firstName: "Emily", lastName: "Johnson"};
+    const PERSONB = {firstName: "David", lastName: "Thompson"};
     ```
   
 - Allowed union types as valid type nodes for constant declarations.
+
     ```ballerina
-    const float|decimal total = 1 + 2.0;
+    const float|decimal TOTAL = 1 + 2.0;
     ```
-  
-- Revamped the logic for resolving module type definitions to properly handle cyclic type definitions as shown below.
+
+- Revamped the logic for resolving module type definitions to properly handle cyclic type definitions.
+
     ```ballerina
     type A [A];
     type B [B] & readonly;

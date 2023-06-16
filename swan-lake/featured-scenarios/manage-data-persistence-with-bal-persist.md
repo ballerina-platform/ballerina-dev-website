@@ -28,7 +28,7 @@ To complete this tutorial, you need:
 
 This guide describes how to interact with the data store and perform operations against it using `bal persist`. This will cover the basic use case of creating, reading, updating, and deleting records on a data store in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the data store.
 
-![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
+![Data Service Architecture](/learn/images/bal-persist-scenario-diagram.png "Data Service Architecture")
 
 >**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL, MSSQL and, Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL and MSSQL databases, and Google Sheets.
 

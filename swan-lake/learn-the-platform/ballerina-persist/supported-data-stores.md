@@ -46,7 +46,7 @@ The `in-memory` data store supports the following Ballerina types.
 
 The In-Memory data store does not require any configuration. 
 
-## Relational Databases(MySQL, MSSQL)
+## Relational Databases (MySQL, MSSQL)
 
 The data store is a relational database management system that stores data in tables. It is useful for storing data in a relational format. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
 

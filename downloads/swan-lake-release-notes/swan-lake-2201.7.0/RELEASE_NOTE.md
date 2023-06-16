@@ -63,8 +63,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 - A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a map constant declaration has been fixed. This previously resulted in a runtime panic instead.
 
     ```ballerina
-    const NAME = "name";
-    const map<string> PERSON = {name : "Joe", [NAME] : "Jack"}; // Compilation error.
+    const MESSAGE = "message";
+    const HTTP_OK = {httpCode: 200, message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
     ```
 
 ## Language updates
@@ -101,22 +101,24 @@ public function main() {
 
 ### Improvements
 
-#### Improved resolving logic of module level constructs.
-
-With this new feature,
+#### Improved resolving logic of constant declarations
 
 - Made the type node in constant declarations optional. Both of the following cases are valid.
 
     ```ballerina
-    const map<string> PERSONA = {firstName: "Emily", lastName: "Johnson"};
-    const PERSONB = {firstName: "David", lastName: "Thompson"};
+    const map<string> HTTP_OK = {httpCode: "200", message: "OK"};
+    const HTTP_BAD_REQUEST = {httpCode: "400", message: "BAD REQUEST"};
     ```
+  
+#### Support union type in constant declarations
   
 - Allowed union types as valid type nodes for constant declarations.
 
     ```ballerina
     const float|decimal TOTAL = 1 + 2.0;
     ```
+
+#### Improved type resolving logic of module type definitions
 
 - Revamped the logic for resolving module type definitions to properly handle cyclic type definitions.
 

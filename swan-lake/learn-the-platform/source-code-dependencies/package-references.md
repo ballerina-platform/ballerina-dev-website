@@ -295,6 +295,20 @@ The following example shows a platform dependency entry with the `scope`.
   scope =  "<scope-of-the-jar-file>"
   ```
 
+## Platform Compatibility
+
+The compatibility of a platform with specific runtimes can be specified in the `Ballerina.toml` file using specific parameters.
+ Currently, the `graalvmCompatible` property is supported to indicate the compatibility of a package with GraalVM for Java platforms.
+ For packages using `java11` platform dependencies, it can be specified as follows.
+
+  ```toml
+[platform.java11]
+graalvmCompatible = true
+  ```
+
+If the package does not use any Java dependencies or if only Java dependencies provided by the distribution are used,
+ this property is automatically inferred to be `true`.
+
 ## The `Dependencies.toml` file
 
 The [`Dependencies.toml`](/learn/manage-dependencies/#specify-dependency-versions) locks the versions of the dependencies to support repeatable builds.

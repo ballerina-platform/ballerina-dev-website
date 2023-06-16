@@ -100,18 +100,29 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `http` package
+
+- Introduced `httpscerr` module which contains http status code errors.
+
 #### `graphql` package
 
 - Added support for the `ID` scalar type.
 - Added support for the input constraint validation.
-- 
+
 #### `persist` package
 
 - Added support for the `mssql` data store.
 
 ### Deprecations
 
+#### `http` package
+
+- Deprecated the usage of adding interceptors in `http:ListenerConfiguration`.
+
 ### Improvements
+
+#### `http` package
+- Improved the default error format and message.
 
 #### `graphql` package
 - Improved the validation of duplicate fields with different arguments.

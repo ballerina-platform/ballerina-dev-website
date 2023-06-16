@@ -56,7 +56,7 @@ $ bal persist init --datastore [mysql/mssql]
 
 ### Supported Ballerina types
 
-The supported types for the relational data store are different from database type to database type. The following table lists the Ballerina types supported by the data store and the corresponding SQL types used to store the data in the database.
+The supported types for the relational data store are different from database to database. The following table lists the Ballerina types supported by the data store and the corresponding SQL types used to store the data in the database.
 
 #### MySQL
 

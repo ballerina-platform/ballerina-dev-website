@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Tabs, Tab } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -37,6 +37,7 @@ export default function UseCases(props) {
     const restConstraints = samples['rest-constraints'];
     const restHateoas = samples['rest-hateoas'];
     const restBal = samples['rest-bal'];
+    const restSpringBoot = samples['rest-springboot'];
     const relationalData = samples['relational-data'];
     const configurability = samples['configurability'];
     const configurabilityBal = samples['configurability-bal'];
@@ -51,6 +52,118 @@ export default function UseCases(props) {
     const security = samples['better-security'];
     const community = samples['community-driven-development'];
     const ipaas = samples['trivial-hosting-in-wso2-choreo-ipaas'];
+
+    var isResizing = false;
+
+    const draggableElements = {
+        "draggable-circle-1": {
+            containerId: "code-container-1",
+            leftId: "left-panel-1",
+            rightId: "right-panel-1",
+        },
+        "draggable-circle-2": {
+            containerId: "code-container-2",
+            leftId: "left-panel-2",
+            rightId: "right-panel-2",
+        },
+        "draggable-circle-3": {
+            containerId: "code-container-3",
+            leftId: "left-panel-3",
+            rightId: "right-panel-3",
+        },
+        "draggable-circle-4": {
+            containerId: "code-container-4",
+            leftId: "left-panel-4",
+            rightId: "right-panel-4",
+        },
+        "draggable-circle-5": {
+            containerId: "code-container-5",
+            leftId: "left-panel-5",
+            rightId: "right-panel-5",
+        },
+        "draggable-circle-6": {
+            containerId: "code-container-6",
+            leftId: "left-panel-6",
+            rightId: "right-panel-6",
+        },
+        "draggable-circle-7": {
+            containerId: "code-container-7",
+            leftId: "left-panel-7",
+            rightId: "right-panel-7",
+        },
+        "draggable-circle-8": {
+            containerId: "code-container-8",
+            leftId: "left-panel-8",
+            rightId: "right-panel-8",
+        },
+        "draggable-circle-9": {
+            containerId: "code-container-9",
+            leftId: "left-panel-9",
+            rightId: "right-panel-9",
+        },
+        "draggable-circle-10": {
+            containerId: "code-container-10",
+            leftId: "left-panel-10",
+            rightId: "right-panel-10",
+        },
+        "draggable-circle-11": {
+            containerId: "code-container-11",
+            leftId: "left-panel-11",
+            rightId: "right-panel-11",
+        },
+        "draggable-circle-12": {
+            containerId: "code-container-12",
+            leftId: "left-panel-12",
+            rightId: "right-panel-12",
+        },
+        "draggable-circle-13": {
+            containerId: "code-container-13",
+            leftId: "left-panel-13",
+            rightId: "right-panel-13",
+        }
+    };
+
+    React.useEffect(() => {
+        (function () {
+            var container = null;
+            var left = null;
+            var right = null;
+
+            document.addEventListener("mousedown", function (e) {
+                if (e.target.classList.contains("draggable")) {
+                    isResizing = true;
+                    const { containerId, leftId, rightId } = draggableElements[e.target.id];
+                    container = document.getElementById(containerId);
+                    left = document.getElementById(leftId);
+                    right = document.getElementById(rightId);
+                }
+            });
+
+            document.onmousemove = function (e) {
+                // we don't want to do anything if we aren't resizing.
+                if (!isResizing) {
+                    return;
+                }
+
+                var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
+
+                //stop resizing if the left panel or right panel is too small
+                if (e.clientX - container.offsetLeft <= 50 || offsetRight <= 50) {
+
+                    isResizing = false;
+                    return;
+                }
+
+                left.style.right = offsetRight + "px";
+                right.style.width = offsetRight + "px";
+            }
+
+            document.onmouseup = function (e) {
+                // stop resizing
+                isResizing = false;
+            }
+        })();
+    }, []);
 
     return (
         <>
@@ -78,7 +191,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <Col xs={12} md={6}>
                                         <div className={styles.wrapper}>
@@ -126,14 +239,40 @@ export default function UseCases(props) {
                                     </Col>
                                 </Row>
                             </Col>
-                            <Col xs={12} md={6} lg={6} className={styles.box}>
-                                {
-                                    (restBal.code && restBal.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: restBal.code }} />
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                <div id="code-container-1" className={`${styles["code-container"]} d-none d-lg-block`}>
+                                    <div id="left-panel-1" className={`${styles["left-panel"]}`}>
+                                        <p className={`${styles["title-old"]}`}>{restSpringBoot.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: restSpringBoot.code }} />
+                                    </div>
+                                    <div id="right-panel-1" className={`${styles["right-panel"]}`}>
+                                        <div id="drag-1" className={`${styles["drag"]}`}>
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${styles["button-wrap"]} absolute`}>
+                                                <circle cx="23" cy="23" r="23" fill="#20b6b0" className='draggable' id="draggable-circle-1"></circle>
+                                                <path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path>
+                                                <path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path>
+                                            </svg>
                                         </div>
-                                        : null
-                                }
+                                        <p className={`${styles["title-new"]}`}>{restBal.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: restBal.code }} />
+                                    </div>
+                                </div>
+
+                                {/* mobile view */}
+                                <div id="code-tab-1" className={`${styles["code-tab"]} d-block d-lg-none`}>
+                                    <Tabs defaultActiveKey="ballerina-code" id="codeTab1" className="mb-3 codeTabs">
+                                        <Tab eventKey="java-code" title={restSpringBoot.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: restSpringBoot.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="ballerina-code" title={restBal.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: restBal.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>

@@ -54,17 +54,16 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
     ```ballerina
     const int CONST = 1 + 7;
-    CONST num = 2;
+    CONST num = 2; // Compilation error now.
     ```
-  
-  This results in a compilation error now since `num` can only be integer `8`.
 
-  
-- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a map constant declaration has been fixed. This previously resulted in a runtime panic instead.
+  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
+ 
+- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
 
     ```ballerina
     const MESSAGE = "message";
-    const HTTP_OK = {httpCode: 200, message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
+    const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
     ```
 
 ## Language updates
@@ -101,31 +100,33 @@ public function main() {
 
 ### Improvements
 
-#### Improved resolving logic of constant declarations
+#### Support for constant declarations without a type descriptor
 
-- Made the type node in constant declarations optional. Both of the following cases are valid.
+Constants can now be declared without specifying a type descriptor. Previously, it was required to specify a type descriptor except with numeric and string literal expressions.
 
-    ```ballerina
-    const map<string> HTTP_OK = {httpCode: "200", message: "OK"};
-    const HTTP_BAD_REQUEST = {httpCode: "400", message: "BAD REQUEST"};
-    ```
+Both of the following cases are allowed now.
+
+```ballerina
+const map<string> HTTP_OK = {httpCode: "200", message: "OK"};
+const HTTP_BAD_REQUEST = {httpCode: "400", message: "BAD REQUEST"};
+```
+
+#### Support for unions as type descriptors in constant declarations
   
-#### Support union type in constant declarations
-  
-- Allowed union types as valid type nodes for constant declarations.
+Constant declarations with unions as type descriptors are now supported.
 
-    ```ballerina
-    const float|decimal TOTAL = 1 + 2.0;
-    ```
+```ballerina
+const float|decimal TOTAL = 1 + 2.0;
+```
 
-#### Improved type resolving logic of module type definitions
+#### Support for more recursive type definitions
 
-- Revamped the logic for resolving module type definitions to properly handle cyclic type definitions.
+The type definition resolution logic has been improved to support more recursive type definitions.
 
-    ```ballerina
-    type A [A];
-    type B [B] & readonly;
-    ```
+```ballerina
+type A [A];
+type B [B] & readonly;
+```
 
 ### Bug fixes
 

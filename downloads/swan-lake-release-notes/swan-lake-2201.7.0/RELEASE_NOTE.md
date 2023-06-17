@@ -47,6 +47,24 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         department
     };
     ```
+  
+- A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
+
+  This may result in compilation errors that were previously not identified.
+
+    ```ballerina
+    const int CONST = 1 + 7;
+    CONST num = 2; // Compilation error now.
+    ```
+
+  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
+ 
+- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
+
+    ```ballerina
+    const MESSAGE = "message";
+    const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
+    ```
 
 - Fixed a bug in the configurable TOML syntax validation for the model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
 
@@ -97,6 +115,34 @@ public function main() {
 ```
 
 ### Improvements
+
+#### Support for constant declarations without a type descriptor
+
+Constants can now be declared without specifying a type descriptor. Previously, it was required to specify a type descriptor except with numeric and string literal expressions.
+
+Both of the following cases are allowed now.
+
+```ballerina
+const map<string> HTTP_OK = {httpCode: "200", message: "OK"};
+const HTTP_BAD_REQUEST = {httpCode: "400", message: "BAD REQUEST"};
+```
+
+#### Support for unions as type descriptors in constant declarations
+  
+Constant declarations with unions as type descriptors are now supported.
+
+```ballerina
+const float|decimal TOTAL = 1 + 2.0;
+```
+
+#### Support for more recursive type definitions
+
+The type definition resolution logic has been improved to support more recursive type definitions.
+
+```ballerina
+type A [A];
+type B [B] & readonly;
+```
 
 ### Bug fixes
 

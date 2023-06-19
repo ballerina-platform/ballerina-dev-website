@@ -287,3 +287,11 @@ a.cDownload span {
     position: relative;
     z-index: 999;
 }
+
+.code2 {
+    min-height: 528px;
+}
+
+.code2 pre {
+    height: 480px;
+}

@@ -6,7 +6,7 @@ url: "https://ballerina.io/learn/bal-persist-overview"
 
 ```
 service /social\-media on new http:Listener(9090) {
-    // This client is a generated using Ballerina persist module
+    // This client is generated using Ballerina persist module
     final persistMysql:Client socialMediaDb;
 
     public function init() returns error? {

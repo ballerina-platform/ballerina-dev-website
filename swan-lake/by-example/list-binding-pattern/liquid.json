@@ -1,0 +1,20 @@
+{
+  "title": "List binding patterns",
+  "description": "This BBE introduces the use of the list binding pattern to bind members of a list, array, or tuple using more than one binding pattern and destructuring a list.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "binding pattern",
+    "list binding pattern",
+    "array destructuring",
+    "list destructuring",
+    "tuple destructuring"
+  ],
+  "permalink": "/learn/by-example/list-binding-pattern",
+  "active": "list-binding-pattern",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/list-binding-pattern",
+    "/swan-lake/learn/by-example/list-binding-pattern.html"
+  ]
+}

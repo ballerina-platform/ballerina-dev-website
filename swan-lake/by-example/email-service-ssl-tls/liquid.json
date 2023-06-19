@@ -1,0 +1,22 @@
+{
+  "title": "SSL/TLS",
+  "description": "This BBE is about receiving emails over SSL/TLS secured connection. It has a listener-based functionality for receiving emails.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "email",
+    "POP3",
+    "POP",
+    "IMAP",
+    "listener",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/email-service-ssl-tls",
+  "active": "email-service-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/email-service-ssl-tls",
+    "/swan-lake/learn/by-example/email-service-ssl-tls.html"
+  ]
+}

@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './Platform.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -26,7 +26,8 @@ export default function Platform(props) {
 
   return (
     <>
-      <Row className="pageContentRow learnRow llanding">
+    <Container>
+    <Row className="pageContentRow learnRow llanding">
         <Col xs={12} md={12}>
           <h2 id="learn-the-platform" className='section'>
             <svg
@@ -90,7 +91,7 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Test, debug &amp; document the code</h3>
+            <h3>Test, debug, and document the code</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
@@ -104,7 +105,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/debug-ballerina-programs`} className={styles.titleLink}>
-                  Debug Ballerina Programs
+                  Debug Ballerina programs
                 </a>
               </p>
               <p className={styles.description}>Details of tooling support for troubleshooting Ballerina applications.</p>
@@ -119,17 +120,13 @@ export default function Platform(props) {
               <p className={styles.description}>Generate documentation for the code.</p>
             </div>
           </div>
-
-
-        </Col>
-        <Col xs={12} lg={4} className={styles.contentCol}>
           <div className={styles.pGroup}>
             <h3>Run in the cloud</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment`} className={styles.titleLink}>
-                  Code to cloud
+                  Code to Cloud
                 </a>
               </p>
               <p className={styles.description}>Generating cloud deployment artifacts.</p>
@@ -146,12 +143,85 @@ export default function Platform(props) {
           </div>
 
 
+        </Col>
+        <Col xs={12} lg={4} className={styles.contentCol}>
+
           <div className={styles.pGroup}>
-            <h3>Ballerina Tooling</h3>
+            <h3>Configure and observe</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a target='_blank' rel="noreferrer" href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" className={styles.titleLink}>
+                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
+                  Configure Ballerina programs
+                </a>
+              </p>
+              <p className={styles.description}>The language support for configurability.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                  Observe Ballerina programs</a>
+              </p>
+              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
+            </div>
+          </div>
+          <div className={styles.pGroup}>
+            <h3>Java interoperability</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
+                  Call Java code from Ballerina
+                </a>
+              </p>
+              <p className={styles.description}>Calling Java code from Ballerina.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
+                  Java interoperability guide
+                </a>
+              </p>
+              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Native support</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
+                  [Experimental] Build a native executable
+                </a>
+              </p>
+              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
+            </div>
+          </div>
+          
+          <div className={styles.pGroup}>
+            <h3>Ballerina Central</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/publish-packages-to-ballerina-central`} className={styles.titleLink}>
+                  Publish packages to Ballerina Central
+                </a>
+              </p>
+              <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
+            </div>
+          </div>
+        </Col>
+        
+        <Col xs={12} lg={4} className={styles.contentCol}>
+          <div className={styles.pGroup}>
+            <h3>Ballerina tooling</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
                   Visual Studio Code extension</a>
               </p>
               <p className={styles.description}>Details of the Ballerina Visual Studio Code extension.</p>
@@ -176,11 +246,11 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/graphql-client-tool`} className={styles.titleLink}>
-                  GraphQL client tool
+                <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
+                  GraphQL tool
                 </a>
               </p>
-              <p className={styles.description}>Details of the Ballerina GraphQL client tool.</p>
+              <p className={styles.description}>Details of the Ballerina GraphQL tool.</p>
             </div>
 
             <div className={styles.content}>
@@ -211,81 +281,62 @@ export default function Platform(props) {
             </div>
           </div>
 
+          <div className={styles.pGroup}>
+            <h3>Bal persist</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
+                  Bal persist overview
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
+                  Data model
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-cli-tool`} className={styles.titleLink}>
+                  CLI tool
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
+                  Type-safe client API
+                </a>
+              </p>
+              <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/supported-data-stores`} className={styles.titleLink}>
+                  Supported data stores
+                </a>
+              </p>
+              <p className={styles.description}>Details on the data stores supported for managing data persistence.</p>
+            </div>
+          </div>
+
 
 
         </Col>
-        <Col xs={12} lg={4} className={styles.contentCol}>
-
-          <div className={styles.pGroup}>
-            <h3>Configure &amp; observe</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
-                  Configure Ballerina programs
-                </a>
-              </p>
-              <p className={styles.description}>The language support for configurability.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
-                  Observe Ballerina programs</a>
-              </p>
-              <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Ballerina Central</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/publish-packages-to-ballerina-central`} className={styles.titleLink}>
-                  Publish packages to Ballerina Central
-                </a>
-              </p>
-              <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Java interoperability</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                  Call Java code from Ballerina
-                </a>
-              </p>
-              <p className={styles.description}>Calling Java code from Ballerina.</p>
-            </div>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
-                  Java interoperability guide
-                </a>
-              </p>
-              <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
-            </div>
-          </div>
-
-          <div className={styles.pGroup}>
-            <h3>Native Support</h3>
-
-            <div className={styles.content}>
-              <p className={styles.title}>
-                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
-                  [Experimental] Build a native executable
-                </a>
-              </p>
-              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
-            </div>
-          </div>
-        </Col>
+        
       </Row>
+    </Container>
+     
     </>
   );
 }

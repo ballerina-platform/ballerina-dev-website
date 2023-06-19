@@ -16,7 +16,7 @@ redirect_from:
 
 ### Updating Ballerina
 
->**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/ballerina-swan-lake-is-on-the-horizon/).
+>**Info:** The version format has been revised. `2201.0.0 (Swan Lake)` represents the format of `$YYMM.$UPDATE.$PATCH ($CODE_NAME)`. For further information, see [Ballerina Swan Lake is on the Horizon](https://blog.ballerina.io/posts/2021-12-14-ballerina-swan-lake-is-on-the-horizon/).
 
 If you are already using Ballerina, use the [Ballerina update tool](/learn/cli-documentation/update-tool/#using-the-update-tool) to directly update to 2201.0.0 (Swan Lake). To do this: 
 

@@ -7,7 +7,7 @@ active: build-a-native-executable
 intro: This guide walks you through compiling a Ballerina application to a native executable and packing the native executable in a container.
 ---
 
-This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official with the following releases. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
+This feature was introduced as an experimental feature in the Swan Lake Update 3 release and it will become official in the upcoming releases. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
 
 The key aspects below help you understand the native executable generating process better.
 
@@ -44,7 +44,7 @@ The only downside is that the GraalVM native image build is a highly complicated
 
 From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the native flag in the build command: `bal build --native`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
-> **Info:** Apart from the Ballerina runtime and [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), the following Ballerina external libraries are GraalVM compatible :
+> **Info:** Apart from the Ballerina runtime and [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), the following Ballerina extended modules are GraalVM-compatible :
 >  - [`nats`](https://central.ballerina.io/ballerinax/nats)
 >  - [`kafka`](https://central.ballerina.io/ballerinax/kafka)
 >  - [`rabbitmq`](https://central.ballerina.io/ballerinax/rabbitmq)
@@ -54,14 +54,14 @@ From Ballerina 2201.3.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compi
 >  - [`oracledb`](https://central.ballerina.io/ballerinax/oracledb)
 >  - [`postgresql`](https://central.ballerina.io/ballerinax/postgresql)
 
-## Build a native executable locally
+## Build the native executable locally
 
 ### Set up the prerequisites
 
 To complete this part of the guide, you need:
 1. [Ballerina 2201.3.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
-   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. GraalVM installed and configured appropriately
 4. A command terminal
 
@@ -78,11 +78,12 @@ To complete this part of the guide, you need:
 
 > **Note:** 
 > - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311).
+> - On the ARM64 architecture of macOS, the Ballerina native image build will work with Ballerina 2201.5.0 (Swan Lake) or greater. For more information, see [this issue comment](https://github.com/ballerina-platform/ballerina-lang/issues/39003#issuecomment-1498765016).
 > - The GraalVM native-image tool support for Apple M1 (darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
 
-### Build a native executable
+### Build the native executable
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -180,13 +181,14 @@ Now, you have built and tested a native executable locally for a simple Ballerin
 To complete this part of the guide, you need:
 1. [Ballerina 2201.3.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
-   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
+   >**Tip:** Since the GraalVM native build consumes a significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB and potentially add more CPUs as well. For more details, see [How to assign more memory to Docker container](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437).
 4. A command terminal
 
 After the environment is set up, follow the steps below to build the native executable and pack it in a container.
 
-### Build a native executable in a container
+### Build the native executable in a container
 
 1. Execute the command below to create a Ballerina service package :
    ```
@@ -204,7 +206,7 @@ After the environment is set up, follow the steps below to build the native exec
    }
    ```
 
-3. Execute `bal build --native --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see the [docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [k8s](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
+3. Execute `bal build --native --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](https://ballerina.io/learn/by-example/c2c-docker-deployment/) and [Kubernetes](https://ballerina.io/learn/by-example/c2c-k8s-deployment/) documentation.
     ```
    $ bal build --native --cloud=docker
    Compiling source
@@ -349,3 +351,52 @@ After the environment is set up, follow the steps below to build the native exec
    $ curl http://localhost:8080/greeting
    Hello, Docker!
    ```
+   
+## Execute tests with the native image
+
+It is recommended to use the JVM for verifying the functionality of the application with sufficient tests and code coverage as running tests against the native image could take time. Running tests against the native image is only required when using libraries that are not verified against the GraalVM native image build. All Ballerina standard libraries are verified and guaranteed to produce native image builds without any issues. The complete list of verified libraries can be found at the top of the article. 
+
+Therefore, if the application is depending on a package that is not verified against the GraalVM native build, it is recommended to run the tests against the native image to ensure that there are no runtime errors by executing the `bal test --native` command.
+
+Also, native testing can be scheduled as a daily check within CI(Continuous Integration) pipelines to maintain compatibility with GraalVM.
+
+Follow the steps below to run the tests with the native image.
+
+
+1. Follow the steps 1 and 2 in [Build the native executable](#build-the-native-executable).
+
+2. Replace the content of the `service_test.bal` file with the following under the `tests` folder.  
+   ```ballerina
+   import ballerina/http;
+   import ballerina/test;
+
+   http:Client testClient = check new ("http://localhost:8080");
+
+   @test:Config {}
+   function testServiceWithProperName() {
+      string|error response = testClient->get("/greeting");
+      test:assertEquals(response, "Hello, World!");
+   }
+
+   ```
+
+3.  Run `bal test --native` to run the tests using the native executable. 
+      > **Info:**  This command will build a native executable with tests similar to `bal build --native` , and the tests will be executed by running this native executable.
+      ```
+               Running Tests
+               hello_world
+                        [pass] testServiceWithProperName
+                        1 passing
+                        0 failing
+                        0 skipped
+      ```
+
+Now, you  tested a simple Ballerina HTTP server application for GraalVM compatibility.
+
+> **Note:** Code coverage  and runtime debug features are not supported with the native image testing. 
+
+
+## Known issues
+
+- [Native image build is failing with `non-reducible loop requires too much duplication` error](https://github.com/ballerina-platform/ballerina-lang/issues/38072)
+- [Native image test fails on Windows without test report](https://github.com/ballerina-platform/ballerina-lang/issues/38882)

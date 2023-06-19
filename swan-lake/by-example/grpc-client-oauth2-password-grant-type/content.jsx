@@ -1,24 +1,15 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
+import ballerina/oauth2;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the OAuth2 secured APIs.
-    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:OAuth2PasswordGrantConfig\` to the \`auth\`
-    // configuration of the client.
+    // Defines the gRPC client to call the OAuth2-secured APIs.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
@@ -26,16 +17,8 @@ public function main() returns error? {
             password: "admin",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
-            refreshConfig: {
-                refreshUrl: "https://localhost:9445/oauth2/token",
-                scopes: ["hello"],
-                clientConfig: {
-                    secureSocket: {
-                        cert: "../resource/path/to/public.crt"
-                    }
-                }
-            },
+            scopes: "admin",
+            refreshConfig: oauth2:INFER_REFRESH_CONFIG,
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -53,39 +36,25 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientOauth2PasswordGrantType() {
+export function GrpcClientOauth2PasswordGrantType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC client - OAuth2 password grant type</h1>
 
       <p>
-        A client, which is secured with OAuth2 password grant type can be used
-        to connect to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:OAuth2PasswordGrantConfig</code> to the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>grpc:Client</code> can connect to a service that is secured
+        with the OAuth2 password grant type by enriching the client metadata
+        with the <code>Authorization: Bearer &lt;token&gt;</code> header. The
+        required configurations for this grant type can be specified in the{" "}
+        <code>auth</code> field of the client configuration. Use this grant type
+        when you need to exchange the user's credentials for an access token.
       </p>
 
       <Row
@@ -98,7 +67,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-client-oauth2-password-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-client-oauth2-password-grant-type",
                 "_blank"
               );
             }}
@@ -173,12 +142,13 @@ export default function GrpcClientOauth2PasswordGrantType() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>
@@ -264,7 +234,7 @@ export default function GrpcClientOauth2PasswordGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/OAuth2PasswordGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#OAuth2PasswordGrantConfig">
               <code>grpc:OAuth2PasswordGrantConfig</code> record - API
               documentation
             </a>

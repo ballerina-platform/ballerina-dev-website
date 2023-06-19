@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -57,6 +57,22 @@ export default function Articles() {
         <Col sm={12} md={7} lg={7} className={styles.articles}>
           <h2 className="removeTopMargin">Articles</h2>
           <div className={styles.articleWrapper}>
+          
+             <div className={styles.articleInfo}>
+              <a target="_blank" rel="noreferrer" href="https://www.infoworld.com/article/3688921/ballerina-a-programming-language-for-the-cloud.html">
+                <h4>Ballerina: A Programming Language for the Cloud</h4>
+              </a>
+              <p> By Martin Heller</p>
+              <p> 8 March 2023</p>
+            </div>
+          
+             <div className={styles.articleInfo}>
+              <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/ballerina-data-functional-programming/">
+                <h4>Data Manipulation with Functional Programming and Queries in Ballerina</h4>
+              </a>
+              <p> By Yehonathan Sharvit</p>
+              <p> 11 Aug 2022</p>
+            </div>
 
             <div className={styles.articleInfo}>
               <a target="_blank" rel="noreferrer" href="https://www.infoq.com/articles/graphql-ballerina/">

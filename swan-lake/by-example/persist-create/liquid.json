@@ -1,0 +1,19 @@
+{
+  "title": "Create/Create many",
+  "description": "This BBE demonstrates the usage of post resource method in the generated persistence client to persist record/records to the data store",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "post",
+    "entity"
+  ],
+  "permalink": "/learn/by-example/persist-create",
+  "active": "persist-create",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-create",
+    "/swan-lake/learn/by-example/persist-create.html"
+  ]
+}

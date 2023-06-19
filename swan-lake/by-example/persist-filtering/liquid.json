@@ -1,0 +1,21 @@
+{
+  "title": "Filter and sort",
+  "description": "This BBE demonstrates the usage of query expressions with get resource method in generated persistence client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "get",
+    "entity",
+    "filtering",
+    "query"
+  ],
+  "permalink": "/learn/by-example/persist-filtering",
+  "active": "persist-filtering",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-filtering",
+    "/swan-lake/learn/by-example/persist-filtering.html"
+  ]
+}

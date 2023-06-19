@@ -6,19 +6,6 @@ keywords: ballerina, programming language, ballerina style guide, annotations, c
 permalink: /learn/style-guide/annotations-documentation-and-comments/
 active: annotations-documentation-and-comments
 intro: The sections below include the coding conventions with respect to annotations, documentation, and comments.
-redirect_from:
-  - /learn/style-guide/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments/
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
 ---
 
 ## Annotations
@@ -88,9 +75,9 @@ public function taintedReturn2() returns
   and 
   
 ```ballerina
-// Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+// Copyright (c) 2022 WSO2 LLC (http://www.wso2.org) All Rights Reserved.
 //
-// WSO2 Inc. licenses this file to you under the Apache License,
+// WSO2 LLC licenses this file to you under the Apache License,
 // Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License.
 // You may obtain a copy of the License at
@@ -134,10 +121,10 @@ function func2() {
 
 ```ballerina
 
-type People record {}; // Inline comment
+type People record {}; // Inline comment.
 
 function func1() {
-    int a = 0; // Inline comment
+    int a = 0; // Inline comment.
 }
 
 ```
@@ -168,8 +155,8 @@ function getValue(int value) returns int {
 ```ballerina
 # Description.
 #
-# + value - Parameter description
-# + return - Return value description
+# + value - parameter description
+# + return - return value description
 function getValue(int value) returns int {
     ...
 }
@@ -178,8 +165,8 @@ function getValue(int value) returns int {
 service / on new http:Listener(8080) {
     # Description.
     #
-    # + caller - Parameter description.
-    # + request - Parameter description.
+    # + caller - parameter description
+    # + request - parameter description
     resource function get greeting(http:Caller caller, http:Request request) {
         ...
     }

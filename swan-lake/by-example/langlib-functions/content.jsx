@@ -1,68 +1,82 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-public function main() {
+public function main() returns error? {
     // You can call langlib functions using the method-call syntax.
-    string s = "abc".substring(1, 2);
-    io:println(s);
+    string str = "abc".substring(1, 2);
 
-    // \`n\` will be 1.
-    int n = s.length();
-    io:println(n);
+    // \`len\` will be 1.
+    int len = str.length();
+    io:println(len);
 
-    // \`s.length()\` is same as \`string:length(s)\`.
-    int m = string:length(s);
-    io:println(m);
+    // \`str.length()\` is same as \`string:length(str)\`.
+    len = string:length(str);
+    io:println(len);
+
+    int val = 123;
+    // The \`lang.value\` module provides functions that work on values of more than one basic type.
+    // \`val.toString()\` performs a direct conversion of \`val\` to string.
+    io:println("value is " + val.toString());
+
+    // \`val.ensureType()\` safely casts a value to a type and
+    // returns an error if the cast is impossible.
+    float|error floatVal = val.ensureType(float);
+    io:println(floatVal);
+
+    int[] evenNumbers = [2, 4, 6 ,8, 10, 12];
+
+    // \`value.clone()\` returns a clone of a value.
+    int[] clonedEvenNumbers = [2, 4, 6 ,8, 10, 12].clone();
+    // Following statement is \`true\`.
+    io:println(evenNumbers == clonedEvenNumbers);
+    // Following statement is \`false\`.
+    io:println(evenNumbers === clonedEvenNumbers);
+
+    // \`value.cloneReadOnly()\` returns a clone of a value that is read-only.
+    int[] & readonly immutableEvenNumbers = evenNumbers.cloneReadOnly();
+    io:println(immutableEvenNumbers);
+
+    // \`value.cloneWithType()\` constructs a value with a specified type by cloning another value.
+    float clonedVal = check val.cloneWithType(float);
+    // Following statement is \`true\`.
+    io:println(clonedVal);
 }
 `,
 ];
 
-export default function LanglibFunctions() {
+export function LanglibFunctions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Langlib functions</h1>
 
       <p>
-        Langlib is a small library defined by language providing fundamental
+        Langlib is a library defined by the language providing fundamental
         operations on built-in data types. Langlib functions can be called using
-        convenient method-call syntax, but these types are not objects!
+        the method-call syntax but these types are not objects.
       </p>
 
       <p>
         There exists a <code>ballerina/lang.T</code> module for each built-in
-        type <code>T</code> and they are automatically imported using{" "}
-        <code>T</code> prefix.
+        type <code>T</code> and they are automatically imported using the{" "}
+        <code>T</code> prefix only if <code>T</code> corresponds to a keyword.
+      </p>
+
+      <p>
+        The <code>lang.value</code> module provides functions that work on
+        values of more than one basic type.
       </p>
 
       <Row
@@ -75,7 +89,7 @@ export default function LanglibFunctions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e56b4eea3e942203029a8574d12502e&file=langlib_functions.bal",
+                "https://play.ballerina.io/?gist=db5f387b2e69063ae6ac6400242aa7fd&file=langlib_functions.bal",
                 "_blank"
               );
             }}
@@ -100,7 +114,7 @@ export default function LanglibFunctions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/langlib-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/langlib-functions",
                 "_blank"
               );
             }}
@@ -228,9 +242,14 @@ export default function LanglibFunctions() {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run langlib_functions.bal`}</span>
-              <span>{`b`}</span>
               <span>{`1`}</span>
               <span>{`1`}</span>
+              <span>{`value is 123`}</span>
+              <span>{`123.0`}</span>
+              <span>{`true`}</span>
+              <span>{`false`}</span>
+              <span>{`[2,4,6,8,10,12]`}</span>
+              <span>{`123.0`}</span>
             </code>
           </pre>
         </Col>
@@ -238,10 +257,7 @@ export default function LanglibFunctions() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="While statement"
-            href="/learn/by-example/while-statement"
-          >
+          <Link title="Range function" href="/learn/by-example/int-range">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +283,7 @@ export default function LanglibFunctions() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  While statement
+                  Range function
                 </span>
               </div>
             </div>

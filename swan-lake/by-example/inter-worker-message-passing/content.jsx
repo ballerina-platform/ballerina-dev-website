@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() {
@@ -43,24 +36,13 @@ public function main() {
 `,
 ];
 
-export default function InterWorkerMessagePassing() {
+export function InterWorkerMessagePassing({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -90,7 +72,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bfa4ef3b66c4b91b11e6ec1d54fefdb6&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=f13d2e0893f488dbff7d0efc76e8b1b9&file=inter_worker_message_passing.bal",
                 "_blank"
               );
             }}
@@ -115,7 +97,7 @@ export default function InterWorkerMessagePassing() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/inter-worker-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/inter-worker-message-passing",
                 "_blank"
               );
             }}

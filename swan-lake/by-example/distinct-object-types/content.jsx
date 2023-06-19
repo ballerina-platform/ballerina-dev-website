@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 // The \`Person\` object type that contains a string field called \`name\`.
@@ -19,11 +12,11 @@ type Person distinct object {
     public string name;
 };
 
-// The \`Engineer\` and \`Manager\` classes are structurally the same but introducing the  
+// The \`Engineer\` and \`Manager\` classes are structurally the same but introducing the
 // \`distinct\` keyword distinguishes them by considering them as nominal types.
 distinct class Engineer {
     *Person;
-    
+
     function init(string name) {
         self.name = name;
     }
@@ -31,44 +24,27 @@ distinct class Engineer {
 
 distinct class Manager {
     *Person;
-    
+
     function init(string name) {
         self.name = name;
     }
 }
 
-type Employee Engineer|Manager;
-
-function desc(Employee employee) returns string {
-    // The \`is\` operator can be used to distinguish distinct subtypes.
-    return employee is Engineer ? "Engineer" : "Manager";
-}
-
 public function main() {
-    Employee employee = new Engineer("James");
-    io:println(desc(employee));
+    Person person = new Engineer("Alice");
+    // The \`is\` operator can be used to distinguish distinct subtypes.
+    io:println(person is Engineer ? "Engineer" : "Manager");
 }
 `,
 ];
 
-export default function DistinctObjectTypes() {
+export function DistinctObjectTypes({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -76,8 +52,8 @@ export default function DistinctObjectTypes() {
 
       <p>
         Using the <code>distinct</code> keyword in the type definition creates
-        distinct object types. This concept allows to define a type with nominal
-        typing within a structured type system. This is useful while interacting
+        distinct object types. This concept allows defining a type with nominal
+        typing within a structured type system. This is useful when interacting
         with the external world through API interfaces like <code>GraphQL</code>
         . You may want to leverage nominal typing via this distinct typing
         feature of Ballerina.
@@ -98,7 +74,7 @@ export default function DistinctObjectTypes() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=177fc193de04f9eeb059fe66236bd703&file=distinct_object_types.bal",
+                "https://play.ballerina.io/?gist=b46b8475154f7c18ba5234f801898224&file=distinct_object_types.bal",
                 "_blank"
               );
             }}
@@ -123,7 +99,7 @@ export default function DistinctObjectTypes() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/distinct-object-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/distinct-object-types",
                 "_blank"
               );
             }}
@@ -257,6 +233,44 @@ export default function DistinctObjectTypes() {
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/object-types/">Object types</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/error-subtyping/">Error subtyping</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/defining-classes/">Defining classes</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="https://ballerina.io/why-ballerina/flexibly-typed/">
+              Flexibly typed
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
@@ -295,10 +309,7 @@ export default function DistinctObjectTypes() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Binding patterns in assignment"
-            href="/learn/by-example/binding-patterns-in-assignment"
-          >
+          <Link title="Object closure" href="/learn/by-example/object-closure">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -307,7 +318,7 @@ export default function DistinctObjectTypes() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Binding patterns in assignment
+                  Object closure
                 </span>
               </div>
               <svg

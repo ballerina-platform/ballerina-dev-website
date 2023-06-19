@@ -103,11 +103,12 @@ const config = {
       '/spec/lang/2020R1/',
       '/spec/lang/2019R3/',
       '/spec/lang/draft/latest/',
-      '/spec/lang/',
       '/spec/lang/2019R3/experimental.html',
       '/spec/lang/2021R1/',
       '/spec/lang/2022R1/',
       '/spec/lang/2022R2/',
+      '/spec/lang/2022R3/',
+      '/spec/lang/2022R4/',
       ]
       
       async function asyncCall(element) {

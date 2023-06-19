@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,6 +22,7 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
+import ReactMarkdown from "react-markdown";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -29,6 +30,19 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+import { highlight } from "../../../utils/highlighter";
+
+String.prototype.hashCode = function () {
+  var hash = 0,
+    i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + chr;
+    hash |= 0;
+  }
+  return hash;
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -82,6 +96,8 @@ export async function getStaticProps({ params: { slug } }) {
   );
   const { data: frontmatter, content } = matter(fileName);
 
+  let codes = await highlight(content);
+
   return {
     props: {
       frontmatter,
@@ -90,6 +106,7 @@ export async function getStaticProps({ params: { slug } }) {
       sub,
       third,
       slug,
+      codes
     },
   };
 }
@@ -101,6 +118,7 @@ export default function PostPage({
   sub,
   third,
   slug,
+  codes
 }) {
 
   // Show mobile left nav
@@ -114,9 +132,6 @@ export default function PostPage({
   const handleToc = (data) => {
     setShowToc(data)
   }
-
-  // Languages used in Learn the platform section
-  const languages = ["bash","ballerina", "toml", "json", "yaml", "java", "groovy", "graphql"];
 
   return (
     <>
@@ -141,6 +156,7 @@ export default function PostPage({
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
         <meta
           property="twitter:description"
           content={frontmatter.description}
@@ -202,12 +218,12 @@ export default function PostPage({
               </Col>
             </div>
 
-            <p className="intro">{frontmatter.intro}</p>
+            <ReactMarkdown className="intro">{frontmatter.intro}</ReactMarkdown>
 
             <MainContent
               content={content}
               handleToc={handleToc}
-              languages={languages} />
+              codes={codes} />
 
           </Container>
         </Col>

@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,10 +23,6 @@ import Image from 'next-image-export-optimizer';
 import { prefix } from '../../../utils/prefix';
 import styles from './BalAction.module.css';
 
-import { getHighlighter, setCDN } from "shiki";
-
-setCDN("https://unpkg.com/shiki/");
-
 export default function BalAction(props) {
   const [key, setKey] = React.useState('consuming-services');
   const samples = props.samples;
@@ -45,33 +41,14 @@ export default function BalAction(props) {
     }
   }, []);
 
-  const HighlightSyntax = (code, language) => {
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-
-    React.useEffect(() => {
-
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: ['ballerina']
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        })
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet]
-  }
-
-  const consumingServices = samples['consuming-services'].replaceAll('```','');
-  const workingWithData = samples['working-with-data'].replaceAll('```','');
-  const restfulApi = samples['restful-api'].replaceAll('```','');
-  const grpcCode1 = samples['grpc-api'].replaceAll('```','');
-  const grpcCode2 = samples['grpc-api-proto'].replaceAll('```','');
-  const graphqlApi = samples['graphql-api'].replaceAll('```','');
-  const kafkaConsumer = samples['kafka-consumer-producer'].replaceAll('```','');
-  const workingWithDataBases = samples['working-with-databases'].replaceAll('```','');
+  const consumingServices = samples['consuming-services'];
+  const workingWithData = samples['working-with-data'];
+  const restfulApi = samples['restful-api'];
+  const grpcCode1 = samples['grpc-api'];
+  const grpcCode2 = samples['grpc-api-proto'];
+  const graphqlApi = samples['graphql-api'];
+  const kafkaConsumer = samples['kafka-consumer-producer'];
+  const workingWithDataBases = samples['working-with-databases'];
 
   return (
     <Col sm={12}>
@@ -109,7 +86,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col lg={7} md={12} sm={12} className={styles.col1} id="column1" >
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(consumingServices, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/consuming_services" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: consumingServices }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2} id="column2" >
@@ -125,7 +107,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col lg={7} md={12} sm={12} className={styles.col1}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(workingWithData, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_data" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithData }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} className={styles.col2}>
@@ -143,7 +130,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(restfulApi, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/restful_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: restfulApi }} />
                     </div>
                   </Col>
                 </Row>
@@ -153,12 +145,17 @@ export default function BalAction(props) {
                 <Row>
                   <Col lg={7} md={12} sm={7} className={styles.col1}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(grpcCode1, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/grpc_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode1 }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} id="grpc-api-proto" className={styles.col2}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(grpcCode2, 'ballerina') }} />
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode2 }} />
                     </div>
                   </Col>
                 </Row>
@@ -168,7 +165,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(graphqlApi, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/graphql_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: graphqlApi }} />
                     </div>
                   </Col>
                 </Row>
@@ -178,7 +180,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(kafkaConsumer, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/kafka_consumer_producer" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: kafkaConsumer }} />
                     </div>
                   </Col>
                 </Row>
@@ -188,7 +195,12 @@ export default function BalAction(props) {
                 <Row>
                   <Col sm={12}>
                     <div className={styles.focusPane}>
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: HighlightSyntax(workingWithDataBases, 'ballerina') }} />
+                      <div className={styles.codeActionIcons}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_databases" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                        </a>
+                      </div>
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />
                     </div>
                   </Col>
                 </Row>

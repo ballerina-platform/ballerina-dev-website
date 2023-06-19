@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 // The service-level CORS config applies globally to each \`resource\`.
@@ -47,7 +40,7 @@ service /crossOriginService on new http:Listener(9092) {
 `,
 ];
 
-export default function HttpCors() {
+export function HttpCors({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -55,28 +48,21 @@ export default function HttpCors() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>HTTP service - CORS (Cross-Origin Resource Sharing)</h1>
 
       <p>
-        The CORS headers can be applied in both the service-level and the
-        resource-level. Service-level CORS headers apply to all the resources
-        unless there are headers configured at the resource-level. Ballerina
-        CORS supports both simple and pre-flight requests.
+        Cross-Origin Resource Sharing (CORS) is an HTTP-header-based mechanism
+        that allows a server to indicate any origins other than its own from
+        which a browser should permit. The CORS headers can be applied at both
+        the service level and the resource level. Each configuration has the{" "}
+        <code>cors</code> field to specify the CORS config. Service-level CORS
+        headers apply to all the resources unless there are headers configured
+        at the resource level. Ballerina CORS supports both simple and
+        pre-flight requests.
       </p>
 
       <Row
@@ -89,7 +75,32 @@ export default function HttpCors() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-cors",
+                "https://play.ballerina.io/?gist=f0078cb212b59f01ab63f877fff97091&file=http_cors.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-cors",
                 "_blank"
               );
             }}
@@ -331,7 +342,7 @@ export default function HttpCors() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/CorsConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#CorsConfig">
               <code>http:CorsConfig</code> record - API documentation
             </a>
           </span>

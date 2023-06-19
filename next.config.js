@@ -3,6 +3,19 @@
 const redirectBase = process.env.NEXT_PUBLIC_BASE_PATH
   ? `${process.env.NEXT_PUBLIC_BASE_PATH}/`
   : "";
+
+const securityHeaders = [
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN',
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: "frame-ancestors 'none';"
+  }
+]
+
+
 const nextConfig = {
   reactStrictMode: true,
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
@@ -24,19 +37,32 @@ const nextConfig = {
     gitHubPath:
       "https://github.com/ballerina-platform/ballerina-dev-website/blob/master/",
   },
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
         source: `/learn/build-a-data-service-in-ballerina`,
-        destination: `/learn/featured-use-cases/build-a-data-service-in-ballerina`,
+        destination: `/learn/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
-        destination: `/${redirectBase}learn/featured-use-cases/deploy-ballerina-on-kubernetes`,
+        destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
-        source: `/${redirectBase}learn/get-started-with-ballerina`,
-        destination: `/${redirectBase}learn/get-started/get-started-with-ballerina`,
+        source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
+        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
+      },
+      {
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/get-started/get-started`,
       },
       {
         source: `/${redirectBase}learn/language-basics`,
@@ -48,23 +74,23 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/work-with-data-using-queries-in-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-graphql-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-graphql-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-graphql-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-grpc-service-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-grpc-service-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-grpc-service-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-restful-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-restful-api-with-ballerina`,
       },
       {
-        source: `/${redirectBase}learn/install-ballerina/:slug`,
-        destination: `/${redirectBase}learn/get-started/install-ballerina/:slug`,
+        source: `/${redirectBase}learn/installation-options`,
+        destination: `/${redirectBase}learn/get-started/installation-options`,
       },
       {
         source: "/learn",
@@ -76,8 +102,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/openapi-tool`,
       },
       {
-        source: `/${redirectBase}learn/graphql-client-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/graphql-client-tool`,
+        source: `/${redirectBase}learn/graphql-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/graphql-tool`,
       },
       {
         source: `/${redirectBase}learn/asyncapi-tool`,
@@ -90,6 +116,26 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/ballerina-shell`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
+      },
+      {
+        source: `/${redirectBase}learn/bal-persist-overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/bal-persist-overview`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-cli-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-model`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-model`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-client-api`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-client-api`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-data-stores`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/supported-data-stores`,
       },
       {
         source: `/${redirectBase}learn/call-java-code-from-ballerina`,

@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/io;
 
@@ -19,16 +12,15 @@ service /fileUpload on new graphql:Listener(9090) {
 
     // Remote methods can use the \`graphql:Upload\` type as an input parameter type.
     remote function fileUpload(graphql:Upload file) returns string|error {
-
         // The uploaded file information can be accessed using the \`graphql:Upload\` type.
         string fileName = file.fileName;
         string path = string \`./uploads/\${fileName}\`;
 
-        // Access the byte stream of the file from the \`graphql:Upload\` type. The type of the
+        // Accesses the byte stream of the file from the \`graphql:Upload\` type. The type of the
         // \`byteStream\` field is \`stream<byte[], io:Error?>\`.
         stream<byte[], io:Error?> byteStream = file.byteStream;
 
-        // Store the received file using the ballerina \`io\` package. If any \`error\` occurred during
+        // Stores the received file using the ballerina \`io\` package. If any \`error\` occurred during
         // the file write, it can be returned as the resolver function output.
         check io:fileWriteBlocksFromStream(path, byteStream);
 
@@ -43,7 +35,7 @@ service /fileUpload on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlFileUpload() {
+export function GraphqlFileUpload({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -51,18 +43,7 @@ export default function GraphqlFileUpload() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -89,7 +70,7 @@ export default function GraphqlFileUpload() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-file-upload",
                 "_blank"
               );
             }}
@@ -329,7 +310,7 @@ export default function GraphqlFileUpload() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/Upload">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Upload">
               <code>graphql:Upload</code> record - API documentation
             </a>
           </span>
@@ -360,8 +341,8 @@ export default function GraphqlFileUpload() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interceptors"
-            href="/learn/by-example/graphql-interceptors"
+            title="Interceptor configurations"
+            href="/learn/by-example/graphql-interceptor-configurations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -388,7 +369,7 @@ export default function GraphqlFileUpload() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptors
+                  Interceptor configurations
                 </span>
               </div>
             </div>

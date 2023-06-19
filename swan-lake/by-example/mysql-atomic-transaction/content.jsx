@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;
@@ -31,13 +24,12 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
-    resource function post 'order(@http:Payload Order salesOrder) returns http:Created|error {
+    resource function post 'order(Order salesOrder) returns http:Created|error {
         transaction {
-            // Insert into \`sales_order\` table.
+            // Insert into the \`sales_order\` table.
             _ = check self.db->execute(\`INSERT INTO MUSIC_STORE.sales_order VALUES 
                                         (\${salesOrder.id}, \${salesOrder.orderDate},
                                          \${salesOrder.productId}, \${salesOrder.quantity});\`);
@@ -73,7 +65,7 @@ service / on new http:Listener(8080) {
 `,
 ];
 
-export default function MysqlAtomicTransaction() {
+export function MysqlAtomicTransaction({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -82,18 +74,7 @@ export default function MysqlAtomicTransaction() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -140,7 +121,7 @@ export default function MysqlAtomicTransaction() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/mysql-atomic-transaction",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mysql-atomic-transaction",
                 "_blank"
               );
             }}
@@ -371,7 +352,7 @@ export default function MysqlAtomicTransaction() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/mysql-atomic-transaction",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mysql-atomic-transaction",
                 "_blank"
               );
             }}

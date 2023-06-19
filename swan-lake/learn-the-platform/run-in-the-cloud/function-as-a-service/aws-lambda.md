@@ -6,23 +6,6 @@ keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
 intro: The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function.
-redirect_from:
-  - /learn/deployment/aws-lambda
-  - /swan-lake/learn/deployment/aws-lambda/
-  - /swan-lake/learn/deployment/aws-lambda
-  - /learn/deployment/aws-lambda/
-  - /learn/deployment/aws-lambda
-  - /learn/user-guide/deployment/aws-lambda
-  - /learn/user-guide/deployment/aws-lambda/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-  - /learn/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
-  - /learn/guides/running-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/
-  - /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina
 ---
 
 ## Prerequisites
@@ -59,12 +42,12 @@ import ballerinax/awslambda;
 
 @awslambda:Function
 public function echo(awslambda:Context ctx, json input) returns json {
-   log:printInfo(input.toJsonString());
-   return input;
+    log:printInfo(input.toJsonString());
+    return input;
 }
 ```
 
-Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://lib.ballerina.io/ballerinax/awslambda/latest/classes/Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
+Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://lib.ballerina.io/ballerinax/awslambda/latest#Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
@@ -164,9 +147,9 @@ import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
-public function notifyS3(awslambda:Context ctx, 
-                         awslambda:S3Event event) returns json {
-                            io:println (event.Records[0].s3.'object.key);
+public function notifyS3(awslambda:Context ctx,
+        awslambda:S3Event event) returns json {
+    io:println(event.Records[0].s3.'object.key);
     return event.Records[0].s3.'object.key;
 }
 ```
@@ -187,9 +170,9 @@ import ballerina/io;
 import ballerinax/awslambda;
 
 @awslambda:Function
-public function notifyDynamoDB(awslambda:Context ctx, 
-                               awslambda:DynamoDBEvent event) returns json {
-                                  io:println (event.Records[0].dynamodb.Keys.toString());
+public function notifyDynamoDB(awslambda:Context ctx,
+        awslambda:DynamoDBEvent event) returns json {
+    io:println(event.Records[0].dynamodb.Keys.toString());
     return event.Records[0].dynamodb.Keys.toString();
 }
 ```

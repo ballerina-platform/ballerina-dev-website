@@ -6,10 +6,6 @@ keywords: ballerina, programming language, asyncapi, contract
 permalink: /learn/asyncapi-tool/
 active: asyncapi-tool
 intro: AsyncAPI is a specification, which is used to describe and document message-driven APIs in a machine-readable format for easy development, discovery, and integration. Ballerina Swan Lake supports the AsyncAPI Specification version 2.x.
-redirect_from:
-  - /learn/ballerina-asyncapi-support
-  - /learn/ballerina-asyncapi-support/
-  - /learn/asyncapi-tool
 ---
 
 The Ballerina AsyncAPI tool makes it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
@@ -21,7 +17,7 @@ To run this tutorial, you need the following prerequisites:
 1. [Ballerina 2202.1.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
 2. A text editor
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension</a> installed.
+  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
 
 ## Prepare the AsyncAPI contract
 
@@ -113,14 +109,14 @@ There are custom tags in this YAML starting with `x-ballerina`. It is very impor
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
 ```
-bal asyncapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
+$ bal asyncapi [-i | --input] <asyncapi-contract-file-path> [-o | --output] <output-location>
 ```
 
 The generated service can be used as a code template to start the service implementation.
 For example,
 
 ```
-bal asyncapi -i hello.yaml
+$ bal asyncapi -i hello.yaml
 ```
 
 This generates a Ballerina source (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
@@ -133,7 +129,7 @@ This generates a Ballerina source (i.e., the four Ballerina files below) from th
 The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
 ```
-bal asyncapi -i hello.yaml -o ./output_path
+$ bal asyncapi -i hello.yaml -o ./output_path
 ```
 
 Then, the generated files can be modified according to the custom requirements. When modifying the generated code segments, it is easier to consider the below facts.
@@ -154,15 +150,15 @@ Follow the steps below to execute the generated Ballerina sources.
 3\. Create a new Ballerina file inside the directory (e.g., `slack_service.bal` ) and copy the code below to it.
 
 ```ballerina
-listener Listener webhookListener = new(8090);
+listener Listener webhookListener = new (8090);
 
 service AppService on webhookListener {
-   remote function onAppMention(GenericEventWrapper event) returns error? {
-       //Implement the logic to use the received `event` here.
-   }
+    remote function onAppMention(GenericEventWrapper event) returns error? {
+        //Implement the logic to use the received `event` here.
+    }
 
     remote function onAppRateLimited(GenericEventWrapper event) returns error? {
-       //Implement the logic to use the received `event` here.
+        //Implement the logic to use the received `event` here.
     }
 }
 ```

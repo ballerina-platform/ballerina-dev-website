@@ -6,15 +6,6 @@ keywords: ballerina, cli, command-line interface, programming language
 permalink: /learn/user-guide/network-communication/http/http-services/
 active: http-services
 intro: The topics below cover details on the HTTP services support in Ballerina. They explore the basics of creating an HTTP service and how Ballerina provides a convenient abstraction for defining complex operations. 
-redirect_from:
-  - /learn/network-communication/http/http-services
-  - /swan-lake/learn/network-communication/http/http-services/
-  - /swan-lake/learn/network-communication/http/http-services
-  - /learn/network-communication/http/http-services/
-  - /learn/network-communication/http/http-services
-  - /learn/user-guide/network-communication/http/http-services
-redirect_to:
-  - https://lib.ballerina.io/ballerina/http/latest/
 ---
 
 ## Structuring an HTTP service
@@ -27,7 +18,7 @@ The elements of the service are as follows.
 
 - **Service name:** the service name represents the base path of the HTTP service. This is an optional value. If it’s kept empty, the base path defaults to the value “/”. 
 
-- **Listener object:** provides an instance of the [`http:Listener`](https://docs.central.ballerina.io/ballerina/http/latest/listeners/Listener) to bind to a specific host/port. 
+- **Listener object:** provides an instance of the [`http:Listener`](https://lib.ballerina.io/ballerina/http/latest/listeners/Listener) to bind to a specific host/port. 
 
 - **Resource:** a resource represents a specific subpath that can be accessed in relation to the service base path.
 

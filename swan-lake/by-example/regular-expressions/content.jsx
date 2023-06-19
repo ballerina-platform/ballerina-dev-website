@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/regex;
 
@@ -41,24 +34,13 @@ public function main() {
 `,
 ];
 
-export default function RegularExpressions() {
+export function RegularExpressions({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -78,6 +60,28 @@ export default function RegularExpressions() {
         .
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Deprecation Notice:</strong> This library is deprecated and
+          will no longer be maintained or updated. Instead, it is recommended to
+          use the{" "}
+          <a href="https://lib.ballerina.io/ballerina/lang.regexp/latest">
+            <code>ballerina/lang.regexp</code>
+          </a>{" "}
+          library for continued support and updates. For more information, see
+          the new{" "}
+          <a href="/learn/by-example/regexp-type">RegExp type example</a>,{" "}
+          <a href="/learn/by-example/regexp-operations">
+            RegExp operations example
+          </a>
+          , and{" "}
+          <a href="/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
+            Regular expressions feature guide
+          </a>
+          .
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -88,7 +92,7 @@ export default function RegularExpressions() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=93f1970bbbbf0d49b28ded4d3debc595&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=f1614665a9a5b4249caf9c4f517822e6&file=regular_expressions.bal",
                 "_blank"
               );
             }}
@@ -113,7 +117,7 @@ export default function RegularExpressions() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/regular-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/regular-expressions",
                 "_blank"
               );
             }}

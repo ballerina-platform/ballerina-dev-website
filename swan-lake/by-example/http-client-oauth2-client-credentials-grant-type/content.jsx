@@ -1,33 +1,26 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/io;
 
-type Album readonly & record {|
+type Album readonly & record {
     string title;
     string artist;
-|};
+};
 
 public function main() returns error? {
     // Defines the HTTP client to call the OAuth2 secured APIs.
-    http:Client albumClient = check new("localhost:9090",
+    http:Client albumClient = check new ("localhost:9090",
         auth = {
             tokenUrl: "https://localhost:9445/oauth2/token",
             clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
             clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-            scopes: ["admin"],
+            scopes: "admin",
             clientConfig: {
                 secureSocket: {
                     cert: "../resource/path/to/public.crt"
@@ -44,24 +37,13 @@ public function main() returns error? {
 `,
 ];
 
-export default function HttpClientOauth2ClientCredentialsGrantType() {
+export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -85,7 +67,32 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-client-oauth2-client-credentials-grant-type",
+                "https://play.ballerina.io/?gist=8de7748e9e8e5cc86d9a3c766c245f53&file=http_client_oauth2_client_credentials_grant_type.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-oauth2-client-credentials-grant-type",
                 "_blank"
               );
             }}
@@ -240,7 +247,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/records/OAuth2ClientCredentialsGrantConfig">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#OAuth2ClientCredentialsGrantConfig">
               <code>http:OAuth2ClientCredentialsGrantConfig</code> record - API
               documentation
             </a>
@@ -272,7 +279,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/http-client-self-signed-jwt-authentication"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -300,7 +307,7 @@ export default function HttpClientOauth2ClientCredentialsGrantType() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
             </div>

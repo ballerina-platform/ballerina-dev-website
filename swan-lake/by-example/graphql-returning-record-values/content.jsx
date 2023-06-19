@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 // Define the custom record types for the returning data.
@@ -55,7 +48,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlReturningRecordValues() {
+export function GraphqlReturningRecordValues({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -64,18 +57,7 @@ export default function GraphqlReturningRecordValues() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -87,15 +69,12 @@ export default function GraphqlReturningRecordValues() {
         <code>remote</code> methods of the <code>graphql:Service</code>. These{" "}
         <code>record</code> types are mapped to GraphQL output object types in
         the GraphQL schema in which the type name and the field names are mapped
-        one-to-one from Ballerina to GraphQL.
-      </p>
-
-      <p>
-        Use a <code>record</code> type to represent a GraphQL output object type
-        only when all fields of that object type do not have any input arguments
-        or the field resolution does not require any complex logic execution.
-        The <code>record</code> type is preferred over the <code>service</code>{" "}
-        object type in this case as it makes the code more concise.
+        one-to-one from Ballerina to GraphQL. Use a <code>record</code> type to
+        represent a GraphQL output object type only when all fields of that
+        object type do not have any input arguments or the field resolution does
+        not require any complex logic execution. The <code>record</code> type is
+        preferred over the <code>service</code> object type in this case as it
+        makes the code more concise.
       </p>
 
       <Row
@@ -108,7 +87,7 @@ export default function GraphqlReturningRecordValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-returning-record-values",
                 "_blank"
               );
             }}
@@ -257,7 +236,7 @@ export default function GraphqlReturningRecordValues() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-returning-record-values",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-returning-record-values",
                 "_blank"
               );
             }}
@@ -332,7 +311,7 @@ export default function GraphqlReturningRecordValues() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 

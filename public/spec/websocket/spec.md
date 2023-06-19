@@ -34,6 +34,7 @@ The conforming implementation of the specification is released and included in t
             * [onIdleTimeout](#onidletimeout)
             * [onClose](#onclose)
             * [onError](#onerror)
+        * 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
 4. [Client](#4-client)
     * 4.1. [Client Configurations](#41-client-configurations)
     * 4.2. [Initialization](#42-initialization)
@@ -257,7 +258,7 @@ As soon as the WebSocket handshake is completed and the connection is establishe
 
 ```ballerina
 remote function onOpen(websocket:Caller caller) returns error? {
-    io:println("Opened a WebSocket connection"`);
+    io:println("Opened a WebSocket connection");
 }
 ```
 
@@ -325,7 +326,7 @@ remote function onPong(websocket:Caller caller, byte[] data) {
 This remote method is dispatched when the idle timeout is reached. The idleTimeout has to be configured either in the WebSocket service or the client configuration.
 
 ```ballerina
-remote function onIdleTimeout(websocket:Client caller) {
+remote function onIdleTimeout(websocket:Caller caller) {
     io:println("Connection timed out");
 }
 ```
@@ -349,6 +350,38 @@ remote function onError(websocket:Caller caller, error err) {
     io:println(err.message());
 }
 ```
+
+#### 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
+
+The WebSocket service also supports dispatching messages to custom remote functions based on the message type(declared by a field in the received message) with the end goal of generating meaningful Async APIs. 
+
+For example, if the message is `{"event": "heartbeat"}` it will get dispatched to `onHeartbeat` remote function if the user has defined such a method. 
+
+**Dispatching rules**
+
+1. The user can configure the field name(key) to identify the messages and the allowed values as message types.
+
+The `dispatcherKey` is used to identify the event type of the incoming message by its value. 
+
+Ex:
+incoming message = ` {"event": "heartbeat"}`
+dispatcherKey = "event"
+event/message type = "heartbeat"
+dispatching to remote function = "onHeartbeat"
+
+```ballerina
+@websocket:ServiceConfig {
+    dispatcherKey: "event"
+}
+service / on new websocket:Listener(9090) {}
+```
+
+2. Naming of the remote function.
+
+- If there are spaces and underscores between message types, those will be removed and made camel case("un subscribe" -> "onUnSubscribe").
+- The 'on' word is added as the predecessor and the remote function name is in the camel case("heartbeat" -> "onHeartbeat").
+
+3. If an unmatching message type receives where a matching remote function is not implemented in the WebSocket service by the user, it gets dispatched to the default `onMessage` remote function if it is implemented. Or else it will get ignored.
 
 ## 4. [Client](#4-client)
 
@@ -452,7 +485,6 @@ The input data is internally converted to relevant frame type as follows,
 #
 # + data - Data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending
-remote isolated function writeBinaryMessage(byte[] data) returns Error? {}
 remote isolated function writeMessage(anydata data) returns Error? {
 ```
 

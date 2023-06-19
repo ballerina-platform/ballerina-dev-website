@@ -1,7 +1,15 @@
 {
-  "title": "Define classes",
-  "description": "This BBE demonstrates how classes are defined in Ballerina",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "class", "object"],
+  "title": "Defining classes",
+  "description": "This BBE demonstrates defining classses, invoking object methods, and initializing object fields in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "class",
+    "object",
+    "init method",
+    "new"
+  ],
   "permalink": "/learn/by-example/defining-classes",
   "active": "defining-classes",
   "redirect_from": [

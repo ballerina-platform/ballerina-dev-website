@@ -8,7 +8,7 @@ nav.home {
     color: #fff;
 }
 
-nav.docs, nav.downloads, nav.other, nav.docs-learn, 
+nav.docs, nav.downloads, nav.other, nav.docs-learn, nav.usecases, 
 nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     background-color: #fff;
 }
@@ -23,13 +23,13 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 }
 /* --------------------------------------- */
 
-.topNav a.navItem {
+.topNav a.navItem, .topNav #navbarScrollingDropdown {
     color: #20b6b0 !important;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
-.topNav a.navItem.active {
+.topNav a.navItem.active, .topNav .active #navbarScrollingDropdown {
     color: #57595d !important;
 }
 
@@ -37,20 +37,28 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     justify-content: end !important;
 }
 
-.home .topNav a.navItem, .home #navbarScrollingDropdown {
+.home .topNav a.navItem, .home .topNav #navbarScrollingDropdown {
     color: #fff !important;
 }
 
-.home .topNav a.navItem:hover {
+.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
     color: #20b6b0 !important;
 }
 
-.topNav a.active, .topNav a:hover {
+.topNav a.active, .topNav a:hover, .topNav #navbarScrollingDropdown:hover {
     color: #57595d !important;
 }
 
+.home .topNav #navbarScrollingDropdown::after {
+    /* color: #20b6b0; */
+    color: inherit !important;
+    vertical-align: middle !important;
+}
+
 .topNav #navbarScrollingDropdown::after {
-    color: #20b6b0;
+    /* color: #20b6b0; */
+    color: inherit;
+    vertical-align: middle !important;
 }
 
 .home .topNav #navbarScrollingDropdown::after {
@@ -144,4 +152,9 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 
 .hackathonBanner a:hover{
     color: #545454 !important;
+}
+
+a.dropDownItem:focus, a.dropDownItem:hover {
+    background-color: #20b6b0 !important;
+    color: #ffffff !important;
 }

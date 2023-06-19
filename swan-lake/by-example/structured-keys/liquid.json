@@ -1,12 +1,14 @@
 {
   "title": "Structured keys",
-  "description": "This BBE demonstrates structured keys in tables in Ballerina.",
+  "description": "This BBE demonstrates how to set a record as key in table, create record key table, make immutable clone.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "structured keys",
-    "keys"
+    "keys",
+    "table",
+    "map"
   ],
   "permalink": "/learn/by-example/structured-keys",
   "active": "structured-keys",

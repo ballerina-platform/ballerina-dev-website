@@ -1,0 +1,19 @@
+{
+  "title": "Anonymous function",
+  "description": "This BBE demonstrates creating an anonymous function, which is commonly known as an arrow function or lambda function in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "anonymous function",
+    "lambda function",
+    "arrow function",
+    "function values"
+  ],
+  "permalink": "/learn/by-example/anonymous-function",
+  "active": "anonymous-function",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/anonymous-function",
+    "/swan-lake/learn/by-example/anonymous-function.html"
+  ]
+}

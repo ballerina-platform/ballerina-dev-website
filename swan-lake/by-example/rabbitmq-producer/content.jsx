@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerinax/rabbitmq;
 
@@ -22,13 +15,18 @@ type Order readonly & record {
     boolean isValid;
 };
 
-// Initializes a ballerina RabbitMQ client.
-final rabbitmq:Client orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
-
 service / on new http:Listener(9092) {
-    resource function post orders(@http:Payload Order newOrder) returns http:Accepted|error {
-        // Publishes the message using newClient and the routing key named OrderQueue.
-        check orderClient->publishMessage({
+    private final rabbitmq:Client orderClient;
+
+    function init() returns error? {
+        // Initiate the RabbitMQ client at the start of the service. This will be used
+        // throughout the lifetime of the service.
+        self.orderClient = check new (rabbitmq:DEFAULT_HOST, rabbitmq:DEFAULT_PORT);
+    }
+
+    resource function post orders(Order newOrder) returns http:Accepted|error {
+        // Publishes the message using the \`newClient\` and the routing key named \`OrderQueue\`.
+        check self.orderClient->publishMessage({
             content: newOrder,
             routingKey: "OrderQueue"
         });
@@ -39,7 +37,7 @@ service / on new http:Listener(9092) {
 `,
 ];
 
-export default function RabbitmqProducer() {
+export function RabbitmqProducer({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -47,18 +45,7 @@ export default function RabbitmqProducer() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -85,7 +72,7 @@ export default function RabbitmqProducer() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/rabbitmq-producer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/rabbitmq-producer",
                 "_blank"
               );
             }}
@@ -327,7 +314,7 @@ export default function RabbitmqProducer() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerinax/rabbitmq/latest#Client">
               <code>rabbitmq:Client</code> client object - API documentation
             </a>
           </span>

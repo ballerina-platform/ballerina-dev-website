@@ -1,6 +1,6 @@
 {
   "title": "XML data model",
-  "description": "This BBE demonstrates xml data model in Ballerina.",
+  "description": "This BBE demonstrates how to define XML elements, XML processing instructions, XML comments, XML text, convert string to XML, create XML value, get the items, access the XML attributes, and retrieve elements in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

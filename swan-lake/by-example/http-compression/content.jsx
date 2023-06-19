@@ -1,25 +1,18 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-// \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. Compression scheme is set to the
-// value indicated in Accept-Encoding request header. When a particular header is not present or the header
-// value is "identity", encoding is done using the "gzip" scheme.
+// \`COMPRESSION_ALWAYS\` guarantees a compressed response entity body. The compression scheme is set to the
+// value indicated in \`Accept-Encoding\` request header. When a particular header is not present or the header
+// value is \`identity\`, encoding is done using the "gzip" scheme.
 // By default, Ballerina compresses any MIME type unless they are mentioned under \`contentTypes\`.
 // Compression can be constrained to certain MIME types by specifying them as an array of MIME types.
-// In this example encoding is applied to "text/plain" responses only.
+// In this example encoding is applied to \`text/plain\` responses only.
 @http:ServiceConfig {
     compression: {
         enable: http:COMPRESSION_ALWAYS,
@@ -36,7 +29,7 @@ service / on new http:Listener(9090) {
 `,
 ];
 
-export default function HttpCompression() {
+export function HttpCompression({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -44,32 +37,22 @@ export default function HttpCompression() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>HTTP service - Compression</h1>
 
       <p>
-        The HTTP service can be configured to change the compression behaviour.
-        By default, the server compresses the response entity body with the
-        scheme(gzip, deflate) that is specified in the Accept-Encoding request
-        header. When the particular header is not present or the header value is
-        &quot;identity&quot;, the server does not perform any compression.
-        Compression is disabled when the option is set to{" "}
-        <code>COMPRESSION_NEVER</code> and always enabled when the option is set
-        to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
+        The <code>http:Service</code> can be configured to change the
+        compression behaviour of the <code>http:Response</code> payload. By
+        default, the server compresses the response entity body with the
+        scheme(gzip, deflate) that is specified in the{" "}
+        <code>Accept-Encoding</code> request header. When the particular header
+        is not present, or the header value is <code>identity</code>, the server
+        does not perform any compression. Compression is disabled when the
+        option is set to <code>COMPRESSION_NEVER</code> and always enabled when
+        the option is set to <code>COMPRESSION_ALWAYS</code>. In the same way{" "}
         <code>http:Client</code> can be configured as well.
       </p>
 
@@ -83,7 +66,32 @@ export default function HttpCompression() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-compression",
+                "https://play.ballerina.io/?gist=793c00571c7b75acd0714fde67874836&file=http_compression.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-compression",
                 "_blank"
               );
             }}
@@ -306,7 +314,7 @@ export default function HttpCompression() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/constants#COMPRESSION_ALWAYS">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#COMPRESSION_ALWAYS">
               <code>COMPRESSION_ALWAYS</code> - API documentation
             </a>
           </span>

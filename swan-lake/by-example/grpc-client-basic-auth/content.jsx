@@ -1,23 +1,14 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the Basic Auth secured APIs.
-    // The client metadata is enriched with the \`Authorization: Basic <token>\`
-    // header by passing the \`grpc:CredentialsConfig\` for the \`auth\` configuration of the client.
+    // Defines the gRPC client to call the APIs secured with basic authentication.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             username: "ldclakmal",
@@ -34,39 +25,24 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientBasicAuth() {
+export function GrpcClientBasicAuth({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC client - Basic authentication</h1>
 
       <p>
-        A client, which is secured with Basic authentication can be used to
-        connect to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Basic &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:CredentialsConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>grpc:Client</code> can connect to a service that is secured
+        with basic authentication by enriching the client metadata with the{" "}
+        <code>Authorization: Basic &lt;token&gt;</code> header. The username and
+        password for basic authentication can be specified in the{" "}
+        <code>auth</code> field of the client configuration.
       </p>
 
       <Row
@@ -79,7 +55,7 @@ export default function GrpcClientBasicAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-client-basic-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-client-basic-auth",
                 "_blank"
               );
             }}
@@ -154,12 +130,13 @@ export default function GrpcClientBasicAuth() {
       </Row>
 
       <p>
-        Setting up the client is the same as setting up the unary RPC client
-        with additional configurations. You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>
@@ -249,7 +226,7 @@ export default function GrpcClientBasicAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/types#ClientAuthConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ClientAuthConfig">
               <code>grpc:ClientAuthConfig</code> type - API documentation
             </a>
           </span>

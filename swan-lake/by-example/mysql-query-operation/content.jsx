@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql;
@@ -31,8 +24,7 @@ service / on new http:Listener(8080) {
     function init() returns error? {
         // Initiate the mysql client at the start of the service. This will be used
         // throughout the lifetime of the service.
-        self.db = check new (host = "localhost", port = 3306, user = "root",
-                            password = "Test@123", database = "MUSIC_STORE");
+        self.db = check new ("localhost", "root", "Test@123", "MUSIC_STORE", 3306);
     }
 
     resource function get albums() returns Album[]|error {
@@ -40,14 +32,14 @@ service / on new http:Listener(8080) {
         stream<Album, sql:Error?> albumStream = self.db->query(\`SELECT * FROM albums\`);
 
         // Process the stream and convert results to Album[] or return error.
-        return check from Album album in albumStream
+        return from Album album in albumStream
             select album;
     }
 }
 `,
 ];
 
-export default function MysqlQueryOperation() {
+export function MysqlQueryOperation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -55,18 +47,7 @@ export default function MysqlQueryOperation() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -110,7 +91,7 @@ export default function MysqlQueryOperation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/mysql-query-operation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mysql-query-operation",
                 "_blank"
               );
             }}
@@ -351,7 +332,10 @@ export default function MysqlQueryOperation() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Write file" href="/learn/by-example/sftp-client-write">
+          <Link
+            title="Send file"
+            href="/learn/by-example/sftp-client-send-file"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -377,7 +361,7 @@ export default function MysqlQueryOperation() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Write file
+                  Send file
                 </span>
               </div>
             </div>

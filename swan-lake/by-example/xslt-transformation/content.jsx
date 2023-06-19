@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/xslt;
 
@@ -21,7 +14,7 @@ public function main() returns error? {
     // Gets an \`XSL\` style sheet represented in an XML value.
     xml xsl = getXsl();
     // Transforms the \`XML\` content to another format.
-    // For details, see https://lib.ballerina.io/ballerina/xslt/latest/functions#transform.
+    // For details, see https://lib.ballerina.io/ballerina/xslt/latest#transform.
     xml target = check xslt:transform(sourceXml, xsl);
     
     io:println("Transformed XML: ", target);
@@ -78,24 +71,13 @@ function getXsl() returns xml {
 `,
 ];
 
-export default function XsltTransformation() {
+export function XsltTransformation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -108,7 +90,7 @@ export default function XsltTransformation() {
 
       <p>
         For more information on the underlying module, see the{" "}
-        <a href="https://docs.central.ballerina.io/ballerina/xslt/latest/">
+        <a href="https://lib.ballerina.io/ballerina/xslt/latest/">
           <code>xslt</code> module
         </a>
         .
@@ -124,7 +106,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e1b865a8b23860899d04ac4be378b62f&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=5ce6f1b041d0412819ad87e3d0d531b2&file=xslt_transformation.bal",
                 "_blank"
               );
             }}
@@ -149,7 +131,7 @@ export default function XsltTransformation() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/xslt-transformation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xslt-transformation",
                 "_blank"
               );
             }}

@@ -3,7 +3,7 @@
 _Owners_: @daneshk @kalaiyarasiganeshalingam @MadhukaHarith92                                       
 _Reviewers_: @daneshk  
 _Created_: 2021/12/10  
-_Updated_: 2022/06/07  
+_Updated_: 2023/01/31  
 _Edition_: Swan Lake
 
 ## Introduction
@@ -370,24 +370,80 @@ The record representation of the above XML with the default configuration of thi
 }
 ```
 
-When `preserveNamespaces` is `false`, the JSON representation of the above XML.
+If `returnType` is configured for the above output, it must be specified in the following format with the open/closed record type.
+
+```ballerina
+type BookStores record {|
+    BookStore ns0\:bookStore;
+|};
+
+type BookStore record {|
+    string ns0\:storeName;
+    string ns0\:postalCode;
+    string ns0\:isOpen;
+    Address ns0\:address;
+    Codes ns0\:codes;
+    string _status;
+    string _xmlns\:ns0;
+|};
+
+type Address record {|
+    string ns0\:street;
+    string ns0\:city;
+    string ns0\:country;
+|};
+
+type Codes record {|
+    string[] ns0\:code;
+|};
+```
+
+When `preserveNamespaces` is `false`(without namespaces), the output of the above XML.
 
 ```ballerina
 {
-    "bookStore":{
-        "storeName":"foo",
-        "postalCode":"94",
-        "isOpen":"true",
-        "address":{
-            "street":"foo",
-            "city":"94",
-            "country":"true"
-        },
-        "codes":{
-            "code":["4","8","9"]
-        }
-    }
+   "bookStore":{
+      "storeName":"foo",
+      "postalCode":"94",
+      "isOpen":"true",
+      "address":{
+         "street":"foo",
+         "city":"94",
+         "country":"true"
+      },
+      "codes":{
+         "code":["4","8","9"]
+      },
+      "_status":"online"
+   }
 }
+```
+
+If `returnType` is configured for the above output(without namespaces), it must be specified in the following format with the open/closed record type.
+
+```ballerina
+type BookStores record {|
+    BookStore bookStore;
+|};
+
+type BookStore record {|
+    string storeName;
+    string postalCode;
+    string isOpen;
+    Address address;
+    Codes codes;
+    string _status;
+|};
+
+type Address record {|
+    string street;
+    string city;
+    string country;
+|};
+
+type Codes record {|
+    string[] code;
+|};
 ```
 
 ### 4.3. JSON to XML Conversion
@@ -494,7 +550,9 @@ When `attributePrefix` is `&` and `arrayEntryTag` is `list`, the XML representat
 
 ### 4.4. Ballerina record/Map to XML Conversion
 This conversion provides a mapping between the different forms of Ballerina record/Map, to a corresponding matching XML representation.
-The following API returns the XML data to the given Ballerina record/Map. The record has annotations to configure namespaces and attributes, but others don't have these.
+The following API returns the XML data to the given Ballerina record/Map. 
+The record has annotations to configure namespaces and attributes, 
+but other types(map<BALLERINA_PRIMITIVE_TYPE>|map<BALLERINA_PRIMITIVE_TYPE[]>|map<json>|map<xml>|map<json[]>|map<xml[]>|map<table<map<string>>>) don't have these.
 ```ballerina
 public isolated function toXml(map<anydata> mapValue) returns xml|Error
 ```
@@ -532,30 +590,27 @@ public annotation Attribute on record field;
 ```
 #### 4.4.1. Sample1
 ```ballerina
-@Name {
+@xmldata:Name {
     value: "Customers"
 }
-@Namespace {
+@xmldata:Namespace {
     prefix: "ns",
     uri: "http://sdf.com"
 }
 type Customer record {
 
-    @Name {
+    @xmldata:Name {
         value: "employeeName"
     }
-    @Namespace {
-        prefix: "ns"
-    }
-    @Attribute
-    string name;
+    @xmldata:Attribute
+    string ns\:name;
 
     int age;
 };
 
 Customer input = { name: "Asha", age: 10 };
 ```
-The XML representation of the above Record.
+The XML representation of the above Record:
 
 ```ballerina
 <ns:Customers xmlns:ns="http://sdf.com" ns:employeeName="Asha">
@@ -571,15 +626,12 @@ map<string> input = {
     genre: "Sci-Fi"
 };
 ```
-The XML representation of the above map.
+The XML representation of the above map:
 
 ```ballerina
 <root>
     <series>Dark</series>
     <genre>Sci-Fi</genre>
-    <language>German</language>
-    <seasons>3</seasons>
-    <id>3296</id>
 </root>;
 ```
 

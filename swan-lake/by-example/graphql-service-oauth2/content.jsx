@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 type Profile record {|
@@ -51,6 +44,7 @@ listener graphql:Listener securedEP = new (9090,
     ]
 }
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -61,24 +55,13 @@ service /graphql on securedEP {
 `,
 ];
 
-export default function GraphqlServiceOauth2() {
+export function GraphqlServiceOauth2({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -109,7 +92,7 @@ export default function GraphqlServiceOauth2() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-service-oauth2",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-oauth2",
                 "_blank"
               );
             }}
@@ -269,7 +252,7 @@ export default function GraphqlServiceOauth2() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/annotations#ServiceConfig">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ServiceConfig">
               <code>graphql:ServiceConfig</code> annotation - API documentation
             </a>
           </span>
@@ -279,7 +262,7 @@ export default function GraphqlServiceOauth2() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/OAuth2IntrospectionConfigWithScopes">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#OAuth2IntrospectionConfigWithScopes">
               <code>graphql:OAuth2IntrospectionConfigWithScopes</code> record -
               API documentation
             </a>
@@ -300,7 +283,7 @@ export default function GraphqlServiceOauth2() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11114-oauth2">
+            <a href="/spec/graphql/#12114-oauth2">
               GraphQL service OAuth2 - Specification
             </a>
           </span>

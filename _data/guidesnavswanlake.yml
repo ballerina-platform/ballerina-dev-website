@@ -81,7 +81,7 @@
     - title: Provide values to configurable variables
       url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables
       sublinks:
-        - title: Provide configuration values through Command Line Arguments
+        - title: Provide configuration values through Command-Line Arguments
           url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-configuration-values-through-command-line-arguments
           active: provide-values-through-command-line-arguments
         - title: Provide configuration values through TOML syntax

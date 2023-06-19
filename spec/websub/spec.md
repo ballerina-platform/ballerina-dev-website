@@ -81,7 +81,7 @@ public type ListenerConfiguration record {|
 |};
 ```
 
-For more details on the available configurations please refer [`http:ListenerConfiguration`](https://lib.ballerina.io/ballerina/http/latest/records/ListenerConfiguration).
+For more details on the available configurations please refer [`http:ListenerConfiguration`](https://lib.ballerina.io/ballerina/http/latest#ListenerConfiguration).
 
 #### 2.1.2. Initialization
 

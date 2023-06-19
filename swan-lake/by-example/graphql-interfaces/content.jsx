@@ -1,27 +1,20 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define the interface \`Profile\` using a \`distinct\` \`service\` object.
+// Defines the interface \`Profile\` using a \`distinct\` \`service\` object.
 type Profile distinct service object {
 
-    // Define the field \`name\` as a resource method definition.
+    // Defines the field \`name\` as a resource method definition.
     resource function get name() returns string;
 };
 
-// Define the \`Teacher\` class implementing the \`Profile\` interface.
+// Defines the \`Teacher\` class implementing the \`Profile\` interface.
 distinct service class Teacher {
     // This denotes that this object implements the \`Profile\` interface.
     *Profile;
@@ -40,13 +33,13 @@ distinct service class Teacher {
         return self.name;
     }
 
-    // Add an additional field \`subject\` to the \`Teacher\` class.
+    // Adds an additional field \`subject\` to the \`Teacher\` class.
     resource function get subject() returns string {
         return self.subject;
     }
 }
 
-// Another class implementing the \`Profile\` interface.
+// Defines another class implementing the \`Profile\` interface.
 distinct service class Student {
     *Profile;
 
@@ -63,7 +56,8 @@ distinct service class Student {
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Returning the \`Profile[]\` type from a GraphQL resolver will identify it as an interface.
+    // Returns the \`Profile[]\` type from a GraphQL resolver. The \`Profile\` type is identified as an
+    // interface.
     resource function get profiles() returns Profile[] {
         return [new Teacher("Walter White", "Chemistry"), new Student("Jesse Pinkman")];
     }
@@ -80,7 +74,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlInterfaces() {
+export function GraphqlInterfaces({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -89,18 +83,7 @@ export default function GraphqlInterfaces() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -129,7 +112,7 @@ export default function GraphqlInterfaces() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-interfaces",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-interfaces",
                 "_blank"
               );
             }}
@@ -278,7 +261,7 @@ export default function GraphqlInterfaces() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-interfaces",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-interfaces",
                 "_blank"
               );
             }}
@@ -353,7 +336,7 @@ export default function GraphqlInterfaces() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 

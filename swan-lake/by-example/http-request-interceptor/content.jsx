@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 type Album readonly & record {|
@@ -50,25 +43,25 @@ service class RequestInterceptor {
 
 // Interceptors can also be engaged at the listener level. In this case, the \`RequestInterceptors\`
 // can have only the default path.
-listener http:Listener interceptorListener = new http:Listener(9090);
+listener http:Listener interceptorListener = new (9090);
 
-// Engage interceptors at the service level. Request interceptor services will be executed from
-// head to tail.
-@http:ServiceConfig {
-    // The interceptor pipeline. The base path of the interceptor services is the same as
-    // the target service. Hence, they will be executed only for this particular service.
-    interceptors: [new RequestInterceptor()]
-}
-service / on interceptorListener {
+// Engage interceptors at the service level using \`http:InterceptableService\`. The base path of the
+// interceptor services is the same as the target service. Hence, they will be executed only for
+// this particular service.
+service http:InterceptableService / on interceptorListener {
 
-    resource function get albums(http:Request req) returns Album[] {
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then the request interceptor services will be executed from head to tail.
+    public function createInterceptors() returns RequestInterceptor {
+        return new RequestInterceptor();
+    }
+    resource function get albums() returns Album[] {
         return albums.toArray();
     }
 }
 `,
 ];
 
-export default function HttpRequestInterceptor() {
+export function HttpRequestInterceptor({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -76,18 +69,7 @@ export default function HttpRequestInterceptor() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -95,17 +77,27 @@ export default function HttpRequestInterceptor() {
 
       <p>
         The <code>http:RequestInterceptor</code> is used to intercept the
-        request and execute some custom logic. A <code>RequestInterceptor</code>{" "}
-        is a service object with only one resource method, which is executed
-        before dispatching the request to the actual resource in the target
-        service. A <code>RequestInterceptor</code> can be created from a service
-        class, which includes the <code>http:RequestInterceptor</code> service
-        type. Then, this service object can be engaged at the listener level or
-        service level by using the <code>interceptors</code> field in the
-        configurations. This field accepts an array of interceptor service
-        objects as an interceptor pipeline, and the interceptors are executed in
-        the order in which they are placed in the pipeline. Use{" "}
-        <code>RequestInterceptors</code> to execute some common logic such as
+        request and execute custom logic. A <code>RequestInterceptor</code> is a
+        service object with only one resource method, which is executed before
+        dispatching the request to the actual resource in the target service.
+        This resource method can have parameters just like a usual resource
+        method in an <code>http:Service</code>.
+      </p>
+
+      <p>
+        A <code>RequestInterceptor</code> can be created from a service class,
+        which includes the <code>http:RequestInterceptor</code> service type.
+        Then, this service object can be engaged at the listener level by using
+        the <code>interceptors</code> field in the{" "}
+        <code>http:ListenerConfiguration</code> or at the service level by
+        declaring a <code>http:InterceptableService</code> object.
+      </p>
+
+      <p>
+        These accept an interceptor service object or an array of interceptor
+        service objects as an interceptor pipeline, and the interceptors are
+        executed in the order in which they are placed in the pipeline. Use{" "}
+        <code>RequestInterceptors</code> to execute common logic such as
         logging, header manipulation, state publishing, etc., for inbound
         requests.
       </p>
@@ -116,9 +108,56 @@ export default function HttpRequestInterceptor() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=7cff034011dad19163683387a46c9d2a&file=http_request_interceptor.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-request-interceptor",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -136,7 +175,7 @@ export default function HttpRequestInterceptor() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -317,7 +356,7 @@ export default function HttpRequestInterceptor() {
           <a href="/learn/by-example/http-client-send-request-receive-response/">
             Send request/Receive response client
           </a>{" "}
-          by adding the required header to the request.
+          example by adding the required header to the request.
         </p>
       </blockquote>
 

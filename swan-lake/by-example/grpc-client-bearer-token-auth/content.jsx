@@ -1,23 +1,14 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 public function main() returns error? {
-    // Defines the gRPC client to call the secured APIs.
-    // The client metadata is enriched with the \`Authorization: Bearer <token>\`
-    // header by passing the \`grpc:BearerTokenConfig\` for the \`auth\` configuration of the client.
+    // Defines the gRPC client to call the APIs secured with bearer token authentication.
     HelloWorldClient securedEP = check new("https://localhost:9090",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
@@ -33,39 +24,24 @@ public function main() returns error? {
 `,
 ];
 
-export default function GrpcClientBearerTokenAuth() {
+export function GrpcClientBearerTokenAuth({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC client - Bearer token authentication</h1>
 
       <p>
-        A client, which is secured with Bearer token authentication can be used
-        to connect to a secured service.
-      </p>
-
-      <p>
-        The client metadata is enriched with the{" "}
-        <code>Authorization: Bearer &lt;token&gt;</code> header by passing the{" "}
-        <code>grpc:BearerTokenConfig</code> for the <code>auth</code>{" "}
-        configuration of the client.
+        The <code>grpc:Client</code> can connect to a service that is secured
+        with bearer token authentication by enriching the client metadata with
+        the <code>Authorization: Bearer &lt;token&gt;</code> header. The bearer
+        token can be specified in the <code>auth</code> field of the client
+        configuration.
       </p>
 
       <Row
@@ -78,7 +54,7 @@ export default function GrpcClientBearerTokenAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-client-bearer-token-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-client-bearer-token-auth",
                 "_blank"
               );
             }}
@@ -153,11 +129,13 @@ export default function GrpcClientBearerTokenAuth() {
       </Row>
 
       <p>
-        You can refer to the{" "}
+        Setting up the client is the same as setting up the simple RPC client
+        with additional configurations. For information on implementing the
+        client, see{" "}
         <a href="/learn/by-example/grpc-client-simple/">
           gRPC client - Simple RPC
-        </a>{" "}
-        to implement the client used here.
+        </a>
+        .
       </p>
 
       <h2>Prerequisites</h2>
@@ -165,7 +143,9 @@ export default function GrpcClientBearerTokenAuth() {
       <ul style={{ marginLeft: "0px" }}>
         <li>
           <span>&#8226;&nbsp;</span>
-          <span>Start a secured service.</span>
+          <span>
+            Run a sample secured service with bearer token authentication.
+          </span>
         </li>
       </ul>
 
@@ -237,7 +217,7 @@ export default function GrpcClientBearerTokenAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/BearerTokenConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#BearerTokenConfig">
               <code>grpc:BearerTokenConfig</code> record - API documentation
             </a>
           </span>
@@ -304,7 +284,7 @@ export default function GrpcClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/grpc-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -315,7 +295,7 @@ export default function GrpcClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
               <svg

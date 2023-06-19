@@ -1,0 +1,18 @@
+{
+  "title": "Object constructor",
+  "description": "This BBE demonstrates constructing an object and inferring the object type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object",
+    "object constructor",
+    "var"
+  ],
+  "permalink": "/learn/by-example/object-constructor",
+  "active": "object-constructor",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/object-constructor",
+    "/swan-lake/learn/by-example/object-constructor.html"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Client class",
+  "description": "This BBE demonstrates creating a client object from a client class definition, and sending `get` and `post` requests to an HTTP client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "class",
+    "client",
+    "http",
+    "remote",
+    "resource"
+  ],
+  "permalink": "/learn/by-example/client-class",
+  "active": "client-class",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/client-class",
+    "/swan-lake/learn/by-example/client-class.html"
+  ]
+}

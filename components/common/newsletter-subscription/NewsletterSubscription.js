@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -25,7 +25,7 @@ export default function NewsletterSubscription() {
     return (
         <>
             <p>
-                Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our monthly newsletter today!
+                Want to get hand-picked content and the latest news on Ballerina delivered directly to your inbox? Then subscribe to our newsletter today!
             </p>
             <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameBorder="0" allowTransparency="true" className={styles.iframe}></iframe>
         </>

@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/grpc;
 
 listener grpc:Listener securedEP = new (9090,
@@ -23,12 +16,6 @@ listener grpc:Listener securedEP = new (9090,
     }
 );
 
-// The service can be secured with JWT Auth and can be authorized
-// optionally. JWT Auth can be enabled by setting the
-// \`grpc:JwtValidatorConfig\` configurations.
-// Authorization is based on scopes. A scope maps to one or more groups.
-// Authorization can be enabled by setting the \`string|string[]\` type
-// configurations for \`scopes\` field.
 @grpc:ServiceConfig {
     auth: [
         {
@@ -48,6 +35,7 @@ listener grpc:Listener securedEP = new (9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
@@ -55,46 +43,28 @@ service "HelloWorld" on securedEP {
 `,
 ];
 
-export default function GrpcServiceJwtAuth() {
+export function GrpcServiceJwtAuth({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC service - JWT authentication</h1>
 
       <p>
-        A gRPC service/resource can be secured with JWT and by enforcing
-        authorization optionally. Then, it validates the JWT sent in the{" "}
-        <code>Authorization</code> metadata against the provided configurations.
-      </p>
-
-      <p>
-        Ballerina uses the concept of scopes for authorization. A resource
-        declared in a service can be bound to one/more scope(s). The scope can
-        be included in the JWT using a custom claim attribute. That custom claim
-        attribute also can be configured as the <code>scopeKey</code>.
-      </p>
-
-      <p>
-        In the authorization phase, the scopes of the service/resource are
-        compared against the scope included in the JWT for at least one match
-        between the two sets.
+        The <code>grpc:Service</code> can be secured with JWT and additionally,
+        scopes can be added to enforce authorization. It validates the JWT sent
+        in the <code>Authorization</code> metadata against the provided
+        configurations. Ballerina uses the concept of scopes for authorization.
+        The scope can be included in the JWT using a custom claim attribute.
+        That custom claim attribute also can be configured as the{" "}
+        <code>scopeKey</code>. In the authorization phase, the scopes of the
+        service are compared against the scope included in the JWT for at least
+        one match between the two sets.
       </p>
 
       <Row
@@ -107,7 +77,7 @@ export default function GrpcServiceJwtAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-service-jwt-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-jwt-auth",
                 "_blank"
               );
             }}
@@ -182,12 +152,13 @@ export default function GrpcServiceJwtAuth() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
       <p>Run the service by executing the command below.</p>
@@ -267,7 +238,7 @@ export default function GrpcServiceJwtAuth() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/JwtValidatorConfig">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#JwtValidatorConfig">
               <code>grpc:JwtValidatorConfig</code> record - API documentation
             </a>
           </span>

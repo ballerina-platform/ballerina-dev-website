@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
 // Create an endpoint with port 9090 to accept HTTP requests.
@@ -35,7 +28,7 @@ service /http2service on http2ServiceEP {
 
         // Construct the requested resource.
         http:Response res = new;
-        json msg = { "response": { "name": "main resource" } };
+        json msg = {"response": {"name": "main resource"}};
         res.setPayload(msg);
 
         // Send the requested resource.
@@ -43,7 +36,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised resource1.
         http:Response push1 = new;
-        msg = { "push": { "name": "resource1" } };
+        msg = {"push": {"name": "resource1"}};
         push1.setPayload(msg);
 
         // Push promised \`resource1\`.
@@ -51,7 +44,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource2\`.
         http:Response push2 = new;
-        msg = { "push": { "name": "resource2" } };
+        msg = {"push": {"name": "resource2"}};
         push2.setPayload(msg);
 
         // Push promised \`resource2\`.
@@ -59,7 +52,7 @@ service /http2service on http2ServiceEP {
 
         // Construct promised \`resource3\`.
         http:Response push3 = new;
-        msg = { "push": { "name": "resource3" } };
+        msg = {"push": {"name": "resource3"}};
         push3.setPayload(msg);
 
         // Push promised \`resource3\`.
@@ -69,24 +62,13 @@ service /http2service on http2ServiceEP {
 `,
 ];
 
-export default function Http20ServerPush() {
+export function Http20ServerPush({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -94,8 +76,8 @@ export default function Http20ServerPush() {
 
       <p>
         HTTP/2 server push messages can be sent using the Ballerina{" "}
-        <code>http</code> service. HTTP/2 Server Push messages allow the server
-        to send resources to the client before the client requests for it.
+        <code>http</code> service. HTTP/2 server push messages allow the server
+        to send resources to the client before the client requests them.
       </p>
 
       <Row
@@ -108,7 +90,32 @@ export default function Http20ServerPush() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/http-2-0-server-push",
+                "https://play.ballerina.io/?gist=4c9fd53cb1a633e06a22e50fcc781de2&file=http_2_0_server_push.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-2-0-server-push",
                 "_blank"
               );
             }}
@@ -248,7 +255,8 @@ export default function Http20ServerPush() {
           <strong>Tip:</strong> You can invoke the above service via the{" "}
           <a href="/learn/by-example/http-2-0-client-server-push/">
             Server push client
-          </a>
+          </a>{" "}
+          example.
         </p>
       </blockquote>
 
@@ -258,7 +266,7 @@ export default function Http20ServerPush() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#promise">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Caller#promise">
               <code>promise()</code> - API documentation
             </a>
           </span>
@@ -268,7 +276,7 @@ export default function Http20ServerPush() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/http/latest/clients/Caller#pushPromisedResponse">
+            <a href="https://lib.ballerina.io/ballerina/http/latest#Caller#pushPromisedResponse">
               <code>pushPromisedResponse()</code> - API documentation
             </a>
           </span>

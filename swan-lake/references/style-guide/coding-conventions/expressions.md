@@ -6,19 +6,6 @@ keywords: ballerina, programming language, ballerina style guide, expressions
 active: expressions
 permalink: /learn/style-guide/expressions/
 intro: The sections below include the coding conventions with respect to expressions.
-redirect_from:
-  - /learn/style-guide/expressions
-  - /learn/coding-conventions/expressions
-  - /swan-lake/learn/coding-conventions/expressions/
-  - /swan-lake/learn/coding-conventions/expressions
-  - /learn/coding-conventions/expressions/
-  - /learn/coding-conventions/expressions
-  - /learn/user-guide/coding-conventions/expressions
-  - /learn/user-guide/coding-conventions/expressions/
-  - /learn/user-guide/code-organization/coding-conventions/expressions/
-  - /learn/user-guide/code-organization/coding-conventions/expressions
-  - /learn/user-guide/style-guide/coding-conventions/expressions
-  - /learn/user-guide/style-guide/coding-conventions/expressions/
 ---
 
 ## Function invocation
@@ -59,7 +46,7 @@ Person p = {name: "john", age: 20};
 
 ```ballerina
 Person person = {
-    name: "john" // in this field key is the "name" and value is "john".
+    name: "john" // In this field, key is the "name" and value is "john".
 };
 ```
 

@@ -1,23 +1,12 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/grpc;
 
-// A gRPC listener can be configured to communicate through SSL/TLS as well.
-// To secure a listener using SSL/TLS, the listener needs to be configured
-// with a certificate file and a private key file for the listener.
-// The \`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations of the listener.
 listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
@@ -31,6 +20,7 @@ listener grpc:Listener securedEP = new (9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
@@ -38,34 +28,25 @@ service "HelloWorld" on securedEP {
 `,
 ];
 
-export default function GrpcServiceSslTls() {
+export function GrpcServiceSslTls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC service - SSL/TLS</h1>
 
       <p>
-        You can use the gRPC listener to connect to or interact with a gRPC
-        client secured with SSL/TLS. Provide the{" "}
-        <code>grpc:ListenerSecureSocket</code> configurations to the server to
-        expose an HTTPS connection over HTTP/2.
+        The <code>grpc:Listener</code> can be configured to communicate with a
+        gRPC client via SSL/TLS by providing a certificate file and a private
+        key file. The certificate and the key can be provided through the{" "}
+        <code>secureSocket</code> field of the listener configuration. Use this
+        to secure the communication and data transfer between the server and the
+        client.
       </p>
 
       <Row
@@ -78,7 +59,7 @@ export default function GrpcServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -153,15 +134,16 @@ export default function GrpcServiceSslTls() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
-      <p>Execute the command below to run the service.</p>
+      <p>Run the service by executing the command below.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded indent"
@@ -238,7 +220,7 @@ export default function GrpcServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ListenerSecureSocket">
               <code>grpc:ListenerSecureSocket</code> record - API documentation
             </a>
           </span>

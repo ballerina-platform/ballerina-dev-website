@@ -6,25 +6,6 @@ keywords: ballerina, programming language, api documentation, api docs
 permalink: /learn/generate-code-documentation/
 active: generate-code-documentation
 intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to generate HTML content as API documentation.
-redirect_from:
-  - /learn/how-to-document-ballerina-code
-  - /learn/how-to-document-ballerina-code/
-  - /learn/documenting-ballerina-code
-  - /swan-lake/learn/documenting-ballerina-code/
-  - /swan-lake/learn/documenting-ballerina-code
-  - /learn/documenting-ballerina-code/
-  - /learn/documenting-ballerina-code
-  - /learn/user-guide/documenting-ballerina-code
-  - /learn/user-guide/code-organization/documenting-ballerina-code
-  - /learn/user-guide/code-organization/documenting-ballerina-code/
-  - /learn/user-guide/documenting-ballerina-code/
-  - /learn/user-guide/code-organization/
-  - /learn/user-guide/code-organization
-  - /learn/generating-code-documentation
-  - /learn/generating-code-documentation/
-  - /learn/generate-code-documentation
-  - /learn/guides/generating-code-documentation/
-  - /learn/guides/generating-code-documentation
 ---
 
 ## Generate documentation for modules
@@ -59,17 +40,17 @@ When writing the documentation for Ballerina APIs, you can use the standard mark
 # ...
 ```
 
-The supported structure of documentation syntax is as follows:
+The supported structure of documentation syntax for functions is as follows:
 
 ```ballerina
 # <description_line_1>
 # <description_line_2>
 # ...
-# + <parameter_name/field_name> - <description_line_1>
-#                                 <description_line_2>
+# + <parameter_name> - <description_line_1>
+#                      <description_line_2>
 # ...
-# + <parameter_name/field_name> - <description_line_1>
-#                                 <description_line_2>
+# + <parameter_name> - <description_line_1>
+#                      <description_line_2>
 # ...
 # + return - <return_parameter_description_line_1>
 #            <return_parameter_description_line_2>
@@ -86,6 +67,18 @@ The supported structure of documentation syntax is as follows:
 public function foo(int i, string s) returns boolean {
     return true;
 }
+```
+
+Members of record and object types can be documented at member-level.
+
+```ballerina
+# Description of the record.
+type Record record {|
+    # Description of field `f1`
+    string f1;    
+    # Description of field `f2`
+    int f2;
+|};
 ```
 
 **Sample usage**

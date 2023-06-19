@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -72,7 +72,7 @@ export default function Intro() {
                 (hoverBtn ? buttonStyleHover : buttonStyle)
               }
               target="_blank"
-              href={`${prefix}/learn/get-started-with-ballerina/`}
+              href={`${prefix}/learn/get-started/`}
               rel="noreferrer">
               Get started
               <p>Install Ballerina, set it all up <br />and take it for a spin.</p>
@@ -83,7 +83,7 @@ export default function Intro() {
               href={`${prefix}/learn/by-example/`}
               rel="noreferrer">
               Examples
-              <p>Explore and try Ballerina examples.<br /> &nbsp;</p>
+              <p>Explore and try out a series of guided Ballerina examples.<br /> &nbsp;</p>
             </a>
           </Col>
         </Row>

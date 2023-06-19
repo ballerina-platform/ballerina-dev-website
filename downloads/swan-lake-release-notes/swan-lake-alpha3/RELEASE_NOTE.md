@@ -166,7 +166,7 @@ Introduced 2 additional log levels: `DEBUG` and `WARN`. The  `printDebug` and `p
 
 To set the global log level, place the entry given below in the `Config.toml` file:
 ```toml
-[log] 
+[ballerina.log] 
 level = "[LOG_LEVEL]"
 ```
 
@@ -895,7 +895,7 @@ bal openapi -i <ballerina file> --json
 
 #### Documentation
 
-- Moved the standard library API documentation out to [Ballerina Central Docs](https://docs.central.ballerina.io) from the Ballerina Website.
+- Moved the standard library API documentation out to Ballerina Central Docs from the Ballerina Website.
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

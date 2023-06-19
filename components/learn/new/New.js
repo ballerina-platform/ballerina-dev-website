@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './New.module.css';
 
@@ -25,8 +25,8 @@ export default function New(props) {
 
   return (
     <>
-
-        <Row className="pageContentRow learnRow llanding">
+     <Container>
+     <Row className="pageContentRow learnRow llanding">
           <Col xs={12} md={12}>
             <h2 id="whats-new" className='section'>
             <svg
@@ -52,6 +52,8 @@ export default function New(props) {
             <p className={styles.description}>Read and contribute to open proposals.</p>
           </Col>
         </Row>
+     </Container>
+        
     </>
   );
 }

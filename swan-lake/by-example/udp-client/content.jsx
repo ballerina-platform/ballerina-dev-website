@@ -1,32 +1,24 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/udp;
 
 public function main() returns error? {
-  
     // Creates a new connectionless UDP client.
-    // Optionally, you can provide the address that the socket needs to bind 
+    // Optionally, you can provide the address that the socket needs to bind
     // and the timeout in seconds, which specifies the read timeout value.
     // E.g.: \`udp:Client client = new (localHost = "localhost", timeout = 5);\`
     udp:Client socketClient = check new;
 
     udp:Datagram datagram = {
         remoteHost: "localhost",
-        remotePort : 9090,
-        data : "Hello Ballerina echo".toBytes()
+        remotePort: 9090,
+        data: "Hello Ballerina echo".toBytes()
     };
 
     // Sends the data to the remote host.
@@ -37,7 +29,7 @@ public function main() returns error? {
 
     // Waits until the data is received from the remote host.
     readonly & udp:Datagram result = check socketClient->receiveDatagram();
-    io:println("Received: ", string:fromBytes(result.data));        
+    io:println("Received: ", string:fromBytes(result.data));
 
     // Closes the client and releases the bound port.
     check socketClient->close();
@@ -45,24 +37,13 @@ public function main() returns error? {
 `,
 ];
 
-export default function UdpClient() {
+export function UdpClient({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -90,7 +71,7 @@ export default function UdpClient() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/udp-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/udp-client",
                 "_blank"
               );
             }}
@@ -246,7 +227,7 @@ export default function UdpClient() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/udp/latest/clients/Client">
+            <a href="https://lib.ballerina.io/ballerina/udp/latest#Client">
               <code>udp:Client</code> client object - API documentation
             </a>
           </span>

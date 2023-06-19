@@ -1,12 +1,13 @@
 {
   "title": "Binding patterns in match statement",
-  "description": "This BBE demonstrates binding patterns in a `match` statement.",
+  "description": "This BBE demonstrates how to use binding patterns in a `match` statement and matching mapping values in a `match` statement in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "spread operator",
-    "binding pattern"
+    "binding pattern",
+    "match"
   ],
   "permalink": "/learn/by-example/binding-patterns-in-match-statement",
   "active": "binding-patterns-in-match-statement",

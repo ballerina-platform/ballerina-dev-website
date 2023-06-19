@@ -1,21 +1,14 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
-function subString(string str, int 'start = 0, int end = str.length())
-                                returns string {
+// Use the value of the preceding \`str\` parameter to initialize the \`end\` parameter.
+function subString(string str, int 'start = 0, int end = str.length()) returns string {
     return str.substring('start, end);
 }
 
@@ -32,24 +25,13 @@ public function main() {
 `,
 ];
 
-export default function DefaultValuesForFunctionParameters() {
+export function DefaultValuesForFunctionParameters({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -72,7 +54,7 @@ export default function DefaultValuesForFunctionParameters() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0f1174b8d44ac512cefdddee1b069329&file=default_values_for_function_parameters.bal",
+                "https://play.ballerina.io/?gist=d24284c1738977aa079398167aebc642&file=default_values_for_function_parameters.bal",
                 "_blank"
               );
             }}
@@ -97,7 +79,7 @@ export default function DefaultValuesForFunctionParameters() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/default-values-for-function-parameters",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/default-values-for-function-parameters",
                 "_blank"
               );
             }}
@@ -232,6 +214,28 @@ export default function DefaultValuesForFunctionParameters() {
           </pre>
         </Col>
       </Row>
+
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/rest-parameters/">Rest Parameters</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/provide-function-arguments-by-name/">
+              Provide function arguments by name
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>

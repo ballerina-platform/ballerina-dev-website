@@ -6,29 +6,6 @@ keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/test-a-simple-function/
 active: test-a-simple-function
 intro: The Ballerina language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including, unit testing, integration testing, and end-to-end testing. It provides assertions, data providers, mocking, and code coverage features, which enable the programmers to write comprehensive tests.
-redirect_from:
-    - /learn/how-to-test-ballerina-code/
-    - /learn/how-to-test-ballerina-code
-    - /learn/testing-ballerina-code/testing-quick-start
-    - /learn/testing-ballerina-code/testing-quick-start/
-    - /swan-lake/learn/testing-ballerina-code/testing-quick-start/
-    - /swan-lake/learn/testing-ballerina-code/testing-quick-start
-    - /learn/user-guide/testing-ballerina-code/testing-quick-start
-    - /learn/user-guide/testing-ballerina-code/testing-quick-start/
-    - /learn/user-guide/testing-ballerina-code/
-    - /learn/user-guide/testing-ballerina-code
-    - /learn/user-guide/testing-ballerina-code/testing-quick-start/
-    - /learn/testing-ballerina-code/testing-a-simple-function
-    - /learn/testing-ballerina-code/testing-a-simple-function/
-    - /learn/testing-ballerina-code/test-a-simple-function/
-    - /learn/testing-ballerina-code/test-a-simple-function
-    - /learn/test-ballerina-code/test-a-simple-function
-    - /learn/testing-ballerina-code/
-    - /learn/testing-ballerina-code
-    - /learn/test-ballerina-code/
-    - /learn/test-ballerina-code
-    - /learn/guides/testing-ballerina-code/testing-a-simple-function
-    - /learn/guides/testing-ballerina-code/testing-a-simple-function
 ---
 
 To get started, let's set up the Ballerina package to run tests.
@@ -36,7 +13,7 @@ To get started, let's set up the Ballerina package to run tests.
 1. Create a Ballerina package with the `bal new` command as follows.
 
    ```
-   bal new hello_world
+   $ bal new hello_world
    ```
 
 2. Create a directory in the root directory of the package named `tests` in which the test files will be stored.
@@ -83,7 +60,6 @@ To get started, let's set up the Ballerina package to run tests.
 
            hello
 
-                   [pass] intAddTest
 
                    1 passing
                    0 failing

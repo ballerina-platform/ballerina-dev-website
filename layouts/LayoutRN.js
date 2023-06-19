@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -30,6 +30,22 @@ export default function Layout({ children }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+         {/* <!--FB--> */}
+         <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+
+{/* <!--LINKED IN  --> */}
+<meta property="og:title" content="Ballerina" />
+<meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+
+{/* <!--TWITTER--> */}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang" />
+<meta name="twitter:creator" content="@ballerinalang" />
+<meta name="twitter:title" content="Ballerina" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+<meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
         
         {/* Google Tag Manager */}
         <script

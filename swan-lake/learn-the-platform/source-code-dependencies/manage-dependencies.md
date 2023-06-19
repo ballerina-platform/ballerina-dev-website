@@ -6,14 +6,6 @@ keywords: ballerina, programming language, ballerina packages, dependencies, imp
 permalink: /learn/manage-dependencies/
 active: manage-dependencies
 intro: The sections below include information about dependencies, imports, and how they can be used in your package.
-redirect_from:
-- /learn/user-guide/ballerina-packages/dependencies
-- /learn/user-guide/ballerina-packages/dependencies/
-- /learn/managing-dependencies
-- /learn/managing-dependencies/
-- /learn/manage-dependencies
-- /learn/guides/managing-dependencies/
-- /learn/guides/managing-dependencies
 ---
 
 ## Specify dependencies
@@ -132,18 +124,18 @@ The local repository is useful to test a package in the development phase or to 
 1. Generate the Ballerina archive after editing the package source files as required.
 
    ```
-   bal pack
+   $ bal pack
    ```
 
 2. Publish to the local repository.
    ```
-   bal push --repository local
+   $ bal push --repository local
    ```
 
    If you already have the path of Ballerina archive, then you can simply execute the following command.
 
     ```
-    bal push --repository local <path-to-bala-archive>
+    $ bal push --repository local <path-to-bala-archive>
     ```
 
 3. Specify the dependency in the `Ballerina.toml` file.
@@ -164,7 +156,8 @@ At this point, the compiler resolves the latest version and ignores the dependen
 ## Achieve reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
- It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
+
+It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
  However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
 ### The sticky mode
@@ -173,7 +166,7 @@ Using the `--sticky` flag with `bal build` will force the compiler to stick to t
 In other words, the CLI disables the automatic-update feature when you provide the `--sticky` flag.
    
 ```
-bal build --sticky
+$ bal build --sticky
 ```
 
 >**Note:** The automatic update runs only once a day to optimize the time taken during frequent builds.
@@ -208,3 +201,42 @@ error: compilation failed: Two incompatible versions exist in the dependency gra
 ballerina/observe versions: 0.9.0, 1.0.0
 ```
 
+## Manage platform dependencies
+
+A Ballerina package can depend on JAVA code that is shipped with the JVM, from a remote package repository, or from a JAR file located in the user’s machine. Libraries shipped with the JVM can be used seamlessly and libraries used from other locations must be specified in the `Ballerina.toml` as shown below.
+
+## Specify a Maven dependency
+
+The following example shows how a dependency from a public Maven repository can be specified.
+
+```toml
+[[platform.java11.dependency]]
+# Group ID of the Maven dependency.
+groupId = "<group-id>"
+# Artifact ID of the Maven dependency.
+artifactId = "<artifact-id>"
+# Version of the Maven dependency.
+version = "<version>"
+```
+
+When building the package, these specified Maven dependencies will be resolved and can be found in the `target/platform-libs` directory. 
+
+### Specify a local JAR file path
+
+The following example uses a JAR file located in the user's machine as a platform dependency.
+
+```toml
+[[platform.java11.dependency]]
+# Group ID of the dependency.
+groupId = "<group-id>"
+# Artifact ID of the dependency.
+artifactId = "<artifact-id>"
+# Version of the dependency.
+version = "<version>"
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+```
+
+The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
+
+>**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).

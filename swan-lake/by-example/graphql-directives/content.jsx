@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 type Profile record {
@@ -20,7 +13,7 @@ type Profile record {
     Gender gender;
 };
 
-// Marking enum value as deprecated.
+// Marks enum value as deprecated.
 enum Gender {
     MALE,
     FEMALE,
@@ -32,7 +25,8 @@ enum Gender {
 }
 
 service /graphql on new graphql:Listener(9090) {
-    // Marking a field as deprecated.
+
+    // Marks a field as deprecated.
     # # Deprecated
     # The \`profile\` field is deprecated. Use \`profile\` instead.
     @deprecated
@@ -80,7 +74,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlDirectives() {
+export function GraphqlDirectives({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
   const [codeClick3, updateCodeClick3] = useState(false);
@@ -95,18 +89,7 @@ export default function GraphqlDirectives() {
   const [outputClick4, updateOutputClick4] = useState(false);
   const ref4 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -121,7 +104,7 @@ export default function GraphqlDirectives() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <code>@depricated</code> - The <code>@deprecated</code> annotation
+            <code>@deprecated</code> - The <code>@deprecated</code> annotation
             can be used as the <code>deprecated</code> directive on the{" "}
             <code>resource</code>/<code>remote</code> methods and{" "}
             <code>enum</code> values. Use this to mark a field or an enum value
@@ -160,7 +143,7 @@ export default function GraphqlDirectives() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -316,7 +299,7 @@ export default function GraphqlDirectives() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -391,7 +374,7 @@ export default function GraphqlDirectives() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 
@@ -470,7 +453,7 @@ export default function GraphqlDirectives() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -544,7 +527,7 @@ export default function GraphqlDirectives() {
         </Col>
       </Row>
 
-      <p>To send the document, use the following cURL command.</p>
+      <p>To send the document, execute the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -621,7 +604,7 @@ export default function GraphqlDirectives() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-directives",
                 "_blank"
               );
             }}
@@ -695,7 +678,7 @@ export default function GraphqlDirectives() {
         </Col>
       </Row>
 
-      <p>To send the document, use the following cURL command.</p>
+      <p>To send the document, execute the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -829,7 +812,7 @@ export default function GraphqlDirectives() {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Context" href="/learn/by-example/graphql-context">
+          <Link title="Context object" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -838,7 +821,7 @@ export default function GraphqlDirectives() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context
+                  Context object
                 </span>
               </div>
               <svg

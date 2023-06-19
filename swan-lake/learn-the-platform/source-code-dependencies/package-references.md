@@ -6,12 +6,6 @@ keywords: ballerina, programming language, ballerina packages, package structure
 permalink: /learn/organize-ballerina-code/package-references/
 active: package-references
 intro: The sections below include information about the structure of a package directory. It explains the purpose of each file in a package.
-redirect_from:
-  - /learn/package-layout
-  - /learn/package-layout/
-  - /learn/package-references/
-  - /learn/package-references/
-  - /learn/organize-ballerina-code/package-references
 ---
 
 ## Package layout
@@ -24,6 +18,9 @@ redirect_from:
 ├── Module.md
 ├── main.bal
 ├── utils.bal
+├── generated/
+│     ├── generated_service.bal
+│     └── model/
 ├── tests/
 │     ├── main_tests.bal
 │     └── utils_tests.bal
@@ -55,7 +52,11 @@ icon = "icon.png"
 observabilityIncluded = true
 ```
 
-The `[package]` table contains the meta information about the package.
+The `[package]` table contains the meta information about the package. If you wish to publish a private package, you can set the following line to the table to set the package visibility.
+
+```toml
+visibility = "private"
+```
 
 ### The `org` field
 
@@ -146,30 +147,53 @@ codeCoverage = true
 cloud = "k8s"
 ```
 
-### Platform dependencies
+### Dependencies
 
-When you compile a Ballerina package with `bal build`, the compiler creates an executable JAR file. However, if the package does not contain an entry point, it will produce a non-executable JAR file (a library package), which can be used in another package/program.
-In both cases, the Ballerina compiler creates self-contained archives. There are situations in which you need to package JAR files with these archives.
+While the Ballerina compiler resolves dependencies automatically based on the import statements, the `[[dependency]]` array can be used to specify a dependency from the local repository or to specify the minimum required version of a dependency.
 
-You can store the JAR files anywhere in your file system. As a best practice, maintain Java libraries inside the package.
-The platform-specific library information needs to be specified in the `Ballerina.toml` file. Java libraries are considered platform-specific.
-You can specify a JAR file dependency in the `Ballerina.toml` file as shown below.
+#### Specify a dependency from the local repository
+
+The following example shows how a dependency from the local repository can be specified:
 
 ```toml
-[[platform.java11.dependency]]
-# Absolute or relative path of the JAR file.
-path = "<path-to-jar-file-1>"
-# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
-modules = ["<ballerina-module-1>"]
+[[dependency]]
+org = "ballerinax"
+name = "mysql"
+version = "1.5.0"
+repository = "local"
 ```
 
+This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies] (learn/manage-dependencies/#use-dependencies-from-the-local-repository).
 
-Alternatively, you can also specify Maven dependencies as platform-specific libraries. These specified dependencies get resolved into the `target/platform-libs` directory when building the package. You can specify a Maven dependency in the `Ballerina.toml` file as shown below.
+#### Specify the minimum version for a dependency
+
+The following example shows how the minimum version for a dependency can be specified:
+
+```toml
+[[dependency]]
+org = "ballerinax"
+name = "sql"
+version = "1.6.0"
+```
+
+With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
+
+### Platform dependencies
+
+When using the "bal build" command to compile a Ballerina package, the resulting output will either be an executable JAR file or a non-executable JAR file (library package) depending on whether the package contains an entry point. These archives created by the Ballerina compiler are self-contained, meaning that they include all necessary dependencies. It may also be necessary to package external JAR files with these archives.
+
+When working with JAR files, it is considered a best practice to keep them organized within the package. This makes it easier to manage and maintain the dependencies. 
+
+>**Note:** Additionally, it is important that Java libraries are considered platform-specific, and thereby, their location and usage should be specified in the “Ballerina.toml” file. This can be done by including a dependency on the specific JAR file as demonstrated below in the “Ballerina.toml” file. This helps the Ballerina compiler to include the relevant JAR files when creating the archive. 
+
+There are two ways to include the JAR dependency.
+
+**Use remote repositories**
+
+The following example shows how a dependency from a public Maven repository can be specified.
 
 ```toml
 [[platform.java11.dependency]]
-# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
-modules = ["<ballerina-module-1>"]
 # Group ID of the Maven dependency.
 groupId = "<group-id>"
 # Artifact ID of the Maven dependency.
@@ -178,8 +202,10 @@ artifactId = "<artifact-id>"
 version = "<version>"
 ```
 
+When building the package, these specified Maven dependencies will be resolved and can be found in the `target/platform-libs` directory. To specify a Maven dependency in the `Ballerina.toml` file, you can use the following format.
 
-If you wish to use a custom Maven repository, you can specify it in the `Ballerina.toml` file as shown below.
+It is also possible to use a custom repository such as a private Maven repository or Github Package repository for your dependencies by specifying it in the `Ballerina.toml` file.
+
 ```toml
 [[platform.java11.repository]]
 id = "<maven-repository-id>"
@@ -189,12 +215,83 @@ password = "<maven-repository-password>"
 ```
 
 
-If your package has only the default root module, then you can attach all the JAR file dependencies to your default root module as the best practice.
+When working with JAR file dependencies, it is a best practice to attach them to the default root module of your package if your package has only the default root module. This makes it easy to manage and maintain the dependencies. However, if your package is a Ballerina library package, it is recommended that you specify the JAR file dependencies in each Ballerina module that depends on the JAR file.
 
-If your package is a Ballerina library package, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file.
+By default, the `bal build` command will package all JAR files specified in the `Ballerina.toml` file along with the executable JAR file. This ensures that the executable JAR file includes all necessary dependencies making the package self-contained and easy to use. This approach allows for a more organized and efficient way of managing dependencies and ensures that the 
 
-The `bal build` packages all JARs specified in the `Ballerina.toml` file with the executable JAR file.
+**Provide the path of JAR file**
 
+You may also store the JAR files anywhere in your file system and provide the path as shown below. 
+
+```toml
+[[platform.java11.dependency]]
+# Group ID of the dependency.
+groupId = "<group-id>"
+# Artifact ID of the dependency.
+artifactId = "<artifact-id>"
+# Version of the dependency.
+version = "<version>"
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+```
+
+The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
+
+**Restrict usage to specific modules**
+
+The following example shows how you can optionally restrict the visibility of a platform dependency to a selected set of modules.
+
+```toml
+[[platform.java11.dependency]]
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+# An optional comma-separated list of Ballerina module names (to restrict the usage of this JAR).
+modules = ["<ballerina-module-1>"]
+```
+
+  It is considered a best practice to provide the names of the modules that use the JAVA library as a comma-separated list. This ensures that the JAR library is only used in the specified modules.
+
+**Resolve multiple versions of the same JAR**
+
+There can be use cases where two different Ballerina dependencies may use the same platform library. Two platform dependency entries having the same `groupId` and the `artifactId` is considered to be the same where the latest out of the two will be picked by the compiler for creating the executable JAR. 
+
+The following example shows the recommended way for specifying a platform dependency which will help with version resolution.
+
+```toml
+[[platform.java11.dependency]]
+# Absolute or relative path of the JAR file.
+path = "<path-to-jar-file-1>"
+# Optional details about the dependency (to handle conflicting JAR files).
+groupId =  "<dependency-group-id>"
+artifactId =  "<dependency-artifact-id>"
+version =  "<dependency-version>"
+```
+
+With the above approach, for example, if you are using `commons-logging-1.2.jar` in your package but there is another package in the dependency graph that uses `commons-logging-1.1.1.jar`, the compiler will pick the `commons-logging-1.2.jar` since it is the latest version. A warning will be reported in addition as shown below.
+
+```
+WARNING [mypackage] detected conflicting jar files. 'commons-logging-1.1.1.jar' dependency of 'myorg/pkg2' conflicts with 'commons-logging-1.2.jar'  dependency of 'myorg/pkg1'. Picking 'commons-logging-1.2.jar' over 'commons-logging-1.1.1.jar'.
+```
+
+Note: Ignoring the `groupId` and `artifactId` will result in picking a random jar with the following warning reported by the compiler.
+```bash
+warning: Detected conflicting jar files:
+        'commons-logging-1.1.1.jar' dependency of 'myorg/pkg1' conflict with 'commons-logging-1.2.jar' dependency of 'myorg/pkg2'
+```
+
+**Define the scope for a dependency**
+
+By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependncy to the test runtime but will avoid packing it into the final executable JAR file.
+
+The following example shows a platform dependency entry with the `scope`.
+
+  ```toml
+  [[platform.java11.dependency]]
+  # Absolute or relative path of the JAR file.
+  path = "<path-to-jar-file-1>"
+  # Scope of the JAR file
+  scope =  "<scope-of-the-jar-file>"
+  ```
 
 ## The `Dependencies.toml` file
 
@@ -247,7 +344,7 @@ Module names can only contain alphanumerics, underscores, and periods and the ma
 You can add other modules using the `bal add` command.
 
 ```
-bal add util
+$ bal add util
 ```
 
 ### The `.bal` source files
@@ -266,6 +363,11 @@ The `resources/` directory stores all module resources such as images, default c
 ### The `tests/` directory
 
 The `tests/` directory contains unit tests for the module and tests the module in isolation. The module-level test cases have access to the symbols with module-level visibility.
+
+
+## The `generated/` directory
+
+This directory contains generated Ballerina code. The `.bal` files at the root of the generated directory become a part of the default module. Any direct subdirectory becomes a module in the package. The files will logically merge into the existing modules during compilation.
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>
 

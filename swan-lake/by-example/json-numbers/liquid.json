@@ -1,7 +1,16 @@
 {
   "title": "JSON numbers",
-  "description": "This BBE demonstrates JSON numbers in Ballerina",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "json", "numbers"],
+  "description": "This BBE demonstrates how to represent numeric value in JSON, convert JSON to numeric representation, convert numeric value to JSON.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "json",
+    "numbers",
+    "toJsonString",
+    "fromJsonString",
+    "ensureType"
+  ],
   "permalink": "/learn/by-example/json-numbers",
   "active": "json-numbers",
   "redirect_from": [

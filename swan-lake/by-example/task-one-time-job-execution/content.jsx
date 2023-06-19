@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/lang.runtime;
 import ballerina/task;
@@ -51,24 +44,13 @@ public function main() returns error? {
 `,
 ];
 
-export default function TaskOneTimeJobExecution() {
+export function TaskOneTimeJobExecution({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -97,7 +79,7 @@ export default function TaskOneTimeJobExecution() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=13cf7e892ee3253094c671ef99120756&file=task_one_time_job_execution.bal",
+                "https://play.ballerina.io/?gist=c1aa73908fc7a5e9d357ebc417884a52&file=task_one_time_job_execution.bal",
                 "_blank"
               );
             }}
@@ -122,7 +104,7 @@ export default function TaskOneTimeJobExecution() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/task-one-time-job-execution",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/task-one-time-job-execution",
                 "_blank"
               );
             }}
@@ -299,7 +281,7 @@ export default function TaskOneTimeJobExecution() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Manage sheduled jobs"
+            title="Manage scheduled jobs"
             href="/learn/by-example/manage-scheduled-jobs"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -310,7 +292,7 @@ export default function TaskOneTimeJobExecution() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Manage sheduled jobs
+                  Manage scheduled jobs
                 </span>
               </div>
               <svg

@@ -4,21 +4,6 @@ title: Top-level definitions
 active: top-level-definitions
 permalink: /learn/style-guide/top-level-definitions/
 intro: The sections below include the coding conventions with respect to top-level definitions.
-redirect_from:
-  - /learn/style-guide/definitions
-  - /learn/coding-conventions/definitions
-  - /learn/coding-conventions/top-level-definitions
-  - /swan-lake/learn/coding-conventions/top-level-definitions/
-  - /swan-lake/learn/coding-conventions/top-level-definitions
-  - /learn/coding-conventions/top-level-definitions/
-  - /learn/coding-conventions/top-level-definitions
-  - /learn/user-guide/coding-conventions/top-level-definitions
-  - /learn/user-guide/coding-conventions/top-level-definitions/
-  - /learn/user-guide/code-organization/coding-conventions/top-level-definitions/
-  - /learn/user-guide/code-organization/coding-conventions/top-level-definitions
-  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions
-  - /learn/user-guide/style-guide/coding-conventions/top-level-definitions/
-  - /learn/style-guide/top-level-definitions
 ---
 
 ## General practices
@@ -28,12 +13,11 @@ redirect_from:
 **Do's**
 
 ```ballerina
-
 import ballerina/http;
 
 const int MIN_AGE = 20;
 int repetitions = 0;
-    
+
 service / on ep1 {
     ...
 }
@@ -183,14 +167,14 @@ Block indent each of the field definitions (including the rest field) in their o
 type Person record {
     string name;
     int...;
-}
+};
 
 // or
 
 type Person record {|
     int id;
     string name;
-|}
+|};
 ```
 
 ## Reference record or object

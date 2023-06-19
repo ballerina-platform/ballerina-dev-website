@@ -1,82 +1,77 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/email;
 import ballerina/log;
 
 // Creates the listener with the connection parameters and the protocol-related configuration. 
-// The \`pollingInterval\` specifies the duration between each poll in seconds.
-listener email:PopListener emailListener = check new ({
-    host: "pop.email.com",
+listener email:ImapListener emailListener = new ({
+    host: "imap.email.com",
     username: "reader@email.com",
-    password: "pass456",
-    pollingInterval: 2,
-    port: 995
+    password: "pass456"
 });
 
 // One or many services can listen to the email listener for the periodically-polled emails.
-service "emailObserver" on emailListener {
+service "observer" on emailListener {
 
     // When an email is successfully received, the \`onMessage\` method is called.
-    remote function onMessage(email:Message emailMessage) {
-        log:printInfo("POP Listener received an email", subject = emailMessage.subject,
-            content = emailMessage?.body);
+    remote function onMessage(email:Message email) {
+        log:printInfo("Received an email", subject = email.subject, content = email?.body);
     }
 
     // When an error occurs during the email poll operations, the \`onError\` method is called.
     remote function onError(email:Error emailError) {
-        log:printError("Error while polling for the emails", 'error = emailError);
+        log:printError(emailError.message(), stackTrace = emailError.stackTrace());
     }
 
     // When the listener is closed, the \`onClose\` method is called.
     remote function onClose(email:Error? closeError) {
-        log:printInfo("Closed the listener");
+        if closeError is email:Error {
+            log:printInfo(closeError.message(), stackTrace = closeError.stackTrace());
+        }
     }
 }
 `,
 ];
 
-export default function ReceiveEmailUsingService() {
+export function ReceiveEmailUsingService({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>Email service - Receive email</h1>
 
       <p>
-        The email service is used to receive (with POP3 or IMAP4) emails using
-        the SSL or STARTTLS protocols. This sample includes receiving emails
-        service attached to a POP3 listener with default configurations over SSL
-        using the default ports. To use IMAP4 the user can use{" "}
-        <code>IMAP listener</code>.
+        The <code>email:Service</code> receives messages from an email server
+        via IMAP using the <code>email:ImapListener</code>. An{" "}
+        <code>email:ImapListener</code> can be initialized by providing the
+        hostname, username, and password. Once connected, <code>onMessage</code>{" "}
+        method is invoked whenever an email is read from the email server. If
+        there is an error while reading the data from the server,{" "}
+        <code>onError</code> method is invoked with relevant error details. When
+        the email server supports both POP3 and IMAP, it is recommended to use
+        the IMAP as it provides the ability to manage emails using multiple
+        devices or email clients, while allowing access to emails that are
+        already read.
       </p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The Ballerina <code>email</code> module also
+          provides an <code>email:PopListener</code> which can be used likewise.
+          The only difference is that the <code>email:PopListener</code> uses
+          POP3 protocol for communication.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -84,9 +79,31 @@ export default function ReceiveEmailUsingService() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/receive-email-using-service",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -104,7 +121,7 @@ export default function ReceiveEmailUsingService() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -216,8 +233,9 @@ export default function ReceiveEmailUsingService() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/PopListener">
-              <code>email:PopListener</code> listener object - API documentation
+            <a href="https://lib.ballerina.io/ballerina/email/latest#ImapListener">
+              <code>email:ImapListener</code> listener object - API
+              documentation
             </a>
           </span>
         </li>
@@ -226,7 +244,7 @@ export default function ReceiveEmailUsingService() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/email/latest/classes/ImapListener">
+            <a href="https://lib.ballerina.io/ballerina/email/latest#PopListener">
               <code>email:PopListener</code> listener object - API documentation
             </a>
           </span>
@@ -237,7 +255,7 @@ export default function ReceiveEmailUsingService() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://ballerina.io/spec/email/#4-service">
-              <code>email</code> service - Specification
+              Email service - Specification
             </a>
           </span>
         </li>

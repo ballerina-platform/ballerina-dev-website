@@ -1,22 +1,14 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/grpc;
 
-// A gRPC listener can be configured to accept new connections that are secured via mutual SSL.
-// The \`grpc:ListenerSecureSocket\` record provides the SSL-related listener configurations.
-listener grpc:Listener securedEP = new(9090,
+// The gRPC listener can be configured to accept new connections that are secured via mutual SSL.
+listener grpc:Listener securedEP = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -34,6 +26,7 @@ listener grpc:Listener securedEP = new(9090,
     value: GRPC_SIMPLE_DESC
 }
 service "HelloWorld" on securedEP {
+
     remote function hello(string request) returns string {
         return "Hello " + request;
     }
@@ -41,34 +34,31 @@ service "HelloWorld" on securedEP {
 `,
 ];
 
-export default function GrpcServiceMutualSsl() {
+export function GrpcServiceMutualSsl({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>gRPC service - Mutual SSL</h1>
 
       <p>
-        Ballerina supports mutual SSL, which is a certificate-based
-        authentication process in which two parties (the client and server)
-        authenticate each other by verifying the digital certificates. It
-        ensures that both parties are assured of each other's identity.
+        The <code>grpc:Listener</code> with mutual SSL (mTLS) enabled in it
+        allows exposing a connection secured with mutual SSL, which is a
+        certificate-based authentication process in which two parties (the
+        client and server) authenticate each other by verifying the digital
+        certificates. It ensures that both parties are assured of each other's
+        identity. The <code>grpc:Listener</code> secured with mutual SSL is
+        created by providing the <code>secureSocket</code> configurations, which
+        require <code>grpc:REQUIRE</code> as the <code>verifyClient</code>, the
+        server's public certificate as the <code>certFile</code>, the server's
+        private key as the <code>keyFile</code>, and the client's certificate as
+        the <code>cert</code>. Use this to secure the gRPC connection with
+        mutual SSL.
       </p>
 
       <Row
@@ -81,7 +71,7 @@ export default function GrpcServiceMutualSsl() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/grpc-service-mutual-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-mutual-ssl",
                 "_blank"
               );
             }}
@@ -156,12 +146,13 @@ export default function GrpcServiceMutualSsl() {
       </Row>
 
       <p>
-        Setting up the service is the same as setting up the unary RPC service
-        with additional configurations. You can refer to the{" "}
+        Setting up the service is the same as setting up the simple RPC service
+        with additional configurations. For information on implementing the
+        service, see{" "}
         <a href="/learn/by-example/grpc-service-simple/">
           gRPC service - Simple RPC
-        </a>{" "}
-        to implement the service used below.
+        </a>
+        .
       </p>
 
       <p>Run the service by executing the command below.</p>
@@ -241,7 +232,7 @@ export default function GrpcServiceMutualSsl() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/grpc/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/grpc/latest#ListenerSecureSocket">
               <code>grpc:ListenerSecureSocket</code> record - API documentation
             </a>
           </span>

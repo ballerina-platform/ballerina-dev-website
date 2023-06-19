@@ -1,0 +1,19 @@
+{
+  "title": "Function closure",
+  "description": "This BBE demonstrates handling closures in a function by creating an anonymous function in Ballerina.",
+  "keywords": [
+    "anonymous function",
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "closures",
+    "functions",
+    "function value"
+  ],
+  "permalink": "/learn/by-example/function-closure",
+  "active": "function-closure",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/function-closure",
+    "/swan-lake/learn/by-example/function-closure.html"
+  ]
+}

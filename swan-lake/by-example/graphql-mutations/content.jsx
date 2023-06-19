@@ -1,41 +1,35 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
-// Define a \`record\` type to use as an object in the GraphQL service.
+// Defines a \`record\` type to use as an object in the GraphQL service.
 type Profile readonly & record {|
     int id;
     string name;
     int age;
 |};
 
-// Define an in-memory table to store the profiles.
+// Defines an in-memory table to store the profiles.
 table<Profile> key(id) profiles = table [
         {id: 1, name: "Walter White", age: 50},
         {id: 2, name: "Jesse Pinkman", age: 25}
     ];
 
 service /graphql on new graphql:Listener(9090) {
+
     // A resource method represents a field in the root \`Query\` operation.
     resource function get profile(int id) returns Profile {
         return profiles.get(id);
     }
 
-    // A \`remote\` method represents a field in the root \`Mutation\` operation. This \`remote\` method will
-    // update the name for the given profile ID and returns the updated \`Profile\` value. If the ID
-    // is not found, this will return an error.
+    // A \`remote\` method represents a field in the root \`Mutation\` operation. This \`remote\` method
+    // is used to update the name for the given profile ID and returns the updated \`Profile\` value.
+    // If the ID is not found, this will return an error.
     remote function updateName(int id, string name) returns Profile|error {
         if profiles.hasKey(id) {
             Profile profile = profiles.remove(id);
@@ -60,7 +54,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlMutations() {
+export function GraphqlMutations({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -69,18 +63,7 @@ export default function GraphqlMutations() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -101,6 +84,15 @@ export default function GraphqlMutations() {
         system.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL mutations are actions that are expected
+          to mutate the state of the server. Ballerina uses <code>remote</code>{" "}
+          methods to handle such cases. Therefore, these <code>remote</code>{" "}
+          methods are usually named using verbs.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -111,7 +103,7 @@ export default function GraphqlMutations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-mutations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-mutations",
                 "_blank"
               );
             }}
@@ -258,7 +250,7 @@ export default function GraphqlMutations() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-mutations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-mutations",
                 "_blank"
               );
             }}
@@ -332,7 +324,7 @@ export default function GraphqlMutations() {
         </Col>
       </Row>
 
-      <p>To send the document, use the following cURL command.</p>
+      <p>To send the document, execute the following cURL command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "

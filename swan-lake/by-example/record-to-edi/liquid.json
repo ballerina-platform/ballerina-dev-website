@@ -1,0 +1,19 @@
+{
+  "title": "Record to EDI conversion",
+  "description": "This BBE demonstrates how convert Ballerina records into EDI text based on an EDI schema.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "edi",
+    "electronic data interchange",
+    "b2b",
+    "integration"
+  ],
+  "permalink": "/learn/by-example/record-to-edi",
+  "active": "record-to-edi",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/record-to-edi",
+    "/swan-lake/learn/by-example/record-to-edi.html"
+  ]
+}

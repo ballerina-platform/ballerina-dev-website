@@ -1,22 +1,15 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 import ballerina/http;
 import ballerina/lang.value;
 
-// Define a record type to use as an object in the GraphQL service.
+// Defines a record type to use as an object in the GraphQL service.
 type Profile record {|
     string name;
     int age;
@@ -31,7 +24,7 @@ type Profile record {|
         // Initialize the \`graphql:Context\` object.
         graphql:Context context = new;
 
-        // Retrieve the header named \`scope\` from the \`http:request\` and set it to the context with
+        // Retrieves the header named \`scope\` from the \`http:request\` and set it to the context with
         // the \`scope\` key. If the header does not exist, this will return an \`error\`, and thereby,
         // the request will not be processed.
         context.set("scope", check request.getHeader("scope"));
@@ -41,19 +34,17 @@ type Profile record {|
     }
 }
 service /graphql on new graphql:Listener(9090) {
-
-    // Define a \`Profile\` field inside the service.
+    // Defines a \`Profile\` field inside the service.
     private final Profile profile;
 
     function init() {
-        // Initialize the \`profile\` value.
+        // Initializes the \`profile\` value.
         self.profile = {name: "Walter White", age: 51, salary: 737000.00};
     }
 
-    // If the context is needed, it should be defined as the first parameter of the resolver
-    // function.
+    // If the context is needed, it should be defined as a parameter of the resolver function.
     resource function get profile(graphql:Context context) returns Profile|error {
-        // Retrieve the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
+        // Retrieves the \`scope\` attribute from the context. This will return a \`graphql:Error\` if
         // the \`scope\` is not found in the context.
         value:Cloneable|isolated object {} scope = check context.get("scope");
 
@@ -62,7 +53,7 @@ service /graphql on new graphql:Listener(9090) {
             return self.profile;
         }
 
-        // Return an \`error\` if the required scope is not found.
+        // Returns an \`error\` if the required scope is not found.
         return error("Permission denied");
     }
 }
@@ -76,7 +67,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlContext() {
+export function GraphqlContext({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -87,22 +78,11 @@ export default function GraphqlContext() {
   const [outputClick3, updateOutputClick3] = useState(false);
   const ref3 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Context</h1>
+      <h1>GraphQL service - Context object</h1>
 
       <p>
         The Ballerina <code>graphql</code> module allows defining and using a{" "}
@@ -110,25 +90,27 @@ export default function GraphqlContext() {
         in the <code>graphql:ServiceConfig</code> annotation can be used to pass
         the context initialization function. If it is not provided, a default,
         empty <code>context</code> object will be created per request. When the{" "}
-        <code>graphql:Context</code> is needed to be accessed, define it as the
-        first parameter of the <code>resource</code>/<code>remote</code> method.
-        Use the <code>graphql:Context</code> to pass meta information between
-        the <code>resource</code>/<code>remote</code> methods used as GraphQL
-        object fields.
+        <code>graphql:Context</code> is needed to be accessed, define it as a
+        parameter of the <code>resource</code>/<code>remote</code> method. Use
+        the <code>graphql:Context</code> to pass meta information between the{" "}
+        <code>resource</code>/<code>remote</code> methods used as GraphQL object
+        fields.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> If the <code>graphql:Context</code> is defined
-          as the first parameter of a resolver function, it will be accessible
-          inside the resolver. Passing down the context is not necessary.
+          <strong>Hint:</strong> The <code>graphql:Context</code> is defined
+          before the other parameters of a function as a convention.
         </p>
       </blockquote>
 
-      <p>
-        This example shows how to initialize and access the context as well as
-        how to set/get attributes in the context.
-      </p>
+      <blockquote>
+        <p>
+          <strong>Note:</strong> If the <code>graphql:Context</code> is defined
+          as a parameter of a resolver function, it will be accessible inside
+          the resolver. Passing it down is not necessary.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -140,7 +122,7 @@ export default function GraphqlContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-context",
                 "_blank"
               );
             }}
@@ -289,7 +271,7 @@ export default function GraphqlContext() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-context",
                 "_blank"
               );
             }}
@@ -364,7 +346,7 @@ export default function GraphqlContext() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal. First, send the request with the <code>scope</code> header
         value set to <code>admin</code>.
       </p>
@@ -511,7 +493,7 @@ export default function GraphqlContext() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/classes/Context">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Context">
               <code>graphql:Context</code> object - API documentation
             </a>
           </span>
@@ -521,7 +503,7 @@ export default function GraphqlContext() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#8-context">
+            <a href="/spec/graphql/#8-context-object">
               GraphQL context - Specification
             </a>
           </span>
@@ -565,8 +547,8 @@ export default function GraphqlContext() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Interceptors"
-            href="/learn/by-example/graphql-interceptors"
+            title="Field object"
+            href="/learn/by-example/graphql-service-field-object"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -576,7 +558,7 @@ export default function GraphqlContext() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptors
+                  Field object
                 </span>
               </div>
               <svg

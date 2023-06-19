@@ -7,16 +7,6 @@ keywords: ballerina, programming language, testing, mocking, object mocking
 permalink: /learn/test-ballerina-code/mocking/
 active: mocking
 intro: Mocking is useful to control the behavior of functions and objects to control the communication with other modules and external endpoints. A mock can be created by defining return values or replacing the entire object or function with a user-defined equivalent. This feature will help you to test the Ballerina code independently from other modules and external endpoints.
-redirect_from:
-  - /learn/testing-ballerina-code/mocking
-  - /learn/testing-ballerina-code/mocking/
-  - /swan-lake/learn/testing-ballerina-code/mocking/
-  - /swan-lake/learn/testing-ballerina-code/mocking
-  - /learn/user-guide/testing-ballerina-code/mocking
-  - /learn/user-guide/testing-ballerina-code/mocking/
-  - /learn/test-ballerina-code/mocking
-  - /learn/guides/testing-ballerina-code/mocking/
-  - /learn/guides/testing-ballerina-code/mocking
 ---
 
 ## Mock objects
@@ -39,8 +29,30 @@ structurally equivalent to the real object via the mocking features in the test 
 
 ***Example:***
 
-Let's make changes to the example in the [Test a simple function](/learn/test-ballerina-code/test-a-simple-function/) to define a 
-test double for the `clientEndpont` object.
+Consider the following example in which an `http:Client` interacts with an external endpoint to get a random joke.
+
+***main.bal***
+
+```ballerina
+import ballerina/http;
+import ballerina/regex;
+
+http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
+
+type Joke readonly & record {|
+    string value;
+|};
+
+// This function performs a `get` request to the Chuck Norris API and returns a random joke 
+// with the name replaced by the provided name or an error if the API invocation fails.
+function getRandomJoke(string name) returns string|error {
+    Joke joke = check clientEndpoint->get("/random");
+    string replacedText = regex:replaceAll(joke.value, "Chuck Norris", name);
+    return replacedText;
+}
+```
+
+Let's write tests for the above `main.bal` file to define a test double for the `clientEndpoint` object.
 
 >**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
  any other member function of the `clientEndpoint` will result in a runtime error. 
@@ -50,29 +62,28 @@ test double for the `clientEndpont` object.
 ```ballerina
 import ballerina/test;
 import ballerina/http;
- 
+
 // An instance of this object can be used as the test double for the `clientEndpoint`.
 public client class MockHttpClient {
 
-    remote function get(@untainted string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns @tainted http:Response| anydata | http:ClientError {
-
-        http:Response response = new;
-        response.statusCode = 500;
-        return response;
+    remote function get(string path, map<string|string[]>? headers = (), http:TargetType targetType = http:Response) returns http:Response|anydata|http:ClientError {
+        Joke joke = {"value": "Mock When Chuck Norris wants an egg, he cracks open a chicken."};
+        return joke;
     }
+
 }
 
 @test:Config {}
 public function testGetRandomJoke() {
 
     // create and assign a test double to the `clientEndpoint` object
-    clientEndpoint=<http:Client>test:mock(http:Client, new MockHttpClient());
+    clientEndpoint = test:mock(http:Client, new MockHttpClient());
 
     // invoke the function to test
     string|error result = getRandomJoke("Sheldon");
 
-    // verify that the function returns an error
-    test:assertTrue(result is error);
+    // verify that the function returns the mock value after replacing the name
+    test:assertEquals(result, "Mock When Sheldon wants an egg, he cracks open a chicken.");
 }
 ```
 
@@ -81,83 +92,45 @@ public function testGetRandomJoke() {
 Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return 
 a specific value or to do nothing.
 
+>**Note:** It is important to ensure that all member functions of the object being tested are properly stubbed. 
+> If any function is called within the implementation that hasn't been stubbed, the test framework will generate an 
+> error message in the following format: 
+> `no cases registered for member function '<member_function_name>' of object type '<object_type>'.`
+
 ***Example:***
 
-The example in [Test a simple function](/learn/test-ballerina-code/test-a-simple-function/) shows how the `get` function of the 
-client object can be stubbed to return a value. Let’s make changes to that example to get a random joke from a specific 
-category (e.g., food or movies).
+Let’s make changes to the above example to get a random joke from a specific category (e.g., food or movies).
 
 ***main.bal***
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
-import ballerina/regex;
+import ballerina/lang.array;
+import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
+type Joke readonly & record {|
+    string value;
+|};
+
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.
-function getRandomJoke(string name, string category = "food") returns @tainted string|error {
-    string replacedText = "";
-    http:Response response = check clientEndpoint->get("/categories");
+function getRandomJoke(string name, string category = "food") returns string|error {
+    string[] categories = check clientEndpoint->get("/categories");
 
-    // Check if the provided category is available
-
-    if (response.statusCode == http:STATUS_OK) {
-        json[] categories = <json[]>check response.getJsonPayload();
-
-        if (!isCategoryAvailable(categories, category)) {
-            error err = error("'" + category + "' is not a valid category.");
-            io:println(err.message());
-            return err;
-        }
-
-    } else {
-        return createError(response);
+    if !isCategoryAvailable(categories, category) {
+        string errorMsg = "'" + category + "' is not a valid category. ";
+        io:println(errorMsg);
+        return error(errorMsg);
     }
 
     // Get a random joke from the provided category
-    response = check clientEndpoint->get("/random?category=" + category);
-
-    if (response.statusCode == http:STATUS_OK) {
-        json payload = check response.getJsonPayload();
-        json joke = check payload.value;
-
-        replacedText = regex:replaceAll(joke.toString(), "Chuck Norris", name);
-        return replacedText;
-
-    } else {
-        return createError(response);
-    }
-
-}
-```
-
-***utils.bal***
-
-The util functions below are used to validate the categories and construct errors based on the HTTP response.
-
-```ballerina
-import ballerina/io;
-import ballerina/http;
-
-// This function checks if the provided category is a valid one.
-function isCategoryAvailable(json[] categories, string category) returns boolean {
-    foreach var cat in categories {
-        if (cat.toString() == category) {
-            return true;
-        }
-    }
-    return false;
+    Joke joke = check clientEndpoint->get("/random?category=" + category);
+    return re `Chuck Norris`.replaceAll(joke.value, name);
 }
 
-// Returns an error based on the HTTP response.
-function createError(http:Response response) returns error {
-    error err = error("error occurred while sending GET request");
-    io:println(err.message(), ", status code: ", response.statusCode);
-    return err;
-}
+function isCategoryAvailable(string[] categories, string category) returns boolean => array:some(categories, categoryVal => categoryVal == category);
 ```
 
 ***test_utils.bal***
@@ -165,22 +138,15 @@ function createError(http:Response response) returns error {
 The util functions below are used to construct mock responses required for testing.
   
   ```ballerina
-import ballerina/http;
-
-// Returns a mock HTTP response to be used for the random joke API invocation.
-function getMockResponse() returns http:Response {
-    http:Response mockResponse = new;
-    json mockPayload = {"value":"When Chuck Norris wants an egg, he cracks open a chicken."};
-    mockResponse.setPayload(mockPayload);
-    return mockResponse;
+// Returns a mock Joke to be used for the random joke API invocation.
+function getMockResponse() returns Joke {
+    Joke joke = {"value": "When Chuck Norris wants an egg, he cracks open a chicken."};
+    return joke;
 }
 
 // Returns a mock response to be used for the category API invocation.
-function getCategoriesResponse() returns http:Response {
-    http:Response categoriesRes = new;
-    json[] payload = ["animal","food","history","money","movie"];
-    categoriesRes.setJsonPayload(payload);
-    return categoriesRes;
+function getCategoriesResponse() returns string[] {
+    return ["animal", "food", "history", "money", "movie"];
 }
 ```
 
@@ -210,7 +176,7 @@ public function testGetRandomJoke() {
         .thenReturn(getCategoriesResponse());
 
     // Invoke the function to test.
-    string result = checkpanic getRandomJoke("Sheldon");
+    string|error result = getRandomJoke("Sheldon");
 
     // Verify the return value against the expected string.
     test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
@@ -239,7 +205,7 @@ public function testGetRandomJoke() {
         .thenReturnSequence(getCategoriesResponse(), getMockResponse());
 
     // Invoke the function to test
-    string result = checkpanic getRandomJoke("Sheldon");
+    string|error result = getRandomJoke("Sheldon");
 
     // Verify the return value against the expected string
     test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
@@ -271,10 +237,10 @@ public type ProductInventory table<Product> key(code);
 
 // This is a sample data set in the defined inventory.
 ProductInventory inventory = table [
-            {code: 1,  name: "Milk", quantity: "1l"},
-            {code: 2, name: "Bread", quantity: "500g"},
-            {code: 3, name: "Apple", quantity: "750g"}
-        ];
+    {code: 1, name: "Milk", quantity: "1l"},
+    {code: 2, name: "Bread", quantity: "500g"},
+    {code: 3, name: "Apple", quantity: "750g"}
+];
 
 # This client represents a product.
 #
@@ -293,14 +259,13 @@ ProductClient productClient = new (1);
 # Get the name of the product represented by the ProductClient.
 #
 # + return - The name of the product
-public function getProductName() returns string?{
-    if (inventory.hasKey(productClient.productCode)){
-        Product? product = inventory.get(productClient.productCode);
-        if(product is Product){
-                return product.name;
-        }
+public function getProductName() returns string? {
+    if !inventory.hasKey(productClient.productCode) {
+        return;
     }
- }
+    Product? product = inventory.get(productClient.productCode);
+    return product is Product ? product.name : ();
+}
 ```
 
 ***main_test.bal***
@@ -412,8 +377,8 @@ This is the initialization of the mock function, which should be called in place
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 ```
 
 After the initialization, the following options can be used to stub the behaviour of a function written in the module being tested.
@@ -428,8 +393,8 @@ After the initialization, the following options can be used to stub the behaviou
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
    
 @test:Config {}
 function testReturn() {
@@ -451,8 +416,8 @@ This test stubs the behaviour of the `intAdd` function to substitute it with a u
 ```ballerina
 import ballerina/test;
 
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 
 @test:Config {}
 function testCall() {
@@ -478,7 +443,7 @@ import ballerina/io;
     moduleName: "ballerina/io",
     functionName: "println"
 }
-test:MockFunction printlnMockFn = new();
+test:MockFunction printlnMockFn = new ();
 
 int tally = 0;
 
@@ -504,8 +469,8 @@ This test calls the original `intAdd` function after it has been stubbed with a 
 ```ballerina
 import ballerina/test;
        
-@test:Mock { functionName: "intAdd" }
-test:MockFunction intAddMockFn = new();
+@test:Mock {functionName: "intAdd"}
+test:MockFunction intAddMockFn = new ();
 
 @test:Config {}
 function testCallOriginal() {

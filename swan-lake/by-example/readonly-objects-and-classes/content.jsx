@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 
 // The \`Timezone\` is a \`readonly\` object type.
@@ -46,24 +39,13 @@ public function main() {
 `,
 ];
 
-export default function ReadonlyObjectsAndClasses() {
+export function ReadonlyObjectsAndClasses({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -91,7 +73,7 @@ export default function ReadonlyObjectsAndClasses() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=49d0af83167b494cd2b11cfa6cf5d900&file=readonly_objects_and_classes.bal",
+                "https://play.ballerina.io/?gist=c1e724e6ce4b5de84dce64457f43c018&file=readonly_objects_and_classes.bal",
                 "_blank"
               );
             }}
@@ -116,7 +98,7 @@ export default function ReadonlyObjectsAndClasses() {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/readonly-objects-and-classes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/readonly-objects-and-classes",
                 "_blank"
               );
             }}
@@ -290,7 +272,7 @@ export default function ReadonlyObjectsAndClasses() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Combining Isolated Functions and Lock"
+            title="Combining isolated functions and lock"
             href="/learn/by-example/combining-isolated-functions-and-lock"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -301,7 +283,7 @@ export default function ReadonlyObjectsAndClasses() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Combining Isolated Functions and Lock
+                  Combining isolated functions and lock
                 </span>
               </div>
               <svg

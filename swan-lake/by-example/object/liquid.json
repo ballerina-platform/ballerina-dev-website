@@ -1,7 +1,14 @@
 {
   "title": "Object",
-  "description": "This BBE demonstrates objects in Ballerina",
-  "keywords": ["ballerina", "ballerina by example", "bbe", "object", "class"],
+  "description": "This BBE demonstrates defining a class, creating an object from the class definition, invoking object methods, and accessing object fields in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "object",
+    "class",
+    "new"
+  ],
   "permalink": "/learn/by-example/object",
   "active": "object",
   "redirect_from": [

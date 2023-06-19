@@ -1,12 +1,15 @@
 {
   "title": "Stream type",
-  "description": "This BBE demonstrates stream type in Ballerina.",
+  "description": "This BBE demonstrates the `stream` type in Ballerina, creating a stream of values, loading values lazily, and saving resources by loading values when needed.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "stream type",
-    "streams"
+    "streams",
+    "lazy",
+    "value",
+    "next"
   ],
   "permalink": "/learn/by-example/stream-type",
   "active": "stream-type",

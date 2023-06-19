@@ -1,5 +1,5 @@
 {
-  "title": "Combining Isolated Functions and Lock",
+  "title": "Combining isolated functions and lock",
   "description": "This BBE demonstrates combining isolated functions and lock in Ballerina.",
   "keywords": [
     "ballerina",

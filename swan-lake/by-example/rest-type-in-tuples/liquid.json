@@ -1,12 +1,19 @@
 {
   "title": "Rest type in tuples",
-  "description": "This BBE demonstrates the rest types in Ballerina tuple types.",
+  "description": "This BBE demonstrates how to create variable length tuple, create tuple with rest type descriptor.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "rest type",
-    "tuple rest type"
+    "tuple rest type",
+    "collection",
+    "length",
+    "size",
+    "list",
+    "rest",
+    "list binding pattern",
+    "push"
   ],
   "permalink": "/learn/by-example/rest-type-in-tuples",
   "active": "rest-type-in-tuples",

@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
@@ -19,7 +12,7 @@ public function main() returns error? {
     // Defines the WebSocket client to call the secured APIs.
     // The client is enriched with the \`Authorization: Bearer <token>\` header by
     // passing the \`websocket:BearerTokenConfig\` for the \`auth\` configuration of the client.
-    websocket:Client chatClient = check new("wss://localhost:9090/chat",
+    websocket:Client chatClient = check new ("wss://localhost:9090/chat",
         auth = {
             token: "56ede317-4511-44b4-8579-a08f094ee8c5"
         },
@@ -34,24 +27,13 @@ public function main() returns error? {
 `,
 ];
 
-export default function WebsocketClientBearerTokenAuth() {
+export function WebsocketClientBearerTokenAuth({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -75,7 +57,7 @@ export default function WebsocketClientBearerTokenAuth() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-client-bearer-token-auth",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/websocket-client-bearer-token-auth",
                 "_blank"
               );
             }}
@@ -273,7 +255,7 @@ export default function WebsocketClientBearerTokenAuth() {
         </Col>
         <Col sm={6}>
           <Link
-            title="Self signed JWT authentication"
+            title="Self-signed JWT authentication"
             href="/learn/by-example/websocket-client-self-signed-jwt-auth"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -284,7 +266,7 @@ export default function WebsocketClientBearerTokenAuth() {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Self signed JWT authentication
+                  Self-signed JWT authentication
                 </span>
               </div>
               <svg

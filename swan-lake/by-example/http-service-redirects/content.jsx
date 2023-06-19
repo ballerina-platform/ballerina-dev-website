@@ -1,37 +1,27 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/http;
 
-service / on new http:Listener(9090) {
-    resource function get redirect(http:Caller caller) returns error? {
-        http:Response res = new;
-        // Sends a redirect response with a location header.
-        check caller->redirect(res, http:REDIRECT_TEMPORARY_REDIRECT_307,
-                            ["http://localhost:9092/greeting"]);
-    }
-}
-
 service / on new http:Listener(9092) {
-    resource function get greeting() returns string {
-        return "Hello World!";
+
+    resource function get redirect() returns http:TemporaryRedirect {
+        // Return a redirect response record with the location header.
+        return {
+            headers: {
+                "Location": "http://localhost:9090/albums"
+            }
+        };
     }
 }
 `,
 ];
 
-export default function HttpServiceRedirects() {
+export function HttpServiceRedirects({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -39,27 +29,19 @@ export default function HttpServiceRedirects() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
       <h1>HTTP service - Redirects</h1>
 
       <p>
-        The HTTP service provides redirection through <code>redirect()</code>{" "}
-        method of <code>http:Caller</code>. The response contains the specified
-        status code and the <code>Location</code> header.
+        Redirection is important to direct requests to the correct endpoints if
+        the called one is not existing or moved. The HTTP specification provides
+        standard status codes to notify such situation to the caller. The HTTP
+        service responds with <code>redirect</code> status code response along
+        with the <code>location</code> header of the new endpoint. This can be
+        done using the <code>http:StatusCodeResponse</code> records.
       </p>
 
       <Row
@@ -68,9 +50,56 @@ export default function HttpServiceRedirects() {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
+          <button
+            className="bg-transparent border-0 m-0 p-2 ms-auto"
+            onClick={() => {
+              window.open(
+                "https://play.ballerina.io/?gist=048ccf5b84dbb3afc08da58ea689840a&file=http_service_redirects.bal",
+                "_blank"
+              );
+            }}
+            target="_blank"
+            aria-label="Open in Ballerina Playground"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-play-circle"
+              viewBox="0 0 16 16"
+            >
+              <title>Open in Ballerina Playground</title>
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
+            </svg>
+          </button>
+
+          <button
+            className="bg-transparent border-0 m-0 p-2"
+            onClick={() => {
+              window.open(
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-redirects",
+                "_blank"
+              );
+            }}
+            aria-label="Edit on Github"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="#000"
+              className="bi bi-github"
+              viewBox="0 0 16 16"
+            >
+              <title>Edit on Github</title>
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+            </svg>
+          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -88,7 +117,7 @@ export default function HttpServiceRedirects() {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              className="bg-transparent border-0 m-0 p-2"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -123,6 +152,21 @@ export default function HttpServiceRedirects() {
           )}
         </Col>
       </Row>
+
+      <h2>Prerequisites</h2>
+
+      <ul style={{ marginLeft: "0px" }}>
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            Run the HTTP service given in the{" "}
+            <a href="/learn/by-example/http-basic-rest-service/">
+              Basic REST service
+            </a>{" "}
+            example.
+          </span>
+        </li>
+      </ul>
 
       <p>Run the service as follows.</p>
 
@@ -193,7 +237,7 @@ export default function HttpServiceRedirects() {
       <blockquote>
         <p>
           <strong>Tip:</strong> You may invoke the service via{" "}
-          <a href="../http-client-redirects/">Redirect client</a>.
+          <a href="../http-client-redirects/">Redirect client</a> example.
         </p>
       </blockquote>
 
@@ -250,37 +294,38 @@ export default function HttpServiceRedirects() {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -v http://localhost:9090/redirect -L`}</span>
+              <span>{`\$ curl -v localhost:9092/redirect -L`}</span>
               <span>{`> GET /redirect HTTP/1.1`}</span>
-              <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
-              <span>{`> Accept: */*`}</span>
-              <span>{`>`}</span>
-              <span>{`< HTTP/1.1 307 Temporary Redirect`}</span>
-              <span>{`< location: http://localhost:9092/greeting`}</span>
-              <span>{`< content-length: 0`}</span>
-              <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Nov 2022 11:15:46 +0530`}</span>
-              <span>{`<`}</span>
-              <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`* Issue another request to this URL: 'http://localhost:9092/greeting'`}</span>
-              <span>{`* Found bundle for host localhost: 0x7fef816187a0 [can pipeline]`}</span>
-              <span>{`* Could pipeline, but not asked to!`}</span>
-              <span>{`*   Trying ::1...`}</span>
-              <span>{`* TCP_NODELAY set`}</span>
-              <span>{`* Connected to localhost (::1) port 9092 (#1)`}</span>
-              <span>{`> GET /greeting HTTP/1.1`}</span>
               <span>{`> Host: localhost:9092`}</span>
               <span>{`> User-Agent: curl/7.64.1`}</span>
               <span>{`> Accept: */*`}</span>
               <span>{`>`}</span>
-              <span>{`< HTTP/1.1 200 OK`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 12`}</span>
+              <span>{`< HTTP/1.1 307 Temporary Redirect`}</span>
+              <span>{`< Location: http://localhost:9090/albums`}</span>
+              <span>{`< content-length: 0`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Tue, 22 Nov 2022 11:15:46 +0530`}</span>
+              <span>{`< date: Wed, 11 Jan 2023 10:45:36 +0530`}</span>
               <span>{`<`}</span>
-              <span>{`Hello World!* Closing connection 0`}</span>
+              <span>{`* Connection #0 to host localhost left intact`}</span>
+              <span>{`* Issue another request to this URL: 'http://localhost:9090/albums'`}</span>
+              <span>{`* Found bundle for host localhost: 0x7feb7341b9c0 [can pipeline]`}</span>
+              <span>{`* Could pipeline, but not asked to!`}</span>
+              <span>{`*   Trying ::1...`}</span>
+              <span>{`* TCP_NODELAY set`}</span>
+              <span>{`* Connected to localhost (::1) port 9090 (#1)`}</span>
+              <span>{`> GET /albums HTTP/1.1`}</span>
+              <span>{`> Host: localhost:9090`}</span>
+              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> Accept: */*`}</span>
+              <span>{`>`}</span>
+              <span>{`< HTTP/1.1 200 OK`}</span>
+              <span>{`< content-type: application/json`}</span>
+              <span>{`< content-length: 95`}</span>
+              <span>{`< server: ballerina`}</span>
+              <span>{`< date: Wed, 11 Jan 2023 10:45:36 +0530`}</span>
+              <span>{`<`}</span>
+              <span>{`* Connection #1 to host localhost left intact`}</span>
+              <span>{`[{"title":"Blue Train", "artist":"John Coltrane"}, {"title":"Jeru", "artist":"Gerry Mulligan"}]`}</span>
             </code>
           </pre>
         </Col>
@@ -293,7 +338,7 @@ export default function HttpServiceRedirects() {
           <span>&#8226;&nbsp;</span>
           <span>
             <a href="https://lib.ballerina.io/ballerina/http/latest/">
-              <code>http</code> package - API documentation
+              <code>http</code> module - API documentation
             </a>
           </span>
         </li>
@@ -312,10 +357,7 @@ export default function HttpServiceRedirects() {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Default resource"
-            href="/learn/by-example/http-default-resource"
-          >
+          <Link title="Caller object" href="/learn/by-example/http-caller">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -341,7 +383,7 @@ export default function HttpServiceRedirects() {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Default resource
+                  Caller object
                 </span>
               </div>
             </div>

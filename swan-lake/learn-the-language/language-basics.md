@@ -6,10 +6,6 @@ keywords: ballerina, programming language, ballerina packages,language-guide
 permalink: /learn/language-basics/
 active: language-basics
 intro: This guide introduces the Ballerina language to help you get started with basics that are common to all C-Family programming languages.
-redirect_from:
-- /learn/language-basics
-- /learn/getting-started/language-basics/
-- /learn/getting-started/language-basics
 ---
 
 ## Familiar subset of Ballerina
@@ -85,13 +81,15 @@ The function performs a simple addition operation and stores the result in anoth
 The general syntax of a Ballerina program is as follows:
 
 ```ballerina
+import ballerina/io;
+
 // This is a comment.
 int count = 0;
 
 // You can have Unicode identifiers.
 function พิมพ์ชื่อ(string ชื่อ) {
     // Use \u{H} to specify character using Unicode code point in hex.
-   io:println(ชื่\u{E2D});
+    io:println(ชื่\u{E2D});
 }
 
 string 'string = "xyz";
@@ -290,7 +288,7 @@ In this code example, the **``x``** variable of the ``float`` type is bound to e
 You can also construct the ``foreach`` statement using a range expression such as `..<`.
 
 ```ballerina
-function sum(float[ ] v) returns float {
+function sum(float[] v) returns float {
     float r = 0.0;
     foreach int i in 0 ..< v.length() {
         r += v[i];
@@ -392,7 +390,7 @@ This is similar to the typedef concept in C, where the identifier **``MapArray``
 A record is a collection of fields of a specific type. With record types, you have control over what your keys are.  
 
 ```ballerina
-record { int x; int y; } r = {
+record {int x; int y; } r = {
     x: 1,
     y: 2
 };
@@ -574,7 +572,7 @@ function divide(int m, int n) returns int {
     if n == 0 {
         panic error("division by 0");
     }
-    return m/n;
+    return m / n;
 }
 ```
  
@@ -652,9 +650,9 @@ Ballerina provides another basic type which is the object type. Object types bun
 Objects are initialized based on a class defined within a module.
 
 ```ballerina
-function demoMyClass( ) {
+function demoMyClass() {
     m:MyClass x = new m:MyClass(1234);
-    x.foo( );
+    x.foo();
     int n = x.n;
 }
 ```
@@ -732,10 +730,10 @@ The ``==`` operator is used to check for contents of a structure type like array
 
 ```ballerina
 // true
-boolean b3 = ([1,2,3] == [1,2,3]);
+boolean b3 = ([1, 2, 3] == [1, 2, 3]);
 
 // false
-boolean b4 = ([1,2,3] === [1,2,3]);
+boolean b4 = ([1, 2, 3] === [1, 2, 3]);
 ```
 
 In the above code example, the first operation results in true as both the arrays have exactly the same content. However, the second operation is false because it is using the ``===`` operator to check for memory locations, and the two inline arrays point to different memory locations, even though their contents are the same.  
@@ -798,12 +796,24 @@ const KEY = "xyzzy";
 function mtest(any v) returns string {
 
     match v {
-        17 => { return "number"; }
-        true => { return " boolean"; }
-        "str" => { return "string"; }
-        KEY => { return "constant"; }
-        0|1 => { return "or"; }
-        _ => { return "any"; }
+        17 => {
+            return "number";
+        }
+        true => {
+            return " boolean";
+        }
+        "str" => {
+            return "string";
+        }
+        KEY => {
+            return "constant";
+        }
+        0|1 => {
+            return "or";
+        }
+        _ => {
+            return "any";
+        }
     }
 }
 ```
@@ -918,7 +928,7 @@ Waiting on a *``future<T>``* returns *``T|error``*. Waiting on the same future m
 Instead of waiting for each future separately, you can also do the following.
 
 ```ballerina
-record {| int|error f1; int|error f2; |} f = wait {f1, f2};
+record {|int|error f1; int|error f2;|} f = wait {f1, f2};
 
 int x1 = check f.f1;
 int x2 = check f.f2;
@@ -930,16 +940,17 @@ In case you want to terminate the ``future``, you can do *``f.cancel( )``*.
 
 Ballerina supports a structured way to document code. Documentation lines start with ``#`` and contain structured documentation in Markdown format.
 
-
-<pre><div><pre class="shiki" style="background-color: #ffffff"><code><span class="line"><span style="color: #6E7781"># Adds two integers.</span></span>
-<span class="line"><span style="color: #6E7781"># </span><span style="color: #CF222E">+ </span><span style="color: #24292F">x</span><span style="color: #CF222E"> - </span><span style="color: #6E7781">an integer</span></span>
-<span class="line"><span style="color: #6E7781"># </span><span style="color: #CF222E">+ </span><span style="color: #24292F">y</span><span style="color: #CF222E"> - </span><span style="color: #6E7781">another integer</span></span>
-<span class="line"><span style="color: #6E7781"># </span><span style="color: #CF222E">+ </span><span style="color: #24292F">return</span><span style="color: #CF222E"> - </span><span style="color: #6E7781">the sum of `x` and `y`</span></span>
-<span class="line"><span style="color: #CF222E">public</span><span style="color: #24292F"> </span><span style="color: #CF222E">function</span><span style="color: #24292F"> </span><span style="color: #8250DF">add</span><span style="color: #24292F">(</span><span style="color: #0550AE">int</span><span style="color: #24292F"> </span><span style="color: #953800">x</span><span style="color: #24292F">, </span><span style="color: #0550AE">int</span><span style="color: #24292F"> </span><span style="color: #953800">y</span><span style="color: #24292F">)</span></span>
-<span class="line"><span style="color: #24292F">                    </span><span style="color: #CF222E">returns</span><span style="color: #24292F"> </span><span style="color: #0550AE">int</span><span style="color: #24292F"> {</span></span>
-<span class="line"><span style="color: #24292F">    </span><span style="color: #CF222E">return</span><span style="color: #24292F"> x </span><span style="color: #CF222E">+</span><span style="color: #24292F"> y;</span></span>
-<span class="line"><span style="color: #24292F">}</span></span></code></pre></div></pre>
-
+```ballerina
+# Adds two integers.
+# 
+# + x - an integer
+# + y - another integer
+# + return - the sum of `x` and `y`
+public function add(int x, int y)
+                     returns int {
+    return x + y;
+}
+```
 
 The above code example adds documentation to describe the parameters and the return type of the **``add()``** function. This is Ballerina-flavoured Markdown (BFM) which makes it convenient to generate pretty documentation using one of the platform tools.
 
@@ -952,10 +963,10 @@ Annotations are defined using the ``@`` notation followed by a tag. This is a wa
     iconPath: "transform.png"
 }
 public function transform(string s) returns string {
-   return s.toUpperAscii();
+    return s.toUpperAscii();
 }
 
-future<int> fut = @strand { thread: "any" } start foo();
+future<int> fut = @strand {thread: "any"} start foo();
 ```
 
 In the above code example, the *``@display``* annotation is attached to the function **``transform()``**, and the *``@strand``* annotation applies to the keyword ``start``, calling the function **``foo()``** asynchronously. These annotations use mapping constructor expressions, which is one of the ways to define them.

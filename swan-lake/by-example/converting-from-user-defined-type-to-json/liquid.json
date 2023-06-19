@@ -1,12 +1,14 @@
 {
   "title": "Convert from user-defined type to JSON",
-  "description": "This BBE demonstrates converting a user-defined type to JSON.",
+  "description": "This BBE demonstrates how to convert user-defined type to JSON and convert JSON to record type in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "conversion",
-    "json"
+    "json",
+    "record",
+    "toJson"
   ],
   "permalink": "/learn/by-example/converting-from-user-defined-type-to-json",
   "active": "converting-from-user-defined-type-to-json",

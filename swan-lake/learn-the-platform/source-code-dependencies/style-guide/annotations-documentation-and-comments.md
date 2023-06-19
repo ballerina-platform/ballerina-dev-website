@@ -6,19 +6,6 @@ keywords: ballerina, programming language, ballerina style guide, annotations, c
 permalink: /learn/style-guide/annotations-documentation-and-comments/
 active: annotations-documentation-and-comments
 intro: The sections below include the coding conventions with respect to annotations, documentation, and comments.
-redirect_from:
-  - /learn/style-guide/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
-  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments/
-  - /learn/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments/
-  - /learn/user-guide/code-organization/coding-conventions/annotations_documentation_and_comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments
-  - /learn/user-guide/style-guide/coding-conventions/annotations-documentation-and-comments/
 ---
 
 ## Annotations
@@ -88,9 +75,9 @@ public function taintedReturn2() returns
   and 
   
 ```ballerina
-// Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+// Copyright (c) 2022 WSO2 LLC (http://www.wso2.org) All Rights Reserved.
 //
-// WSO2 Inc. licenses this file to you under the Apache License,
+// WSO2 LLC licenses this file to you under the Apache License,
 // Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License.
 // You may obtain a copy of the License at
@@ -133,13 +120,11 @@ function func2() {
 **Example,**
 
 ```ballerina
-
 type People record {}; // Inline comment
 
 function func1() {
     int a = 0; // Inline comment
 }
-
 ```
 
 

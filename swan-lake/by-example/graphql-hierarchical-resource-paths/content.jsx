@@ -1,40 +1,33 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 // This service has multiple resources with hierarchical resource paths. Since all the resource
 // paths starts with \`profile\`, the root \`Query\` operation will have a single field named \`profile\`.
-// The type of this field will also be \`profile\`. (For hierarchical paths, the field name and the
+// The type of this field is \`profile!\`. (For hierarchical paths, the field name and the
 // type name will be the same). The \`profile\` type has two fields: \`quote\` and \`name\`. The type of
 // the \`quote\` field is \`String!\` and the type of the \`name\` field is \`name!\`. The \`name\` type has
 // two fields: \`first\` and the \`last\`. Both of the fields are of type \`String!\`.
 service /graphql on new graphql:Listener(9090) {
 
-    // This resource represents the \`quote\` field under the \`profile\` object.
+    // This resource method represents the \`quote\` field under the \`profile\` object.
     resource function get profile/quote() returns string {
         return "I am the one who knocks!";
     }
 
-    // This resource represents the \`first\` field under the \`name\` object type. The \`name\` field
-    // in the \`profile\` object is of type \`name\`.
+    // This resource method represents the \`first\` field under the \`name\` object type. The \`name\`
+    // field in the \`profile\` object is of type \`name!\`.
     resource function get profile/name/first() returns string {
         return "Walter";
     }
 
-    // This resource represents the \`last\` field under the \`name\` object type. The \`name\` field in
-    // the \`profile\` object is of type \`name\`.
+    // This resource method represents the \`last\` field under the \`name\` object type. The \`name\`
+    // field in the \`profile\` object is of type \`name!\`.
     resource function get profile/name/last() returns string {
         return "White";
     }
@@ -51,7 +44,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlHierarchicalResourcePaths() {
+export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -60,18 +53,7 @@ export default function GraphqlHierarchicalResourcePaths() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -97,7 +79,7 @@ export default function GraphqlHierarchicalResourcePaths() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-hierarchical-resource-paths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hierarchical-resource-paths",
                 "_blank"
               );
             }}
@@ -246,7 +228,7 @@ export default function GraphqlHierarchicalResourcePaths() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-hierarchical-resource-paths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hierarchical-resource-paths",
                 "_blank"
               );
             }}
@@ -321,7 +303,7 @@ export default function GraphqlHierarchicalResourcePaths() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 

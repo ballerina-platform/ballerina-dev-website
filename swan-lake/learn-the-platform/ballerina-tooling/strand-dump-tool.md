@@ -4,8 +4,6 @@ description: Check out how you can dump and inspect the currently available stra
 keywords: ballerina runtime, troubleshoot, strand dump, thread dump
 permalink: /learn/strand-dump-tool/
 active: strand-dump-tool
-redirect_from:
-  - /learn/strand-dump-tool
 ---
 
 The Ballerina runtime can have unexpected behaviors due to user code errors, bugs, or issues with the running environment. 
@@ -77,7 +75,11 @@ $ jps
 28845 $_init
 ```
 
-You get the PID for this program as 28845 because `$_init` is the main class of the Ballerina program. 
+You get the PID for this program as 28845 because `$_init` is the main class of the Ballerina program.
+
+>**Note:** If you run the tests in a Ballerina package or a file using the `bal test` command, you need to get the 
+PID of the process denoted by the `BTestMain` classname.
+
 To get the strand dump, send the `SIGTRAP` signal to that process. You can use the following CLI command.
 ```
 $ kill -SIGTRAP 28845

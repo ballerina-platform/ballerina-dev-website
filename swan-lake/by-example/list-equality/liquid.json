@@ -1,0 +1,23 @@
+{
+  "title": "List equality",
+  "description": "Check two list  are equal, check two collections are equal, check two lists have the same members, Check two list are the same reference, Compare two lists",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "==",
+    "!=",
+    "===",
+    "!==",
+    "equality",
+    "array",
+    "deep",
+    "exact"
+  ],
+  "permalink": "/learn/by-example/list-equality",
+  "active": "list-equality",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/list-equality",
+    "/swan-lake/learn/by-example/list-equality.html"
+  ]
+}

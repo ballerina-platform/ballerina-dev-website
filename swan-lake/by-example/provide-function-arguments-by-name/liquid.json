@@ -1,12 +1,14 @@
 {
   "title": "Provide function arguments by name",
-  "description": "This BBE demonstrates call functions with named arguments in Ballerina.",
+  "description": "This BBE demonstrates calling functions with named arguments and creating functions in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "named arguments",
-    "functions"
+    "functions",
+    "function definition",
+    "parameters"
   ],
   "permalink": "/learn/by-example/provide-function-arguments-by-name",
   "active": "provide-function-arguments-by-name",

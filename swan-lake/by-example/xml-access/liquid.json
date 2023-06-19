@@ -1,0 +1,18 @@
+{
+  "title": "XML access",
+  "description": "This BBE demonstrates how to get an item in XML, access an attribute in XML, and access XML optional attributes in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "xml data model",
+    "xml",
+    "get element"
+  ],
+  "permalink": "/learn/by-example/xml-access",
+  "active": "xml-access",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-access",
+    "/swan-lake/learn/by-example/xml-access.html"
+  ]
+}

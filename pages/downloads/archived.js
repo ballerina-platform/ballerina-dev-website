@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -112,7 +112,7 @@ export default function AllArchived() {
             <Head>
 
                 <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
-                <meta name="author" content="WSO2, Inc." />
+                <meta name="author" content="WSO2 LLC." />
 
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 
@@ -196,6 +196,18 @@ export default function AllArchived() {
                                                                 </a>
                                                                 </td>
                                                             </tr>
+                                                            {
+                                                                item['macos-arm-installer'] &&
+
+                                                                <tr>
+                                                                    <td>{item['macos-arm-installer']}</td>
+                                                                    <td><a href={`${process.env.distServer}/downloads/${item.version}/${item['macos-arm-installer']}`}
+                                                                        name={item['macos-arm-installer']} data-pack={item['macos-arm-installer']} target="">
+                                                                        <Image src={`${prefix}/images/download-bg-green-fill.svg`} width={13} height={13} alt={item['macos-arm-installer']} />
+                                                                    </a>
+                                                                    </td>
+                                                                </tr>
+                                                            }
 
                                                             {
                                                                 item['other-artefacts'].map((ot, index) => (
@@ -230,8 +242,10 @@ export default function AllArchived() {
                                 <Row className='archivedCategory'>
                                     <div className='catTitleRow'>
                                         <h2 id='1.2.x-archived-versions'>1.2.x archived versions</h2>
-                                    </div>
-
+                                        </div>
+                                        <div className='archivedNote'>
+                                        <p>You can download the Visual Studio Code extension for Ballerina 1.2.x versions, from the <a target="_blank" rel="noreferrer" className="archivedReleaseNotesLink" href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina">VS Code marketplace.</a></p>
+                                        </div>
                                     {sortedRelease12x.map((item, index) => (
 
                                         <div className="installers" key={item.version}>

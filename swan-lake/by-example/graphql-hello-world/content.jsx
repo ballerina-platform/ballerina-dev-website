@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 // Service attached to a GraphQL listener exposes a GraphQL service on the provided port.
@@ -30,7 +23,7 @@ service /graphql on new graphql:Listener(9090) {
 `,
 ];
 
-export default function GraphqlHelloWorld() {
+export function GraphqlHelloWorld({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -39,18 +32,7 @@ export default function GraphqlHelloWorld() {
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -64,6 +46,17 @@ export default function GraphqlHelloWorld() {
         method will be the type of field represented by that resource method.
       </p>
 
+      <blockquote>
+        <p>
+          <strong>Note:</strong> GraphQL queries are expected to be read-only
+          operations that are usually executed against entities such as{" "}
+          <code>Person</code>, <code>Profile</code>, <code>Address</code>, etc.
+          Ballerina uses <code>resource</code> methods to handle such cases.
+          Therefore, these <code>resource</code> methods are usually named using
+          nouns with <code>get</code> accessor.
+        </p>
+      </blockquote>
+
       <Row
         className="bbeCode mx-0 py-0 rounded 
       "
@@ -74,7 +67,7 @@ export default function GraphqlHelloWorld() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hello-world",
                 "_blank"
               );
             }}
@@ -223,7 +216,7 @@ export default function GraphqlHelloWorld() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-hello-world",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hello-world",
                 "_blank"
               );
             }}
@@ -298,7 +291,7 @@ export default function GraphqlHelloWorld() {
       </Row>
 
       <p>
-        To send the document, use the following cURL command in a separate
+        To send the document, execute the following cURL command in a separate
         terminal.
       </p>
 

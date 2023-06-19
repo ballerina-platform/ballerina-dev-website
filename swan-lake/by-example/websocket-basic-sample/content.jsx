@@ -1,33 +1,28 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/io;
 import ballerina/websocket;
 
 service /chat on new websocket:Listener(9090) {
-   resource function get .() returns websocket:Service|websocket:Error {
-       // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
-       return new ChatService();
-   }
+
+    resource function get .() returns websocket:Service {
+        // Accept the WebSocket upgrade by returning a \`websocket:Service\`.
+        return new ChatService();
+    }
 }
 
 service class ChatService {
     *websocket:Service;
+
     // This \`remote function\` is triggered when a new message is received
     // from a client. It accepts \`anydata\` as the function argument. The received data 
     // will be converted to the data type stated as the function argument.
-    remote function onMessage(websocket:Caller caller, string chatMessage) returns websocket:Error? {
+    remote function onMessage(websocket:Caller caller, string chatMessage) returns error? {
         io:println(chatMessage);
         check caller->writeMessage("Hello!, How are you?");
     }
@@ -35,24 +30,13 @@ service class ChatService {
 `,
 ];
 
-export default function WebsocketBasicSample() {
+export function WebsocketBasicSample({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -89,7 +73,7 @@ export default function WebsocketBasicSample() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/websocket-basic-sample",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/websocket-basic-sample",
                 "_blank"
               );
             }}

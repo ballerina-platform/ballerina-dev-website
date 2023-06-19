@@ -1,0 +1,20 @@
+{
+  "title": "Destructure records using a query",
+  "description": "This BBE demonstrates using binding patterns in a query expression, record destructuring in a query expression and accessing values in a query iteration.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "query",
+    "var",
+    "binding pattern",
+    "from",
+    "access"
+  ],
+  "permalink": "/learn/by-example/destructure-records-using-query",
+  "active": "destructure-records-using-query",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/destructure-records-using-query",
+    "/swan-lake/learn/by-example/destructure-records-using-query.html"
+  ]
+}

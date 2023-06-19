@@ -1,17 +1,10 @@
-import React, { useState, useEffect, createRef } from "react";
-import { setCDN } from "shiki";
+import React, { useState, createRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DOMPurify from "dompurify";
-import {
-  copyToClipboard,
-  extractOutput,
-  shikiTokenizer,
-} from "../../../utils/bbe";
+import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
-setCDN("https://unpkg.com/shiki/");
-
-const codeSnippetData = [
+export const codeSnippetData = [
   `import ballerina/graphql;
 
 type Profile record {|
@@ -29,6 +22,7 @@ listener graphql:Listener securedEP = new (9090,
 );
 
 service /graphql on securedEP {
+    
     resource function get profile() returns Profile {
         return {
             name: "Walter White",
@@ -39,24 +33,13 @@ service /graphql on securedEP {
 `,
 ];
 
-export default function GraphqlServiceSslTls() {
+export function GraphqlServiceSslTls({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
   const ref1 = createRef();
 
-  const [codeSnippets, updateSnippets] = useState([]);
   const [btnHover, updateBtnHover] = useState([false, false]);
-
-  useEffect(() => {
-    async function loadCode() {
-      for (let snippet of codeSnippetData) {
-        const output = await shikiTokenizer(snippet, "ballerina");
-        updateSnippets((prevSnippets) => [...prevSnippets, output]);
-      }
-    }
-    loadCode();
-  }, []);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
@@ -81,7 +64,7 @@ export default function GraphqlServiceSslTls() {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.3.0/examples/graphql-service-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-ssl-tls",
                 "_blank"
               );
             }}
@@ -232,7 +215,7 @@ export default function GraphqlServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerConfiguration">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ListenerConfiguration">
               <code>graphql:ListenerConfiguration</code> record - API
               documentation
             </a>
@@ -243,7 +226,7 @@ export default function GraphqlServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest/records/ListenerSecureSocket">
+            <a href="https://lib.ballerina.io/ballerina/graphql/latest#ListenerSecureSocket">
               <code>graphql:ListenerSecureSocket</code> record - API
               documentation
             </a>
@@ -254,7 +237,7 @@ export default function GraphqlServiceSslTls() {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11311-ssltls">
+            <a href="/spec/graphql/#12311-ssltls">
               GraphQL service SSL/TLS - Specification
             </a>
           </span>

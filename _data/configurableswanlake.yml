@@ -7,7 +7,7 @@
   - title: Provide values to configurable variables
     url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables
     sublinks:
-      - title: Provide via command line arguments
+      - title: Provide via command-line arguments
         url: /learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments
         active: provide-via-command-line-arguments
       - title: Provide via TOML syntax

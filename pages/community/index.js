@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,9 +28,26 @@ import Discord from '../../components/community/discord/Discord';
 import TechTalk from '../../components/community/tech-talk/TechTalk';
 import GetInvolved from '../../components/community/get-involved/GetInvolved';
 import Contact from '../../components/community/contact/Contact';
-import SubMenu from '../../components/community/submenu/SubMenu';
 
 export default function Community() {
+
+  const getLink = (element, id) => {
+    if (element.tagName.toLowerCase() === "path")
+      element = element.parentElement;
+
+    const elementNodeList = document.querySelectorAll(`#${id}`);
+    const elementArray = Array.prototype.slice.call(elementNodeList);
+    const count = elementArray.indexOf(element.parentElement);
+
+    if (count === 0) {
+      location.hash = `#${id}`;
+    } else {
+      location.hash = `#${id}-${count}`;
+    }
+
+    navigator.clipboard.writeText(window.location.href);
+    element.parentElement.scrollIntoView();
+  };
 
   return (
     <>
@@ -45,7 +62,7 @@ export default function Community() {
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina"/>
+        <meta property="og:title" content="Ballerina" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}
@@ -54,11 +71,6 @@ export default function Community() {
       </Head>
       <Layout>
         <Col sm={12}>
-
-          <Row className="pageContentRow communityRow communitySub">
-            <SubMenu />
-          </Row>
-
 
           <Row className="pageHeader pageContentRow communityRow">
             <Col xs={12}>
@@ -81,31 +93,31 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Newsletter />
+            <Newsletter getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Events />
+            <Events getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Resources />
+            <Resources getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Discord />
+            <Discord getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <TechTalk />
+            <TechTalk getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <GetInvolved />
+            <GetInvolved getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Contact />
+            <Contact getLink={getLink} />
           </Row>
 
         </Col>

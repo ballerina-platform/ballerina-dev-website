@@ -34,6 +34,21 @@
         "isLearnByExample": true
       },
       {
+        "name": "Main function",
+        "url": "main-function",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Init function",
+        "url": "init-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Variables and types",
         "url": "variables-and-types",
         "verifyBuild": true,
@@ -81,6 +96,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Boolean",
+        "url": "boolean",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -104,8 +126,8 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Booleans and conditionals",
-        "url": "booleans",
+        "name": "If statement",
+        "url": "if-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -113,6 +135,20 @@
       {
         "name": "Match statement",
         "url": "match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match guard in match statement",
+        "url": "match-guard-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Binding patterns in match statement",
+        "url": "binding-patterns-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -127,13 +163,6 @@
       {
         "name": "Functions",
         "url": "functions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Function values",
-        "url": "function-values",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -172,6 +201,34 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Function values",
+        "url": "function-values",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function types",
+        "url": "function-types",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Anonymous function",
+        "url": "anonymous-function",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Function closure",
+        "url": "function-closure",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -192,7 +249,27 @@
         "url": "while-statement",
         "verifyBuild": true,
         "verifyOutput": true,
-        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Break statement",
+        "url": "break-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Continue statement",
+        "url": "continue-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Range function",
+        "url": "int-range",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "isLearnByExample": true
       }
     ]
@@ -309,6 +386,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Stream type",
+        "url": "stream-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Never type",
         "url": "never-type",
         "verifyBuild": true,
@@ -344,6 +428,13 @@
         "isLearnByExample": true
       },
       {
+        "name": "Nested arrays",
+        "url": "nested-arrays",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Tuples",
         "url": "tuples",
         "verifyBuild": true,
@@ -351,15 +442,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure tuples",
-        "url": "destructure-tuples",
+        "name": "Rest type in tuples",
+        "url": "rest-type-in-tuples",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Rest type in tuples",
-        "url": "rest-type-in-tuples",
+        "name": "Filler values of a list",
+        "url": "filler-values-of-a-list",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List subtyping",
+        "url": "list-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List equality",
+        "url": "list-equality",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -421,7 +526,7 @@
         "isLearnByExample": true
       },
       {
-        "name": "Control openness",
+        "name": "Controlling openness",
         "url": "controlling-openness",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -470,8 +575,29 @@
         "isLearnByExample": true
       },
       {
-        "name": "Define classes",
+        "name": "Defining classes",
         "url": "defining-classes",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Object constructor",
+        "url": "object-constructor",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Object value from class definition",
+        "url": "object-value-from-class-definition",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Visibility of object fields and methods",
+        "url": "visibility-of-object-fields-and-methods",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -503,6 +629,29 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Object closure",
+        "url": "object-closure",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Client class",
+        "url": "client-class",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Start service from service class definition",
+        "url": "start-service-from-service-class-definition",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -512,22 +661,106 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Binding patterns in assignment",
-        "url": "binding-patterns-in-assignment",
+        "name": "Binding patterns",
+        "url": "binding-patterns",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Spread in binding patterns",
-        "url": "spread-in-binding-patterns",
+        "name": "Typed binding pattern",
+        "url": "typed-binding-pattern",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Binding patterns in match statement",
-        "url": "binding-patterns-in-match-statement",
+        "name": "Wildcard binding pattern",
+        "url": "wildcard-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List binding patterns",
+        "url": "list-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Rest binding pattern in list binding pattern",
+        "url": "rest-binding-pattern-in-list-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Mapping binding pattern",
+        "url": "mapping-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Rest binding pattern in mapping binding pattern",
+        "url": "rest-binding-pattern-in-mapping-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error binding pattern",
+        "url": "error-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Rest binding pattern in error binding pattern",
+        "url": "rest-binding-pattern-in-error-binding-pattern",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Single use of typed binding patterns",
+        "url": "single-use-of-typed-binding",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Single use of typed binding patterns with on fail clause",
+        "url": "single-use-with-on-fail-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Iterative use of typed binding patterns",
+        "url": "iterative-use-of-typed-binding",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "List binding pattern in match statement",
+        "url": "list-binding-pattern-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Mapping binding pattern in match statement",
+        "url": "mapping-binding-pattern-in-match-statement",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error binding pattern in match statement",
+        "url": "error-binding-pattern-in-match-statement",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -535,169 +768,20 @@
     ]
   },
   {
-    "title": "Error handling",
+    "title": "Regular Expressions",
     "column": 1,
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Error handling",
-        "url": "error-handling",
+        "name": "RegExp type",
+        "url": "regexp-type",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Check expression",
-        "url": "check-expression",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Error subtyping",
-        "url": "error-subtyping",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Panics",
-        "url": "panics",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Type intersection for error types",
-        "url": "error-type-intersection",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Error detail",
-        "url": "error-detail",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Error cause",
-        "url": "error-cause",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "Ignore return values and errors",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Ignore return values and errors",
-        "url": "ignoring-return-values-and-errors",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "Mutability and identity",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "Identity",
-        "url": "identity",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Const and final ",
-        "url": "const-and-final",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Enumerations",
-        "url": "enumerations",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Immutability",
-        "url": "immutability",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      }
-    ]
-  },
-  {
-    "title": "JSON",
-    "column": 1,
-    "category": "Language concepts",
-    "samples": [
-      {
-        "name": "JSON type",
-        "url": "json-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Work directly with JSON",
-        "url": "working-directly-with-json",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Match statement with maps",
-        "url": "match-statement-with-maps",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert from user-defined type to JSON",
-        "url": "converting-from-user-defined-type-to-json",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert from JSON to user-defined type",
-        "url": "converting-from-json-to-user-defined-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Convert to user-defined type",
-        "url": "converting-to-user-defined-type",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Resource method typing",
-        "url": "resource-method-typing",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disablePlayground": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "JSON numbers",
-        "url": "json-numbers",
+        "name": "RegExp operations",
+        "url": "regexp-operations",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -710,8 +794,15 @@
     "category": "Language concepts",
     "samples": [
       {
-        "name": "Table syntax",
-        "url": "table-syntax",
+        "name": "Table",
+        "url": "table",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Table types",
+        "url": "table-types",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -745,8 +836,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Destructure records",
-        "url": "destructuring-records",
+        "name": "Sort iterable objects",
+        "url": "sort-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -759,13 +850,6 @@
         "isLearnByExample": true
       },
       {
-        "name": "Ordering",
-        "url": "ordering",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
         "name": "Limit clause",
         "url": "limit-clause",
         "verifyBuild": true,
@@ -773,22 +857,8 @@
         "isLearnByExample": true
       },
       {
-        "name": "Querying tables",
-        "url": "querying-tables",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Create tables with query",
-        "url": "creating-tables-with-query",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": true
-      },
-      {
-        "name": "Join clause",
-        "url": "join-clause",
+        "name": "Join iterable objects",
+        "url": "joining-iterable-objects",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -801,14 +871,63 @@
         "isLearnByExample": true
       },
       {
-        "name": "Stream type",
-        "url": "stream-type",
+        "name": "Query tables",
+        "url": "querying-tables",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Querying with streams",
+        "name": "Create tables with a query",
+        "url": "create-tables-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Create maps with a query",
+        "url": "create-maps-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Create streams with a query",
+        "url": "create-streams-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "On conflict clause",
+        "url": "on-conflict-clause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Iterate over XML with a query",
+        "url": "iterating-over-xml-with-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Nested query expressions",
+        "url": "nested-query-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Destructure records using a query",
+        "url": "destructure-records-using-query",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Querying streams",
         "url": "querying-with-streams",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -824,6 +943,84 @@
       {
         "name": "Query actions",
         "url": "query-actions",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "JSON",
+    "column": 2,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "JSON type",
+        "url": "json-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Access JSON elements",
+        "url": "access-json-elements",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Access optional JSON elements",
+        "url": "access-optional-json-elements",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Match statement with maps",
+        "url": "match-statement-with-maps",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert from user-defined type to JSON",
+        "url": "converting-from-user-defined-type-to-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert from table and XML to JSON",
+        "url": "converting-from-table-and-xml-to-json",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Convert from JSON to user-defined type",
+        "url": "convert-from-json-to-user-defined-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Cast JSON to user-defined type",
+        "url": "casting-json-to-user-defined-type",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Resource method typing",
+        "url": "resource-method-typing",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON numbers",
+        "url": "json-numbers",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -880,11 +1077,31 @@
         "isLearnByExample": true
       },
       {
+        "name": "XML iteration",
+        "url": "xml-iteration",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML access",
+        "url": "xml-access",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML mutation",
+        "url": "xml-mutation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "XML subtyping",
         "url": "xml-subtyping",
         "verifyBuild": true,
         "verifyOutput": true,
-        "disablePlayground": true,
         "isLearnByExample": true
       },
       {
@@ -948,7 +1165,7 @@
         "url": "consuming-services",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disableVerificationReason": "Failing intermittently due to github rate limiting",
+        "disableVerificationReason": "Failing intermittently due to GitHub rate limiting",
         "isLearnByExample": true
       },
       {
@@ -1012,6 +1229,130 @@
         "url": "configurable-variables",
         "verifyBuild": true,
         "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configure via TOML files",
+        "url": "configuring-via-toml",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Configure via CLI arguments",
+        "url": "configuring-via-cli",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes varying output",
+        "disablePlayground": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Error handling",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Error handling",
+        "url": "error-handling",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Check expression",
+        "url": "check-expression",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error subtyping",
+        "url": "error-subtyping",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Panics",
+        "url": "panics",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Type intersection for error types",
+        "url": "error-type-intersection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error detail",
+        "url": "error-detail",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Error cause",
+        "url": "error-cause",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Ignore return values and errors",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Ignore return values and errors",
+        "url": "ignoring-return-values-and-errors",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      }
+    ]
+  },
+  {
+    "title": "Mutability and identity",
+    "column": 3,
+    "category": "Language concepts",
+    "samples": [
+      {
+        "name": "Identity",
+        "url": "identity",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Const and final ",
+        "url": "const-and-final",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Enumerations",
+        "url": "enumerations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Immutability",
+        "url": "immutability",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
         "isLearnByExample": true
       }
     ]
@@ -1212,14 +1553,14 @@
         "isLearnByExample": true
       },
       {
-        "name": "Readonly Objects and Classes",
+        "name": "Readonly objects and classes",
         "url": "readonly-objects-and-classes",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
       },
       {
-        "name": "Combining Isolated Functions and Lock",
+        "name": "Combining isolated functions and lock",
         "url": "combining-isolated-functions-and-lock",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -1327,7 +1668,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Data driven tests",
+        "name": "Data-driven tests",
         "url": "testerina-data-driven-tests",
         "verifyBuild": false,
         "verifyOutput": false,
@@ -1383,7 +1724,6 @@
         "url": "http-basic-rest-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1391,7 +1731,6 @@
         "url": "http-service-and-resource-paths",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1399,7 +1738,6 @@
         "url": "http-service-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1407,7 +1745,6 @@
         "url": "http-service-payload-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1415,7 +1752,6 @@
         "url": "http-path-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1423,7 +1759,6 @@
         "url": "http-query-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1431,7 +1766,6 @@
         "url": "http-header-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1439,7 +1773,6 @@
         "url": "http-send-response",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1447,7 +1780,6 @@
         "url": "http-send-different-status-codes",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1455,7 +1787,13 @@
         "url": "http-send-different-status-codes-with-payload",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "http-default-error-handling",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1463,7 +1801,6 @@
         "url": "http-service-cache-response",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -1478,6 +1815,7 @@
         "url": "http-client-send-request-receive-response",
         "verifyBuild": false,
         "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1485,6 +1823,7 @@
         "url": "http-client-data-binding",
         "verifyBuild": true,
         "verifyOutput": false,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1492,7 +1831,7 @@
         "url": "http-client-payload-constraint-validation",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1500,7 +1839,7 @@
         "url": "http-client-path-parameter",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1508,7 +1847,7 @@
         "url": "http-client-query-parameter",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1516,7 +1855,7 @@
         "url": "http-client-header-parameter",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1524,7 +1863,7 @@
         "url": "http-caching-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1594,7 +1933,7 @@
         "url": "http-client-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1602,7 +1941,7 @@
         "url": "http-client-mutual-ssl",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1610,7 +1949,7 @@
         "url": "http-client-basic-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1618,15 +1957,15 @@
         "url": "http-client-bearer-token-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "http-client-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1634,7 +1973,7 @@
         "url": "http-client-oauth2-client-credentials-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1642,7 +1981,7 @@
         "url": "http-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1650,7 +1989,7 @@
         "url": "http-client-oauth2-refresh-token-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1658,7 +1997,7 @@
         "url": "http-client-oauth2-jwt-bearer-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1673,7 +2012,7 @@
         "url": "http-timeout",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1681,7 +2020,7 @@
         "url": "http-retry",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1689,7 +2028,7 @@
         "url": "http-circuit-breaker",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1697,7 +2036,7 @@
         "url": "http-load-balancer",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1705,7 +2044,7 @@
         "url": "http-failover",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1720,7 +2059,20 @@
         "url": "http-default-resource",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Request/Response object",
+        "url": "http-request-response",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Caller object",
+        "url": "http-caller",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1728,7 +2080,6 @@
         "url": "http-service-redirects",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1736,7 +2087,6 @@
         "url": "http-cors",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1744,7 +2094,6 @@
         "url": "http-100-continue",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1752,7 +2101,6 @@
         "url": "http-matrix-param",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1760,7 +2108,6 @@
         "url": "http-restrict-by-media-type",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1768,7 +2115,7 @@
         "url": "http-service-file-upload",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1776,7 +2123,6 @@
         "url": "http-compression",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1784,7 +2130,7 @@
         "url": "http-trace-logs",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1792,7 +2138,7 @@
         "url": "http-access-logs",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1800,7 +2146,6 @@
         "url": "http-cookies-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1808,7 +2153,13 @@
         "url": "http-service-chunking",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Sending headers",
+        "url": "http-send-header",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": false
       },
       {
@@ -1816,7 +2167,7 @@
         "url": "http-response-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1824,7 +2175,7 @@
         "url": "http-passthrough",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1832,7 +2183,7 @@
         "url": "http-2-to-1-1-downgrade-service",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1840,7 +2191,7 @@
         "url": "http-2-0-server-push",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1855,7 +2206,7 @@
         "url": "http-client-redirects",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1863,7 +2214,7 @@
         "url": "http-client-file-upload",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1871,7 +2222,7 @@
         "url": "http-cookies-client",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1879,7 +2230,7 @@
         "url": "http-client-chunking",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1887,7 +2238,7 @@
         "url": "http-request-with-multiparts",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1895,7 +2246,7 @@
         "url": "http-2-to-1-1-downgrade-client",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1903,7 +2254,7 @@
         "url": "http-2-prior-knowledge-client",
         "verifyBuild": false,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       },
       {
@@ -1911,7 +2262,7 @@
         "url": "http-2-0-client-server-push",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
+        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -1926,7 +2277,6 @@
         "url": "http-request-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1934,7 +2284,6 @@
         "url": "http-response-interceptor",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1942,7 +2291,6 @@
         "url": "http-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       },
       {
@@ -1950,7 +2298,6 @@
         "url": "http-interceptor-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
-        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -2033,8 +2380,16 @@
         "isLearnByExample": false
       },
       {
-        "name": "Union Types",
+        "name": "Union types",
         "url": "graphql-service-union-types",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "graphql-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2065,7 +2420,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Context",
+        "name": "Context object",
         "url": "graphql-context",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2073,8 +2428,32 @@
         "isLearnByExample": false
       },
       {
-        "name": "Interceptors",
-        "url": "graphql-interceptors",
+        "name": "Field object",
+        "url": "graphql-service-field-object",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Service interceptors",
+        "url": "graphql-service-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field interceptors",
+        "url": "graphql-field-interceptors",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Interceptor configurations",
+        "url": "graphql-interceptor-configurations",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,
@@ -2215,7 +2594,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "graphql-client-security-self-signed-jwt-authentication",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2249,6 +2628,15 @@
       {
         "name": "Payload constraint validation",
         "url": "websocket-service-payload-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Service cannot be stopped",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "websocket-service-error-handling",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Service cannot be stopped",
@@ -2373,7 +2761,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "websocket-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2389,7 +2777,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "OAuth2 Password grant type",
+        "name": "OAuth2 password grant type",
         "url": "websocket-client-oauth2-password-grant-type",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2699,7 +3087,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Self signed JWT authentication",
+        "name": "Self-signed JWT authentication",
         "url": "grpc-client-self-signed-jwt-auth",
         "verifyBuild": true,
         "verifyOutput": false,
@@ -2866,6 +3254,15 @@
       {
         "name": "Constraint validation",
         "url": "kafka-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Error handling",
+        "url": "kafka-service-error-handling",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3289,22 +3686,13 @@
     ]
   },
   {
-    "title": "FTP Service",
+    "title": "Email service security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-service-read",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Read/Write file",
-        "url": "ftp-service-read-write",
+        "name": "SSL/TLS",
+        "url": "email-service-ssl-tls",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3314,13 +3702,29 @@
     ]
   },
   {
-    "title": "FTP Client",
+    "title": "Email client security",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "ftp-client-read",
+        "name": "SSL/TLS",
+        "url": "email-client-ssl-tls",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "FTP Service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "ftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3328,8 +3732,33 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "ftp-client-write",
+        "name": "Send file",
+        "url": "ftp-service-send-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "FTP client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Receive file",
+        "url": "ftp-client-receive-file",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Send file",
+        "url": "ftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3344,8 +3773,8 @@
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-service-read",
+        "name": "Receive file",
+        "url": "sftp-service-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3353,8 +3782,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Read/Write file",
-        "url": "sftp-service-read-write",
+        "name": "Send file",
+        "url": "sftp-service-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3364,13 +3793,13 @@
     ]
   },
   {
-    "title": "SFTP Client",
+    "title": "SFTP client",
     "column": 3,
     "category": "Network libraries",
     "samples": [
       {
-        "name": "Read file",
-        "url": "sftp-client-read",
+        "name": "Receive file",
+        "url": "sftp-client-receive-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3378,8 +3807,8 @@
         "isLearnByExample": false
       },
       {
-        "name": "Write file",
-        "url": "sftp-client-write",
+        "name": "Send file",
+        "url": "sftp-client-send-file",
         "verifyBuild": true,
         "verifyOutput": false,
         "disableVerificationReason": "Needs prerequisite condition",
@@ -3389,7 +3818,7 @@
     ]
   },
   {
-    "title": "Database Access",
+    "title": "Database access",
     "column": 3,
     "category": "Network libraries",
     "samples": [
@@ -3454,21 +3883,6 @@
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "SerDes",
-    "column": 3,
-    "category": "Network libraries",
-    "samples": [
-      {
-        "name": "Serialization/Deserialization",
-        "url": "serdes-simple",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "disablePlayground": false,
         "isLearnByExample": false
       }
     ]
@@ -3645,6 +4059,29 @@
     ]
   },
   {
+    "title": "EDI",
+    "column": 1,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "EDI to record conversion",
+        "url": "edi-to-record",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      },
+      {
+        "name": "Record to EDI conversion",
+        "url": "record-to-edi",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes generated code",
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "File",
     "column": 2,
     "category": "Common libraries",
@@ -3727,7 +4164,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "Manage sheduled jobs",
+        "name": "Manage scheduled jobs",
         "url": "manage-scheduled-jobs",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -3813,7 +4250,7 @@
         "isLearnByExample": false
       },
       {
-        "name": "JSON to XML conversion ",
+        "name": "JSON to XML conversion",
         "url": "xml-from-json-conversion",
         "verifyBuild": true,
         "verifyOutput": true,
@@ -3845,6 +4282,92 @@
         "url": "constraint-validations",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Query data",
+    "column": 0,
+    "category": "Bal persist",
+    "samples": [
+      {
+        "name": "Get all",
+        "url": "persist-get-all",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Get by key",
+        "url": "persist-get-by-key",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Select fields",
+        "url": "persist-select-fields",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Filter and sort",
+        "url": "persist-filtering",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Relation queries",
+        "url": "persist-relation-queries",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Write data",
+    "column": 1,
+    "category": "Bal persist",
+    "samples": [
+      {
+        "name": "Create/Create many",
+        "url": "persist-create",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Update",
+        "url": "persist-update",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Delete",
+        "url": "persist-delete",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs code generation",
+        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]

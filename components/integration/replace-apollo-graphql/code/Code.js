@@ -402,6 +402,12 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{subscription.frontmatter.description}</ReactMarkdown>
                                 </div>
+                                <div className={styles.dVersion}>
+                                    <a href={subscription.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                        View code on GitHub
+                                    </a>
+                                </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
 

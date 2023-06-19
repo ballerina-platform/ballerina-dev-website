@@ -4,21 +4,23 @@ title: "Ballerina"
 
 ```ballerina
 import ballerina/graphql;
-import xlibb/pubsub;
+import ballerina/uuid;
 
 service on new graphql:Listener(9090) {
-    private final pubsub:PubSub pubsub = new;
     resource function get greeting() returns string {
         return "Welcome";
     }
 
-    remote function publishMessage(string message) returns string|error {
-        check self.pubsub.publish("messages", message);
-        return message;
+    remote function publishMessage(NewPost newPost) returns string|error {
+        check publishPost(postData);
+        return new (postData);
     }
 
-    resource function subscribe messages() returns stream<string, error?>|error {
-        return self.pubsub.subscribe("messages");
+    resource function subscribe messages() returns stream<Post, error?>|error {
+        string id = uuid:createType1AsString();
+        PostStreamGenerator postStreamGenerator = check new (id);
+        stream<Post, error?> postStream = new (postStreamGenerator);
+        return postStream;
     }
 }
 ```

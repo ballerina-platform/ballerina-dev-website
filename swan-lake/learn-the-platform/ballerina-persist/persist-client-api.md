@@ -196,7 +196,7 @@ type WorkspaceWithEmployee record {|
 |};
 ```
 
-This same as writing the following SQL query to retrieve data from MySQL database,
+This is the same as writing the following SQL query to retrieve data from a relational database,
 ```sql
 SELECT * 
 FROM workspace w
@@ -231,7 +231,7 @@ type WorkspaceWithRelations record {|
 |};
 ```
 
-This is the same as writing the following SQL query to retrieve data from a MySQL database.
+This is the same as writing the following SQL query to retrieve data from a relational database.
 ```sql
 SELECT w.workspaceType, e.firstName, e.lastName, b.name, b.address
 FROM workspace w

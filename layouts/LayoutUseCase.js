@@ -30,7 +30,7 @@ export default function Layout({ children }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+
         {/* Google Tag Manager */}
         <script
           // eslint-disable-next-line react/no-danger
@@ -66,4 +66,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
 
     </>
   );
-}
+

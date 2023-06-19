@@ -628,7 +628,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* anything */}
-            <Row className="pageContentRow integration code odd">
+            {/* <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -685,7 +685,7 @@ export default function UseCases(props) {
                         </Row>
                     </Container>
                 </Col>
-            </Row>
+            </Row> */}
         </>
     );
 }

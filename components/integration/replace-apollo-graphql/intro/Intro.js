@@ -34,17 +34,18 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                    Ballerina excels in system integration for GraphQL services with
-                                    built-in connectors for databases, APIs, and protocols, enabling
-                                    seamless communication and efficient data exchange via GraphQL
-                                    API.
+                                    GraphQL's flexibility, efficient data fetching, reduced network
+                                    traffic, versioning capabilities, backend aggregation, and
+                                    improved developer experience make it a powerful choice for
+                                    implementing the Backend for Frontend architecture, providing
+                                    enhanced performance and simplified data management for frontend
+                                    applications.
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Unleash seamless integration with Ballerina GraphQL: <br />
-                                    Empower your APIs, systems, and databases to harmoniously
-                                    communicate and exchange data, effortlessly transforming your
-                                    integration journey.
+                                    Ballerina is an excellent choice for GraphQL due to its
+                                    GraphQL-friendly abstractions. Choose Ballerina as your go-to
+                                    language for building robust and scalable GraphQL APIs.
                                 </p>
 
                                 <p className={styles.dVersion}>

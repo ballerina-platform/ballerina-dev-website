@@ -3,7 +3,7 @@ title: 'Better security'
 description: 'Ballerina provides robust security features such as encryption, authentication, and authorization, which are essential for businesses dealing with sensitive data.'
 ---
 ```
-listener graphql:Listener securedEP = new (9090,
+listener graphql:Listener graphqlListener = new (9090,
     secureSocket = {
         key: {
             certFile: "../resource/path/to/public.crt",
@@ -28,11 +28,25 @@ listener graphql:Listener securedEP = new (9090,
             },
             scopes: ["admin"]
         }
-    ]
+    ],
+    // Validate the query depth
+    maxQueryDepth: 5
 }
-service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
+service /graphql on graphqlListener {
+    resource function get users() returns User[] {
+        // ...
+    }
+    remote function createPost(graphql:Context context, NewPost newPost) returns Post|error {
+        // ...
     }
 }
+
+public type NewPost readonly & record {|
+    // Validate user inputs
+    @constraint:String {
+        maxLength: 25,
+        minLength: 5
+    }
+    string title;
+|};
 ```

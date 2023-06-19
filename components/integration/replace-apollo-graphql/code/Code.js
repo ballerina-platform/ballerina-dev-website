@@ -48,12 +48,16 @@ export default function UseCases(props) {
     const cleanApollo = samples['clean-and-simple-code-apollo'];
     const cleanBallerina = samples['clean-and-simple-code-ballerina'];
 
-    // Ballerina is code-first
-    const codeFirst = samples['code-first'];
-    const codeFirstGraphQL = samples['code-first-graphql'];
-    const codeFirstBallerina = samples['code-first-ballerina'];
+    // Simplifying GraphQL API Development
+    const simplifying = samples['simplifying-graphql-api-development'];
+    const simplifyingGraphql = samples['simplifying-graphql-api-development-graphql'];
+    const simplifyingBallerina = samples['simplifying-graphql-api-development-ballerina'];
 
+    // Subscription support
     const subscription = samples['subscription-support'];
+    const subscriptionApollo = samples['subscription-support-apollo'];
+    const subscriptionBallerina = samples['subscription-support-ballerina'];
+
     const designer = samples['designer-tool'];
     const cli = samples['cli-tool'];
     const security = samples['better-security'];
@@ -75,7 +79,12 @@ export default function UseCases(props) {
             containerId: "code-container-2",
             leftId: "left-panel-2",
             rightId: "right-panel-2",
-        }
+        },
+        "draggable-circle-3": {
+            containerId: "code-container-3",
+            leftId: "left-panel-3",
+            rightId: "right-panel-3",
+        },
     };
 
     React.useEffect(() => {
@@ -295,7 +304,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* code-first */}
+            {/* simplifying graphql api development */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
@@ -314,22 +323,22 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {codeFirst.frontmatter.title}
+                                    {simplifying.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{codeFirst.frontmatter.description}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{simplifying.frontmatter.description}</ReactMarkdown>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
 
                                 <div id="code-container-2" className={`${styles["code-container"]} d-none d-lg-block`}>
                                     <div id="left-panel-2" className={`${styles["left-panel"]}`}>
-                                        <p className={`${styles["title-new"]}`}>{codeFirstBallerina.frontmatter.title}</p>
-                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: codeFirstBallerina.code }} />
+                                        <p className={`${styles["title-new"]}`}>{simplifyingBallerina.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: simplifyingBallerina.code }} />
                                     </div>
                                     <div id="right-panel-2" className={`${styles["right-panel"]}`}>
                                         <div id="drag-2" className={`${styles["drag"]}`}>
@@ -339,22 +348,22 @@ export default function UseCases(props) {
                                                 <path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path>
                                             </svg>
                                         </div>
-                                        <p className={`${styles["title-old"]}`}>{codeFirstGraphQL.frontmatter.title}</p>
-                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: codeFirstGraphQL.code }} />
+                                        <p className={`${styles["title-old"]}`}>{simplifyingGraphql.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: simplifyingGraphql.code }} />
                                     </div>
                                 </div>
 
                                 {/* mobile view */}
                                 <div id="code-tab-2" className={`${styles["code-tab"]} d-block d-lg-none`}>
                                     <Tabs defaultActiveKey="ballerina-code" id="codeTab2" className="mb-3 codeTabs">
-                                        <Tab eventKey="ballerina-code" title={codeFirstBallerina.frontmatter.title}>
+                                        <Tab eventKey="ballerina-code" title={simplifyingBallerina.frontmatter.title}>
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: codeFirstBallerina.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: simplifyingBallerina.code }} />
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="graphql-code" title={codeFirstGraphQL.frontmatter.title}>
+                                        <Tab eventKey="graphql-code" title={simplifyingGraphql.frontmatter.title}>
                                             <div className={styles.codeSnippet}>
-                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: codeFirstGraphQL.code }} />
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: simplifyingGraphql.code }} />
                                             </div>
                                         </Tab>
                                     </Tabs>
@@ -392,33 +401,43 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{subscription.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (subscription.frontmatter.url && subscription.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={subscription.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
                                 </div>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (subscription.code && subscription.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: subscription.code }} />
+                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
+
+                                <div id="code-container-3" className={`${styles["code-container"]} d-none d-lg-block`}>
+                                    <div id="left-panel-3" className={`${styles["left-panel"]}`}>
+                                        <p className={`${styles["title-new"]}`}>{subscriptionApollo.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: subscriptionApollo.code }} />
+                                    </div>
+                                    <div id="right-panel-3" className={`${styles["right-panel"]}`}>
+                                        <div id="drag-3" className={`${styles["drag"]}`}>
+                                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${styles["button-wrap"]} absolute`}>
+                                                <circle cx="23" cy="23" r="23" fill="#20b6b0" className='draggable' id="draggable-circle-3"></circle>
+                                                <path d="M10.4375 22.5625C10.4375 22.2988 10.5254 22.0645 10.7012 21.8887L16.3262 16.2637C16.6777 15.8828 17.293 15.8828 17.6445 16.2637C18.0254 16.6152 18.0254 17.2305 17.6445 17.582L12.6934 22.5625L17.6445 27.5137C18.0254 27.8652 18.0254 28.4805 17.6445 28.832C17.293 29.2129 16.6777 29.2129 16.3262 28.832L10.7012 23.207C10.5254 23.0312 10.4375 22.7969 10.4375 22.5625Z" fill="white"></path>
+                                                <path d="M35.5625 22.5625C35.5625 22.2988 35.4746 22.0645 35.2988 21.8887L29.6738 16.2637C29.3223 15.8828 28.707 15.8828 28.3555 16.2637C27.9746 16.6152 27.9746 17.2305 28.3555 17.582L33.3066 22.5625L28.3555 27.5137C27.9746 27.8652 27.9746 28.4805 28.3555 28.832C28.707 29.2129 29.3223 29.2129 29.6738 28.832L35.2988 23.207C35.4746 23.0312 35.5625 22.7969 35.5625 22.5625Z" fill="white"></path>
+                                            </svg>
                                         </div>
-                                        : null
-                                }
-                                {
-                                    (subscription.frontmatter.image && subscription.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${subscription.frontmatter.image}`} alt={subscription.frontmatter.title} />
-                                        : null
-                                }
+                                        <p className={`${styles["title-old"]}`}>{subscriptionBallerina.frontmatter.title}</p>
+                                        <div className={`${styles["code-panel"]}`} dangerouslySetInnerHTML={{ __html: subscriptionBallerina.code }} />
+                                    </div>
+                                </div>
+
+                                {/* mobile view */}
+                                <div id="code-tab-2" className={`${styles["code-tab"]} d-block d-lg-none`}>
+                                    <Tabs defaultActiveKey="apollo-code" id="codeTab3" className="mb-3 codeTabs">
+                                        <Tab eventKey="apollo-code" title={subscriptionApollo.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: subscriptionApollo.code }} />
+                                            </div>
+                                        </Tab>
+                                        <Tab eventKey="ballerina-code" title={subscriptionBallerina.frontmatter.title}>
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: subscriptionBallerina.code }} />
+                                            </div>
+                                        </Tab>
+                                    </Tabs>
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -514,7 +533,7 @@ export default function UseCases(props) {
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
-                                <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} className={styles.doNotFill} width='60%'  />
+                                <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} className={styles.doNotFill} width='60%' />
                             </Col>
                         </Row>
                     </Container>
@@ -620,7 +639,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (workflow.frontmatter.image && workflow.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title}  className={styles.doNotFill} width='60%'/>
+                                        <img src={`${prefix}/${workflow.frontmatter.image}`} alt={workflow.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
                             </Col>

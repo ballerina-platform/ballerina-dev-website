@@ -3,17 +3,26 @@ title: "Ballerina"
 description: null
 ---
 
-```
+```ballerina
 import ballerina/graphql;
-import ballerina/io;
+
+type Book record {|
+    string title;
+    string author;
+|};
+
+Book[] books = [
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling"
+    },
+    {
+        title: "The Lord of the Rings",
+        author: "J. R. R. Tolkien"
+    }
+];
 
 service on new graphql:Listener(9090) {
-    function init() {
-        io:println(“💃 Server started at http://localhost:9090”);
-    }
-
-    resource function get hello() returns string {
-        return "Hello, World!";
-    }
+    resource function get books() returns Book[] => books;
 }
 ```

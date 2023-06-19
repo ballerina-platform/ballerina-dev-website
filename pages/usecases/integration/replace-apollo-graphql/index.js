@@ -113,7 +113,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Unleashing the power of GraphQL APIs: Apollo vs. Ballerina</title>
+        <title>Apollo vs. Ballerina</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />

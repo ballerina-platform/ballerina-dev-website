@@ -61,6 +61,7 @@ export default function Intro() {
 
                         <p className={styles.dVersion}>
                         <br/>
+                        <p>If you do not have Ballerina already installed,</p>
                         <a href={`https://ballerina.io/downloads/`}
                             className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />

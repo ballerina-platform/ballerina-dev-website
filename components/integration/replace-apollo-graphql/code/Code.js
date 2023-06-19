@@ -477,17 +477,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{designer.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (designer.frontmatter.url && designer.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={designer.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Learn more about the Ballerina GraphQL designer
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                    <div className={styles.dVersion}>
+                                        <a href={designer.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                            Learn more about the Ballerina GraphQL designer
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -537,6 +532,12 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{cli.frontmatter.description}</ReactMarkdown>
                                 </div>
+                                <div className={styles.dVersion}>
+                                    <a href={cli.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                        Learn more about the Ballerina GraphQL CLI tool
+                                    </a>
+                                </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
                                 <img src={`${prefix}/${cli.frontmatter.image}`} alt={cli.frontmatter.title} className={styles.doNotFill} width='60%' />
@@ -573,21 +574,18 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{security.frontmatter.description}</ReactMarkdown>
+                                    <div className={styles.dVersion}>
+                                        <a href={security.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (security.code && security.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: security.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (security.frontmatter.image && security.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${security.frontmatter.image}`} alt={security.frontmatter.title} />
-                                        : null
-                                }
+                                <div className={styles.codeSnippet}>
+                                    <div className="highlight" dangerouslySetInnerHTML={{ __html: security.code }} />
+                                </div>
                             </Col>
                         </Row>
                     </Container>
@@ -621,18 +619,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{workflow.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (workflow.frontmatter.url && workflow.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={workflow.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
+                                    <div className={styles.dVersion}>
+                                        <a href={workflow.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box} ${styles.ipaas}`}>
@@ -729,12 +721,6 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{anything.frontmatter.description}</ReactMarkdown>
-                                    <div className={styles.dVersion}>
-                                        <a href={anything.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
-                                        </a>
-                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>

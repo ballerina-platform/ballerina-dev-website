@@ -39,6 +39,7 @@ export default function UseCases(props) {
     const restBal = samples['rest-bal'];
     const restSpringBoot = samples['rest-springboot'];
     const relationalData = samples['relational-data'];
+    const openAPITool = samples['openapi-tool'];
     const configurability = samples['configurability'];
     const configurabilityBal = samples['configurability-bal'];
     const configurabilityToml = samples['configurability-toml'];
@@ -332,8 +333,61 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* Configurability */}
+            {/* OpenAPI; from spec to code and backwards */}
             <Row className="pageContentRow integration code odd">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='openapi-tool' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'openapi-tool')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {openAPITool.frontmatter.title}
+                                </h2>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{openAPITool.frontmatter.description}</ReactMarkdown>
+                                    {
+                                        (openAPITool.frontmatter.url && openAPITool.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={openAPITool.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    Learn more about Ballerina OpenAPI tool
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                {
+                                    (openAPITool.code && openAPITool.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: openAPITool.code }} />
+                                        </div>
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
+
+            {/* Configurability */}
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -393,7 +447,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* Consuming REST endpoints as resources */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -436,7 +490,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* diagram */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -484,7 +538,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* Built for cloud */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -529,7 +583,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* Go native with GraalVM */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -574,7 +628,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* anything */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

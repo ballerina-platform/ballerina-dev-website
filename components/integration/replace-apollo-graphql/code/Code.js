@@ -729,33 +729,18 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{anything.frontmatter.description}</ReactMarkdown>
-
-                                    {
-                                        (anything.frontmatter.url && anything.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={anything.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
-
+                                    <div className={styles.dVersion}>
+                                        <a href={anything.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            View code on GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
-                                {
-                                    (anything.code && anything.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: anything.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (anything.frontmatter.image && anything.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${anything.frontmatter.image}`} alt={anything.frontmatter.title} />
-                                        : null
-                                }
+                                <div className={styles.codeSnippet}>
+                                    <div className="highlight" dangerouslySetInnerHTML={{ __html: anything.code }} />
+                                </div>
                             </Col>
                         </Row>
                     </Container>

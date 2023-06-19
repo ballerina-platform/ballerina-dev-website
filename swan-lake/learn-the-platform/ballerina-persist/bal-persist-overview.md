@@ -10,9 +10,9 @@ redirect_from:
 - /learn/ballerina-persist/persist-overview/
 ---
 This feature has three main components: the data model, CLI tool, and type-safe client API. 
-* The data model definition is used to define the data model. 
-* The CLI tool is used to generate the client API for the data model. 
-* The type-safe client API is used to access the data in the data store.
+* Data model: The data model definition is used to define the data model. 
+* CLI tool: The CLI tool is used to generate the client API for the data model. 
+* Client API: The type-safe client API is used to access the data in the data store.
 
 The following diagram illustrates how the `bal persist` feature works.
 

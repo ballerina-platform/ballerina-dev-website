@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.03 12.03">
+  <defs>
+    <style>
+      .b {
+        fill: #52c3c2;
+      }
+
+      .c {
+        fill: none;
+        stroke: #52c3c2;
+        stroke-miterlimit: 10;
+        stroke-width: .65px;
+      }
+    </style>
+  </defs>
+  <line class="c" x1="2.98" y1="6.01" x2="8.35" y2="6.01"/>
+  <polygon class="b" points="6.25 8.62 5.81 8.15 8.11 6.01 5.81 3.88 6.25 3.41 9.04 6.01 6.25 8.62"/>
+  <circle class="c" cx="6.01" cy="6.01" r="5.58"/>
+</svg>

@@ -13,13 +13,16 @@ service /graphql on new graphql:Listener(9090) {
     }
 
     resource function get repositories() returns Repository[]|error {
-        stream<Repository, github:Error?> repositories = check self.githubClient->getRepositories();
+        stream<Repository, github:Error?> repositories = 
+            check self.githubClient->getRepositories();
         return from github:Repository repository in repositories
             select repository;
     }
 
-    remote function createIssue(CreateIssueInput createIssueInput, string owner, string repositoryName) returns github:Issue|error {
-        Issue issue = check self.githubClient->createIssue(createIssueInput, owner, repositoryName);
+    remote function createIssue(CreateIssueInput createIssueInput, 
+            string owner, string repositoryName) returns github:Issue|error {
+        Issue issue = 
+            check self.githubClient->createIssue(createIssueInput, owner, repositoryName);
         check produceIssue(issue, repositoryName);
         return issue;
     }

@@ -125,14 +125,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://pre-prod.ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content="https://pre-prod.ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
         <meta
           property="og:description"
@@ -152,7 +152,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://pre-prod.ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://pre-prod.ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
       </Head>
       <Layout>

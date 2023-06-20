@@ -225,7 +225,7 @@ a {
 
 .mdContent li pre {
   line-height: 18.375px !important;
-} 
+}
 
 .mdContent a:hover,
 .policyContent a:hover {
@@ -309,8 +309,8 @@ pre.default {
 }
 
 .mdContent img {
-  width: -moz-available;         
-  width: -webkit-fill-available;  
+  width: -moz-available;
+  width: -webkit-fill-available;
   width: fill-available;
 }
 
@@ -1265,9 +1265,9 @@ table.cTopControlsContainer tbody {
   padding-top: 50px;
 } */
 
-.integration.code.odd {
-  background-color: #eeeeee;
-}
+/* .integration.code.odd {
+  background-color: #f7f7f7;
+} */
 
 /* .integration.code pre {
   padding-top: 0 !important;
@@ -1277,6 +1277,11 @@ table.cTopControlsContainer tbody {
 .integration.code pre.shiki, #code-container {
   background-color: #ffffff !important;
   border: 1px solid #eeeeee;
+}
+
+.integration.code table pre.shiki {
+  background-color: #ffffff !important;
+  border: none !important;
 }
 
 .pageContentRow.integration {
@@ -1291,6 +1296,15 @@ table.cTopControlsContainer tbody {
 .usecases .wrap-page-content {
   padding-bottom: 0 !important;
   font-size: 18px;
+}
+
+.vscode {
+ background-color: #494949;
+ color: #ffffff;
+}
+
+.vscode h1 {
+  color: #ffffff;
 }
 
 /* ----------- draggable code blocks -------------- */
@@ -1331,7 +1345,7 @@ table.cTopControlsContainer tbody {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 200px;
+  width: 50%;
   /* color: #fff;
   background: black; */
   background-color: #ffffff;

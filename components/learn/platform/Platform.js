@@ -287,7 +287,7 @@ export default function Platform(props) {
             <div className={styles.content}>
               <p className={styles.title}>
                 <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
-                  Bal persist overview
+                  Overview
                 </a>
               </p>
               <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>

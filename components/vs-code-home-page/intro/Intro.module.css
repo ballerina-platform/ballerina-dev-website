@@ -1,23 +1,26 @@
-/* .introText {
-    display: flex;
-    align-items: center;
-} */
+.introText {
+    text-align: center;
+}
 
 .introText1 {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 200;
     font-style: italic;
 }
 
 .introText2 {
     font-size: 24px;
     /* font-weight: 300; */
-    font-weight: 400;
+    font-weight: 200;
     color: #20b6b0;
 }
 
 .introText3, .download {
     display: block;
+    
+}
+.dGetBallerinaText{
+    font-size: 14px;
 }
 
 /* a.cDownload {
@@ -33,16 +36,20 @@
 } */
 
 a.cVideoBtn {
-    display: flex;
+    display: inline-block;
     transition: none !important;
     font-weight: 400;
     color: #20b6b0 !important;
     text-decoration: none;
     margin-bottom: 40px;
+    font-size: 14px;
+    
 }
 
 a.cVideoBtn span {
-    margin-right: 10px !important;
+    margin-right: 5px !important;
+    margin-bottom: -3px !important;
+
 }
 
 a.cDownload {
@@ -50,13 +57,14 @@ a.cDownload {
     transition: none !important;
     font-size: 18px;
     font-weight: 400;
-    background-color: #57595d;
+    background-color: #20b6b0;
+    border: 1px solid #20b6b0;
     color: #ffffff !important;
     padding: 10px 20px 10px 60px;
     text-decoration: none;
     min-height: 60px;
     line-height: 35px;
-    background-image: url('/images/main-right-arrow-home-hover.svg');
+    background-image: url("/images/main-right-arrow-home.svg");
     background-repeat: no-repeat;
     background-position: left 20px top 13px;
     width: 245px;
@@ -96,11 +104,12 @@ a.cDownloadOutlined:hover {
 
 
 a.cDownload:hover {
-    background-image: url("/images/main-right-arrow-home.svg");
-    background-color: #20b6b0;
+    background-image: url("/images/main-right-arrow-home-hover.svg");
     background-repeat: no-repeat;
     background-position: left 20px top 13px;
     background-size: 40px 30px;
+    background-color: #eee;
+    color: #494949 !important;
 }
 
 .introImg div {
@@ -123,12 +132,11 @@ a.cDownload:hover {
     font-size: 20px;
     font-weight: 300;
     line-height: 1.5;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+    padding: 0 45px;
 }
 
-.introText3 {
-    margin-bottom: 20px;
-}
+
 
 /* .introImg {
     display: flex;
@@ -175,4 +183,10 @@ a.cDownload:hover {
 
 .linkWrap {
     text-align: right;
+}
+
+.title {
+    text-align: center;
+    font-weight: 400;
+    padding-top: 50px;
 }

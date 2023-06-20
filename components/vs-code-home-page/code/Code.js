@@ -29,9 +29,9 @@ import styles from './Code.module.css';
 export default function UseCases(props) {
 
     const samples = props.samples;
-    const architectureView = samples['design-the-project'];
+    const architectureView = samples['design-the-application'];
     const serviceDesigning = samples['design-the-services'];
-    const codeEditing = samples['develop-the-code'];
+    const codeEditing = samples['write-the-code'];
     const notebooks = samples['notebooks'];
     const runAndDebug = samples['run-and-debug'];
     const tryIt = samples['try-the-services'];
@@ -88,7 +88,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='design-the-project' className='section'>
+                                <h2 id='design-the-application' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -96,7 +96,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'design-the-project')}
+                                        onClick={(e) => props.getLink(e.target, 'design-the-application')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -111,11 +111,11 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{architectureView.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                          {/* <span>Sample 1: Summarize text using OpenAI</span>  */}
-                                        <a href='https://wso2.com/ballerina/vscode/docs/design-the-project/' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://wso2.com/ballerina/vscode/docs/design-the-application/' className={styles.cDownload} target="_blank" rel="noreferrer">
                                              {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />  */}
                                             
                                             <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Design your project" />
-                                            Design the project
+                                            Design the application
                                         </a>
                                         <a href='https://github.com/ballerina-guides/gcp-microservices-demo' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -196,7 +196,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="HTTP API designer" />
-                                            HTTP API designer
+                                            HTTP API Designer
                                         </a>
                                         <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/http-api-designer' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -207,7 +207,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/graphql-service-designer/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL service designer" />
-                                        GraphQL service designer
+                                        GraphQL API Designer
                                         </a>
                                         <a href='https://github.com/ballerina-platform/module-ballerina-graphql/tree/master/examples/starwars' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -221,12 +221,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="serviceDesigning1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="serviceDesigning1" title="HTTP API designer">
+                                        <Tab eventKey="serviceDesigning1" title="HTTP API Designer">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/http-designer.png`}/>
                                             </div>
                                         </Tab>
-                                        <Tab eventKey="serviceDesigning2" title="GraphQL service designer">
+                                        <Tab eventKey="serviceDesigning2" title="GraphQL API Designer">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/graphql-designer.png`}/>
                                             </div>
@@ -245,7 +245,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='develop-the-code' className='section'>
+                                <h2 id='write-the-code' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -253,7 +253,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'develop-the-code')}
+                                        onClick={(e) => props.getLink(e.target, 'write-the-code')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -267,9 +267,9 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{codeEditing.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/develop-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href="https://wso2.com/ballerina/vscode/docs/write-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Implement the code" />
-                                            Develop the code
+                                            Write the code
                                         </a>
                                         <a href='https://github.com/ballerina-guides/integration-samples/blob/main/consuming_services/consuming_services.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -378,7 +378,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* Try It */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -450,7 +450,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* Write Tests */}
+            {/* Test the Code */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
@@ -482,10 +482,6 @@ export default function UseCases(props) {
                                         <a href="https://wso2.com/ballerina/vscode/docs/test-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Test the code" />
                                             Test the code
-                                        </a>
-                                        <a href='https://github.com/ballerina-guides/integration-samples/tree/main/vs-code-home-page-samples/write-tests/' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                            View code on GitHub
                                         </a>
                                     </div>
 
@@ -631,7 +627,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* Choreo Integration */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -663,6 +659,15 @@ export default function UseCases(props) {
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Deploy the code" />
                                             Deploy with WSO2 Choreo
                                         </a>
+                                        <a href="https://wso2.com/choreo/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Deploy the code" />
+                                            Get started with WSO2 Choreo
+                                        </a>
+                                        <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.choreo" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Deploy the code" />
+                                            Get the Choreo extension
+                                        </a>
+                                        
                                     </div>
 
                                 </div>

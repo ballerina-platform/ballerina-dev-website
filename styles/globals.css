@@ -1298,6 +1298,15 @@ table.cTopControlsContainer tbody {
   font-size: 18px;
 }
 
+.vscode {
+ background-color: #494949;
+ color: #ffffff;
+}
+
+.vscode h1 {
+  color: #ffffff;
+}
+
 /* ----------- draggable code blocks -------------- */
 #code-container {
   width: 100%;

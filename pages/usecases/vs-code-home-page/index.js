@@ -157,16 +157,16 @@ export default function Integrations({ samples }) {
 
       <Layout>
         <Col sm={12}>
-          <Row className="pageHeader pageContentRow integration">
+          <Row className="pageHeader pageContentRow integration vscode">
             <Col xs={12}>
               <Container>
-                <h1>Code and visualize Ballerina</h1>
+                {/* <h1>Code and visualize Ballerina</h1> */}
               </Container>
 
             </Col>
           </Row>
 
-          <Row className="pageContentRow integration">
+          <Row className="pageContentRow integration vscode">
             <Intro />
           </Row>
           {/* <Row className="pageContentRow integration usecases">

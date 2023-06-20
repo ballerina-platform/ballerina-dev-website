@@ -30,7 +30,7 @@ This guide describes how to interact with the data store and perform operations 
 
 ![Data Service Architecture](/learn/images/bal-persist-scenario-diagram.png "Data Service Architecture")
 
->**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL, MSSQL, and Google Sheets, as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL and MSSQL databases, and Google Sheets.
+>**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL, and Google Sheets, as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL database, and Google Sheets.
 
 ## Create a Ballerina package
 
@@ -136,14 +136,14 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 |         File          |                                         Description                                         |
 |:---------------------:|:-------------------------------------------------------------------------------------------:|
-| `persist_client.bal`  |               This is the client that is used to persist and retrieve data.               |
+| `persist_client.bal`  |                This is the client that is used to persist and retrieve data.                |
 |  `persist_types.bal`  |       This contains the record types that will be used to persist and retrieve data.        |
 
 
 
 > Note: All of the above auto-generated BAL files should not be modified.
 
-> Note: If you use other data stores like MySQL, MSSQL, or Google Sheets, additional files will get created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need to do any configuration or setting-up before running the application.
+> Note: If you use other data stores like MySQL, or Google Sheets, additional files will get created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need to do any configuration or setting-up before running the application.
 
 ## Query your database with client API
 

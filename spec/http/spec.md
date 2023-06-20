@@ -161,7 +161,6 @@ public type ListenerConfiguration record {|
     decimal timeout = DEFAULT_LISTENER_TIMEOUT;
     string? server = ();
     RequestLimitConfigs requestLimits = {};
-    Interceptor|Interceptor[] interceptors?;
     int http2InitialWindowSize = 65535;
 |};
 ```
@@ -2294,13 +2293,11 @@ service http:InterceptableService / on new http:Listener(9099) {
 }
 ```
 
-##### 8.1.4.2 Listener level
-Interceptors could get engaged at Listener level as well. Interceptors engaged at listener level should have resource 
-function only with default path i.e. these interceptors will get executed for all the services registered on this 
-listener.
-```ballerina
-listener http:Listener echoListener = new http:Listener(9090, config = {interceptors: [requestInterceptor, responseInterceptor]});
-```
+When handling `http:ServiceNotFound` scenarios,
+1. If there is a service in `/`, the error will be handled by the interceptors in that service.
+2. If there is only a single service, the error will be handled by the interceptors in that service.
+3. If there are multiple services including a service in `/`, the error will be handled by the interceptors in `/`.
+   Otherwise it will be handled by the `http:DefaultErrorInterceptor`.
 
 ##### 8.1.4.3 Execution order of interceptors
 

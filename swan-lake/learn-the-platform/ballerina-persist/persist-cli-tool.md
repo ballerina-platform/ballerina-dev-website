@@ -1,11 +1,11 @@
 ---
 layout: ballerina-persist-documentation-left-nav-pages-swanlake
-title: Persist CLI tool
-description: The sections give details on the Persist CLI tool.
+title: CLI tool
+description: The sections give details on the CLI tool.
 keywords: ballerina, programming language, ballerina packages, persist, persist cli tool, persist init, persist generate, persist migrate
 permalink: /learn/ballerina-persist/persist-cli/
 active: persist_cli
-intro: One of the main components of the bal persist feature is the CLI tool. This tool is used to initialize the project with the bal persist command and generate the required files.
+intro: The CLI tool is used to initialize the project with the bal persist command and generate the required files.
 redirect_from:
 - /learn/ballerina-persist/persist-cli/
 ---
@@ -18,10 +18,10 @@ The Ballerina project should be initialized with `bal persist` before generating
 $ bal persist init --datastore="mysql" --module="store"
 ```
 
-| Command parameter  |                                                     Description                                                      | Mandatory  |       Default value        |
-|:------------------:|:--------------------------------------------------------------------------------------------------------------------:|:----------:|:--------------------------:|
-|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, and `googlesheets` |     No     |          `inmemory`          |
-|       `module`       |                    Used to indicate the persist-enabled module in which the files are generated.                     |     No     |       `<root_module>`        |
+|  Command parameter   |                                                          Description                                                           | Mandatory  |        Default value         |
+|:--------------------:|:------------------------------------------------------------------------------------------------------------------------------:|:----------:|:----------------------------:|
+|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql` and `googlesheets`  |     No     |          `inmemory`          |
+|       `module`       |                         Used to indicate the persist-enabled module in which the files are generated.                          |     No     |       `<root_module>`        |
 
 
 The command initializes the `bal persist` feature in the project. This command will do the following,

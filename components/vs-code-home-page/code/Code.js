@@ -660,11 +660,11 @@ export default function UseCases(props) {
                                             Deploy with WSO2 Choreo
                                         </a>
                                         <a href="https://wso2.com/choreo/" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Deploy the code" />
+                                        <Image src={`${prefix}/images/main-right-arrow-home-grey.svg`} width={20} height={20} alt="Deploy the code" />
                                             Get started with WSO2 Choreo
                                         </a>
                                         <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.choreo" className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Deploy the code" />
+                                        <Image src={`${prefix}/images/main-right-arrow-home-grey.svg`} width={20} height={20} alt="Deploy the code" />
                                             Get the Choreo extension
                                         </a>
                                         

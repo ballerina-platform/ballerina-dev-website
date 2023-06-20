@@ -1265,9 +1265,9 @@ table.cTopControlsContainer tbody {
   padding-top: 50px;
 } */
 
-.integration.code.odd {
-  background-color: #eeeeee;
-}
+/* .integration.code.odd {
+  background-color: #f7f7f7;
+} */
 
 /* .integration.code pre {
   padding-top: 0 !important;
@@ -1296,6 +1296,15 @@ table.cTopControlsContainer tbody {
 .usecases .wrap-page-content {
   padding-bottom: 0 !important;
   font-size: 18px;
+}
+
+.vscode {
+ background-color: #494949;
+ color: #ffffff;
+}
+
+.vscode h1 {
+  color: #ffffff;
 }
 
 /* ----------- draggable code blocks -------------- */

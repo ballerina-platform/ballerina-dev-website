@@ -50,52 +50,32 @@ export default function Intro() {
             <Row className='pageContentRow integration'>
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
-
-                        {/* <p className={styles.introText2}>
-                        "Code and Visualize Ballerina"
-                        </p> */}
-                        <br/>
                         <h1 className={styles.title}>Code and visualize<br/>Ballerina</h1>
                         
                         <br/>
                         <p className={styles.introText3}>
                         The VS Code extension provides robust language support with visualization and design tools for Ballerina.
                         </p>
+                        <br/>  
                         
                         <p className={styles.dVersion}>
-                        <br/>
-
+                    
                         <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
                             className={styles.cDownload} target="_blank" rel="noreferrer">
                             Install the extension
                         </a>
-                        {/* <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
-                            className={styles.cDownloadOutlined} target="_blank" rel="noreferrer">
-                            See it in action
-                        </a> */}
+                    
                         <p className={styles.dGetBallerinaText}>If you are new to Ballerina,</p>
+                        <p>
                         <a href={`https://ballerina.io/downloads/`}
                             className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
                             Get Ballerina
+                            
                         </a>
+                        </p>
                     </p>
                     </div>
-                    <br/>     
-
-                    <div>
-                    <p >
-                           
-            
-                            {/* <a href="https://www.youtube.com/watch?v=NYrKeElltg8&t=6s" className={styles.cVideoBtn} target="_blank" rel="noreferrer">
-                            <Image src={`${prefix}/images/you-tube-play.svg`} width={20} height={20} alt="Try GraphQL services" />
-                                        See it in action
-                                        </a> */}
-                         
-                        </p>
-                    </div>
-          
-                 
 
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
@@ -103,25 +83,6 @@ export default function Intro() {
                     <img src={`${prefix}/images/vs-code-intro.png`} alt="AI" />
                 </Col>
             </Row>
-
-            {/* <Row className='pageContentRow integration'>
-                <Col xs={12}>
-                    <div className={styles.introText3}>
-                        <p>Just write the code using the only language with integration friendly abstractions</p>
-                    </div>
-
-                    <div className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </div>
-
-                </Col>
-            </Row> */}
-
-
-
             </Container>
             </Col>
         </>

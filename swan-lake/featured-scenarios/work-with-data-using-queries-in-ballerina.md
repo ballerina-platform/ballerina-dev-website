@@ -437,7 +437,7 @@ The aggregated variables can only be used in the following ways:
 1. An aggregated variable can be a rest argument to a langlib function call. It is not necessary to use the module prefix in the langlib function call. For example, you can write `sum(deaths)` instead of `int:sum(deaths)`. Essential aggregating functions such as `min`, `max`, `avg`, `sum`, `first`, `last`, and `count` are available.
 2. An aggregated variable can be an element in a single element list constructor.
 
-In the following example the variable `deaths` becomes an aggregated variable. The `sum` function is used to calculate the total number of deaths.
+In the following example, the `deaths` variable becomes an aggregated variable. The `sum` function is used to calculate the total number of deaths.
 
 To define a function to get total number of deaths, add the code below to the `main.bal` file.
 

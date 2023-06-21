@@ -742,7 +742,7 @@ The stream type is treated as an object and provides a flexible way to work with
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
 
-To create a stream, you can use various techniques, such as generating values through computations, reading from external sources, or transforming existing collections. One way to generate a stream is by applying the `toStream()` function on an array. Here's an example:
+One way to generate a stream is by transforming an existing collection. This can be done by applying the `toStream()` function on an array. Here's an example:
 
 ```
 int[] numArray = [2, 4, 6, 8, 10];

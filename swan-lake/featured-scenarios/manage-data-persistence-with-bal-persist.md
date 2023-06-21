@@ -28,9 +28,9 @@ To complete this tutorial, you need:
 
 This guide describes how to interact with the data store and perform operations against it using `bal persist`. This will cover the basic use case of creating, reading, updating, and deleting records on a data store in an organization. It also elaborates on how you can create an HTTP RESTful API using Ballerina that can be used to perform basic CRUD operations on the data store.
 
-![Data Service Architecture](/learn/images/data-service-architecture.png "Data Service Architecture")
+![Data Service Architecture](/learn/images/bal-persist-scenario-diagram.png "Data Service Architecture")
 
->**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL and Google Sheets as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL databases, and Google Sheets.
+>**Info:** This guide uses an in-memory data store for simplicity. However, the described methodology can also be applied to work with MySQL, MSSQL, and Google Sheets, as the `bal persist` currently offers support for these three data stores: in-memory tables, MySQL and MSSQL databases, and Google Sheets.
 
 ## Create a Ballerina package
 
@@ -136,16 +136,16 @@ The `persist generate` will parse the `persist/model.bal` definition file and ge
 
 |         File          |                                         Description                                         |
 |:---------------------:|:-------------------------------------------------------------------------------------------:|
-| `persist_client.bal`  |               This is the client that is used to persist and retrieve data.               |
+| `persist_client.bal`  |                This is the client that is used to persist and retrieve data.                |
 |  `persist_types.bal`  |       This contains the record types that will be used to persist and retrieve data.        |
 
 
 
 > Note: All of the above auto-generated BAL files should not be modified.
 
-> Note: If you use other data stores like MySQL or Google Sheets, additional files are created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need any configuration and pre setting up to run the application.
+> Note: If you use other data stores like MySQL, MSSQL, or Google Sheets, additional files will get created to handle runtime configurations and scripts to set up the database/worksheet. Since `in-memory` is used, you don’t need to do any configuration or setting-up before running the application.
 
-## Query your database with Persist Client
+## Query your database with client API
 
 First, you need to instantiate the generated client object inside the `rainier.store` module like below.
 
@@ -205,11 +205,11 @@ Running executable
 Inserted employee id: 16c6553a-373c-4b29-b1c8-c282f444248c
 ```
 
-This creates the first database record with the Persist Client. The next sections describe how to read data from the database.
+This creates the first database record with the client API. The next sections describe how to read data from the database.
 
 ### Retrieve all `Employee` records
 
-Let’s try to fetch all the records inserted into the database. The Persist Client offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
+Let’s try to fetch all the records inserted into the database. The client API offers the `get` resource method, which returns a stream of the return type. The return type can be either a complete `Employee` record or a custom record with a subset of fields.
 
 Replace the previous code and add the new `get` call instead.
 
@@ -320,7 +320,7 @@ You will get the same results as you have only one record. Let’s explore the `
 
 ### Update the `Employee` record
 
-With the Persist Client, you can easily update the record with the given ID. You only need to pass the fields that need to be updated with the new values. In this case, The job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
+With the client API, you can easily update the record with the given ID. You only need to pass the fields that need to be updated with the new values. In this case, The job title of the given employee is updated from `Software Engineer` to `Senior Software Engineer`.
 
 Replace the previous code and add the new `update` call instead.
 

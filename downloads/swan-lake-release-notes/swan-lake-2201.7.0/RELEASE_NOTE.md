@@ -198,7 +198,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 - Added a new API named `workspaceProjects` to the workspace manager to get the projects loaded in the workspace.
 
 #### OpenAPI Tool
-- Added a new `--without-data-binding` flag to the OpenAPI to Ballerina service generation command for generating low-level service skeletons without any data-binding logic. This flag can be used for implementing pass-through services.
+- Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding the `--without-data-binding` flag to the OpenAPI to Ballerina service generation command. This flag can be used for implementing pass-through services.
 
 ### Deprecations
 

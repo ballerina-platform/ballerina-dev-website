@@ -431,7 +431,7 @@ Found erroneous entries for countries: ["Sri Lanka","India"]
 
 ### Create the `getTotalNumberOfDeaths` function
 
-In order to aggregate the input records of the query we can use `collect` clause. If we use `collect` clause, all the variables in the query expression become aggregated variables.
+You can use the `collect` clause to aggregate the input records of the query. If you use the collect clause, all the variables in the query expression become aggregated variables.
 
 The aggregated variables can only be used in the following ways:
 1. An aggregated variable can be a rest argument to a langlib function call. It is not necessary to use module prefix in langlib function call. For example, we can write `sum(deaths)` instead of `int:sum(deaths)`. Essential aggregating functions such as `min`, `max`, `avg`, `sum`, `first`, `last`, and `count` are available.

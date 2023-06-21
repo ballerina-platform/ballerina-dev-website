@@ -587,7 +587,7 @@ In this code,
 
 ### Update the main function for grouping
 
-To call the `groupDeathsByContinent` function within the main function and find the number of total deaths per `continent`, add the code below to the main function of the `main.bal` file.
+Add the code below to the main function of the `main.bal` file to call the `groupDeathsByContinent` function within the main function and find the number of total deaths per `continent`.
 
 ### The complete code with the grouping function
 

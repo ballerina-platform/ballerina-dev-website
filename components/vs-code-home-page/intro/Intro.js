@@ -61,10 +61,10 @@ export default function Intro() {
                         <p className={styles.introText3}>
                         The VS Code extension provides robust language support with visualization and design tools for Ballerina.
                         </p>
+                        <br/>  
                         
                         <p className={styles.dVersion}>
-                        <br/>
-
+                    
                         <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
                             className={styles.cDownload} target="_blank" rel="noreferrer">
                             Install the extension
@@ -73,12 +73,16 @@ export default function Intro() {
                             className={styles.cDownloadOutlined} target="_blank" rel="noreferrer">
                             See it in action
                         </a> */}
+                    
                         <p className={styles.dGetBallerinaText}>If you are new to Ballerina,</p>
+                        <p>
                         <a href={`https://ballerina.io/downloads/`}
                             className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
                             Get Ballerina
+                            
                         </a>
+                        </p>
                     </p>
                     </div>
                     <br/>     

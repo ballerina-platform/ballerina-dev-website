@@ -65,7 +65,7 @@ export function IoJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=40cfb1e0c71cab6302020136ad4a62a5&file=io_json.bal",
+                "https://play.ballerina.io/?gist=661b2b651b4985a86d87b8c5c6c318f5&file=io_json.bal",
                 "_blank"
               );
             }}

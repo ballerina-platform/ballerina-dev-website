@@ -583,7 +583,7 @@ In this code,
 - Since the `grouping-key` is `continent`, the input table is grouped by the `continent` in the `groupDeathsByContinent` function.
 - After creating groups based on the `continent`, the `deaths` and `cases` become sequence values for each `continent`.
 - You can call the `sum` function to get the total number of deaths per `continent`.
-- You can represent the `cases` are a list using `[cases]`.
+- You can represent the `cases` as a list using `[cases]`.
 
 ### Update the main function for grouping
 

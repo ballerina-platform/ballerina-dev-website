@@ -581,7 +581,7 @@ public function groupDeathsByContinent(table<CovidEntry> dataTable) returns reco
 In this code,
 - The `group by` clause is used to group the input and the `grouping-key` comes after the `group by` clause. In this example, the `continent` is the `grouping-key`. This is unique for each group and is used to group the input.
 - Since the `grouping-key` is `continent`, the input table is grouped by the `continent` in the `groupDeathsByContinent` function.
-- After creating groups based on the `continent`, `deaths` and `cases` become sequence values for each `continent`.
+- After creating groups based on the `continent`, the `deaths` and `cases` become sequence values for each `continent`.
 - You can call the `sum` function to get the total number of deaths per `continent`.
 - You can represent the `cases` are a list using `[cases]`.
 

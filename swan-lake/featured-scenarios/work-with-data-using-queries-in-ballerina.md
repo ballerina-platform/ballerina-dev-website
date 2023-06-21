@@ -454,7 +454,7 @@ In this code,
 
 ### Update the main function for aggregating
 
-To call the `getTotalNumberOfDeaths` function within the main function to find the total number of deaths, add the code below to the main function of the `main.bal` file.
+Add the code below to the main function of the `main.bal` file to call the `getTotalNumberOfDeaths` function within the main function for finding the total number of deaths.
 
 ### The complete code with the aggregating function
 

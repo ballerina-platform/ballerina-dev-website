@@ -439,7 +439,7 @@ The aggregated variables can only be used in the following ways:
 
 In the following example, the `deaths` variable becomes an aggregated variable. The `sum` function is used to calculate the total number of deaths.
 
-To define a function to get total number of deaths, add the code below to the `main.bal` file.
+Add the code below to the `main.bal` file to define a function to get the total number of deaths.
 
 ```ballerina
 public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns decimal {

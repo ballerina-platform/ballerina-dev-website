@@ -197,6 +197,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 - Added a new API named `workspaceProjects` to the workspace manager to get the projects loaded in the workspace.
 
+#### OpenAPI Tool
+- Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding the `--without-data-binding` flag to the OpenAPI to Ballerina service generation command. This new generation mode can be useful for generating pass-through and proxy services based on a provided OpenAPI contract.
+
 ### Deprecations
 
 ### Improvements
@@ -214,6 +217,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 #### OpenAPI tool
 - Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations. Also, the users will have the option to  replace the auto generated headers with their own license, using the `--license <license-file-path>` command option.
+- Added support for query parameters with object types in the OpenAPI to Ballerina service generation.
 
 ### Bug fixes
 

@@ -226,7 +226,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">persist</td>
-<td class="cDescription">Manage data persistence. For more information, see <a href="/learn/asyncapi-tool">Ballerina Persist support</a>.</td>
+<td class="cDescription">Manage data persistence. For more information, see <a href="/learn/persist-cli">Bal Persist support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

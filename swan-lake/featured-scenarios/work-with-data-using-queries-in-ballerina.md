@@ -568,7 +568,7 @@ The aggregated variables can only be used in the following ways:
 1. An aggregated variable can be a rest argument to a langlib function call. It is not necessary to use module prefix in langlib function call. For example, we can write `sum(deaths)` instead of `int:sum(deaths)`. Essential aggregating functions such as `min`, `max`, `avg`, `sum`, `first`, `last`, and `count` are available.
 2. An aggregated variable can be an element in a single element list constructor.
 
-To define a function that groups the data by continent and retrieves the total number of deaths per continent, add the following code to the `main.bal` file.
+Add the following code to the `main.bal` file to define a function that groups the data by continent and retrieves the total number of deaths per continent.
 
 ```ballerina
 public function groupDeathsByContinent(table<CovidEntry> dataTable) returns record {|string continent; decimal[] cases; decimal deaths;|}[] {

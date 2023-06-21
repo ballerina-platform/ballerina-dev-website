@@ -29,7 +29,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Introduce DataLoader for Ballerina GraphQL](https://github.com/ballerina-platform/ballerina-standard-library/issues/4569)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-06-14|N/A|
+|[Proposal: Introduce DataLoader for Ballerina GraphQL](https://github.com/ballerina-platform/ballerina-standard-library/issues/4569)|[MohamedSabthar](https://github.com/MohamedSabthar)|4|2023-06-14|N/A|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-standard-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|
 |[Proposal: GraphQL Federation Gateway in Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/4298)|[Ishad-M-I-M](https://github.com/Ishad-M-I-M)|0|2023-04-03|N/A|
 |[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|

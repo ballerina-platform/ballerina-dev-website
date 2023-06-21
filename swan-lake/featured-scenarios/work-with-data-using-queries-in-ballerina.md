@@ -427,7 +427,7 @@ Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892
 Found erroneous entries for countries: ["Sri Lanka","India"]
 ```
 
-## Aggregating
+## Aggregation
 
 ### Create the `getTotalNumberOfDeaths` function
 
@@ -452,7 +452,7 @@ In this code,
 - The `collect` clause aggregates the input values into one group.
 - Since `deaths` becomes a sequence value, you can call the `sum` function in order to get the total number of deaths.
 
-### Update the main function for aggregating
+### Update the main function for aggregation
 
 Add the code below to the main function of the `main.bal` file to call the `getTotalNumberOfDeaths` function within the main function for finding the total number of deaths.
 
@@ -535,7 +535,7 @@ public function main() {
 }
 ```
 
-### Run the package for aggregating
+### Run the package for aggregation
 
 In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
 

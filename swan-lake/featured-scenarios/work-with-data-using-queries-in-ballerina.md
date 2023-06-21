@@ -449,7 +449,7 @@ public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns deci
 ```
 
 In this code,
-- The `collect` clause aggregate input values into one group.
+- The `collect` clause aggregates the input values into one group.
 - Since `deaths` becomes a sequence value, you can call the `sum` function in order to get the total number of deaths.
 
 ### Update the main function for aggregating

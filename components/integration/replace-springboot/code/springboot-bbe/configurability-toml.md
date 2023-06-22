@@ -2,7 +2,7 @@
 title: "Config.toml changes"
 ---
 ```
-# `Config.toml` is used to pass the configurations to the application
+# `Config.toml` is used to pass application configurations.
 [databaseConfig]
 database = "social_media_database"
 user = "social_media_user"

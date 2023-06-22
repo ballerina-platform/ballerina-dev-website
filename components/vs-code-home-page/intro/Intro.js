@@ -19,9 +19,12 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import Carousel from 'react-bootstrap/Carousel';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
+
+
 
 export default function Intro() {
 
@@ -103,8 +106,23 @@ export default function Intro() {
 
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
-                    {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                    <img src={`${prefix}/images/vs-code-intro.png`} alt="AI" />
+                
+
+                <Carousel controls={false}>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-1.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-3.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-4.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-5.png`} alt="AI" />
+      </Carousel.Item>
+    </Carousel>
+
                 </Col>
             </Row>
 

@@ -43,7 +43,7 @@ a.cVideoBtn {
     text-decoration: none;
     margin-bottom: 40px;
     font-size: 14px;
-    margin-right: 60px;
+    margin-right: 0px;
     
 }
 
@@ -71,7 +71,6 @@ a.cDownload {
     width: 245px;
     border-radius: 4px;
     background-size: 40px 30px;
-    margin-right:20px;
     margin-bottom:40px;
 }
 
@@ -113,13 +112,17 @@ a.cDownload:hover {
     color: #494949 !important;
 }
 
+.SliderImg{margin-right: 0px !important;text-align: center;}
+
+.carousel-control-next, .carousel-control-prev{display: none !important;}
+.carousel-control-next-icon, .carousel-control-prev-icon{display: none !important;}
 .introImg div {
     /* display: flex;
     align-items: center;
     justify-content: center; */
-    background-color: #20b6b0;
-    padding: 40px;
-    border-radius: 4px;
+    background-color: transparent;
+    padding-bottom: 10px;
+    border-radius: 0px;
     color: #ffffff;
 }
 

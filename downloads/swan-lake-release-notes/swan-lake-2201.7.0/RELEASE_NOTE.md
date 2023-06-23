@@ -81,6 +81,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ’foo.bar’. with variable 'intVar'. Please provide the module name as '[foo.bar]'
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ‘foo’.bar. with variable 'stringVar'. Please provide the module name as ‘[foo.bar]’
     ```
+
 ## Platform updates
 
 ### Official support for generating GraalVM native executables

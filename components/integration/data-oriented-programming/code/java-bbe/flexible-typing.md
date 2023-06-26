@@ -1,5 +1,5 @@
 ---
-title: 'Enrich data with flexible typing'
-description: Ballerina’s type system allows you to add record fields on the fly, using the bracket notation, like in a dynamically-typed language. This is a very useful feature when you need to enrich data with calculated fields. <br>In Java, you need to create a new structure to represent the enriched data.
+title: 'Model data as safe and flexible'
+description: In data-oriented programming, the ability to model data in a secure and flexible manner is crucial. Ballerina's open and closed records offer a powerful mechanism to achieve this. <br><br>Closed records provide a secure and rigid structure, ensuring data integrity and type safety. With closed records, access to fields is strictly defined, preventing unintended modifications. This approach is ideal for well-defined and stable data structures. <br><br>Open records, on the other hand, offer flexibility by allowing dynamic addition of fields. This enables handling evolving data structures where new fields can be introduced as needed.Open records provide adaptability and extensibility, accommodating changing data requirements.
 image: 
 ---

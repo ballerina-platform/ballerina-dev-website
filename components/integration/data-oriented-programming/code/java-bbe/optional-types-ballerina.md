@@ -5,29 +5,33 @@ description: null
 ```
 import ballerina/io;
 
-type Person record {
+type Person record {|
+    int id;
     string name;
+    //optional typed field
     int? age;
-    string? email;
-};
+    //optional field
+    string email?;
+|};
 
 public function main() returns error? {
     json jsonInput = {
+        id: 1,
         "name": "John Doe",
-        "email": "abc@mail.com",
-        "age": null,
-        id: 1
+        "age": null
     };
+
     Person person = check jsonInput.fromJsonWithType();
 
-    //optional value access
-    int? ageInFiveYears = person.age + 5;
-    io:println(ageInFiveYears);
+    io:println(person.age.toBalString()); //output: ()
 
-    var {name: _, email, name: _} = person;
-    boolean emailValid = email !is null 
-        ? email.matches(re `^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$`) 
-        : false;
-    io:println(emailValid);
+    //optional type access
+    int age = person.age ?: -1;
+    io:println(age); //output: -1
+
+    //optional field access
+    io:println(person.hasKey("email")); //output: false
+    string email = person.email ?: "Email is not provided";
+    io:println(email); //output: Email is not provided
 }
 ```

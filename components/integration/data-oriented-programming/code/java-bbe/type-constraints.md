@@ -1,5 +1,4 @@
 ---
-title: 'Type constraints'
-description: Ballerina supports type constraints, allowing developers to specify additional constraints or validations on data types. Type constraints help enforce rules and requirements on data, promoting data integrity and separation. Developers can define constraints such as range checks, pattern validations, or custom validations.
-image:
+title: 'Data validation at the boundary'
+description: Boundary data validation is crucial for data-oriented programming. It ensures only valid and reliable data enters the system, improving data integrity, downstream processing, and security. <br><br>Ballerina, with its built-in language features handle data validation automatically. In Java, libraries like Hibernate Validator and Apache Commons Validator provide tools for enforcing validation rules.
 ---

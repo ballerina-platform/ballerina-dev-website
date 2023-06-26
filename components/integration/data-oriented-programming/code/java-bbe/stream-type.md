@@ -1,5 +1,5 @@
 ---
-title: 'Stream type'
-description: Ballerina and Java provide powerful constructs for working with sequences of data through their stream types. Streams enhance data-oriented programming by enabling efficient and expressive manipulation of data in a streaming fashion resulting in cleaner, more maintainable code that is easier to understand and debug. This enhances the overall data-oriented programming experience.
+title: 'Model data streams'
+description: In data-oriented programming, efficient handling and processing of large amounts of data is vital. Ballerina's built-in stream type enables developers to process data on-demand, apply transformations, filters, and aggregations, and facilitates seamless integration with other data processing operations.
 image:
 ---

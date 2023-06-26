@@ -4,15 +4,22 @@ description: null
 ---
 
 ```
-import ballerina/uuid;
+import ballerina/io;
 
-type Customer record {|
-    string id = uuid:createType1AsString();
+enum UserType {
+    ADMIN,
+    GUEST,
+    MEMBER
+};
+
+type User record {|
+    int id;
     string name;
+    UserType userType = GUEST;
 |};
 
 public function main() {
-    Customer customer = {name: "John Doe"};
-    io:println(string `Customer '${customer.name}' with id '${customer.id}' created successfully`);
+    User user = {id: 1, name: "John Doe"};
+    io:println(string `User '${user.name}' with id '${user.id}' as '${user.userType}' created successfully`);
 }
 ```

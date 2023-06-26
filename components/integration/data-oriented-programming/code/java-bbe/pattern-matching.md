@@ -1,4 +1,4 @@
 ---
 title: 'Pattern matching'
-description: Pattern matching is a powerful feature in Ballerina that greatly enhances data-oriented programming by enabling concise and expressive handling of complex data structures. With pattern matching, developers can easily extract relevant data from intricate data patterns and perform targeted operations based on the structure and content of the data. 
+description: Pattern matching empowers developers to effortlessly extract pertinent data from intricate patterns and execute precise operations based on the data's structure and content. Both Ballerina and Java offer the ability to handle complex data structures concisely and expressively using pattern matching techniques. 
 ---

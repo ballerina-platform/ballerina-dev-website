@@ -1,5 +1,5 @@
 ---
-title: 'Union types'
-description: Union types enable developers to define data structures that can hold values of different types. This flexibility allows for the representation of diverse data formats within a unified structure. As a result, the separation of code from data becomes more pronounced, facilitating easier manipulation and processing of heterogeneous data. <br>By embracing union types, data-oriented programming achieves a higher level of abstraction, enabling seamless integration and efficient handling of diverse data formats.
+title: 'Model choices as discriminate unions'
+description: Modeling choices play a crucial role in achieving code-data separation in data-oriented programming, leading to modular, maintainable, and extensible code that can handle diverse data variants in a unified and type-safe manner. <br><br>Both Java and Ballerina provide mechanisms to model choices as discriminate unions. Java uses interfaces or abstract classes along with class hierarchies and method overrides to represent the variants and their behaviors. Ballerina, on the other hand, offers built-in support for discriminate unions with a concise and language-integrated syntax.
 image:
 ---

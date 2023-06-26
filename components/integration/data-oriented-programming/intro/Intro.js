@@ -34,21 +34,11 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                    Why is Ballerina the way to write 
-                                    Data oriented programs?  <br />
+                                Data-oriented programming is crucial in modern software development due to the complex and data-intensive nature of applications and the widespread adoption of microservices architecture, emphasizing the need for efficient data handling.<br />
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Ballerina is a powerful programming language specifically 
-                                    designed for writing data-oriented programs. <br />
-                                    <br />
-                                    With its unique features and design principles,<br /> 
-                                    Ballerina offers a seamless experience for developing 
-                                    data-intensive applications and data integration scenarios. 
-                
-                                    <br />
-                                    <br />
-                                    Switch to Ballerina to enhance data-oriented programming.
+                                With its robust support, seamless integration with data structures, and powerful features make Ballerina the top choice for efficient data handling and processing.
                                 </p>
 
                                 <p className={styles.dVersion}>

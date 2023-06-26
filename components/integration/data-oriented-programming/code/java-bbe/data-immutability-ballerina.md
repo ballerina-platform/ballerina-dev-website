@@ -25,5 +25,6 @@ public function main() {
         }
     };
     // student.grade = 11; // Error: Cannot assign a new value to readonly field
+    // student.marks["Maths"] = 80; // Error: Cannot assign a new value to readonly field
 }
 ```

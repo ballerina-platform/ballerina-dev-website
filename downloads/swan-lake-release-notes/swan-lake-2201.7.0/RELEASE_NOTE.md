@@ -82,6 +82,12 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ‘foo’.bar. with variable 'stringVar'. Please provide the module name as ‘[foo.bar]’
     ```
 
+## Platform updates
+
+### Official support for generating GraalVM native executables
+
+Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see the [Build a GraalVM executable](/learn/build-a-graalvm-executable/).
+
 ## Language updates
 
 ### New features

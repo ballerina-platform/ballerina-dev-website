@@ -158,3 +158,12 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     background-color: #20b6b0 !important;
     color: #ffffff !important;
 }
+
+.sub {
+    padding-left: 30px;
+}
+
+.sub span {
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+}

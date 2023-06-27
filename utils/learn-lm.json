@@ -15,12 +15,12 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
-                    "dirName": "[Experimental] Build a native executable",
+                    "dirName": "Build a GraalVM executable",
                     "level": 2,
                     "position": 10,
                     "isDir": false,
-                    "url": "/learn/build-a-native-executable",
-                    "id": "build-a-native-executable"
+                    "url": "/learn/build-a-graalvm-executable",
+                    "id": "build-a-graalvm-executable"
                 },
                 {
                     "dirName": "Ballerina specifications",

@@ -1,7 +1,7 @@
 ---
 title: "Build a GraalVM executable"
 permalink: /learn/build-graalvm-executable/
-description: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing. the native executable in a container.\.
+description: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing. 
 keywords: ballerina, programming language, ballerina packages, language-guide, graalvm
 active: build-a-graalvm-executable
 intro: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing.

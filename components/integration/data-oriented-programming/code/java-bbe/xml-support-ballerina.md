@@ -21,13 +21,6 @@ xml soapPayload = xml `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.o
 
 xmlns "http://schemas.xmlsoap.org/soap/envelope/" as ns;
 
-type Person record {|
-    string name;
-    int age;
-    string city;
-    string country;
-|};
-
 public function main() returns error? {
     // Extract the SOAP payload
     xml xmlPayload = soapPayload/**/<ns:Body>;

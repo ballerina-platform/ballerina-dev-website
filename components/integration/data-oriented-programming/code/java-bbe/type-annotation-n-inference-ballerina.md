@@ -23,8 +23,6 @@ public function main() {
     };
 
     io:println(employee is Employee);
-    io:println("Name: ", employee.name);
-    io:println("Age: ", employee.age.toString());
-    io:println("Skills: ", employee.skills.toString());
+    io:println(string `${employee.name} is ${employee.age} years old and knows ${employee.skills.toString()}.`);
 }
 ```

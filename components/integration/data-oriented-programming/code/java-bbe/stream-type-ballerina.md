@@ -5,7 +5,7 @@ description: null
 ```
 import ballerina/io;
 
-const string FILE_PATH = "/path/to/file.csv";
+const string FILE_PATH = "/path/to/file.txt";
 
 type SensorData record {|
     string sensorName;
@@ -22,20 +22,15 @@ public function main() returns error? {
 }
 
 function processSensorData(stream<SensorData, error?> sensorDataStrm) returns map<float>|error? {
-    map<float> avgTemperatureMap = {};
-    check from var {sensorName, temperature} in sensorDataStrm
-        let () _ = check validateTemperatureReading(sensorName, temperature) 
+    return check map from var {sensorName, temperature} in sensorDataStrm
+        // if sensor reading is faulty, stops processing the file 
+        let () _ = check validateTemperatureReading(sensorName, temperature)
         group by sensorName
-        do {
-            float avg = float:avg(temperature);
-            avgTemperatureMap[sensorName] = avg;
-        };
-        return avgTemperatureMap;
+        select [sensorName, avg(temperature)];
 }
 
 function validateTemperatureReading(string sensorName, float temperature) returns error? {
     if (temperature < 0.0) {
-        // stops processing the stream; sensor reading is faulty
         fail error(string `Invalid temperature value in sensor ${sensorName}`);
     }
 }

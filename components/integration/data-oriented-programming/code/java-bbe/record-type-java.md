@@ -9,6 +9,7 @@ enum UserType {
   GUEST, 
   MEMBER
 }
+
 record User(int id, String name, UserType userType) {
   public User(int id, String name) {
      this(id, name, UserType.GUEST);

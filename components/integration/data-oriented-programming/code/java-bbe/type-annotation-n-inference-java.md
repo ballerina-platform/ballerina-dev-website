@@ -17,9 +17,7 @@ public class ImplicitAndExplicit {
         var employee = new Employee("John Doe", 30, skills);
 
         System.out.println(employee instanceof Employee);
-        System.out.println("Name: " + employee.name());
-        System.out.println("Age: " + employee.age());
-        System.out.println("Skills: " + employee.skills());
+        System.out.printf("%s is %d years old and knows %s.%n", employee.name(), employee.age(), employee.skills());
     }
 }
 ```

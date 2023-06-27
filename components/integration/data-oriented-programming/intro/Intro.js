@@ -38,7 +38,7 @@ export default function Intro() {
                                 </p>
 
                                 <p className={styles.introText3}>
-                                With its robust support, seamless integration with data structures, and powerful features make Ballerina the top choice for efficient data handling and processing.
+                                With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing.
                                 </p>
 
                                 <p className={styles.dVersion}>

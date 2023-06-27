@@ -20,9 +20,10 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
-import Layout from "../../../../layouts/LayoutUseCase";
-import Intro from "../../../../components/integration/replace-apollo-graphql/intro/Intro";
-import Code from "../../../../components/integration/replace-apollo-graphql/code/Code";
+import Layout from "../../../layouts/LayoutUseCase";
+import Intro from "../../../components/vs-code-home-page/intro/Intro";
+import Code from "../../../components/vs-code-home-page/code/Code";
+import { prefix } from '../../../utils/prefix';
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -42,22 +43,13 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/replace-apollo-graphql/code/apollo-graphql-bbe");
+  const files = traverseFolder("components/vs-code-home-page/code/vs-code-blades");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/replace-apollo-graphql/code/apollo-graphql-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/vs-code-home-page/code/vs-code-blades/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
-    const regex = /```(\w+)([\s\S]*?)```/g;
-    let match = [];
-    let lang = 'ballerina';
-    while (match = regex.exec(content)) {
-      let code = match[2];
-      const firstLine = code.split('/n')[0];
-      const indent = firstLine.length - firstLine.trimStart().length;
-      lang = (match[1]).toLowerCase();
-    }
     samples[sampleName] = {
       frontmatter: {
         title: frontmatter.title? frontmatter.title : '',
@@ -65,8 +57,7 @@ export async function getStaticProps() {
         url: frontmatter.url ? frontmatter.url : '',
         image: frontmatter.image ? frontmatter.image : '',
       },
-      content: content,
-      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```'+lang, '').replaceAll('```', '').trim(), { lang: lang }) : ''
+      code: (content != '') ? highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) : ''
     };
   });
 
@@ -113,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina as an Apollo Alternative - The simpler solution over Apollo</title>
+        <title>Ballerina VS Code extension</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina as an Apollo Alternative - The simpler solution over Apollo" />
+        <meta property="og:title" content="Ballerina - Ballerina VS Code extension" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."
@@ -125,14 +116,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/vs-code-sm-banner.png"
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Ballerina - Ballerina VS Code extension" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/vs-code-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -144,7 +135,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Ballerina - Ballerina VS Code extension" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -152,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/vs-code-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -160,26 +151,29 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/vs-code-sm-banner.png"
         />
       </Head>
 
       <Layout>
         <Col sm={12}>
-          <Row className="pageHeader pageContentRow integration">
+          <Row className="pageHeader pageContentRow integration vscode">
             <Col xs={12}>
               <Container>
-                <h1>Seamless Integration in GraphQL APIs - The simpler solution over Apollo</h1>
+                {/* <h1>Code and visualize Ballerina</h1> */}
               </Container>
 
             </Col>
           </Row>
 
-          <Row className="pageContentRow integration">
+          <Row className="pageContentRow integration vscode">
             <Intro />
           </Row>
+          {/* <Row className="pageContentRow integration usecases">
+            <UseCases getLink={getLink} />
+          </Row> */}
           {/* <Row className="pageContentRow integration code"> */}
-          <Code samples={samples} getLink={getLink} />
+            <Code samples={samples} getLink={getLink} />
           {/* </Row> */}
         </Col>
       </Layout>

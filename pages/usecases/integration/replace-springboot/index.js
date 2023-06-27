@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -21,8 +21,8 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../../../layouts/LayoutUseCase";
-import Intro from "../../../../components/integration/replace-apollo-graphql/intro/Intro";
-import Code from "../../../../components/integration/replace-apollo-graphql/code/Code";
+import Intro from "../../../../components/integration/replace-springboot/intro/Intro";
+import Code from "../../../../components/integration/replace-springboot/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -42,12 +42,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/replace-apollo-graphql/code/apollo-graphql-bbe");
+  const files = traverseFolder("components/integration/replace-springboot/code/springboot-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/replace-apollo-graphql/code/apollo-graphql-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/integration/replace-springboot/code/springboot-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     const regex = /```(\w+)([\s\S]*?)```/g;
     let match = [];
@@ -113,11 +113,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina as an Apollo Alternative - The simpler solution over Apollo</title>
+        <title>Writing REST API: Ballerina vs Spring Boot</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina as an Apollo Alternative - The simpler solution over Apollo" />
+        <meta property="og:title" content="Writing REST API: Ballerina vs Spring Boot" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."
@@ -125,14 +125,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
         <meta
           property="og:description"
@@ -152,7 +152,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -160,16 +160,15 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/usecases/integration/springboot/springboot-banner.png"
         />
       </Head>
-
       <Layout>
         <Col sm={12}>
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Seamless Integration in GraphQL APIs - The simpler solution over Apollo</h1>
+                <h1>Writing REST API: Ballerina vs Spring Boot</h1>
               </Container>
 
             </Col>
@@ -178,9 +177,12 @@ export default function Integrations({ samples }) {
           <Row className="pageContentRow integration">
             <Intro />
           </Row>
-          {/* <Row className="pageContentRow integration code"> */}
-          <Code samples={samples} getLink={getLink} />
-          {/* </Row> */}
+          {/* <Row className="pageContentRow integration usecases">
+            <UseCases getLink={getLink} />
+          </Row> */}
+          <Row className="pageContentRow integration code">
+            <Code samples={samples} getLink={getLink} />
+          </Row>
         </Col>
       </Layout>
     </>

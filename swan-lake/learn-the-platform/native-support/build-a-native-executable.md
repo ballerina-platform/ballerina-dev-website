@@ -13,7 +13,7 @@ The key aspects below help you understand the GraalVM executable generating proc
 
 ## GraalVM
 
-Building a Ballerina native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud-native, and polyglot JDK designed to accelerate the execution of applications. There are three different distributions of GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE), and Mandrel. You can install any to use the Ballerina native functionality.
+Building a Ballerina GraalVM native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud-native, and polyglot JDK designed to accelerate the execution of applications. There are three different distributions of GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE), and Mandrel. You can install any to use the Ballerina GraalVM native functionality.
 
 - GraalVM CE is the free version of GraalVM, which is distributed under GPLv2+CE.
 - GraaLVM EE is the paid version of GraalVM, which comes with a few additional features such as options for GC, debugging, and other optimizations.
@@ -40,13 +40,13 @@ As depicted in the image, AOT compilation with GraalVM provides the following ad
 
 The only downside is that the GraalVM native image build is a highly complicated process, which may consume a lot of memory and CPU resulting in an extended build time. However, the GraalVM community is continuously working on improving its performance.
 
-## Ballerina native image
+## Ballerina GraalVM native image
 
 From Ballerina 2201.7.0 (SwanLake) onwards, Ballerina supports GraalVM AOT compilation to generate standalone executables by passing the `graalvm` flag in the build command: `bal build --graalvm`. The generated executable contains the modules in the current package, their dependencies, Ballerina runtime, and statically linked native code from the JDK.
 
 Ballerina runtime, [standard libraries](/learn/ballerina-specifications/#standard-library-specifications), and the Ballerina extended modules are GraalVM-compatible. Therefore packages developed only using these libraries are also GraalVM-compatible. Furthermore, Ballerina reports warnings when the GraalVM build is executed for a project with GraalVM-incompatible packages.
 
-## Build the native executable locally
+## Build the GraalVM native executable locally
 
 ### Set up the prerequisites
 
@@ -70,7 +70,6 @@ To complete this part of the guide, you need:
 
 > **Note:** 
 > - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311).
-> - On the ARM64 architecture of macOS, the Ballerina native image build will work with Ballerina 2201.5.0 (Swan Lake) or greater. For more information, see [this issue comment](https://github.com/ballerina-platform/ballerina-lang/issues/39003#issuecomment-1498765016).
 > - The GraalVM native-image tool support for Apple M1 (darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
@@ -309,7 +308,7 @@ Also, native testing can be scheduled as a daily check within CI(Continuous Inte
 Follow the steps below to run the tests with the native image.
 
 
-1. Follow steps 1 and 2 in [Build the native executable](#build-the-native-executable).
+1. Follow steps 1 and 2 in [Build the GraalVM executable](#build-the-graalvm-executable).
 
 2. Replace the content of the `service_test.bal` file with the following under the `tests` folder.  
    ```ballerina
@@ -323,11 +322,10 @@ Follow the steps below to run the tests with the native image.
       string|error response = testClient->get("/greeting");
       test:assertEquals(response, "Hello, World!");
    }
-
    ```
 
 3.  Run `bal test --graalvm` to run the tests using the GraalVM executable. 
-      > **Info:**  This command will build a native executable with tests similar to `bal build --native` , and the tests will be executed by running this native executable.
+      > **Info:**  This command will build a native executable with tests similar to `bal build --graalvm` , and the tests will be executed by running this native executable.
       ```
                Running Tests
                hello_world
@@ -337,9 +335,9 @@ Follow the steps below to run the tests with the native image.
                         0 skipped
       ```
 
-Now, you  tested a simple Ballerina HTTP server application for GraalVM compatibility.
+Now, you tested a simple Ballerina HTTP server application for GraalVM compatibility.
 
-> **Note:** Code coverage  and runtime debug features are not supported with native image testing. 
+> **Note:** Code coverage  and runtime debug features are not supported with GraalVM native image testing. 
 
 ## Create GraalVM-compatible library packages
 

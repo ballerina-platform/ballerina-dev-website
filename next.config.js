@@ -207,8 +207,8 @@ const nextConfig = {
         destination: `/${redirectBase}learn/references/style-guide/coding-conventions/:slug`,
       },
       {
-        source: `/${redirectBase}learn/build-a-native-executable`,
-        destination: `/${redirectBase}learn/learn-the-platform/native-support/build-a-native-executable`,
+        source: `/${redirectBase}learn/build-a-graalvm-executable`,
+        destination: `/${redirectBase}learn/learn-the-platform/native-support/build-a-graalvm-executable`,
       },
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,

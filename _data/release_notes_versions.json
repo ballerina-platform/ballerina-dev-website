@@ -1230,8 +1230,7 @@
       "rpm-installer":"ballerina-linux-installer-x64-1.2.40.rpm",
       "rpm-installer-size":"167mb",
       "other-artefacts":[  
-         "ballerina-1.2.40.zip",
-         "ballerina-1.2.40.vsix"
+         "ballerina-1.2.40.zip"
        ],
       "api-docs":"ballerina-api-docs-1.2.40.zip",
       "release-notes":"ballerina-release-notes-1.2.40.md"

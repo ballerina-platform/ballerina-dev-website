@@ -2,7 +2,7 @@
 title: "Build a GraalVM executable"
 permalink: /learn/build-a-graalvm-executable/
 description: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing the GraalVM executable in a container. 
-keywords: ballerina, programming language, ballerina packages, language-guide, graalvm, native
+keywords: ballerina, programming language, ballerina packages, language-guide, graalvm, native, executable
 active: build-a-graalvm-executable
 intro: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing the GraalVM executable in a container.
 ---
@@ -51,9 +51,9 @@ Ballerina runtime, [standard libraries](/learn/ballerina-specifications/#standar
 ### Set up the prerequisites
 
 To complete this part of the guide, you need:
-1. [Ballerina 2201.7.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.7.0 (Swan Lake)](/downloads) or greater
 2. A text editor
-   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. GraalVM installed and configured appropriately
 4. A command terminal
 
@@ -169,9 +169,9 @@ Now, you have built and tested a native executable locally for a simple Ballerin
 ### Set up the prerequisites
 
 To complete this part of the guide, you need:
-1. [Ballerina 2201.7.0 (Swan Lake)](/learn/install-ballerina/set-up-ballerina/) or greater
+1. [Ballerina 2201.7.0 (Swan Lake)](/downloads) or greater
 2. A text editor
-   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
    >**Tip:** Since the GraalVM native build consumes a significant amount of memory, it is recommended to increase the memory allocated to Docker to at least 8GB and potentially add more CPUs as well. For more details, see [How to assign more memory to Docker container](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437).
 4. A command terminal
@@ -343,7 +343,7 @@ Now, you tested a simple Ballerina HTTP server application for GraalVM compatibi
 
 Packages that solely use Ballerina standard libraries and connectors or those that use platform Java libraries provided by the distribution are inferred to be compatible with GraalVM.
 
-If the package utilizes any Java platform libraries specified in the Ballerina.toml, it falls upon the package author to ensure that it remains compatible with GraalVM even after incorporating these platform dependencies. In the event that GraalVM compatibility has not been confirmed by the user, the bal pack command will trigger a warning message.
+If the package utilizes any Java platform libraries specified in the `Ballerina.toml`, it falls upon the package author to ensure that it remains compatible with GraalVM even after incorporating these platform dependencies. In the event that GraalVM compatibility has not been confirmed by the user, the bal pack command will trigger a warning message.
 
 ```
 **********************************************************************************
@@ -369,7 +369,7 @@ graalvmCompatible = true
 
 ## Configure GraalVM native image build options
 
-GraalVM native image has build options that can be passed to the native-image builder. For a Ballerina application, these options can be configured in the Ballerina.toml file as follows.
+GraalVM native image has build options that can be passed to the native-image builder. For a Ballerina application, these options can be configured in the `Ballerina.toml` file as follows.
 ```toml
 [build-options]
 graalvmBuildOptions = "--verbose --static"

@@ -189,12 +189,12 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Native support</h3>
+            <h3>Native executable support</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
-                  [Experimental] Build a native executable
+                <a href={`${prefix}/learn/build-a-graalvm-executable`} className={styles.titleLink}>
+                  Build a GraalVM executable
                 </a>
               </p>
               <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>

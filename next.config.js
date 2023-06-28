@@ -208,7 +208,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/build-a-graalvm-executable`,
-        destination: `/${redirectBase}learn/learn-the-platform/native-support/build-a-graalvm-executable`,
+        destination: `/${redirectBase}learn/learn-the-platform/native-executable-support/build-a-graalvm-executable`,
       },
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,

@@ -71,7 +71,7 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=afe5282fbc91a6a2e6623e584421c1d3&file=strands.bal",
+                "https://play.ballerina.io/?gist=5631c8d8cdcc7489b082eeb102e2aa78&file=strands.bal",
                 "_blank"
               );
             }}

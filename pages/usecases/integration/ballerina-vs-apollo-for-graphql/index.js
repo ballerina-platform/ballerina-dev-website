@@ -21,8 +21,8 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../../../layouts/LayoutUseCase";
-import Intro from "../../../../components/integration/replace-apollo-graphql/intro/Intro";
-import Code from "../../../../components/integration/replace-apollo-graphql/code/Code";
+import Intro from "../../../../components/integration/ballerina-vs-apollo-for-graphql/intro/Intro";
+import Code from "../../../../components/integration/ballerina-vs-apollo-for-graphql/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -42,12 +42,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/replace-apollo-graphql/code/apollo-graphql-bbe");
+  const files = traverseFolder("components/integration/ballerina-vs-apollo-for-graphql/code/apollo-graphql-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/replace-apollo-graphql/code/apollo-graphql-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/integration/ballerina-vs-apollo-for-graphql/code/apollo-graphql-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     const regex = /```(\w+)([\s\S]*?)```/g;
     let match = [];

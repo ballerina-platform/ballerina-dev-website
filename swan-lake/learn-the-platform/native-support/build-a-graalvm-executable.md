@@ -1,13 +1,13 @@
 ---
 title: "Build a GraalVM executable"
-permalink: /learn/build-graalvm-executable/
-description: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing. 
-keywords: ballerina, programming language, ballerina packages, language-guide, graalvm
+permalink: /learn/build-a-graalvm-executable/
+description: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing the GraalVM executable in a container. 
+keywords: ballerina, programming language, ballerina packages, language-guide, graalvm, native
 active: build-a-graalvm-executable
-intro: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing.
+intro: This guide walks you through the GraalVM native executable support in Ballerina, starting with compiling a Ballerina application to a native executable and packing the GraalVM executable in a container.
 ---
 
-This feature was officially supported in the Swan Lake Update 7 release. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
+With the release of Swan Lake Update 7, generating GraalVM executables is officially supported in Ballerina. In case you come across any issues do report them as the Ballerina community will be aggressively addressing them.
 
 The key aspects below help you understand the GraalVM executable generating process better.
 
@@ -270,9 +270,9 @@ After the environment is set up, follow the steps below to build the native exec
 It is recommended to use the JVM for verifying the functionality of the application with sufficient tests and code coverage as running tests against the GraalVM native image could take time. Running tests against the native image is only required when you see GraalVM incompatibility warnings during `bal build --graalvm`. 
 
 ```
-***************************************************************************
-* WARNING: Some dependencies may not be GraalVM compatible.               *
-***************************************************************************
+*********************************************************************************
+* WARNING: Some dependencies may not be GraalVM compatible.                     *
+*********************************************************************************
 
 The following Ballerina dependencies in your project could pose compatibility
 issues with GraalVM. 
@@ -298,12 +298,12 @@ these packages for more information on their GraalVM compatibility status. You
 may need to adjust or find alternatives for these packages before proceeding
 with GraalVM native image generation.
 
-****************************************************************************
+*********************************************************************************
 ```
 
-Therefore, if the application depends on a package that is not verified against the GraalVM native image build, it is recommended to run the tests against the native image to ensure that there are no runtime issues by executing the `bal test --graalvm` command.
+If the application depends on a package that is not verified against the GraalVM native image build, it is recommended to run the tests against the native image by executing the `bal test --graalvm` command to ensure that there are no runtime issues.
 
-Also, native testing can be scheduled as a daily check within CI(Continuous Integration) pipelines to maintain compatibility with GraalVM.
+Also, GraalVM native testing can be scheduled as a daily check within CI(Continuous Integration) pipelines to maintain compatibility with GraalVM.
 
 Follow the steps below to run the tests with the native image.
 
@@ -325,7 +325,7 @@ Follow the steps below to run the tests with the native image.
    ```
 
 3.  Run `bal test --graalvm` to run the tests using the GraalVM executable. 
-      > **Info:**  This command will build a native executable with tests similar to `bal build --graalvm` , and the tests will be executed by running this native executable.
+      > **Info:**  This command will build a native executable with tests similar to `bal build --graalvm`, and the tests will be executed by running this native executable.
       ```
                Running Tests
                hello_world
@@ -346,9 +346,9 @@ Packages that solely use Ballerina standard libraries and connectors or those th
 If the package utilizes any Java platform libraries specified in the Ballerina.toml, it falls upon the package author to ensure that it remains compatible with GraalVM even after incorporating these platform dependencies. In the event that GraalVM compatibility has not been confirmed by the user, the bal pack command will trigger a warning message.
 
 ```
-****************************************************************************
-* WARNING: Package is not verified with GraalVM.                           *
-****************************************************************************
+**********************************************************************************
+* WARNING: Package is not verified with GraalVM.                                 *
+**********************************************************************************
 
 The GraalVM compatibility property has not been defined for the package
 '<package-name>. This could potentially lead to compatibility issues with GraalVM.
@@ -358,7 +358,7 @@ package are compatible with GraalVM. Subsequently, update the Ballerina.toml
 file under the section '[platform.<java*>]' with the attribute
 'graalvmCompatible = true'.
 
-****************************************************************************
+**********************************************************************************
 ```
 
 In that scenario, the package owner should evaluate the GraalVM-compatibility with `bal test --graalvm`. If the package has sufficient test cases to verify the compatibility, the package can be marked as GraalVM-compatible by adding the following to the Ballerin.toml file.

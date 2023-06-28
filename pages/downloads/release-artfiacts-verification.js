@@ -56,8 +56,14 @@ export default function PostPage({ frontmatter, content, id }) {
     }
 
     function replaceAfterSecondPeriod(str) {
-        const regex = /^([^.]*(?:\.[^.]*){2})/;
-        return str.replace(regex, '$1x');
+        const regex = /^(\d+\.\d+\.)/;
+        const match = str.match(regex);
+
+        if (match && match[1]) {
+            return match[1] + 'x';
+        }
+        
+        return '';
     }
 
     const branch = replaceAfterSecondPeriod(SwanLake.version);
@@ -73,7 +79,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 "windows-installer-size": SwanLake["windows-installer-size"],
                 dist_server: process.env.distServer,
                 version: SwanLake.version,
-                branch:branch,
+                branch: branch,
                 "windows-installer": SwanLake["windows-installer"],
                 "linux-installer": SwanLake["linux-installer"],
                 "linux-installer-size": SwanLake["linux-installer-size"],

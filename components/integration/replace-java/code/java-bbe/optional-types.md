@@ -1,4 +1,0 @@
----
-title: 'Optional types'
-description: In Ballerina, optional types are built into the language, ensuring that optional types are explicitly handled, reducing the risk of null pointer exceptions and related bugs. <br>It seamlessly integrates with other data structures, such as records and objects, allowing easy handling of nullable fields within complex data structures. <br>In Java, nullable fields are typically handled using annotations or external libraries, which may require additional boilerplate code and can be error-prone. <br>With Ballerina's robust support for optional types, the separation of code from data is reinforced, enabling more reliable and efficient data-oriented programming.
----

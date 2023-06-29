@@ -1,4 +1,0 @@
----
-title: 'Smart endpoints'
-description: Ballerina, designed for integration and orchestration, provides built-in support for smart endpoints. Smart endpoints in Ballerina are endpoints that can automatically handle protocol-specific data serialization and deserialization, content negotiation, error handling, and other common endpoint functionalities. By encapsulating these capabilities within the endpoint itself, Ballerina simplifies the development of data-oriented applications and promotes separation of concerns. <br>On the other hand, Java, particularly when using frameworks like Spring, also provides ways to create smart endpoints through annotations and abstractions to handle request mapping, data binding, and other endpoint-related tasks.
----

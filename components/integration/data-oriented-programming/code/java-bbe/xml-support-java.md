@@ -15,21 +15,21 @@ import javax.xml.xpath.*;
 
 class Main {
 
-    public static void main(String[] args) throws Exception {
-        // Define a SOAP payload
-        String soapPayload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
-                "    <soapenv:Body>\n" +
-                "        <person>\n" +
-                "            <name>John Doe</name>\n" +
-                "            <age>30</age>\n" +
-                "            <address>\n" +
-                "                <city>New York</city>\n" +
-                "                <country>USA</country>\n" +
-                "            </address>\n" +
-                "        </person>\n" +
-                "    </soapenv:Body>\n" +
-                "</soapenv:Envelope>";
+    // Define a SOAP payload
+    static String soapPayload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+            "    <soapenv:Body>\n" +
+            "        <person>\n" +
+            "            <name>John Doe</name>\n" +
+            "            <age>30</age>\n" +
+            "            <address>\n" +
+            "                <city>New York</city>\n" +
+            "                <country>USA</country>\n" +
+            "            </address>\n" +
+            "        </person>\n" +
+            "    </soapenv:Body>\n" +
+            "</soapenv:Envelope>";
 
+    public static void main(String[] args) throws Exception {
         // Parse the SOAP payload
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);

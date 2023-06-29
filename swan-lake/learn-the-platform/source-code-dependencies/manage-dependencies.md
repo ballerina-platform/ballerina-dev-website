@@ -117,7 +117,9 @@ name = "mysql"
 version = "1.5.0”
 ```
 
-However, when a project is built with a new minor distribution version than what is specified in `distribution-version` field of `Dependencies.toml`, the `Dependencies.toml` will be updated with the latest compatible minor versions of the dependencies.
+**Building with a new distribution version**
+
+When a project is built with a new minor distribution version than what is specified in `distribution-version` field of `Dependencies.toml`, the `Dependencies.toml` will be updated with the latest compatible minor versions of the dependencies.
 
 ## Use dependencies from the local repository
 

@@ -206,7 +206,7 @@ Once the function is deployed, add an item to the collection.
 
 >**Note:** For a full sample with all the supported Azure Functions triggers and bindings in Ballerina, see the [Azure Functions deployment example](/learn/by-example/azure-functions-deployment).
 
-## Azure Functions Native (Experimental)
+## Azure Functions Native
 
 ### Prerequisites
 1. Install the latest Ballerina [distribution](https://ballerina.io/downloads/).
@@ -253,8 +253,7 @@ This sample uses these build options along with the native build option while bu
 
 
 ```bash
-$ bal build --cloud="azure_functions_local" --native
-WARNING: GraalVM Native Image generation in Ballerina is an experimental feature
+$ bal build --cloud="azure_functions_local" --graalvm
 Compiling source
         anjana/azure_functions_native:0.1.0
 
@@ -317,11 +316,11 @@ Finished generating 'azure_functions_native' in 5m 44s.
         @azure_functions:Function: get-hello
 
         Execute the command below to deploy the function locally:
-        $ bal build --native --cloud="azure_functions_local"
+        $ bal build --graalvm --cloud="azure_functions_local"
         $ func start --script-root target/azure_functions
 
         Execute the command below to deploy Ballerina Azure Functions:
-        $ bal build --native --cloud="azure_functions"
+        $ bal build --graalvm --cloud="azure_functions"
         $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
 
@@ -352,7 +351,7 @@ Hello, Jack!
 Now, you can build the package for the Azure Functions cloud. This will perform the compilation inside the Docker image to make it compatible with the Azure Functions cloud environment.
 
 ```bash
-$ bal build --cloud="azure_functions" --native
+$ bal build --cloud="azure_functions" --graalvm
 ```
 
 You can execute the following command to deploy the Azure Function to the Azure Functions cloud.

@@ -3,35 +3,62 @@ title: 'Java'
 description: null
 ---
 ```
-public class PatternMatching {
-        public static String matchValue(Object val, boolean isObstructed, float powerPercentage) {
-            switch (val.toString()) {
-                case "1":
-                    if (!isObstructed) {
-                        return "Move forward";
-                    }
-                    break;
-                case "2":
-                case "3":
-                    return "Turn";
-                case "4":
-                    if (powerPercentage > 25.0) {
-                        return "Increase speed";
-                    }
-                    break;
-                case "STOP":
-                    return "STOP";
-                case "ON":
-                    return "Switch ON";
-                default:
-                    return "Invalid instruction";
-            }
-            return "Invalid instruction";
-        }
+import java.util.Map;
 
-        public static void main(String[] args) {
-            System.out.println(matchValue(1, false, 36.0f));
-            System.out.println(matchValue(4, false, 36.0f));
+public class PatternMatching {
+
+    static final String switchStatus = "ON";
+
+    public static String matchValue(Object value, boolean isObstructed, float powerPercentage) {
+        switch (value) {
+            case Integer i -> {
+                if (i == 1 && !isObstructed) {
+                    return "Move forward";
+                }
+                if (i == 2 || i == 3) {
+                    return "Turn";
+                }
+                if (i == 4 && powerPercentage > 25.0) {
+                    return "Increase speed";
+                }
+                return "Invalid instruction";
+            }
+            case String str -> {
+                if (str.equals("STOP")) {
+                    return "STOP";
+                }
+                if (str.equals(switchStatus)) {
+                    return "Switch ON";
+                }
+                return "Invalid instruction";
+            }
+            case double[] arr -> {
+                if (arr.length == 2) {
+                    return "Maneuvering to x: " + arr[0] + " and y: " + arr[1] + " coordinates";
+                } else {
+                    return "Invalid instruction";
+                }
+            }
+            case Record record -> {
+                double a = record.x;
+                double b = record.y;
+                Map<String, Object> rest = record.rest;
+                String optionalArg = matchValue(rest, isObstructed, powerPercentage);
+                return "Maneuvering to x: " + a + " and y: " + b +
+                        " coordinates with " + optionalArg;
+            }
+            default -> {
+                return "Invalid instruction";
+            }
         }
+    }
+
+    record Record(double x, double y, Map<String, Object> rest) {}
+
+    public static void main(String[] args) {
+        String output = matchValue(new double[]{2.516, 51.409}, false, 0.0f);
+        System.out.println(output);
+    }
 }
+
 ```

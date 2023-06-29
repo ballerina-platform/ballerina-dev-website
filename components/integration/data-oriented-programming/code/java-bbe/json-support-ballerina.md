@@ -5,67 +5,49 @@ description: null
 ```
 import ballerina/io;
 
-type Employee record {
-    int id;
-    string name;
-    string department;
+type InvoiceItem record {
+    string id;
+    decimal price;
+    boolean taxable;
 };
 
-public function main() returns error? {
-    json inputJson = {
-        "employees": [
-            {
-                "id": 1,
-                "name": "John Doe",
-                "department": "Engineering",
-                "address": {
-                    "apt": "1001",
-                    "street": "10 Downing Street",
-                    "city": "London",
-                    "country": "UK"
-                }
-            },
-            {
-                "id": 2,
-                "name": "Jane Smith",
-                "department": "Sales"
-            },
-            {
-                "id": 3,
-                "name": "Bob Johnson",
-                "department": "Finance",
-                "address": {
-                    "apt": "1002",
-                    "street": "10 Downing Street",
-                    "city": "London",
-                    "country": "UK"
-                }
-            }
-        ]
-    };
+type Customer record {
+    string id;
+    string name;
+};
 
-    // Navigate to the employees array
-    json empJson = check inputJson.employees;
+type Invoice record {
+    string id;
+    Customer customer;
+    InvoiceItem[] items;
+};
 
-    // Convert the JSON to a JSON array
-    json[] jsonArr = check empJson.cloneWithType();
+public function main() returns error?{
+    json invoiceData = check io:fileReadJson("./invoice.json");
 
-    // Get the first employee's name
-    string firstEmpName = check jsonArr[0].name;
-    io:println(firstEmpName);
+    // Enjoy lax static typing here!
+    // Fails at runtime if the key is not present or the value is not a string.
+    string id = check invoiceData.id;
+    io:println("Invoice id: ", id);
 
-    // Navigate optioanlly to the first employee's address
-    string? firstEmpAptNum = check jsonArr[0]?.address?.apt;
-    io:println(firstEmpAptNum);
+    // Fails at runtime if the key is not present.
+    json items = check invoiceData.items;
+    io:println("Invoice items: ", items);
 
-    string? secondEmpAptNum = check jsonArr[1]?.address?.apt;
-    io:println(secondEmpAptNum.toBalString());
+    // Fails at runtime if the convertion is not possible.
+    json[] itemArr = check items.cloneWithType();
 
-    // Convert the JSON array to an Employee records array
-    Employee[] employees = check empJson.cloneWithType();
+    // Results in a nil value if the accessed field is not present.
+    decimal? discountAmount = check itemArr[1]?.discount?.amount;
+    io:println("Discount amount: ", discountAmount);
 
-    foreach var item in employees {
-        io:println(item.name);
-    }
+    // Converts to the domain type.
+    // Fails at runtime if the json value does not match the type.
+    Invoice invoice = check invoiceData.fromJsonWithType();
+
+    // Enjoy type-safe handling of json values.
+    id = invoice.id;
+    InvoiceItem[] invoiceItems = invoice.items;
+    io:println("Invoice items: ", invoiceItems);
 }
 ```

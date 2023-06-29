@@ -3,8 +3,6 @@ title: 'Ballerina'
 description: null
 ---
 ```
-const int x = 10;
-
 type Student record {|
     int grade;
     string name;
@@ -12,8 +10,6 @@ type Student record {|
 |};
 
 public function main() {
-    // x = 20; // Error: Cannot assign a new value to immutable variable
-    
     Student & readonly student = {
         grade: 12,
         name: "John",
@@ -24,7 +20,9 @@ public function main() {
             "English": 90
         }
     };
-    // student.grade = 11; // Error: Cannot assign a new value to readonly field
-    // student.marks["Maths"] = 80; // Error: Cannot assign a new value to readonly field
+
+    // student.grade = 11; // Compile time error
+
+    // student.marks["Maths"] = 80; // Compile time error
 }
 ```

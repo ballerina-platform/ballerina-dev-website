@@ -27,10 +27,10 @@ public function main() returns error? {
     io:println(xmlPayload);
 
     // Navigate to the subcontext and extract the data
-    xml person =  xmlPayload/**/<person>;
+    xml person =  xmlPayload/<person>;
 
-    string name = (person/**/<name>).data();
-    string age = (person/**/<age>).data();
+    string name = (person/<name>).data();
+    string age = (person/<age>).data();
     string city = (person/**/<city>).data();
     string country = (person/<address>/<country>).data();
 

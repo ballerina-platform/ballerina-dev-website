@@ -8,7 +8,6 @@ import ballerina/constraint;
 import ballerina/io;
 
 type User record {
-    // Validate the username and password
     @constraint:String {
         minLength: 1,
         maxLength: 8

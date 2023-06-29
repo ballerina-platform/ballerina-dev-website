@@ -45,7 +45,7 @@ final class EmployeeDetails {
     }
 };
 
-class FlexibleTypeSystem {
+class Main {
     public static void main(String[] args) {
         // Create a new PersonalDetails populating defined fields
         PersonalDetails personalDetails = new PersonalDetails("John Doe", 30);

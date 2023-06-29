@@ -7,38 +7,49 @@ import ballerina/io;
 
 const switchStatus = "ON";
 
-function matchValue(any val, boolean isObstructed, float powerPercentage) returns string {
+function matchValue(anydata value, boolean isObstructed, float powerPercentage) returns string {
     // The value of the `val` variable is matched against the given value match patterns.
-    match val {
-        // The `if !isObstructed` match guard is used.
+    match value {
         1 if !isObstructed => {
-            // This block will execute if `!isObstructed` is true.
+            // This block will execute if `value` is 1 and `isObstructed` is false.
             return "Move forward";
         }
-        // Use `|` to match more than one value.
+        // `|` is used to match more than one value.
         2|3 => {
+            // This block will execute if `value` is either 2 or 3.
             return "Turn";
         }
-        //The `if 25.0 < powerPercentage` match guard is used.
         4 if 25.0 < powerPercentage => {
-            // This block will execute if `25.0 < powerPercentage` is true.
-            return  "Increase speed";
+            // This block will execute if `value` is 4 and `25.0 < powerPercentage` is true.
+            return "Increase speed";
         }
         "STOP" => {
+            // This block will execute if `value` is "STOP".
             return "STOP";
         }
         switchStatus => {
+            // This block will execute if `value` is equal to the value of the `switchStatus` constant.
             return "Switch ON";
         }
-        // Use `_` to match type `any`.
+        // Destructuring a tuple with type checking
+        [var x, var y] if x is decimal && y is decimal => {
+            return string `Maneuvering to x: ${x.toString()} and y: ${y.toString()} coordinates`;
+        }
+        // Destructuring a map and recursively matching with optional argument
+        {x: var a, y: var b, ...var rest} => {
+            string optionalArg = matchValue(rest, isObstructed, powerPercentage);
+
+            return string `Maneuvering to x: ${a.toString()} and y: ${b.toString()} coordinates with ${optionalArg}`;
+        }
         _ => {
+            // This block will execute for any other unmatched value.
             return "Invalid instruction";
         }
     }
 }
 
 public function main() {
-    io:println(matchValue(1, false, 36.0));
-    io:println(matchValue(4, false, 36.0));
+    string output = matchValue([-2.516d, 51.409d], false, 0.0);
+    io:println(output);
 }
 ```

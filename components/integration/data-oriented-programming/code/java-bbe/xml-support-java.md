@@ -13,22 +13,23 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.*;
 
-// Define a SOAP payload
-String soapPayload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
-        "    <soapenv:Body>\n" +
-        "        <person>\n" +
-        "            <name>John Doe</name>\n" +
-        "            <age>30</age>\n" +
-        "            <address>\n" +
-        "                <city>New York</city>\n" +
-        "                <country>USA</country>\n" +
-        "            </address>\n" +
-        "        </person>\n" +
-        "    </soapenv:Body>\n" +
-        "</soapenv:Envelope>";
-
 class Main {
+
     public static void main(String[] args) throws Exception {
+        // Define a SOAP payload
+        String soapPayload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
+                "    <soapenv:Body>\n" +
+                "        <person>\n" +
+                "            <name>John Doe</name>\n" +
+                "            <age>30</age>\n" +
+                "            <address>\n" +
+                "                <city>New York</city>\n" +
+                "                <country>USA</country>\n" +
+                "            </address>\n" +
+                "        </person>\n" +
+                "    </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+
         // Parse the SOAP payload
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -55,13 +56,16 @@ class Main {
         };
         xpath.setNamespaceContext(nsContext);
 
-        // Navigate to the subcontext and extract the data using XPath
-        String expression = "/soapenv:Envelope/soapenv:Body/person";
-        Node personNode = (Node) xpath.evaluate(expression, document, XPathConstants.NODE);
+        // // Navigate to SOAP payload and extract the data using XPath
+        String soapPayloadExpression = "/*/soapenv:Body";
+        Node soapPayloadNode = (Node) xpath.evaluate(soapPayloadExpression, document, XPathConstants.NODE);
+
+        String expression = "./person";
+        Node personNode = (Node) xpath.evaluate(expression, soapPayloadNode, XPathConstants.NODE);
 
         String name = (String) xpath.evaluate("name", personNode, XPathConstants.STRING);
         String age = (String) xpath.evaluate("age", personNode, XPathConstants.STRING);
-        String city = (String) xpath.evaluate("address/city", personNode, XPathConstants.STRING);
+        String city = (String) xpath.evaluate("*/city", personNode, XPathConstants.STRING);
         String country = (String) xpath.evaluate("address/country", personNode, XPathConstants.STRING);
 
         System.out.println("Name: " + name + ", Age: " + age + ", City: " + city + ", Country: " + country);

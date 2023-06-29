@@ -7,50 +7,48 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-record Employee(int id, String name, String department) {}
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
-class Main {
-    public static void main(String[] args) {
+record InvoiceItem(String id, double price, boolean taxable) {}
 
-        String jsonStr = "{" +
-                "\"employees\":[" +
-                        "{" +
-                            "\"id\":1," +
-                            "\"name\":\"John Doe\"," +
-                            "\"department\":\"Engineering\"" +
-                        "}," +
-                        "{" +
-                            "\"id\":2," +
-                            "\"name\":\"Jane Smith\"," +
-                            "\"department\":\"Sales\"" +
-                        "}," +
-                        "{" +
-                            "\"id\":3," +
-                            "\"name\":\"Bob Johnson\"," +
-                            "\"department\":\"Finance\"" +
-                        "}" +
-                    "]" +
-                "}";
+record Customer(String id, String name) {}
 
-        // Parse the JSON string
-        Gson gson = new Gson();
-        JsonObject jsonObj = gson.fromJson(jsonStr, JsonObject.class);
+record Invoice(String id, Customer customer, List<InvoiceItem> items) {}
 
-        // Navigate and convert to JSON array
-        JsonArray employeesArray = jsonObj.getAsJsonArray("employees");
+public class JSON {
+    public static void main(String[] args) throws IOException {
+            String invoiceData = Files.readString(Paths.get("./invoice.json"));
 
-        // Get the first employee's name
-        JsonObject firstEmployee = employeesArray.get(0).getAsJsonObject();
-        String firstEmpName = firstEmployee.get("name").getAsString();
-        System.out.println(firstEmpName);
+            // Parse the JSON string
+            Gson gson = new Gson();
+            JsonObject jsonObj = gson.fromJson(invoiceData, JsonObject.class);
 
-        // Convert the JSON array to an Employee records array
-        Employee[] employeesWrapper = gson.fromJson(employeesArray, Employee[].class);
+            // Fails at runtime if the key is not present or the value is not a string.
+            String id = jsonObj.get("id").getAsString();
+            System.out.println("Invoice id: " + id);
 
-        // Print all employee names
-        for (Employee employee : employeesWrapper) {
-            System.out.println(employee.name());
-        }
+            // Fails at runtime if the key is not present.
+            JsonArray items = jsonObj.getAsJsonArray("items");
+            System.out.println("Invoice items: " + items);
+
+            // Results in a null value if the accessed field is not present.
+            JsonObject secondItem = items.get(1).getAsJsonObject();
+            if (secondItem.has("discount")) {
+                double discount = secondItem.get("discount").getAsDouble();
+                System.out.println("Discount: " + discount);
+            }
+
+            // Converts to the domain type.
+            // Fails at runtime if the json value does not match the type.
+            Invoice invoice = gson.fromJson(invoiceData, Invoice.class);
+
+            // Access the fields of the domain type.
+            id = invoice.id();
+            List<InvoiceItem> invoiceItems = invoice.items();
+            System.out.println("Invoice items: " + invoiceItems);
     }
 }
 ```

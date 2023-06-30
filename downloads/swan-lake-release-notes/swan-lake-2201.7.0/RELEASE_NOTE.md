@@ -164,10 +164,6 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### New features
 
-#### `http` package
-
-- Introduced the `httpscerr` module, which contains the HTTP status code errors.
-
 #### `graphql` package
 
 - Added support for the `ID` scalar type.

@@ -736,11 +736,44 @@ The ``join`` clause uses an internal hashtable, thereby improving the query effi
 
 ## Stream type
 
-Ballerina supports the concept of a stream. A stream is a sequence of values that are generated as needed. This concept is the opposite of a list that is pre-populated with values before you perform any operations on it.
+In Ballerina, the stream type represents a dynamic sequence of values that are generated on-demand. Unlike pre-populated lists, streams allow you to process data as it becomes available, enabling efficient handling of potentially infinite data sets.
 
-The ``stream`` type is a separate basic type but acts as an object. A stream is defined with the ``stream`` keyword, as **``stream<T, E>``**, where members of the stream sequence are of type ``T`` and the termination value is of type ``E``. A shorter definition of **``stream<T>``** can be used to mean **``stream<T,()>``**, where the termination value is nil.
+The stream type is treated as an object and provides a flexible way to work with sequences of values. To define a stream, you can use the syntax `stream<T, E>`, where `T` represents the type of the stream elements, and `E` represents the type of the termination value. Alternatively, you can use the shorter form `stream<T>`, which is equivalent to `stream<T, ()>`, where `()` indicates the termination value is `nil`.
 
 Generating the values for a stream can result in an error, in which case the stream is terminated with an error value.
+
+One way to generate a stream is by transforming an existing collection. This can be done by applying the `toStream()` function on an array. Here's an example:
+
+```
+int[] numArray = [2, 4, 6, 8, 10];
+stream<int> numStream = numArray.toStream();
+```
+
+Alternatively, a stream generator class can be used to create a stream.
+
+```
+class NumberGenerator {
+  int i = 0;
+  public isolated function next() returns record {|int value;|}|error? {
+      if self.i > 10 {
+          return error("No more elements");
+      } else {
+          int value = self.i;
+          self.i += 1;
+          return {value: value};
+      }
+  }
+}
+```
+
+The `next()` function is used to return the next element of the stream.
+
+```
+public function main() {
+  NumberGenerator numberGenerator = new;
+  stream<int, error?> numberStream = new (numberGenerator);
+}
+```
 
 ### Query with streams
 

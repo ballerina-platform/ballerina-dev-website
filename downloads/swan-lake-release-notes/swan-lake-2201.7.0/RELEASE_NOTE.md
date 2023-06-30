@@ -66,7 +66,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
     ```
 
-- Fixed a bug in the configurable TOML syntax validation for the model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
+- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
 
     For example, consider a non-default module `foo.bar`, which contains the following configurable variables.
 
@@ -164,10 +164,6 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### New features
 
-#### `http` package
-
-- Introduced the `httpscerr` module, which contains the HTTP status code errors.
-
 #### `graphql` package
 
 - Added support for the `ID` scalar type.
@@ -181,7 +177,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration`.
+- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration` record. `http:InterceptableService` should be used instead.
 
 ### Improvements
 

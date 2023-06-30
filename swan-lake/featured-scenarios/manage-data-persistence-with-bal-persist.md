@@ -96,14 +96,14 @@ import ballerina/persist as _;
 import ballerina/time;
 
 public type Employee record {|
-   readonly string employee_id;
-   string first_name;
-   string last_name;
+   readonly string id;
+   string firstName;
+   string lastName;
    string email;
    string phone;
-   time:Date hire_date;
-   string? manager_id;
-   string job_title;
+   time:Date hireDate;
+   string? managerId;
+   string jobTitle;
 |};
 ```
 
@@ -122,7 +122,7 @@ This changes the Ballerina package as follows.
 ```
 ├── rainier
 │   ├── generated
-│   │		└── db
+│   │		└── store
 │   │		│	├── persist_client.bal
 │   │		│	└── persist_types.bal
 │   ├── persist
@@ -172,18 +172,18 @@ final store:Client sClient = check new();
 
 public function main() returns error? {
    store:EmployeeInsert employee1 = {
-       employee_id: uuid:createType4AsString(),
-       first_name: "John",
-       last_name: "Doe",
+       id: uuid:createType4AsString(),
+       firstName: "John",
+       lastName: "Doe",
        email: "johnd@xyz.com",
        phone: "1234567890",
-       hire_date: {
+       hireDate: {
            year: 2020,
            month: 10,
            day: 10
        },
-       manager_id: "123e4567-e89b-12d3-a456-426614174000",
-       job_title: "Software Engineer"
+       managerId: "123e4567-e89b-12d3-a456-426614174000",
+       jobTitle: "Software Engineer"
    };
 
 
@@ -231,7 +231,7 @@ public function main() returns error? {
        };
 
 
-   // Get only the `employee_id`, `first_name`, and `last_name` fields.
+   // Get only the `id`, `firstName`, and `lastName` fields.
    stream<EmployeeName, persist:Error?> empNames = sClient->/employees;
    check from var name in empNames
        do {
@@ -241,9 +241,9 @@ public function main() returns error? {
 
 
 type EmployeeName record {|
-   string employee_id;
-   string first_name;
-   string last_name;
+   string id;
+   string firstName;
+   string lastName;
 |};
 ```
 
@@ -258,7 +258,7 @@ Compiling source
 
 Running executable
 
-{"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe","email":"johnd@xyz.com","phone":"1234567890","hire_date":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Software Engineer"}
+{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Software Engineer"}
 
 {"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
 ```
@@ -294,9 +294,9 @@ public function main() returns error? {
 
 
 type EmployeeName record {|
-   string employee_id;
-   string first_name;
-   string last_name;
+   string id;
+   string firstName;
+   string lastName;
 |};
 ```
 
@@ -311,9 +311,9 @@ Compiling source
 
 Running executable
 
-{"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe","email":"johnd@xyz.com","phone":"1234567890","hire_date":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Software Engineer"}
+{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"123e4567-e89b-12d3-a456-426614174000","jobTitle":"Software Engineer"}
 
-{"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
+{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe"}
 ```
 
 You will get the same results as you have only one record. Let’s explore the `update` function.
@@ -338,7 +338,7 @@ public function main() returns error? {
 
    // Update the job title of the employee with the given ID.
    store:Employee employee = check sClient->/employees/[empId].put({
-       job_title: "Senior Software Engineer"
+       jobTitle: "Senior Software Engineer"
    });
    io:println(employee);
 }
@@ -355,7 +355,7 @@ Compiling source
 
 Running executable
 
-{"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe","email":"johnd@xyz.com","phone":"1234567890","hire_date":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Senior Software Engineer"}
+{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"123e4567-e89b-12d3-a456-426614174000","jobTitle":"Senior Software Engineer"}
 ```
 
 Now, you have successfully executed the `CREATE`, `READ`, and `UPDATE` queries against your database. Let’s explore the final `DELETE` query in the next section.
@@ -477,17 +477,17 @@ Invoke the defined resource method by sending the POST request below to http://l
 $ curl -X POST http://localhost:8080/employees/
     -H 'Content-Type: application/json'
     -d '{
-        "employee_id": "6",
-        "first_name": "test",
-        "last_name": "test",
+        "id": "6",
+        "firstName": "test",
+        "lastName": "test",
         "email": "test@test.com",
         "phone": "882 771 110",
-        "hire_date": {
+        "hireDate": {
             "year": 2021,
             "month": 12,
             "day": 16
         },
-        "manager_id": "1",
-        "job_title": "Sales Manager"
+        "managerId": "1",
+        "jobTitle": "Sales Manager"
     }'
 ```

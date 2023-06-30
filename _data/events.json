@@ -1,6 +1,22 @@
 {
     "events": [
-      {
+       {
+            "date": "July 6, 2023",
+            "day": "Thur.",
+            "time": "7.30 p.m. CDT",
+            "expire": "2023-07-07T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/utdcsor/events/294335142",
+            "eventType": "UT Dallas Computer Science Outreach Meetup",
+            "eventName": "Ballerina: Seamless Integration and Cloud-Native Development",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP here"
+        },
+        {
             "date": "June 8, 2023",
             "day": "Thur.",
             "time": "8.00 p.m. IST",
@@ -109,8 +125,8 @@
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director of Engineering, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/LyVmeQa8w90",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 10, 2023",

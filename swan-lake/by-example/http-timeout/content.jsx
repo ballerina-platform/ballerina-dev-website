@@ -52,7 +52,7 @@ export function HttpTimeout({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a79d032d3fc43bf6bb58034af41f8add&file=http_timeout.bal",
+                "https://play.ballerina.io/?gist=20f6c84e739980e8ae6faa7ae41e8f6a&file=http_timeout.bal",
                 "_blank"
               );
             }}

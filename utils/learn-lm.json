@@ -18,9 +18,35 @@
                     "dirName": "Build a GraalVM executable",
                     "level": 2,
                     "position": 10,
-                    "isDir": false,
+                    "isDir": true,
                     "url": "/learn/build-a-graalvm-executable",
-                    "id": "build-a-graalvm-executable"
+                    "id": "graalvm-executable",
+                    "subDirectories": [
+                        {
+                            "dirName": "GraalVM executable overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/graalvm-executable-overview",
+                            "id": "graalvm-executable-overview"
+                        },
+                        {
+                            "dirName": "Build the executable in a container",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-in-a-container",
+                            "id": "build-the-executable-in-a-container"
+                        },
+                        {
+                            "dirName": "Build the executable locally",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-locally/",
+                            "id": "build-the-executable-locally"
+                        }
+                    ]
                 },
                 {
                     "dirName": "Ballerina specifications",

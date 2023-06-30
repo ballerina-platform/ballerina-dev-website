@@ -214,7 +214,7 @@ Once the function is deployed, add an item to the collection.
 3. Install and configure the [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools)
 4. Log in to the Azure CLI by executing the `az login` command.
 5. Install and configure <a href="https://www.docker.com/" target="_blank">Docker</a> in your machine.
-6. Install and configure [GraalVM](/learn/build-a-graalvm-executable/#configure-graalvm) in your machine.
+6. Install and configure [GraalVM](/learn/build-the-executable-locally/#configure-graalvm) in your machine.
 7. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
 
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.

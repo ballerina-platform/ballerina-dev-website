@@ -98,6 +98,7 @@ The language now supports the `group by` and `collect` clauses to perform aggreg
 
 ```ballerina
 import ballerina/io;
+
 public type CovidEntry record {|
     string district;
     string province;

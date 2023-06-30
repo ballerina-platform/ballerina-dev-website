@@ -122,7 +122,7 @@ This changes the Ballerina package as follows.
 ```
 ├── rainier
 │   ├── generated
-│   │		└── db
+│   │		└── store
 │   │		│	├── persist_client.bal
 │   │		│	└── persist_types.bal
 │   ├── persist

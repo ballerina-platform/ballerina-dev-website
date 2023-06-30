@@ -73,7 +73,7 @@ export function DestructureRecordsUsingQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2d15148bbe5c0bc6a5b9cd6afadf9de9&file=destructure_records_using_query.bal",
+                "https://play.ballerina.io/?gist=23ab39f49cee8824cb4283161198eb4a&file=destructure_records_using_query.bal",
                 "_blank"
               );
             }}

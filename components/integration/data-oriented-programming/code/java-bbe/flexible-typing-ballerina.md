@@ -5,13 +5,13 @@ description: null
 ```
 import ballerina/io;
 
-// closed record for personal information
+// closed record
 type PersonalDetails record {|
     string name;
     int age;
 |};
 
-// open record for additional employee details
+// open record
 type EmployeeDetails record {
     string designation;
     float salary;

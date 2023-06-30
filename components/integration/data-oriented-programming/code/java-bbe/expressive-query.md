@@ -1,6 +1,7 @@
 ---
-title: 'Expressive query language'
+title: 'Declarative data processing'
 description: Ballerina's query language is a powerful feature that enhances data-oriented programming by providing a concise and expressive way to transform and manipulate data. It allows developers to perform complex data operations such as filtering, mapping, aggregating, and sorting with ease. The query language in Ballerina is specifically designed to work seamlessly with structured data types like records, making it well-suited for data-oriented programming tasks.
+url: https://github.com/ballerina-guides/integration-samples/tree/main/dop-expressive-query-language
 ---
 ```
 import ballerina/io;

@@ -177,7 +177,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration`.
+- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration` record. `http:InterceptableService` should be used instead.
 
 ### Improvements
 

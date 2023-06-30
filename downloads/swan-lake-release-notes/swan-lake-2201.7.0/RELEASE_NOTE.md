@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.7.0
 
-<em>2201.7.0 (Swan Lake Update 7) is the seventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
+<em>2201.7.0 (Swan Lake Update 7) is the seventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
 
 ## Update Ballerina
 

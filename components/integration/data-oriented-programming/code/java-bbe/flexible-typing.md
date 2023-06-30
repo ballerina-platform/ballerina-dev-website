@@ -1,6 +1,6 @@
 ---
-title: 'Model constrained and flexible data'
-description: In data-oriented programming, the ability to model data in a secure and flexible manner is crucial. Ballerina's open and closed records offer a powerful mechanism to achieve this. <br><br>Closed records provide a secure and rigid structure with strictly defined field access, ensuring data integrity, type safety, and prevention of unintended modifications. <br><br>Open records, on the other hand, offer flexibility by allowing dynamic addition of fields. This enables handling evolving data structures where new fields can be introduced as needed.In Java, this dynamic behavior is not directly supported, and data structures usually require modification or the use of map-like structures to accommodate additional fields.
+title: 'Be conservative in what you send, be liberal in what you accept'
+description: 'Ballerina employs "be conservative in what you send, be liberal in what you accept" by using structural types that support openness. <br><br>These types serve a dual purpose: enhancing static typing within programs and describing service interfaces accurately. While outgoing messages are tightly controlled to ensure protocol adherence, incoming data is handled with a degree of flexibility. The result is a balance of strictness and tolerance that enhances interoperability and resilience. This makes Ballerina a robust and adaptable choice for constructing cloud-native applications'
 image: 
 url: https://github.com/ballerina-guides/integration-samples/tree/main/dop-model-constrained-flexible-data
 ---

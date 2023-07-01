@@ -104,6 +104,7 @@ public type CovidEntry record {|
     string province;
     decimal deaths;
 |};
+
 public final table<CovidEntry> covidTable = table [
     {district: "Colombo", province: "Western", deaths: 21},
     {district: "Kandy", province: "Central", deaths: 14},

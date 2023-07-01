@@ -17,7 +17,7 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to 2201.7.0 by using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.7.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
 2. Run `bal dist update` to update to this latest distribution.
@@ -84,7 +84,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Official support for generating GraalVM native executables
 
-Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see the [Build a GraalVM executable](/learn/graalvm-executable-overview/).
+Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/graalvm-executable-overview/).
 
 ## Language updates
 
@@ -92,7 +92,7 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 #### Introduction of the `group by` and `collect` clauses
 
-The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique for each group. The `collect` clause is used to group a collection into one group. 
+The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique to each group. The `collect` clause is used to group a collection into one group. 
 
 ```ballerina
 import ballerina/io;
@@ -184,9 +184,11 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 ### Improvements
 
 #### `http` package
+
 - Improved the default error format and message.
 
 #### `graphql` package
+
 - Improved the validation of duplicate fields with different arguments.
 
 ### Bug fixes

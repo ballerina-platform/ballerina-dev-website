@@ -84,11 +84,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Official support for generating GraalVM native executables
 
-<<<<<<< HEAD
-Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/build-a-graalvm-executable/).
-=======
 Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see the [Build a GraalVM executable](/learn/graalvm-executable-overview/).
->>>>>>> 98d6d411eb30873d7c6770dd89706f5a25dc3bb4
 
 ## Language updates
 
@@ -225,16 +221,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 #### CLI commands
 
 - Renamed the `--native` flag to `--graalvm`.
-<<<<<<< HEAD
 - Introduced the `--graalvm-build-options` build option to support passing additional arguments for the GraalVM native image generation.
-=======
-- Introduced the `--graalvm-build-options` build option to support passing additional arguments for GraalVM native image generation.
-
-#### OpenAPI tool
-
-- Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations. Also, the users will have the option to replace the auto-generated headers with their own license using the `--license <license-file-path>` command option.
-- Added support for query parameters with object types in the OpenAPI to Ballerina service generation.
->>>>>>> 98d6d411eb30873d7c6770dd89706f5a25dc3bb4
 
 ### Bug fixes
 

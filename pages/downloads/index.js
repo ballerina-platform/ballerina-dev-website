@@ -110,10 +110,16 @@ export default function Downloads() {
 
             <Row className={`${styles.donwloadVersion} pageContentRow`}>
                <Col xs={12}>
-                  <p>
-                     To <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>verify that Ballerina was successfully installed</a>, execute 
+                  <p><ul>
+                     <li>
+                     To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/`} className={styles.instructions}>Installation options</a>.
+                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>Verify the installation</a>.
+                     </li>
+                     <li>
+                     To verify the Ballerina release artifacts (you downloaded based on your platform) using Cosign CLI or Rekor API, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
+                     </li>
+                     </ul>
                   </p>
                </Col>
             </Row>

@@ -33,7 +33,7 @@ import SwanLake from "../../_data/swanlake-latest/metadata.json";
 
 export async function getStaticProps() {
 
-    const fileName = fs.readFileSync(`downloads/release-artifacts-verification.md`, "utf-8");
+    const fileName = fs.readFileSync(`downloads/verify-ballerina-artifacts.md`, "utf-8");
     const { data: frontmatter, content } = matter(fileName);
     const id = "installation-options";
 

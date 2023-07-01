@@ -17,7 +17,7 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to 2201.7.0 by using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.7.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
 2. Run `bal dist update` to update to this latest distribution.
@@ -28,7 +28,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
+- A bug that allowed using a function reference of a `non-isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
 
     ```ballerina
     type Employee record {|
@@ -37,28 +37,26 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         string department;
     |};
 
-    isolated function createEmployee(string[] name, 
-                                    function () returns int idFunction,
-                                    string department) 
+    isolated function createEmployee(string[] name,
+            function () returns int idFunction,
+            string department)
             returns Employee => {
         name: string:'join(" ", ...name),
         // Compilation error now, since `idFunction` is not `isolated`.
         id: idFunction(),
         department
-    };
+    };  
     ```
   
 - A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
 
-  This may result in compilation errors that were previously not identified.
+  For example, the code below may result in a compilation error now since `num`, which is of type `CONST` can only be integer `8`.
 
     ```ballerina
     const int CONST = 1 + 7;
     CONST num = 2; // Compilation error now.
     ```
 
-  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
- 
 - A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
 
     ```ballerina
@@ -68,14 +66,14 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Fixed a bug in the configurable TOML syntax validation for the module structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
 
-    For example, consider a non-default module `foo.bar`, which contains the following configurable variables.
+    For example, consider a non-default module named `foo.bar`, which contains the following configurable variables.
 
     ```ballerina
     configurable int intVar = ?;
     configurable string stringVar = ?;
     ```
 
-    If an invalid TOML structure is found for the module `foo.bar` in the `Config.toml` file, it throws an error with the following message.
+    If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it throws an error with the following message.
 
     ```
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ’foo.bar’. with variable 'intVar'. Please provide the module name as '[foo.bar]'
@@ -86,7 +84,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Official support for generating GraalVM native executables
 
-Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see the [Build a GraalVM executable](/learn/graalvm-executable-overview/).
+Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/graalvm-executable-overview/).
 
 ## Language updates
 
@@ -94,7 +92,7 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 #### Introduction of the `group by` and `collect` clauses
 
-The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique for each group. The `collect` clause is used to group a collection into one group. 
+The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique to each group. The `collect` clause is used to group a collection into one group. 
 
 ```ballerina
 import ballerina/io;
@@ -114,11 +112,12 @@ public final table<CovidEntry> covidTable = table [
 
 public function main() {
     record {|string province; decimal deaths;|}[] deathsByProvince = from var {province, deaths} in covidTable
-        group by province
+        group
+         by province
         select {province, deaths: sum(deaths)};
     io:println(deathsByProvince);
     decimal totalDeaths = from var {deaths} in covidTable
-            collect sum(deaths);
+        collect    sum(deaths);
     io:println(totalDeaths);
 }
 ```
@@ -155,7 +154,7 @@ type B [B] & readonly;
 
 ### Bug fixes
 
-To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 
@@ -185,9 +184,11 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 ### Improvements
 
 #### `http` package
+
 - Improved the default error format and message.
 
 #### `graphql` package
+
 - Improved the validation of duplicate fields with different arguments.
 
 ### Bug fixes
@@ -200,32 +201,32 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 #### Language Server
 
-- Added a new API named `workspaceProjects` to the workspace manager to get the projects loaded in the workspace.
+- Added a new API named `workspaceProjects` to the workspace manager to get the projects loaded onto the workspace.
 
 #### OpenAPI Tool
-- Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding the `--without-data-binding` flag to the OpenAPI to Ballerina service generation command. This new generation mode can be useful for generating pass-through and proxy services based on a provided OpenAPI contract.
+
+- Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding the `--without-data-binding` flag to the OpenAPI to Ballerina service generation command. This new generation mode will be useful for generating pass-through and proxy services based on a provided OpenAPI contract.
 
 ### Improvements
 
 #### Language Server
 
-- Improved the order of completion items in the client resource access action context.
-- Improved the documentation generated by the `Document this` code action to follow the Ballerina code-style best practices.
+- Improved the order of the completion items in the client resource access action context.
+- Improved the documentation generated by the `Document this` code action to follow [Ballerina coding conventions](/learn/style-guide/coding-conventions/).
 - Improved the placeholder support provided for the completion items of the service-template snippets.
+
+#### OpenAPI tool
+
+- Added auto-generated file headers for all the generated Ballerina files in the OpenAPI to Ballerina service and client generations. Also, the users will have the option to replace the auto-generated headers with their license using the `--license <license-file-path>` command option.
+- Added support for object-typed query parameters in the OpenAPI to Ballerina service generation.
 
 #### CLI commands
 
 - Renamed the `--native` flag to `--graalvm`.
-- Introduced the `--graalvm-build-options` build option to support passing additional arguments for GraalVM native image generation.
-
-#### OpenAPI tool
-
-- Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations. Also, the users will have the option to replace the auto-generated headers with their own license using the `--license <license-file-path>` command option.
-- Added support for query parameters with object types in the OpenAPI to Ballerina service generation.
+- Introduced the `--graalvm-build-options` build option to support passing additional arguments for the GraalVM native image generation.
 
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.7.0 of the repositories below.
 
-- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FTestFramework+milestone%3A2201.7.0)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug)

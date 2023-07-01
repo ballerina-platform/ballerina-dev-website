@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.7.0
 
-<em>2201.7.0 (Swan Lake Update 7) is the seventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
+<em>2201.7.0 (Swan Lake Update 7) is the seventh update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -64,7 +64,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
     ```
 
-- Fixed a bug in the configurable TOML syntax validation for the model structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
+- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
 
     For example, consider a non-default module named `foo.bar`, which contains the following configurable variables.
 
@@ -84,7 +84,11 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Official support for generating GraalVM native executables
 
+<<<<<<< HEAD
 Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/build-a-graalvm-executable/).
+=======
+Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see the [Build a GraalVM executable](/learn/graalvm-executable-overview/).
+>>>>>>> 98d6d411eb30873d7c6770dd89706f5a25dc3bb4
 
 ## Language updates
 
@@ -166,10 +170,6 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 ### New features
 
-#### `http` package
-
-- Introduced the `httpscerr` module, which contains the HTTP status code errors.
-
 #### `graphql` package
 
 - Added support for the `ID` scalar type.
@@ -183,7 +183,7 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 
 #### `http` package
 
-- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration`.
+- Deprecated the usage of adding interceptors in the `http:ListenerConfiguration` record. `http:InterceptableService` should be used instead.
 
 ### Improvements
 
@@ -225,7 +225,16 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 #### CLI commands
 
 - Renamed the `--native` flag to `--graalvm`.
+<<<<<<< HEAD
 - Introduced the `--graalvm-build-options` build option to support passing additional arguments for the GraalVM native image generation.
+=======
+- Introduced the `--graalvm-build-options` build option to support passing additional arguments for GraalVM native image generation.
+
+#### OpenAPI tool
+
+- Added auto-generated file headers for all the generated Ballerina files in OpenAPI to Ballerina service and client generations. Also, the users will have the option to replace the auto-generated headers with their own license using the `--license <license-file-path>` command option.
+- Added support for query parameters with object types in the OpenAPI to Ballerina service generation.
+>>>>>>> 98d6d411eb30873d7c6770dd89706f5a25dc3bb4
 
 ### Bug fixes
 

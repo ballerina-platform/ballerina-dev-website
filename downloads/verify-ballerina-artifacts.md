@@ -1,9 +1,9 @@
 ---
 layout: release-artifacts-verification
 title: Verify Ballerina artifacts
-description: Verify Ballerina artifacts.
+description: The sections below include information about verifying Ballerina artifacts.
 keywords: ballerina, verifying ballerina
-permalink: /downloads/release-artifacts-verification/
+permalink: /downloads/verify-ballerina-artifacts/
 active: release-artifacts-verification
 intro: The sections below include information about verifying Ballerina artifacts.
 ---

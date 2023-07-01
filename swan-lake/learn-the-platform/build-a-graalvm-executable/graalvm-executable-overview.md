@@ -57,7 +57,7 @@ $ bal test --graalvm --graalvm-build-options="--static"
 ## Build the GraalVM executable
 
 There are two ways to build the GraalVM native executable for a Ballerina application.
-1. [Build the GraalVM executable in a container](/learn/build-the-executable-in-a-container)
-2. [Build the GraalVM executable locally](/learn/build-the-executable-locally)
+- [Build the GraalVM executable in a container](/learn/build-the-executable-in-a-container)
+- [Build the GraalVM executable locally](/learn/build-the-executable-locally)
 
 The above guides use GraalVM CE to discuss the topics.

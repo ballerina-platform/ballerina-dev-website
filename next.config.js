@@ -207,8 +207,16 @@ const nextConfig = {
         destination: `/${redirectBase}learn/references/style-guide/coding-conventions/:slug`,
       },
       {
-        source: `/${redirectBase}learn/build-a-native-executable`,
-        destination: `/${redirectBase}learn/learn-the-platform/native-support/build-a-native-executable`,
+        source: `/${redirectBase}learn/graalvm-executable-overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/graalvm-executable-overview`,
+      },
+      {
+        source: `/${redirectBase}learn/build-the-executable-locally`,
+        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/build-the-executable-locally`,
+      },
+      {
+        source: `/${redirectBase}learn/build-the-executable-in-a-container`,
+        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/build-the-executable-in-a-container`,
       },
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,

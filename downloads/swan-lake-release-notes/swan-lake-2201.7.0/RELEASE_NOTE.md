@@ -111,6 +111,7 @@ public final table<CovidEntry> covidTable = table [
     {district: "Kaluthara", province: "Western", deaths: 18},
     {district: "Jaffna", province: "North", deaths: 10}
 ];
+
 public function main() {
     record {|string province; decimal deaths;|}[] deathsByProvince = from var {province, deaths} in covidTable
         group by province

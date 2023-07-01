@@ -92,7 +92,7 @@ Follow the steps below to send an API call to Rekor to retrieve and verify the d
         $ curl -s -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID?}" \ | jq -r '.[] | .body' \ | base64 -d |jq -r '.spec .signature .publicKey .content' \ | base64 -d > ballerina-{{ version }}-swan-lake-macos-x64.pkg.crt
         ```
 
-7. Extract the `public key` from the `certificate` file using `openssl`
+7. Extract the `public key` from the `certificate` file using `openssl`.
 
     ```bash
     $ openssl x509 -in ballerina-{{ version }}-swan-lake-macos-x64.pkg.crt -noout -pubkey > ballerina-{{ version }}-swan-lake-macos-x64.pkg.pubkey.crt

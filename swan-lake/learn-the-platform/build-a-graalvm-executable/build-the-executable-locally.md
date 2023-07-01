@@ -35,7 +35,7 @@ After the environment is set up, follow the steps below to build a native execut
 
 ## Build the GraalVM executable
 
-1. Execute the command below to create a Ballerina service package :
+1. Execute the command below to create a Ballerina service package.
    ```
    $ bal new hello_world -t service
    ```
@@ -51,7 +51,7 @@ After the environment is set up, follow the steps below to build a native execut
    }
    ```
 
-3. Run `bal build --graalvm` to create the graalvm executable.
+3. Run `bal build --graalvm` to create the GraalVM executable.
    ```
    $ bal build --graalvm
 
@@ -108,14 +108,14 @@ After the environment is set up, follow the steps below to build a native execut
    Finished generating 'hello_world' in 4m 24s.
    ```
 
-   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native-image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
+   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
 
 4. Execute the command below to run the native executable.
    ```
    $ ./target/bin/hello_world
    ```
 
-5. Test the service with a cURL request :
+5. Test the service with a cURL request.
    ```
    $ curl http://localhost:8080/greeting
    Hello, World!

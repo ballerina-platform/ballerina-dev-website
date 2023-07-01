@@ -81,7 +81,7 @@ export function HttpCircuitBreaker({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3329c2720741c04fdec95866c500ef4b&file=http_circuit_breaker.bal",
+                "https://play.ballerina.io/?gist=0e2b93f89b12efc904c9e07a6ef0cb52&file=http_circuit_breaker.bal",
                 "_blank"
               );
             }}

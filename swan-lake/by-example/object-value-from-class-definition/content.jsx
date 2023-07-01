@@ -82,7 +82,7 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=80c681acbdb01277c5678d2c891e14df&file=object_value_from_class_definition.bal",
+                "https://play.ballerina.io/?gist=abbeeaa93740514cec2de236d1534ace&file=object_value_from_class_definition.bal",
                 "_blank"
               );
             }}

@@ -3159,6 +3159,15 @@
         "disableVerificationReason": "Includes ballerinax components",
         "disablePlayground": true,
         "isLearnByExample": false
+      },
+      {
+        "name": "Consume JetStream message",
+        "url": "nats-jestream-sub",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
       }
     ]
   },
@@ -3179,6 +3188,15 @@
       {
         "name": "Send request message",
         "url": "nats-basic-request",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Publish message",
+        "url": "nats-jestream-pub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

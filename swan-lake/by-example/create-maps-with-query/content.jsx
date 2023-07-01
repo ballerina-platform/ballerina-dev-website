@@ -66,7 +66,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=88fac9e2fe8de3ea3fdafb9cd2d16ce5&file=create_maps_with_query.bal",
+                "https://play.ballerina.io/?gist=6c53c1bbd361c3cd6f015ed1f996c87e&file=create_maps_with_query.bal",
                 "_blank"
               );
             }}

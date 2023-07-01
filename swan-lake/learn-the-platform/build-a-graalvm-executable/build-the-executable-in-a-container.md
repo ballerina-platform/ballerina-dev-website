@@ -21,12 +21,14 @@ After the environment is set up, follow the steps below to build the native exec
 
 ## Build the GraalVM executable in a container
 
-1. Execute the command below to create a Ballerina service package :
+1. Execute the command below to create a Ballerina service package.
+
    ```
    $ bal new hello_docker -t service
    ```
 
 2. Replace the content of the file `service.bal` with the following.
+
    ```ballerina
    import ballerina/http;
 
@@ -37,8 +39,11 @@ After the environment is set up, follow the steps below to build the native exec
    }
    ```
 
-3. Execute `bal build --graalvm --cloud=docker` to generate the artifacts with the native executable. Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](/learn/by-example/c2c-docker-deployment/) and [Kubernetes](/learn/by-example/c2c-k8s-deployment/) documentation.
-    ```
+3. Execute `bal build --graalvm --cloud=docker` to generate the artifacts with the native executable. 
+
+   >**Info:** Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](/learn/by-example/c2c-docker-deployment/) and [Kubernetes](/learn/by-example/c2c-k8s-deployment/) documentation.
+
+   ```
    $ bal build --graalvm --cloud=docker
    Compiling source
            user/hello_docker:0.1.0
@@ -76,7 +81,8 @@ After the environment is set up, follow the steps below to build the native exec
            docker run -d -p 8080:8080 hello_docker:latest
    ```
 
-   The Docker file :
+   **The Docker file:**
+
    ```	
    # Auto Generated Dockerfile
    FROM ballerina/native-builder:latest as build
@@ -95,12 +101,14 @@ After the environment is set up, follow the steps below to build the native exec
    CMD ["./hello_docker"]
    ```
 
-4. Execute the Docker image :
+4. Execute the Docker image.
+
    ```
    $ docker run -d -p 8080:8080 hello_docker:latest
    ```
 
-5. Test the service with a cURL request :
+5. Test the service with the cURL request below.
+
    ```
    $ curl http://localhost:8080/greeting
    Hello, Docker!

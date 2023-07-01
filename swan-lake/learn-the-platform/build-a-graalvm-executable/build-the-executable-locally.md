@@ -18,13 +18,13 @@ To complete this part of the guide, you need:
 
 ## Configure GraalVM
 
-1. Install GraalVM if you have not done it already.
-    - Install GraalVM on Linux, macOS, and Windows (via Git Bash, Cygwin, or WSL) using the following command.
+1. Install GraalVM on Linux, macOS, and Windows (via Git Bash, Cygwin, or WSL) using the following command.
+
       ```
       $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
       ```
       > **Note:** The above command installs the native-image tool, which is required to generate the native images along with GraalVM. Follow the instructions in the output log to resolve prerequisites for GraalVM native image.
-    - For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started).
+      For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started).
 2. Configure the runtime environment. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory as directed at the end of the execution of the above command.
 
 > **Note:** 

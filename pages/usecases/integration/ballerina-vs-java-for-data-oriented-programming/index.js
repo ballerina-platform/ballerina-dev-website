@@ -21,8 +21,8 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../../../layouts/LayoutUseCase";
-import Intro from "../../../../components/integration/data-oriented-programming/intro/Intro";
-import Code from "../../../../components/integration/data-oriented-programming/code/Code";
+import Intro from "../../../../components/integration/ballerina-vs-java-for-data-oriented-programming/intro/Intro";
+import Code from "../../../../components/integration/ballerina-vs-java-for-data-oriented-programming/code/Code";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -42,12 +42,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/integration/data-oriented-programming/code/java-bbe");
+  const files = traverseFolder("components/integration/ballerina-vs-java-for-data-oriented-programming/code/java-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/integration/data-oriented-programming/code/java-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/integration/ballerina-vs-java-for-data-oriented-programming/code/java-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     const regex = /```(\w+)([\s\S]*?)```/g;
     let match = [];

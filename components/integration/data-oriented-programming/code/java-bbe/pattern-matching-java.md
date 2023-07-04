@@ -5,7 +5,7 @@ description: null
 ```
 import java.util.Map;
 
-public class PatternMatching {
+class Main {
 
     static final String switchStatus = "ON";
 

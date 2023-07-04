@@ -14,7 +14,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.*;
 
 class Main {
-
     // Define a SOAP payload
     static String soapPayload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">\n" +
             "    <soapenv:Body>\n" +

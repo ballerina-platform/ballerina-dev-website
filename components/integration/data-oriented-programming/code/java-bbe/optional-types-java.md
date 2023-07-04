@@ -15,8 +15,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-record Person(int id, String name, Integer age, String email, List<String> availableFields) {
 
+record Person(int id, String name, Integer age, String email, List<String> availableFields) {
     public Optional<String> getEmail() {
         return Optional.ofNullable(email);
     }
@@ -26,10 +26,8 @@ record Person(int id, String name, Integer age, String email, List<String> avail
     }
 }
 
-class Optionals {
-
+class Main {
     public static void main(String[] args) throws JsonProcessingException {
-
         String jsonInput = """
                 {
                     "id": 1,

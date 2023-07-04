@@ -9,7 +9,7 @@ record Circle(double radius) implements Shape {}
 
 record Rectangle(double width, double height) implements Shape {}
 
-class Unions {
+class Main {
     public static double calculateArea(Shape shape) {
         switch (shape) {
             case Circle circle:

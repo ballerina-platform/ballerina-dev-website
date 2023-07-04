@@ -1,6 +1,22 @@
 {
     "events": [
-       {
+      {
+            "date": "July 13, 2023",
+            "day": "Thur.",
+            "time": "9.00 a.m. IST",
+            "expire": "2023-07-14T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/294514966/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Persist with Precision: Mastering Data Persistence with Bal Persist",
+            "presenterTwitter": "https://twitter.com/dknkuruppu",
+            "presenter": "Danesh Kuruppu",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP here"
+        },
+        {
             "date": "July 6, 2023",
             "day": "Thur.",
             "time": "7.30 p.m. CDT",
@@ -29,7 +45,7 @@
             "presenter": "Hinduja Balasubramaniyam",
             "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "https://www.twitch.tv/videos/1840958805",
+            "videoURL": "https://riverside.fm/dashboard/studios/12in23-summer-of-sexps/recordings/17e79d5e-db84-46e9-9881-e220eb16f6f9?share-token=5b37b9ea4dfce7d13b86&content-shared=recording",
             "buttonText": "Watch recording"
         },
         {

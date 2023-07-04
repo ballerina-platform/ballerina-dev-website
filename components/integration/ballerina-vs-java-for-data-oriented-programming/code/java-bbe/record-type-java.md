@@ -15,6 +15,7 @@ record User(int id, String name, UserType userType) {
      this(id, name, UserType.GUEST);
   }
 }
+
 class Main {
   public static void main(String[] args) {
     User user = new User(1, "John Doe");

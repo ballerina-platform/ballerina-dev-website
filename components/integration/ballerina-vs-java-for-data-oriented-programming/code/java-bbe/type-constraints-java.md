@@ -24,7 +24,7 @@ record User(@Size(min = 1, max = 8) String username,
 
 @SpringBootApplication
 @RestController
-public class OptimalConstraint {
+class Main {
 
     @PostMapping("/userSignUp")
     public ResponseEntity<String> handleRequest(@Valid @RequestBody User user) {

@@ -18,7 +18,7 @@ record Customer(String id, String name) {}
 
 record Invoice(String id, Customer customer, List<InvoiceItem> items) {}
 
-public class JSON {
+class Main {
     public static void main(String[] args) throws IOException {
             String invoiceData = Files.readString(Paths.get("./invoice.json"));
 

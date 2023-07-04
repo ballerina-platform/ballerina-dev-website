@@ -97,28 +97,33 @@ The language now supports the `group by` and `collect` clauses to perform aggreg
 ```ballerina
 import ballerina/io;
 
-public type CovidEntry record {|
-    string district;
-    string province;
-    decimal deaths;
+type Order record {|
+    string name;
+    int price;
 |};
 
-public final table<CovidEntry> covidTable = table [
-    {district: "Colombo", province: "Western", deaths: 21},
-    {district: "Kandy", province: "Central", deaths: 14},
-    {district: "Kaluthara", province: "Western", deaths: 18},
-    {district: "Jaffna", province: "North", deaths: 10}
-];
+public function main() {
+    Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
+    var averages = from var {name, price} in orders
+                        group by name
+                        select {name, avg: avg(price)}; 
+    io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
+}
+```
+
+```
+import ballerina/io;
+
+type Order record {|
+    string name;
+    int price;
+|};
 
 public function main() {
-    record {|string province; decimal deaths;|}[] deathsByProvince = from var {province, deaths} in covidTable
-        group
-         by province
-        select {province, deaths: sum(deaths)};
-    io:println(deathsByProvince);
-    decimal totalDeaths = from var {deaths} in covidTable
-        collect    sum(deaths);
-    io:println(totalDeaths);
+    Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
+    var average = from var {price} in orders
+                       collect avg(price); 
+    io:println(average); // 84.25
 }
 ```
 

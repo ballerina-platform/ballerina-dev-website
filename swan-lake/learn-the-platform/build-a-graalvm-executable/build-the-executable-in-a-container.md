@@ -34,7 +34,7 @@ After the environment is set up, follow the steps below to build the native exec
 
    service / on new http:Listener(8080) {
        resource function get greeting() returns string {   
-              return "Hello, Docker!";   
+           return "Hello, Docker!";   
        }
    }
    ```
@@ -52,7 +52,7 @@ After the environment is set up, follow the steps below to build the native exec
    
    Building the native image. This may take a while
    
-   [+] Building 263.1s (16/16) FINISHED                                                                                                                                            
+   [+] Building 263.1s (16/16) FINISHED                                                  
     => [internal] load build definition from Dockerfile                                  0.0s
     => => transferring dockerfile: 395B                                                  0.0s
     => [internal] load .dockerignore                                                     0.0s
@@ -62,7 +62,7 @@ After the environment is set up, follow the steps below to build the native exec
     => [auth] ballerina/native-builder:pull token for registry-1.docker.io               0.0s
     => [auth] library/debian:pull token for registry-1.docker.io                         0.0s
     => [build 1/4] FROM docker.io/ballerina/native-builder:2201.7.x                      1.7s
-    => => resolve docker.io/ballerina/native-builder:2201.7.x                            0.0s                                                                           
+    => => resolve docker.io/ballerina/native-builder:2201.7.x                            0.0s
     => CACHED [stage-1 1/4] FROM docker.io/library/debian:11-slim                        0.0s
     => [internal] load build context                                                     0.3s
     => => transferring context: 38.39MB                                                  0.3s

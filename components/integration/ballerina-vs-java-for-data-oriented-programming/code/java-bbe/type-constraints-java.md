@@ -33,7 +33,7 @@ class Main {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(OptimalConstraint.class);
-        app.setDefaultProperties(Collections.singletonMap("server.port", "8080"));
+        app.setDefaultProperties(Collections.singletonMap("server.port", "9090"));
         app.run(args);
     }
 

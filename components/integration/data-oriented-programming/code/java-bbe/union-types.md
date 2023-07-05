@@ -1,6 +1,6 @@
 ---
 title: 'Model choices as discriminate unions'
-description: Modeling choices play a crucial role in achieving code-data separation in data-oriented programming, leading to modular, maintainable, and extensible code that can handle diverse data variants in a unified and type-safe manner. <br><br>Both Java and Ballerina provide mechanisms to model choices as discriminate unions. Java uses interfaces or abstract classes along with class hierarchies and method overrides to represent the variants and their behaviors. Ballerina, on the other hand, offers built-in support for discriminate unions with a concise and language-integrated syntax.
+description: In data-oriented programming, modeling choices is essential for achieving code-data separation. This approach results in modular, maintainable, and extensible code that can handle different data variants in a unified and type-safe manner. Ballerina simplifies this process by offering built-in mechanisms to model choices as discriminate unions, using a concise and seamlessly integrated syntax.
 image:
 url: https://github.com/ballerina-guides/integration-samples/tree/main/model-choices-for-dop
 ---

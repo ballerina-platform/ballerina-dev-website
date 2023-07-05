@@ -1,6 +1,6 @@
 ---
 title: 'Pattern matching'
-description: Pattern matching empowers developers to effortlessly extract pertinent data from intricate patterns and execute precise operations based on the data's structure and content. Both Ballerina and Java offer the ability to handle complex data structures concisely and expressively using pattern matching techniques. 
+description: Pattern matching is a powerful tool in data-oriented programming that allows developers to extract relevant data from complex patterns and perform specific operations based on the structure and content of the data. <br><br>Ballerina provides concise and expressive pattern matching techniques to handle intricate data structures efficiently.
 url: https://github.com/ballerina-guides/integration-samples/tree/main/pattern-matching-for-dop
 ---
 ```

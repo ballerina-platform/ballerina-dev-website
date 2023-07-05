@@ -6,7 +6,6 @@ description: null
 import java.util.Map;
 
 class Main {
-
     static final String switchStatus = "ON";
 
     public static String matchValue(Object value, boolean isObstructed, float powerPercentage) {

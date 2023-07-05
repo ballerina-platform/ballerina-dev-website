@@ -28,7 +28,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- A bug that allowed using a function reference of a `non-isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
+- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
 
     ```ballerina
     type Employee record {|
@@ -64,7 +64,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
     ```
 
-- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message thrown for an invalid TOML module structure is now improved to provide the variable name.
+- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message for an invalid TOML module structure is now improved to provide the variable name.
 
     For example, consider a non-default module named `foo.bar`, which contains the following configurable variables.
 
@@ -73,10 +73,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     configurable string stringVar = ?;
     ```
 
-    If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it throws an error with the following message.
+    If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it results in the following error messages.
 
     ```
-    [Config.toml:(1:1,2:23)] invalid TOML structure found for module ’foo.bar’. with variable 'intVar'. Please provide the module name as '[foo.bar]'
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar'. with variable 'intVar'. Please provide the module name as '[foo.bar]'
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ‘foo’.bar. with variable 'stringVar'. Please provide the module name as ‘[foo.bar]’
     ```
 
@@ -115,7 +115,7 @@ public function main() {
     var averages = from var {name, price} in orders
         group by name
         select {name, avg: avg(price)};
-    io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
+```ballerina
 }
 ```
 

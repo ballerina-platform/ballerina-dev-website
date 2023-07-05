@@ -26,10 +26,7 @@ Update your current Ballerina installation directly to 2201.7.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
-### Ballerina artifacts verification
-
-From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
-
+>**Info:** From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
 
 ## Backward-incompatible changes
 

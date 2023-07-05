@@ -50,7 +50,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7705dfffdee87d602173a35adbcf1949&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=593e3fe5140f09ba81fc7ab197644537&file=binary_data.bal",
                 "_blank"
               );
             }}

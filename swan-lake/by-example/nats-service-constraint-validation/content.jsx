@@ -308,7 +308,10 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Publish message" href="/learn/by-example/nats-basic-pub">
+          <Link
+            title="Consume JetStream message"
+            href="/learn/by-example/nats-jetstream-sub"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -317,7 +320,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Publish message
+                  Consume JetStream message
                 </span>
               </div>
               <svg

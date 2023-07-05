@@ -54,7 +54,7 @@ export function ConsumingServices({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e052d8e6aa2bcf3527ace97e2db6212d&file=consuming_services.bal",
+                "https://play.ballerina.io/?gist=dfe654ff83be7e0bba32c51d09bde0cd&file=consuming_services.bal",
                 "_blank"
               );
             }}

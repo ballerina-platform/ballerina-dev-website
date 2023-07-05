@@ -322,8 +322,8 @@ export function NatsBasicPub({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validation"
-            href="/learn/by-example/nats-service-constraint-validation"
+            title="Consume JetStream message"
+            href="/learn/by-example/nats-jetstream-sub"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -350,7 +350,7 @@ export function NatsBasicPub({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  Consume JetStream message
                 </span>
               </div>
             </div>

@@ -69,7 +69,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=09076aed73009d7fe2aa4f0d1f519cb7&file=create_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=e0db6c69afcd6d0cbe388fe92ec92de9&file=create_tables_with_query.bal",
                 "_blank"
               );
             }}

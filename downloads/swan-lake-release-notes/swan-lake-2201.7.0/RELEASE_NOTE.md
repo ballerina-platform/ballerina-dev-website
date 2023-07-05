@@ -86,6 +86,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/graalvm-executable-overview/).
 
+### Ballerina artifacts verification
+
+From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
+
 ## Language updates
 
 ### New features

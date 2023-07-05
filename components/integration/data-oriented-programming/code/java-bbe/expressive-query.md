@@ -4,28 +4,32 @@ description: Ballerina's query language is a powerful feature that enhances data
 url: https://github.com/ballerina-guides/integration-samples/tree/main/declarative-data-processing-for-dop
 ---
 ```
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
 
-type Country record {|
+type Country record {
     string country;
-    string continent;
     int population;
+    string continent;
     int cases;
     int deaths;
-|};
+};
 
-http:Client covidClient = check new ("http://localhost:9090");
-
+// Prints the top 10 countries having the highest case-fatality ratio grouped by continent.
 public function main() returns error? {
-    // Perform data transformation using Ballerina's query language
-    json summary = from var {country, continent, population, cases, deaths} in <Country[]>check covidClient->/countries
-        where population >= 100000 && deaths >= 100
-        let decimal caseFatalityRatio = (<decimal>deaths / <decimal>cases * 100).round(4)
-        group by continent
-        limit 3
-        select {continent, countries: [country], population: sum(population), caseFatalityRatio: avg(caseFatalityRatio)};
+    http:Client diseaseEp = check new ("https://disease.sh/v3");
+    Country[] countries = check diseaseEp->/covid\-19/countries;
 
+    json summary =
+        from var {country, continent, population, cases, deaths} in countries
+            where population >= 100000 && deaths >= 100
+            let decimal caseFatalityRatio = (<decimal>deaths / <decimal>cases * 100).round(4)
+            let json countryInfo = {country, population, caseFatalityRatio}
+            order by caseFatalityRatio descending
+            limit 10
+            group by continent
+            order by avg(caseFatalityRatio)
+            select {continent, countries: [countryInfo]};
     io:println(summary);
 }
 ```

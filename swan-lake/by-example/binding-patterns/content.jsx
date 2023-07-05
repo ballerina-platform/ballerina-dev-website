@@ -55,8 +55,8 @@ export function BindingPatterns({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=81fa0a39727683bf697e7c61be89ecd9&file=binding_patterns.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=b54802e1d3cc078f4d3a9864f068ebd5&file=binding_patterns.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -81,7 +81,7 @@ export function BindingPatterns({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/binding-patterns",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

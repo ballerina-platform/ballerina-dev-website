@@ -62,8 +62,8 @@ export function HttpFailover({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0b2a03721f4f0b7ed45876a4e9840513&file=http_failover.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=e46e8fdf8eb795fa8f3f29e5efaac3d9&file=http_failover.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -88,7 +88,7 @@ export function HttpFailover({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-failover",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

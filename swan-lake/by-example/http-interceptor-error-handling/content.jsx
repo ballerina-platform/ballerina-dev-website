@@ -34,21 +34,19 @@ service class RequestInterceptor {
     }
 }
 
-RequestInterceptor requestInterceptor = new;
-
 // A \`RequestErrorInterceptor\` service class implementation. It allows intercepting
 // the error that occurred in the request path and handle it accordingly.
 // A \`RequestErrorInterceptor\` service class can have only one resource function.
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
 
-    // The resource function inside a \`RequestErrorInterceptor\` is only allowed 
+    // The resource function inside a \`RequestErrorInterceptor\` is only allowed
     // to have the default method and path. The error occurred in the interceptor
     // execution can be accessed by the mandatory argument: \`error\`.
     resource function 'default [string... path](error err) returns http:BadRequest {
         // In this case, all of the errors are sent as \`400 BadRequest\` responses with a customized
         // media type and body. You can also send different status code responses according to
-        // the error type. Furthermore, you can also call \`ctx.next()\` if you want to continue the 
+        // the error type. Furthermore, you can also call \`ctx.next()\` if you want to continue the
         // request flow after fixing the error.
         return {
             mediaType: "application/org+json",
@@ -57,16 +55,13 @@ service class RequestErrorInterceptor {
     }
 }
 
-// Creates a new \`RequestErrorInterceptor\`.
-RequestErrorInterceptor requestErrorInterceptor = new;
+service http:InterceptableService / on new http:Listener(9090) {
 
-listener http:Listener interceptorListener = new (9090,
-    // To handle all of the errors in the request path, the \`RequestErrorInterceptor\`
-    // is added as the last interceptor as it has to be executed last.
-    interceptors = [requestInterceptor, requestErrorInterceptor]
-);
-
-service / on interceptorListener {
+    public function createInterceptors() returns [RequestInterceptor, RequestErrorInterceptor] {
+        // To handle all of the errors in the request path, the \`RequestErrorInterceptor\`
+        // is added as the last interceptor as it has to be executed last.
+        return [new RequestInterceptor(), new RequestErrorInterceptor()];
+    }
 
     resource function get albums() returns Album[] {
         return albums.toArray();
@@ -112,8 +107,8 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eaea71f1ebebfef8d146b457662a2244&file=http_interceptor_error_handling.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=0dffd499f4233682e0ca2fcc155c08de&file=http_interceptor_error_handling.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -138,7 +133,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-interceptor-error-handling",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

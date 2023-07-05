@@ -1460,6 +1460,10 @@ import {
   codeSnippetData as NatsServiceConstraintValidationCodeSnippetData,
 } from "./nats-service-constraint-validation/content.jsx";
 import {
+  NatsJetstreamSub,
+  codeSnippetData as NatsJetstreamSubCodeSnippetData,
+} from "./nats-jetstream-sub/content.jsx";
+import {
   NatsBasicPub,
   codeSnippetData as NatsBasicPubCodeSnippetData,
 } from "./nats-basic-pub/content.jsx";
@@ -1467,6 +1471,10 @@ import {
   NatsBasicRequest,
   codeSnippetData as NatsBasicRequestCodeSnippetData,
 } from "./nats-basic-request/content.jsx";
+import {
+  NatsJetstreamPub,
+  codeSnippetData as NatsJetstreamPubCodeSnippetData,
+} from "./nats-jetstream-pub/content.jsx";
 import {
   NatsServiceSecureConnection,
   codeSnippetData as NatsServiceSecureConnectionCodeSnippetData,
@@ -2641,10 +2649,14 @@ const BBEs = {
   NatsBasicReplyCodeSnippetData,
   NatsServiceConstraintValidation,
   NatsServiceConstraintValidationCodeSnippetData,
+  NatsJetstreamSub,
+  NatsJetstreamSubCodeSnippetData,
   NatsBasicPub,
   NatsBasicPubCodeSnippetData,
   NatsBasicRequest,
   NatsBasicRequestCodeSnippetData,
+  NatsJetstreamPub,
+  NatsJetstreamPubCodeSnippetData,
   NatsServiceSecureConnection,
   NatsServiceSecureConnectionCodeSnippetData,
   NatsServiceBasicAuth,

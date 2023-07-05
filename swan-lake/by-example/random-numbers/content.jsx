@@ -55,8 +55,8 @@ export function RandomNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2213eb3fab6bfab82934aa8af5bdd75d&file=random_numbers.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=c7e1331f57b34bdc2bb3ea6d19c05b05&file=random_numbers.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -81,7 +81,7 @@ export function RandomNumbers({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/random-numbers",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -88,8 +88,8 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=46789a724aa6f62558c280084b859b18&file=json_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=92a07f7cc52e511a41c969a89d4d322e&file=json_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -114,7 +114,7 @@ export function JsonType({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/json-type",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

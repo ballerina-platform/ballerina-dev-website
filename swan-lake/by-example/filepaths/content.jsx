@@ -79,8 +79,8 @@ export function Filepaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3694592a5467f55deab9a438054427ad&file=filepaths.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=438010ec524dbe4a23a5a6c012632922&file=filepaths.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -105,7 +105,7 @@ export function Filepaths({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/filepaths",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

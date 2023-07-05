@@ -73,8 +73,8 @@ export function HttpBasicRestService({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=64c5550c19d10b17a8f96cd327798328&file=http_basic_rest_service.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=d894493a5fa250f677eeaf034b332b38&file=http_basic_rest_service.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -99,7 +99,7 @@ export function HttpBasicRestService({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-basic-rest-service",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

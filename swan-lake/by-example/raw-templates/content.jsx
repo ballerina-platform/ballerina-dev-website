@@ -117,7 +117,7 @@ export function RawTemplates({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/raw-templates",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -206,7 +206,7 @@ export function RawTemplates({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/raw-templates",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

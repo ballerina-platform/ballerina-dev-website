@@ -52,8 +52,8 @@ export function HttpTimeout({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=20f6c84e739980e8ae6faa7ae41e8f6a&file=http_timeout.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6a73533478c3c66cd2eb3135604aeb1c&file=http_timeout.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -78,7 +78,7 @@ export function HttpTimeout({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-timeout",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

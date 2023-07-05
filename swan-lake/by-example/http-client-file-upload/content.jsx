@@ -56,8 +56,8 @@ export function HttpClientFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f2310a86be714f6b22374c87e2c58c03&file=http_client_file_upload.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=4620f816fe98ad143650b44aed97030a&file=http_client_file_upload.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -82,7 +82,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-file-upload",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

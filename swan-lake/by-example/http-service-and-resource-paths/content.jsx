@@ -65,8 +65,8 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f5913c2c60b4350565826539329e1137&file=http_service_and_resource_paths.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=fe2cd1796d6e454ff6062cf0c0b762e4&file=http_service_and_resource_paths.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -91,7 +91,7 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-and-resource-paths",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

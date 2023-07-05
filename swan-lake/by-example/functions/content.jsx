@@ -77,8 +77,8 @@ export function Functions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a070509aa6c0d7c93f2f68ea5e4d4ef3&file=functions.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=b91a02d57ee95cec8674f2193e8257f5&file=functions.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -103,7 +103,7 @@ export function Functions({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/functions",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

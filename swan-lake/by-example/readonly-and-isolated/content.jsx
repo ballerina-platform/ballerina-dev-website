@@ -66,8 +66,8 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c43213ff77b40d856d982a027b21f5d7&file=readonly_and_isolated.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=e75bb89fb39f2f3cf1551e6c0b0f2da1&file=readonly_and_isolated.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -92,7 +92,7 @@ export function ReadonlyAndIsolated({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/readonly-and-isolated",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

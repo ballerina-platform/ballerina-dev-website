@@ -53,7 +53,7 @@ export function MainFunction({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/main-function",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

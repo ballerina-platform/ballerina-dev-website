@@ -50,7 +50,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
 - A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
 
-  For example, the code below may result in a compilation error now since `num`, which is of type `CONST` can only be integer `8`.
+  This may result in a compilation error now since `num`, which is of type `CONST` can only be integer `8`.
 
     ```ballerina
     const int CONST = 1 + 7;
@@ -100,7 +100,7 @@ The language now supports the `group by` and `collect` clauses to perform aggreg
 
 ##### The `group by` clause
 
-The `group by` clause is used to group a collection based on a `grouping-key` as shown in the example below. The `grouping-key` will be unique to each group.
+The `group by` clause is used to group a collection based on a grouping-key as shown in the example below. The grouping-key will be unique to each group.
 
 ```ballerina
 import ballerina/io;

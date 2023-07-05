@@ -1,6 +1,6 @@
 ---
 title: 'Model choices as discriminate unions'
-description: In data-oriented programming, modeling choices is essential for achieving code-data separation. This approach results in modular, maintainable, and extensible code that can handle different data variants in a unified and type-safe manner. Ballerina simplifies this process by offering built-in mechanisms to model choices as discriminate unions, using a concise and seamlessly integrated syntax.
+description: In data-oriented programming, modeling choices is essential for achieving code-data separation. This approach results in modular, maintainable, and extensible code that can handle different data variants in a unified and type-safe manner. Ballerina offers built-in mechanisms to model choices as discriminate unions, using a concise and seamlessly integrated syntax.
 image:
 url: https://github.com/ballerina-guides/integration-samples/tree/main/model-choices-for-dop
 ---

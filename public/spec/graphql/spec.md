@@ -727,6 +727,8 @@ type Profile record {|
 
 >**Note:** When a record field is defined as an optional field, the Ballerina GraphQL engine identifies it as a nullable field. Even though it is supported, it is recommended to use Ballerina nilable types instead of optional fields to define nullable fields in GraphQL.
 
+>**Note:** Alias types of record types are not allowed to be used as object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
+
 >**Hint:** Open records are supported in GraphQL services, but they do not make sense in the context of GraphQL since a GraphQL type cannot have dynamic fields. Therefore, it is recommended to use closed records in GraphQL services unless it is absolutely needed.
 
 #### 4.2.2 Service Type as Object
@@ -884,6 +886,8 @@ Although `Scalar` and `enum` types can be used as input and output types without
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
 
 >**Note:** Since GraphQL schema can not use the same type as an input and an output type when a record type is used as an input and an output, a compilation error will be thrown.
+
+>**Note:** Alias types of record types are not allowed to be used as input object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
 
 ###### Example: Input Objects
 

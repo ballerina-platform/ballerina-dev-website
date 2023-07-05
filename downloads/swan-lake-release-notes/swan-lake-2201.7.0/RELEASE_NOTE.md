@@ -92,7 +92,11 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 #### Introduction of the `group by` and `collect` clauses
 
-The language now supports the `group by` and `collect` clauses to perform aggregation-related operations. The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique to each group. The `collect` clause is used to group a collection into one group. 
+The language now supports the `group by` and `collect` clauses to perform aggregation-related operations.
+
+##### The `group by` clause
+
+The `group by` clause is used to group a collection based on a `grouping-key` as shown in the example below. The `grouping-key` will be unique to each group.
 
 ```ballerina
 import ballerina/io;
@@ -105,13 +109,17 @@ type Order record {|
 public function main() {
     Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
     var averages = from var {name, price} in orders
-                        group by name
-                        select {name, avg: avg(price)}; 
+        group by name
+        select {name, avg: avg(price)};
     io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
 }
 ```
 
-```
+##### The `collect` clause
+
+ The `collect` clause is used to group a collection into one group as shown in the example below.
+
+```ballerina
 import ballerina/io;
 
 type Order record {|
@@ -122,7 +130,7 @@ type Order record {|
 public function main() {
     Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
     var average = from var {price} in orders
-                       collect avg(price); 
+        collect avg(price);
     io:println(average); // 84.25
 }
 ```

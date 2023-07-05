@@ -28,7 +28,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- A bug that allowed using a function reference of a `non-isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
+- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
 
     ```ballerina
     type Employee record {|

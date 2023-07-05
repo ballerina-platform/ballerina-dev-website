@@ -26,6 +26,11 @@ Update your current Ballerina installation directly to 2201.7.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
+### Ballerina artifacts verification
+
+From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
+
+
 ## Backward-incompatible changes
 
 - A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
@@ -85,10 +90,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 ### Official support for generating GraalVM native executables
 
 Ballerina now officially supports generating GraalVM native executables and the language and the standard libraries are compatible with the GraalVM native executable generation. In addition to that, GraalVM incompatibility warnings will be printed for any incompatible modules in the application. To explore more on this support, see [Build a GraalVM executable](/learn/graalvm-executable-overview/).
-
-### Ballerina artifacts verification
-
-From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
 
 ## Language updates
 

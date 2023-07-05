@@ -367,8 +367,8 @@ export function NatsBasicRequest({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
-            href="/learn/by-example/nats-service-secure-connection"
+            title="Publish message"
+            href="/learn/by-example/nats-jestream-pub"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -378,7 +378,7 @@ export function NatsBasicRequest({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Publish message
                 </span>
               </div>
               <svg

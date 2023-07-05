@@ -69,7 +69,7 @@ export function HttpClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6ad35b0cac998083092648b505fe7b17&file=http_client_oauth2_refresh_token_grant_type.bal",
+                "https://play.ballerina.io/?gist=c484574bd639bfa5ae1b1f42d6985f47&file=http_client_oauth2_refresh_token_grant_type.bal",
                 "_blank"
               );
             }}

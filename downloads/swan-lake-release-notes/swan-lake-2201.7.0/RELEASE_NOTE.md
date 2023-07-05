@@ -76,7 +76,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it results in the following error messages.
 
     ```
-    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar'. with variable 'intVar'. Please provide the module name as '[foo.bar]'
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar' with variable 'intVar'. Please provide the module name as '[foo.bar]'
     [Config.toml:(1:1,2:23)] invalid TOML structure found for module ‘foo’.bar. with variable 'stringVar'. Please provide the module name as ‘[foo.bar]’
     ```
 

@@ -1276,9 +1276,12 @@ sublinks:
           - title: Send reply to request message
             id: 2
             url: nats-basic-reply
-          - title: Constraint validation
+          - title: Constraint validations
             id: 3
-            url: nats-service-constraint-validation
+            url: nats-service-constraint-validations
+          - title: Consume JetStream message
+            id: 4
+            url: nats-jetstream-sub
       - title: NATS client
         id: 25
         sublinks:
@@ -1288,6 +1291,9 @@ sublinks:
           - title: Send request message
             id: 2
             url: nats-basic-request
+          - title: Publish message
+            id: 3
+            url: nats-jestream-pub
       - title: NATS service security
         id: 26
         sublinks:

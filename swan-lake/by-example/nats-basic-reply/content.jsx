@@ -282,8 +282,8 @@ export function NatsBasicReply({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Constraint validation"
-            href="/learn/by-example/nats-service-constraint-validation"
+            title="Constraint validations"
+            href="/learn/by-example/nats-service-constraint-validations"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -293,7 +293,7 @@ export function NatsBasicReply({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  Constraint validations
                 </span>
               </div>
               <svg

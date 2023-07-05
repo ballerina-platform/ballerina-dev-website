@@ -62,7 +62,7 @@ export function ComputedFieldKey({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7a3649448d96db3e6723412e75b98847&file=computed_field_key.bal",
+                "https://play.ballerina.io/?gist=f49ebc5576fb85658c867848aa657083&file=computed_field_key.bal",
                 "_blank"
               );
             }}

@@ -64,7 +64,7 @@ export function HttpRetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f04c2ca716e425f953cd3da91495d938&file=http_retry.bal",
+                "https://play.ballerina.io/?gist=86bde2e4872b04f2ad0424e0a868b345&file=http_retry.bal",
                 "_blank"
               );
             }}

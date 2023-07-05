@@ -96,7 +96,7 @@ The language now supports the `group by` and `collect` clauses to perform aggreg
 
 ##### The `group by` clause
 
-The `group by` clause is used to group a collection based on a `grouping-key`. The `grouping-key` will be unique to each group as shown in the example below.
+The `group by` clause is used to group a collection based on a `grouping-key` as shown in the example below. The `grouping-key` will be unique to each group.
 
 ```ballerina
 import ballerina/io;

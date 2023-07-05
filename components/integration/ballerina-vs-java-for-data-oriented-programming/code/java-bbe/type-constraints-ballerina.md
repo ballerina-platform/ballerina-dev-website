@@ -20,7 +20,7 @@ type User record {
 };
 
 service / on new http:Listener(9090) {
-    resource function post userSignUp(User user) returns http:Created {
+    resource function post user(User user) returns http:Created {
         io:println(string `User ${user.username} signed up successfully`);
         return http:CREATED;
     }

@@ -26,13 +26,17 @@ Below is an example of using the Cosign CLI to verify the release artifacts of t
 
 >**Info:** You can select the verification artifacts you want to verify based on your installer from the ones listed in the table above.
 
-Execute the command below to verify the artifacts using the Cosign CLI.
+Follow the steps below to verify the artifacts using the Cosign CLI.
 
-```
-$ cosign verify-blob ballerina-{{ version }}-swan-lake-macos-x64.pkg --certificate ballerina-{{ version }}-swan-lake-macos-x64.pkg.pem --signature ballerina-{{ version }}-swan-lake-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/{{ branch }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
-```
+1. Download the desired artifact from the table above.
 
-If the `ballerina-{{ version }}-swan-lake-macos-x64.pkg`  artifact matches the one signed by Cosign, you will receive the following message.  
+2. Execute the command below to verify the artifacts.
+
+    ```
+    $ cosign verify-blob ballerina-{{ version }}-swan-lake-macos-x64.pkg --certificate ballerina-{{ version }}-swan-lake-macos-x64.pkg.pem --signature ballerina-{{ version }}-swan-lake-macos-x64.pkg.sig --certificate-identity=https://github.com/ballerina-platform/ballerina-distribution/.github/workflows/publish-release.yml@refs/heads/{{ branch }} --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+    ```
+
+If the artifact matches the one signed by Cosign, you will receive the following message.  
 
 ```
 Verified OK
@@ -40,7 +44,7 @@ Verified OK
 
 ## Verify using the Rekor API
 
-The signatures applied on the Ballerina release artifacts are recorded in [Rekor](https://github.com/sigstore/rekor), which is a Sigstore Transparency Log.  Below is an example of using the Rekor API to verify the release artifacts of the MacOS platform.  
+The signatures applied on the Ballerina release artifacts are recorded in [Rekor](https://github.com/sigstore/rekor), which is a Sigstore Transparency Log. Below is an example of using the Rekor API to verify the release artifacts of the MacOS platform.  
 
 >**Info:** You can select the verification artifacts you want to verify based on your installer from the ones listed in the table above.
 

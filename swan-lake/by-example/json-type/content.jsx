@@ -88,7 +88,7 @@ export function JsonType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=085b3370655c6a94803b13bec96056d9&file=json_type.bal",
+                "https://play.ballerina.io/?gist=fc0703f3ef43df017c793663bd559c93&file=json_type.bal",
                 "_blank",
               );
             }}

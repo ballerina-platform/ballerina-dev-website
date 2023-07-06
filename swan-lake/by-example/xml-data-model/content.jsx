@@ -172,7 +172,7 @@ export function XmlDataModel({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e0e61cfb466ffc8467c837d327035ca7&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=9801aab0b684b3f5ecd19f485bfc6899&file=xml_data_model.bal",
                 "_blank",
               );
             }}

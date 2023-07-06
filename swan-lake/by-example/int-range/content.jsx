@@ -60,7 +60,7 @@ export function IntRange({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2009de3e882b5c0ae261087ea5fd6558&file=int_range.bal",
+                "https://play.ballerina.io/?gist=9970454d5390535a433d6c8d366efecb&file=int_range.bal",
                 "_blank",
               );
             }}

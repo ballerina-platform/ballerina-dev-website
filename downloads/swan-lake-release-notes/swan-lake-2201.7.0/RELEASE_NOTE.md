@@ -52,13 +52,14 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
 - A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
 
-  This may result in a compilation error now since `num`, which is of type `CONST` can only be integer `8`.
+  This may result in compilation errors that were previously not identified.
 
     ```ballerina
     const int CONST = 1 + 7;
     CONST num = 2; // Compilation error now.
     ```
-
+  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
+  
 - A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
 
     ```ballerina

@@ -116,7 +116,7 @@ public function main() {
 }
 ```
 
-The `collect` clause is used to group a collection into one group as shown in the example below.
+The `collect` clause is used to group a collection into one group.
 
 ```ballerina
 import ballerina/io;

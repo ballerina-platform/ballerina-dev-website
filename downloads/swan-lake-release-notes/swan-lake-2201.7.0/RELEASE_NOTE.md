@@ -97,7 +97,7 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 The language now supports the `group by` and `collect` clauses to perform aggregation-related operations.
 
-The `group by` clause is used to group a collection based on a grouping-key as shown in the example below. The grouping-key will be unique to each group.
+The `group by` clause is used to group a collection based on a grouping-key. The grouping-key will be unique to each group.
 
 ```ballerina
 import ballerina/io;
@@ -112,6 +112,7 @@ public function main() {
     var averages = from var {name, price} in orders
         group by name
         select {name, avg: avg(price)};
+ io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
 }
 ```
 

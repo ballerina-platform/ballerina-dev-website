@@ -112,7 +112,7 @@ public function main() {
     var averages = from var {name, price} in orders
         group by name
         select {name, avg: avg(price)};
- io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
+    io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
 }
 ```
 

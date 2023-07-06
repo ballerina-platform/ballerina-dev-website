@@ -65,7 +65,7 @@ export function HttpServiceChunking({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f6f86541d72b35bf34ce07fb0f4ad96f&file=http_service_chunking.bal",
+                "https://play.ballerina.io/?gist=7674f631da6f1e64fb7b7e6bcc1418c4&file=http_service_chunking.bal",
                 "_blank",
               );
             }}

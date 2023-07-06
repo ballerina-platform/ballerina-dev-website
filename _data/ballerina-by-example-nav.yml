@@ -403,6 +403,9 @@ sublinks:
           - title: Querying streams
             id: 15
             url: querying-with-streams
+          - title: Aggregation
+            id: 16
+            url: aggregation
       - title: Query actions
         id: 20
         sublinks:

@@ -64,7 +64,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=257b12b9a67338f2d515fa4740dfa648&file=interface_to_external_code.bal",
+                "https://play.ballerina.io/?gist=f8095c9af9640f9c398d4b17a534e464&file=interface_to_external_code.bal",
                 "_blank",
               );
             }}

@@ -113,7 +113,7 @@ export function VisibilityOfObjectFieldsAndMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4ed80da34c7e6f208ce0f8cf4573f6bf&file=visibility_of_object_fields_and_methods.bal",
+                "https://play.ballerina.io/?gist=e06ae5242167fa4fc5a40ff140b49c2f&file=visibility_of_object_fields_and_methods.bal",
                 "_blank",
               );
             }}

@@ -67,7 +67,7 @@ export function Flush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9f44fc262b6c06e57031641cd6f5bd6a&file=flush.bal",
+                "https://play.ballerina.io/?gist=fb86d18a76a635cfc31f4c79774c17f2&file=flush.bal",
                 "_blank",
               );
             }}

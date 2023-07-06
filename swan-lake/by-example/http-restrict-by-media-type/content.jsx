@@ -63,7 +63,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d00b0ebf1b8738dc86d47799853b8ca&file=http_restrict_by_media_type.bal",
+                "https://play.ballerina.io/?gist=75b18b5d71160f1768986b15af139cb1&file=http_restrict_by_media_type.bal",
                 "_blank",
               );
             }}

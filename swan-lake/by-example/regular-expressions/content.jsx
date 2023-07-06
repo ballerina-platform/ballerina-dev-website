@@ -92,7 +92,7 @@ export function RegularExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=28bf3cd502f111bd0c684863632ac37a&file=regular_expressions.bal",
+                "https://play.ballerina.io/?gist=27e4ff2609846f6f2f95c8f45e9199a4&file=regular_expressions.bal",
                 "_blank",
               );
             }}

@@ -65,7 +65,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=05a37a2d0fe537bdfe4b676a60cead74&file=querying_with_streams.bal",
+                "https://play.ballerina.io/?gist=3208a16a9941c9e1ceee037e9a440ae4&file=querying_with_streams.bal",
                 "_blank",
               );
             }}
@@ -372,7 +372,7 @@ export function QueryingWithStreams({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Query actions" href="/learn/by-example/query-actions">
+          <Link title="Aggregation" href="/learn/by-example/aggregation">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -381,7 +381,7 @@ export function QueryingWithStreams({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query actions
+                  Aggregation
                 </span>
               </div>
               <svg

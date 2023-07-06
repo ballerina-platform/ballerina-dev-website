@@ -65,8 +65,8 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f87bd3e1b761a05e7160ee7d060e971f&file=querying_with_streams.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5645fb381d077a3c815af274eb06e2b4&file=querying_with_streams.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -91,7 +91,7 @@ export function QueryingWithStreams({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/querying-with-streams",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

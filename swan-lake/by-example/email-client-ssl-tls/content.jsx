@@ -75,7 +75,7 @@ export function EmailClientSslTls({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/email-client-ssl-tls",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

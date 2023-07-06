@@ -95,7 +95,7 @@ export function MysqlBatchExecuteOperation({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mysql-batch-execute-operation",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

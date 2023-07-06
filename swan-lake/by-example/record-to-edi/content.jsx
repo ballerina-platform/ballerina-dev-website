@@ -77,8 +77,8 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1e4ed1ccc700084ef65a4e46c16760e&file=schema.json",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -103,7 +103,7 @@ export function RecordToEdi({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -192,8 +192,8 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1e4ed1ccc700084ef65a4e46c16760e&file=schema.json",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -218,7 +218,7 @@ export function RecordToEdi({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -426,7 +426,7 @@ export function RecordToEdi({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal edi codegen resources/simple_order_schema.json modules/sorder/sorder.bal`}</span>
+              <span>{`\$ bal edi codegen -s resources/simple_order_schema.json -o modules/sorder/sorder.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -454,8 +454,8 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a2b50b61cda73ec45721d932daa8f30&file=record_to_edi.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -480,7 +480,7 @@ export function RecordToEdi({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

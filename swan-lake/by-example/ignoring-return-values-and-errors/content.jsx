@@ -74,8 +74,8 @@ export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e36581f94158563c3342263333fbdc4&file=ignoring_return_values_and_errors.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=31ff2c60c6c60d1e9c004b331c694177&file=ignoring_return_values_and_errors.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -100,7 +100,7 @@ export function IgnoringReturnValuesAndErrors({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/ignoring-return-values-and-errors",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

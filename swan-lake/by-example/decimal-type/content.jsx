@@ -63,8 +63,8 @@ export function DecimalType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9c5237b2545b591a9901c8c06c2d3d28&file=decimal_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5a6b07b91701c4c0cadbe18275a49e0e&file=decimal_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -89,7 +89,7 @@ export function DecimalType({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/decimal-type",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

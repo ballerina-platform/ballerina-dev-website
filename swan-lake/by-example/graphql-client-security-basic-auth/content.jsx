@@ -74,7 +74,7 @@ export function GraphqlClientSecurityBasicAuth({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-client-security-basic-auth",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

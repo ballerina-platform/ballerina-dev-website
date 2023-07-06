@@ -79,8 +79,8 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c177b565acc50f78bc7ccd28d4b0efa9&file=task_one_time_job_execution.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -105,7 +105,7 @@ export function TaskOneTimeJobExecution({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/task-one-time-job-execution",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

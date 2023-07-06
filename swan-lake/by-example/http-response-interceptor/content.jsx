@@ -36,14 +36,17 @@ service class ResponseInterceptor {
     }
 }
 
-// Engage interceptors at the listener level. Response interceptor services will be executed from
-// tail to head.
-listener http:Listener interceptorListener = new (9090,
-    // This interceptor pipeline will be executed for all of the services attached to this listener.
-    interceptors = [new ResponseInterceptor()]
-);
+// Engage interceptors at the service level using an \`http:InterceptableService\`. The base path of the
+// interceptor services is the same as the target service. Hence, they will be executed only for
+// this particular service.
+service http:InterceptableService / on new http:Listener(9090) {
 
-service / on interceptorListener {
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of
+    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then, the
+    // request interceptor services will be executed from head to tail.
+    public function createInterceptors() returns ResponseInterceptor {
+        return new ResponseInterceptor();
+    }
 
     resource function get albums() returns Album[] {
         return albums.toArray();
@@ -77,13 +80,11 @@ export function HttpResponseInterceptor({ codeSnippets }) {
       </p>
 
       <p>
-        This service object can be engaged at the listener level by using the{" "}
-        <code>interceptors</code> field in the{" "}
-        <code>http:ListenerConfiguration</code> or at the service level by
-        declaring a <code>http:InterceptableService</code> object. These accept
-        an interceptor service object or an array of interceptor service objects
-        as an interceptor pipeline and the interceptors are executed in the
-        order in which they are placed in the pipeline.
+        This service object can be engaged at the service level by declaring an{" "}
+        <code>http:InterceptableService</code> object. This accepts an
+        interceptor service object or an array of interceptor service objects as
+        an interceptor pipeline and the interceptors are executed in the order
+        in which they are placed in the pipeline.
       </p>
 
       <p>
@@ -102,8 +103,8 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=07d887e9904d5c2c30a42829206997fe&file=http_response_interceptor.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -128,7 +129,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-response-interceptor",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

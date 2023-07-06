@@ -185,7 +185,7 @@ export function PersistSelectFields({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-select-fields",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -344,7 +344,7 @@ export function PersistSelectFields({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-select-fields",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

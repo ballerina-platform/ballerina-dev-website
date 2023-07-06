@@ -65,7 +65,7 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d78a34bf90e3382a70ccbca92e9def63&file=http_service_and_resource_paths.bal",
+                "https://play.ballerina.io/?gist=a46607383c8f9ec2670998699e4f0c56&file=http_service_and_resource_paths.bal",
                 "_blank",
               );
             }}

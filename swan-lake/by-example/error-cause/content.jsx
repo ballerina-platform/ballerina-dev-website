@@ -60,7 +60,7 @@ export function ErrorCause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0a0b71d9d4499973ea8b401e4161578b&file=error_cause.bal",
+                "https://play.ballerina.io/?gist=e5aa6aa3d5d77aad56b4835b2489f834&file=error_cause.bal",
                 "_blank",
               );
             }}

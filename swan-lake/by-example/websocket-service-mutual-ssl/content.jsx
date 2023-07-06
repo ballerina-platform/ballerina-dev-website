@@ -80,7 +80,7 @@ export function WebsocketServiceMutualSsl({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/websocket-service-mutual-ssl",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

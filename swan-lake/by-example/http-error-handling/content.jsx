@@ -35,20 +35,17 @@ service class ResponseErrorInterceptor {
     }
 }
 
-// Creates a new \`ResponseErrorInterceptor\`.
-ResponseErrorInterceptor responseErrorInterceptor = new;
+// Engage interceptors at the service level using an \`http:InterceptableService\`. The base path of the
+// interceptor services is the same as the target service. Hence, they will be executed only for
+// this particular service.
+service http:InterceptableService / on new http:Listener(9090) {
 
-// A \`ResponseErrorInterceptor\` can be configured at the listener level or
-// service level. Listener-level error interceptors can handle any error associated
-// with the listener, whereas, service-level error interceptors can only handle
-// errors occurred during the service execution.
-listener http:Listener interceptorListener = new (9090,
-    // To handle all of the errors, the \`ResponseErrorInterceptor\` is added as a first
-    // interceptor as it has to be executed last.
-    interceptors = [responseErrorInterceptor]
-);
-
-service / on interceptorListener {
+    // Service-level error interceptors can handle errors occurred during the service execution.
+    public function createInterceptors() returns ResponseErrorInterceptor {
+        // To handle all of the errors, the \`ResponseErrorInterceptor\` is added as a first
+        // interceptor as it has to be executed last.
+        return new ResponseErrorInterceptor();
+    }
 
     // If the request does not have an\`x-api-version\` header, then an error will be returned
     // and the execution will jump to the nearest \`ResponseErrorInterceptor\`.
@@ -101,8 +98,8 @@ export function HttpErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=511d4a202fc2bc807ec3a1bbcd8f75fc&file=http_error_handling.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=863c9d9b5a98da42b95eae9d111656ea&file=http_default_resource.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -127,7 +124,7 @@ export function HttpErrorHandling({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-error-handling",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

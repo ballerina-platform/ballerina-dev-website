@@ -71,7 +71,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-file-upload",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -341,8 +341,8 @@ export function GraphqlFileUpload({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interceptor configurations"
-            href="/learn/by-example/graphql-interceptor-configurations"
+            title="Input constraint validation"
+            href="/learn/by-example/graphql-input-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -369,7 +369,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptor configurations
+                  Input constraint validation
                 </span>
               </div>
             </div>

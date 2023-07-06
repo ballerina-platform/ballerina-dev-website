@@ -108,7 +108,7 @@ export function HttpServiceBasicAuthenticationFileUserStore({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-basic-authentication-file-user-store",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -204,7 +204,7 @@ export function HttpServiceBasicAuthenticationFileUserStore({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-basic-authentication-file-user-store",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

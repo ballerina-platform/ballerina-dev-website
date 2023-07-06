@@ -71,7 +71,7 @@ export function WebsocketClientSelfSignedJwtAuth({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/websocket-client-self-signed-jwt-auth",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

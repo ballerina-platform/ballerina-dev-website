@@ -2460,6 +2460,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "Input constraint validation",
+        "url": "graphql-input-constraint-validation",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "File upload",
         "url": "graphql-file-upload",
         "verifyBuild": true,
@@ -3152,8 +3160,17 @@
         "isLearnByExample": false
       },
       {
-        "name": "Constraint validation",
+        "name": "Constraint validations",
         "url": "nats-service-constraint-validation",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Consume JetStream message",
+        "url": "nats-jetstream-sub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
@@ -3179,6 +3196,15 @@
       {
         "name": "Send request message",
         "url": "nats-basic-request",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Publish message",
+        "url": "nats-jetstream-pub",
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",

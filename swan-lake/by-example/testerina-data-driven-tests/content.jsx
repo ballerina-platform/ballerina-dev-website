@@ -92,7 +92,7 @@ export function TesterinaDataDrivenTests({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/testerina-data-driven-tests",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

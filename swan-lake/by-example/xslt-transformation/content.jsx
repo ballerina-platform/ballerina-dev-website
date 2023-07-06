@@ -106,7 +106,7 @@ export function XsltTransformation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f2bf5fc6414a3cfd271a70e959cb97cf&file=xslt_transformation.bal",
+                "https://play.ballerina.io/?gist=55a266091c584d3139584c02c3463c8e&file=xslt_transformation.bal",
                 "_blank",
               );
             }}

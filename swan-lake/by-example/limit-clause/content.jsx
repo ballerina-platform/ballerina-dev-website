@@ -63,7 +63,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=eced04b0706cbc234ecff350bebb3e53&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=31790ebde545c1538fac9b62712f1511&file=limit_clause.bal",
                 "_blank",
               );
             }}

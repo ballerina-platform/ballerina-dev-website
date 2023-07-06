@@ -79,7 +79,7 @@ export function ErrorReporting({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dfa18d55f4f7f85f4298fd9bddcb7d4f&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=3a106b65524456093f7be5d64b8429b6&file=error_reporting.bal",
                 "_blank",
               );
             }}

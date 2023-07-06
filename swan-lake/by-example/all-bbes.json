@@ -932,6 +932,13 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "Aggregation",
+        "url": "aggregation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },

@@ -5,43 +5,47 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/http;
-import ballerina/io;
-
-// Fetch from A or B.
-function altFetch(string urlA, string urlB) returns string|error {
-
-    worker A returns string|error {
-        return fetch(urlA);
-    }
-
-    worker B returns string|error {
-        return fetch(urlB);
-    }
-
-    // The \`wait\` action can be used to wait for one of several workers.
-    // This function will return as soon as the return value of either
-    // \`A\` or \`B\` is available.
-    return wait A | B;
-
-}
+  `import ballerina/io;
 
 public function main() returns error? {
-    string res = 
-        check altFetch("https://postman-echo.com/get?lang=ballerina",
-                       "https://postman-echo.com/get?greeting=hello");
-    io:println(res);
-}
+    var orders = [
+        {orderId: 1, itemName: "A", price: 23.4, quantity: 2},
+        {orderId: 1, itemName: "A", price: 20.4, quantity: 1},
+        {orderId: 2, itemName: "B", price: 21.5, quantity: 3},
+        {orderId: 1, itemName: "B", price: 21.5, quantity: 3}
+    ];
 
-function fetch(string url) returns string|error {
-    http:Client cl = check new (url);
-    map<json> payload = check cl->get("");
-    return payload["args"].toString();
+    var items = from var {orderId, itemName} in orders
+        // The \`group by\` clause create groups for each \`orderId\`.
+        // The \`itemName\` is a non-grouping key and it becomes a sequence variable.
+        group by orderId
+        select [itemName];
+    
+    // List of items per \`orderId\`
+    io:println(items);
+
+    var quantities = from var {itemName, quantity} in orders
+        // The \`group by\` clause create groups for each \`itemName\`.
+        // The \`quantity\` is a non-grouping key and it becomes a sequence variable.
+        group by itemName
+        select {itemName, quantity: sum(quantity)};
+
+    // List of quantity per item
+    io:println(quantities);
+
+    var income = from var {price, quantity} in orders
+        let var totPrice = price*quantity
+        // The \`collect\` clause creates a single group and all variables become
+        // non-grouping keys
+        collect sum(totPrice);
+    
+    // Total Income from orders
+    io:println(income);
 }
 `,
 ];
 
-export function AlternateWait({ codeSnippets }) {
+export function Aggregation({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -51,11 +55,23 @@ export function AlternateWait({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Alternate wait</h1>
+      <h1>Aggregation</h1>
 
       <p>
-        The <code>wait</code> action can be used to wait for one of several
-        workers.
+        The <code>group by</code> clause in the query expression can group the
+        elements in a collection. Grouping happens based on the grouping keys
+        provided in <code>group by</code> clause. For each group, grouping keys
+        are unique. All other variables other than grouping keys are called
+        non-grouping keys. For each group, non-grouping keys become sequence
+        variables. Those variables can be used as a list or an argument to a
+        rest parameter of a langlib function.
+      </p>
+
+      <p>
+        The <code>collect</code> clause collects the collection into one group.
+        All the variables become aggregated variables and those variables can be
+        used as a list or an argument to a rest parameter of a langlib function
+        same as in <code>group by</code>.
       </p>
 
       <Row
@@ -68,7 +84,7 @@ export function AlternateWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=05cadae333f72d71cafef53d2a44df3c&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=ba81529da982a3e89688785534512a9e&file=aggregation.bal",
                 "_blank",
               );
             }}
@@ -89,31 +105,9 @@ export function AlternateWait({ codeSnippets }) {
             </svg>
           </button>
 
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/alternate-wait",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -220,18 +214,120 @@ export function AlternateWait({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run alternate_wait.bal`}</span>
-              <span>{`{"lang":"ballerina"}`}</span>
+              <span>{`\$ bal run aggregation.bal`}</span>
+              <span>{`[["A","A","B"],["B"]]`}</span>
+              <span>{`[{"itemName":"A","quantity":3},{"itemName":"B","quantity":6}]`}</span>
+              <span>{`196.2`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h2>Related links</h2>
+
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/query-expressions">Query expressions</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/let-clause">
+              Let clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/limit-clause">
+              Limit clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/joining-iterable-objects">
+              Joining iterable objects using query
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/querying-tables">Querying tables</a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-maps-with-query">
+              Create maps with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-tables-with-query">
+              Create tables with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/create-streams-with-query">
+              Create streams with query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/on-conflict-clause">
+              On conflict clause in query expression
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/learn/by-example/nested-query-expressions">
+              Nested query expressions
+            </a>
+          </span>
+        </li>
+      </ul>
+      <span style={{ marginBottom: "20px" }}></span>
+
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Named worker return values"
-            href="/learn/by-example/named-worker-return-values"
+            title="Querying streams"
+            href="/learn/by-example/querying-with-streams"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -258,14 +354,14 @@ export function AlternateWait({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Named worker return values
+                  Querying streams
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Multiple wait" href="/learn/by-example/multiple-wait">
+          <Link title="Query actions" href="/learn/by-example/query-actions">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +370,7 @@ export function AlternateWait({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Multiple wait
+                  Query actions
                 </span>
               </div>
               <svg

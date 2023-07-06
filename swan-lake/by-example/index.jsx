@@ -452,6 +452,10 @@ import {
   codeSnippetData as QueryingWithStreamsCodeSnippetData,
 } from "./querying-with-streams/content.jsx";
 import {
+  Aggregation,
+  codeSnippetData as AggregationCodeSnippetData,
+} from "./aggregation/content.jsx";
+import {
   QueryActions,
   codeSnippetData as QueryActionsCodeSnippetData,
 } from "./query-actions/content.jsx";
@@ -2149,6 +2153,8 @@ const BBEs = {
   DestructureRecordsUsingQueryCodeSnippetData,
   QueryingWithStreams,
   QueryingWithStreamsCodeSnippetData,
+  Aggregation,
+  AggregationCodeSnippetData,
   QueryActions,
   QueryActionsCodeSnippetData,
   JsonType,

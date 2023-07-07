@@ -127,7 +127,12 @@ type Order record {|
 |};
 
 public function main() {
-    Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
+    Order[] orders = [
+        {name: "Item1", price: 91},
+        {name: "Item2", price: 83},
+        {name: "Item1", price: 75},
+        {name: "Item2", price: 88}
+    ];
     var average = from var {price} in orders
         collect avg(price);
     io:println(average); // 84.25

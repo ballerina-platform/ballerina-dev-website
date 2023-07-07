@@ -104,15 +104,15 @@ import ballerina/io;
 
 type Order record {|
     string name;
-    int price;
+    float price;
 |};
 
 public function main() {
-    Order[] orders = [{name: "Item1", price: 91}, {name: "Item2", price: 83}, {name: "Item1", price: 75}, {name: "Item2", price: 88}];
+    Order[] orders = [{name: "Rich Dad Poor Dad", price: 16.0}, {name: "Becoming", price: 22.5}, {name: "Rich Dad Poor Dad", price: 16.4}, {name: "Becoming", price: 22.6}];
     var averages = from var {name, price} in orders
         group by name
         select {name, avg: avg(price)};
-    io:println(averages); // [{"name":"Item1","avg":83},{"name":"Item2","avg":85.5}]
+    io:println(averages); // [{"name":"Rich Dad Poor Dad","avg":16.2},{"name":"Becoming","avg":22.55}]
 }
 ```
 
@@ -123,19 +123,19 @@ import ballerina/io;
 
 type Order record {|
     string name;
-    int price;
+    float price;
 |};
 
 public function main() {
     Order[] orders = [
-        {name: "Item1", price: 91},
-        {name: "Item2", price: 83},
-        {name: "Item1", price: 75},
-        {name: "Item2", price: 88}
+        {name: "Rich Dad Poor Dad", price: 16.0},
+        {name: "Becoming", price: 22.6},
+        {name: "Rich Dad Poor Dad", price: 16.4},
+        {name: "Becoming", price: 22.5}
     ];
     var average = from var {price} in orders
         collect avg(price);
-    io:println(average); // 84.25
+    io:println(average); // 19.375
 }
 ```
 

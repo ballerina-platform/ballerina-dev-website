@@ -25,6 +25,43 @@ export default function PastTechTalks() {
 
   return (
     <>
+      
+      <Row className={styles.eventRows}>
+        <Col sm={12} md={2} className={styles.eventDateContainer}>
+          <p className={`${styles.eventDate} ${styles.eventDateNum}`}>June 7, 2023</p>
+          <p className={styles.eventDate}>Wednesday</p>
+          <p className="eventLocation">Online</p>
+        </Col>
+        <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+          <a target="_blank" href="https://youtu.be/qflhlNQg18c" rel="noreferrer">
+            <p className="eventName">Monthly Tech Talk</p>
+          </a>
+          <h5>Unleash the Power of AI with Ballerina</h5>
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/JayaniHewa">Jayani Hewavitharana</a>, Ballerina AI Team<br />
+        </Col>
+        <Col sm={12} md={3} className={styles.eventURL}>
+          <a className={styles.eventRegistration} href="https://youtu.be/qflhlNQg18c" target="_blank" rel="noreferrer">Watch Tech Talk</a>
+        </Col>
+      </Row>
+    
+      <Row className={styles.eventRows}>
+        <Col sm={12} md={2} className={styles.eventDateContainer}>
+          <p className={`${styles.eventDate} ${styles.eventDateNum}`}>May 4, 2023</p>
+          <p className={styles.eventDate}>Thursday</p>
+          <p className="eventLocation">Online</p>
+        </Col>
+        <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+          <a target="_blank" href="https://youtu.be/jmSy_n6VUPk" rel="noreferrer">
+            <p className="eventName">Monthly Tech Talk</p>
+          </a>
+          <h5>Bend it like Ballerina: Unveiling our Regex Support</h5>
+          <a target="_blank" rel="noreferrer" href="https://twitter.com/Sasindu3625">Sasindu Alahakoon</a>, Software Engineer, WSO2<br />
+        </Col>
+        <Col sm={12} md={3} className={styles.eventURL}>
+          <a className={styles.eventRegistration} href="https://youtu.be/jmSy_n6VUPk" target="_blank" rel="noreferrer">Watch Tech Talk</a>
+        </Col>
+      </Row>
+    
       <Row className={styles.eventRows}>
         <Col sm={12} md={2} className={styles.eventDateContainer}>
           <p className={`${styles.eventDate} ${styles.eventDateNum}`}>Feb 22, 2022</p>

@@ -50,7 +50,7 @@ export function WhileStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=37ffdb2befe95edca768cbc569679b87&file=while_statement.bal",
+                "https://play.ballerina.io/?gist=a2d11b187a3fc4d74929a64a5157b27c&file=while_statement.bal",
                 "_blank"
               );
             }}
@@ -75,7 +75,7 @@ export function WhileStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/while-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/while-statement",
                 "_blank"
               );
             }}

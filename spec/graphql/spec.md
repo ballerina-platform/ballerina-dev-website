@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar  
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal  
 _Created_: 2022/01/06  
-_Updated_: 2023/04/03
+_Updated_: 2023/05/18  
 _Edition_: Swan Lake  
 
 ## Introduction
@@ -60,6 +60,7 @@ The conforming implementation of the specification is released and included in t
         * 4.1.2 [Float](#412-float)
         * 4.1.3 [String](#413-string)
         * 4.1.4 [Boolean](#414-boolean)
+        * 4.1.5 [ID](#415-id)
     * 4.2 [Objects](#42-objects)
         * 4.2.1 [Record Type as Object](#421-record-type-as-object)
         * 4.2.2 [Service Type as Object](#422-service-type-as-object)
@@ -108,6 +109,7 @@ The conforming implementation of the specification is released and included in t
         * 9.1.3 [Get Field Path](#913-get-field-path)
         * 9.1.4 [Get Subfield Names](#914-get-subfield-names)
         * 9.1.5 [Get Field Type](#915-get-field-type)
+        * 9.1.6 [Get Subfields](#916-get-subfields)
     * 9.2 [Accessing the Field Object](#92-accessing-the-field-object)
 10. [Annotations](#10-annotations)
     * 10.1 [Service Configuration](#101-service-configuration)
@@ -118,6 +120,7 @@ The conforming implementation of the specification is released and included in t
         * 10.1.5 [GraphiQL Configurations](#1015-graphiql-configurations)
         * 10.1.6 [Service Interceptors](#1016-service-interceptors)
         * 10.1.7 [Introspection Configurations](#1017-introspection-configurations)
+        * 10.1.8 [Constraint Configurations](#1018-constraint-configurations)
     * 10.2 [Resource Configuration](#102-resource-configuration)
         * 10.2.1 [Field Interceptors](#1021-field-interceptors)
     * 10.3 [Interceptor Configuration](#103-interceptor-configuration)
@@ -587,18 +590,18 @@ service on new graphql:Listener(9090) {
     resource function get profile(int id) returns Profile {
         // ...
     }
-
-    # Represents a profile.
-    #
-    # + id - The ID of the profile
-    # + name - The name of the profile
-    # + age - The age of the profile
-    public type Profile record {|
-        int id;
-        string name;
-        int age;
-    |};
 }
+
+# Represents a profile.
+#
+# + id - The ID of the profile
+# + name - The name of the profile
+# + age - The age of the profile
+public type Profile record {|
+    int id;
+    string name;
+    int age;
+|};
 ```
 
 This will generate the documentation for all the fields of the `Query` type including the field descriptions of the `Profile` type.
@@ -649,6 +652,51 @@ The `String` type is represented using the `string` type in Ballerina. It can re
 #### 4.1.4 Boolean
 The `Boolean` type is represented using the `boolean` type in Ballerina.
 
+#### 4.1.5 ID
+The `ID` type is represented using the `@graphql:ID` annotation in Ballerina.
+
+###### Example: Scalar type ID 
+```ballerina
+service on new graphql:Listener(9090) {
+
+    resource function get profileById(@graphql:ID int id) returns Profile {
+        // ...
+    }
+    
+    resource function get studentByStringId(@graphql:ID string id) returns Student {
+        // ...
+    }
+    
+    resource function get studentByUuidId(@graphql:ID uuid:Uuid id) returns Student {
+        // ...
+    }
+}
+
+public type Profile record {|
+    @graphql:ID int id;
+    string name;
+    int age;
+|};
+
+public distinct service class Student {
+    final string id;
+    final string name;
+
+    function init(@graphql:ID string id, string name) {
+        self.id = id;
+        self.name = name;
+    }
+
+    resource function get id() returns @graphql:ID string {
+        return self.id;
+    }
+
+    resource function get name() returns string {
+        return self.name;
+    }
+}
+```
+
 Apart from the above types, the `decimal` type can also be used inside a GraphQL service, which will create the `Decimal` scalar type in the corresponding GraphQL schema.
 
 ### 4.2 Objects
@@ -678,6 +726,8 @@ type Profile record {|
 >**Note:** Even though anonymous record types are supported in Ballerina, they cannot be used as types in a GraphQL schema. This is because a type in a GraphQL schema must have a name. Therefore, if an anonymous record is used in a GraphQL service, it will result in a compilation error.
 
 >**Note:** When a record field is defined as an optional field, the Ballerina GraphQL engine identifies it as a nullable field. Even though it is supported, it is recommended to use Ballerina nilable types instead of optional fields to define nullable fields in GraphQL.
+
+>**Note:** Alias types of record types are not allowed to be used as object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
 
 >**Hint:** Open records are supported in GraphQL services, but they do not make sense in the context of GraphQL since a GraphQL type cannot have dynamic fields. Therefore, it is recommended to use closed records in GraphQL services unless it is absolutely needed.
 
@@ -836,6 +886,8 @@ Although `Scalar` and `enum` types can be used as input and output types without
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
 
 >**Note:** Since GraphQL schema can not use the same type as an input and an output type when a record type is used as an input and an output, a compilation error will be thrown.
+
+>**Note:** Alias types of record types are not allowed to be used as input object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
 
 ###### Example: Input Objects
 
@@ -1700,6 +1752,20 @@ service on new graphql:Listener(9090) {
 }
 ```
 
+#### 9.1.6 Get Subfields
+
+This method returns the subfields of the currently executing field as an array of `graphql:Field` objects. It will return `nil` if the field is not an `INTERFACE` or an `OBJECT`, i.e. if it does not have subfields.
+
+#### Example: Get Subfields
+
+```ballerina
+service on new graphql:Listener(9090) {
+    resource function get profile(graphql:Field 'field) returns Profile {
+        graphql:Field[] subfields = 'field.getSubfields();
+    }
+}
+```
+
 ### 9.2 Accessing the Field Object
 
 The `graphql:Field` can be accessed inside any resolver. When needed, the `graphql:Field` should be added as a parameter of the `resource` or `remote` method representing a GraphQL field.
@@ -1965,6 +2031,21 @@ service on new graphql:Listener(9090) {
 ```
 >**Note:** It is recommended to disable introspection in production environments until it is required.
 
+#### 10.1.8 Constraint Configurations
+
+The `validation` field is used to enable or disable the validation of constraints defined on GraphQL input types. If constraint validation support is enabled, the GraphQL service verifies all constraints set on the GraphQL inputs when executing the resolver. By default, constraint validation is enabled for Ballerina GraphQL services.
+
+###### Example: Disable Constraint Validation Support
+
+```ballerina
+@graphql:ServiceConfig {
+    validation: false
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
 ### 10.2 Resource Configuration
 
 The configurations stated in the `graphql:ResourceConfig`, are used to change the behavior of a particular GraphQL resolver. These configurations are applied to the resolver functions.
@@ -2151,9 +2232,9 @@ There are two ways to enable authentication and authorization in Ballerina Graph
 
 #### 12.1.1 Declarative Approach
 
-This is also known as the configuration-driven approach, which is used for simple use cases, where users have to provide a set of configurations and do not need to be worried more about how authentication and authorization works. The user does not have full control over the configuration-driven approach.
+This is also known as the configuration-driven approach, which is used for simple use cases, where users have to provide a set of configurations and do not need to be worried more about how authentication and authorization work. The user does not have full control over the configuration-driven approach.
 
-The service configurations are used to define the authentication and authorization configurations. Users can configure the configurations needed for different authentication schemes and configurations needed for authorizations of each authentication scheme. The configurations can be provided at the service level. The auth handler creation and request authentication/authorization is handled internally without user intervention. The requests that succeeded both authentication and/or authorization phases according to the configurations will be passed to the business logic layer.
+The service configurations are used to define the authentication and authorization configurations. Users can configure the configurations needed for different authentication schemes and configurations needed for authorizations of each authentication scheme. The configurations can be provided at the service level. The auth handler creation and request authentication/authorization is handled internally without user intervention. The requests that succeeded in authentication and/or authorization phases according to the configurations will be passed to the business logic layer.
 
 ##### 12.1.1.1 Basic Authentication - File User Store
 
@@ -2923,7 +3004,7 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 
 1. Assign the `@subgraph:Entity` annotation to an object type.
 2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
-3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#133-the-referenceresolver).
+3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#1313-the-subgraphreferenceresolver).
 
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 

@@ -61,7 +61,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=500f5d64b62f2ade9f8e34c5456de35d&file=logging.bal",
+                "https://play.ballerina.io/?gist=e0fef11e2d954e3ead642d1866756944&file=logging.bal",
                 "_blank"
               );
             }}
@@ -86,7 +86,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/logging",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/logging",
                 "_blank"
               );
             }}

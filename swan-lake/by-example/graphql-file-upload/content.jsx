@@ -70,7 +70,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/graphql-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-file-upload",
                 "_blank"
               );
             }}
@@ -341,8 +341,8 @@ export function GraphqlFileUpload({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Interceptors"
-            href="/learn/by-example/graphql-interceptors"
+            title="Interceptor configurations"
+            href="/learn/by-example/graphql-interceptor-configurations"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -369,7 +369,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interceptors
+                  Interceptor configurations
                 </span>
               </div>
             </div>

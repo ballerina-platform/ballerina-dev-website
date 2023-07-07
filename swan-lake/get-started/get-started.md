@@ -12,11 +12,13 @@ intro: Let’s set up a Ballerina development environment and write a simple Bal
 
 [Download](/downloads/) Ballerina based on the operating system you are using and install it.
 
+>**Tip:** For more information on installing Ballerina, see [Installation options](/downloads/installation-options/).
+
 ## Set up the editor
 
 Set up a text editor to write Ballerina code.
 
->**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+>**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the Ballerina VS Code extension installed. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina VS Code extension documentation</a>.
 
 ## Meet `bal`
 
@@ -135,7 +137,7 @@ Let's take a moment to digest the new constructs in this code:
 
 >**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
-## Running the simple REST API
+## Run the simple REST API
 
 Let's run this package in your terminal:
 

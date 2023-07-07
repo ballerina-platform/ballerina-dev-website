@@ -91,7 +91,7 @@ export function UuidGeneration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cdaddf9a42bb5071ae7e9a09c6ab1986&file=uuid_generation.bal",
+                "https://play.ballerina.io/?gist=ecdc7b8f1ebc6e111deea01d962ba95a&file=uuid_generation.bal",
                 "_blank"
               );
             }}
@@ -116,7 +116,7 @@ export function UuidGeneration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/uuid-generation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/uuid-generation",
                 "_blank"
               );
             }}

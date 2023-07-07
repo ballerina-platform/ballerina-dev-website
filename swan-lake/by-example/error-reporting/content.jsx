@@ -79,7 +79,7 @@ export function ErrorReporting({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7a99992bbda5170075f9703063578d47&file=error_reporting.bal",
+                "https://play.ballerina.io/?gist=e39d77d4f5a03bd63b25221f0df5bd60&file=error_reporting.bal",
                 "_blank"
               );
             }}
@@ -104,7 +104,7 @@ export function ErrorReporting({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/error-reporting",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/error-reporting",
                 "_blank"
               );
             }}

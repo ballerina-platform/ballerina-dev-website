@@ -113,7 +113,7 @@ export function VisibilityOfObjectFieldsAndMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=10ab6dab212dee7a0821b132a2f0c6f6&file=visibility_of_object_fields_and_methods.bal",
+                "https://play.ballerina.io/?gist=2aa17701427c5f5646fe58761a9590e0&file=visibility_of_object_fields_and_methods.bal",
                 "_blank"
               );
             }}
@@ -138,7 +138,7 @@ export function VisibilityOfObjectFieldsAndMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/visibility-of-object-fields-and-methods",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/visibility-of-object-fields-and-methods",
                 "_blank"
               );
             }}

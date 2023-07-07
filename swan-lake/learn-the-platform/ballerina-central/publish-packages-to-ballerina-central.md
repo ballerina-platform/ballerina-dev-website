@@ -73,7 +73,7 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 ```toml
 [proxy]
 host = "localhost"
-port = "3128"
+port = 3128
 username = ""
 password = ""
 ```

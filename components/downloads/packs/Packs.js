@@ -57,7 +57,7 @@ export default function Packs(props) {
             <h3 className={styles.dwindows} style={windowsIcon}>Windows</h3>
             <a id="packWindows"
                href={`${distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}`}
-               className={styles.cDownload}
+               className={`${styles.cDownload} cGTMDownload`}
                data-download="downloads"
                data-pack={swanlake['windows-installer']}>
                <div className={styles.cSize}>msi <span id="packWindowsName">{swanlake['windows-installer-size']}</span></div>
@@ -68,7 +68,7 @@ export default function Packs(props) {
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>
                   <a id="packLinux" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}`}
-                     className={styles.cDownload}
+                     className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['linux-installer']}>
                      <div className={styles.cSize}>deb <span id="packLinuxName">{swanlake['linux-installer-size']}</span></div>
@@ -76,7 +76,7 @@ export default function Packs(props) {
                </div>
                <div className={styles.dVersion}>
                   <a id="packLinux" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}`}
-                     className={styles.cDownload}
+                     className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['rpm-installer']}>
                      <div className={styles.cSize}>rpm <span id="packLinuxName">{swanlake['rpm-installer-size']}</span></div>
@@ -89,7 +89,7 @@ export default function Packs(props) {
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>
                   <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
-                     className={styles.cDownload}
+                     className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['macos-installer']}>
                      <div className={styles.cSize}>pkg(x64) <span id="packMacName">{swanlake['macos-installer-size']}</span></div>
@@ -97,7 +97,7 @@ export default function Packs(props) {
                </div>
                <div className={styles.dVersion}>
                   <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-arm-installer']}`}
-                     className={styles.cDownload}
+                     className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['macos-arm-installer']}>
                      <div className={styles.cSize}>pkg(ARM64) <span id="packMacName">{swanlake['macos-arm-installer-size']}</span></div>

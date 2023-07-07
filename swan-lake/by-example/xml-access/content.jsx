@@ -91,8 +91,8 @@ export function XmlAccess({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=db67330c3c2eaeb63f26e9f5c9a36b51&file=xml_access.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=abc100d0e9ec3204d2a7716d9ccea65a&file=xml_access.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -117,7 +117,7 @@ export function XmlAccess({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xml-access",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

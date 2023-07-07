@@ -53,7 +53,7 @@ export function LoggingConfiguration({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/logging-configuration",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

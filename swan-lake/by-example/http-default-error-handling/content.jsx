@@ -76,8 +76,8 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a69d475d58932a2a1100ac4a65fb1667&file=http_default_error_handling.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9cb7e7e215acee3dedfece3b5387019a&file=http_default_error_handling.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -102,7 +102,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-default-error-handling",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -299,22 +299,23 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`\$ curl -v localhost:9090/artist`}</span>
-              <span>{`*   Trying ::1...`}</span>
+              <span>{`*   Trying 127.0.0.1:9090...`}</span>
               <span>{`* TCP_NODELAY set`}</span>
-              <span>{`* Connected to localhost (::1) port 9090 (#0)`}</span>
+              <span>{`* Connected to localhost (127.0.0.1) port 9090 (#0)`}</span>
               <span>{`> GET /artist HTTP/1.1`}</span>
               <span>{`> Host: localhost:9090`}</span>
-              <span>{`> User-Agent: curl/7.64.1`}</span>
+              <span>{`> User-Agent: curl/7.68.0`}</span>
               <span>{`> Accept: */*`}</span>
-              <span>{`> `}</span>
+              <span>{`>`}</span>
+              <span>{`* Mark bundle as not supporting multiuse`}</span>
               <span>{`< HTTP/1.1 502 Bad Gateway`}</span>
-              <span>{`< content-type: text/plain`}</span>
-              <span>{`< content-length: 35`}</span>
+              <span>{`< content-type: application/json`}</span>
+              <span>{`< content-length: 210`}</span>
               <span>{`< server: ballerina`}</span>
-              <span>{`< date: Wed, 21 Dec 2022 13:30:30 +0530`}</span>
-              <span>{`< `}</span>
+              <span>{`< date: Fri, 16 Jun 2023 10:40:52 +0530`}</span>
+              <span>{`<`}</span>
               <span>{`* Connection #0 to host localhost left intact`}</span>
-              <span>{`Something wrong with the connection`}</span>
+              <span>{`{"timestamp":"2023-06-16T05:10:52.220224Z", "status":502, "reason":"Bad Gateway", "message":"Something wrong with the connection: Connection refused: localhost/127.0.0.1:9091", "path":"/artist", "method":"GET"}`}</span>
             </code>
           </pre>
         </Col>

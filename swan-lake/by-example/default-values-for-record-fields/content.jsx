@@ -70,8 +70,8 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e4a43839eb910010943eaa866bca0a00&file=default_values_for_record_fields.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=3e86b081cfe8fe9a891c3083fee7b575&file=default_values_for_record_fields.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -96,7 +96,7 @@ export function DefaultValuesForRecordFields({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/default-values-for-record-fields",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

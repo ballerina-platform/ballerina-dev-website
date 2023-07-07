@@ -98,7 +98,7 @@ export function ClientClass({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/client-class",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
-description: The Ballerina awslambda package allows you to write AWS Lambda-compatible packages using Ballerina.
+description: AWS Lambda is an event driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud native
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
@@ -10,10 +10,11 @@ intro: AWS Lambda is an event driven, serverless computing platform. The AWS Lam
 
 The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`. 
 
-> **Note** - An AWS Lambda function always adheres to the following function signature: 
+> **Note:** An AWS Lambda function always adheres to the following function signature: 
 `function (awslambda:Context, json|EventType) returns json|error`
 
 ## Supported triggers
+
 An AWS Lambda function can be triggered by various AWS services. You can find the list of supported notification types below.
 
 - Direct Invocation
@@ -23,29 +24,15 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - Simple Email Service <a href="https://aws.amazon.com/ses//" target="_blank">SES</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
 
-## Set up the prerequisites
+## Set up AWS
 
-Set up the prerequisites below to work with AWS Lambda functions using Ballerina.
+Follow the steps below to set an AWS account and the AWS CLI.
 
-### Set up Ballerina
+1. Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">AWS CLI</a>.
 
-Install the [latest Ballerina distribution](https://ballerina.io/downloads/).
+2. [Create](https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-AWSsignup.html) an AWS account and [sign in](https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-rootuser.html) to it.
 
-### Set up the AWS CLI
-
-Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">AWS CLI</a>.
-
-### Set up an AWS account
-
-Follow the steps below to set up an AWS account.
-
-1. Create an <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-AWSsignup.html" target="_blank">AWS account</a>.
-
-    >**Info:** For detailed instructions on creating an AWS account, see <a href="https://aws.amazon.com/getting-started/guides/setup-environment/module-one/" target="_blank">Module 1: Create Your AWS Account</a>.
-
-2. <a href="https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-rootuser.html" target="_blank">Sign in</a> to the AWS account you created.
-
-### Create a user
+## Create a user
 
 Follow the steps below to create a new user in your AWS account.
 
@@ -61,7 +48,7 @@ Follow the steps below to create a new user in your AWS account.
 
 4. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-configure.title" target="_blank">AWS CLI</a> for the user by providing the access key and secret generated in the user creation.
 
-### Create a role
+## Create a role
 
 Follow the steps below to create a new role in your AWS account.
 
@@ -73,7 +60,7 @@ Follow the steps below to create a new role in your AWS account.
 
 3. Access the newly created role in the AWS Console, and copy the role ARN to use when the Lambda function is being deployed.
 
-## Write the function
+## Create the function
 
 The following Ballerina code gives an example of how to expose a simple echo function in AWS Lambda. 
 

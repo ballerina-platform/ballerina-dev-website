@@ -453,8 +453,7 @@ Ballerina gRPC services enable authentication and authorization using a file use
     ]
 }
 @grpc:Descriptor {
-    value: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: ROOT_DESCRIPTOR_MAP
+    value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     remote function hello() returns string {
@@ -515,8 +514,7 @@ Ballerina gRPC services enable authentication and authorization using an LDAP us
     ]
 }
 @grpc:Descriptor {
-    value: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: ROOT_DESCRIPTOR_MAP
+    value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     remote function hello() returns string {
@@ -546,8 +544,7 @@ Ballerina gRPC services enable authentication and authorization using JWTs by se
     ]
 }
 @grpc:Descriptor {
-    value: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: ROOT_DESCRIPTOR_MAP
+    value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on new grpc:Listener(9090) {
     remote function hello() returns string {
@@ -580,8 +577,7 @@ Ballerina gRPC services enable authentication and authorization using OAuth2 by 
     ]
 }
 @grpc:Descriptor {
-    value: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: ROOT_DESCRIPTOR_MAP
+    value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on securedEP {
     remote function hello() returns string {
@@ -922,8 +918,7 @@ listener grpc:Listener securedEp = new(9090,
 );
 
 @grpc:Descriptor {
-    value: ROOT_DESCRIPTOR_GRPC_SERVICE,
-    descMap: ROOT_DESCRIPTOR_MAP
+    value: ROOT_DESCRIPTOR_GRPC_SERVICE
 }
 service "HelloWorld" on securedEp {
     remote function hello() returns string {

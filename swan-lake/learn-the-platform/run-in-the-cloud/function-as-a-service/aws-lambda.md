@@ -62,54 +62,37 @@ Follow the steps below to create a new role in your AWS account.
 
 ## Create the function
 
-The following Ballerina code gives an example of how to expose a simple echo function in AWS Lambda. 
-
-```ballerina
-import ballerina/log;
-import ballerinax/awslambda;
-
-@awslambda:Function
-public function echo(awslambda:Context ctx, json input) returns json {
-    log:printInfo(input.toJsonString());
-    return input;
-}
-```
+You can write AWS Lambda functions that use different triggers based on your use case. 
 
 Functions annotated as `@awslambda:Function` should always have the first parameter with the <a href="https://lib.ballerina.io/ballerinax/awslambda/latest#Context" target="_blank">`awslambda:Context`</a>object, which contains the information and operations related to the current function execution in AWS Lambda such as the request ID and the remaining execution time. 
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
+>**Info:** For examples, see [Learn more](#learn-more).
+
 ## Build the function
 
-The AWS Lambda functionality is implemented as a compiler extension. Thus, artifact generation happens automatically when you build a Ballerina module using the `bal build` command.
+The AWS Lambda functionality is implemented as a compiler extension. Therefore, the artifact generation happens automatically when you build a Ballerina module by executing the command below.
+
+```
+$ bal build
+```
 
 ## Deploy the function
 
-Ballerina's AWS Lambda functionality is implemented as a custom AWS Lambda layer. This information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html" target="_blank">AWS CLI</a> to deploy the functions. 
+The AWS Lambda functionality in Ballerina is implemented as a custom AWS Lambda layer. This information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html" target="_blank">AWS CLI</a> to deploy the functions. 
 
-To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For example, see the sample command below.
+To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Learn more](#learn-more).
 
-**Info:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
+>**Info:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
 
-```bash
-	Run the following command to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name $FUNCTION_NAME --zip-file fileb:///Users/user1/Desktop/aws_lambda_deployment/target/bin/aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.$FUNCTION_NAME --runtime provided --role $LAMBDA_ROLE_ARN --layers arn:aws:lambda:$REGION_ID:134633749276:layer:ballerina-jre11:6 --memory-size 512 --timeout 10
-
-	Run the following command to re-deploy an updated Ballerina AWS Lambda function:
-	aws lambda update-function-code --function-name $FUNCTION_NAME --zip-file fileb://aws-ballerina-lambda-functions.zip
-```
-
->**Info:**  For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
-
-## Invoke the function
-
-You can invoke the deployed AWS Lambda function based on the function trigger. 
+>**Tip:**  For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
 ## Learn more
 
 In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
 
-For examples on using AWS Lambda functions, see the below.
+For more examples of the usage of AWS Lambda functions, see the below.
 
 - [Hello world](/learn/by-example/aws-lambda-hello-world/)
 - [Context execution](/learn/by-example/aws-lambda-context-execution/)

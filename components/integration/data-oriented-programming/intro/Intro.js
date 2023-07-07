@@ -51,7 +51,7 @@ export default function Intro() {
                         </Col>
                         <Col xs={12} lg={7} className={styles.introImg}>
                             {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                            <img src={`${prefix}/images/usecases/integration/connect-with-anything.png`} alt="Data-oriented programming" />
+                            <img src={`${prefix}/images/usecases/integration/dop-banner.png`} alt="Data-oriented programming" />
                         </Col>
                     </Row>
 

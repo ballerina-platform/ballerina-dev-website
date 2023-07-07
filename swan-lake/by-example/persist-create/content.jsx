@@ -5,61 +5,66 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/graphql;
-import ballerina/log;
+  `import ballerina/persist as _;
+import ballerina/time;
 
-// Defines an interceptor \`LogInterceptor\` using a service class. It cannot have any
-// \`resource\`/\`remote\` methods except the \`execute()\` remote method. Other methods are allowed.
-readonly service class LogInterceptor {
-    // Includes the \`graphql:Interceptor\` service object from the GraphQL package.
-    *graphql:Interceptor;
-
-    // Implement the \`execute()\` remote method provided by the \`graphql:Interceptor\` object.
-    // Within the function, the \`graphql:Context\` and the \`graphql:Field\` object can be accessed to
-    // get the request and field-related information.
-    isolated remote function execute(graphql:Context context, graphql:Field 'field)
-        returns anydata|error {
-        // Access the current execution field name using the \`graphql:Field\` object.
-        string fieldName = 'field.getName();
-
-        // This log statement executes before the resolver execution.
-        log:printInfo(string \`Field "\${fieldName}" execution started!\`);
-
-        // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, and it invokes the actual resolver function. The function
-        // returns an \`anydata\` type value that includes the execution result of the next
-        // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
-        // \`graphql:Field\` value should be provided as the argument.
-        var data = context.resolve('field);
-
-        // This log statement executes after the resolver execution.
-        log:printInfo(string \`Field "\${fieldName}" execution completed!\`);
-
-        // Returns the execution result of the next interceptor or the resolver.
-        return data;
-    }
-}
-
-@graphql:ServiceConfig {
-    // Interceptor instances should be inserted into the \`interceptors\` array according to the
-    // desired execution order.
-    interceptors: [new LogInterceptor()]
-}
-service /graphql on new graphql:Listener(9090) {
-
-    isolated resource function get name() returns string {
-        log:printInfo("Executing the field \\"name\\"");
-        return "GraphQL Interceptors";
-    }
-}
+type Employee record {|
+    readonly string id;
+    string firstName;
+    string lastName;
+    time:Date birthDate;
+    string gender;
+    time:Date hireDate;
+|};
 `,
-  `{
-    name
+  `import ballerina/io;
+import ballerina/persist;
+import rainier.store;
+
+store:Client sClient = check new ();
+
+public function main() returns error? {
+    store:EmployeeInsert employee1 = {
+        id: uuid:createType4AsString(),
+        firstName: "John",
+        lastName: "Doe",
+        gender: "Male",
+        birthDate: {
+            year: 1987,
+            month: 7,
+            day: 23
+        },
+        hireDate: {
+            year: 2020,
+            month: 10,
+            day: 10
+        }
+    };
+
+    store:EmployeeInsert employee2 = {
+        id: uuid:createType4AsString(),
+        firstName: "Jane",
+        lastName: "Doe",
+        gender: "Female",
+        birthDate: {
+            year: 1989,
+            month: 7,
+            day: 11
+        },
+        hireDate: {
+            year: 2020,
+            month: 10,
+            day: 10
+        }
+    };
+
+    string[] employeeIds = check sClient->/employees.post([employee1, employee2]);
+    io:println(string \`Inserted employee ids: \${employeeIds.toString()}\`);
 }
 `,
 ];
 
-export function GraphqlInterceptors({ codeSnippets }) {
+export function PersistCreate({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
   const [codeClick2, updateCodeClick2] = useState(false);
 
@@ -67,33 +72,124 @@ export function GraphqlInterceptors({ codeSnippets }) {
   const ref1 = createRef();
   const [outputClick2, updateOutputClick2] = useState(false);
   const ref2 = createRef();
+  const [outputClick3, updateOutputClick3] = useState(false);
+  const ref3 = createRef();
 
   const [btnHover, updateBtnHover] = useState([false, false]);
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>GraphQL service - Interceptors</h1>
+      <h1>Persist write - Create record/records</h1>
 
       <p>
-        The <code>graphql:Service</code> allows adding interceptors for GraphQL
-        requests to execute custom logic. A interceptor can be defined using a{" "}
-        <code>readonly</code> class that includes the{" "}
-        <code>graphql:Interceptor</code> type. The interceptor class must
-        implement the <code>execute</code> remote method, which is defined in
-        the <code>graphql:Interceptor</code> service object type. They can be
-        passed as an array using the <code>interceptors</code> field in the{" "}
-        <code>graphql:ServiceConfig</code> annotation. The provided interceptors
-        will be executed using the <em>onion principle</em>. Use the
-        interceptors to execute custom logic before and after executing the{" "}
-        <code>resource</code> and <code>remote</code> methods that needs to be
-        separated from the business logic.
+        The bal persist feature provides support to manage data persistence in a
+        Ballerina package. It starts with defining the application's data model.
+        Once the model is defined, the client API is generated with resources
+        based on the model. The generated
+      </p>
+
+      <p>
+        API can be used to query and manipulate the persistent data in the
+        application.
+      </p>
+
+      <p>
+        The generated client API provides a <code>post</code> resource method to
+        persist record/records to the data store.
       </p>
 
       <blockquote>
         <p>
-          <strong>Note:</strong> A service can have zero or more interceptors.
+          <strong>Note:</strong> This example uses the Ballerina tables as the
+          data store. You can use MySQL and Google Sheets as the data store as
+          well. For more information, see{" "}
+          <a href="/learn/supported-data-stores/">Supported Data Stores</a>.
         </p>
       </blockquote>
+
+      <h4>Initialize the project</h4>
+
+      <p>
+        Execute the command below to initialize <code>bal persist</code> in the
+        project.
+      </p>
+
+      <Row
+        className="bbeOutput mx-0 py-0 rounded "
+        style={{ marginLeft: "0px" }}
+      >
+        <Col sm={12} className="d-flex align-items-start">
+          {outputClick1 ? (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              aria-label="Copy to Clipboard Check"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#20b6b0"
+                className="output-btn bi bi-check"
+                viewBox="0 0 16 16"
+              >
+                <title>Copied</title>
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
+              onClick={() => {
+                updateOutputClick1(true);
+                const extractedText = extractOutput(ref1.current.innerText);
+                copyToClipboard(extractedText);
+                setTimeout(() => {
+                  updateOutputClick1(false);
+                }, 3000);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#EEEEEE"
+                className="output-btn bi bi-clipboard"
+                viewBox="0 0 16 16"
+                aria-label="Copy to Clipboard"
+              >
+                <title>Copy to Clipboard</title>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+              </svg>
+            </button>
+          )}
+        </Col>
+        <Col sm={12}>
+          <pre ref={ref1}>
+            <code className="d-flex flex-column">
+              <span>{`\$ bal persist init --module store`}</span>
+              <span>{`
+`}</span>
+              <span>{`Initialized persistence in your Ballerina project.`}</span>
+              <span>{`
+`}</span>
+              <span>{`Your Persist schema is at persist/model.bal.`}</span>
+              <span>{`You can now update it with entity definitions.`}</span>
+              <span>{`
+`}</span>
+              <span>{`Next steps:`}</span>
+              <span>{`Run bal persist generate to generate the Ballerina Client, Types, and Scripts. You can then start querying your database.`}</span>
+            </code>
+          </pre>
+        </Col>
+      </Row>
+
+      <h4>Model the data</h4>
+
+      <p>
+        Add the <code>Employee</code> entity with the following fields in the{" "}
+        <code>model.bal</code> file inside the <code>persist</code> directory.
+      </p>
 
       <Row
         className="bbeCode mx-0 py-0 rounded 
@@ -105,7 +201,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/graphql-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-create",
                 "_blank"
               );
             }}
@@ -179,14 +275,16 @@ export function GraphqlInterceptors({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>Run the service by executing the following command.</p>
+      <h4>Generate client APIs</h4>
+
+      <p>Execute the command below to generate the Ballerina client API.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
-          {outputClick1 ? (
+          {outputClick2 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
@@ -207,11 +305,11 @@ export function GraphqlInterceptors({ codeSnippets }) {
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
-                updateOutputClick1(true);
-                const extractedText = extractOutput(ref1.current.innerText);
+                updateOutputClick2(true);
+                const extractedText = extractOutput(ref2.current.innerText);
                 copyToClipboard(extractedText);
                 setTimeout(() => {
-                  updateOutputClick1(false);
+                  updateOutputClick2(false);
                 }, 3000);
               }}
             >
@@ -232,20 +330,23 @@ export function GraphqlInterceptors({ codeSnippets }) {
           )}
         </Col>
         <Col sm={12}>
-          <pre ref={ref1}>
+          <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run graphql_interceptors.bal`}</span>
-              <span>{`# when executing the query, following statements are logged in the terminal.`}</span>
-              <span>{`time = 2022-11-16T17:09:59.234+05:30 level = INFO module = "" message = "Field \\"name\\" execution started!"`}</span>
-              <span>{`time = 2022-11-16T17:09:59.243+05:30 level = INFO module = "" message = "Executing the field \\"name\\""`}</span>
-              <span>{`time = 2022-11-16T17:09:59.247+05:30 level = INFO module = "" message = "Field \\"name\\" execution completed!"`}</span>
+              <span>{`\$ bal persist generate`}</span>
+              <span>{`
+`}</span>
+              <span>{`Generated Ballerina Client, Types, and Scripts to ./generated/store directory.`}</span>
+              <span>{`You can now start using Ballerina Client in your code.`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
+      <h4>Use the generated client API</h4>
+
       <p>
-        Send the following document to the GraphQL endpoint to test the service.
+        Using the generated client API, you can persist record/records to the
+        data store with the <code>post</code> resource method.
       </p>
 
       <Row
@@ -258,7 +359,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/graphql-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-create",
                 "_blank"
               );
             }}
@@ -332,17 +433,16 @@ export function GraphqlInterceptors({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>
-        To send the document, execute the following cURL command in a separate
-        terminal.
-      </p>
+      <h4>Run the program</h4>
+
+      <p>Execute the command below to run the program.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
       >
         <Col sm={12} className="d-flex align-items-start">
-          {outputClick2 ? (
+          {outputClick3 ? (
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               aria-label="Copy to Clipboard Check"
@@ -363,11 +463,11 @@ export function GraphqlInterceptors({ codeSnippets }) {
             <button
               className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
-                updateOutputClick2(true);
-                const extractedText = extractOutput(ref2.current.innerText);
+                updateOutputClick3(true);
+                const extractedText = extractOutput(ref3.current.innerText);
                 copyToClipboard(extractedText);
                 setTimeout(() => {
-                  updateOutputClick2(false);
+                  updateOutputClick3(false);
                 }, 3000);
               }}
             >
@@ -388,54 +488,29 @@ export function GraphqlInterceptors({ codeSnippets }) {
           )}
         </Col>
         <Col sm={12}>
-          <pre ref={ref2}>
+          <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ curl -X POST -H "Content-type: application/json" -d '{ "query": "{ name }"}' 'http://localhost:9090/graphql'`}</span>
-              <span>{`{"data":{"name":"GraphQL Interceptors"}}`}</span>
+              <span>{`\$ bal run`}</span>
+              <span>{`
+`}</span>
+              <span>{`Compiling source`}</span>
+              <span>{`        foo/rainier:0.1.0`}</span>
+              <span>{`
+`}</span>
+              <span>{`Running executable`}</span>
+              <span>{`
+`}</span>
+              <span>{`Inserted employee ids: ["394c694f-82ae-4fe9-9947-85948625fea1","639082b7-4be7-4a64-8db2-1e3d1b3313f8"]`}</span>
             </code>
           </pre>
         </Col>
       </Row>
 
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> You can invoke the above service via the{" "}
-          <a href="/learn/by-example/graphql-client-query-endpoint/">
-            GraphQL client
-          </a>
-          .
-        </p>
-      </blockquote>
-
-      <h2>Related links</h2>
-
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="https://lib.ballerina.io/ballerina/graphql/latest#Interceptor">
-              <code>graphql:Interceptor</code> object - API documentation
-            </a>
-          </span>
-        </li>
-      </ul>
-      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            <a href="/spec/graphql/#11-interceptors">
-              GraphQL interceptors - Specification
-            </a>
-          </span>
-        </li>
-      </ul>
-      <span style={{ marginBottom: "20px" }}></span>
-
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Field object"
-            href="/learn/by-example/graphql-service-field-object"
+            title="Relation queries"
+            href="/learn/by-example/persist-relation-queries"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -462,17 +537,14 @@ export function GraphqlInterceptors({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Field object
+                  Relation queries
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="File upload"
-            href="/learn/by-example/graphql-file-upload"
-          >
+          <Link title="Update" href="/learn/by-example/persist-update">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -481,7 +553,7 @@ export function GraphqlInterceptors({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File upload
+                  Update
                 </span>
               </div>
               <svg

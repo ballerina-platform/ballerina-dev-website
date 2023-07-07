@@ -76,7 +76,7 @@ export default function Intro() {
                         </a>
                     </Col>
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
-                        <a href={`https://wso2.com/ballerina/vscode/docs/`} className={`${styles.cardWrapper} ${styles.secondary}`} target='_blank' rel="noreferrer">
+                        <a href={`https://wso2.com/ballerina/vscode/`} className={`${styles.cardWrapper} ${styles.secondary}`} target='_blank' rel="noreferrer">
                             <div>
                                 <h3>VS Code extension</h3>
                                 <div className={styles.cardDescription}>

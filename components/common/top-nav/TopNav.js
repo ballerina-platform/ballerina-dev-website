@@ -53,6 +53,9 @@ const TopNav = (props) => {
                 <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/eda`} className={styles.dropDownItem}>EDA</NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/b2b`} className={styles.dropDownItem}>B2B</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
               <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>

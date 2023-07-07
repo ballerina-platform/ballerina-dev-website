@@ -85,6 +85,7 @@ a.cDownload:hover {
 
 .introText3 {
     margin-bottom: 20px;
+    
 }
 
 /* .introImg {
@@ -94,7 +95,7 @@ a.cDownload:hover {
 } */
 
 .introImg img {
-    width: -moz-available;         
+  width: -moz-available;         
   width: -webkit-fill-available;  
   width: fill-available;
 }

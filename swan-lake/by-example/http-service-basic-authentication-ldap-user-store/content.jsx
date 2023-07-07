@@ -112,7 +112,7 @@ export function HttpServiceBasicAuthenticationLdapUserStore({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-basic-authentication-ldap-user-store",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

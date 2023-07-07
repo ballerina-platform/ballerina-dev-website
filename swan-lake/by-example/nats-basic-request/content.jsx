@@ -81,7 +81,7 @@ export function NatsBasicRequest({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/nats-basic-request",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -367,8 +367,8 @@ export function NatsBasicRequest({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="SSL/TLS"
-            href="/learn/by-example/nats-service-secure-connection"
+            title="Publish message"
+            href="/learn/by-example/nats-jetstream-pub"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -378,7 +378,7 @@ export function NatsBasicRequest({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SSL/TLS
+                  Publish message
                 </span>
               </div>
               <svg

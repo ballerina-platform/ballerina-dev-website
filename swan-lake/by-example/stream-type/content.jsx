@@ -72,8 +72,8 @@ export function StreamType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6978c649ff7bd022d88c58a98263076c&file=stream_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=2e600bf03547ffad711473669f44b55f&file=stream_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -98,7 +98,7 @@ export function StreamType({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/stream-type",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

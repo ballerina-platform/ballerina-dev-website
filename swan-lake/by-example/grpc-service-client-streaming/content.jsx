@@ -91,7 +91,7 @@ export function GrpcServiceClientStreaming({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-client-streaming",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -282,7 +282,7 @@ export function GrpcServiceClientStreaming({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-client-streaming",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

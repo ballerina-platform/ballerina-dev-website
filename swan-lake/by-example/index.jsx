@@ -452,6 +452,10 @@ import {
   codeSnippetData as QueryingWithStreamsCodeSnippetData,
 } from "./querying-with-streams/content.jsx";
 import {
+  Aggregation,
+  codeSnippetData as AggregationCodeSnippetData,
+} from "./aggregation/content.jsx";
+import {
   QueryActions,
   codeSnippetData as QueryActionsCodeSnippetData,
 } from "./query-actions/content.jsx";
@@ -1172,6 +1176,10 @@ import {
   codeSnippetData as GraphqlInterceptorConfigurationsCodeSnippetData,
 } from "./graphql-interceptor-configurations/content.jsx";
 import {
+  GraphqlInputConstraintValidation,
+  codeSnippetData as GraphqlInputConstraintValidationCodeSnippetData,
+} from "./graphql-input-constraint-validation/content.jsx";
+import {
   GraphqlFileUpload,
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
 } from "./graphql-file-upload/content.jsx";
@@ -1460,6 +1468,10 @@ import {
   codeSnippetData as NatsServiceConstraintValidationCodeSnippetData,
 } from "./nats-service-constraint-validation/content.jsx";
 import {
+  NatsJetstreamSub,
+  codeSnippetData as NatsJetstreamSubCodeSnippetData,
+} from "./nats-jetstream-sub/content.jsx";
+import {
   NatsBasicPub,
   codeSnippetData as NatsBasicPubCodeSnippetData,
 } from "./nats-basic-pub/content.jsx";
@@ -1467,6 +1479,10 @@ import {
   NatsBasicRequest,
   codeSnippetData as NatsBasicRequestCodeSnippetData,
 } from "./nats-basic-request/content.jsx";
+import {
+  NatsJetstreamPub,
+  codeSnippetData as NatsJetstreamPubCodeSnippetData,
+} from "./nats-jetstream-pub/content.jsx";
 import {
   NatsServiceSecureConnection,
   codeSnippetData as NatsServiceSecureConnectionCodeSnippetData,
@@ -2137,6 +2153,8 @@ const BBEs = {
   DestructureRecordsUsingQueryCodeSnippetData,
   QueryingWithStreams,
   QueryingWithStreamsCodeSnippetData,
+  Aggregation,
+  AggregationCodeSnippetData,
   QueryActions,
   QueryActionsCodeSnippetData,
   JsonType,
@@ -2497,6 +2515,8 @@ const BBEs = {
   GraphqlFieldInterceptorsCodeSnippetData,
   GraphqlInterceptorConfigurations,
   GraphqlInterceptorConfigurationsCodeSnippetData,
+  GraphqlInputConstraintValidation,
+  GraphqlInputConstraintValidationCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
   GraphqlHierarchicalResourcePaths,
@@ -2641,10 +2661,14 @@ const BBEs = {
   NatsBasicReplyCodeSnippetData,
   NatsServiceConstraintValidation,
   NatsServiceConstraintValidationCodeSnippetData,
+  NatsJetstreamSub,
+  NatsJetstreamSubCodeSnippetData,
   NatsBasicPub,
   NatsBasicPubCodeSnippetData,
   NatsBasicRequest,
   NatsBasicRequestCodeSnippetData,
+  NatsJetstreamPub,
+  NatsJetstreamPubCodeSnippetData,
   NatsServiceSecureConnection,
   NatsServiceSecureConnectionCodeSnippetData,
   NatsServiceBasicAuth,

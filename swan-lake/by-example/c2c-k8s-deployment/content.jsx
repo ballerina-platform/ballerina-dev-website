@@ -78,7 +78,7 @@ export function C2cK8sDeployment({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/c2c-k8s-deployment",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -177,7 +177,7 @@ export function C2cK8sDeployment({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/c2c-k8s-deployment",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

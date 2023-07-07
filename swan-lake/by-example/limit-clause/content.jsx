@@ -63,8 +63,8 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e851f0445f2150d80bf67d755ea99de7&file=limit_clause.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=31790ebde545c1538fac9b62712f1511&file=limit_clause.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -89,7 +89,7 @@ export function LimitClause({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/limit-clause",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

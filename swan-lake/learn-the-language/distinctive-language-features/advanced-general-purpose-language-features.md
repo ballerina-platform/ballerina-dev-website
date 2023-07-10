@@ -132,7 +132,7 @@ function h() returns Hashable {
 }
 ```
 
-In the above code example, **``Hashable``** is an object type, and it has a method called **``hash( )``**  that returns an integer. The function **``h()``** returns the object type **``Hashable``**. Inside **``h()``**, an object of type **``Hashabe``** is created by defining the **``hash()``** method and assigned to the **``obj``** variable, which is finally returned.
+In the above code example, **``Hashable``** is an object type, and it has a method called **``hash( )``**  that returns an integer. The function **``h()``** returns the object type **``Hashable``**. Inside **``h()``**, an object of type **``Hashable``** is created by defining the **``hash()``** method and assigned to the **``obj``** variable, which is finally returned.
 
 Object typing is structural, and an object type looks like a pattern that the object must match. In this case, the match is done to check that the returned object matches the pattern of the **``Hashable``** object type which contains a **``hash()``** method returning an integer.
 

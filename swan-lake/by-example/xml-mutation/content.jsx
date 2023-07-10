@@ -52,8 +52,8 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=192c5f68f061786c7c133ed4a8182160&file=xml_mutation.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6dfa0bb2ea882e846e6f46911ccdd53b&file=xml_mutation.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -77,8 +77,8 @@ export function XmlMutation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xml-mutation",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-mutation",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

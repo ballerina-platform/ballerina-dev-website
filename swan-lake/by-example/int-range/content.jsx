@@ -60,8 +60,8 @@ export function IntRange({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=80537d921f7b9769016aef0cbda00a73&file=int_range.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=ff76e0486c75536171a6cd75f259e683&file=int_range.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -85,8 +85,8 @@ export function IntRange({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/int-range",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/int-range",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

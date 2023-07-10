@@ -58,8 +58,8 @@ export function TimeUtc({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=677029fe8259a60a2571c5b5b70e09f8&file=time_utc.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=8a73e4178d714b730bcd03dd84bd2394&file=time_utc.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -83,8 +83,8 @@ export function TimeUtc({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/time-utc",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/time-utc",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

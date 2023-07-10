@@ -58,8 +58,8 @@ export function HttpClientRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=93b525c35e2c3b31c4be48e5160597b7&file=http_client_redirects.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=487aef2c27b661c250b542b72fe542de&file=http_client_redirects.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -83,8 +83,8 @@ export function HttpClientRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-redirects",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-redirects",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

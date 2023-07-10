@@ -72,8 +72,8 @@ export function ListEquality({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f15dff93c47d0477701830b87dc9743f&file=list_equality.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6bf1ed9c87bb24a49abe10678f556231&file=list_equality.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -97,8 +97,8 @@ export function ListEquality({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/list-equality",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/list-equality",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

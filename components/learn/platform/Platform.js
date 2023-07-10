@@ -189,17 +189,36 @@ export default function Platform(props) {
           </div>
 
           <div className={styles.pGroup}>
-            <h3>Native support</h3>
+            <h3>Build a GraalVM executable</h3>
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/build-a-native-executable`} className={styles.titleLink}>
-                  [Experimental] Build a native executable
+                <a href={`${prefix}/learn/graalvm-executable-overview`} className={styles.titleLink}>
+                  GraalVM executable overview
                 </a>
               </p>
-              <p className={styles.description}>Building a GraalVM native executable from Ballerina.</p>
+              <p className={styles.description}>The overview of GraalVM and the native executable.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/build-the-executable-in-a-container`} className={styles.titleLink}>
+                  Build the GraalVM executable in a container
+                </a>
+              </p>
+              <p className={styles.description}>Building and packing the GraalVM executable in a container.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/build-the-executable-locally`} className={styles.titleLink}>
+                  Build the GraalVM executable locally
+                </a>
+              </p>
+              <p className={styles.description}>Building the GraalVM executable locally from Ballerina.</p>
             </div>
           </div>
+          
           <div className={styles.pGroup}>
             <h3>Ballerina Central</h3>
 
@@ -212,9 +231,8 @@ export default function Platform(props) {
               <p className={styles.description}>Details of publishing your library package to Ballerina Central.</p>
             </div>
           </div>
-
-          
         </Col>
+        
         <Col xs={12} lg={4} className={styles.contentCol}>
           <div className={styles.pGroup}>
             <h3>Ballerina tooling</h3>
@@ -278,6 +296,55 @@ export default function Platform(props) {
                 </a>
               </p>
               <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
+            </div>
+          </div>
+
+          <div className={styles.pGroup}>
+            <h3>Bal persist</h3>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
+                  Overview
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
+                  Data model
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-cli-tool`} className={styles.titleLink}>
+                  CLI tool
+                </a>
+              </p>
+              <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
+                  Type-safe client API
+                </a>
+              </p>
+              <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>
+            </div>
+
+            <div className={styles.content}>
+              <p className={styles.title}>
+                <a href={`${prefix}/learn/supported-data-stores`} className={styles.titleLink}>
+                  Supported data stores
+                </a>
+              </p>
+              <p className={styles.description}>Details on the data stores supported for managing data persistence.</p>
             </div>
           </div>
 

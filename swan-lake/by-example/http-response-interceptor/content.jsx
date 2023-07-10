@@ -36,14 +36,17 @@ service class ResponseInterceptor {
     }
 }
 
-// Engage interceptors at the listener level. Response interceptor services will be executed from
-// tail to head.
-listener http:Listener interceptorListener = new (9090,
-    // This interceptor pipeline will be executed for all of the services attached to this listener.
-    interceptors = [new ResponseInterceptor()]
-);
+// Engage interceptors at the service level using an \`http:InterceptableService\`. The base path of the
+// interceptor services is the same as the target service. Hence, they will be executed only for
+// this particular service.
+service http:InterceptableService / on new http:Listener(9090) {
 
-service / on interceptorListener {
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of
+    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then, the
+    // request interceptor services will be executed from head to tail.
+    public function createInterceptors() returns ResponseInterceptor {
+        return new ResponseInterceptor();
+    }
 
     resource function get albums() returns Album[] {
         return albums.toArray();
@@ -68,18 +71,24 @@ export function HttpResponseInterceptor({ codeSnippets }) {
 
       <p>
         The <code>http:ResponseInterceptor</code> is used to intercept the
-        response and execute some custom logic. A{" "}
-        <code>ResponseInterceptor</code> is a service object with a remote
-        method called <code>interceptResponse</code>, which is executed before
-        dispatching the response to the client. A{" "}
-        <code>ResponseInterceptor</code> can be created from a service class,
-        which includes the <code>http:ResponseInterceptor</code> service type.
-        Then, this service object can be engaged at the listener level or
-        service level by using the <code>interceptors</code> field in the
-        configurations. This field accepts an array of interceptor service
-        objects as an interceptor pipeline, and the interceptors are executed in
-        the order in which they are placed in the pipeline. Use{" "}
-        <code>ResponseInterceptors</code> to execute some common logic such as
+        response and execute custom logic. A <code>ResponseInterceptor</code> is
+        a service object with a remote method called{" "}
+        <code>interceptResponse</code>, which is executed before dispatching the
+        response to the client. A <code>ResponseInterceptor</code> can be
+        created from a service class, which includes the{" "}
+        <code>http:ResponseInterceptor</code> service type.
+      </p>
+
+      <p>
+        This service object can be engaged at the service level by declaring an{" "}
+        <code>http:InterceptableService</code> object. This accepts an
+        interceptor service object or an array of interceptor service objects as
+        an interceptor pipeline and the interceptors are executed in the order
+        in which they are placed in the pipeline.
+      </p>
+
+      <p>
+        Use <code>ResponseInterceptors</code> to execute common logic such as
         logging, header manipulation, state publishing, etc., for all outbound
         responses.
       </p>
@@ -94,8 +103,8 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1b157cbdece1c3aadc674f347b0e760b&file=http_response_interceptor.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6b72d669433b96953e7c6d057c7ff389&file=http_response_interceptor.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -119,8 +128,8 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-response-interceptor",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-response-interceptor",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

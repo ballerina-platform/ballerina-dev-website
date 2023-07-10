@@ -16,7 +16,7 @@ To run this guide, you need the following prerequisites:
 
 1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
 2. A text editor
-    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/get-started/install-the-extension/" target="_blank">Ballerina extension</a> installed.
+    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. A command terminal
 
 ## Create the Ballerina package
@@ -426,4 +426,276 @@ Countries with highest deaths:[["India",980976],["USA",880976],["Afghanistan",73
 Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892277],["India",33892279]]
 Found erroneous entries for countries: ["Sri Lanka","India"]
 ```
-   
+
+## Aggregation
+
+### Create the `getTotalNumberOfDeaths` function
+
+You can use the `collect` clause to aggregate the input records of the query. If you use the collect clause, all the variables in the query expression become aggregated variables.
+
+The aggregated variables can only be used in the following ways:
+1. An aggregated variable can be a rest argument to a langlib function call. It is not necessary to use the module prefix in the langlib function call. For example, you can write `sum(deaths)` instead of `int:sum(deaths)`. Essential aggregating functions such as `min`, `max`, `avg`, `sum`, `first`, `last`, and `count` are available.
+2. An aggregated variable can be an element in a single element list constructor.
+
+In the following example, the `deaths` variable becomes an aggregated variable. The `sum` function is used to calculate the total number of deaths.
+
+Add the code below to the `main.bal` file to define a function to get the total number of deaths.
+
+```ballerina
+public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns decimal {
+    return from var {deaths} in dataTable
+            collect sum(deaths);
+}
+```
+
+In this code,
+- The `collect` clause aggregates the input values into one group.
+- Since `deaths` becomes a sequence value, you can call the `sum` function in order to get the total number of deaths.
+
+### Update the main function for aggregation
+
+Add the code below to the main function of the `main.bal` file to call the `getTotalNumberOfDeaths` function within the main function for finding the total number of deaths.
+
+### The complete code with the aggregating function
+
+```ballerina
+import ballerina/io;
+
+public type CovidEntry record {|
+    readonly string iso_code;
+    string country;
+    string continent;
+    decimal cases;
+    decimal deaths;
+    decimal recovered;
+    decimal active;
+|};
+
+public final table<CovidEntry> key(iso_code) covidTable = table [
+    {iso_code: "AFG", country: "Afghanistan", continent: "Asia", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", continent: "Asia", cases: 598536, deaths: 5243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", continent: "North America", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097},
+    {iso_code: "IND", country: "India", continent: "Asia", cases: 80808350, deaths: 980976, recovered: 33892279, active: 35035095}
+];
+
+public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOfCases) returns string[] {
+    string[] filteredCountries = from CovidEntry entry in dataTable
+        where entry.cases > noOfCases
+        select entry.country;
+    return filteredCountries;
+}
+
+public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, int n) returns [string, decimal][] {
+    [string, decimal][] countriesWithDeaths = from CovidEntry entry in dataTable
+        order by entry.deaths descending
+        limit n
+        select [entry.country, entry.deaths];
+    return countriesWithDeaths;
+}
+
+public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, string[] countries) returns [string, decimal][] {
+    [string, decimal][] countriesWithRecovered = from CovidEntry entry in dataTable
+        join string country in countries on entry.country equals country
+        select [entry.country, entry.recovered];
+    return countriesWithRecovered;
+}
+
+public function printErroneousData(table<CovidEntry> dataTable) {
+
+    string[] countries = from CovidEntry entry in dataTable
+        let decimal sum = entry.recovered + entry.deaths + entry.active
+        where entry.cases != sum
+        select entry.country;
+
+    if countries.length() > 0 {
+        io:println("Found erroneous entries for countries: ", countries);
+    }
+}
+
+public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns decimal {
+    return from var {deaths} in dataTable
+            collect sum(deaths);
+}
+
+public function main() {
+    string[] countries = filterCountriesByCases(covidTable, 10000000);
+    io:println("Countries with more than 10 million cases: ", countries);
+
+    [string, decimal][] countriesWithDeaths = findCountriesByHighestNoOfDeaths(covidTable, 3);
+    io:println("Countries with highest deaths: ", countriesWithDeaths);
+
+    string[] c = ["USA", "India", "Afghanistan"];
+    [string, decimal][] countriesWithRecovered = findRecoveredPatientsOfCountries(covidTable, c);
+    io:println("Countries with number of Recovered patients: ", countriesWithRecovered);
+
+    printErroneousData(covidTable);
+
+    decimal totalDeaths = getTotalNumberOfDeaths(covidTable);
+    io:println("Total number of deaths: ", totalDeaths);
+}
+```
+
+### Run the package for aggregation
+
+In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
+
+```bash
+$ bal run
+```
+
+You view the output below.
+
+```bash
+Compiling source
+	    .../query_expressions:0.1.0
+
+Running executable
+
+Countries with more than 10 million cases: ["USA","India"]
+Countries with highest deaths: [["India",980976],["USA",880976],["Afghanistan",7386]]
+Countries with number of Recovered patients: [["Afghanistan",146084],["USA",43892277],["India",33892279]]
+Found erroneous entries for countries: ["Sri Lanka","India"]
+Total number of deaths: 1874581
+```
+
+## Grouping
+
+### Create the `groupDeathsByContinent` function
+
+The `group by` clause is used to group the input based on one or more `grouping-key`s. The set of variables that do not belong to `grouping-key`s become aggregated variables after the `group by` clause. 
+
+The aggregated variables can only be used in the following ways:
+1. An aggregated variable can be a rest argument to a langlib function call. It is not necessary to use the module prefix in the langlib function call. For example, you can write `sum(deaths)` instead of `int:sum(deaths)`. Essential aggregating functions such as `min`, `max`, `avg`, `sum`, `first`, `last`, and `count` are available.
+2. An aggregated variable can be an element in a single element list constructor.
+
+Add the following code to the `main.bal` file to define a function that groups the data by continent and retrieves the total number of deaths per continent.
+
+```ballerina
+public function groupDeathsByContinent(table<CovidEntry> dataTable) returns record {|string continent; decimal[] cases; decimal deaths;|}[] {
+    return from var {continent, cases, deaths} in dataTable
+        group by continent
+        select {continent, cases: [cases], deaths: sum(deaths)};
+}
+```
+
+In this code,
+- The `group by` clause is used to group the input and the `grouping-key` comes after the `group by` clause. In this example, the `continent` is the `grouping-key`. This is unique for each group and is used to group the input.
+- Since the `grouping-key` is `continent`, the input table is grouped by the `continent` in the `groupDeathsByContinent` function.
+- After creating groups based on the `continent`, the `deaths` and `cases` become sequence values for each `continent`.
+- You can call the `sum` function to get the total number of deaths per `continent`.
+- You can represent the `cases` as a list using `[cases]`.
+
+### Update the main function for grouping
+
+Add the code below to the main function of the `main.bal` file to call the `groupDeathsByContinent` function within the main function and find the number of total deaths per `continent`.
+
+### The complete code with the grouping function
+
+```ballerina
+import ballerina/io;
+
+public type CovidEntry record {|
+    readonly string iso_code;
+    string country;
+    string continent;
+    decimal cases;
+    decimal deaths;
+    decimal recovered;
+    decimal active;
+|};
+
+public final table<CovidEntry> key(iso_code) covidTable = table [
+    {iso_code: "AFG", country: "Afghanistan", continent: "Asia", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", continent: "Asia", cases: 598536, deaths: 5243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", continent: "North America", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097},
+    {iso_code: "IND", country: "India", continent: "Asia", cases: 80808350, deaths: 980976, recovered: 33892279, active: 35035095}
+];
+
+public function filterCountriesByCases(table<CovidEntry> dataTable, decimal noOfCases) returns string[] {
+    string[] filteredCountries = from CovidEntry entry in dataTable
+        where entry.cases > noOfCases
+        select entry.country;
+    return filteredCountries;
+}
+
+public function findCountriesByHighestNoOfDeaths(table<CovidEntry> dataTable, int n) returns [string, decimal][] {
+    [string, decimal][] countriesWithDeaths = from CovidEntry entry in dataTable
+        order by entry.deaths descending
+        limit n
+        select [entry.country, entry.deaths];
+    return countriesWithDeaths;
+}
+
+public function findRecoveredPatientsOfCountries(table<CovidEntry> dataTable, string[] countries) returns [string, decimal][] {
+    [string, decimal][] countriesWithRecovered = from CovidEntry entry in dataTable
+        join string country in countries on entry.country equals country
+        select [entry.country, entry.recovered];
+    return countriesWithRecovered;
+}
+
+public function printErroneousData(table<CovidEntry> dataTable) {
+    string[] countries = from CovidEntry entry in dataTable
+        let decimal sum = entry.recovered + entry.deaths + entry.active
+        where entry.cases != sum
+        select entry.country;
+
+    if countries.length() > 0 {
+        io:println("Found erroneous entries for countries: ", countries);
+    }
+}
+
+public function getTotalNumberOfDeaths(table<CovidEntry> dataTable) returns decimal {
+    return from var {deaths} in dataTable
+            collect sum(deaths);
+}
+
+public function groupDeathsByContinent(table<CovidEntry> dataTable) returns record {|string continent; decimal[] cases; decimal deaths;|}[] {
+    return from var {continent, cases, deaths} in dataTable
+        group by continent
+        select {continent, cases: [cases], deaths: sum(deaths)};
+}
+
+public function main() {
+    string[] countries = filterCountriesByCases(covidTable, 10000000);
+    io:println("Countries with more than 10 million cases: ", countries);
+
+    [string, decimal][] countriesWithDeaths = findCountriesByHighestNoOfDeaths(covidTable, 3);
+    io:println("Countries with highest deaths: ", countriesWithDeaths);
+
+    string[] c = ["USA", "India", "Afghanistan"];
+    [string, decimal][] countriesWithRecovered = findRecoveredPatientsOfCountries(covidTable, c);
+    io:println("Countries with number of Recovered patients: ", countriesWithRecovered);
+
+    printErroneousData(covidTable);
+
+    decimal totalDeaths = getTotalNumberOfDeaths(covidTable);
+    io:println("Total number of deaths: ", totalDeaths);
+
+    record {|string continent; decimal[] cases; decimal deaths;|}[] deathsByContinent = groupDeathsByContinent(covidTable);
+    io:println("Cases and total number of deaths by continent: ", deathsByContinent);
+}
+```
+
+### Run the package for grouping
+
+In the terminal, navigate to the `query_expressions` directory, and execute the command below to run the service package.
+
+```bash
+$ bal run
+```
+
+You view the output below.
+
+```bash
+Compiling source
+	    .../query_expressions:0.1.0
+
+Running executable
+
+Countries with more than 10 million cases: ["USA","India"]
+Countries with highest deaths: [["India",980976],["USA",880976],["Afghanistan",7386]]
+Countries with number of Recovered patients: [["Afghanistan",146084],["USA",43892277],["India",33892279]]
+Found erroneous entries for countries: ["Sri Lanka","India"]
+Total number of deaths: 1874581
+Cases and total number of deaths by continent: [{"continent":"Asia","cases":[159303,598536,80808350],"deaths":993605},{"continent":"North America","cases":[69808350],"deaths":880976}]
+```

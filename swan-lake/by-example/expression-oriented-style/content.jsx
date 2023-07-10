@@ -72,8 +72,8 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=afd3df3931dd2d98bf5e667795b1375f&file=expression_oriented_style.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=1a09120c10e1b7b370310f0dfada0d70&file=expression_oriented_style.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -97,8 +97,8 @@ export function ExpressionOrientedStyle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/expression-oriented-style",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/expression-oriented-style",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -82,8 +82,8 @@ export function MatchGuardInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d87bb8913218c02c6db4d2579d5cf2d5&file=match_guard_in_match_statement.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=78735b6a3e06f32c40dd2dd6c2c837e8&file=match_guard_in_match_statement.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -107,8 +107,8 @@ export function MatchGuardInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/match-guard-in-match-statement",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/match-guard-in-match-statement",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

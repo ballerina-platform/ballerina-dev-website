@@ -53,8 +53,8 @@ export function Covariance({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=390af3d342d3ff6c20948e954b4be0cd&file=covariance.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=cd48a221017325c7f8c95b8a0c0d1563&file=covariance.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -78,8 +78,8 @@ export function Covariance({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/covariance",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/covariance",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

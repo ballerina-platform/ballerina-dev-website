@@ -15,17 +15,43 @@
             "id": "learn-the-platform",
             "subDirectories": [
                 {
-                    "dirName": "[Experimental] Build a native executable",
+                    "dirName": "Build a GraalVM executable",
                     "level": 2,
-                    "position": 9,
-                    "isDir": false,
-                    "url": "/learn/build-a-native-executable",
-                    "id": "build-a-native-executable"
+                    "position": 10,
+                    "isDir": true,
+                    "url": "/learn/build-a-graalvm-executable",
+                    "id": "graalvm-executable",
+                    "subDirectories": [
+                        {
+                            "dirName": "GraalVM executable overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/graalvm-executable-overview",
+                            "id": "graalvm-executable-overview"
+                        },
+                        {
+                            "dirName": "Build the executable in a container",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-in-a-container",
+                            "id": "build-the-executable-in-a-container"
+                        },
+                        {
+                            "dirName": "Build the executable locally",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-locally/",
+                            "id": "build-the-executable-locally"
+                        }
+                    ]
                 },
                 {
                     "dirName": "Ballerina specifications",
                     "level": 2,
-                    "position": 8,
+                    "position": 9,
                     "isDir": false,
                     "url": "/learn/ballerina-specifications",
                     "id": "ballerina-specifications"
@@ -33,7 +59,7 @@
                 {
                     "dirName": "Publish packages to Ballerina Central",
                     "level": 2,
-                    "position": 7,
+                    "position": 8,
                     "isDir": false,
                     "url": "/learn/publish-packages-to-ballerina-central",
                     "id": "publish-packages-to-ballerina-central"
@@ -537,6 +563,56 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "dirName": "Bal persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": true,
+                    "url": "/learn/ballerina-persist",
+                    "id": "ballerina-persist",
+                    "subDirectories": [
+                        {
+                            "dirName": "Overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/bal-persist-overview",
+                            "id": "bal-persist-overview"
+                        },
+                        {
+                            "dirName": "Data model",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/persist-model",
+                            "id": "persist-model"
+                        },
+                        {
+                            "dirName": "CLI tool",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/persist-cli-tool",
+                            "id": "persist-cli-tool"
+                        },
+                        {
+                            "dirName": "Type-safe client API",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-client-api",
+                            "id": "persist-client-api"
+                        },
+                        {
+                            "dirName": "Supported data stores",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/supported-data-stores",
+                            "id": "supported-data-stores"
+                        }
+                    ]
                 }
             ]
         },
@@ -595,6 +671,14 @@
                     "isDir": false,
                     "url": "/learn/deploy-ballerina-on-kubernetes",
                     "id": "deploy-ballerina-on-kubernetes"
+                },
+                {
+                    "dirName": "Manage data persistence with bal persist",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/manage-data-persistence-with-bal-persist",
+                    "id": "manage-data-persistence-with-bal-persist"
                 }
             ]
         },

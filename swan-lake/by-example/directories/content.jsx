@@ -79,8 +79,8 @@ export function Directories({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=983d7634675a80f1c925c6ea44f87ee2&file=directories.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=26660cf84b1256a077b78932280c488a&file=directories.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -104,8 +104,8 @@ export function Directories({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/directories",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/directories",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

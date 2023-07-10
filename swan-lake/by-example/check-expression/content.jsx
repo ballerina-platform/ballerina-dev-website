@@ -60,8 +60,8 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=97626ae320573656dff9dd82573d9e90&file=check_expression.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=59221c4957a4ea989649ecf05e6dbf82&file=check_expression.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -85,8 +85,8 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/check-expression",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/check-expression",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

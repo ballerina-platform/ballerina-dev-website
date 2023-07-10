@@ -71,8 +71,8 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1e2c83c8bb4d192da253656b08f11f41&file=strands.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=75548178b4c1af2e75b747f2d30a8fce&file=strands.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -96,8 +96,8 @@ export function Strands({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/strands",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/strands",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

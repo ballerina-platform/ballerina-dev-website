@@ -92,8 +92,8 @@ export function UuidOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8b456984ec4ae083887a54cc4df6e39c&file=uuid_operations.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=f929b51ba38874bd164d50a66b739490&file=uuid_operations.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -117,8 +117,8 @@ export function UuidOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/uuid-operations",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/uuid-operations",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

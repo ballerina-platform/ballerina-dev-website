@@ -54,8 +54,8 @@ export function FloatingPointNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=fe0102c3277574bb20813060486546dd&file=floating_point_numbers.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=7bcf6b1a5dd04d9bf5eace12cf8b32c8&file=floating_point_numbers.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -79,8 +79,8 @@ export function FloatingPointNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/floating-point-numbers",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/floating-point-numbers",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

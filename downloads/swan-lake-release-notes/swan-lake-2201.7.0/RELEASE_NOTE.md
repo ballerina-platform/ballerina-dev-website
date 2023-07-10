@@ -171,13 +171,13 @@ type B [B] & readonly;
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.7.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.7.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
 ## Standard library updates
 
@@ -210,7 +210,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.7.0%22+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.7.0%22+label%3AType%2FBug).
 
 ## Developer tools updates
 
@@ -244,6 +244,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake 2201.7.0](https://git
 
 ### Bug fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.7.0 of the repositories below.
+To view bug fixes, see the GitHub milestone for 2201.7.0 (Swan Lake) of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug)

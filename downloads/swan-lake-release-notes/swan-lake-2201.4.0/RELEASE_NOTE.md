@@ -114,7 +114,7 @@ Annotations are not allowed on the tuple rest descriptor.
 
 Annotation values of fields of record type descriptors that are not defined with a type definition are now accessible at runtime.
 
-To view other bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
+To view other bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 
@@ -230,7 +230,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.4.0](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.4.0%22+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.4.0%22+label%3AType%2FBug).
 
 ### Code to Cloud updates
 
@@ -319,7 +319,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### Bug fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.4.0 of the repositories below.
+To view bug fixes, see the GitHub milestone for 2201.5.0 (Swan Lake) of the repositories below.
 
 - [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.4.0+label%3AArea%2FProjectAPI)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug)

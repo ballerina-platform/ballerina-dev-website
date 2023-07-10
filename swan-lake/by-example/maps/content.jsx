@@ -74,7 +74,7 @@ export function Maps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a753908667375633a8cc07a599991663&file=maps.bal",
+                "https://play.ballerina.io/?gist=66544da47dfda01c5e65f358a2fe570d&file=maps.bal",
                 "_blank",
               );
             }}
@@ -99,7 +99,7 @@ export function Maps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/maps",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/maps",
                 "_blank",
               );
             }}

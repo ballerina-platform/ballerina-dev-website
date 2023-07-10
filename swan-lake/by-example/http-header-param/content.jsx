@@ -69,7 +69,7 @@ export function HttpHeaderParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55a95580ae19cdd8991933bc0bb7c750&file=http_header_param.bal",
+                "https://play.ballerina.io/?gist=4715b3198ca96938b4235e6756be447b&file=http_header_param.bal",
                 "_blank",
               );
             }}
@@ -94,7 +94,7 @@ export function HttpHeaderParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-header-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-header-param",
                 "_blank",
               );
             }}

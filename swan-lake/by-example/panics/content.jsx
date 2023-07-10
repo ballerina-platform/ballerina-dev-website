@@ -71,7 +71,7 @@ export function Panics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4ec1a4865f6580a6c96b0bd0cfe14fe2&file=panics.bal",
+                "https://play.ballerina.io/?gist=74f7f09e26f9ea2a1291e824d4fa9f3f&file=panics.bal",
                 "_blank",
               );
             }}
@@ -96,7 +96,7 @@ export function Panics({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/panics",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/panics",
                 "_blank",
               );
             }}

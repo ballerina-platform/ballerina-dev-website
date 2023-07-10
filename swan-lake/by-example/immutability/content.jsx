@@ -68,7 +68,7 @@ export function Immutability({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/immutability",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

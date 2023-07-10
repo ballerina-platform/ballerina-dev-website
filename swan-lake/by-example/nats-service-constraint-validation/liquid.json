@@ -1,5 +1,5 @@
 {
-  "title": "Constraint validation",
+  "title": "Constraint validations",
   "description": "BBE on validating a payload according to the constraints defined in the payload record.",
   "keywords": [
     "ballerina",

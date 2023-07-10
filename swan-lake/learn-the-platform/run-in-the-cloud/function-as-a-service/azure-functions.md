@@ -109,7 +109,7 @@ The example command below will build the package for the Azure Functions cloud.
 >**Info:** This will perform the compilation inside the Docker image to make it compatible with the Azure Functions cloud environment.
 
 ```bash
-$ bal build --cloud="azure_functions" --native
+$ bal build --cloud="azure_functions" --graalvm
 ```
 
 ### Deploy the function for the native approach

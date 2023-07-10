@@ -56,7 +56,7 @@ export function GraphqlInputTypes({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-input-types",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -205,7 +205,7 @@ export function GraphqlInputTypes({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-input-types",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

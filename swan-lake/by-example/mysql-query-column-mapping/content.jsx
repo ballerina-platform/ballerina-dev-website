@@ -95,7 +95,7 @@ export function MysqlQueryColumnMapping({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mysql-query-column-mapping",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -403,6 +403,9 @@ sublinks:
           - title: Querying streams
             id: 15
             url: querying-with-streams
+          - title: Aggregation
+            id: 16
+            url: aggregation
       - title: Query actions
         id: 20
         sublinks:
@@ -1018,11 +1021,14 @@ sublinks:
           - title: Interceptor configurations
             id: 19
             url: graphql-interceptor-configurations
-          - title: File upload
+          - title: Input constraint validation
             id: 20
+            url: graphql-input-constraint-validation
+          - title: File upload
+            id: 21
             url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 21
+            id: 22
             url: graphql-hierarchical-resource-paths
       - title: GraphQL client
         id: 10
@@ -1276,9 +1282,12 @@ sublinks:
           - title: Send reply to request message
             id: 2
             url: nats-basic-reply
-          - title: Constraint validation
+          - title: Constraint validations
             id: 3
             url: nats-service-constraint-validation
+          - title: Consume JetStream message
+            id: 4
+            url: nats-jetstream-sub
       - title: NATS client
         id: 25
         sublinks:
@@ -1288,6 +1297,9 @@ sublinks:
           - title: Send request message
             id: 2
             url: nats-basic-request
+          - title: Publish message
+            id: 3
+            url: nats-jetstream-pub
       - title: NATS service security
         id: 26
         sublinks:

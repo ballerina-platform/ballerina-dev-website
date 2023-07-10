@@ -170,7 +170,7 @@ export function PersistGetByKey({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-get-by-key",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -329,7 +329,7 @@ export function PersistGetByKey({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-get-by-key",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

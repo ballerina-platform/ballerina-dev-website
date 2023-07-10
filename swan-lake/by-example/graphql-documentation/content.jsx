@@ -92,7 +92,7 @@ export function GraphqlDocumentation({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-documentation",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -242,7 +242,7 @@ export function GraphqlDocumentation({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-documentation",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

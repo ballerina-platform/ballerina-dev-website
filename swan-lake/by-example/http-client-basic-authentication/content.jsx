@@ -60,8 +60,8 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3e71439772c91d87d6832bcf84fd591a&file=http_client_basic_authentication.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=2107d5ce5c5feeaa8ec8744c3300f08d&file=http_client_basic_authentication.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -86,7 +86,7 @@ export function HttpClientBasicAuthentication({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-basic-authentication",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

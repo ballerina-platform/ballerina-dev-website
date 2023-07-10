@@ -67,7 +67,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/nats-service-secure-connection",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -244,8 +244,8 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Send request message"
-            href="/learn/by-example/nats-basic-request"
+            title="Publish message"
+            href="/learn/by-example/nats-jetstream-pub"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -272,7 +272,7 @@ export function NatsServiceSecureConnection({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Send request message
+                  Publish message
                 </span>
               </div>
             </div>

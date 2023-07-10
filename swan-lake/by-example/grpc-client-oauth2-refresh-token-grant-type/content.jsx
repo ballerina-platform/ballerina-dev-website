@@ -65,7 +65,7 @@ export function GrpcClientOauth2RefreshTokenGrantType({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-client-oauth2-refresh-token-grant-type",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

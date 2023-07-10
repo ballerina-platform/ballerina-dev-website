@@ -120,7 +120,7 @@ export function Tracing({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/tracing",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

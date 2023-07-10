@@ -75,7 +75,7 @@ export function NeverType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=836839be1ecca2ed0ebce243d578632e&file=never_type.bal",
+                "https://play.ballerina.io/?gist=6dcaeee1b501ab01641a3e70f1e457d4&file=never_type.bal",
                 "_blank",
               );
             }}

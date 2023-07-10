@@ -67,7 +67,7 @@ export function HttpSendDifferentStatusCodes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c0f05518ee8b42a77d17050b5faabd35&file=http_send_different_status_codes.bal",
+                "https://play.ballerina.io/?gist=e8a063732218cff8055ca3e55a49c4f0&file=http_send_different_status_codes.bal",
                 "_blank",
               );
             }}

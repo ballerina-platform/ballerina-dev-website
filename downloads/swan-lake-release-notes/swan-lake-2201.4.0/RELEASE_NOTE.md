@@ -319,7 +319,7 @@ To view bug fixes, see the [GitHub milestone for 2201.4.0 (Swan Lake)](https://g
 
 ### Bug fixes
 
-To view bug fixes, see the GitHub milestone for 2201.5.0 (Swan Lake) of the repositories below.
+To view bug fixes, see the GitHub milestone for 2201.4.0 (Swan Lake) of the repositories below.
 
 - [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.4.0+label%3AArea%2FProjectAPI)
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.4.0+is%3Aclosed+label%3AType%2FBug)

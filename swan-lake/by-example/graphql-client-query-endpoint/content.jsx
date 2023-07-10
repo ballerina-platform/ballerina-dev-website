@@ -71,7 +71,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-client-query-endpoint",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

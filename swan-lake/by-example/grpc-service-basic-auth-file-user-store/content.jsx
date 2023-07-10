@@ -98,7 +98,7 @@ export function GrpcServiceBasicAuthFileUserStore({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-basic-auth-file-user-store",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -194,7 +194,7 @@ export function GrpcServiceBasicAuthFileUserStore({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/grpc-service-basic-auth-file-user-store",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

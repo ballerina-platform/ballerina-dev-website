@@ -155,8 +155,8 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ad1ebd157129d01d954646bcfbfbea63&file=http_response_with_multiparts.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=60278f388f28ddb8e6302e32de14bf98&file=http_response_with_multiparts.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -181,7 +181,7 @@ export function HttpResponseWithMultiparts({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-response-with-multiparts",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

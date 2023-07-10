@@ -93,7 +93,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-oauth2",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

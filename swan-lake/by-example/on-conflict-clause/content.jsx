@@ -85,8 +85,8 @@ export function OnConflictClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d82a247171dc47a5df8f1206b4edc8b7&file=on_conflict_clause.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=e3a45a2608ece2db56f6d4ea541b66b3&file=on_conflict_clause.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -111,7 +111,7 @@ export function OnConflictClause({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/on-conflict-clause",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -67,7 +67,7 @@ export function WebsocketClientOauth2JwtBearerGrantType({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/websocket-client-oauth2-jwt-bearer-grant-type",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

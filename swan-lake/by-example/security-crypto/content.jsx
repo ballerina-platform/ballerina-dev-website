@@ -265,7 +265,7 @@ export function SecurityCrypto({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/security-crypto",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

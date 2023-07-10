@@ -41,19 +41,17 @@ service class RequestInterceptor {
     }
 }
 
-// Interceptors can also be engaged at the listener level. In this case, the \`RequestInterceptors\`
-// can have only the default path.
-listener http:Listener interceptorListener = new (9090);
+// Engage interceptors at the service level using an \`http:InterceptableService\`. The interceptors
+// will inherit the basepath of the service.
+service http:InterceptableService / on new http:Listener(9090) {
 
-// Engage interceptors at the service level using \`http:InterceptableService\`. The base path of the
-// interceptor services is the same as the target service. Hence, they will be executed only for
-// this particular service.
-service http:InterceptableService / on interceptorListener {
-
-    // Creates the interceptor pipeline. The function can return a single interceptor or an array of interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then the request interceptor services will be executed from head to tail.
+    // Creates the interceptor pipeline. The function can return a single interceptor or an array of
+    // interceptors as the interceptor pipeline. If the interceptor pipeline is an array, then, the
+    // request interceptor services will be executed from head to tail.
     public function createInterceptors() returns RequestInterceptor {
         return new RequestInterceptor();
     }
+
     resource function get albums() returns Album[] {
         return albums.toArray();
     }
@@ -87,14 +85,12 @@ export function HttpRequestInterceptor({ codeSnippets }) {
       <p>
         A <code>RequestInterceptor</code> can be created from a service class,
         which includes the <code>http:RequestInterceptor</code> service type.
-        Then, this service object can be engaged at the listener level by using
-        the <code>interceptors</code> field in the{" "}
-        <code>http:ListenerConfiguration</code> or at the service level by
-        declaring a <code>http:InterceptableService</code> object.
+        Then, this service object can be engaged at the service level by
+        declaring an <code>http:InterceptableService</code> object.
       </p>
 
       <p>
-        These accept an interceptor service object or an array of interceptor
+        This accepts an interceptor service object or an array of interceptor
         service objects as an interceptor pipeline, and the interceptors are
         executed in the order in which they are placed in the pipeline. Use{" "}
         <code>RequestInterceptors</code> to execute common logic such as
@@ -112,8 +108,8 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4580682cf6ceb6752c050cf73eb544e7&file=http_request_interceptor.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6b9b621f3e3ad48fc9b429ad745fae18&file=http_request_interceptor.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -138,7 +134,7 @@ export function HttpRequestInterceptor({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-request-interceptor",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

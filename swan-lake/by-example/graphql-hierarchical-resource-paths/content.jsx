@@ -80,7 +80,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hierarchical-resource-paths",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -229,7 +229,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-hierarchical-resource-paths",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

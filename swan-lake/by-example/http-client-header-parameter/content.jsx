@@ -71,8 +71,8 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=73b806b6440802a7f370088d44447710&file=http_client_header_parameter.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=3585ea8ae34703eecb6e81ac4a54f0da&file=http_client_header_parameter.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -97,7 +97,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-header-parameter",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -262,8 +262,8 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2cadd1216c3c6320eb8a1d6ae0c06dbb&file=http_client_header_parameter_post.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=18bb7a5c8aac4a9383499fb13e92b161&file=http_client_header_parameter_post.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -288,7 +288,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-header-parameter",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

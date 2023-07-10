@@ -73,7 +73,7 @@ export function RabbitmqClientConstraintValidation({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/rabbitmq-client-constraint-validation",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

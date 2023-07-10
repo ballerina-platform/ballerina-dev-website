@@ -65,8 +65,8 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2b8175aaf8bbd3a6753255d40196513a&file=http_service_cache_response.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=c9bb04783c74929d98754aeaf0bfe035&file=http_service_cache_response.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -91,7 +91,7 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-service-cache-response",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

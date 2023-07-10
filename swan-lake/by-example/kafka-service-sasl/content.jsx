@@ -78,7 +78,7 @@ export function KafkaServiceSasl({ codeSnippets }) {
             onClick={() => {
               window.open(
                 "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/kafka-service-sasl",
-                "_blank"
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

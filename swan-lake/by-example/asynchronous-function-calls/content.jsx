@@ -58,7 +58,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bf5bbcc753750d8af26653136e5f1d6e&file=asynchronous_function_calls.bal",
+                "https://play.ballerina.io/?gist=273b4b69789ed062b70aba082438a3b1&file=asynchronous_function_calls.bal",
                 "_blank",
               );
             }}
@@ -83,7 +83,7 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/asynchronous-function-calls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/asynchronous-function-calls",
                 "_blank",
               );
             }}

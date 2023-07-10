@@ -81,7 +81,7 @@ export function OptionalFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=014c4faee755a679d8baec168b0b4797&file=optional_fields.bal",
+                "https://play.ballerina.io/?gist=3d1e7bbcb88ebd0e6a3ed57e0700da18&file=optional_fields.bal",
                 "_blank",
               );
             }}
@@ -106,7 +106,7 @@ export function OptionalFields({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/optional-fields",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/optional-fields",
                 "_blank",
               );
             }}

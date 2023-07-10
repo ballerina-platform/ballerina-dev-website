@@ -27,14 +27,13 @@ export default function Intro() {
     return (
         <>
             <Container>
-
-                <Row className='pageContentRow llanding'>
+            <Row className='pageContentRow llanding justify-content-center'>
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`${prefix}/learn/get-started`} className={`${styles.cardWrapper} ${styles.secondary}`}>
                             <div>
                                 <h3>Get started with Ballerina</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Write your first Ballerina program and create your first Ballerina package</p>
+                                    <p>Install Ballerina, set it all up, and take it for a spin. </p>
                                 </div>
                             </div>
                         </a>
@@ -45,7 +44,7 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina by Example</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>A series of guided examples to learn the language</p>
+                                    <p>Explore and try out a series of guided Ballerina examples.</p>
                                 </div>
                             </div>
                         </a>
@@ -55,18 +54,33 @@ export default function Intro() {
                             <div>
                                 <h3>Ballerina API Docs</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Library API documentation</p>
+                                    <p>Refer Ballerina library (API) documentation.</p>
                                 </div>
                             </div>
                         </a>
                     </Col>
+  
+    
+                </Row>
+
+                <Row className='pageContentRow llanding justify-content-center'>
 
                     <Col xs={12} md={3} lg={3} className={styles.introCard}>
                         <a href={`${prefix}/learn/ballerina-specifications`} className={`${styles.cardWrapper} ${styles.secondary}`}>
                             <div>
                                 <h3>Ballerina specifications</h3>
                                 <div className={styles.cardDescription}>
-                                    <p>Language, library, and platform specifications</p>
+                                    <p>Refer language, library, and platform specifications.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </Col>
+                    <Col xs={12} md={3} lg={3} className={styles.introCard}>
+                        <a href={`https://wso2.com/ballerina/vscode/`} className={`${styles.cardWrapper} ${styles.secondary}`} target='_blank' rel="noreferrer">
+                            <div>
+                                <h3>VS Code extension</h3>
+                                <div className={styles.cardDescription}>
+                                    <p>Design and develop Ballerina code via its graphical representation.</p>
                                 </div>
                             </div>
                         </a>

@@ -50,7 +50,9 @@ const TopNav = (props) => {
               <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
               <NavDropdown title='Use cases' id={styles.navbarScrollingDropdown} className={(launcher === 'usecases') ? `${styles.active}` : null} >
                 <NavDropdown.Item href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
               <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>

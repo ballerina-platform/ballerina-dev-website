@@ -161,7 +161,7 @@ public type ListenerConfiguration record {|
     decimal timeout = DEFAULT_LISTENER_TIMEOUT;
     string? server = ();
     RequestLimitConfigs requestLimits = {};
-    Interceptor|Interceptor[] interceptors?;
+    int http2InitialWindowSize = 65535;
 |};
 ```
 
@@ -1087,6 +1087,18 @@ public type ClientConfiguration record {|
     ProxyConfig? proxy = ();
     boolean validation = true;
 |};
+
+public type ClientHttp1Settings record {|
+    KeepAlive keepAlive = KEEPALIVE_AUTO;
+    Chunking chunking = CHUNKING_AUTO;
+    ProxyConfig? proxy = ();
+|};
+
+public type ClientHttp2Settings record {|
+    boolean http2PriorKnowledge = false;
+    int http2InitialWindowSize = 65535;
+|};
+
 ```
 
 Based on the config, the client object will be accompanied by following client behaviours. Following clients cannot be
@@ -2260,19 +2272,32 @@ interceptors.
 Interceptors could get engaged at service level. One reason for this is that users may want to engage two different 
 interceptor chains for each service even though it is attached to the same Listener. At the service level resource 
 function paths are relative to the service base path.
+
+In order to engage interceptors at service level, the service should be marked as `http:InterceptableService`. Then, the 
+interceptor pipeline can be defined by implementing the `createInterceptors` function.
 ```ballerina
-@http:ServiceConfig{
-   interceptors: [requestInterceptor, responseInterceptor]
+public function createInterceptors() returns Interceptor|Interceptor[];
+```
+Internally, this function is used to create the interceptor pipeline when the service gets initialised. An example 
+implementation is shown below,
+```ballerina
+service http:InterceptableService / on new http:Listener(9099) {
+
+    public function createInterceptors() returns [RequestInterceptor, ResponseInterceptor] {
+        return [new RequestInterceptor(), new ResponseInterceptor()];
+    }
+
+    resource function get hello() returns string {
+        return "Hello, World!";
+    }
 }
 ```
 
-##### 8.1.4.2 Listener level
-Interceptors could get engaged at Listener level as well. Interceptors engaged at listener level should have resource 
-function only with default path i.e. these interceptors will get executed for all the services registered on this 
-listener.
-```ballerina
-listener http:Listener echoListener = new http:Listener(9090, config = {interceptors: [requestInterceptor, responseInterceptor]});
-```
+When handling `http:ServiceNotFound` scenarios,
+1. If there is a service in `/`, the error will be handled by the interceptors in that service.
+2. If there is only a single service, the error will be handled by the interceptors in that service.
+3. If there are multiple services including a service in `/`, the error will be handled by the interceptors in `/`.
+   Otherwise it will be handled by the `http:DefaultErrorInterceptor`.
 
 ##### 8.1.4.3 Execution order of interceptors
 

@@ -10,7 +10,7 @@ intro: The HTTP service resource payloads can be directly data bound to the reso
 
 ## Using the annotation
 
-To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://docs.central.ballerina.io/ballerina/http/latest/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
+To distinguish between query parameters and resource payload parameters, the parameters that represent the resource payload are annotated with [`@http:Payload`](https://lib.ballerina.io/ballerina/http/latest/annotations#Payload). The supported parameter types are `string`, `json`, `xml`, `byte[]`, record types, and record array types. 
 
 ## Example
 

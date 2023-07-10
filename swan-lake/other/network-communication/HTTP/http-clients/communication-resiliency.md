@@ -12,7 +12,7 @@ These features allow you to handle and recover from unexpected communication sce
 
 ## Retry
 
-The HTTP client can be configured with a retry configuration using the [`retryConfig`](https://docs.central.ballerina.io/ballerina/http/latest/records/RetryConfig) property in the [HTTP client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
+The HTTP client can be configured with a retry configuration using the [`retryConfig`](https://lib.ballerina.io/ballerina/http/latest/records/RetryConfig) property in the [HTTP client configuration](https://lib.ballerina.io/ballerina/http/latest/records/ClientConfiguration) to retry sending the same request to the endpoint in the case of a failure. This follows an exponential backoff algorithm to execute the retry requests. 
 
 The `retry_demo.bal` below shows an HTTP client configured with a retry configuration. 
 
@@ -64,7 +64,7 @@ If the requests sent to the backend service are successful in this state, it wil
 
 ### Circuit breaker client configuration
 
-The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](https://docs.central.ballerina.io/ballerina/http/latest/records/CircuitBreakerConfig). This contains the configuration properties below. 
+The circuit breaker pattern can be used in Ballerina HTTP clients by using its [client configuration](https://lib.ballerina.io/ballerina/http/latest/records/CircuitBreakerConfig). This contains the configuration properties below. 
 
 - `rollingWindow`: A rolling window is used to calculate the statistics for backend service errors. 
 - `timeWindow`: The size of the rolling time window (in seconds).
@@ -107,7 +107,7 @@ Otherwise, in the case of 20% requests failure in the rolling window, the circui
 
 ## Load balancing and failover
 
-In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](https://docs.central.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
+In the event of load balancing requests to multiple remote endpoints, Ballerina has the [`http:LoadBalanceClient`](https://lib.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient) to provide a list of endpoints, and optionally an implementation of the algorithm to select the endpoint to distribute the traffic. The default load balancer rule is to use a round-robin strategy to distribute the load. 
 
 ### HTTP client-side load balancing
 
@@ -132,11 +132,11 @@ public function main() returns @tainted error? {
 
 In the above code, the three hosts configured using the `targets` property provide the list of base URLs used for the load balancing requests. 
 
-For more detailed configuration options, see the [`http:LoadBalanceClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient).
+For more detailed configuration options, see the [`http:LoadBalanceClientConfiguration`](https://lib.ballerina.io/ballerina/http/latest/clients/LoadBalanceClient).
 
 ## Handling failover scenarios
 
-Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](https://docs.central.ballerina.io/ballerina/http/latest/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
+Similarly, Ballerina supports fail-over scenarios using the [`http:FailoverClient`](https://lib.ballerina.io/ballerina/http/latest/clients/FailoverClient). In this, a list of target URLs can be provided to attempt requests in a sequence, in which, in the case of failure, it will move on to the next available URL in the list for retrying the request. 
 
 The `fail_over_load-balancer_demo.bal` example below shows this in action. 
 
@@ -157,7 +157,7 @@ public function main() returns @tainted error? {
 }
 ```
 
-For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://docs.central.ballerina.io/ballerina/http/latest/clients/FailoverClient). 
+For more detailed configuration options of the failover client, see the [`http:FailoverClientConfiguration`](https://lib.ballerina.io/ballerina/http/latest/clients/FailoverClient). 
 
 ## What's next?
 

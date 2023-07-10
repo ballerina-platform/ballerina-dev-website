@@ -50,11 +50,15 @@ const nextConfig = {
     return [
       {
         source: `/learn/build-a-data-service-in-ballerina`,
-        destination: `/learn/featured-use-cases/build-a-data-service-in-ballerina`,
+        destination: `/learn/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
-        destination: `/${redirectBase}learn/featured-use-cases/deploy-ballerina-on-kubernetes`,
+        destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
+      },
+      {
+        source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
+        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },
       {
         source: `/${redirectBase}learn/get-started`,
@@ -70,19 +74,19 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/work-with-data-using-queries-in-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-graphql-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-graphql-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-graphql-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-grpc-service-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-grpc-service-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-grpc-service-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-use-cases/write-a-restful-api-with-ballerina`,
+        destination: `/${redirectBase}learn/featured-scenarios/write-a-restful-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/installation-options`,
@@ -112,6 +116,26 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/ballerina-shell`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
+      },
+      {
+        source: `/${redirectBase}learn/bal-persist-overview`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/bal-persist-overview`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-cli-tool`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-model`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-model`,
+      },
+      {
+        source: `/${redirectBase}learn/persist-client-api`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-client-api`,
+      },
+      {
+        source: `/${redirectBase}learn/supported-data-stores`,
+        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/supported-data-stores`,
       },
       {
         source: `/${redirectBase}learn/call-java-code-from-ballerina`,

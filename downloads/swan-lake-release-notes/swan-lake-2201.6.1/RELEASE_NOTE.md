@@ -42,9 +42,11 @@ To view bug fixes, see the [GitHub milestone for 2201.6.1 (Swan Lake)](https://g
 ### Improvements
 
 #### OpenAPI Tool
+
 - Added support for object-typed query parameters in the OpenAPI to Ballerina service generation.
 - Added support to generate low-level service skeletons without any data-binding logic. This mode can be enabled by adding the `--without-data-binding` flag to the OpenAPI to Ballerina service generation command.
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for 2201.6.1 (Swan Lake)](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.1%22+is%3Aclosed+label%3AType%2FBug).
+To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.1 of the repository below.
+- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.1%22+is%3Aclosed)

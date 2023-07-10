@@ -54,8 +54,8 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d4208dad384dbbb1e163b39e9192c23d&file=rest_binding_pattern_in_list_binding_pattern.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=ef1ebbd50947472cb1d7a9b240e4dd87&file=rest_binding_pattern_in_list_binding_pattern.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -79,8 +79,8 @@ export function RestBindingPatternInListBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/rest-binding-pattern-in-list-binding-pattern",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/rest-binding-pattern-in-list-binding-pattern",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

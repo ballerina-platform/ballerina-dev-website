@@ -112,8 +112,8 @@ export function GraphqlInterfaces({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/graphql-interfaces",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-interfaces",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -261,8 +261,8 @@ export function GraphqlInterfaces({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/graphql-interfaces",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-interfaces",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

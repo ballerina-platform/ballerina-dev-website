@@ -120,8 +120,8 @@ export function ArrayMapSymmetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ac62e6c3b8c3061ad1b451b10c4e3cc7&file=array_map_symmetry.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=3f3d9d50db27c55cffad278433187420&file=array_map_symmetry.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -145,8 +145,8 @@ export function ArrayMapSymmetry({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/array-map-symmetry",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/array-map-symmetry",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

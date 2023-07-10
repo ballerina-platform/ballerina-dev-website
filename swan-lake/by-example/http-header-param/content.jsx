@@ -69,8 +69,8 @@ export function HttpHeaderParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6e5129e8e33b79fb2bfe203256152198&file=http_header_param.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=a61e4dacb61209ec1a3ac699f544351f&file=http_header_param.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -94,8 +94,8 @@ export function HttpHeaderParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-header-param",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-header-param",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

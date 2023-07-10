@@ -69,8 +69,8 @@ export function NatsBasicPub({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/nats-basic-pub",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/nats-basic-pub",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -322,8 +322,8 @@ export function NatsBasicPub({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validation"
-            href="/learn/by-example/nats-service-constraint-validation"
+            title="Consume JetStream message"
+            href="/learn/by-example/nats-jetstream-sub"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -350,7 +350,7 @@ export function NatsBasicPub({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  Consume JetStream message
                 </span>
               </div>
             </div>

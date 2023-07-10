@@ -59,8 +59,8 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f7d6f6dfe39e5e62f44d7e4614e94d95&file=environment_variables.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=b720cd841a40454a3604b1c05f2c1638&file=environment_variables.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -84,8 +84,8 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/environment-variables",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/environment-variables",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

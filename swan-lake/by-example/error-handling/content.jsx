@@ -64,8 +64,8 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=82aed718ea3182c55f15b08d69e5d354&file=error_handling.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=8e8c2fc367ffe9bc0c9d82d65324d2a1&file=error_handling.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -89,8 +89,8 @@ export function ErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/error-handling",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/error-handling",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

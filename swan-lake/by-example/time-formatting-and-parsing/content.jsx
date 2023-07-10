@@ -86,8 +86,8 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c79421622bcf4c1f7c0c51530f6a92c9&file=time_formatting_and_parsing.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9de78a42c30d59938a32e2d4ebc4ce89&file=time_formatting_and_parsing.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -111,8 +111,8 @@ export function TimeFormattingAndParsing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/time-formatting-and-parsing",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/time-formatting-and-parsing",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

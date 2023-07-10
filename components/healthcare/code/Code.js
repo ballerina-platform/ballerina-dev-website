@@ -38,7 +38,7 @@ export default function UseCases(props) {
     const aiPair = samples['ai-pair-programming'];
     const apisNewDll = samples['apis-are-new-dll'];
     const accelerators = samples['why-ballerina-for-healthcare-apps'];
-    
+
     return (
         <>
             {/* accelerators */}
@@ -252,8 +252,8 @@ export default function UseCases(props) {
                                         (dataMap.frontmatter.url && dataMap.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={dataMap.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
-                                                    Get started with WSO2 Choreo dataMap for free
+                                                    {<Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />}
+                                                    View code on GitHub
                                                 </a>
                                             </div>
                                             : null

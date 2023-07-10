@@ -128,8 +128,8 @@ export function XmlSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a4d2897704c918a66b9ada62eaecb75&file=xml_subtyping.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9f4529cf9fc7817f55740f76c14dc24c&file=xml_subtyping.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -153,8 +153,8 @@ export function XmlSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xml-subtyping",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-subtyping",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

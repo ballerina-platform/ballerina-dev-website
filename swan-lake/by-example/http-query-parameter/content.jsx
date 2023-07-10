@@ -69,8 +69,8 @@ export function HttpQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1edb4cf7ea8e001eb93871b8d807fdf2&file=http_query_parameter.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=97f0c94553371d18ce671204566187c5&file=http_query_parameter.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -94,8 +94,8 @@ export function HttpQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-query-parameter",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-query-parameter",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -48,8 +48,8 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f76e7d344c9c32960a8ff24ec469a7a1&file=variables_and_types.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=4cdb956f99dd9ea8fd27f0ca8e5f4d6d&file=variables_and_types.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -73,8 +73,8 @@ export function VariablesAndTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/variables-and-types",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/variables-and-types",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

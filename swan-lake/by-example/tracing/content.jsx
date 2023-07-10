@@ -119,8 +119,8 @@ export function Tracing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/tracing",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/tracing",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -334,10 +334,7 @@ export function Tracing({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations"
-          >
+          <Link title="Delete" href="/learn/by-example/persist-delete">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -363,7 +360,7 @@ export function Tracing({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  Delete
                 </span>
               </div>
             </div>

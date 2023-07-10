@@ -52,8 +52,8 @@ export function LoggingConfiguration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/logging-configuration",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/logging-configuration",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -265,7 +265,10 @@ export function LoggingConfiguration({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="File paths" href="/learn/by-example/filepaths">
+          <Link
+            title="EDI to record conversion"
+            href="/learn/by-example/edi-to-record"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -274,7 +277,7 @@ export function LoggingConfiguration({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File paths
+                  EDI to record conversion
                 </span>
               </div>
               <svg

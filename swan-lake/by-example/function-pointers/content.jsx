@@ -64,7 +64,7 @@ export function FunctionPointers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=961f09fd3c0993867459408b6fa6ea6f&file=function_pointers.bal",
+                "https://play.ballerina.io/?gist=dfb9a607bf0c8353582cce8a58735b8c&file=function_pointers.bal",
                 "_blank",
               );
             }}
@@ -89,7 +89,7 @@ export function FunctionPointers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/function-pointers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/function-pointers",
                 "_blank",
               );
             }}

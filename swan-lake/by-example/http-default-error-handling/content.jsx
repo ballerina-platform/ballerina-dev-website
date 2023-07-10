@@ -76,7 +76,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9cb7e7e215acee3dedfece3b5387019a&file=http_default_error_handling.bal",
+                "https://play.ballerina.io/?gist=265d89ca0f9091ae04a96d30c2961f58&file=http_default_error_handling.bal",
                 "_blank",
               );
             }}
@@ -101,7 +101,7 @@ export function HttpDefaultErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-default-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-default-error-handling",
                 "_blank",
               );
             }}

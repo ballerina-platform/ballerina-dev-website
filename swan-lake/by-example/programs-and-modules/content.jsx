@@ -47,7 +47,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3aee66f6ba5e390ee2658665f2fdab39&file=programs_and_modules.bal",
+                "https://play.ballerina.io/?gist=7c35511a64fafa73f73a790d04f53b74&file=programs_and_modules.bal",
                 "_blank",
               );
             }}
@@ -72,7 +72,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/programs-and-modules",
                 "_blank",
               );
             }}

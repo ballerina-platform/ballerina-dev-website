@@ -63,7 +63,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=31790ebde545c1538fac9b62712f1511&file=limit_clause.bal",
+                "https://play.ballerina.io/?gist=ffd7ff2e347851fb9fa99c99d0a2aa1d&file=limit_clause.bal",
                 "_blank",
               );
             }}
@@ -88,7 +88,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/limit-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/limit-clause",
                 "_blank",
               );
             }}

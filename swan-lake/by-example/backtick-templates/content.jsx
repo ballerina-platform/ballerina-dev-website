@@ -73,7 +73,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d373112329bd0b991e577b060de28ef3&file=backtick_templates.bal",
+                "https://play.ballerina.io/?gist=0d9fdefa2af30f9a9fb5575ba00e5865&file=backtick_templates.bal",
                 "_blank",
               );
             }}
@@ -98,7 +98,7 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/backtick-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/backtick-templates",
                 "_blank",
               );
             }}

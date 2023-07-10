@@ -81,7 +81,7 @@ export function OuterJoinClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c3019b114124a49fe8b0ff2a1090ecce&file=outer_join_clause.bal",
+                "https://play.ballerina.io/?gist=77e4e0104d311321213fb9e185a4f3c4&file=outer_join_clause.bal",
                 "_blank",
               );
             }}
@@ -106,7 +106,7 @@ export function OuterJoinClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/outer-join-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/outer-join-clause",
                 "_blank",
               );
             }}

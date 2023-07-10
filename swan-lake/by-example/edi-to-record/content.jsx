@@ -99,7 +99,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cc6fe98b0aa2a5cb53bcee0b9c5caa35&file=schema.json",
+                "https://play.ballerina.io/?gist=4224786e65924a9cac2f360f700be547&file=schema.json",
                 "_blank",
               );
             }}
@@ -124,7 +124,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -212,7 +212,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cc6fe98b0aa2a5cb53bcee0b9c5caa35&file=schema.json",
+                "https://play.ballerina.io/?gist=4224786e65924a9cac2f360f700be547&file=schema.json",
                 "_blank",
               );
             }}
@@ -237,7 +237,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -327,7 +327,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cc6fe98b0aa2a5cb53bcee0b9c5caa35&file=schema.json",
+                "https://play.ballerina.io/?gist=4224786e65924a9cac2f360f700be547&file=schema.json",
                 "_blank",
               );
             }}
@@ -352,7 +352,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -589,7 +589,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=817bca57bcc24226afdfc92637152f8e&file=edi_to_record.bal",
+                "https://play.ballerina.io/?gist=8100a947b86b1ddf4a486f71300ec5bf&file=edi_to_record.bal",
                 "_blank",
               );
             }}
@@ -614,7 +614,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/edi-to-record",
                 "_blank",
               );
             }}

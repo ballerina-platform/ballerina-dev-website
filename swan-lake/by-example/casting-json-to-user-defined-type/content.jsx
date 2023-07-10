@@ -73,7 +73,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=562e1768ca79684f222f559f9d206a00&file=casting_json_to_user_defined_type.bal",
+                "https://play.ballerina.io/?gist=cf25ce48cb67329e7bc6add686e3c889&file=casting_json_to_user_defined_type.bal",
                 "_blank",
               );
             }}
@@ -98,7 +98,7 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/casting-json-to-user-defined-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/casting-json-to-user-defined-type",
                 "_blank",
               );
             }}

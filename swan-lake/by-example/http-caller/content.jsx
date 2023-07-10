@@ -69,7 +69,7 @@ export function HttpCaller({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa3c0753bd47ccbbaa42b9ccea230abc&file=http_caller.bal",
+                "https://play.ballerina.io/?gist=d5f9746aae4e80560e6bd039779a2029&file=http_caller.bal",
                 "_blank",
               );
             }}
@@ -94,7 +94,7 @@ export function HttpCaller({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-caller",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-caller",
                 "_blank",
               );
             }}

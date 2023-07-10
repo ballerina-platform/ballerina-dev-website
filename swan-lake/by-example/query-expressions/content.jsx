@@ -74,7 +74,7 @@ export function QueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cb97f92ae6fa5259fd5ecba16b493ec6&file=query_expressions.bal",
+                "https://play.ballerina.io/?gist=824b03e403e5b657050869d799745893&file=query_expressions.bal",
                 "_blank",
               );
             }}
@@ -99,7 +99,7 @@ export function QueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/query-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/query-expressions",
                 "_blank",
               );
             }}

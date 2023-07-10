@@ -58,7 +58,7 @@ export function DependentTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f13c7a47c99c609af981b0076f7ecab1&file=dependent_types.bal",
+                "https://play.ballerina.io/?gist=9f15a38300c75b5ffb6e61f70e0d9a7e&file=dependent_types.bal",
                 "_blank",
               );
             }}
@@ -83,7 +83,7 @@ export function DependentTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/dependent-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/dependent-types",
                 "_blank",
               );
             }}

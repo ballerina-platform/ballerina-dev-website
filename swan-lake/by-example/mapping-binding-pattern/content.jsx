@@ -79,7 +79,7 @@ export function MappingBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cddc1c21daa3a109e8805fd7c3ae1475&file=mapping_binding_pattern.bal",
+                "https://play.ballerina.io/?gist=48a5517b71a3dc8512296d3cc1c7eef8&file=mapping_binding_pattern.bal",
                 "_blank",
               );
             }}
@@ -104,7 +104,7 @@ export function MappingBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mapping-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/mapping-binding-pattern",
                 "_blank",
               );
             }}

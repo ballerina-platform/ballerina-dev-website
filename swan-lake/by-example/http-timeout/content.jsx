@@ -52,7 +52,7 @@ export function HttpTimeout({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e3b5d7b8bcf184146b2562bc781ed5e0&file=http_timeout.bal",
+                "https://play.ballerina.io/?gist=6c9d2c468698d8a4d159f086f5125f98&file=http_timeout.bal",
                 "_blank",
               );
             }}
@@ -77,7 +77,7 @@ export function HttpTimeout({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-timeout",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-timeout",
                 "_blank",
               );
             }}

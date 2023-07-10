@@ -77,7 +77,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c559ebd14a55a4f359aa5a6f7bf7d742&file=schema.json",
+                "https://play.ballerina.io/?gist=7a46b1c711cb34b421e5b53c9e511d0a&file=schema.json",
                 "_blank",
               );
             }}
@@ -102,7 +102,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -192,7 +192,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c559ebd14a55a4f359aa5a6f7bf7d742&file=schema.json",
+                "https://play.ballerina.io/?gist=7a46b1c711cb34b421e5b53c9e511d0a&file=schema.json",
                 "_blank",
               );
             }}
@@ -217,7 +217,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/record-to-edi",
                 "_blank",
               );
             }}
@@ -454,7 +454,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f1ab77f0020e0727a703c8016c3dba3b&file=record_to_edi.bal",
+                "https://play.ballerina.io/?gist=40b67927d73335b08371d8eaeee62433&file=record_to_edi.bal",
                 "_blank",
               );
             }}
@@ -479,7 +479,7 @@ export function RecordToEdi({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/record-to-edi",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/record-to-edi",
                 "_blank",
               );
             }}

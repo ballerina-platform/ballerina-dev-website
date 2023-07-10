@@ -81,7 +81,7 @@ export function HttpCircuitBreaker({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c610ffdff7260ff164624b2435d45b81&file=http_circuit_breaker.bal",
+                "https://play.ballerina.io/?gist=bd40df1d2e6168b44c7ba9cde47a1a89&file=http_circuit_breaker.bal",
                 "_blank",
               );
             }}
@@ -106,7 +106,7 @@ export function HttpCircuitBreaker({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-circuit-breaker",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-circuit-breaker",
                 "_blank",
               );
             }}

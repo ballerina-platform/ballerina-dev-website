@@ -54,7 +54,7 @@ export function Http2PriorKnowledgeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0d4b2cb504d7d60d0341cf5019c81fe9&file=http_2_prior_knowledge_client.bal",
+                "https://play.ballerina.io/?gist=fb710ed20c3214a48e0ea0da531d702e&file=http_2_prior_knowledge_client.bal",
                 "_blank",
               );
             }}
@@ -79,7 +79,7 @@ export function Http2PriorKnowledgeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-2-prior-knowledge-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-2-prior-knowledge-client",
                 "_blank",
               );
             }}

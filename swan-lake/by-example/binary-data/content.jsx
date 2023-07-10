@@ -50,7 +50,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d60bbbeb1cc200abce187591aa255883&file=binary_data.bal",
+                "https://play.ballerina.io/?gist=c7d1dc4f26aa481df81a342b9b4f3026&file=binary_data.bal",
                 "_blank",
               );
             }}
@@ -75,7 +75,7 @@ export function BinaryData({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/binary-data",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/binary-data",
                 "_blank",
               );
             }}

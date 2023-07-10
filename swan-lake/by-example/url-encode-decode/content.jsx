@@ -56,7 +56,7 @@ export function UrlEncodeDecode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ca4b7ae6555dd4655cefb3db11f28067&file=url_encode_decode.bal",
+                "https://play.ballerina.io/?gist=480e60ac0bf5a2f408aca0a94eb73734&file=url_encode_decode.bal",
                 "_blank",
               );
             }}
@@ -81,7 +81,7 @@ export function UrlEncodeDecode({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/url-encode-decode",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/url-encode-decode",
                 "_blank",
               );
             }}

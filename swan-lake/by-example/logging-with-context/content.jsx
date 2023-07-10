@@ -59,7 +59,7 @@ export function LoggingWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cbe23e8ea2844bc65c15992e6b474132&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=6fd92b291823361a293401d1f940ca94&file=logging_with_context.bal",
                 "_blank",
               );
             }}
@@ -84,7 +84,7 @@ export function LoggingWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/logging-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/logging-with-context",
                 "_blank",
               );
             }}

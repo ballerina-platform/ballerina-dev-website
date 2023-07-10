@@ -54,7 +54,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8a749b4f0d7b2e4324c3e6f0257a1cab&file=http_2_to_1_1_downgrade_client.bal",
+                "https://play.ballerina.io/?gist=adde7ed8c3802b5686d461c1d3af595d&file=http_2_to_1_1_downgrade_client.bal",
                 "_blank",
               );
             }}
@@ -79,7 +79,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-2-to-1-1-downgrade-client",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-2-to-1-1-downgrade-client",
                 "_blank",
               );
             }}

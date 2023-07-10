@@ -59,7 +59,7 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=716fba952ff6eaaaa2e0d4c3865fec86&file=break_statement.bal",
+                "https://play.ballerina.io/?gist=2f95ba5009104d5ff0916edf1cb10526&file=break_statement.bal",
                 "_blank",
               );
             }}
@@ -84,7 +84,7 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/break-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/break-statement",
                 "_blank",
               );
             }}

@@ -56,7 +56,7 @@ Follow the steps below to create a new user in your AWS account.
 
 Follow the steps below to create a new role in your AWS account.
 
-1. Create a <a href="" target="_blank">new role</a>.
+1. Create a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html" target="_blank">new role</a>.
 
 2. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console" target="_blank">Set the permissions</a> to the created role.
 

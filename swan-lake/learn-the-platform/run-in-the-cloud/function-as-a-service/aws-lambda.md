@@ -88,11 +88,11 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 >**Tip:**  For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
 
-## Learn more
+## Examples
 
 In a more practical scenario, the AWS Lambda functions will be used by associating them to an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
 
-For more examples of the usage of AWS Lambda functions, see the below.
+For examples of the usage of AWS Lambda functions, see the below.
 
 - [Hello world](/learn/by-example/aws-lambda-hello-world/)
 - [Context execution](/learn/by-example/aws-lambda-context-execution/)

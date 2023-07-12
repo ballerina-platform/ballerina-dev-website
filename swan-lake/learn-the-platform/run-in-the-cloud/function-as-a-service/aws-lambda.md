@@ -24,7 +24,9 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - Simple Email Service <a href="https://aws.amazon.com/ses//" target="_blank">SES</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
 
-## Set up AWS
+## Set up the prerequisites
+
+### Set up AWS
 
 Follow the steps below to set up an AWS account and the AWS CLI.
 
@@ -32,7 +34,7 @@ Follow the steps below to set up an AWS account and the AWS CLI.
 
 2. [Create](https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-AWSsignup.html) an AWS account and [sign in](https://docs.aws.amazon.com/SetUp/latest/UserGuide/setup-rootuser.html) to it.
 
-## Create a user
+### Create a user
 
 Follow the steps below to create a new user in your AWS account.
 
@@ -48,7 +50,7 @@ Follow the steps below to create a new user in your AWS account.
 
 4. Configure the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-configure.title" target="_blank">AWS CLI</a> for the user by providing the access key and secret generated in the user creation.
 
-## Create a role
+### Create a role
 
 Follow the steps below to create a new role in your AWS account.
 

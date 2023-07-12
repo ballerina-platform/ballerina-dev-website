@@ -70,8 +70,8 @@ export function AzureFunctionsDeployment({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/azure-functions-deployment",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/azure-functions-deployment",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -265,7 +265,7 @@ export function AzureFunctionsDeployment({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal build`}</span>
+              <span>{`\$ bal build --cloud="azure_functions"`}</span>
               <span>{`Compiling source`}</span>
               <span>{`        wso2/azure_functions_deployment:0.1.0`}</span>
               <span>{`

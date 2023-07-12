@@ -62,8 +62,8 @@ export function XmlToJsonConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cdbce6027f3f679b8f2dcdabc0454cb7&file=xml_to_json_conversion.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9f350a21d1800fa6161250d9759f0521&file=xml_to_json_conversion.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -87,8 +87,8 @@ export function XmlToJsonConversion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/xml-to-json-conversion",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-to-json-conversion",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -64,8 +64,8 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=efa0462220bf2cf2e004e738d0e4af11&file=structured_keys.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=ebd9fea4da2b6c62a8859a57a345e4c1&file=structured_keys.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -89,8 +89,8 @@ export function StructuredKeys({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/structured-keys",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/structured-keys",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

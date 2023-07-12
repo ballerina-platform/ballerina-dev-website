@@ -1,20 +1,68 @@
 {
     "events": [
-       {
-            "date": "May 31, 2023",
-            "day": "Wed.",
-            "time": "5.00 p.m. UTC",
-            "expire": "2023-05-25T00:00:00.0000-00:00",
+      {
+            "date": "July 13, 2023",
+            "day": "Thur.",
+            "time": "9.00 a.m. IST",
+            "expire": "2023-07-14T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/294514966/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Persist with Precision: Mastering Data Persistence with Bal Persist",
+            "presenterTwitter": "https://twitter.com/dknkuruppu",
+            "presenter": "Danesh Kuruppu",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP here"
+        },
+        {
+            "date": "July 6, 2023",
+            "day": "Thur.",
+            "time": "7.30 p.m. CDT",
+            "expire": "2023-07-07T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/utdcsor/events/294335142",
+            "eventType": "UT Dallas Computer Science Outreach Meetup",
+            "eventName": "Ballerina: Seamless Integration and Cloud-Native Development",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP here"
+        },
+        {
+            "date": "June 8, 2023",
+            "day": "Thur.",
+            "time": "8.00 p.m. IST",
+            "expire": "2023-06-09T00:00:00.0000-00:00",
             "location": "Virtual",
             "url": "https://www.twitch.tv/exercismlive",
             "eventType": "Exercism - #12in23 Challenge",
             "eventName": "Concurrency Abstractions in Ballerina",
-            "presenterTwitter": "https://twitter.com/sameerajayasoma",
-            "presenter": "Sameera Jayasoma",
-            "presenterDesignation": "Senior Director, WSO2",
+            "presenterTwitter": "https://twitter.com/B_Hinduja",
+            "presenter": "Hinduja Balasubramaniyam",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
+            "videoURL": "https://riverside.fm/dashboard/studios/12in23-summer-of-sexps/recordings/17e79d5e-db84-46e9-9881-e220eb16f6f9?share-token=5b37b9ea4dfce7d13b86&content-shared=recording",
+            "buttonText": "Watch recording"
+        },
+        {
+            "date": "June 7, 2023",
+            "day": "Wed.",
+            "time": "8.30 a.m. IST",
+            "expire": "2023-06-08T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/293754946/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Unleash the Power of AI with Ballerina",
+            "presenterTwitter": "https://twitter.com/JayaniHewa",
+            "presenter": "Jayani Hewavitharana",
+            "presenterDesignation": "Ballerina AI Team",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/qflhlNQg18c",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 30, 2023",
@@ -29,8 +77,8 @@
             "presenter": "Lakshan Weerasinghe",
             "presenterDesignation": "Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Subscribe"
+            "videoURL": "https://riverside.fm/dashboard/studios/12in23-mindshifting-may/recordings/5f47e520-bce9-4945-b725-be2c9afb5778?share-token=5250d02b76c3eff47b0a&content-shared=recording",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 23, 2023",
@@ -45,7 +93,7 @@
             "presenter": "Malintha Ranasinghe",
             "presenterDesignation": "Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "https://www.twitch.tv/videos/1827355955?t=0h1m17s",
+            "videoURL": "https://riverside.fm/dashboard/studios/12in23-mindshifting-may/recordings/d0b72305-9a7f-417a-aec7-a857eb16dbf3?share-token=5250d02b76c3eff47b0a&content-shared=recording",
             "buttonText": "Watch recording"
         },
         {
@@ -61,7 +109,7 @@
             "presenter": "Imesha Sudasingha",
             "presenterDesignation": "Associate Technical Lead, WSO2",
             "otherInfo": "",
-            "videoURL": "https://www.twitch.tv/videos/1823130419",
+            "videoURL": "https://riverside.fm/dashboard/studios/12in23-mindshifting-may/recordings/c0e05247-dd24-49c6-8c64-11743d476b0c?share-token=5250d02b76c3eff47b0a&content-shared=recording",
             "buttonText": "Watch recording"
         },
         {
@@ -93,8 +141,8 @@
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director of Engineering, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/LyVmeQa8w90",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 10, 2023",

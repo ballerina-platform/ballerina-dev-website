@@ -54,8 +54,8 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=827ee7b3390aab7e88cd3c640446f339&file=ensureType_function.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=7e4de24da6b2253e03deab78f38524e2&file=ensureType_function.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -79,8 +79,8 @@ export function EnsureTypeFunction({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/ensureType-function",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/ensureType-function",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

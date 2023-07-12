@@ -65,8 +65,8 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4d313400c79dae3f4733d6c617fb0ced&file=querying_with_streams.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=649518b58e6a195401d3d419a23b1f77&file=querying_with_streams.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -90,8 +90,8 @@ export function QueryingWithStreams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/querying-with-streams",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/querying-with-streams",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -372,7 +372,7 @@ export function QueryingWithStreams({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Query actions" href="/learn/by-example/query-actions">
+          <Link title="Aggregation" href="/learn/by-example/aggregation">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -381,7 +381,7 @@ export function QueryingWithStreams({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query actions
+                  Aggregation
                 </span>
               </div>
               <svg

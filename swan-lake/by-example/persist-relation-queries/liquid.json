@@ -1,0 +1,22 @@
+{
+  "title": "Relation queries",
+  "description": "This BBE demonstrates the usage of the get/get by key resource method in generated persistence client to retrieve relation fields of an entity from the data store.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "get by key",
+    "get",
+    "select",
+    "entity",
+    "relations"
+  ],
+  "permalink": "/learn/by-example/persist-relation-queries",
+  "active": "persist-relation-queries",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-relation-queries",
+    "/swan-lake/learn/by-example/persist-relation-queries.html"
+  ]
+}

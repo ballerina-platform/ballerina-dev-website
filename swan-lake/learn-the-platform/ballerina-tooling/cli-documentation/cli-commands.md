@@ -46,7 +46,6 @@ COMMANDS
 
    Package Commands:
         new             Create a new Ballerina package
-        init            Create a new Ballerina package in an existing directory
         add             Add a new Ballerina module to the current package
         pull            Pull a package from Ballerina Central
         push            Publish a package to Ballerina Central
@@ -67,6 +66,7 @@ COMMANDS
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
+        persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL
         version         Print the Ballerina version
@@ -158,11 +158,6 @@ Ballerina packages are the way to organize real-world Ballerina development task
 </td>
 </tr>
 <tr>
-<td class="cCommand">init</td>
-<td class="cDescription">Create a new Ballerina package in the current directory.
-</td>
-</tr>
-<tr>
 <td class="cCommand">add</td>
 <td class="cDescription">Add a new module to the current package.
 </td>
@@ -228,6 +223,10 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">asyncapi</td>
 <td class="cDescription">Tool to generate Ballerina sources for a given AsyncAPI definition. For more information, see <a href="/learn/asyncapi-tool">Ballerina AsyncAPI support</a>.</td>
+</tr>
+<tr>
+<td class="cCommand">persist</td>
+<td class="cDescription">Manage data persistence. For more information, see <a href="/learn/bal-persist-overview/">Bal persist overview</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">bindgen</td>

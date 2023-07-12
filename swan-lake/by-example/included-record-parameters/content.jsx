@@ -59,8 +59,8 @@ export function IncludedRecordParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b2a575aea1c8ed3fdda6aae8de8bead4&file=included_record_parameters.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=1f2f324cd0be60631e45976ebcc81a07&file=included_record_parameters.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -84,8 +84,8 @@ export function IncludedRecordParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/included-record-parameters",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/included-record-parameters",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

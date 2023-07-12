@@ -97,8 +97,8 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9f8e4255f70602f1426824263c54b850&file=run_strands_safely_on_separate_threads.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=769397ea56b81d71ff1ccc3cb969133b&file=run_strands_safely_on_separate_threads.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -122,8 +122,8 @@ export function RunStrandsSafelyOnSeparateThreads({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/run-strands-safely-on-separate-threads",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/run-strands-safely-on-separate-threads",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

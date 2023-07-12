@@ -66,8 +66,8 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=4d953621f68d04f25506b3c6bc7c2822&file=http_compression.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=376ab383967c93b7e55e9ad62ac4cb66&file=http_compression.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -91,8 +91,8 @@ export function HttpCompression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-compression",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-compression",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

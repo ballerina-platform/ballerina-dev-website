@@ -82,8 +82,8 @@ export function IoCsvDatamapping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=3e5d80cd9558078f8c5017279fdecab6&file=io_csv_datamapping.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=df76df0bf961adbe89532c81a69316c6&file=io_csv_datamapping.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -107,8 +107,8 @@ export function IoCsvDatamapping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/io-csv-datamapping",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/io-csv-datamapping",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

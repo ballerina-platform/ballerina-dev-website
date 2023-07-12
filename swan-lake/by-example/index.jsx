@@ -452,6 +452,10 @@ import {
   codeSnippetData as QueryingWithStreamsCodeSnippetData,
 } from "./querying-with-streams/content.jsx";
 import {
+  Aggregation,
+  codeSnippetData as AggregationCodeSnippetData,
+} from "./aggregation/content.jsx";
+import {
   QueryActions,
   codeSnippetData as QueryActionsCodeSnippetData,
 } from "./query-actions/content.jsx";
@@ -1160,9 +1164,21 @@ import {
   codeSnippetData as GraphqlServiceFieldObjectCodeSnippetData,
 } from "./graphql-service-field-object/content.jsx";
 import {
-  GraphqlInterceptors,
-  codeSnippetData as GraphqlInterceptorsCodeSnippetData,
-} from "./graphql-interceptors/content.jsx";
+  GraphqlServiceInterceptors,
+  codeSnippetData as GraphqlServiceInterceptorsCodeSnippetData,
+} from "./graphql-service-interceptors/content.jsx";
+import {
+  GraphqlFieldInterceptors,
+  codeSnippetData as GraphqlFieldInterceptorsCodeSnippetData,
+} from "./graphql-field-interceptors/content.jsx";
+import {
+  GraphqlInterceptorConfigurations,
+  codeSnippetData as GraphqlInterceptorConfigurationsCodeSnippetData,
+} from "./graphql-interceptor-configurations/content.jsx";
+import {
+  GraphqlInputConstraintValidation,
+  codeSnippetData as GraphqlInputConstraintValidationCodeSnippetData,
+} from "./graphql-input-constraint-validation/content.jsx";
 import {
   GraphqlFileUpload,
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
@@ -1452,6 +1468,10 @@ import {
   codeSnippetData as NatsServiceConstraintValidationCodeSnippetData,
 } from "./nats-service-constraint-validation/content.jsx";
 import {
+  NatsJetstreamSub,
+  codeSnippetData as NatsJetstreamSubCodeSnippetData,
+} from "./nats-jetstream-sub/content.jsx";
+import {
   NatsBasicPub,
   codeSnippetData as NatsBasicPubCodeSnippetData,
 } from "./nats-basic-pub/content.jsx";
@@ -1459,6 +1479,10 @@ import {
   NatsBasicRequest,
   codeSnippetData as NatsBasicRequestCodeSnippetData,
 } from "./nats-basic-request/content.jsx";
+import {
+  NatsJetstreamPub,
+  codeSnippetData as NatsJetstreamPubCodeSnippetData,
+} from "./nats-jetstream-pub/content.jsx";
 import {
   NatsServiceSecureConnection,
   codeSnippetData as NatsServiceSecureConnectionCodeSnippetData,
@@ -1688,10 +1712,6 @@ import {
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
 import {
-  SerdesSimple,
-  codeSnippetData as SerdesSimpleCodeSnippetData,
-} from "./serdes-simple/content.jsx";
-import {
   IoBytes,
   codeSnippetData as IoBytesCodeSnippetData,
 } from "./io-bytes/content.jsx";
@@ -1759,6 +1779,14 @@ import {
   LoggingConfiguration,
   codeSnippetData as LoggingConfigurationCodeSnippetData,
 } from "./logging-configuration/content.jsx";
+import {
+  EdiToRecord,
+  codeSnippetData as EdiToRecordCodeSnippetData,
+} from "./edi-to-record/content.jsx";
+import {
+  RecordToEdi,
+  codeSnippetData as RecordToEdiCodeSnippetData,
+} from "./record-to-edi/content.jsx";
 import {
   Filepaths,
   codeSnippetData as FilepathsCodeSnippetData,
@@ -1835,6 +1863,38 @@ import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
+import {
+  PersistGetAll,
+  codeSnippetData as PersistGetAllCodeSnippetData,
+} from "./persist-get-all/content.jsx";
+import {
+  PersistGetByKey,
+  codeSnippetData as PersistGetByKeyCodeSnippetData,
+} from "./persist-get-by-key/content.jsx";
+import {
+  PersistSelectFields,
+  codeSnippetData as PersistSelectFieldsCodeSnippetData,
+} from "./persist-select-fields/content.jsx";
+import {
+  PersistFiltering,
+  codeSnippetData as PersistFilteringCodeSnippetData,
+} from "./persist-filtering/content.jsx";
+import {
+  PersistRelationQueries,
+  codeSnippetData as PersistRelationQueriesCodeSnippetData,
+} from "./persist-relation-queries/content.jsx";
+import {
+  PersistCreate,
+  codeSnippetData as PersistCreateCodeSnippetData,
+} from "./persist-create/content.jsx";
+import {
+  PersistUpdate,
+  codeSnippetData as PersistUpdateCodeSnippetData,
+} from "./persist-update/content.jsx";
+import {
+  PersistDelete,
+  codeSnippetData as PersistDeleteCodeSnippetData,
+} from "./persist-delete/content.jsx";
 import {
   Tracing,
   codeSnippetData as TracingCodeSnippetData,
@@ -2093,6 +2153,8 @@ const BBEs = {
   DestructureRecordsUsingQueryCodeSnippetData,
   QueryingWithStreams,
   QueryingWithStreamsCodeSnippetData,
+  Aggregation,
+  AggregationCodeSnippetData,
   QueryActions,
   QueryActionsCodeSnippetData,
   JsonType,
@@ -2447,8 +2509,14 @@ const BBEs = {
   GraphqlContextCodeSnippetData,
   GraphqlServiceFieldObject,
   GraphqlServiceFieldObjectCodeSnippetData,
-  GraphqlInterceptors,
-  GraphqlInterceptorsCodeSnippetData,
+  GraphqlServiceInterceptors,
+  GraphqlServiceInterceptorsCodeSnippetData,
+  GraphqlFieldInterceptors,
+  GraphqlFieldInterceptorsCodeSnippetData,
+  GraphqlInterceptorConfigurations,
+  GraphqlInterceptorConfigurationsCodeSnippetData,
+  GraphqlInputConstraintValidation,
+  GraphqlInputConstraintValidationCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
   GraphqlHierarchicalResourcePaths,
@@ -2593,10 +2661,14 @@ const BBEs = {
   NatsBasicReplyCodeSnippetData,
   NatsServiceConstraintValidation,
   NatsServiceConstraintValidationCodeSnippetData,
+  NatsJetstreamSub,
+  NatsJetstreamSubCodeSnippetData,
   NatsBasicPub,
   NatsBasicPubCodeSnippetData,
   NatsBasicRequest,
   NatsBasicRequestCodeSnippetData,
+  NatsJetstreamPub,
+  NatsJetstreamPubCodeSnippetData,
   NatsServiceSecureConnection,
   NatsServiceSecureConnectionCodeSnippetData,
   NatsServiceBasicAuth,
@@ -2711,8 +2783,6 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
-  SerdesSimple,
-  SerdesSimpleCodeSnippetData,
   IoBytes,
   IoBytesCodeSnippetData,
   IoStrings,
@@ -2747,6 +2817,10 @@ const BBEs = {
   LoggingWithContextCodeSnippetData,
   LoggingConfiguration,
   LoggingConfigurationCodeSnippetData,
+  EdiToRecord,
+  EdiToRecordCodeSnippetData,
+  RecordToEdi,
+  RecordToEdiCodeSnippetData,
   Filepaths,
   FilepathsCodeSnippetData,
   Directories,
@@ -2785,6 +2859,22 @@ const BBEs = {
   XmlFromRecordConversionCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  PersistGetAll,
+  PersistGetAllCodeSnippetData,
+  PersistGetByKey,
+  PersistGetByKeyCodeSnippetData,
+  PersistSelectFields,
+  PersistSelectFieldsCodeSnippetData,
+  PersistFiltering,
+  PersistFilteringCodeSnippetData,
+  PersistRelationQueries,
+  PersistRelationQueriesCodeSnippetData,
+  PersistCreate,
+  PersistCreateCodeSnippetData,
+  PersistUpdate,
+  PersistUpdateCodeSnippetData,
+  PersistDelete,
+  PersistDeleteCodeSnippetData,
   Tracing,
   TracingCodeSnippetData,
   CounterMetrics,

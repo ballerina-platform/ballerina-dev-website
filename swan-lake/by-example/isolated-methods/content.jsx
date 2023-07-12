@@ -76,8 +76,8 @@ export function IsolatedMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=706b515e8039762fb06ef930e68d5267&file=isolated_methods.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=48f3d53effa57d9c8b7ff176dfd0ac23&file=isolated_methods.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -101,8 +101,8 @@ export function IsolatedMethods({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/isolated-methods",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/isolated-methods",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

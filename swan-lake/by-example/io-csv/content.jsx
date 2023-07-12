@@ -68,8 +68,8 @@ export function IoCsv({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ce9593745517b808c702c84a7ba77a56&file=io_csv.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=0835f4455c7e74df27dae54085e547be&file=io_csv.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -93,8 +93,8 @@ export function IoCsv({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/io-csv",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/io-csv",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

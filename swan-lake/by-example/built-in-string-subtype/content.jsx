@@ -59,8 +59,8 @@ export function BuiltInStringSubtype({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0bde94ab5f537232785a64ce27d1c570&file=built_in_string_subtype.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=8493dc618f2ec2981f55a1d802297f51&file=built_in_string_subtype.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -84,8 +84,8 @@ export function BuiltInStringSubtype({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/built-in-string-subtype",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/built-in-string-subtype",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

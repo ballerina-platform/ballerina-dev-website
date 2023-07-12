@@ -72,8 +72,8 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d2c78d30a8d81557ec3d0d51af759b5f&file=http_client_oauth2_password_grant_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=8e52674e9dc76cb70e0abc541b61b322&file=http_client_oauth2_password_grant_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -97,8 +97,8 @@ export function HttpClientOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-client-oauth2-password-grant-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-oauth2-password-grant-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

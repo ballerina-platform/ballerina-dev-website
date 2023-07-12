@@ -67,8 +67,8 @@ export function HttpSendResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=09e1617df51d6b4889c4c44cdb49d5c3&file=http_send_response.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=8656477624e0c14705f8da32d00154e7&file=http_send_response.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -92,8 +92,8 @@ export function HttpSendResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.5.0/examples/http-send-response",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-send-response",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

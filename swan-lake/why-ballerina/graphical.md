@@ -20,7 +20,7 @@ For more information, see [Sequence Diagram View](https://wso2.com/ballerina/vsc
 
 ## Architecture View
 
-The Architecture View of the Ballerina VS Code extension provides a holistic picture of the components and their interactions in Ballerina projects purely based on the source code. It provides several types of diagrams namely, the Service Diagram Level 1, Service Diagram Level 2, type diagram, and composition diagram to explore and ease the designing of the application.  
+The Architecture View of the Ballerina VS Code extension provides a holistic picture of the components and their interactions in Ballerina projects purely based on the source code. It provides several types of diagrams, namely, the Service Diagram Level 1 (Services), Service Diagram Level 2 (Resources), type diagram, and composition diagram to explore and ease the designing of the application.  
 
 For more information, see [Design the application](https://wso2.com/ballerina/vscode/docs/design-the-application/).
 

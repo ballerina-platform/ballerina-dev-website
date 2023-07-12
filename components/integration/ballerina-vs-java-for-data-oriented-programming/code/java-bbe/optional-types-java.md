@@ -35,7 +35,6 @@ class Main {
                     "age": null
                 }
                 """;
-
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Person.class, new PersonDeserializer());
@@ -43,16 +42,18 @@ class Main {
 
         Person person = objectMapper.readValue(jsonInput, Person.class);
 
-        System.out.println(person.age()); //output: null
+        System.out.println(person.age()); // output: null
 
-        //optional type access
+        // optional type access
         int age = person.getAge().orElse(-1);
-        System.out.println(age); //output: -1
+        System.out.println(age); // output: -1
 
-        //optional field access
-        System.out.println(person.availableFields().contains("email")); //output: false
-        String emailValue = person.getEmail().isPresent() ? person.email() : "Email is not provided";
-        System.out.println(emailValue); //output: Email is not provided
+        // optional field access
+        System.out.println(person.availableFields().contains("email")); // output: false
+        String emailValue = person.getEmail().isPresent()
+                ? person.email()
+                : "Email is not provided";
+        System.out.println(emailValue); // output: Email is not provided
     }
 }
 
@@ -66,7 +67,8 @@ class PersonDeserializer extends StdDeserializer<Person> {
     }
 
     @Override
-    public Person deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public Person deserialize(JsonParser jsonParser,
+            DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
         List<String> availableFields = Arrays.asList("name", "age", "id");

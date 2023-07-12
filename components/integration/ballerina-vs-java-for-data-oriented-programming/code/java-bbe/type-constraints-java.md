@@ -19,26 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
-record User(@Size(min = 1, max = 8) String username,
-            @Pattern(regexp = "^[\\S]{4,}$") String password) {}
-
 @SpringBootApplication
 @RestController
-class Main {
-
+public class Main {
     @PostMapping("/user")
     public ResponseEntity<String> handleRequest(@Valid @RequestBody User user) {
         return ResponseEntity.ok("User " + user.username() + " signed up successfully");
     }
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(OptimalConstraint.class);
+        SpringApplication app = new SpringApplication(Main.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "9090"));
         app.run(args);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handleValidationException(MethodArgumentNotValidException ex) {
+    public ResponseEntity<String> handleException(MethodArgumentNotValidException ex) {
         String errorMessage = ex.getBindingResult().getFieldErrors().stream()
                 .map(this::getViolationMessage)
                 .collect(Collectors.joining(", "));
@@ -50,5 +46,12 @@ class Main {
         String constraintName = fieldError.getCode();
         return String.format("Validation failed for '%s:%s'", fieldName, constraintName);
     }
+
+    record User(
+            @Size(min = 1, max = 8,
+                    message = "Username is not valid") String username,
+            @Pattern(regexp = "^[\\S]{4,}$",
+                    message = "Password should be greater than 4") String password
+    ) {}
 }
 ```

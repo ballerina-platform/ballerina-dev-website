@@ -4,8 +4,8 @@ description: Boundary data validation is a critical aspect of data-oriented prog
 url: https://github.com/ballerina-guides/integration-samples/tree/main/boundary-validation-for-dop
 ---
 ```
-import ballerina/http;
 import ballerina/constraint;
+import ballerina/http;
 import ballerina/io;
 
 type User record {

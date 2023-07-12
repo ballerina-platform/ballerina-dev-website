@@ -20,6 +20,7 @@ type User record {|
 
 public function main() {
     User user = {id: 1, name: "John Doe"};
-    io:println(string `User '${user.name}' with id '${user.id}' as '${user.userType}' created successfully`);
+    io:println(string `User '${user.name}' with id '${user.id
+        }' as '${user.userType}' created successfully`);
 }
 ```

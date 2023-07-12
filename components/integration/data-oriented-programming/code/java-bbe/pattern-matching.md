@@ -8,7 +8,8 @@ import ballerina/io;
 
 const switchStatus = "ON";
 
-function matchValue(anydata value, boolean isObstructed, float powerPercentage) returns string {
+function matchValue(anydata value, boolean isObstructed,
+                float powerPercentage) returns string {
     // The value of the `val` variable is matched against the given value match patterns.
     match value {
         1 if !isObstructed => {
@@ -29,18 +30,20 @@ function matchValue(anydata value, boolean isObstructed, float powerPercentage) 
             return "STOP";
         }
         switchStatus => {
-            // This block will execute if `value` is equal to the value of the `switchStatus` constant.
+            // This block will execute if `value` is equal 
+            // to the value of the `switchStatus` constant.
             return "Switch ON";
         }
         // Destructuring a tuple with type checking
         [var x, var y] if x is decimal && y is decimal => {
-            return string `Maneuvering to x: ${x.toString()} and y: ${y.toString()} coordinates`;
+            return string `Maneuvering to x: ${x.toString()} and y: ${y.toString()
+                            } coordinates`;
         }
         // Destructuring a map and recursively matching with optional argument
         {x: var a, y: var b, ...var rest} => {
             string optionalArg = matchValue(rest, isObstructed, powerPercentage);
-
-            return string `Maneuvering to x: ${a.toString()} and y: ${b.toString()} coordinates with ${optionalArg}`;
+            return string `Maneuvering to x: ${a.toString()} and y: ${b.toString()
+                            } coordinates with ${optionalArg}`;
         }
         _ => {
             // This block will execute for any other unmatched value.

@@ -8,7 +8,8 @@ import java.util.Map;
 class Main {
     static final String switchStatus = "ON";
 
-    public static String matchValue(Object value, boolean isObstructed, float powerPercentage) {
+    public static String matchValue(Object value, boolean isObstructed,
+            float powerPercentage) {
         switch (value) {
             case Integer i -> {
                 if (i == 1 && !isObstructed) {
@@ -33,7 +34,8 @@ class Main {
             }
             case double[] arr -> {
                 if (arr.length == 2) {
-                    return "Maneuvering to x: " + arr[0] + " and y: " + arr[1] + " coordinates";
+                    return "Maneuvering to x: " + arr[0]
+                            + " and y: " + arr[1] + " coordinates";
                 } else {
                     return "Invalid instruction";
                 }
@@ -55,9 +57,8 @@ class Main {
     record Record(double x, double y, Map<String, Object> rest) {}
 
     public static void main(String[] args) {
-        String output = matchValue(new double[]{2.516, 51.409}, false, 0.0f);
+        String output = matchValue(new double[] { 2.516, 51.409 }, false, 0.0f);
         System.out.println(output);
     }
 }
-
 ```

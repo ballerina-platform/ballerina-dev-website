@@ -4,22 +4,23 @@ description: Data-oriented programming promotes the idea of representing data in
 url: https://github.com/ballerina-guides/integration-samples/tree/main/model-data-as-data-for-dop
 --- 
 ```
-import ballerina/io;
-
 enum UserType {
     ADMIN,
-    GUEST,
-    MEMBER
-};
+    CUSTOMER,
+    GUEST
+}
 
-type User record {|
-    int id;
-    string name;
-    UserType userType = GUEST;
-|};
+record User(int id, String name, UserType userType) {
+    public User(int id, String name) {
+        this(id, name, UserType.GUEST);
+    }
+}
 
-public function main() {
-    User user = {id: 1, name: "John Doe"};
-    io:println(string `User '${user.name}' with id '${user.id}' as '${user.userType}' created successfully`);
+class Main {
+    public static void main(String[] args) {
+        User customer = new User(1, "John Doe");
+        System.out.printf("User '%s' with id '%s' as '%s' created successfully",
+                customer.name(), customer.id(), customer.userType());
+    }
 }
 ```

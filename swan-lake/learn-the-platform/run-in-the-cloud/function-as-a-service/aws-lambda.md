@@ -26,6 +26,8 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 
 ## Set up the prerequisites
 
+Follow the instructions in the sections below to set up the prerequisites.
+
 ### Set up AWS
 
 Follow the steps below to set up an AWS account and the AWS CLI.

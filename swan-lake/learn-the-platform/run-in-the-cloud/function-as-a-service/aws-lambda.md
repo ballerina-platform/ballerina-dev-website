@@ -10,18 +10,17 @@ intro: AWS Lambda is an event-driven, serverless computing platform. The AWS Lam
 
 The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`. 
 
-> **Note:** An AWS Lambda function always adheres to the following function signature: 
-`function (awslambda:Context, json|EventType) returns json|error`
+> **Note:** An AWS Lambda function always adheres to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
 
 ## Supported triggers
 
 An AWS Lambda function can be triggered by various AWS services. You can find the list of supported notification types below.
 
-- Direct Invocation
-- Simple Queue Service <a href="https://aws.amazon.com/sqs/" target="_blank">SQS</a>
-- Simple Storage Service <a href="https://aws.amazon.com/s3/" target="_blank">S3</a>
+- <a href="https://aws.amazon.com/lambda/" target="_blank">Direct invocation</a>
+- <a href="https://aws.amazon.com/sqs/" target="_blank">Simple Queue Service (SQS)</a>
+- <a href="https://aws.amazon.com/s3/" target="_blank">Simple Storage Service (S3)</a>
 - <a href="https://aws.amazon.com/dynamodb/" target="_blank">DynamoDB</a>
-- Simple Email Service <a href="https://aws.amazon.com/ses//" target="_blank">SES</a>
+- <a href="https://aws.amazon.com/ses//" target="_blank">Simple Email Service (SES)</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
 
 ## Set up the prerequisites
@@ -42,11 +41,11 @@ Follow the steps below to create a new user in your AWS account.
 
 1. Create a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">new AWS user</a>.
 
-    >**Info:** Enter a username and enable access to the AWS Management Console.
+    >**Note:** Enter a username and enable access to the AWS Management Console.
 
 2. <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console" target="_blank">Set the permissions</a> to the created user.
 
-    >**Info:** Enable `AWSLambda_FullAccess` or higher permissions. 
+    >**Note:** Enable `AWSLambda_FullAccess` or higher permissions. 
 
 3. Obtain the <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html#cli-authentication-user-get" target="_blank">access keys</a>.
 

@@ -453,7 +453,17 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11-interceptors">
+            <a href="/spec/graphql/#73-interceptor-configuration">
+              GraphQL interceptor configuration - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#103-interceptors">
               GraphQL interceptors - Specification
             </a>
           </span>

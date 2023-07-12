@@ -283,7 +283,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12114-oauth2">
+            <a href="/spec/graphql/#8114-oauth2">
               GraphQL service OAuth2 - Specification
             </a>
           </span>

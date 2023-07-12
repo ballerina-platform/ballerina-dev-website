@@ -592,7 +592,7 @@ export function GraphqlServiceErrorHandling({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#72-service-error-handling">
+            <a href="/spec/graphql/#62-service-error-handling">
               GraphQL error handling - Specification
             </a>
           </span>

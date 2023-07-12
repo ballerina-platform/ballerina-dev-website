@@ -296,7 +296,7 @@ export function GraphqlServiceBasicAuthLdapUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12112-basic-authentication---ldap-user-store">
+            <a href="/spec/graphql/#8112-basic-authentication---ldap-user-store">
               GraphQL service basic authentication - LDAP user store -
               Specification
             </a>

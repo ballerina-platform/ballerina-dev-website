@@ -1,11 +1,11 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
-description: AWS Lambda is an event driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
-keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud native
+description: AWS Lambda is an event-driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
+keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud-native
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
-intro: AWS Lambda is an event driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
+intro: AWS Lambda is an event-driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 ---
 
 The AWS Lambda extension provides the functionality to expose a Ballerina function as an AWS Lambda function. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`. 
@@ -26,7 +26,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 
 ## Set up AWS
 
-Follow the steps below to set an AWS account and the AWS CLI.
+Follow the steps below to set up an AWS account and the AWS CLI.
 
 1. Install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">AWS CLI</a>.
 
@@ -72,7 +72,7 @@ The second parameter with the `json` value contains the input request data. This
 
 ## Build the function
 
-The AWS Lambda functionality is implemented as a compiler extension. Therefore, the artifact generation happens automatically when you build a Ballerina module by executing the command below.
+The AWS Lambda functionality is implemented as a compiler extension. Therefore, artifact generation happens automatically when you build a Ballerina module by executing the command below.
 
 ```
 $ bal build

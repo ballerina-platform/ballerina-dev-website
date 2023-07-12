@@ -68,7 +68,7 @@ export function RegexpOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=54f740772ee381fb8b566a0c11f381da&file=regexp_operations.bal",
+                "https://play.ballerina.io/?gist=e487e61a08c7a3177a58a89e03beda81&file=regexp_operations.bal",
                 "_blank",
               );
             }}

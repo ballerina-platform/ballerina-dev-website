@@ -88,7 +88,7 @@ export function ErrorBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d22d0d184194ed955b45655db6bd05a2&file=error_binding_pattern_in_match_statement.bal",
+                "https://play.ballerina.io/?gist=ebd7f7daf2f915930c2cac7843e53145&file=error_binding_pattern_in_match_statement.bal",
                 "_blank",
               );
             }}

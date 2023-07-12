@@ -330,7 +330,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#6-file-upload">
+            <a href="/spec/graphql/#104-file-upload">
               GraphQL file upload - Specification
             </a>
           </span>

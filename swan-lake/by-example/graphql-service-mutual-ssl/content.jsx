@@ -250,7 +250,7 @@ export function GraphqlServiceMutualSsl({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12312-mutual-ssl">
+            <a href="/spec/graphql/#8312-mutual-ssl">
               GraphQL service mutual SSL - Specification
             </a>
           </span>

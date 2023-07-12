@@ -25,14 +25,18 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
 - Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
 
-## Set up Azure Functions 
+## Set up the prerequisites
+
+Follow the instructions in the sections below to set up the prerequisites.
+
+### Set up Azure Functions 
 
 Follow the steps below to set up the Azure Functions.
 
 1. Install the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank">Azure CLI</a>.
 2. Install and configure [Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Clinux%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools).
 
-## Create the app
+### Create the app
 
 Follow the steps below to create the Azure function app.
 

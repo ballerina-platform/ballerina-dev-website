@@ -132,9 +132,9 @@ The example command below will deploy the package on the Azure Functions cloud.
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
 
-## Learn more
+## Examples
 
-For more examples of the usage of Azure Functions, see the below.
+For examples of the usage of Azure Functions, see the below.
 
 - [Hello world](/learn/by-example/azure-functions-hello-world/)
 - [Timer trigger](/learn/by-example/azure-functions-timer-trigger/)

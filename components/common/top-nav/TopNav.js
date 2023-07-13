@@ -51,6 +51,8 @@ const TopNav = (props) => {
               <NavDropdown title='Use cases' id={styles.navbarScrollingDropdown} className={(launcher === 'usecases') ? `${styles.active}` : null} >
                 <NavDropdown.Item href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Data-oriented programming</span></NavDropdown.Item>
+                <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={`${styles.dropDownItem} ${styles.subsub}`}><span>Ballerina vs Java</span></NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</NavDropdown.Item>
                 <NavDropdown.Item href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</NavDropdown.Item>

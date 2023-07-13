@@ -71,7 +71,7 @@ Functions annotated as `@awslambda:Function` should always have the first parame
 
 The second parameter with the `json` value contains the input request data. This input value format will vary depending on the source, which invoked the function (e.g., an AWS S3 bucket update event). The return type of the function is `json`. When the function is triggered by the event, the function body executes and it simply logs the input JSON and returns the JSON.
 
->**Info:** For examples, see [Learn more](#learn-more).
+>**Info:** For examples of creating AWS Lambda functions, see [Examples](#examples).
 
 ## Build the function
 

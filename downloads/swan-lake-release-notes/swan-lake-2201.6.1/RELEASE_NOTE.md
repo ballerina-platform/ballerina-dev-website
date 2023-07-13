@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.6.1
 
-<em>Swan Lake 2201.6.1 is the first patch release of Ballerina 2201.6.0 (Swan Lake Update 6) and it includes a new set of bug fixes to the language, tooling, and standard library.</em>
+<em>Swan Lake 2201.6.1 is the first patch release of Ballerina 2201.6.0 (Swan Lake Update 6) and it includes a new set of bug fixes to the language, standard library, and tooling.</em>
 
 ## Update Ballerina
 
@@ -49,4 +49,4 @@ To view bug fixes, see the [GitHub milestone for 2201.6.1 (Swan Lake)](https://g
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake 2201.6.1 of the repository below.
-- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.1%22+is%3Aclosed)
+- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+milestone%3A%22Swan+Lake+2201.6.1%22+label%3AType%2FBug+is%3Aclosed+)

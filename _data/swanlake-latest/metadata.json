@@ -13,9 +13,9 @@
 	"macos-arm-installer-size":"235mb",
 	"rpm-installer":"ballerina-2201.6.0-swan-lake-linux-x64.rpm",
 	"rpm-installer-size":"239mb",
-	"other-artefacts":[  
+	"other-artefacts":[
 		"ballerina-2201.6.0-swan-lake.zip"
- 	],
+	],
 	"api-docs":"ballerina-api-docs-2201.6.0.zip",
 	"release-notes":"ballerina-release-notes-2201.6.0.md"
 }

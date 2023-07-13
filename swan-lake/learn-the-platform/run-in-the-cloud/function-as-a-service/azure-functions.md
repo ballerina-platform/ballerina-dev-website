@@ -50,7 +50,7 @@ Follow the steps below to create the Azure function app.
 
 You can write Azure functions that use different triggers to invoke the function, and output bindings to generate the response based on your use case. 
 
->**Info:** For examples, see [Learn more](#learn-more).
+>**Info:** For examples of creating Azure functions, see [Examples](#examples).
 
 ## Build the function
 

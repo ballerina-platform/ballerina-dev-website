@@ -5,8 +5,6 @@ description: null
 ```
 import ballerina/io;
 
-const string FILE_PATH = "sensor_data.csv";
-
 type SensorData record {|
     string sensorName;
     string timestamp;
@@ -14,9 +12,9 @@ type SensorData record {|
     float humidity;
 |};
 
-public function main() returns error? {
+public function main(string filePath = "sensor_data.csv") returns error? {
     // Read file as a stream which will be lazily evaluated
-    stream<SensorData, error?> sensorDataStrm = check io:fileReadCsvAsStream(FILE_PATH);
+    stream<SensorData, error?> sensorDataStrm = check io:fileReadCsvAsStream(filePath);
     map<float> ecoSenseAvg = check map from var {sensorName, temperature} in sensorDataStrm
         // if sensor reading is faulty; stops processing the file 
         let float tempInCelcius = check convertTemperatureToCelcius(sensorName, temperature)
@@ -27,7 +25,7 @@ public function main() returns error? {
 
 function convertTemperatureToCelcius(string sensorName, float temperature) returns float|error {
     if temperature < 0.0 || temperature > 10000.0 {
-        return error(string `Invalid kelvin temperature value in sensor ${sensorName}`);
+        return error(string `Invalid kelvin temperature value in sensor: ${sensorName}`);
     }
     return temperature - 273.15;
 }

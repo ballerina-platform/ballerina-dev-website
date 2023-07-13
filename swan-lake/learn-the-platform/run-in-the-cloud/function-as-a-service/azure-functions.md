@@ -66,7 +66,7 @@ $ bal build --cloud="azure_functions"
 
 To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Learn more](#learn-more).
 
->**Info:** When you are deploying, make sure to replace the `<function_app_name>` placeholder with the app name of the [created function](#create-the-function).
+>**Note:** When you are deploying, make sure to replace the `<function_app_name>` placeholder with the app name of the [created function](#create-the-function).
 
 
 ## Azure Functions native (experimental)
@@ -75,7 +75,7 @@ You can use Azure Functions in the [native approach of Ballerina](/learn/build-a
 
 ### Set up the prerequisites for the native approach
 
-Follow the steps below to set up the prerequisites that are specifically required to follow the native approach.
+Follow the steps below to set up the prerequisites, which are specifically required to follow the native approach.
 
 1. Set up the [general prerequisites](#set-up-the-prerequisites).
 2. Install and configure [Docker](https://www.docker.com/) in your machine.
@@ -91,7 +91,7 @@ Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functi
 
 An Azure Functions package supports the two build options below.
 
->**Note:** Both build options for the non-native JVM-based approach will behave the same since the JVM is platform-independent.
+>**Info:** Both build options for the non-native JVM-based approach will behave the same since the JVM is platform-independent.
 
 - `cloud="azure_functions"` - Builds the native executable to be compatible with the Azure Functions cloud.
 - `cloud="azure_functions_local"` - Builds the native executable to be compatible with your machine for development purposes.

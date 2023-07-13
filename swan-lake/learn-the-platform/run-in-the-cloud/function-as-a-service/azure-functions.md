@@ -27,7 +27,7 @@ The following Azure Functions triggers and bindings are currently supported in B
 
 | Supported triggers | Supported output bindings | Supported input bindings |
 |:------------------:|---------------------------|--------------------------|
-|        <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger">HTTP</a>        |            <https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput">HTTP</a>           |             -            |
+|        <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger">HTTP</a>        |            <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput">HTTP</a>           |             -            |
 |        Queue       |           Oueue           |             -            |
 |        Blob        |            Blob           |           Blob           |
 |          -         |         Twilio SMS        |             -            |

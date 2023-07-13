@@ -18,13 +18,6 @@ There are *input* and *output* bindings. An input binding is a source of data th
 
 The following Azure Functions triggers and bindings are currently supported in Ballerina.
 
-- HTTP <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger" target="_blank">trigger</a> and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput" target="_blank">output</a> binding
-- Queue <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueTrigger" target="_blank">trigger</a> and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueOutput" target="_blank">output</a> binding
-- Blob <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobOutput" target="_blank">output</a> binding
-- Twilio SMS <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TwilioSmsOutput" target="_blank">output</a> binding
-- CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
-- Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
-
 |                                                 Supported triggers                                                |                                              Supported output bindings                                              |                                             Supported input bindings                                            |
 |:-----------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|
 |     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger" target="_blank">HTTP</a>     |       <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput" target="_blank">HTTP</a>      |                                                        -                                                        |

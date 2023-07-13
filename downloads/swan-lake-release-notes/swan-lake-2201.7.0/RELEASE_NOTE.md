@@ -95,7 +95,7 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 #### Introduction of the `group by` and `collect` clauses
 
-The language now supports the features below for query expressions and actions.
+The language now supports the features below for query expressions and query actions.
 
 - The `group by` clause is used to group a collection based on a grouping-key. The grouping-key will be unique to each group.
 

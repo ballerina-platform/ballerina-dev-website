@@ -95,49 +95,49 @@ Ballerina now officially supports generating GraalVM native executables and the 
 
 #### Introduction of the `group by` and `collect` clauses
 
-The language now supports the `group by` and `collect` clauses to perform aggregation-related operations.
+The language now supports the features below for query expressions and query actions.
 
-The `group by` clause is used to group a collection based on a grouping-key. The grouping-key will be unique to each group.
+- The `group by` clause is used to group a collection based on a grouping-key. The grouping-key will be unique to each group.
 
-```ballerina
-import ballerina/io;
+    ```ballerina
+    import ballerina/io;
+    
+    type Order record {|
+        string name;
+        float price;
+    |};
+    
+    public function main() {
+        Order[] orders = [{name: "Rich Dad Poor Dad", price: 16.0}, {name: "Becoming", price: 22.5}, {name: "Rich Dad Poor Dad", price: 16.4}, {name: "Becoming", price: 22.6}];
+        var averages = from var {name, price} in orders
+            group by name
+            select {name, avg: avg(price)};
+        io:println(averages); // [{"name":"Rich Dad Poor Dad","avg":16.2},{"name":"Becoming","avg":22.55}]
+    }
+    ```
 
-type Order record {|
-    string name;
-    float price;
-|};
+- The `collect` clause is used to group a collection into one group.
 
-public function main() {
-    Order[] orders = [{name: "Rich Dad Poor Dad", price: 16.0}, {name: "Becoming", price: 22.5}, {name: "Rich Dad Poor Dad", price: 16.4}, {name: "Becoming", price: 22.6}];
-    var averages = from var {name, price} in orders
-        group by name
-        select {name, avg: avg(price)};
-    io:println(averages); // [{"name":"Rich Dad Poor Dad","avg":16.2},{"name":"Becoming","avg":22.55}]
-}
-```
-
-The `collect` clause is used to group a collection into one group.
-
-```ballerina
-import ballerina/io;
-
-type Order record {|
-    string name;
-    float price;
-|};
-
-public function main() {
-    Order[] orders = [
-        {name: "Rich Dad Poor Dad", price: 16.0},
-        {name: "Becoming", price: 22.6},
-        {name: "Rich Dad Poor Dad", price: 16.4},
-        {name: "Becoming", price: 22.5}
-    ];
-    var average = from var {price} in orders
-        collect avg(price);
-    io:println(average); // 19.375
-}
-```
+    ```ballerina
+    import ballerina/io;
+    
+    type Order record {|
+        string name;
+        float price;
+    |};
+    
+    public function main() {
+        Order[] orders = [
+            {name: "Rich Dad Poor Dad", price: 16.0},
+            {name: "Becoming", price: 22.6},
+            {name: "Rich Dad Poor Dad", price: 16.4},
+            {name: "Becoming", price: 22.5}
+        ];
+        var average = from var {price} in orders
+            collect avg(price);
+        io:println(average); // 19.375
+    }
+    ```
 
 ### Improvements
 

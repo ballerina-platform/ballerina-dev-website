@@ -25,6 +25,15 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
 - Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
 
+| Supported triggers | Supported input bindings | Supported output bindings |
+|:------------------:|:------------------------:|---------------------------|
+|        HTTP        |             -            |            HTTP           |
+|        Queue       |             -            |           Oueue           |
+|        Blob        |           Blob           |            Blob           |
+|          -         |             -            |         Twilio SMS        |
+|      CosmosDB      |             -            |             -             |
+|        Timer       |             -            |             -             |
+
 ## Set up the prerequisites
 
 Follow the instructions in the sections below to set up the prerequisites.

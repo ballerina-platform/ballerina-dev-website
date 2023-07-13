@@ -51,8 +51,8 @@ export function XmlNamespaces({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2523539ef8724eed5dacbd4e76d60c32&file=xml_namespaces.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=0c84d6e85bad6e1c7704965d7cc3f791&file=xml_namespaces.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -76,8 +76,8 @@ export function XmlNamespaces({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xml-namespaces",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-namespaces",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

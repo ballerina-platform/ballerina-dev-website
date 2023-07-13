@@ -54,8 +54,8 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=60647060e811677049bec17416dbbaed&file=http_client_ssl_tls.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5747345717b46a068f71f16384f13767&file=http_client_ssl_tls.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -79,8 +79,8 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-ssl-tls",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-ssl-tls",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -136,8 +136,8 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-interceptor-configurations",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-interceptor-configurations",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -287,8 +287,8 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-interceptor-configurations",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-interceptor-configurations",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -453,7 +453,17 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11-interceptors">
+            <a href="/spec/graphql/#73-interceptor-configuration">
+              GraphQL interceptor configuration - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/graphql/#103-interceptors">
               GraphQL interceptors - Specification
             </a>
           </span>
@@ -500,8 +510,8 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="File upload"
-            href="/learn/by-example/graphql-file-upload"
+            title="Input constraint validation"
+            href="/learn/by-example/graphql-input-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -511,7 +521,7 @@ export function GraphqlInterceptorConfigurations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File upload
+                  Input constraint validation
                 </span>
               </div>
               <svg

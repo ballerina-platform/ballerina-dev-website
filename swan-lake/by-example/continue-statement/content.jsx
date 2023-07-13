@@ -60,8 +60,8 @@ export function ContinueStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a7e4324b97c93047cc594e9ae4376a1b&file=continue_statement.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=31e6ade3e8e697009fc28ce1c453e27f&file=continue_statement.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -85,8 +85,8 @@ export function ContinueStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/continue-statement",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/continue-statement",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

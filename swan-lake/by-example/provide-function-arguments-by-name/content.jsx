@@ -54,8 +54,8 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9ef97e84d569fef3a3d1eebfcc363ce8&file=provide_function_arguments_by_name.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=f80002725b8e35c6342ba842cd011afd&file=provide_function_arguments_by_name.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -79,8 +79,8 @@ export function ProvideFunctionArgumentsByName({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/provide-function-arguments-by-name",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/provide-function-arguments-by-name",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -91,8 +91,8 @@ export function MappingBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=625147f7b7361e9abe8bcc101a83b9cc&file=mapping_binding_pattern_in_match_statement.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=abbf3f4ebc8aa96d3f91197fa8103a78&file=mapping_binding_pattern_in_match_statement.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -116,8 +116,8 @@ export function MappingBindingPatternInMatchStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/mapping-binding-pattern-in-match-statement",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/mapping-binding-pattern-in-match-statement",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

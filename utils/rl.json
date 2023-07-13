@@ -15,6 +15,14 @@
             "id": "swan-lake-release-notes",
             "subDirectories": [
                 {
+                    "dirName": "2201.7.0 (Swan Lake Update 7)",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.7.0",
+                    "id": "swan-lake-2201.7.0"
+                },   
+                {
                     "dirName": "2201.6.0 (Swan Lake Update 6)",
                     "level": 2,
                     "position": 1,

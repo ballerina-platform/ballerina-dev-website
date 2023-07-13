@@ -63,8 +63,8 @@ export function HttpCachingClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f26ce7521f3ba2d292f5f118f93780f9&file=http_caching_client.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=a00ead2369d7903ac30c9a5df0be9e72&file=http_caching_client.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -88,8 +88,8 @@ export function HttpCachingClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-caching-client",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-caching-client",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

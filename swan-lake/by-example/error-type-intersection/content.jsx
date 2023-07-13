@@ -69,8 +69,8 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b38e4c9c37981c9796ae502e79c288e2&file=error_type_intersection.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=7d54e21aab95e4d6a5afb8d4bb65d4aa&file=error_type_intersection.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -94,8 +94,8 @@ export function ErrorTypeIntersection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/error-type-intersection",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/error-type-intersection",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

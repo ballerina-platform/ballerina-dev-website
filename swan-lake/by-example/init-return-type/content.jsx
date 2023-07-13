@@ -63,8 +63,8 @@ export function InitReturnType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c1d6ba1e0464920a0bde35227dcd5e26&file=init_return_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9ff090aaed9098627412d2930c098ecb&file=init_return_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -88,8 +88,8 @@ export function InitReturnType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/init-return-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/init-return-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

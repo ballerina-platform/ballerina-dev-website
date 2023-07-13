@@ -67,8 +67,8 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b4139e9323cdd4210b7ef4e14a8b271a&file=http_access_logs.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=afbe0e6038a9ea3111f6faac9ee8241f&file=http_access_logs.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -92,8 +92,8 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-access-logs",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-access-logs",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -188,8 +188,8 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=745c360a8ca40670deb06dd43eddcd95&file=Config.toml",
-                "_blank"
+                "https://play.ballerina.io/?gist=efc7fffab94885527fc461e0c39197c7&file=Config.toml",
+                "_blank",
               );
             }}
             target="_blank"
@@ -213,8 +213,8 @@ export function HttpAccessLogs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-access-logs",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-access-logs",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

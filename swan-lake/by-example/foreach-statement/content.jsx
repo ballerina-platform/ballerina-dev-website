@@ -73,8 +73,8 @@ export function ForeachStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=34d42902669cac27b827fb49dc272c16&file=foreach_statement.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=43e243ea3a779c6203e271f7f754a13a&file=foreach_statement.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -98,8 +98,8 @@ export function ForeachStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/foreach-statement",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/foreach-statement",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

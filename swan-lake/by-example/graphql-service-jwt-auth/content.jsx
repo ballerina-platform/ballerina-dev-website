@@ -87,8 +87,8 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-jwt-auth",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-jwt-auth",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -269,7 +269,7 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12113-jwt-authentication">
+            <a href="/spec/graphql/#8113-jwt-authentication">
               GraphQL service JWT authentication - Specification
             </a>
           </span>

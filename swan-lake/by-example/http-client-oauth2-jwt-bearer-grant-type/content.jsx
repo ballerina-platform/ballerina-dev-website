@@ -68,8 +68,8 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c897365175e36b877178d0a4c9836bfb&file=http_client_oauth2_jwt_bearer_grant_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=a6184d2dcdf842f505947679301b016b&file=http_client_oauth2_jwt_bearer_grant_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -93,8 +93,8 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-oauth2-jwt-bearer-grant-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-oauth2-jwt-bearer-grant-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

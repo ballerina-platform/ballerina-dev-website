@@ -59,8 +59,8 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6b85c2b151fc747405a541cbf2eaf9a6&file=break_statement.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=96c9ee23b93f1ad937671dc92a3e2276&file=break_statement.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -84,8 +84,8 @@ export function BreakStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/break-statement",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/break-statement",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

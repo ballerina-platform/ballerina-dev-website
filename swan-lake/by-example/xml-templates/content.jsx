@@ -58,8 +58,8 @@ export function XmlTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=63e20c0f0352695ab3c1060c4def36f3&file=xml_templates.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=4178b49ab053b238f67307451598a618&file=xml_templates.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -83,8 +83,8 @@ export function XmlTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xml-templates",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-templates",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

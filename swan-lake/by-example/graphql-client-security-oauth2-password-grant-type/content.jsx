@@ -84,8 +84,8 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-client-security-oauth2-password-grant-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-client-security-oauth2-password-grant-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -262,7 +262,7 @@ export function GraphqlClientSecurityOauth2PasswordGrantType({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12242-password-grant-type">
+            <a href="/spec/graphql/#8242-password-grant-type">
               GraphQL client OAuth2 password grant type - Specification
             </a>
           </span>

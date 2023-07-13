@@ -60,8 +60,8 @@ export function RestParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=95471920d7581c90ce93e98b1199cb8b&file=rest_parameters.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6f759f2f46d55c5fc8352ce9623417eb&file=rest_parameters.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -85,8 +85,8 @@ export function RestParameters({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/rest-parameters",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/rest-parameters",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

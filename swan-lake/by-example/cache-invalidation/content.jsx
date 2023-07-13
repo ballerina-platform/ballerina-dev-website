@@ -86,8 +86,8 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6fab3853d65c4fa7eccefdad93a73294&file=cache_invalidation.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=d669c46fb56d0dfa20b78d1f6f3e116e&file=cache_invalidation.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -111,8 +111,8 @@ export function CacheInvalidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/cache-invalidation",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/cache-invalidation",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

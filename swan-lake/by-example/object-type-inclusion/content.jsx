@@ -25,7 +25,7 @@ type Person object {
 
 class Engineer {
     // The \`Engineer\` class includes the \`Person\` object type.
-    // Therefore, it has to implement both the \`clone()\` and \`draw()\` methods.
+    // Therefore, it has to implement both the \`clone()\` and \`getName()\` methods.
     *Person;
 
     function init(string name) {
@@ -91,8 +91,8 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=87f00d3c14047b9785731a6970efceeb&file=object_type_inclusion.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=93ce31c7c3463116a684a4f640e3f244&file=object_type_inclusion.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -116,8 +116,8 @@ export function ObjectTypeInclusion({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/object-type-inclusion",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/object-type-inclusion",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

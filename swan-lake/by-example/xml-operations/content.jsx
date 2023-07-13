@@ -59,8 +59,8 @@ export function XmlOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=855218b9491004880f898f2635a09e0a&file=xml_operations.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=738608dad6ac349a63e978f6417a766b&file=xml_operations.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -84,8 +84,8 @@ export function XmlOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/xml-operations",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-operations",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

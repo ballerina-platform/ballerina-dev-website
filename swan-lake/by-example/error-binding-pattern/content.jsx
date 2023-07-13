@@ -75,8 +75,8 @@ export function ErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9bf7d142e71ae5d9551eb1edf45d77d4&file=error_binding_pattern.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=e170b5fbbb3242aa53c8d89949e4b097&file=error_binding_pattern.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -100,8 +100,8 @@ export function ErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/error-binding-pattern",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/error-binding-pattern",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

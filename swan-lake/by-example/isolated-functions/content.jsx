@@ -98,8 +98,8 @@ export function IsolatedFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f323a7bc219c93244aba2887b5c0579e&file=isolated_functions.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=10bb688751318845a284637e2697280a&file=isolated_functions.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -123,8 +123,8 @@ export function IsolatedFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/isolated-functions",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/isolated-functions",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -68,8 +68,8 @@ export function AlternateWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=350bd86b4b29d012089cfddf409a3604&file=alternate_wait.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=a2217b4f32f3d8f1b42645fe8ae03594&file=alternate_wait.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -93,8 +93,8 @@ export function AlternateWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/alternate-wait",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/alternate-wait",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

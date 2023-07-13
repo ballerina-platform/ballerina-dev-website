@@ -64,8 +64,8 @@ export function GraphqlServiceSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-ssl-tls",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-ssl-tls",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -237,7 +237,7 @@ export function GraphqlServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12311-ssltls">
+            <a href="/spec/graphql/#8311-ssltls">
               GraphQL service SSL/TLS - Specification
             </a>
           </span>

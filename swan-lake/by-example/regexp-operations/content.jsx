@@ -68,8 +68,8 @@ export function RegexpOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=959d275229de8d492bbb35a566682d0f&file=regexp_operations.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=e487e61a08c7a3177a58a89e03beda81&file=regexp_operations.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -93,8 +93,8 @@ export function RegexpOperations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/regexp-operations",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/regexp-operations",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

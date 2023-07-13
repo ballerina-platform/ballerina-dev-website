@@ -65,8 +65,8 @@ export function IoJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=661b2b651b4985a86d87b8c5c6c318f5&file=io_json.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6339087d708f4c972e268fd4013c8498&file=io_json.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -90,8 +90,8 @@ export function IoJson({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/io-json",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/io-json",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

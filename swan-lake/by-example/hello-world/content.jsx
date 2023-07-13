@@ -39,8 +39,8 @@ export function HelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=ebf3b22f7aea64280ef80c919d56e7a4&file=hello_world.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -64,8 +64,8 @@ export function HelloWorld({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/hello-world",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/hello-world",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

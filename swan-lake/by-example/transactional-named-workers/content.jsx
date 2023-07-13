@@ -65,8 +65,8 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=1459a2483efef50a4e52f7d4b6dc47cf&file=transactional_named_workers.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=f5507cbd74f4857804593b84728bb046&file=transactional_named_workers.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -90,8 +90,8 @@ export function TransactionalNamedWorkers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/transactional-named-workers",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/transactional-named-workers",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

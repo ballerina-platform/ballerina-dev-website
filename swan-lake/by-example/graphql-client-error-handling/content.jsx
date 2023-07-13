@@ -83,8 +83,8 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-client-error-handling",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-client-error-handling",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -250,7 +250,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#255-client-error-handling">
+            <a href="/spec/graphql/#63-client-error-handling">
               GraphQL client error handling - Specification
             </a>
           </span>

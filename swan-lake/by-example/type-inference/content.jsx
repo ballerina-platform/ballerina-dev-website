@@ -66,8 +66,8 @@ export function TypeInference({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2640bcec8bf9be52605d7b31b67bcbcd&file=type_inference.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9921e8e3b4444f1d7761f97fe7b79a07&file=type_inference.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -91,8 +91,8 @@ export function TypeInference({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/type-inference",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/type-inference",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

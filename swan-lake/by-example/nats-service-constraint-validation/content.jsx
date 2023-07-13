@@ -73,8 +73,8 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/nats-service-constraint-validation",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/nats-service-constraint-validation",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -308,7 +308,10 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Publish message" href="/learn/by-example/nats-basic-pub">
+          <Link
+            title="Consume JetStream message"
+            href="/learn/by-example/nats-jetstream-sub"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -317,7 +320,7 @@ export function NatsServiceConstraintValidation({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Publish message
+                  Consume JetStream message
                 </span>
               </div>
               <svg

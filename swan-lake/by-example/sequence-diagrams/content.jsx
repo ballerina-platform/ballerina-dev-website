@@ -67,8 +67,8 @@ export function SequenceDiagrams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=aa44bd7c5f4ca63a492d20986e3590cc&file=sequence_diagrams.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=efd4b9c9e4f9353fe51e19752488b356&file=sequence_diagrams.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -92,8 +92,8 @@ export function SequenceDiagrams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/sequence-diagrams",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/sequence-diagrams",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -1,0 +1,19 @@
+{
+  "title": "Aggregation",
+  "description": "This BBE demonstrates how to group a collection, how to handle non grouping keys.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "group",
+    "non-grouping keys",
+    "aggregate",
+    "collect"
+  ],
+  "permalink": "/learn/by-example/aggregation",
+  "active": "aggregation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/aggregation",
+    "/swan-lake/learn/by-example/aggregation.html"
+  ]
+}

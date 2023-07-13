@@ -201,8 +201,8 @@ export function PersistCreate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-create",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/persist-create",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -359,8 +359,8 @@ export function PersistCreate({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/persist-create",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/persist-create",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

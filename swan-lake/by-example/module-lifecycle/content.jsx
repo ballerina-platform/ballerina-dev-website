@@ -60,8 +60,8 @@ export function ModuleLifecycle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9bd20288fc1a3a0c3c32b8d401c22536&file=module_lifecycle.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5e77e57d773ca0f1429502a7def5d376&file=module_lifecycle.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -85,8 +85,8 @@ export function ModuleLifecycle({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/module-lifecycle",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/module-lifecycle",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

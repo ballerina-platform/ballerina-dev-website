@@ -74,8 +74,8 @@ export function CommitRollbackHandlers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e7e9852fe1261b3209c403529d36cbac&file=commit_rollback_handlers.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=f92d0691c76a8bf5027b1987aa1cec62&file=commit_rollback_handlers.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -99,8 +99,8 @@ export function CommitRollbackHandlers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/commit-rollback-handlers",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/commit-rollback-handlers",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

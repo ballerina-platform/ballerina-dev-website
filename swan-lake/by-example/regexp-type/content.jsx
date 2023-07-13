@@ -96,8 +96,8 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c23a79ff7bc5907664913e4e3d9c177d&file=regexp_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=6357291e68e1565b25f6c6e735fcc432&file=regexp_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -121,8 +121,8 @@ export function RegexpType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/regexp-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/regexp-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

@@ -75,8 +75,8 @@ export function Identity({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=702d212472ff4c06b2357fad2abc2e74&file=identity.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5ecb693d3215b4b72ae443f0588a45eb&file=identity.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -100,8 +100,8 @@ export function Identity({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/identity",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/identity",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

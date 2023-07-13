@@ -59,8 +59,8 @@ export function GraphqlGraphiql({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-graphiql",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-graphiql",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -234,8 +234,8 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1015-graphiql-configurations">
-              GraphQL GraphiQL client - Configuration
+            <a href="/spec/graphql/#91-graphiql-client">
+              GraphQL GraphiQL client - Specification
             </a>
           </span>
         </li>
@@ -244,8 +244,8 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#141-graphiql-client">
-              GraphQL GraphiQL client - Specification
+            <a href="/spec/graphql/#715-graphiql-configurations">
+              GraphQL GraphiQL client configuration - Specification
             </a>
           </span>
         </li>

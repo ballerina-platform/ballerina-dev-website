@@ -34,15 +34,15 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 ## Language updates
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%222201.0.3%22).
+To view bug fixes, see the [GitHub milestone for 2201.0.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%222201.0.3%22).
 
 ## Runtime updates
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%222201.0.3%22+).
+To view bug fixes, see the [GitHub milestone for 2201.0.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%222201.0.3%22+).
 
 ## Standard library updates
 
-To view bug fixes, see the [GitHub milestone for Swan Lake 2201.0.3](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.3%22+label%3AType%2FBug).
+To view bug fixes, see the [GitHub milestone for 2201.0.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.3%22+label%3AType%2FBug).
 
 ## Developer tools updates
 
@@ -54,7 +54,7 @@ Added rutime breakpoint verification support. With this improvement, now, the de
 
 ### Bug fixes
 
-To view bug fixes, see the GitHub milestone for Swan Lake 2201.0.3 of the repositories below.
+To view bug fixes, see the GitHub milestone for 2201.0.3 (Swan Lake) of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3ATeam%2FLanguageServer+milestone%3A%222201.0.3%22+label%3AType%2FBug+)
 - [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+label%3AArea%2FDebugger+is%3Aclosed+milestone%3A2201.0.3)

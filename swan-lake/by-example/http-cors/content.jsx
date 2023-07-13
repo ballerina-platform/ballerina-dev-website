@@ -75,8 +75,8 @@ export function HttpCors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=694ea9e5ed6914abbe3093f2e6bd9bee&file=http_cors.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=b40ca50506afe1a11c39a1ea0e46c9e9&file=http_cors.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -100,8 +100,8 @@ export function HttpCors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-cors",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-cors",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

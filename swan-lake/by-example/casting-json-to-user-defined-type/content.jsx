@@ -73,8 +73,8 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6123da52b600732cdebf7d4ab0b90384&file=casting_json_to_user_defined_type.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=40ae6a0ce9f4d94c6d834e4f53c0ae3e&file=casting_json_to_user_defined_type.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -98,8 +98,8 @@ export function CastingJsonToUserDefinedType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/casting-json-to-user-defined-type",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/casting-json-to-user-defined-type",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

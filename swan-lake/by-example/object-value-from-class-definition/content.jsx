@@ -82,8 +82,8 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=80c681acbdb01277c5678d2c891e14df&file=object_value_from_class_definition.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=9ab968197d1e60fe1d0db4a67ab5cb32&file=object_value_from_class_definition.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -107,8 +107,8 @@ export function ObjectValueFromClassDefinition({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/object-value-from-class-definition",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/object-value-from-class-definition",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

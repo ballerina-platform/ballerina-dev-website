@@ -62,8 +62,8 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=cd41fcde691071173eb46c4481ed7138&file=http_passthrough.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=fa27bf44c38da2c4f2a944c2947a689d&file=http_passthrough.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -87,8 +87,8 @@ export function HttpPassthrough({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-passthrough",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-passthrough",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

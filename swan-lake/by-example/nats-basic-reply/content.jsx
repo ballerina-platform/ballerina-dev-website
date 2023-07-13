@@ -64,8 +64,8 @@ export function NatsBasicReply({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/nats-basic-reply",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/nats-basic-reply",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -282,7 +282,7 @@ export function NatsBasicReply({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Constraint validation"
+            title="Constraint validations"
             href="/learn/by-example/nats-service-constraint-validation"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
@@ -293,7 +293,7 @@ export function NatsBasicReply({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validation
+                  Constraint validations
                 </span>
               </div>
               <svg

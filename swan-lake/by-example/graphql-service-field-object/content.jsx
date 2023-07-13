@@ -138,8 +138,8 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-field-object",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-field-object",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -287,8 +287,8 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-field-object",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-field-object",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -506,8 +506,8 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-field-object",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-field-object",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -735,7 +735,7 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#9-field-object">
+            <a href="/spec/graphql/#102-field-object">
               GraphQL field - Specification
             </a>
           </span>

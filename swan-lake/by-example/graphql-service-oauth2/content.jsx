@@ -92,8 +92,8 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/graphql-service-oauth2",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-service-oauth2",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -283,7 +283,7 @@ export function GraphqlServiceOauth2({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12114-oauth2">
+            <a href="/spec/graphql/#8114-oauth2">
               GraphQL service OAuth2 - Specification
             </a>
           </span>

@@ -68,8 +68,8 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=73980260714313dd165a1afac173d8be&file=http_client_query_parameter.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=a4a54789a51b423325bfe06f87908041&file=http_client_query_parameter.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -93,8 +93,8 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-query-parameter",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-query-parameter",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"
@@ -259,8 +259,8 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8fd214d459ef4c120888658045b741e6&file=http_client_query_parameter_post.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=5cf50324ef205f40b5e155847d776d8d&file=http_client_query_parameter_post.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -284,8 +284,8 @@ export function HttpClientQueryParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/http-client-query-parameter",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-query-parameter",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

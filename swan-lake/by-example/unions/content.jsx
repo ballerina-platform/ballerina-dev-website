@@ -74,8 +74,8 @@ export function Unions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=b338aba39eb6fa8f024702dc20bdd253&file=unions.bal",
-                "_blank"
+                "https://play.ballerina.io/?gist=b30dd4f6505ef025b78a9b14bfe1edd0&file=unions.bal",
+                "_blank",
               );
             }}
             target="_blank"
@@ -99,8 +99,8 @@ export function Unions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.6.0/examples/unions",
-                "_blank"
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/unions",
+                "_blank",
               );
             }}
             aria-label="Edit on Github"

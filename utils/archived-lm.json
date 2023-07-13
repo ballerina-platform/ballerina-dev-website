@@ -22,13 +22,13 @@
                     "url": "https://lib.ballerina.io/",
                     "id": "swan-lake-api-docs"
                 },
-                            {
-                    "dirName": "2201.5.1",
+                {
+                    "dirName": "2201.6.1",
                     "level": 2,
                     "position": 1,
                     "isDir": false,
-                    "url": "#2201.5.1",
-                    "id": "2201.5.1v"
+                    "url": "#2201.6.1",
+                    "id": "2201.6.1v"
                 },
                 {
                     "dirName": "2201.6.0",
@@ -37,6 +37,14 @@
                     "isDir": false,
                     "url": "#2201.6.0",
                     "id": "2201.6.0v"
+                },
+                {
+                    "dirName": "2201.5.1",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.5.1",
+                    "id": "2201.5.1v"
                 },
                 {
                     "dirName": "2201.5.0",

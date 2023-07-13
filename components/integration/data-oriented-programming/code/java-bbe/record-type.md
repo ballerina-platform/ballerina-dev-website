@@ -1,7 +1,7 @@
 ---
 title: 'Model data as data'
 description: Data-oriented programming promotes the idea of representing data in its purest form. Ballerina's records simplify this approach, enabling concise and effective data representation.
-url: https://github.com/ballerina-guides/integration-samples/tree/main/model-data-as-data-for-dop
+url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/model-data-as-data/ballerina/main.bal
 --- 
 ```
 enum UserType {

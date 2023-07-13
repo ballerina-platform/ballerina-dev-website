@@ -25,14 +25,14 @@ The following Azure Functions triggers and bindings are currently supported in B
 - CosmosDB <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">trigger</a>, <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">input</a> binding, and <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">output</a> binding
 - Timer <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">trigger</a>
 
-| Supported triggers | Supported output bindings | Supported input bindings |
-|:------------------:|---------------------------|--------------------------|
-|        <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger">HTTP</a>        |            <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput">HTTP</a>           |             -            |
-|        Queue       |           Oueue           |             -            |
-|        Blob        |            Blob           |           Blob           |
-|          -         |         Twilio SMS        |             -            |
-|      CosmosDB      |             -             |             -            |
-|        Timer       |             -             |             -            |
+|                                                 Supported triggers                                                |                                              Supported output bindings                                              |                                             Supported input bindings                                            |
+|:-----------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|
+|     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpTrigger" target="_blank">HTTP</a>     |       <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#HttpOutput" target="_blank">HTTP</a>      |                                                        -                                                        |
+|    <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueTrigger" target="_blank">Queue</a>    |      <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#QueueOutput" target="_blank">Queue</a>     |                                                        -                                                        |
+|     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobTrigger" target="_blank">Blob</a>     |       <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobOutput" target="_blank">Blob</a>      |     <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#BlobInput" target="_blank">Blob</a>     |
+|                                                         -                                                         | <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TwilioSmsOutput" target="_blank">Twilio SMS</a> |                                                        -                                                        |
+| <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBTrigger" target="_blank">CosmosDB</a> |   <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBOutput" target="_blank">CosmosDB</a>  | <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#CosmosDBInput" target="_blank">CosmosDB</a> |
+|    <a href="https://lib.ballerina.io/ballerinax/azure_functions/latest#TimerTrigger" target="_blank">Timer</a>    |                                                          -                                                          |                                                        -                                                        |
 
 ## Set up the prerequisites
 

@@ -427,7 +427,7 @@ Countries with number of Recovered patients:[["Afghanistan",146084],["USA",43892
 Found erroneous entries for countries: ["Sri Lanka","India"]
 ```
 
-## Aggregation
+## Calculate the total number of deaths
 
 ### Create the `getTotalNumberOfDeaths` function
 
@@ -558,7 +558,7 @@ Found erroneous entries for countries: ["Sri Lanka","India"]
 Total number of deaths: 1874581
 ```
 
-## Grouping
+## Group the deaths by the continent
 
 ### Create the `groupDeathsByContinent` function
 

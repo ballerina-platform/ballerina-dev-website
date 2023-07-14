@@ -42,7 +42,7 @@ Follow the steps below to set up the Azure Functions.
 
 Follow the steps below to create the Azure function app.
 
-1. Log in to the Azure CLI by executing the `az login` command on CLI.
+1. Execute the `az login` command on the CLI to log in to the Azure CLI.
 2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
    - Runtime stack - `Java 11`

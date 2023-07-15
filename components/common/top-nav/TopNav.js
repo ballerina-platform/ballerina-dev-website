@@ -17,10 +17,12 @@
  */
 
 import * as React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Accordion, Container, Nav, Navbar, NavDropdown, OverlayTrigger, Dropdown, Button, ButtonGroup, Offcanvas, Form } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import Search from '../search/Search';
+import CustomToggle from "./CustomToggle";
+import CustomMenu from "./CustomMenu";
 import { prefix } from '../../../utils/prefix';
 import styles from './TopNav.module.css';
 
@@ -32,50 +34,121 @@ const TopNav = (props) => {
     launcher = launcher + '-learn';
   }
 
+  // const renderTooltip = (props) => (
+  //   <div id="button-tooltip" {...props} className={styles.submenu}>
+  //     <Nav.Link className={styles.navItem} href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} target='_blank' rel="noreferrer">Apollo vs. Ballerina</Nav.Link>
+  //   </div>
+  // );
+
+  const expand = 'lg';
+
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const MenuItems = [
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</Dropdown.Item>,
+    <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={styles.dropDownItem}>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</Dropdown.Item>,
+    <Dropdown.Item contentType='case studies' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Data oriented programming</Dropdown.Item>,
+  ];
+
+
   return (
     <>
-      <Navbar className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} expand="lg" sticky='top'>
-        <Container fluid className={(launcher === 'home') ? styles.toggleFloat : null}>
-          {(launcher !== "home") ?
-            <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
-            </Navbar.Brand>
-            : null
-          }
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className={styles.navItems}>
-            <Nav
-              className={`${styles.topNav} ms-auto my-2 my-lg-0`}
-              navbarScroll >
-              <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
-              <NavDropdown title='Use cases' id={styles.navbarScrollingDropdown} className={(launcher === 'usecases') ? `${styles.active}` : null} >
-                <NavDropdown.Item href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Data-oriented programming</span></NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={`${styles.dropDownItem} ${styles.subsub}`}><span>Ballerina vs Java</span></NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/eda`} className={styles.dropDownItem}>EDA</NavDropdown.Item>
-                <NavDropdown.Item href={`${prefix}/usecases/b2b`} className={styles.dropDownItem}>B2B</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
-              <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
-              <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Central</Nav.Link>
-              <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
-              <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
-              {(launcher === 'docs-learn') ?
-                <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
-                  <NavDropdown.Item href={`${prefix}/learn/`} className={styles.dropDownItem}>Swan Lake</NavDropdown.Item>
-                  <NavDropdown.Item href={`${prefix}/1.2/learn/`} className={styles.dropDownItem}>v1.2</NavDropdown.Item>
-                </NavDropdown>
-                : null
-              }
-            </Nav>
-            <Search />
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <>
+        {/* {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => ( */}
+        <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
+          <Container fluid>
+            {(launcher !== "home") ?
+              <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
+                <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
+              </Navbar.Brand>
+              : null
+            }
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className={`${styles.topNav} ms-auto my-2 my-lg-0`}>
+                  <Nav.Link className={(launcher === 'downloads') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/downloads`}>Download</Nav.Link>
+
+
+                  <Dropdown className={(launcher === 'usecases') ? `${styles.active} nav-item d-none d-lg-block` : 'nav-item d-none d-lg-block'} id={`dropdown-button-drop-end`}>
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" launcher={launcher}>
+                      Explore
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '900px', marginLeft: '-275px' }} className="dropdown-center">
+                      <MenuItems />
+                    </Dropdown.Menu>
+                  </Dropdown>
+
+                  {/* Offcanvas nav bar for mobile view */}
+                  <a className={(launcher === 'usecases') ? `${styles.active} ${styles.navItem} nav-link d-block d-lg-none` : `${styles.navItem} nav-link d-block d-lg-none`}
+                    onClick={handleShow}>
+                    Explore
+                  </a>
+
+
+                  <Offcanvas show={show} onHide={handleClose}>
+                    <Offcanvas.Header>
+                      <Offcanvas.Title onClick={handleClose} className={styles.back}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="#20b6b0"
+                          className={` bi bi-arrow-right`}
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                          />
+                        </svg> Back
+                      </Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>
+                      <Accordion as={CustomMenu} launcher='mobile' className={styles.mobileAccordion}>
+                        <MenuItems />
+                      </Accordion>
+                    </Offcanvas.Body>
+                  </Offcanvas>
+
+                  {/* Offcanvas nav bar for mobile view */}
+
+
+                  <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
+                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
+                  <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Central</Nav.Link>
+                  <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
+                  <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
+                  {(launcher === 'docs-learn') ?
+                    <NavDropdown title={versionPicker} id={styles.navbarScrollingDropdown}>
+                      <NavDropdown.Item href={`${prefix}/learn/`} className={styles.dropDownItem}>Swan Lake</NavDropdown.Item>
+                      <NavDropdown.Item href={`${prefix}/1.2/learn/`} className={styles.dropDownItem}>v1.2</NavDropdown.Item>
+                    </NavDropdown>
+                    : null
+                  }
+                </Nav>
+                <Search />
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+        {/* ))} */}
+      </>
     </>
 
   );

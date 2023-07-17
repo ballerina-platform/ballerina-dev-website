@@ -188,19 +188,27 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     flex-direction: row;
     justify-content: space-between;
     padding: 15px;
-    min-width: 900px;
+    /* min-width: 900px; */
     /* margin-left: -275px; */
 }
 
 .subSection p {
     font-weight: 600;
-    color: #57595d;
+    /* color: #57595d; */
+    color: #a3a3a3;
 }
 
 .subSection ul {
     margin-bottom: 0;
 }
 
+.subSection ul li a {
+    padding: 0.25rem 0 0.25rem 1rem !important;
+}
+
+.subSection ul li a.sub {
+    padding: 0.25rem 0 0.25rem 1.5rem !important;
+}
 
 /* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */
 
@@ -232,6 +240,11 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     white-space: normal !important;
    /* word-wrap: break-word !important;
 } */
+
+
+.acItem a {
+    white-space: break-spaces !important;
+}
 
 .mobileAccordion h2 {
     margin-top: 0;

@@ -49,17 +49,22 @@ const TopNav = (props) => {
 
   const MenuItems = [
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Data-oriented programming</span></Dropdown.Item>,
     <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={styles.dropDownItem}>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</Dropdown.Item>,
-    <Dropdown.Item contentType='case studies' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Data oriented programming</Dropdown.Item>,
+    // <Dropdown.Item contentType='case studies' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Data oriented programming</Dropdown.Item>,
+
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem}>EDA</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem}>B2B</Dropdown.Item>
   ];
 
 
   return (
     <>
       <>
-        {/* {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => ( */}
         <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
           <Container fluid>
             {(launcher !== "home") ?
@@ -89,7 +94,7 @@ const TopNav = (props) => {
                       Explore
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '900px', marginLeft: '-275px' }} className="dropdown-center">
+                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '700px', marginLeft: '-210px' }} className="dropdown-center">
                       <MenuItems />
                     </Dropdown.Menu>
                   </Dropdown>
@@ -147,7 +152,6 @@ const TopNav = (props) => {
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-        {/* ))} */}
       </>
     </>
 

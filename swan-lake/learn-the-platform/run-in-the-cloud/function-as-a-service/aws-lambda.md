@@ -98,7 +98,7 @@ In a more practical scenario, the AWS Lambda functions will be used by associati
 For examples of the usage of AWS Lambda functions, see the below.
 
 - [Hello world](/learn/by-example/aws-lambda-hello-world/)
-- [Context execution](/learn/by-example/aws-lambda-context-execution/)
+- [Execution context](/learn/by-example/aws-lambda-execution-context/)
 - [S3 trigger](/learn/by-example/aws-lambda-s3-trigger/)
 - [DynamoDB trigger](/learn/by-example/aws-lambda-dynamodb-trigger/)
 

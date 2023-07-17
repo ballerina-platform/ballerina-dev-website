@@ -117,9 +117,9 @@ name = "mysql"
 version = "1.5.0”
 ```
 
-**Building with a new distribution version**
+### Upgrading packages to use new Swan Lake Update distributions
 
-When a project is built with a new minor distribution version than what is specified in `distribution-version` field of `Dependencies.toml`, the `Dependencies.toml` will be updated with the latest compatible minor versions of the dependencies.
+When a new Swan Lake Update distribution is released, it may include incompatible language improvements. When upgrading an existing package to use new Swan Lake Update distributions, the Ballerina compiler automatically updates the Dependencies.toml file with the latest compatible minor versions of dependencies for the new distribution. This enables existing projects to benefit from improvements in the new Update without significant modifications.
 
 ## Use dependencies from the local repository
 

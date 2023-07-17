@@ -14,20 +14,18 @@ public function main() returns error? {
     if paymentMethod != "42" {
         return;
     }
-    var allowances = invoice.Segment_group_15;
-    if allowances is mINVOIC:Segment_group_15_GType[] {
-        foreach mINVOIC:Segment_group_15_GType allowance in invoice.Segment_group_15 {
-            if allowance.ALLOWANCE_OR_CHARGE.Allowance_or_charge_qualifier == "A" &&
-                allowance.ALLOWANCE_OR_CHARGE.Settlement == "6" {
-                    mINVOIC:Segment_group_19_GType[] amounts = allowance.Segment_group_19;
-                    foreach mINVOIC:Segment_group_19_GType amount in amounts {
-                        string? sAmount = amount.MONETARY_AMOUNT_2.MONETARY_AMOUNT_1.Monetary_amount;
-                        if sAmount is string {
-                            decimal dAmount = check decimal:fromString(sAmount);
-                            dAmount += dAmount * <decimal>.1;
-                            amount.MONETARY_AMOUNT_2.MONETARY_AMOUNT_1.Monetary_amount = dAmount.toString();
-                        }
-                    }
+    foreach mINVOIC:Segment_group_15_GType allowance in invoice.Segment_group_15 {
+        if allowance.ALLOWANCE_OR_CHARGE.Allowance_or_charge_qualifier != "A" ||
+            allowance.ALLOWANCE_OR_CHARGE.Settlement != "6" {
+                continue;
+        }
+        mINVOIC:Segment_group_19_GType[] amounts = allowance.Segment_group_19;
+        foreach mINVOIC:Segment_group_19_GType amount in amounts {
+            string? sAmount = amount.MONETARY_AMOUNT_2.MONETARY_AMOUNT_1.Monetary_amount;
+            if sAmount is string {
+                decimal dAmount = check decimal:fromString(sAmount);
+                dAmount += dAmount * <decimal>.1;
+                amount.MONETARY_AMOUNT_2.MONETARY_AMOUNT_1.Monetary_amount = dAmount.toString();
             }
         }
     }

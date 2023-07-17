@@ -23,7 +23,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-import { prefix } from '../../../../utils/prefix';
+import { prefix } from '../../../utils/prefix';
 import styles from './Code.module.css';
 
 export default function UseCases(props) {

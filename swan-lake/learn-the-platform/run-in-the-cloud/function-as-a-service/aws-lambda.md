@@ -8,7 +8,7 @@ active: aws-lambda
 intro: AWS Lambda is an event-driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 --- 
 
-> **Info:** Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@awslambda:Function` by adhering to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
+> **Info:** Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@awslambda:Function` adhering to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
 
 ## Supported triggers
 

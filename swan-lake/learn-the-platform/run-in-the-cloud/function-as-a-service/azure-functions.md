@@ -71,7 +71,7 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 ## Azure Functions native (experimental)
 
-You can use Azure Functions in the [native approach of Ballerina](/learn/build-a-graalvm-native-executable/#pack-the-native-executable-in-a-container).
+You can use Azure Functions in the [native approach of Ballerina](/learn/build-the-executable-in-a-container/).
 
 ### Set up the prerequisites for the native approach
 

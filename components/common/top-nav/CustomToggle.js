@@ -36,4 +36,6 @@ const CustomToggle = React.forwardRef(({ children, onClick, launcher }, ref) => 
   </a>
 ));
 
+CustomToggle.displayName = 'CustomToggle';
+
 export default CustomToggle;

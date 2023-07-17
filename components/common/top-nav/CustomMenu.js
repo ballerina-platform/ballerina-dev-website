@@ -146,4 +146,6 @@ const CustomMenu = React.forwardRef(
     }
 );
 
+CustomMenu.displayName = 'CustomMenu';
+
 export default CustomMenu;

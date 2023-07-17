@@ -1,15 +1,14 @@
 # Specification: Ballerina GraphQL Library
 
-_Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
-_Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
-_Created_: 2022/01/06 \
-_Updated_: 2023/07/12 \
-_Edition_: Swan Lake \
-_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
+_Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar  
+_Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal  
+_Created_: 2022/01/06  
+_Updated_: 2023/05/18  
+_Edition_: Swan Lake  
 
 ## Introduction
 
-This is the specification for the GraphQL standard library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL standard library of the [Ballerina](https://ballerina.io)[ language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -77,102 +76,96 @@ The conforming implementation of the specification is released and included in t
    * 5.1 [@skip](#51-skip)
    * 5.2 [@include](#52-include)
    * 5.3 [@deprecated](#53-deprecated)
-6. [Errors](#6-errors)
-    * 6.1 [Error Detail Record](#61-error-detail-record)
-        * 6.1.1 [Message](#611-message)
-        * 6.1.2 [Locations](#612-locations)
-        * 6.1.3 [Path](#613-path)
-    * 6.2 [Service Error Handling](#62-service-error-handling)
-        * 6.2.1 [Returning Errors](#621-returning-errors)
-        * 6.2.2 [Returning Errors and Nil Values](#622-returning-errors-and-nil-values)
-        * 6.2.3 [The `graphql:__addError` Function](#623-the-graphql__adderror-function)
-    * 6.3 [Client Error Handling](#63-client-error-handling)
-        * 6.3.1 [Request Error](#631-request-error)
-            * 6.3.1.1 [HTTP Error](#6311-http-error)
-            * 6.3.1.2 [Invalid Document Error](#6312-invalid-document-error)
-        * 6.3.2 [Payload Binding Error](#632-payload-binding-error)
-7. [Annotations](#7-annotations)
-    * 7.1 [Service Configuration](#71-service-configuration)
-        * 7.1.1 [Max Query Depth](#711-max-query-depth)
-        * 7.1.2 [Auth Configurations](#712-auth-configurations)
-        * 7.1.3 [Context Initializer Function](#713-context-initializer-function)
-        * 7.1.4 [CORS Configurations](#714-cors-configurations)
-        * 7.1.5 [GraphiQL Configurations](#715-graphiql-configurations)
-        * 7.1.6 [Service Interceptors](#716-service-interceptors)
-        * 7.1.7 [Introspection Configurations](#717-introspection-configurations)
-        * 7.1.8 [Constraint Configurations](#718-constraint-configurations)
-    * 7.2 [Resource Configuration](#72-resource-configuration)
-        * 7.2.1 [Field Interceptors](#721-field-interceptors)
-    * 7.3 [Interceptor Configuration](#73-interceptor-configuration)
-        * 7.3.1 [Scope Configuration](#731-scope-configuration)
-8. [Security](#8-security)
-    * 8.1 [Service Authentication and Authorization](#81-service-authentication-and-authorization)
-        * 8.1.1 [Declarative Approach](#811-declarative-approach)
-            * 8.1.1.1 [Basic Authentication - File User Store](#8111-basic-authentication---file-user-store)
-            * 8.1.1.2 [Basic Authentication - LDAP User Store](#8112-basic-authentication---ldap-user-store)
-            * 8.1.1.3 [JWT Authentication](#8113-jwt-authentication)
-            * 8.1.1.4 [OAuth2](#8114-oauth2)
-        * 8.1.2 [Imperative Approach](#812-imperative-approach)
-            * 8.1.2.1 [Basic Authentication - File User Store](#8121-basic-authentication---file-user-store)
-            * 8.1.2.2 [Basic Authentication - LDAP User Store](#8122-basic-authentication---ldap-user-store)
-            * 8.1.2.3 [JWT Authentication](#8123-jwt-authentication)
-            * 8.1.2.4 [OAuth2](#8124-oauth2)
-    * 8.2 [Client Authentication and Authorization](#82-client-authentication-and-authorization)
-        * 8.2.1. [Basic Authentication](#821-basic-authentication)
-        * 8.2.2. [Bearer Token Authentication](#822-bearer-token-authentication)
-        * 8.2.3. [Self-Signed JWT Authentication](#823-self-signed-jwt-authentication)
-        * 8.2.4. [OAuth2](#824-oauth2)
-            * 8.2.4.1 [Client Credentials Grant Type](#8241-client-credentials-grant-type)
-            * 8.2.4.2 [Password Grant Type](#8242-password-grant-type)
-            * 8.2.4.3 [Refresh Token Grant Type](#8243-refresh-token-grant-type)
-            * 8.2.4.4 [JWT Bearer Grant Type](#8244-jwt-bearer-grant-type)
-    * 8.3 [SSL/TLS and Mutual SSL](#83-ssltls-and-mutual-ssl)
-        * 8.3.1 [Listener](#831-listener)
-            * 8.3.1.1 [SSL/TLS](#8311-ssltls)
-            * 8.3.1.2 [Mutual SSL](#8312-mutual-ssl)
-        * 8.3.2 [Client](#832-client)
-            * 8.3.2.1 [SSL/TLS](#8321-ssltls)
-            * 8.3.2.2 [Mutual SSL](#8322-mutual-ssl)
-9. [Tools](#9-tools)
-    * 9.1 [GraphiQL Client](#91-graphiql-client)
-10. [Advanced Features](#10-advanced-features)
-    * 10.1 [Context Object](#101-context-object)
-        * 10.1.1 [Context Methods](#1011-context-methods)
-            * 10.1.1.1 [Set Attribute in Context](#10111-set-attribute-in-context)
-            * 10.1.1.2 [Get Context Attribute](#10112-get-attribute-from-context)
-            * 10.1.1.3 [Remove Attribute from Context](#10113-remove-attribute-from-context)
-        * 10.1.2 [Accessing the Context](#1012-accessing-the-context-object)
-        * 10.1.3 [Resolving Field Value](#1013-resolving-field-value)
-    * 10.2 [Field Object](#102-field-object)
-        * 10.2.1 [Field Object Methods](#1021-field-object-methods)
-            * 10.2.1.1 [Get Field Name](#10211-get-field-name)
-            * 10.2.1.2 [Get Field Alias](#10212-get-field-alias)
-            * 10.2.1.3 [Get Field Path](#10213-get-field-path)
-            * 10.2.1.4 [Get Subfield Names](#10214-get-subfield-names)
-            * 10.2.1.5 [Get Field Type](#10215-get-field-type)
-            * 10.2.1.6 [Get Subfields](#10216-get-subfields)
-            * 10.2.1.7 [Get Field Location](#10217-get-field-location)
-        * 10.2.2 [Accessing the Field Object](#1022-accessing-the-field-object)
-    * 10.3 [Interceptors](#103-interceptors)
-        * 10.3.1 [Interceptor Service Object](#1031-interceptor-service-object)
-        * 10.3.2 [Writing an Interceptor](#1032-writing-an-interceptor)
-        * 10.3.3 [Execution](#1033-execution)
-            * 10.3.3.1 [Service Interceptors](#10331-service-interceptors)
-            * 10.3.3.2 [Field Interceptors](#10332-field-interceptors)
-    * 10.4 [File Upload](#104-file-upload)
-        * 10.4.1 [File Upload Protocol](#1041-file-upload-protocol)
-        * 10.4.2 [`graphql:Upload` Type](#1042-the-graphqlupload-type)
-            * 10.4.2.1 [`fileName` Field](#10421-the-filename-field)
-            * 10.4.2.2 [`mimeType` Field](#10422-the-mimetype-field)
-            * 10.4.2.3 [`encoding` Field](#10423-the-encoding-field)
-            * 10.4.2.4 [`byteStream` Field](#10424-the-bytestream-field)
-        * 10.4.3 [File Upload Service](#1043-file-upload-service)
-            * 10.4.3.1 [File Upload Resolver](#10431-file-upload-resolver)
-    * 10.5 [Federation](#105-federation)
-        * 10.5.1 [Federated Subgraph](#1051-federated-subgraph)
-            * 10.5.1.1 [The `@subgraph:Subgraph` Annotation](#10511-the-subgraphsubgraph-annotation)
-            * 10.5.1.2 [The `@subgraph:Entity` Annotation](#10512-the-subgraphentity-annotation)
-            * 10.5.1.3 [The `subgraph:ReferenceResolver` Function Type](#10513-the-subgraphreferenceresolver-function-type)
+6. [File Upload](#6-file-upload)
+    * 6.1 [File Upload Endpoint](#61-file-upload-endpoint)
+        * 6.1.1 [`graphql:Upload` Type](#611-graphqlupload-type)
+            * 6.1.1.1 [`fileName` Field](#6111-filename-field)
+            * 6.1.1.2 [`mimeType` Field](#6112-mimetype-field)
+            * 6.1.1.3 [`encoding` Field](#6113-encoding-field)
+            * 6.1.1.4 [`byteStream` Field](#6114-bytestream-field)
+        * 6.1.2 [Writing a File Upload Resolver](#612-writing-a-file-upload-resolver)
+7. [Errors](#7-errors)
+    * 7.1 [Error Detail Record](#71-error-detail-record)
+        * 7.1.1 [Message](#711-message)
+        * 7.1.2 [Locations](#712-locations)
+        * 7.1.3 [Path](#713-path)
+    * 7.2 [Service Error Handling](#72-service-error-handling)
+        * 7.2.1 [Returning Errors and Nil Values](#721-returning-errors-and-nil-values)
+    * 7.3 [Client Error Handling](#73-client-error-handling)
+        * 7.3.1 [Request Error](#731-request-error)
+            * 7.3.1.1 [HTTP Error](#7311-http-error)
+            * 7.3.1.2 [Invalid Document Error](#7312-invalid-document-error)
+        * 7.3.2 [Payload Binding Error](#732-payload-binding-error)
+8. [Context Object](#8-context-object)
+    * 8.1 [Set Attribute in Context](#81-set-attribute-in-context)
+    * 8.2 [Get Context Attribute](#82-get-context-attribute)
+    * 8.3 [Remove Attribute from Context](#83-remove-attribute-from-context)
+    * 8.4 [Accessing the Context](#84-accessing-the-context-object)
+    * 8.5 [Resolving Field Value](#85-resolving-field-value)
+9. [Field Object](#9-field-object)
+    * 9.1 [Field Object Methods](#91-field-object-methods)
+        * 9.1.1 [Get Field Name](#911-get-field-name)
+        * 9.1.2 [Get Field Alias](#912-get-field-alias)
+        * 9.1.3 [Get Field Path](#913-get-field-path)
+        * 9.1.4 [Get Subfield Names](#914-get-subfield-names)
+        * 9.1.5 [Get Field Type](#915-get-field-type)
+        * 9.1.6 [Get Subfields](#916-get-subfields)
+    * 9.2 [Accessing the Field Object](#92-accessing-the-field-object)
+10. [Annotations](#10-annotations)
+    * 10.1 [Service Configuration](#101-service-configuration)
+        * 10.1.1 [Max Query Depth](#1011-max-query-depth)
+        * 10.1.2 [Auth Configurations](#1012-auth-configurations)
+        * 10.1.3 [Context Initializer Function](#1013-context-initializer-function)
+        * 10.1.4 [CORS Configurations](#1014-cors-configurations)
+        * 10.1.5 [GraphiQL Configurations](#1015-graphiql-configurations)
+        * 10.1.6 [Service Interceptors](#1016-service-interceptors)
+        * 10.1.7 [Introspection Configurations](#1017-introspection-configurations)
+        * 10.1.8 [Constraint Configurations](#1018-constraint-configurations)
+    * 10.2 [Resource Configuration](#102-resource-configuration)
+        * 10.2.1 [Field Interceptors](#1021-field-interceptors)
+    * 10.3 [Interceptor Configuration](#103-interceptor-configuration)
+        * 10.3.1 [Scope Configuration](#1031-scope-configuration)
+11. [Interceptors](#11-interceptors)
+    * 11.1 [Interceptor Service Object](#111-interceptor-service-object)
+    * 11.2 [Writing an Interceptor](#112-writing-an-interceptor)
+    * 11.3 [Execution](#113-execution)
+        * 11.3.1 [Service Interceptors](#1131-service-interceptors)
+        * 11.3.2 [Field Interceptors](#1132-field-interceptors)
+12. [Security](#12-security)
+    * 12.1 [Service Authentication and Authorization](#121-service-authentication-and-authorization)
+        * 12.1.1 [Declarative Approach](#1211-declarative-approach)
+            * 12.1.1.1 [Basic Authentication - File User Store](#12111-basic-authentication---file-user-store)
+            * 12.1.1.2 [Basic Authentication - LDAP User Store](#12112-basic-authentication---ldap-user-store)
+            * 12.1.1.3 [JWT Authentication](#12113-jwt-authentication)
+            * 12.1.1.4 [OAuth2](#12114-oauth2)
+        * 12.1.2 [Imperative Approach](#1212-imperative-approach)
+            * 12.1.2.1 [Basic Authentication - File User Store](#12121-basic-authentication---file-user-store)
+            * 12.1.2.2 [Basic Authentication - LDAP User Store](#12122-basic-authentication---ldap-user-store)
+            * 12.1.2.3 [JWT Authentication](#12123-jwt-authentication)
+            * 12.1.2.4 [OAuth2](#12124-oauth2)
+    * 12.2 [Client Authentication and Authorization](#122-client-authentication-and-authorization)
+        * 12.2.1. [Basic Authentication](#1221-basic-authentication)
+        * 12.2.2. [Bearer Token Authentication](#1222-bearer-token-authentication)
+        * 12.2.3. [Self-Signed JWT Authentication](#1223-self-signed-jwt-authentication)
+        * 12.2.4. [OAuth2](#1224-oauth2)
+            * 12.2.4.1 [Client Credentials Grant Type](#12241-client-credentials-grant-type)
+            * 12.2.4.2 [Password Grant Type](#12242-password-grant-type)
+            * 12.2.4.3 [Refresh Token Grant Type](#12243-refresh-token-grant-type)
+            * 12.2.4.4 [JWT Bearer Grant Type](#12244-jwt-bearer-grant-type)
+    * 12.3 [SSL/TLS and Mutual SSL](#123-ssltls-and-mutual-ssl)
+        * 12.3.1 [Listener](#1231-listener)
+            * 12.3.1.1 [SSL/TLS](#12311-ssltls)
+            * 12.3.1.2 [Mutual SSL](#12312-mutual-ssl)
+        * 12.3.2 [Client](#1232-client)
+            * 12.3.2.1 [SSL/TLS](#12321-ssltls)
+            * 12.3.2.2 [Mutual SSL](#12322-mutual-ssl)
+13. [Federation](#13-federation)
+    * 13.1 [Federated Subgraph](#131-federated-subgraph)
+        * 13.1.1 [The `@subgraph:Subgraph` Annotation](#1311-the-graphqlsubgraph-annotation)
+        * 13.1.2 [The `@subgraph:Entity` Annotation](#1312-the-graphqlentity-annotation)
+        * 13.1.3 [The `subgraph:ReferenceResolver`](#1311-the-referenceresolver)
+14. [Tools](#14-tools)
+    * 14.1 [GraphiQL Client](#141-graphiql-client)
 
 ## 1. Overview
 
@@ -204,7 +197,7 @@ In Ballerina, WebSocket is used as the communication protocol for GraphQL subscr
 
 A standard response includes JSON fields for `type`, `id`, and `payload`. The `type` field specifies the message type of the response. The `id` field is used to uniquely identify the client. The `payload` field includes the GraphQL response returned from the GraphQL engine. If a subscription request is sent without the `graphql-transport-ws` sub-protocol then the WebSocket handshake fails with an error.
 
->**Note:** The Ballerina GraphQL subscription includes a default implementation for sending `ping` messages over a graphql-ws connection, and periodically checking for `pong` messages in response. By default, these messages are sent and checked every 15 seconds. If a `pong` message is not received within this time frame, the service will close the WebSocket connection.
+>**Note:** The Ballerina GraphQL subscription includes a default implementation for sending `ping` messages over a graphql-ws connection, and periodically checking for `pong` messages in response. By default, these messages are sent and checked every 15 seconds. If a `pong` message is not received within this time frame, the service will close the WebSocket connection. 
 
 A Ballerina GraphQL listener can be declared as described below, honoring the Ballerina generic [listener declaration](https://ballerina.io/spec/lang/2021R1/#section_9.2.1).
 
@@ -312,7 +305,7 @@ public function main() returns error? {
 
 #### 2.2.5 Service Configuration
 
-The `graphql:ServiceConfiguration` annotation can be used to provide additional configurations to the GraphQL service. These configurations are described in the [Service Configuration](#71-service-configuration) section.
+The `graphql:ServiceConfiguration` annotation can be used to provide additional configurations to the GraphQL service. These configurations are described in the [Service Configuration](#101-service-configuration) section.
 
 ### 2.3 Parser
 The Ballerina GraphQL parser is responsible for parsing the incoming GraphQL documents. This will parse each document and then report any errors. If the document is valid, it will return a syntax tree.
@@ -358,7 +351,7 @@ When sending a GraphQL request to a GraphQL server using the Ballerina GraphQL c
 
 >**Note:** It is recommended to use the `graphql:GenericResponseWithErrors` or any subtype of it when retrieving a response using the `graphql:Client` using the `execute` method.
 
-When defining the expected type, nullable fields should be defined as a union of the field type and nil (`()`). A [Payload Binding Error](#632-payload-binding-error) can occur otherwise.
+When defining the expected type, nullable fields should be defined as a union of the field type and nil (`()`). A [Payload Binding Error](#732-payload-binding-error) can occur otherwise.
 
 ###### Example: Handle Response with Data Binding
 
@@ -384,7 +377,7 @@ public function main() returns error? {
 }
 ```
 
-The `execute` method can return errors when retrieving a response from a GraphQL API. For information about handling errors, check the section [Client Error Handling](#63-client-error-handling)
+The `execute` method can return errors when retrieving a response from a GraphQL API. For information about handling errors, check the section [Client Error Handling](#73-client-error-handling)
 
 #### 2.5.4 Client Configuration
 
@@ -660,33 +653,20 @@ The `String` type is represented using the `string` type in Ballerina. It can re
 The `Boolean` type is represented using the `boolean` type in Ballerina.
 
 #### 4.1.5 ID
+The `ID` type is represented using the `@graphql:ID` annotation in Ballerina.
 
-The `ID` scalar type represents a unique identifier, often used to re-fetch an object or as the key for a cache. The `ID` type is serialized in the same way as a `String`; however, it is not intended to be human-readable.
-
-In Ballerina, the `ID` type is represented using the [`@graphql:ID` annotation](#74-id-annotation). The following Ballerina types are supported as `ID` types.
-
-* `int`
-* `string`
-* `float`
-* `decimal`
-* `uuid:Uuid` (From the `ballerina/uuid` module)
-
-When the `@graphql:ID` annotation is used, the generated schema will show the field type as `ID`, regardless of the actual type of the field.
-
->**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
-
-###### Example: Scalar type ID
+###### Example: Scalar type ID 
 ```ballerina
 service on new graphql:Listener(9090) {
 
     resource function get profileById(@graphql:ID int id) returns Profile {
         // ...
     }
-
+    
     resource function get studentByStringId(@graphql:ID string id) returns Student {
         // ...
     }
-
+    
     resource function get studentByUuidId(@graphql:ID uuid:Uuid id) returns Student {
         // ...
     }
@@ -1183,41 +1163,137 @@ public enum Status {
 
 In the above service, the generated schema will indicate that the `hello` field of the `Query` type and the `PRIVATE_PARTY` value of the `Status` enum type are deprecated, with the reasons provided in the doc comments. (The reason will be the line after the `# # Deprecated` line.)
 
+## 6. File Upload
+
+A Ballerina GraphQL service can be used to upload files. This section describes how file uploading in Ballerina GraphQL works.
+
+### 6.1 File Upload Endpoint
+
+A Ballerina GraphQL service can have a field inside the `Mutation` type to handle file uploads. To upload a file, the `graphql:Upload` type can be used as an input.
+
+#### 6.1.1 `graphql:Upload` Type
+
+The `graphql:Upload` type is a record type that consists of the following fields.
+
+##### 6.1.1.1 `fileName` Field
+
+This field contains the name of the file that is being uploaded. The type of field is `string``.
+
+##### 6.1.1.2 `mimeType` Field
+
+This field contains the mime type of the file being uploaded. The type of field is `string`.
+
+##### 6.1.1.3 `encoding` Field
+
+This field contains the encoding used to serialize the file. The type of field is `string`.
+
+##### 6.1.1.4 `byteStream` Field
+
+This field contains the serialized byte stream for the uploaded file. The type of the field is `stream<byte[], io:Error?>`.
+
+##### 6.1.2 Writing a File Upload Resolver
+
+Uploading a file is considered a mutation operation. Therefore, `remote` methods are used to implement file upload.
+
+###### Example: File Upload Resolver
+
+```ballerina
+service on new graphql:Listener(9090) {
+    remote function fileUpload(graphql:Upload fileUpload) returns boolean {
+        string fileName = fileUpload.fileName;
+        string mimeType = fileUpload.mimeType;
+        string encoding = fileUpload.encoding;
+        stream<byte[], io:Error?> byteStream = fileUpload.byteStream;
+
+        // ...
+    }
+}
+```
+
+###### Example: Multiple File Upload Resolver
+
+```ballerina
+service on new graphql:Listener(9090) {
+    remote function fileUpload(graphql:Upload[] fileUploads) returns boolean {
+        foreach graphql:Upload fileUpload in fileUploads {
+            string fileName = fileUpload.fileName;
+            string mimeType = fileUpload.mimeType;
+            string encoding = fileUpload.encoding;
+            stream<byte[], io:Error?> byteStream = fileUpload.byteStream;
+
+            // ...
+        }
+    }
+}
+```
 
 
-## 6. Errors
+### 6.2 Sending a File Upload Request
 
-### 6.1 Error Detail Record
+To upload a file, the GraphQL endpoint requires a multipart request. The multipart request follows the [GraphQL Multipart Form Request Specification](https://github.com/jaydenseric/graphql-multipart-request-spec).
+
+Following are the required, ordered fields that must be present in a multipart request to upload a file to a Ballerina GraphQL API.
+
+#### 6.2.1 `Operations` Field
+
+This field contains the `JSON-encoded` body of standard GraphQL POST requests where all the variable values storing files must be `null`.
+
+#### 6.2.2 `Map` Field
+
+This field contains the `JSON-encoded` map of the path(s) of where the file(s) occurred in the operations.
+
+#### 6.2.3 File Fields
+
+Each file extracted from the `operations` object with a unique name must be added as a field.
+
+###### Example: Single File Upload Request
+
+```shell
+curl localhost:9090/graphql \
+    -F operations='{ "query": "mutation($file: Upload!) { fileUpload(file: $file) { link } }", "variables": { "file": null } }' \
+    -F map='{ "0": ["variables.file"] }' \
+    -F 0=@file1.png
+```
+
+###### Example: Multiple File Upload Request
+
+```shell
+curl localhost:9090/graphql \
+    -F operations='{ "query": "mutation($file: [Upload!]) { filesUpload(file: $file) { link } }", "variables": { "file": [null, null] } }' \
+    -F map='{ "0": ["variables.file.0"], "1": ["variables.file.1"]}' \
+    -F 0=@file1.png
+    -F 1=@file2.png
+```
+
+## 7. Errors
+
+### 7.1 Error Detail Record
 
 The `graphql:ErrorDetail` is used to describe an error (according to the [GraphQL specification](https://spec.graphql.org/October2021/#sec-Errors)) occurred in a GraphQL response. It contains the following fields.
 
-#### 6.1.1 Message
+#### 7.1.1 Message
 
 The `message` contains the error message from the particular error.
 
-#### 6.1.2 Locations
+#### 7.1.2 Locations
 
 The `locations` field contains the locations of the GraphQL document associated with the error. There can be cases where more than one location can cause the error, therefore, this field is an array of locations. There are also cases where a location can not be associated with an error, therefore, this field is optional.
 
-##### 6.1.3 Path
+##### 7.1.3 Path
 
 The `path` field is an array of `Int` and `String`, that points to a particular path of the document tree associated with the error. This field will have a value only when a particular error has occurred at the execution phase. Therefore, this field is optional.
 
-##### 6.1.4 Extensions
+##### 7.1.4 Extensions
 
 The `extensions` field is an optional field containing a map with `string` keys. This can be used to send additional metadata related to the error.
 
-### 6.2 Service Error Handling
+### 7.2 Service Error Handling
 
-A GraphQL service can return errors so that the client can handle them. The Ballerina errors types are used to return errors to the GraphQL client. The Ballerina GraphQL service will convert the Ballerina errors to GraphQL errors and send them to the client.
-
-#### 6.2.1 Returning Errors
-
-A Ballerina `resource` or `remote` method representing a GraphQL object field can return an error. When an error is returned, it will be added to the `errors` field in the GraphQL response. The shape of the error object is described in the [Error Detail Record](#61-error-detail-record) section.
+A Ballerina `resource` or `remote` method representing a GraphQL object field can return an error. When an error is returned, it will be added to the `errors` field in the GraphQL response. The shape of the error object is described in the [Error Detail Record](#71-error-detail-record) section.
 
 When an error is returned from a GraphQL resolver, the error message is added as the message of the error, and the location of the document that caused the error will be added to the `locations` field. The path of the error (from the root of the document) will be added as the path in the error response. Currently, the Ballerina GraphQL service __will not add__ any metadata in the `extensions` field.
 
-If a resolver execution results in an error, the stacktrace of the error will be logged to the `stderr` of the server.
+If a resolver execution results in an error, the stacktrace of the error will be logged to the stderr of the server.
 
 ###### Example: Returning Errors
 ```ballerina
@@ -1263,9 +1339,9 @@ The result of the above document is the following.
 }
 ```
 
-#### 6.2.2 Returning Errors and Nil Values
+#### 7.2.1 Returning Errors and Nil Values
 
-If a `resource` or `remote` method representing a field of a GraphQL object returns an `error`, the corresponding field value under the `data` field will be `null` in the response, in addition to adding an entry in the `errors` field. In this case, if the [field type is `NON_NULL`](#321-nonnull-type), the `null` value will be propagated to the upper levels until the `null` value is allowed. This might cause the whole `data` field to become `null`.
+If a `resource` or `remote` method representing a field of a GraphQL object returns an `error`, the corresponding field value under the `data` field will be `null` in the response, in addition to adding an entry in the `errors` field. In this case, if the [field type is `NON_NULL`](#321-non_null-type), the `null` value will be propagated to the upper levels until the `null` value is allowed. This might cause the whole `data` field to become `null`.
 
 To avoid this, a method can optionally include `nil` type (denoted by `()` in Ballerina). When the method return type includes `nil`, the response is allowed to add `null` as the field value, thus it stops propagating the `null` value to upper levels.
 
@@ -1341,38 +1417,7 @@ Similarly, the `age` field of the `Profile` object can return an `error` too. Bu
 }
 ```
 
-#### 6.2.3 The `graphql:__addError` Function
-
-The `graphql:__addError` function can be used to add a custom error to the response. This function accepts two parameters.
-
-1. [`graphql:Context`](#101-context-object) - The context of the GraphQL request.
-2. [`graphql:ErrorDetail`](#61-error-detail-record) - The details of the error.
-
->**Note:** Using the `graphql:__addError` function is not recommended until it is absolutely necessary. It is recommended to return an error from the `resource`/`remote` method instead.
-
-###### Example: Using the `graphql:__addError` Function
-
-```ballerina
-service on new graphql:Listener(9090) {
-    resource function get greeting(graphql:Context context, graphql:Field 'field, string name) returns string? {
-        if name == "" {
-            graphql:ErrorDetail errorDetail = {
-                message: "Invalid name provided",
-                locations: ['field.getLocation()],
-                path: 'field.getPath(),
-                extensions: {
-                    code: "INVALID_NAME"
-                }
-            };
-            graphql:__addError(context, errorDetail);
-            return;
-        }
-        return string `Hello, ${name}!`;
-    }
-}
-```
-
-### 6.3 Client Error Handling
+### 7.3 Client Error Handling
 
 The response returned from the `execute` method of the GraphQL client can include errors. This section describes how to handle those errors on the Ballerina client side. All the errors that occurred during a GraphQL client operation are categorized as `graphql:ClientError` error type. All the other errors are subtypes of this error type.
 
@@ -1389,14 +1434,14 @@ if response is graphql:ClientError {
 
 The above example shows how to capture the `graphql:ClientError`. This way all the errors that are returned are treated the same.
 
-#### 6.3.1 Request Error
+#### 7.3.1 Request Error
 
 There can be errors occurred during sending and validating a GraphQL request. These errors are categorized under the `graphql:RequestError` error type, which is a subtype of the `graphql:ClientError`.
 
 ###### Example: Handle Request Error
 Above example shows how the `graphql:RequestError`s are handled separately.
 
-##### 6.3.1.1 HTTP Error
+##### 7.3.1.1 HTTP Error
 
 When a network error is occurred while sending a request to the GraphQL API, those errors are captured by `graphql:HttpError` error type. These errors can be related to any HTTP level error including invalid URL, network-level failures, timeouts, etc. When the HTTP response has a body, it can be accessed by the `body` field of the details of the error.
 
@@ -1415,7 +1460,7 @@ if response is graphql:HttpError {
 
 The above example shows how the `graphql:HttpError`s are handled separately.
 
-##### 6.3.1.2 Invalid Document Error
+##### 7.3.1.2 Invalid Document Error
 
 When the document sent to the GraphQL API is invalid, a validation error will be returned. These errors are captured by `graphql:InvalidDocumentError` error type. The `ErrorDetail` records are added to the `errors` field of the error detail so the details of the error can be retrieved.
 
@@ -1434,11 +1479,11 @@ if response is graphql:InvalidDocumentError {
 
 The above example shows how the `graphql:InvalidDocumentError`s are handled separately.
 
-##### 6.3.2 Payload Binding Error
+##### 7.3.2 Payload Binding Error
 
 As described in the section [Client Data Binding](#253-client-data-binding), the response can be data-bound. When the data binding fails, a `graphql:PayloadBindingError` will be returned. This error can occur due to a mismatch between the shape of the expected type and the actual response from the GraphQL API. The `ErrorDetail` records are added to the `errors` field of the error detail so the details of the error can be retrieved.
 
-###### Example: Handle Payload Binding Error
+##### Example: Handle Payload Binding Error
 
 ```ballerina
 graphql:Client graphqlClient = check new ("localhost:9090/graphql");
@@ -1497,1058 +1542,13 @@ function handleErrors(graphql:ClientError clientError) {
 }
 ```
 
-## 7. Annotations
-
-### 7.1 Service Configuration
-
-The configurations stated in the `graphql:ServiceConfig`, are used to change the behavior of a particular GraphQL service. These configurations are applied to the service.
-
-This annotation consists of the following fields.
-
-#### 7.1.1 Max Query Depth
-
-The `maxQueryDepth` field is used to provide a limit on the depth of an incoming request. When this is set, every incoming request is validated by checking the depth of the query. This includes the depths of the spread fragments. If a particular GraphQL document exceeds the maximum query depth, the request is invalidated and the server will respond with an error.
-
-###### Example: Setting Max Query Depth
-
-```ballerina
-@graphql:ServiceConfig {
-    maxQueryDepth: 3
-}
-service on new graphql:Listener(9090) {
-
-}
-```
-
-In the above example, when a document has a depth of more than 3, the request will be failed.
-
-
-###### Example: Invalid Document with Exceeding Max Query Depth
-
-```graphql
-{
-    profile {
-        friend {
-            friend {
-                name # Depth is 4
-            }
-        }
-    }
-}
-```
-
-This will result in the following response.
-
-```json
-{
-  "error": {
-    "errors": [
-      {
-        "message": "Query has depth of 4, which exceeds max depth of 3",
-        "locations": [
-          {
-            "line": 1,
-            "column": 1
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-#### 7.1.2 Auth Configurations
-
-The `auth` field is used to provide configurations related to authentication and authorization for the GraphQL API. The [Security](#8-security) section will explain this configuration in detail.
-
-
-#### 7.1.3 Context Initializer Function
-
-The `contextInit` field is used to provide a method to initialize the [`graphql:Context` object](#101-context-object). It is called per each request to create a `graphql:Context` object.
-
-The context initializer function can return an error if the validation is failed. In such cases, the request will not proceed, and an error will be returned immediately.
-
-Following is the function template for the `contextInit` function.
-
-```ballerina
-isolated function (http:RequestContext requestContext, http:Request request) returns graphql:Context|error {}
-```
-
-When `contextInit` is not provided, a default function will be set as the value of the field. The default function definition is below.
-
-```ballerina
-isolated function initDefaultContext(http:RequestContext requestContext, http:Request request) returns Context|error {
-    return new;
-}
-```
-
-The `contextInit` function can be provided inline, or as a function pointer.
-
-###### Example: Provide Context Initializer Function Inline
-
-```ballerina
-@graphql:ServiceConfig {
-    contextInit: isolated function(http:RequestContext requestContext, http:Request request) returns graphql:Context|error {
-        // ...
-    }
-}
-```
-
-###### Example: Provide Context Initializer Function as a Function Pointer
-
-```ballerina
-isolated function initContext(http:RequestContext requestContext, http:Request request) returns graphql:Context|error {
-    // ...
-}
-
-@graphql:ServiceConfig {
-    contextInit: initContext
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
->**Note:** The init function has `http:RequestContext` and `http:Request` objects as inputs. These objects are passed into the function when a request is received. The HTTP headers and the request context can be used to perform additional validations to a request before proceeding to the GraphQL validations. This can be useful to validate the HTTP request before performing the GraphQL operations. The [Imperative Approach in Security](#812-imperative-approach) section will discuss this in detail.
-
-#### 7.1.4 CORS Configurations
-
-The `cors` field is used to configure CORS configurations for the GraphQL service.
-
-###### Example: CORS Configurations
-
-```ballerina
-@graphql:ServiceConfig {
-    cors: {
-        allowOrigins: ["http://www.wso2.com", "http://www.ballerina.io"],
-        allowCredentials: false,
-        allowHeaders: ["CORELATION_ID"],
-        exposeHeaders: ["X-CUSTOM-HEADER"],
-        maxAge: 84900
-    }
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
-#### 7.1.5 GraphiQL Configurations
-
-The `graphiql` field is used to provide the GraphiQL client configuration to enable the GraphiQL client for a given GraphQL service.
-
-###### Example: GraphiQL Configurations
-
-```ballerina
-@graphql:ServiceConfig {
-    graphiql: {
-        enabled: true,
-        path: "/ballerina/graphiql"
-    }
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
->**Note:** The field enabled accepts a `boolean` that denotes whether the client is enabled or not. By default, it has been set to `false`. The optional field `path` accepts a valid `string` for the GraphiQL service. If the path is not given in the configuration, `/graphiql` is set as the default path.
-
-#### 7.1.6 Service Interceptors
-
-The `interceptors` field is used to provide the service interceptors.
-
-###### Example: Single Service Interceptor
-
-```ballerina
-@graphql:ServiceConfig {
-    interceptors: new Interceptor1()
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
-###### Example: Array of Service Interceptors
-
-```ballerina
-@graphql:ServiceConfig {
-    interceptors: [new Interceptor1(), new Interceptor2()]
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
-#### 7.1.7 Introspection Configurations
-
-The `introspection` field is used to enable or disable the GraphQL introspection query support. If the introspection query support is disabled, the GraphQL service won't allow the execution of the `__schema` and the `__type` introspection queries. However, the `__typename` introspection will work even if the introspection query support is disabled. By default, introspection is enabled for Ballerina GraphQL services.
-
-###### Example: Disable Introspection Query Support
-
-```ballerina
-@graphql:ServiceConfig {
-    introspection: false
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
->**Note:** It is recommended to disable introspection in production environments until it is required.
-
-#### 7.1.8 Constraint Configurations
-
-The `validation` field is used to enable or disable the validation of constraints defined on GraphQL input types. If constraint validation support is enabled, the GraphQL service verifies all constraints set on the GraphQL inputs when executing the resolver. By default, constraint validation is enabled for Ballerina GraphQL services.
-
-###### Example: Disable Constraint Validation Support
-
-```ballerina
-@graphql:ServiceConfig {
-    validation: false
-}
-service on new graphql:Listener(9090) {
-    // ...
-}
-```
-
-### 7.2 Resource Configuration
-
-The configurations stated in the `graphql:ResourceConfig`, are used to change the behavior of a particular GraphQL resolver. These configurations are applied to the resolver functions.
-
-This annotation consists of the following field.
-
-#### 7.2.1 Field Interceptors
-
-The `interceptors` field is used to provide the field interceptors.
-
-###### Example: Single Field Interceptor
-
-```ballerina
-service on new graphql:Listener(9090) {
-
-    @graphql:ResourceConfig {
-        interceptors: new Interceptor1()
-    }
-    resource function get name(int id) returns string {
-      // ...
-   }
-}
-```
-
-###### Example: Array of Field Interceptors
-
-```ballerina
-service on new graphql:Listener(9090) {
-
-    @graphql:ResourceConfig {
-        interceptors: [new Interceptor1(), new Interceptor2()]
-    }
-    resource function get name(int id) returns string {
-      // ...
-   }
-}
-```
-
-### 7.3 Interceptor Configuration
-
-The configurations stated in the `graphql:InterceptorConfig`, are used to change the behavior of a particular GraphQL interceptor.
-
-#### 7.3.1 Scope Configuration
-
-The field `global` is used to configure the scope of the interceptor. If the `global` field is set as `true`, the interceptor will be applied to each field and subfield of the service. If the flag is set as `false`, the interceptor will be applied top level fields of the Query, Mutation and Subscription types, but not to the subfields of them. By default, the `global` flag is set as `true`.
-
->**Note:** The scope configuration is applied only to the GraphQL [service interceptors](#10331-service-interceptors).
-
-###### Example: Scope Configuration
-
-```ballerina
-@graphql:InterceptorConfig {
-    global:false
-}
-readonly service class LogInterceptor {
-   *graphql:Interceptor;
-
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-        // ...
-    }
-}
-```
-
-### 7.4 ID Annotation
-
-The `graphql:ID` annotation is used to define the [GraphQL `ID` scalar type](#415-id). This annotation can be used to annotate a field of a GraphQL object type or a GraphQL input type.
-
-## 8. Security
-
-### 8.1 Service Authentication and Authorization
-
-There are two ways to enable authentication and authorization in Ballerina GraphQL service.
-
-1. Declarative approach
-2. Imperative approach
-
-#### 8.1.1 Declarative Approach
-
-This is also known as the configuration-driven approach, which is used for simple use cases, where users have to provide a set of configurations and do not need to be worried more about how authentication and authorization work. The user does not have full control over the configuration-driven approach.
-
-The service configurations are used to define the authentication and authorization configurations. Users can configure the configurations needed for different authentication schemes and configurations needed for authorizations of each authentication scheme. The configurations can be provided at the service level. The auth handler creation and request authentication/authorization is handled internally without user intervention. The requests that succeeded in authentication and/or authorization phases according to the configurations will be passed to the business logic layer.
-
-##### 8.1.1.1 Basic Authentication - File User Store
-
-A GraphQL service can be secured using [Basic Authentication with File User Store](https://github.com/ballerina-platform/module-ballerina-auth/blob/master/docs/spec/spec.md#311-file-user-store) and optionally by enforcing authorization.
-
-When configured, it validates the `Authorization` header in the HTTP request that contains the GraphQL document. This reads the data from a `TOML` file, that stores the usernames and passwords for authentication and the scopes for authorization.
-
-###### Example: Declarative Basic Authentication with File User Store
-
-```ballerina
-@graphql:ServiceConfig {
-    auth: [
-        {
-            fileUserStoreConfig: {},
-            scopes: "admin"
-        }
-    ]
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-The `Config.toml` file below will be used to define the users.
-
-```toml
-[[ballerina.auth.users]]
-username="alice"
-password="alice@123"
-scopes=["developer"]
-
-
-[[ballerina.auth.users]]
-username="bob"
-password="bob@123"
-scopes=["developer", "admin"]
-```
-
-##### 8.1.1.2 Basic Authentication - LDAP User Store
-
-A GraphQL service can be secured using [Basic Authentication with LDAP User Store](https://github.com/ballerina-platform/module-ballerina-auth/blob/master/docs/spec/spec.md#312-ldap-user-store) and optionally by enforcing authorization.
-
-When configured, it validates the `Authorization` header in the HTTP request that contains the GraphQL document. This reads the data from the configured LDAP, which stores the usernames and passwords for authentication and the scopes for authorization.
-
-###### Example: Declarative Basic Authentication with LDAP User Store
-
-```ballerina
-@graphql:ServiceConfig {
-    auth: [
-        {
-            ldapUserStoreConfig: {
-                domainName: "bcssl.lk",
-                connectionUrl: "ldap://localhost:389",
-                connectionName: "cn=admin,dc=bcssl,dc=lk",
-                connectionPassword: "bcssl123",
-                userSearchBase: "ou=Users,dc=bcssl,dc=lk",
-                userEntryObjectClass: "inetOrgPerson",
-                userNameAttribute: "uid",
-                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
-                userNameListFilter: "(objectClass=inetOrgPerson)",
-                groupSearchBase: ["ou=Groups,dc=bcssl,dc=lk"],
-                groupEntryObjectClass: "groupOfNames",
-                groupNameAttribute: "cn",
-                groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
-                groupNameListFilter: "(objectClass=groupOfNames)",
-                membershipAttribute: "member",
-                userRolesCacheEnabled: true,
-                connectionPoolingEnabled: false,
-                connectionTimeout: 5,
-                readTimeout: 60
-            },
-            scopes: "admin"
-        }
-    ]
-}
-service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-##### 8.1.1.3 JWT Authentication
-
-A GraphQL service can be secured using [JWT Authentication](https://github.com/ballerina-platform/module-ballerina-jwt/blob/master/docs/spec/spec.md) and by enforcing authorization optionally.
-
-When configured, it validates the JWT sent in the `Authorization` header in the HTTP request that contains the GraphQL document.
-
-###### Example: Declarative JWT Authentication
-
-```ballerina
-@graphql:ServiceConfig {
-    auth: [
-        {
-            jwtValidatorConfig: {
-                issuer: "wso2",
-                audience: "ballerina",
-                signatureConfig: {
-                    certFile: "path/to/public.crt"
-                },
-                scopeKey: "scp"
-            },
-            scopes: "admin"
-        }
-    ]
-}
-service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-##### 8.1.1.4 OAuth2
-
-A GraphQL service can be secured using [OAuth2](https://github.com/ballerina-platform/module-ballerina-oauth2/blob/master/docs/spec/spec.md) and by enforcing authorization optionally.
-
-When configured, it validates the OAuth2 token sent in the `Authorization` header in the HTTP request that contains the GraphQL document. This calls the configured OAuth2 introspection endpoint to validate.
-
-###### Example: Declarative Approach to Secure Service Using OAuth2
-
-```ballerina
-@graphql:ServiceConfig {
-    auth: [
-        {
-            oauth2IntrospectionConfig: {
-                url: "https://localhost:9445/oauth2/introspect",
-                tokenTypeHint: "access_token",
-                scopeKey: "scp",
-                clientConfig: {
-                    customHeaders: {"Authorization": "Basic YWRtaW46YWRtaW4="},
-                    secureSocket: {
-                        cert: "path/to/public.crt"
-                    }
-                }
-            },
-            scopes: "admin"
-        }
-    ]
-}
-service /graphql on securedEP {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-#### 8.1.2 Imperative Approach
-
-This is also known as the code-driven approach, which is used for advanced use cases, where users need to be worried more about how authentication and authorization work and need to have further customizations. The user has full control of the code-driven approach. The handler creation and authentication/authorization calls are made by the user at the business logic layer.
-
-The [`graphql:Context`](#101-context-object) object and the [`contextInit`](#713-context-initializer-function) method can be used to achieve this.
-
-##### 8.1.2.1 Basic Authentication - File User Store
-
-A file user store can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
-
-###### Example: Imperative Basic Authentication with File User Store
-
-```ballerina
-final http:ListenerFileUserStoreBasicAuthHandler handler = new;
-
-isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
-    string authorization = check request.getHeader("Authorization");
-    graphql:Context context = new;
-    context.set("Authorization", authorization);
-    return context;
-}
-
-readonly service class AuthInterceptor {
-    *graphql:Interceptor;
-
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
-        if authorization !is string {
-            return error("Failed to authorize");
-        }
-        auth:UserDetails|http:Unauthorized authn = handler.authenticate(authorization);
-        if authn is http:Unauthorized {
-            return error("Unauthorized");
-        }
-        http:Forbidden? authz = handler.authorize(authn, "admin");
-        if authz is http:Forbidden {
-            return error("Forbidden");
-        }
-        return context.resolve('field);
-    }
-}
-
-@graphql:ServiceConfig {
-    contextInit: contextInit,
-    interceptors: new AuthInterceptor()
-}
-service on new graphql:Listener(9090) {
-
-    resource function get greeting(graphql:Context context) returns string {
-        return "welcome";
-    }
-}
-```
-
-The `Config.toml` file below will be used to define the users.
-
-```toml
-[[ballerina.auth.users]]
-username="alice"
-password="alice@123"
-scopes=["developer"]
-
-
-[[ballerina.auth.users]]
-username="bob"
-password="bob@123"
-scopes=["developer", "admin"]
-```
-
-##### 8.1.2.2 Basic Authentication - LDAP User Store
-
-An LDAP user store can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
-
-###### Example: Imperative Basic Authentication with LDAP User Store
-
-```ballerina
-graphql:LdapUserStoreConfig config = {
-    domainName: "bcssl.lk",
-    connectionUrl: "ldap://localhost:389",
-    connectionName: "cn=admin,dc=bcssl,dc=lk",
-    connectionPassword: "bcssl123",
-    userSearchBase: "ou=Users,dc=bcssl,dc=lk",
-    userEntryObjectClass: "inetOrgPerson",
-    userNameAttribute: "uid",
-    userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
-    userNameListFilter: "(objectClass=inetOrgPerson)",
-    groupSearchBase: ["ou=Groups,dc=bcssl,dc=lk"],
-    groupEntryObjectClass: "groupOfNames",
-    groupNameAttribute: "cn",
-    groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
-    groupNameListFilter: "(objectClass=groupOfNames)",
-    membershipAttribute: "member",
-    userRolesCacheEnabled: true,
-    connectionPoolingEnabled: false,
-    connectionTimeout: 5,
-    readTimeout: 60
-};
-final http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
-
-isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
-    string authorization = check request.getHeader("Authorization");
-    graphql:Context context = new;
-    context.set("Authorization", authorization);
-    return context;
-}
-
-readonly service class AuthInterceptor {
-    *graphql:Interceptor;
-
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
-        if authorization !is string {
-            return error("Failed to authorize");
-        }
-        auth:UserDetails|http:Unauthorized authn = handler->authenticate(authorization);
-        if authn is http:Unauthorized {
-            return error("Unauthorized");
-        }
-        http:Forbidden? authz = handler->authorize(authn, "admin");
-        if authz is http:Forbidden {
-            return error("Forbidden");
-        }
-        return context.resolve('field);
-    }
-}
-
-@graphql:ServiceConfig {
-    contextInit: contextInit,
-    interceptors: new AuthInterceptor()
-}
-service on new graphql:Listener(9090) {
-
-    resource function get greeting(graphql:Context context) returns string {
-        return "welcome";
-    }
-}
-```
-
-##### 8.1.2.3 JWT Authentication
-
-A JWT configuration can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
-
-###### Example: Imperative JWT Authentication
-
-```ballerina
-graphql:JwtValidatorConfig config = {
-    issuer: "ballerina",
-    audience: ["wso2"],
-    signatureConfig: {
-        jwksConfig: {
-            url: "https://localhost:8080/jwks"
-        }
-    }
-};
-final http:ListenerJwtAuthHandler handler = new (config);
-
-isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
-    string authorization = check request.getHeader("Authorization");
-    graphql:Context context = new;
-    context.set("Authorization", authorization);
-    return context;
-}
-
-readonly service class AuthInterceptor {
-    *graphql:Interceptor;
-
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
-        if authorization !is string {
-            return error("Failed to authorize");
-        }
-        jwt:Payload|http:Unauthorized authn = handler.authenticate(authorization);
-        if authn is http:Unauthorized {
-            return error("Unauthorized");
-        }
-        if authn is jwt:Payload {
-            http:Forbidden? authz = handler.authorize(authn, "admin");
-            if authz is http:Forbidden {
-                return error("Forbidden");
-            }
-        }
-        return context.resolve('field);
-    }
-}
-
-@graphql:ServiceConfig {
-    contextInit: contextInit,
-    interceptors: new AuthInterceptor()
-}
-service on new graphql:Listener(9090) {
-
-    resource function get greeting(graphql:Context context) returns string {
-        return "welcome";
-    }
-}
-```
-
-##### 8.1.2.4 OAuth2
-
-An OAuth2 introspection endpoint can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
-
-###### Example: Imperative Approach to Secure Service Using OAuth2
-
-```ballerina
-graphql:OAuth2IntrospectionConfig config = {
-    url: "https://localhost:8080/oauth2/introspect",
-    tokenTypeHint: "access_token"
-};
-final http:ListenerOAuth2Handler handler = new (config);
-
-isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
-    string authorization = check request.getHeader("Authorization");
-    graphql:Context context = new;
-    context.set("Authorization", authorization);
-    return context;
-}
-
-readonly service class AuthInterceptor {
-    *graphql:Interceptor;
-
-    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
-         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
-        if authorization !is string {
-            return error("Failed to authorize");
-        }
-        oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(authorization, "admin");
-        if auth is http:Unauthorized {
-            return error("Unauthorized");
-        }
-        if auth is http:Forbidden {
-            return error("Forbidden");
-        }
-        return context.resolve('field);
-    }
-}
-
-@graphql:ServiceConfig {
-    contextInit: contextInit,
-    interceptors: new AuthInterceptor()
-}
-service on new graphql:Listener(9090) {
-
-    resource function get greeting(graphql:Context context) returns string {
-        return "welcome";
-    }
-}
-```
-
-### 8.2 Client Authentication and Authorization
-
-Authentication and authorization in Ballerina GraphQL clients can be enabled using the declarative approach.
-
-##### 8.2.1 Basic Authentication
-
-Ballerina GraphQL clients enable basic authentication with credentials by setting the `graphql:CredentialsConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Basic <token>` header when passing the `graphql:CredentialsConfig` for the `auth` configuration of the client.
-
-###### Example: Client Using Declarative Basic Authentication
-
-```ballerina
-public function main() returns error? {
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-        auth = {
-            username: "bob",
-            password: "bob@123"
-        }
-    );
-    string document = "{ one: profile(id: 100) {name} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
-    // ...
-}
-```
-
-##### 8.2.2 Bearer Token Authentication
-
-Ballerina GraphQL clients enable authentication using bearer tokens by setting the `graphql:BearerTokenConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:BearerTokenConfig` for the `auth` configuration of the client.
-
-###### Example: Client Using Declarative Bearer Token Authentication
-
-```ballerina
-public function main() returns error? {
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-        auth = {
-            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
-        }
-    );
-    string document = "{ one: profile(id: 100) {name} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
-    // ...
-}
-```
-
-##### 8.2.3 Self-Signed JWT Authentication
-
-Ballerina GraphQL clients enable authentication using JWTs by setting the `graphql:JwtIssuerConfig` configurations in the client.  The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:JwtIssuerConfig` for the `auth` configuration of the client.
-
-###### Example: Client Using Declarative Self Signed JWT Authentication
-
-```ballerina
-public function main() returns error? {
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-        auth = {
-            username: "ballerina",
-            issuer: "wso2",
-            audience: ["ballerina", "ballerina.org", "ballerina.io"],
-            keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
-            jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
-            customClaims: {scp: "admin"},
-            expTime: 3600,
-            signatureConfig: {
-                config: {
-                    keyFile: "path/to/private.key"
-                }
-            }
-        }
-    );
-    string document = "{ one: profile(id: 100) {name} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
-    // ...
-}
-```
-
-##### 8.2.4 OAuth2
-
-Ballerina GraphQL clients enable authentication using OAuth2 by setting the `graphql:OAuth2GrantConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:OAuth2GrantConfig` for the `auth` configuration of the client. OAuth2 can configure in following 4 ways
-
-###### 8.2.4.1 Client Credentials Grant Type
-
-```ballerina
-graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-    auth = {
-        tokenUrl: "localhost:9445/oauth2/token",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: "admin",
-        clientConfig: {
-            secureSocket: {
-                cert: "path/to/public.crt"
-            }
-        }
-    }
-);
-```
-
-###### 8.2.4.2 Password Grant Type
-
-```ballerina
-graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        username: "admin",
-        password: "admin",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: "admin",
-        refreshConfig: {
-            refreshUrl: "https://localhost:9445/oauth2/token",
-            scopes: "hello",
-            clientConfig: {
-                secureSocket: {
-                    cert: "path/to/public.crt"
-                }
-            }
-        },
-        clientConfig: {
-            secureSocket: {
-                cert: "path/to/public.crt"
-            }
-        }
-    }
-);
-```
-###### 8.2.4.3 Refresh Token Grant Type
-
-```ballerina
-graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-    auth = {
-        refreshUrl: "https://localhost:9445/oauth2/token",
-        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: "admin",
-        clientConfig: {
-            secureSocket: {
-                cert: "path/to/public.crt"
-            }
-        }
-    }
-);
-```
-
-###### 8.2.4.4 JWT Bearer Grant Type
-
-```ballerina
-graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-    auth = {
-        tokenUrl: "https://localhost:9445/oauth2/token",
-        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
-        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
-        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
-        scopes: "admin",
-        clientConfig: {
-            secureSocket: {
-                cert: "path/to/public.crt"
-            }
-        }
-    }
-);
-```
-
-### 8.3 SSL/TLS and Mutual SSL
-
-The Ballerina GraphQL listeners/clients can be used to communicate via a secured connection. This section defines the specifications for creating Ballerina GraphQL listeners and clients to communicate via a secured connection.
-
-### 8.3.1 Listener
-
-#### 8.3.1.1 SSL/TLS
-
-The GraphQL listener can be secured to communicate via HTTPS using SSL/TLS. The `graphql:ListenerSecureSocket` can be used to configure the listener to expose an HTTPS connection.
-
-Alternatively, an HTTP listener configured to connect with an HTTPS client can also be used to create the GraphQL listener to expose an HTTPS connection.
-
-###### Example: SSL/TLS Configuration of the GraphQL Listener
-
-```ballerina
-listener graphql:Listener securedGraphqlListener = new(9090,
-    secureSocket = {
-        key: {
-            certFile: "/path/to/public.crt",
-            keyFile: "/path/to/private.key"
-        }
-    }
-);
-
-service on securedGraphqlListener {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-###### Example: GraphQL Listener Using an SSL/TLS Configured HTTP Listener
-
-```ballerina
-listener http:Listener securedHttpListener = new(9090,
-    secureSocket = {
-        key: {
-            certFile: "/path/to/public.crt",
-            keyFile: "/path/to/private.key"
-        }
-    }
-);
-listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
-
-service on securedGraphqlListener {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-#### 8.3.1.2 Mutual SSL
-
-The GraphQL listener supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and the server) authenticate each other by verifying the digital certificates.
-
-The `graphql:ListenerSecureSocket` configuration can be used to configure mutual SSL for a GraphQL listener.
-
-Alternatively, an HTTP listener configured to connect with a client with mutual SSL can also be used to create the GraphQL listener to expose an HTTPS connection.
-
-###### Example: Mutual SSL Configuration of the GraphQL Listener
-
-```ballerina
-listener graphql:Listener securedGraphqlListener = new(9090,
-    secureSocket = {
-        key: {
-            certFile: "/path/to/public.crt",
-            keyFile: "/path/to/private.key"
-        },
-        mutualSsl: {
-            verifyClient: http:REQUIRE,
-            cert: "/path/to/public.crt"
-        },
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    }
-);
-
-service on securedGraphqlListener {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-###### Example: GraphQL Listener Using a Mutual SSL Configured HTTP Listener
-
-```ballerina
-listener http:Listener securedHttpListener = new(9090,
-    secureSocket = {
-        key: {
-            certFile: "/path/to/public.crt",
-            keyFile: "/path/to/private.key"
-        },
-        mutualSsl: {
-            verifyClient: http:REQUIRE,
-            cert: "/path/to/public.crt"
-        },
-        protocol: {
-            name: http:TLS,
-            versions: ["TLSv1.2", "TLSv1.1"]
-        },
-        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-    }
-);
-listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
-
-service on securedGraphqlListener {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-```
-
-### 8.3.2 Client
-
-#### 8.3.2.1 SSL/TLS
-
-A GraphQL client can communicate with a secured GraphQL service via SSL/TLS. The `graphql:ClientSecureSocket` configuration can be used to provide configurations related to SSL/TLS.
-
-###### Example: GraphQL Client Using SSL/TLS
-
-```ballerina
-public function main() returns error? {
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-       secureSocket = {
-            cert: "path/to/public.crt"
-        }
-    );
-    string document = "{ one: profile(id: 100) {name} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
-    // ...
-}
-```
-
-#### 8.3.2.2 Mutual SSL
-
-A GraphQL client can communicate with a secured GraphQL service using mutual SSL. Mutual SSL can be enabled by providing the `graphql:ClientSecureSocket` value for the `auth` configuration of the client along with providing the client certificate and key files via the `key` configuration of the `graphql:ClientSecureSocket`.
-
-###### Example: GraphQL Client Using Mutual SSL
-
-```ballerina
-public function main() returns error? {
-    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
-       secureSocket = {
-            key: {
-                certFile: "path/to/public.crt",
-                keyFile: "path/to/private.key"
-            },
-            cert: "path/to/public.crt",
-            protocol: {
-                name: http:TLS
-            },
-            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
-        }
-    );
-    string document = "{ one: profile(id: 100) {name} }";
-    ProfileResponseWithErrors response = check graphqlClient->execute(document);
-    // ...
-}
-```
-
-## 9. Tools
-
-### 9.1 GraphiQL client
-
-The Ballerina GraphQL package provides an integrated GraphiQL client tool which is provided by the GraphQL Foundation. The client is implemented using CDN assets, and it provides a Graphical User Interface to execute the GraphQL queries. To enable the GraphiQL client, configuration should be provided as mentioned in the [GraphiQL configuration](#715-graphiql-configurations) section.
-
-If the configurations are provided correctly, the GraphiQL client tool will be served at the given path when the service starts. The client can be accessed via a web browser.
-
-###### Example: Enable GraphiQL Client
-
-```ballerina
-@graphql:ServiceConfig {
-    graphiql: {
-        enabled: true,
-        path: "/ballerina/graphiql"
-    }
-}
-service on new graphql:Listener(9090) {
-    resource function get greeting() returns string {
-        return "Hello, World!";
-    }
-}
-````
->**Note:** The GraphiQL client is used as a tool to help developers when writing a GraphQL service, and It is recommended not to enable it in production environments.
-
-## 10. Advanced Features
-
-### 10.1 Context Object
+## 8. Context Object
 
 The `graphql:Context` object is used to pass meta-information of a request among the graphql resolvers. It will be created per each request.
 
-Attributes can be stored in the `graphql:Context` object using key-value pairs and can be retrieved back when needed.
+Attributes can be stored in the `graphql:Context` object using key-value pairs.
 
-#### 10.1.1 Context Methods
-
-The `graphql:Context` object provides a set of methods for handling attributes.
-
-##### 10.1.1.1 Set Attribute in Context
+### 8.1 Set Attribute in Context
 
 To set an attribute in the `graphql:Context` object, the `set()` method can be used. It requires two parameters.
 
@@ -2565,7 +1565,7 @@ context.set("key", "value");
 
 >**Note:** If the provided key already exists in the context, the value will be replaced.
 
-##### 10.1.1.2 Get Attribute from Context
+### 8.2 Get Context Attribute
 
 To get an attribute from the `graphql:Context` object, the `get()` method can be used. It requires one parameter.
 
@@ -2579,7 +1579,7 @@ If the key does not exist in the context, the `get` method will return a `graphq
 value:Cloneable|isolated object {}|graphql:Error attribute = context.get("key");
 ```
 
-##### 10.1.1.3 Remove Attribute from Context
+### 8.3 Remove Attribute from Context
 
 To remove an attribute from the `graphql:Context` object, the `remove` method can be used. It requires one parameter.
 
@@ -2595,7 +1595,7 @@ graphql:Error? result = context.remove("key");
 
 >**Note:** Even though the functionalities are provided to update/remove attributes in the context, it is discouraged to do such operations. The reason is that destructive modifications may cause issues in parallel executions of the Query operations.
 
-#### 10.1.2 Accessing the Context Object
+### 8.4 Accessing the Context Object
 
 The `graphql:Context` can be accessed inside any resolver. When needed, the `graphql:Context` should be added as a parameter of the `resource` or `remote` method representing a GraphQL field.
 
@@ -2651,7 +1651,7 @@ service class Profile {
 }
 ```
 
-#### 10.1.3 Resolving Field Value
+### 8.5 Resolving Field Value
 
 To resolve the value of a field, the `resolve()` method can be used. This requires the `graphql:Field` object which is related to the particular field that is going to be resolved. If the resolver has interceptors attached, the interceptors will be executed until there are no more interceptors left. If there are no interceptors left, the actual resolver will be executed.
 
@@ -2659,13 +1659,29 @@ To resolve the value of a field, the `resolve()` method can be used. This requir
 public isolated function resolve(graphql:Field ‘field) returns anydata;
 ```
 
-### 10.2 Field Object
+## 9. Field Object
 
-The `graphql:Field` object is used to access meta-information of a field in a GraphQL document. This object can be used to retrieve information about a particular field of a GraphQL document, from a Ballerina GraphQL `resource` or `remote` method.
+The `graphql:Field` object is used to access meta-information of a field in a GraphQL document. This object can be used to retrieve information about a particular field inside a Ballerina GraphQL `resource` or `remote` method. 
 
-#### 10.2.1 Field Object Methods
+Following is the definition of the `graphql:Field` object.
 
-##### 10.2.1.1 Get Field Name
+```ballerina
+public class Field {
+    public isolated function getName() returns string;
+
+    public isolated function getAlias() returns string;
+    
+    public isolated function getPath() returns (int|string)[];
+    
+    public isolated function getSubfieldNames() returns string[];
+    
+    public isolated function getType() returns __Type;
+}
+```
+
+### 9.1 Field Object Methods
+
+#### 9.1.1 Get Field Name
 
 This method returns the name of the currently executing field. It returns a `string`.
 
@@ -2679,7 +1695,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.2 Get Field Alias
+#### 9.1.2 Get Field Alias
 
 This method returns the alias of the currently executing field as a `string`. If the field does not have an alias, it returns the field name.
 
@@ -2693,7 +1709,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.3 Get Field Path
+#### 9.1.3 Get Field Path
 
 This method returns the path of the currently executing field as an array of `int` and `string`. The path is an array of indices and keys that can be used to traverse the response JSON to reach the current field.
 
@@ -2707,7 +1723,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.4 Get Subfield Names
+#### 9.1.4 Get Subfield Names
 
 This method returns the names of the subfields of the currently executing field as an array of `string`. If the field does not have any subfields, it returns an empty array.
 
@@ -2721,7 +1737,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.5 Get Field Type
+#### 9.1.5 Get Field Type
 
 This method returns the type of the currently executing field as a `graphql:__Type` record. The `graphql:__Type` record can be used to retrieve information about the type of the currently executing field.
 
@@ -2736,7 +1752,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.6 Get Subfields
+#### 9.1.6 Get Subfields
 
 This method returns the subfields of the currently executing field as an array of `graphql:Field` objects. It will return `nil` if the field is not an `INTERFACE` or an `OBJECT`, i.e. if it does not have subfields.
 
@@ -2750,21 +1766,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.2.1.7 Get Field Location
-
-This method returns the location of the field in the GraphQL document as a `graphql:Location` record. It includes the line and the column number of the field in the GraphQL document.
-
-###### Example: Get Field Location
-
-```ballerina
-service on new graphql:Listener(9090) {
-    resource function get profile(graphql:Field 'field) returns Profile {
-        graphql:Location location = 'field.getLocation();
-    }
-}
-```
-
-#### 10.2.2 Accessing the Field Object
+### 9.2 Accessing the Field Object
 
 The `graphql:Field` can be accessed inside any resolver. When needed, the `graphql:Field` should be added as a parameter of the `resource` or `remote` method representing a GraphQL field.
 
@@ -2833,13 +1835,287 @@ service class Profile {
 }
 ```
 
-### 10.3 Interceptors
+## 10. Annotations
+
+### 10.1 Service Configuration
+
+The configurations stated in the `graphql:ServiceConfig`, are used to change the behavior of a particular GraphQL service. These configurations are applied to the service.
+
+This annotation consists of the following fields.
+
+#### 10.1.1 Max Query Depth
+
+The `maxQueryDepth` field is used to provide a limit on the depth of an incoming request. When this is set, every incoming request is validated by checking the depth of the query. This includes the depths of the spread fragments. If a particular GraphQL document exceeds the maximum query depth, the request is invalidated and the server will respond with an error.
+
+###### Example: Setting Max Query Depth
+
+```ballerina
+@graphql:ServiceConfig {
+    maxQueryDepth: 3
+}
+service on new graphql:Listener(9090) {
+
+}
+```
+
+In the above example, when a document has a depth of more than 3, the request will be failed.
+
+
+###### Example: Invalid Document with Exceeding Max Query Depth
+
+```graphql
+{
+    profile {
+        friend {
+            friend {
+                name // Depth is 4
+            }
+        }
+    }
+}
+```
+
+This will result in the following response.
+
+```json
+{
+  "error": {
+    "errors": [
+      {
+        "message": "Query has depth of 4, which exceeds max depth of 3",
+        "locations": [
+          {
+            "line": 1,
+            "column": 1
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### 10.1.2 Auth Configurations
+
+The `auth` field is used to provide configurations related to authentication and authorization for the GraphQL API. The [Security](#12-security) section will explain this configuration in detail.
+
+
+#### 10.1.3 Context Initializer Function
+
+The `contextInit` field is used to provide a method to initialize the [`graphql:Context` object](#8-context-object). It is called per each request to create a `graphql:Context` object.
+
+The context initializer function can return an error if the validation is failed. In such cases, the request will not proceed, and an error will be returned immediately.
+
+Following is the function template for the `contextInit` function.
+
+```ballerina
+isolated function (http:RequestContext requestContext, http:Request request) returns graphql:Context|error {}
+```
+
+When `contextInit` is not provided, a default function will be set as the value of the field. The default function definition is below.
+
+```ballerina
+isolated function initDefaultContext(http:RequestContext requestContext, http:Request request) returns Context|error {
+    return new;
+}
+```
+
+The `contextInit` function can be provided inline, or as a function pointer.
+
+###### Example: Provide Context Initializer Function Inline
+
+```ballerina
+@graphql:ServiceConfig {
+    contextInit: isolated function(http:RequestContext requestContext, http:Request request) returns graphql:Context|error {
+        // ...
+    }
+}
+```
+
+###### Example: Provide Context Initializer Function as a Function Pointer
+
+```ballerina
+isolated function initContext(http:RequestContext requestContext, http:Request request) returns graphql:Context|error {
+    // ...
+}
+
+@graphql:ServiceConfig {
+    contextInit: initContext
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+>**Note:** The init function has `http:RequestContext` and `http:Request` objects as inputs. These objects are passed into the function when a request is received. The HTTP headers and the request context can be used to perform additional validations to a request before proceeding to the GraphQL validations. This can be useful to validate the HTTP request before performing the GraphQL operations. The [Imperative Approach in Security](#1212-imperative-approach) section will discuss this in detail.
+
+#### 10.1.4 CORS Configurations
+
+The `cors` field is used to configure CORS configurations for the GraphQL service.
+
+###### Example: CORS Configurations
+
+```ballerina
+@graphql:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://www.wso2.com", "http://www.ballerina.io"],
+        allowCredentials: false,
+        allowHeaders: ["CORELATION_ID"],
+        exposeHeaders: ["X-CUSTOM-HEADER"],
+        maxAge: 84900
+    }
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+#### 10.1.5 GraphiQL Configurations
+
+The `graphiql` field is used to provide the GraphiQL client configuration to enable the GraphiQL client for a given GraphQL service.
+
+###### Example: GraphiQL Configurations
+
+```ballerina
+@graphql:ServiceConfig {
+    graphiql: {
+        enabled: true,
+        path: "/ballerina/graphiql"
+    }
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+>**Note:** The field enabled accepts a `boolean` that denotes whether the client is enabled or not. By default, it has been set to `false`. The optional field `path` accepts a valid `string` for the GraphiQL service. If the path is not given in the configuration, `/graphiql` is set as the default path.
+
+#### 10.1.6 Service Interceptors
+
+The `interceptors` field is used to provide the service interceptors.
+
+###### Example: Single Service Interceptor
+
+```ballerina
+@graphql:ServiceConfig {
+    interceptors: new Interceptor1()
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+###### Example: Array of Service Interceptors
+
+```ballerina
+@graphql:ServiceConfig {
+    interceptors: [new Interceptor1(), new Interceptor2()]
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+#### 10.1.7 Introspection Configurations
+
+The `introspection` field is used to enable or disable the GraphQL introspection query support. If the introspection query support is disabled, the GraphQL service won't allow the execution of the `__schema` and the `__type` introspection queries. However, the `__typename` introspection will work even if the introspection query support is disabled. By default, introspection is enabled for Ballerina GraphQL services.
+
+###### Example: Disable Introspection Query Support
+
+```ballerina
+@graphql:ServiceConfig {
+    introspection: false
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+>**Note:** It is recommended to disable introspection in production environments until it is required.
+
+#### 10.1.8 Constraint Configurations
+
+The `validation` field is used to enable or disable the validation of constraints defined on GraphQL input types. If constraint validation support is enabled, the GraphQL service verifies all constraints set on the GraphQL inputs when executing the resolver. By default, constraint validation is enabled for Ballerina GraphQL services.
+
+###### Example: Disable Constraint Validation Support
+
+```ballerina
+@graphql:ServiceConfig {
+    validation: false
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+### 10.2 Resource Configuration
+
+The configurations stated in the `graphql:ResourceConfig`, are used to change the behavior of a particular GraphQL resolver. These configurations are applied to the resolver functions.
+
+This annotation consists of the following field.
+
+#### 10.2.1 Field Interceptors
+
+The `interceptors` field is used to provide the field interceptors.
+
+###### Example: Single Field Interceptor
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        interceptors: new Interceptor1()
+    }
+    resource function get name(int id) returns string {
+      // ...
+   }
+}
+```
+
+###### Example: Array of Field Interceptors
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        interceptors: [new Interceptor1(), new Interceptor2()]
+    }
+    resource function get name(int id) returns string {
+      // ...
+   }
+}
+```
+
+### 10.3 Interceptor Configuration
+
+The configurations stated in the `graphql:InterceptorConfig`, are used to change the behavior of a particular GraphQL interceptor.
+
+#### 10.3.1 Scope Configuration
+
+The field `global` is used to configure the scope of the interceptor. If the `global` field is set as `true`, the interceptor will be applied to each field and subfield of the service. If the flag is set as `false`, the interceptor will be applied only to the fields of the type, but not to the subfields of the type. By default, the `global` flag is set as `true`.
+
+>**Note:** The scope configuration is applied only to the GraphQL [service interceptors](#1131-service-interceptors).
+
+###### Example: Scope Configuration
+
+```ballerina
+@graphql:InterceptorConfig {
+    global:false
+}
+readonly service class LogInterceptor {
+   *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        // ...
+    }
+}
+```
+
+## 11. Interceptors
 
 The GraphQL interceptors can be used to execute a custom code before and after a resolver gets invoked.
 
-#### 10.3.1 Interceptor Service Object
+### 11.1 Interceptor Service Object
 
-The interceptor service object is defined in the Ballerina GraphQL package. It includes a single remote method named execute that accepts [`Context`](#101-context-object) and [`Field`](#102-field-object) as the parameters. The return type of the method is a union of `anydata` and `error`.
+The interceptor service object is defined in the Ballerina GraphQL package. It includes a single remote method named execute that accepts [`Context`](#8-context-object) and [`Field`](#9-field-object) as the parameters. The return type of the method is a union of `anydata` and `error`.
 
 ```ballerina
 public type Interceptor distinct service object {
@@ -2847,7 +2123,7 @@ public type Interceptor distinct service object {
 };
 ```
 
-#### 10.3.2 Writing an Interceptor
+### 11.2 Writing an Interceptor
 
 Interceptors can be defined as a readonly service class that infers the Interceptor object provided by the GraphQL package. A user-specific name can be used as the service class name.
 
@@ -2865,14 +2141,14 @@ readonly service class InterceptorName {
 
 The Interceptor service class should have the implementation of the `execute()` remote method that infers from the interceptor service object. The code needed to be included in the interceptor should be kept inside the `execute()` method. Interceptors can not have any other `resource/remote` methods inside the interceptor. However, the users can define the general methods inside the interceptors.
 
-#### 10.3.3 Execution
+### 11.3 Execution
 
-When it comes to interceptor execution, it follows the `onion principle`. Each interceptor adds a layer before and after the actual resolver invocation. Therefore, the order of the interceptor array in the configuration will be important. In an Interceptor `execute()` method, all the code lines that are placed before the `context.resolve()` will be executed before the resolver execution, and the code lines placed after the `context.resolve()` will be executed after the resolver execution. The [`context.resolve()`](#1013-resolving-field-value) method invokes the next interceptor.
+When it comes to interceptor execution, it follows the `onion principle`. Each interceptor adds a layer before and after the actual resolver invocation. Therefore, the order of the interceptor array in the configuration will be important. In an Interceptor `execute()` method, all the code lines that are placed before the `context.resolve()` will be executed before the resolver execution, and the code lines placed after the `context.resolve()` will be executed after the resolver execution. The [`context.resolve()`](#85-resolving-field-value) method invokes the next interceptor.
 
 >**Note:** The inserting order of the interceptors into the array, will be the execution order of Interceptors. The interceptors are applied to each event in response stream of subscription resolvers.
 
-##### 10.3.3.1 Service Interceptors
-The service interceptors are applied to all the resolvers in the GraphQL service. A GraphQL service accepts a single service interceptor or an array of service interceptors, and it should be inserted as mentioned in the [Service Interceptor](#716-service-interceptors) section. The scope of the interceptor can be configured as defined in the [scope configuration](#731-scope-configuration) section.
+#### 11.3.1 Service Interceptors
+The service interceptors are applied to all the resolvers in the GraphQL service. A GraphQL service accepts a single service interceptor or an array of service interceptors, and it should be inserted as mentioned in the [Service Interceptor](#1016-service-interceptors) section. The scope of the interceptor can be configured as defined in the [scope configuration](#1031-scope-configuration) section.
 
 ###### Example: GraphQL Service Interceptor
 
@@ -2908,8 +2184,8 @@ Following is the output of the server when a request is processed:
 5. Connection closed!
 ```
 
-##### 10.3.3.2 Field Interceptors
-The field interceptors are applied to a specific resolver in the GraphQL service. A GraphQL resolver accepts a single field interceptor or an array of field interceptors, and it should be inserted as mentioned in the [Field Interceptor](#721-field-interceptors) section.
+#### 11.3.2 Field Interceptors
+The field interceptors are applied to a specific resolver in the GraphQL service. A GraphQL resolver accepts a single field interceptor or an array of field interceptors, and it should be inserted as mentioned in the [Field Interceptor](#1021-field-interceptors) section.
 
 ###### Example: GraphQL Field Interceptor
 
@@ -2945,120 +2221,756 @@ Following is the output of the server when a request is processed:
 5. Connection closed!
 ```
 
-### 10.4 File Upload
+## 12. Security
 
-This section describes how file uploading in Ballerina GraphQL works.
+### 12.1 Service Authentication and Authorization
 
-#### 10.4.1 File Upload Protocol
+There are two ways to enable authentication and authorization in Ballerina GraphQL service.
 
-The Ballerina GraphQL package uses the [GraphQL Multipart Request Specification](https://github.com/jaydenseric/graphql-multipart-request-spec) for file uploads.
+1. Declarative approach
+2. Imperative approach
 
-Following are the required, ordered fields that must be present in a multipart request to upload a file to a Ballerina GraphQL API that supports file uploads.
+#### 12.1.1 Declarative Approach
 
-##### 10.4.1.1 The `operations` Field
+This is also known as the configuration-driven approach, which is used for simple use cases, where users have to provide a set of configurations and do not need to be worried more about how authentication and authorization work. The user does not have full control over the configuration-driven approach.
 
-This field contains the `JSON-encoded` body of standard GraphQL POST requests where all the variable values storing files must be `null`.
+The service configurations are used to define the authentication and authorization configurations. Users can configure the configurations needed for different authentication schemes and configurations needed for authorizations of each authentication scheme. The configurations can be provided at the service level. The auth handler creation and request authentication/authorization is handled internally without user intervention. The requests that succeeded in authentication and/or authorization phases according to the configurations will be passed to the business logic layer.
 
-##### 10.4.1.2 The `map` Field
+##### 12.1.1.1 Basic Authentication - File User Store
 
-This field contains the `JSON-encoded` map of the path(s) of where the file(s) occurred in the GraphQL document provided in the `operations` field. Each variable must be mapped to a unique key.
+A GraphQL service can be secured using [Basic Authentication with File User Store](https://github.com/ballerina-platform/module-ballerina-auth/blob/master/docs/spec/spec.md#311-file-user-store) and optionally by enforcing authorization.
 
-##### 10.4.1.3 File Fields
+When configured, it validates the `Authorization` header in the HTTP request that contains the GraphQL document. This reads the data from a `TOML` file, that stores the usernames and passwords for authentication and the scopes for authorization.
 
-The path for each file that needs to be uploaded should be provided separately. The file path should be mapped to the corresponding key in the `map` field.
-
-###### Example: Single File Upload Request
-
-```shell
-curl localhost:9090/graphql \
-    -F operations='{ "query": "mutation($file: Upload!) { fileUpload(file: $file) { link } }", "variables": { "file": null } }' \
-    -F map='{ "0": ["variables.file"] }' \
-    -F 0=@file1.png
-```
-
-###### Example: Multiple File Upload Request
-
-```shell
-curl localhost:9090/graphql \
-    -F operations='{ "query": "mutation($file: [Upload!]) { filesUpload(file: $file) { link } }", "variables": { "file": [null, null] } }' \
-    -F map='{ "0": ["variables.file.0"], "1": ["variables.file.1"]}' \
-    -F 0=@file1.png
-    -F 1=@file2.png
-```
-
-##### 10.4.2 The `graphql:Upload` Type
-
-The `graphql:Upload` type is used to provide information on uploaded file. The `graphql:Upload` type is a record type with the following fields.
-
-###### 10.4.2.1 The `fileName` Field
-
-This field contains the name of the file that is being uploaded. The type of field is `string``.
-
-###### 10.4.2.2 The `mimeType` Field
-
-This field contains the mime type of the file being uploaded. The type of field is `string`.
-
-###### 10.4.2.3 The `encoding` Field
-
-This field contains the encoding used to serialize the file. The type of field is `string`.
-
-###### 10.4.2.4 The `byteStream` Field
-
-This field contains the serialized byte stream for the uploaded file. The type of the field is `stream<byte[], io:Error?>`.
-
-#### 10.4.3 File Upload Service
-
-A Ballerina GraphQL service can have `remote` methods that lets clients upload files. To upload a file, the [`graphql:Upload`](#1042-the-graphqlupload-type) type can be used as an input of the `remote` method.
-
-##### 10.4.3.1 File Upload Resolver
-
-Uploading a file is considered a `Mutation` operation in GraphQL. Therefore, only `remote` methods can be used for uploading files.
-
-###### Example: File Upload Resolver
+###### Example: Declarative Basic Authentication with File User Store
 
 ```ballerina
+@graphql:ServiceConfig {
+    auth: [
+        {
+            fileUserStoreConfig: {},
+            scopes: ["admin"]
+        }
+    ]
+}
 service on new graphql:Listener(9090) {
-    remote function fileUpload(graphql:Upload fileUpload) returns boolean {
-        string fileName = fileUpload.fileName;
-        string mimeType = fileUpload.mimeType;
-        string encoding = fileUpload.encoding;
-        stream<byte[], io:Error?> byteStream = fileUpload.byteStream;
-
-        // ...
+    resource function get greeting() returns string {
+        return "Hello, World!";
     }
 }
 ```
 
-###### Example: Multiple File Upload Resolver
+The `Config.toml` file below will be used to define the users.
+
+```toml
+[[ballerina.auth.users]]
+username="alice"
+password="alice@123"
+scopes=["developer"]
+
+
+[[ballerina.auth.users]]
+username="bob"
+password="bob@123"
+scopes=["developer", "admin"]
+```
+
+##### 12.1.1.2 Basic Authentication - LDAP User Store
+
+A GraphQL service can be secured using [Basic Authentication with LDAP User Store](https://github.com/ballerina-platform/module-ballerina-auth/blob/master/docs/spec/spec.md#312-ldap-user-store) and optionally by enforcing authorization.
+
+When configured, it validates the `Authorization` header in the HTTP request that contains the GraphQL document. This reads the data from the configured LDAP, which stores the usernames and passwords for authentication and the scopes for authorization.
+
+###### Example: Declarative Basic Authentication with LDAP User Store
 
 ```ballerina
-service on new graphql:Listener(9090) {
-    remote function fileUpload(graphql:Upload[] fileUploads) returns boolean {
-        foreach graphql:Upload fileUpload in fileUploads {
-            string fileName = fileUpload.fileName;
-            string mimeType = fileUpload.mimeType;
-            string encoding = fileUpload.encoding;
-            stream<byte[], io:Error?> byteStream = fileUpload.byteStream;
+@graphql:ServiceConfig {
+    auth: [
+        {
+            ldapUserStoreConfig: {
+                domainName: "bcssl.lk",
+                connectionUrl: "ldap://localhost:389",
+                connectionName: "cn=admin,dc=bcssl,dc=lk",
+                connectionPassword: "bcssl123",
+                userSearchBase: "ou=Users,dc=bcssl,dc=lk",
+                userEntryObjectClass: "inetOrgPerson",
+                userNameAttribute: "uid",
+                userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+                userNameListFilter: "(objectClass=inetOrgPerson)",
+                groupSearchBase: ["ou=Groups,dc=bcssl,dc=lk"],
+                groupEntryObjectClass: "groupOfNames",
+                groupNameAttribute: "cn",
+                groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
+                groupNameListFilter: "(objectClass=groupOfNames)",
+                membershipAttribute: "member",
+                userRolesCacheEnabled: true,
+                connectionPoolingEnabled: false,
+                connectionTimeout: 5,
+                readTimeout: 60
+            },
+            scopes: ["admin"]
+        }
+    ]
+}
+service /graphql on securedEP {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
 
-            // ...
+##### 12.1.1.3 JWT Authentication
+
+A GraphQL service can be secured using [JWT Authentication](https://github.com/ballerina-platform/module-ballerina-jwt/blob/master/docs/spec/spec.md) and by enforcing authorization optionally.
+
+When configured, it validates the JWT sent in the `Authorization` header in the HTTP request that contains the GraphQL document.
+
+###### Example: Declarative JWT Authentication
+
+```ballerina
+@graphql:ServiceConfig {
+    auth: [
+        {
+            jwtValidatorConfig: {
+                issuer: "wso2",
+                audience: "ballerina",
+                signatureConfig: {
+                    certFile: "path/to/public.crt"
+                },
+                scopeKey: "scp"
+            },
+            scopes: ["admin"]
+        }
+    ]
+}
+service /graphql on securedEP {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+##### 12.1.1.4 OAuth2
+
+A GraphQL service can be secured using [OAuth2](https://github.com/ballerina-platform/module-ballerina-oauth2/blob/master/docs/spec/spec.md) and by enforcing authorization optionally.
+
+When configured, it validates the OAuth2 token sent in the `Authorization` header in the HTTP request that contains the GraphQL document. This calls the configured OAuth2 introspection endpoint to validate.
+
+###### Example: Declarative Approach to Secure Service Using OAuth2
+
+```ballerina
+@graphql:ServiceConfig {
+    auth: [
+        {
+            oauth2IntrospectionConfig: {
+                url: "https://localhost:9445/oauth2/introspect",
+                tokenTypeHint: "access_token",
+                scopeKey: "scp",
+                clientConfig: {
+                    customHeaders: {"Authorization": "Basic YWRtaW46YWRtaW4="},
+                    secureSocket: {
+                        cert: "path/to/public.crt"
+                    }
+                }
+            },
+            scopes: ["admin"]
+        }
+    ]
+}
+service /graphql on securedEP {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+#### 12.1.2 Imperative Approach
+
+This is also known as the code-driven approach, which is used for advanced use cases, where users need to be worried more about how authentication and authorization work and need to have further customizations. The user has full control of the code-driven approach. The handler creation and authentication/authorization calls are made by the user at the business logic layer.
+
+The [`graphql:Context`](#8-context-object) object and the [`contextInit`](#1013-context-initializer-function) method can be used to achieve this.
+
+##### 12.1.2.1 Basic Authentication - File User Store
+
+A file user store can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
+
+###### Example: Imperative Basic Authentication with File User Store
+
+```ballerina
+graphql:FileUserStoreConfig config = {};
+final http:ListenerFileUserStoreBasicAuthHandler handler = new (config);
+
+isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
+    string authorization = check request.getHeader("Authorization");
+    graphql:Context context = new;
+    context.set("Authorization", authorization);
+    return context;
+}
+
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+        if authorization !is string {
+            return error("Failed to authorize");
+        }
+        auth:UserDetails|http:Unauthorized authn = handler.authenticate(authorization);
+        if authn is http:Unauthorized {
+            return error("Unauthorized");
+        }
+        http:Forbidden? authz = handler.authorize(authn, "admin");
+        if authz is http:Forbidden {
+            return error("Forbidden");
+        }
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: new AuthInterceptor()
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
+    }
+}
+```
+
+The `Config.toml` file below will be used to define the users.
+
+```toml
+[[ballerina.auth.users]]
+username="alice"
+password="alice@123"
+scopes=["developer"]
+
+
+[[ballerina.auth.users]]
+username="bob"
+password="bob@123"
+scopes=["developer", "admin"]
+```
+
+##### 12.1.2.2 Basic Authentication - LDAP User Store
+
+An LDAP user store can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
+
+###### Example: Imperative Basic Authentication with LDAP User Store
+
+```ballerina
+graphql:LdapUserStoreConfig config = {
+    domainName: "bcssl.lk",
+    connectionUrl: "ldap://localhost:389",
+    connectionName: "cn=admin,dc=bcssl,dc=lk",
+    connectionPassword: "bcssl123",
+    userSearchBase: "ou=Users,dc=bcssl,dc=lk",
+    userEntryObjectClass: "inetOrgPerson",
+    userNameAttribute: "uid",
+    userNameSearchFilter: "(&(objectClass=inetOrgPerson)(uid=?))",
+    userNameListFilter: "(objectClass=inetOrgPerson)",
+    groupSearchBase: ["ou=Groups,dc=bcssl,dc=lk"],
+    groupEntryObjectClass: "groupOfNames",
+    groupNameAttribute: "cn",
+    groupNameSearchFilter: "(&(objectClass=groupOfNames)(cn=?))",
+    groupNameListFilter: "(objectClass=groupOfNames)",
+    membershipAttribute: "member",
+    userRolesCacheEnabled: true,
+    connectionPoolingEnabled: false,
+    connectionTimeout: 5,
+    readTimeout: 60
+};
+final http:ListenerLdapUserStoreBasicAuthHandler handler = new (config);
+
+isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
+    string authorization = check request.getHeader("Authorization");
+    graphql:Context context = new;
+    context.set("Authorization", authorization);
+    return context;
+}
+
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+        if authorization !is string {
+            return error("Failed to authorize");
+        }
+        auth:UserDetails|http:Unauthorized authn = handler->authenticate(authorization);
+        if authn is http:Unauthorized {
+            return error("Unauthorized");
+        }
+        http:Forbidden? authz = handler->authorize(authn, "admin");
+        if authz is http:Forbidden {
+            return error("Forbidden");
+        }
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: new AuthInterceptor()
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
+    }
+}
+```
+
+##### 12.1.2.3 JWT Authentication
+
+A JWT configuration can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
+
+###### Example: Imperative JWT Authentication
+
+```ballerina
+graphql:JwtValidatorConfig config = {
+    issuer: "ballerina",
+    audience: ["wso2"],
+    signatureConfig: {
+        jwksConfig: {
+            url: "https://localhost:8080/jwks"
         }
     }
+};
+final http:ListenerJwtAuthHandler handler = new (config);
+
+isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
+    string authorization = check request.getHeader("Authorization");
+    graphql:Context context = new;
+    context.set("Authorization", authorization);
+    return context;
+}
+
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+        value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+        if authorization !is string {
+            return error("Failed to authorize");
+        }
+        jwt:Payload|http:Unauthorized authn = handler.authenticate(authorization);
+        if authn is http:Unauthorized {
+            return error("Unauthorized");
+        }
+        if authn is jwt:Payload {
+            http:Forbidden? authz = handler.authorize(authn, "admin");
+            if authz is http:Forbidden {
+                return error("Forbidden");
+            }
+        }
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: new AuthInterceptor()
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
+    }
 }
 ```
 
-### 10.5. Federation
+##### 12.1.2.4 OAuth2
 
-#### 10.5.1 Federated Subgraph
+An OAuth2 introspection endpoint can be used to validate the `Authorization` header in the HTTP request that contains the GraphQL document.
 
-The Ballerina GraphQL module provides the capability to expose a `graphql:Service` as a [federation2 subgraph](https://www.apollographql.com/docs/federation/subgraph-spec). To convert a Ballerina GraphQL service into a federation2 subgraph, the `graphql.subgraph` submodule must be imported.
+###### Example: Imperative Approach to Secure Service Using OAuth2
+
+```ballerina
+graphql:OAuth2IntrospectionConfig config = {
+    url: "https://localhost:8080/oauth2/introspect",
+    tokenTypeHint: "access_token"
+};
+final http:ListenerOAuth2Handler handler = new (config);
+
+isolated function contextInit(http:RequestContext reqCtx, http:Request request) returns graphql:Context|error {
+    string authorization = check request.getHeader("Authorization");
+    graphql:Context context = new;
+    context.set("Authorization", authorization);
+    return context;
+}
+
+readonly service class AuthInterceptor {
+    *graphql:Interceptor;
+
+    isolated remote function execute(graphql:Context context, graphql:Field 'field) returns anydata|error {
+         value:Cloneable|isolated object {} authorization = check context.get("Authorization");
+        if authorization !is string {
+            return error("Failed to authorize");
+        }
+        oauth2:IntrospectionResponse|http:Unauthorized|http:Forbidden auth = handler->authorize(authorization, "admin");
+        if auth is http:Unauthorized {
+            return error("Unauthorized");
+        }
+        if auth is http:Forbidden {
+            return error("Forbidden");
+        }
+        return context.resolve('field);
+    }
+}
+
+@graphql:ServiceConfig {
+    contextInit: contextInit,
+    interceptors: new AuthInterceptor()
+}
+service on new graphql:Listener(9090) {
+
+    resource function get greeting(graphql:Context context) returns string {
+        return "welcome";
+    }
+}
+```
+
+### 12.2 Client Authentication and Authorization
+
+Authentication and authorization in Ballerina GraphQL clients can be enabled using the declarative approach.
+
+##### 12.2.1 Basic Authentication
+
+Ballerina GraphQL clients enable basic authentication with credentials by setting the `graphql:CredentialsConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Basic <token>` header when passing the `graphql:CredentialsConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Basic Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+        auth = {
+            username: "bob",
+            password: "bob@123"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 12.2.2 Bearer Token Authentication
+
+Ballerina GraphQL clients enable authentication using bearer tokens by setting the `graphql:BearerTokenConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:BearerTokenConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Bearer Token Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+        auth = {
+            token: "56ede317-4511-44b4-8579-a08f094ee8c5"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 12.2.3 Self-Signed JWT Authentication
+
+Ballerina GraphQL clients enable authentication using JWTs by setting the `graphql:JwtIssuerConfig` configurations in the client.  The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:JwtIssuerConfig` for the `auth` configuration of the client.
+
+###### Example: Client Using Declarative Self Signed JWT Authentication
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+        auth = {
+            username: "ballerina",
+            issuer: "wso2",
+            audience: ["ballerina", "ballerina.org", "ballerina.io"],
+            keyId: "5a0b754-895f-4279-8843-b745e11a57e9",
+            jwtId: "JlbmMiOiJBMTI4Q0JDLUhTMjU2In",
+            customClaims: {"scp": "admin"},
+            expTime: 3600,
+            signatureConfig: {
+                config: {
+                    keyFile: "path/to/private.key"
+                }
+            }
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+##### 12.2.4 OAuth2
+
+Ballerina GraphQL clients enable authentication using OAuth2 by setting the `graphql:OAuth2GrantConfig` configurations in the client. The requests from the client are automatically enriched with the `Authorization: Bearer <token>` header when passing the `graphql:OAuth2GrantConfig` for the `auth` configuration of the client. OAuth2 can configure in following 4 ways
+
+###### 12.2.4.1 Client Credentials Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    auth = {
+        tokenUrl: "localhost:9445/oauth2/token",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+###### 12.2.4.2 Password Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        username: "admin",
+        password: "admin",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        refreshConfig: {
+            refreshUrl: "https://localhost:9445/oauth2/token",
+            scopes: ["hello"],
+            clientConfig: {
+                secureSocket: {
+                    cert: "path/to/public.crt"
+                }
+            }
+        },
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+###### 12.2.4.3 Refresh Token Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    auth = {
+        refreshUrl: "https://localhost:9445/oauth2/token",
+        refreshToken: "24f19603-8565-4b5f-a036-88a945e1f272",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+###### 12.2.4.4 JWT Bearer Grant Type
+
+```ballerina
+graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+    auth = {
+        tokenUrl: "https://localhost:9445/oauth2/token",
+        assertion: "eyJhbGciOiJFUzI1NiIsImtpZCI6Ij[...omitted for brevity...]",
+        clientId: "FlfJYKBD2c925h4lkycqNZlC2l4a",
+        clientSecret: "PJz0UhTJMrHOo68QQNpvnqAY_3Aa",
+        scopes: ["admin"],
+        clientConfig: {
+            secureSocket: {
+                cert: "path/to/public.crt"
+            }
+        }
+    }
+);
+```
+
+### 12.3 SSL/TLS and Mutual SSL
+
+The Ballerina GraphQL listeners/clients can be used to communicate via a secured connection. This section defines the specifications for creating Ballerina GraphQL listeners and clients to communicate via a secured connection.
+
+### 12.3.1 Listener
+
+#### 12.3.1.1 SSL/TLS
+
+The GraphQL listener can be secured to communicate via HTTPS using SSL/TLS. The `graphql:ListenerSecureSocket` can be used to configure the listener to expose an HTTPS connection.
+
+Alternatively, an HTTP listener configured to connect with an HTTPS client can also be used to create the GraphQL listener to expose an HTTPS connection.
+
+###### Example: SSL/TLS Configuration of the GraphQL Listener
+
+```ballerina
+listener graphql:Listener securedGraphqlListener = new(9090,
+    secureSocket = {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+);
+
+service on securedGraphqlListener {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+###### Example: GraphQL Listener Using an SSL/TLS Configured HTTP Listener
+
+```ballerina
+listener http:Listener securedHttpListener = new(9090,
+    secureSocket = {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        }
+    }
+);
+listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
+
+service on securedGraphqlListener {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+#### 12.3.1.2 Mutual SSL
+
+The GraphQL listener supports mutual SSL, which is a certificate-based authentication process in which two parties (the client and the server) authenticate each other by verifying the digital certificates.
+
+The `graphql:ListenerSecureSocket` configuration can be used to configure mutual SSL for a GraphQL listener.
+
+Alternatively, an HTTP listener configured to connect with a client with mutual SSL can also be used to create the GraphQL listener to expose an HTTPS connection.
+
+###### Example: Mutual SSL Configuration of the GraphQL Listener
+
+```ballerina
+listener graphql:Listener securedGraphqlListener = new(9090,
+    secureSocket = {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        },
+        mutualSsl: {
+            verifyClient: http:REQUIRE,
+            cert: "/path/to/public.crt"
+        },
+        protocol: {
+            name: http:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+    }
+);
+
+service on securedGraphqlListener {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+###### Example: GraphQL Listener Using a Mutual SSL Configured HTTP Listener
+
+```ballerina
+listener http:Listener securedHttpListener = new(9090,
+    secureSocket = {
+        key: {
+            certFile: "/path/to/public.crt",
+            keyFile: "/path/to/private.key"
+        },
+        mutualSsl: {
+            verifyClient: http:REQUIRE,
+            cert: "/path/to/public.crt"
+        },
+        protocol: {
+            name: http:TLS,
+            versions: ["TLSv1.2", "TLSv1.1"]
+        },
+        ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+    }
+);
+listener graphql:Listener securedGraphqlListener = new (securedHttpListener);
+
+service on securedGraphqlListener {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+```
+
+### 12.3.2 Client
+
+#### 12.3.2.1 SSL/TLS
+
+A GraphQL client can communicate with a secured GraphQL service via SSL/TLS. The `graphql:ClientSecureSocket` configuration can be used to provide configurations related to SSL/TLS.
+
+###### Example: GraphQL Client Using SSL/TLS
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+       secureSocket = {
+            cert: "path/to/public.crt"
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+#### 12.3.2.2 Mutual SSL
+
+A GraphQL client can communicate with a secured GraphQL service using mutual SSL. Mutual SSL can be enabled by providing the `graphql:ClientSecureSocket` value for the `auth` configuration of the client along with providing the client certificate and key files via the `key` configuration of the `graphql:ClientSecureSocket`.
+
+###### Example: GraphQL Client Using Mutual SSL
+
+```ballerina
+public function main() returns error? {
+    graphql:Client graphqlClient = check new ("localhost:9090/graphql",
+       secureSocket = {
+            key: {
+                certFile: "path/to/public.crt",
+                keyFile: "path/to/private.key"
+            },
+            cert: "path/to/public.crt",
+            protocol: {
+                name: http:TLS
+            },
+            ciphers: ["TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"]
+        }
+    );
+    string document = "{ one: profile(id: 100) {name} }";
+    ProfileResponseWithErrors response = check graphqlClient->execute(document);
+    // ...
+}
+```
+
+## 13. Federation
+
+### 13.1 Federated Subgraph
+
+The Ballerina GraphQL module provides the capability to expose a `graphql:Service` as a [federation2 subgraph](https://www.apollographql.com/docs/federation/subgraph-spec). To convert a Ballerina GraphQL service into a federation2 subgraph, the `graphql.subgraph` sub module must be imported.
 
 ```ballerina
 import ballerina/graphql.subgraph;
-```
+``` 
 
->**Note:** The current implementation of the subgraph only supports dynamic schema composition through introspection.
+> **Note:** The current implementation of the subgraph only supports dynamic schema composition through introspection.
 
-##### 10.5.1.1 The `@subgraph:Subgraph` Annotation
+#### 13.1.1 The `@subgraph:Subgraph` Annotation
 
 To make a Ballerina GraphQL service a federation2 subgraph, it should be annotated with `@subgraph:Subgraph`. This annotation adds all the subgraph schema additions to the GraphQL schema as described in the [subgraph specification](https://www.apollographql.com/docs/federation/subgraph-spec/#subgraph-schema-additions). Moreover, this annotation automatically adds resolvers for the `_entities` and `_service` root Query fields.
 
@@ -3071,7 +2983,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 10.5.1.2 The `@subgraph:Entity` Annotation
+#### 13.1.2 The `@subgraph:Entity` Annotation
 
 In a federated graph, an entity is an object type that can resolve its fields across multiple subgraphs. Each subgraph can contribute different fields to the entity and is responsible for resolving only the fields that it contributes. The `@subgraph:Entity` designates an object type as an entity in Ballerina. The following type definition describes the shape of the `@subgraph:Entity` annotation.
 
@@ -3092,7 +3004,7 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 
 1. Assign the `@subgraph:Entity` annotation to an object type.
 2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
-3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#10513-the-subgraphreferenceresolver-function-type).
+3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#1313-the-subgraphreferenceresolver).
 
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 
@@ -3134,7 +3046,7 @@ type Product @key(fields: "id") {
     </td>
   </tr>
   <tr>
-    <td>Multiple keys</td>
+    <td>Mutiple keys</td>
     <td>
     <pre lang='ballerina'>
 
@@ -3224,7 +3136,7 @@ type Product @key(fields: "id", resolvable: false) {
   </tr>
 </table>
 
-##### 10.5.1.3 The `subgraph:ReferenceResolver` Function Type
+#### 13.1.3 The `subgraph:ReferenceResolver`
 
 Reference resolver is a function that resolves an entity of a specific type using its primary key. When the router requires a particular entity to be resolved, it invokes the corresponding entity's reference resolver. Following is the type definition of a reference resolver defined in `graphql.subgraph` module.
 
@@ -3253,3 +3165,28 @@ type Product record {
 ```
 
 >**Note:** If the reference resolver returns an entity of a different type than the entity being resolved, a runtime error will be returned to the router. For example, if the resolver returns a `User` for a `Product` entity, a runtime error will occur.
+
+## 14. Tools
+
+### 14.1 GraphiQL client
+
+The Ballerina GraphQL package provides an integrated GraphiQL client tool which is provided by the GraphQL Foundation. The client is implemented using CDN assets, and it provides a Graphical User Interface to execute the GraphQL queries. To enable the GraphiQL client, configuration should be provided as mentioned in the [GraphiQL configuration](#1015-graphiql-configurations) section.
+
+If the configurations are provided correctly, the GraphiQL client tool will be served at the given path when the service starts. The client can be accessed via a web browser.
+
+###### Example: Enable GraphiQL Client
+
+```ballerina
+@graphql:ServiceConfig {
+    graphiql: {
+        enabled: true,
+        path: "/ballerina/graphiql"
+    }
+}
+service on new graphql:Listener(9090) {
+    resource function get greeting() returns string {
+        return "Hello, World!";
+    }
+}
+````
+>**Note:** The GraphiQL client is used as a tool to help developers when writing a GraphQL service, and It is recommended not to enable it in production environments.

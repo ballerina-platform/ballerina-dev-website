@@ -34,12 +34,6 @@ const TopNav = (props) => {
     launcher = launcher + '-learn';
   }
 
-  // const renderTooltip = (props) => (
-  //   <div id="button-tooltip" {...props} className={styles.submenu}>
-  //     <Nav.Link className={styles.navItem} href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} target='_blank' rel="noreferrer">Apollo vs. Ballerina</Nav.Link>
-  //   </div>
-  // );
-
   const expand = 'lg';
 
   const [show, setShow] = React.useState(false);
@@ -54,8 +48,6 @@ const TopNav = (props) => {
     <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={styles.dropDownItem}>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</Dropdown.Item>,
-    // <Dropdown.Item contentType='case studies' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Data oriented programming</Dropdown.Item>,
-
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem}>EDA</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem}>B2B</Dropdown.Item>

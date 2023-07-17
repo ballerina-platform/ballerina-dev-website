@@ -10,7 +10,7 @@ intro: AWS Lambda is an event-driven, serverless computing platform. The AWS Lam
 
 Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@awslambda:Function`. 
 
-> **Note:** An AWS Lambda function always adheres to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
+> **Note:** An AWS Lambda function should always adhere to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`
 
 ## Supported triggers
 

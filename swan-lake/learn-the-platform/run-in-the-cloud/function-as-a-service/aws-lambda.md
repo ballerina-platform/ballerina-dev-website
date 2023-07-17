@@ -85,7 +85,7 @@ $ bal build
 
 The AWS Lambda functionality in Ballerina is implemented as a custom AWS Lambda layer. This information is provided when the function is created. The compiler generates the `aws-ballerina-lambda-functions.zip` file, which encapsulates all the AWS Lambda functions that are generated. This ZIP file can be used with the AWS web console or the <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-configure-cli.html" target="_blank">AWS CLI</a> to deploy the functions. 
 
-To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Learn more](#learn-more).
+To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Examples](#examples).
 
 >**Info:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
 

@@ -8,7 +8,7 @@ active: azure-functions
 intro: Azure Functions is an event-driven, serverless computing platform. The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 ---
 
-[Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview?pivots=programming-language-csharp) can be written from Ballerina using the listeners and services provided by Azure Functions package. 
+[Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview?pivots=programming-language-csharp) can be written in Ballerina using the listeners and services provided by the Azure Functions package. 
 
 ## Supported triggers and bindings
 
@@ -45,8 +45,8 @@ Follow the steps below to create the Azure function app.
 1. Execute the `az login` command on the CLI to log in to the Azure CLI.
 2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the default option of creating a resource group automatically and the requirements below.
 >**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
-   - Runtime stack - `Java 11`
-   - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
+      - Runtime stack - `Java 11`
+      - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
 
 ## Create the function
 
@@ -64,7 +64,7 @@ $ bal build --cloud="azure_functions"
 
 ## Deploy the function
 
-To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Learn more](#learn-more).
+To deploy the function, execute the command, which you get in the CLI output logs after you [build the function](#build-the-function). For examples, see [Examples](#examples).
 
 >**Note:** When you are deploying, make sure to replace the `<function_app_name>` placeholder with the app name of the [created function](#create-the-function).
 

@@ -8,7 +8,7 @@ active: azure-functions
 intro: Azure Functions is an event-driven, serverless computing platform. The Azure Functions extension provides the functionality to expose a Ballerina function as a serverless function in the Azure Functions platform.
 ---
 
-[Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview?pivots=programming-language-csharp) can be written in Ballerina using the listeners and services provided by the Azure Functions package. 
+>**Info:** [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview?pivots=programming-language-csharp) can be written in Ballerina using the listeners and services provided by the Azure Functions package. 
 
 ## Supported triggers and bindings
 

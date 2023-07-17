@@ -36,7 +36,7 @@ const CustomMenu = React.forwardRef(
                     (launcher === 'mobile') ?
                         <>
                             <Accordion.Item eventKey="usecases" className={styles.acItem}>
-                                <Accordion.Header className={styles.mainDir}>Usecases</Accordion.Header>
+                                <Accordion.Header className={styles.mainDir}>Use cases</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
                                         children.type.map((child) => {

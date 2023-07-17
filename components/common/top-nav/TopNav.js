@@ -43,11 +43,11 @@ const TopNav = (props) => {
 
   const MenuItems = [
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
+    <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
     <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='7'>Microservices</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='8'>EDA</Dropdown.Item>,
     <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='9'>B2B</Dropdown.Item>
@@ -92,13 +92,15 @@ const TopNav = (props) => {
                   </Dropdown>
 
                   {/* Offcanvas nav bar for mobile view */}
-                  <a className={(launcher === 'usecases') ? `${styles.active} ${styles.navItem} nav-link d-block d-lg-none` : `${styles.navItem} nav-link d-block d-lg-none`}
+                  <a className={(launcher === 'usecases') ? `${styles.active} ${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none` : `${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none`}
                     onClick={handleShow}>
                     Explore
+
+                    
                   </a>
 
 
-                  <Offcanvas show={show} onHide={handleClose}>
+                  <Offcanvas show={show} onHide={handleClose} placement='end'>
                     <Offcanvas.Header>
                       <Offcanvas.Title onClick={handleClose} className={styles.back}>
                         <svg

@@ -42,15 +42,15 @@ const TopNav = (props) => {
   const handleShow = () => setShow(true);
 
   const MenuItems = [
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem}>Integration</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`}><span>Data-oriented programming</span></Dropdown.Item>,
-    <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem}>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem}>AI</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem}>Healthcare</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem}>Microservices</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem}>EDA</Dropdown.Item>,
-    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem}>B2B</Dropdown.Item>
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem} ${styles.sub}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/integration/data-oriented-programming`} className={`${styles.dropDownItem} ${styles.sub}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
+    <Dropdown.Item contentType='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data oriented programming</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='7'>Microservices</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='8'>EDA</Dropdown.Item>,
+    <Dropdown.Item contentType='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='9'>B2B</Dropdown.Item>
   ];
 
 
@@ -110,7 +110,7 @@ const TopNav = (props) => {
                           viewBox="0 0 16 16"
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                           />
                         </svg> Back

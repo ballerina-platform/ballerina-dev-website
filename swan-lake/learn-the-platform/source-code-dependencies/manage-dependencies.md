@@ -119,7 +119,7 @@ version = "1.5.0”
 
 ### Upgrading packages to use new Swan Lake Update distributions
 
-When a new Swan Lake Update distribution is released, it may include incompatible language improvements. When upgrading an existing package to use new Swan Lake Update distributions, the Ballerina compiler automatically updates the Dependencies.toml file with the latest compatible minor versions of dependencies for the new distribution. This enables existing projects to benefit from improvements in the new Update without significant modifications.
+When a new Swan Lake Update distribution is released, it may include incompatible language improvements. When upgrading an existing package to use new Swan Lake Update distributions, the Ballerina compiler automatically updates the `Dependencies.toml` file with the latest compatible minor versions of the dependencies of the new distribution. This enables the existing projects to benefit from improvements in the new update releases without requiring significant modifications.
 
 ## Use dependencies from the local repository
 

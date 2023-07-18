@@ -155,15 +155,129 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 }
 
 a.dropDownItem:focus, a.dropDownItem:hover {
-    background-color: #20b6b0 !important;
-    color: #ffffff !important;
+    /* background-color: #20b6b0 !important;
+    color: #ffffff !important; */
+    color: #20b6b0 !important;
+    background-color: transparent !important;
 }
 
 .sub {
     padding-left: 30px;
 }
 
+.subsub {
+    padding-left: 60px;
+}
+
+.subsub span {
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+}
+
 .sub span {
     padding-left: 10px;
     border-left: 2px solid #ccc;
 }
+
+.back {
+    color: #20b6b0;
+}
+
+.subSections {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    /* min-width: 900px; */
+    /* margin-left: -275px; */
+}
+
+.subSection p {
+    font-weight: 600;
+    /* color: #57595d; */
+    color: #a3a3a3;
+}
+
+.subSection ul {
+    margin-bottom: 0;
+}
+
+.subSection ul li a {
+    padding: 0.25rem 0 0.25rem 1rem !important;
+}
+
+.subSection ul li a.sub {
+    padding: 0.25rem 0 0.25rem 1.5rem !important;
+}
+
+/* mobile view */
+
+.mobileAccordion {
+    padding-left: 0.4rem;
+}
+
+.mobileAccordion button {
+    padding: 1rem 0.75rem;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: normal;
+    line-height: normal;
+}
+
+.headName {
+    white-space: nowrap;
+}
+
+.acItem {
+    border: none !important;
+}
+
+.acItem a {
+    white-space: break-spaces !important;
+}
+
+.mobileAccordion h2 {
+    margin-top: 0;
+    line-height: 0;
+}
+
+.mainDir button {
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.mobileAccordion button:focus {
+    border: none;
+    box-shadow: none;
+}
+ 
+.mobileAccordion button:not([aria-expanded="false"]) {
+    background: #f7f7f7;
+    color: #20b6b0;
+    font-weight: 500;
+}
+
+.mobileAccordion button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.mobileAccordion button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2320b6b0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.arrow {
+    background-image: url("/images/chevron-right-teal.svg");
+    display: block;
+    transition: none !important;
+    background-repeat: no-repeat;
+    background-position: right 20px top 13px;
+}
+
+.arrow.active {
+    background-image: url("/images/chevron-right-grey.svg");
+    display: block;
+    transition: none !important;
+    background-repeat: no-repeat;
+    background-position: right 20px top 13px;
+}
+

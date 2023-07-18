@@ -1,9 +1,10 @@
 ---
-title: 'JSON? Ballerina is JSON'
-description: Javascript is JSON, and so is Ballerina. Plain data in Ballerina bear a natural resemblance to JSON values, simplifying the manipulation of JSON data. You can use the in-built `json` type if that’s your thing! Otherwise, convert to domain types for type-safe handling.
-url: 'https://github.com/ballerina-guides/integration-samples/tree/main/working_with_json/ballerina/main.bal'
+title: 'Ballerina'
+description: null
 ---
 ```
+import ballerina/io;
+
 type InvoiceItem record {
     string id;
     decimal price;
@@ -27,9 +28,18 @@ public function main() returns error?{
     // Enjoy lax static typing here!
     // Fails at runtime if the key is not present or the value is not a string.
     string id = check invoiceData.id;
+    io:println("Invoice id: ", id);
 
     // Fails at runtime if the key is not present.
     json items = check invoiceData.items;
+    io:println("Invoice items: ", items);
+
+    // Fails at runtime if the convertion is not possible.
+    json[] itemArr = check items.cloneWithType();
+
+    // Results in a nil value if the accessed field is not present.
+    decimal? discountAmount = check itemArr[1]?.discount?.amount;
+    io:println("Discount amount: ", discountAmount);
 
     // Converts to the domain type.
     // Fails at runtime if the json value does not match the type.
@@ -38,5 +48,6 @@ public function main() returns error?{
     // Enjoy type-safe handling of json values.
     id = invoice.id;
     InvoiceItem[] invoiceItems = invoice.items;
+    io:println("Invoice items: ", invoiceItems);
 }
 ```

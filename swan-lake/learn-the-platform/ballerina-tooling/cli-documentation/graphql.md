@@ -38,7 +38,7 @@ The command-line arguments below can be used with the command for each particula
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `-i, --input`  | The `input` parameter specifies the path of the GraphQL schema file (e.g., `schema.graphql`) specified in Schema Definition Language. This parameter is mandatory.                             |
 | `-o, --output` | The `output` parameter specifies the path of the output location of the generated files. This parameter is optional. If this parameter is not specified, the Ballerina files will be generated at the same location where the GraphQL command is executed. |
-| `-m, --mode`  | The `mode` parameter specifies the operation mode. It indicates the way to process the schema file. This parameter is mandatory for GraphQL service generation. |
+| `-m, --mode`  | The `mode` parameter specifies the operation mode. It indicates the way to process the schema file. If the `mode` flag is not specified, the `graphql` tool will infer the mode from the `input` file extension. |
 | `-r, --use-records-for-objects`  | The `use-records-for-objects` parameter specifies to generate record types for GraphQL object types whenever it is possible. This parameter is optional. If this parameter is not specified, service class types will be generated for GraphQL object types. |
 
 ## Ballerina to GraphQL

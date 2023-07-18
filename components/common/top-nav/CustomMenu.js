@@ -88,7 +88,7 @@ const CustomMenu = React.forwardRef(
                         <div className={styles.subSections}>
 
                             <div className={styles.subSection}>
-                                <p>Usecases</p>
+                                <p>Use cases</p>
                                 <ul className="list-unstyled">
                                     {
                                         children.type.map((child) => {

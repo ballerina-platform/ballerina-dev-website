@@ -36,3 +36,10 @@ To view bug fixes, see the [GitHub milestone for 2201.7.1 (Swan Lake)](https://g
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.7.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+milestone%3A2201.7.1+label%3AType%2FBug+is%3Aclosed+).
+
+## Developer tools updates
+
+### Bug fixes
+
+To view bug fixes, see the GitHub milestone for Swan Lake 2201.7.1 of the repository below.
+- [OpenAPI Tool](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aclosed+milestone%3A%22Swan+Lake+2201.7.1+%22+label%3AType%2FBug)

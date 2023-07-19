@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Immutability {
+class Main {
     record Student(int grade, String name, Map<String, Integer> marks) {}
 
     public static void main(String[] args) {

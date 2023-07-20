@@ -301,41 +301,41 @@ The `service` parameter specifies the base path of the Ballerina GraphQL service
 
 ## Service generation
 
-The GraphQL tool supports generating a Ballerina GraphQL service from a given GraphQL schema. Successfull execution will generate two files. One contains the service, and other contains the types needed. You can export the generated files into a given location. The tool can be used in the following ways to generate a Ballerina GraphQL service.
+The GraphQL tool supports generating a Ballerina GraphQL service from a given GraphQL schema. Successful execution will generate two files. One contains the service and the other contains the types needed. You can export the generated files to a given location. The tool can be used in the following ways to generate a Ballerina GraphQL service.
 
 ### Generate a service with GraphQL object types represented in service class types 
 
-If you want to generate service class types for GraphQL object types in the GraphQL schema, use the following command to generate the service.
+Execute the command below to generate service class types for GraphQL object types in the GraphQL schema.
 
 ```
 $ bal graphql [-i | --input] <graphql-schema-file-path> [-m | --mode] <operation-mode> [-o | --output <output-location>] 
 ```
 
-For example,
+For example, see the command below.
 
 ```
 $ bal graphql -i schema.graphql -m service -o ./service
 ```
 
-Output flag is optional. If it is omitted, the generated files will be written to the current directory. 
+The output flag is optional. If it is omitted, the generated files will be written to the current directory. 
 
 >**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
 
 ### Generate a service with GraphQL object types represented in record types
 
-If you want to generate record types for GraphQL object types in the GraphQL schema, use the following command to generate the service. 
+Execute the command below to generate record types for GraphQL object types in the GraphQL schema. 
 
 ```
 $ bal graphql [-i | --input] <graphql-schema-file-path> [-m | --mode] <operation-mode> [-o | --output <output-location>] [-r | --use-records-for-objects]
 ```
 
-For example, 
+For example, see the command below.
    
 ```
 $ bal graphql -i schema.graphql -m service -o ./service -r
 ```
 
-Even if the `[-r | --use-records-for-objects]` flag is used, the following object types will be generated using service types because these types cannot be represented by Ballerina record types.
+Even if the `[-r | --use-records-for-objects]` flag is used, the following object types will be generated using the service types because these types cannot be represented by Ballerina record types.
 - types having a field with input arguments 
 - types being a subtype of a union type 
 - types implementing an interface 

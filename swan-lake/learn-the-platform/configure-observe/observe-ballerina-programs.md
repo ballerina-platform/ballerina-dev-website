@@ -32,12 +32,13 @@ Ballerina logs can be fed to any external log monitoring system like the [Elasti
 
 Follow the steps below to observe a sample Ballerina service.
 
-### Step 1 - set up the prerequisites
+### Step 1 - Set up the prerequisites
 
-Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger,
-Prometheus, etc. For instructions, go to the <a href="https://docs.docker.com/install/" target="_blank">Docker documentation</a> to install Docker.
+Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger, Prometheus, etc.
+For instructions, go to the <a href="https://docs.docker.com/install/" target="_blank">Docker documentation</a> to install Docker.
+>**Tip:** User can set up directly using the precompiled binaries of external systems.
 
-### Step 2 - install and configure the external systems
+### Step 2 - Install and configure the external systems
 
 * [Set up Prometheus](#set-up-prometheus) for collecting metrics information.
 * [Set up Grafana](#set-up-grafana) to visualize metrics.
@@ -191,6 +192,7 @@ collect metrics from the Ballerina service with the default configurations. Foll
 Prometheus. 
 
 >**Tip:** There are many other ways to install Prometheus and you can find possible options from the <a href="https://prometheus.io/docs/prometheus/latest/installation/" target="_blank">installation guide</a>.
+> The easiest option is to use precompiled binaries listed in <a href="https://prometheus.io/download/" target="_blank">Downloads</a>.
 
 1. Create a `prometheus.yml` file in the `/tmp/` directory.
 
@@ -305,7 +307,7 @@ tracingProvider="jaeger"
 
 [ballerinax.jaeger]
 agentHostname="localhost"
-agentPort=55680
+agentPort=4317
 samplerType="const"
 samplerParam=1.0
 reporterFlushInterval=2000
@@ -329,12 +331,13 @@ Jaeger with Docker as a quick installation.
 
 #### Set up the Jaeger server
 
-There are many possible ways to deploy Jaeger. For more information, see <a href="https://www.jaegertracing.io/docs/deployment/" target="_blank">Jaeger Deployment</a>. This focuses on an all-in-one deployment with Docker.
+>**Tip:** There are many possible ways to deploy Jaeger. For more information, see <a href="https://www.jaegertracing.io/docs/deployment/" target="_blank">Jaeger Deployment</a>.
+> The easiest option is to use executable binaries listed in <a href="https://www.jaegertracing.io/download/" target="_blank">Downloads</a>.
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 
     ```
-    $ docker run -d -p 13133:13133 -p 16686:16686 -p 55680:55680 jaegertracing/opentelemetry-all-in-one
+    $ docker run -d -p 13133:13133 -p 16686:16686 -p 4317:4317 jaegertracing/opentelemetry-all-in-one
     ```
 
 2. Go to <http://localhost:16686> and load the web UI of Jaeger to make sure it is functioning properly.

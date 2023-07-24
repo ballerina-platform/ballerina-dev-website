@@ -41,7 +41,7 @@ There are two options to set up prerequisites.
 
 We focus on using Docker to set up prerequisites.
 
-### Step 2 - install and configure the external systems
+### Step 2 - Install and configure the external systems
 
 * [Set up Prometheus](#set-up-prometheus) for collecting metrics information.
 * [Set up Grafana](#set-up-grafana) to visualize metrics.

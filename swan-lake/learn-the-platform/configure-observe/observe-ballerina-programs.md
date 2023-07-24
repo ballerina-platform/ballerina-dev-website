@@ -32,7 +32,7 @@ Ballerina logs can be fed to any external log monitoring system like the [Elasti
 
 Follow the steps below to observe a sample Ballerina service.
 
-### Step 1 - set up the prerequisites
+### Step 1 - Set up the prerequisites
 
 There are two options to set up prerequisites.
 

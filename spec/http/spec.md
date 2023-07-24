@@ -456,7 +456,7 @@ with any annotation or additional detail unless any default payload param is def
 and not ordered. The type of query param are as follows
 
 ```ballerina
-type BasicType boolean|int|float|decimal|string|map<json>|enum;
+type BasicType boolean|int|float|decimal|string|map<anydata>|enum;
 public type QueryParamType ()|BasicType|BasicType[];
 ```
 

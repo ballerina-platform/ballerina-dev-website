@@ -337,7 +337,7 @@ versa.
 #### `stan` package
 
 - Deprecated the `stan` package.
-    > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library, including the new NATS JetStream client and the NATS JetStream listener.
+    > For NATS-enabled applications requiring persistence, it is recommended to use `JetStream` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library, including the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
 
 #### `serdes` package
 

@@ -250,7 +250,7 @@ export function GraphqlClientErrorHandling({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#255-client-error-handling">
+            <a href="/spec/graphql/#63-client-error-handling">
               GraphQL client error handling - Specification
             </a>
           </span>

@@ -74,7 +74,7 @@ export function Maps({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=8c9406208e6f94eb8c14c74ee2db0741&file=maps.bal",
+                "https://play.ballerina.io/?gist=2de36484ca48698291aa114d05568e79&file=maps.bal",
                 "_blank",
               );
             }}

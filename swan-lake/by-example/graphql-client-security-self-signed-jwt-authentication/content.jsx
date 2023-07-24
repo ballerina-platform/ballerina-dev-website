@@ -262,7 +262,7 @@ export function GraphqlClientSecuritySelfSignedJwtAuthentication({
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1223-self-signed-jwt-authentication">
+            <a href="/spec/graphql/#823-self-signed-jwt-authentication">
               GraphQL client self signed JWT authentication - Specification
             </a>
           </span>

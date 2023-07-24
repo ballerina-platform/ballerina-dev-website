@@ -5,28 +5,42 @@ description: null
 ```
 import ballerina/io;
 
-type SensorData record {|
-    string sensorName;
-    string timestamp;
-    float temperature;
-    float humidity;
+// Define a type for tabular data
+type Employee record {|
+    readonly int id;
+    string name;
+    readonly string department;
+    int salary;
 |};
 
-public function main(string filePath = "sensor_data.csv") returns error? {
-    // Read file as a stream which will be lazily evaluated
-    stream<SensorData, error?> sensorDataStrm = check io:fileReadCsvAsStream(filePath);
-    map<float> ecoSenseAvg = check map from var {sensorName, temperature} in sensorDataStrm
-        // if sensor reading is faulty; stops processing the file 
-        let float tempInCelcius = check convertTemperatureToCelcius(sensorName, temperature)
-        group by sensorName
-        select [sensorName, avg(tempInCelcius)];
-    io:println(ecoSenseAvg);
-}
+// Create an in-memory table with compound keys
+table<Employee> key(id, department) employeeTable = table [
+    {id: 1, name: "John Doe", department: "Engineering", salary: 5000},
+    {id: 2, name: "Jane Smith", department: "Sales", salary: 4000}
+];
 
-function convertTemperatureToCelcius(string sensorName, float temperature) returns float|error {
-    if temperature < 0.0 || temperature > 10000.0 {
-        return error(string `Invalid kelvin temperature value in sensor: ${sensorName}`);
+public function main() {
+    // Add an employee to the table
+    employeeTable.add({id: 3, name: "William Smith", department: "Engineering", salary: 4500});
+
+    // Adding duplicate record, throws KeyAlreadyExist error
+    // employeeTable.add({id: 2, name: "Jane Smith", department: "Sales", salary: 5000});
+
+    // Putting duplicate record, overrides the existing value
+    employeeTable.put({id: 2, name: "Jane Smith", department: "Sales", salary: 5000});
+
+    // Retrieve an employee using the compound key
+    Employee? employee = employeeTable[1, "Engineering"];
+    if (employee is Employee) {
+        io:println("Employee Found: " + employee.name);
+    } else {
+        io:println("Employee Not Found");
     }
-    return temperature - 273.15;
+
+    // Calculate the total salary in the Engineering department
+    int totalSalary = from var {department, salary} in employeeTable
+        where department == "Engineering"
+        collect int:sum(salary);
+    io:println(string `Total Salary in Engineering Department: ${totalSalary}`);
 }
 ```

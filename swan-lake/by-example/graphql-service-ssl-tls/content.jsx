@@ -237,7 +237,7 @@ export function GraphqlServiceSslTls({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12311-ssltls">
+            <a href="/spec/graphql/#8311-ssltls">
               GraphQL service SSL/TLS - Specification
             </a>
           </span>

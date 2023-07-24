@@ -234,8 +234,8 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1015-graphiql-configurations">
-              GraphQL GraphiQL client - Configuration
+            <a href="/spec/graphql/#91-graphiql-client">
+              GraphQL GraphiQL client - Specification
             </a>
           </span>
         </li>
@@ -244,8 +244,8 @@ export function GraphqlGraphiql({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#141-graphiql-client">
-              GraphQL GraphiQL client - Specification
+            <a href="/spec/graphql/#715-graphiql-configurations">
+              GraphQL GraphiQL client configuration - Specification
             </a>
           </span>
         </li>

@@ -423,8 +423,8 @@ export function GraphqlServiceInterceptors({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11-interceptors">
-              GraphQL interceptors - Specification
+            <a href="/spec/graphql/#10331-service-interceptors">
+              GraphQL service interceptors - Specification
             </a>
           </span>
         </li>

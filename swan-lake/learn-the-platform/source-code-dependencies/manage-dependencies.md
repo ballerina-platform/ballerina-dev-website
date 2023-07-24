@@ -117,6 +117,10 @@ name = "mysql"
 version = "1.5.0”
 ```
 
+### Upgrading packages to use new Swan Lake update distributions
+
+When a new Swan Lake update distribution is released, it may include incompatible language improvements. When upgrading an existing package to use new Swan Lake update distributions, the Ballerina compiler automatically updates the `Dependencies.toml` file with the latest compatible minor versions of the dependencies of the new distribution. This enables the existing projects to benefit from improvements in the new update releases without requiring significant modifications.
+
 ## Use dependencies from the local repository
 
 The local repository is useful to test a package in the development phase or to fix bugs. To specify a dependency from the local repository, first, you need to publish it to the local repository by following the steps below.

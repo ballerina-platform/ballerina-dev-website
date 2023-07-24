@@ -1,67 +1,29 @@
 ---
 layout: ballerina-why-ballerina-left-nav-pages-swanlake
 title: Graphical
-description: See why the support for a graphical model lays the foundation for designing the syntax and semantics of the Ballerina programming language.
+description: See why the support for a visual representation of the development experience lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 keywords: ballerina, programming language, sequence diagram, graphical, diagram editor, why ballerina
+intro: See why the support for a visual representation of the development experience lays the foundation for designing the syntax and semantics of the Ballerina programming language.
 permalink: /why-ballerina/graphical/
 active: graphical
 ---
 
-In today’s cloud-era, you need technologies that can model distributed systems in a more developer-friendly way. This means that for a single use case you need to model a flow that shows how multiple actors interact with each other, how concurrent execution flows, and what remote endpoints are involved. Sequence diagrams are known to be the best way to visually describe this.
+In today’s cloud era, you need technologies that can model distributed systems in a more developer-friendly way. The feature-rich development experience of the [Ballerina Visual Studio code extension](/vscode/) brings in graphical representations for designing the architecture of your applications, designing and editing your services, modeling how concurrent execution flows and how multiple actors interact with each other, and mapping the data conversions within your applications.
 
-That’s why sequence diagrams are the foundation for designing the syntax and semantics of the Ballerina language. Ballerina provides the flexibility of a general-purpose language while having features to model and visualize solutions based on higher-level abstractions derived from sequence diagrams.
+Ballerina provides the flexibility of a general-purpose language with the capabilities to model and visualize solutions based on higher-level abstractions derived from the graphical representations provided by its developer tooling features as described below.
 
+## Architecture View
 
-## Sequence diagrams in Ballerina
+The [Architecture View](https://wso2.com/ballerina/vscode/docs/design-the-application/) of the Ballerina VS Code extension provides a holistic picture of the components and their interactions in Ballerina projects purely based on the source code. It provides several types of diagrams, namely, the Service Diagram Level 1 (Services), Service Diagram Level 2 (Resources), type diagram, and composition diagram to explore and ease the designing of the application.  
 
-Being based on sequence diagrams, Ballerina allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display the logic and network interaction of a function or a service resource. You can view and edit these diagrams using the Ballerina VSCode plugin.
+## Service Designers
 
-<img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Ballerina sequence diagram"  style="width:100%; border: 1px solid #eee;">
+The interactive visual interfaces provided by the Ballerina VS Code extension enable the [designing and developing of HTTP and GraphQL services](https://wso2.com/ballerina/vscode/docs/design-the-services/) via graphical representations with a limited understanding of the underlying syntax and configurations.
 
-One of the key benefits of the diagram is that it acts as a documentation of the code. It makes it far easier to comprehend the program than reading the source code. Even if you are not familiar with Ballerina code syntax it is easier to understand the diagram.
+## Sequence Diagram View
 
-> ***"[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful." -- Christian Posta, field CTO, solo.io***
+The [Sequence Diagram View](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) provided by the Ballerina VS Code extension allows you to visualize a program written in Ballerina as a sequence diagram. The diagram will display the logic and network interaction of a function or a service resource. You can view and edit these diagrams using the Ballerina VS Code extension.
 
+## Data Mapper
 
-### Get started
-
-The <a href="https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina" target="_blank">Ballerina extension for Visual Studio Code</a> can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/" target="_blank">download</a> the VS Code extension and launch the graphical viewer.
-
-
-## Graphical representation
-
-### Functions
-
-Functions in Ballerina are visualized as a sequence diagram. The diagram will have a lifeline with start and end which represent the default worker of the function. The worker lifeline will be displayed as a flow diagram to represent function logic.
-
-
-
-<img src="/img/why-pages/sequence-diagrams-for-programming-2.png" alt="Ballerina sequence diagram of HTTP resource definition" style="width:100%; border: 1px solid #eee;">
-
-
-### Client objects and remote methods
-
-Ballerina has special network client objects, like HTTP clients and database connections, that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations are done on these network clients are called _remote methods_ — a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow “`->`” notation.
-
-The following code shows an HTTP client that is used to do GET and POST requests to a remote endpoint:
-
-
-```ballerina
-function execute() returns error? {
-    http:Client lookupService = check new (lookupUrl);
-    http:Client reportService = check new (reportUrl);
-
-    json result = check lookupService->get("/query");
-    http:Response response = check reportService->post("/report", result);
-}
-```
-
-The HTTP clients represented by `lookupService` and `reportService` variables are of type `http:Client`, which represents remote HTTP endpoints. The following diagram shows the generated sequence diagram for the above remote method calls.
-
-
-
-<img src="/img/why-pages/sequence-diagrams-for-programming-3.png" alt="Ballerina sequence diagram of HTTP resource definition" style="width:100%; border: 1px solid #eee;">
-
-
-You can see here how the HTTP clients have become participants of the sequence diagram with its own lifeline, where you visualize the messages sent and received to represent the network calls you do.
-
+The Ballerina VS Code extension supports [creating and updating the data mappings]((https://wso2.com/ballerina/vscode/docs/implement-the-code/data-mapper/)) to convert data between the corresponding input and output types. The user interface eases performing data integration, migration, and transformation elements of the data mapping process via the graphical representation of the source code.

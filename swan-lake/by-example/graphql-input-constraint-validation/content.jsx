@@ -389,8 +389,8 @@ export function GraphqlInputConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://ballerina.io/spec/graphql/#1018-constraint-configurations">
-              GraphQL constraint config - API documentation
+            <a href="/spec/graphql/#1018-constraint-configurations">
+              GraphQL constraint config - Specification
             </a>
           </span>
         </li>

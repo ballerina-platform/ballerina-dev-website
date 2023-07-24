@@ -36,9 +36,7 @@ Follow the steps below to observe a sample Ballerina service.
 
 Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger, Prometheus, etc.
 For instructions, go to the <a href="https://docs.docker.com/install/" target="_blank">Docker documentation</a> to install Docker.
->**Tip:** User can set up directly using the precompiled binaries of external systems. 
-
-We focus on using Docker to set up prerequisites.
+>**Tip:** User can set up directly using the precompiled binaries of external systems.
 
 ### Step 2 - Install and configure the external systems
 

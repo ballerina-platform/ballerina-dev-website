@@ -34,10 +34,8 @@ Follow the steps below to observe a sample Ballerina service.
 
 ### Step 1 - Set up the prerequisites
 
-There are two options to set up prerequisites.
-
-1. Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger, Prometheus, etc.
-2. Set up directly using the precompiled binaries. 
+Install <a href="https://www.docker.com/" target="_blank">Docker</a> to set up external systems such as Jaeger, Prometheus, etc.
+>**Tip:** User can set up directly using the precompiled binaries of external systems. 
 
 We focus on using Docker to set up prerequisites.
 
@@ -196,7 +194,6 @@ Prometheus.
 
 >**Tip:** There are many other ways to install Prometheus and you can find possible options from the <a href="https://prometheus.io/docs/prometheus/latest/installation/" target="_blank">installation guide</a>.
 > The easiest option is to use precompiled binaries listed in <a href="https://prometheus.io/download/" target="_blank">Downloads</a>.
-> However, this guide concentrates on the Docker deployment of Prometheus, which is geared toward the production level.
 
 1. Create a `prometheus.yml` file in the `/tmp/` directory.
 
@@ -337,7 +334,6 @@ Jaeger with Docker as a quick installation.
 
 >**Tip:** There are many possible ways to deploy Jaeger. For more information, see <a href="https://www.jaegertracing.io/docs/deployment/" target="_blank">Jaeger Deployment</a>.
 > The easiest option is to use executable binaries listed in <a href="https://www.jaegertracing.io/download/" target="_blank">Downloads</a>.
-> However, this guide concentrates on the all-in-one Docker deployment of Jaeger, which is geared toward the production level.
 
 1. Install Jaeger via Docker and start the Docker container by executing the command below.
 

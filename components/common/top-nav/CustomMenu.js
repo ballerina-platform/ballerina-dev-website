@@ -40,7 +40,7 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
                                         children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('usecases')) {
+                                            if (child.props.category.toLowerCase().startsWith('usecases')) {
                                                 return (
                                                     <>
                                                         {child}
@@ -56,7 +56,7 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
                                         children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('case studies')) {
+                                            if (child.props.category.toLowerCase().startsWith('case studies')) {
                                                 return (
                                                     <>
                                                         {child}
@@ -72,7 +72,7 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
                                         children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('comparisons')) {
+                                            if (child.props.category.toLowerCase().startsWith('comparisons')) {
                                                 return (
                                                     <>
                                                         {child}
@@ -91,10 +91,10 @@ const CustomMenu = React.forwardRef(
                                 <p>Use cases</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('usecases')) {
+                                        children.type.map((child, index) => {
+                                            if (child.props.category.toLowerCase().startsWith('usecases')) {
                                                 return (
-                                                    <li>
+                                                    <li key={index}>
                                                         {child}
                                                     </li>
                                                 )
@@ -108,10 +108,10 @@ const CustomMenu = React.forwardRef(
                                 <p>Case studies</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('case studies')) {
+                                        children.type.map((child, index) => {
+                                            if (child.props.category.toLowerCase().startsWith('case studies')) {
                                                 return (
-                                                    <li>
+                                                    <li key={index}>
                                                         {child}
                                                     </li>
                                                 )
@@ -126,10 +126,10 @@ const CustomMenu = React.forwardRef(
                                 <p>Comparisons</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.contentType.toLowerCase().startsWith('comparisons')) {
+                                        children.type.map((child, index) => {
+                                            if (child.props.category.toLowerCase().startsWith('comparisons')) {
                                                 return (
-                                                    <li>
+                                                    <li key={index}>
                                                         {child}
                                                     </li>
                                                 )

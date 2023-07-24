@@ -735,7 +735,7 @@ export function GraphqlServiceFieldObject({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#9-field-object">
+            <a href="/spec/graphql/#102-field-object">
               GraphQL field - Specification
             </a>
           </span>

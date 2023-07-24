@@ -269,7 +269,7 @@ export function GraphqlServiceJwtAuth({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12113-jwt-authentication">
+            <a href="/spec/graphql/#8113-jwt-authentication">
               GraphQL service JWT authentication - Specification
             </a>
           </span>

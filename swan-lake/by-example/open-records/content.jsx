@@ -96,7 +96,7 @@ export function OpenRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2e7fe51e138d9c29fef51efcbc2d7aa6&file=open_records.bal",
+                "https://play.ballerina.io/?gist=2f04c30f3f06ece3dc17bf60e1e76b25&file=open_records.bal",
                 "_blank",
               );
             }}

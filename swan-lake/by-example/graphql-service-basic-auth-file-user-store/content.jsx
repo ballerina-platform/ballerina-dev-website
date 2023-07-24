@@ -376,7 +376,7 @@ export function GraphqlServiceBasicAuthFileUserStore({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#12111-basic-authentication---file-user-store">
+            <a href="/spec/graphql/#8111-basic-authentication---file-user-store">
               GraphQL service basic authentication - file user store -
               Specification
             </a>

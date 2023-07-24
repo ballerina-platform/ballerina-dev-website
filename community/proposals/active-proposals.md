@@ -31,7 +31,7 @@ permalink: /community/active-proposals
 |---|----|----|----|---| 
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-standard-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|1|2023-07-07|N/A|
 |[[Proposal] Decoupling GraphQL API development from API design](https://github.com/ballerina-platform/ballerina-standard-library/issues/4620)|[shafreenAnfar](https://github.com/shafreenAnfar)|3|2023-06-27|Active|
-|[Proposal: Introduce DataLoader for Ballerina GraphQL](https://github.com/ballerina-platform/ballerina-standard-library/issues/4569)|[MohamedSabthar](https://github.com/MohamedSabthar)|5|2023-06-14|N/A|
+|[Proposal: Introduce DataLoader for Ballerina GraphQL](https://github.com/ballerina-platform/ballerina-standard-library/issues/4569)|[MohamedSabthar](https://github.com/MohamedSabthar)|6|2023-06-14|N/A|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-standard-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|
 |[Proposal: GraphQL Federation Gateway in Ballerina](https://github.com/ballerina-platform/ballerina-standard-library/issues/4298)|[Ishad-M-I-M](https://github.com/Ishad-M-I-M)|0|2023-04-03|N/A|
 |[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-standard-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|

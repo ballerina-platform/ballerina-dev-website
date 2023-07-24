@@ -22,7 +22,8 @@ import styles from './TopNav.module.css';
 
 const CustomToggle = React.forwardRef(({ children, onClick, launcher }, ref) => (
   <a
-    href="a"
+    role="button"
+    href="#"
     ref={ref}
     onClick={(e) => {
       e.preventDefault();

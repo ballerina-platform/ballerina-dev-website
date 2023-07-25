@@ -1,11 +1,11 @@
 ---
 layout: ballerina-cloud-left-nav-pages-swanlake
 title: AWS Lambda
-description: AWS Lambda is an event-driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
+description: The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 keywords: ballerina, programming language, serverless, cloud, aws, lambda, cloud-native
 permalink: /learn/run-ballerina-programs-in-the-cloud/function-as-a-service-with-ballerina/aws-lambda/
 active: aws-lambda
-intro: AWS Lambda is an event-driven, serverless computing platform. The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
+intro: The AWS Lambda extension provides the functionality to write AWS Lambda-compatible packages by exposing a Ballerina function as an AWS Lambda function.
 --- 
 
 > **Info:** Ballerina functions can be deployed in [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) by annotating a Ballerina function with `@awslambda:Function` adhering to the following function signature: <br/>`function (awslambda:Context, json|EventType) returns json|error`

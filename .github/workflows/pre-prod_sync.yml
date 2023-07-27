@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       NEXT_PUBLIC_BASE_PATH: ""
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

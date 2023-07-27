@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Rearrange files to match the urls
 cp -r ./out/learn/featured-scenarios/* ./out/learn
 cp -r ./out/learn/learn-the-language/* ./out/learn

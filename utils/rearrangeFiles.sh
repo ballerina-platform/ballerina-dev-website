@@ -23,16 +23,16 @@ rm -rf ./out/learn/build-a-graalvm-executable ./out/learn/ballerina-central/ ./o
 
 
 #Edit the sitemap
-sed -i 's/featured-scenarios\///g' ./out/sitemap.xml
-sed -i 's/learn-the-language\///g' ./out/sitemap.xml
-sed -i 's/learn-the-platform\///g' ./out/sitemap.xml
-sed -i 's/policies\///g' ./out/sitemap.xml
+sed -i '' 's/featured-scenarios\///g' ./out/sitemap.xml
+sed -i '' 's/learn-the-language\///g' ./out/sitemap.xml
+sed -i '' 's/learn-the-platform\///g' ./out/sitemap.xml
+sed -i '' 's/policies\///g' ./out/sitemap.xml
 
-sed -i 's/build-a-graalvm-executable\///g' ./out/sitemap.xml
-sed -i 's/ballerina-central\///g' ./out/sitemap.xml
-sed -i 's/ballerina-tooling\///g' ./out/sitemap.xml
-sed -i 's/ballerina-persist\///g' ./out/sitemap.xml
-sed -i 's/configure-observe\///g' ./out/sitemap.xml
-sed -i 's/java-interoperability\///g' ./out/sitemap.xml
-sed -i 's/test-document-the-code\///g' ./out/sitemap.xml
-sed -i 's/source-code-dependencies\///g' ./out/sitemap.xml
+sed -i '' 's/build-a-graalvm-executable\///g' ./out/sitemap.xml
+sed -i '' 's/ballerina-central\///g' ./out/sitemap.xml
+sed -i '' 's/ballerina-tooling\///g' ./out/sitemap.xml
+sed -i '' 's/ballerina-persist\///g' ./out/sitemap.xml
+sed -i '' 's/configure-observe\///g' ./out/sitemap.xml
+sed -i '' 's/java-interoperability\///g' ./out/sitemap.xml
+sed -i '' 's/test-document-the-code\///g' ./out/sitemap.xml
+sed -i '' 's/source-code-dependencies\///g' ./out/sitemap.xml

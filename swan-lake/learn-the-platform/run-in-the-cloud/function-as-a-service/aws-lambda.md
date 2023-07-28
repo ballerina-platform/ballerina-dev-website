@@ -18,7 +18,7 @@ An AWS Lambda function can be triggered by various AWS services. You can find th
 - <a href="https://aws.amazon.com/sqs/" target="_blank">Simple Queue Service (SQS)</a>
 - <a href="https://aws.amazon.com/s3/" target="_blank">Simple Storage Service (S3)</a>
 - <a href="https://aws.amazon.com/dynamodb/" target="_blank">DynamoDB</a>
-- <a href="https://aws.amazon.com/ses//" target="_blank">Simple Email Service (SES)</a>
+- <a href="https://aws.amazon.com/ses/" target="_blank">Simple Email Service (SES)</a>
 - <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a>
 
 ## Set up the prerequisites

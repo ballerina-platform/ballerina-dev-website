@@ -4,12 +4,15 @@ description: Ballerina enhances file transfer with FTP listeners, reacting to ev
 url: 'https://ballerina.io/learn/by-example/ftp-service-send-file/'
 ---
 ```
+configurable string username = ?;
+configurable string password = ?;
+
 listener ftp:Listener fileListener = check new ({
     host: "ftp.example.com",
     auth: {
         credentials: {
-            username: "user1",
-            password: "pass456"
+            username,
+            password
         }
     },
     path: "/home/in",

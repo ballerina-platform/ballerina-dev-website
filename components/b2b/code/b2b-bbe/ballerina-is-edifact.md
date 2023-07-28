@@ -10,7 +10,8 @@ import ballerinax/edifact.finance.d96a.mINVOIC;
 public function main() returns error? {
     string ediText = check io:fileReadString("resources/invoice_message_in.edi");
     mINVOIC:EDI_INVOIC_Invoice_message invoice = check mINVOIC:fromEdiString(ediText);
-    string? paymentMethod = invoice?.PAYMENT_INSTRUCTIONS?.PAYMENT_INSTRUCTION_DETAILS?.Payment_means;
+    string? paymentMethod = 
+            invoice?.PAYMENT_INSTRUCTIONS?.PAYMENT_INSTRUCTION_DETAILS?.Payment_means;
     if paymentMethod != "42" {
         return;
     }

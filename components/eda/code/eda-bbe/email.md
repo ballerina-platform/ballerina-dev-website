@@ -4,10 +4,13 @@ description: Ballerina simplifies real-time email handling by offering abstracti
 url: 'https://ballerina.io/learn/by-example/receive-email-using-service/'
 ---
 ```
+configurable string username = ?;
+configurable string password = ?;
+
 listener email:ImapListener emailListener = new ({
     host: "imap.email.com",
-    username: "reader@email.com",
-    password: "pass456"
+    username,
+    password
 });
 
 service "observer" on emailListener {

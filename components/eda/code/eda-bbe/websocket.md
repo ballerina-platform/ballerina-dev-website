@@ -6,7 +6,8 @@ url: 'https://github.com/ballerina-platform/module-ballerina-websocket/tree/main
 ```
 // This service is for drivers to register and send locations.
 service /taxi on taxiMgtListener {
-    resource isolated function get [string name]() returns websocket:Service|websocket:UpgradeError {
+    resource isolated function get [string name]() 
+                        returns websocket:Service|websocket:UpgradeError {
         return new DriverService(name);
     }
 }
@@ -21,7 +22,8 @@ isolated service class DriverService {
     }
 
     remote isolated function onOpen(websocket:Caller caller) returns websocket:Error? {
-        string welcomeMsg = "Hi " + self.driverName + "! Your location will be shared with the riders";
+        string welcomeMsg = 
+                "Hi " + self.driverName + "! Your location will be shared with the riders";
         check caller->writeMessage(welcomeMsg);
         
         broadcast("Driver " + self.driverName + " ready for a ride");

@@ -96,7 +96,7 @@ An Azure Functions package supports the two build options below.
 - `cloud="azure_functions"` - Builds the native executable to be compatible with the Azure Functions cloud.
 - `cloud="azure_functions_local"` - Builds the native executable to be compatible with your machine for development purposes.
 
-You can use these build options along with the native build option (i.e., `--native`) while building the package, as shown below. 
+You can use these build options along with the graalvm build option (`--graalvm`) while building the package, as shown below. 
 
 #### Build locally 
 

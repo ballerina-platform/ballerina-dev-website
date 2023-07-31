@@ -105,7 +105,7 @@ The example command below will build the package and run it locally.
 >**Info:** This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
 
 ```bash
-$ bal build --cloud="azure_functions_local" --native
+$ bal build --cloud="azure_functions_local" --graalvm
 ```
 
 #### Build for the cloud

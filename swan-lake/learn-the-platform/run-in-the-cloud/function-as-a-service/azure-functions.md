@@ -42,9 +42,11 @@ Follow the steps below to set up the Azure Functions.
 
 Follow the steps below to create the Azure function app.
 
+>**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
+
 1. Execute the `az login` command on the CLI to log in to the Azure CLI.
 2. Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the default option of creating a resource group automatically and the requirements below.
->**Note:** Make sure to remember the function application name and storage account name as they will be required in the code samples.
+
       - Runtime stack - `Java 11`
       - Hosting operating system - `Windows` (Currently, Linux is not supported in Azure by default for custom handlers.)
 
@@ -69,11 +71,11 @@ To deploy the function, execute the command, which you get in the CLI output log
 >**Note:** When you are deploying, make sure to replace the `<function_app_name>` placeholder with the app name of the [created function](#create-the-function).
 
 
-## Azure Functions native (experimental)
+## Azure Functions as a native executable
 
 You can use Azure Functions in the [native approach of Ballerina](/learn/build-the-executable-in-a-container/).
 
-### Set up the prerequisites for the native approach
+### Set up the prerequisites 
 
 Follow the steps below to set up the prerequisites, which are specifically required to follow the native approach.
 
@@ -81,13 +83,13 @@ Follow the steps below to set up the prerequisites, which are specifically requi
 2. Install and configure [Docker](https://www.docker.com/) in your machine.
 3. Install and configure [GraalVM](https://www.graalvm.org/) in your machine.
 
-### Create an app for the native approach
+### Create the app 
 
 Create an <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-function-app-portal" target="_blank">Azure Function app</a> with the given resource group with the following requirements.
    - Runtime stack - `Java 11`
    - Hosting operating system - `Linux` (As of now, Ballerina Azure functions native support is only available for Linux.)
 
-### Create the function for the native approach
+### Create the function 
 
 An Azure Functions package supports the two build options below.
 
@@ -102,23 +104,23 @@ You can use these build options along with the native build option (i.e., `--nat
 
 The example command below will build the package and run it locally.
 
->**Info:** This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
-
 ```bash
 $ bal build --cloud="azure_functions_local" --native
 ```
+
+>**Info:** This will use the GraalVM you installed on your machine to build the native image and make the generated executable compatible with your machine.
 
 #### Build for the cloud
 
 The example command below will build the package for the Azure Functions cloud. 
 
->**Info:** This will perform the compilation inside the Docker image to make it compatible with the Azure Functions cloud environment.
-
 ```bash
 $ bal build --cloud="azure_functions" --graalvm
 ```
 
-### Deploy the function for the native approach
+>**Info:** This will perform the compilation inside the Docker image to make it compatible with the Azure Functions cloud environment.
+
+### Deploy the function 
 
 You can either deploy the Azure Functions package locally or on the Azure Functions cloud. 
 

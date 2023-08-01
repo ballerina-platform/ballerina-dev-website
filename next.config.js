@@ -174,7 +174,7 @@ const nextConfig = {
         destination: `/${redirectBase}learn/learn-the-language/distinctive-language-features/:slug`,
       },
       {
-        source: `/${redirectBase}learn/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment`,
+        source: `/${redirectBase}learn/run-in-the-cloud/code-to-cloud-deployment`,
         destination: `/${redirectBase}learn/learn-the-platform/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment`,
       },
       {

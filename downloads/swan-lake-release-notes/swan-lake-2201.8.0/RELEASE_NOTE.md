@@ -34,6 +34,15 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### Introduction of list constants
+
+The language now supports list constants. You can declare a constant variable using a list constructor as shown below.
+
+```ballerina
+const int[] ERROR_CODES = [404, 500, 503];
+const ERROR_MESSAGES = ["Not Found", "Internal Server Error", "Service Unavailable"];
+```
+
 ### Improvements
 
 ### Bug fixes

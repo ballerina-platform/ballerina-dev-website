@@ -1,6 +1,23 @@
 {
     "events": [
-      {
+       {
+            "date": "August 17, 2023",
+            "day": "Thur.",
+            "time": "9.30 a.m. PDT",
+            "expire": "2023-08-18T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/295144732/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Ballerina Meets GraalVM: Empower Cloud Native Applications",
+            "presenterTwitter": "https://www.linkedin.com/in/tharmigan-krishnananthalingam-ab2265157/",
+            "presenter": "Tharmigan Krishnananthalingam",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP here"
+        },
+        },
+        {
             "date": "July 13, 2023",
             "day": "Thur.",
             "time": "9.00 a.m. IST",

@@ -8,7 +8,7 @@ permalink: /why-ballerina/graphical/
 active: graphical
 ---
 
-In today’s cloud era, you need technologies that can model distributed systems in a more developer-friendly way. The feature-rich development experience of the [Ballerina Visual Studio code extension](/vscode/) brings in graphical representations for designing the architecture of your applications, designing and editing your services, modeling how concurrent execution flows and how multiple actors interact with each other, and mapping the data conversions within your applications.
+In today’s cloud era, you need technologies that can model distributed systems in a more developer-friendly way. The feature-rich development experience of the [Ballerina Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina) brings in graphical representations for designing the architecture of your applications, designing and editing your services, modeling how concurrent execution flows and how multiple actors interact with each other, and mapping the data conversions within your applications.
 
 Ballerina provides the flexibility of a general-purpose language with the capabilities to model and visualize solutions based on higher-level abstractions derived from the graphical representations provided by its developer tooling features as described below.
 

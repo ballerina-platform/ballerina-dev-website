@@ -175,7 +175,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/run-in-the-cloud/code-to-cloud-deployment`,
-        destination: `/${redirectBase}learn/learn-the-platform/run-in-the-cloud/code-to-cloud/code-to-cloud-deployment`,
+        destination: `/${redirectBase}learn/learn-the-platform/run-in-the-cloud/code-to-cloud-deployment`,
       },
       {
         source: `/${redirectBase}learn/run-in-the-cloud/function-as-a-service/:slug`,

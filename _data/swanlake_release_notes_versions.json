@@ -864,5 +864,26 @@
    ],
    "api-docs":"ballerina-api-docs-2201.6.1.zip",
    "release-notes":"ballerina-release-notes-2201.6.1.md"
+},
+{
+	"version":"2201.7.0",
+	"short-version":"2201.7.0",
+	"display-version":"2201.7.0 (Swan Lake Update 7)",
+	"release-date":"2023-07-07",
+	"windows-installer":"ballerina-2201.7.0-swan-lake-windows-x64.msi",
+	"windows-installer-size":"185mb",
+	"linux-installer":"ballerina-2201.7.0-swan-lake-linux-x64.deb",
+	"linux-installer-size":"201mb",
+	"macos-installer":"ballerina-2201.7.0-swan-lake-macos-x64.pkg",
+	"macos-installer-size":"240mb",
+	"macos-arm-installer":"ballerina-2201.7.0-swan-lake-macos-arm-x64.pkg",
+	"macos-arm-installer-size":"240mb",
+	"rpm-installer":"ballerina-2201.7.0-swan-lake-linux-x64.rpm",
+	"rpm-installer-size":"244mb",
+	"other-artefacts":[
+		"ballerina-2201.7.0-swan-lake.zip"
+ 	],
+	"api-docs":"ballerina-api-docs-2201.7.0.zip",
+	"release-notes":"ballerina-release-notes-2201.7.0.md"
 }
 ]

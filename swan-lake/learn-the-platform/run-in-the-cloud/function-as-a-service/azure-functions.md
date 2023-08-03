@@ -142,4 +142,4 @@ $ func azure functionapp publish <function_app_name> --script-root target/azure_
 
 ## Examples
 
-For an example of the usage of Azure Functions, see [Azure Functions](learn/by-example/azure-functions-deployment/).
+For an example of the usage of Azure Functions, see [Azure Functions](/learn/by-example/azure-functions-deployment/).

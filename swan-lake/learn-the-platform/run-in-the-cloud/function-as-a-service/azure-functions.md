@@ -142,9 +142,4 @@ $ func azure functionapp publish <function_app_name> --script-root target/azure_
 
 ## Examples
 
-For examples of the usage of Azure Functions, see the below.
-
-- [Hello world](/learn/by-example/azure-functions-hello-world/)
-- [HTTP trigger with queue](/learn/by-example/azure-functions-http-trigger-with-queue/)
-- [Timer trigger](/learn/by-example/azure-functions-timer-trigger/)
-- [Cosmos DB trigger](/learn/by-example/azure-functions-cosmosdb-trigger/)
+For an example of the usage of Azure Functions, see [Azure Functions](learn/by-example/azure-functions-deployment/).

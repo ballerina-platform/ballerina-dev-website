@@ -147,12 +147,6 @@ export default function Articles() {
             </div>
 
             <div className={styles.articleInfo}>
-              <a target="_blank" rel="noreferrer" href="https://dzone.com/articles/utilising-binding-patterns-in-ballerina"><h4>Using Binding Patterns in Ballerina</h4></a>
-              <p> By Suleka Helmini</p>
-              <p> 20 Oct 2021</p>
-            </div>
-
-            <div className={styles.articleInfo}>
               <a target="_blank" rel="noreferrer" href="https://dzone.com/articles/binding-patterns-in-ballerina"><h4>Binding Patterns in Ballerina</h4></a>
               <p> By Suleka Helmini</p>
               <p> 19 Oct 2021</p>

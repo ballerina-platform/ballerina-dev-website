@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/03 \
+_Updated_: 2023/08/04 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -180,20 +180,19 @@ The conforming implementation of the specification is released and included in t
             * 10.5.1.1 [The `@subgraph:Subgraph` Annotation](#10511-the-subgraphsubgraph-annotation)
             * 10.5.1.2 [The `@subgraph:Entity` Annotation](#10512-the-subgraphentity-annotation)
             * 10.5.1.3 [The `subgraph:ReferenceResolver` Function Type](#10513-the-subgraphreferenceresolver-function-type)
-11. [Experimental Features](#11-experimental-features)
-    * 11.1 [DataLoader](#111-dataloader)
-        * 11.1.1 [DataLoader API](#1111-dataloader-api)
-            * 11.1.1.1 [The `load` method](#11111-the-load-method)
-            * 11.1.1.2 [The `get` method](#11112-the-get-method)
-            * 11.1.1.3 [The `dispatch` method](#11113-the-dispatch-method)
-            * 11.1.1.4 [The `clearAll` method](#11114-the-clearall-method)
-        * 11.1.2 [The DefaultDataLoader](#1112-the-defaultdataloader)
-            * 11.1.2.1 [The `init` Method](#11121-the-init-method)
-                * 11.1.2.1.1 [The BatchLoadFunction](#111211-the-batchloadfunction)
-        * 11.1.3. [Engaging DataLoaders](#1113-engaging-dataloaders)
-            * 11.1.3.1 [Import `graphql.dataloader` Submodule](#11131-import-graphqldataloader-submodule)
-            * 11.1.3.2 [Register DataLoaders to Context via ContextInit Function](#11132-register-dataloaders-to-context-via-contextinit-function)
-            * 11.1.3.3 [Define the Corresponding `prefetch` Method](#11133-define-the-corresponding-prefetch-method)
+    * 10.6 [DataLoader](#106-dataloader)
+        * 10.6.1 [DataLoader API](#1061-dataloader-api)
+            * 10.6.1.1 [The `load` method](#10611-the-add-method)
+            * 10.6.1.2 [The `get` method](#10612-the-get-method)
+            * 10.6.1.3 [The `dispatch` method](#10613-the-dispatch-method)
+            * 10.6.1.4 [The `clearAll` method](#10614-the-clearall-method)
+        * 10.6.2 [The DefaultDataLoader](#1062-the-defaultdataloader)
+            * 10.6.2.1 [The `init` Method](#10621-the-init-method)
+                * 10.6.2.1.1 [The BatchLoadFunction](#106211-the-batchloadfunction)
+        * 10.6.3. [Engaging DataLoaders](#1063-engaging-dataloaders)
+            * 10.6.3.1 [Import `graphql.dataloader` Submodule](#10631-import-graphqldataloader-submodule)
+            * 10.6.3.2 [Register DataLoaders to Context via ContextInit Function](#10632-register-dataloaders-to-context-via-contextinit-function)
+            * 10.6.3.3 [Define the Corresponding `prefetch` Method](#10633-define-the-corresponding-prefetch-method)
 
 ## 1. Overview
 
@@ -1787,7 +1786,7 @@ service on new graphql:Listener(9090) {
 
 #### 7.2.2 Prefetch Method Name Configuration
 
-The `prefetchMethodName` field is used override the default prefetch method name. To know more about the prefetch method, refer to the [Define the Corresponding `prefetch` Method](#11123-define-the-corresponding-prefetch-method) section.
+The `prefetchMethodName` field is used override the default prefetch method name. To know more about the prefetch method, refer to the [Define the Corresponding `prefetch` Method](#10633-define-the-corresponding-prefetch-method) section.
 
 ###### Example: Override Prefetch Method Name
 
@@ -3344,19 +3343,15 @@ type Product record {
 
 >**Note:** If the reference resolver returns an entity of a different type than the entity being resolved, a runtime error will be returned to the router. For example, if the resolver returns a `User` for a `Product` entity, a runtime error will occur.
 
-## 11. Experimental Features
-
-This section includes the experimental features in the Ballerina GraphQL package. There _might be_ backward-incompatible changes to these features in future releases. Once a feature is stabilized, it will be graduated as a standard feature.
-
-### 11.1 DataLoader
+### 10.6 DataLoader
 
 The Ballerina GraphQL module allows efficient batching of data retrieval from datasources and enables caching of fetched data using the `graphql.dataloader` submodule.
 
-#### 11.1.1 DataLoader API
+#### 10.6.1 DataLoader API
 
 The `graphql.dataloader` submodule provides the `DataLoader` object, which is used to batch and cache data requests from a data source. The `DataLoader` object type has the following public methods/APIs.
 
-##### 11.1.1.1 The `add` method
+##### 10.6.1.1 The `add` method
 
 This method takes an `anydata` parameter called `key`, which is used to identify the data to be loaded. This method collects and stores the `key` to dispatch a batch operation at a later time. It does not return any values. The following is the method definition of this method.
 
@@ -3364,7 +3359,7 @@ This method takes an `anydata` parameter called `key`, which is used to identify
 public isolated function add(anydata key);
 ```
 
-##### 11.1.1.2 The `get` method
+##### 10.6.1.2 The `get` method
 
 This method takes a `key` parameter and retrieves the result for the provided `key`. It performs data binding by examining the type of the assigned variable. In case of failure to retrieve the result or perform data binding, the method returns an error. The following is the method definition of this method.
 
@@ -3372,15 +3367,15 @@ This method takes a `key` parameter and retrieves the result for the provided `k
 public isolated function get(anydata key, typedesc<anydata> 'type = <>) returns 'type|error;
 ```
 
-##### 11.1.1.3 The `dispatch` method
+##### 10.6.1.3 The `dispatch` method
 
-This method does not take any parameters and does not return any values. This method is invoked by the GraphQL Engine to dispatch a user-defined batch load function for all the collected keys. For more information about the batch load function, refer to the [Implement the Batch Load Function](#11125-implement-the-batch-load-function) section. The following is the method definition of the `dispatch` method.
+This method does not take any parameters and does not return any values. This method is invoked by the GraphQL Engine to dispatch a user-defined batch load function for all the collected keys. For more information about the batch load function, refer to the [The BatchLoadFunction](#106211-the-batchloadfunction) section. The following is the method definition of the `dispatch` method.
 
 ```ballerina
 public isolated function dispatch();
 ```
 
-##### 11.1.1.4 The `clearAll` method
+##### 10.6.1.4 The `clearAll` method
 
 This method does not take any parameters and does not return any values. The purpose of this method is to clear all the collected keys and cached values from the DataLoader cache. The following is the method definition of the this method.
 
@@ -3388,11 +3383,11 @@ This method does not take any parameters and does not return any values. The pur
 public isolated function clearAll();
 ```
 
-#### 11.1.2 The DefaultDataLoader
+#### 10.6.2 The DefaultDataLoader
 
 The `DefaultDataLoader` is a built-in implementation of the `DataLoader` object available via the `graphql.dataloader` submodule. Users can use this implementation to batch and cache data loading operations.
 
-#### 11.1.2.1 The `init` Method
+##### 10.6.2.1 The `init` Method
 
 The `init` method of the `DefaultDataLoader` object takes a function pointer of type `BatchLoadFunction`. The following is the method definition of the `init` method.
 
@@ -3406,7 +3401,7 @@ public isolated function init(BatchLoadFunction loadFunction);
 dataloader:DefaultDataLoader bookLoader = new (batchBooksForAuthors);
 ```
 
-##### 11.1.2.1.1 The BatchLoadFunction
+##### 10.6.2.1.1 The BatchLoadFunction
 
 The batch load function is responsible for retrieving data based on an array of keys and returning an array of corresponding results or an `error` if the operation fails. The following is the type definition of the batch load function.
 
@@ -3427,11 +3422,11 @@ isolated function batchBooksForAuthors(readonly & anydata[] ids) returns Book[][
 };
 ```
 
-#### 11.1.3 Engaging DataLoaders
+#### 10.6.3 Engaging DataLoaders
 
 To engage a DataLoader with a GraphQL service, follow the steps discussed in the below sections.
 
-##### 11.1.3.1 Import `graphql.dataloader` Submodule
+##### 10.6.3.1 Import `graphql.dataloader` Submodule
 
 In order to engage the dataloader with a GraphQL service, the `graphql.dataloader` submodule must be imported. This submodule provides the `DataLoader` object, which is used to batch and cache data loading operations.
 
@@ -3441,7 +3436,7 @@ In order to engage the dataloader with a GraphQL service, the `graphql.dataloade
 import graphql.dataloader;
 ```
 
-##### 11.1.3.2 Register DataLoaders to Context via ContextInit Function
+##### 10.6.3.2 Register DataLoaders to Context via ContextInit Function
 
 Users should register the `DataLoader` objects via the `graphql:ContextInit` function. The `DataLoader` objects are meant to be used per request. Therefore, the `graphql:ContextInit` function is the ideal place to register the `DataLoader` objects. By registering the `DataLoader` objects to the `graphql:Context` object, these objects become accessible to all resolver functions of the GraphQL service.
 
@@ -3460,7 +3455,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
-##### 11.1.3.3 Define the Corresponding `prefetch` Method
+##### 10.6.3.3 Define the Corresponding `prefetch` Method
 
 To engage the DataLoader with a GraphQL field (let's assume the field name is `foo`), define a corresponding _prefetch_ method named `preFoo` in the service, where `Foo` represents the Pascal-cased name of the GraphQL field. The `preFoo` method can include some or all of the parameters from the GraphQL field and must include the `graphql:Context` parameter. Adding the parameters of the GraphQL `foo` field to the `preFoo` method is optional. However, if these parameters are added, the GraphQL Engine will make the same parameter values of the GraphQL field available to the `preFoo` method.
 

@@ -1,6 +1,6 @@
 ---
 title: 'GraphQL subscription'
-description: Ballerina simplifies GraphQL subscriptions, allowing easy event streaming to frontend applications, enabling effortless event subscriptions and delivery to popular clients.
+description: Ballerina simplifies GraphQL subscriptions, allowing easy event streaming to frontend applications and also enabling effortless event subscriptions and delivery to popular clients.
 url: 'https://github.com/ballerina-platform/module-ballerina-graphql/tree/master/examples/news_alerts'
 ---
 ```

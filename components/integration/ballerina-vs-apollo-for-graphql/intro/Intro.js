@@ -35,10 +35,10 @@ export default function Intro() {
 
                                 <p className={styles.introText2}>
                                     GraphQL&apos;s flexibility, efficient data fetching, reduced network
-                                    traffic, versioning capabilities, backend aggregation, and
+                                    traffic, versioning capabilities, back-end aggregation, and
                                     improved developer experience make it a powerful choice for
-                                    implementing the Backend for Frontend architecture, providing
-                                    enhanced performance and simplified data management for frontend
+                                    implementing the back-end for the front-end architecture, providing
+                                    enhanced performance and simplified data management for front-end
                                     applications.
                                 </p>
 

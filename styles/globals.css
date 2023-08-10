@@ -19,6 +19,10 @@ a {
   min-height: 100vh;
 } */
 
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 .wrap-page-content {
   /* margin-top: 74px; */
   padding-bottom: 30px;

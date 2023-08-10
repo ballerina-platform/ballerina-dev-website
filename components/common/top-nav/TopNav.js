@@ -83,8 +83,8 @@ const TopNav = (props) => {
                       Explore
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '700px', marginLeft: '-210px' }} className="dropdown-center">
-                      <MenuItems />
+                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '700px', marginLeft: '-210px' }} className="dropdown-center" renderOnMount={true}>
+                      {MenuItems}
                     </Dropdown.Menu>
                   </Dropdown>
 
@@ -115,7 +115,7 @@ const TopNav = (props) => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                       <Accordion as={CustomMenu} launcher='mobile' className={styles.mobileAccordion}>
-                        <MenuItems />
+                        {MenuItems}
                       </Accordion>
                     </Offcanvas.Body>
                   </Offcanvas>

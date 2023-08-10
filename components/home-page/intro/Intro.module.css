@@ -89,3 +89,10 @@ a.homeIntroButton:hover {
 .socialMediaPanel {
     margin-top: 50px;
 }
+
+.introLinks {
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 20px !important;
+    padding-top: 20px;
+}

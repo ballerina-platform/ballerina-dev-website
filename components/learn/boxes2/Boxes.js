@@ -77,7 +77,16 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Integration example
+                            Integration examples
+                          </a>
+                        </p>
+                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                            Enterprise Integration Patterns (EIP)
                           </a>
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -120,22 +129,6 @@ export default function Boxes(props) {
                   <div>
                     <h3>Integration technology tools</h3>
                     <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
-                            Visual Studio Code extension</a>
-                        </p>
-                        <p className={styles.description}>Details of the Ballerina Visual Studio Code extension.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/ballerina-shell`} className={styles.titleLink}>
-                            Ballerina Shell
-                          </a>
-                        </p>
-                        <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
-                      </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -165,21 +158,22 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
-                            Strand dump tool
+                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                            gRPC tool
                           </a>
                         </p>
-                        <p className={styles.description}>Details of the Ballerina strand dump tool.</p>
+                        <p className={styles.description}>Details of the Ballerina gRPC tool.</p>
                       </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
-                            CLI documentation
+                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                            FHIR tool
                           </a>
                         </p>
-                        <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
+                        <p className={styles.description}>Details of the Ballerina FHIR profile to client and stub generation tool.</p>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -222,6 +216,23 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Refer language, library, and platform specifications.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
+                            Visual Studio Code extension</a>
+                        </p>
+                        <p className={styles.description}>Details of the Ballerina Visual Studio Code extension.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
+                            CLI documentation
+                          </a>
+                        </p>
+                        <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
                       </div>
 
                     </div>
@@ -464,7 +475,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Building and running</h3>
+                    <h3>Build and run</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -491,7 +502,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Organizing source code &amp; dependencies</h3>
+                    <h3>Organize source code &amp; dependencies</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -537,7 +548,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Testing, debugging and documenting</h3>
+                    <h3>Test, debug and document the code</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -555,6 +566,15 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Details of tooling support for troubleshooting Ballerina applications.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                            Strand dump tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Details of the Ballerina strand dump tool.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -577,7 +597,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Persistently storing data</h3>
+                    <h3>Persistently store data</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -631,7 +651,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Running in the cloud</h3>
+                    <h3>Run in the cloud</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -723,7 +743,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Building native binaries with GraalVM</h3>
+                    <h3>Build native binaries with GraalVM</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -760,7 +780,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Code reuse with Ballerina Central</h3>
+                    <h3>Reuse code with Ballerina Central</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>

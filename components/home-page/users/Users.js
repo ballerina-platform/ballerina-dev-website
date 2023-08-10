@@ -29,7 +29,7 @@ export default function Users(props) {
         <Row>
           <Col sm={12} className='sectionTitle'>
             <h2 id="users" className='section'>
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
@@ -48,18 +48,18 @@ export default function Users(props) {
 
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
-              <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
-              <img src={`${prefix}/images/home-page/user-logos/logo-a.webp`}  width={280} alt="logo-a.webp" />
-              <img src={`${prefix}/images/home-page/user-logos/logo-h.svg`} width={280}  alt="logo-h" />
-              
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
+
           </Col>
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/logo-r.png`} width={280} alt="logo-r.png" />
-              <img src={`${prefix}/images/home-page/user-logos/logo-o.svg`} width={320} alt="logo-o" />
-              <img src={`${prefix}/images/home-page/user-logos/logo-m.png`}  width={280} alt="logo-m" />
+          <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
           </Col>
         </Row>
       </Container>

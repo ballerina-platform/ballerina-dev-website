@@ -51,7 +51,7 @@ export default function Intro() {
       <Container>
         <Row className={styles.introTopRow}>
           <Col xs={12} sm={12} md={12} lg={8}>
-            <Image className={styles.homePageLogo} src={`${prefix}/images/ballerina-logo-white.svg`} height={61} width={330} alt="Ballerina Logo" />
+            <Image className={styles.homePageLogo} src={`${prefix}/images/ballerina-logo-white.svg`} height={100} width={330} alt="Ballerina Logo" />
           </Col>
           <Col xs={12} sm={12} md={12} lg={4}></Col>
         </Row>
@@ -59,6 +59,33 @@ export default function Intro() {
           <Col xs={12} sm={12} md={12} lg={8}>
             <p className={styles.descriptionMain}>Ballerina Swan Lake is an open-source programming language optimized for integration.</p>
             <p className={styles.descriptionSub}>Ballerina Swan Lake was developed by WSO2 and open source contributors and first released in February 2021.</p>
+
+            <div className={styles.socialMediaPanel} >
+              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
+                <Image src={`${prefix}/images/github-mark-white.svg`} width={40} height={40} alt="GitHub" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
+                <Image src={`${prefix}/images/twitter-white.svg`} width={40} height={40} alt="Twitter" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
+                <Image src={`${prefix}/images/discord-white.svg`} width={40} height={40} alt="Discord" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
+                <Image src={`${prefix}/images/stackoverflow-white.svg`} width={40} height={40} alt="Stackoverflow" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
+                <Image src={`${prefix}/images/youtube-white.svg`} width={40} height={40} alt="YouTube" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
+                <Image src={`${prefix}/images/linkedin-white.svg`} width={40} height={40} alt="LinkedIn" />
+              </a>
+            </div>
+
           </Col>
 
           <Col xs={12} sm={12} md={12} lg={4}>

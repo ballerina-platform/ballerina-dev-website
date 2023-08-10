@@ -51,13 +51,13 @@ export default function Users(props) {
               <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
               <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
               <img src={`${prefix}/images/home-page/user-logos/logo-h.svg`} width={280}  alt="logo-h" />
-              <img src={`${prefix}/images/home-page/user-logos/logo-a.webp`}  width={280} alt="avinya" />
+              <img src={`${prefix}/images/home-page/user-logos/logo-a.webp`}  width={280} alt="logo-a.webp" />
               
           </Col>
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/logo-r.png`} width={280} alt="red-cross" />
+              <img src={`${prefix}/images/home-page/user-logos/logo-r.png`} width={280} alt="logo-r.png" />
               <img src={`${prefix}/images/home-page/user-logos/logo-m.png`}  width={280} alt="logo-m" />
               <img src={`${prefix}/images/home-page/user-logos/logo-o.svg`} width={320} alt="logo-o" />
           </Col>

@@ -1247,7 +1247,7 @@ table.cTopControlsContainer tbody {
   padding-right: 0 !important;
 }
 
-.integration h2 {
+.integration h2, .llanding h2 {
   margin-top: 50px;
   margin-bottom: 30px;
   scroll-margin-top: 60px;
@@ -1279,7 +1279,7 @@ table.cTopControlsContainer tbody {
   border: 1px solid #eeeeee;
 }
 
-.pageContentRow.integration {
+.pageContentRow.integration, .pageContentRow.llanding {
   margin-bottom: 0 !important;
   padding-bottom: 50px;
 }

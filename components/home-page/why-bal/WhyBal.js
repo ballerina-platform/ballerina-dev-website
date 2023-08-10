@@ -119,7 +119,7 @@ export default function WhyBal(props) {
             <div className={styles.whyBallerinaBox}>
               <Image src={`${prefix}/images/home-page/icons/concurrent.svg`} width={90} height={100} alt="concurrent" />
               <h3>End-to-End Type Safety</h3>
-              <p>Ballerina's strong type system minimizes runtime surprises. From data mapping to network-bound communications, type safety ensures reliability in your integrations.</p>
+              <p>Ballerina&apos;s strong type system minimizes runtime surprises. From data mapping to network-bound communications, type safety ensures reliability in your integrations.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
                   <Link href={`/why-ballerina/concurrent/`}>More info</Link>

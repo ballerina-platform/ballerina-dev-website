@@ -56,8 +56,9 @@ export default function Intro() {
           <Col xs={12} sm={12} md={12} lg={4}></Col>
         </Row>
         <Row className={styles.introBottomRow}>
-          <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <p>Ballerina is an open-source programming language for the cloud that makes it easier to use, combine, and create network services.</p>
+          <Col xs={12} sm={12} md={12} lg={8}>
+            <p className={styles.descriptionMain}>Ballerina Swan Lake is an open-source programming language optimized for integration.</p>
+            <p className={styles.descriptionSub}>Ballerina Swan Lake was developed by WSO2 and open source contributors and first released in February 2021.</p>
           </Col>
 
           <Col xs={12} sm={12} md={12} lg={4}>
@@ -72,10 +73,9 @@ export default function Intro() {
                 (hoverBtn ? buttonStyleHover : buttonStyle)
               }
               target="_blank"
-              href={`${prefix}/learn/get-started/`}
+              href={`${prefix}/downloads/`}
               rel="noreferrer">
-              Get started
-              <p>Install Ballerina, set it all up <br />and take it for a spin.</p>
+              Download
             </a>
             <a className={`${styles.homeIntroButton} ${styles.playButton}`}
               style={buttonStyleHover}

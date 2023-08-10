@@ -24,6 +24,7 @@ import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
 import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
+import Users from '../components/home-page/users/Users';
 import styles from '../styles/Home.module.css';
 
 import fs from "fs";
@@ -101,11 +102,15 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeVideos}>
-          <Videos getLink={getLink} />
+          <Users getLink={getLink} />
         </Row>
 
         <Row className={styles.homeEvents}>
           <Events getLink={getLink} />
+        </Row>
+
+        <Row className={styles.homeVideos}>
+          <Videos getLink={getLink} />
         </Row>
 
       </Col>

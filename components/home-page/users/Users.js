@@ -48,7 +48,7 @@ export default function Users(props) {
 
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/wso2.webp`} width={280} alt="wso2" />
+              <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
               <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
               <img src={`${prefix}/images/home-page/user-logos/logo-h.svg`} width={280}  alt="logo-h" />
               <img src={`${prefix}/images/home-page/user-logos/logo-a.webp`}  width={280} alt="avinya" />

@@ -58,7 +58,7 @@ languages that don’t understand the unique challenges
 of integrations.
                         </p>
 
-                        <p className={styles.introText3}>Ballerina is the language designed for integration.
+                        <p className={styles.introText3}>Ballerina is ONLY the programming language designed for integration.
                         </p>
 
                         {/* <p className={styles.dVersion}>

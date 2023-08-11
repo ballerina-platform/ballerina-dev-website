@@ -116,7 +116,8 @@ a.homeIntroButton:hover {
     line-height: 1.125rem;
     margin-bottom: 0.5rem;
     font-size: 18px;
-    color: #c0c0c0;
+    /* color: #c0c0c0; */
+    color: #ffffff;
 }
 
 .btnCol {

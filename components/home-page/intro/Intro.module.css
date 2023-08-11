@@ -91,10 +91,12 @@ a.homeIntroButton:hover {
 }
 
 .introLinks {
-    color: #ffffff;
+    /* color: #ffffff; */
+    color: #20b6b0;
     text-decoration: none;
     margin-top: 20px !important;
     padding-top: 20px;
+    cursor: pointer;
 }
 
 .introLinks:hover {
@@ -114,6 +116,7 @@ a.homeIntroButton:hover {
     line-height: 1.125rem;
     margin-bottom: 0.5rem;
     font-size: 18px;
+    color: #c0c0c0;
 }
 
 .btnCol {

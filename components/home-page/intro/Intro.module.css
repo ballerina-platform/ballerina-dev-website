@@ -96,3 +96,7 @@ a.homeIntroButton:hover {
     margin-top: 20px !important;
     padding-top: 20px;
 }
+
+.introLinks:hover {
+    color: #20b6b0;
+}

@@ -50,13 +50,7 @@ export default function Intro() {
 
     <Col sm={12}>
       <Container>
-        <Row className={styles.introTopRow}>
-          {/* <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <Image className={styles.homePageLogo} src={`${prefix}/images/ballerina-logo-white.svg`} height={100} width={330} alt="Ballerina Logo" />
-            <h1>Flexible, Powerful, Beautiful<br/>Integrations as Code with Ballerina</h1>
-          </Col> */}
-          <Col xs={12} sm={12} md={12} lg={4}></Col>
-        </Row>
+        
         <Row className={styles.introBottomRow}>
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
           <h1>Flexible, Powerful, Beautiful<br/>Integrations as Code with Ballerina</h1>

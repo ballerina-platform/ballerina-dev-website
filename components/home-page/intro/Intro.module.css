@@ -88,7 +88,8 @@ a.homeIntroButton:hover {
 
 .socialMediaPanel {
     margin-top: 30px;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
+    text-align: center;
 }
 
 .introLinks {
@@ -114,9 +115,9 @@ a.homeIntroButton:hover {
 }
 
 .description p {
-    line-height: 1.125rem;
+    line-height: 1.3rem;
     margin-bottom: 0.5rem;
-    font-size: 18px;
+    font-size: 16px;
     /* color: #c0c0c0; */
     color: #ffffff;
 }

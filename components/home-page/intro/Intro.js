@@ -19,6 +19,7 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import { FaCheck } from 'react-icons/fa';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
@@ -49,16 +50,25 @@ export default function Intro() {
 
     <Col sm={12}>
       <Container>
-        <Row className={styles.introTopRow}>
+        {/* <Row className={styles.introTopRow}>
           <Col xs={12} sm={12} md={12} lg={8}>
             <Image className={styles.homePageLogo} src={`${prefix}/images/ballerina-logo-white.svg`} height={100} width={330} alt="Ballerina Logo" />
+          <h1>Flexible, Powerful, Beautiful Integrations as Code with Ballerina</h1>
           </Col>
           <Col xs={12} sm={12} md={12} lg={4}></Col>
-        </Row>
+        </Row> */}
         <Row className={styles.introBottomRow}>
-          <Col xs={12} sm={12} md={12} lg={8}>
-            <p className={styles.descriptionMain}>Ballerina Swan Lake is an open-source programming language optimized for integration.</p>
-            <p className={styles.descriptionSub}>Developed by <a className ={styles.introLinks} href="https://wso2.com/">WSO2</a> and open source contributors and first released in February 2021.</p>
+          <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
+          <h1>Flexible, Powerful, Beautiful Integrations as Code with Ballerina</h1>
+
+          <p><FaCheck/>&nbsp;Open source, cloud-native programming language optimized for integration</p>
+          <p><FaCheck/>&nbsp;Batteries included: Rich ecosystem of network protocols, data formats and connectors</p>
+          <p><FaCheck/>&nbsp;Edit/view source code textually or graphically as sequence diagrams and flowcharts</p>
+          <p><FaCheck/>&nbsp;Built-in easy and efficient concurrency with sequence diagrams and safety primitives</p>
+          <p><FaCheck/>&nbsp;Developed by WSO2 since 2016 and first released in February 2021</p>
+
+            {/* <p className={styles.descriptionMain}>Ballerina Swan Lake is an open-source programming language optimized for integration.</p>
+            <p className={styles.descriptionSub}>Developed by <a className ={styles.introLinks} href="https://wso2.com/">WSO2</a> and open source contributors and first released in February 2021.</p> */}
 
             <div className={styles.socialMediaPanel} >
               <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">

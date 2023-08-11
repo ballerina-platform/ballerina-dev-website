@@ -100,3 +100,17 @@ a.homeIntroButton:hover {
 .introLinks:hover {
     color: #20b6b0;
 }
+
+.description {
+    color: #ffffff;
+}
+
+.description h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.45rem;
+}
+
+.description p {
+    line-height: 1.125rem;
+    margin-bottom: 0.5rem;
+}

@@ -58,12 +58,12 @@ const TopNav = (props) => {
       <>
         <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
           <Container fluid>
-            {(launcher !== "home") ?
+            {/* {(launcher !== "home") ? */}
               <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-                <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
+                <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={35} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
-              : null
-            }
+              {/* : null
+            } */}
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}

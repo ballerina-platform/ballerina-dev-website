@@ -23,6 +23,11 @@ a {
   display: block;
 }
 
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .wrap-page-content {
   /* margin-top: 74px; */
   padding-bottom: 30px;

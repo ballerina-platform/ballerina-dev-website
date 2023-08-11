@@ -63,8 +63,8 @@ const TopNav = (props) => {
                 <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
               : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
-            </Navbar.Brand>
+                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+              </Navbar.Brand>
             }
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -74,7 +74,7 @@ const TopNav = (props) => {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
+                  <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>

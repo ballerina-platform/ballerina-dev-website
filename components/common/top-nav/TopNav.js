@@ -60,7 +60,7 @@ const TopNav = (props) => {
           <Container fluid>
             {(launcher === "home") ?
               <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-dark-grey-sl-white.svg`} height={50} width={150} alt="Ballerina Logo" />
+                <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
               : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
               <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
@@ -125,7 +125,7 @@ const TopNav = (props) => {
                   {/* Offcanvas nav bar for mobile view */}
 
 
-                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn/learn3`}>Learn</Nav.Link>
+                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
                   <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Central</Nav.Link>
                   <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
                   <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>

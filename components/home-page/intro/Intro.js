@@ -61,40 +61,13 @@ export default function Intro() {
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
           <h1>Flexible, Powerful, Beautiful<br/>Integrations as Code with Ballerina</h1>
 
-          <p><BsCheck/>&nbsp;Open source, cloud-native programming language optimized for integration</p>
-          <p><BsCheck/>&nbsp;Batteries included: Rich ecosystem of network protocols, data formats and connectors</p>
-          <p><BsCheck/>&nbsp;Edit/view source code textually or graphically as sequence diagrams and flowcharts</p>
-          <p><BsCheck/>&nbsp;Built-in easy and efficient concurrency with sequence diagrams and safety primitives</p>
-          <p><BsCheck/>&nbsp;Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2021</p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Open source, cloud-native programming language optimized for integration</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Batteries included: Rich ecosystem of network protocols, data formats and connectors</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Built-in easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2021</span></p>
 
-            {/* <p className={styles.descriptionMain}>Ballerina Swan Lake is an open-source programming language optimized for integration.</p>
-            <p className={styles.descriptionSub}>Developed by <a className ={styles.introLinks} href="https://wso2.com/">WSO2</a> and open source contributors and first released in February 2021.</p> */}
-
-            {/* <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
-                <Image src={`${prefix}/images/github-mark-white.svg`} width={25} height={25} alt="GitHub" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
-                <Image src={`${prefix}/images/twitter-white.svg`} width={25} height={25} alt="Twitter" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
-                <Image src={`${prefix}/images/discord-white.svg`} width={25} height={25} alt="Discord" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
-                <Image src={`${prefix}/images/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
-                <Image src={`${prefix}/images/youtube-white.svg`} width={25} height={25} alt="YouTube" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
-                <Image src={`${prefix}/images/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
-              </a>
-            </div> */}
+           
 
           </Col>
 
@@ -146,45 +119,14 @@ export default function Intro() {
                 <Image src={`${prefix}/images/youtube-white.svg`} width={25} height={25} alt="YouTube" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
+              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
                 <Image src={`${prefix}/images/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
-              </a>
+              </a> */}
             </div>
           </Col>
         </Row>
 
-        {/* <Row className={styles.introBottomRow}>
-          <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
-                <Image src={`${prefix}/images/github-mark-white.svg`} width={25} height={25} alt="GitHub" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
-                <Image src={`${prefix}/images/twitter-white.svg`} width={25} height={25} alt="Twitter" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
-                <Image src={`${prefix}/images/discord-white.svg`} width={25} height={25} alt="Discord" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
-                <Image src={`${prefix}/images/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
-                <Image src={`${prefix}/images/youtube-white.svg`} width={25} height={25} alt="YouTube" />
-              </a>
-
-              <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
-                <Image src={`${prefix}/images/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
-              </a>
-            </div>
-
-          </Col>
-
-          
-        </Row> */}
+       
       </Container>
     </Col>
 

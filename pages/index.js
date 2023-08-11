@@ -101,18 +101,17 @@ export default function Home({ samples }) {
           <WhyBal getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeVideos}>
+        <Row className={styles.homeUsers}>
           <Users getLink={getLink} />
-        </Row>
-
-        <Row className={styles.homeEvents}>
-          <Events getLink={getLink} />
         </Row>
 
         <Row className={styles.homeVideos}>
           <Videos getLink={getLink} />
         </Row>
 
+        <Row className={styles.homeEvents}>
+          <Events getLink={getLink} />
+        </Row>
       </Col>
     </Layout>
   );

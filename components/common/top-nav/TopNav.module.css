@@ -4,13 +4,16 @@
 }
 
 nav.home {
-    background-color: #494949;
+    /* background-color: #494949; */
+    background-color: #20b6b0;
     color: #fff;
+    /* border-bottom: 1px solid #ebedf0; */
 }
 
 nav.docs, nav.downloads, nav.other, nav.docs-learn, nav.usecases, 
 nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     background-color: #fff;
+    border-bottom: 1px solid #ebedf0;
 }
 
 /* added to increase spacing on sides */
@@ -41,11 +44,12 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     color: #fff !important;
 }
 
-.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
+/* .home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
     color: #20b6b0 !important;
-}
+} */
 
-.topNav a.active, .topNav a:hover, .topNav #navbarScrollingDropdown:hover {
+.topNav a.active, .topNav a:hover, .topNav #navbarScrollingDropdown:hover,
+.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
     color: #57595d !important;
 }
 

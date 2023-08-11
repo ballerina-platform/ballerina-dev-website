@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/04 \
+_Updated_: 2023/08/09 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -3462,6 +3462,8 @@ To engage the DataLoader with a GraphQL field (let's assume the field name is `f
 The GraphQL Engine guarantees the execution of the `preFoo` method prior to the `foo` method. By default, the GraphQL engine searches for a method named `preFoo` in the service class before executing the `foo` method. If the method name is different, the user can override the prefetch method name using the [`prefetchMethodName`](#722-prefetch-method-name-configuration) configuration of the `@graphql:ResourceConfig` annotation.
 
 The user is responsible for implementing the logic to collect the keys of the data to be loaded into the `DataLoader` in the `preFoo` method. Subsequently, the user can implement the logic to retrieve the data from the `DataLoader` within the `foo` method.
+
+>**Note:** If there are multiple `resource`/`remote` methods with the same name in a GraphQL service, such as `bar`, and there exists a prefetch method named `preBar`, the GraphQL Engine will execute the `preBar` method prior to executing each `bar` method. Users can modify this behavior by utilizing the `prefetchMethodName` configuration within the `@graphql:ResourceConfig` annotation.
 
 ###### Example: Defining the Corresponding `prefetch` Method
 

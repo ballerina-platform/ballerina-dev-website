@@ -58,7 +58,7 @@ a.homeIntroButton {
     text-decoration: none;
     margin-bottom: 10px;
     border: 1px solid #20b6b0;
-    margin-top: 8px;
+    /* margin-top: 8px; */
     width: 100%;
 }
 
@@ -113,4 +113,11 @@ a.homeIntroButton:hover {
 .description p {
     line-height: 1.125rem;
     margin-bottom: 0.5rem;
+    font-size: 18px;
+}
+
+.btnCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
 }

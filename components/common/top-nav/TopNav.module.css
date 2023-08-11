@@ -5,12 +5,16 @@
 
 nav.home {
     background-color: #494949;
+    /* background-color: #20b6b0; */
     color: #fff;
+    /* border-bottom: 0.1px solid #ebedf0; */
+    box-shadow: 0 0.0625rem 0.125rem rgb(171 171 171 / 30%);
 }
 
 nav.docs, nav.downloads, nav.other, nav.docs-learn, nav.usecases, 
 nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     background-color: #fff;
+    border-bottom: 1px solid #ebedf0;
 }
 
 /* added to increase spacing on sides */

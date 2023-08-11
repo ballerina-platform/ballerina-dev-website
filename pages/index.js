@@ -24,6 +24,7 @@ import Intro from '../components/home-page/intro/Intro';
 import WhyBal from '../components/home-page/why-bal/WhyBal';
 import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
+import Integration from '../components/home-page/integration/Integration';
 import styles from '../styles/Home.module.css';
 
 import fs from "fs";
@@ -92,6 +93,10 @@ export default function Home({ samples }) {
           <Intro />
         </Row>
 
+        <Row className={styles.homeIntegration}>
+          <Integration getLink={getLink}/>
+        </Row>
+
         <Row className={styles.homeBalAction}>
           <BalAction samples={samples} getLink={getLink} />
         </Row>
@@ -107,7 +112,6 @@ export default function Home({ samples }) {
         <Row className={styles.homeEvents}>
           <Events getLink={getLink} />
         </Row>
-
       </Col>
     </Layout>
   );

@@ -63,7 +63,7 @@ const TopNav = (props) => {
                 <Image src={`${prefix}/images/logo/ballerina-logo-dark-grey-sl-white.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
               : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={60} width={150} alt="Ballerina Logo" />
+              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
             </Navbar.Brand>
             }
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

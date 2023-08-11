@@ -94,7 +94,7 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeIntegration}>
-          <Integration />
+          <Integration getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeBalAction}>

@@ -23,9 +23,11 @@ a {
   display: block;
 }
 
-.navbar {
+.navbar-brand {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  font-size: 16px !important;
+  line-height: 0px;
 }
 
 .wrap-page-content {
@@ -150,7 +152,7 @@ a {
   /* margin-top: 20px; */
   color: #585a5e;
   font-size: 1.5rem;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 /* .mdContent h2:hover:after, .mdContent h3:hover:after, .mdContent h4:hover:after,
@@ -173,13 +175,13 @@ a {
   /* margin-top: 20px; */
   color: #585a5e;
   font-size: 1.3rem;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .downloads h3 {
   color: #585a5e;
   font-size: 1.3rem;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .community h3 {
@@ -200,7 +202,7 @@ a {
   margin-top: 40px;
   /* margin-top: 20px; */
   color: #585a5e;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .mdContent h4,
@@ -490,7 +492,7 @@ a.cGreenLinkArrow:hover {
 .pageContentRow h2 {
   color: #585a5e;
   font-size: 1.5rem;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .community .pageContentRow h2 {
@@ -1259,11 +1261,11 @@ table.cTopControlsContainer tbody {
 .integration h2, .llanding h2 {
   margin-top: 50px;
   margin-bottom: 30px;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .integration h3 {
-  scroll-margin-top: 60px;
+  scroll-margin-top: 65px;
 }
 
 .integration.usecases {

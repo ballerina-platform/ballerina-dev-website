@@ -17,7 +17,7 @@ img.homePageLogo {
     font-weight: 300;
 }
 
-.descriptionSub{
+.descriptionSub {
     color: #c0c0c0;
     font-size: 16px;
     line-height: 40px;
@@ -87,7 +87,8 @@ a.homeIntroButton:hover {
 }
 
 .socialMediaPanel {
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 0.5rem;
 }
 
 .introLinks {
@@ -124,4 +125,37 @@ a.homeIntroButton:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between
+}
+
+.check {
+    margin-right: 5px;
+}
+
+.desItem {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 576px) {
+    .btnCol {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 576px) {
+    .btnCol {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .btnCol {
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .btnCol {
+        margin-top: 0px;
+    }
 }

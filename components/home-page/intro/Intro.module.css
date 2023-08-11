@@ -10,9 +10,16 @@ img.homePageLogo {
     margin: 40px 0;
 }
 
-.description p {
+.descriptionMain {
     color: #c0c0c0;
     font-size: 31px;
+    line-height: 40px;
+    font-weight: 300;
+}
+
+.descriptionSub{
+    color: #c0c0c0;
+    font-size: 16px;
     line-height: 40px;
     font-weight: 300;
 }
@@ -44,14 +51,14 @@ a.homeIntroButton {
     font-size: 25px;
     background-color: #20b6b0;
     color: #fff;
-    padding: 10px 70px 10px 20px;
+    padding: 20px 70px 20px 20px;
     display: inline-block;
     float: right;
     font-weight: 500;
     text-decoration: none;
     margin-bottom: 10px;
     border: 1px solid #20b6b0;
-    margin-top: 8px;
+    /* margin-top: 8px; */
     width: 100%;
 }
 
@@ -71,4 +78,50 @@ a.playButton {
 a.homeIntroButton:hover {
     background-color: #eeeeee;
     color: #494949;
+}
+
+.socialMediaIcons {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.socialMediaPanel {
+    margin-top: 50px;
+}
+
+.introLinks {
+    /* color: #ffffff; */
+    color: #20b6b0;
+    text-decoration: none;
+    margin-top: 20px !important;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.introLinks:hover {
+    color: #20b6b0;
+}
+
+.description {
+    color: #ffffff;
+}
+
+.description h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.45rem;
+}
+
+.description p {
+    line-height: 1.125rem;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+    /* color: #c0c0c0; */
+    color: #ffffff;
+}
+
+.btnCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
 }

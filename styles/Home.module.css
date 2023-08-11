@@ -2,7 +2,7 @@
   padding: 80px 0 130px 0;
 }
 
-.homeWhyBal, .homeEvents {
+.homeWhyBal, .homeEvents, .homeIntegration {
   background: #fff;
 }
 
@@ -10,11 +10,11 @@
   background: #f5f5f5;
 }
 
-.homeBalAction {
+.homeBalAction, .homeIntegration {
   padding-bottom: 6rem;
 }
 
-.home h2, .homeBalAction h2, .homeWhyBal h2,
+.home h2, .homeBalAction h2, .homeWhyBal h2, .homeIntegration h2,
 .homeVideos h2, .homeEvents h2 {
   font-size: 32px;
   margin-top: 40px;

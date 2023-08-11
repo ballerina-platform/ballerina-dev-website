@@ -31,6 +31,7 @@ const CustomToggle = React.forwardRef(({ children, onClick, launcher }, ref) => 
     }}
     className={(launcher === 'usecases') ? `dropdown-toggle nav-link` : 'dropdown-toggle nav-link'}
     id={styles.navbarScrollingDropdown} 
+    data-bs-toggle="dropdown"
   >
     {children}
   </a>

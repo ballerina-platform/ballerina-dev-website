@@ -91,7 +91,7 @@ export default function WhyBal(props) {
               <p>Why reinvent the wheel? Ballerina boasts a rich ecosystem of connectors, allowing you to integrate with countless databases, cloud services, and enterprise applications out of the box.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/data-oriented/`}>More info</Link>
+                  <Link href={`https://dev-central.ballerina.io/extendedlibs`}>More info</Link>
                 </li>
               </ul>
             </div>
@@ -135,7 +135,7 @@ export default function WhyBal(props) {
               <p>Visualize as you code. The Ballerina Composer lets developers switch between graphical and source views, making complex integration logic more intuitive and accessible.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/reliable-maintainable/`}>More info</Link>
+                  <Link href={`https://wso2.com/ballerina/vscode/`}>More info</Link>
                 </li>
               </ul>
             </div>
@@ -164,7 +164,7 @@ export default function WhyBal(props) {
               <p>Being open source, Ballerina empowers a vast community of developers and experts. This means continuous improvements, a plethora of resources, and a supportive network for all your integration endeavors.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/flexibly-typed/`}>More info</Link>
+                  <Link href={`/community`}>More info</Link>
                 </li>
               </ul>
             </div>
@@ -177,7 +177,7 @@ export default function WhyBal(props) {
               <p>Enterprise integration demands speed and efficiency. Ballerina’s compatibility with GraalVM native images ensures rapid startup times, reduced resource consumption, and optimal performance, even in large-scale, resource-intensive scenarios.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/data-oriented/`}>More info</Link>
+                  <Link href={`/learn/graalvm-executable-overview/`}>More info</Link>
                 </li>
               </ul>
             </div>

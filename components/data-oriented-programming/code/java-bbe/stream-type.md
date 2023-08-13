@@ -1,6 +1,6 @@
 ---
 title: 'Model data streams'
-description: Efficient handling and processing of large amounts of data is vita in data-oriented programming. Ballerina's built-in stream type enables developers to process data on-demand, apply transformations, filters, and aggregations, and facilitates seamless integration with other data processing operations.
+description: Efficient handling and processing of large amounts of data is vital in data-oriented programming. Ballerina's built-in stream type enables developers to process data on-demand, apply transformations, filters, and aggregations, and facilitates seamless integration with other data processing operations.
 image:
 url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/model-data-streams/main.bal
 ---

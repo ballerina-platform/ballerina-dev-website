@@ -43,6 +43,13 @@ const int[] ERROR_CODES = [404, 500, 503];
 const ERROR_MESSAGES = ["Not Found", "Internal Server Error", "Service Unavailable"];
 ```
 
+Also, you can declare a list constant using a byte array literal.
+
+```ballerina
+const byte[] data16 = base16 `55 EE 66`;
+const data64 = base64 `ABCD pqrs`;
+```
+
 ### Improvements
 
 ### Bug fixes

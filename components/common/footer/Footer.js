@@ -38,32 +38,32 @@ export default function Footer() {
                     <ul>
                       <li>
                         <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
-                          <Image src={`${prefix}/images/footer-icons/github-white.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="Twitter">
-                          <Image src={`${prefix}/images/footer-icons/twitter-white.svg`} width={19} height={15} alt="Twitter" />
+                          <Image src={`${prefix}/images/sm-icons/twitter-white.svg`} width={19} height={15} alt="Twitter" />
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                          <Image src={`${prefix}/images/footer-icons/discord-white.svg`} width={17} height={17} alt="Discord" />
+                          <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={17} height={17} alt="Discord" />
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                          <Image src={`${prefix}/images/footer-icons/stackoverflow-white.svg`} width={15} height={18} alt="Stackoverflow" />
+                          <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={15} height={18} alt="Stackoverflow" />
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube">
-                          <Image src={`${prefix}/images/footer-icons/youtube-white.svg`} width={15} height={18} alt="YouTube" />
+                          <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={15} height={18} alt="YouTube" />
                         </a>
                       </li>
                       <li>
                         <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
-                          <Image src={`${prefix}/images/footer-icons/linkedin-white.svg`} width={16} height={16} alt="LinkedIn" />
+                          <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={16} height={16} alt="LinkedIn" />
                         </a>
                       </li>
                     </ul>

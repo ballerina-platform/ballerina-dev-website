@@ -34,7 +34,7 @@ export default function Footer() {
             <Row>
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className={styles.socialMedia}>
-                <div className={styles.smIcons}>
+                  <div className={styles.smIcons}>
                     <ul>
                       <li>
                         <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">

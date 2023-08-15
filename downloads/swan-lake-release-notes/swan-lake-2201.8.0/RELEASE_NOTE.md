@@ -52,6 +52,20 @@ const data64 = base64 `ABCD pqrs`;
 
 ### Improvements
 
+#### Make `async-send` as an action node
+
+`async-send` has been reclassified from a statement to an action node, aligning with the Ballerina specification.
+
+The following case is now supported.
+
+```ballerina
+public function main() {
+    worker w1 {
+        _ = 5 -> w2;
+    }
+}
+```
+
 ### Bug fixes
 
 ## Language updates

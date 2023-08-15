@@ -76,7 +76,7 @@
     padding: 10px 52px 10px 54px !important;
     /* margin-bottom: 2px;*/
     display: inline-block; 
-    background-image: url(/images/footer-icons/rss-white.svg);
+    background-image: url(/images/sm-icons/rss-white.svg);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 20px;
@@ -90,7 +90,7 @@
     padding: 10px 52px 10px 54px !important;
     /* margin-bottom: 2px;*/
     display: inline-block; 
-    background-image: url(/images/footer-icons/rss-teal.svg) !important;
+    background-image: url(/images/sm-icons/rss-teal.svg) !important;
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 20px;

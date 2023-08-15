@@ -37,7 +37,7 @@ function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:
     return dbClient->query(\`SELECT * FROM orders WHERE customerId = \${customerId}\`);
 }
 `,
-  `[[platform.java11.dependency]]
+  `[[platform.java17.dependency]]
 path = "h2-2.1.210.jar"
 `,
 ];

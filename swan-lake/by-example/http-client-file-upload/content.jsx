@@ -56,7 +56,7 @@ export function HttpClientFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f32859bb5238449edefea4c22f876b1c&file=http_client_file_upload.bal",
+                "https://play.ballerina.io/?gist=0942b682e755d9a825703b09bc55aaa3&file=http_client_file_upload.bal",
                 "_blank",
               );
             }}

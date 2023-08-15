@@ -40,13 +40,13 @@ service class RequestInterceptor {
 service class RequestErrorInterceptor {
     *http:RequestErrorInterceptor;
 
-    // The resource function inside a \`RequestErrorInterceptor\` is only allowed
+    // The resource function inside a \`RequestErrorInterceptor\` is only allowed 
     // to have the default method and path. The error occurred in the interceptor
     // execution can be accessed by the mandatory argument: \`error\`.
     resource function 'default [string... path](error err) returns http:BadRequest {
         // In this case, all of the errors are sent as \`400 BadRequest\` responses with a customized
         // media type and body. You can also send different status code responses according to
-        // the error type. Furthermore, you can also call \`ctx.next()\` if you want to continue the
+        // the error type. Furthermore, you can also call \`ctx.next()\` if you want to continue the 
         // request flow after fixing the error.
         return {
             mediaType: "application/org+json",
@@ -107,7 +107,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=426c55553478fd0477ab0f3ce00a2b2e&file=http_interceptor_error_handling.bal",
+                "https://play.ballerina.io/?gist=c28d48573f839260ac4fbf4b9752314c&file=http_interceptor_error_handling.bal",
                 "_blank",
               );
             }}

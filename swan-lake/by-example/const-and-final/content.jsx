@@ -7,16 +7,23 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/io;
 
+const int MAX_VALUE = 1000;
+
 // Constants can be defined without the type. Then, the type is inferred from the right-hand side.
-const MAX_VALUE = 1000;
 const URL = "https://ballerina.io";
 
-// The value for variable \`msg\` can only be assigned once.
+// Mapping and list constants can also be defined.
+const HTTP_OK = {httpCode: 200, message: "OK"};
+const ERROR_CODES = [200, 202, 400];
+
+// The value for the \`msg\` variable can only be assigned once.
 final string msg = loadMessage();
 
 public function main() {
     io:println(MAX_VALUE);
     io:println(URL);
+    io:println(HTTP_OK);
+    io:println(ERROR_CODES);
     io:println(msg);
 }
 
@@ -55,7 +62,7 @@ export function ConstAndFinal({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=d6178f30a6f32976f249da0a85b65b5b&file=const_and_final.bal",
+                "https://play.ballerina.io/?gist=a56b04b575f7ee0e09bf913556dd98d8&file=const_and_final.bal",
                 "_blank",
               );
             }}
@@ -210,6 +217,8 @@ export function ConstAndFinal({ codeSnippets }) {
               <span>{`\$ bal run const_and_final`}</span>
               <span>{`1000`}</span>
               <span>{`https://ballerina.io`}</span>
+              <span>{`{"httpCode":200,"message":"OK"}`}</span>
+              <span>{`[200,202,400]`}</span>
               <span>{`Hello World`}</span>
             </code>
           </pre>

@@ -63,8 +63,8 @@ const TopNav = (props) => {
                 <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
               : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
-            </Navbar.Brand>
+                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+              </Navbar.Brand>
             }
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -74,7 +74,7 @@ const TopNav = (props) => {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <Image src={`${prefix}/images/ballerina-logo.svg`} height={28} width={150} alt="Ballerina Logo" />
+                  <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -124,9 +124,9 @@ const TopNav = (props) => {
 
                   {/* Offcanvas nav bar for mobile view */}
 
-
-                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn/learn3`}>Learn</Nav.Link>
-                  <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Central</Nav.Link>
+                  <Nav.Link className={styles.navItem} href="https://play.ballerina.io/" target='_blank' rel="noreferrer">Playground</Nav.Link>
+                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
+                  <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Packages</Nav.Link>
                   <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
                   <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
                 </Nav>

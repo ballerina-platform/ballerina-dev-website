@@ -88,7 +88,7 @@ export function TableTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f96a7dc2af5304f552a1f3ef15cea346&file=table_types.bal",
+                "https://play.ballerina.io/?gist=cb9989c38aa1d6ed149600779ca4ff58&file=table_types.bal",
                 "_blank",
               );
             }}

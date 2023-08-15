@@ -503,7 +503,7 @@ export function GraphqlContext({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#8-context-object">
+            <a href="/spec/graphql/#101-context-object">
               GraphQL context - Specification
             </a>
           </span>

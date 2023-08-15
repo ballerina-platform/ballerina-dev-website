@@ -439,10 +439,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Query GraphQL endpoint"
-            href="/learn/by-example/graphql-client-query-endpoint"
-          >
+          <Link title="Dataloader" href="/learn/by-example/graphql-dataloader">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -451,7 +448,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query GraphQL endpoint
+                  Dataloader
                 </span>
               </div>
               <svg

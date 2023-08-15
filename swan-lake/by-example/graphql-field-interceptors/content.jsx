@@ -418,8 +418,8 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#11-interceptors">
-              GraphQL interceptors - Specification
+            <a href="/spec/graphql/#10332-field-interceptors">
+              GraphQL field interceptors - Specification
             </a>
           </span>
         </li>

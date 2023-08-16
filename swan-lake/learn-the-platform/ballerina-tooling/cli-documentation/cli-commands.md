@@ -148,7 +148,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">tool</td>
-<td class="cDescription">Pull, remove, update, switch between version list, and search Ballerina command line tools.
+<td class="cDescription">Pull, remove, update, switch between versions, and search Ballerina command line tools.
 </td>
 </tr>
 </table>
@@ -253,9 +253,9 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 </table>
 
-## Tool Commands
+## Tool commands
 
-These tools extend the Ballerina CLI to support additional functionalities. These tools are not installed by default. These tools can be pulled from the Ballerina Central and managed using `bal tool` command. 
+These tools extend the Ballerina CLI to support additional functionalities and are not installed by default. They can be pulled from the Ballerina Central and are managed using the `bal tool` command.
 
 The following tool sub commands can be used to manage the tools.
 
@@ -282,7 +282,7 @@ The following tool sub commands can be used to manage the tools.
 </tr>
 <tr>
 <td class="cCommand">list</td>
-<td class="cDescription">List the tool ids and the versions of all locally available tools.
+<td class="cDescription">List the tool IDs and the versions of all locally available tools.
 </td>
 </tr>
 <tr>

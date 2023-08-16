@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Card } from 'react-bootstrap';
+import { Row, Col, Container, Card, Table } from 'react-bootstrap';
 // import Image from 'next-image-export-optimizer';
 
 import { prefix } from '../../../utils/prefix';
@@ -49,6 +49,8 @@ export default function Articles(props) {
               </h2>
             </Col>
           </Row>
+
+          {/* Design 1 */}
           {/* <Row className={styles.resourceRow}>
             <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
@@ -94,10 +96,10 @@ export default function Articles(props) {
                 </Card.Body>
               </Card>
             </Col>
-          </Row> */}
+          </Row>
 
 
-          {/* <Row className={styles.resourceRow}>
+          <Row className={styles.resourceRow}>
             <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
@@ -144,8 +146,11 @@ export default function Articles(props) {
             </Col>
           </Row> */}
 
+
+
+          {/* Design 2 */}
           {/* <Row>
-            <Col sm={12} md={12} lg={3} style={{display:"flex", flexWrap:"row wrap", flexDirection:"column"}}>
+            <Col sm={12} md={12} lg={3} style={{ display: "flex", flexWrap: "row wrap", flexDirection: "column" }}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   <Card.Img variant="top" src="/images/1_zcZH8qdrFHY7f503LthNJA.webp" />
@@ -160,7 +165,7 @@ export default function Articles(props) {
                 </Card.Body>
               </Card>
             </Col>
-            <Col sm={12} md={12} lg={3} style={{display:"flex", flexWrap:"row wrap", flexDirection:"column"}}>
+            <Col sm={12} md={12} lg={3} style={{ display: "flex", flexWrap: "row wrap", flexDirection: "column", justifyContent:"space-between" }}>
               <Row>
                 <Col sm={12}>
                   <Card className={styles.cardBox}>
@@ -194,7 +199,7 @@ export default function Articles(props) {
                 </Col>
               </Row>
             </Col>
-            <Col sm={12} md={12} lg={3} style={{display:"flex", flexWrap:"row wrap", flexDirection:"column"}}>
+            <Col sm={12} md={12} lg={3} style={{ display: "flex", flexWrap: "row wrap", flexDirection: "column", justifyContent:"space-between" }}>
               <Row>
                 <Col sm={12}>
                   <Card className={styles.cardBox}>
@@ -228,7 +233,7 @@ export default function Articles(props) {
                 </Col>
               </Row>
             </Col>
-            <Col sm={12} md={12} lg={3} style={{display:"flex", flexWrap:"row wrap", flexDirection:"column"}}>
+            <Col sm={12} md={12} lg={3} style={{ display: "flex", flexWrap: "row wrap", flexDirection: "column", justifyContent:"space-between" }}>
               <Row>
                 <Col sm={12}>
                   <Card className={styles.cardBox}>
@@ -264,6 +269,13 @@ export default function Articles(props) {
             </Col>
 
           </Row> */}
+
+
+
+
+
+
+{/* useless */}
 
           {/* <Row>
             <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
@@ -353,7 +365,7 @@ export default function Articles(props) {
             </Col>
           </Row> */}
 
-
+{/* Design3 */}
           {/* <Row>
             <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
               <div className={`${styles.cardWrapper} card`} style={{background:"#ffffff"}}>
@@ -455,22 +467,22 @@ export default function Articles(props) {
           </Row> */}
 
 
-
-<Row xs={1} md={3} className="g-4">
+{/* Design4 */}
+          {/* <Row xs={1} md={3} className="g-4">
       {articles.map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+        <Col key={idx} style={{display:"flex", flexWrap:"row wrap"}}>
+          <Card style={{width:"100%"}}>
             <Card.Body>
-              <Card.Title>{_.title}</Card.Title>
               <Card.Text>
-                {_.url}
+                <a href={_.url} target="_blank" rel="noreferrer">{_.title}</a>
+                <br/>
+                <span className={styles.date}>{_.date}</span>
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
       ))}
-    </Row>
+    </Row> */}
 
         </Container>
       </Col>

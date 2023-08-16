@@ -1,0 +1,28 @@
+{
+    "articles": [
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        },
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        },
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        },
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        },
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        },
+        {
+            "title": "Article 1",
+            "url": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisl quis aliquam ultricies, nunc nisl aliquet"
+        }
+    ]
+}

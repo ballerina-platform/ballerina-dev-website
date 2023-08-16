@@ -22,9 +22,10 @@ import { Row, Col, Container, Card } from 'react-bootstrap';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Articles.module.css';
+import ArticlesList from '../../../_data/articles.json';
 
 export default function Articles(props) {
-
+  const articles = ArticlesList.articles;
   return (
     <>
       <Col xs={12}>
@@ -353,137 +354,123 @@ export default function Articles(props) {
           </Row> */}
 
 
-<Row>
+          {/* <Row>
             <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
-              <div className={styles.cardWrapper}>
-              <Card className={styles.cardBox}>
+              <div className={`${styles.cardWrapper} card`} style={{background:"#ffffff"}}>
+                <div className={styles.cardBox}>
+                  <img src='/images/1_zcZH8qdrFHY7f503LthNJA.webp' alt='image' />
+                  <h5 className={`${styles.cardTitle} card-title`}>Blog posts</h5>
+                  <p class={`${styles.cardText} card-text`}>
+                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
+                      <h4 class="card-title">10 Lesser-Known Programming Languages Revolutionizing the Tech Industry</h4>
+                    </a>
+                  </p>
+                  <div>
+                    <p className={`${styles.author} card-text`}> By Arslan Mirza</p>
+                    <p className={styles.date}>Jul 4, 2023</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+
+            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
+            <div className={styles.cardWrapper} style={{padding:"0"}}>
+            <Card className={`${styles.cardBox} ${styles.subArticles}`}>
                 <Card.Body className={styles.cardBody}>
-                  <Card.Img variant="top" src="/images/1_zcZH8qdrFHY7f503LthNJA.webp" />
                   <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
                   <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
-                      <h4 className="card-title" >10 lesser-known programming languages revolutionizing the tech industry</h4>
+                    <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
+                      <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
                     </a>
                   </Card.Text>
-                  <p className={`${styles.author} card-text`}> By Arslan Mirza</p>
-                  <p className={styles.date}>Jul 4, 2023</p>
+                  <p className={`${styles.author} card-text`}> By Parth Patel</p>
+                  <p className={styles.date}>June 19, 2023</p>
                 </Card.Body>
               </Card>
 
-              <div>
-                                <h3>Automate anything</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Automation is just code after all - write a main() and do whatever you want.</p>
-
-                                    <p>Use Ballerina&apos;s extended standard library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
-
-                                    <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
-
-                                </div>
-                                </div>
-                                {/* <div className={styles.sampleText}>
-                                    <p>See Sample Automation: GitHub to Google Sheets</p>
-                                </div> */}
-
-                                <div className={styles.cardLinks}>
-                                    <a target="_blank" rel="noreferrer" href="https://github.com/ballerina-guides/integration-samples/blob/main/github-pull-requests-to-gsheets/main.bal" className={styles.cDownload}>
-                                        See sample automation: GitHub to Google Sheets
-                                    </a>
-                                </div>
-                            
+              <Card className={styles.cardBox}>
+                <Card.Body className={styles.cardBody}>
+                  <Card.Title className={styles.cardTitle}>Article</Card.Title>
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://www.codelivly.com/lesser-known-programming-languages-worth-exploring/">
+                      <h4>8 lesser-known programming languages worth exploring</h4>
+                    </a>
+                  </Card.Text>
+                  <p className={`${styles.author} card-text`}> By Codelivly</p>
+                  <p className={styles.date}>June 13, 2023</p>
+                </Card.Body>
+              </Card>
               </div>
             </Col>
 
             <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
-              <div className={styles.cardWrapper}>
-              <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
 
-                  <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
+            <div className={styles.cardWrapper} style={{padding:"0"}}>
+            <Card className={`${styles.cardBox} ${styles.subArticles}`}>
+                <Card.Body className={styles.cardBody}>
+                  <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://www.tatvasoft.com/blog/top-12-microservices-frameworks/">
+                      <h4 className="card-title" >Top 12 microservices frameworks</h4>
+                    </a>
+                  </Card.Text>
+                  <p className={`${styles.author} card-text`}> By Vishal Shah</p>
+                  <p className={styles.date}>Apr 25, 2023</p>
+                </Card.Body>
+              </Card>
+
+              
+              <Card className={styles.cardBox}>
+                <Card.Body className={styles.cardBody}>
+                  <Card.Title className={styles.cardTitle}>Article</Card.Title>
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/14-mind-blowing-programming-languages-youve-probably-never-heard-of-b96550980661">
+                      <h4 className="card-title" >14 programming languages you&apos;ve probably never heard of</h4>
+                    </a>
+                  </Card.Text>
+                  <p className={`${styles.author} card-text`}> By Clement Brian</p>
+                  <p className={styles.date}>Apr 12, 2023</p>
+                </Card.Body>
+              </Card>
               </div>
             </Col>
 
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
-              <div className={styles.cardWrapper}>
-              <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
-
-                  <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
+            <Col xs={12} md={3} lg={3} className={styles.useCaseCard} >
+              <div className={`${styles.cardWrapper}`} style={{padding:"0"}}>
+                
+                <Card className={`${styles.cardBox} ${styles.subArticles}`}>
+                <Card.Body className={styles.cardBody}>
+                  <Card.Title className={styles.cardTitle}>Article</Card.Title>
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://camunda.com/blog/2022/09/seven-best-programming-languages-for-microservices/">
+                      <h4>7 best programming languages for microservices</h4>
+                    </a>
+                  </Card.Text>
+                  <p className={`${styles.author} card-text`}> By Josh Wulf</p>
+                  <p className={styles.date}>September 29, 2022</p>
+                </Card.Body>
+              </Card>
               </div>
             </Col>
+          </Row> */}
 
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
-              <div className={styles.cardWrapper}>
-              <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
 
-                  <Card className={styles.cardBox}>
-                    <Card.Body className={styles.cardBody}>
-                      <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                      <Card.Text className={styles.cardText}>
-                        <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                          <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                        </a>
-                      </Card.Text>
-                      <p className={`${styles.author} card-text`}> By Parth Patel</p>
-                      <p className={styles.date}>June 19, 2023</p>
-                    </Card.Body>
-                  </Card>
-              </div>
-            </Col>
-          </Row>
+
+<Row xs={1} md={3} className="g-4">
+      {articles.map((_, idx) => (
+        <Col key={idx}>
+          <Card>
+            {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+            <Card.Body>
+              <Card.Title>{_.title}</Card.Title>
+              <Card.Text>
+                {_.url}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      ))}
+    </Row>
 
         </Container>
       </Col>

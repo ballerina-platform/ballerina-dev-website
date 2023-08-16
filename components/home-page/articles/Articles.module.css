@@ -6,21 +6,33 @@
 }
 
 .cardBox {
-    border: #E6EAEB solid 0.1px;
+    /* border: #E6EAEB solid 0.1px; */
     /* text-align: left;
     padding: 10px;
     background-color: #ffffff; */
-    border-radius: 0;
+    /* border-radius: 0; */
     /* box-shadow: 0;
     margin-bottom: 15px;
     margin-top: 15px;
     box-shadow: none; */
+    /* margin-bottom: 10px; */
+
+        /* border: #E6EAEB solid 0.1px; */
+        /* border-radius: 0; */
+        /* margin-bottom: 10px; */
+        display: flex;
+        flex-direction: column;
+        /* height: 100%; */
+        justify-content: space-between;
+}
+
+.subArticles {
     margin-bottom: 10px;
 }
 
-.cardBox:hover {
+/* .cardBox:hover {
     border: #464646 solid 0.1px;;
-}
+} */
 
 .cardBody {
     padding: 18px;
@@ -32,7 +44,7 @@
 }
 
 .cardText {
-    height: 100px;
+    height: 115px;
 }
 
 .cardText a {
@@ -95,7 +107,6 @@
 }
 
 .useCaseCard .cardWrapper {
-    background-color: #ffffff;
     width: 100%;
     padding: 20px;
     border-radius: 4px;
@@ -170,4 +181,12 @@
     .cardLinks {
         height: 60px;
     }
+}
+
+.author {
+    margin-bottom: 0;
+}
+
+.date {
+    margin-bottom: 0;
 }

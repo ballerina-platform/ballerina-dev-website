@@ -43,6 +43,7 @@ COMMANDS
         test            Run package tests
         doc             Generate current package's documentation
         pack            Create distribution format of the current package
+        tool            Manage Ballerina tools
 
    Package Commands:
         new             Create a new Ballerina package
@@ -60,15 +61,15 @@ COMMANDS
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
-        graphql         Generate the Ballerina client sources for a given GraphQL config
-                        file, generate the GraphQL schema for a given Ballerina
-                        GraphQL service, and generate the Ballerina service sources for a given GraphQL schema file.
+        graphql         Generate the Ballerina client sources for a GraphQL config file,
+                        generate the GraphQL schema for a Ballerina GraphQL service, and 
+                        generate the Ballerina GraphQL service for a GraphQL schema
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
         persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
-        shell           Run Ballerina interactive REPL
+        shell           Run Ballerina interactive REPL [Experimental]
         version         Print the Ballerina version
 
    Update Commands:
@@ -142,7 +143,12 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">pack</td>
-<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package
+<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package.
+</td>
+</tr>
+<tr>
+<td class="cCommand">tool</td>
+<td class="cDescription">Pull, remove, update, switch between versions, and search Ballerina command line tools.
 </td>
 </tr>
 </table>
@@ -243,6 +249,45 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">help</td>
 <td class="cDescription">Prints the usage details of any Ballerina command (e.g., <code>bal help pull</code>).
+</td>
+</tr>
+</table>
+
+## Tool commands
+
+These tools extend the Ballerina CLI to support additional functionalities and are not installed by default. They can be pulled from the Ballerina Central and are managed using the `bal tool` command.
+
+The following tool sub commands can be used to manage the tools.
+
+<table class="cComandTable">
+<tr>
+<td class="cCommand">pull</td>
+<td class="cDescription">Pull a tool from Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">remove</td>
+<td class="cDescription">Remove a tool from the local bal tool chain.
+</td>
+</tr>
+<tr>
+<td class="cCommand">update</td>
+<td class="cDescription">Update to the latest patch version of the currently active version.
+</td>
+</tr>
+<tr>
+<td class="cCommand">use</td>
+<td class="cDescription">Set the specified version of a tool as the active version.
+</td>
+</tr>
+<tr>
+<td class="cCommand">list</td>
+<td class="cDescription">List the tool IDs and the versions of all locally available tools.
+</td>
+</tr>
+<tr>
+<td class="cCommand">search</td>
+<td class="cDescription">Search Ballerina Central for tools using a given keyword.
 </td>
 </tr>
 </table>

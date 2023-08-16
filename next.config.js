@@ -96,7 +96,6 @@ const nextConfig = {
         source: "/learn",
         destination: "/learn/get-started/install-ballerina/set-up-ballerina",
       },
-
       {
         source: `/${redirectBase}learn/openapi-tool`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/openapi-tool`,
@@ -310,6 +309,14 @@ const nextConfig = {
         source: `/spec/lang/2019R1/`,
         destination: `/spec/lang/2019R1/index.html`,
       },
+      {
+        source: `/learn/supported-data-formats`,
+        destination: `/learn/integration/supported-data-formats`,
+      },
+      {
+        source: `/learn/supported-network-protocols`,
+        destination: `/learn/integration/supported-network-protocols`,
+      }
     ];
   },
   trailingSlash: true,

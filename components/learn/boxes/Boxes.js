@@ -103,7 +103,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/supported-network-protocols`} className={styles.titleLink}>
                             Supported network integration protocols
                           </a>
                         </p>
@@ -112,7 +112,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/supported-data-formats`} className={styles.titleLink}>
                             Supported data formats
                           </a>
                         </p>
@@ -225,16 +225,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of the Ballerina Visual Studio Code extension.</p>
                       </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
-                            CLI documentation
-                          </a>
-                        </p>
-                        <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
-                      </div>
-
                     </div>
                   </div>
                 </div>
@@ -365,7 +355,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/integration/supported-data-formats`} className={styles.titleLink}>
                             JSON
                           </a>
                         </p>
@@ -479,20 +469,11 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Quick run: via VSCode
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`/learn/cli-documentation/cli-commands/`} className={styles.titleLink}>
                             Bal command
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Details of the CLI commands of the bal tool.</p>
                       </div>
                     </div>
                   </div>

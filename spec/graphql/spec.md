@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/09 \
+_Updated_: 2023/08/15 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -965,6 +965,8 @@ In GraphQL, an interface can be used to define a set of common fields for object
 In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
 
 Non-distinct `service` objects and `service` classes can not be used to define or implement GraphQL interfaces.
+
+>**Note**: In order to be recognized as GraphQL objects or interfaces, the Ballerina `service` `object`s and `service` `class`es must be defined within the same module as the GraphQL service.
 
 ###### Example: Interfaces
 ```ballerina
@@ -3182,6 +3184,8 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 1. Assign the `@subgraph:Entity` annotation to an object type.
 2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
 3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#10513-the-subgraphreferenceresolver-function-type).
+
+>**Note:** In order to be recognized as subgraph entities, GraphQL object types marked with `@subgraph:Entity` must be defined within the same Ballerina module as the GraphQL service.
 
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 

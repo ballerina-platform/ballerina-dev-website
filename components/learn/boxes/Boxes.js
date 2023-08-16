@@ -72,7 +72,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Integrations</h3>
+                    <h3>Integration</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -197,7 +197,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/get-started`} className={styles.titleLink}>
-                            Get started with Ballerina
+                            Get started
                           </a>
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
@@ -493,7 +493,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Organize source code &amp; dependencies</h3>
+                    <h3>Organize source code and dependencies</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -539,7 +539,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Test, debug and document the code</h3>
+                    <h3>Test, debug, and document the code</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>

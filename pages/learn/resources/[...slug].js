@@ -54,7 +54,7 @@ var traverseFolder = function (dir) {
       results = results.concat(traverseFolder(filex));
     } else {
       /* Is a file */
-      filex = filex.replace(/swan-lake\/learn-the-language\//g, "");
+      filex = filex.replace(/swan-lake\/resources\//g, "");
       results.push(filex);
     }
   });
@@ -63,7 +63,7 @@ var traverseFolder = function (dir) {
 
 export async function getStaticPaths() {
   // Retrieve all our slugs
-  const files = traverseFolder("swan-lake/learn-the-language");
+  const files = traverseFolder("swan-lake/resources");
   const paths = files.map((fileName) => ({
     params: {
       slug: fileName.replace(".md", "").split("/"),
@@ -90,7 +90,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   slug = slug.join("/");
   const fileName = fs.readFileSync(
-    `swan-lake/learn-the-language/${slug}.md`,
+    `swan-lake/resources/${slug}.md`,
     "utf-8"
   );
   const { data: frontmatter, content } = matter(fileName);
@@ -171,7 +171,7 @@ export default function PostPage({
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="learn-the-language"
+            mainDir="resources"
             sub={sub}
             third={third}
             Toc={LearnToc}
@@ -187,7 +187,7 @@ export default function PostPage({
               <LeftNav
                 launcher="learn"
                 id={id}
-                mainDir="learn-the-language"
+                mainDir="resources"
                 sub={sub}
                 third={third}
                 Toc={LearnToc}
@@ -203,7 +203,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/learn-the-language/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/resources/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"

@@ -80,7 +80,7 @@ export default function Boxes(props) {
                             Integration examples
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Explore and try out a series of guided integration examples.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -89,7 +89,7 @@ export default function Boxes(props) {
                             Enterprise Integration Patterns (EIP)
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Learn how common EIPs can be implemented using Ballerina.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -98,7 +98,7 @@ export default function Boxes(props) {
                             Integration tutorials
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Explore and try out a series of guided integration tutorials.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -107,7 +107,7 @@ export default function Boxes(props) {
                             Supported network integration protocols
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Details of the list of network integration protocols supported by Ballerina.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -116,7 +116,7 @@ export default function Boxes(props) {
                             Supported data formats
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Details of the list of data formats supported by Ballerina.</p>
                       </div>
 
                     </div>
@@ -168,10 +168,20 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
-                            FHIR tool
+                            Health tool (FHIR/HL7)
                           </a>
                         </p>
                         <p className={styles.description}>Details of the Ballerina FHIR profile to client and stub generation tool.</p>
+                      </div>
+
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                            EDI tool 
+                          </a>
+                        </p>
+                        <p className={styles.description}>The set of command line tools provided to work with EDI files in Ballerina.</p>
                       </div>
 
                     </div>
@@ -669,7 +679,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Configure and observe</h3>
+                    <h3>Configurability</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -679,13 +689,42 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>The language support for configurability.</p>
                       </div>
-
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
+                <div className={styles.cardWrapper}>
+                  <div>
+                    <h3>Observability</h3>
+                    <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe Ballerina programs</a>
                         </p>
                         <p className={styles.description}>Basics of the observability functionalities that are provided for Ballerina programs.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                            Observe logs</a>
+                        </p>
+                        <p className={styles.description}>Details of how Ballerina supports observing logs of external systems.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                            Observe metrics</a>
+                        </p>
+                        <p className={styles.description}>Details of how Ballerina supports observing metrics of external systems.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
+                            Observe tracing</a>
+                        </p>
+                        <p className={styles.description}>Details of how Ballerina supports observing tracing of external systems.</p>
                       </div>
                     </div>
                   </div>
@@ -702,7 +741,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                            Call Java code from Ballerina
+                            Details of how to call Java code from Ballerina.
                           </a>
                         </p>
                         <p className={styles.description}>Calling Java code from Ballerina.</p>
@@ -881,51 +920,32 @@ export default function Boxes(props) {
                           Language basics
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <h4>
-                          Distinctive language features
-                        </h4>
-                      </div>
-
-                      <div className={`${styles.content} ${styles.sub}`}>
+                        <p className={styles.description}>Get started with basics that are common to all C-Family programming languages.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.titleLink}>
                           Network interaction
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-
-                      <div className={`${styles.content} ${styles.sub}`}>
+                        <p className={styles.description}>The features of the Ballerina programming language that are distinctive. </p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.titleLink}>
                             Data
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-
-                      <div className={`${styles.content} ${styles.sub}`}>
+                        <p className={styles.description}>Some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
                           Concurrency
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-
-                      <div className={`${styles.content} ${styles.sub}`}>
+                        <p className={styles.description}>How concurrency and transactions are handled in Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.titleLink}>
                           Advanced general purpose language features
                           </a>
                         </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <p className={styles.description}>Advanced features which are a mixed bag of additional options to the language.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -934,9 +954,6 @@ export default function Boxes(props) {
           </Container>
         </Col>
       </Row>
-
-
-
       {/* </Container> */}
 
     </>

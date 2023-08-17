@@ -62,7 +62,11 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/get-started`,
-        destination: `/${redirectBase}learn/get-started/get-started`,
+        destination: `/${redirectBase}learn/references/get-started`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-specifications`,
+        destination: `/${redirectBase}learn/references/ballerina-specifications`,
       },
       {
         source: `/${redirectBase}learn/language-basics`,

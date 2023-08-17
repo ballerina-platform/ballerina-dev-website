@@ -312,6 +312,10 @@ const nextConfig = {
       {
         source: `/learn/supported-network-protocols`,
         destination: `/learn/integration/supported-network-protocols`,
+      },
+      {
+        source: `/learn/pre-built-integrations`,
+        destination: `/learn/integration/pre-built-integrations`,
       }
     ];
   },

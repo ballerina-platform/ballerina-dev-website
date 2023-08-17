@@ -65,7 +65,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Pre-built integrations</h3>
+                    <h3>Integrations</h3>
                     <div className={styles.cardDescription}>
                     <div className={styles.content}>
                         <p className={styles.title}>
@@ -79,7 +79,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Integration examples
+                            Pre-built integrations
                           </a>
                         </p>
                         <p className={styles.description}>Explore and try out a series of guided integration examples.</p>

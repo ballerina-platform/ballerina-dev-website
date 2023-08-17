@@ -366,8 +366,8 @@ export default function Articles(props) {
           </Row> */}
 
 {/* Design3 */}
-          {/* <Row>
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
+          <Row>
+            <Col xs={12} sm={12} md={12} lg={3} className={styles.useCaseCard}>
               <div className={`${styles.cardWrapper} card`} style={{background:"#ffffff"}}>
                 <div className={styles.cardBox}>
                   <img src='/images/1_zcZH8qdrFHY7f503LthNJA.webp' alt='image' />
@@ -377,15 +377,18 @@ export default function Articles(props) {
                       <h4 class="card-title">10 Lesser-Known Programming Languages Revolutionizing the Tech Industry</h4>
                     </a>
                   </p>
-                  <div>
+                  {/* <div> */}
                     <p className={`${styles.author} card-text`}> By Arslan Mirza</p>
                     <p className={styles.date}>Jul 4, 2023</p>
-                  </div>
+                  {/* </div> */}
+                  {/* <div>ffffffff</div>
+                  <div>ffffffff</div>
+                  <div>ffffffff</div> */}
                 </div>
               </div>
             </Col>
 
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
+            <Col xs={12} sm={12} md={12} lg={3} className={styles.useCaseCard}>
             <div className={styles.cardWrapper} style={{padding:"0"}}>
             <Card className={`${styles.cardBox} ${styles.subArticles}`}>
                 <Card.Body className={styles.cardBody}>
@@ -415,7 +418,7 @@ export default function Articles(props) {
               </div>
             </Col>
 
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard}>
+            <Col xs={12} sm={12} md={12} lg={3} className={styles.useCaseCard}>
 
             <div className={styles.cardWrapper} style={{padding:"0"}}>
             <Card className={`${styles.cardBox} ${styles.subArticles}`}>
@@ -447,7 +450,7 @@ export default function Articles(props) {
               </div>
             </Col>
 
-            <Col xs={12} md={3} lg={3} className={styles.useCaseCard} >
+            <Col xs={12} sm={12} md={12} lg={3} className={styles.useCaseCard} >
               <div className={`${styles.cardWrapper}`} style={{padding:"0"}}>
                 
                 <Card className={`${styles.cardBox} ${styles.subArticles}`}>
@@ -464,7 +467,7 @@ export default function Articles(props) {
               </Card>
               </div>
             </Col>
-          </Row> */}
+          </Row>
 
 
 {/* Design4 */}

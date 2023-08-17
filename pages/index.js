@@ -110,9 +110,9 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeArticles}>
-          {/* <Articles getLink={getLink}/> */}
+          <Articles getLink={getLink}/>
           {/* <Resources getLink={getLink} /> */}
-          <Usecases getLink={getLink} />
+          {/* <Usecases getLink={getLink} /> */}
           {/* <Articles2 getLink={getLink} /> */}
         </Row>
 

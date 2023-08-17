@@ -17,11 +17,11 @@
  */
 
 import React from "react";
+import Head from "next/head";
 import { Row, Col, Container } from "react-bootstrap";
 
 import Layout from "../../../../layouts/LayoutLearn";
 import SampleList from "../../../../components/common/sample-list/SampleList";
-import Head from "next/head";
 import { prefix } from '../../../../utils/prefix';
 
 export default function Learn() {
@@ -117,7 +117,7 @@ export default function Learn() {
 
             <Col xs={12}>
               <Container>
-                <h1>Pre-built integrations</h1>
+                <h1>Integration examples</h1>
               </Container>
             </Col>
 
@@ -138,11 +138,13 @@ export default function Learn() {
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
               <Container>
+                {/* Repeat the SampleList component */}
+                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
+                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
 
                 <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
                   tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+
                 <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
                   tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
 

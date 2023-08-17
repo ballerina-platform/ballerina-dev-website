@@ -314,8 +314,8 @@ const nextConfig = {
         destination: `/learn/integration/supported-network-protocols`,
       },
       {
-        source: `/learn/pre-built-integrations`,
-        destination: `/learn/integration/pre-built-integrations`,
+        source: `/learn/integration-examples`,
+        destination: `/learn/integration/integration-examples`,
       }
     ];
   },

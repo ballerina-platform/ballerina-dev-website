@@ -69,7 +69,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/integration-examples/`} className={styles.titleLink}>
                             Integration examples
                           </a>
                         </p>

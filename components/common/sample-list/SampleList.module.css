@@ -19,6 +19,20 @@
 .tag {
     margin-right: 5px;
     margin-top: 5px;
-    background-color: #dddddd !important;
-    color: #888;
+    background-color: #888 !important;
+    color: #ffffff;
 }
+
+
+@media (max-width: 768px) {
+    .icon {
+        padding-top: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .icon {
+        padding-top: 0;
+    }
+}
+

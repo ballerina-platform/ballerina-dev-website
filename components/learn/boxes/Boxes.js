@@ -15,15 +15,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-
 import styles from './Boxes.module.css';
 import { prefix } from '../../../utils/prefix';
-
 export default function Boxes(props) {
-
   return (
     <>
       {/* <Container> */}
@@ -46,7 +42,6 @@ export default function Boxes(props) {
           </h2>
         </Col>
       </Row> */}
-
       {/* <Container className=" text-center">
   <Row className="gy-5 gx-5">
     <Col xs={6} style={{border:"1px solid #000000"}}>
@@ -63,8 +58,6 @@ export default function Boxes(props) {
     </Col>
   </Row>
 </Container> */}
-
-
       <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container>
@@ -123,13 +116,11 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
                     <h3>Integration technology tools</h3>
                     <div className={styles.cardDescription}>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/openapi-tool`} className={styles.titleLink}>
@@ -137,7 +128,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of the Ballerina OpenAPI tool.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
@@ -146,7 +136,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of the Ballerina GraphQL tool.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
@@ -155,7 +144,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of the Ballerina AsyncAPI tool.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
@@ -178,7 +166,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -208,7 +195,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Refer Ballerina library (API) documentation.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/ballerina-specifications`} className={styles.titleLink}>
@@ -217,7 +203,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Refer language, library, and platform specifications.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
@@ -239,7 +224,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               {/* <Col xs={12} md={3} lg={3} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -253,7 +237,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -262,7 +245,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -271,7 +253,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -280,7 +261,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -289,7 +269,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -298,7 +277,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -307,7 +285,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -316,7 +293,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -325,7 +301,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -334,7 +309,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -343,7 +317,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -352,12 +325,10 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={3} lg={3} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -371,7 +342,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -380,7 +350,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -389,7 +358,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -398,7 +366,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -407,7 +374,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -416,7 +382,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -425,7 +390,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -434,7 +398,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -443,7 +406,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -460,9 +422,6 @@ export default function Boxes(props) {
           </Container>
         </Col>
       </Row>
-
-
-
       <Row className="pageContentRow llanding" style={{ background: "#eeeeee" }}>
         <Col xs={12}>
           <Container>
@@ -488,7 +447,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/build-and-run/cli-commands`} className={styles.titleLink}>
                             Bal command
                           </a>
                         </p>
@@ -498,7 +457,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -512,7 +470,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Basics of projects, packages, and modules.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/package-references`} className={styles.titleLink}>
@@ -521,7 +478,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>References related to Ballerina Packages.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/manage-dependencies`} className={styles.titleLink}>
@@ -530,7 +486,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of declaring and managing dependencies and using the local repository.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/style-guide/coding-conventions`} className={styles.titleLink}>
@@ -539,12 +494,10 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Best practices to follow when formatting Ballerina code.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -558,7 +511,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of writing automated tests using the built-in test framework.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/debug-ballerina-programs`} className={styles.titleLink}>
@@ -567,7 +519,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of tooling support for troubleshooting Ballerina applications.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
@@ -576,7 +527,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details of the Ballerina strand dump tool.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/generate-code-documentation`} className={styles.titleLink}>
@@ -589,10 +539,7 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
             </Row>
-
-
             <Row>
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
@@ -607,7 +554,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details on how to simplify data persistence with <code>bal persist</code>.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/persist-model`} className={styles.titleLink}>
@@ -616,7 +562,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details on how to model and define data structures for efficient data persistence.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/persist-cli-tool`} className={styles.titleLink}>
@@ -625,7 +570,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details on how to use the tool for generating client code and types for the data model.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/persist-client-api`} className={styles.titleLink}>
@@ -634,7 +578,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Details on generated client, types, and their usages for managing data persistence.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/supported-data-stores`} className={styles.titleLink}>
@@ -647,7 +590,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -661,10 +603,9 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Generating cloud deployment artifacts.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/azure-functions/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/azure-functions/`} className={styles.titleLink}>
                             Azure Function
                           </a>
                         </p>
@@ -673,7 +614,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/aws-lambda/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
                             AWS Lambda
                           </a>
                         </p>
@@ -684,7 +625,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -711,7 +651,6 @@ export default function Boxes(props) {
                 </div>
               </Col>
             </Row>
-
             <Row>
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
@@ -726,7 +665,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Calling Java code from Ballerina.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
@@ -739,7 +677,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -753,7 +690,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>The overview of GraalVM and the native executable.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/build-the-executable-in-a-container`} className={styles.titleLink}>
@@ -762,7 +698,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Building and packing the GraalVM executable in a container.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/build-the-executable-locally`} className={styles.titleLink}>
@@ -771,12 +706,10 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Building the GraalVM executable locally from Ballerina.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -798,24 +731,15 @@ export default function Boxes(props) {
           </Container>
         </Col>
       </Row>
-
-
-
-
-
       <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container>
-
             <Row>
               <Col xs={12}>
                 <h2>Resources</h2>
               </Col>
             </Row>
-
-
             <Row>
-
               <Col xs={12} md={6} lg={6} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -829,7 +753,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Use Ballerina constructs to create RESTful APIs.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/write-a-grpc-service-with-ballerina/`} className={styles.titleLink}>
@@ -838,7 +761,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Write and invoke a simple Ballerina gRPC service.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/manage-data-persistence-with-bal-persist/`} className={styles.titleLink}>
@@ -847,7 +769,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Use <code>bal persist</code> to simplify data persistence management.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/write-a-graphql-api-with-ballerina/`} className={styles.titleLink}>
@@ -856,7 +777,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Write and invoke a simple Ballerina GraphQL service.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/work-with-data-using-queries-in-ballerina/`} className={styles.titleLink}>
@@ -865,7 +785,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Use query expressions to work with data.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/build-a-data-service-in-ballerina/`} className={styles.titleLink}>
@@ -874,7 +793,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Use Ballerina constructs to work with data services.</p>
                       </div>
-
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/deploy-ballerina-on-kubernetes/`} className={styles.titleLink}>
@@ -883,12 +801,10 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Write, build, and deploy a Ballerina service on Kubernetes.</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </Col>
-
               <Col xs={12} md={6} lg={6} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>

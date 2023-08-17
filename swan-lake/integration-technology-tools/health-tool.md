@@ -38,7 +38,7 @@ The parameters that are available with the tool are listed below.
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | optional           |
 | `-h, --help`     | Print the usage details of the Health tool.                                                                                                                                                                                                                                                                                                                                     | optional           |
 
-## Usage
+## Example
 
 Follow the steps below to try out an example of using the Health tool.
 

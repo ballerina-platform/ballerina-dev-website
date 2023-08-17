@@ -11,9 +11,10 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 - **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
 - **Library generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also, organize those as a Ballerina library
 
-## Compatibility
+## Prerequisites
 
-The EDI tool is compatible with the Ballerina language version 2201.7.0 and Java Development Kit (JDK) 11.
+- [Ballerina 2201.7.0 (Swan Lake Update 7)](https://ballerina.io/downloads/)
+- Java Development Kit (JDK) 11
 
 ## Usage
 

@@ -20,7 +20,10 @@ FHIR integration developers can leverage the generated package when transforming
 
 - [Ballerina 2201.7.0 (Swan Lake Update 7)](https://ballerina.io/downloads/)
 - A directory containing all FHIR specification definition files.
-    >**Note:** It is recommended to use the STU version of the implementation guides.
+
+    >**Tip:** You can download a preferred standard implementation guide from the [FHIR Implementation Guide registry](http://fhir.org/guides/registry/).
+
+    >**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
 
 ## Available parameters
 
@@ -47,15 +50,11 @@ Follow the steps below to try out an example of using the Health tool.
     health:1.0.0 successfully set as the active version.
     ```
 
-2. Download and extract an FHIR Implementation guide to your current directory.
-
-    >**Tip:** You can find standard implementation guides from the [FHIR Implementation Guide registry](http://fhir.org/guides/registry/) (e.g., [Carin BB implementation guide](http://hl7.org/fhir/us/carin-bb/STU2/definitions.json.zip)).
-
-    >**Note:** Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
+2. Download the [Carin BB implementation guide](http://hl7.org/fhir/us/carin-bb/STU2/definitions.json.zip) and extract it to your current directory.
 
 3. Run the tool with the [required arguments](#available-parameters).
 
-    >**Note:** Provide values for mandatory arguments. Make sure to give the path to downloaded FHIR definitions as the last argument. (As this is a common input, no identifier is being used).
+    >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument. As this is a common input, no identifier is being used.
 
 4. Build the generated package and push it to a repository.
 
@@ -65,20 +64,20 @@ Follow the steps below to try out an example of using the Health tool.
     $ cd gen/carinbb.lib
     $ bal pack
     Compiling source
-            healthcare/carinbb.lib:1.0.0
+            healthcare/carinbb.lib:0.0.1
 
     Creating bala
-            target/bala/healthcare-carinbb.lib-any-1.0.0.bala
+            target/bala/healthcare-carinbb.lib-any-0.0.1.bala
     ```
 
     ```
     $ bal push --repository local
-    Successfully pushed target/bala/healthcare-carinbb.lib-any-1.0.0.bala to 'local' repository.
+    Successfully pushed target/bala/healthcare-carinbb.lib-any-0.0.1.bala to 'local' repository.
     ```
 
 5. Create a Ballerina project and import the generated package. 
 
-    >**Note:** Make sure to add the [correct version and repository](https://github.com/isuruh15/carinbb_sample) to the `Ballerina.toml` file.
+    >**Note:** Make sure to add the correct version and repository to the `Ballerina.toml` file.
 
     ```
     [package]
@@ -90,7 +89,7 @@ Follow the steps below to try out an example of using the Health tool.
     [[dependency]]
     org = "healthcare"
     name = "carinbb.lib"
-    version = "1.0.0"
+    version = "0.0.1"
     repository = "local"
     ```
 
@@ -104,52 +103,52 @@ Follow the steps below to try out an example of using the Health tool.
     listener http:Listener httpListener = new (9090);
 
     public type Patient record {
-    string id;
-    string lastName?;
-    string firstName;
-    string middleName;
-    string gender?;
+        string id;
+        string lastName?;
+        string firstName;
+        string middleName;
+        string gender?;
     };
 
     service / on httpListener {
 
-    isolated resource function get [string fhirType]/[string id]() returns @http:Payload {mediaType: ["application/fhir+json", "application/fhir+xml"]}r4:FHIRWireFormat|error {
+        isolated resource function get [string fhirType]/[string id]() returns @http:Payload {mediaType: ["application/fhir+json", "application/fhir+xml"]} r4:FHIRWireFormat|error {
 
-    // Mock the patient payload from the legacy healthcare system.
+            // Mock the patient payload from the legacy healthcare system.
 
-    Patient patient = {
-    id: "2121",
-    lastName: "Doe",
-    firstName: "John",
-    middleName: "Hemish",
-    gender: "male"
-    };
+            Patient patient = {
+                id: "2121",
+                lastName: "Doe",
+                firstName: "John",
+                middleName: "Hemish",
+                gender: "male"
+            };
 
-    // Convert to the Carin BB Patient structure.
-    carinbb:C4BBPatient c4bbPatient = {
-    id: patient.id,
-    identifier: [
-    {
-    system: "http://hl7.org/fhir/sid/us-ssn",
-    value: patient.id
-    }
-    ]
-    ,
-    gender: <carinbb:PatientGender>patient.gender,
-    name: [
-    {
-    family: patient.lastName,
-    given: [patient.firstName, patient.middleName]
-    }
-    ]
-    };
+            // Convert to the Carin BB Patient structure.
+            carinbb:C4BBPatient c4bbPatient = {
+                id: patient.id,
+                identifier: [
+                    {
+                        system: "http://hl7.org/fhir/sid/us-ssn",
+                        value: patient.id
+                    }
+                ]
+        ,
+                gender: <carinbb:PatientGender>patient.gender,
+                name: [
+                    {
+                        family: patient.lastName,
+                        given: [patient.firstName, patient.middleName]
+                    }
+                ]
+            };
 
-    return c4bbPatient.toJson();
-    }
+            return c4bbPatient.toJson();
+        }
     }
     ```
 
-7. Run the Ballerina project and validate the output response.
+7. Run the Ballerina project and validate the output.
 
     ```
     $ bal run
@@ -159,7 +158,7 @@ Follow the steps below to try out an example of using the Health tool.
     Running executable
     ```
 
-8. Execute the command below to invoke the API to test it.
+8. Invoke the API to test it.
 
     ```
     $ curl --location --request GET 'http://localhost:9090/Patient/2121'

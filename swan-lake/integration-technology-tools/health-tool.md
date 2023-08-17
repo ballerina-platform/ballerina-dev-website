@@ -31,12 +31,12 @@ The parameters that are available with the tool are listed below.
 
 | Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| -m, --mode     | Mode can be 'package'. If `mode`` is set to 'package', a Ballerina package will be generated including all the records and types. New modes will be added in future releases.                                                                                                                                                                                                      | mandatory          |
-| -o, --output   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | optional           |
-| --package-name | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name of the implementation guide will be taken to construct the name of the package. For more information, see <a href="https://ballerina.io/learn/package-references/#the-name-field" target="_blank">the <code>name</code>field</a>. | optional           |
-| --org-name     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>name</code>field</a>.                                                                                                                                                                   | optional           |
-| -v, --version  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | optional           |
-| -h, --help     | Print the usage details of the Health tool.                                                                                                                                                                                                                                                                                                                                     | optional           |
+| `-m, --mode`     | Mode can be `package`. If `mode` is set to `package`, a Ballerina package will be generated including all the records and types. New modes will be added in future releases.                                                                                                                                                                                                      | mandatory          |
+| `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | optional           |
+| `--package-name` | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name of the implementation guide will be taken to construct the name of the package. For more information, see <a href="https://ballerina.io/learn/package-references/#the-name-field" target="_blank">the <code>name</code>field</a>. | optional           |
+| --org-name     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code>field</a>.                                                                                                                                                                   | optional           |
+| `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | optional           |
+| `-h, --help`     | Print the usage details of the Health tool.                                                                                                                                                                                                                                                                                                                                     | optional           |
 
 ## Usage
 
@@ -54,7 +54,7 @@ Follow the steps below to try out an example of using the Health tool.
 
 3. Run the tool with the [required arguments](#available-parameters).
 
-    >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument. As this is a common input, no identifier is being used.
+    >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument.
 
 4. Build the generated package and push it to a repository.
 
@@ -164,32 +164,32 @@ Follow the steps below to try out an example of using the Health tool.
     $ curl --location --request GET 'http://localhost:9090/Patient/2121'
     ```
 
-You view the response shown below.
+    You view the response shown below.
 
-```
-{
-   "resourceType" : "Patient",
-   "gender" : "male",
-   "id" : "2121",
-   "identifier" : [
-      {
-         "system" : "http://hl7.org/fhir/sid/us-ssn",
-         "value" : "2121"
-      }
-   ],
-   "meta" : {
-      "profile" : [
-         "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
-      ]
-   },
-   "name" : [
-      {
-         "family" : "Doe",
-         "given" : [
-            "John",
-            "Hemish"
-         ]
-      }
-   ]
-}
-```
+    ```
+    {
+    "resourceType" : "Patient",
+    "gender" : "male",
+    "id" : "2121",
+    "identifier" : [
+        {
+            "system" : "http://hl7.org/fhir/sid/us-ssn",
+            "value" : "2121"
+        }
+    ],
+    "meta" : {
+        "profile" : [
+            "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
+        ]
+    },
+    "name" : [
+        {
+            "family" : "Doe",
+            "given" : [
+                "John",
+                "Hemish"
+            ]
+        }
+    ]
+    }
+    ```

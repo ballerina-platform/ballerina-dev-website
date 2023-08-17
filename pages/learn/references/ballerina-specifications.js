@@ -27,50 +27,25 @@ import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
 import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
-import Toc from "../../../components/common/pg-toc/Toc";
 import LearnToc from "../../../utils/learn-lm.json";
-import { highlight } from "../../../utils/highlighter";
-
-String.prototype.hashCode = function () {
-  var hash = 0,
-    i, chr;
-  if (this.length === 0) return hash;
-  for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = ((hash << 5) - hash) + chr;
-    hash |= 0;
-  }
-  return hash;
-}
-
+import Toc from "../../../components/common/pg-toc/Toc";
 
 export async function getStaticProps() {
-
-  const fileName = fs.readFileSync(`swan-lake/get-started/get-started.md`, "utf-8");
+  const fileName = fs.readFileSync(`spec/spec.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-  const id = "get-started";
-  let codes = await highlight(content);
+  const id = "ballerina-specifications";
 
   return {
     props: {
       frontmatter,
       content,
       id,
-      codes
     },
   };
 }
 
-export default function PostPage({
-  frontmatter,
-  content,
-  id,
-  sub,
-  third,
-  codes
-}) {
+export default function PostPage({ frontmatter, content, id }) {
 
-  
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
@@ -106,7 +81,6 @@ export default function PostPage({
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
         <meta
           property="twitter:description"
           content={frontmatter.description}
@@ -121,9 +95,7 @@ export default function PostPage({
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="get-started"
-            sub={sub}
-            third={third}
+            mainDir="learn-the-platform"
             Toc={LearnToc}
           />
         </Col>
@@ -137,10 +109,9 @@ export default function PostPage({
               <LeftNav
                 launcher="learn"
                 id={id}
-                mainDir="get-started"
-                sub={sub}
-                third={third}
+                mainDir="learn-the-platform"
                 Toc={LearnToc}
+                sub={id}
               />
             </Offcanvas.Body>
           </Offcanvas>
@@ -153,7 +124,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/get-started/get-started.md`}
+                  href={`${process.env.gitHubPath}spec/spec.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"
@@ -172,8 +143,7 @@ export default function PostPage({
 
             <MainContent
               content={content}
-              handleToc={handleToc}
-              codes={codes} />
+              handleToc={handleToc} />
 
           </Container>
         </Col>

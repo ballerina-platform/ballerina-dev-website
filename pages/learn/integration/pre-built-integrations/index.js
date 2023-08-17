@@ -117,7 +117,7 @@ export default function Learn() {
 
             <Col xs={12}>
               <Container>
-                <h1>Integration examples</h1>
+                <h1>Pre-built integrations</h1>
               </Container>
             </Col>
 

@@ -22,42 +22,6 @@ import { prefix } from '../../../utils/prefix';
 export default function Boxes(props) {
   return (
     <>
-      {/* <Container> */}
-      {/* <Row className="pageContentRow learnRow llanding">
-        <Col xs={12} md={12}>
-          <h2 id="learn-the-platform" className='section'>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              className="bi bi-link-45deg mdButton pe-2"
-              viewBox="0 0 16 16"
-              onClick={(e) => props.getLink(e.target, 'learn-the-platform')}
-            >
-              <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-              <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-            </svg>
-            Learn the platform
-          </h2>
-        </Col>
-      </Row> */}
-      {/* <Container className=" text-center">
-  <Row className="gy-5 gx-5">
-    <Col xs={6} style={{border:"1px solid #000000"}}>
-      <div className="p-3">Custom column padding</div>
-    </Col>
-    <Col xs={6} style={{border:"1px solid #000000"}}>
-      <div className="p-3">Custom column padding</div>
-    </Col>
-    <Col xs={6} style={{border:"1px solid #000000"}}>
-      <div className="p-3">Custom column padding</div>
-    </Col>
-    <Col xs={6} style={{border:"1px solid #000000"}}>
-      <div className="p-3">Custom column padding</div>
-    </Col>
-  </Row>
-</Container> */}
       <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container>
@@ -67,7 +31,7 @@ export default function Boxes(props) {
                   <div>
                     <h3>Get started with integration</h3>
                     <div className={styles.cardDescription}>
-                    <div className={styles.content}>
+                      <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/get-started`} className={styles.titleLink}>
                             Get started
@@ -75,7 +39,7 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
                       </div>
-                    <div className={styles.content}>
+                      <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
                             Enterprise Integration Patterns (EIP)
@@ -83,10 +47,10 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Learn how common EIPs can be implemented using Ballerina.</p>
                       </div>
-                      
+
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/integration-examples/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/pre-built-integrations/`} className={styles.titleLink}>
                             Pre-built integrations
                           </a>
                         </p>
@@ -174,7 +138,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/edi-tool`} className={styles.titleLink}>
-                            EDI tool 
+                            EDI tool
                           </a>
                         </p>
                         <p className={styles.description}>The set of command line tools provided to work with EDI files in Ballerina.</p>
@@ -224,204 +188,11 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-              {/* <Col xs={12} md={3} lg={3} className={styles.boxCol}>
-                <div className={styles.cardWrapper}>
-                  <div>
-                    <h3>Supported network integration protocols</h3>
-                    <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            HTTP
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            gRPC
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            WebSockets
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            WebSub
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            GraphQL
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            TCP
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            FTP
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            SMTP
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            POP3
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            JMS
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            AMQP
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            AWS SQS
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col xs={12} md={3} lg={3} className={styles.boxCol}>
-                <div className={styles.cardWrapper}>
-                  <div>
-                    <h3>Supported data formats</h3>
-                    <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/integration/supported-data-formats`} className={styles.titleLink}>
-                            JSON
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            XML
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            YAML
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            TOML
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            CSV
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            TSV
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            EDI
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            HL7
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            FHIR
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            ProtoBuf
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col> */}
             </Row>
           </Container>
         </Col>
       </Row>
+
       <Row className="pageContentRow llanding" style={{ background: "#eeeeee" }}>
         <Col xs={12}>
           <Container>
@@ -634,6 +405,8 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
+            </Row>
+            <Row>
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -671,8 +444,6 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
-            </Row>
-            <Row>
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -681,7 +452,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                          Call Java code from Ballerina
+                            Call Java code from Ballerina
                           </a>
                         </p>
                         <p className={styles.description}>Call existing Java code from Ballerina.</p>
@@ -731,6 +502,8 @@ export default function Boxes(props) {
                   </div>
                 </div>
               </Col>
+            </Row>
+            <Row>
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
@@ -834,13 +607,13 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/language-basics`} className={styles.titleLink}>
-                          Language basics
+                            Language basics
                           </a>
                         </p>
                         <p className={styles.description}>Get started with basics that are common to all C-Family programming languages.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.titleLink}>
-                          Network interaction
+                            Network interaction
                           </a>
                         </p>
                         <p className={styles.description}>Provide and consume services using Ballerina. </p>
@@ -852,13 +625,13 @@ export default function Boxes(props) {
                         <p className={styles.description}>Work with data using Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
-                          Concurrency
+                            Concurrency
                           </a>
                         </p>
                         <p className={styles.description}>How concurrency and transactions are handled in Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.titleLink}>
-                          Advanced general-purpose language features
+                            Advanced general-purpose language features
                           </a>
                         </p>
                         <p className={styles.description}>Advanced features, which are additional options for the language.</p>

@@ -62,7 +62,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/get-started`,
-        destination: `/${redirectBase}learn/references/get-started`,
+        destination: `/${redirectBase}learn/integration/get-started`,
       },
       {
         source: `/${redirectBase}learn/ballerina-specifications`,
@@ -326,8 +326,8 @@ const nextConfig = {
         destination: `/learn/integration/supported-network-protocols`,
       },
       {
-        source: `/learn/integration-examples`,
-        destination: `/learn/integration/integration-examples`,
+        source: `/learn/pre-built-integrations`,
+        destination: `/learn/integration/pre-built-integrations`,
       }
     ];
   },

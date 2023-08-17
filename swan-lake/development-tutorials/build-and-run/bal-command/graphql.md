@@ -3,7 +3,7 @@ layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: GraphQL
 description: The sections below include information about the usages of the Ballerina GraphQL tool.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout, GraphQL
-permalink: /learn/cli-documentation/graphql/
+permalink: /learn/build-and-run/graphql/
 active: graphql
 intro: The sections below include information about the usages of the Ballerina GraphQL tool.
 ---

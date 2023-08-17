@@ -3,7 +3,7 @@ layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: AsyncAPI
 description: The sections below include information about the usages of the Ballerina AsyncAPI tool.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout, AsyncAPI
-permalink: /learn/cli-documentation/asyncapi/
+permalink: /learn/build-and-run/asyncapi/
 active: asyncapi
 intro: The sections below include information about the usages of the Ballerina AsyncAPI tool.
 ---

@@ -447,7 +447,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/build-and-run/cli-commands`} className={styles.titleLink}>
                             Bal command
                           </a>
                         </p>

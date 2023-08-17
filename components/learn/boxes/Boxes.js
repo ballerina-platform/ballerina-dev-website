@@ -118,7 +118,7 @@ export default function Boxes(props) {
                             Supported network integration protocols
                           </a>
                         </p>
-                        <p className={styles.description}>Details of the list of network integration protocols supported by Ballerina.</p>
+                        <p className={styles.description}>List of network integration protocols supported by Ballerina.</p>
                       </div>
 
                     </div>

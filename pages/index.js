@@ -26,9 +26,6 @@ import Videos from '../components/home-page/videos/Videos';
 import Events from '../components/home-page/events/Events';
 import Integration from '../components/home-page/integration/Integration';
 import Articles from '../components/home-page/articles/Articles';
-import Resources from '../components/home-page/resources/Resources';
-import Usecases from '../components/home-page/use-cases/UseCases';
-import Articles2 from '../components/home-page/articles2/Resources';
 import styles from '../styles/Home.module.css';
 
 import fs from "fs";
@@ -111,9 +108,6 @@ export default function Home({ samples }) {
 
         <Row className={styles.homeArticles}>
           <Articles getLink={getLink}/>
-          {/* <Resources getLink={getLink} /> */}
-          {/* <Usecases getLink={getLink} /> */}
-          {/* <Articles2 getLink={getLink} /> */}
         </Row>
 
         <Row className={styles.homeVideos}>

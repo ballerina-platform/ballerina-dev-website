@@ -1,28 +1,14 @@
 
 
 .resourceRow {
-    /* padding-bottom: 20px; */
     margin-top: 10px;
 }
 
 .cardBox {
-    /* border: #E6EAEB solid 0.1px; */
-    /* text-align: left;
-    padding: 10px;
-    background-color: #ffffff; */
-    /* border-radius: 0; */
-    /* box-shadow: 0;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    box-shadow: none; */
-    /* margin-bottom: 10px; */
-
-        /* border: #E6EAEB solid 0.1px; */
-        /* border-radius: 0; */
-        /* margin-bottom: 10px; */
+    
         display: flex;
         flex-direction: column;
-        /* height: 100%; */
+   
         justify-content: space-between;
 }
 
@@ -30,9 +16,7 @@
     margin-bottom: 10px;
 }
 
-/* .cardBox:hover {
-    border: #464646 solid 0.1px;;
-} */
+
 
 .cardBody {
     padding: 18px;
@@ -43,16 +27,10 @@
     margin: 10px 0;
 }
 
-/* .cardText {
-    height: 115px;
-} */
 
 .cardText a {
     color: #20b6b0;
     text-decoration: none;
-    /* text-align: right;
-    font-weight: 400;
-    font-size: 18px; */
 }
 
 .cardText h4 {
@@ -69,52 +47,7 @@
 .date {
     font-size: 14px;
     color: #464646;
-    /* margin-bottom: 0; */
 }
-
-/* .author {
-    margin-bottom: 0;
-} */
-
-
-
-
-/* @media (min-width: 360px) {
-    .cardText {
-        height: 145px;
-    }
-}
-
-@media (min-width: 660px) {
-    .cardText {
-        height: 50px;
-    }
-}
-
-@media (min-width: 768px) {
-    .cardText {
-        height: 300px;
-    }
-}
-
-@media (min-width: 840px) {
-    .cardText {
-        height: 300px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .cardText {
-        height: 205px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .cardText {
-        height: 115px;
-    }
-} */
-
 
 @media (max-width: 576px) {
     .cardText {
@@ -145,24 +78,6 @@
         height: 115px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .useCaseCard {
     display: flex;

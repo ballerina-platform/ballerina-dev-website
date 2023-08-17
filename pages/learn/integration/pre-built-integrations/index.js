@@ -20,11 +20,7 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 import Layout from "../../../../layouts/LayoutLearn";
-// import Intro from "../../../components/learn/intro/Intro";
-// import LearnTheLanguage from "../../../components/learn/language/Language";
-// import UseCases from "../../../components/learn/use-cases/UseCases";
 import SampleList from "../../../../components/common/sample-list/SampleList";
-// import New from "../../../components/learn/new/New";
 import Head from "next/head";
 import { prefix } from '../../../../utils/prefix';
 
@@ -115,42 +111,48 @@ export default function Learn() {
       </Head>
 
       <Layout>
-        
+
         <Col sm={12}>
           <Row className="pageHeader pageContentRow llanding">
-           
+
             <Col xs={12}>
-            <Container>
-              <h1>Pre-built integrations</h1>
-            </Container>
+              <Container>
+                <h1>Pre-built integrations</h1>
+              </Container>
             </Col>
-            
-           
+
+
           </Row>
 
           <Row className="pageContentRow llanding">
-            
+
             <Col xs={12} md={12}>
-            <Container>
-              <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-              </p>
+              <Container>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </p>
               </Container>
             </Col>
           </Row>
 
-          <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                   tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]}/>
-          
+          <Row className="pageContentRow llanding" >
+            <Col xs={12}>
+              <Container>
 
-          {/* <Intro />
-          <LearnTheLanguage getLink={getLink}/>
-          <UseCases getLink={getLink}/>
-          <Platform getLink={getLink}/> */}
-          {/* <New getLink={getLink}/> */}
+                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
+                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
+                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
+                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+
+              </Container>
+            </Col>
+          </Row>
+
         </Col>
-        
-        
+
+
       </Layout>
     </>
   );

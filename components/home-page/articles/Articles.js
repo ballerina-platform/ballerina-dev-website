@@ -54,9 +54,9 @@ export default function Articles(props) {
                 <div className={styles.cardBox}>
                   <img src={`${prefix}/images/1_zcZH8qdrFHY7f503LthNJA.webp`} alt='featured-image' />
                   <h5 className={`${styles.cardTitle} card-title`}>Blog posts</h5>
-                  <p class={`${styles.cardText} card-text`}>
+                  <p className={`${styles.cardText} card-text`}>
                     <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
-                      <h4 class="card-title">10 Lesser-Known Programming Languages Revolutionizing the Tech Industry</h4>
+                      <h4 className="card-title">10 Lesser-Known Programming Languages Revolutionizing the Tech Industry</h4>
                     </a>
                   </p>
                   <p className={`${styles.author} card-text`}> By Arslan Mirza</p>

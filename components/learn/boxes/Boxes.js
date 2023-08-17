@@ -104,15 +104,6 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/supported-network-protocols`} className={styles.titleLink}>
-                            Supported network integration protocols
-                          </a>
-                        </p>
-                        <p className={styles.description}>List of network integration protocols supported by Ballerina.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/supported-data-formats`} className={styles.titleLink}>
                             Supported data formats
                           </a>

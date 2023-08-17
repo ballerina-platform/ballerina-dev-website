@@ -65,8 +65,16 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Integrations</h3>
+                    <h3>Get started with integration</h3>
                     <div className={styles.cardDescription}>
+                    <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/get-started`} className={styles.titleLink}>
+                            Get started
+                          </a>
+                        </p>
+                        <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
+                      </div>
                     <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -79,15 +87,6 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/integration-examples/`} className={styles.titleLink}>
-                            Pre-built integrations
-                          </a>
-                        </p>
-                        <p className={styles.description}>Explore and try out a series of guided integration examples.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
                             Pre-built integrations
                           </a>
                         </p>
@@ -137,7 +136,7 @@ export default function Boxes(props) {
               <Col xs={12} md={4} lg={4} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
-                    <h3>Integration technology tools</h3>
+                    <h3>Integration tools</h3>
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -201,14 +200,6 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/get-started`} className={styles.titleLink}>
-                            Get started
-                          </a>
-                        </p>
-                        <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/by-example`} className={styles.titleLink}>
                             Ballerina by Example
                           </a>
@@ -221,7 +212,7 @@ export default function Boxes(props) {
                             Ballerina API Docs
                           </a>
                         </p>
-                        <p className={styles.description}>Refer Ballerina library (API) documentation.</p>
+                        <p className={styles.description}>Refer to the Ballerina library (API) documentation.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -229,7 +220,7 @@ export default function Boxes(props) {
                             Ballerina specifications
                           </a>
                         </p>
-                        <p className={styles.description}>Refer language, library, and platform specifications.</p>
+                        <p className={styles.description}>Refer to the language, library, and platform specifications.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -594,7 +585,7 @@ export default function Boxes(props) {
                             Supported data stores
                           </a>
                         </p>
-                        <p className={styles.description}>Data stores supported for managing data persistence.</p>
+                        <p className={styles.description}>Data stores for managing data persistence.</p>
                       </div>
                     </div>
                   </div>
@@ -710,7 +701,7 @@ export default function Boxes(props) {
                             Java interoperability guide
                           </a>
                         </p>
-                        <p className={styles.description}>Instructions on the supoorted Java interoperability.</p>
+                        <p className={styles.description}>Instructions on the supported Java interoperability features.</p>
                       </div>
                     </div>
                   </div>
@@ -867,7 +858,7 @@ export default function Boxes(props) {
                             Data
                           </a>
                         </p>
-                        <p className={styles.description}>Some of the plain data supported by Ballerina.</p>
+                        <p className={styles.description}>Provide and consume services using Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
                           Concurrency
@@ -876,10 +867,10 @@ export default function Boxes(props) {
                         <p className={styles.description}>How concurrency and transactions are handled in Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.titleLink}>
-                          Advanced general purpose language features
+                          Advanced general-purpose language features
                           </a>
                         </p>
-                        <p className={styles.description}>Advanced features that are additional options to the language.</p>
+                        <p className={styles.description}>Advanced features, which are additional options for the language.</p>
                       </div>
                     </div>
                   </div>

@@ -112,6 +112,15 @@ export default function Boxes(props) {
                         <p className={styles.description}>List of data formats supported by Ballerina.</p>
                       </div>
 
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/supported-network-protocols`} className={styles.titleLink}>
+                            Supported network integration protocols
+                          </a>
+                        </p>
+                        <p className={styles.description}>Details of the list of network integration protocols supported by Ballerina.</p>
+                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -436,14 +445,6 @@ export default function Boxes(props) {
                   <div>
                     <h3>Build and run</h3>
                     <div className={styles.cardDescription}>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Quick run: via VSCode
-                          </a>
-                        </p>
-                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                      </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>

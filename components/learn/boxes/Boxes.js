@@ -167,7 +167,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/health-tool`} className={styles.titleLink}>
                             Health tool (FHIR/HL7)
                           </a>
                         </p>
@@ -177,7 +177,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/edi-tool`} className={styles.titleLink}>
                             EDI tool 
                           </a>
                         </p>
@@ -656,10 +656,10 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/azure-functions/`} className={styles.titleLink}>
-                            Azure Function
+                            Azure Functions
                           </a>
                         </p>
-                        <p className={styles.description}>Details of Azure Function.</p>
+                        <p className={styles.description}>Details of Azure Functions related functionalities.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -668,7 +668,7 @@ export default function Boxes(props) {
                             AWS Lambda
                           </a>
                         </p>
-                        <p className={styles.description}>Details of AWS Lambda.</p>
+                        <p className={styles.description}>Details of AWS Lambda related functionalities.</p>
                       </div>
 
                     </div>

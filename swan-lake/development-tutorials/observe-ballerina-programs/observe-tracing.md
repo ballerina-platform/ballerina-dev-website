@@ -1,5 +1,5 @@
 ---
-title: Observe Distributed Tracing Using Jaeger
+title: Observe distributed tracing
 description: See how Ballerina supports observing tracing to external systems.
 keywords: ballerina, observability, tracing, jaeger
 permalink: /learn/observe-tracing/

@@ -1,5 +1,5 @@
 ---
-title: Observe Logs With Elastic Stack
+title: Observe logs
 description: See how Ballerina supports observing tracing to external systems.
 keywords: ballerina, observability, logs, elastic stack
 permalink: /learn/observe-logs/

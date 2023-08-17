@@ -605,7 +605,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/azure-functions/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/azure-functions/`} className={styles.titleLink}>
                             Azure Function
                           </a>
                         </p>
@@ -614,7 +614,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/aws-lambda/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
                             AWS Lambda
                           </a>
                         </p>

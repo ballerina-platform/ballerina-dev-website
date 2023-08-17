@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/15 \
+_Updated_: 2023/08/17 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -749,6 +749,8 @@ In Ballerina, a GraphQL object type can be represented using either a service ty
 
 A Ballerina record type can be used as an Object type in GraphQL. Each record field is mapped to a field in the GraphQL object and the type of the record field will be mapped to the type of the corresponding GraphQL field.
 
+>**Note:** A GraphQL object must have at least one field. Therefore, an empty record type cannot be used as an object type in GraphQL, and using an empty record type will result in a compilation error.
+
 ###### Example: Record Type as Object
 ```ballerina
 service on new graphql:Listener(9090) {
@@ -924,6 +926,8 @@ service on new graphql:Listener(9090) {
 Although `Scalar` and `enum` types can be used as input and output types without a limitation, an object type can not be used as an input type and an output type at the same time. Therefore, separate kinds of objects are used to define input objects.
 
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
+
+>**Note:** A GraphQL input object must have at least one field. Therefore, an empty record type cannot be used as an input object type in GraphQL, and using an empty record type will result in a compilation error.
 
 >**Note:** Since GraphQL schema can not use the same type as an input and an output type when a record type is used as an input and an output, a compilation error will be thrown.
 
@@ -2659,7 +2663,7 @@ graphql:Error? result = context.remove("key");
 
 ##### 10.1.1.4 Register DataLoader in Context
 
-To register a [DataLoader](#111-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
+To register a [DataLoader](#106-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
 
 - `key`: The key used to identify a specific DataLoader instance. This key can later be used to retrieve the DataLoader instance when needed. The `key` must be a `string`.
 - `dataloader`: The DataLoader instance.

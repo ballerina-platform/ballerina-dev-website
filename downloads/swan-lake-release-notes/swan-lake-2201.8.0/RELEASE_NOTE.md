@@ -30,6 +30,13 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- A bug that allowed using field access with a map of `xml` has been fixed. 
+
+    ```ballerina
+    map<xml> m = {a: xml `foo`};
+    xml x = check m.a; // Compilation error now.
+    ```
+
 ## Platform updates
 
 ### New features

@@ -56,6 +56,11 @@ Follow the steps below to try out an example of using the Health tool.
 
     >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument.
 
+    ```
+    $ bal health fhir -m package --org-name healthcare --package-name carinbb.lib -o gen ./definitions.json
+    Ballerina FHIR package generation completed successfully.
+    ```
+
 4. Build the generated package and push it to a repository.
 
     >**Info:** You can push either to the local repository or the remote repository in Ballerina Central.

@@ -320,6 +320,10 @@ const nextConfig = {
       {
         source: `/learn/supported-network-protocols`,
         destination: `/learn/integration/supported-network-protocols`,
+      },
+      {
+        source: `/learn/integration-examples`,
+        destination: `/learn/integration/integration-examples`,
       }
     ];
   },

@@ -477,7 +477,7 @@ export default function Boxes(props) {
                             Package references
                           </a>
                         </p>
-                        <p className={styles.description}>References related to Ballerina Packages.</p>
+                        <p className={styles.description}>References related to Ballerina packages.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -602,7 +602,7 @@ export default function Boxes(props) {
                             Code to cloud deployment
                           </a>
                         </p>
-                        <p className={styles.description}>Generating cloud deployment artifacts.</p>
+                        <p className={styles.description}>Generate cloud deployment artifacts.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -610,7 +610,7 @@ export default function Boxes(props) {
                             Azure Function
                           </a>
                         </p>
-                        <p className={styles.description}>Functionality to expose Ballerina functions as serverless functions in the Azure Functions platform.</p>
+                        <p className={styles.description}>Expose Ballerina functions as serverless functions in the Azure Functions platform.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -619,7 +619,7 @@ export default function Boxes(props) {
                             AWS Lambda
                           </a>
                         </p>
-                        <p className={styles.description}>Functionality to write AWS Lambda-compatible packages.</p>
+                        <p className={styles.description}>Write AWS Lambda-compatible packages.</p>
                       </div>
 
                     </div>
@@ -690,10 +690,10 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/call-java-code-from-ballerina`} className={styles.titleLink}>
-                            How to call Java code from Ballerina.
+                          Call Java code from Ballerina
                           </a>
                         </p>
-                        <p className={styles.description}>Calling Java code from Ballerina.</p>
+                        <p className={styles.description}>Call existing Java code from Ballerina.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -726,7 +726,7 @@ export default function Boxes(props) {
                             Build the GraalVM executable in a container
                           </a>
                         </p>
-                        <p className={styles.description}>Building and packing the GraalVM executable in a container.</p>
+                        <p className={styles.description}>Build and pack the GraalVM executable in a container.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -734,7 +734,7 @@ export default function Boxes(props) {
                             Build the GraalVM executable locally
                           </a>
                         </p>
-                        <p className={styles.description}>Building the GraalVM executable locally from Ballerina.</p>
+                        <p className={styles.description}>Build the GraalVM executable locally from Ballerina.</p>
                       </div>
                     </div>
                   </div>
@@ -858,7 +858,7 @@ export default function Boxes(props) {
                             Data
                           </a>
                         </p>
-                        <p className={styles.description}>Some of the plain data supported by Ballerina that we have not covered in the last part, specifically, tables and XML types.</p>
+                        <p className={styles.description}>Some of the plain data supported by Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
                           Concurrency
@@ -870,7 +870,7 @@ export default function Boxes(props) {
                           Advanced general purpose language features
                           </a>
                         </p>
-                        <p className={styles.description}>Advanced features which are a mixed bag of additional options to the language.</p>
+                        <p className={styles.description}>Advanced features that are additional options to the language.</p>
                       </div>
                     </div>
                   </div>

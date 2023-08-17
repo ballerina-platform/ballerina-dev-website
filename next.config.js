@@ -50,15 +50,15 @@ const nextConfig = {
     return [
       {
         source: `/learn/build-a-data-service-in-ballerina`,
-        destination: `/learn/featured-scenarios/build-a-data-service-in-ballerina`,
+        destination: `/learn/resources/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
-        destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
         source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
-        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },
       {
         source: `/${redirectBase}learn/get-started`,
@@ -74,19 +74,19 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/work-with-data-using-queries-in-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-graphql-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-graphql-api-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-graphql-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-grpc-service-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-grpc-service-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-grpc-service-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-restful-api-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-restful-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/installation-options`,
@@ -96,7 +96,6 @@ const nextConfig = {
         source: "/learn",
         destination: "/learn/get-started/install-ballerina/set-up-ballerina",
       },
-
       {
         source: `/${redirectBase}learn/openapi-tool`,
         destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/openapi-tool`,
@@ -310,6 +309,14 @@ const nextConfig = {
         source: `/spec/lang/2019R1/`,
         destination: `/spec/lang/2019R1/index.html`,
       },
+      {
+        source: `/learn/supported-data-formats`,
+        destination: `/learn/integration/supported-data-formats`,
+      },
+      {
+        source: `/learn/supported-network-protocols`,
+        destination: `/learn/integration/supported-network-protocols`,
+      }
     ];
   },
   trailingSlash: true,

@@ -22,7 +22,6 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -55,7 +54,7 @@ var traverseFolder = function (dir) {
       results = results.concat(traverseFolder(filex));
     } else {
       /* Is a file */
-      filex = filex.replace(/swan-lake\/learn-the-platform\//g, "");
+      filex = filex.replace(/swan-lake\/integration\//g, "");
       results.push(filex);
     }
   });
@@ -64,7 +63,7 @@ var traverseFolder = function (dir) {
 
 export async function getStaticPaths() {
   // Retrieve all our slugs
-  const files = traverseFolder("swan-lake/learn-the-platform");
+  const files = traverseFolder("swan-lake/integration");
   const paths = files.map((fileName) => ({
     params: {
       slug: fileName.replace(".md", "").split("/"),
@@ -91,7 +90,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   slug = slug.join("/");
   const fileName = fs.readFileSync(
-    `swan-lake/learn-the-platform/${slug}.md`,
+    `swan-lake/integration/${slug}.md`,
     "utf-8"
   );
   const { data: frontmatter, content } = matter(fileName);
@@ -171,7 +170,7 @@ export default function PostPage({
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="learn-the-platform"
+            mainDir="integration"
             sub={sub}
             third={third}
             Toc={LearnToc}
@@ -187,7 +186,7 @@ export default function PostPage({
               <LeftNav
                 launcher="learn"
                 id={id}
-                mainDir="learn-the-platform"
+                mainDir="integration"
                 sub={sub}
                 third={third}
                 Toc={LearnToc}
@@ -203,7 +202,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/learn-the-platform/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/integration/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"
@@ -218,7 +217,7 @@ export default function PostPage({
               </Col>
             </div>
 
-            <ReactMarkdown className="intro">{frontmatter.intro}</ReactMarkdown>
+            <p className="intro">{frontmatter.intro}</p>
 
             <MainContent
               content={content}
@@ -227,7 +226,7 @@ export default function PostPage({
 
           </Container>
         </Col>
-        <Col sm={2} className="pageToc d-none d-sm-block">
+        <Col sm={2} xxl={3} className="pageToc d-none d-sm-block">
           {showToc ? (
             <>
               <h6>On this page</h6>

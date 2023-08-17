@@ -167,7 +167,7 @@ export default function Boxes(props) {
                             Health tool (FHIR/HL7)
                           </a>
                         </p>
-                        <p className={styles.description}>FHIR profile to client and stub generation tool of Ballerina.</p>
+                        <p className={styles.description}>FHIR/HL7 profile to client and stub generation tool of Ballerina.</p>
                       </div>
 
 
@@ -843,13 +843,13 @@ export default function Boxes(props) {
                           Network interaction
                           </a>
                         </p>
-                        <p className={styles.description}>The features of the Ballerina programming language that are distinctive. </p>
+                        <p className={styles.description}>Provide and consume services using Ballerina. </p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.titleLink}>
                             Data
                           </a>
                         </p>
-                        <p className={styles.description}>Provide and consume services using Ballerina.</p>
+                        <p className={styles.description}>Work with data using Ballerina.</p>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
                           Concurrency

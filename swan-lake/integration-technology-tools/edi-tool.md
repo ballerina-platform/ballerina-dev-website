@@ -13,10 +13,7 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 
 ## Compatibility
 
-|                            | Compatible with |
-|----------------------------|------------------|
-| Ballerina language version | 2201.7.0         |
-| Java Development Kit (JDK) | 11               |
+The EDI tool is compatible with the Ballerina language version 2201.7.0 and Java Development Kit (JDK) 11.
 
 ## Usage
 

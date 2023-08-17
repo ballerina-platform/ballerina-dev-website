@@ -438,7 +438,16 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`/learn/cli-documentation/cli-commands/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                            Quick run: via VSCode
+                          </a>
+                        </p>
+                        <p className={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/build-and-run/cli-commands`} className={styles.titleLink}>
                             Bal command
                           </a>
                         </p>
@@ -596,8 +605,8 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/azure-functions/`} className={styles.titleLink}>
-                            Azure Functions
+                          <a href={`${prefix}/learn/run-in-the-cloud/azure-functions/`} className={styles.titleLink}>
+                            Azure Function
                           </a>
                         </p>
                         <p className={styles.description}>Details of Azure Functions related functionalities.</p>
@@ -605,7 +614,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/aws-lambda/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
                             AWS Lambda
                           </a>
                         </p>

@@ -3,7 +3,7 @@ layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: OpenAPI 
 description: The sections below include information about the usages of the Ballerina OpenAPI tool.
 keywords: ballerina, programming language, ballerina packages, package structure, package layout, OpenAPI
-permalink: /learn/cli-documentation/openapi/
+permalink: /learn/build-and-run/openapi/
 active: openapi
 intro: The sections below include information about the usages of the Ballerina OpenAPI tool.
 ---

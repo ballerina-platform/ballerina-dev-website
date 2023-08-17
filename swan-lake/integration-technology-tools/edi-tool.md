@@ -20,7 +20,7 @@ The EDI tool is compatible with the Ballerina language version 2201.7.0 and Java
 The usage of the tool is described below.
 
 ```
-bal edi codegen <EDI schema path> <output path>
+$ bal edi codegen <EDI schema path> <output path>
 ```
 
 The above command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path. The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
@@ -63,7 +63,7 @@ ITM*T-46*28
 Ballerina records for the EDI schema in the `edi-schema.json` file can be generated as follows (the generated Ballerina records will be saved in `orderRecords.bal`).
 
 ```
-bal edi codegen -s resources/edi-schema1.json -o modules/hmartOrder/orderRecords.bal
+$ bal edi codegen -s resources/edi-schema1.json -o modules/hmartOrder/orderRecords.bal
 ```
 
 The Ballerina records generated for the above schema are shown below.
@@ -125,7 +125,7 @@ Usually, organizations have to work with many EDI formats, and integration devel
 The command below can be used to generate EDI libraries.
 
 ```
-bal edi libgen -O <org name> -n <library name> -s <EDI schema folder> -o <output folder>
+$ bal edi libgen -O <org name> -n <library name> -s <EDI schema folder> -o <output folder>
 ```
 
 A Ballerina library project will be generated in the output folder. This library can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated library can be imported into any Ballerina project and the generated utility functions of the library can be invoked to parse EDI messages into Ballerina records.
@@ -145,12 +145,12 @@ For example, if an organization (`CityMart`) needs to work with `X12 850`, `810`
 Execute the `libgen` command to generate a Ballerina library as shown below.
 
 ```
-bal edi libgen -O citymart -n porder -s CityMart/schemas -o CityMart/lib
+$ bal edi libgen -O citymart -n porder -s CityMart/schemas -o CityMart/lib
 ```
 
 The generated Ballerina library will be as shown below.
 
-```ballerina
+```
 |-- CityMart
     |--lib  
     |--porder
@@ -210,7 +210,7 @@ For example, the `citymart` library generated above can be built and executed as
 You can convert `X12 850` EDI text to JSON using the REST service as shown below.
 
 ```
-curl --request POST \
+$curl --request POST \
   --url http://localhost:9090/porderParser/edis/850 \
   --header 'Content-Type: text/plain' \
   --data 'ST*834*12345*005010X220A1~

@@ -1,6 +1,7 @@
 ---
 title: 'JSON support'
 description: Ballerina offers native support for JSON, enabling effortless integration with JSON-based systems and APIs. This support ensures smooth handling and manipulation of JSON data within data-oriented programming, enhancing interoperability and facilitating seamless communication with JSON-based systems.
+image: 
 url: https://github.com/ballerina-guides/integration-samples/blob/main/working_with_json/ballerina/main.bal
 ---
 ```

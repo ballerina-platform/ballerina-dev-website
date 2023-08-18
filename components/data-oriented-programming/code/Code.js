@@ -189,7 +189,7 @@ export default function UseCases(props) {
                                         (records.frontmatter.url && records.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={records.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -250,7 +250,7 @@ export default function UseCases(props) {
                                         (unions.frontmatter.url && unions.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={unions.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -310,7 +310,7 @@ export default function UseCases(props) {
                                         (optionals.frontmatter.url && optionals.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={optionals.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -370,7 +370,7 @@ export default function UseCases(props) {
                                         (flexibleTyping.frontmatter.url && flexibleTyping.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={flexibleTyping.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -430,7 +430,7 @@ export default function UseCases(props) {
                                         (languageQuery.frontmatter.url && languageQuery.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={languageQuery.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -490,7 +490,7 @@ export default function UseCases(props) {
                                         (patternMatching.frontmatter.url && patternMatching.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={patternMatching.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -550,7 +550,7 @@ export default function UseCases(props) {
                                         (constraints.frontmatter.url && constraints.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={constraints.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -610,7 +610,7 @@ export default function UseCases(props) {
                                         (immutability.frontmatter.url && immutability.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={immutability.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -670,7 +670,7 @@ export default function UseCases(props) {
                                         (xmlSupport.frontmatter.url && xmlSupport.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={xmlSupport.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -730,7 +730,7 @@ export default function UseCases(props) {
                                         (jsonSupport.frontmatter.url && jsonSupport.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={jsonSupport.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -790,7 +790,7 @@ export default function UseCases(props) {
                                         (streamType.frontmatter.url && streamType.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={streamType.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -850,7 +850,7 @@ export default function UseCases(props) {
                                         (tableType.frontmatter.url && tableType.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={tableType.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>

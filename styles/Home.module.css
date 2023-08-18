@@ -3,20 +3,20 @@
   padding: 80px 0 80px 0;
 }
 
-.homeWhyBal, .homeEvents, .homeIntegration {
+.homeWhyBal, .homeIntegration, .homeVideos {
   background: #fff;
 }
 
-.homeBalAction, .homeVideos {
+.homeBalAction, .homeArticles, .homeEvents {
   background: #f5f5f5;
 }
 
-.homeBalAction, .homeIntegration {
+.homeBalAction, .homeIntegration, .homeArticles {
   padding-bottom: 6rem;
 }
 
 .home h2, .homeBalAction h2, .homeWhyBal h2, .homeIntegration h2,
-.homeVideos h2, .homeEvents h2 {
+.homeVideos h2, .homeEvents h2, .homeArticles h2 {
   font-size: 32px;
   margin-top: 40px;
   margin-bottom: 30px;

@@ -9,26 +9,21 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 --- 
 
 - **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **Library generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also, organize those as a Ballerina library
-
-## Prerequisites
-
-- [Ballerina 2201.7.0 (Swan Lake Update 7)](https://ballerina.io/downloads/)
-- Java Development Kit (JDK) 11
+- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
 ## Usage
 
-The usage of the tool is described below.
+The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema, and writes those into the file specified in the output path.
 
 ```
 $ bal edi codegen <EDI schema path> <output path>
 ```
 
-The above command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path. The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
+The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
 
 ## Example
 
-A simple EDI schema (`edi-schema.json` file) is shown below.
+A simple EDI schema file is shown below.
 
 ```json
 {
@@ -48,7 +43,7 @@ A simple EDI schema (`edi-schema.json` file) is shown below.
 }
 ```
 
-The above schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`. Below is a sample EDI document that can be parsed using the above schema (`edi-sample1.edi` file).
+The above schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`. Below is a sample EDI document that can be parsed using the above schema.
 
 ```
 HDR*ORDER_1201*ABC_Store*2008-01-01~
@@ -64,72 +59,86 @@ ITM*T-46*28
 Ballerina records for the EDI schema in the `edi-schema.json` file can be generated as follows (the generated Ballerina records will be saved in `orderRecords.bal`).
 
 ```
-$ bal edi codegen -s resources/edi-schema1.json -o modules/hmartOrder/orderRecords.bal
+$ bal edi codegen -s resources/edi-schema.json -o modules/hmartOrder/orderRecords.bal
 ```
 
 The Ballerina records generated for the above schema are shown below.
 
 ```ballerina
 type Header_Type record {|
-   string code?;
-   string orderId?;
-   string organization?;
-   string date?;
+    string code?;
+    string orderId?;
+    string organization?;
+    string date?;
 |};
 
 type Items_Type record {|
-   string code?;
-   string item?;
-   int quantity?;
+    string code?;
+    string item?;
+    int quantity?;
 |};
 
 type SimpleOrder record {|
-   Header_Type header;
-   Items_Type[] items?;
+    Header_Type header;
+    Items_Type[] items?;
 |};
 ```
 
 ### Read EDI files
 
-The generated `fromEdiString` function can be used to read EDI text files into the generated Ballerina record as shown below. 
+The generated `fromEdiString` function can be used to read EDI text files into the generated Ballerina record, as shown below. 
 
->**Note:** Any data item in the EDI can be accessed using the record's fields as shown in the example code below.
+>**Note:** Any data item in the EDI can be accessed using the record's fields, as shown in the example code below.
 
 ```ballerina
 import ballerina/io;
 
 public function main() returns error? {
-    string ediText = check io:fileReadString("resources/edi-sample1.edi");
-    SimpleOrder order1 = check hmartOrder:fromEdiString(ediText);
-    io:println(order1.header.date);
+    string ediText = check io:fileReadString("resources/edi-sample.edi");
+    SimpleOrder order = check hmartOrder:fromEdiString(ediText);
+    io:println(order.header.date);
 }
 ```
 
 ### Write EDI files
 
-The generated `toEdiString` function can be used to serialize the `SimpleOrder` records into EDI text as shown below.
+The generated `toEdiString` function can be used to serialize the `SimpleOrder` records into EDI text, as shown below.
 
 ```ballerina
 import ballerina/io;
 
 public function main() returns error? {
-    SimpleOrder order2 = {...};
-    string orderEDI = check hmartOrder:toEdiString(order2);
-    io:println(orderEDI);
+    SimpleOrder salesOrder = {SimpleOrder    salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
+    salesOrder.items.push({item: "A680", quantity: 15});
+    salesOrder.items.push({item: "A530", quantity: 2});
+    salesOrder.items.push({item: "A500", quantity: 4});
+};
+
+string orderEDI = check hmartOrder:toEdiString(salesOrder);
+io:println (orderEDI) ;
 }
 ```
 
-## Create an EDI library
-
-Usually, organizations have to work with many EDI formats, and integration developers need to have a convenient way to work on EDI data with minimum effort. Ballerina EDI libraries facilitate this by allowing organizations to pack all EDI processing the codes of their EDI collections into an importable library. Therefore, integration developers can simply import those libraries and convert EDI messages into Ballerina records in a single line of code.
-
-The command below can be used to generate EDI libraries.
+Below is the output of the above code.
 
 ```
-$ bal edi libgen -O <org name> -n <library name> -s <EDI schema folder> -o <output folder>
+HDRORDER_200HMart17-05-2023~
+ITMA68015~
+ITMA5302~
+ITMA500*4~
 ```
 
-A Ballerina library project will be generated in the output folder. This library can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated library can be imported into any Ballerina project and the generated utility functions of the library can be invoked to parse EDI messages into Ballerina records.
+## Create an EDI package
+
+Usually, organizations have to work with many EDI formats, and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing the codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
+
+The below command can be used to generate the EDI package.
+
+```
+$ bal edi libgen -O <org name> -n <package name> -s <EDI schema folder> -o <output folder>
+```
+
+A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
 
 For example, if an organization (`CityMart`) needs to work with `X12 850`, `810`, `820`, and `855` for handling purchase orders, then, its integration developers can put schemas of those `X12` specifications into a folder as follows.
 
@@ -143,13 +152,13 @@ For example, if an organization (`CityMart`) needs to work with `X12 850`, `810`
        |--855.json
 ```
 
-Execute the `libgen` command to generate a Ballerina library as shown below.
+Execute the `libgen` command to generate a Ballerina package, as shown below.
 
 ```
 $ bal edi libgen -O citymart -n porder -s CityMart/schemas -o CityMart/lib
 ```
 
-The generated Ballerina library will be as shown below.
+The generated Ballerina package will be, as shown below.
 
 ```
 |-- CityMart
@@ -183,7 +192,7 @@ The generated Ballerina library will be as shown below.
 
 As seen in the above project structure, the code for each EDI schema is generated into a separate module to prevent possible conflicts. Now, it is possible to build the above project using the `bal pack` command and publish it into [Ballerina Central](https://central.ballerina.io/) using the `bal push` command. 
 
-Then, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this library for reading an `850` file and writing an `855` file is shown below.
+Then, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this package for reading an `850` file and writing an `855` file is shown below.
 
 ```ballerina
 import ballerina/io;
@@ -194,21 +203,20 @@ public function main() returns error? {
     string orderText = check io:fileReadString("orders/d15_05_2023/order10.edi");
     m850:Purchase_Order purchaseOrder = check m850:fromEdiString(orderText);
     ...
-    m855:Purchase_Order_Acknowledgement orderAck = {...};
+    m855:Purchase_Order_Acknowledgement    orderAck = {...};
     string orderAckText = check m855:toEdiString(orderAck);
     check io:fileWriteString("acks/d15_05_2023/ack10.edi", orderAckText);
 }
 ```
 
-It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina library for processing interactions with a particular partner.
+It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with a particular partner.
+## Use the generated EDI package as a standalone REST service
 
-### Use generated EDI libraries as standalone REST services
+The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
 
-The EDI libraries generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
+For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with `X12 850`, `810`, `820`, and `855` files. 
 
-For example, the `citymart` library generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with `X12 850`, `810`, `820`, and `855` files. 
-
-You can convert `X12 850` EDI text to JSON using the REST service as shown below.
+You can convert `X12 850` EDI text to JSON using a cURL command, as shown below.
 
 ```
 $curl --request POST \
@@ -229,7 +237,7 @@ DTP*348*D8*20020701~
 SE*12*12345~'
 ```
 
-The above REST call will return a JSON response as shown below.
+The above REST call will return a JSON response, as shown below.
 
 ```json
 {

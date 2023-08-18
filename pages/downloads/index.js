@@ -39,48 +39,42 @@ export default function Downloads() {
    return (
       <Layout>
          <Col sm={12}>
-            <Row className="cDownloadsHeader pageHeader pageContentRow">
+            <Row className={`${styles.downloadContentRow} cDownloadsHeader pageHeader`}>
                <Col xs={12}>
                   <h1>Downloads</h1> 
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
+            <Row className={`${styles.donwloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={10}>
                   <h2 id="swanlake"><span>{swanlake['display-version']}</span></h2>
                </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-                  <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Packs info={swanlake}/>
-            </Row>
-
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
-               <Col xs={12}>
-               <div className={styles.releaseLinks} >
+               <Col xs={2}>
+                  <div className={styles.releaseLinks} >
                      <div className={styles.releaseNotes} >
                         <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
-                     </div>
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`}>ARCHIVED VERSIONS &gt;</a></p>
                      </div>
                   </div>
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsOther} pageContentRow`}>
-               <Col xs={12} sm={12} md={6} lg={6}>
+            <Row className={`${styles.donwloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={12}>
+                  <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.donwloadVersion} ${styles.downloadContentRow}`}>
+               <Packs info={swanlake}/>
+            </Row>
+
+            <Row className={`${styles.downloadsOther} ${styles.downloadContentRow}`}>
+               <Col xs={12} sm={12} md={12} lg={6}>
                   <div className="cInstallers">
                      <h3>Other installation options</h3>
-                     <div className="">
+                  </div>
+                  <div className="">
                         <table id="insPackages1">
-                           <tr> </tr>
                            <tr>
                               <td>Install via Homebrew (for macOS)
                                  <a href={`${prefix}/downloads/installation-options/#install-using-homebrew`} className={styles.cDownloadLinkIcon}>
@@ -103,53 +97,55 @@ export default function Downloads() {
                               </td>
                            </tr>
                         </table>
-                     </div>
                   </div>
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.donwloadVersion} ${styles.downloadContentRow}`}>
                <Col xs={12}>
                   <p><ul>
                      <li>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>Verify the installation</a>.
+                     in the Terminal/Shell.
                      </li>
                      <li>
-                     To verify the Ballerina release artifacts (you downloaded based on your platform) using Cosign CLI or Rekor API, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
+                     To verify the Ballerina release artifact signatures, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
+                     </li>
+                     <li>
+                     To view older releases, see <a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`} className={styles.instructions}>Archived versions</a>.
                      </li>
                      </ul>
                   </p>
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
+               <Col xs={12} sm={12} md={12} lg={6}>
+               <p>Next, click <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">here</a> to open <code className="highlighter-rouge language-plaintext">hello_world.bal<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> sample on VSCode and run.</p>
+                  <p>Refer <a href={`${prefix}/learn/`}>learn</a> page for more guides and material.</p>
+               </Col>
+            </Row>
+
+            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
+               <Col xs={12} sm={12} md={12} lg={12}>
+                 
+               </Col>
+            </Row>
+
+            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12}>
-                  <h2 id="swanlake"><span>Visual Studio Code extension</span></h2>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
-               <Col xs={12}>
-                  <p>Next, install the Ballerina Visual Studio Code extension from the VS Code marketplace. For detailed information of the functionalities of this extension, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina VS Code extension documentation</a>.</p>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <h3 className={styles.dVSCode} style={vscodeIcon}>Visual Studio Code</h3>
-                  <a id="packWindows" href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" 
-                  className={styles.cDownload} data-download="downloads" 
-                  target="_blank" rel="noreferrer">
-                     <div className={styles.cSize}>Ballerina extension<span id="packWindowsName"></span></div>
-                  </a>
-               </Col>
-            </Row>
-
-            <Row className={`${styles.downloadsVSCode} pageContentRow`}>
-               <Col xs={12} sm={12} md={12} lg={4}>
-                  <p>Now, you are all set to <a href={`${prefix}/learn/get-started/`}>get started with Ballerina.</a></p>
+                  <p className={styles.dVSCode} style={vscodeIcon}>Ballerina VSCode Extension</p>
+                  <p>
+                     <ul>
+                        <li>
+                           Ballerina VSCode is available in <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Marketplace</a>
+                        </li>
+                        <li>
+                           For detailed information, go to the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina VSCode extension documentation</a>.
+                        </li>
+                     </ul>
+                  </p>
                </Col>
             </Row>
          </Col>

@@ -201,6 +201,10 @@ p.dwindows, p.dLinux, p.dMac, p.dVSCode {
   line-height: 32px;
 }
 
+.downloadContentRow {
+  margin-bottom: 25px;
+}
+
 
 
 

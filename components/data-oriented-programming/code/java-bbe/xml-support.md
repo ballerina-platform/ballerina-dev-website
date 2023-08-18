@@ -1,7 +1,6 @@
 ---
 title: 'XML support'
-description: XML, as a structured markup language, provides a flexible and extensible means of representing data. Ballerina's native support for XML enables smooth parsing, generation, and manipulation of XML data. This support greatly facilitates integration with XML-based systems and protocols within data-oriented programming, enhancing interoperability and data exchange capabilities.
-image: 
+description: XML is a structured markup language that offers a flexible and extensible approach for representing data. <br><br>Ballerina's XML native support enables seamless parsing, generation, and manipulation of XML data, facilitating integration with XML-based systems and protocols in data-oriented programming. Java developers can utilize third-party libraries to achieve similar XML handling capabilities. 
 url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/xml-support/ballerina/main.bal
 ---
 ```

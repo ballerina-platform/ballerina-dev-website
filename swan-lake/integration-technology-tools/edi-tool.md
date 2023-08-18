@@ -9,7 +9,7 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 --- 
 
 - **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
 ## Usage
 
@@ -66,21 +66,21 @@ The Ballerina records generated for the above schema are shown below.
 
 ```ballerina
 type Header_Type record {|
-   string code?;
-   string orderId?;
-   string organization?;
-   string date?;
+    string code?;
+    string orderId?;
+    string organization?;
+    string date?;
 |};
 
 type Items_Type record {|
-   string code?;
-   string item?;
-   int quantity?;
+    string code?;
+    string item?;
+    int quantity?;
 |};
 
 type SimpleOrder record {|
-   Header_Type header;
-   Items_Type[] items?;
+    Header_Type header;
+    Items_Type[] items?;
 |};
 ```
 
@@ -108,10 +108,24 @@ The generated `toEdiString` function can be used to serialize the `SimpleOrder` 
 import ballerina/io;
 
 public function main() returns error? {
-    SimpleOrder order2 = {...};
-    string orderEDI = check hmartOrder:toEdiString(order2);
-    io:println(orderEDI);
+    SimpleOrder salesOrder = {SimpleOrder    salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
+    salesOrder.items.push({item: "A680", quantity: 15});
+    salesOrder.items.push({item: "A530", quantity: 2});
+    salesOrder.items.push({item: "A500", quantity: 4});
+};
+
+string orderEDI = check hmartOrder:toEdiString(salesOrder);
+io:println (orderEDI) ;
 }
+```
+
+Below is the output of the above code.
+
+```
+HDRORDER_200HMart17-05-2023~
+ITMA68015~
+ITMA5302~
+ITMA500*4~
 ```
 
 ## Create an EDI package
@@ -189,14 +203,13 @@ public function main() returns error? {
     string orderText = check io:fileReadString("orders/d15_05_2023/order10.edi");
     m850:Purchase_Order purchaseOrder = check m850:fromEdiString(orderText);
     ...
-    m855:Purchase_Order_Acknowledgement orderAck = {...};
+    m855:Purchase_Order_Acknowledgement    orderAck = {...};
     string orderAckText = check m855:toEdiString(orderAck);
     check io:fileWriteString("acks/d15_05_2023/ack10.edi", orderAckText);
 }
 ```
 
 It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with a particular partner.
-
 ## Use the generated EDI package as a standalone REST service
 
 The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.

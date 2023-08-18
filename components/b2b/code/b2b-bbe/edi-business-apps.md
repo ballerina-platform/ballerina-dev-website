@@ -1,6 +1,6 @@
 ---
 title: 'Unlock EDI data for business apps'
-description: Developers can create Ballerina apps that perform actions on EDI data such as calling external services with relevant EDI fields, making intelligent decisions, storing extracted data in databases, and performing data manipulations like filtering, replacing, and enrichment. These capabilities empower organizations to effectively utilize EDI data, enabling the implementation of data-driven processes and enhancing overall operational efficiency.
+description: Developers can create Ballerina apps that perform actions on EDI data, such as calling external services with relevant EDI fields, making intelligent decisions, storing extracted data in databases, and performing data manipulations like filtering, replacing, and enrichment. These capabilities empower organizations to effectively utilize EDI data, enabling the implementation of data-driven processes and enhancing overall operational efficiency.
 
 url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/edi-in-business-apps/main.bal'
 ---

@@ -114,9 +114,9 @@ export default function Home({ samples }) {
           <Videos getLink={getLink} />
         </Row>
 
-        <Row className={styles.homeEvents}>
+        {/* <Row className={styles.homeEvents}>
           <Events getLink={getLink} />
-        </Row>
+        </Row> */}
       </Col>
     </Layout>
   );

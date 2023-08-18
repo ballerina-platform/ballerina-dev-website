@@ -17,7 +17,7 @@ The usages of the above functionalities are described below.
 
 ### Code generation usage
 
-The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema, and writes those into the file specified in the output path.
+The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
 
 ```
 $ bal edi codegen <EDI schema path> <output path>
@@ -27,7 +27,7 @@ The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text fi
 
 ### Package generation usage
 
-Usually, organizations have to work with many EDI formats, and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing the codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
+Usually, organizations have to work with many EDI formats, and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
 
 The below command can be used to generate the EDI package.
 
@@ -39,11 +39,11 @@ A Ballerina package project will be generated in the output folder. This package
 
 ## Example
 
-Examples on the above usages are described below.
+Examples of the above usages are described below.
 
 ### Code generation example
 
-Follow the steps below to try out an example on generating Ballerina code from an EDI schema file.
+Follow the steps below to try out an example of generating Ballerina code from an EDI schema file.
 
 1. Create a sample EDI schema (`edi-schema.json` file) with the code below.
 

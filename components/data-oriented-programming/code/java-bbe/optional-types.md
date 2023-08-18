@@ -1,6 +1,6 @@
 ---
 title: 'Model optionality'
-description: In data-oriented programming, where data is at the forefront, modeling optionality provides a powerful mechanism to express the presence or absence of data in a concise and type-safe manner. <br><br>Optional typing allows indicating when a value may be absent or nullable, while optional fields provide flexibility in representing varying data states. <br><br> Ballerina has built-in support for optional types and fields, eliminating the risk of null pointer exceptions and related bugs. In Java, handling optional types and fields typically involves using external libraries or annotations, which can introduce additional complexity and potential for errors.
+description: In data-oriented programming, where data takes precedence, modeling optionality is crucial for expressing the presence or absence of data in a concise and type-safe manner. <br><br>Optional typing enables the indication of nullable or absent values, while optional fields offer flexibility in representing different data states.<br><br>Ballerina has built-in support for optional types and fields, eliminating the risk of null pointer exceptions and related bugs, ensuring more robust code.
 url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/model-optionality/ballerina/main.bal
 ---
 ```

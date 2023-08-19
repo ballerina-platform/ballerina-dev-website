@@ -328,6 +328,10 @@ const nextConfig = {
       {
         source: `/learn/pre-built-integrations`,
         destination: `/learn/integration/pre-built-integrations`,
+      },
+      {
+        source: `/learn/pre-built-integrations/sample1`,
+        destination: `/learn/integration/pre-built-integrations/sample1`,
       }
     ];
   },

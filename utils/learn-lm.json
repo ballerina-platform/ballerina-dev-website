@@ -230,7 +230,34 @@
             "url": "swan-lake/development-tutorials",
             "id": "development-tutorials",
             "subDirectories": [
-
+                {
+                    "dirName": "Build and run",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/build-and-run",
+                    "id": "build-and-run",
+                    "subDirectories": [
+                        {
+                            "dirName": "Bal command",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": true,
+                            "url": "/learn/build-and-run/bal-command",
+                            "id": "bal-command",
+                            "subDirectories": [
+                                {
+                                    "dirName": "CLI commands",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/build-and-run/cli-commands",
+                                    "id": "cli-commands"
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     "dirName": "Source code & dependencies",
                     "level": 2,
@@ -546,15 +573,15 @@
                     "level": 2,
                     "position": 6,
                     "isDir": true,
-                    "url": "/learn/configure-ballerina-programs",
-                    "id": "Configurability",
+                    "url": "/learn/configurability",
+                    "id": "configurability",
                     "subDirectories": [
                         {
                             "dirName": "Configure Ballerina programs",
                             "level": 3,
                             "position": 1,
                             "isDir": true,
-                            "url": "/learn/configure-ballerina-programs",
+                            "url": "/learn/configurability/configure-ballerina-programs",
                             "id": "configure-ballerina-programs",
                             "subDirectories": [
                                 {
@@ -590,8 +617,8 @@
                     "level": 2,
                     "position": 7,
                     "isDir": true,
-                    "url": "/learn/configure-ballerina-programs",
-                    "id": "Configurability",
+                    "url": "/learn/observability",
+                    "id": "observability",
                     "subDirectories": [
                         {
                             "dirName": "Observe Ballerina programs",
@@ -685,7 +712,7 @@
                     "position": 9,
                     "isDir": true,
                     "url": "/learn/build-a-graalvm-executable",
-                    "id": "graalvm-executable",
+                    "id": "build-a-graalvm-executable",
                     "subDirectories": [
                         {
                             "dirName": "GraalVM executable overview",
@@ -736,7 +763,7 @@
                     "level": 2,
                     "position": 1,
                     "isDir": true,
-                    "url": "swan-lake/featured-scenarios",
+                    "url": "swan-lake/resources/featured-scenarios",
                     "id": "featured-scenarios",
                     "subDirectories": [
                         {
@@ -800,14 +827,14 @@
                 {
                     "dirName": "Learn the language",
                     "level": 2,
-                    "position": 3,
+                    "position": 2,
                     "isDir": true,
                     "url": "swan-lake/learn-the-language",
                     "id": "learn-the-language",
                     "subDirectories": [
                         {
                             "dirName": "Language basics",
-                            "level": 2,
+                            "level": 3,
                             "position": 1,
                             "isDir": false,
                             "url": "/learn/language-basics",
@@ -815,32 +842,32 @@
                         },
                         {
                             "dirName": "Concurrency ",
-                            "level": 2,
-                            "position": 3,
+                            "level": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/concurrency",
                             "id": "concurrency"
                         },
                         {
                             "dirName": "Network interaction",
-                            "level": 2,
-                            "position": 1,
+                            "level": 3,
+                            "position": 2,
                             "isDir": false,
                             "url": "/learn/network-interaction",
                             "id": "network-interaction"
                         },
                         {
                             "dirName": "Advanced, general-purpose language features",
-                            "level": 2,
-                            "position": 4,
+                            "level": 3,
+                            "position": 5,
                             "isDir": false,
                             "url": "/learn/advanced-general-purpose-language-features",
                             "id": "advanced-general-purpose-language-features"
                         },
                         {
                             "dirName": "Data",
-                            "level": 2,
-                            "position": 2,
+                            "level": 3,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/data",
                             "id": "data"

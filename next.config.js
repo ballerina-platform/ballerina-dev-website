@@ -61,22 +61,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/resources/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },
       {
-        source: `/${redirectBase}learn/get-started`,
-        destination: `/${redirectBase}learn/integration/get-started`,
-      },
-      {
-        source: `/${redirectBase}learn/ballerina-specifications`,
-        destination: `/${redirectBase}learn/references/ballerina-specifications`,
-      },
-      {
-        source: `/${redirectBase}learn/language-basics`,
-        destination: `/${redirectBase}learn/learn-the-language/language-basics`,
-      },
-      {
-        source: `/${redirectBase}learn/language-walkthrough`,
-        destination: `/${redirectBase}learn/learn-the-language/language-walkthrough`,
-      },
-      {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
@@ -91,6 +75,38 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
         destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-restful-api-with-ballerina`,
+      },
+      {
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/integration/get-started`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-specifications`,
+        destination: `/${redirectBase}learn/references/ballerina-specifications`,
+      },
+      {
+        source: `/${redirectBase}learn/language-basics`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/language-basics`,
+      },
+      {
+        source: `/${redirectBase}learn/language-walkthrough`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/language-walkthrough`,
+      },
+      {
+        source: `/${redirectBase}learn/network-interaction`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/network-interaction`,
+      },
+      {
+        source: `/${redirectBase}learn/concurrency`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/concurrency`,
+      },
+      {
+        source: `/${redirectBase}learn/advanced-general-purpose-language-features`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/advanced-general-purpose-language-features`,
+      },
+      {
+        source: `/${redirectBase}learn/data`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/data`,
       },
       {
         source: `/${redirectBase}learn/installation-options`,
@@ -166,7 +182,19 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/observe-ballerina-programs`,
-        destination: `/${redirectBase}learn/development-tutorials/configure-observe/observe-ballerina-programs`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-ballerina-programs`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-logs`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-logs`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-metrics`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-metrics`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-tracing`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-tracing`,
       },
       {
         source: `/${redirectBase}learn/organize-ballerina-code`,
@@ -178,11 +206,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/configure-ballerina-programs/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/configure-observe/configure-ballerina-programs/:slug`,
-      },
-      {
-        source: `/${redirectBase}learn/distinctive-language-features/:slug`,
-        destination: `/${redirectBase}learn/learn-the-language/distinctive-language-features/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-ballerina-programs/:slug`,
       },
       {
         source: `/${redirectBase}learn/run-in-the-cloud/:slug`,

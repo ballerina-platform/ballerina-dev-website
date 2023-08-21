@@ -158,6 +158,10 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Language Server
+
+- Add custom completions for http services
+
 #### CLI
 
 - Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from the Ballerina Central and are managed using the `bal tool` command. For more information, see [Tool commands](https://ballerina.io/learn/cli-documentation/cli-commands/#tool-commands).
@@ -166,6 +170,16 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Added support to generate Ballerina client and service declarations from OpenAPI v3.1.x definitions.
 
 ### Improvements
+
+#### Language Server
+
+- Suggest ballerina central packages when they're partially typed
+- Improve sorting in Record type descriptor node context
+- Introduce a codeaction to add local module dependencies to Ballerina.toml
+- Introduce change variable type code action for let expression
+- Introduce create function code action for the expression of select clause
+- Improve completions in Service Declaration node context
+- LS simulator improvements
 
 ### Bug fixes
 

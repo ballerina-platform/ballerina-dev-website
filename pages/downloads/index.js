@@ -46,15 +46,8 @@ export default function Downloads() {
             </Row>
 
             <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
-               <Col xs={10}>
-                  <h2>Step 01 - Install</h2> 
-               </Col>
-               <Col xs={2}>
-                  <div className={styles.releaseLinks} >
-                     <div className={styles.releaseNotes} >
-                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
-                     </div>
-                  </div>
+               <Col xs={12}>
+                  <h2>Step 1 - Install</h2> 
                </Col>
             </Row>
 
@@ -70,6 +63,14 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadContentRow}`}>
                <Packs info={swanlake}/>
+            </Row>
+
+            <Row className={`${styles.downloadContentRow}`}>
+               <div className={styles.releaseLinks} >
+                     <div className={styles.releaseNotes} >
+                        <p><a href={`${prefix}/downloads/swan-lake-release-notes/swan-lake-${swanlake.version}`}>RELEASE NOTES &gt;</a></p>
+                     </div>
+               </div>
             </Row>
 
             <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} ${styles.InstallInfo}`}>
@@ -95,7 +96,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-                  <h2>Step 02 - Verify</h2> 
+                  <h2>Step 2 - Verify installation</h2> 
                </Col>
             </Row>
 
@@ -110,7 +111,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-                  <h2>Step 03 - Run</h2> 
+                  <h2>Step 3 - Run</h2> 
                </Col>
             </Row>
 
@@ -121,21 +122,21 @@ export default function Downloads() {
                   <p>
                      <ul>
                         <li>
-                        <p>You will be prompted to install the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Ballerina VSCode extension</a> there.</p>
+                        <p>You will be prompted to install the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension</a> there.</p>
                         </li>
                         <li>
-                        <p>Refer to the Ballerina <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina VSCode extension documentation</a> for more information.</p>
+                        <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension documentation</a>.</p>
                         </li>
                      </ul>
                   </p>
-                  <p>Click Run button </p>
+                  <p>Click Run button in CodeLens of Visual Studio Code.</p>
                   <Image src={`${prefix}/images/downloads/vscode-hello-world.png`} width={406} height={91} alt="Install from source"/>
                </Col>
             </Row>
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={6}>
-                  <p>Now you are all set! Refer to the <a href={`${prefix}/learn/`}> learn</a> page for more guides and material.</p>
+                  <p>Now you are all set! For more guides, see the <a href={`${prefix}/learn/`}> Learn</a> page.</p>
                </Col>
             </Row>
          </Col>

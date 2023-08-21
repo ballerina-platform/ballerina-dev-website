@@ -507,7 +507,7 @@ export function GrpcClientBidirectionalStreaming({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/cli-documentation/grpc/">
+            <a href="/learn/bal-command/grpc/">
               Ballerina protocol buffers guide
             </a>
           </span>

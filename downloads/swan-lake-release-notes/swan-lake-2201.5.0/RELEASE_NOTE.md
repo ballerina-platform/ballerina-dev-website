@@ -17,7 +17,7 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to 2201.5.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.5.0 using the [Ballerina Update Tool](/learn/bal-command/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
 2. Run `bal dist pull 2201.5.0` to update to this latest distribution.
@@ -213,7 +213,7 @@ public function main() {
 }
 ```
 
-For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](/learn/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 
@@ -352,7 +352,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 #### `regex` package
 
-- The `regex` package has been deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions).
+- The `regex` package has been deprecated and will no longer be maintained or updated. Instead, it is recommended to use the [`ballerina/lang.regexp`](https://lib.ballerina.io/ballerina/lang.regexp/latest) library. For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), and [Regular expressions feature guide](/learn/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 

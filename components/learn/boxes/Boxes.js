@@ -211,7 +211,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/build-and-run/cli-commands`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/bal-command/cli-commands`} className={styles.titleLink}>
                             Bal command
                           </a>
                         </p>
@@ -636,25 +636,25 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Get started with basics that are common to all C-Family programming languages.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/network-interaction`} className={styles.titleLink}>
                             Network interaction
                           </a>
                         </p>
                         <p className={styles.description}>Provide and consume services using Ballerina. </p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/data`} className={styles.titleLink}>
                             Data
                           </a>
                         </p>
                         <p className={styles.description}>Work with data using Ballerina.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/concurrency`} className={styles.titleLink}>
                             Concurrency
                           </a>
                         </p>
                         <p className={styles.description}>How concurrency and transactions are handled in Ballerina.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/advanced-general-purpose-language-features`} className={styles.titleLink}>
                             Advanced general-purpose language features
                           </a>
                         </p>

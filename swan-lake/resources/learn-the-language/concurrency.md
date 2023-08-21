@@ -3,7 +3,7 @@ layout: ballerina-distinctive-language-features-left-nav-pages-swanlake
 title: Concurrency 
 description: Let’s now look at how concurrency and transactions are handled in Ballerina. 
 keywords: ballerina, programming language, ballerina packages,language-guide
-permalink: /learn/distinctive-language-features/concurrency/
+permalink: /learn/concurrency/
 active: concurrency
 intro: Let’s now look at how concurrency and transactions are handled in Ballerina. 
 ---

@@ -59,7 +59,7 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 
 Once you execute the command, only the operations related to the given tags get included in the generated service file.
 
->**Info:** For more information on the command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
+>**Info:** For more information on the command options, see [OpenAPI to Ballerina](/learn/bal-command/openapi/#openapi-to-ballerina).
 
 ## Export OpenAPI contracts from Ballerina services
 
@@ -228,7 +228,7 @@ Use the `--client-methods <resource|remote>` option to select the client method 
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina](/learn/cli-documentation/openapi/#openapi-to-ballerina).
+>**Info:** For more command options, see [OpenAPI to Ballerina](/learn/bal-command/openapi/#openapi-to-ballerina).
 
 ## Publish your client
 

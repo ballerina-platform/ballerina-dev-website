@@ -122,14 +122,14 @@ export default function Downloads() {
                   <p>
                      <ul>
                         <li>
-                        <p>You will be prompted to install the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Ballerina VSCode extension</a> there.</p>
+                        <p>You will be prompted to install the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension</a> there.</p>
                         </li>
                         <li>
-                        <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina VSCode extension documentation</a>.</p>
+                        <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension documentation</a>.</p>
                         </li>
                      </ul>
                   </p>
-                  <p>Click Run button in VSCode CodeLens.</p>
+                  <p>Click Run button in CodeLens of Visual Studio Code.</p>
                   <Image src={`${prefix}/images/downloads/vscode-hello-world.png`} width={406} height={91} alt="Install from source"/>
                </Col>
             </Row>

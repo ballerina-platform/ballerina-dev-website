@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/09 \
+_Updated_: 2023/08/17 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -749,6 +749,8 @@ In Ballerina, a GraphQL object type can be represented using either a service ty
 
 A Ballerina record type can be used as an Object type in GraphQL. Each record field is mapped to a field in the GraphQL object and the type of the record field will be mapped to the type of the corresponding GraphQL field.
 
+>**Note:** A GraphQL object must have at least one field. Therefore, an empty record type cannot be used as an object type in GraphQL, and using an empty record type will result in a compilation error.
+
 ###### Example: Record Type as Object
 ```ballerina
 service on new graphql:Listener(9090) {
@@ -925,6 +927,8 @@ Although `Scalar` and `enum` types can be used as input and output types without
 
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
 
+>**Note:** A GraphQL input object must have at least one field. Therefore, an empty record type cannot be used as an input object type in GraphQL, and using an empty record type will result in a compilation error.
+
 >**Note:** Since GraphQL schema can not use the same type as an input and an output type when a record type is used as an input and an output, a compilation error will be thrown.
 
 >**Note:** Alias types of record types are not allowed to be used as input object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
@@ -965,6 +969,8 @@ In GraphQL, an interface can be used to define a set of common fields for object
 In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
 
 Non-distinct `service` objects and `service` classes can not be used to define or implement GraphQL interfaces.
+
+>**Note**: In order to be recognized as GraphQL objects or interfaces, the Ballerina `service` `object`s and `service` `class`es must be defined within the same module as the GraphQL service.
 
 ###### Example: Interfaces
 ```ballerina
@@ -2657,7 +2663,7 @@ graphql:Error? result = context.remove("key");
 
 ##### 10.1.1.4 Register DataLoader in Context
 
-To register a [DataLoader](#111-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
+To register a [DataLoader](#106-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
 
 - `key`: The key used to identify a specific DataLoader instance. This key can later be used to retrieve the DataLoader instance when needed. The `key` must be a `string`.
 - `dataloader`: The DataLoader instance.
@@ -3182,6 +3188,8 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 1. Assign the `@subgraph:Entity` annotation to an object type.
 2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
 3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#10513-the-subgraphreferenceresolver-function-type).
+
+>**Note:** In order to be recognized as subgraph entities, GraphQL object types marked with `@subgraph:Entity` must be defined within the same Ballerina module as the GraphQL service.
 
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 

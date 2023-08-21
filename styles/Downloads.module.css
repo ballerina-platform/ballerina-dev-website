@@ -1,8 +1,18 @@
-.donwloadVersion h2 {
+.InstallInfo {
+  margin-top: 25px;
+}
+
+.downloadVersion h2 {
   color: #585a5e;
   font-size: 32px;
   margin-top: 15px;
   font-size: 1.5rem;
+}
+
+.downloadVersion h3 {
+  color: #5e5858;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .downloadsOther h3 {
@@ -202,7 +212,7 @@ p.dwindows, p.dLinux, p.dMac, p.dVSCode {
 }
 
 .downloadContentRow {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 
@@ -223,7 +233,7 @@ p.dwindows, p.dLinux, p.dMac, p.dVSCode {
 
 
 
-/* .donwloadVersion h2 {
+/* .down loadVersion h2 {
     color: #464646;
     font-size: 32px;
     margin-top: 15px;

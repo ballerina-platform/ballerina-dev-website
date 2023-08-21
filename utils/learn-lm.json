@@ -83,7 +83,7 @@
                 {
                     "dirName": "Enterprise Integration Patterns (EIP)",
                     "level": 2,
-                    "position": 2,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/patterns",
                     "id": "patterns"
@@ -91,7 +91,7 @@
                 {
                     "dirName": "Pre-built integrations",
                     "level": 2,
-                    "position": 3,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/pre-built-integrations",
                     "id": "pre-built-integrations"
@@ -99,7 +99,7 @@
                 {
                     "dirName": "Integration tutorials",
                     "level": 2,
-                    "position": 4,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/integration-tutorials",
                     "id": "integration-tutorials"
@@ -157,7 +157,7 @@
                 {
                     "dirName": "gRPC tool",
                     "level": 3,
-                    "position": 4,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/grpc-tool",
                     "id": "grpc-tool"

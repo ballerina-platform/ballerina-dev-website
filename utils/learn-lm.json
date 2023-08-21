@@ -128,7 +128,7 @@
             "position": 3,
             "isDir": true,
             "url": "/learn/integration-tools",
-            "id": "integration-technology-tools",
+            "id": "integration-tools",
             "subDirectories": [
                 {
                     "dirName": "OpenAPI tool",

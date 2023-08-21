@@ -116,13 +116,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Generate a Ballerina service and listener skeletons for an AsyncAPI contract.</p>
                       </div>
+
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/asyncapi-tool`} className={styles.titleLink}>
-                            gRPC tool
+                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                            Strand dump tool
                           </a>
                         </p>
-                        <p className={styles.description}>Generate clients in Ballerina for gRPC services.</p>
+                        <p className={styles.description}>Dump and inspect the currently available strands of a Ballerina program.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -395,13 +396,36 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
-                            Configure Ballerina programs
+                          <a href={`${prefix}/learn/configure-a-sample-ballerina-service`} className={styles.titleLink}>
+                            Configure a sample Ballerina service
                           </a>
                         </p>
-                        <p className={styles.description}>The language support for configurability.</p>
+                        <p className={styles.description}>Configure values at runtime through configurable module-level variables.</p>
                       </div>
                     </div>
+
+                    <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/provide-values-to-configurable-variables`} className={styles.titleLink}>
+                          Provide values to configurable variables
+                          </a>
+                        </p>
+                        <p className={styles.description}>Provide configurable values through configuration files, command-line arguments, and environment variables.</p>
+                      </div>
+                    </div>
+
+                    <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/configure-values`} className={styles.titleLink}>
+                            Configure values
+                          </a>
+                        </p>
+                        <p className={styles.description}>Advanced use cases of configuring values using configurable variables.</p>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </Col>

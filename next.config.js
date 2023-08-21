@@ -118,31 +118,31 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/openapi-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/openapi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/openapi-tool`,
       },
       {
         source: `/${redirectBase}learn/graphql-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/graphql-tool`,
+        destination: `/${redirectBase}learn/integration-tools/graphql-tool`,
       },
       {
         source: `/${redirectBase}learn/asyncapi-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/asyncapi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/asyncapi-tool`,
       },
       {
         source: `/${redirectBase}learn/strand-dump-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/strand-dump-tool`,
+        destination: `/${redirectBase}learn/integration-tools/strand-dump-tool`,
       },
       {
         source: `/${redirectBase}learn/edi-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/edi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/edi-tool`,
       },
       {
         source: `/${redirectBase}learn/health-tool`,
-        destination: `/${redirectBase}learn/integration-technology-tools/health-tool`,
+        destination: `/${redirectBase}learn/integration-tools/health-tool`,
       },
       {
         source: `/${redirectBase}learn/ballerina-shell`,
-        destination: `/${redirectBase}learn/integration-technology-tools/ballerina-shell`,
+        destination: `/${redirectBase}learn/integration-tools/ballerina-shell`,
       },
       {
         source: `/${redirectBase}learn/bal-persist-overview`,

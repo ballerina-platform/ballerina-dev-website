@@ -154,7 +154,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
                   title="Edit in GitHub"
                 >
                   <Image
-                    src={`${prefix}/images/github.svg`}
+                    src={`${prefix}/images/sm-icons/github.svg`}
                     height={20}
                     width={20}
                     alt="Edit in GitHub"

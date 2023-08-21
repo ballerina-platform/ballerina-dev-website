@@ -149,7 +149,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <Row className='pageContentRow integration'>
+                <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>Salesforce is used by many organizations to centralize customer information,
                       aiming to enhance customer service, streamline sales, enable collaboration and obtain sales analytics.

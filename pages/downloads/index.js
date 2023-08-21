@@ -129,7 +129,7 @@ export default function Downloads() {
                         </li>
                      </ul>
                   </p>
-                  <p>Click Run button in VScode CodeLens.</p>
+                  <p>Click Run button in VSCode CodeLens.</p>
                   <Image src={`${prefix}/images/downloads/vscode-hello-world.png`} width={406} height={91} alt="Install from source"/>
                </Col>
             </Row>

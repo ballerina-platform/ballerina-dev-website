@@ -1,8 +1,8 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
 title: Configure values 
-description: Below are a few advanced usecases in which you configure values using configurable variables.
-intro: Below are a few advanced usecases in which you configure values using configurable variables.
+description: Below are a few advanced use cases in which you configure values using configurable variables.
+intro: Below are a few advanced use cases in which you configure values using configurable variables.
 keywords: ballerina, programming language, configurable, variables, kubernetes, pod
 permalink: /learn/configure-ballerina-programs/configure-values/
 active: configure-values

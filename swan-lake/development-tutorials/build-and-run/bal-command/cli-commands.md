@@ -3,7 +3,7 @@ layout: ballerina-cli-documentation-left-nav-pages-swanlake
 title: CLI commands
 description: Learn all the command-line interface (CLI) commands you need to get started, build, test and run programs, work with Ballerina Central, and manage packages.
 keywords: ballerina, cli, command-line interface, programming language
-permalink: /learn/build-and-run/cli-commands/
+permalink: /learn/build-and-run/bal-command/cli-commands/
 active: cli-commands
 intro: The Ballerina Tool is your one-stop-shop for all the things you do in Ballerina. 
 ---
@@ -210,7 +210,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/cli-documentation/grpc">gRPC/Protocol Buffers</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/bal-command/grpc">gRPC/Protocol Buffers</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">graphql</td>
@@ -252,12 +252,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <table class="cComandTable">
 <tr>
 <td class="cCommand">dist</td>
-<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/cli-documentation/update-tool/">Update Tool</a>.
+<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/bal-command/update-tool/">Update Tool</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/cli-documentation/update-tool/">Update Tool</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/bal-command/update-tool/">Update Tool</a>.
 </td>
 </tr>
 </table>

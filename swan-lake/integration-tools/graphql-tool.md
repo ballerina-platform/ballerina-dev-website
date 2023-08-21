@@ -138,7 +138,7 @@ In general you can use the command format given below.
 $ bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For more information, see [GraphQL to Ballerina](/learn/cli-documentation/graphql/#graphql-to-ballerina).
+This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For more information, see [GraphQL to Ballerina](/learn/bal-command/graphql/#graphql-to-ballerina).
 
 The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
@@ -170,7 +170,7 @@ You can also use the `graphql` CLI tool to generate a Ballerina module. For more
 
 Follow the steps below to generate a Ballerina client from a GraphQL config file configured with a GraphQL schema (SDL) and multiple GraphQL documents using the `graphql` CLI tool. This client consists of all the remote operations related to the specified document files.
 
-1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-documentation/cli-commands/#package-commands).
+1. Create a Ballerina package. For more information, see [Package commands](/learn/bal-command/cli-commands/#package-commands).
 
 2. Create a GraphQL config file (`graphql.config.yaml`) in the Ballerina package root directory with the configurations below.
 
@@ -210,7 +210,7 @@ You can also use the `graphql` CLI command to generate a Ballerina module. For m
 
 Follow the steps below to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects using the `graphql` CLI tool. Each project generates a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API endpoint under a separate project.
 
-1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-documentation/cli-commands/#package-commands).
+1. Create a Ballerina package. For more information, see [Package commands](/learn/bal-command/cli-commands/#package-commands).
 
 2. Create a GraphQL config file (`graphql.config.yaml`) in the Ballerina package root directory with the configurations below.
 
@@ -277,7 +277,7 @@ $ bal graphql -i service.bal -o ./schema
 
 The `input` parameter specifies the path of the ballerina service file (e.g., `service.bal`) and is mandatory.
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+>**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/bal-command/graphql/#ballerina-to-graphql).
 
 ### Generate a schema for a specific service
 
@@ -295,4 +295,4 @@ $ bal graphql -i service.bal -o ./schema -s /starwars
 
 The `service` parameter specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+>**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/bal-command/graphql/#ballerina-to-graphql).

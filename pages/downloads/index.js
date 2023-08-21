@@ -104,7 +104,7 @@ export default function Downloads() {
                   <p>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/cli-documentation/cli-commands/`}> CLI Commands</a> page  to learn about more commands.</p>
+                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/bal-command/cli-commands/`}> CLI Commands</a> page  to learn about more commands.</p>
                </Col>
             </Row>
 

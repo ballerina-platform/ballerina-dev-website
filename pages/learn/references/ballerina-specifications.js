@@ -95,7 +95,7 @@ export default function PostPage({ frontmatter, content, id }) {
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="learn-the-platform"
+            mainDir="references"
             Toc={LearnToc}
           />
         </Col>

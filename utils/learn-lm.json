@@ -163,9 +163,17 @@
                     "id": "grpc-tool"
                 },
                 {
-                    "dirName": "Health tool (FHIR/HL7)",
+                    "dirName": "Strand dump tool",
                     "level": 3,
                     "position": 5,
+                    "isDir": false,
+                    "url": "/learn/strand-dump-tool",
+                    "id": "strand-dump-tool"
+                },
+                {
+                    "dirName": "Health tool (FHIR/HL7)",
+                    "level": 3,
+                    "position": 6,
                     "isDir": false,
                     "url": "/learn/health-tool",
                     "id": "health-tool"
@@ -173,7 +181,7 @@
                 {
                     "dirName": "EDI tool",
                     "level": 3,
-                    "position": 6,
+                    "position": 7,
                     "isDir": false,
                     "url": "/learn/edi-tool",
                     "id": "edi-tool"
@@ -247,12 +255,52 @@
                             "id": "bal-command",
                             "subDirectories": [
                                 {
+                                    "dirName": "AsyncAPI",
+                                    "level": 4,
+                                    "position": 6,
+                                    "isDir": false,
+                                    "url": "/learn/bal-command/asyncapi",
+                                    "id": "asyncapi"
+                                },
+                                {
                                     "dirName": "CLI commands",
                                     "level": 4,
                                     "position": 1,
                                     "isDir": false,
-                                    "url": "/learn/build-and-run/cli-commands",
+                                    "url": "/learn/bal-command/cli-commands",
                                     "id": "cli-commands"
+                                },
+                                {
+                                    "dirName": "GraphQL",
+                                    "level": 4,
+                                    "position": 5,
+                                    "isDir": false,
+                                    "url": "/learn/bal-command/graphql",
+                                    "id": "graphql"
+                                },
+                                {
+                                    "dirName": "OpenAPI ",
+                                    "level": 4,
+                                    "position": 4,
+                                    "isDir": false,
+                                    "url": "/learn/bal-command/openapi",
+                                    "id": "openapi"
+                                },
+                                {
+                                    "dirName": "gRPC/Protocol Buffers",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/bal-command/grpc",
+                                    "id": "grpc"
+                                },
+                                {
+                                    "dirName": "Update Tool",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/bal-command/update-tool",
+                                    "id": "update-tool"
                                 }
                             ]
                         }
@@ -577,38 +625,28 @@
                     "id": "configurability",
                     "subDirectories": [
                         {
-                            "dirName": "Configure Ballerina programs",
+                            "dirName": "Configure a sample Ballerina service",
                             "level": 3,
                             "position": 1,
-                            "isDir": true,
-                            "url": "/learn/configurability/configure-ballerina-programs",
-                            "id": "configure-ballerina-programs",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Configure a sample Ballerina service",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/configure-a-sample-ballerina-service",
-                                    "id": "configure-a-sample-ballerina-service"
-                                },
-                                {
-                                    "dirName": "Configure values ",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/configure-values",
-                                    "id": "configure-values"
-                                },
-                                {
-                                    "dirName": "Provide values to configurable variables",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/provide-values-to-configurable-variables",
-                                    "id": "provide-values-to-configurable-variables"
-                                }
-                            ]
+                            "isDir": false,
+                            "url": "/learn/configure-a-sample-ballerina-service",
+                            "id": "configure-a-sample-ballerina-service"
+                        },
+                        {
+                            "dirName": "Configure values ",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-values",
+                            "id": "configure-values"
+                        },
+                        {
+                            "dirName": "Provide values to configurable variables",
+                            "level": 43,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/provide-values-to-configurable-variables",
+                            "id": "provide-values-to-configurable-variables"
                         }
                     ]
                 },
@@ -741,12 +779,22 @@
                     ]
                 },
                 {
-                    "dirName": "Publish packages to Ballerina Central",
+                    "dirName": "Reuse code with Ballerina Central",
                     "level": 2,
                     "position": 10,
-                    "isDir": false,
-                    "url": "/learn/publish-packages-to-ballerina-central",
-                    "id": "publish-packages-to-ballerina-central"
+                    "isDir": true,
+                    "url": "/learn/ballerina-central",
+                    "id": "ballerina-central",
+                    "subDirectories": [
+                        {
+                            "dirName": "Publish packages to Ballerina Central",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/publish-packages-to-ballerina-central",
+                            "id": "publish-packages-to-ballerina-central"
+                        }
+                    ]
                 } 
             ]
         },

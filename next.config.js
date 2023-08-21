@@ -181,6 +181,18 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/manage-dependencies`,
       },
       {
+        source: `/${redirectBase}learn/configure-a-sample-ballerina-service`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-a-sample-ballerina-service`,
+      },
+      {
+        source: `/${redirectBase}learn/configure-values`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-values`,
+      },
+      {
+        source: `/${redirectBase}learn/provide-values-to-configurable-variables`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/provide-values-to-configurable-variables`,
+      },
+      {
         source: `/${redirectBase}learn/observe-ballerina-programs`,
         destination: `/${redirectBase}learn/development-tutorials/observability/observe-ballerina-programs`,
       },
@@ -205,10 +217,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
-        source: `/${redirectBase}learn/configure-ballerina-programs/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-ballerina-programs/:slug`,
-      },
-      {
         source: `/${redirectBase}learn/run-in-the-cloud/:slug`,
         destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/:slug`,
       },
@@ -216,13 +224,12 @@ const nextConfig = {
         source: `/${redirectBase}learn/test-ballerina-code/:slug`,
         destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/test-ballerina-code/:slug`,
       },
-
       {
         source: `/${redirectBase}learn/package-references`,
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
       },
       {
-        source: `/${redirectBase}learn/build-and-run/:slug`,
+        source: `/${redirectBase}learn/bal-command/:slug`,
         destination: `/${redirectBase}learn/development-tutorials/build-and-run/bal-command/:slug`,
       },
       {

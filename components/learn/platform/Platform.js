@@ -291,7 +291,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/bal-command/cli-commands`} className={styles.titleLink}>
                   CLI documentation
                 </a>
               </p>

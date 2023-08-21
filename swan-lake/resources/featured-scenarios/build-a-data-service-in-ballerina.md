@@ -147,7 +147,7 @@ configurable int PORT = ?;
 configurable string DATABASE = ?;
 ```
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/configure-ballerina-programs/provide-values-to-configurable-variables/).
+>**Note:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
 
 ### Connect to the database
 

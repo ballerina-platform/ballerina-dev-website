@@ -3,7 +3,7 @@ layout: ballerina-configurable-left-nav-pages-swanlake
 title: Configure a sample Ballerina service
 description: Ballerina supports configurability through the configurable, module-level variables.
 keywords: ballerina, programming language, configurable, variables
-permalink: /learn/configure-ballerina-programs/configure-a-sample-ballerina-service/
+permalink: /learn/configure-a-sample-ballerina-service/
 active: configure-a-sample-ballerina-service/
 intro: Configurability enables users to modify the system behavior through external user inputs. Ballerina Language provides an in-built functionality to configure values at runtime through configurable  module-level variables.
 ---

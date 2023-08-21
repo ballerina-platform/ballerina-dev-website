@@ -102,4 +102,4 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 ### New features
 
-Extended the dependency managemnt support for third-party repositories. 
+Added support for custom package repositories for dependency resolution. This feature enables configuring commonly used package repositories to publish Ballerina libraries and to use them in Ballerina projects. 

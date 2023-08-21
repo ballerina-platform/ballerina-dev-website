@@ -111,12 +111,12 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-                  <h2>Step 3 - Run</h2> 
+                  <h2>Step 3 - Run a sample program</h2> 
                </Col>
             </Row>
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={6}>
+               <Col xs={12} sm={12} md={12} lg={12}>
                   <p>Next, click <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">here</a> to open <code className="highlighter-rouge language-plaintext">hello_world.bal<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> sample on VSCode and run.</p>
 
                   <p>
@@ -129,8 +129,7 @@ export default function Downloads() {
                         </li>
                      </ul>
                   </p>
-                  <p>Click Run button in CodeLens of Visual Studio Code.</p>
-                  <Image src={`${prefix}/images/downloads/vscode-hello-world.png`} width={406} height={91} alt="Install from source"/>
+                  <p>Run the program by using CodeLens of Visual Studio Code. See the <a href=" https://wso2.com/ballerina/vscode/docs/run-a-program/" target="_blank" rel="noreferrer">Run program</a> documentation for more information.</p>
                </Col>
             </Row>
 

@@ -99,17 +99,17 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
 3. Use the generated `fromEdiString` function to read EDI text files into the generated Ballerina record, as shown below. 
 
->**Note:** Any data item in the EDI can be accessed using the record's fields, as shown in the example code below.
+    >**Note:** Any data item in the EDI can be accessed using the record's fields, as shown in the example code below.
 
-```ballerina
-import ballerina/io;
-
-public function main() returns error? {
-    string ediText = check io:fileReadString("resources/edi-sample.edi");
-    SimpleOrder order = check hmartOrder:fromEdiString(ediText);
-    io:println(order.header.date);
-}
-```
+    ```ballerina
+    import ballerina/io;
+    
+    public function main() returns error? {
+        string ediText = check io:fileReadString("resources/edi-sample.edi");
+        SimpleOrder order = check hmartOrder:fromEdiString(ediText);
+        io:println(order.header.date);
+    }
+    ```
 
 4. Use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text, as shown below.
 

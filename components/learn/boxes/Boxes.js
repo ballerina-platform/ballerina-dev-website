@@ -171,7 +171,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
+                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/" className={styles.titleLink}>
                             Visual Studio Code extension</a>
                         </p>
                         <p className={styles.description}>Features of the Ballerina Visual Studio Code extension.</p>

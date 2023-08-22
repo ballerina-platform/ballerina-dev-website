@@ -202,11 +202,29 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/bal-command/cli-commands`} className={styles.titleLink}>
-                            Bal command
+                          <a href={`${prefix}/learn/cli-commands`} className={styles.titleLink}>
+                          CLI commands
                           </a>
                         </p>
                         <p className={styles.description}>CLI commands of the bal tool.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/update-tool/`} className={styles.titleLink}>
+                            Update tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Maintain your Ballerina installation up to date with the latest patch and minor releases.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-shell`} className={styles.titleLink}>
+                          Ballerina Shell
+                          </a>
+                        </p>
+                        <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
                       </div>
                     </div>
                   </div>

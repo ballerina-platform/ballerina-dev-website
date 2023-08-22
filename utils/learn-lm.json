@@ -163,17 +163,9 @@
                     "id": "grpc-tool"
                 },
                 {
-                    "dirName": "Strand dump tool",
-                    "level": 3,
-                    "position": 5,
-                    "isDir": false,
-                    "url": "/learn/strand-dump-tool",
-                    "id": "strand-dump-tool"
-                },
-                {
                     "dirName": "Health tool (FHIR/HL7)",
                     "level": 3,
-                    "position": 6,
+                    "position": 5,
                     "isDir": false,
                     "url": "/learn/health-tool",
                     "id": "health-tool"
@@ -181,7 +173,7 @@
                 {
                     "dirName": "EDI tool",
                     "level": 3,
-                    "position": 7,
+                    "position": 6,
                     "isDir": false,
                     "url": "/learn/edi-tool",
                     "id": "edi-tool"
@@ -427,7 +419,7 @@
                         {
                             "dirName": "Generate code documentation",
                             "level": 3,
-                            "position": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/generate-code-documentation",
                             "id": "generate-code-documentation"
@@ -529,6 +521,14 @@
                             "isDir": false,
                             "url": "/learn/debug-ballerina-programs",
                             "id": "debug-ballerina-programs"
+                        },
+                        {
+                            "dirName": "Strand dump tool",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/strand-dump-tool",
+                            "id": "strand-dump-tool"
                         }
                     ]
                 },

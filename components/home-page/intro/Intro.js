@@ -94,27 +94,27 @@ export default function Intro() {
 
             <div className={styles.socialMediaPanel} >
               <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
-                <Image src={`${prefix}/images/github-mark-white.svg`} width={25} height={25} alt="GitHub" />
+                <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
-                <Image src={`${prefix}/images/twitter-white.svg`} width={25} height={25} alt="Twitter" />
+                <Image src={`${prefix}/images/sm-icons/twitter-white.svg`} width={25} height={25} alt="Twitter" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
-                <Image src={`${prefix}/images/discord-white.svg`} width={25} height={25} alt="Discord" />
+                <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={25} height={25} alt="Discord" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
-                <Image src={`${prefix}/images/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
+                <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
-                <Image src={`${prefix}/images/youtube-white.svg`} width={25} height={25} alt="YouTube" />
+                <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={25} height={25} alt="YouTube" />
               </a>
 
               {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
-                <Image src={`${prefix}/images/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
+                <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
               </a> */}
             </div>
           </Col>

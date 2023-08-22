@@ -134,7 +134,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/run-in-the-cloud/function-as-a-service/aws-lambda/`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
                   Functions as a service
                 </a>
               </p>
@@ -151,7 +151,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/configure-ballerina-programs/configure-a-sample-ballerina-service`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/configure-a-sample-ballerina-service`} className={styles.titleLink}>
                   Configure Ballerina programs
                 </a>
               </p>
@@ -291,7 +291,7 @@ export default function Platform(props) {
 
             <div className={styles.content}>
               <p className={styles.title}>
-                <a href={`${prefix}/learn/cli-documentation/cli-commands`} className={styles.titleLink}>
+                <a href={`${prefix}/learn/bal-command/cli-commands`} className={styles.titleLink}>
                   CLI documentation
                 </a>
               </p>

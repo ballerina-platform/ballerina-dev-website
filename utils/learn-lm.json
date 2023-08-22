@@ -7,213 +7,259 @@
     "id": "swan-lake",
     "subDirectories": [
         {
-            "dirName": "Learn the platform",
+            "dirName": "Why Ballerina",
             "level": 1,
-            "position": 5,
+            "position": 1,
             "isDir": true,
-            "url": "swan-lake/learn-the-platform",
-            "id": "learn-the-platform",
+            "url": "swan-lake/why-ballerina",
+            "id": "why-ballerina",
             "subDirectories": [
                 {
-                    "dirName": "Build a GraalVM executable",
+                    "dirName": "Reliable, maintainable",
                     "level": 2,
-                    "position": 10,
-                    "isDir": true,
-                    "url": "/learn/build-a-graalvm-executable",
-                    "id": "graalvm-executable",
-                    "subDirectories": [
-                        {
-                            "dirName": "GraalVM executable overview",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/graalvm-executable-overview",
-                            "id": "graalvm-executable-overview"
-                        },
-                        {
-                            "dirName": "Build the executable in a container",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/build-the-executable-in-a-container",
-                            "id": "build-the-executable-in-a-container"
-                        },
-                        {
-                            "dirName": "Build the executable locally",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/build-the-executable-locally/",
-                            "id": "build-the-executable-locally"
-                        }
-                    ]
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/why-ballerina/reliable-maintainable",
+                    "id": "reliable-maintainable"
+                },
+                {
+                    "dirName": "Graphical",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "url": "/why-ballerina/graphical",
+                    "id": "graphical"
+                },
+                {
+                    "dirName": "Data oriented",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/why-ballerina/data-oriented",
+                    "id": "data-oriented"
+                },
+                {
+                    "dirName": "Cloud native",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/why-ballerina/cloud-native",
+                    "id": "cloud-native"
+                },
+                {
+                    "dirName": "Flexibly typed",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/why-ballerina/flexibly-typed",
+                    "id": "flexibly-typed"
+                },
+                {
+                    "dirName": "Concurrent",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/why-ballerina/concurrent",
+                    "id": "concurrent"
+                }
+            ]
+        },
+        {
+            "dirName": "Get started with integration",
+            "level": 1,
+            "position": 2,
+            "isDir": true,
+            "url": "swan-lake/integration",
+            "id": "integration",
+            "subDirectories": [
+                {
+                    "dirName": "Get started",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/get-started",
+                    "id": "get-started"
+                },
+                {
+                    "dirName": "Enterprise Integration Patterns (EIP)",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/patterns",
+                    "id": "patterns"
+                },
+                {
+                    "dirName": "Pre-built integrations",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/pre-built-integrations",
+                    "id": "pre-built-integrations"
+                },
+                {
+                    "dirName": "Integration tutorials",
+                    "level": 2,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/integration-tutorials",
+                    "id": "integration-tutorials"
+                },
+                {
+                    "dirName": "Supported data formats",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/supported-data-formats",
+                    "id": "supported-data-formats"
+                },
+                {
+                    "dirName": "Supported network integration protocols",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/learn/supported-network-protocols",
+                    "id": "supported-network-protocols"
+                }
+            ]
+        },
+        {
+            "dirName": "Integration tools",
+            "level": 2,
+            "position": 3,
+            "isDir": true,
+            "url": "/learn/integration-tools",
+            "id": "integration-tools",
+            "subDirectories": [
+                {
+                    "dirName": "OpenAPI tool",
+                    "level": 3,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/openapi-tool",
+                    "id": "openapi-tool"
+                },
+                {
+                    "dirName": "GraphQL tool",
+                    "level": 3,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/graphql-tool",
+                    "id": "graphql-tool"
+                },
+                {
+                    "dirName": "AsyncAPI tool",
+                    "level": 3,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/asyncapi-tool",
+                    "id": "asyncapi-tool"
+                },
+                {
+                    "dirName": "gRPC tool",
+                    "level": 3,
+                    "position": 0,
+                    "isDir": false,
+                    "url": "/learn/grpc-tool",
+                    "id": "grpc-tool"
+                },
+                {
+                    "dirName": "Strand dump tool",
+                    "level": 3,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/strand-dump-tool",
+                    "id": "strand-dump-tool"
+                },
+                {
+                    "dirName": "Health tool (FHIR/HL7)",
+                    "level": 3,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/learn/health-tool",
+                    "id": "health-tool"
+                },
+                {
+                    "dirName": "EDI tool",
+                    "level": 3,
+                    "position": 7,
+                    "isDir": false,
+                    "url": "/learn/edi-tool",
+                    "id": "edi-tool"
+                }
+            ]
+        },
+        {
+            "dirName": "References",
+            "level": 2,
+            "position": 4,
+            "isDir": true,
+            "url": "/learn/references",
+            "id": "references",
+            "subDirectories": [
+                {
+                    "dirName": "Ballerina by Example",
+                    "level": 3,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/by-example",
+                    "id": "by-example"
+                },
+                {
+                    "dirName": "Ballerina API Docs",
+                    "level": 3,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "https://lib.ballerina.io/",
+                    "id": "api-docs"
                 },
                 {
                     "dirName": "Ballerina specifications",
-                    "level": 2,
-                    "position": 9,
+                    "level": 3,
+                    "position": 3,
                     "isDir": false,
                     "url": "/learn/ballerina-specifications",
                     "id": "ballerina-specifications"
                 },
                 {
-                    "dirName": "Publish packages to Ballerina Central",
-                    "level": 2,
-                    "position": 8,
-                    "isDir": false,
-                    "url": "/learn/publish-packages-to-ballerina-central",
-                    "id": "publish-packages-to-ballerina-central"
-                },
-                {
-                    "dirName": "Configure & observe",
-                    "level": 2,
+                    "dirName": "Visual Studio Code extension",
+                    "level": 3,
                     "position": 4,
-                    "isDir": true,
-                    "url": "/learn/configure-observe",
-                    "id": "configure-observe",
-                    "subDirectories": [
-                        {
-                            "dirName": "Configure Ballerina programs",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": true,
-                            "url": "/learn/configure-ballerina-programs",
-                            "id": "configure-ballerina-programs",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Configure a sample Ballerina service",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/configure-a-sample-ballerina-service",
-                                    "id": "configure-a-sample-ballerina-service"
-                                },
-                                {
-                                    "dirName": "Configure values ",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/configure-values",
-                                    "id": "configure-values"
-                                },
-                                {
-                                    "dirName": "Provide values to configurable variables",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/configure-ballerina-programs/provide-values-to-configurable-variables",
-                                    "id": "provide-values-to-configurable-variables"
-                                }
-                            ]
-                        },
-                        {
-                            "dirName": "Observe Ballerina Programs",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/observe-ballerina-programs",
-                            "id": "observe-ballerina-programs"
-                        }
-                    ]
-                },
+                    "isDir": false,
+                    "url": "https://wso2.com/ballerina/vscode/docs/",
+                    "id": "vcsode"
+                }
+            ]
+        },
+        {
+            "dirName": "Development tutorials",
+            "level": 1,
+            "position": 5,
+            "isDir": true,
+            "url": "swan-lake/development-tutorials",
+            "id": "development-tutorials",
+            "subDirectories": [
                 {
-                    "dirName": "Java interoperability",
+                    "dirName": "Build and run",
                     "level": 2,
-                    "position": 5,
+                    "position": 1,
                     "isDir": true,
-                    "url": "/learn/java-interoperability",
-                    "id": "java-interoperability",
+                    "url": "/learn/build-and-run",
+                    "id": "build-and-run",
                     "subDirectories": [
                         {
-                            "dirName": "Java interoperability guide",
+                            "dirName": "Bal command",
                             "level": 3,
                             "position": 2,
                             "isDir": true,
-                            "url": "/learn/java-interoperability/java-interoperability-guide",
-                            "id": "java-interoperability-guide",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Java interoperability",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/java-interoperability",
-                                    "id": "java-interoperability"
-                                },
-                                {
-                                    "dirName": "Ballerina FFI",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/ballerina-ffi",
-                                    "id": "ballerina-ffi"
-                                },
-                                {
-                                    "dirName": "The Bindgen Tool",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/the-bindgen-tool",
-                                    "id": "the-bindgen-tool"
-                                }
-                            ]
-                        },
-                        {
-                            "dirName": "Call Java code from Ballerina",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/call-java-code-from-ballerina",
-                            "id": "call-java-code-from-ballerina"
-                        }
-                    ]
-                },
-                {
-                    "dirName": "Ballerina tooling",
-                    "level": 2,
-                    "position": 6,
-                    "isDir": true,
-                    "url": "/learn/ballerina-tooling",
-                    "id": "ballerina-tooling",
-                    "subDirectories": [
-                        {
-                            "dirName": "Visual Studio Code extension",
-                            "level": 3,
-                            "position": 0,
-                            "isDir": false,
-                            "url": "https://wso2.com/ballerina/vscode/docs/",
-                            "id": "visual-studio-code-extension"
-                        },
-                        {
-                            "dirName": "Ballerina Shell",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/ballerina-shell",
-                            "id": "ballerina-shell"
-                        },
-                        {
-                            "dirName": "OpenAPI tool",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/openapi-tool",
-                            "id": "openapi-tool"
-                        },
-                        {
-                            "dirName": "CLI documentation",
-                            "level": 3,
-                            "position": 6,
-                            "isDir": true,
-                            "url": "/learn/ballerina-tooling/cli-documentation",
-                            "id": "cli-documentation",
+                            "url": "/learn/build-and-run/bal-command",
+                            "id": "bal-command",
                             "subDirectories": [
                                 {
                                     "dirName": "AsyncAPI",
                                     "level": 4,
                                     "position": 6,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/asyncapi",
+                                    "url": "/learn/bal-command/asyncapi",
                                     "id": "asyncapi"
                                 },
                                 {
@@ -221,7 +267,7 @@
                                     "level": 4,
                                     "position": 1,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/cli-commands",
+                                    "url": "/learn/bal-command/cli-commands",
                                     "id": "cli-commands"
                                 },
                                 {
@@ -229,7 +275,7 @@
                                     "level": 4,
                                     "position": 5,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/graphql",
+                                    "url": "/learn/bal-command/graphql",
                                     "id": "graphql"
                                 },
                                 {
@@ -237,7 +283,7 @@
                                     "level": 4,
                                     "position": 4,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/openapi",
+                                    "url": "/learn/bal-command/openapi",
                                     "id": "openapi"
                                 },
                                 {
@@ -245,7 +291,7 @@
                                     "level": 4,
                                     "position": 3,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/grpc",
+                                    "url": "/learn/bal-command/grpc",
                                     "id": "grpc"
                                 },
                                 {
@@ -253,41 +299,17 @@
                                     "level": 4,
                                     "position": 2,
                                     "isDir": false,
-                                    "url": "/learn/cli-documentation/update-tool",
+                                    "url": "/learn/bal-command/update-tool",
                                     "id": "update-tool"
                                 }
                             ]
-                        },
-                        {
-                            "dirName": "GraphQL tool",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/graphql-tool",
-                            "id": "graphql-tool"
-                        },
-                        {
-                            "dirName": "AsyncAPI tool",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/asyncapi-tool",
-                            "id": "asyncapi-tool"
-                        },
-                        {
-                            "dirName": "Strand dump tool",
-                            "level": 3,
-                            "position": 5,
-                            "isDir": false,
-                            "url": "/learn/strand-dump-tool",
-                            "id": "strand-dump-tool"
                         }
                     ]
                 },
                 {
                     "dirName": "Source code & dependencies",
                     "level": 2,
-                    "position": 1,
+                    "position": 2,
                     "isDir": true,
                     "url": "/learn/source-code-dependencies",
                     "id": "source-code-dependencies",
@@ -511,54 +533,9 @@
                     ]
                 },
                 {
-                    "dirName": "Run in the cloud",
-                    "level": 2,
-                    "position": 3,
-                    "isDir": true,
-                    "url": "/learn/run-in-the-cloud",
-                    "id": "run-in-the-cloud",
-                    "subDirectories": [
-                        {
-                            "dirName": "Code to cloud deployment",
-                            "level": 3,
-                            "position": 1,
-                            "isDir": false,
-                            "url": "/learn/run-in-the-cloud/code-to-cloud-deployment",
-                            "id": "code-to-cloud-deployment"
-            
-                        },
-                        {
-                            "dirName": "Function as a service",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": true,
-                            "url": "/learn/run-in-the-cloud/function-as-a-service",
-                            "id": "function-as-a-service",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Azure Functions",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/run-in-the-cloud/function-as-a-service/azure-functions",
-                                    "id": "azure-functions"
-                                },
-                                {
-                                    "dirName": "AWS Lambda",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/run-in-the-cloud/function-as-a-service/aws-lambda",
-                                    "id": "aws-lambda"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     "dirName": "Bal persist",
                     "level": 2,
-                    "position": 7,
+                    "position": 4,
                     "isDir": true,
                     "url": "/learn/ballerina-persist",
                     "id": "ballerina-persist",
@@ -604,167 +581,351 @@
                             "id": "supported-data-stores"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "dirName": "Featured scenarios",
-            "level": 1,
-            "position": 4,
-            "isDir": true,
-            "url": "swan-lake/featured-scenarios",
-            "id": "featured-scenarios",
-            "subDirectories": [
-                {
-                    "dirName": "Write a gRPC service with Ballerina",
-                    "level": 2,
-                    "position": 2,
-                    "isDir": false,
-                    "url": "/learn/write-a-grpc-service-with-ballerina",
-                    "id": "write-a-grpc-service-with-ballerina"
                 },
                 {
-                    "dirName": "Write a RESTful API with Ballerina",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/learn/write-a-restful-api-with-ballerina",
-                    "id": "write-a-restful-api-with-ballerina"
-                },
-                {
-                    "dirName": "Build a data service in Ballerina ",
+                    "dirName": "Run in the cloud",
                     "level": 2,
                     "position": 5,
-                    "isDir": false,
-                    "url": "/learn/build-a-data-service-in-ballerina",
-                    "id": "build-a-data-service-in-ballerina"
-                },
-                {
-                    "dirName": "Write a GraphQL API with Ballerina",
-                    "level": 2,
-                    "position": 3,
-                    "isDir": false,
-                    "url": "/learn/write-a-graphql-api-with-ballerina",
-                    "id": "write-a-graphql-api-with-ballerina"
-                },
-                {
-                    "dirName": "Work with data using queries in Ballerina",
-                    "level": 2,
-                    "position": 4,
-                    "isDir": false,
-                    "url": "/learn/work-with-data-using-queries-in-ballerina",
-                    "id": "work-with-data-using-queries-in-ballerina"
-                },
-                {
-                    "dirName": "Deploy Ballerina on Kubernetes",
-                    "level": 2,
-                    "position": 6,
-                    "isDir": false,
-                    "url": "/learn/deploy-ballerina-on-kubernetes",
-                    "id": "deploy-ballerina-on-kubernetes"
-                },
-                {
-                    "dirName": "Manage data persistence with bal persist",
-                    "level": 2,
-                    "position": 7,
-                    "isDir": false,
-                    "url": "/learn/manage-data-persistence-with-bal-persist",
-                    "id": "manage-data-persistence-with-bal-persist"
-                }
-            ]
-        },
-        {
-            "dirName": "Learn the language",
-            "level": 1,
-            "position": 3,
-            "isDir": true,
-            "url": "swan-lake/learn-the-language",
-            "id": "learn-the-language",
-            "subDirectories": [
-                {
-                    "dirName": "Library documentation",
-                    "level": 2,
-                    "position": 0,
-                    "isDir": false,
-                    "url": "https://lib.ballerina.io/",
-                    "id": "library-documentation"
-                },
-                {
-                    "dirName": "By example",
-                    "level": 2,
-                    "position": 0,
-                    "isDir": false,
-                    "url": "/learn/by-example",
-                    "id": "by-example"
-                },
-                {
-                    "dirName": "Language walkthrough",
-                    "level": 2,
-                    "position": 3,
-                    "isDir": false,
-                    "url": "/learn/language-walkthrough",
-                    "id": "language-walkthrough"
-                },
-                {
-                    "dirName": "Language basics",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/learn/language-basics",
-                    "id": "language-basics"
-                },
-                {
-                    "dirName": "Distinctive language features",
-                    "level": 2,
-                    "position": 2,
                     "isDir": true,
-                    "url": "/learn/distinctive-language-features",
-                    "id": "distinctive-language-features",
+                    "url": "/learn/run-in-the-cloud",
+                    "id": "run-in-the-cloud",
                     "subDirectories": [
                         {
-                            "dirName": "Concurrency ",
+                            "dirName": "Code to cloud deployment",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/run-in-the-cloud/code-to-cloud-deployment",
+                            "id": "code-to-cloud-deployment"
+                        },
+                        {
+                            "dirName": "Azure Functions",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/run-in-the-cloud/azure-functions",
+                            "id": "azure-functions"
+                        },
+                        {
+                            "dirName": "AWS Lambda",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/run-in-the-cloud//aws-lambda",
+                            "id": "aws-lambda"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Configurability",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": true,
+                    "url": "/learn/configurability",
+                    "id": "configurability",
+                    "subDirectories": [
+                        {
+                            "dirName": "Configure a sample Ballerina service",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/configure-a-sample-ballerina-service",
+                            "id": "configure-a-sample-ballerina-service"
+                        },
+                        {
+                            "dirName": "Configure values ",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-values",
+                            "id": "configure-values"
+                        },
+                        {
+                            "dirName": "Provide values to configurable variables",
+                            "level": 43,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/provide-values-to-configurable-variables",
+                            "id": "provide-values-to-configurable-variables"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Observability",
+                    "level": 2,
+                    "position": 7,
+                    "isDir": true,
+                    "url": "/learn/observability",
+                    "id": "observability",
+                    "subDirectories": [
+                        {
+                            "dirName": "Observe Ballerina programs",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/observe-ballerina-programs",
+                            "id": "observe-ballerina-programs"
+                        },
+                        {
+                            "dirName": "Observe logs",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/observe-logs",
+                            "id": "observe-logs"
+                        },
+                        {
+                            "dirName": "Observe metrics",
                             "level": 3,
                             "position": 3,
                             "isDir": false,
-                            "url": "/learn/distinctive-language-features/concurrency",
+                            "url": "/learn/observe-metrics",
+                            "id": "observe-metrics"
+                        },
+                        {
+                            "dirName": "Observe tracing",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/observe-tracing",
+                            "id": "observe-tracing"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Java interoperability",
+                    "level": 2,
+                    "position": 8,
+                    "isDir": true,
+                    "url": "/learn/java-interoperability",
+                    "id": "java-interoperability",
+                    "subDirectories": [
+                        {
+                            "dirName": "Java interoperability guide",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": true,
+                            "url": "/learn/java-interoperability/java-interoperability-guide",
+                            "id": "java-interoperability-guide",
+                            "subDirectories": [
+                                {
+                                    "dirName": "Java interoperability",
+                                    "level": 4,
+                                    "position": 1,
+                                    "isDir": false,
+                                    "url": "/learn/java-interoperability-guide/java-interoperability",
+                                    "id": "java-interoperability"
+                                },
+                                {
+                                    "dirName": "Ballerina FFI",
+                                    "level": 4,
+                                    "position": 3,
+                                    "isDir": false,
+                                    "url": "/learn/java-interoperability-guide/ballerina-ffi",
+                                    "id": "ballerina-ffi"
+                                },
+                                {
+                                    "dirName": "The Bindgen Tool",
+                                    "level": 4,
+                                    "position": 2,
+                                    "isDir": false,
+                                    "url": "/learn/java-interoperability-guide/the-bindgen-tool",
+                                    "id": "the-bindgen-tool"
+                                }
+                            ]
+                        },
+                        {
+                            "dirName": "Call Java code from Ballerina",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/call-java-code-from-ballerina",
+                            "id": "call-java-code-from-ballerina"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Build a GraalVM executable",
+                    "level": 2,
+                    "position": 9,
+                    "isDir": true,
+                    "url": "/learn/build-a-graalvm-executable",
+                    "id": "build-a-graalvm-executable",
+                    "subDirectories": [
+                        {
+                            "dirName": "GraalVM executable overview",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/graalvm-executable-overview",
+                            "id": "graalvm-executable-overview"
+                        },
+                        {
+                            "dirName": "Build the executable in a container",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-in-a-container",
+                            "id": "build-the-executable-in-a-container"
+                        },
+                        {
+                            "dirName": "Build the executable locally",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/build-the-executable-locally/",
+                            "id": "build-the-executable-locally"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Reuse code with Ballerina Central",
+                    "level": 2,
+                    "position": 10,
+                    "isDir": true,
+                    "url": "/learn/ballerina-central",
+                    "id": "ballerina-central",
+                    "subDirectories": [
+                        {
+                            "dirName": "Publish packages to Ballerina Central",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/publish-packages-to-ballerina-central",
+                            "id": "publish-packages-to-ballerina-central"
+                        }
+                    ]
+                } 
+            ]
+        },
+        {
+            "dirName": "Resources",
+            "level": 1,
+            "position": 6,
+            "isDir": true,
+            "url": "/learn/resources",
+            "id": "resources",
+            "subDirectories": [
+                {
+                    "dirName": "Featured scenarios",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "swan-lake/resources/featured-scenarios",
+                    "id": "featured-scenarios",
+                    "subDirectories": [
+                        {
+                            "dirName": "Write a gRPC service with Ballerina",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/write-a-grpc-service-with-ballerina",
+                            "id": "write-a-grpc-service-with-ballerina"
+                        },
+                        {
+                            "dirName": "Write a RESTful API with Ballerina",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/write-a-restful-api-with-ballerina",
+                            "id": "write-a-restful-api-with-ballerina"
+                        },
+                        {
+                            "dirName": "Build a data service in Ballerina ",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/build-a-data-service-in-ballerina",
+                            "id": "build-a-data-service-in-ballerina"
+                        },
+                        {
+                            "dirName": "Write a GraphQL API with Ballerina",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/write-a-graphql-api-with-ballerina",
+                            "id": "write-a-graphql-api-with-ballerina"
+                        },
+                        {
+                            "dirName": "Work with data using queries in Ballerina",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/work-with-data-using-queries-in-ballerina",
+                            "id": "work-with-data-using-queries-in-ballerina"
+                        },
+                        {
+                            "dirName": "Deploy Ballerina on Kubernetes",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/deploy-ballerina-on-kubernetes",
+                            "id": "deploy-ballerina-on-kubernetes"
+                        },
+                        {
+                            "dirName": "Manage data persistence with bal persist",
+                            "level": 3,
+                            "position": 7,
+                            "isDir": false,
+                            "url": "/learn/manage-data-persistence-with-bal-persist",
+                            "id": "manage-data-persistence-with-bal-persist"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Learn the language",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": true,
+                    "url": "swan-lake/learn-the-language",
+                    "id": "learn-the-language",
+                    "subDirectories": [
+                        {
+                            "dirName": "Language basics",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/language-basics",
+                            "id": "language-basics"
+                        },
+                        {
+                            "dirName": "Concurrency ",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/concurrency",
                             "id": "concurrency"
                         },
                         {
                             "dirName": "Network interaction",
                             "level": 3,
-                            "position": 1,
+                            "position": 2,
                             "isDir": false,
-                            "url": "/learn/distinctive-language-features/network-interaction",
+                            "url": "/learn/network-interaction",
                             "id": "network-interaction"
                         },
                         {
                             "dirName": "Advanced, general-purpose language features",
                             "level": 3,
-                            "position": 4,
+                            "position": 5,
                             "isDir": false,
-                            "url": "/learn/distinctive-language-features/advanced-general-purpose-language-features",
+                            "url": "/learn/advanced-general-purpose-language-features",
                             "id": "advanced-general-purpose-language-features"
                         },
                         {
                             "dirName": "Data",
                             "level": 3,
-                            "position": 2,
+                            "position": 3,
                             "isDir": false,
-                            "url": "/learn/distinctive-language-features/data",
+                            "url": "/learn/data",
                             "id": "data"
                         }
                     ]
                 }
             ]
         },
-        {
-            "dirName": "Get started",
-            "level": 0,
-            "position": 2,
-            "isDir": false,
-            "url": "/learn/get-started",
-            "id": "get-started"
-        },
+        
+
         {
             "dirName": "other",
             "level": 1,
@@ -1338,64 +1499,6 @@
                             "id": "the-bindgen-tool"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "dirName": "Why Ballerina",
-            "level": 1,
-            "position": 1,
-            "isDir": true,
-            "url": "swan-lake/why-ballerina",
-            "id": "why-ballerina",
-            "subDirectories": [
-                {
-                    "dirName": "Reliable, maintainable",
-                    "level": 2,
-                    "position": 6,
-                    "isDir": false,
-                    "url": "/why-ballerina/reliable-maintainable",
-                    "id": "reliable-maintainable"
-                },
-                {
-                    "dirName": "Graphical",
-                    "level": 2,
-                    "position": 4,
-                    "isDir": false,
-                    "url": "/why-ballerina/graphical",
-                    "id": "graphical"
-                },
-                {
-                    "dirName": "Data oriented",
-                    "level": 2,
-                    "position": 3,
-                    "isDir": false,
-                    "url": "/why-ballerina/data-oriented",
-                    "id": "data-oriented"
-                },
-                {
-                    "dirName": "Cloud native",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/why-ballerina/cloud-native",
-                    "id": "cloud-native"
-                },
-                {
-                    "dirName": "Flexibly typed",
-                    "level": 2,
-                    "position": 2,
-                    "isDir": false,
-                    "url": "/why-ballerina/flexibly-typed",
-                    "id": "flexibly-typed"
-                },
-                {
-                    "dirName": "Concurrent",
-                    "level": 2,
-                    "position": 5,
-                    "isDir": false,
-                    "url": "/why-ballerina/concurrent",
-                    "id": "concurrent"
                 }
             ]
         },

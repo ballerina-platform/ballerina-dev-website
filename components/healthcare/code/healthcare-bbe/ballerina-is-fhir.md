@@ -17,7 +17,7 @@ public function main() returns error? {
 
     // Parse it - you can pass the input (as a string or a json) and the
     // type of the resource you want to parse.
-    fhir:Patient patient = check fhirParser:parse(input).ensureType();
+    international401:Patient patient = check fhirParser:parse(input).ensureType();
 
     // Access the parsed data
     fhir:HumanName[]? names = patient.name;

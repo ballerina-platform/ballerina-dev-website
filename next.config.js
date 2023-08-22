@@ -50,43 +50,63 @@ const nextConfig = {
     return [
       {
         source: `/learn/build-a-data-service-in-ballerina`,
-        destination: `/learn/featured-scenarios/build-a-data-service-in-ballerina`,
+        destination: `/learn/resources/featured-scenarios/build-a-data-service-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/deploy-ballerina-on-kubernetes`,
-        destination: `/${redirectBase}learn/featured-scenarios/deploy-ballerina-on-kubernetes`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/deploy-ballerina-on-kubernetes`,
       },
       {
         source: `/${redirectBase}learn/manage-data-persistence-with-bal-persist`,
-        destination: `/${redirectBase}learn/featured-scenarios/manage-data-persistence-with-bal-persist`,
-      },
-      {
-        source: `/${redirectBase}learn/get-started`,
-        destination: `/${redirectBase}learn/get-started/get-started`,
-      },
-      {
-        source: `/${redirectBase}learn/language-basics`,
-        destination: `/${redirectBase}learn/learn-the-language/language-basics`,
-      },
-      {
-        source: `/${redirectBase}learn/language-walkthrough`,
-        destination: `/${redirectBase}learn/learn-the-language/language-walkthrough`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/manage-data-persistence-with-bal-persist`,
       },
       {
         source: `/${redirectBase}learn/work-with-data-using-queries-in-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/work-with-data-using-queries-in-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/work-with-data-using-queries-in-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-graphql-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-graphql-api-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-graphql-api-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-grpc-service-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-grpc-service-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-grpc-service-with-ballerina`,
       },
       {
         source: `/${redirectBase}learn/write-a-restful-api-with-ballerina`,
-        destination: `/${redirectBase}learn/featured-scenarios/write-a-restful-api-with-ballerina`,
+        destination: `/${redirectBase}learn/resources/featured-scenarios/write-a-restful-api-with-ballerina`,
+      },
+      {
+        source: `/${redirectBase}learn/get-started`,
+        destination: `/${redirectBase}learn/integration/get-started`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-specifications`,
+        destination: `/${redirectBase}learn/references/ballerina-specifications`,
+      },
+      {
+        source: `/${redirectBase}learn/language-basics`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/language-basics`,
+      },
+      {
+        source: `/${redirectBase}learn/language-walkthrough`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/language-walkthrough`,
+      },
+      {
+        source: `/${redirectBase}learn/network-interaction`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/network-interaction`,
+      },
+      {
+        source: `/${redirectBase}learn/concurrency`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/concurrency`,
+      },
+      {
+        source: `/${redirectBase}learn/advanced-general-purpose-language-features`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/advanced-general-purpose-language-features`,
+      },
+      {
+        source: `/${redirectBase}learn/data`,
+        destination: `/${redirectBase}learn/resources/learn-the-language/data`,
       },
       {
         source: `/${redirectBase}learn/installation-options`,
@@ -96,111 +116,129 @@ const nextConfig = {
         source: "/learn",
         destination: "/learn/get-started/install-ballerina/set-up-ballerina",
       },
-
       {
         source: `/${redirectBase}learn/openapi-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/openapi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/openapi-tool`,
       },
       {
         source: `/${redirectBase}learn/graphql-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/graphql-tool`,
+        destination: `/${redirectBase}learn/integration-tools/graphql-tool`,
       },
       {
         source: `/${redirectBase}learn/asyncapi-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/asyncapi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/asyncapi-tool`,
       },
       {
         source: `/${redirectBase}learn/strand-dump-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/strand-dump-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/strand-dump-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/edi-tool`,
+        destination: `/${redirectBase}learn/integration-tools/edi-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/health-tool`,
+        destination: `/${redirectBase}learn/integration-tools/health-tool`,
       },
       {
         source: `/${redirectBase}learn/ballerina-shell`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/ballerina-shell`,
+        destination: `/${redirectBase}learn/integration-tools/ballerina-shell`,
       },
       {
         source: `/${redirectBase}learn/bal-persist-overview`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/bal-persist-overview`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/bal-persist-overview`,
       },
       {
         source: `/${redirectBase}learn/persist-cli-tool`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-cli-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-cli-tool`,
       },
       {
         source: `/${redirectBase}learn/persist-model`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-model`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-model`,
       },
       {
         source: `/${redirectBase}learn/persist-client-api`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/persist-client-api`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-client-api`,
       },
       {
         source: `/${redirectBase}learn/supported-data-stores`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-persist/supported-data-stores`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/supported-data-stores`,
       },
       {
         source: `/${redirectBase}learn/call-java-code-from-ballerina`,
-        destination: `/${redirectBase}learn/learn-the-platform/java-interoperability/call-java-code-from-ballerina`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/call-java-code-from-ballerina`,
       },
       {
         source: `/${redirectBase}learn/debug-ballerina-programs`,
-        destination: `/${redirectBase}learn/learn-the-platform/test-document-the-code/debug-ballerina-programs`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/debug-ballerina-programs`,
       },
       {
         source: `/${redirectBase}learn/generate-code-documentation`,
-        destination: `/${redirectBase}learn/learn-the-platform/test-document-the-code/generate-code-documentation`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/generate-code-documentation`,
       },
       {
         source: `/${redirectBase}learn/manage-dependencies`,
-        destination: `/${redirectBase}learn/learn-the-platform/source-code-dependencies/manage-dependencies`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/manage-dependencies`,
+      },
+      {
+        source: `/${redirectBase}learn/configure-a-sample-ballerina-service`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-a-sample-ballerina-service`,
+      },
+      {
+        source: `/${redirectBase}learn/configure-values`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/configure-values`,
+      },
+      {
+        source: `/${redirectBase}learn/provide-values-to-configurable-variables`,
+        destination: `/${redirectBase}learn/development-tutorials/configurability/provide-values-to-configurable-variables`,
       },
       {
         source: `/${redirectBase}learn/observe-ballerina-programs`,
-        destination: `/${redirectBase}learn/learn-the-platform/configure-observe/observe-ballerina-programs`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-ballerina-programs`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-logs`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-logs`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-metrics`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-metrics`,
+      },
+      {
+        source: `/${redirectBase}learn/observe-tracing`,
+        destination: `/${redirectBase}learn/development-tutorials/observability/observe-tracing`,
       },
       {
         source: `/${redirectBase}learn/organize-ballerina-code`,
-        destination: `/${redirectBase}learn/learn-the-platform/source-code-dependencies/organize-ballerina-code`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/organize-ballerina-code`,
       },
       {
         source: `/${redirectBase}learn/publish-packages-to-ballerina-central`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-central/publish-packages-to-ballerina-central`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
-        source: `/${redirectBase}learn/configure-ballerina-programs/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/configure-observe/configure-ballerina-programs/:slug`,
-      },
-      {
-        source: `/${redirectBase}learn/distinctive-language-features/:slug`,
-        destination: `/${redirectBase}learn/learn-the-language/distinctive-language-features/:slug`,
-      },
-      {
-        source: `/${redirectBase}learn/run-in-the-cloud/code-to-cloud-deployment`,
-        destination: `/${redirectBase}learn/learn-the-platform/run-in-the-cloud/code-to-cloud-deployment`,
-      },
-      {
-        source: `/${redirectBase}learn/run-in-the-cloud/function-as-a-service/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/run-in-the-cloud/function-as-a-service/:slug`,
+        source: `/${redirectBase}learn/run-in-the-cloud/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/:slug`,
       },
       {
         source: `/${redirectBase}learn/test-ballerina-code/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/test-document-the-code/test-ballerina-code/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/test-ballerina-code/:slug`,
       },
-
       {
         source: `/${redirectBase}learn/package-references`,
-        destination: `/${redirectBase}learn/learn-the-platform/source-code-dependencies/package-references`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
       },
       {
-        source: `/${redirectBase}learn/cli-documentation/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/ballerina-tooling/cli-documentation/:slug`,
+        source: `/${redirectBase}learn/bal-command/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/build-and-run/bal-command/:slug`,
       },
       {
         source: `/${redirectBase}learn/java-interoperability-guide/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/java-interoperability/java-interoperability-guide/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/java-interoperability-guide/:slug`,
       },
       {
         source: `/${redirectBase}learn/style-guide/:slug`,
-        destination: `/${redirectBase}learn/learn-the-platform/source-code-dependencies/style-guide/:slug`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/style-guide/:slug`,
       },
       {
         source: `/${redirectBase}learn/style-guide/coding-conventions/:slug`,
@@ -208,15 +246,15 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/graalvm-executable-overview`,
-        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/graalvm-executable-overview`,
+        destination: `/${redirectBase}learn/development-tutorials/build-a-graalvm-executable/graalvm-executable-overview`,
       },
       {
         source: `/${redirectBase}learn/build-the-executable-locally`,
-        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/build-the-executable-locally`,
+        destination: `/${redirectBase}learn/development-tutorials/build-a-graalvm-executable/build-the-executable-locally`,
       },
       {
         source: `/${redirectBase}learn/build-the-executable-in-a-container`,
-        destination: `/${redirectBase}learn/learn-the-platform/build-a-graalvm-executable/build-the-executable-in-a-container`,
+        destination: `/${redirectBase}learn/development-tutorials/build-a-graalvm-executable/build-the-executable-in-a-container`,
       },
       {
         source: `/${redirectBase}downloads/swan-lake-release-notes`,
@@ -310,6 +348,22 @@ const nextConfig = {
         source: `/spec/lang/2019R1/`,
         destination: `/spec/lang/2019R1/index.html`,
       },
+      {
+        source: `/learn/supported-data-formats`,
+        destination: `/learn/integration/supported-data-formats`,
+      },
+      {
+        source: `/learn/supported-network-protocols`,
+        destination: `/learn/integration/supported-network-protocols`,
+      },
+      {
+        source: `/learn/pre-built-integrations`,
+        destination: `/learn/integration/pre-built-integrations`,
+      },
+      {
+        source: `/learn/pre-built-integrations/sample1`,
+        destination: `/learn/integration/pre-built-integrations/sample1`,
+      }
     ];
   },
   trailingSlash: true,

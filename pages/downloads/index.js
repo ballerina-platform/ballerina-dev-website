@@ -38,7 +38,7 @@ export default function Downloads() {
    return (
       <Layout>
          <Col sm={12}>
-            <Row className={`${styles.downloadContentRow} cDownloadsHeader pageHeader`}>
+            <Row className="cDownloadsHeader pageHeader pageContentRow">
                <Col xs={12}>
                   <h1>Downloads</h1> 
                </Col>
@@ -50,7 +50,7 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadContentRow}`}>
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
                <Col xs={12}>
                   <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
                </Col>
@@ -93,23 +93,30 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={12}>
                   <h2>Step 2 - Verify the installation</h2> 
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
-                  <p>
+            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+               <Col xs={12}>
+                  <p><ul>
+                     <li>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/cli-documentation/cli-commands/`}> CLI Commands</a> page  to learn about more commands.</p>
+                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>Verify the installation</a>.
+                     </li>
+                     <li>
+                     To verify the Ballerina release artifacts (you downloaded based on your platform) using Cosign CLI or Rekor API, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
+                     </li>
+                     </ul>
+                  </p>
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={12}>
                   <h2>Step 3 - Run a sample program</h2> 
                </Col>
             </Row>

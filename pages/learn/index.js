@@ -23,7 +23,7 @@ import Layout from "../../layouts/LayoutLearn";
 import Intro from "../../components/learn/intro/Intro";
 import LearnTheLanguage from "../../components/learn/language/Language";
 import UseCases from "../../components/learn/use-cases/UseCases";
-import Platform from "../../components/learn/platform/Platform";
+import Boxes from "../../components/learn/boxes/Boxes";
 import New from "../../components/learn/new/New";
 import Head from "next/head";
 import { prefix } from '../../utils/prefix';
@@ -122,6 +122,12 @@ export default function Learn() {
             <Col xs={12}>
             <Container>
               <h1>Learn Ballerina</h1>
+
+              {/* <p>
+                Ballerina is a comprehensive language that is easy to grasp for
+                anyone with prior programming experience. Let&apos;s start
+                learning Ballerina.
+              </p> */}
             </Container>
             </Col>
             
@@ -141,10 +147,13 @@ export default function Learn() {
             </Col>
           </Row>
 
-          <Intro />
+          <Boxes/>
+          
+
+          {/* <Intro />
           <LearnTheLanguage getLink={getLink}/>
           <UseCases getLink={getLink}/>
-          <Platform getLink={getLink}/>
+          <Platform getLink={getLink}/> */}
           {/* <New getLink={getLink}/> */}
         </Col>
         

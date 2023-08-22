@@ -1,0 +1,34 @@
+.cardLink {
+  text-decoration: none;
+  color: #464646;
+}
+
+.cardLink:hover {
+  color: #20b6b0;
+}
+
+.tagWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  margin-right: 5px;
+  margin-top: 5px;
+  background-color: #888 !important;
+  color: #ffffff;
+}
+
+
+@media (max-width: 768px) {
+  .icon {
+      padding-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .icon {
+      padding-top: 0;
+  }
+}
+

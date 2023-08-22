@@ -361,8 +361,44 @@ const nextConfig = {
         destination: `/learn/integration/pre-built-integrations`,
       },
       {
-        source: `/learn/pre-built-integrations/sample1`,
-        destination: `/learn/integration/pre-built-integrations/sample1`,
+        source: `/learn/pre-built-integrations/google-sheets-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/google-sheets-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/kafka-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/kafka-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/mysql-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/mysql-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/gmail-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/gmail-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/salesforce-to-twilio-integration`,
+        destination: `/learn/integration/pre-built-integrations/salesforce-to-twilio-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/newsapi-to-email-integration`,
+        destination: `/learn/integration/pre-built-integrations/newsapi-to-email-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/github-to-email-integration`,
+        destination: `/learn/integration/pre-built-integrations/github-to-email-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/shopify-to-outlook-integration`,
+        destination: `/learn/integration/pre-built-integrations/shopify-to-outlook-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/google-drive-to-onedrive-integration`,
+        destination: `/learn/integration/pre-built-integrations/google-drive-to-onedrive-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
+        destination: `/learn/integration/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
       }
     ];
   },

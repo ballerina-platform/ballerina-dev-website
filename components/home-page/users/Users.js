@@ -60,7 +60,7 @@ export default function Users(props) {
               <img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" />
               <img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" />
               <img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" />
-              <img src={`${prefix}/images/home-page/user-logos/tech-venturas.jpg`} width={180} alt="Tech Venturas" title="Tech Venturas" />
+              <img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" />
           </Col>
         </Row>
       </Container>

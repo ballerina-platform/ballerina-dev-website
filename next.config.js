@@ -129,6 +129,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/asyncapi-tool`,
       },
       {
+        source: `/${redirectBase}learn/grpc-tool`,
+        destination: `/${redirectBase}learn/integration-tools/grpc-tool`,
+      },
+      {
         source: `/${redirectBase}learn/strand-dump-tool`,
         destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/strand-dump-tool`,
       },

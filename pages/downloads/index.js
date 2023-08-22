@@ -101,16 +101,10 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} pageContentRow`}>
                <Col xs={12}>
-                  <p><ul>
-                     <li>
+                  <p>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. For more information on installing Ballerina, see <a href={`${prefix}/downloads/installation-options/#verify-the-installation`} className={styles.instructions}>Verify the installation</a>.
-                     </li>
-                     <li>
-                     To verify the Ballerina release artifacts (you downloaded based on your platform) using Cosign CLI or Rekor API, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
-                     </li>
-                     </ul>
+                     in the Terminal/Shell. Refer to the <a href={`${prefix}/bal-command/cli-commands/`} className={styles.instructions}>CLI commands page</a> to learn about more commands.
                   </p>
                </Col>
             </Row>
@@ -123,9 +117,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-
                   <p className={styles.dVSCode} style={vscodeIcon}>Next, open the <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">hello_world.bal</a> on Visual Studio Code.</p>
-
                   <p>
                      <ul>
                         <li>

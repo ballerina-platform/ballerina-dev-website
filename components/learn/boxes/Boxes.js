@@ -119,6 +119,15 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/grpc-tool`} className={styles.titleLink}>
+                            gRPC tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/health-tool`} className={styles.titleLink}>
                             Health tool (FHIR/HL7)
                           </a>

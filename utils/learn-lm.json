@@ -157,7 +157,7 @@
                 {
                     "dirName": "gRPC tool",
                     "level": 3,
-                    "position": 0,
+                    "position": 4,
                     "isDir": false,
                     "url": "/learn/grpc-tool",
                     "id": "grpc-tool"

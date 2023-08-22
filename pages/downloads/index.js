@@ -50,7 +50,7 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} pageContentRow`}>
                <Col xs={12}>
                   <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
                </Col>
@@ -99,7 +99,7 @@ export default function Downloads() {
                </Col>
             </Row>
 
-            <Row className={`${styles.donwloadVersion} pageContentRow`}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} pageContentRow`}>
                <Col xs={12}>
                   <p><ul>
                      <li>

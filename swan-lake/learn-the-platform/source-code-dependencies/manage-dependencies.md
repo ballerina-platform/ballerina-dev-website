@@ -160,7 +160,7 @@ At this point, the compiler resolves the latest version and ignores the dependen
 
 ## Use dependencies from a custom repository
 
-Ballerina supports [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. You can configure the custom repository in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate it to the package resolution.
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. You can configure the custom repository in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate it to the package resolution.
 
 ```toml
 [[repository.maven]]
@@ -169,11 +169,11 @@ url = "<repository-url>"
 username = "<username/userId>"
 accesstoken = "<password/accesstoken>"
 ```
-In the above snippet, `TYPE` can be anything among `nexus`,  `artifactory`, or `github`. The below steps show how to configure a GitHub package repository to resolve a specific dependency.
+The below steps show how to configure a GitHub package repository to resolve a specific dependency.
 
 ```toml
-[[repository.github]]
-id = "github_1" # This id is used when pushing/ pulling balas
+[[repository.maven]]
+id = "github_1" # This ID is used when pushing/ pulling balas
 url = "https://maven.pkg.github.com/jackson12/jackson-encrypt-module"
 username = "jackson12"
 accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"

@@ -164,7 +164,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`https://central.ballerina.io/`} className={styles.titleLink}>
+                          <a target='_blank' rel="noreferrer" href={`https://lib.ballerina.io/`} className={styles.titleLink}>
                             Ballerina API Docs
                           </a>
                         </p>

@@ -446,14 +446,14 @@ export default function Boxes(props) {
                           <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe metrics</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing metrics of external systems.</p>
+                        <p className={styles.description}>How Ballerina supports observing metrics of Ballerina programs.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe tracing</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing tracing of external systems.</p>
+                        <p className={styles.description}>How Ballerina supports observing tracing of Ballerina programs.</p>
                       </div>
                     </div>
                   </div>

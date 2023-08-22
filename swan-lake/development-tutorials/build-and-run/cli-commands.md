@@ -210,7 +210,7 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/bal-command/grpc">gRPC/Protocol Buffers</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/grpc">gRPC/Protocol Buffers</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">graphql</td>
@@ -252,12 +252,12 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <table class="cComandTable">
 <tr>
 <td class="cCommand">dist</td>
-<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/bal-command/update-tool/">Update Tool</a>.
+<td class="cDescription">Manage Ballerina distributions. For more information, see <a href="/learn/update-tool/">Update Tool</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">update</td>
-<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/bal-command/update-tool/">Update Tool</a>.
+<td class="cDescription">Update the Ballerina Tool. For more information, see <a href="/learn/update-tool/">Update Tool</a>.
 </td>
 </tr>
 </table>

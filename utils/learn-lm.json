@@ -251,7 +251,7 @@
                                     "level": 4,
                                     "position": 6,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/asyncapi",
+                                    "url": "/learn/asyncapi",
                                     "id": "asyncapi"
                                 },
                                 {
@@ -259,7 +259,7 @@
                                     "level": 4,
                                     "position": 1,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/cli-commands",
+                                    "url": "/learn/cli-commands",
                                     "id": "cli-commands"
                                 },
                                 {
@@ -267,7 +267,7 @@
                                     "level": 4,
                                     "position": 5,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/graphql",
+                                    "url": "/learn/graphql",
                                     "id": "graphql"
                                 },
                                 {
@@ -275,7 +275,7 @@
                                     "level": 4,
                                     "position": 4,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/openapi",
+                                    "url": "/learn/openapi",
                                     "id": "openapi"
                                 },
                                 {
@@ -283,7 +283,7 @@
                                     "level": 4,
                                     "position": 3,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/grpc",
+                                    "url": "/learn/grpc",
                                     "id": "grpc"
                                 },
                                 {
@@ -291,7 +291,7 @@
                                     "level": 4,
                                     "position": 2,
                                     "isDir": false,
-                                    "url": "/learn/bal-command/update-tool",
+                                    "url": "/learn/update-tool",
                                     "id": "update-tool"
                                 }
                             ]

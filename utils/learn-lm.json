@@ -239,62 +239,28 @@
                     "id": "build-and-run",
                     "subDirectories": [
                         {
-                            "dirName": "Bal command",
+                            "dirName": "CLI commands",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/cli-commands",
+                            "id": "cli-commands"
+                        },
+                        {
+                            "dirName": "Update Tool",
                             "level": 3,
                             "position": 2,
-                            "isDir": true,
-                            "url": "/learn/build-and-run/bal-command",
-                            "id": "bal-command",
-                            "subDirectories": [
-                                {
-                                    "dirName": "AsyncAPI",
-                                    "level": 4,
-                                    "position": 6,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/asyncapi",
-                                    "id": "asyncapi"
-                                },
-                                {
-                                    "dirName": "CLI commands",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/cli-commands",
-                                    "id": "cli-commands"
-                                },
-                                {
-                                    "dirName": "GraphQL",
-                                    "level": 4,
-                                    "position": 5,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/graphql",
-                                    "id": "graphql"
-                                },
-                                {
-                                    "dirName": "OpenAPI ",
-                                    "level": 4,
-                                    "position": 4,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/openapi",
-                                    "id": "openapi"
-                                },
-                                {
-                                    "dirName": "gRPC/Protocol Buffers",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/grpc",
-                                    "id": "grpc"
-                                },
-                                {
-                                    "dirName": "Update Tool",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/update-tool",
-                                    "id": "update-tool"
-                                }
-                            ]
+                            "isDir": false,
+                            "url": "/learn/update-tool",
+                            "id": "update-tool"
+                        },
+                        {
+                            "dirName": "Ballerina Shell",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/ballerina-shell",
+                            "id": "ballerina-shell"
                         }
                     ]
                 },

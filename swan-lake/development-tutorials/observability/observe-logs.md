@@ -1,6 +1,6 @@
 ---
 title: Observe logs
-description: See how Ballerina supports observing tracing to external systems.
+description: See how Ballerina supports observing tracing of Ballerina programs.
 keywords: ballerina, observability, logs, elastic stack
 permalink: /learn/observe-logs/
 active: observe-logs

@@ -217,8 +217,16 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
-        source: `/${redirectBase}learn/run-in-the-cloud/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/:slug`,
+        source: `/${redirectBase}learn/code-to-cloud-deployment`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/code-to-cloud-deployment`,
+      },
+      {
+        source: `/${redirectBase}learn/azure-functions`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/azure-functions`,
+      },
+      {
+        source: `/${redirectBase}learn/aws-lambda`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/aws-lambda`,
       },
       {
         source: `/${redirectBase}learn/test-ballerina-code/:slug`,

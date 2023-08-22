@@ -322,7 +322,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
-                            Overview
+                          Bal persist overview
                           </a>
                         </p>
                         <p className={styles.description}>How to simplify data persistence with <code>bal persist</code>.</p>
@@ -370,7 +370,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/code-to-cloud-deployment`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/code-to-cloud-deployment`} className={styles.titleLink}>
                             Code to cloud deployment
                           </a>
                         </p>
@@ -378,7 +378,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/azure-functions/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/azure-functions/`} className={styles.titleLink}>
                             Azure Function
                           </a>
                         </p>
@@ -387,7 +387,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/aws-lambda/`} className={styles.titleLink}>
                             AWS Lambda
                           </a>
                         </p>

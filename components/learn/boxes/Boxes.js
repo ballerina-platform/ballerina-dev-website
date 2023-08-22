@@ -119,15 +119,6 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
-                            Strand dump tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Dump and inspect the currently available strands of a Ballerina program.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/health-tool`} className={styles.titleLink}>
                             Health tool (FHIR/HL7)
                           </a>

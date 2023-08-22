@@ -130,7 +130,7 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/strand-dump-tool`,
-        destination: `/${redirectBase}learn/integration-tools/strand-dump-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/strand-dump-tool`,
       },
       {
         source: `/${redirectBase}learn/edi-tool`,

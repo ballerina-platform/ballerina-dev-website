@@ -55,23 +55,23 @@ export default function Language(props) {
         </Col>
         <Col xs={12}  lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.linkText}>Network interaction</a>
+            <a href={`${prefix}/learn/network-interaction`} className={styles.linkText}>Network interaction</a>
           </div>
         </Col>
           <Col xs={12} lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
 
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.linkText}>Data</a>
+            <a href={`${prefix}/learn/data`} className={styles.linkText}>Data</a>
           </div>
         </Col>
           <Col xs={12} lg={2} className={`${styles.newBox} ${styles.newBoxBorder}`}>
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.linkText}>Concurrency</a>
+            <a href={`${prefix}/learn/concurrency`} className={styles.linkText}>Concurrency</a>
           </div>
         </Col>
           <Col xs={12} lg={2} className={styles.newBox}>
           <div className={styles.langRow}>
-            <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.linkText}>Advanced general purpose language features</a>
+            <a href={`${prefix}/learn/advanced-general-purpose-language-features`} className={styles.linkText}>Advanced general purpose language features</a>
           </div>
         </Col>
 

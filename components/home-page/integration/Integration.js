@@ -53,8 +53,8 @@ export default function Intro(props) {
                     <div>
 
                         <p className={styles.introText2}>Integration problems have been solved by restricted 
-drag-and-drop tools / DSLs or generic programming
-languages that don’t understand the unique challenges
+drag-and-drop tools/DSLs or generic programming
+languages that don&apos;t understand the unique challenges
 of integrations.
                         </p>
 

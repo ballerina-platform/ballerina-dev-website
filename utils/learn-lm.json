@@ -157,7 +157,7 @@
                 {
                     "dirName": "gRPC tool",
                     "level": 3,
-                    "position": 0,
+                    "position": 4,
                     "isDir": false,
                     "url": "/learn/grpc-tool",
                     "id": "grpc-tool"
@@ -561,7 +561,7 @@
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud/code-to-cloud-deployment",
+                            "url": "/learn/code-to-cloud-deployment",
                             "id": "code-to-cloud-deployment"
                         },
                         {
@@ -569,7 +569,7 @@
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud/azure-functions",
+                            "url": "/learn/azure-functions",
                             "id": "azure-functions"
                         },
                         {
@@ -577,7 +577,7 @@
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud//aws-lambda",
+                            "url": "/learn/aws-lambda",
                             "id": "aws-lambda"
                         }
                     ]

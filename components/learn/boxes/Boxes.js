@@ -439,7 +439,7 @@ export default function Boxes(props) {
                           <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe logs</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing logs of external systems.</p>
+                        <p className={styles.description}>How Ballerina supports observing logs of Ballerina programs.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>

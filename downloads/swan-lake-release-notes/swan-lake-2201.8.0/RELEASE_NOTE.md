@@ -30,6 +30,14 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- A bug related to the inference of numeric literal types has been fixed.
+
+    ```ballerina
+    2f|1 num1 = 2; // Compilation error now.
+    2f|3d|6 num2 = 10; // Compilation error now.
+    3d|6 num3 = 10; // Compilation error now.
+    ```
+
 ## Platform updates
 
 ### New features

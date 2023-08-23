@@ -57,7 +57,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 
-
 - `TypeSymbol` of an intersection type will now return an `IntersectionTypeSymbol`.
 
     ```ballerina
@@ -105,7 +104,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### New Runtime Java APIs
 
-- Introduced the `getImpliedType()` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to retrieve the referred type if a given type is a type reference type or retrieve the effective type if the given type is an intersection type.
+- Introduced the `getImpliedType()` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to retrieve the referred type if a given type is a type-reference type or to retrieve the effective type if the given type is an intersection type.
 
     ```java
     Type getImpliedType(Type type)
@@ -115,40 +114,40 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### Intersection type support in runtime Java APIs
 
-The following runtime APIs are now modified to return the intersection type rather than returning the effective type of the intersection.
+The following runtime APIs are now modified to return an intersection type rather than returning the effective type of the intersection.
 
-| **Runtime API**                                                          | **Java class**                                     |
-|--------------------------------------------------------------------------|----------------------------------------------------|
-| `getElementType`                                                         | `io.ballerina.runtime.api.types.ArrayType`         |
-| `getDetailType`                                                          | `io.ballerina.runtime.api.types.ErrorType`         |
-| `getFieldType`                                                           | `io.ballerina.runtime.api.types.Field`             |
-| `getParameterTypes`                                                      | `io.ballerina.runtime.api.types.FunctionType`      |
-| `getReturnType`                                                          | `io.ballerina.runtime.api.types.FunctionType`      |
-| `getReturnParameterType`                                                 | `io.ballerina.runtime.api.types.FunctionType`      |
-| `getRestType`                                                            | `io.ballerina.runtime.api.types.FunctionType`      |
-| `getParameters` (The `Parameter.type` field can be a intersection type.) | `io.ballerina.runtime.api.types.FunctionType`      |
-| `getConstituentTypes`                                                    | `io.ballerina.runtime.api.types.IntersectionType`  |
-| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.MapType`           |
-| `getParamValueType`                                                      | `io.ballerina.runtime.api.types.ParameterizedType` |
-| `getRestFieldType`                                                       | `io.ballerina.runtime.api.types.RecordType`        |
-| `getReferredType`                                                        | `io.ballerina.runtime.api.types.ReferenceType`     |
-| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.StreamType`        |
-| `getCompletionType`                                                      | `io.ballerina.runtime.api.types.StreamType`        |
-| `getConstrainedType`                                                     | `io.ballerina.runtime.api.types.TableType`         |
-| `getTupleTypes`                                                          | `io.ballerina.runtime.api.types.TupleType`         |
-| `getRestType`                                                            | `io.ballerina.runtime.api.types.TupleType`         |
-| `getConstraint`                                                          | `io.ballerina.runtime.api.types.TypedescType`      |
-| `getMemberTypes`                                                         | `io.ballerina.runtime.api.types.UnionType`         |
-| `getOriginalMemberTypes`                                                 | `io.ballerina.runtime.api.types.UnionType`         |
-| `getElementType`                                                         | `io.ballerina.runtime.api.values.BArray`           |
-| `getConstraintType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
-| `getCompletionType`                                                      | `io.ballerina.runtime.api.values.BStream`          |
-| `getKeyType`                                                             | `io.ballerina.runtime.api.values.BTable`           |
-| `getDescribingType`                                                      | `io.ballerina.runtime.api.values.BTypedesc`        |
-| `getType`                                                                | `io.ballerina.runtime.api.values.BValue`           |
-| `getType`                                                                | `io.ballerina.runtime.api.utils.TypeUtils`         |
+| **Runtime API**                                                           | **Java class**                                     |
+|---------------------------------------------------------------------------|----------------------------------------------------|
+| `getElementType`                                                          | `io.ballerina.runtime.api.types.ArrayType`         |
+| `getDetailType`                                                           | `io.ballerina.runtime.api.types.ErrorType`         |
+| `getFieldType`                                                            | `io.ballerina.runtime.api.types.Field`             |
+| `getParameterTypes`                                                       | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnType`                                                           | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnParameterType`                                                  | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getRestType`                                                             | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getParameters` (The `Parameter.type` field can be an intersection type.) | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getConstituentTypes`                                                     | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.MapType`           |
+| `getParamValueType`                                                       | `io.ballerina.runtime.api.types.ParameterizedType` |
+| `getRestFieldType`                                                        | `io.ballerina.runtime.api.types.RecordType`        |
+| `getReferredType`                                                         | `io.ballerina.runtime.api.types.ReferenceType`     |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.StreamType`        |
+| `getCompletionType`                                                       | `io.ballerina.runtime.api.types.StreamType`        |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.TableType`         |
+| `getTupleTypes`                                                           | `io.ballerina.runtime.api.types.TupleType`         |
+| `getRestType`                                                             | `io.ballerina.runtime.api.types.TupleType`         |
+| `getConstraint`                                                           | `io.ballerina.runtime.api.types.TypedescType`      |
+| `getMemberTypes`                                                          | `io.ballerina.runtime.api.types.UnionType`         |
+| `getOriginalMemberTypes`                                                  | `io.ballerina.runtime.api.types.UnionType`         |
+| `getElementType`                                                          | `io.ballerina.runtime.api.values.BArray`           |
+| `getConstraintType`                                                       | `io.ballerina.runtime.api.values.BStream`          |
+| `getCompletionType`                                                       | `io.ballerina.runtime.api.values.BStream`          |
+| `getKeyType`                                                              | `io.ballerina.runtime.api.values.BTable`           |
+| `getDescribingType`                                                       | `io.ballerina.runtime.api.values.BTypedesc`        |
+| `getType`                                                                 | `io.ballerina.runtime.api.values.BValue`           |
+| `getType`                                                                 | `io.ballerina.runtime.api.utils.TypeUtils`         |
 
-For example, if the type-reference types are defined in the following way,
+For example, if an intersection type is defined in the following way,
 
 ```ballerina
 type ReadonlyIntArray readonly & int[];
@@ -157,12 +156,11 @@ ReadonlyIntArray array = [1, 2, 3, 4];
 ```
 the results of the runtime API calls will be as follows.
 
-| **Runtime API call**                                     | **Result**                                                      |
-|----------------------------------------------------------|-----------------------------------------------------------------|
-| `array.getType()`                                        | This will return an `IntersectionType` insted of `ArrayType`.   |
-| `getDescribingType()` on `ReadonlyIntArray` type         | This will return an `IntersectionType` insted of `ArrayType`.   |
-| `getImpliedType()` on received `IntersectionType` type   | This will return an `ArrayType`.                                |      
-
+| **Runtime API call**                                   | **Result**                                                     |
+|--------------------------------------------------------|----------------------------------------------------------------|
+| `array.getType()`                                      | This will return an `IntersectionType` instead of `ArrayType`. |
+| `getDescribingType()` on `ReadonlyIntArray` type       | This will return an `IntersectionType` instead of `ArrayType`. |
+| `getImpliedType()` on received `IntersectionType` type | This will return an `ArrayType`.                               |      
 
 ### Bug fixes
 

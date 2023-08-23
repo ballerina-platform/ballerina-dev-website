@@ -104,7 +104,7 @@ export default function Downloads() {
                   <p>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/cli-commands/`} className={styles.instructions}>CLI commands page</a> to learn about more commands.
+                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/cli-commands/`} className={styles.instructions}>CLI commands</a> page to learn about more commands.
                   </p>
                </Col>
             </Row>
@@ -117,14 +117,14 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-                  <p className={styles.dVSCode} style={vscodeIcon}>Next, open the <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">hello_world.bal</a> on Visual Studio Code.</p>
+                  <p className={styles.dVSCode} style={vscodeIcon}>Open the <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">hello_world.bal</a> on Visual Studio Code.</p>
                   <p>
                      <ul>
                         <li>
-                        <p>You will be prompted to install the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension</a> there.</p>
+                        <p>You will be prompted to install the Ballerina Visual Studio Code extension.</p>
                         </li>
                         <li>
-                        <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension documentation</a>.</p>
+                        <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension</a>.</p>
                         </li>
                      </ul>
                   </p>
@@ -134,7 +134,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={6}>
-                  <p>Now you are all set! For more guides, see the <a href={`${prefix}/learn/`}> Learn</a> page.</p>
+                  <p>Now, you are all set! For more guides, see the <a href={`${prefix}/learn/`}> Learn</a> page.</p>
                </Col>
             </Row>
          </Col>

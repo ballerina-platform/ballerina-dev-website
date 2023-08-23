@@ -30,6 +30,39 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
+
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check maybeProvideInt(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // error: resultInt may not have been initialized
+  }
+  ```
+
+- Fixed a bug related to type inference within query expressions when an expected type was absent. Previously, when iterating over a `map` without specifying an expected type, the query expression's result type was mistakenly inferred as an `array` which is now restricted.
+  
+- ```ballerina
+  function foo(map<int> mp) {
+      var _ = from int i in mp // compile-time error
+                select i;
+  }
+  ```
+
+- Fixed a bug where `error` completion was ignored while using collect-clause with query expressions.
+ 
+- ```ballerina
+  function foo(stream<int, error?> strm) {
+     int _ = from var i in strm // compile-time error: expected int, but found int|error
+             collect sum(i);
+  }
+  ```
+
 ## Platform updates
 
 ### New features

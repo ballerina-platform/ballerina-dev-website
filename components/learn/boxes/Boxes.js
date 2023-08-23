@@ -19,6 +19,8 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import styles from './Boxes.module.css';
 import { prefix } from '../../../utils/prefix';
+
+
 export default function Boxes(props) {
   return (
     <>
@@ -156,7 +158,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/by-example`} className={styles.titleLink}>
+                          <a target='_blank' rel="noreferrer" href={`${prefix}/learn/by-example`} className={styles.titleLink}>
                             Ballerina by Example
                           </a>
                         </p>
@@ -199,7 +201,21 @@ export default function Boxes(props) {
           <Container>
             <Row>
               <Col xs={12}>
-                <h2>Development tutorials</h2>
+                <h2 id="development-tutorials" className='section'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentColor"
+                    className="bi bi-link-45deg mdButton pe-2"
+                    viewBox="0 0 16 16"
+                    onClick={(e) => props.getLink(e.target, 'development-tutorials')}
+                  >
+                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                  </svg>
+                  Development tutorials
+                </h2>
               </Col>
             </Row>
             <Row>
@@ -212,7 +228,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/cli-commands`} className={styles.titleLink}>
-                          CLI commands
+                            CLI commands
                           </a>
                         </p>
                         <p className={styles.description}>CLI commands of the bal tool.</p>
@@ -230,7 +246,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/ballerina-shell`} className={styles.titleLink}>
-                          Ballerina Shell
+                            Ballerina Shell
                           </a>
                         </p>
                         <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
@@ -331,7 +347,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
-                          Bal persist overview
+                            Bal persist overview
                           </a>
                         </p>
                         <p className={styles.description}>How to simplify data persistence with <code>bal persist</code>.</p>
@@ -426,7 +442,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/provide-values-to-configurable-variables`} className={styles.titleLink}>
-                          Provide values to configurable variables
+                            Provide values to configurable variables
                           </a>
                         </p>
                         <p className={styles.description}>Provide configurable values through configuration files, command-line arguments, and environment variables.</p>
@@ -567,12 +583,27 @@ export default function Boxes(props) {
           </Container>
         </Col>
       </Row>
+
       <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container>
             <Row>
               <Col xs={12}>
-                <h2>Resources</h2>
+                <h2 id="resources" className='section'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentColor"
+                    className="bi bi-link-45deg mdButton pe-2"
+                    viewBox="0 0 16 16"
+                    onClick={(e) => props.getLink(e.target, 'resources')}
+                  >
+                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                  </svg>
+                  Resources
+                </h2>
               </Col>
             </Row>
             <Row>

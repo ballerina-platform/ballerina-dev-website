@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/17 \
+_Updated_: 2023/08/22 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
@@ -695,11 +695,17 @@ When the `@graphql:ID` annotation is used, the generated schema will show the fi
 
 >**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
 
-###### Example: Scalar type ID
+>**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements. 
+
+###### Example: ID Scalar Type
 ```ballerina
 service on new graphql:Listener(9090) {
 
     resource function get profileById(@graphql:ID int id) returns Profile {
+        // ...
+    }
+
+    resource function get profileByIds(@graphql:ID int[] ids) returns Profile[] {
         // ...
     }
 
@@ -722,7 +728,7 @@ public distinct service class Student {
     final string id;
     final string name;
 
-    function init(@graphql:ID string id, string name) {
+    function init(string id, string name) {
         self.id = id;
         self.name = name;
     }

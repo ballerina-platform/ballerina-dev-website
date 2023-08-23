@@ -267,14 +267,15 @@ a {
   overflow-x: auto;
 }
 
-.mdContent table {
+.mdContent table, .patternContent table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
 .mdContent table td, .policyContent table td,
-.mdContent table th, .policyContent table th {
+.mdContent table th, .policyContent table th,
+.patternContent table td, .patternContent table th {
   border: 1px solid #e1e4e5 !important;
 }
 
@@ -283,7 +284,8 @@ a {
 }
 
 .mdContent table th, .policyContent table th,
-.mdContent table td, .policyContent table td {
+.mdContent table td, .policyContent table td,
+.patternContent table td, .patternContent table th {
   padding: 10px;
 }
 

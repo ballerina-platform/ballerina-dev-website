@@ -35,7 +35,7 @@ export function ConfigurableVariables({ codeSnippets }) {
 
       <p>
         For more information, see{" "}
-        <a href="/learn/configure-ballerina-programs/configure-a-sample-ballerina-service/">
+        <a href="/learn/configure-a-sample-ballerina-service/">
           Configure a sample Ballerina service
         </a>
         .

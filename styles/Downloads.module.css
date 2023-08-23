@@ -6,7 +6,10 @@
   color: #585a5e;
   font-size: 32px;
   margin-top: 15px;
-  font-size: 1.5rem;
+}
+
+.downloadVersion b {
+  color: #585a5e;
 }
 
 .downloadVersion h3 {

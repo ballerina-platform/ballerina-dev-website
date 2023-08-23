@@ -21,13 +21,13 @@ import { load } from "js-yaml";
 import fs from "fs";
 import path from 'path';
 import React from "react";
-import { Row, Container, Col, Badge } from "react-bootstrap";
+import { Row, Container, Col, Badge, Table } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import { getHighlighter } from "shiki";
 import styles from './Patterns.module.css';
-import { FaRegCopy, FaCheck } from 'react-icons/fa';
+import { FaRegCopy, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 
 const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-patterns");
 
@@ -77,55 +77,72 @@ export default function Pattern(props) {
 
   return (
     <Layout>
-      <Col xl={{ offset: 1, span: 10 }} className="mdContent">
-        <h1 className="mt-2 mb-4 pb-2">
-          <abbr title="Enterprise Integration Pattern">EIP</abbr>: {props.name}
-        </h1>
-        <p className="mb-5">
-          <table>
-            {props.desc &&
-              <tr>
-                <td>Pattern</td>
-                <td>{props.desc} <a href={props.link}>↗</a></td>
-              </tr>
-            }
-            {props.helps &&
-              <tr>
-                <td>How Ballerina helps</td>
-                <td>{props.helps}</td>
-              </tr>
-            }
-          </table>
+      <Col sm={12}>
+        <Row className="pageHeader pageContentRow llanding">
+          <Col xs={12}>
+            <Container>
+              <h1 className="mt-2 mb-4 pb-2">
+                <abbr title="Enterprise Integration Pattern">EIP</abbr>: {props.name}
+              </h1>
+            </Container>
+          </Col>
+        </Row>
 
-        </p>
-        <div className={styles.tags}>
-          {props.tags && props.tags.map((tag) => (<Badge className={styles.tag}>{tag}</Badge>))}
-        </div>
-        {/* <div className="highlight" dangerouslySetInnerHTML={{ __html: props.code }} /> */}
+
+
+        <Row className="pageContentRow llanding">
+
+          <Col xs={12}>
+            <Container>
+              <Row>
+                <Col xs={12} className="patternContent">
+                  <table>
+                    {props.desc &&
+                      <tr>
+                        <td>Pattern</td>
+                        <td>{props.desc} <a href={props.link} style={{ color: "#20b6b0" }}><FaExternalLinkAlt /></a></td>
+                      </tr>
+                    }
+                    {props.helps &&
+                      <tr>
+                        <td>How Ballerina helps</td>
+                        <td>{props.helps}</td>
+                      </tr>
+                    }
+                  </table>
+                  <div className={styles.tags}>
+                    {props.tags && props.tags.map((tag) => (<Badge className={styles.tag}>{tag}</Badge>))}
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </Col>
+        </Row>
 
         <Row className="pageContentRow llanding" >
-            <Col xs={12}>
-              <Container>
+          <Col xs={12}>
+            <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={props.content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+              <div style={{
+                background: "#eeeeee", padding: "10px",
+                borderRadius: "5px",
+                marginTop: "20px",
+                backgroundColor: "#eeeeee !important"
+              }}>
+                <CopyToClipboard text={props.content}
+                  onCopy={() => codeCopy()} style={{ float: "right" }}>
+                  {
+                    copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                  }
+                </CopyToClipboard>
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: props.code }} />
-                </div>
-              </Container>
-            </Col>
-          </Row>
+                <div className="highlight" dangerouslySetInnerHTML={{ __html: props.code }} />
+              </div>
+            </Container>
+          </Col>
+        </Row>
+
       </Col>
-    </Layout>
+    </Layout >
   );
 }

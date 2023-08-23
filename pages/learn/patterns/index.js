@@ -17,17 +17,18 @@
  */
 
 import { load } from "js-yaml";
+import Head from "next/head";
 import fs from "fs";
 import path from 'path';
- import React from "react";
- import { Container, Col } from "react-bootstrap";
- import Layout from "../../../layouts/LayoutLearn";
- import { useRouter } from "next/router";
+import React from "react";
+import { Container, Col, Row } from "react-bootstrap";
+import Layout from "../../../layouts/LayoutLearn";
+import { useRouter } from "next/router";
 import Pattern from "../../../components/learn/pattern/Pattern";
 
 const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-patterns");
 
- export async function getStaticProps() {
+export async function getStaticProps() {
   const files = fs.readdirSync(baseDirectory);
   var patterns = [];
   for (let i = 0; i < files.length; i++) {
@@ -36,7 +37,7 @@ const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-
     const stats = fs.statSync(filePath);
     const bal = path.join(filePath, file + ".bal");
     if (stats.isDirectory() && fs.existsSync(bal)) {
-      if (!fs.existsSync(path.resolve(""))){
+      if (!fs.existsSync(path.resolve(""))) {
 
       }
 
@@ -53,23 +54,116 @@ const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-
     }
   }
   return { props: { patterns } };
- }
+}
 
- export default function PatternList(props) {
-   const router = useRouter();
-   return (
-       <Layout>
-         <Col xl={{ offset: 1, span: 10 }} className="mdContent">
-           <Container fluid="xl">
-             <h1 className="mt-2 mb-4 pb-2">
-             Integrations Patterns
-             </h1>
-             <p className="mb-5">
-               Ballerina usage pattens and best practices for implementing integrations.
-             </p>
-           </Container>
-         </Col>
-                {props.patterns.map((p) => (<Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} />))}
-       </Layout>
-   );
- }
+export default function PatternList(props) {
+  const router = useRouter();
+  return (
+    <>
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta name="author" content="WSO2 LLC" />
+        <meta
+          name="keywords"
+          content="ballerina, learn, documentation, docs, programming language"
+        />
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <title>Integrations Patterns</title>
+
+        {/* FB */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Ballerina - Learn" />
+        <meta
+          property="og:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+
+        {/* LINKED IN */}
+        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta
+          property="og:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+        <meta
+          property="og:description"
+          itemProp="image"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+
+        {/* TWITTER */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ballerinalang" />
+        <meta name="twitter:creator" content="@ballerinalang" />
+        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+        <meta
+          property="twitter:text:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          property="twitter:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+      </Head>
+
+      <Layout>
+        <Col sm={12}>
+          <Row className="pageHeader pageContentRow llanding">
+
+            <Col xs={12}>
+              <Container>
+                <h1>Integrations Patterns</h1>
+              </Container>
+            </Col>
+
+
+          </Row>
+
+          <Row className="pageContentRow llanding">
+
+            <Col xs={12} md={12}>
+              <Container>
+                <p>
+                  Ballerina usage pattens and best practices for implementing integrations.
+                </p>
+              </Container>
+            </Col>
+          </Row>
+
+          <Row className="pageContentRow llanding" >
+            <Col xs={12}>
+              <Container>
+                {
+                  props.patterns.map((p) => (
+                    <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} />
+                  ))
+                }
+              </Container>
+            </Col>
+          </Row>
+
+        </Col>
+        
+      </Layout>
+
+    </>
+  );
+}

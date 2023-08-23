@@ -1,0 +1,14 @@
+POST http://localhost:8080/payroll/employees/907f059924cc1acad24e950ef7a9b249/paytemplate/reimbursements
+
+[
+    {
+        "reimbursementTypeID": "83791a58-e043-4883-ad53-6f4cba62c313",
+        "reimbursementTypeName": "Internet Allowance",
+        "fixedAmount": 1000.0
+    },
+    {
+        "reimbursementTypeID": "3242f696-c71e-47e1-9393-91fa613d9619",
+        "reimbursementTypeName": "Parking Expenses",
+        "fixedAmount": 1500.50
+    }
+]

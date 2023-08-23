@@ -1,0 +1,75 @@
+/**
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ *
+ * WSO2 LLC licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { load } from "js-yaml";
+import fs from "fs";
+import path from 'path';
+ import React from "react";
+ import { Container, Col } from "react-bootstrap";
+ import Layout from "../../../layouts/LayoutLearn";
+ import { useRouter } from "next/router";
+import Pattern from "../../../components/learn/pattern/Pattern";
+
+const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-patterns");
+
+ export async function getStaticProps() {
+  const files = fs.readdirSync(baseDirectory);
+  var patterns = [];
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const filePath = path.join(baseDirectory, file);
+    const stats = fs.statSync(filePath);
+    const bal = path.join(filePath, file + ".bal");
+    if (stats.isDirectory() && fs.existsSync(bal)) {
+      if (!fs.existsSync(path.resolve(""))){
+
+      }
+
+      const ymlPath = path.join(baseDirectory, file, file + ".yml");
+      const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
+      if (!fs.existsSync(ymlPath)) {
+        patterns.push({ name });
+        continue;
+      }
+      const yml = fs.readFileSync(ymlPath, "utf-8");
+      var pattern = load(yml);
+      pattern.name = pattern.name ?? name;
+      patterns.push(pattern);
+    }
+  }
+  return { props: { patterns } };
+ }
+
+ export default function PatternList(props) {
+   const router = useRouter();
+   return (
+       <Layout>
+         <Col xl={{ offset: 1, span: 10 }} className="mdContent">
+           <Container fluid="xl">
+             <h1 className="mt-2 mb-4 pb-2">
+             Integrations Patterns
+             </h1>
+             <p className="mb-5">
+               Ballerina usage pattens and best practices for implementing integrations.
+             </p>
+           </Container>
+         </Col>
+                {props.patterns.map((p) => (<Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} />))}
+       </Layout>
+   );
+ }

@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/v1/ticket
+Content-Type: application/xml
+
+<ticket>
+    <subject>Printer offline</subject>
+    <comment>My printer is offline. Restarting doesn’t help.</comment>
+</ticket>

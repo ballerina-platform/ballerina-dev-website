@@ -62,6 +62,15 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/patterns/`} className={styles.titleLink}>
+                            Enterprise Integration Patterns
+                          </a>
+                        </p>
+                        <p className={styles.description}>Usage pattens for implementing robust integrations.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
                             Integration tutorials
                           </a>

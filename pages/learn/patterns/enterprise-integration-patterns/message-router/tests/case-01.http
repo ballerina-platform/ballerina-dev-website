@@ -1,0 +1,1 @@
+GET http://localhost:8080/shipments/UK/123A/status

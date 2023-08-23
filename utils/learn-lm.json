@@ -83,7 +83,7 @@
                 {
                     "dirName": "Enterprise Integration Patterns (EIP)",
                     "level": 2,
-                    "position": 2,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/patterns",
                     "id": "patterns"
@@ -91,7 +91,7 @@
                 {
                     "dirName": "Pre-built integrations",
                     "level": 2,
-                    "position": 3,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/pre-built-integrations",
                     "id": "pre-built-integrations"
@@ -99,7 +99,7 @@
                 {
                     "dirName": "Integration tutorials",
                     "level": 2,
-                    "position": 4,
+                    "position": 0,
                     "isDir": false,
                     "url": "/learn/integration-tutorials",
                     "id": "integration-tutorials"
@@ -163,17 +163,9 @@
                     "id": "grpc-tool"
                 },
                 {
-                    "dirName": "Strand dump tool",
-                    "level": 3,
-                    "position": 5,
-                    "isDir": false,
-                    "url": "/learn/strand-dump-tool",
-                    "id": "strand-dump-tool"
-                },
-                {
                     "dirName": "Health tool (FHIR/HL7)",
                     "level": 3,
-                    "position": 6,
+                    "position": 5,
                     "isDir": false,
                     "url": "/learn/health-tool",
                     "id": "health-tool"
@@ -181,7 +173,7 @@
                 {
                     "dirName": "EDI tool",
                     "level": 3,
-                    "position": 7,
+                    "position": 6,
                     "isDir": false,
                     "url": "/learn/edi-tool",
                     "id": "edi-tool"
@@ -247,62 +239,28 @@
                     "id": "build-and-run",
                     "subDirectories": [
                         {
-                            "dirName": "Bal command",
+                            "dirName": "CLI commands",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/cli-commands",
+                            "id": "cli-commands"
+                        },
+                        {
+                            "dirName": "Update Tool",
                             "level": 3,
                             "position": 2,
-                            "isDir": true,
-                            "url": "/learn/build-and-run/bal-command",
-                            "id": "bal-command",
-                            "subDirectories": [
-                                {
-                                    "dirName": "AsyncAPI",
-                                    "level": 4,
-                                    "position": 6,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/asyncapi",
-                                    "id": "asyncapi"
-                                },
-                                {
-                                    "dirName": "CLI commands",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/cli-commands",
-                                    "id": "cli-commands"
-                                },
-                                {
-                                    "dirName": "GraphQL",
-                                    "level": 4,
-                                    "position": 5,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/graphql",
-                                    "id": "graphql"
-                                },
-                                {
-                                    "dirName": "OpenAPI ",
-                                    "level": 4,
-                                    "position": 4,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/openapi",
-                                    "id": "openapi"
-                                },
-                                {
-                                    "dirName": "gRPC/Protocol Buffers",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/grpc",
-                                    "id": "grpc"
-                                },
-                                {
-                                    "dirName": "Update Tool",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/bal-command/update-tool",
-                                    "id": "update-tool"
-                                }
-                            ]
+                            "isDir": false,
+                            "url": "/learn/update-tool",
+                            "id": "update-tool"
+                        },
+                        {
+                            "dirName": "Ballerina Shell",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/ballerina-shell",
+                            "id": "ballerina-shell"
                         }
                     ]
                 },
@@ -427,7 +385,7 @@
                         {
                             "dirName": "Generate code documentation",
                             "level": 3,
-                            "position": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/generate-code-documentation",
                             "id": "generate-code-documentation"
@@ -529,6 +487,14 @@
                             "isDir": false,
                             "url": "/learn/debug-ballerina-programs",
                             "id": "debug-ballerina-programs"
+                        },
+                        {
+                            "dirName": "Strand dump tool",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/strand-dump-tool",
+                            "id": "strand-dump-tool"
                         }
                     ]
                 },
@@ -595,7 +561,7 @@
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud/code-to-cloud-deployment",
+                            "url": "/learn/code-to-cloud-deployment",
                             "id": "code-to-cloud-deployment"
                         },
                         {
@@ -603,7 +569,7 @@
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud/azure-functions",
+                            "url": "/learn/azure-functions",
                             "id": "azure-functions"
                         },
                         {
@@ -611,7 +577,7 @@
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/run-in-the-cloud//aws-lambda",
+                            "url": "/learn/aws-lambda",
                             "id": "aws-lambda"
                         }
                     ]

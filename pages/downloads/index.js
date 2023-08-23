@@ -18,7 +18,6 @@
 
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 import dynamic from 'next/dynamic';
 
 import Layout from '../../layouts/LayoutDownloads';
@@ -39,7 +38,7 @@ export default function Downloads() {
    return (
       <Layout>
          <Col sm={12}>
-            <Row className={`${styles.downloadContentRow} cDownloadsHeader pageHeader`}>
+            <Row className="cDownloadsHeader pageHeader pageContentRow">
                <Col xs={12}>
                   <h1>Downloads</h1> 
                </Col>
@@ -47,18 +46,18 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
                <Col xs={12}>
-                  <h2>Step 1 - Install</h2> 
+                  <h2>Step 1 - Install Ballerina Swan Lake</h2> 
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadContentRow}`}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} pageContentRow`}>
                <Col xs={12}>
                   <p>If you are new to Ballerina, download the relevant Ballerina distribution based on your operating system and install it.</p>
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
-               <h3 id="swanlake"><span>{swanlake['display-version']}</span></h3>
+            <Row className={`${styles.downloadVersion}`}>
+               <h3>{swanlake['display-version']}</h3>
             </Row>
 
             <Row className={`${styles.downloadContentRow}`}>
@@ -78,47 +77,47 @@ export default function Downloads() {
                   <p>
                      <ul>
                         <li>
-                           macOS users can run <code className="highlighter-rouge language-plaintext">brew install bal<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> alternatively
+                           <b>macOS Users:</b> Install quickly with <code className="highlighter-rouge language-plaintext">brew install bal<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code>.
                         </li>
                         <li>
-                           Refer to the <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}> other installation options</a>.
+                           <b>Installation Options:</b> Check out various methods in our <a href={`${prefix}/downloads/installation-options/`} className={styles.instructions}>guide</a>.
                         </li>
                         <li>
-                           To verify the Ballerina release artifact signatures, see <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>Verify Ballerina artifacts</a>.
+                           <b>Artifact Signature Verification:</b> Ensure authenticity using our <a href={`${prefix}/downloads/verify-ballerina-artifacts/`} className={styles.instructions}>verification guide</a>.
                         </li>
                         <li>
-                           To view older releases, see <a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`} className={styles.instructions}>Archived versions</a>.
+                           <b>Previous Releases:</b> Find older versions in <a href={`${prefix}/downloads/archived/#swan-lake-archived-versions`} className={styles.instructions}>Archived versions</a>.
                         </li>
                      </ul>
                   </p>
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
-                  <h2>Step 2 - Verify installation</h2> 
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={12}>
+                  <h2>Step 2 - Verify the installation</h2> 
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow} pageContentRow`}>
+               <Col xs={12}>
                   <p>
                      To verify that Ballerina was successfully installed, execute 
                      the <code className="highlighter-rouge language-plaintext">bal version<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> command 
-                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/bal-command/cli-commands/`}> CLI Commands</a> page  to learn about more commands.</p>
+                     in the Terminal/Shell. Refer to the <a href={`${prefix}/learn/cli-commands/`} className={styles.instructions}>CLI commands page</a> to learn about more commands.
+                  </p>
                </Col>
             </Row>
 
-            <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={12}>
+            <Row className={`${styles.downloadVersion} ${styles.downloadContentRow}`}>
+               <Col xs={12}>
                   <h2>Step 3 - Run a sample program</h2> 
                </Col>
             </Row>
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={12}>
-                  <p>Next, click <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">here</a> to open <code className="highlighter-rouge language-plaintext">hello_world.bal<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> sample on VSCode and run.</p>
-
+                  <p className={styles.dVSCode} style={vscodeIcon}>Next, open the <a href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" target="_blank" rel="noreferrer">hello_world.bal</a> on Visual Studio Code.</p>
                   <p>
                      <ul>
                         <li>
@@ -129,7 +128,7 @@ export default function Downloads() {
                         </li>
                      </ul>
                   </p>
-                  <p>Run the program by using CodeLens of Visual Studio Code. See the <a href=" https://wso2.com/ballerina/vscode/docs/run-a-program/" target="_blank" rel="noreferrer">Run program</a> documentation for more information.</p>
+                  <p>Run the program by using the Run CodeLens of Visual Studio Code. For more information, see <a href=" https://wso2.com/ballerina/vscode/docs/run-a-program/" target="_blank" rel="noreferrer">Run a program</a>.</p>
                </Col>
             </Row>
 

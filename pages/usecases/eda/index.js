@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for Event Driven Architecture (EDA)</h1>
+                <h1>Ballerina for Event-Driven Architecture (EDA)</h1>
               </Container>
 
             </Col>

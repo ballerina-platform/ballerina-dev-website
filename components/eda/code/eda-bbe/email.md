@@ -1,6 +1,6 @@
 ---
-title: 'Automate reacting to emails'
-description: Ballerina simplifies real-time email handling by offering abstractions and connectors for seamless integration. It supports SMTP, IMAP, POP3 and even enables integration with ChatGPT for advanced email automation workflows, adding sophistication to your communication processes.
+title: 'Automated responding to emails'
+description: Ballerina simplifies real-time email handling by offering abstractions and connectors for seamless integration. It supports SMTP, IMAP, and POP3, and even enables integration with ChatGPT for advanced email automation workflows, adding sophistication to your communication processes.
 url: 'https://ballerina.io/learn/by-example/receive-email-using-service/'
 ---
 ```

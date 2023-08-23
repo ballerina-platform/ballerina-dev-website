@@ -15,7 +15,7 @@ redirect_from:
   - /swan-lake/learn/keeping-ballerina-up-to-date
   - /learn/tooling-guide/cli-tools/update-tool
   - /learn/tooling-guide/cli-tools/update-tool/
-  - /learn/bal-command/update-tool
+  - /learn/update-tool
 ---
 
 ## Understand Ballerina distributions 

@@ -171,28 +171,28 @@ Follow the steps below to try out an example of using the Health tool.
 
     ```
     {
-    "resourceType": "Patient",
-    "gender": "male",
-    "id": "2121",
-    "identifier": [
-        {
-        "system": "http://hl7.org/fhir/sid/us-ssn",
-        "value": "2121"
-        }
-    ],
-    "meta": {
-        "profile": [
-        "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
+        "resourceType": "Patient",
+        "gender": "male",
+        "id": "2121",
+        "identifier": [
+            {
+                "system": "http://hl7.org/fhir/sid/us-ssn",
+                "value": "2121"
+            }
+        ],
+        "meta": {
+            "profile": [
+                "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
+            ]
+        },
+        "name": [
+            {
+                "family": "Doe",
+                "given": [
+                    "John",
+                    "Hemish"
+                ]
+            }
         ]
-    },
-    "name": [
-        {
-        "family": "Doe",
-        "given": [
-            "John",
-            "Hemish"
-        ]
-        }
-    ]
-    }  
+    }
     ```

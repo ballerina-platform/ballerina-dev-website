@@ -155,5 +155,5 @@ horizontalpodautoscaler.autoscaling/greeter-hpa created
 
 ## Learn more
 
-For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/run-in-the-cloud/code-to-cloud-deployment).
+For in-depth information about executing these deployed applications and the supported customizations in code to cloud, see [Code to Cloud deployment](/learn/code-to-cloud-deployment).
  

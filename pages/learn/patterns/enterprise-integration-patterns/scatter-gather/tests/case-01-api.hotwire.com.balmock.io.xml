@@ -1,0 +1,27 @@
+<HotLine>
+  <Errors/>
+  <Response>
+    <Car>
+      <CarType>Hyundai Accent</CarType>
+      <Price>USD 214.40</Price>
+      <ResultLink>http://hotwire.com/quote/1234</ResultLink>
+      <AdditionalInfo>
+        <Manufacturer>Hyundai</Manufacturer>
+        <ManufactureYear>2023</ManufactureYear>
+        <CarColor>Silver</CarColor>
+      </AdditionalInfo>
+    </Car>
+    <Car>
+      <CarType>Ford Freestar</CarType>
+      <Price>USD 242.13</Price>
+      <ResultLink>http://hotwire.com/quote/1257</ResultLink>
+      <AdditionalInfo>
+        <Manufacturer>Ford</Manufacturer>
+        <ManufactureYear>2023</ManufactureYear>
+        <CarColor>Blue</CarColor>
+      </AdditionalInfo>
+    </Car>
+  </Response>
+  <StatusCode>0</StatusCode>
+  <StatusDesc>success</StatusDesc>
+</HotLine>

@@ -8,7 +8,7 @@ active: ballerina-ffi
 intro: The reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
 ---
 
-Let's look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler allows you to call any `C` Code.
+For example, while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler allows you to call any `C` Code.
 
 ## The external function body
 Usually, the body or the implementation of a function is specified in the same source file. The part, which is enclosed by curly braces is called the function body.

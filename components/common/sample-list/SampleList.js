@@ -36,7 +36,7 @@ export default function SampleList(props) {
                 <Card className={`${styles.card} mb-3`}>
                   <Row className="g-0 align-items-center">
                     <Col md={2} className='text-center'>
-                      <Card.Img src={`${prefix}/images/pre-built/${href}.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                      <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={200} width={100} />
                     </Col>
                     <Col md={10}>
                       <Card.Body>

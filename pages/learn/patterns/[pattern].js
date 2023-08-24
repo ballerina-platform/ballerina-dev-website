@@ -111,7 +111,7 @@ export default function Pattern(props) {
                     }
                   </table>
                   <div className={styles.tags}>
-                    {props.tags && props.tags.map((tag) => (<Badge className={styles.tag}>{tag}</Badge>))}
+                    {props.tags && props.tags.map((tag) => (<Badge className={styles.tag} key={tag}>{tag}</Badge>))}
                   </div>
                 </Col>
               </Row>

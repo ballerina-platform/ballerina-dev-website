@@ -153,7 +153,7 @@ export default function PatternList(props) {
               <Container>
                 {
                   props.patterns.map((p) => (
-                    <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} />
+                    <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name}/>
                   ))
                 }
               </Container>

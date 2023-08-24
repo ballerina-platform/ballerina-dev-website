@@ -78,9 +78,9 @@ Introduced the `profile` CLI command, which runs a Ballerina package and does a 
 $ bal profile
 ```
 
-- For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph which shows time taken to execute each function.
+- For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
 
-- The output is given by a `html` file which can be opened using a web browser.
+- The output is given by the `ProfilerOutput.html` file which can be opened using a web browser.
 
 >**Note:** This is an experimental feature, which supports only a limited set of functionality.
 
@@ -92,7 +92,7 @@ Ballerina now supports code compilation and execution with Java 17.
 
 #### Support large list and mapping constructors
 
-Number of members supported in a list constructor expression and number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map and record values larger in size.
+The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values larger in size.
 
 For example, the following array constructor is now supported.
 

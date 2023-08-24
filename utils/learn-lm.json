@@ -679,7 +679,7 @@
                                     "level": 4,
                                     "position": 1,
                                     "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/java-interoperability",
+                                    "url": "/learn/java-interoperability",
                                     "id": "java-interoperability"
                                 },
                                 {
@@ -687,7 +687,7 @@
                                     "level": 4,
                                     "position": 3,
                                     "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/ballerina-ffi",
+                                    "url": "/learn/ballerina-ffi",
                                     "id": "ballerina-ffi"
                                 },
                                 {
@@ -695,7 +695,7 @@
                                     "level": 4,
                                     "position": 2,
                                     "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/the-bindgen-tool",
+                                    "url": "/learn/the-bindgen-tool",
                                     "id": "the-bindgen-tool"
                                 }
                             ]

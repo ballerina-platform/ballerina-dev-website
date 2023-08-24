@@ -1,6 +1,6 @@
 ---
 layout: ballerina-java-interoperability-left-nav-pages-swanlake
-title: The Bindgen Tool
+title: The Bindgen tool
 description: The Bindgen Tool is a CLI tool that generates Ballerina bindings for Java classes.
 keywords: ballerina, programming language, java, interoperability, bindgen
 permalink: /learn/java-interoperability/the-bindgen-tool/
@@ -8,7 +8,7 @@ active: the-bindgen-tool
 intro: The Bindgen Tool is a CLI tool that generates Ballerina bindings for Java classes.
 ---
 
-The following sections explain how the Bindgen Tool works.
+The following sections explain how the Bindgen tool works.
 
 ## The `bindgen` command
 
@@ -168,7 +168,7 @@ function read() returns int|IOException {
 >**Note:** If a Java exception class is explicitly generated as a Ballerina binding class, it would follow the naming convention `JException` or `JError`. For instance, the binding class's name for `java.io.FileNotFoundException` would be `JFileNotFoundException`.
 
 ### Dependent classes
-When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the Bindgen Tool generates an empty Ballerina binding class to represent each one of these classes. This represents a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the Bindgen Tool could be re-run to generate the complete implementation of the Ballerina bindings.
+When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the Bindgen tool generates an empty Ballerina binding class to represent each one of these classes. This represents a Java class mapping without the constructors, methods, or field bindings. If one of these classes is required later, the Bindgen tool could be re-run to generate the complete implementation of the Ballerina bindings.
 
 E.g., the generated dependent class representing `java.util.List` is as follows.
 

@@ -78,6 +78,18 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+##### `soap` Package
+- Add support for basic SOAP client.
+
+##### `mqtt` Package
+- Add support for `mqtt:Client`.
+- Add support for `mqtt:Listener`.
+
+##### `java.jms` Package
+- Add support for `jms:MessageProducer`.
+- Add support for `jms:MessageConsumer`.
+- Add support for `jms:Listener`.
+
 ### Deprecations
 
 ### Improvements

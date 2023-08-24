@@ -36,6 +36,8 @@ import ballerinax/salesforce as sfdc;
 
 configurable string salesforceAccessToken = ?;
 configurable string salesforceBaseUrl = ?;
+configurable string salesforcePriceBookId = ?;
+
 public type ProductPrice readonly & record {|
     string name;
     float unitPrice;
@@ -47,10 +49,8 @@ public type ProductPriceUpdate readonly & record {|
 
 listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
     groupId: "order-group-id",
-    topics: "foobar"
+    topics: "product_price_updates"
 });
-
-const string PRICEBOOKID = "";
 
 final sfdc:Client sfdcClient = check new ({
     baseUrl: salesforceBaseUrl,
@@ -62,11 +62,12 @@ final sfdc:Client sfdcClient = check new ({
 service on orderListener {
     isolated remote function onConsumerRecord(ProductPrice[] prices) returns error? {
         foreach ProductPrice {name, unitPrice} in prices {
-            stream<record{},error?> retrievedStream = check sfdcClient->query(
+            stream<record {}, error?> retrievedStream = check sfdcClient->query(
                 string \`SELECT Id FROM PricebookEntry 
-                    WHERE Pricebook2Id = '\${PRICEBOOKID}' AND 
+                    WHERE Pricebook2Id = '\${salesforcePriceBookId}' AND 
                     Name = '\${name}'\`);
-            record{}[] retrieved = check from record{} entry in retrievedStream select entry;
+            record {}[] retrieved = check from record {} entry in retrievedStream
+                select entry;
             anydata pricebookEntryId = retrieved[0]["Id"];
             if pricebookEntryId is string {
                 ProductPriceUpdate updatedPrice = {UnitPrice: unitPrice};
@@ -200,7 +201,7 @@ export default function Learn({ samples, content }) {
 
                   </Col>
                   <Col xs={12} lg={6}>
-                    <img src={`${prefix}/images/kafka-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/test-sahan/2.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
                   </Col>
                 </Row>
 

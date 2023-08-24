@@ -168,6 +168,9 @@ export default function Learn() {
 
                 <SampleList name="Hubspot contacts to Google Contacts Integration" description="Sync Hubspot Contacts with Google Contacts"
                   tags={["Hubspot", "Integration", "Google Contacts"]} />
+                
+                <SampleList name="FTP EDI Message to Salesforce Opportunity" description="Reads EDI files from a given FTP location and creates a Salesforce Opportunity"
+                  tags={["Hubspot", "Integration", "Google Contacts"]} />
 
               </Container>
             </Col>

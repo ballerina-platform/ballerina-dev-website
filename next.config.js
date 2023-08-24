@@ -399,6 +399,10 @@ const nextConfig = {
       {
         source: `/learn/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
         destination: `/learn/integration/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
+        destination: `/learn/integration/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
       }
     ];
   },

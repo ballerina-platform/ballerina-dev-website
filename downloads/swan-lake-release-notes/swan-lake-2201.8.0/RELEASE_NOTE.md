@@ -85,7 +85,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using MQTT protocol.
 
 ##### `java.jms` Package
-- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using JMS API.
+- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using JMS protocol.
 
 ### Deprecations
 

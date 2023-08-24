@@ -41,15 +41,6 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
                       </div>
-                      
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Enterprise Integration Patterns (EIP)
-                          </a>
-                        </p>
-                        <p className={styles.description}>Learn how common EIPs can be implemented using Ballerina.</p>
-                      </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>

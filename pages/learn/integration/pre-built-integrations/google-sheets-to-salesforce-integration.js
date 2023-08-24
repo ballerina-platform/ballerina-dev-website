@@ -35,10 +35,10 @@ import ballerina/log;
 import ballerinax/googleapis.sheets;
 import ballerinax/salesforce as sfdc;
 
-public type Contact record {
+public type Contact record {|
     string Id;
     string Email;
-};
+|};
 
 const int HEADINGS_ROW = 1;
 
@@ -69,20 +69,20 @@ public function main() returns error? {
         if indexOfEmail is () {
             return error("Email column not found");
         }
-        stream<Contact, error?> retrievedStream = check sfdcClient->query(string \`SELECT Id, Email FROM Contact WHERE Email='\${item[indexOfEmail]}'\`);
+        stream<Contact, error?> retrievedStream = check sfdcClient->query(
+            string \`SELECT Id, Email FROM Contact WHERE Email='\${item[indexOfEmail]}'\`);
         if retrievedStream.next() !is () {
             log:printInfo(string \`Contact already exists. Email : \${item[indexOfEmail]}\`);
-            check sheetsClient->appendRowToSheet(spreadsheetId, duplicateWorksheetName, item);
+            _ = check sheetsClient->appendValue(spreadsheetId, item, {sheetName: duplicateWorksheetName});
             continue;
         }
         record {} newContact = map from int index in 0 ..< headers.length()
-                                    let int|string|decimal header = headers[index]
-                                    select [header.toString(), item[index]];
+            let int|string|decimal header = headers[index]
+            select [header.toString(), item[index]];
 
         _ = check sfdcClient->create("Contact", newContact);
-        log:printInfo(string \`Contact created successfully!. Email : \${item[<int>indexOfEmail]}\`);
+        log:printInfo(string \`Contact created successfully!. Email : \${item[indexOfEmail]}\`);
     }
-
 }
   
 `;

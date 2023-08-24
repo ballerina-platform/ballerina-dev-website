@@ -52,7 +52,7 @@ public function main() returns error? {
         github:SearchResult|github:Error issuesForAssignee = githubClient-> search(query, github:SEARCH_TYPE_ISSUE, 1);
         if issuesForAssignee is github:SearchResult {
             string userName = user?.name ?: "Unknown Name";
-            assigneeSummary += string \`\${userName} : \${issuesForAssignee.issueCount} \${"\n"}\`;
+            assigneeSummary += string \`\${userName} : \${issuesForAssignee.issueCount} \${"\\n"}\`;
         } else {
             log:printError("Error while searching issues of an assignee.",'error = issuesForAssignee);
         }
@@ -72,12 +72,12 @@ public function main() returns error? {
     }
     int totalClosedIssueCount = closedIssues is github:SearchResult? closedIssues.issueCount :0;
 
-    string issueSummary = string \`ISSUE SUMMARY REPORT\${"\n\n"}Repository Name: \${repositoryName}
-        \${"\n"}Total Issues Open: \${totalOpenIssueCount} \${"\n"}Total Issues Closed: \${totalClosedIssueCount}
-        \${"\n\n"}Issue Count by Assignee: \${"\n"}\${assigneeSummary} \${"\n"}\`;
+    string issueSummary = string \`ISSUE SUMMARY REPORT\${"\\n\\n"}Repository Name: \${repositoryName}
+        \${"\\n"}Total Issues Open: \${totalOpenIssueCount} \${"\\n"}Total Issues Closed: \${totalClosedIssueCount}
+        \${"\\n\\n"}Issue Count by Assignee: \${"\\n"}\${assigneeSummary} \${"\\n"}\`;
     email:Client emailClient = check new ();
     string sendEmailResponse = check emailClient->sendEmail(recipientAddress, "Git Issue Summary", issueSummary);
-    log:printInfo("Email sent successfully \n " + sendEmailResponse);
+    log:printInfo("Email sent successfully \\n " + sendEmailResponse);
   }
   
 `;

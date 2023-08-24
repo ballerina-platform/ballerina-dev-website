@@ -45,11 +45,11 @@ public function main() returns error? {
     log:printInfo(topHeadlines.toString());
     newsapi:WSNewsArticle[]? articles = topHeadlines?.articles;
     if articles is newsapi:WSNewsArticle[] && articles.length() != 0 {
-        mailBody = "BBC top news are,\n";
+        mailBody = "BBC top news are,\\n";
         foreach var article in articles {
             string? title = article?.title;
             if title is string {
-                mailBody = mailBody + "\t" + "* " + title + "\n";
+                mailBody = mailBody + "\t" + "* " + title + "\\n";
                 log:printInfo(mailBody);
             }
         }

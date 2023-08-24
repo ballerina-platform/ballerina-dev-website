@@ -31,8 +31,8 @@ export async function getStaticProps() {
     theme: 'github-light'
   });
   const content = `
-import ballerinax/salesforce as sfdc;
 import ballerinax/mysql;
+import ballerinax/salesforce as sfdc;
 
 type Product record {
     string Name;
@@ -68,9 +68,10 @@ sfdc:Client sfdcClient = check new ({
 });
 
 public function main() returns error? {
-    mysql:Client dbClient = check new (host = host, user = user, password = password, database = database, port = port, options = {});
+    mysql:Client dbClient = check new (host, user, password, database, port);
 
-    stream<ProductRecieved, error?> streamOutput = dbClient->query(\`SELECT name, unitType, currencyISO, productId FROM products WHERE processed = false\`);
+    stream<ProductRecieved, error?> streamOutput = dbClient->query(
+        \`SELECT name, unitType, currencyISO, productId FROM products WHERE processed = false\`);
     ProductRecieved[] productsRecieved = check from ProductRecieved items in streamOutput
         select items;
     foreach ProductRecieved prductRecieved in productsRecieved {
@@ -80,9 +81,10 @@ public function main() returns error? {
             CurrencyIsoCode: prductRecieved.currencyISO
         };
         _ = check sfdcClient->create("Product2", product);
-        _ = check dbClient->execute(\`UPDATE products SET processed = true WHERE productId = \${prductRecieved.productId}\`);
-    }      
-}
+        _ = check dbClient->execute(
+            \`UPDATE products SET processed = true WHERE productId = \${prductRecieved.productId}\`);
+    }
+}  
   
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
@@ -204,7 +206,7 @@ export default function Learn({ samples, content }) {
 
                   </Col>
                   <Col xs={12} lg={6}>
-                    <img src={`${prefix}/images/mysql-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/test-sahan/3.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
                   </Col>
                 </Row>
 

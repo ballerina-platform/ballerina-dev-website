@@ -57,8 +57,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 
-- `TypeSymbol` of an intersection type will now return an `IntersectionTypeSymbol`.
-
+- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type(corresponding non-intersection type computed to represent the same value space) symbol.
     ```ballerina
     // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `StringTypeSymbol`.
     type A string & readonly;

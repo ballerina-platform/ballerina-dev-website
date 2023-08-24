@@ -6,6 +6,12 @@ intro: The active proposals list for the Ballerina GitHub repositories.
 keywords: ballerina, community, ballerina community 
 permalink: /community/active-proposals 
 --- 
+## [ballerina-lang](https://github.com/ballerina-platform/ballerina-lang)
+
+|Proposal|Author|Comments|Created date|Status| 
+|---|----|----|----|---| 
+|[[New Feature]: Formatting Ballerina module through project level configurations](https://github.com/ballerina-platform/ballerina-lang/issues/41280)|[poorna2152](https://github.com/poorna2152)|0|2023-08-23|N/A|
+
 ## [ballerina-distribution](https://github.com/ballerina-platform/ballerina-distribution)
 
 |Proposal|Author|Comments|Created date|Status| 

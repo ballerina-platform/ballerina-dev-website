@@ -49,7 +49,6 @@ After the environment is set up, follow the steps below to build the native exec
            user/hello_docker:0.1.0
    
    Generating artifacts
-
    Building the native image. This may take a while
 
    [+] Building 193.8s (13/13) FINISHED                                                                                                                                        docker:default

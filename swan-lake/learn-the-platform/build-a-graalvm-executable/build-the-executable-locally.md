@@ -10,7 +10,7 @@ intro: This guide walks you through compiling a Ballerina application to a nativ
 ## Prerequisites
 
 To complete this part of the guide, you need:
-1. [Ballerina 2201.7.0 (Swan Lake)](/downloads) or greater
+1. [Latest Ballerina Swan Lake distribution](/downloads)
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. GraalVM installed and configured appropriately
@@ -18,17 +18,15 @@ To complete this part of the guide, you need:
 
 ## Configure GraalVM
 
-1. Install GraalVM on Linux, macOS, and Windows (via Git Bash, Cygwin, or WSL) using the following command.
+1. Install GraalVM using [SDKMAN!](https://sdkman.io/). For additional download options, see [Get Started with GraalVM](https://www.graalvm.org/latest/docs/getting-started/).
 
       ```
-      $ bash <(curl -sL https://get.graalvm.org/jdk)  graalvm-ce-java11-22.3.0
+      $ sdk install java 17.0.7-graalce
       ```
-      > **Note:** The above command installs the native-image tool, which is required to generate the native images along with GraalVM. Follow the instructions in the output log to resolve prerequisites for GraalVM native image.
-      For additional information, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started).
-2. Configure the runtime environment. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory as directed at the end of the execution of the above command.
+      > **Note:** If you have installed Ballerina Swan Lake Update 7(2201.7.x) or lower, you have to install GraalVM JDK 11. For download options, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started/macos/).
 
 > **Note:** 
-> - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For instructions on installing Visual Studio Code with the Windows 10 SDK, go to [Using GraalVM and Native Image on Windows 10](https://medium.com/graalvm/using-graalvm-and-native-image-on-windows-10-9954dc071311).
+> - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For more details, see [Prerequisites for Native Image on Windows](https://www.graalvm.org/latest/docs/getting-started/windows/#prerequisites-for-native-image-on-windows).
 > - The GraalVM native-image tool support for Apple M1 (darwin-aarch64) is still experimental. For more updates, see [Support for Apple M1](https://github.com/oracle/graal/issues/2666).
 
 After the environment is set up, follow the steps below to build a native executable for a simple Ballerina HTTP server application.
@@ -56,59 +54,63 @@ After the environment is set up, follow the steps below to build a native execut
    $ bal build --graalvm
 
    Compiling source
-        user/hello_world:0.1.0
+           tharmigan/hello_world:0.1.0
 
-   ==============================================================================================
+   ===============================================================================================
    GraalVM Native Image: Generating 'hello_world' (executable)...
-   ==============================================================================================
-   [1/7] Initializing...                                                          (7.3s @ 0.47GB)
-    Version info: 'GraalVM 22.3.1 Java 11 CE'
-    Java version info: '11.0.18+10-jvmci-22.3-b13'
+   ===============================================================================================
+   [1/8] Initializing...                                                           (5.8s @ 0.30GB)
+    Java version: 17.0.8+7, vendor version: GraalVM CE 17.0.8+7.1
+    Graal compiler: optimization level: 2, target machine: armv8-a
     C compiler: cc (apple, arm64, 14.0.3)
-    Garbage collector: Serial GC
+    Garbage collector: Serial GC (max heap size: 80% of RAM)
     2 user-specific feature(s)
     - com.oracle.svm.thirdparty.gson.GsonFeature
     - io.ballerina.stdlib.crypto.svm.BouncyCastleFeature
-   [2/7] Performing analysis...  [***********]                                  (116.0s @ 2.63GB)
-     24,926 (93.71%) of 26,599 classes reachable
-     81,454 (81.08%) of 100,467 fields reachable
-    134,363 (72.76%) of 184,660 methods reachable
-      1,477 classes,    15 fields, and 2,740 methods registered for reflection
-         91 classes,    94 fields, and    66 methods registered for JNI access
-          6 native libraries: -framework CoreServices,-framework Foundation,dl,pthread,stdc++,z
-   [3/7] Building universe...                                                    (12.4s @ 4.55GB)
-   [4/7] Parsing methods...      [*****]                                         (21.1s @ 3.22GB)
-   [5/7] Inlining methods...     [***]                                            (7.3s @ 4.51GB)
-   [6/7] Compiling methods...    [********]                                      (75.3s @ 4.54GB)
-   [7/7] Creating image...                                                        (9.9s @ 5.48GB)
-     87.22MB (58.51%) for code area:    97,270 compilation units
-     60.14MB (40.34%) for image heap:  472,434 objects and 32 resources
-      1.72MB ( 1.15%) for other data
-    149.07MB in total
-   ----------------------------------------------------------------------------------------------
-   Top 10 packages in code area:         Top 10 object types in image heap:
-     15.91MB ballerina.http/2              14.81MB byte[] for code metadata
-      4.17MB ballerina.http/2.types         3.09MB byte[] for embedded resources
-      2.83MB ballerina.io/1                 6.54MB java.lang.Class
-      1.59MB sun.security.ssl               5.06MB byte[] for java.lang.String
-      1.37MB ballerina.file/1               4.62MB java.lang.String
-      1.19MB com.sun.media.sound            3.64MB byte[] for general heap data
-      1.19MB ballerina.jwt/2                2.28MB com.oracle.svm.core.hub.DynamicHubCompanion
-      1.14MB ballerina.http/2.creators      1.19MB byte[] for reflection metadata
-      1.07MB ballerina.oauth2/2           963.28KB java.lang.String[]
-      1.06MB ballerina.lang$0046query/0   922.42KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
-     55.13MB for 889 more packages        6.12MB for 3467 more object types
-   ----------------------------------------------------------------------------------------------
-              36.0s (13.6% of total time) in 60 GCs | Peak RSS: 3.53GB | CPU load: 3.18
-   ----------------------------------------------------------------------------------------------
+   [2/8] Performing analysis...  [*******]                                        (50.9s @ 2.63GB)
+     24,957 (92.94%) of 26,854 types reachable
+     81,899 (80.56%) of 101,665 fields reachable
+    137,486 (72.86%) of 188,711 methods reachable
+      5,160 types,   117 fields, and 3,566 methods registered for reflection
+         85 types,    74 fields, and    65 methods registered for JNI access
+          5 native libraries: -framework CoreServices, -framework Foundation, dl, pthread, z
+   [3/8] Building universe...                                                      (8.1s @ 2.33GB)
+   [4/8] Parsing methods...      [***]                                             (5.3s @ 3.01GB)
+   [5/8] Inlining methods...     [***]                                             (2.7s @ 3.22GB)
+   [6/8] Compiling methods...    [******]                                         (42.5s @ 2.24GB)
+   [7/8] Layouting methods...    [***]                                             (7.2s @ 4.20GB)
+   [8/8] Creating image...       [***]                                            (11.1s @ 4.29GB)
+     84.96MB (57.36%) for code area:    99,712 compilation units
+     61.55MB (41.55%) for image heap:  488,592 objects and 34 resources
+      1.61MB ( 1.09%) for other data
+    148.12MB in total
+   -----------------------------------------------------------------------------------------------
+   Top 10 origins of code area:       Top 10 object types in image heap:
+     62.81MB hello_world.jar            16.05MB byte[] for code metadata
+     11.99MB java.base                  13.10MB byte[] for embedded resources
+      3.03MB java.xml                    6.59MB java.lang.Class
+      1.41MB java.desktop                5.32MB byte[] for java.lang.String
+      1.30MB svm.jar (Native Image)      4.81MB java.lang.String
+      1.21MB java.net.http               3.80MB byte[] for general heap data
+    589.89kB java.naming                 2.09MB com.oracle.svm.core.hub.DynamicHubCompanion
+    466.25kB java.management             1.28MB byte[] for reflection metadata
+    458.28kB java.rmi                    1.00MB java.lang.String[]
+    318.20kB jdk.crypto.ec             928.40kB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
+    892.91kB for 21 more packages        6.30MB for 3528 more object types
+   -----------------------------------------------------------------------------------------------
+   Recommendations:
+    HEAP: Set max heap for improved and more predictable memory usage.
+    CPU:  Enable more CPU features with '-march=native' for improved performance.
+   -----------------------------------------------------------------------------------------------
+             18.5s (13.6% of total time) in 109 GCs | Peak RSS: 5.11GB | CPU load: 5.08
+   -----------------------------------------------------------------------------------------------
    Produced artifacts:
-    /Users/user/hello_world/target/bin/hello_world (executable)
-    /Users/user/hello_world/target/bin/hello_world.build_artifacts.txt (txt)
-   ==============================================================================================
-   Finished generating 'hello_world' in 4m 24s.
+    /Users/tharmigan/ballerina_demos/hello_world/target/bin/hello_world (executable)
+   ===============================================================================================
+   Finished generating 'hello_world' in 2m 14s.
    ```
 
-   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --native`.
+   > **Note:** On Windows, the Microsoft Native Tools for Visual Studio must be initialized before building a native image. You can do this by starting the **x64 Native Tools Command Prompt** that was installed with the Visual Studio Build Tools. In the x64 Native Tools Command Prompt, navigate to your project folder and run `bal build --graalvm`.
 
 4. Execute the command below to run the native executable.
    ```
@@ -221,6 +223,6 @@ file under the section '[platform.<java*>]' with the attribute
 
 In that scenario, the package owner should evaluate the GraalVM-compatibility with `bal test --graalvm`. If the package has sufficient test cases to verify the compatibility, the package can be marked as GraalVM-compatible by adding the following to the Ballerin.toml file.
 ```toml
-[platform.java11]
+[platform.java17]
 graalvmCompatible = true
 ```

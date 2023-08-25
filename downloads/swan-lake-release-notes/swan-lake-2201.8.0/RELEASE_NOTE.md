@@ -80,20 +80,20 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `graphql` package
 
-- Introduced DataLoader functionality.
+- Introduced the `DataLoader` functionality.
 
 ### Deprecations
 
 #### `graphql` package
 
-- Deprecated the `executeWithType()` method from `graphql:Client`.
+- Deprecated the `executeWithType()` method of the `graphql:Client`.
 
 ### Improvements
 
 #### `graphql` package
 
 - Added support for the `@deprecated` directive to output objects defined using record types.
-- Added support for printing the GraphiQL URL to stdout.
+- Added support for printing the GraphiQL URL to `stdout`.
 - Added support for generating a subgraph SDL schema at compile time.
 
 ### Bug fixes

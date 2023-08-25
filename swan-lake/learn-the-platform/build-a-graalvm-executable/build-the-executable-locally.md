@@ -18,12 +18,14 @@ To complete this part of the guide, you need:
 
 ## Configure GraalVM
 
-1. Install GraalVM using [SDKMAN!](https://sdkman.io/). For additional download options, see [Get Started with GraalVM](https://www.graalvm.org/latest/docs/getting-started/).
+1. Install GraalVM using [SDKMAN!](https://sdkman.io/). 
+   >**Tip:** For additional download options, see [Get Started with GraalVM](https://www.graalvm.org/jdk17/docs/getting-started/).
 
       ```
       $ sdk install java 17.0.7-graalce
       ```
       > **Note:** If you have installed Ballerina Swan Lake Update 7(2201.7.x) or lower, you have to install GraalVM JDK 11. For download options, see [Get Started with GraalVM](https://www.graalvm.org/22.3/docs/getting-started/macos/).
+2. Set the `GRAALVM_HOME` environment variable to the GraalVM installation directory. If you have installed using SDKMAN! you can set it to `JAVA_HOME`.
 
 > **Note:** 
 > - On Windows, the native image requires Visual Studio Code and Microsoft Visual C++ (MSVC). For more details, see [Prerequisites for Native Image on Windows](https://www.graalvm.org/latest/docs/getting-started/windows/#prerequisites-for-native-image-on-windows).
@@ -54,7 +56,7 @@ After the environment is set up, follow the steps below to build a native execut
    $ bal build --graalvm
 
    Compiling source
-           tharmigan/hello_world:0.1.0
+           ballerina/hello_world:0.1.0
 
    ===============================================================================================
    GraalVM Native Image: Generating 'hello_world' (executable)...
@@ -105,7 +107,7 @@ After the environment is set up, follow the steps below to build a native execut
              18.5s (13.6% of total time) in 109 GCs | Peak RSS: 5.11GB | CPU load: 5.08
    -----------------------------------------------------------------------------------------------
    Produced artifacts:
-    /Users/tharmigan/ballerina_demos/hello_world/target/bin/hello_world (executable)
+    /Users/ballerina/hello_world/target/bin/hello_world (executable)
    ===============================================================================================
    Finished generating 'hello_world' in 2m 14s.
    ```

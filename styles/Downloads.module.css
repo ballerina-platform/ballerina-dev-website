@@ -70,6 +70,28 @@ a.cDownload {
   background-size: 40px 40px;
 }
 
+
+a.cVSCodeSample {
+  display: block;
+  transition: none !important;
+  font-size: 25px;
+  font-weight: 200;
+  background-color: #57595d;
+  color: #ffffff !important;
+  padding: 10px 0px 0px 30px;
+  text-decoration: none;
+  min-height: 60px;
+  line-height: 35px;
+  background-image: url('/images/downloads/vscode-alt.svg');
+  background-repeat: no-repeat;
+  background-position: left 30px top 45px;
+  background-size: 30px 30px;
+  height: 90px;
+  margin-bottom: 30px;
+  margin-right: 0px;
+  width: 290px;
+}
+
 .releaseLinks {
   display: flex;
   flex-direction: column;
@@ -157,6 +179,13 @@ a.cDownload .cSize {
   margin-top: -4px;
 }
 
+a.cVSCodeSample .cSize {
+  font-family: monaco, Consolas, "Lucida Console", monospace;
+  font-size: 14px;
+  color: #d9dadb;
+  margin-top: -4px;
+}
+
 .cArchived a, .cArchived a:hover,
 .cArchived a:focus {
   font-size: 16px;
@@ -200,6 +229,14 @@ a.cDownload:hover {
   background-repeat: no-repeat;
   background-position: left 20px top 14px;
   background-size: 40px 40px;
+}
+
+a.cVSCodeSample:hover {
+  background-image: url("/images/downloads/vscode-alt.svg");
+  background-color: #20b6b0;
+  background-repeat: no-repeat;
+  background-position: left 30px top 45px;
+  background-size: 30px 30px;
 }
 
 .dwindows, .dLinux, .dMac, .dVSCode {

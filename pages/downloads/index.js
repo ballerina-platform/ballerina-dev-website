@@ -138,7 +138,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={6}>
-                  <p>Now, you are all set! For more guides, see the <a href={`${prefix}/learn/`}> Learn</a> page.</p>
+                  <p>Now, you are all set! For more guides, see <a href={`${prefix}/learn/`}> Learn</a>.</p>
                </Col>
             </Row>
          </Col>

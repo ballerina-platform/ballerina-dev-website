@@ -59,7 +59,7 @@ Follow the steps below to try out an example of using the Health tool.
     Ballerina FHIR package generation completed successfully.
     ```
 
-4. Build the generated package and push it to a repository.
+4. Build the generated package and push it to the local repository.
 
     >**Info:** You can push either to the local repository or the remote repository in Ballerina Central.
 
@@ -78,7 +78,9 @@ Follow the steps below to try out an example of using the Health tool.
     Successfully pushed target/bala/healthcare-carinbb.lib-any-0.0.1.bala to 'local' repository.
     ```
 
-5. Create a Ballerina project and import the generated package. 
+5. Create a Ballerina project.
+   
+6. Replace the content of the [`Ballerina.toml` file](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) with the below to import the generated package. 
 
     >**Note:** Make sure to add the correct version and repository to the `Ballerina.toml` file.
 
@@ -96,7 +98,7 @@ Follow the steps below to try out an example of using the Health tool.
     repository = "local"
     ```
 
-6. Implement the business logic/mapping using the generated FHIR resource records.
+7. Replace the content of the [`main.bal` file](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) with the below to implement the business logic/mapping using the generated FHIR resource records.
 
     ```ballerina
     import ballerina/http;
@@ -151,7 +153,7 @@ Follow the steps below to try out an example of using the Health tool.
     }
     ```
 
-7. Run the Ballerina project and validate the output.
+8. Run the Ballerina project and validate the output.
 
     ```
     $ bal run
@@ -161,7 +163,7 @@ Follow the steps below to try out an example of using the Health tool.
     Running executable
     ```
 
-8. Invoke the API to test it.
+9. Invoke the API to test it.
 
     ```
     $ curl --location --request GET 'http://localhost:9090/Patient/2121'

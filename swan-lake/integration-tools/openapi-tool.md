@@ -59,8 +59,6 @@ $ bal openapi -i hello.yaml --tags "pets", "list"
 
 Once you execute the command, only the operations related to the given tags get included in the generated service file.
 
->**Info:** For more information on the command options, see [OpenAPI to Ballerina](/learn/openapi-tool).
-
 ## Export OpenAPI contracts from Ballerina services
 
 If you prefer to follow the **code-first approach**, you can convert your Ballerina service APIs into human-readable or machine-readable documents such as OpenAPI documents by using the Ballerina to OpenAPI CLI Tool as follows.

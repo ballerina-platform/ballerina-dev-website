@@ -10,7 +10,7 @@ intro: This guide walks you through compiling a Ballerina application to a nativ
 ## Prerequisites
 
 To complete this part of the guide, you need:
-1. [Ballerina 2201.7.0 (Swan Lake)](/downloads) or greater
+1. [Latest Ballerina Swan Lake distribution](/downloads)
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine
@@ -49,56 +49,54 @@ After the environment is set up, follow the steps below to build the native exec
            user/hello_docker:0.1.0
    
    Generating artifacts
-   
+
    Building the native image. This may take a while
-   
-   [+] Building 263.1s (16/16) FINISHED                                                  
-    => [internal] load build definition from Dockerfile                                  0.0s
-    => => transferring dockerfile: 395B                                                  0.0s
-    => [internal] load .dockerignore                                                     0.0s
-    => => transferring context: 2B                                                       0.0s
-    => [internal] load metadata for docker.io/library/debian:11-slim                     5.7s
-    => [internal] load metadata for docker.io/ballerina/native-builder:2201.7.x         10.1s
-    => [auth] ballerina/native-builder:pull token for registry-1.docker.io               0.0s
-    => [auth] library/debian:pull token for registry-1.docker.io                         0.0s
-    => [build 1/4] FROM docker.io/ballerina/native-builder:2201.7.x                      1.7s
-    => => resolve docker.io/ballerina/native-builder:2201.7.x                            0.0s
-    => CACHED [stage-1 1/4] FROM docker.io/library/debian:11-slim                        0.0s
-    => [internal] load build context                                                     0.3s
-    => => transferring context: 38.39MB                                                  0.3s
-    => [stage-1 2/4] RUN useradd -ms /bin/bash ballerina                                 0.5s
-    => [stage-1 3/4] WORKDIR /home/ballerina                                             0.0s
-    => [build 2/4] WORKDIR /app/build                                                    0.1s
-    => [build 3/4] COPY hello_docker.jar .                                               0.1s
-    => [build 4/4] RUN sh build-native.sh hello_docker.jar hello_docker                250.5s
-    => [stage-1 4/4] COPY --from=build /app/build/hello_docker .                         0.3s
-    => exporting to image                                                                0.3s
-    => => exporting layers                                                               0.3s
-    => => writing image                                                                  0.0s
-    => => naming to docker.io/library/hello_docker:latest                                0.0s
-   
-   Execute the below command to run the generated Docker image: 
-           docker run -d -p 8080:8080 hello_docker:latest
+
+   [+] Building 193.8s (13/13) FINISHED                                                                                                                                        docker:default
+    => [internal] load .dockerignore                                                                                              0.0s
+    => => transferring context: 2B                                                                                                0.0s
+    => [internal] load build definition from Dockerfile                                                                           0.0s
+    => => transferring dockerfile: 416B                                                                                           0.0s
+    => [internal] load metadata for gcr.io/distroless/base:latest                                                                 3.2s
+    => [internal] load metadata for ghcr.io/graalvm/native-image:ol8-java11-22.3.3                                                4.2s
+    => [build 1/4] FROM ghcr.io/graalvm/native-image:ol8-java11-22.3.3@sha256                                                     0.0s
+    => [internal] load build context                                                                                              0.2s
+    => => transferring context: 38.38MB                                                                                           0.2s
+    => [stage-1 1/3] FROM gcr.io/distroless/base@sha256:73deaaf6a207c1a33850257ba74e0f196bc418636cada9943a03d7abea980d6d          0.0s
+    => CACHED [stage-1 2/3] WORKDIR /home/ballerina                                                                               0.0s
+    => CACHED [build 2/4] WORKDIR /app/build                                                                                      0.0s
+    => [build 3/4] COPY hello_world.jar .                                                                                         0.1s
+    => [build 4/4] RUN native-image -jar hello_world.jar -H:Name=hello_world --no-fallback -H:+StaticExecutableWithDynamicLibC  188.7s
+    => [stage-1 3/3] COPY --from=build /app/build/hello_world .                                                                   0.2s 
+    => exporting to image                                                                                                         0.3s 
+    => => exporting layers                                                                                                        0.2s 
+    => => writing image sha256:0129932fea465e620849b5842b42cb8136ab2daabf25e1817a7879207f6d861b                                   0.0s 
+    => => naming to docker.io/library/hello_world:latest                                                                          0.0s 
+                                                                                                                                                                                           
+    Execute the below command to run the generated Docker image: 
+           docker run -d -p 8080:8080 hello_world:latest
    ```
 
    **The Docker file:**
 
    ```	
    # Auto Generated Dockerfile
-   FROM ballerina/native-builder:latest as build
+   FROM ghcr.io/graalvm/native-image:ol8-java11-22.3.3 as build
+
    WORKDIR /app/build
-   COPY hello_docker.jar .
-   
-   RUN sh build-native.sh hello_docker.jar hello_docker
-   
-   FROM debian:11-slim
-   RUN useradd -ms /bin/bash ballerina
+
+   COPY hello_world.jar .
+
+   RUN native-image -jar hello_world.jar -H:Name=hello_world --no-fallback -H:+StaticExecutableWithDynamicLibC
+
+   FROM gcr.io/distroless/base
+
    WORKDIR /home/ballerina
+
    EXPOSE  8080
-   USER ballerina
-   COPY --from=build /app/build/hello_docker .
-   
-   CMD ["./hello_docker"]
+   COPY --from=build /app/build/hello_world .
+
+   CMD ["./hello_world"]
    ```
 
 4. Execute the Docker image.

@@ -25,6 +25,7 @@
     "isomorphic-dompurify": "^0.20.0",
     "jquery": "^3.6.0",
     "js-yaml": "^4.1.0",
+    "lightgallery": "^2.7.1",
     "liquidjs": "^10.0.0",
     "next": "12.1.0",
     "next-image-export-optimizer": "^0.10.0",

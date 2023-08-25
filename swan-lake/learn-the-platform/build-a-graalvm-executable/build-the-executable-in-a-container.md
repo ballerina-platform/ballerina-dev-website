@@ -10,7 +10,7 @@ intro: This guide walks you through compiling a Ballerina application to a nativ
 ## Prerequisites
 
 To complete this part of the guide, you need:
-1. [Latest Ballerina Swan Lake distribution](/downloads)
+1. Latest [Ballerina Swan Lake](/downloads) distribution
 2. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 3. [Docker](https://www.docker.com) installed and configured in your machine

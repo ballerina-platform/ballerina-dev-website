@@ -30,7 +30,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- With the Java 11 to Java 17 migration, some Ballerina interop codes can have broken Java codes and require compatible versions of libraries. Please refer to Java 17 migration guides to update them.
+- Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
 ## Platform updates
 
@@ -80,7 +80,7 @@ $ bal profile
 
 - For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
 
-- The output is given by the `ProfilerOutput.html` file which can be opened using a web browser.
+- The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
 
 >**Note:** This is an experimental feature, which supports only a limited set of functionality.
 
@@ -92,7 +92,7 @@ Ballerina now supports code compilation and execution with Java 17.
 
 #### Support large list and mapping constructors
 
-The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values larger in size.
+The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger in size.
 
 For example, the following array constructor is now supported.
 

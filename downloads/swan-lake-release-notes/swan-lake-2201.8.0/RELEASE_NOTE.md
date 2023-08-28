@@ -54,7 +54,7 @@ const data64 = base64 `ABCD pqrs`;
 
 #### Make `async-send` an action
 
-`async-send` has been reclassified from a statement to an action, in alignment with the Ballerina specification.
+- Reclassified `async-send` from a statement to an action in alignment with the Ballerina specification.
 
 The following case is now supported.
 

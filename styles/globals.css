@@ -1306,6 +1306,33 @@ table.cTopControlsContainer tbody {
   font-size: 18px;
 }
 
+.backToLanding {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+
+.backToLanding * {
+  margin: 16px 16px;
+  cursor: pointer;
+}
+
+.backToLanding p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #20b6b0;
+}
+
+.backToLanding:hover svg {
+  fill: #57595d;
+}
+
+.backToLanding:hover p {
+  font-weight: 400;
+  color: #57595d;
+}
+
 /* ----------- draggable code blocks -------------- */
 #code-container {
   width: 100%;

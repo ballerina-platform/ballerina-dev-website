@@ -32,7 +32,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
-- Fixed a bug that resulted in variables that may or may not be initialized in an `on fail` clause not being identified as potentially uninitialized variables.
+- A bug that allowed variables within an `on fail` clause, which may or may not have been initialized, to evade detection as potentially uninitialized variables, has been fixed.
 
   ```ballerina
   public function main() {
@@ -47,19 +47,19 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   }
   ```
 
-- Fixed a bug related to type inference within query expressions when an expected type was absent. Previously, when iterating over a `map` without specifying an expected type, the query expression's result type was mistakenly inferred as an `array` which is now restricted.
+- A bug that allowed incorrect type inference within query expressions when an expected type was absent has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
   
 - ```ballerina
-  function foo(map<int> mp) {
-      var _ = from int i in mp // compile-time error
+  function iterateMap(map<int> mp) {
+      var result = from int i in mp // compile-time error
                 select i;
   }
   ```
 
-- Fixed a bug where `error` completion was ignored while using collect-clause with query expressions.
+- A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
  
 - ```ballerina
-  function foo(stream<int, error?> strm) {
+  function calculateTotal(stream<int, error?> strm) {
      int _ = from var i in strm // compile-time error: expected int, but found int|error
              collect sum(i);
   }

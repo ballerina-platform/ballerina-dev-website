@@ -173,7 +173,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### Language Server
 
-- Suggest ballerina central packages when they're partially typed
+- Suggest Ballerina Central packages when they are partially typed
 - Improve sorting in Record type descriptor node context
 - Introduce a codeaction to add local module dependencies to Ballerina.toml
 - Introduce change variable type code action for let expression

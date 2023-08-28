@@ -14,7 +14,7 @@ A package can depend on other packages that are available in Ballerina repositor
 * The distribution repository
 * The Ballerina Central repository
 
-It also supports a third repository named the `local repository`. It temporarily overrides dependencies, which is useful for the package development and bug fixing phases. Additionally, a predefined set of custom package repositories are also supported, which are useful to bring third-party repositories into dependency management.
+It also supports a third repository named the `local repository`, and temporarily overrides dependencies, which is useful for the package-development and bug-fixing phases. Additionally, a predefined set of custom package repositories are also supported, which are useful to bring third-party repositories into dependency management.
 
 **Distribution repository**
 
@@ -153,14 +153,14 @@ The local repository is useful to test a package in the development phase or to 
     ```
 
 Once you complete the above steps, the dependency will be picked from the local repository when building the package.
-Ballerina considers the version specified in the Ballerina.toml as the minimum required version and uses the local repository to resolve the dependency.
+Ballerina considers the version specified in the `Ballerina.toml` file as the minimum required version and uses the local repository to resolve the dependency.
 However, the compiler gives priority to the latest version if a new patch version is found in the distribution or Ballerina Central repositories.
 At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
 
 
 ## Use dependencies from a custom repository
 
-Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. You can configure the custom repository in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate it to the package resolution.
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. You can configure the custom repository in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate it into the package resolution.
 
 ```toml
 [[repository.maven]]
@@ -199,7 +199,7 @@ accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"
 
 ### Pull a Ballerina library package from a custom repository
 
-1. Use the following command to pull a Ballerina package from a custom repository.
+1. Execute the following command to pull a Ballerina package from a custom repository.
     ```
    $ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
     ```

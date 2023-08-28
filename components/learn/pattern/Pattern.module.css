@@ -32,3 +32,8 @@
   }
 }
 
+.icon {
+  background-color: #eee;
+  border-radius: 0;
+  margin-left: 8px;
+}

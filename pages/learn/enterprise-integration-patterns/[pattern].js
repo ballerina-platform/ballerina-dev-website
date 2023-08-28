@@ -30,7 +30,7 @@ import { getHighlighter } from "shiki";
 import styles from './Patterns.module.css';
 import { FaRegCopy, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 
-const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-patterns");
+const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
 
 export async function getStaticProps({ params }) {
   const highlighter = await getHighlighter({ theme: 'github-light' });
@@ -85,7 +85,7 @@ export default function Pattern(props) {
             <Container>
               <Row>
                 <Col xs={12} className="patternContent">
-                  <Link href="/learn/patterns/" passHref>
+                  <Link href="/learn/enterprise-integration-patterns/" passHref>
                     <div className="backToLanding">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ export default function Pattern(props) {
           <Col xs={12}>
             <Container>
               <h1>
-                <abbr title="Enterprise Integration Pattern">EIP</abbr>: {props.name}
+                <abbr className={styles.eipabbr} title="Enterprise Integration Pattern">EIP</abbr>: {props.name}
               </h1>
             </Container>
           </Col>

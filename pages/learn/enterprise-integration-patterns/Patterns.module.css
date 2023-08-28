@@ -18,3 +18,9 @@
     font-size: 12px;
     line-height: 1.42857;
 }
+
+.eipabbr {
+    border-bottom: none !important;
+    cursor: inherit !important;
+    text-decoration: none !important;
+  }

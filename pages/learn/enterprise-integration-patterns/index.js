@@ -26,7 +26,7 @@ import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import Pattern from "../../../components/learn/pattern/Pattern";
 
-const baseDirectory = path.resolve("pages/learn/patterns/enterprise-integration-patterns");
+const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
 
 export async function getStaticProps() {
   const files = fs.readdirSync(baseDirectory);
@@ -130,7 +130,7 @@ export default function PatternList(props) {
 
             <Col xs={12}>
               <Container>
-                <h1>Integrations Patterns</h1>
+                <h1>Enterprise Integrations Patterns</h1>
               </Container>
             </Col>
 
@@ -142,7 +142,7 @@ export default function PatternList(props) {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Ballerina usage pattens and best practices for implementing integrations.
+                  Ballerina usage pattens and best practices for implementing enterprise integrations. These patterns are based on the <a href="https://www.enterpriseintegrationpatterns.com">Enterprise Integration Patterns</a> book by Gregor Hohpe and Bobby Woolf. Each sample is a simplified version of a real world integration scenario.
                 </p>
               </Container>
             </Col>
@@ -151,11 +151,13 @@ export default function PatternList(props) {
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
               <Container>
+                    <Row>
                 {
                   props.patterns.map((p) => (
                     <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name}/>
                   ))
                 }
+                    </Row>
               </Container>
             </Col>
           </Row>

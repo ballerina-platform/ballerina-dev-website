@@ -3,11 +3,11 @@
   padding: 80px 0 80px 0;
 }
 
-.homeWhyBal, .homeIntegration, .homeArticles, .homeEvents {
+.homeWhyBal, .homeIntegration, .homeVideos, .homeEvents {
   background: #fff;
 }
 
-.homeBalAction, .homeUsers, .homeVideos {
+.homeBalAction, .homeUsers, .homeArticles {
   background: #f5f5f5;
 }
 

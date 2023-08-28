@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.5.2
 
-<em>Swan Lake 2201.5.2 is the second patch release of Ballerina 2201.5.0 (Swan Lake Update 5) and it includes a new set of bug fixes to the language and tooling.</em>
+<em>Swan Lake 2201.5.2 is the second patch release of Ballerina 2201.5.0 (Swan Lake Update 5) and it includes a new set of bug fixes to the language.</em>
 
 ## Update Ballerina
 

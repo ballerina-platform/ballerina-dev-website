@@ -30,6 +30,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
+
 ## Platform updates
 
 ### New features
@@ -68,7 +70,36 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Ballerina Profiler (experimental)
+
+Introduced the `profile` CLI command, which runs a Ballerina package and does a CPU profile of it during runtime.
+
+```
+$ bal profile
+```
+
+- For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
+
+- The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
+
+>**Note:** This is an experimental feature, which supports only a limited set of functionality.
+
 ### Improvements
+
+#### Java 17 support
+
+Ballerina now supports code compilation and execution with Java 17.
+
+#### Support large list and mapping constructors
+
+The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger in size.
+
+For example, the following array constructor is now supported.
+
+```ballerina
+// Array with 10000 elements. Middle elements are not shown and replaced with `...`.
+int[] array = [1, 2, 3, ..., 9998, 9999, 10000];
+```
 
 ### Bug fixes
 
@@ -78,9 +109,23 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `graphql` package
+
+- Introduced the `DataLoader` functionality.
+
 ### Deprecations
 
+#### `graphql` package
+
+- Deprecated the `executeWithType()` method of the `graphql:Client`.
+
 ### Improvements
+
+#### `graphql` package
+
+- Added support for the `@deprecated` directive to output objects defined using record types.
+- Added support for printing the GraphiQL URL to `stdout`.
+- Added support for generating a subgraph SDL schema at compile time.
 
 ### Bug fixes
 
@@ -105,3 +150,9 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.8.0%22+is%3Aclosed)
+
+## Ballerina packages updates
+
+### New features
+
+Added support for custom package repositories for dependency resolution. This feature enables configuring commonly used package repositories to publish Ballerina libraries and to use them in Ballerina projects. 

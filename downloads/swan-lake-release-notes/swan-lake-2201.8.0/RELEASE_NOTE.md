@@ -160,7 +160,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### Language Server
 
-- Add custom completions for http services
+- Add custom completions for HTTP services.
 
 #### CLI
 

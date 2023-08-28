@@ -78,14 +78,14 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
-#### `soap` Package
-- Introduced the `soap` standard library package, which provides a client API to connect to SOAP enpoints.
+#### `soap` package
+- Introduced the `soap` standard library package, which provides a client API to connect to SOAP endpoints.
 
 #### `mqtt` Package
-- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using MQTT protocol.
+- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` Package
-- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using JMS protocol.
+- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
 
 ### Deprecations
 

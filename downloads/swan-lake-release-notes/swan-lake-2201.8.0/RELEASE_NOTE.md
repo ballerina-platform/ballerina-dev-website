@@ -95,7 +95,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from the Ballerina Central and are managed using the `bal tool` command. For more information, see [Tool commands](https://ballerina.io/learn/cli-documentation/cli-commands/#tool-commands).
 
 #### OpenAPI tool
-- Added support to generate Ballerina client and service declarations from OpenAPI 3.1 definitions.
+- Added support to generate Ballerina client and service declarations from OpenAPI v3.1.x definitions.
 
 ### Improvements
 

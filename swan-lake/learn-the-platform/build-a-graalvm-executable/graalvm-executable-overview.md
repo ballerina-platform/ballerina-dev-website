@@ -7,10 +7,11 @@ active: graalvm-executable-overview
 intro: With the release of Swan Lake Update 7, generating GraalVM executables is officially supported in Ballerina.
 ---
 
-Building a Ballerina GraalVM native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud-native, and polyglot JDK designed to accelerate the execution of applications. There are three different distributions of GraalVM: Oracle GraalVM Community Edition (CE), Oracle GraalVM Enterprise Edition (EE), and Mandrel. You can install any to use the Ballerina GraalVM native functionality.
+Building a Ballerina GraalVM native executable requires the [GraalVM](https://www.graalvm.org) [native-image](https://www.graalvm.org/22.3/reference-manual/native-image/) compiler. GraalVM is a high-performance, cloud-native, and polyglot JDK designed to accelerate the execution of applications. There are four different distributions of GraalVM: GraalVM Community Edition (CE), GraalVM Enterprise Edition (EE), Oracle GraalVM and Mandrel. You can install any to use the Ballerina GraalVM native functionality.
 
 - GraalVM CE is the free version of GraalVM, which is distributed under GPLv2+CE.
 - GraaLVM EE is the paid version of GraalVM, which comes with a few additional features such as options for GC, debugging, and other optimizations.
+- Oracle GraalVM is the new distribution from Oracle available under the [GraalVM Free Terms and Conditions license](https://www.oracle.com/downloads/licenses/graal-free-license.html).
 - Mandrel is a downstream distribution of the Oracle GraalVM CE, which is maintained by Red Hat.
 
 ## GraalVM executable vs. Uber Jar
@@ -43,15 +44,15 @@ Ballerina runtime, [standard libraries](/learn/ballerina-specifications/#standar
 GraalVM native image has build options that can be passed to the native-image builder. For a Ballerina application, these options can be configured in the `Ballerina.toml` file as follows.
 ```toml
 [build-options]
-graalvmBuildOptions = "--verbose --static"
+graalvmBuildOptions = "--verbose -H:+StaticExecutableWithDynamicLibC"
 ```
 
 The options can be also passed as an argument to the build and test commands.
 ```
-$ bal build --graalvm --graalvm-build-options="--static"
+$ bal build --graalvm --graalvm-build-options="-H:+StaticExecutableWithDynamicLibC"
 ```
 ```
-$ bal test --graalvm --graalvm-build-options="--static"
+$ bal test --graalvm --graalvm-build-options="-H:+StaticExecutableWithDynamicLibC"
 ```
 
 ## Build the GraalVM executable

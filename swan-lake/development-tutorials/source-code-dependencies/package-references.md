@@ -39,14 +39,13 @@ intro: The sections below include information about the structure of a package d
 
 The `Ballerina.toml` identifies the directory as a Ballerina package. It contains all the meta information that is needed to build your package.
 
+Below is an example of a simple `Ballerina.toml` file.
+
 ```toml
 [package]
 org = "samjs"
 name = "winery"
 version = "0.1.0"
-export = ["winery", "winery.model"]
-include = ["documents", "sample.png"]
-icon = "icon.png"
 
 [build-options]
 observabilityIncluded = true
@@ -113,10 +112,17 @@ Ballerina strictly follows the rules of <a href="https://semver.org/" target="_b
 
 ### The `export` field
 
-You can specify the modules which should be visible to the outside using the `export` field. The export field accepts a string array, which contains the names of the modules which
-need to be publicly visible.
+By default, only the default module of the package is public. To control this behavior, specify the modules, which should be visible to the outside using the `export` field under the `[package]` table. The export field accepts a string array, which accepts the names of the modules that need to be publicly visible. The modules should be referred to in the `<pacakge_name>.<module_name>` format. The default module should be referenced by the package name.
 
-The modules should be referred in the `<pacakge_name>.<module_name>` format. The default module should be referenced by the package name.
+The below example shows how to specify the modules to expose.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+export = ["winery", "winery.model"] # The default module and the `winery.model` module will be public.
+```
 
 ### The `icon` field
 
@@ -124,12 +130,60 @@ The `icon` field accepts a path to an icon. The specified icon will be packaged 
 
 Only the `.png` format is supported for the icon.
 
+The below example shows how to specify an icon for the package.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+icon = "icon.png"
+```
+
 ### The `include` field
 
 You can provide paths to any additional resources, which need to be packed in the BALA file during the use of the `bal pack` command.
 
-The `include` field accepts a string array, which contains the directory or file paths to include in the BALA. The paths should be relative to the package root directory.
-The included file paths will be packaged into the root of the BALA preserving its original structure.
+The `include` field accepts a string array, which contains the directory or file paths to include in the BALA. The included file paths will be packaged into the root of the BALA preserving its original structure. 
+
+The paths should be relative to the package root directory and support the following patterns.
+
+```toml
+include = [
+    "foo", # Any file/dir named 'foo'.
+    "/bar", # Any file/dir named `bar` in the root dir of the package.
+    "baz/", # Directories named `baz` (files are ignored).
+    "/qux/", # Any dir named `qux` in the root dir.
+    "*.html", # Any file with the `.HTML` extension. 
+    "foo*bar.*", # Any file that has a name starting with `foo`,
+                 # ending with `bar`,
+                 # with any no of characters in the middle, 
+                 # and ending with an extension after a dot.
+    "plug?", # Any file/dir named `plug` followed by a single character
+                # (e. g., 'plugr', 'plugz').
+    "thud[ab]", # Any file/dir named `thuda` or `thudb`.
+    "fred[q-s]", # Any file/dir named `fredq` to `thuds` in alphabetical order.
+    "**/grault/garply", # A file/dir that has '/grault/garply' at the end of their paths.
+    "waldo/xyzzy/**", # A file/dir that has `waldo/xyzzy/` at the beginning
+                      # followed by the rest of the path.
+    "babble/**/bar", # A path that has `babble` followed by any path in the middle
+                     # ending with `bar`.
+    "*.rs", # Files that has the `.rs` extension.
+    "!corge.rs", # Exclude the `corge.rs` file from the selected paths of the patterns above.
+    "include-resources/thud", # Direct dir path from the root is acceptable.
+    "include-resources/x.js", # Direct file path from the root is acceptable.
+    ]
+
+```
+The below example shows how a custom directory can be included in the BALA.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+include = ["documents", "sample.png"]
+```
 
 ### Build options
 

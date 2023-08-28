@@ -5,8 +5,7 @@ import styles from './Pattern.module.css';
 export default function Pattern(props) {
   const href = props.name.replace(/\s+/g, '-').toLowerCase();
   return (
-    <Row>
-      <Col xl={{ offset: 2, span: 8 }}>
+      <Col xl={{span: 6 }}>
         <Card className={`${styles.card} mb-3`}>
           <Row className="g-0 align-items-center">
             <Col md={2} className='text-center'>
@@ -26,6 +25,5 @@ export default function Pattern(props) {
           </Row>
         </Card>
       </Col>
-    </Row>
   );
 }

@@ -179,7 +179,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Introduce a code action to change the variable type of a `let` expression.
 - Introduce a code action to create a function for the expression of a `select` clause.
 - Improve completions in the service declaration node context.
-- LS simulator improvements
+- Improved the LS simulator.
 
 ### Bug fixes
 

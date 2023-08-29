@@ -1,7 +1,6 @@
 ---
 title: 'Data immutability'
 description: Immutable data is a key aspect that ensures data integrity, simplifies code reasoning, and minimizes the risk of unexpected side effects. <br><br>In Ballerina, immutability is emphasized by default, offering deep immutability for data. This approach promotes a safer programming environment, where data remains unchanged once created, enhancing code reliability and predictability.
-image: 
 url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/immutability/ballerina/main.bal
 ---
 ```

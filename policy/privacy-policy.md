@@ -52,7 +52,7 @@ We will only collect and process personal data about You where we have lawful ba
 - The processing is necessary for us to comply with a relevant legal obligation; or
 - The processing is in our legitimate commercial interests and necessary for us to administer our business, subject to Your interests and fundamental rights.
 
-Where we rely on Your consent to process personal data, You have the right to withdraw or decline Your consent at any time, and where we rely on legitimate interests, You have the right to object. If You have any questions about the lawful bases upon which we collect and use Your personal data or wish to withdraw consent or object, You can submit a request via dpo@wso2.com or through the details listed in the [How to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
+Where we rely on Your consent to process personal data, You have the right to withdraw or decline Your consent at any time, and where we rely on legitimate interests, You have the right to object. If You have any questions about the lawful bases upon which we collect and use Your personal data or wish to withdraw consent or object, You can submit a request via <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a> or through the details listed in the [How to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
 
 
 ## Who is your information shared with?
@@ -93,11 +93,11 @@ We may retain your information for a period of time consistent with the original
 
 ## Your rights to your data and how to manage your preferences
 
-WSO2 acknowledges your right to access your data. If information pertaining to you as an individual has been submitted to us, then you have the right to access, correct, or edit your data. If you wish, we can provide all the personal information on our records to you or to someone you nominate in a portable format as well. Our contact details are provided at the bottom of the page, or you may submit a request through the “Send Request” form that appears at the bottom of your screen. All you have to do is to request, and we are happy to help.
+WSO2 acknowledges your right to access your data. If information pertaining to you as an individual has been submitted to us, then you have the right to access, correct, or edit your data. If you wish, we can provide all the personal information on our records to you or to someone you nominate in a portable format as well. Our contact details are provided at the bottom of the page, or you may submit a request through <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. All you have to do is to request, and we are happy to help.
 
 You can ask us to stop using all or some of your personal data (e.g., if we have no legal right to keep using it) or to limit our use of it (e.g., if your personal data is inaccurate or unlawfully held).
 
-You may also choose to delete your data from our website at any time you choose, and unsubscribe from any Ballerina mailing lists you are on. You can unsubscribe from our marketing emails by clicking on the unsubscribe link which is at the bottom of our marketing emails or via the Form that pops up on this page . Please note that deleting your data may affect the provision of some services.
+You may also choose to delete your data from our website at any time you choose, and unsubscribe from any Ballerina mailing lists you are on. You can unsubscribe from our marketing emails by clicking on the unsubscribe link which is at the bottom of our marketing emails or by sending an email to <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. Please note that deleting your data may affect the provision of some services.
 
 We only ever retain your personal data even after you have ceased using our services, requested to unsubscribe or delete your data only if reasonably necessary to comply with our legal obligations (including law enforcement requests), meet regulatory requirements, resolve disputes, maintain security, prevent fraud and abuse, or fulfill your request to "unsubscribe" from further messages from us.
 

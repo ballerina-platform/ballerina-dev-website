@@ -32,7 +32,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
-- A bug that allowed assigning `anydata` value to a `readonly` `anydata` variable has been fixed.
+- A bug where an `anydata` value could be assigned to contexts requiring an `anydata & readonly` value has been fixed.
 
     ```ballerina
     public function main() {
@@ -41,7 +41,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
   
-- A bug that allowed including a `readonly` `service` object inside a non-`service` `readonly` class has been fixed.
+- A bug that allowed including a `readonly` `service` object inside a `readonly` non-`service` class has been fixed.
 
     ```ballerina
     public type A readonly & service object {
@@ -49,7 +49,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     };
   
     readonly client class B {
-        *A;
+        *A; // Compilation error now.
   
         isolated remote function execute() returns int {
             return 2;
@@ -59,10 +59,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 
-- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type(corresponding non-intersection type computed to represent the same value space) symbol.
+- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).
     ```ballerina
-    // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `StringTypeSymbol`.
-    type A string & readonly;
+    // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `ArrayTypeSymbol`.
+    type A int[] & readonly;
     ```
 
 ## Platform updates
@@ -119,11 +119,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### New Runtime Java APIs
 
-- Introduced the `getImpliedType()` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to retrieve the referred type if a given type is a type-reference type or to retrieve the effective type if the given type is an intersection type.
-
-    ```java
-    Type getImpliedType(Type type)
-    ```
+- Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively retrieve the referred type or the effective type of given type.
 
 #### Ballerina Profiler (experimental)
 
@@ -198,6 +194,7 @@ type ReadonlyIntArray readonly & int[];
 
 ReadonlyIntArray array = [1, 2, 3, 4];
 ```
+
 the results of the runtime API calls will be as follows.
 
 | **Runtime API call**                                   | **Result**                                                     |

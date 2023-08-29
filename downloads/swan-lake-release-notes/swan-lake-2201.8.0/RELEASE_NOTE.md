@@ -68,7 +68,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
  
 - ```ballerina
   function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
-    int res = from var {department, salary} in strm // Compilation error now.
+    int total = from var {department, salary} in strm // Compilation error now.
         where department == dept
         collect sum(salary);
   }

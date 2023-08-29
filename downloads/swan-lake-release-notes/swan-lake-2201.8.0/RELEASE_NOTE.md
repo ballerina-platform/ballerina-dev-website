@@ -30,6 +30,13 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Fixed a bug that allowed using field access with a map of `xml`. 
+
+    ```ballerina
+    map<xml> m = {a: xml `foo`};
+    xml x = check m.a; // Compilation error now.
+    ```
+
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
 ## Platform updates

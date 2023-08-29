@@ -123,7 +123,8 @@ export default function LeftNav(props) {
             :
             (directory.position > 0) ?
               <li key={directory.id}>
-                {(directory.dirName === 'API Docs') ?
+                {(directory.dirName === 'API Docs' || directory.dirName === "Ballerina by Example" || 
+                  directory.dirName === "Visual Studio Code extension" || directory.dirName === "Ballerina API Docs") ?
                   <a id={directory.id} className={(id === directory.id) ? styles.active : null}
                     href={(`${prefix}`) ? `${prefix}` + directory.url : directory.url}
                     target='_blank' rel="noreferrer">

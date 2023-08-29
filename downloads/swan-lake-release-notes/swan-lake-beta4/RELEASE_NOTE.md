@@ -14,7 +14,7 @@ It introduces the new language features planned for the Swan Lake GA release and
 
 ## Updating Ballerina
 
-If you are already using Ballerina, you can use the [update tool](/learn/cli-documentation/update-tool/) to directly update to Ballerina Swan Lake Beta4 as follows. 
+If you are already using Ballerina, you can use the [update tool](/learn/update-tool/) to directly update to Ballerina Swan Lake Beta4 as follows. 
 
 To do this, first, execute the command below to get the update tool updated to its latest version. 
 

@@ -20,13 +20,8 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 
 import Layout from "../../layouts/LayoutLearn";
-import Intro from "../../components/learn/intro/Intro";
-import LearnTheLanguage from "../../components/learn/language/Language";
-import UseCases from "../../components/learn/use-cases/UseCases";
-import Platform from "../../components/learn/platform/Platform";
-import New from "../../components/learn/new/New";
+import Boxes from "../../components/learn/boxes/Boxes";
 import Head from "next/head";
-import { prefix } from '../../utils/prefix';
 
 export default function Learn() {
 
@@ -141,11 +136,8 @@ export default function Learn() {
             </Col>
           </Row>
 
-          <Intro />
-          <LearnTheLanguage getLink={getLink}/>
-          <UseCases getLink={getLink}/>
-          <Platform getLink={getLink}/>
-          {/* <New getLink={getLink}/> */}
+          <Boxes getLink={getLink}/>
+
         </Col>
         
         

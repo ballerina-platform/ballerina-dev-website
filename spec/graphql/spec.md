@@ -5,7 +5,7 @@ _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
 _Updated_: 2023/08/22 \
 _Edition_: Swan Lake \
-_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
+_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
 ## Introduction
 
@@ -254,7 +254,7 @@ Since the GraphQL listener uses the `http:Listener` and the `websocket:Listener`
 ###### Example: Listener Configuration
 
 ```ballerina
-listener graphql:Listener graphqlListener = = new (9090, timeout = 10);
+listener graphql:Listener graphqlListener = new (9090, timeout = 10);
 ```
 
 >**Note:** If the GraphQL service includes subscription operations, the `httpVersion` of the `graphql:ListenerConfiguration` must be either `"1.0"` or `"1.1"`. Otherwise, this will cause a runtime error when attaching the service to the listener.
@@ -695,7 +695,7 @@ When the `@graphql:ID` annotation is used, the generated schema will show the fi
 
 >**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
 
->**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements. 
+>**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements.
 
 ###### Example: ID Scalar Type
 ```ballerina
@@ -3606,7 +3606,7 @@ isolated distinct service class User {
 
         dataloader:DataLoader rePostsLoader = ctx.getDataLoader("rePostsLoader");
         Post[] rePosts = check rePostsLoader.get(self.userId);
-        
+
         return [...posts, ...rePosts];
     }
 

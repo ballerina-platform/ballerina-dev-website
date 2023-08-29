@@ -45,7 +45,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   public function main() {
     int resultInt;
     transaction {
-        resultInt = check maybeProvideInt(true);
+        resultInt = check calculateDefaultValue(true);
         check commit;
     } on fail {
         io:println("Failed to initialize resultInt");
@@ -54,7 +54,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   }
   ```
 
-- A bug that allowed incorrect type inference within query expressions when an expected type was absent has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
+- A bug that resulted incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
   
 - ```ballerina
   function filterEmployeesByDepartment(map<Employee> employees, string department) {

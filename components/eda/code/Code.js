@@ -114,7 +114,7 @@ export default function UseCases(props) {
                                         (pam.frontmatter.url && pam.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={pam.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -174,7 +174,7 @@ export default function UseCases(props) {
                                         (websub.frontmatter.url && websub.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={websub.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -190,7 +190,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>WebSub Subscriber</span>
                                         <a href='https://ballerina.io/learn/by-example/websub-webhook-sample/' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -198,7 +198,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>WebSub Hub</span>
                                         <a href='https://github.com/ballerina-platform/module-ballerina-websubhub/tree/main/examples/kafka-hub' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -269,7 +269,7 @@ export default function UseCases(props) {
                                         (websocket.frontmatter.url && websocket.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={websub.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -329,7 +329,7 @@ export default function UseCases(props) {
                                         (graphql.frontmatter.url && graphql.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={graphql.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -389,7 +389,7 @@ export default function UseCases(props) {
                                         (grpc.frontmatter.url && grpc.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={grpc.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -480,7 +480,7 @@ export default function UseCases(props) {
                                         (file.frontmatter.url && file.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={file.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -540,7 +540,7 @@ export default function UseCases(props) {
                                         (email.frontmatter.url && email.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={websub.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>

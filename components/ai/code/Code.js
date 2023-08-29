@@ -180,7 +180,7 @@ export default function UseCases(props) {
                                         (why.frontmatter.url && why.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={why.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -273,7 +273,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Summarize text using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -281,7 +281,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Correct grammar and spelling in text using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -289,7 +289,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 3: Tweet on upcoming and recently released movies using Azure OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/tweet_on_upcoming_and_recently_released_movies_using_azure_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -351,7 +351,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Generate images using OpenAI and store them in Google Drive</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_images_using_openai_and_store_in_google_drive/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -360,7 +360,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Create products in Shopify using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/tree/main/create_products_in_shopify_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -368,7 +368,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 3: Create and send customized greeting cards using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/create_and_send_customized_greeting_cards_using_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -376,7 +376,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 4: Generate a poem and an image on a topic using OpenAI and Stable Diffusion and email both of them</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/generate_and_send_a_creative_email_using_openai_and_stability_ai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -443,7 +443,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Convert audio to text and translate using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -451,7 +451,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Audio-to-text summarization using OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/audio_to_text_summarization_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -511,7 +511,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Fine-tune GPT-3 models</span>
                                                 <a href={tune.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -572,7 +572,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Answer questions by performing a similarity search on embedding vectors stored in Weaviate</span>
                                                 <a href={vector.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -633,7 +633,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Text similarity comparison with OpenAI GPT-3 embeddings</span>
                                                 <a href={libraries.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -692,7 +692,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Chatbot service for Slack using Azure OpenAI</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/slackbot_using_azure_openai/service.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -700,7 +700,7 @@ export default function UseCases(props) {
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Question Answering based on Context using OpenAI GPT-3 and Pinecone</span>
                                         <a href='https://github.com/ballerina-guides/ai-samples/blob/main/question_answering_based_on_context_using_openai_and_pinecone/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -761,7 +761,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Question answering with OpenAI</span>
                                                 <a href={powered.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -828,7 +828,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Grammar and spelling correction in text using OpenAI</span>
                                                 <a href={robust.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -889,7 +889,7 @@ export default function UseCases(props) {
                                             <div className={styles.dVersion}>
                                                 <span>Personalized greetings with custom design using OpenAI</span>
                                                 <a href={concurrency.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>

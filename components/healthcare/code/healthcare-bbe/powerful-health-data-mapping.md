@@ -21,10 +21,11 @@ public function main() returns error? {
     // https://build.fhir.org/ig/HL7/v2-to-fhir/branches/master/datatype_maps.html.
     json v2tofhirResult = check v2tofhirr4:v2ToFhir(msg);
     io:println("Transformed FHIR message: ", v2tofhirResult.toString());
-    io:println("------------------------------------------------------------------");
+
+    // v2tofhirr4 library exposes these low level functions as well,
+    // In this case, by using stringToHl7 function you can pass a HL7v2 message string and get a parsed HL7v2 message model.
     hl7:Message hl7msg = check v2tofhirr4:stringToHl7(msg);
     if (hl7msg is hl7v23:ADT_A01) {
-        // v2tofhirr4 library exposes these low level functions as well,
         // if you want to work with HL7v2 segments directly.
         // Transform HL7v2 PID to FHIR R4 Patient Name.
         r4:HumanName[] patientName = v2tofhirr4:pidToPatientName(hl7msg.pid.pid5,

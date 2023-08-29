@@ -1,0 +1,118 @@
+.cardBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.subArticles {
+    margin-bottom: 10px;
+}
+
+.cardBody {
+    padding: 18px;
+}
+
+.cardTitle {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+
+.cardText a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.cardText h4 {
+    line-height: 30px;
+    font-size: 22px;
+}
+
+.cardText a:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+    line-height: 30px;
+}
+
+.date {
+    font-size: 14px;
+    color: #464646;
+}
+
+@media (max-width: 576px) {
+    .cardText {
+        height: 115px;
+    }
+}
+
+@media (min-width: 576px) {
+    .cardText {
+        height: 100px;
+    }
+}
+
+@media (min-width: 768px) {
+    .cardText {
+        height: 60px;
+    }
+}
+
+@media (min-width: 992px) {
+    .cardText {
+        height: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .cardText {
+        height: 115px;
+    }
+}
+
+.newsCard {
+    display: flex;
+    flex-flow: row wrap;
+    /* margin-top: 20px !important; */
+}
+
+/* @media (min-width: 768px) {
+    .useCaseCard {
+        margin-top: 0px !important;
+    }
+} */
+
+.useCaseCard .cardWrapper {
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cardWrapper h3 {
+    font-size: 22px;
+    color: #585a5e;
+    height: auto;
+}
+
+.cardWrapper .cardDescription {
+    height: auto;
+    margin-top: 20px;
+    color: #585a5e;
+    font-weight: 400;
+}
+
+.author {
+    margin-bottom: 0;
+}
+
+.author span {
+    font-weight: 400;
+}
+
+.date {
+    margin-bottom: 0;
+    font-size: 14px;
+}

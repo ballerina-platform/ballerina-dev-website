@@ -48,19 +48,18 @@ export default function Users(props) {
 
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" />
-              <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" />
-              <img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`} width={180}  alt="Fat Tuesday" title="Fat Tuesday" />
-              <img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" />
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
 
           </Col>
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" />
-              <img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" />
-              <img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" />
-              <img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" />
+          <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
+            <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="choero" />
+            <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="wso2" />
           </Col>
         </Row>
       </Container>

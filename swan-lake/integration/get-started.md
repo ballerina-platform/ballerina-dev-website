@@ -135,7 +135,7 @@ Let's take a moment to digest the new constructs in this code:
 - In this example, there are two `resource` methods: The first one responds to HTTP GET requests with the `/greeting` path and the other one responds to `GET` requests with the `/greeting/{name}` path.
 - These `resource` methods return a `string` value, which maps to the `text/plain` content-type in the HTTP response.
 
->**Info:** To learn more about services, see [Network interaction](/learn/network-interaction/). 
+>**Info:** To learn more about services, see [Network interaction](/learn/distinctive-language-features/network-interaction/). 
 
 ## Run the simple REST API
 

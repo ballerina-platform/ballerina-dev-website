@@ -48,8 +48,8 @@ export default function Articles(props) {
             </Col>
           </Row>
 
-          <Row>
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+          <Row className={styles.resourceRow}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -58,15 +58,13 @@ export default function Articles(props) {
                       <h4 className="card-title" >10 lesser-known programming languages revolutionizing the tech industry</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Arslan Mirza</span> in Level Up Coding</p>
-                    <p className={styles.date}>Jul 4, 2023</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Arslan Mirza</p>
+                  <p className={styles.date}>Jul 4, 2023</p>
                 </Card.Body>
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -75,15 +73,13 @@ export default function Articles(props) {
                       <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Parth Patel</span> in Cmarix</p>
-                    <p className={styles.date}>June 19, 2023</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Parth Patel</p>
+                  <p className={styles.date}>June 19, 2023</p>
                 </Card.Body>
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -92,18 +88,16 @@ export default function Articles(props) {
                       <h4>8 lesser-known programming languages worth exploring</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Rocky Sah</span> in Codelivly</p>
-                    <p className={styles.date}>June 13, 2023</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Codelivly</p>
+                  <p className={styles.date}>June 13, 2023</p>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
 
 
-          <Row>
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+          <Row className={styles.resourceRow}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -112,15 +106,13 @@ export default function Articles(props) {
                       <h4 className="card-title" >Top 12 microservices frameworks</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Vishal Shah</span> in Tatvasoft</p>
-                    <p className={styles.date}>Apr 25, 2023</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Vishal Shah</p>
+                  <p className={styles.date}>Apr 25, 2023</p>
                 </Card.Body>
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -129,15 +121,13 @@ export default function Articles(props) {
                       <h4 className="card-title" >14 programming languages you&apos;ve probably never heard of</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Clement Brian</span> in Level Up Coding</p>
-                    <p className={styles.date}>Apr 12, 2023</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Clement Brian</p>
+                  <p className={styles.date}>Apr 12, 2023</p>
                 </Card.Body>
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={4}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -146,10 +136,8 @@ export default function Articles(props) {
                       <h4>7 best programming languages for microservices</h4>
                     </a>
                   </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Josh Wulf</span> in Camunda</p>
-                    <p className={styles.date}>September 29, 2022</p>
-                  </div>
+                  <p className={`${styles.author} card-text`}> By Josh Wulf</p>
+                  <p className={styles.date}>September 29, 2022</p>
                 </Card.Body>
               </Card>
             </Col>

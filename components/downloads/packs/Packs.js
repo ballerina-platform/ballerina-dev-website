@@ -53,7 +53,7 @@ export default function Packs(props) {
 
    return (
       <>
-         <Col xs={12} sm={12} md={12} lg={4} style={{marginTop:"10px"}}>
+         <Col xs={12} sm={12} md={12} lg={4}>
             <h3 className={styles.dwindows} style={windowsIcon}>Windows</h3>
             <a id="packWindows"
                href={`${distServer}/downloads/${swanlake.version}/${swanlake['windows-installer']}`}
@@ -63,7 +63,7 @@ export default function Packs(props) {
                <div className={styles.cSize}>msi <span id="packWindowsName">{swanlake['windows-installer-size']}</span></div>
             </a>
          </Col>
-         <Col xs={12} sm={12} md={12} lg={4} style={{marginTop:"10px"}}>
+         <Col xs={12} sm={12} md={12} lg={4}>
             <h3 className={styles.dLinux} style={linuxIcon}>Linux </h3>
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>
@@ -84,7 +84,7 @@ export default function Packs(props) {
                </div>
             </div>
          </Col>
-         <Col xs={12} sm={12} md={12} lg={4} style={{marginTop:"10px"}}>
+         <Col xs={12} sm={12} md={12} lg={4}>
             <h3 className={styles.dMac} style={macIcon}>macOS</h3>
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>

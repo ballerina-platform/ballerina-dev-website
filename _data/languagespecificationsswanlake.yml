@@ -1,0 +1,22 @@
+- title: Language specifications
+  url: /learn/language-specifications
+  sublinks:
+    - title: Released specifications
+      url: /learn/language-specifications/#released-specifications
+      active: released-specifications
+    - title: Current snapshot
+      url: /learn/language-specifications/#current-snapshot
+      active: current-snapshot
+    - title: Previous drafts 
+      url: /learn/language-specifications/#previous-drafts
+      active: previous-drafts
+    - title: Specification versioning convention
+      url: /learn/language-specifications/#specification-versioning-convention
+      active: specification-versioning-convention
+    - title: Proposals for improvements
+      url: /learn/language-specifications/#proposals-for-improvements
+      active: proposals-for-improvements
+
+
+
+

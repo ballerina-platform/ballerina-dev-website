@@ -4,7 +4,7 @@ title: Configure values
 description: Below are a few advanced use cases in which you configure values using configurable variables.
 intro: Below are a few advanced use cases in which you configure values using configurable variables.
 keywords: ballerina, programming language, configurable, variables, kubernetes, pod
-permalink: /learn/configure-values/
+permalink: /learn/configure-ballerina-programs/configure-values/
 active: configure-values
 ---
 

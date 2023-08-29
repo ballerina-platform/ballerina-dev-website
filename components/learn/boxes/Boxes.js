@@ -19,8 +19,6 @@ import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import styles from './Boxes.module.css';
 import { prefix } from '../../../utils/prefix';
-
-
 export default function Boxes(props) {
   return (
     <>
@@ -41,6 +39,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                            Enterprise Integration Patterns (EIP)
+                          </a>
+                        </p>
+                        <p className={styles.description}>Learn how common EIPs can be implemented using Ballerina.</p>
+                      </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>
@@ -49,15 +55,6 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Explore and try out a series of guided integration examples.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/enterprise-integration-patterns/`} className={styles.titleLink}>
-                            Enterprise integration patterns
-                          </a>
-                        </p>
-                        <p className={styles.description}>Usage patterns for implementing robust integrations.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -122,11 +119,11 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/grpc-tool`} className={styles.titleLink}>
-                            gRPC tool
+                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                            Strand dump tool
                           </a>
                         </p>
-                        <p className={styles.description}>Develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.</p>
+                        <p className={styles.description}>Dump and inspect the currently available strands of a Ballerina program.</p>
                       </div>
 
                       <div className={styles.content}>
@@ -159,7 +156,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a target='_blank' rel="noreferrer" href={`${prefix}/learn/by-example`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/by-example`} className={styles.titleLink}>
                             Ballerina by Example
                           </a>
                         </p>
@@ -167,7 +164,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a target='_blank' rel="noreferrer" href={`https://lib.ballerina.io/`} className={styles.titleLink}>
+                          <a href={`https://central.ballerina.io/`} className={styles.titleLink}>
                             Ballerina API Docs
                           </a>
                         </p>
@@ -183,7 +180,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/" className={styles.titleLink}>
+                          <a target='_blank' rel="noreferrer" href="https://wso2.com/ballerina/vscode/docs/" className={styles.titleLink}>
                             Visual Studio Code extension</a>
                         </p>
                         <p className={styles.description}>Features of the Ballerina Visual Studio Code extension.</p>
@@ -202,21 +199,7 @@ export default function Boxes(props) {
           <Container>
             <Row>
               <Col xs={12}>
-                <h2 id="development-tutorials" className='section'>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    className="bi bi-link-45deg mdButton pe-2"
-                    viewBox="0 0 16 16"
-                    onClick={(e) => props.getLink(e.target, 'development-tutorials')}
-                  >
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                  </svg>
-                  Development tutorials
-                </h2>
+                <h2>Development tutorials</h2>
               </Col>
             </Row>
             <Row>
@@ -228,29 +211,11 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/cli-commands`} className={styles.titleLink}>
-                            CLI commands
+                          <a href={`${prefix}/learn/build-and-run/cli-commands`} className={styles.titleLink}>
+                            Bal command
                           </a>
                         </p>
                         <p className={styles.description}>CLI commands of the bal tool.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/update-tool/`} className={styles.titleLink}>
-                            Update tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Maintain your Ballerina installation up to date with the latest patch and minor releases.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/ballerina-shell`} className={styles.titleLink}>
-                            Ballerina Shell
-                          </a>
-                        </p>
-                        <p className={styles.description}>Details of the Read-Evaluate-Print Loop (REPL) for Ballerina.</p>
                       </div>
                     </div>
                   </div>
@@ -348,7 +313,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/bal-persist-overview`} className={styles.titleLink}>
-                            Bal persist overview
+                            Overview
                           </a>
                         </p>
                         <p className={styles.description}>How to simplify data persistence with <code>bal persist</code>.</p>
@@ -396,7 +361,7 @@ export default function Boxes(props) {
                     <div className={styles.cardDescription}>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/code-to-cloud-deployment`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/code-to-cloud-deployment`} className={styles.titleLink}>
                             Code to cloud deployment
                           </a>
                         </p>
@@ -404,7 +369,7 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/azure-functions/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/azure-functions/`} className={styles.titleLink}>
                             Azure Function
                           </a>
                         </p>
@@ -413,7 +378,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/aws-lambda/`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/run-in-the-cloud/aws-lambda/`} className={styles.titleLink}>
                             AWS Lambda
                           </a>
                         </p>
@@ -443,7 +408,7 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/provide-values-to-configurable-variables`} className={styles.titleLink}>
-                            Provide values to configurable variables
+                          Provide values to configurable variables
                           </a>
                         </p>
                         <p className={styles.description}>Provide configurable values through configuration files, command-line arguments, and environment variables.</p>
@@ -480,24 +445,24 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-logs`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe logs</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing logs of Ballerina programs.</p>
+                        <p className={styles.description}>How Ballerina supports observing logs of external systems.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-metrics`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe metrics</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing metrics of Ballerina programs.</p>
+                        <p className={styles.description}>How Ballerina supports observing metrics of external systems.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/observe-tracing`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/observe-ballerina-programs`} className={styles.titleLink}>
                             Observe tracing</a>
                         </p>
-                        <p className={styles.description}>How Ballerina supports observing tracing of Ballerina programs.</p>
+                        <p className={styles.description}>How Ballerina supports observing tracing of external systems.</p>
                       </div>
                     </div>
                   </div>
@@ -584,27 +549,12 @@ export default function Boxes(props) {
           </Container>
         </Col>
       </Row>
-
       <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container>
             <Row>
               <Col xs={12}>
-                <h2 id="resources" className='section'>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="currentColor"
-                    className="bi bi-link-45deg mdButton pe-2"
-                    viewBox="0 0 16 16"
-                    onClick={(e) => props.getLink(e.target, 'resources')}
-                  >
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                  </svg>
-                  Resources
-                </h2>
+                <h2>Resources</h2>
               </Col>
             </Row>
             <Row>
@@ -686,25 +636,25 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Get started with basics that are common to all C-Family programming languages.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/network-interaction`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/distinctive-language-features/network-interaction`} className={styles.titleLink}>
                             Network interaction
                           </a>
                         </p>
                         <p className={styles.description}>Provide and consume services using Ballerina. </p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/data`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/distinctive-language-features/data`} className={styles.titleLink}>
                             Data
                           </a>
                         </p>
                         <p className={styles.description}>Work with data using Ballerina.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/concurrency`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/distinctive-language-features/concurrency`} className={styles.titleLink}>
                             Concurrency
                           </a>
                         </p>
                         <p className={styles.description}>How concurrency and transactions are handled in Ballerina.</p>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/advanced-general-purpose-language-features`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/distinctive-language-features/advanced-general-purpose-language-features`} className={styles.titleLink}>
                             Advanced general-purpose language features
                           </a>
                         </p>

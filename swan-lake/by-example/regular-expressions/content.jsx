@@ -75,7 +75,7 @@ export function RegularExpressions({ codeSnippets }) {
             RegExp operations example
           </a>
           , and{" "}
-          <a href="/learn/advanced-general-purpose-language-features/#regular-expressions">
+          <a href="/learn/distinctive-language-features/advanced-general-purpose-language-features/#regular-expressions">
             Regular expressions feature guide
           </a>
           .

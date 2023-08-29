@@ -63,7 +63,7 @@ of integrations.
                     </div>
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/integration_diagram.png`} alt="Position Ballerina" />
+                    <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" />
                 </Col>
             </Row>
 

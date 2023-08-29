@@ -1,0 +1,36 @@
+- title: Debug Ballerina programs
+  url: /learn/debug-ballerina-programs/
+  sublinks:
+    - title: Start a debug session
+      url: /learn/debug-ballerina-programs/#start-a-debug-session
+      sublinks:
+        - title: Start a Program Debug Session
+          url: /learn/debug-ballerina-programs/#start-a-program-debug-session
+          active: start-a-program-debug-session
+        - title: Start a test debug session
+          url: /learn/debug-ballerina-programs/#start-a-test-debug-session
+          active: start-a-test-debug-session
+        - title: Start a debug session with configurations
+          url: /learn/debug-ballerina-programs/#start-a-debug-session-with-configurations
+          active: start-a-debug-session-with-configurations
+        - title: Start a remote debug session
+          url: /learn/debug-ballerina-programs/#start-a-remote-debug-session
+          active: start-a-remote-debug-session
+    - title: Use debug configurations
+      url: /learn/debug-ballerina-programs/#use-debug-configurations
+      active: use-debug-configurations
+    - title: Use the debugging features
+      url: /learn/debug-ballerina-programs/#use-the-debugging-features
+      sublinks:
+        - title: Conditional breakpoints
+          url: /learn/debug-ballerina-programs/#conditional-breakpoints
+          active: conditional-breakpoints
+        - title: Logpoints
+          url: /learn/debug-ballerina-programs/#logpoints
+          active: logpoints
+        - title: Pause and continue
+          url: /learn/debug-ballerina-programs/#pause-and-continue
+          active: pause-and-continue
+        - title: Expression evaluation
+          url: /learn/debug-ballerina-programs/#expression-evaluation
+          active: expression-evaluation

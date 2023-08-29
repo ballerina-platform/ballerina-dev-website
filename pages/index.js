@@ -16,7 +16,6 @@
  * under the License.
  */
 
-import * as React from 'react';
 import dynamic from 'next/dynamic';
 import { Col, Row } from 'react-bootstrap';
 
@@ -29,7 +28,6 @@ import Integration from '../components/home-page/integration/Integration';
 import Users from '../components/home-page/users/Users';
 import Articles from '../components/home-page/articles/Articles';
 import styles from '../styles/Home.module.css';
-import EventsData from '../_data/events.json';
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -44,21 +42,6 @@ var traverseFolder = function (dir) {
   });
   return results;
 };
-
-export function getUpcomingEvents(now) {
-  const events = EventsData.events;
-  let upcomingEvents = false;
-
-  for (var i = 0; i < events.length; i++) {
-    if (now < Date.parse(events[i].expire)) {
-      upcomingEvents = true;
-      break;
-    }
-  }
-
-  return upcomingEvents;
-
-}
 
 export async function getStaticProps() {
 
@@ -104,16 +87,6 @@ export default function Home({ samples }) {
     element.parentElement.scrollIntoView();
   };
 
-
-  const [now, setNow] = React.useState(new Date());
-
-  React.useEffect(() => {
-    setNow(new Date());
-  }, [])
-
-  const upcomingEvents = getUpcomingEvents(now);
-
-
   return (
     <Layout>
       <Col sm={12}>
@@ -123,7 +96,7 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeIntegration}>
-          <Integration getLink={getLink} />
+          <Integration getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeBalAction}>
@@ -139,19 +112,16 @@ export default function Home({ samples }) {
         </Row> */}
 
         <Row className={styles.homeArticles}>
-          <Articles getLink={getLink} />
+          <Articles getLink={getLink}/>
         </Row>
 
         <Row className={styles.homeVideos}>
           <Videos getLink={getLink} />
         </Row>
-        {
-          upcomingEvents &&
-          <Row className={styles.homeEvents}>
-            <Events getLink={getLink} />
-          </Row>
-        }
 
+        <Row className={styles.homeEvents}>
+          <Events getLink={getLink} />
+        </Row>
       </Col>
     </Layout>
   );

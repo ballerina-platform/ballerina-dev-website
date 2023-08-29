@@ -404,7 +404,7 @@ export default function UseCases(props) {
                                 </div>
                                 <div className={styles.dVersion}>
                                     <a href={subscription.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                         View code on GitHub
                                     </a>
                                 </div>
@@ -479,7 +479,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{designer.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <a href={designer.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                            {/* <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
                                             Learn more about the Ballerina GraphQL designer
                                         </a>
                                     </div>
@@ -534,7 +534,7 @@ export default function UseCases(props) {
                                 </div>
                                 <div className={styles.dVersion}>
                                     <a href={cli.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                        {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                        {/* <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
                                         Learn more about the Ballerina GraphQL CLI tool
                                     </a>
                                 </div>
@@ -576,7 +576,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{security.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <a href={security.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -621,7 +621,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{workflow.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <a href={workflow.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                            <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
                                     </div>
@@ -765,7 +765,7 @@ export default function UseCases(props) {
                                         (community.frontmatter.url && community.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={transactions.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>
                                             </div>
@@ -825,7 +825,7 @@ export default function UseCases(props) {
                                         (ipaas.frontmatter.url && ipaas.frontmatter.url !== '') ?
                                             <div className={styles.dVersion}>
                                                 <a href={ipaas.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
+                                                    {/* <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" /> */}
                                                     Get started with WSO2 Choreo iPaaS for free
                                                 </a>
                                             </div>

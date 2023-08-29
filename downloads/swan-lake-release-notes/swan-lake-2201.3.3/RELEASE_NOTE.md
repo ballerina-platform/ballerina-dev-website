@@ -16,7 +16,7 @@ redirect_from:
 
 ## Update Ballerina
 
-**If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.3.3 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/).
+**If you are already using Ballerina 2201.0.0 (Swan Lake)**, run either of the commands below to directly update to 2201.3.3 using the [Ballerina Update Tool](/learn/update-tool/).
 
 `bal dist update` (or `bal dist pull 2201.3.3`)
 

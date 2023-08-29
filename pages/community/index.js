@@ -27,6 +27,7 @@ import Resources from '../../components/community/resources/Resources';
 import Discord from '../../components/community/discord/Discord';
 import TechTalk from '../../components/community/tech-talk/TechTalk';
 import GetInvolved from '../../components/community/get-involved/GetInvolved';
+import Blog from '../../components/community/blog/Blog';
 import Contact from '../../components/community/contact/Contact';
 
 export default function Community() {
@@ -116,6 +117,10 @@ export default function Community() {
             <GetInvolved getLink={getLink} />
           </Row>
 
+          <Row className="pageContentRow communityRow">
+            <Blog getLink={getLink} />
+          </Row>
+          
           <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>

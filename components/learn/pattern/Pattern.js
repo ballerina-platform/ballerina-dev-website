@@ -5,8 +5,8 @@ import styles from './Pattern.module.css';
 export default function Pattern(props) {
   const href = props.name.replace(/\s+/g, '-').toLowerCase();
   return (
-      <Col xl={{span: 6 }}>
-        <Card className={`${styles.card} mb-3`}>
+      <Col xl={{span: 6 }} className={styles.card}>
+        <Card className={`mb-3`} style={{width:"100%", justifyContent:"center"}}>
           <Row className="g-0 align-items-center">
             <Col md={2} className='text-center'>
               <Card.Img src={`${prefix}/images/patterns/${href}.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />

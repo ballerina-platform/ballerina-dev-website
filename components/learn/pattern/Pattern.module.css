@@ -1,3 +1,8 @@
+.card {
+  display: flex;
+  flex-wrap: row wrap;
+}
+
 .cardLink {
   text-decoration: none;
   color: #464646;

@@ -1,0 +1,7 @@
+{
+  "ticket": {
+      "url": "https://api.zendesk.balmock.io/api/v2/tickets/3.json",
+      "id": 3,
+      "subject": "Printer offline"
+  }
+}

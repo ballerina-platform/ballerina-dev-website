@@ -403,6 +403,14 @@ const nextConfig = {
       {
         source: `/learn/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
         destination: `/learn/integration/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
+      },
+      {
+        source: `/learn/pre-built-integrations/sample1`,
+        destination: `/learn/integration/pre-built-integrations/sample1`,
+      },
+      {
+        source: `/learn/pre-built-integrations/sample2`,
+        destination: `/learn/integration/pre-built-integrations/sample2`,
       }
     ];
   },

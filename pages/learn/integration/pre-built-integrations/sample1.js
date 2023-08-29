@@ -19,30 +19,51 @@
 import React from "react";
 import Head from "next/head";
 import { Row, Col, Container } from "react-bootstrap";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
 import Layout from "../../../../layouts/LayoutLearn";
-import SampleList from "../../../../components/common/sample-list/SampleList";
 import { prefix } from '../../../../utils/prefix';
+import { getHighlighter } from "shiki";
 
-export default function Learn() {
+export async function getStaticProps() {
+  const highlighter = await getHighlighter({
+    theme: 'github-light'
+  });
+  const content = `
+service /finance on new http:Listener(8080) {
 
-  const getLink = (element, id) => {
-    if (element.tagName.toLowerCase() === "path")
-      element = element.parentElement;
+  resource function post customers/[int id]/accounts(BankAccountReq req) returns BankAccount|error {
+      http:Client iban = check new("http://api.iban.com.balmock.io");
+      IbanRequest ibanReq = { country_iso: req.country ?: "US", nid: req.accountNumber };
+      IbanResponse ibanRes = check iban->/clients/api/banksuite/nid.post(ibanReq);
+      string bankCode = ibanRes.bank_code;
+      http:Client intuit = check new("http://api.intuit.com.balmock.io");
+      return check intuit->/quickbooks/v4/customers/[id]/bank\-accounts.post({ ...req, bankCode });
+  }
+}
+`;
+  var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 
-    const elementNodeList = document.querySelectorAll(`#${id}`);
-    const elementArray = Array.prototype.slice.call(elementNodeList);
-    const count = elementArray.indexOf(element.parentElement);
-
-    if (count === 0) {
-      location.hash = `#${id}`;
-    } else {
-      location.hash = `#${id}-${count}`;
-    }
-
-    navigator.clipboard.writeText(window.location.href);
-    element.parentElement.scrollIntoView();
+  return {
+    props: {
+      samples,
+      content
+    },
   };
+}
+
+export default function Learn({ samples, content }) {
+
+  const [copied, setCopied] = React.useState(false);
+
+  const codeCopy = () => {
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  }
+
 
   return (
     <>
@@ -59,7 +80,7 @@ export default function Learn() {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Pre-built integrations</title>
+        <title>Sample 1</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -75,7 +96,7 @@ export default function Learn() {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
@@ -117,7 +138,7 @@ export default function Learn() {
 
             <Col xs={12}>
               <Container>
-                <h1>Pre-built integrations</h1>
+                <h1>Sample1</h1>
               </Container>
             </Col>
 
@@ -126,11 +147,26 @@ export default function Learn() {
 
           <Row className="pageContentRow llanding">
 
-            <Col xs={12} md={12}>
+            <Col xs={12}>
               <Container>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                </p>
+                <Row>
+                  <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
+                    <p>Salesforce is used by many organizations to centralize customer information,
+                      aiming to enhance customer service, streamline sales, enable collaboration and obtain sales analytics.
+                      However, managing customer interactions can be complex, involving various touch points and business units.
+                      Therefore, integrating Salesforce with all related entities and automating the exchange of customer
+                      information is essential to fully leverage its capabilities.</p>
+
+                    <p>Ballerina, being a language specifically designed for integrations, can facilitate the integration of
+                      Salesforce with all relevant systems and support any complex Salesforce integration use case.
+                    </p>
+
+                  </Col>
+                  <Col xs={12} lg={6}>
+                    <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                  </Col>
+                </Row>
+
               </Container>
             </Col>
           </Row>
@@ -138,50 +174,22 @@ export default function Learn() {
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
               <Container>
-                {/* Repeat the SampleList component */}
-                <SampleList name="Google Sheets to Salesforce Integration" description="Create a new contact in Salesforce for each new row is added to a Google Sheet"
-                  tags={["Google Sheets", "Salesforce", "Integration", "CRM"]} />
 
-                <SampleList name="Kafka to Salesforce Integration" description="Update pricebook in Salesforce for each new message in Kafka"
-                  tags={["Kafka", "Salesforce", "Integration", "CRM"]} />
+                <div style={{
+                  background: "#eeeeee", padding: "10px",
+                  borderRadius: "5px",
+                  marginTop: "20px",
+                  backgroundColor: "#eeeeee !important"
+                }}>
+                  <CopyToClipboard text={content}
+                    onCopy={() => codeCopy()} style={{float:"right"}}>
+                    {
+                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                    }
+                  </CopyToClipboard>
 
-                <SampleList name="MySQL to Salesforce Integration" description="Create a new product in Salesforce for each new record is added to a MySQL table"
-                  tags={["Salesforce", "Integration", "CRM", "MySQL"]} />
-
-                <SampleList name="Salesforce to Twilio Integration" description="Send a SMS for each new lead in Salesforce"
-                  tags={["Salesforce", "Integration", "CRM", "Twilio"]} />
-
-                <SampleList name="GMail to Salesforce Integration" description="Create lead for each new marketing email in GMail"
-                  tags={["Salesforce", "Integration", "CRM", "GMail"]} />
-
-                <SampleList name="NewsAPI to Email Integration" description="Fetch BBC top headlines and send as email to recipient"
-                  tags={["NewsAPI", "Integration", "Email"]} />
-
-                <SampleList name="GitHub to Email Integration" description="Generate a GitHub issue summary report and email to a specified email address"
-                  tags={["Github", "Integration", "Email"]} />
-                
-                <SampleList name="Shopify to Outlook Integration" description="Send Welcome Email using MS Outlook to New Shopify Customers"
-                  tags={["Outlook", "Integration", "Shopify"]} />
-                
-                <SampleList name="Google Drive to OneDrive Integration" description="Sync Google Drive files to Microsoft OneDrive"
-                  tags={["OneDrive", "Integration", "Google Drive"]} />
-
-                <SampleList name="Hubspot contacts to Google Contacts Integration" description="Sync Hubspot Contacts with Google Contacts"
-                  tags={["Hubspot", "Integration", "Google Contacts"]} />
-                
-                <SampleList name="FTP EDI Message to Salesforce Opportunity" description="Reads EDI files from a given FTP location and creates a Salesforce Opportunity"
-                  tags={["Hubspot", "Integration", "Google Contacts"]} />
-                    
-                <SampleList name="Sample1" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-                    
-
+                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                </div>
               </Container>
             </Col>
           </Row>

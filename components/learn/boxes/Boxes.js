@@ -39,6 +39,7 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
                       </div>
+                      
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
@@ -55,6 +56,15 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Explore and try out a series of guided integration examples.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/enterprise-integration-patterns/`} className={styles.titleLink}>
+                            Enterprise integration patterns
+                          </a>
+                        </p>
+                        <p className={styles.description}>Usage pattens for implementing robust integrations.</p>
                       </div>
 
                       <div className={styles.content}>

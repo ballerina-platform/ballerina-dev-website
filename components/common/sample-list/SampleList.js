@@ -31,7 +31,7 @@ export default function SampleList(props) {
         <Col xs={12}>
           <Container> */}
             <Row>
-              <Col xs={12}>
+              <Col xl={{ offset: 2, span: 8 }}>
 
                 <Card className={`${styles.card} mb-3`}>
                   <Row className="g-0 align-items-center">

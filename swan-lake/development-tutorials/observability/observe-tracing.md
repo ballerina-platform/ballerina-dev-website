@@ -1,6 +1,6 @@
 ---
-title: Observe tracing
-description: See how Ballerina supports observing tracing of Ballerina programs.
+title: Observe distributed tracing
+description: See how Ballerina supports observing tracing to external systems.
 keywords: ballerina, observability, tracing, jaeger
 permalink: /learn/observe-tracing/
 active: observe-tracing

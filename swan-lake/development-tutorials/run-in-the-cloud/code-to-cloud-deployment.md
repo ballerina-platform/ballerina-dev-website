@@ -64,7 +64,7 @@ cloud = "k8s"
 
 ***Config.toml***
 
-Contains the values, which need to be passed into the configurable variables. To learn more about this, see [Configure a sample Ballerina service](https://ballerina.io/learn/configure-a-sample-ballerina-service/). When you are using the cloud-related features in Ballerina, the `Config.toml` file is not being packed with the container image as it can contain sensitive information. You need to explicitly provide this file in the runtime. 
+Contains the values, which need to be passed into the configurable variables. To learn more about this, see [Configure a sample Ballerina service](https://ballerina.io/learn/configure-ballerina-programs/configure-a-sample-ballerina-service/). When you are using the cloud-related features in Ballerina, the `Config.toml` file is not being packed with the container image as it can contain sensitive information. You need to explicitly provide this file in the runtime. 
 
 ***entry.bal***
 

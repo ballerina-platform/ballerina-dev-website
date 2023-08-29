@@ -1,0 +1,33 @@
+- title: GraphQL client tool
+  url: #
+  sublinks:
+    - title: Generate a client from a GraphQL config
+      url: /learn/graphql-client-tool/#generate-a-client-from-a-graphql-config
+      sublinks:
+        - title: Create a Ballerina package 
+          url: /learn/graphql-client-tool/#create-a-ballerina-package
+          active: create-a-ballerina-package
+        - title: Add the GraphQL document
+          url: /learn/graphql-client-tool/#add-the-graphql-document
+          active: add-the-graphql-document
+        - title: Create a GraphQL config
+          url: /learn/graphql-client-tool/#create-a-graphql-config
+          active: create-a-graphql-config
+        - title: Add the GraphQL queries
+          url: /learn/graphql-client-tool/#add-the-graphql-queries
+          active: add-the-graphql-queries
+        - title: Execute the `graphql` CLI command
+          url: /learn/graphql-client-tool/#execute-the-graphql-cli-command
+          active: execute-the-graphql-cli-command
+        - title: Sample usage of the generated client
+          url: /learn/graphql-client-tool/#sample-usage-of-the-generated-client
+          active: sample-usage-of-the-generated-client
+    - title: Advanced use cases
+      url: /learn/graphql-client-tool/#advanced-use-cases
+      sublinks:
+        - title: Generate multiple modules from a GraphQL config 
+          url: /learn/graphql-client-tool/#generate-multiple-modules-from-a-graphql-config
+          active: generate-multiple-modules-from-a-graphql-config
+        - title: Generate multiple clients from a GraphQL config 
+          url: /learn/graphql-client-tool/#generate-multiple-clients-from-a-graphql-config
+          active: generate-multiple-clients-from-a-graphql-config

@@ -1,6 +1,6 @@
 ---
 title: Observe metrics 
-description: See how Ballerina supports observing metrics of Ballerina programs.
+description: See how Ballerina supports observing metrics to external systems.
 keywords: ballerina, observability, metrics, prometheus, grafana
 permalink: /learn/observe-metrics/
 active: observe-metrics

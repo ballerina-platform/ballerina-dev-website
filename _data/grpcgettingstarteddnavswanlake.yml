@@ -1,0 +1,27 @@
+- title: Write a gRPC service with Ballerina
+  url: #
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/write-a-grpc-service-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Understand the implementation
+      url: /learn/write-a-grpc-service-with-ballerina/#understand-the-implementation
+      active: understand-the-implementation
+    - title: Create the service definition
+      url: /learn/write-a-grpc-service-with-ballerina/#create-the-service-definition
+      active: create-the-service-definition
+    - title: Implement the gRPC service
+      url: /learn/write-a-grpc-service-with-ballerina/#implement-the-grpc-service
+      active: implement-the-grpc-service
+    - title: Run the gRPC service
+      url: /learn/write-a-grpc-service-with-ballerina/#run-the-grpc-service
+      active: run-the-grpc-service
+    - title: Implement the gRPC client
+      url: /learn/write-a-grpc-service-with-ballerina/#implement-the-grpc-client
+      active: implement-the-grpc-client
+    - title: Run the gRPC client
+      url: /learn/write-a-grpc-service-with-ballerina/#run-the-grpc-client
+      active: run-the-grpc-client
+    - title: Learn more
+      url: /learn/write-a-grpc-service-with-ballerina/#learn-more
+      active: learn-more

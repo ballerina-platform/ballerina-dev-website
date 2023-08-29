@@ -1,0 +1,39 @@
+- title: OpenAPI tool
+  url: #
+  sublinks:
+    - title: Generate Ballerina services from OpenAPI contracts 
+      url: /learn/openapi-tool/#generate-ballerina-services-from-openapi-contracts
+      sublinks:
+        - title: Generate from tags
+          url: /learn/openapi-tool/#generate-from-tags
+          active: generate-from-tags
+    - title: Export OpenAPI contracts from Ballerina services 
+      url: /learn/openapi-tool/#export-openapi-contracts-from-ballerina-services 
+      sublinks:
+        - title: Export in JSON format
+          url: /learn/openapi-tool/#export-in-json-format
+          active: export-in-json-format
+        - title: Export for a specific service
+          url: /learn/openapi-tool/#export-for-a-specific-service
+          active: export-for-a-specific-service
+        - title: Export with a given title and version
+          url: /learn/openapi-tool/#export-with-a-given-title-and-version
+          active: export-with-a-given-title-and-version
+    - title: OpenAPI validator compiler plugin
+      url: /learn/openapi-tool/#openapi-validator-compiler-plugin
+      active: openapi-validator-compiler-plugin
+    - title: Generate Ballerina clients from OpenAPI definitions
+      url: /learn/openapi-tool/#generate-ballerina-client-from-openapi-definitions
+      sublinks:
+        - title: Generate with boiler-plate tests
+          url: /learn/openapi-tool/#generate-with-boiler-plate-tests
+          active: generate-with-boiler-plate-tests
+        - title: Generate with nillable types
+          url: /learn/openapi-tool/#generate-with-nillable-types
+          active: generate-with-nillable-types
+    - title: Publish your client
+      url: /learn/openapi-tool/#publish-your-client
+      active: publish-your-client
+    - title: Annotation reference
+      url: /learn/openapi-tool/#annotation-reference
+      active: annotation-reference

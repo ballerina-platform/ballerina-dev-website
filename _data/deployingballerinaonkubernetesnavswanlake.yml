@@ -1,0 +1,34 @@
+- title: Deploy Ballerina on Kubernetes
+  url: #
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/deploy-ballerina-on-kubernetes/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Create the Ballerina package
+      url: /learn/deploy-ballerina-on-kubernetes/#create-the-ballerina-package
+      active: create-the-ballerina-package
+    - title: Create the Ballerina service
+      url: /learn/deploy-ballerina-on-kubernetes/#create-the-ballerina-service
+      active: create-the-ballerina-service
+    - title: Update the `Ballerina.toml` file
+      url: /learn/deploy-ballerina-on-kubernetes/#update-the-ballerina-toml-file
+      active: update-the-Ballerina-toml-file
+    - title: Create the `Cloud.toml` file
+      url: /learn/deploy-ballerina-on-kubernetes/#create-the-cloud-toml-file
+      active: create-the-cloud-toml-file
+    - title: Build the package
+      url: /learn/deploy-ballerina-on-kubernetes/#build-the-package
+      active: build-the-package
+    - title: Build the package
+      url: /learn/deploy-ballerina-on-kubernetes/#build-the-package
+      active: build-the-package
+    - title: Deploy the package on Docker
+      url: /learn/deploy-ballerina-on-kubernetes/#deploy-the-package-on-docker
+      active: deploy-the-package-on-docker
+    - title: Deploy the package on Kubernetes
+      url: /learn/deploy-ballerina-on-kubernetes/#deploy-the-package-on-kubernetes
+      active: deploy-the-package-on-kubernetes
+    - title: Learn more
+      url: /learn/deploy-ballerina-on-kubernetes/#learn-more
+      active: learn-more
+  

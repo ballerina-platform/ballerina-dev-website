@@ -1,0 +1,64 @@
+- title: CLI documentation
+  url: #
+  sublinks:
+    - title: CLI commands
+      url: /learn/cli-documentation/cli-commands/
+      sublinks:
+        - title: Use the Ballerina tool
+          url: /learn/cli-documentation/cli-commands/#use-the-ballerina-tool
+          active: use-the-ballerina-tool
+        - title: Core commands
+          url: /learn/cli-documentation/cli-commands/#core-commands
+          active: core-commands
+        - title: Package commands
+          url: /learn/cli-documentation/cli-commands/#package-commands
+          active: package-commands
+        - title: Other commands
+          url: /learn/cli-documentation/cli-commands/#other-commands
+          active: other-commands
+        - title: Update commands
+          url: /learn/cli-documentation/cli-commands/#update-commands
+          active: update-commands
+    - title: Update Tool
+      url: /learn/cli-documentation/update-tool/
+      sublinks:
+        - title: Use the update tool
+          url: /learn/cli-documentation/update-tool/#use-the-update-tool
+          active: use-the-update-tool
+        - title: Manage your Ballerina distributions
+          url: /learn/cli-documentation/update-tool/#manage-your-ballerina-distributions
+          active: manage-your-ballerina-distributions
+    - title: gRPC/Protocol Buffers
+      url: /learn/cli-documentation/grpc/
+      sublinks:
+        - title: Usage of the tool
+          url: /learn/cli-documentation/grpc/#usage-of-the-tool
+          active: usage-of-the-tool
+        - title: Protocol Buffers to Ballerina
+          url: /learn/cli-documentation/grpc/#protocol-buffers-to-ballerina
+          active: protocol-buffers-to-ballerina
+        - title: Sample
+          url: /learn/cli-documentation/grpc/#sample
+          active: sample
+    - title: OpenAPI
+      url: /learn/cli-documentation/openapi/
+      sublinks:
+        - title: OpenAPI to Ballerina 
+          url: /learn/cli-documentation/openapi/#openapi-to-ballerina
+          active: openapi-to-ballerina
+        - title: Ballerina to OpenAPI 
+          url: /learn/cli-documentation/openapi/#ballerina-to-openapi
+          active: ballerina-to-openapi
+    - title: GraphQL
+      url: /learn/cli-documentation/graphql/
+      sublinks:
+        - title: GraphQL to Ballerina 
+          url: /learn/cli-documentation/graphql/#graphql-to-ballerina
+          active: graphql-to-ballerina
+    - title: AsyncAPI
+      url: /learn/cli-documentation/asyncapi/
+      sublinks:
+        - title: AsyncAPI to Ballerina 
+          url: /learn/cli-documentation/asyncapi/#asyncapi-to-ballerina
+          active: asyncapi-to-ballerina
+ 

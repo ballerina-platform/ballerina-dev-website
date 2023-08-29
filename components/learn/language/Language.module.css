@@ -1,0 +1,116 @@
+.langRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    /* align-items: center; */
+}
+
+.linkText {
+    color: #20b6b0;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.linkText:hover {
+    color: #57595d;
+}
+.newBox{width:20% ;float:left;padding: 0 15px; text-align: center;}
+.newBoxBorder{border-right: 1px solid #d7d7d7;width:20% ;float:left;}
+.cHighlightedText{background-color: #F8F8F8; padding: 25px ;}
+.linkTextSpan{color: #b3b3b3;}
+
+/* .linkVideo {
+    padding: 5px 15px;
+    background-color: #20b6b0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+} */
+
+/* .linkVideo:hover {
+    background-color: #57595d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+} */
+
+.btnCol {
+    /* text-align: center; */
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+/* .langSlides, .linkVideo {
+    padding: 20px;
+    background-color: #20b6b0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.langSlides:hover {
+    padding: 20px;
+    background-color: #57595d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+} */
+
+.langContent {
+    display: flex;
+}
+
+
+.linkBtn {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #57595d;
+    color: #ffffff !important;
+    padding: 10px 60px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.linkBtn:hover {
+    background-color: #20b6b0;
+}
+
+/* .linkBtn:not(:last-of-type) {
+    margin-right: 10px;
+} */
+
+@media (min-width: 576px) {
+    .langRow {
+        display: flex;
+        justify-content: space-between;
+
+        
+    }
+
+    .linkBtn:not(:last-of-type) {
+        margin-right: 10px;
+    }
+    
+}
+@media (max-width: 820px) {
+    .newBoxBorder{width:100% ;float:left;padding: 0 15px; text-align: center;text-align: left;border: none !important;}
+    .newBox{width: 100%;text-align: left;}
+
+    .linkBtn:not(:last-of-type) {
+        margin-right: 10px;
+    }
+    .langRow{text-align: left;}
+    
+}
+

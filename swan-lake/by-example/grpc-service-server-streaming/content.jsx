@@ -452,7 +452,7 @@ export function GrpcServiceServerStreaming({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/grpc/">
+            <a href="/learn/cli-documentation/grpc/">
               Ballerina protocol buffers guide
             </a>
           </span>

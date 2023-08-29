@@ -769,10 +769,10 @@
 <url><loc>https://ballerina.io/1.2/learn/coding-conventions/operators_keywords_and_types/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/coding-conventions/statements/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/coding-conventions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/grpc/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/grpc/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/update-tool/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/update-tool/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/grpc/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/grpc/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/update-tool/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/update-tool/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/calling-java-code-from-ballerina-and-vice-versa/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/calling-java-code-from-ballerina-and-vice-versa/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/organizing-ballerina-code/package-layout/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -797,8 +797,8 @@
 <url><loc>https://ballerina.io/1.2/learn/deployment/azure-functions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/deployment/aws-lambda/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/deployment/aws-lambda/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/openapi/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/openapi/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/openapi/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/openapi/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/testing-ballerina-code/quick-start-on-testing/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/testing-ballerina-code/quick-start-on-testing/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/testing-ballerina-code/mocking/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -815,8 +815,8 @@
 <url><loc>https://ballerina.io/1.2/learn/installing-ballerina/building-from-source/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/generating-code-documentation/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/generating-code-documentation/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/cli-commands/ment/azure-functions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://ballerina.io/1.2/learn/bal-command/cli-commands/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/cli-commands/ment/azure-functions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://ballerina.io/1.2/learn/cli-documentation/cli-commands/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/style-guide/expressions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/style-guide/expressions/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://ballerina.io/1.2/learn/style-guide/annotations-documentation-and-comments/</loc><lastmod>2023-07-01T08:53:23.867Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>

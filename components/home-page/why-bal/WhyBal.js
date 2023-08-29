@@ -59,9 +59,9 @@ export default function WhyBal(props) {
         <Row className={styles.whyBallerinaRow}>
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/cloud-native.svg`} width={126} height={100} alt="cloud-native" />
-              <h3>Cloud native</h3>
-              <p>Network primitives in the language make it simpler to write services and run them in the cloud.</p>
+              <Image src={`${prefix}/images/home-page/icons/cloud-native.svg`} width={100} height={100} alt="cloud-native" />
+              <h3>Native integration DNA</h3>
+              <p>Ballerina is not just another programming language; it’s a language born for integration. With constructs designed for network communication and data manipulation, Ballerina speaks the language of integration natively.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
                   <Link href={`/why-ballerina/cloud-native/`}>More info</Link>
@@ -73,10 +73,9 @@ export default function WhyBal(props) {
 
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/flexible-typing.svg`} width={151} height={100} alt="flexible-typing" />
-              <h3>Flexibly typed</h3>
-              <p>Structural types with support for openness are used both for static typing within a program and for
-                describing service interfaces.</p>
+              <Image src={`${prefix}/images/home-page/icons/flexible-typing.svg`} width={100} height={100} alt="flexible-typing" />
+              <h3>Built-in Support for Diverse Transports and Data Formats</h3>
+              <p>Diverse integration landscapes require flexibility. Ballerina inherently understands and supports a wide range of transports from HTTP, and gRPC, to WebSockets and data formats like JSON, XML, and CSV, enabling truly seamless integration without external libraries.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
                   <Link href={`/why-ballerina/flexibly-typed/`}>More info</Link>
@@ -87,12 +86,12 @@ export default function WhyBal(props) {
 
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/data-transformation.svg`} width={142} height={100} alt="data-transformation" />
-              <h3>Data oriented</h3>
-              <p>Type-safe, declarative processing of JSON, XML, and tabular data with language-integrated queries.</p>
+              <Image src={`${prefix}/images/home-page/icons/data-transformation.svg`} width={100} height={100} alt="data-transformation" />
+              <h3>Seamless Connectivity with Rich Ecosystem</h3>
+              <p>Why reinvent the wheel? Ballerina boasts a rich ecosystem of connectors, allowing you to integrate with countless databases, cloud services, and enterprise applications out of the box.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/data-oriented/`}>More info</Link>
+                  <Link href={`https://dev-central.ballerina.io/extendedlibs`}>More info</Link>
                 </li>
               </ul>
             </div>
@@ -104,9 +103,9 @@ export default function WhyBal(props) {
         <Row className={styles.whyBallerinaRow}>
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/graphical.svg`} width={135} height={100} alt="graphical" />
-              <h3>Graphical</h3>
-              <p>Programs have both a textual syntax and an equivalent graphical form based on sequence diagrams.</p>
+              <Image src={`${prefix}/images/home-page/icons/graphical.svg`} width={100} height={100} alt="graphical" />
+              <h3>Robust Error Handling for Integration Scenarios</h3>
+              <p>Ballerina recognizes that network-bound integration can be unpredictable. Its resilient error handling ensures your applications remain robust, even when faced with unexpected integration challenges.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
                   <Link href={`/why-ballerina/graphical/`}>More info</Link>
@@ -118,9 +117,9 @@ export default function WhyBal(props) {
 
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/concurrent.svg`} width={108} height={100} alt="concurrent" />
-              <h3>Concurrent</h3>
-              <p>Easy and efficient  concurrency with sequence diagrams and language-managed threads without the complexity of asynchronous functions.</p>
+              <Image src={`${prefix}/images/home-page/icons/concurrent.svg`} width={90} height={100} alt="concurrent" />
+              <h3>End-to-End Type Safety</h3>
+              <p>Ballerina&apos;s strong type system minimizes runtime surprises. From data mapping to network-bound communications, type safety ensures reliability in your integrations.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
                   <Link href={`/why-ballerina/concurrent/`}>More info</Link>
@@ -131,12 +130,54 @@ export default function WhyBal(props) {
 
           <Col sm={12} md={4}>
             <div className={styles.whyBallerinaBox}>
-              <Image src={`${prefix}/images/home-page/icons/reliable-maintainable.svg`} width={100} height={100} alt="reliable-maintainable" />
-              <h3>Reliable, maintainable</h3>
-              <p>Explicit error handling, static types, and concurrency safety, combined with a  familiar, readable syntax make programs reliable and maintainable.</p>
+              <Image src={`${prefix}/images/home-page/icons/reliable-maintainable.svg`} width={80} height={100} alt="reliable-maintainable" />
+              <h3>Graphical and Code Views with Ballerina VSCode extension</h3>
+              <p>Visualize as you code. The Ballerina Composer lets developers switch between graphical and source views, making complex integration logic more intuitive and accessible.</p>
               <ul className={styles.inlineLinkList}>
                 <li className={styles.greenLinkArrow} style={linkStyle}>
-                  <Link href={`/why-ballerina/reliable-maintainable/`}>More info</Link>
+                  <Link href={`https://wso2.com/ballerina/vscode/`}>More info</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+        </Row>
+
+        <Row className={styles.whyBallerinaRow}>
+          <Col sm={12} md={4}>
+            <div className={styles.whyBallerinaBox}>
+              <Image src={`${prefix}/images/home-page/icons/cloud-native.svg`} width={100} height={100} alt="cloud-native" />
+              <h3>Maintainable Code for Ever-evolving Enterprises</h3>
+              <p>Integration solutions should stand the test of time. Ballerina emphasizes clarity and simplicity, ensuring that enterprise integrations are not just written once but are easily read, updated, and maintained by teams across the lifecycle.</p>
+              <ul className={styles.inlineLinkList}>
+                <li className={styles.greenLinkArrow} style={linkStyle}>
+                  <Link href={`/why-ballerina/cloud-native/`}>More info</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+
+
+          <Col sm={12} md={4}>
+            <div className={styles.whyBallerinaBox}>
+              <Image src={`${prefix}/images/home-page/icons/flexible-typing.svg`} width={100} height={100} alt="flexible-typing" />
+              <h3>Open Source and Community-Driven</h3>
+              <p>Being open source, Ballerina empowers a vast community of developers and experts. This means continuous improvements, a plethora of resources, and a supportive network for all your integration endeavors.</p>
+              <ul className={styles.inlineLinkList}>
+                <li className={styles.greenLinkArrow} style={linkStyle}>
+                  <Link href={`/community`}>More info</Link>
+                </li>
+              </ul>
+            </div>
+          </Col>
+
+          <Col sm={12} md={4}>
+            <div className={styles.whyBallerinaBox}>
+              <Image src={`${prefix}/images/home-page/icons/data-transformation.svg`} width={100} height={100} alt="data-transformation" />
+              <h3>Lightweight and Performant Runtime with GraalVM Native Image Support</h3>
+              <p>Enterprise integration demands speed and efficiency. Ballerina’s compatibility with GraalVM native images ensures rapid startup times, reduced resource consumption, and optimal performance, even in large-scale, resource-intensive scenarios.</p>
+              <ul className={styles.inlineLinkList}>
+                <li className={styles.greenLinkArrow} style={linkStyle}>
+                  <Link href={`/learn/graalvm-executable-overview/`}>More info</Link>
                 </li>
               </ul>
             </div>

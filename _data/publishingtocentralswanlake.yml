@@ -1,0 +1,23 @@
+- title: Publish packages to Ballerina Central
+  url: #
+  sublinks:
+    - title: Create a library package
+      url: /learn/publish-packages-to-ballerina-central/#create-a-library-package
+      active: create-a-library-package
+    - title: Publish a library package to Ballerina Central
+      url: /learn/publish-packages-to-ballerina-central/#publish-a-library-package-to-ballerina-central
+      active: publish-a-library-package-to-ballerina-central
+      sublinks:
+        - title: Prepare for publishing
+          url: /learn/publish-packages-to-ballerina-central/#prepare-for-publishing
+          active: prepare-for-publishing
+        - title: Organizations
+          url: /learn/publish-packages-to-ballerina-central/#organizations
+          active: organizations
+        - title: Publish the package
+          url: /learn/publish-packages-to-ballerina-central/#publishing-the-package
+          active: publish-the-package
+    - title: Use the packages in Ballerina Central
+      url: /learn/publish-packages-to-ballerina-central/#use-the-packages-in-ballerina-central
+      active: use-the-packages-in-ballerina-central
+

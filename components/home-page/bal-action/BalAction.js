@@ -88,7 +88,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/consuming_services" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: consumingServices }} />
@@ -109,7 +109,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_data" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithData }} />
@@ -132,7 +132,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/restful_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: restfulApi }} />
@@ -147,7 +147,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/grpc_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode1 }} />
@@ -167,7 +167,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/graphql_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: graphqlApi }} />
@@ -182,7 +182,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/kafka_consumer_producer" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: kafkaConsumer }} />
@@ -197,7 +197,7 @@ export default function BalAction(props) {
                     <div className={styles.focusPane}>
                       <div className={styles.codeActionIcons}>
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_databases" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          <Image src={`${prefix}/images/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />

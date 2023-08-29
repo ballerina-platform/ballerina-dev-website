@@ -1,0 +1,36 @@
+- title: Install Ballerina
+  url: #
+  sublinks:
+    - title: Set up Ballerina
+      url: /learn/install-ballerina/set-up-ballerina/
+      sublinks:
+          - title: Download Ballerina
+            url: /learn/install-ballerina/set-up-ballerina/#download-ballerina
+            active: download-ballerina
+          - title: Install Ballerina
+            url: /learn/install-ballerina/set-up-ballerina/#install-ballerina
+            active: install-ballerina
+          - title: Install the VS Code extension
+            url: /learn/install-ballerina/set-up-ballerina/#install-the-vscode-extension
+            active: install-the-vscode-extension
+    - title: Installation options
+      url: /learn/install-ballerina/installation-options/
+      sublinks:
+          - title: Install Ballerina via installers
+            url: /learn/install-ballerina/installation-options/#install-ballerina-via-installers
+            active: install-ballerina-via-installers
+          - title: Install via the Ballerina language ZIP file
+            url: /learn/install-ballerina/installation-options/#install-via-the-ballerina-language-zip-file
+            active: install-via-the-ballerina-language-zip-file
+          - title: Verify the installation
+            url: /learn/install-ballerina/installation-options/#verify-the-installation
+            active: verify-the-installation
+          - title: Build from source
+            url: /learn/install-ballerina/installation-options/#build-from-source
+            active: build-from-source
+          - title: Update Ballerina
+            url: /learn/install-ballerina/installation-options/#update-ballerina
+            active: update-ballerina
+          - title: Uninstall Ballerina
+            url: /learn/install-ballerina/installation-options/#uninstall-ballerina
+            active: uninstall-ballerina

@@ -1,0 +1,40 @@
+- title: Build a data service in Ballerina
+  url: '#'
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/build-a-data-service-in-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Understand the implementation
+      url: /learn/build-a-data-service-in-ballerina/#understand-the-implementation
+      active: understand-the-implementation
+    - title: Set up a MySQL server instance
+      url: /learn/build-a-data-service-in-ballerina/#set-up-a-mysql-server-instance
+      active: set-up-a-mysql-server-instance
+    - title: Create a database and table
+      url: /learn/build-a-data-service-in-ballerina/#create-a-database-and-table
+      active: create-a-database-and-table
+    - title: Create the serivce package
+      url: /learn/build-a-data-service-in-ballerina/#create-the-service-package
+      active: create-the-service-package
+    - title: Create the serivce 
+      url: /learn/build-a-data-service-in-ballerina/#create-the-service
+      active: create-the-service
+    - title: The `service.bal` file complete code 
+      url: /learn/build-a-data-service-in-ballerina/#the-servicebal-file-complete-code 
+      active: the-servicebal-file-complete-code
+    - title: Expose the database via an HTTP RESTful API
+      url: /learn/build-a-data-service-in-ballerina/#expose-the-database-via-an-http-restful-api
+      active: expose-the-database-via-an-http-restful-api
+    - title: The `main.bal` file complete code 
+      url: /learn/build-a-data-service-in-ballerina/#the-mainbal-file-complete-code 
+      active: the-mainbal-file-complete-code
+    - title: Run the service
+      url: /learn/build-a-data-service-in-ballerina/#run-the-service
+      active: run-the-service
+    - title: Try the service
+      url: /learn/build-a-data-service-in-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/build-a-data-service-in-ballerina/#learn-more
+      active: learn-more
+   

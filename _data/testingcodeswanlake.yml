@@ -1,0 +1,102 @@
+- title: Test Ballerina code 
+  url: '#'
+  sublinks:
+    - title: Test a simple function
+      url: /learn/test-ballerina-code/test-a-simple-function
+      active: test-a-simple-function
+    - title: Write tests
+      url: '#'
+      sublinks:
+        - title: Define a test
+          url: /learn/test-ballerina-code/write-tests/#define-a-test
+          active: define-a-test
+        - title: Use assertions
+          url: /learn/test-ballerina-code/write-tests/#use-assertions
+          active: use-assertions
+    - title: Structure tests
+      url: '#'
+      sublinks:
+        - title: Test source files
+          url: /learn/test-ballerina-code/structure-tests/#test-source-files
+          active: test-source-files
+        - title: Test resources
+          url: /learn/test-ballerina-code/structure-tests/#test-resources
+          active: test-resources
+        - title: Test configurations
+          url: /learn/test-ballerina-code/structure-tests/#test-configurations
+          active: test-configurations
+    - title: Configure tests
+      url : '#'
+      sublinks:
+        - title: Set up and tear down
+          url: /learn/test-ballerina-code/configure-tests/#set-up-and-tear-down
+          active: set-up-and-tear-down
+        - title: Define test specific configurations
+          url: /learn/test-ballerina-code/configure-tests/#define-test-specific-configurations
+          active: define-test-specific-configurations
+        - title: Define test-only dependencies
+          url: /learn/test-ballerina-code/configure-tests/#define-test-only-dependencies
+          active: define-test-only-dependencies
+    - title: Code coverage and reporting
+      url : '#'
+      sublinks:
+        - title: Generate a test report
+          url: /learn/test-ballerina-code/code-coverage-and-reporting/#generate-a-test-report
+          active: generate-a-test-report
+        - title: Generate a code coverage report
+          url: /learn/test-ballerina-code/code-coverage-and-reporting/#generate-a-code-coverage-report
+          active: generate-a-code-coverage-report
+        - title: Generate a JaCoCo XML report
+          url: /learn/test-ballerina-code/code-coverage-and-reporting/#generate-a-jacoco-xml-report
+          active: generate-a-jacoco-xml-report
+    - title: Define data-driven tests
+      url : '#'
+      sublinks:
+        - title: Use data providers
+          url: /learn/test-ballerina-code/define-data-driven-tests/#use-data-providers
+          active: use-data-providers
+        - title: Execute specific data sets
+          url: /learn/test-ballerina-code/define-data-driven-tests/#execute-specific-data-sets
+          active: execute-specific-data-sets
+    - title: Define test groups
+      url: "#"
+      sublinks:
+        - title: Group tests
+          url: /learn/test-ballerina-code/define-test-groups/#group-tests
+          active: group-tests
+        - title: Group commands
+          url: /learn/test-ballerina-code/define-test-groups/#group-commands
+          active: group-commands
+    - title: Test services and clients
+      url: '#'
+      sublinks:
+        - title: Test services
+          url: /learn/test-ballerina-code/test-services-and-clients/#test-services
+          active: test-services
+        - title: Test clients
+          url: /learn/test-ballerina-code/test-services-and-clients/#test-clients
+          active: test-clients
+        - title: Configure services and clients
+          url: /learn/test-ballerina-code/test-services-and-clients/#configure-services-and-clients
+          active: configure-services-and-clients
+    - title: Mocking 
+      url: '#'
+      sublinks:
+        - title: Mock objects
+          url: /learn/test-ballerina-code/mocking/#mock-objects
+          active: mock-objects
+        - title: Mock functions
+          url: /learn/test-ballerina-code/mocking/#mock-functions
+          active: mock-functions
+    - title: Execute tests
+      url: '#'
+      sublinks:
+        - title: Understand the test execution behavior
+          url: /learn/test-ballerina-code/execute-tests/#understand-the-test-execution-behavior
+          active: understand-the-test-execution-behavior
+        - title: Understand the behavior during failures
+          url: /learn/test-ballerina-code/execute-tests/#understand-the-behavior-during-failures
+          active: understand-the-behavior-during-failures
+        - title: Execute tests using CLI commands
+          url: /learn/test-ballerina-code/execute-tests/#execute-tests-using-cli-commands
+          active: execute-tests-using-cli-commands

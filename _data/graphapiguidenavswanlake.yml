@@ -1,0 +1,36 @@
+- title: Write a GraphQL API with Ballerina
+  url: #
+  sublinks:
+    - title: Set up the prerequisites
+      url: /learn/write-a-graphql-api-with-ballerina/#set-up-the-prerequisites
+      active: set-up-the-prerequisites
+    - title: Design the GraphQL endpoint
+      url: /learn/write-a-graphql-api-with-ballerina/#design-the-graphql-endpoint
+      active: design-the-graphql-endpoint
+    - title: Create the service package
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-service-package
+      active: create-the-service-package
+    - title: Create the data source 
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-data-source 
+      active: create-the-data-source
+    - title: Create the object types
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-object-types
+      active: create-the-object-types
+    - title: Create the service
+      url: /learn/write-a-graphql-api-with-ballerina/#create-the-service
+      active: create-the-service
+    - title: The complete code
+      url: /learn/write-a-graphql-api-with-ballerina/#the-complete-code
+      active: the-complete-code
+    - title: Run the service
+      url: /learn/write-a-graphql-api-with-ballerina/#run-the-service
+      active: run-the-service
+    - title: View the generated schema
+      url: /learn/write-a-graphql-api-with-ballerina/#view-the-generated-schema
+      active: view-the-generated-schema
+    - title: Try the service
+      url: /learn/write-a-graphql-api-with-ballerina/#try-the-service
+      active: try-the-service
+    - title: Learn more
+      url: /learn/write-a-graphql-api-with-ballerina/#learn-more
+      active: learn-more

@@ -1,13 +1,6 @@
-.downloadVersion h2 {
+.donwloadVersion h2 {
     color: #585a5e;
     font-size: 32px;
-    margin-top: 15px;
-    font-size: 1.5rem;
-}
-
-.downloadVersion h3 {
-    color: #e71a1a !important;
-    font-size: 24px;
     margin-top: 15px;
     font-size: 1.5rem;
 }

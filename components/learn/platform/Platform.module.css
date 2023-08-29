@@ -1,0 +1,46 @@
+.introCard {
+    text-align: center;
+}
+  
+.pGroup {
+    border: #a7a8ab solid 0.3px;
+    padding: 25px;
+    /* height: 120px; */
+    margin-bottom: 30px;
+}
+
+.pGroup h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #585a5e;
+}
+
+.pGroup:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.titleLink {
+    text-decoration: none;
+    color: #20b6b0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.titleLink:hover {
+    color: #57595d;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.description {
+    color: #57595d;
+    font-size: 14px;
+}
+
+.contentCol {
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+}

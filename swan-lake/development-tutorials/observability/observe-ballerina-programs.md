@@ -123,8 +123,8 @@ $ curl http://localhost:9090/hello/sayHello
 
 A ballerina service can be observed as follows. 
 
-1. [Observe metrics using Prometheus](/learn/observe-metrics)
+1. [Observe metrics using Prometheus]()
 
-2. [Observe tracing using Jaeger](/learn/observe-tracing)
+2. [Observe distributed tracing using Jaeger]()
 
-3. [Observe logs with Elastic Stack](/learn/observe-logs)
+3. [Observe logs with Elastic Stack]()

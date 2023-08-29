@@ -59,7 +59,7 @@ export function ConfiguringViaCli({ codeSnippets }) {
 
       <p>
         For more information, see{" "}
-        <a href="/learn/configure-ballerina-programs/provide-values-to-configurable-variables/#provide-via-command-line-arguments/">
+        <a href="/learn/provide-values-to-configurable-variables/#provide-via-command-line-arguments/">
           Configure via command-line arguments
         </a>
         .

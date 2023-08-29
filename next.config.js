@@ -129,8 +129,12 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/asyncapi-tool`,
       },
       {
+        source: `/${redirectBase}learn/grpc-tool`,
+        destination: `/${redirectBase}learn/integration-tools/grpc-tool`,
+      },
+      {
         source: `/${redirectBase}learn/strand-dump-tool`,
-        destination: `/${redirectBase}learn/integration-tools/strand-dump-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/strand-dump-tool`,
       },
       {
         source: `/${redirectBase}learn/edi-tool`,
@@ -217,8 +221,16 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-central/publish-packages-to-ballerina-central`,
       },
       {
-        source: `/${redirectBase}learn/run-in-the-cloud/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/:slug`,
+        source: `/${redirectBase}learn/code-to-cloud-deployment`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/code-to-cloud-deployment`,
+      },
+      {
+        source: `/${redirectBase}learn/azure-functions`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/azure-functions`,
+      },
+      {
+        source: `/${redirectBase}learn/aws-lambda`,
+        destination: `/${redirectBase}learn/development-tutorials/run-in-the-cloud/aws-lambda`,
       },
       {
         source: `/${redirectBase}learn/test-ballerina-code/:slug`,
@@ -229,8 +241,16 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
       },
       {
-        source: `/${redirectBase}learn/bal-command/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/build-and-run/bal-command/:slug`,
+        source: `/${redirectBase}learn/cli-commands/`,
+        destination: `/${redirectBase}learn/development-tutorials/build-and-run/cli-commands/`,
+      },
+      {
+        source: `/${redirectBase}learn/update-tool/`,
+        destination: `/${redirectBase}learn/development-tutorials/build-and-run/update-tool/`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-shell/`,
+        destination: `/${redirectBase}learn/development-tutorials/build-and-run/ballerina-shell/`,
       },
       {
         source: `/${redirectBase}learn/java-interoperability-guide/:slug`,

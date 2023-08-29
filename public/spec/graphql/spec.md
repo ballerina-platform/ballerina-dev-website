@@ -3,9 +3,9 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/08/09 \
+_Updated_: 2023/08/22 \
 _Edition_: Swan Lake \
-_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
+_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
 ## Introduction
 
@@ -254,7 +254,7 @@ Since the GraphQL listener uses the `http:Listener` and the `websocket:Listener`
 ###### Example: Listener Configuration
 
 ```ballerina
-listener graphql:Listener graphqlListener = = new (9090, timeout = 10);
+listener graphql:Listener graphqlListener = new (9090, timeout = 10);
 ```
 
 >**Note:** If the GraphQL service includes subscription operations, the `httpVersion` of the `graphql:ListenerConfiguration` must be either `"1.0"` or `"1.1"`. Otherwise, this will cause a runtime error when attaching the service to the listener.
@@ -695,11 +695,17 @@ When the `@graphql:ID` annotation is used, the generated schema will show the fi
 
 >**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
 
-###### Example: Scalar type ID
+>**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements.
+
+###### Example: ID Scalar Type
 ```ballerina
 service on new graphql:Listener(9090) {
 
     resource function get profileById(@graphql:ID int id) returns Profile {
+        // ...
+    }
+
+    resource function get profileByIds(@graphql:ID int[] ids) returns Profile[] {
         // ...
     }
 
@@ -722,7 +728,7 @@ public distinct service class Student {
     final string id;
     final string name;
 
-    function init(@graphql:ID string id, string name) {
+    function init(string id, string name) {
         self.id = id;
         self.name = name;
     }
@@ -748,6 +754,8 @@ In Ballerina, a GraphQL object type can be represented using either a service ty
 #### 4.2.1 Record Type as Object
 
 A Ballerina record type can be used as an Object type in GraphQL. Each record field is mapped to a field in the GraphQL object and the type of the record field will be mapped to the type of the corresponding GraphQL field.
+
+>**Note:** A GraphQL object must have at least one field. Therefore, an empty record type cannot be used as an object type in GraphQL, and using an empty record type will result in a compilation error.
 
 ###### Example: Record Type as Object
 ```ballerina
@@ -925,6 +933,8 @@ Although `Scalar` and `enum` types can be used as input and output types without
 
 In Ballerina, a `record` type can be used as an input object. When a `record` type is used as the type of the input argument of a `resource` or `remote` method in a GraphQL service (or in a `resource` method in a `service` type returned from the GraphQL service), it is mapped to an `INPUT_OBJECT` type in GraphQL.
 
+>**Note:** A GraphQL input object must have at least one field. Therefore, an empty record type cannot be used as an input object type in GraphQL, and using an empty record type will result in a compilation error.
+
 >**Note:** Since GraphQL schema can not use the same type as an input and an output type when a record type is used as an input and an output, a compilation error will be thrown.
 
 >**Note:** Alias types of record types are not allowed to be used as input object types in a GraphQL schema. If there is a need to utilize fields from an existing type repeatedly, ballerina type inclusion can be used.
@@ -965,6 +975,8 @@ In GraphQL, an interface can be used to define a set of common fields for object
 In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
 
 Non-distinct `service` objects and `service` classes can not be used to define or implement GraphQL interfaces.
+
+>**Note**: In order to be recognized as GraphQL objects or interfaces, the Ballerina `service` `object`s and `service` `class`es must be defined within the same module as the GraphQL service.
 
 ###### Example: Interfaces
 ```ballerina
@@ -2657,7 +2669,7 @@ graphql:Error? result = context.remove("key");
 
 ##### 10.1.1.4 Register DataLoader in Context
 
-To register a [DataLoader](#111-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
+To register a [DataLoader](#106-dataloader) in the `graphql:Context` object, you can use the `registerDataLoader()` method, which requires two parameters.
 
 - `key`: The key used to identify a specific DataLoader instance. This key can later be used to retrieve the DataLoader instance when needed. The `key` must be a `string`.
 - `dataloader`: The DataLoader instance.
@@ -3183,6 +3195,8 @@ To fully define an entity within a Ballerina GraphQL subgraph, you must:
 2. Define the `key` field of the annotation to be the fields and subfields that contribute to the entity's primary key/keys.
 3. Define the `resolveReference` field of the annotation to be a function pointer to resolve the entity. If this field is set to `nil`, it indicates to the graph router that this subgraph does not define a reference resolver for this entity. For more details, see [ReferenceResolver](#10513-the-subgraphreferenceresolver-function-type).
 
+>**Note:** In order to be recognized as subgraph entities, GraphQL object types marked with `@subgraph:Entity` must be defined within the same Ballerina module as the GraphQL service.
+
 ###### Example: Federated Entity Definition and Corresponding GraphQL Schema
 
 <table>
@@ -3592,7 +3606,7 @@ isolated distinct service class User {
 
         dataloader:DataLoader rePostsLoader = ctx.getDataLoader("rePostsLoader");
         Post[] rePosts = check rePostsLoader.get(self.userId);
-        
+
         return [...posts, ...rePosts];
     }
 

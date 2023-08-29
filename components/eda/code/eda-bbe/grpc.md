@@ -1,6 +1,6 @@
 ---
 title: 'RPC, why not gRPC?'
-description: Ballerina simplifies gRPC event streaming, bridging the gap between service definition and code generation. Effortlessly leverage gRPC's power for seamless data streaming with Ballerina.
+description: Ballerina simplifies gRPC event streaming by bridging the gap between the service definition and code generation. You can effortlessly leverage gRPC's power for seamless data streaming with Ballerina.
 url: 'https://github.com/ballerina-platform/module-ballerina-grpc/tree/master/examples/route-guide'
 ---
 ```

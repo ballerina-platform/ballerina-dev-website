@@ -18,7 +18,7 @@ The Ballerina Swan Lake Beta5 release improves upon the Beta4 release by address
 
 ### Updating Ballerina
 
-If you are already using Ballerina, you can use the [update tool](/learn/cli-documentation/update-tool/) to directly update to Ballerina Swan Lake Beta5 as follows. 
+If you are already using Ballerina, you can use the [update tool](/learn/update-tool/) to directly update to Ballerina Swan Lake Beta5 as follows. 
 
 To do this, first, execute the command below to get the update tool updated to its latest version. 
 

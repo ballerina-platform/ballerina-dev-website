@@ -50,7 +50,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     } on fail {
         io:println("Failed to initialize resultInt");
     }
-    resultInt += 1; // Compilation error now: resultInt may not have been initialized
+    resultInt += 1; // Compilation error now.
   }
   ```
 
@@ -59,17 +59,18 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 - ```ballerina
   function filterEmployeesByDepartment(map<Employee> employees, string department) {
     var result = from var e in employees // Compilation error now.
-                 where e.department == department
-                 select e.name;
+        where e.department == department
+        select e.name;
   }
   ```
 
 - A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
  
 - ```ballerina
-  function calculateTotal(stream<int, error?> strm) {
-     int total = from var i in strm // Compilation error now: expected int, but found int|error
-             collect sum(i);
+  function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
+    int res = from var {department, salary} in strm // Compilation error now.
+        where department == dept
+        collect sum(salary);
   }
   ```
 

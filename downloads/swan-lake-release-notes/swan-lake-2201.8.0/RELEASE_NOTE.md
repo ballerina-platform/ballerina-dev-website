@@ -37,6 +37,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     ```ballerina
     2f|1 a = 2; // Compilation error now, `2` is considered to be `int`.
     3d|6 b = 3; // Compilation error now, `3` is considered to be `int`.
+    3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
     ```
 
 ## Platform updates

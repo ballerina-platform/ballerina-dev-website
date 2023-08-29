@@ -63,15 +63,17 @@ These cookies are necessary for the website to function and cannot be switched o
 
 | Cookie subgroup      	| Cookies            	| Cookies used 	| Lifespan  	|
 |----------------------	|--------------------	|--------------	|-----------	|
-| central.ballerina.io 	| USER_EMAIL         	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_ID            	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_LOGGED        	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| admin_org_names    	| First party  	| Session   	|
-| central.ballerina.io 	| is_first_time      	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| ACCESS_TOKEN       	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_PROFILE_IMAGE 	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| token_expired      	| First party  	| Session   	|
-| central.ballerina.io 	| access_token       	| First party  	| 7.5 hours 	|
+| ballerina.io 	        | `OptanonConsent`       	| First party  	| 364 days 	    |
+| ballerina.io 	        | `OptanonAlertBoxClosed` | First party  	| 364 days 	    |
+| central.ballerina.io 	| `USER_EMAIL`        	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `USER_ID`            	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `USER_LOGGED`        	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `admin_org_names`    	| First party  	| Session   	|
+| central.ballerina.io 	| `is_first_time`      	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `ACCESS_TOKEN`       	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `USER_PROFILE_IMAGE` 	| First party  	| 7.5 hours 	|
+| central.ballerina.io 	| `token_expired`      	| First party  	| Session   	|
+| central.ballerina.io 	| `access_token`       	| First party  	| 7.5 hours 	|
 
 ### Performance cookies
 
@@ -79,16 +81,21 @@ These cookies allow us to count visits and traffic sources so we can measure and
 
 | Cookie subgroup   	| Cookies                      	| Cookies used 	| Lifespan (Days) 	|
 |-------------------	|------------------------------	|--------------	|-----------------	|
-| ballerina.io      	| _hjIncludedInPageviewSample  	| First party  	| 0               	|
-| ballerina.io      	| _gid                         	| First party  	| 0               	|
-| ballerina.io      	| _hjAbsoluteSessionInProgress 	| First party  	| 0               	|
-| ballerina.io      	| _hjSessionUser_865786        	| First party  	| 364             	|
-| ballerina.io      	| _hjFirstSeen                 	| First party  	| 0               	|
-| ballerina.io      	| _hjSession_865786            	| First party  	| 0               	|
-| ballerina.io      	| _ga                          	| First party  	| 729             	|
-| ballerina.io      	| _hjIncludedInSessionSample   	| First party  	| 0               	|
-| script.hotjar.com 	| _hjIncludedInSessionSample   	| Third party  	| 0               	|
-| script.hotjar.com 	| _hjIncludedInPageviewSample  	| Third party  	| 0               	|
+| ballerina.io      	| `_hjIncludedInPageviewSample`  	| First party  	| 0               	|
+| ballerina.io      	| `_gid`                         	| First party  	| 0               	|
+| ballerina.io      	| `_hjAbsoluteSessionInProgress` 	| First party  	| 0               	|
+| ballerina.io      	| `_hjSessionUser_865786`        	| First party  	| 364             	|
+| ballerina.io      	| `_hjFirstSeen`                 	| First party  	| 0               	|
+| ballerina.io      	| `_hjSession_865786`            	| First party  	| 0               	|
+| ballerina.io      	| `_ga`                          	| First party  	| 729             	|
+| ballerina.io      	| `_ga_xxxxxxxxxx`                  | First party  	| 729             	|
+| ballerina.io      	| `_hjIncludedInSessionSample`   	| First party  	| 0               	|
+| central.ballerina.io 	| `route`  	| First party  	| 0               	|
+| api.central.ballerina.io 	| `route`  	| First party  	| 0               	|
+| lib.ballerina.io 	| `route`  	| First party  	| 0               	|
+| script.hotjar.com 	| `_hjIncludedInSessionSample`   	| Third party  	| 0               	|
+| script.hotjar.com 	| `_hjIncludedInPageviewSample`  	| Third party  	| 0               	|
+| script.hotjar.com 	| `_hjIncludedInSessionSample_865786`  	| Third party  	| 0               	|
 
 ### Targeting cookies
 
@@ -96,13 +103,18 @@ These cookies allow us to count visits and traffic sources so we can measure and
 
 | Cookie subgroup    	| Cookies                               	| Cookies used 	| Lifespan (Days) 	|
 |--------------------	|---------------------------------------	|--------------	|-----------------	|
-| ballerina.io       	| _gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx 	| First party  	| 0               	|
-| resources.wso2.com 	| visitor_id142131-hash                 	| Third party  	| 3649            	|
-| resources.wso2.com 	| pardot                                	| Third party  	| 0               	|
-| resources.wso2.com 	| visitor_id#####                       	| Third party  	| 3649            	|
-| pardot.com         	| visitor_id#####                       	| Third party  	| 3649            	|
-| pi.pardot.com      	| pardot                                	| Third party  	| 0               	|
-| pardot.com         	| visitor_id142131-hash                 	| Third party  	| 3649            	|
+| ballerina.io       	| `_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx` 	| First party  	| 0               	|
+| ballerina.io       	| `_gat_UA-nnnnnnn-nn` 	| First party  	| 0               	|
+| resources.wso2.com 	| `visitor_id142131-hash`                 	| Third party  	| 3649            	|
+| resources.wso2.com 	| `pardot`                                	| Third party  	| 0               	|
+| resources.wso2.com 	| `visitor_id#####`                       	| Third party  	| 3649            	|
+| pardot.com         	| `visitor_id#####`                       	| Third party  	| 3649            	|
+| pardot.com         	| `visitor_id142131-hash`                 	| Third party  	| 3649            	|
+| pi.pardot.com      	| `pardot`                                	| Third party  	| 0               	|
+| youtube.com         	| `CONSENT`                  	| Third party  	| 729           |
+| youtube.com         	| `VISITOR_INFO1_LIVE`                	| Third party  	| 179           |
+| youtube.com         	| `VISITOR_PRIVACY_METADATA`                 	| Third party  	| 179           |
+| youtube.com         	| `YSC`                 	| Third party  	| 0           |
 
-**Effective August 20, 2022**
+**Effective August 28, 2023**
 

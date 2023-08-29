@@ -16,9 +16,10 @@ California residents may view WSO2's California-specific privacy policy at [http
 
     When you register on the Ballerina Sites for updates or sign up for an event or service, or when you login through single-sign-on through certain designated federated identity providers mentioned on the Sites, we may ask that you submit some or all of the following information:
 
-    - Your user name
-    - Your email address
-    - Your GitHub profile picture
+    - Name
+    - Email address
+    - Profile picture
+    - Language preference
 
     You may choose to visit our site anonymously without providing any of the above information. However, some services on our site may require that such details be entered on a mandatory basis. This is because those details are essential for us to be able to provide you with those services.
 

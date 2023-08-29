@@ -39,15 +39,17 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Header className={styles.mainDir}>Use cases</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.category.toLowerCase().startsWith('usecases')) {
-                                                return (
-                                                    <>
-                                                        {child}
-                                                    </>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('usecases')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                        )
                                     }
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -55,15 +57,17 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Header className={styles.mainDir}>Case studies</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.category.toLowerCase().startsWith('case studies')) {
-                                                return (
-                                                    <>
-                                                        {child}
-                                                    </>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('case studies')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                        )
                                     }
                                 </Accordion.Body>
                             </Accordion.Item> */}
@@ -71,15 +75,17 @@ const CustomMenu = React.forwardRef(
                                 <Accordion.Header className={styles.mainDir}>Comparisons</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
-                                        children.type.map((child) => {
-                                            if (child.props.category.toLowerCase().startsWith('comparisons')) {
-                                                return (
-                                                    <>
-                                                        {child}
-                                                    </>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('comparisons')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                        )
                                     }
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -91,15 +97,17 @@ const CustomMenu = React.forwardRef(
                                 <p>Use cases</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child, index) => {
-                                            if (child.props.category.toLowerCase().startsWith('usecases')) {
-                                                return (
-                                                    <li key={index}>
-                                                        {child}
-                                                    </li>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('usecases')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                        )
                                     }
                                 </ul>
                             </div>
@@ -108,15 +116,17 @@ const CustomMenu = React.forwardRef(
                                 <p>Case studies</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child, index) => {
-                                            if (child.props.category.toLowerCase().startsWith('case studies')) {
-                                                return (
-                                                    <li key={index}>
-                                                        {child}
-                                                    </li>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('case studies')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                          )
                                     }
                                 </ul>
                             </div> */}
@@ -126,15 +136,17 @@ const CustomMenu = React.forwardRef(
                                 <p>Comparisons</p>
                                 <ul className="list-unstyled">
                                     {
-                                        children.type.map((child, index) => {
-                                            if (child.props.category.toLowerCase().startsWith('comparisons')) {
-                                                return (
-                                                    <li key={index}>
-                                                        {child}
-                                                    </li>
-                                                )
+                                        React.Children.toArray(children).filter(
+                                            (child, index) => {
+                                                if (child.props.category.toLowerCase().startsWith('comparisons')) {
+                                                    return (
+                                                        <li key={index}>
+                                                            {child}
+                                                        </li>
+                                                    )
+                                                }
                                             }
-                                        })
+                                        )
                                     }
                                 </ul>
                             </div>

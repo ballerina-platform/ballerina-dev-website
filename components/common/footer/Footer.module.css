@@ -1,9 +1,12 @@
 .stack {
-    background-color: #eeeeee;
+    /* background-color: #eeeeee; */
+    background-color: #494949;
+    color:#ffffff;
 }
 
 .footer {
-    background: #eeeeee;
+    /* background: #eeeeee; */
+    background: #494949;
     /* padding: 20px 0 10px 0; */
     padding-top: 20px;
     padding-bottom: 10px;
@@ -58,7 +61,7 @@
     padding-left: 2px;
 }
 
-.subscribeBtn, .subscribe a {
+.subscribeBtn, .subscribe a, .subRss {
     background-color: #20b6b0;
     color: #fff;
     padding: 10px 20px;
@@ -73,18 +76,34 @@
     padding: 10px 52px 10px 54px !important;
     /* margin-bottom: 2px;*/
     display: inline-block; 
-    background-image: url(/img/rss.svg);
+    background-image: url(/images/sm-icons/rss-white.svg);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 20px;
     background-color: #20b6b0;
-    color: #fff !important;
+    color: #fff;
+    /* font-weight: 500; */
+}
+
+.subRss:hover {
+    /* padding: 10px 20px 10px 50px !important; */
+    padding: 10px 52px 10px 54px !important;
+    /* margin-bottom: 2px;*/
+    display: inline-block; 
+    background-image: url(/images/sm-icons/rss-teal.svg) !important;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 20px;
+    background-color: #ffffff;
+    color: #20b6b0 !important;
     /* font-weight: 500; */
 }
 
 .subscribeBtn:hover, .subscribe a:hover {
-    background-color: #57595d;
-    color: #fff !important;
+    /* background-color: #57595d;
+    color: #fff !important; */
+    color: #20b6b0 !important;
+    background-color: #ffffff;
 }
 
 .footerLinks {
@@ -94,7 +113,8 @@
 }
 
 .footerLinks ul li a, .policyLinks ul li a, .policyLinks span {
-    color: #57595d;
+    /* color: #57595d; */
+    color: #ffffff;
     text-transform: uppercase;
     font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif !important;
     font-weight: normal;
@@ -112,7 +132,8 @@
     font-size: 12px;
     /* padding-left: 40px; */
     padding-top: 0;
-    color: #57595d;
+    /* color: #57595d; */
+    color: #ffffff;
     letter-spacing: 0.4px;
     font-weight: 300;
     line-height: 16px !important;

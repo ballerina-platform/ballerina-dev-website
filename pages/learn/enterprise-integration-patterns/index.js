@@ -141,7 +141,7 @@ export default function PatternList(props) {
 
             <Col xs={12} md={12}>
               <Container>
-                <p>
+                <p className="intro">
                   Ballerina usage pattens and best practices for implementing enterprise integrations. These patterns are based on the <a href="https://www.enterpriseintegrationpatterns.com">Enterprise Integration Patterns</a> book by Gregor Hohpe and Bobby Woolf. Each sample is a simplified version of a real world integration scenario.
                 </p>
               </Container>

@@ -1266,6 +1266,16 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 65px;
 }
 
+.llanding .intro a {
+  color: #20b6b0;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.llanding .intro a:hover {
+  color: #57595d;
+}
+
 .integration h3 {
   scroll-margin-top: 65px;
 }

@@ -29,11 +29,11 @@
 @media (min-width: 768px) {
   .icon {
       padding-top: 0;
+      margin-left: 8px;
   }
 }
 
 .icon {
   background-color: #eee;
   border-radius: 0;
-  margin-left: 8px;
 }

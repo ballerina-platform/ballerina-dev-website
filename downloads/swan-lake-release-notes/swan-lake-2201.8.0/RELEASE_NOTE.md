@@ -39,7 +39,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
-- A bug that allowed variables within an `on fail` clause, which may or may not have been initialized, to evade detection as potentially uninitialized variables, has been fixed.
+- A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
 
   ```ballerina
   public function main() {
@@ -50,16 +50,17 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     } on fail {
         io:println("Failed to initialize resultInt");
     }
-    resultInt += 1; // error: resultInt may not have been initialized
+    resultInt += 1; // Compilation error now: resultInt may not have been initialized
   }
   ```
 
 - A bug that allowed incorrect type inference within query expressions when an expected type was absent has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
   
 - ```ballerina
-  function iterateMap(map<int> mp) {
-      var result = from int i in mp // compile-time error
-                select i;
+  function filterEmployeesByDepartment(map<Employee> employees, string department) {
+    var result = from var e in employees // Compilation error now.
+                 where e.department == department
+                 select e.name;
   }
   ```
 
@@ -67,7 +68,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
  
 - ```ballerina
   function calculateTotal(stream<int, error?> strm) {
-     int _ = from var i in strm // compile-time error: expected int, but found int|error
+     int total = from var i in strm // Compilation error now: expected int, but found int|error
              collect sum(i);
   }
   ```

@@ -1,6 +1,6 @@
 ---
 title: 'Data validation at the boundary'
-description: Boundary data validation is a critical aspect of data-oriented programming as it ensures that only valid and reliable data is allowed into the system enhancing data integrity, downstream processing, and security. <br><br>Ballerina with its built-in language features, handles the validation process automatically, ensuring that only valid data is accepted.
+description: Boundary data validation is a critical aspect of data-oriented programming as it ensures that only valid and reliable data is allowed into the system enhancing data integrity, downstream processing, and security. <br><br>Ballerina, with its built-in language features, handles the validation process automatically, ensuring that only valid data is accepted.
 url: https://github.com/ballerina-guides/integration-samples/blob/main/data-oriented-programming/data-validation/ballerina/main.bal
 ---
 ```

@@ -30,6 +30,13 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- Fixed a bug that allowed using field access with a map of `xml`. 
+
+    ```ballerina
+    map<xml> m = {a: xml `foo`};
+    xml x = check m.a; // Compilation error now.
+    ```
+
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
 - A bug that allowed variables within an `on fail` clause, which may or may not have been initialized, to evade detection as potentially uninitialized variables, has been fixed.
@@ -87,6 +94,20 @@ const data64 = base64 `ABCD pqrs`;
 
 ### Improvements
 
+#### Make `async-send` an action
+
+- Reclassified `async-send` from a statement to an action in alignment with the Ballerina specification.
+
+The following case is now supported.
+
+```ballerina
+public function main() {
+    worker w1 {
+        _ = 5 -> w2;
+    }
+}
+```
+
 ### Bug fixes
 
 ## Language updates
@@ -142,6 +163,15 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### `soap` package
+- Introduced the `soap` standard library package, which provides a client API to connect to SOAP endpoints.
+
+#### `mqtt` package
+- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
+
+#### `java.jms` package
+- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
+
 #### `graphql` package
 
 - Introduced the `DataLoader` functionality.
@@ -168,6 +198,10 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### Language Server
+
+- Add custom completions for HTTP services.
+
 #### CLI
 
 - Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from the Ballerina Central and are managed using the `bal tool` command. For more information, see [Tool commands](https://ballerina.io/learn/cli-documentation/cli-commands/#tool-commands).
@@ -177,11 +211,21 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### Improvements
 
+#### Language Server
+
+- Suggest Ballerina Central packages when they are partially typed.
+- Improve sorting in the record type descriptor node context.
+- Introduce a code action to add local module dependencies to the `Ballerina.toml` file.
+- Introduce a code action to change the variable type of a `let` expression.
+- Introduce a code action to create a function for the expression of a `select` clause.
+- Improve completions in the service declaration node context.
+- Improved the LS simulator.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug)
+- [Language Server](https://github.com/orgs/ballerina-platform/projects/356/views/55?filterQuery=task-approved%3AYes+release%3A%22Swan+Lake+-+U8%22+subteam%3ALS+label%3A%22Type%2FBug%22+status%3ADone)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.8.0%22+is%3Aclosed)
 
 ## Ballerina packages updates

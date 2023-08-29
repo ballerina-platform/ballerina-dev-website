@@ -32,7 +32,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
-- A bug related to the inference of numeric literal types has been fixed.
+- A bug related to deciding the types of numeric literals has been fixed.
 
     ```ballerina
     2f|1 num1 = 2; // Compilation error now.

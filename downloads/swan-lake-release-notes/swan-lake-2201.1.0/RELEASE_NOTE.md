@@ -632,7 +632,7 @@ To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake U
 
 #### AsyncAPI tool
 
-Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0). For more information, see [Ballerina AsyncAPI support](/learn/asyncapi-tool/) and [AsyncAPI CLI documentation](/learn/asyncapi/#asyncapi-to-ballerina).
+Introduced the AsyncAPI tool, which will make it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating Ballerina service and listener skeletons. Ballerina Swan Lake supports the [AsyncAPI Specification version 2.x](https://www.asyncapi.com/docs/specifications/v2.0.0). For more information, see [Ballerina AsyncAPI support](/learn/asyncapi-tool/) and [AsyncAPI CLI documentation](/learn/asyncapi-tool).
 
 #### GraphQL tool
 

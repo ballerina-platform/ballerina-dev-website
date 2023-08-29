@@ -138,7 +138,7 @@ In general you can use the command format given below.
 $ bal graphql [-i | --input] <graphql-configuration-file-path> [-o | --output] <output-location> 
 ```
 
-This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory). For more information, see [GraphQL to Ballerina](/learn/graphql/#graphql-to-ballerina).
+This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory).
 
 The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 

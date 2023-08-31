@@ -76,8 +76,10 @@ The second parameter with the `json` value contains the input request data. This
 The AWS Lambda functionality is implemented as a compiler extension. Therefore, artifact generation happens automatically when you build a Ballerina module by executing the command below.
 
 ```
-$ bal build
+$ bal build --cloud="aws_lambda"
 ```
+
+>***Tip** You can append --graalvm flag to the above build command to build the native executable. This executable will have much smaller memory footprint and faster startup time. For more information, see [Build the executable in a container](/learn/build-the-executable-in-a-container/).
 
 ## Deploy the function
 
@@ -87,7 +89,8 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 >**Note:** When you are deploying, make sure to replace the `$FUNCTION_NAME`, `$LAMBDA_ROLE_ARN`, and `$REGION_ID` placeholders with the corresponding values you obtained when [setting up the prerequisites](#set-up-the-prerequisites).
 
->**Info:**  For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
+>**Info:** For the supported parameters, go to the <a href="https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html" target="_blank">`create-function` documentation</a>. You might need to change parameters such as the `MemorySize` and `Timeout` depending on your application and connection speed. 
+
 
 ## Examples
 

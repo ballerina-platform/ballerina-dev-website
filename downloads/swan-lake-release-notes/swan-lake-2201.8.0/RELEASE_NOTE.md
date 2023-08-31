@@ -39,6 +39,41 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
 
+- A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
+
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check calculateDefaultValue(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // Compilation error now.
+  }
+  ```
+
+- A bug that resulted incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
+  
+- ```ballerina
+  function filterEmployeesByDepartment(map<Employee> employees, string department) {
+    var result = from var e in employees // Compilation error now.
+        where e.department == department
+        select e.name;
+  }
+  ```
+
+- A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
+ 
+- ```ballerina
+  function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
+    int total = from var {department, salary} in strm // Compilation error now.
+        where department == dept
+        collect sum(salary);
+  }
+  ```
+
 - A bug related to deciding the types of numeric literals has been fixed.
 
     ```ballerina

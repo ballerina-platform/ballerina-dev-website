@@ -5,7 +5,7 @@ permalink: /privacy-policy/
 
 ---
 
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io/](https://ballerina.io/), Ballerina Central, Ballerina Play, the Ballerina blog, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
+At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io/](https://ballerina.io/), Ballerina Central, Ballerina Play, the Ballerina blog, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share, and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
 
 California residents may view WSO2's California-specific privacy policy at [https://wso2.com/california-privacy](https://wso2.com/california-privacy).
 
@@ -14,7 +14,7 @@ California residents may view WSO2's California-specific privacy policy at [http
 
 1. **Information you share with us**
 
-    When you register on the Ballerina Sites for updates or sign up for an event or service, or when you login through single-sign-on through certain designated federated identity providers mentioned on the Sites, we may ask that you submit some or all of the following information:
+    When you register on the Ballerina Sites for updates or sign up for an event or service, or when you log in through single-sign-on through certain designated federated identity providers mentioned on the Sites, we may ask that you submit some or all of the following information:
 
     - Name
     - Email address
@@ -25,7 +25,7 @@ California residents may view WSO2's California-specific privacy policy at [http
 
 2. **Information collected automatically from your devices**
 
-    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our [Cookie policy](https://ballerina.io/cookie-policy/) on how we use and store cookies. 
+    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our [Cookie policy](https://ballerina.io/cookie-policy/) on how we use and store cookies. 
 
 3. **Information received from third parties**
 
@@ -35,14 +35,14 @@ California residents may view WSO2's California-specific privacy policy at [http
 
 The information we collect from you may be used to:
 
-- **Provide services:** We use Your personal data to perform the services you request (for instance, if you’ve filled in a contact us form, we use Your information to get in touch with you).
+- **Provide services:** We use Your personal data to perform the services you request (for instance, if you’ve filled in a Contact Us form, we use Your information to get in touch with you).
 - **Support and improve WSO2 offerings:** We use Your personal data to improve our Sites and services. We continually strive to improve our website offerings based on the type of content our users click on or download. We also monitor usage to fix issues and to make improvements to our services or to provide offerings more relevant to You.
 - **Carry out analysis:** We sometimes require Your personal data to analyze the ways in which our products and services are used or downloaded, what features are effective or popular, whether our marketing campaigns reach our intended audiences, and to track lead generation for our sales process.
 - **Account creation and communication:** We use Your data to create Your online profile, which we create for every user who registers on our Site or for a service, and to send You communications about updates and changes to Your account or services.
-- **Marketing:** To send marketing material, event invitations and updates. You may opt out of these at any time.
+- **Marketing:** To send marketing material, event invitations, and updates. You may opt out of these at any time.
 - **Contests and surveys:** To administer a contest, survey, or other site feature.
 - **Fraud and abuse detection:** We use Your personal information to prevent and detect fraud and abuse in order to protect our users. 
-- **Compliance with legal obligations:** Sometimes, we may have a legal obligation to collect, use or record Your personal data, such as when you make a payment or submit a data subject request.
+- **Compliance with legal obligations:** Sometimes, we may have a legal obligation to collect, use, or record Your personal data, such as when you make a payment or submit a data subject request.
 
 ## How do we process your data?
 
@@ -62,9 +62,9 @@ We do not sell, trade, or otherwise share your information with outside parties.
 
 We sometimes need to give our service providers who help us run our website and services access to the data we have in order for them to perform those services. They are only authorized to use information that is strictly relevant for them to perform their tasks, and we ensure that they are under obligations of confidentiality to us so that your data is secure. For a full list of third-party service providers used by Ballerina ( processors), please visit [Ballerina processor list](/policy/ballerina-subprocessor-list.pdf).
 
-We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 LLC and is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil) and any other affiliates set out in our [Contact Us](https://wso2.com/contact/?src=contact) page. We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
+We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 LLC, which is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil) and any other affiliates set out in our [Contact Us](https://wso2.com/contact/?src=contact) page. We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
 
-## Cross border data transfers
+## Cross-border data transfers
 
 WSO2 operates globally, with businesses both inside and outside of the European Economic Area ("EEA") and the UK. We may transfer your Personal Data to countries other than the one in which you live, including transfers to the United States. Additionally, third-party service providers who handle data on our behalf may be based in locations around the world. For these reasons, your personal information may be transferred to other countries both inside and outside of the UK and the EEA. As privacy laws in other countries may not be equivalent to those in your home country, we only make arrangements to transfer data overseas where we are satisfied that adequate levels of protection are in place to protect any information held in that country or that the service provider acts at all times in compliance with applicable privacy laws. Where required under applicable laws, we will take measures to ensure that personal information handled in other countries will receive at least the same level of protection as it is given in your home country.
 
@@ -74,7 +74,7 @@ WSO2 is a participant in the EU-U.S. Data Privacy Framework (“DPF”) as set f
 
 Data transferred from the EU, EEA, and the United Kingdom to other WSO2 affiliate entities located around the world is transferred on the basis of Data Transfer Agreements containing the New EU Standard Contractual Clauses set out by the European Commission in June 2021 and their UK equivalent, which guarantee uniform levels of protection to your data as specified by the EU and the UK.
 
-We may also release your information when we believe release is necessary to comply with the law subject to our (Governmental and law enforcement Data Access Policy), enforce our privacy policy or protect our or others’ rights, property, or safety.
+We may also release your information when we believe release is necessary to comply with the law subject to our (Governmental and law enforcement Data Access Policy), enforce our privacy policy, or protect our or others’ rights, property, or safety.
 
 ### Dispute resolution
 
@@ -94,11 +94,11 @@ We may retain your information for a period of time consistent with the original
 
 ## Your rights to your data and how to manage your preferences
 
-WSO2 acknowledges your right to access your data. If information pertaining to you as an individual has been submitted to us, then you have the right to access, correct, or edit your data. If you wish, we can provide all the personal information on our records to you or to someone you nominate in a portable format as well. Our contact details are provided at the bottom of the page, or you may submit a request through <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. All you have to do is to request, and we are happy to help.
+WSO2 acknowledges your right to access your data. If information pertaining to you as an individual has been submitted to us, then you have the right to access, correct, or edit your data. If you wish, we can provide all the personal information on our records to you or to someone you nominate in a portable format as well. Our contact details are provided at the bottom of the page, or you may submit a request through <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. All you have to do is request, and we are happy to help.
 
-You can ask us to stop using all or some of your personal data (e.g., if we have no legal right to keep using it) or to limit our use of it (e.g., if your personal data is inaccurate or unlawfully held).
+You can ask us to stop using all or some of your personal data (e.g., if we have no legal right to keep using it) or to limit our use of it (e.g. if your personal data is inaccurate or unlawfully held).
 
-You may also choose to delete your data from our website at any time you choose, and unsubscribe from any Ballerina mailing lists you are on. You can unsubscribe from our marketing emails by clicking on the unsubscribe link which is at the bottom of our marketing emails or by sending an email to <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. Please note that deleting your data may affect the provision of some services.
+You may also choose to delete your data from our website at any time you choose and unsubscribe from any Ballerina mailing lists you are on. You can unsubscribe from our marketing emails by clicking on the unsubscribe link which is at the bottom of our marketing emails or by sending an email to <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a>. Please note that deleting your data may affect the provision of some services.
 
 We only ever retain your personal data even after you have ceased using our services, requested to unsubscribe or delete your data only if reasonably necessary to comply with our legal obligations (including law enforcement requests), meet regulatory requirements, resolve disputes, maintain security, prevent fraud and abuse, or fulfill your request to "unsubscribe" from further messages from us.
 

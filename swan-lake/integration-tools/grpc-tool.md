@@ -8,7 +8,16 @@ active: grpc
 intro: Protocol Buffers is an open-source cross-platform data format used to serialize structured data. gRPC uses Protocol Buffers as Interface Definition Language to create service contracts, detailing all of its remote methods and message formats. The `Protocol Buffers to Ballerina` tooling makes it easy for users to develop a service documented in a Protocol Buffers by generating Ballerina service/client stub files and skeletons.
 ---
 
-## Usage of the tool
+## Prerequisites
+
+To use the gRPC tool, you need the following prerequisites:
+
+1. [Ballerina 2202.1.0 (Swan Lake)](/downloads/) or greater
+2. A text editor
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
+  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
+
+## Usage
 
 The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
  

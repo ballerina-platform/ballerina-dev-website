@@ -8,12 +8,23 @@ active: edi-tool
 intro: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
 --- 
 
-- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+## Prerequisites
+
+To use the AsyncAPI tool, you need the following prerequisites:
+
+1. [Ballerina 2202.1.0 (Swan Lake)](/downloads/) or greater
+2. A text editor
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
+  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 
 ## Usage
 
-The usages of the above functionalities are described below.
+The tool supports two main usages as follows.
+
+- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
+- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+
+The functionalities of the above usages are described below.
 
 ### Code generation usage
 

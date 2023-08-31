@@ -10,18 +10,18 @@ intro: The health tool generates accelerators for developing healthcare integrat
 
 The Health tool can generate accelerators primarily focussed on the <a href="https://www.hl7.org/fhir/overview.html" target="_blank">Fast Healthcare Interoperability Resources (FHIR)</a> standard. The Health tool is supported from Ballerina Swan Lake version 2201.7.0 onwards.
 
-## Ballerina FHIR package generator
-
-This tool generates a Ballerina package for a given FHIR implementation guide. The FHIR resources in the implementation guide will be represented as Ballerina records including the correct cardinality constraints and metadata.
-
-FHIR integration developers can leverage the generated package when transforming custom health data into FHIR format without referring to the specification.
-
 ## Prerequisites
 
 - <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
 - A directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the <a href="http://fhir.org/guides/registry/" target="_blank">FHIR Implementation Guide registry</a>
 
     >**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
+
+## Usage
+
+This tool generates a Ballerina package for a given FHIR implementation guide. The FHIR resources in the implementation guide will be represented as Ballerina records including the correct cardinality constraints and metadata.
+
+FHIR integration developers can leverage the generated package when transforming custom health data into FHIR format without referring to the specification.
 
 ## Available parameters
 

@@ -8,6 +8,17 @@ active: graphql-tool
 intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL client. It generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document. In addition, the GraphQL tool supports generating the GraphQL schema for a given Ballerina GraphQL service and writing it to a file in GraphQL schema definition language (SDL).
 --- 
 
+## Prerequisites
+
+To use the GraphQL tool, you need the following prerequisites:
+
+1. [Ballerina 2202.1.0 (Swan Lake)](/downloads/) or greater
+2. A text editor
+  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
+  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
+
+## Usage
+
 The Ballerina GraphQL tooling support provides the following capabilities.
 
 1. Generating a Ballerina client from a given GraphQL config file configured with a GraphQL schema, which is specified by the GraphQL schema definition language and a GraphQL document/documents.

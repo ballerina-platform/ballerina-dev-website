@@ -5,9 +5,9 @@ permalink: /privacy-policy/
 
 ---
 
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at [https://ballerina.io/](https://ballerina.io/), Ballerina Central, Ballerina Play, the Ballerina blog, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share, and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
+At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://play.ballerina.io/">Ballerina Playground</a>, the <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share, and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
 
-California residents may view WSO2's California-specific privacy policy at [https://wso2.com/california-privacy](https://wso2.com/california-privacy).
+California residents may view WSO2's California-specific privacy policy at <a target="_blank" href="https://wso2.com/california-privacy">https://wso2.com/california-privacy</a>.
 
 
 ## What information do we collect?
@@ -25,9 +25,9 @@ California residents may view WSO2's California-specific privacy policy at [http
 
 2. **Information collected automatically from your devices**
 
-    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our [Cookie policy](https://ballerina.io/cookie-policy/) on how we use and store cookies. 
+    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our <a target="_blank" href="https://ballerina.io/cookie-policy/">Cookie policy</a> on how we use and store cookies. 
 
-3. **Information received from third parties**
+4. **Information received from third parties**
 
     We may also receive Your personal data from other sources, including service providers, partners, and publicly available sources. Examples of these sources are event organizers of events we sponsor, sponsored content providers, and our partners, who pass on prospective customers to us. 
 
@@ -60,9 +60,9 @@ Where we rely on Your consent to process personal data, You have the right to wi
 
 We do not sell, trade, or otherwise share your information with outside parties. However, we do share your information with our subsidiaries, affiliates, service providers, and partners who assist us in operating our website, conducting our business, or servicing you.
 
-We sometimes need to give our service providers who help us run our website and services access to the data we have in order for them to perform those services. They are only authorized to use information that is strictly relevant for them to perform their tasks, and we ensure that they are under obligations of confidentiality to us so that your data is secure. For a full list of third-party service providers used by Ballerina (processors), please visit [Ballerina processor list](/policy/ballerina-subprocessor-list.pdf).
+We sometimes need to give our service providers who help us run our website and services access to the data we have in order for them to perform those services. They are only authorized to use information that is strictly relevant for them to perform their tasks, and we ensure that they are under obligations of confidentiality to us so that your data is secure. For a full list of third-party service providers used by Ballerina (processors), please visit <a target="_blank" href="/policy/ballerina-subprocessor-list.pdf">Ballerina processor list</a>
 
-We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 LLC, which is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil) and any other affiliates set out in our [Contact Us](https://wso2.com/contact/?src=contact) page. We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
+We may share your data with our subsidiaries or affiliates within our corporate group. WSO2 ‘s parent company is WSO2 LLC, which is located in the United States of America. Our affiliates are WSO2 UK Limited (located in the United Kingdom), WSO2 Lanka (Private) Limited (located in Sri Lanka), and WSO2 Brasil Tecnologia E Software Ltda (located in Brazil) and any other affiliates set out in our <a target="_blank" href="[mailto:dpo@wso2.com](https://wso2.com/contact/?src=contact)">Contact Us</a> page. We share information within this group because these entities also carry out support, marketing, account management, and technical operations for WSO2 that are relevant to the provision of the website and services.
 
 ## Cross-border data transfers
 
@@ -70,7 +70,7 @@ WSO2 operates globally, with businesses both inside and outside of the European 
 
 In July 2023, EU regulators approved the United States as a third-party country to which EU personal data may be transferred, under an Adequacy Decision. Subsequent to this, the EU-US Data Privacy Framework was set up (which replaces the previous Privacy Shield Framework). When we transfer personal information to the US, we do so on the following basis:
 
-WSO2 is a participant in the EU-U.S. Data Privacy Framework (“DPF”) as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of personal information transferred from the European Union to the United States. WSO2 has certified to the Department of Commerce that it adheres to the DPF Principles. If there is any conflict between the terms in this privacy policy and the DPF Principles, the DPF Principles shall govern. To learn more about the DPF program, and to view our certification, please visit [https://www.dataprivacyframework.gov/s/](https://www.dataprivacyframework.gov/s/).
+WSO2 is a participant in the EU-U.S. Data Privacy Framework (“DPF”) as set forth by the U.S. Department of Commerce regarding the collection, use, and retention of personal information transferred from the European Union to the United States. WSO2 has certified to the Department of Commerce that it adheres to the DPF Principles. If there is any conflict between the terms in this privacy policy and the DPF Principles, the DPF Principles shall govern. To learn more about the DPF program, and to view our certification, please visit <a target="_blank" href="https://www.dataprivacyframework.gov/s/">https://www.dataprivacyframework.gov/s/</a>.
 
 Data transferred from the EU, EEA, and the United Kingdom to other WSO2 affiliate entities located around the world is transferred on the basis of Data Transfer Agreements containing the New EU Standard Contractual Clauses set out by the European Commission in June 2021 and their UK equivalent, which guarantee uniform levels of protection to your data as specified by the EU and the UK.
 
@@ -80,7 +80,7 @@ We may also release your information when we believe release is necessary to com
 
 In compliance with the Data Privacy Framework Principles, we commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints regarding our DPF policy should first reach out to us using the information in the [How to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
 
-WSO2 has committed to refer unresolved DTF complaints to JAMS, an alternative dispute resolution provider located in the United States. If you do not receive timely acknowledgment of your complaint from us, or if we have not addressed your complaint to your satisfaction, please contact or visit [EU-US Data Privacy Framework | JAMS Mediation, Arbitration, ADR Services](https://www.jamsadr.com/eu-us-data-privacy-framework) for more information or to file a complaint. The services of JAMS are provided at no cost to you. Under certain conditions, more fully described on the DTF website, you may invoke binding arbitration when other dispute resolution procedures have been exhausted.
+WSO2 has committed to refer unresolved DTF complaints to JAMS, an alternative dispute resolution provider located in the United States. If you do not receive timely acknowledgment of your complaint from us, or if we have not addressed your complaint to your satisfaction, please contact or visit <a target="_blank" href="https://www.jamsadr.com/eu-us-data-privacy-framework">EU-US Data Privacy Framework | JAMS Mediation, Arbitration, ADR Services</a> for more information or to file a complaint. The services of JAMS are provided at no cost to you. Under certain conditions, more fully described on the DTF website, you may invoke binding arbitration when other dispute resolution procedures have been exhausted.
 
 Within the USA, we are also subject to the investigatory and enforcement powers of the Federal Trade Commission (FTC).
 
@@ -108,7 +108,7 @@ At our discretion, we may include or offer third-party products or services on o
 
 ## Information about our website
 
-This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our [Terms of service](https://ballerina.io/terms-of-service/) section relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services.
+This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our <a target="_blank" href="https://ballerina.io/terms-of-service/">Terms of service</a> section relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services.
 
 ## Information about data controllers, processors, and how to contact us
 

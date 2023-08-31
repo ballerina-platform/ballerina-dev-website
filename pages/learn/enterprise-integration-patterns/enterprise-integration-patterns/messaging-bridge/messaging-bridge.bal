@@ -18,7 +18,7 @@ type Task record {|
     string description;
 |};
 
-final http:Client zoho = check new("http://zohoapis.com.balmock.io");
+final http:Client zoho = check new ("http://zohoapis.com.balmock.io");
 
 service /api/v1 on new graphql:Listener(8080) {
 

@@ -11,7 +11,7 @@ type ZendeskResponse record {
 final http:Client zendeskClient = check new ("http://api.zendesk.com.balmock.io");
 
 service /api/v1 on new http:Listener(8080) {
-    
+
     resource function post ticket(@http:Payload json|xml request) returns string|error {
         json normalizedRequest;
         if request is json {
@@ -21,13 +21,13 @@ service /api/v1 on new http:Listener(8080) {
         }
         ZendeskResponse zendeskResponse = check zendeskClient->/api/v2/tickets.post(normalizedRequest);
         return zendeskResponse.ticket.url;
-    }       
+    }
 }
 
 function normalize(string subject, string comment) returns json {
     return {
         ticket: {
-            subject, 
+            subject,
             comment: {
                 body: comment
             }

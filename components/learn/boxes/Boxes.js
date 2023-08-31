@@ -57,7 +57,7 @@ export default function Boxes(props) {
                             Enterprise integration patterns
                           </a>
                         </p>
-                        <p className={styles.description}>Usage pattens for implementing robust integrations.</p>
+                        <p className={styles.description}>Usage patterns for implementing robust integrations.</p>
                       </div>
 
                       <div className={styles.content}>

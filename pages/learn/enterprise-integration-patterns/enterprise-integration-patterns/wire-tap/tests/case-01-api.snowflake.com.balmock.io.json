@@ -1,0 +1,7 @@
+{
+    "code": "090001",
+    "sqlState": "00000",
+    "message": "successfully executed",
+    "statementHandle": "e4ce975e-f7ff-4b5e-b15e-bf25f59371ae",
+    "statementStatusUrl": "/api/v2/statements/e4ce975e-f7ff-4b5e-b15e-bf25f59371ae"
+}

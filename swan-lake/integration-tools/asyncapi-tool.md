@@ -119,15 +119,14 @@ For example,
 $ bal asyncapi -i hello.yaml
 ```
 
-### Available parameters
+## Available parameters
 
 The below command-line arguments can be used with the command.
 
-| Parameter       | Description       |
-Mandatory/Optional                                                                                                                                                                                                                                                                                                                                                            |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-i, --input`  | The `asyncapi-contract-path` parameter specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                 | Mandatory |
-| `-o, --output` | The Ballerina files get generated at the same location from which the AsyncAPI command is executed. Optionally, you can point to another directory location by using this flag. | Optional |
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i, --input`  | The `asyncapi-contract-path` parameter specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                               | mandatory           |
+| `-o, --output`     | The Ballerina files get generated at the same location from which the AsyncAPI command is executed. Optionally, you can point to another directory location by using this flag.                                                                                                                                           | optional           |
 
 This command generates a Ballerina source (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
 
@@ -140,7 +139,7 @@ The generated Ballerina sources are written into the same directory from which t
 
 The above AsyncAPI to Ballerina command supports several usages in the Ballerina AsyncAPI tool as follows.
 
-### Generate to a specified location
+## Generate to a specified location
 
 If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
@@ -160,7 +159,7 @@ Below are some example libraries generated using the tool.
 | **Slack**  | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">`asyncapi.yml` of Slack</a>   | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/slack" target="_blank">`asyncapi-triggers/slack`</a>   | <a href="https://central.ballerina.io/ballerinax/trigger.slack" target="_blank">`ballerinax/trigger.slack`</a>   |
 | **Twilio** | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/twilio/asyncapi.yml" target="_blank">`asyncapi.yml` of Twilio</a> | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/twilio" target="_blank">`asyncapi-triggers/twilio`</a> | <a href="https://central.ballerina.io/ballerinax/trigger.twilio" target="_blank">`ballerinax/trigger.twilio`</a> |
 
-## Execute the generated sources
+## Example
 
 Follow the steps below to execute the generated Ballerina sources.
 

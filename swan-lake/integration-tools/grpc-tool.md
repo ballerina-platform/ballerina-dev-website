@@ -17,46 +17,9 @@ To use the gRPC tool, you need the following prerequisites:
   >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
   <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 
-## Usage
+## Prepare the service definition
 
-The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
- 
-> In Ballerina, Protocol Buffers serialization is supported only in the gRPC module. Therefore, you can only use
-> this tool to generate Ballerina source code for gRPC service definitions.
-
-## Protocol Buffers to Ballerina
-
-You can generate Ballerina source code using the following command.
-
-```
-$ bal grpc --input <proto-file-path> 
-         [--output <path>] 
-         [--mode client|service]
-         [--proto-path <proto-directory>]
-```
-
-### CLI command options
-
-`--input` - Path to a '.proto' file or a directory containing multiple '.proto' files. This is a mandatory field. 
-You need to provide the path of the definition file or the directory that contains multiple ‘.proto’ files.
-
-`--output` - Location of the generated Ballerina source files. This is an optional field. 
-If the output path is not specified, the output is written to a directory corresponding to the package in the Protocol
- Buffers definition. 
-If the package is not specified, the output is written to a directory named 'temp' in the current location.
-
-`--mode` - Set the mode as client or service to generate code samples. If not specified, only the stub file is 
-generated.
-
-`-- proto-path` - Path to a directory in which to look for '.proto' files when resolving import directives. If 
-omitted, the current directory is used. The '.proto' file specified in the 'input' must reside in the 'proto-path' so that the 
-compiler can determine its canonical name.
-
-
-
-## Sample
-
-The example below shows how you can generate Ballerina source code from the following Protocol Buffers definition (in the `helloworld.proto` file).
+The example below shows a sample Protocol Buffers definition (`helloworld.proto` file).
 
 ```proto
 syntax = "proto3";
@@ -79,27 +42,60 @@ message HelloReply {
  string message = 1;
 }
 ```
-**Note:** The sample service definition is taken from the quick start guide on the gRPC official site.
+**Note:** The sample service definition is taken from the [gRPC official site](https://grpc.io/docs/what-is-grpc/introduction/).
 
-### Execute the sample
+## Usage
 
-* Execute the below command to generate the client/service stub and service template files.
+The code generation tool can produce `service/client stub files` and `service/client skeletons` in the Ballerina Language.
+ 
+>**Info:** In Ballerina, Protocol Buffers serialization is supported only in the gRPC module. Therefore, you can only use this tool to generate Ballerina source code for gRPC service definitions.
+
+You can generate Ballerina source code using the following command.
+
 ```
-$ bal grpc --input helloworld.proto --mode service --output service
+$ bal grpc --input <proto-file-path> 
+         [--output <path>] 
+         [--mode client|service]
+         [--proto-path <proto-directory>]
 ```
-Once you execute the command, the stub file (`helloworld_pb.bal`) and the service template file (`greeter_service.bal`) are generated inside the service directory.
-> **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
 
+## Available parameters
 
-* Execute the following command to generate the client/service stub and client template files.
-```
-$ bal grpc --input helloworld.proto --mode client --output client
-```
-Once you execute the command, the stub file (`helloworld_pb.bal`) and the client template file (`greeter_client.bal`) are generated inside the client directory.
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                  | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `--input`  | Path of the `.proto` definition file or a directory containing multiple `.proto` files.                                                                                                                                                                                                                         | mandatory           |
+| `--output`     | Location of the generated Ballerina source files. If the output path is not specified, the output is written to a directory corresponding to the package in the Protocol Buffers definition. If the package is not specified, the output is written to a directory named 'temp' in the current location.                                                                                                                                          | optional           |
+| `--mode`     | Set the mode as client or service to generate code samples. If not specified, only the stub file is generated.                                                                                                                                          | optional           |
+| `-- proto-path`     | Path to a directory in which to look for `.proto` files when resolving import directives. If omitted, the current directory is used. The `.proto` file specified in the `input` must reside in the `proto-path` so that the compiler can determine its canonical name.                                                                                                                                         | optional           |
 
+## Generate the stub 
 
-* Execute the following command to generate only the client/service stub file.
+Execute the following command to generate only the client/service stub file.
+
 ```
 $ bal grpc --input helloworld.proto --output stubs
 ```
+
 Once you execute the command, only the stub file (`helloworld_pb.bal`) is generated inside the `stubs` directory.
+
+## Generate the stub and service template
+
+Execute the below command to generate the client/service stub and service template files.
+
+```
+$ bal grpc --input helloworld.proto --mode service --output service
+```
+
+Once you execute the command, the stub file (`helloworld_pb.bal`) and the service template file (`greeter_service.bal`) are generated inside the service directory.
+
+> **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
+
+## Generate the stub and client template
+
+Execute the following command to generate the client/service stub and client template files.
+
+```
+$ bal grpc --input helloworld.proto --mode client --output client
+```
+
+Once you execute the command, the stub file (`helloworld_pb.bal`) and the client template file (`greeter_client.bal`) are generated inside the client directory.

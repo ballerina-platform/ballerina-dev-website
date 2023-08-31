@@ -58,7 +58,11 @@ export function AsynchronousFunctionCalls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=05dd3c52014ea23ca3b313f86e4342e1&file=asynchronous_function_calls.bal",
+=======
+                "https://play.ballerina.io/?gist=00735982da4d0a160d91c059ccf849aa&file=asynchronous_function_calls.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

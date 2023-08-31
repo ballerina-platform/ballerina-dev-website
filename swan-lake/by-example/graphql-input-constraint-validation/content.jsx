@@ -389,7 +389,11 @@ export function GraphqlInputConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+<<<<<<< HEAD
             <a href="/spec/graphql/#718-constraint-configurations">
+=======
+            <a href="/spec/graphql/#1018-constraint-configurations">
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
               GraphQL constraint config - Specification
             </a>
           </span>

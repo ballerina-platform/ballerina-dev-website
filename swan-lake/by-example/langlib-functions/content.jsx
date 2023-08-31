@@ -89,7 +89,11 @@ export function LanglibFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=ec5cf55f1e2a1812c3d7f208185db72b&file=langlib_functions.bal",
+=======
+                "https://play.ballerina.io/?gist=bf0d704c75ef36d7d74ae1e5520f0f2e&file=langlib_functions.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

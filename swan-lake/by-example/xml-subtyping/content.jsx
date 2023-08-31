@@ -128,7 +128,11 @@ export function XmlSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=40872d8a83fbf0178ed08fac8a9834ca&file=xml_subtyping.bal",
+=======
+                "https://play.ballerina.io/?gist=ec2927745e26536d7001ae78fb85ec18&file=xml_subtyping.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

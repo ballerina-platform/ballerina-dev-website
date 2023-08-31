@@ -73,7 +73,11 @@ export function BacktickTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=f39e05b9c3919548089f4c287b63ba04&file=backtick_templates.bal",
+=======
+                "https://play.ballerina.io/?gist=95f7913c157372d0d526a95ead4aa3aa&file=backtick_templates.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

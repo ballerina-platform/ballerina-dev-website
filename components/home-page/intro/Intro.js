@@ -19,6 +19,7 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import { BsCheck } from 'react-icons/bs';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
@@ -49,18 +50,22 @@ export default function Intro() {
 
     <Col sm={12}>
       <Container>
-        <Row className={styles.introTopRow}>
-          <Col xs={12} sm={12} md={12} lg={8}>
-            <Image className={styles.homePageLogo} src={`${prefix}/images/ballerina-logo-white.svg`} height={61} width={330} alt="Ballerina Logo" />
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={4}></Col>
-        </Row>
+        
         <Row className={styles.introBottomRow}>
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-            <p>Ballerina is an open-source programming language for the cloud that makes it easier to use, combine, and create network services.</p>
+          <h1>Flexible, Powerful, Beautiful<br/>Integrations as Code with Ballerina</h1>
+
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Open source, cloud-native programming language optimized for integration</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2021</span></p>
+
+           
+
           </Col>
 
-          <Col xs={12} sm={12} md={12} lg={4}>
+          <Col xs={12} sm={12} md={12} lg={4} className={styles.btnCol}>
             <a className={styles.homeIntroButton}
               onMouseEnter={() => {
                 setHoverBtn(true);
@@ -72,10 +77,10 @@ export default function Intro() {
                 (hoverBtn ? buttonStyleHover : buttonStyle)
               }
               target="_blank"
-              href={`${prefix}/learn/get-started/`}
+              href={`${prefix}/downloads/`}
               rel="noreferrer">
-              Get started
-              <p>Install Ballerina, set it all up <br />and take it for a spin.</p>
+              Download
+              {/* <p>Install Ballerina, set it all up <br />and take it for a spin.</p> */}
             </a>
             <a className={`${styles.homeIntroButton} ${styles.playButton}`}
               style={buttonStyleHover}
@@ -83,10 +88,39 @@ export default function Intro() {
               href={`${prefix}/learn/by-example/`}
               rel="noreferrer">
               Examples
-              <p>Explore and try out a series of guided Ballerina examples.<br /> &nbsp;</p>
+              {/* <p>Explore and try out a series of guided Ballerina examples.<br /> &nbsp;</p> */}
             </a>
+
+
+            <div className={styles.socialMediaPanel} >
+              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
+                <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
+                <Image src={`${prefix}/images/sm-icons/twitter-white.svg`} width={25} height={25} alt="Twitter" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
+                <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={25} height={25} alt="Discord" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
+                <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
+              </a>
+
+              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
+                <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={25} height={25} alt="YouTube" />
+              </a>
+
+              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
+                <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
+              </a> */}
+            </div>
           </Col>
         </Row>
+
+       
       </Container>
     </Col>
 

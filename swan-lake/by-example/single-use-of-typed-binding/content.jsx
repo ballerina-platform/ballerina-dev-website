@@ -67,7 +67,11 @@ export function SingleUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=1552128370385344083a7f41f51cfa41&file=single_use_of_typed_binding.bal",
+=======
+                "https://play.ballerina.io/?gist=3c7b4e79bd2102434e47426df625553e&file=single_use_of_typed_binding.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

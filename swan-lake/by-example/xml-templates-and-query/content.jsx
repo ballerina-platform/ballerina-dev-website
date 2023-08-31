@@ -55,7 +55,11 @@ export function XmlTemplatesAndQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=2315a715c270a8607462448120da25df&file=xml_templates_and_query.bal",
+=======
+                "https://play.ballerina.io/?gist=75d14c3df61f38b08f800bf0e61db536&file=xml_templates_and_query.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

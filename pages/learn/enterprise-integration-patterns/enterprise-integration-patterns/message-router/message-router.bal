@@ -4,20 +4,19 @@ type DhlUkResponse record {|
     string url;
     record {|
         string id;
-        record {|
-            string statusCode;
-            string status;
-        |} status;
+        Status status;
     |}[] shipments;
 |};
 
 type DhlDpiResponse record {|
-    record {|
-        string status;
-        string statusCode;
-    |}[] events;
+    Status[] events;
     string publicUrl;
     string barcode;
+|};
+
+type Status record {|
+    string statusCode;
+    string status;
 |};
 
 enum Country {
@@ -28,7 +27,7 @@ enum Country {
 final http:Client dhl = check new ("http://api.dhl.com.balmock.io");
 
 service /shipments on new http:Listener(8080) {
-    
+
     resource function get [Country country]/[string trackingNumber]/status() returns string|error {
         match country {
             UK => {

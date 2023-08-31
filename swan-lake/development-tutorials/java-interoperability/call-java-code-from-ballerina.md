@@ -28,6 +28,8 @@ The [Package layout](/learn/package-references/#package-layout) explains how to 
 
 ## Example
 
+The below sections explain how to use the Bindgen tool to generate Ballerina bindings for Java classes and how to use them.
+
 SnakeYAML is a YAML parser for Java. This guide describes how to use this library to parse a YAML document using the Bindgen tool. You develop a Ballerina program that parses the given YAML file and writes the content to the standard output.
 
 ### Step 1 - Write the Java code
@@ -290,7 +292,3 @@ Suite #292
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, product=[{sku=BL394D, quantity=4, description=Basketball, price=450.0}, {sku=BL4438H, quantity=null, description=Super Hoop, price=2392.0}], tax=251.42, total=4443.52, comments=Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.\}
 ```
-
-The above sections explain how to use the Bindgen tool to generate Ballerina bindings for Java classes and how to use them.
-
-For more information on various aspects related to Java interoperability in Ballerina, see [Java interoperability](/learn/java-interoperability/).

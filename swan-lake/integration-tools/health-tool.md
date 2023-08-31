@@ -91,7 +91,7 @@ Follow the steps below to create the package.
 
 Follow the steps below to try out an example use case of the Health tool.
 
-1. Clone the [artifacts of the sample](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
+1. Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
 
     >**Note:** Make sure to add the correct version and repository to the [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file. The generated package is imported and the business logic/mapping is implemented using the generated FHIR resource records in the [`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) file.
 

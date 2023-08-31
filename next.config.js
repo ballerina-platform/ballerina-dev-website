@@ -173,10 +173,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/java-interoperability/call-java-code-from-ballerina`,
       },
       {
-        source: `/${redirectBase}learn/java-interoperability-guide`,
-        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/java-interoperability-guide`,
-      },
-      {
         source: `/${redirectBase}learn/the-bindgen-tool`,
         destination: `/${redirectBase}learn/development-tutorials/java-interoperability/the-bindgen-tool`,
       },

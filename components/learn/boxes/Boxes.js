@@ -517,14 +517,6 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/java-interoperability-guide`} className={styles.titleLink}>
-                            Java interoperability guide
-                          </a>
-                        </p>
-                        <p className={styles.description}>Instructions on the supported Java interoperability features.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/the-bindgen-tool`} className={styles.titleLink}>
                             The BindGen tool
                           </a>

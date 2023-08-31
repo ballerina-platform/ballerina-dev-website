@@ -675,14 +675,6 @@
                             "id": "call-java-code-from-ballerina"
                         },
                         {
-                            "dirName": "Java interoperability guide",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": false,
-                            "url": "/learn/java-interoperability-guide",
-                            "id": "java-interoperability-guide"
-                        },
-                        {
                             "dirName": "Ballerina FFI",
                             "level": 3,
                             "position": 3,

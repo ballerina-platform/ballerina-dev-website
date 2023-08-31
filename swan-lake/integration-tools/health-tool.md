@@ -13,9 +13,9 @@ The Health tool can generate accelerators primarily focussed on the <a href="htt
 ## Prerequisites
 
 - <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
-- A directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the <a href="http://fhir.org/guides/registry/" target="_blank">FHIR Implementation Guide registry</a>
+-  Download the **JSON Definitions ZIP archive** from the <a href="http://hl7.org/fhir/us/carin-bb/STU2/downloads.html" target="_blank">Carin BB implementation guide</a> and extract it to your current directory.
 
-    >**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
+    >**Note:** Alternatively, you can download a preferred standard implementation guide containing all the FHIR specification definition files from the <a href="http://fhir.org/guides/registry/" target="_blank">FHIR Implementation Guide registry</a>. It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
 
 ## Usage
 
@@ -36,11 +36,9 @@ The parameters that are available with the tool are listed below.
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | optional           |
 | `-h, --help`     | Print the usage details of the Health tool.                                                                                                                                                                                                                                                                                                                                     | optional           |
 
-## Example
+## Install the tool
 
-Follow the steps below to try out an example of using the Health tool.
-
-1. Pull the Health tool from Ballerina Central.
+Pull the Health tool from Ballerina Central.
 
     ```
     $ bal tool pull health
@@ -48,9 +46,11 @@ Follow the steps below to try out an example of using the Health tool.
     health:1.0.0 successfully set as the active version.
     ```
 
-2. Download the **JSON Definitions ZIP archive** from the <a href="http://hl7.org/fhir/us/carin-bb/STU2/downloads.html" target="_blank">Carin BB implementation guide</a> and extract it to your current directory.
+## Create the package
 
-3. Run the tool with the [required arguments](#available-parameters).
+Follow the steps below to create the package.
+
+1. Run the tool with the [required arguments](#available-parameters) to generate the package.
 
     >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument.
 
@@ -59,7 +59,7 @@ Follow the steps below to try out an example of using the Health tool.
     Ballerina FHIR package generation completed successfully.
     ```
 
-4. Build the generated package and push it to a repository.
+2. Build the generated package.
 
     >**Info:** You can push either to the local repository or the remote repository in Ballerina Central.
 
@@ -73,14 +73,28 @@ Follow the steps below to try out an example of using the Health tool.
             target/bala/healthcare-carinbb.lib-any-0.0.1.bala
     ```
 
+3. Push it to a repository.
+
+    >**Tip:** You can push either to the local repository or the remote repository in Ballerina Central.
+
     ```
     $ bal push --repository local
     Successfully pushed target/bala/healthcare-carinbb.lib-any-0.0.1.bala to 'local' repository.
     ```
 
-5. Create a Ballerina project and import the generated package. 
+## Example
+
+Follow the steps below to try out an example use case of the Health tool.
+
+1. Clone the [artifacts of the sample](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
 
     >**Note:** Make sure to add the correct version and repository to the `Ballerina.toml` file.
+
+2. Update the `Ballerina.toml` file with the 
+
+3. Create a Ballerina project and import the generated package. 
+
+    >**Note:** Make sure to add the correct version and repository to the [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file. Also, implement the business logic/mapping using the generated FHIR resource records in the []`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) file.
 
     ```
     [package]
@@ -96,62 +110,7 @@ Follow the steps below to try out an example of using the Health tool.
     repository = "local"
     ```
 
-6. Implement the business logic/mapping using the generated FHIR resource records.
-
-    ```ballerina
-    import ballerina/http;
-    import ballerinax/health.fhir.r4;
-    import healthcare/carinbb.lib as carinbb;
-
-    listener http:Listener httpListener = new (9090);
-
-    public type Patient record {
-        string id;
-        string lastName?;
-        string firstName;
-        string middleName;
-        string gender?;
-    };
-
-    service / on httpListener {
-
-        isolated resource function get [string fhirType]/[string id]() returns @http:Payload {mediaType: ["application/fhir+json", "application/fhir+xml"]} r4:FHIRWireFormat|error {
-
-            // Mock the patient payload from the legacy healthcare system.
-
-            Patient patient = {
-                id: "2121",
-                lastName: "Doe",
-                firstName: "John",
-                middleName: "Hemish",
-                gender: "male"
-            };
-
-            // Convert to the Carin BB Patient structure.
-            carinbb:C4BBPatient c4bbPatient = {
-                id: patient.id,
-                identifier: [
-                    {
-                        system: "http://hl7.org/fhir/sid/us-ssn",
-                        value: patient.id
-                    }
-                ]
-        ,
-                gender: <carinbb:PatientGender>patient.gender,
-                name: [
-                    {
-                        family: patient.lastName,
-                        given: [patient.firstName, patient.middleName]
-                    }
-                ]
-            };
-
-            return c4bbPatient.toJson();
-        }
-    }
-    ```
-
-7. Run the Ballerina project and validate the output.
+4. Run the Ballerina project and validate the output.
 
     ```
     $ bal run
@@ -161,7 +120,7 @@ Follow the steps below to try out an example of using the Health tool.
     Running executable
     ```
 
-8. Invoke the API to test it.
+5. Invoke the API to test it.
 
     ```
     $ curl --location --request GET 'http://localhost:9090/Patient/2121'

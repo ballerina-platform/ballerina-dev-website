@@ -387,6 +387,10 @@ const nextConfig = {
       {
         source: `/learn/pre-built-integrations/sample2`,
         destination: `/learn/integration/pre-built-integrations/sample2`,
+      },
+      {
+        source: `/learn/case-studies/wso2-vs-ballerina`,
+        destination: `/learn/case-studies/wso2-vs-ballerina`,
       }
     ];
   },

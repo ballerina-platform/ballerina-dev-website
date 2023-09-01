@@ -1,0 +1,26 @@
+{
+    "id": "907f059924cc1acad24e950ef7a9b249",
+    "providerName": "FlyB",
+    "dateTimeUTC": "2023-08-14T01:22:26.2509647",
+    "httpStatusCode": "OK",
+    "pagination": null,
+    "problem": null,
+    "reimbursementTemplates": [
+        {
+            "payTemplateReimbursementID": "9284ad01-a859-49c5-add1-b9a32dfd4d1e",
+            "ratePerUnit": null,
+            "numberOfUnits": null,
+            "fixedAmount": 1000.0,
+            "reimbursementTypeID": "83791a58-e043-4883-ad53-6f4cba62c313",
+            "name": "Internet Allowance"
+        },
+        {
+            "payTemplateReimbursementID": "5804b0ad-d0e7-4f74-a0e0-d8bc815cfee5",
+            "ratePerUnit": null,
+            "numberOfUnits": null,
+            "fixedAmount": 1500.50,
+            "reimbursementTypeID": "3242f696-c71e-47e1-9393-91fa613d9619",
+            "name": "Parking Expenses"
+        }
+    ]
+}

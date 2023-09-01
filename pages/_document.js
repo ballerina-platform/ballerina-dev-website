@@ -26,6 +26,9 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <meta name="author" content="WSO2 LLC"/>
+
+        <meta HTTP-EQUIV='X-Frame-Options' CONTENT="SAMEORIGIN"/>
+        <meta HTTP-EQUIV='Content-Security-Policy' CONTENT="frame-ancestors 'none';"/>
         
         <link rel="shortcut icon" href={`${prefix}/images/favicon.ico`}></link>
 

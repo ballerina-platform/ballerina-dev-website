@@ -20,6 +20,15 @@ import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {SSRProvider} from '@react-aria/ssr';
 
+// import styles
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+
+// If you want you can use SCSS instead of css
+// import 'lightgallery/scss/lightgallery.scss';
+// import 'lightgallery/scss/lg-zoom.scss';
+
 function MyApp({ Component, pageProps }) {
   return <SSRProvider>
           <Component {...pageProps} />

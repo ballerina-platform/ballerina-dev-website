@@ -1,0 +1,5 @@
+tagline: Send large data sets in chunks
+desc: Message sequence sends the data as a sequence of messages and marks each message with sequence identification fields.
+helps: Ballerina supports loop constructs such as while, foreach, and map. These constructs can be used to iterate over data and send it in chunks. Program state can be kept in variables.
+tags: ["Message Sequence", "Message Channel", "Message Endpoint", "Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSequence.html

@@ -165,7 +165,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- A bug where the runtime error messages were including the flattened representation of the union types instead of the name used in the type definition has been fixed.
+- A bug which caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
   
     ```ballerina
     type AC map<int>|string;

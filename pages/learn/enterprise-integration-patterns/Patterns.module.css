@@ -1,0 +1,26 @@
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: #dddddd !important;
+    color: #888;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.link {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.table a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+  }

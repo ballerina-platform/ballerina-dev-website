@@ -267,14 +267,15 @@ a {
   overflow-x: auto;
 }
 
-.mdContent table {
+.mdContent table, .patternContent table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
 .mdContent table td, .policyContent table td,
-.mdContent table th, .policyContent table th {
+.mdContent table th, .policyContent table th,
+.patternContent table td, .patternContent table th {
   border: 1px solid #e1e4e5 !important;
 }
 
@@ -283,7 +284,8 @@ a {
 }
 
 .mdContent table th, .policyContent table th,
-.mdContent table td, .policyContent table td {
+.mdContent table td, .policyContent table td,
+.patternContent table td, .patternContent table th {
   padding: 10px;
 }
 
@@ -1264,6 +1266,16 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 65px;
 }
 
+.llanding .intro a {
+  color: #20b6b0;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.llanding .intro a:hover {
+  color: #57595d;
+}
+
 .integration h3 {
   scroll-margin-top: 65px;
 }
@@ -1302,6 +1314,33 @@ table.cTopControlsContainer tbody {
 .usecases .wrap-page-content {
   padding-bottom: 0 !important;
   font-size: 18px;
+}
+
+.backToLanding {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+
+.backToLanding * {
+  margin: 16px 16px;
+  cursor: pointer;
+}
+
+.backToLanding p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #20b6b0;
+}
+
+.backToLanding:hover svg {
+  fill: #57595d;
+}
+
+.backToLanding:hover p {
+  font-weight: 400;
+  color: #57595d;
 }
 
 /* ----------- draggable code blocks -------------- */

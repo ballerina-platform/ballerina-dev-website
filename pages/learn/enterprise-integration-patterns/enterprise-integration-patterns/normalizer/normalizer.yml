@@ -1,0 +1,5 @@
+tagline: Process messages with different formats
+desc: Normalizer routes each message type through a custom message translator so that the resulting messages match a common format.
+helps: Ballerina's type test (`is` keyword) and match statement can both be used to test the structure of incoming data. Then the data can be transformed to the required format constructing new data structures. Ballerina's data-oriented design helps with complex transformations with features such as destructuring, query expressions, spread operator, etc.
+tags: ["Normalizer", "Message Channel", "Message Endpoint", "Message Translator", "Message Router", "Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Normalizer.html

@@ -164,7 +164,20 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         }
     }
     ```
+
+- A bug where the runtime error messages were including the flattened representation of the union types instead of the name used in the type definition has been fixed.
   
+    ```ballerina
+    type AC map<int>|string;
+    
+    public function main() returns error? {
+        map<anydata> x = {a: "Ballerina"};
+        AC|boolean _ = check x.cloneWithType();
+    }
+    ```
+
+    This now fails with ```"'map<anydata>' value cannot be converted to '(AC|boolean)'"``` instead of ```"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"```.
+
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 
 - Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).

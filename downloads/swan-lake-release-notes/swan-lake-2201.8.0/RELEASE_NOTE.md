@@ -30,6 +30,64 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
+
+    ```ballerina
+    import ballerina/io;
+
+    type Person record {
+        string name;
+    };
+
+    type Employee record {
+        string name;
+        int id?;
+    };
+
+    public function main() {
+        Person person = {name: "May"};
+        Employee employee = person; // Compilation error now.
+
+        io:println(person is Employee); // Prints `false` now.
+    }
+    ```
+
+- Analysis in the `init` method of an `isolated` object has been updated to disallow invalid transferring in/out of values that violated the isolated root invariant.
+
+    ```ballerina
+    type Node record {|
+        readonly string path;
+        map<string[]>? app = ();
+    |};
+
+    isolated class Class {
+        private Node node;
+        private Node[] arr = [];
+
+        function init(Node node) {
+            self.node = node.clone();
+
+            self.arr.push(node); // Compilation error now.
+            self.arr[0] = node; // Compilation error now.
+        }
+    }
+    ```
+
+- Mutable objects have been disallowed in annotations.
+
+    ```ballerina
+    type Validator object {
+        function validate(anydata data) returns error?;
+    };
+
+    type AnnotationData record {|
+        string name;
+        Validator validator;
+    |};
+
+    annotation AnnotationData config on type; // Compilation error now.
+    ```
+    
 - Fixed a bug that allowed using field access with a map of `xml`. 
 
     ```ballerina

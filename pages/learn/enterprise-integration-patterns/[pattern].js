@@ -28,6 +28,7 @@ import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import { getHighlighter } from "shiki";
 import styles from './Patterns.module.css';
+import ReactMarkdown from 'react-markdown';
 import { FaRegCopy, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
 
 const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
@@ -117,9 +118,7 @@ export default function Pattern(props) {
         <Row className="pageHeader pageContentRow llanding">
           <Col xs={12}>
             <Container>
-              <h1>
-                <abbr className={styles.eipabbr} title="Enterprise Integration Pattern">EIP</abbr>: {props.name}
-              </h1>
+              <h1>{props.name}</h1>
             </Container>
           </Col>
         </Row>
@@ -132,7 +131,7 @@ export default function Pattern(props) {
             <Container>
               <Row>
                 <Col xs={12} className="patternContent">
-                  <table>
+                  <table className={styles.table}>
                     {props.desc &&
                       <tr>
                         <td>Pattern</td>
@@ -142,7 +141,7 @@ export default function Pattern(props) {
                     {props.helps &&
                       <tr>
                         <td>How Ballerina helps</td>
-                        <td>{props.helps}</td>
+                        <td><ReactMarkdown children={props.helps}></ReactMarkdown></td>
                       </tr>
                     }
                   </table>

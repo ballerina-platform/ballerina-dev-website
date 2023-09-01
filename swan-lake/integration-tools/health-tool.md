@@ -12,10 +12,6 @@ The Health tool can generate accelerators primarily focussed on the <a href="htt
 
 ## Prerequisites
 
-- <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
-- A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 -  A directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the [FHIR Implementation Guide registry](http://fhir.org/guides/registry/)
 
     >**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
@@ -60,7 +56,7 @@ Follow the steps below to create the package.
     >**Note:** Provide values for mandatory arguments. Make sure to give the directory path of the downloaded FHIR definitions as the last argument.
 
     ```
-    $ bal health fhir -m package --org-name healthcare --package-name carinbb.lib -o gen ./definitions.json
+    $ bal health fhir -m package --org-name healthcare_samples --package-name carinbb_package -o gen ./definitions.json
     Ballerina FHIR package generation completed successfully.
     ```
 
@@ -69,13 +65,13 @@ Follow the steps below to create the package.
     >**Info:** You can push either to the local repository or the remote repository in Ballerina Central.
 
     ```
-    $ cd gen/carinbb.lib
+    $ cd gen/carinbb_package
     $ bal pack
     Compiling source
-            healthcare/carinbb.lib:0.0.1
+            healthcare_samples/carinbb_package:0.0.1
 
     Creating bala
-            target/bala/healthcare-carinbb.lib-any-0.0.1.bala
+            target/bala/healthcare_samples-carinbb_package-any-0.0.1.bala
     ```
 
 4. Push it to a repository.
@@ -84,7 +80,7 @@ Follow the steps below to create the package.
 
     ```
     $ bal push --repository local
-    Successfully pushed target/bala/healthcare-carinbb.lib-any-0.0.1.bala to 'local' repository.
+    Successfully pushed target/bala/healthcare_samples-carinbb_package-any-0.0.1.bala to 'local' repository.
     ```
 
 ## Example
@@ -100,7 +96,7 @@ Follow the steps below to try out an example use case of the Health tool.
     ```
     $ bal run
     Compiling source
-            healthcare/integration.carinbb:1.0.0
+            healthcare_samples/carinbb_ballerina:1.0.0
 
     Running executable
     ```

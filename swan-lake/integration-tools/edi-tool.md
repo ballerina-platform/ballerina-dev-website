@@ -8,15 +8,6 @@ active: edi-tool
 intro: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
 --- 
 
-## Prerequisites
-
-To use the AsyncAPI tool, you need the following prerequisites:
-
-- <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
-- A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-
 ## Usage
 
 The tool supports two main usages as follows.

@@ -10,15 +10,6 @@ intro: AsyncAPI is a specification, which is used to describe and document messa
 
 The Ballerina AsyncAPI tool makes it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
 
-## Prerequisites
-
-To use the AsyncAPI tool, you need the following prerequisites:
-
-- <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
-- A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-
 ## Prepare the AsyncAPI contract
 
 Before using the tool, there are some modifications that should be made by adding some custom tags to the contract.

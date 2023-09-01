@@ -10,15 +10,6 @@ intro: OpenAPI Specification is a specification that creates a RESTFUL contract 
 
 Ballerina OpenAPI tool makes it easy for you to start the development of a service documented in an OpenAPI contract in Ballerina by generating a Ballerina service and client skeletons. It enables you to take the code-first API design approach by generating an OpenAPI contract for the given service implementation.
 
-## Prerequisites
-
-To use the AsyncAPI tool, you need the following prerequisites:
-
-- <a href="https://ballerina.io/downloads/" target="_blank">Ballerina 2201.7.0 (Swan Lake Update 7)</a>
-- A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-
 ## Usage
 
 The Ballerina OpenAPI tool support provides the following capabilities.

@@ -61,196 +61,195 @@ Most browsers allow you to control cookies through their settings preferences. H
 
 These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you, which amount to a request for services such as setting your privacy preferences, logging in, or filling in forms. You can set your browser to block or alert you about these cookies but some parts of the site will not then work. These cookies do not store any personally identifiable information.
 
-<google-sheets-html-origin style="color: rgb(0, 0, 0);"><table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border: none;">
+<table>
   <thead>
-    <tr style="height: 20px;">
+    <tr>
       <th>Cookies used</th>
       <th>Cookie subgroup</th>
       <th>Cookies</th>
       <th>Lifespan</th>
     </tr>
-  </thead><colgroup><col width="185"><col width="299"><col width="170"><col width="100"></colgroup>
+  </thead>
   <tbody>
-    <tr style="height: 20px;">
-      <td rowspan="11" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;First party&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 220px;">First party</div></td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;ballerina.io&quot;}" data-sheets-hyperlink="http://ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 40px;"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;OptanonConsent&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"> <code>OptanonConsent</code></td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;364 days&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 40px;">364 days</div></td>
+    <tr>
+      <td rowspan="11" colspan="1">First party</div></td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>OptanonConsent</code></td>
+      <td rowspan="2" colspan="1">364 days</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;OptanonAlertBoxClosed&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>OptanonAlertBoxClosed</code></td>
+    <tr>
+      <td><code>OptanonAlertBoxClosed</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td rowspan="9" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;central.ballerina.io&quot;}" data-sheets-hyperlink="http://central.ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 180px;"><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;USER_EMAIL&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>USER_EMAIL</code></td>
-      <td rowspan="7" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;7.5 hours&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 140px;">7.5 hours</div></td>
+    <tr>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td><code>USER_EMAIL</code></td>
+      <td rowspan="7" colspan="1">7.5 hours</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;USER_ID&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>USER_ID</code></td>
+    <tr>
+      <td><code>USER_ID</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;USER_LOGGED&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>USER_LOGGED</code></td>
+    <tr>
+      <td><code>USER_LOGGED</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;USER_PROFILE_IMAGE&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>USER_PROFILE_IMAGE</code></td>
+    <tr>
+      <td><code>USER_PROFILE_IMAGE</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;is_first_time&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>is_first_time</code></td>
+    <tr>
+      <td><code>is_first_time</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;ACCESS_TOKEN&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>ACCESS_TOKEN</code></td>
+    <tr>
+      <td><code>ACCESS_TOKEN</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;access_token&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>access_token</code></td>
+    <tr>
+      <td><code>access_token</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;admin_org_names&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>admin_org_names</code></td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Session&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 40px;">Session</div></td>
+    <tr>
+      <td><code>admin_org_names</code></td>
+      <td rowspan="2" colspan="1">Session</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;token_expired&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>token_expired</code></td>
+    <tr>
+      <td><code>token_expired</code></td>
     </tr>
   </tbody>
-</table></google-sheets-html-origin>
+</table>
 
 ### Performance cookies
 
 These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
 
-<google-sheets-html-origin style="color: rgb(0, 0, 0);"><table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border: none;">
+<table>
   <thead>
-    <tr style="height: 20px;">
+    <tr>
       <th>Cookies used</th>
       <th>Cookie subgroup</th>
       <th>Cookies</th>
       <th>Lifespan (Days)</th>
     </tr>
-  </thead><colgroup><col width="167"><col width="173"><col width="261"><col width="120"></colgroup>
+  </thead>
   <tbody>
-    <tr style="height: 20px;">
-      <td rowspan="12" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;First party&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 240px;">First party</div></td>
-      <td rowspan="9" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;ballerina.io&quot;}" data-sheets-hyperlink="http://ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 180px;"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjSessionUser_865786&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjSessionUser_865786</code></td>
-      <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:364}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;">364</td>
+    <tr>
+      <td rowspan="12" colspan="1">First party</td>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>_hjSessionUser_865786</code></td>
+      <td>364</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_ga&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_ga</code></td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:729}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;"><div style="max-height: 40px;">729</div></td>
+    <tr>
+      <td><code>_ga</code></td>
+      <td rowspan="2" colspan="1">729</div></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_ga_xxxxxxxxxx&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_ga_xxxxxxxxxx</code></td>
+    <tr>
+      <td><code>_ga_xxxxxxxxxx</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjIncludedInPageviewSample&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjIncludedInPageviewSample</code></td>
-      <td rowspan="12" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;"><div style="max-height: 240px;">0</div></td>
+    <tr>
+      <td><code>_hjIncludedInPageviewSample</code></td>
+      <td rowspan="12" colspan="1">0</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_gid&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_gi</code></td>
+    <tr>
+      <td><code>_gi</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjAbsoluteSessionInProgress&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjAbsoluteSessionInProgress</code></td>
+    <tr>
+      <td><code>_hjAbsoluteSessionInProgress</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjFirstSeen&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjFirstSeen</code></td>
+    <tr>
+      <td><code>_hjFirstSeen</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjSession_865786&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjSession_865786</code></td>
+    <tr>
+      <td><code>_hjSession_865786</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjIncludedInSessionSample&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjIncludedInSessionSample</code></td>
+    <tr>
+      <td><code>_hjIncludedInSessionSample</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;central.ballerina.io&quot;}" data-sheets-hyperlink="http://central.ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;route&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;">route</td>
+    <tr>
+      <td><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td>route</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;api.central.ballerina.io&quot;}" data-sheets-hyperlink="http://api.central.ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><a class="in-cell-link" href="http://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;route&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>route</code></td>
+    <tr>
+      <td><a class="in-cell-link" href="http://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
+      <td><code>route</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;lib.ballerina.io&quot;}" data-sheets-hyperlink="http://lib.ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><a class="in-cell-link" href="http://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;route&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;">route</td>
+    <tr>
+      <td><a class="in-cell-link" href="http://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
+      <td>route</td>
     </tr>
-    <tr style="height: 20px;">
-      <td rowspan="3" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Third party&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 60px;">Third party</div></td>
-      <td rowspan="3" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;script.hotjar.com&quot;}" data-sheets-hyperlink="http://script.hotjar.com" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 60px;"><a class="in-cell-link" href="http://script.hotjar.com" target="_blank">script.hotjar.com</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjIncludedInSessionSample&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjIncludedInSessionSample</code></td>
+    <tr>
+      <td rowspan="3" colspan="1">Third party</td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://script.hotjar.com" target="_blank">script.hotjar.com</a></td>
+      <td><code>_hjIncludedInSessionSample</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjIncludedInPageviewSample&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjIncludedInPageviewSample</<code>code></td>
+    <tr>
+      <td><code>_hjIncludedInPageviewSample</<code>code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_hjIncludedInSessionSample_865786&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_hjIncludedInSessionSample_865786</code></td>
+    <tr>
+      <td><code>_hjIncludedInSessionSample_865786</code></td>
     </tr>
   </tbody>
-</table></google-sheets-html-origin>
+</table>
 
 ### Targeting cookies
 
 These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
 
-<google-sheets-html-origin style="color: rgb(0, 0, 0);"><table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout: fixed; font-size: 11pt; font-family: Calibri; width: 0px; border-collapse: collapse; border: none;">
+<table>
   <thead>
-    <tr style="height: 20px;">
+    <tr>
       <th>Cookies used</th>
       <th>Cookie subgroup</th>
       <th>Cookies</th>
       <th>Lifespan (Days)</th>
     </tr>
-  </thead><colgroup><col width="141"><col width="177"><col width="220"><col width="130"></colgroup>
+  </thead>
   <tbody>
-    <tr style="height: 20px;">
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;First party&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 40px;">First party</div></td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;ballerina.io&quot;}" data-sheets-hyperlink="http://ballerina.io" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 40px;"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx</code></td>
-      <td rowspan="3" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;"><div style="max-height: 60px;">0</div></td>
+    <tr>
+      <td rowspan="2" colspan="1">First party</td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx</code></td>
+      <td rowspan="3" colspan="1">0</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;_gat_UA-nnnnnnn-nn&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>_gat_UA-nnnnnnn-nn</code></td>
+    <tr>
+      <td><code>_gat_UA-nnnnnnn-nn</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td rowspan="10" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Third party&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41);"><div style="max-height: 200px;">Third party</div></td>
-      <td rowspan="3" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;resources.wso2.com&quot;}" data-sheets-hyperlink="http://resources.wso2.com" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 60px;"><a class="in-cell-link" href="http://resources.wso2.com" target="_blank">resources.wso2.com</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;pardot&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>pardot</code></td>
+    <tr>
+      <td rowspan="10" colspan="1">Third party</td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://resources.wso2.com" target="_blank">resources.wso2.com</a></td>
+      <td><code>pardot</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;visitor_id142131-hash&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>visitor_id142131-hash</code></td>
-      <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:3649}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;"><div style="max-height: 80px;">3649</div></td>
+    <tr>
+      <td><code>visitor_id142131-hash</code></td>
+      <td rowspan="4" colspan="1">3649</div></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;visitor_id#####&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>visitor_id#####</code></td>
+    <tr>
+      <td><code>visitor_id#####</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;pardot.com&quot;}" data-sheets-hyperlink="http://pardot.com" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 40px;"><a class="in-cell-link" href="http://pardot.com" target="_blank">pardot.com</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;visitor_id#####&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>visitor_id#####</code></td>
+    <tr>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://pardot.com" target="_blank">pardot.com</a></td>
+      <td><code>visitor_id#####</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;visitor_id142131-hash&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>visitor_id142131-hash</code></td>
+    <tr>
+      <td><code>visitor_id142131-hash</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;pi.pardot.com&quot;}" data-sheets-hyperlink="http://pi.pardot.com" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><a class="in-cell-link" href="http://pi.pardot.com" target="_blank">pi.pardot.com</a></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;pardot&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>pardot</code></td>
-      <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;">0</td>
+    <tr>
+      <td><a class="in-cell-link" href="http://pi.pardot.com" target="_blank">pi.pardot.com</a></td>
+      <td><code>pardot</code></td>
+      <td>0</td>
     </tr>
-    <tr style="height: 20px;">
-      <td rowspan="4" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;youtube.com&quot;}" data-sheets-hyperlink="http://youtube.com" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; text-decoration-line: underline; color: rgb(33, 37, 41);"><div style="max-height: 80px;"><a class="in-cell-link" href="http://youtube.com" target="_blank">youtube.com</a></div></td>
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;CONSENT&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>CONSENT</code></td>
-      <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:729}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;">729</td>
+    <tr>
+      <td rowspan="4" colspan="1"><a class="in-cell-link" href="http://youtube.com" target="_blank">youtube.com</a></td>
+      <td><code>CONSENT</code></td>
+      <td>729</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;VISITOR_INFO1_LIVE&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;">VISITOR_INFO1_LIVE</td>
-      <td rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:179}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;"><div style="max-height: 40px;">179</div></td>
+    <tr>
+      <td>VISITOR_INFO1_LIVE</td>
+      <td rowspan="2" colspan="1">179</td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;VISITOR_PRIVACY_METADATA&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>VISITOR_PRIVACY_METADATA</code></td>
+    <tr>
+      <td><code>VISITOR_PRIVACY_METADATA</code></td>
     </tr>
-    <tr style="height: 20px;">
-      <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;YSC&quot;}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; font-family: Roboto; overflow-wrap: break-word;"><code>YSC</
-      code></td>
-      <td data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:0}" style="border: 1px solid rgb(204, 204, 204); overflow: hidden; padding: 0px 3px; vertical-align: bottom; background-color: rgb(255, 255, 255); font-family: Roboto; font-size: 12pt; color: rgb(33, 37, 41); text-align: right;">0</td>
+    <tr>
+      <td><code>YSC</code></td>
+      <td>0</td>
     </tr>
   </tbody>
-</table></google-sheets-html-origin><br/>
+</table><br/>
 
 **Effective August 28, 2023**
 

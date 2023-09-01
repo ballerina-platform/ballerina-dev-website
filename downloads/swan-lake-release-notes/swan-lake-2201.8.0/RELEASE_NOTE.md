@@ -140,7 +140,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
     ```
 
-- A bug where an `anydata` value could be assigned to contexts requiring an `anydata & readonly` value has been fixed.
+- A bug that allowed an `anydata` value to be used in contexts expecting an `anydata & readonly` value has been fixed.
 
     ```ballerina
     public function main() {
@@ -176,7 +176,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-    This now fails with ```"'map<anydata>' value cannot be converted to '(AC|boolean)'"``` instead of ```"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"```.
+    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
 
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 

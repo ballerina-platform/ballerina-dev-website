@@ -30,7 +30,115 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
+- A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
+
+    ```ballerina
+    import ballerina/io;
+
+    type Person record {
+        string name;
+    };
+
+    type Employee record {
+        string name;
+        int id?;
+    };
+
+    public function main() {
+        Person person = {name: "May"};
+        Employee employee = person; // Compilation error now.
+
+        io:println(person is Employee); // Prints `false` now.
+    }
+    ```
+
+- Analysis in the `init` method of an `isolated` object has been updated to disallow invalid transferring in/out of values that violated the isolated root invariant.
+
+    ```ballerina
+    type Node record {|
+        readonly string path;
+        map<string[]>? app = ();
+    |};
+
+    isolated class Class {
+        private Node node;
+        private Node[] arr = [];
+
+        function init(Node node) {
+            self.node = node.clone();
+
+            self.arr.push(node); // Compilation error now.
+            self.arr[0] = node; // Compilation error now.
+        }
+    }
+    ```
+
+- Mutable objects have been disallowed in annotations.
+
+    ```ballerina
+    type Validator object {
+        function validate(anydata data) returns error?;
+    };
+
+    type AnnotationData record {|
+        string name;
+        Validator validator;
+    |};
+
+    annotation AnnotationData config on type; // Compilation error now.
+    ```
+    
+- Fixed a bug that allowed using field access with a map of `xml`. 
+
+    ```ballerina
+    map<xml> m = {a: xml `foo`};
+    xml x = check m.a; // Compilation error now.
+    ```
+
 - Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
+
+- A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
+
+  ```ballerina
+  public function main() {
+    int resultInt;
+    transaction {
+        resultInt = check calculateDefaultValue(true);
+        check commit;
+    } on fail {
+        io:println("Failed to initialize resultInt");
+    }
+    resultInt += 1; // Compilation error now.
+  }
+  ```
+
+- A bug that resulted incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
+  
+- ```ballerina
+  function filterEmployeesByDepartment(map<Employee> employees, string department) {
+    var result = from var e in employees // Compilation error now.
+        where e.department == department
+        select e.name;
+  }
+  ```
+
+- A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
+ 
+- ```ballerina
+  function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
+    int total = from var {department, salary} in strm // Compilation error now.
+        where department == dept
+        collect sum(salary);
+  }
+  ```
+
+- A bug related to deciding the types of numeric literals has been fixed.
+
+    ```ballerina
+    2f|1 a = 2; // Compilation error now, `2` is considered to be `int`.
+    3d|6 b = 3; // Compilation error now, `3` is considered to be `int`.
+    3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
+    ```
 
 - A bug where an `anydata` value could be assigned to contexts requiring an `anydata & readonly` value has been fixed.
 

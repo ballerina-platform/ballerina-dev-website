@@ -79,7 +79,7 @@ The AWS Lambda functionality is implemented as a compiler extension. Therefore, 
 $ bal build --cloud="aws_lambda"
 ```
 
->***Tip** You can append --graalvm flag to the above build command to build the native executable. This executable will have much smaller memory footprint and faster startup time. For more information, see [Build the executable in a container](/learn/build-the-executable-in-a-container/).
+>***Tip** You can append the `--graalvm` flag to the above build command to build the native executable. This executable will have a much smaller memory footprint and faster startup time. For more information, see [Build the executable in a container](/learn/build-the-executable-in-a-container/).
 
 ## Deploy the function
 

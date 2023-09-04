@@ -149,7 +149,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
   
-- A bug that allowed including a `readonly` `service` object inside a `readonly` non-`service` class has been fixed.
+- A bug that allowed using object type inclusion with a `readonly` `service` object in a `readonly` non-`service` class has been fixed.
 
     ```ballerina
     public type A readonly & service object {

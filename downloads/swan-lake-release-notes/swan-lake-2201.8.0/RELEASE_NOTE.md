@@ -240,7 +240,12 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### New Runtime Java APIs
 
-- Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively retrieve the referred type or the effective type of given type.
+- Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
+
+    ```ballerina
+    // `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the referred type of the type reference type, which will be an intersection type, and then retrieving the effective type of the intersection type.
+    type A int[] & readonly;
+    ```
 
 #### Ballerina Profiler (experimental)
 

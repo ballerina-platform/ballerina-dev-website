@@ -11,7 +11,7 @@ Below is information about how the <a target="_blank" href="https://ballerina.io
 
 The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
 
-This cookie policy is part of our [Privacy policy](/privacy-policy/). It explains the following:
+This cookie policy is part of our <a target="_blank" href="/privacy-policy/">privacy policy</a>. It explains the following:
 
 ## What are cookies?
 
@@ -161,7 +161,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
     </tr>
     <tr>
       <td><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
-      <td>route</td>
+      <td><code>route</code></td>
     </tr>
     <tr>
       <td><a class="in-cell-link" href="http://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
@@ -169,7 +169,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
     </tr>
     <tr>
       <td><a class="in-cell-link" href="http://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
-      <td>route</td>
+      <td><code>route</code></td>
     </tr>
     <tr>
       <td rowspan="3" colspan="1">Third party</td>
@@ -238,7 +238,7 @@ These cookies allow us to count visits and traffic sources so we can measure and
       <td>729</td>
     </tr>
     <tr>
-      <td>VISITOR_INFO1_LIVE</td>
+      <td><code>VISITOR_INFO1_LIVE</code></td>
       <td rowspan="2" colspan="1">179</td>
     </tr>
     <tr>

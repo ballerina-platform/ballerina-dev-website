@@ -24,7 +24,7 @@ California residents may view WSO2's California-specific privacy policy at <a ta
 
 2. **Information collected automatically from your devices**
 
-    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our <a target="_blank" href="https://ballerina.io/cookie-policy/">Cookie policy</a> on how we use and store cookies. 
+    We also collect certain standard information that Your browser sends to every website you visit, such as your IP address, browser type, and language, access times, and referring website addresses. Our website may also place certain cookies to help you access our sites, and to track and analyze Your actions on our website such as navigation, number of visits, downloads, and search items to gain a better understanding of our visitors and their movements through the site. Please see our <a target="_blank" href="https://ballerina.io/cookie-policy/">cookie policy</a> on how we use and store cookies. 
 
 4. **Information received from third parties**
 
@@ -52,7 +52,7 @@ We will only collect and process personal data about You where we have lawful ba
 - The processing is necessary for us to comply with a relevant legal obligation; or
 - The processing is in our legitimate commercial interests and necessary for us to administer our business, subject to Your interests and fundamental rights.
 
-Where we rely on Your consent to process personal data, You have the right to withdraw or decline Your consent at any time, and where we rely on legitimate interests, You have the right to object. If You have any questions about the lawful bases upon which we collect and use Your personal data or wish to withdraw consent or object, You can submit a request via <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a> or through the details listed in the [How to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
+Where we rely on Your consent to process personal data, You have the right to withdraw or decline Your consent at any time, and where we rely on legitimate interests, You have the right to object. If You have any questions about the lawful bases upon which we collect and use Your personal data or wish to withdraw consent or object, You can submit a request via <a target="_blank" href="mailto:dpo@wso2.com">dpo@wso2.com</a> or through the details listed in the [Information about data controllers, processors, and how to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
 
 
 ## Who is your information shared with?
@@ -77,7 +77,7 @@ We may also release your information when we believe release is necessary to com
 
 ### Dispute resolution
 
-In compliance with the Data Privacy Framework Principles, we commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints regarding our DPF policy should first reach out to us using the information in the [How to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
+In compliance with the Data Privacy Framework Principles, we commit to resolving complaints about our collection or use of your personal information. EU/EEA or UK individuals with inquiries or complaints regarding our DPF policy should first reach out to us using the information in the [Information about data controllers, processors, and how to contact us](#information-about-data-controllers-processors-and-how-to-contact-us) section below.
 
 WSO2 has committed to refer unresolved DTF complaints to JAMS, an alternative dispute resolution provider located in the United States. If you do not receive timely acknowledgment of your complaint from us, or if we have not addressed your complaint to your satisfaction, please contact or visit <a target="_blank" href="https://www.jamsadr.com/eu-us-data-privacy-framework">EU-US Data Privacy Framework | JAMS Mediation, Arbitration, ADR Services</a> for more information or to file a complaint. The services of JAMS are provided at no cost to you. Under certain conditions, more fully described on the DTF website, you may invoke binding arbitration when other dispute resolution procedures have been exhausted.
 
@@ -107,7 +107,7 @@ At our discretion, we may include or offer third-party products or services on o
 
 ## Information about our website
 
-This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our <a target="_blank" href="https://ballerina.io/terms-of-service/">Terms of service</a> section relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services.
+This privacy policy applies only to information collected through the Sites and not to information collected offline. Please also visit our <a target="_blank" href="https://ballerina.io/terms-of-service/">terms of service</a> relating to use, disclaimers, indemnities, and limitations of liability governing the use of our site and services.
 
 ## Information about data controllers, processors, and how to contact us
 

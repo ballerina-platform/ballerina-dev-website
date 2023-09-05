@@ -140,6 +140,52 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
     ```
 
+- A bug that allowed an `anydata` value to be used in contexts expecting an `anydata & readonly` value has been fixed.
+
+    ```ballerina
+    public function main() {
+        anydata a = [];
+        anydata & readonly b = a; // Compilation error now.
+    }
+    ```
+  
+- A bug that allowed using object type inclusion with a `readonly` `service` object in a `readonly` non-`service` class has been fixed.
+
+    ```ballerina
+    public type A readonly & service object {
+        isolated remote function execute() returns int;
+    };
+  
+    readonly client class B {
+        *A; // Compilation error now.
+  
+        isolated remote function execute() returns int {
+            return 2;
+        }
+    }
+    ```
+
+- A bug which caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
+  
+    ```ballerina
+    type AC map<int>|string;
+    
+    public function main() returns error? {
+        map<anydata> x = {a: "Ballerina"};
+        AC|boolean _ = check x.cloneWithType();
+    }
+    ```
+
+    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
+
+- Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
+
+- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).
+    ```ballerina
+    // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `ArrayTypeSymbol`.
+    type A int[] & readonly;
+    ```
+
 ## Platform updates
 
 ### New features
@@ -192,6 +238,15 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
+#### New Runtime Java APIs
+
+- Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
+
+    ```ballerina
+    // `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the referred type of the type reference type, which will be an intersection type, and then retrieving the effective type of the intersection type.
+    type A int[] & readonly;
+    ```
+
 #### Ballerina Profiler (experimental)
 
 Introduced the `profile` CLI command, which runs a Ballerina package and does a CPU profile of it during runtime.
@@ -222,6 +277,57 @@ For example, the following array constructor is now supported.
 // Array with 10000 elements. Middle elements are not shown and replaced with `...`.
 int[] array = [1, 2, 3, ..., 9998, 9999, 10000];
 ```
+
+#### Intersection type support in runtime Java APIs
+
+The following runtime APIs are now modified to return an intersection type rather than returning the effective type of the intersection.
+
+| **Runtime API**                                                           | **Java class**                                     |
+|---------------------------------------------------------------------------|----------------------------------------------------|
+| `getElementType`                                                          | `io.ballerina.runtime.api.types.ArrayType`         |
+| `getDetailType`                                                           | `io.ballerina.runtime.api.types.ErrorType`         |
+| `getFieldType`                                                            | `io.ballerina.runtime.api.types.Field`             |
+| `getParameterTypes`                                                       | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnType`                                                           | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getReturnParameterType`                                                  | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getRestType`                                                             | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getParameters` (The `Parameter.type` field can be an intersection type.) | `io.ballerina.runtime.api.types.FunctionType`      |
+| `getConstituentTypes`                                                     | `io.ballerina.runtime.api.types.IntersectionType`  |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.MapType`           |
+| `getParamValueType`                                                       | `io.ballerina.runtime.api.types.ParameterizedType` |
+| `getRestFieldType`                                                        | `io.ballerina.runtime.api.types.RecordType`        |
+| `getReferredType`                                                         | `io.ballerina.runtime.api.types.ReferenceType`     |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.StreamType`        |
+| `getCompletionType`                                                       | `io.ballerina.runtime.api.types.StreamType`        |
+| `getConstrainedType`                                                      | `io.ballerina.runtime.api.types.TableType`         |
+| `getTupleTypes`                                                           | `io.ballerina.runtime.api.types.TupleType`         |
+| `getRestType`                                                             | `io.ballerina.runtime.api.types.TupleType`         |
+| `getConstraint`                                                           | `io.ballerina.runtime.api.types.TypedescType`      |
+| `getMemberTypes`                                                          | `io.ballerina.runtime.api.types.UnionType`         |
+| `getOriginalMemberTypes`                                                  | `io.ballerina.runtime.api.types.UnionType`         |
+| `getElementType`                                                          | `io.ballerina.runtime.api.values.BArray`           |
+| `getConstraintType`                                                       | `io.ballerina.runtime.api.values.BStream`          |
+| `getCompletionType`                                                       | `io.ballerina.runtime.api.values.BStream`          |
+| `getKeyType`                                                              | `io.ballerina.runtime.api.values.BTable`           |
+| `getDescribingType`                                                       | `io.ballerina.runtime.api.values.BTypedesc`        |
+| `getType`                                                                 | `io.ballerina.runtime.api.values.BValue`           |
+| `getType`                                                                 | `io.ballerina.runtime.api.utils.TypeUtils`         |
+
+For example, if an intersection type is defined in the following way,
+
+```ballerina
+type ReadonlyIntArray readonly & int[];
+
+ReadonlyIntArray array = [1, 2, 3, 4];
+```
+
+the results of the runtime API calls will be as follows.
+
+| **Runtime API call**                                   | **Result**                                                     |
+|--------------------------------------------------------|----------------------------------------------------------------|
+| `array.getType()`                                      | This will return an `IntersectionType` instead of `ArrayType`. |
+| `getDescribingType()` on `ReadonlyIntArray` type       | This will return an `IntersectionType` instead of `ArrayType`. |
+| `getImpliedType()` on received `IntersectionType` type | This will return an `ArrayType`.                               |      
 
 ### Bug fixes
 

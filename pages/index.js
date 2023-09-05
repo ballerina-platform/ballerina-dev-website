@@ -134,9 +134,9 @@ export default function Home({ samples }) {
           <WhyBal getLink={getLink} />
         </Row>
 
-        {/* <Row className={styles.homeUsers}>
+        <Row className={styles.homeUsers}>
           <Users getLink={getLink} />
-        </Row> */}
+        </Row>
 
         <Row className={styles.homeArticles}>
           <Articles getLink={getLink} />

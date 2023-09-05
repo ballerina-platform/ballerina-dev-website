@@ -278,7 +278,7 @@ Use the `--client-methods <resource|remote>` option to select the client method 
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina](/learn/openapi/#openapi-to-ballerina).
+>**Info:** For more command options, see [OpenAPI to Ballerina](##openapi-to-ballerina).
 
 ## Publish your client
 
@@ -290,7 +290,7 @@ To see your new client in Ballerina central in the future, follow the steps belo
 
 3. Run the `bal new <connector_name> -t lib` command to create a new Ballerina package. 
 
-4. Copy the [generated files](#generate-a-ballerina-client) (i.e., `client.bal`, `types.bal`, and `utils.bal`) into the `<connector_name>` directory. 
+4. Copy the [generated files](#generate-ballerina-clients-from-openapi-definitions) (i.e., `client.bal`, `types.bal`, and `utils.bal`) into the `<connector_name>` directory. 
 
 5. Run the `bal build` command to check whether the newly-generated connector is compiling successfully. 
 

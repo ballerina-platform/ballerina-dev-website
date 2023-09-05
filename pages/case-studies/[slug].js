@@ -30,7 +30,7 @@ import Toc from "../../components/common/pg-toc/Toc";
 
 export async function getStaticPaths() {
     // Retrieve all our slugs
-    const files = fs.readdirSync('policy');
+    const files = fs.readdirSync('case-studies');
     const paths = files.map((fileName) => ({
         params: {
             slug: fileName.replace('.md', ''),

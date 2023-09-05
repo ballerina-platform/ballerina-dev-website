@@ -18,11 +18,7 @@ The Ballerina GraphQL tooling support provides the following capabilities.
 
 3. Generate the GraphQL schema for a given Ballerina GraphQL service(s) and write the schema(s) to a file/files using the GraphQL schema definition language.
 
-## Available parameters
-
-The below command-line arguments can be used with the command.
-
-### GraphQL to Ballerina 
+### GraphQL to Ballerina usage
 
 The GraphQL to Ballerina command supports several usages in the Ballerina GraphQL tool as follows.
 
@@ -30,6 +26,22 @@ The GraphQL to Ballerina command supports several usages in the Ballerina GraphQ
 $ bal graphql [-i | --input] <graphql-configuration-file-path>
             [-o | --output] <output-location>
 ```
+
+### Ballerina to GraphQL usage
+
+The Ballerina to GraphQL command supports several usages in the Ballerina GraphQL tool as follows.
+
+```
+$ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
+            [-o | --output] <output-location>
+            [-s | --service] <service-base-path>
+```
+
+## Available parameters 
+
+The below command-line arguments can be used with the command.
+
+### GraphQL to Ballerina parameters
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
@@ -42,15 +54,7 @@ This generates a Ballerina client with remote operations corresponding to each G
 
 The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
-### Ballerina to GraphQL
-
-The Ballerina to GraphQL command supports several usages in the Ballerina GraphQL tool as follows.
-
-```
-$ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
-            [-o | --output] <output-location>
-            [-s | --service] <service-base-path>
-```
+### Ballerina to GraphQL parameters
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 

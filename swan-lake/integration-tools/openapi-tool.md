@@ -19,11 +19,7 @@ The Ballerina OpenAPI tool support provides the following capabilities.
  3. Validate the service implementation compliance with a provided OpenAPI contract using the OpenAPI annotation.
   >**Info:** The OpenAPI compiler plugin allows you to validate a service implementation against an OpenAPI contract during the compile time. This plugin ensures that the implementation of a service does not deviate from its OpenAPI contract. 
 
-## Available parameters
-
-The below command-line arguments can be used with the command.
-
-### OpenAPI to Ballerina 
+### OpenAPI to Ballerina usage
 
 The OpenAPI to Ballerina command supports several usages in the Ballerina OpenAPI tool as follows.
 
@@ -37,6 +33,22 @@ $ bal openapi [-i | --input] <openapi-contract-file-path>
             [--license] <license-file-path> 
             [--with-tests]
 ```
+
+### Ballerina to OpenAPI usage
+
+The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
+
+```
+$ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
+            [-s | --service] <current-service-name>
+            [-o | --output] <output-location>
+```
+
+## Available parameters
+
+The below command-line arguments can be used with the command.
+
+### OpenAPI to Ballerina parameters
 
 The command-line arguments below can be used with the command for each particular purpose as described below. 
 
@@ -52,15 +64,7 @@ The command-line arguments below can be used with the command for each particula
 | `--with-tests`    | This is optional. It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                                                            |
 | `--client-methods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `remote`).                                                                                                                                                                                                                                                                                                                                                                            |
 
-### Ballerina to OpenAPI 
-
-The Ballerina to OpenAPI command supports several usages in the Ballerina OpenAPI tool as follows.
-
-```
-$ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
-            [-s | --service] <current-service-name>
-            [-o | --output] <output-location>
-```
+### Ballerina to OpenAPI parameters
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
@@ -278,7 +282,7 @@ Use the `--client-methods <resource|remote>` option to select the client method 
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina](##openapi-to-ballerina).
+>**Info:** For more command options, see [OpenAPI to Ballerina](##openapi-to-ballerina-parameters).
 
 ## Publish your client
 

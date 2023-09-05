@@ -39,6 +39,25 @@ $ bal edi libgen -O <org name> -n <package name> -s <EDI schema folder> -o <outp
 
 A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
 
+## Available parameters 
+
+The parameters that are available with the tool are listed below.
+
+### Code generation parameters
+
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `EDI schema path`     | Path of the EDI schema which will be used to generate the code.                                                                                                                                                                                                      | mandatory          |
+| `output path`   | The path in which the output file will be created.                                                                                                                                                                                                   | mandatory           |
+
+### Package generation parameters
+
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-O, --org`     | Organization of the package.                                                                                                                                                                                                    | mandatory          |
+| `-n, --name`   | Name of the package.                                                                                                                                                                                                                   | mandatory          |
+| `-s, --schema`     | Location of the EDI schema.                                                                                                                                                                                                      | mandatory          |
+| `-o, --output`   | Location of the generated package.                                                                                                                                                                                                                    | mandatory           |
 ## Example
 
 Examples of the above usages are described below.

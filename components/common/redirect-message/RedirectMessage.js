@@ -31,28 +31,28 @@ export function PageContent(props) {
 
   return (
     <>
-    <Row className="pageHeader">
-      <Col xs={11}><h1>404</h1></Col>
-    </Row>
+      <Row className="pageHeader">
+        <Col xs={11}><h1>404</h1></Col>
+      </Row>
 
-    <Row className='pageContentRow'>
-      <Col xs={12}>
-        <p><strong>Page not found. :(</strong></p>
-        {
-        (props.redirectLink) ?
-        redirectmsg
-        :null
-        }
-        <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`https://discord.gg/ballerinalang`}>Ballerina
-          Team</a>.</p>
-      </Col>
-    </Row>
-  </>
+      <Row className='pageContentRow'>
+        <Col xs={12}>
+          <p><strong>Page not found. :(</strong></p>
+          {
+            (props.redirectLink) ?
+              redirectmsg
+              : null
+          }
+          <p>You can either <a href="#" onClick={goBack}>go back</a> to the previous page, <a className="getStartLinks" href='https://github.com/ballerina-platform/ballerina-lang/issues/new/choose'>report your issue,</a> or contact the <a href={`https://discord.gg/ballerinalang`}>Ballerina
+            Team</a>.</p>
+        </Col>
+      </Row>
+    </>
   );
 }
 
 export default function RedirectMessage(props) {
-  
+
   let pageBody = '';
   let redirectLink = '';
 
@@ -61,7 +61,7 @@ export default function RedirectMessage(props) {
     if (global.location.pathname.indexOf('.html') > 0) {
       redirectTo = global.location.pathname.replace('.html', '');
     }
-    
+
     pageBody = <>
       <meta charSet="utf-8" />
       <title>Redirecting&hellip;</title>
@@ -70,23 +70,37 @@ export default function RedirectMessage(props) {
       <meta httpEquiv="refresh" content={"0; url=\"" + redirectTo + '"'} />
       <meta name="robots" content="noindex" />
       <h2>Redirecting&hellip;</h2>
-      <br/><br/><br/>
+      <br /><br /><br />
+      <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
+    </>
+  } else if (global.location.href.indexOf('learn/build-a-native-executable/#configure-graalvm') > 0) {
+    let redirectTo = '/learn/build-the-executable-locally/#configure-graalvm'
+
+    pageBody = <>
+      <meta charSet="utf-8" />
+      <title>Redirecting&hellip;</title>
+      <link rel="canonical" href={redirectTo} />
+      <script>location=&quot;{redirectTo}&quot;</script>
+      <meta httpEquiv="refresh" content={"0; url=\"" + redirectTo + '"'} />
+      <meta name="robots" content="noindex" />
+      <h2>Redirecting&hellip;</h2>
+      <br /><br /><br />
       <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
     </>
   } else if (global.location.pathname.indexOf('learn') > 0) {
     redirectLink = <Link href='/learn'>Learn</Link>
-    pageBody = <PageContent redirectLink = {redirectLink}/>
+    pageBody = <PageContent redirectLink={redirectLink} />
   } else if (global.location.pathname.indexOf('community') > 0) {
     redirectLink = <Link href='/community'>Community</Link>
-    pageBody = <PageContent redirectLink = {redirectLink}/>
+    pageBody = <PageContent redirectLink={redirectLink} />
   } else if (global.location.pathname.indexOf('downloads') > 0) {
     redirectLink = <Link href='/downloads'>Downloads</Link>
-    pageBody = <PageContent redirectLink = {redirectLink}/>
+    pageBody = <PageContent redirectLink={redirectLink} />
   } else if (global.location.pathname.indexOf('spec') > 0) {
     redirectLink = <Link href='/learn/ballerina-specifications'>Ballerina specifications</Link>
-    pageBody = <PageContent redirectLink = {redirectLink}/>
+    pageBody = <PageContent redirectLink={redirectLink} />
   } else {
-    pageBody = <PageContent/>
+    pageBody = <PageContent />
   }
 
 

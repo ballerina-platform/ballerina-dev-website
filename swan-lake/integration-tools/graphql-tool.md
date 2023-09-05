@@ -57,7 +57,7 @@ The command-line arguments below can be used with the command for each particula
 | Argument        | Description                                                                                                                                                                                                                                                               |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `-i, --input`   | The `input` parameter specifies the path of the Ballerina GraphQL service file (e.g., `service.bal`). This parameter is mandatory.                                                                                                                                        |
-| `-o, --output`  | The `output` parameter specifies the output location of the generated GraphQL schema files. This parameter is optional. If this parameter is not specified, the schema files will be generated at the same location in which the GraphQL command is executed.             |
+| `-o, --output`  | The `output` parameter specifies the output location of the generated GraphQL schema files. This parameter is optional. If this parameter is not specified, the schema files will be generated at the same location in which the `bal graphql` command is executed.             |
 | `-o, --service` | The `service` parameter specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This parameter is optional. If this parameter is not specified, schemas will be generated for each of the GraphQL services in the given file. |
 
 ## Client generation
@@ -137,7 +137,7 @@ You can validate and execute the GraphQL queries using the >GraphQL Foundation V
 
 >**Note:** You are required to give a name for each query. This name is used as the corresponding remote operation name in the generated client.
 
-#### Execute the `graphql` CLI command
+#### Execute the `bal graphql` CLI command
 
 If you want to generate the Ballerina client for a given GraphQL document, use the command below.
 
@@ -236,11 +236,11 @@ This generates the Ballerina sources (i.e., the Ballerina files below) from the 
 
 The generated clients can be used to execute the queries/mutations on the GraphQL API. You can use the generated client within a Ballerina program in the same Ballerina package.
 
-You can also use the `graphql` CLI command to generate a Ballerina module. For more information, see [Generate multiple modules from a GraphQL config](/learn/graphql-tool/#generate-multiple-modules-from-a-graphql-config).
+You can also use the `bal graphql` CLI command to generate a Ballerina module. For more information, see [Generate multiple modules from a GraphQL config](/learn/graphql-tool/#generate-multiple-modules-from-a-graphql-config).
 
 #### Generate multiple modules from a GraphQL config
 
-Follow the steps below to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects using the `graphql` CLI tool. Each project generates a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API endpoint under a separate project.
+Follow the steps below to generate multiple Ballerina modules from a GraphQL config file configured with multiple GraphQL projects using the GraphQL CLI tool. Each project generates a separate Ballerina module. This enables you to work with multiple GraphQL APIs by configuring each GraphQL API endpoint under a separate project.
 
 1. Create a Ballerina package. For more information, see [Package commands](/learn/cli-commands/#package-commands).
 

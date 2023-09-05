@@ -12,9 +12,9 @@ The Health tool can generate accelerators primarily focussed on the <a href="htt
 
 ## Prerequisites
 
--  A directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the [FHIR Implementation Guide registry](http://fhir.org/guides/registry/)
+Download a directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the [FHIR Implementation Guide registry](http://fhir.org/guides/registry/).
 
-    >**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
+>**Note:** It is recommended to use the STU version of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
 
 ## Usage
 
@@ -61,8 +61,6 @@ Follow the steps below to create the package.
     ```
 
 3. Build the generated package.
-
-    >**Info:** You can push either to the local repository or the remote repository in Ballerina Central.
 
     ```
     $ cd gen/carinbb_package

@@ -11,6 +11,7 @@ intro: The Ballerina Shell is a Read-Evaluate-Print Loop (REPL) for Ballerina.
 ## Prerequisites
 
 Ballerina Shell is a part of the Ballerina distribution. Therefore, if you have already installed Ballerina, you are all set. If not, for information on installing the latest version of Ballerina, see [downloads](https://ballerina.io/downloads/).
+
 The Ballerina shell allows you to evaluate code snippets, eliminating the need to write complete programs.
 
 ## Usage

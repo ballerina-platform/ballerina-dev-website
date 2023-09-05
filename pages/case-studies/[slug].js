@@ -113,7 +113,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                         </Col>
                         <Col xs={1} className="gitIcon">
                             <a
-                                href={`${process.env.gitHubPath}policy/${slug}.md`}
+                                href={`${process.env.gitHubPath}case-studies/${slug}.md`}
                                 target="_blank"
                                 rel="noreferrer"
                                 title="Edit in GitHub"

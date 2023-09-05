@@ -65,7 +65,11 @@ export function HttpServiceCacheResponse({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=aa8af31b5e74857941c74dab207571bf&file=http_service_cache_response.bal",
+=======
+                "https://play.ballerina.io/?gist=7ff8d7b0b0999eb8587e2ed4581b2484&file=http_service_cache_response.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

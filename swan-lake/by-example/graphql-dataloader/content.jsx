@@ -426,8 +426,13 @@ export function GraphqlDataloader({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
+<<<<<<< HEAD:swan-lake/by-example/graphql-dataloader/content.jsx
             <a href="/spec/graphql/#example-utilizing-multiple-dataloaders-in-a-graphql-service">
               Utilizing multiple dataloaders in a graphql service
+=======
+            <a href="/learn/grpc/">
+              Ballerina protocol buffers guide
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda:swan-lake/by-example/grpc-service-simple/content.jsx
             </a>
           </span>
         </li>

@@ -59,7 +59,11 @@ export function HttpClientBearerTokenAuthentication({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
+<<<<<<< HEAD
                 "https://play.ballerina.io/?gist=475ffcef63402b5f6b39009c8a477588&file=http_client_bearer_token_authentication.bal",
+=======
+                "https://play.ballerina.io/?gist=41cde8a54699959aba663958af623a6a&file=http_client_bearer_token_authentication.bal",
+>>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
                 "_blank",
               );
             }}

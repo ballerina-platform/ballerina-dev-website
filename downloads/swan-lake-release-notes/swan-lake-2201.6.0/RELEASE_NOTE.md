@@ -17,7 +17,7 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to 2201.6.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.6.0 using the [Ballerina Update Tool](/learn/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
 2. Run `bal dist update` to update to this latest distribution.
@@ -337,7 +337,7 @@ versa.
 #### `stan` package
 
 - Deprecated the `stan` package.
-    > For NATS-enabled applications requiring persistence, it is recommended to use the `JetStreamClient` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library, including the new NATS JetStream client and the NATS JetStream listener.
+    > For NATS-enabled applications requiring persistence, it is recommended to use `JetStream` provided by the [`ballerinax/nats`](https://github.com/ballerina-platform/module-ballerinax-nats) library, including the new [NATS JetStream client](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamClient) and the [NATS JetStream listener](https://lib.ballerina.io/ballerinax/nats/latest#JetStreamListener).
 
 #### `serdes` package
 

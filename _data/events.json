@@ -1,6 +1,22 @@
 {
     "events": [
-      {
+       {
+            "date": "August 17, 2023",
+            "day": "Thur.",
+            "time": "9.30 a.m. PDT",
+            "expire": "2023-08-18T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/295144732/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Ballerina Meets GraalVM: Empower Cloud Native Applications",
+            "presenterTwitter": "https://www.linkedin.com/in/tharmigan-krishnananthalingam-ab2265157/",
+            "presenter": "Tharmigan Krishnananthalingam",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://www.youtube.com/watch?v=fDRi3rNiFqo",
+            "buttonText": "Watch recording"
+        },
+        {
             "date": "July 13, 2023",
             "day": "Thur.",
             "time": "9.00 a.m. IST",
@@ -13,8 +29,8 @@
             "presenter": "Danesh Kuruppu",
             "presenterDesignation": "Technical Lead, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP here"
+            "videoURL": "https://youtu.be/d0kg8Ggd6cs",
+            "buttonText": "Watch recording"
         },
         {
             "date": "July 6, 2023",
@@ -29,8 +45,8 @@
             "presenter": "Anupama Pathirage",
             "presenterDesignation": "Director of Engineering, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP here"
+            "videoURL": "https://www.meetup.com/utdcsor/events/294335142",
+            "buttonText": "More info"
         },
         {
             "date": "June 8, 2023",

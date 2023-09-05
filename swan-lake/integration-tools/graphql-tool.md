@@ -313,7 +313,7 @@ $ bal graphql -i service.bal -o ./schema
 
 The `input` parameter specifies the path of the ballerina service file (e.g., `service.bal`) and is mandatory.
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](#ballerina-to-graphql).
+>**Info:** For more command options, see [Ballerina to GraphQL parameters](#ballerina-to-graphql-parameters).
 
 ### Generate a schema for a specific service
 
@@ -331,4 +331,4 @@ $ bal graphql -i service.bal -o ./schema -s /starwars
 
 The `service` parameter specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](#ballerina-to-graphql).
+>**Info:** For more command options, see [Ballerina to GraphQL parameters](#ballerina-to-graphql-parameters).

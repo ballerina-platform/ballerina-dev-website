@@ -183,6 +183,7 @@ export default function Learn() {
 
                 <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
                   tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                    
 
               </Container>
             </Col>

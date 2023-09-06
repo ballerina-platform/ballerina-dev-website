@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -174,6 +174,8 @@ export default function Learn({ samples, content }) {
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
               <Container>
+
+              
 
                 <div style={{
                   background: "#eeeeee", padding: "10px",

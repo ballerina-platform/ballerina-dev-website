@@ -53,7 +53,7 @@ const CustomMenu = React.forwardRef(
                                     }
                                 </Accordion.Body>
                             </Accordion.Item>
-                            {/* <Accordion.Item eventKey="case studies" className={styles.acItem}>
+                            <Accordion.Item eventKey="case studies" className={styles.acItem}>
                                 <Accordion.Header className={styles.mainDir}>Case studies</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
                                     {
@@ -70,7 +70,7 @@ const CustomMenu = React.forwardRef(
                                         )
                                     }
                                 </Accordion.Body>
-                            </Accordion.Item> */}
+                            </Accordion.Item>
                             <Accordion.Item eventKey="comparisons" className={styles.acItem}>
                                 <Accordion.Header className={styles.mainDir}>Comparisons</Accordion.Header>
                                 <Accordion.Body className={styles.accordionBody}>
@@ -112,7 +112,7 @@ const CustomMenu = React.forwardRef(
                                 </ul>
                             </div>
 
-                            {/* <div className={styles.subSection}>
+                            <div className={styles.subSection}>
                                 <p>Case studies</p>
                                 <ul className="list-unstyled">
                                     {
@@ -129,7 +129,7 @@ const CustomMenu = React.forwardRef(
                                           )
                                     }
                                 </ul>
-                            </div> */}
+                            </div>
 
 
                             <div className={styles.subSection}>

@@ -327,6 +327,14 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-profiler`} className={styles.titleLink}>
+                            Ballerina Profiler (experimental)
+                          </a>
+                        </p>
+                        <p className={styles.description}>Profile a Ballerina package and create a flame graph.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/generate-code-documentation`} className={styles.titleLink}>
                             Document Ballerina code
                           </a>

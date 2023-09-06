@@ -141,7 +141,7 @@ export default function Pattern(props) {
                     {props.helps &&
                       <tr>
                         <td>How Ballerina helps</td>
-                        <td><ReactMarkdown children={props.helps}></ReactMarkdown></td>
+                        <td><ReactMarkdown>{props.helps}</ReactMarkdown></td>
                       </tr>
                     }
                   </table>

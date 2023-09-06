@@ -26,6 +26,21 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
+import LightGallery from 'lightgallery/react';
+
+// // import styles
+// import 'lightgallery/css/lightgallery.css';
+// import 'lightgallery/css/lg-zoom.css';
+// import 'lightgallery/css/lg-thumbnail.css';
+
+// // If you want you can use SCSS instead of css
+// import 'lightgallery/scss/lightgallery.scss';
+// import 'lightgallery/scss/lg-zoom.scss';
+
+// // import plugins if you need
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
@@ -110,6 +125,10 @@ service sfdcListener:RecordService on sfdcEventListener {
 }
 
 export default function Learn({ samples, content }) {
+
+  const onInit = () => {
+    console.log('lightGallery has been initialized');
+  };
 
   const [copied, setCopied] = React.useState(false);
 

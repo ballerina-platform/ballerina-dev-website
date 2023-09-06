@@ -26,6 +26,21 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
+import LightGallery from 'lightgallery/react';
+
+// // import styles
+// import 'lightgallery/css/lightgallery.css';
+// import 'lightgallery/css/lg-zoom.css';
+// import 'lightgallery/css/lg-thumbnail.css';
+
+// // If you want you can use SCSS instead of css
+// import 'lightgallery/scss/lightgallery.scss';
+// import 'lightgallery/scss/lg-zoom.scss';
+
+// // import plugins if you need
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
@@ -97,6 +112,10 @@ public function main() returns error? {
 }
 
 export default function Learn({ samples, content }) {
+
+  const onInit = () => {
+    console.log('lightGallery has been initialized');
+  };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -206,9 +225,20 @@ export default function Learn({ samples, content }) {
                     </p>
 
                   </Col>
-                  <Col xs={12} lg={6}>
-                    <img src={`${prefix}/images/google-sheets-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
-                  </Col>
+                  <Col xs={12} lg={6} className="text-center">
+                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
+
+                    <LightGallery
+                onInit={onInit}
+                speed={500}
+                plugins={[lgThumbnail, lgZoom]}
+            >
+                <a href={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`}>
+                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration_cropped.png`} height={300}/>
+                </a>
+
+            </LightGallery>
+                </Col>
                 </Row>
 
               </Container>

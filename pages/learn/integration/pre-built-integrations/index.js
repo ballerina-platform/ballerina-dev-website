@@ -129,7 +129,7 @@ export default function Learn() {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Pre-built integration samples using Ballerina language.
                 </p>
               </Container>
             </Col>
@@ -139,14 +139,39 @@ export default function Learn() {
             <Col xs={12}>
               <Container>
                 {/* Repeat the SampleList component */}
-                <SampleList name="Sample1" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                <SampleList name="Google Sheets to Salesforce Integration" description="Create a new contact in Salesforce for each new row is added to a Google Sheet"
+                  tags={["Google Sheets", "Salesforce", "Integration", "CRM"]} />
 
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                <SampleList name="Kafka to Salesforce Integration" description="Update pricebook in Salesforce for each new message in Kafka"
+                  tags={["Kafka", "Salesforce", "Integration", "CRM"]} />
 
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
+                <SampleList name="MySQL to Salesforce Integration" description="Create a new product in Salesforce for each new record is added to a MySQL table"
+                  tags={["Salesforce", "Integration", "CRM", "MySQL"]} />
+
+                <SampleList name="Salesforce to Twilio Integration" description="Send a SMS for each new lead in Salesforce"
+                  tags={["Salesforce", "Integration", "CRM", "Twilio"]} />
+
+                <SampleList name="GMail to Salesforce Integration" description="Create lead for each new marketing email in GMail"
+                  tags={["Salesforce", "Integration", "CRM", "GMail"]} />
+
+                <SampleList name="NewsAPI to Email Integration" description="Fetch BBC top headlines and send as email to recipient"
+                  tags={["NewsAPI", "Integration", "Email"]} />
+
+                <SampleList name="GitHub to Email Integration" description="Generate a GitHub issue summary report and email to a specified email address"
+                  tags={["Github", "Integration", "Email"]} />
+                
+                <SampleList name="Shopify to Outlook Integration" description="Send Welcome Email using MS Outlook to New Shopify Customers"
+                  tags={["Outlook", "Integration", "Shopify"]} />
+                
+                <SampleList name="Google Drive to OneDrive Integration" description="Sync Google Drive files to Microsoft OneDrive"
+                  tags={["OneDrive", "Integration", "Google Drive"]} />
+
+                <SampleList name="Hubspot contacts to Google Contacts Integration" description="Sync Hubspot Contacts with Google Contacts"
+                  tags={["Hubspot", "Integration", "Google Contacts"]} />
+                
+                <SampleList name="FTP EDI Message to Salesforce Opportunity" description="Reads EDI files from a given FTP location and creates a Salesforce Opportunity"
+                  tags={["Hubspot", "Integration", "Google Contacts"]} />
+                    
 
               </Container>
             </Col>

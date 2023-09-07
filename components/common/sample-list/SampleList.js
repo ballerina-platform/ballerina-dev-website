@@ -30,13 +30,12 @@ export default function SampleList(props) {
       {/* <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container> */}
-            <Row>
-              <Col xl={{ offset: 2, span: 8 }}>
+              <Col xl={{span: 6 }} style={{display: "flex", flexWrap: "row wrap"}}>
 
                 <Card className={`${styles.card} mb-3`}>
                   <Row className="g-0 align-items-center">
                     <Col md={2} className='text-center'>
-                      <Card.Img src={`${prefix}/images/pre-built/${href}.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                      <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                     </Col>
                     <Col md={10}>
                       <Card.Body>
@@ -53,7 +52,6 @@ export default function SampleList(props) {
                 </Card>
 
               </Col>
-            </Row>
           {/* </Container>
         </Col>
       </Row> */}

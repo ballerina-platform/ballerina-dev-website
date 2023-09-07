@@ -48,7 +48,7 @@ export default function LightBoxImage(props) {
 
 <a href={props.diagram}>
                 
-                <img alt="img1" src={props.thumbnail} width='100%'/>
+                <img alt=" " src={props.thumbnail} width='100%'/>
                 <span className={styles.lightThumb}></span>
             </a>
 

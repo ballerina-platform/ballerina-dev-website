@@ -213,15 +213,17 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Customer interactions holds immense significance in modern e-commerce. Seamless communication through
-                      emails allows businesses to provide personalized support, timely updates, and relevant recommendations to their customers.
-                      By integrating Shopify with email platforms, companies can ensure that every customer interaction is both efficient and
-                      tailored to individual needs, enhancing customer satisfaction. This integration also enables the automation of order confirmations,
-                      shipping notifications, and even personalized product suggestions based on customer preferences and browsing history.
-                      Such interactions not only strengthen customer relationships but also contribute to increased sales and improved brand loyalty.</p>
+                    <p>Customer interactions hold immense significance in modern e-commerce. Seamless communication
+                    through emails allows businesses to provide personalized support, timely updates, and relevant
+                    recommendations to their customers. By integrating Shopify with email platforms, companies can
+                    ensure that every customer interaction is both efficient and tailored to individual needs, enhancing
+                    customer satisfaction. This integration also enables the automation of order confirmations, shipping
+                    notifications, and even personalized product suggestions based on customer preferences and browsing
+                    history. Such interactions not only strengthen customer relationships but also contribute to
+                    increased sales and improved brand loyalty.</p>
 
-                    <p>The code sample below illustrates how to integrate Shopify and Outlook to sent automatic welcome emails to new customers.
-                    </p>
+                    <p>The code sample below illustrates how to integrate Shopify and Outlook to send
+                      automatic welcome emails to new customers.</p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">

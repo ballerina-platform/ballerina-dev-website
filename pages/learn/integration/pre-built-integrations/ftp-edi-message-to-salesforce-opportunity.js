@@ -275,16 +275,15 @@ export default function Learn({ samples, content }) {
                   <Row>
                     <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                       <p>Interactions between businesses, such as sending purchase orders and invoices,
-                        usually occur over EDI based B2B channels. On the other hand, sales and customer details
-                        related to such transactions are maintained in Salesforce. Therefore, it's critical to bridge
-                        salesforce with B2B channels in order to automate the sales processes. For example, it is
-                        possible to update the status and details of opportunities in Salesforce based on the exchange of
-                        EDI messages like 840 request for quotation, 843 quotation response, 850 purchase order, etc.
-                        Such integrations will eliminate the delays and inconsistencies in updating Salesforce, and
-                        provide up to date information for sales staff and decision makers.</p>
+                      usually occur over EDI-based B2B channels. On the other hand, sales and customer details
+                      related to such transactions are maintained in Salesforce. Therefore, it's critical to bridge
+                      salesforce with B2B channels in order to automate the sales processes. For example, it is
+                      It is possible to update the status and details of opportunities in Salesforce based on the exchange of
+                      EDI messages like 840 request for quotation, 843 quotation response, 850 purchase order, etc.
+                      Such integrations will eliminate the delays and inconsistencies in updating Salesforce and
+                      provide up-to-date information for sales staff and decision-makers.</p>
 
-                      <p>The code sample below reads EDI files from a given FTP location and creates a Salesforce Opportunity.
-                      </p>
+                      <p>The code sample below reads EDI files from a given FTP location and creates a Salesforce Opportunity.</p>
 
                     </Col>
                     <Col xs={12} lg={6} className="text-center">

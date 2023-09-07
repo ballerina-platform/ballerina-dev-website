@@ -193,7 +193,7 @@ export default function Learn({ samples, content }) {
                 <Container>
                   <Row>
                     <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                      <p>Fetching GitHub issues summaries directly to email through seamless integration holds significant value
+                      <p>Fetching GitHub issue summaries directly to email through seamless integration holds significant value
                         for streamlined project management and efficient collaboration.
                         By receiving summarized updates on GitHub issues directly in their email inboxes, team members can stay
                         informed about the project's progress without the need to constantly visit the GitHub platform.

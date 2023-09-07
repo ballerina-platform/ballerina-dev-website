@@ -189,15 +189,14 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>In enterprises, business data like inventory levels, order statuses,
-                      or product prices changes constantly, and multiple entities require access
-                      to these updates. Utilizing messaging systems like Kafka enables real-time
-                      consumption of this information by multiple parties. Keeping Salesforce updated
-                      with such frequently changing information, such as current pricing, is vital for
-                      sales staff. Ballerina's connectors and streaming capabilities facilitate this
-                      integration, allowing seamless connection between Salesforce and streaming data sources.
-                      It ensures transformed and filtered data is constantly pushed to Salesforce, keeping all
-                      relevant information current and accessible.</p>
+                    <p>In enterprises, business data like inventory levels, order statuses, or product prices changes
+                      constantly, and multiple entities require access to these updates. Utilizing messaging systems
+                      like Kafka enables the real-time consumption of this information by multiple parties.
+                      Keeping Salesforce updated with frequently changing information, such as current pricing, is vital
+                      for sales staff. Ballerina's connectors and streaming capabilities facilitate this integration,
+                      allowing seamless connections between Salesforce and streaming data sources. It ensures
+                      transformed and filtered data is constantly pushed to Salesforce, keeping all relevant information
+                      current and accessible.</p>
 
                     <p>The code sample below illustrates how to update Salesforce price books in real-time
                       based on prices published to a Kafka topic.</p>

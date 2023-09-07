@@ -210,16 +210,16 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Sales related events need to be acted upon as soon as possible.
-                      For example, when a new lead is received, sales staff need to evaluate it and get in contact
-                      with the lead immediately. When an opportunity is won, support staff need to be informed,
-                      so that they can attend to any issues reported by new customers without a delay.
-                      As all customer related events are captured in Salesforce, it is the best place to look for such events.
-                      Ballerina can listen for any interested events in Salesforce and notify relevant employees over their
-                      preferred channels, ensuring that all customer events are attended in a timely manner.</p>
+                    <p>Sales-related events need to be acted upon as soon as possible. For example, when a new lead is
+                      received, sales staff need to evaluate it and get in contact with the lead immediately. When an
+                      opportunity is won, support staff need to be informed so that they can attend to any issues
+                      reported by new customers without delay. As all customer-related events are captured in
+                      Salesforce, it is the best place to look for such events. Ballerina can listen for any interested
+                      events in Salesforce and notify relevant employees over their preferred channels, ensuring that
+                      all customer events are attended in a timely manner.</p>
 
-                    <p>Following example shows Ballerina code for listening for new leads in
-                      Salesforce and sending an SMS to sales staff upon receiving a lead.
+                    <p>The following example shows Ballerina code for listening for new leads in Salesforce and sending
+                      an SMS to sales staff upon receiving a lead.
                     </p>
 
                   </Col>

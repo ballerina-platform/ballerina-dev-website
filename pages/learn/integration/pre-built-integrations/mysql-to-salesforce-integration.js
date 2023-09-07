@@ -197,11 +197,12 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Data about products, customers, and sales transactions are often scattered across various systems,
-                      databases, and business units. Extracting this information and integrating it into Salesforce is
-                      essential for a unified view. Ballerina, with its rich set of connectors and data handling capabilities,
-                      can connect to multiple data sources and fetch data in any format. By linking disparate data, Ballerina
-                      aids in enriching Salesforce with relevant information, making it the single source for all customer information.</p>
+                    <p>Data about products, customers, and sales transactions is often scattered across various systems,
+                      databases, and business units. Extracting this information and integrating it into Salesforce
+                      is essential for a unified view. Ballerina, with its rich set of connectors and data
+                      handling capabilities, can connect to multiple data sources and fetch data in any format.
+                      By linking disparate data, Ballerina aids in enriching Salesforce with relevant information,
+                      making it the single source for all customer information.</p>
 
                     <p>The code sample below illustrates how to create Salesforce products based on newly added MySQL records.
                     </p>

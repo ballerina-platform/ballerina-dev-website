@@ -189,14 +189,14 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Integrating news headlines directly into Gmail through NewsAPI and email integration
+                    <p>Integrating news headlines directly into Gmail through the NewsAPI and email integration
                       carries significant advantages in today's fast-paced information landscape. By seamlessly
                       delivering relevant and timely news updates within the familiar interface of Gmail, users
                       can effortlessly stay informed without the need to toggle between multiple platforms. This
-                      integration not only enhances user convenience but also fosters efficient time management,
-                      as individuals can access important headlines while managing their emails</p>
+                      Integration not only enhances user convenience but also fosters efficient time management.
+                      as individuals can access important headlines while managing their emails.</p>
 
-                    <p>The code sample below illustrates how to integrate newsAPI to recieve an email containing BBC headlines.
+                    <p>The code sample below illustrates how to integrate the news API to receive an email containing BBC headlines.
                     </p>
 
                   </Col>

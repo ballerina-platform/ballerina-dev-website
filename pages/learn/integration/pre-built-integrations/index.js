@@ -129,7 +129,7 @@ export default function Learn() {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  Pre-built integration samples using Ballerina language.
                 </p>
               </Container>
             </Col>

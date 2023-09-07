@@ -197,7 +197,7 @@ export default function Learn({ samples, content }) {
                       spread across various platforms such as smartphones, email accounts, social networks, and professional databases.
                       Synchronization ensures that contact details remain consistent and updated across all these sources, saving time
                       and preventing discrepancies. This harmonization simplifies communication, as users can easily access the right
-                      information when needed. Whether it's connecting with friends, colleagues, or clients, synchronized contact storages
+                      information when needed. Whether it&apos;s connecting with friends, colleagues, or clients, synchronized contact storages
                       foster efficient and reliable interaction</p>
 
                     <p>The code sample below illustrates how to sync Hubspot and Google Contacts using Ballerina integration.

@@ -340,7 +340,7 @@ export default function Learn({ samples, content }) {
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>
-                      In today's fast-paced business landscape, effective customer relationship management (CRM) has become a linchpin of success.
+                      In today&apos;s fast-paced business landscape, effective customer relationship management (CRM) has become a linchpin of success.
                       Salesforce, a leading CRM platform, empowers organizations to streamline their sales, marketing, and customer support efforts,
                       providing invaluable insights into customer interactions. However, to truly harness the full potential of Salesforce,
                       seamless integration with essential communication tools like mailing clients is imperative.</p>

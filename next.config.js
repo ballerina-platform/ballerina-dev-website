@@ -412,6 +412,7 @@ const nextConfig = {
         source: `/learn/pre-built-integrations/sample2`,
         destination: `/learn/integration/pre-built-integrations/sample2`,
       },
+      {
         source: `/learn/pre-built-integrations/google-sheets-to-salesforce-integration`,
         destination: `/learn/integration/pre-built-integrations/google-sheets-to-salesforce-integration`,
       },

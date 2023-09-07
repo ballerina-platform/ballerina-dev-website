@@ -196,7 +196,7 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Office productivity tools like Google Sheets are vital for employees' daily tasks, including
+                    <p>Office productivity tools like Google Sheets are vital for employees&apos; daily tasks, including
                       capturing customer and sales data such as contact information and support issues. This data must be
                       pumped into Salesforce to maintain up-to-date records, often requiring validation and cleansing due
                       to the ad-hoc nature of entering data. Ballerina can streamline this process by fetching data from these tools,

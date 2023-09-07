@@ -196,7 +196,7 @@ export default function Learn({ samples, content }) {
                       <p>Fetching GitHub issue summaries directly to email through seamless integration holds significant value
                         for streamlined project management and efficient collaboration.
                         By receiving summarized updates on GitHub issues directly in their email inboxes, team members can stay
-                        informed about the project's progress without the need to constantly visit the GitHub platform.
+                        informed about the project&apos;s progress without the need to constantly visit the GitHub platform.
                         This integration not only simplifies communication but also ensures that crucial issue updates are never missed,
                         enhancing responsiveness and facilitating prompt issue resolution</p>
 

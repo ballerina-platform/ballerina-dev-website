@@ -276,7 +276,7 @@ export default function Learn({ samples, content }) {
                     <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                       <p>Interactions between businesses, such as sending purchase orders and invoices,
                       usually occur over EDI-based B2B channels. On the other hand, sales and customer details
-                      related to such transactions are maintained in Salesforce. Therefore, it's critical to bridge
+                      related to such transactions are maintained in Salesforce. Therefore, it&apos;s critical to bridge
                       salesforce with B2B channels in order to automate the sales processes. For example, it is
                       It is possible to update the status and details of opportunities in Salesforce based on the exchange of
                       EDI messages like 840 request for quotation, 843 quotation response, 850 purchase order, etc.

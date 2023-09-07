@@ -106,7 +106,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                 />
             </Head>
             <Layout>
-                <Col xs={12} sm={10} className="policyContent">
+                <Col xs={12} sm={10} className="mdContent">
                     <Row className="topRow innerRow">
                         <Col xs={11}>
                             <h1>{frontmatter.title}</h1>

@@ -172,18 +172,6 @@ export default function Learn() {
                 <SampleList name="FTP EDI Message to Salesforce Opportunity" description="Reads EDI files from a given FTP location and creates a Salesforce Opportunity"
                   tags={["Hubspot", "Integration", "Google Contacts"]} />
                     
-                <SampleList name="Sample1" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-                
-                <SampleList name="Sample2" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-
-                <SampleList name="Scatter-Gather" description="Send message to multiple recipients"
-                  tags={["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint"]} />
-                    
 
               </Container>
             </Col>

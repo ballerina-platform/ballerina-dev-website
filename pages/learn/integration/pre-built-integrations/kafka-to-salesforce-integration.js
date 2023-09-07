@@ -18,13 +18,34 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
 import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
+
+
+
+// import LightGallery from 'lightgallery/react';
+
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -76,7 +97,6 @@ service on orderListener {
         }
     }
 }
-  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 
@@ -89,6 +109,10 @@ service on orderListener {
 }
 
 export default function Learn({ samples, content }) {
+
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -186,22 +210,34 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>In enterprises, business data like inventory levels, order statuses, 
-                      or product prices changes constantly, and multiple entities require access 
-                      to these updates. Utilizing messaging systems like Kafka enables real-time 
-                      consumption of this information by multiple parties. Keeping Salesforce updated 
-                      with such frequently changing information, such as current pricing, is vital for 
-                      sales staff. Ballerina's connectors and streaming capabilities facilitate this 
-                      integration, allowing seamless connection between Salesforce and streaming data sources. 
-                      It ensures transformed and filtered data is constantly pushed to Salesforce, keeping all 
+                    <p>In enterprises, business data like inventory levels, order statuses,
+                      or product prices changes constantly, and multiple entities require access
+                      to these updates. Utilizing messaging systems like Kafka enables real-time
+                      consumption of this information by multiple parties. Keeping Salesforce updated
+                      with such frequently changing information, such as current pricing, is vital for
+                      sales staff. Ballerina's connectors and streaming capabilities facilitate this
+                      integration, allowing seamless connection between Salesforce and streaming data sources.
+                      It ensures transformed and filtered data is constantly pushed to Salesforce, keeping all
                       relevant information current and accessible.</p>
 
-                    <p>The code sample below illustrates how to update Salesforce price books in real-time 
+                    <p>The code sample below illustrates how to update Salesforce price books in real-time
                       based on prices published to a Kafka topic.</p>
 
                   </Col>
-                  <Col xs={12} lg={6}>
-                    <img src={`${prefix}/images/kafka-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                  <Col xs={12} lg={6} className="text-center">
+
+                    {/* Use when there is an image from README */}
+
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/kafka-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
                   </Col>
                 </Row>
 
@@ -213,21 +249,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  {/*<Tab eventKey="diagram" title="Diagram">*/}
+
+                  {/*  <Col xs={12} lg={6} className="text-center">*/}
+                  {/*    <LightBoxImage*/}
+                  {/*      thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                  {/*      diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+                  {/*  </Col>*/}
+
+                  {/*</Tab>*/}
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

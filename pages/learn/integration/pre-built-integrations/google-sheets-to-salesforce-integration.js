@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,20 +26,26 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -94,12 +100,10 @@ public function main() returns error? {
         record {} newContact = map from int index in 0 ..< headers.length()
             let int|string|decimal header = headers[index]
             select [header.toString(), item[index]];
-
         _ = check sfdcClient->create("Contact", newContact);
         log:printInfo(string \`Contact created successfully!. Email : \${item[indexOfEmail]}\`);
     }
 }
-  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 
@@ -113,9 +117,9 @@ public function main() returns error? {
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -214,31 +218,32 @@ export default function Learn({ samples, content }) {
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>Office productivity tools like Google Sheets are vital for employees' daily tasks,
-                       including capturing customer and sales data such as contact information and support issues. This data must 
-                       be pumped into Salesforce to maintain up-to-date records, often requiring validation and cleansing due 
-                       to the ad-hoc nature of entering data. Ballerina can streamline this process by fetching data from these tools, 
-                       performing necessary data processing, and pushing updates to Salesforce, either periodically or by listening to changes.
+                      including capturing customer and sales data such as contact information and support issues. This data must
+                      be pumped into Salesforce to maintain up-to-date records, often requiring validation and cleansing due
+                      to the ad-hoc nature of entering data. Ballerina can streamline this process by fetching data from these tools,
+                      performing necessary data processing, and pushing updates to Salesforce, either periodically or by listening to changes.
                     </p>
 
-                    <p>The following code sample demonstrates an integration scenario in which contact details added to the google sheets gets 
+                    <p>The following code sample demonstrates an integration scenario in which contact details added to the google sheets gets
                       periodically synched with the Salesforce Contacts.
                     </p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
-                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
 
-                    <LightGallery
-                onInit={onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                <a href={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`}>
-                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration_cropped.png`} height={300}/>
-                </a>
+                    {/* Use when there is an image from README */}
 
-            </LightGallery>
-                </Col>
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/google-sheets-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
+                  </Col>
                 </Row>
 
               </Container>
@@ -249,21 +254,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

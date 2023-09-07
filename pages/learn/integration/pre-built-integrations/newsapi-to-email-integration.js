@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,54 +26,72 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
   const content = `
+import ballerina/email;
 import ballerina/log;
 import ballerinax/newsapi;
-import wso2/choreo.sendemail;
-  
+
+// News API configuration
 configurable newsapi:ApiKeysConfig apiKeyConfig = ?;
+
+// Email client configuration parameters
+configurable string smtpPassword = ?;
+configurable string smtpUsername = ?;
+configurable string smtpHost = ?;
+
+// Email configuration parameters
+configurable string fromAddress = ?;
 configurable string emailAddress = ?;
-  
+
 public function main() returns error? {
-    string mailBody = "";
-    newsapi:Client newsClient = check new (apiKeyConfig, {}, "https://newsapi.org/v2");
-    newsapi:WSNewsTopHeadlineResponse topHeadlines = check newsClient->listTopHeadlines(sources="bbc-news", page=1);
-    log:printInfo(topHeadlines.toString());
+    newsapi:Client newsapi = check new (apiKeyConfig, {}, "https://newsapi.org/v2");
+    email:SmtpClient smtpClient = check new (smtpHost, smtpUsername, smtpPassword);
+    newsapi:WSNewsTopHeadlineResponse topHeadlines = check newsapi->listTopHeadlines(sources = "bbc-news", page = 1);
     newsapi:WSNewsArticle[]? articles = topHeadlines?.articles;
-    if articles is newsapi:WSNewsArticle[] && articles.length() != 0 {
-        mailBody = "BBC top news are,\\n";
-        foreach var article in articles {
-            string? title = article?.title;
-            if title is string {
-                mailBody = mailBody + "\t" + "* " + title + "\\n";
-                log:printInfo(mailBody);
-            }
-        }
-        sendemail:Client sendemailEndpoint = check new ();
-        string sendEmailResponse = check sendemailEndpoint->sendEmail(emailAddress, "BBC Headlines", mailBody);
-        log:printInfo("Email sent successfully!" + sendEmailResponse);
-    } else {
+    if articles is () || articles.length() == 0 {
         log:printInfo("No news found");
+        return;
     }
+    string mailBody = "BBC top news are,\\n";
+    foreach newsapi:WSNewsArticle article in articles {
+        string? title = article?.title;
+        if title is string {
+            mailBody = mailBody + string \`\${title}\${"\n"}\`;
+        }
+    }
+    email:Message email = {
+        to: emailAddress,
+        'from: fromAddress,
+        subject: "BBC Headlines",
+        body: mailBody
+    };
+    check smtpClient->sendMessage(email);
+    log:printInfo("Email sent successfully!");
 }
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
@@ -88,9 +106,9 @@ public function main() returns error? {
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -188,11 +206,11 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Integrating news headlines directly into Gmail through NewsAPI and email integration 
-                      carries significant advantages in today's fast-paced information landscape. By seamlessly 
-                      delivering relevant and timely news updates within the familiar interface of Gmail, users 
-                      can effortlessly stay informed without the need to toggle between multiple platforms. This 
-                      integration not only enhances user convenience but also fosters efficient time management, 
+                    <p>Integrating news headlines directly into Gmail through NewsAPI and email integration
+                      carries significant advantages in today's fast-paced information landscape. By seamlessly
+                      delivering relevant and timely news updates within the familiar interface of Gmail, users
+                      can effortlessly stay informed without the need to toggle between multiple platforms. This
+                      integration not only enhances user convenience but also fosters efficient time management,
                       as individuals can access important headlines while managing their emails</p>
 
                     <p>The code sample below illustrates how to integrate newsAPI to recieve an email containing BBC headlines.
@@ -200,19 +218,20 @@ export default function Learn({ samples, content }) {
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
-                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
 
-                    <LightGallery
-                onInit={onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                <a href={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration.png`}>
-                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration_cropped.png`} height={300}/>
-                </a>
+                    {/* Use when there is an image from README */}
 
-            </LightGallery>
-                </Col>
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/newsapi-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
+                  </Col>
                 </Row>
 
               </Container>
@@ -223,21 +242,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

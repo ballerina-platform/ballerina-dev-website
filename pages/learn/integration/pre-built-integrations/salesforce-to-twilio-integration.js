@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,20 +26,26 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -90,9 +96,9 @@ service sfdcListener:RecordService on sfdcEventListener {
         string[] nameParts = re \`,\`.split(payload.changedData["Name"].toString());
         if nameParts.length() >= 2 {
             firstName = re \`=\`.split(nameParts[0])[1];
-            lastName = re \`=\`.split(re \`\}\`.replace(nameParts[1], ""))[1];
+            lastName = re \`=\`.split(re \`\\}\`.replace(nameParts[1], ""))[1];
         } else {
-            lastName = re \`=\`.split(re \`\}\`.replace(nameParts[0], ""))[1];
+            lastName = re \`=\`.split(re \`\\}\`.replace(nameParts[0], ""))[1];
         }
         twilio:SmsResponse response = check twilioClient->sendSms(fromNumber, toNumber,
             string \`New contact is created! | Name: \${firstName} \${lastName} | Created Date: 
@@ -112,7 +118,6 @@ service sfdcListener:RecordService on sfdcEventListener {
         return;
     }
 }
-  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 
@@ -126,9 +131,9 @@ service sfdcListener:RecordService on sfdcEventListener {
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -226,21 +231,33 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Sales related events need to be acted upon as soon as possible. 
-                      For example, when a new lead is received, sales staff need to evaluate it and get in contact 
-                      with the lead immediately. When an opportunity is won, support staff need to be informed, 
-                      so that they can attend to any issues reported by new customers without a delay. 
-                      As all customer related events are captured in Salesforce, it is the best place to look for such events. 
-                      Ballerina can listen for any interested events in Salesforce and notify relevant employees over their 
+                    <p>Sales related events need to be acted upon as soon as possible.
+                      For example, when a new lead is received, sales staff need to evaluate it and get in contact
+                      with the lead immediately. When an opportunity is won, support staff need to be informed,
+                      so that they can attend to any issues reported by new customers without a delay.
+                      As all customer related events are captured in Salesforce, it is the best place to look for such events.
+                      Ballerina can listen for any interested events in Salesforce and notify relevant employees over their
                       preferred channels, ensuring that all customer events are attended in a timely manner.</p>
 
-                    <p>Following example shows Ballerina code for listening for new leads in 
+                    <p>Following example shows Ballerina code for listening for new leads in
                       Salesforce and sending an SMS to sales staff upon receiving a lead.
                     </p>
 
                   </Col>
-                  <Col xs={12} lg={6}>
-                    <img src={`${prefix}/images/salesforce-to-twilio-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                  <Col xs={12} lg={6} className="text-center">
+
+                    {/* Use when there is an image from README */}
+
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/salesforce-to-twilio-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
                   </Col>
                 </Row>
 
@@ -252,21 +269,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  {/*<Tab eventKey="diagram" title="Diagram">*/}
+
+                  {/*  <Col xs={12} lg={6} className="text-center">*/}
+                  {/*    <LightBoxImage*/}
+                  {/*      thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                  {/*      diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+                  {/*  </Col>*/}
+
+                  {/*</Tab>*/}
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

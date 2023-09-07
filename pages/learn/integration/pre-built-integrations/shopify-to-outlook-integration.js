@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,20 +26,26 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -62,14 +68,14 @@ configurable string oneDriveAccessToken = ?;
 configurable string flyerFilePath = ?;
 
 public function main() returns error? {
-    shopify:Client shopifyClient = check new ({xShopifyAccessToken: xShopifyAccessToken}, shopifyServiceUrl);
-    mail:Client outlookClient = check new ({ auth: { token: outlookAccessToken }});
-    onedrive:Client onedriveClient = check new ({auth: { token: oneDriveAccessToken}});
+    shopify:Client shopify = check new ({xShopifyAccessToken: xShopifyAccessToken}, shopifyServiceUrl);
+    mail:Client outlook = check new ({ auth: { token: outlookAccessToken }});
+    onedrive:Client oneDrive = check new ({auth: { token: oneDriveAccessToken}});
 
     string dateOriginTime = time:utcToString(time:utcAddSeconds(time:utcNow(), -300.0));
     string currentTime = time:utcToString(time:utcNow());
 
-    shopify:CustomerList customerList = check shopifyClient->getCustomers(createdAtMin = dateOriginTime, createdAtMax = currentTime);
+    shopify:CustomerList customerList = check shopify->getCustomers(createdAtMin = dateOriginTime, createdAtMax = currentTime);
     shopify:Customer[] customers = customerList?.customers ?: [];
     mail:Recipient[] recepients = [];
     foreach shopify:Customer customer in customers {
@@ -81,7 +87,7 @@ public function main() returns error? {
         });
     }
 
-    onedrive:File fileContents = check onedriveClient->downloadFileByPath(flyerFilePath);
+    onedrive:File fileContents = check oneDrive->downloadFileByPath(flyerFilePath);
     byte[] byteContent = fileContents.content ?: [];
 
     if customers.length() > 0 {
@@ -107,7 +113,7 @@ public function main() returns error? {
             },
             saveToSentItems: true
         };
-        http:Response response = check outlookClient->sendMessage(messageContent);
+        http:Response response = check outlook->sendMessage(messageContent);
         if response.statusCode == http:STATUS_ACCEPTED {
             log:printInfo(string \`Welcome emails sent successfully!\`);
         } else {
@@ -128,9 +134,9 @@ public function main() returns error? {
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -228,11 +234,11 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Customer interactions holds immense significance in modern e-commerce. Seamless communication through 
-                      emails allows businesses to provide personalized support, timely updates, and relevant recommendations to their customers. 
-                      By integrating Shopify with email platforms, companies can ensure that every customer interaction is both efficient and 
-                      tailored to individual needs, enhancing customer satisfaction. This integration also enables the automation of order confirmations, 
-                      shipping notifications, and even personalized product suggestions based on customer preferences and browsing history. 
+                    <p>Customer interactions holds immense significance in modern e-commerce. Seamless communication through
+                      emails allows businesses to provide personalized support, timely updates, and relevant recommendations to their customers.
+                      By integrating Shopify with email platforms, companies can ensure that every customer interaction is both efficient and
+                      tailored to individual needs, enhancing customer satisfaction. This integration also enables the automation of order confirmations,
+                      shipping notifications, and even personalized product suggestions based on customer preferences and browsing history.
                       Such interactions not only strengthen customer relationships but also contribute to increased sales and improved brand loyalty.</p>
 
                     <p>The code sample below illustrates how to integrate Shopify and Outlook to sent automatic welcome emails to new customers.
@@ -240,19 +246,20 @@ export default function Learn({ samples, content }) {
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
-                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
 
-                    <LightGallery
-                onInit={onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                <a href={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration.png`}>
-                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration_cropped.png`} height={300}/>
-                </a>
+                    {/* Use when there is an image from README */}
 
-            </LightGallery>
-                </Col>
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/shopify-to-outlook-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
+                  </Col>
                 </Row>
 
               </Container>
@@ -263,21 +270,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

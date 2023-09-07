@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,20 +26,26 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -121,9 +127,9 @@ isolated function checkIfFileExistsInOneDrive(string fileName, onedrive:Client o
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -221,12 +227,12 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>The significance of synchronizing different types of cloud storages lies in the seamless accessibility, 
-                      enhanced collaboration, and efficient data management it offers. 
-                      In an increasingly interconnected digital landscape, individuals and businesses often use multiple 
-                      cloud storage services to cater to diverse needs. Synchronization ensures that files and data are 
-                      up-to-date across all platforms, eliminating the hassle of manual transfers. 
-                      This enables users to access their data from anywhere, fostering flexibility and productivity. Moreover, when collaborating on projects, 
+                    <p>The significance of synchronizing different types of cloud storages lies in the seamless accessibility,
+                      enhanced collaboration, and efficient data management it offers.
+                      In an increasingly interconnected digital landscape, individuals and businesses often use multiple
+                      cloud storage services to cater to diverse needs. Synchronization ensures that files and data are
+                      up-to-date across all platforms, eliminating the hassle of manual transfers.
+                      This enables users to access their data from anywhere, fostering flexibility and productivity. Moreover, when collaborating on projects,
                       synchronized cloud storage ensures that all team members are working with the latest version of files, promoting streamlined workflows</p>
 
                     <p>The code sample below illustrates how to sync OneDrive and Google Drive files using Ballerina integrations.
@@ -234,19 +240,20 @@ export default function Learn({ samples, content }) {
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
-                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
 
-                    <LightGallery
-                onInit={onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                <a href={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration.png`}>
-                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration_cropped.png`} height={300}/>
-                </a>
+                    {/* Use when there is an image from README */}
 
-            </LightGallery>
-                </Col>
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/google-drive-to-onedrive-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
+                  </Col>
                 </Row>
 
               </Container>
@@ -257,21 +264,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

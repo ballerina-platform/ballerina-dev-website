@@ -18,7 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
@@ -26,20 +26,26 @@ import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 
-import LightGallery from 'lightgallery/react';
 
-// // import styles
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 
-// // If you want you can use SCSS instead of css
-// import 'lightgallery/scss/lightgallery.scss';
-// import 'lightgallery/scss/lg-zoom.scss';
+// import LightGallery from 'lightgallery/react';
 
-// // import plugins if you need
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
+// // // import styles
+// // import 'lightgallery/css/lightgallery.css';
+// // import 'lightgallery/css/lg-zoom.css';
+// // import 'lightgallery/css/lg-thumbnail.css';
+
+// // // If you want you can use SCSS instead of css
+// // import 'lightgallery/scss/lightgallery.scss';
+// // import 'lightgallery/scss/lg-zoom.scss';
+
+// // // import plugins if you need
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgZoom from 'lightgallery/plugins/zoom';
+import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
+
+
+
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -152,7 +158,8 @@ function removeLabels(gmail:Client gmailClient, gmail:MailThread[] mailThreads, 
     do {
         gmail:MailThread|error removeLabelResponse = gmailClient->modifyThread(mailThread.id, [], labelIds);
         if removeLabelResponse is error {
-            log:printError("An error occured in removing the labels from the thread.", removeLabelResponse, removeLabelResponse.stackTrace(), threadId = mailThread.id, labelIds = labelIds);
+            log:printError("An error occured in removing the labels from the thread.", 
+                removeLabelResponse, removeLabelResponse.stackTrace(), threadId = mailThread.id, labelIds = labelIds);
         }
     };
 }
@@ -163,7 +170,8 @@ function getMatchingEmails(gmail:Client gmailClient, gmail:MailThread[] mailThre
         do {
             gmail:MailThread|error response = gmailClient->readThread(mailThread.id);
             if response is error {
-                log:printError("An error occured while reading the email.", response, response.stackTrace(), threadId = mailThread.id);
+                log:printError("An error occured while reading the email.", 
+                    response, response.stackTrace(), threadId = mailThread.id);
             } else {
                 messages.push((<gmail:Message[]>response.messages)[0]);
             }
@@ -232,7 +240,8 @@ function addLeadsToSalesforce(Lead[] leads) returns error? {
     do {
         sfdc:CreationResponse|error createResponse = check sfdcClient->create("EmailLead__c", lead);
         if createResponse is error {
-            log:printError("An error occured while creating a Lead object on salesforce.", createResponse, createResponse.stackTrace(), lead = lead);
+            log:printError("An error occured while creating a Lead object on salesforce.", 
+                createResponse, createResponse.stackTrace(), lead = lead);
         } else {
             log:printInfo("Lead successfully created.", lead = lead);
         }
@@ -251,9 +260,9 @@ function addLeadsToSalesforce(Lead[] leads) returns error? {
 
 export default function Learn({ samples, content }) {
 
-  const onInit = () => {
-    console.log('lightGallery has been initialized');
-  };
+  // const onInit = () => {
+  //   console.log('lightGallery has been initialized');
+  // };
 
   const [copied, setCopied] = React.useState(false);
 
@@ -351,31 +360,31 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Salesforce is used by many organizations to centralize customer information,
-                      aiming to enhance customer service, streamline sales, enable collaboration and obtain sales analytics.
-                      However, managing customer interactions can be complex, involving various touch points and business units.
-                      Therefore, integrating Salesforce with all related entities and automating the exchange of customer
-                      information is essential to fully leverage its capabilities.</p>
+                    <p>
+                      In today's fast-paced business landscape, effective customer relationship management (CRM) has become a linchpin of success.
+                      Salesforce, a leading CRM platform, empowers organizations to streamline their sales, marketing, and customer support efforts,
+                      providing invaluable insights into customer interactions. However, to truly harness the full potential of Salesforce,
+                      seamless integration with essential communication tools like mailing clients is imperative.</p>
 
-                    <p>Ballerina, being a language specifically designed for integrations, can facilitate the integration of
-                      Salesforce with all relevant systems and support any complex Salesforce integration use case.
+                    <p>The code sample below illustrates how to integrate GMail and Salesforce to create new leads in Salesforce for each new marketing email.
                     </p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
-                    {/* <img src={`${prefix}/images/slide_diagram-new-v6-final.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} /> */}
 
-                    <LightGallery
-                onInit={onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                <a href={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration.png`}>
-                    <img alt="img1" src={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration_cropped_2.png`} height={300}/>
-                </a>
+                    {/* Use when there is an image from README */}
 
-            </LightGallery>
-                </Col>
+                     <img src={`${prefix}/images/pre-built/flow_diagrams/gmail-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+
+                    {/* Use when there is no image from README and to show the diagram */}
+
+                    {/*<LightBoxImage*/}
+                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
+                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+
+
+
+                  </Col>
                 </Row>
 
               </Container>
@@ -386,21 +395,56 @@ export default function Learn({ samples, content }) {
             <Col xs={12}>
               <Container>
 
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={content}
-                    onCopy={() => codeCopy()} style={{float:"right"}}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
+                {/* Use the following section if there the diagram shown above */}
 
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                </div>
+                {/* <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div> */}
+
+
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
+                      background: "#eeeeee", padding: "10px",
+                      borderRadius: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#eeeeee !important"
+                    }}>
+                      <CopyToClipboard text={content}
+                        onCopy={() => codeCopy()} style={{ float: "right" }}>
+                        {
+                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                        }
+                      </CopyToClipboard>
+
+                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
               </Container>
             </Col>
           </Row>

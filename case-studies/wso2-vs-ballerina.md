@@ -6,6 +6,7 @@ keywords: ballerina, programming language, digital transformation, internal apps
 permalink: /learn/wso2-vs-ballerina
 active: wso2-vs-ballerina
 intro: WSO2’s digital transformation team realized that they needed to modernize the company’s own internal applications to improve operational efficiency, collaboration, and productivity. To drive these efforts, the company leveraged the Ballerina language to achieve remarkable results and empower its workforce.
+logo: '/images/home-page/user-logos/wso2.svg'
 ---
 
 ## Overview

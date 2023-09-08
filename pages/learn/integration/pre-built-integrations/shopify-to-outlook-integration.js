@@ -213,14 +213,10 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Customer interactions hold immense significance in modern e-commerce. Seamless communication
-                    through emails allows businesses to provide personalized support, timely updates, and relevant
-                    recommendations to their customers. By integrating Shopify with email platforms, companies can
-                    ensure that every customer interaction is both efficient and tailored to individual needs, enhancing
-                    customer satisfaction. This integration also enables the automation of order confirmations, shipping
-                    notifications, and even personalized product suggestions based on customer preferences and browsing
-                    history. Such interactions not only strengthen customer relationships but also contribute to
-                    increased sales and improved brand loyalty.</p>
+                    <p>In modern e-commerce, customer interactions are pivotal. Effective email communication enables
+                      businesses to offer targeted support, updates, and recommendations. By integrating Shopify with
+                      email platforms, companies can automate essential communications like order confirmations and
+                      shipping updates, while also personalizing product suggestions.</p>
 
                     <p>The code sample below illustrates how to integrate Shopify and Outlook to send
                       automatic welcome emails to new customers.</p>

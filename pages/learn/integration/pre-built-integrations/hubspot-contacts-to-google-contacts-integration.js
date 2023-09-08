@@ -192,13 +192,10 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>The importance of synchronizing different types of contact storages lies in the seamless organization,
-                      accessibility, and effective communication it facilitates. In our interconnected world, contacts are
-                      spread across various platforms such as smartphones, email accounts, social networks, and professional databases.
-                      Synchronization ensures that contact details remain consistent and updated across all these sources, saving time
-                      and preventing discrepancies. This harmonization simplifies communication, as users can easily access the right
-                      information when needed. Whether it&apos;s connecting with friends, colleagues, or clients, synchronized contact storages
-                      foster efficient and reliable interaction</p>
+                    <p>Synchronizing contact storages across platforms like smartphones, email, and social networks
+                      ensures seamless organization and communication. By keeping contacts updated and consistent,
+                      synchronization saves time and prevents errors, enabling quick and reliable interactions with
+                      friends, colleagues, and clients.</p>
 
                     <p>The code sample below illustrates how to sync Hubspot and Google Contacts using Ballerina integration.
                     </p>

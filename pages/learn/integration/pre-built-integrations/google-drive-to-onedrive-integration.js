@@ -210,13 +210,9 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>The significance of synchronizing different types of cloud storages lies in the seamless accessibility,
-                      enhanced collaboration, and efficient data management it offers.
-                      In an increasingly interconnected digital landscape, individuals and businesses often use multiple
-                      cloud storage services to cater to diverse needs. Synchronization ensures that files and data are
-                      up-to-date across all platforms, eliminating the hassle of manual transfers.
-                      This enables users to access their data from anywhere, fostering flexibility and productivity. Moreover, when collaborating on projects,
-                      synchronized cloud storage ensures that all team members are working with the latest version of files, promoting streamlined workflows</p>
+                    <p>In an increasingly interconnected digital landscape, individuals and businesses often use
+                      multiple cloud storage services to cater to diverse needs. Synchronizing data across such
+                      storages is essential for ensuring that all interested parties access the latest versions of relevant data.</p>
 
                     <p>The code sample below illustrates how to sync OneDrive and Google Drive files using Ballerina integrations.
                     </p>

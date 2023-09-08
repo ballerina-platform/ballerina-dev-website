@@ -189,12 +189,12 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>In enterprises, business data like inventory levels, order statuses, or product prices changes
+                    <p>In enterprises, business data like inventory levels, order statuses, or product prices change
                       constantly, and multiple entities require access to these updates. Utilizing messaging systems
-                      like Kafka enables the real-time consumption of this information by multiple parties.
-                      Keeping Salesforce updated with frequently changing information, such as current pricing, is vital
-                      for sales staff. Ballerina&apos;s connectors and streaming capabilities facilitate this integration,
-                      allowing seamless connections between Salesforce and streaming data sources. It ensures
+                      like Kafka enables the real-time consumption of this information by multiple parties. Keeping
+                      Salesforce updated with frequently changing information, such as current pricing, is vital for
+                      sales staff. Ballerina&apos;s connectors and streaming capabilities facilitate this integration,
+                      allowing seamless connections between Salesforce and streaming data sources. It ensures that
                       transformed and filtered data is constantly pushed to Salesforce, keeping all relevant information
                       current and accessible.</p>
 

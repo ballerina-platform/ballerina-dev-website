@@ -128,6 +128,15 @@ export default function PostPage({ frontmatter, content, slug }) {
                         </Col>
                     </Row>
 
+                    <Row className="pageContentRow innerRow" style={{marginTop:'40px', marginBottom:"0", alignItems:"center"}}>
+                        <Col xs={12} md={8}>
+                            <p>{frontmatter.intro}</p>
+                        </Col>
+                        <Col xs={12} md={3}>
+                            <img src={frontmatter.logo}/>
+                        </Col>
+                    </Row>
+
                     <Row className="pageContentRow innerRow">
                         <Col xs={12}>
                             <MainContent

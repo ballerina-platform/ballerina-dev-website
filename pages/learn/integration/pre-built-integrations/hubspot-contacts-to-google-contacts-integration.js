@@ -122,7 +122,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Hubspot Contacts to Google Contacts Integration</title>
+        <title>Hubspot Contacts to Google Contacts integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -216,7 +216,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Hubspot Contacts to Google Contacts Integration</h1>
+                <h1>Hubspot Contacts to Google Contacts integration</h1>
               </Container>
             </Col>
 
@@ -234,7 +234,7 @@ export default function Learn({ samples, content }) {
                       synchronization saves time and prevents errors, enabling quick and reliable interactions with
                       friends, colleagues, and clients.</p>
 
-                    <p>The code sample below illustrates how to sync Hubspot and Google Contacts using Ballerina integration.
+                    <p>The example below demonstrates how to sync Hubspot and Google Contacts using Ballerina integration features.
                     </p>
 
                   </Col>
@@ -275,9 +275,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/hubspot-contacts-to-google-contacts-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/hubspot-contacts-to-google-contacts-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/hubspot-contacts-to-google-contacts-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

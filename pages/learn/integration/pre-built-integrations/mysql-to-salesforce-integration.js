@@ -127,7 +127,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>MySQL to Salesforce Integration</title>
+        <title>MySQL to Salesforce integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -221,7 +221,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>MySQL to Salesforce Integration</h1>
+                <h1>MySQL to Salesforce integration</h1>
               </Container>
             </Col>
 
@@ -241,7 +241,7 @@ export default function Learn({ samples, content }) {
                       By linking disparate data, Ballerina aids in enriching Salesforce with relevant information,
                       making it the single source for all customer information.</p>
 
-                    <p>The code sample below illustrates how to create Salesforce products based on newly added MySQL records.
+                    <p>The example below demonstrates how to create Salesforce products based on newly added MySQL records.
                     </p>
 
                   </Col>
@@ -282,9 +282,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/mysql-to-salesforce-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/mysql-to-salesforce-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/mysql-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

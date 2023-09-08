@@ -115,7 +115,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>NewsAPI to Email Integration</title>
+        <title>NewsAPI to Email integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -209,7 +209,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>NewsAPI to Email Integration</h1>
+                <h1>NewsAPI to Email integration</h1>
               </Container>
             </Col>
 
@@ -227,7 +227,7 @@ export default function Learn({ samples, content }) {
                       relevant and timely news updates within the familiar interface of Gmail, users can effortlessly
                       stay informed without the need to toggle between multiple platforms.</p>
 
-                    <p>The code sample below illustrates how to integrate the news API to receive an email containing BBC headlines.
+                    <p>The example below demonstrates how to integrate the news API to receive an email containing BBC headlines.
                     </p>
 
                   </Col>
@@ -268,9 +268,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

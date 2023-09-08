@@ -204,7 +204,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>FTP EDI Message to Salesforce Opportunity</title>
+        <title>FTP EDI message to Salesforce Opportunity</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -298,7 +298,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>FTP EDI Message to Salesforce Opportunity</h1>
+                <h1>FTP EDI message to Salesforce Opportunity</h1>
               </Container>
             </Col>
 
@@ -311,16 +311,18 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Interactions between businesses, such as sending purchase orders and invoices,
-                      usually occur over EDI-based B2B channels. On the other hand, sales and customer details
-                      related to such transactions are maintained in Salesforce. Therefore, it&apos;s critical to bridge
-                      salesforce with B2B channels in order to automate the sales processes. For example, it is
-                      It is possible to update the status and details of opportunities in Salesforce based on the exchange of
-                      EDI messages like 840 request for quotation, 843 quotation response, 850 purchase order, etc.
-                      Such integrations will eliminate the delays and inconsistencies in updating Salesforce and
-                      provide up-to-date information for sales staff and decision-makers.</p>
+                    <p>Interactions between businesses, such as sending purchase orders and invoices, usually occur over
+                      EDI-based B2B channels. On the other hand, sales and customer details related to such transactions
+                      are maintained in Salesforce. Therefore, it's critical to bridge salesforce with B2B channels in
+                      order to automate the sales processes. For example, it is It is possible to update the status and
+                      details of opportunities in Salesforce based on the exchange of EDI messages like EDIFACT REQOTE
+                      (Request for quotation), EDIFACT QUOTES (Quotation response), EDIFACT ORDERS (Purchase order), etc.
+                      Such integrations will eliminate the delays and inconsistencies in updating Salesforce and provide
+                      up-to-date information for sales staff and decision-makers.
+                    </p>
 
-                    <p>The code sample below reads EDI files from a given FTP location and creates a Salesforce Opportunity.</p>
+                    <p>The code sample below reads EDIFACT REQOTE EDI files from a given FTP location and creates a Salesforce Opportunity.
+                    </p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
@@ -360,9 +362,8 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} />
+                      
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

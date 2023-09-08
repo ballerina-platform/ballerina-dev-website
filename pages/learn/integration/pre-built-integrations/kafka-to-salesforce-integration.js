@@ -119,7 +119,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Kafka to Salesforce Integration</title>
+        <title>Kafka to Salesforce integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -211,7 +211,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Kafka to Salesforce Integration</h1>
+                <h1>Kafka to Salesforce integration</h1>
               </Container>
             </Col>
 
@@ -233,7 +233,7 @@ export default function Learn({ samples, content }) {
                       transformed and filtered data is constantly pushed to Salesforce, keeping all relevant information
                       current and accessible.</p>
 
-                    <p>The code sample below illustrates how to update Salesforce price books in real-time
+                    <p>The example below demonstrates how to update Salesforce price books in real-time
                       based on prices published to a Kafka topic.</p>
 
                   </Col>

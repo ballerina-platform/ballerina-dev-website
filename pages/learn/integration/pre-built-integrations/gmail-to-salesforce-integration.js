@@ -269,7 +269,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>GMail to Salesforce Integration</title>
+        <title>Gmail to Salesforce integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -362,7 +362,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>GMail to Salesforce Integration</h1>
+                <h1>Gmail to Salesforce integration</h1>
               </Container>
             </Col>
 
@@ -381,7 +381,7 @@ export default function Learn({ samples, content }) {
                       providing invaluable insights into customer interactions. However, to truly harness the full potential of Salesforce,
                       seamless integration with essential communication tools like mailing clients is imperative.</p>
 
-                    <p>The code sample below illustrates how to integrate GMail and Salesforce to create new leads in Salesforce for each new marketing email.
+                    <p>The example below demonstrates how to integrate Gmail and Salesforce to create new leads in Salesforce for each new marketing email.
                     </p>
 
                   </Col>
@@ -422,9 +422,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/gmail-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

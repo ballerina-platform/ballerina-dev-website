@@ -126,7 +126,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Google Sheets to Salesforce Integration</title>
+        <title>Google Sheets to Salesforce integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -220,7 +220,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Google Sheets to Salesforce Integration</h1>
+                <h1>Google Sheets to Salesforce integration</h1>
               </Container>
             </Col>
 
@@ -241,8 +241,8 @@ export default function Learn({ samples, content }) {
                       listening to changes.
                     </p>
 
-                    <p>The following code sample demonstrates an integration scenario in which contact details added to
-                      Google Sheets get periodically synced with Salesforce Contacts..
+                    <p>The  example below demonstrates an integration scenario in which contact details
+                      added to Google Sheets get periodically synced with the Salesforce Contacts.
                     </p>
 
                   </Col>
@@ -283,9 +283,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

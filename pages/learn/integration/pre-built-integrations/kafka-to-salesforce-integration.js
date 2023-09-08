@@ -18,6 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
@@ -172,6 +173,40 @@ export default function Learn({ samples, content }) {
       <Layout>
 
         <Col sm={12}>
+          <Row className="pageContentRow llanding pb-0">
+
+            <Col xs={12}>
+              <Container>
+                <Row>
+                  <Col xs={12} className="patternContent">
+                    <Link href="/learn/pre-built-integrations/" passHref>
+                      <div className="backToLanding">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30"
+                          height="30"
+                          fill="#3ad1ca"
+                          className="bi bi-box-arrow-left ms-0"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"
+                          />
+                          <path
+                            fillRule="evenodd"
+                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                          />
+                        </svg>
+                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                      </div>
+                    </Link>
+                  </Col>
+                </Row>
+              </Container>
+            </Col>
+          </Row>
+
           <Row className="pageHeader pageContentRow llanding">
 
             <Col xs={12}>
@@ -204,17 +239,7 @@ export default function Learn({ samples, content }) {
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
 
-                    {/* Use when there is an image from README */}
-
-                     <img src={`${prefix}/images/pre-built/flow_diagrams/kafka-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
-
-                    {/* Use when there is no image from README and to show the diagram */}
-
-                    {/*<LightBoxImage*/}
-                    {/*  thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
-                    {/*  diagram={`${prefix}/images/gmail-diagram.png`} />*/}
-
-
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/kafka-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                   </Col>
                 </Row>
@@ -226,25 +251,6 @@ export default function Learn({ samples, content }) {
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
               <Container>
-
-                {/* Use the following section if there the diagram shown above */}
-
-                {/* <div style={{
-                      background: "#eeeeee", padding: "10px",
-                      borderRadius: "5px",
-                      marginTop: "20px",
-                      backgroundColor: "#eeeeee !important"
-                    }}>
-                      <CopyToClipboard text={content}
-                        onCopy={() => codeCopy()} style={{ float: "right" }}>
-                        {
-                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                        }
-                      </CopyToClipboard>
-
-                      <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                    </div> */}
-
 
                 {/* Use tabs if there the diagram is not shown above */}
                 <Tabs className="mb-3 preBuilt">

@@ -18,6 +18,7 @@
 
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy, FaCheck } from 'react-icons/fa';
@@ -189,92 +190,128 @@ export default function Learn({ samples, content }) {
 
 
   return (
-      <>
-        <Head>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta
-              name="description"
-              content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-          />
-          <meta name="author" content="WSO2 LLC" />
-          <meta
-              name="keywords"
-              content="ballerina, learn, documentation, docs, programming language"
-          />
-          <link rel="shortcut icon" href="/img/favicon.ico" />
-          <title>FTP EDI Message to Salesforce Opportunity</title>
+    <>
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta name="author" content="WSO2 LLC" />
+        <meta
+          name="keywords"
+          content="ballerina, learn, documentation, docs, programming language"
+        />
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <title>FTP EDI Message to Salesforce Opportunity</title>
 
-          {/* FB */}
-          <meta property="og:type" content="article" />
-          <meta property="og:title" content="Ballerina - Learn" />
-          <meta
-              property="og:description"
-              content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-          />
-          <meta
-              property="og:image"
-              itemProp="image"
-              content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
-          />
+        {/* FB */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Ballerina - Learn" />
+        <meta
+          property="og:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
 
-          {/* LINKED IN */}
-          <meta property="og:title" content="Ballerina" />
-          <meta
-              property="og:image"
-              content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
-          />
-          <meta
-              property="og:description"
-              itemProp="image"
-              content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-          />
+        {/* LINKED IN */}
+        <meta property="og:title" content="Ballerina" />
+        <meta
+          property="og:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+        <meta
+          property="og:description"
+          itemProp="image"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
 
-          {/* TWITTER */}
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:site" content="@ballerinalang" />
-          <meta name="twitter:creator" content="@ballerinalang" />
-          <meta name="twitter:title" content="Ballerina" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-              property="twitter:description"
-              content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-          />
-          <meta
-              name="twitter:image"
-              content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
-          />
-          <meta
-              property="twitter:text:description"
-              content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
-          />
-          <meta
-              property="twitter:image"
-              content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
-          />
-        </Head>
+        {/* TWITTER */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ballerinalang" />
+        <meta name="twitter:creator" content="@ballerinalang" />
+        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          name="twitter:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+        <meta
+          property="twitter:text:description"
+          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+        />
+        <meta
+          property="twitter:image"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+        />
+      </Head>
 
-        <Layout>
+      <Layout>
 
-          <Col sm={12}>
-            <Row className="pageHeader pageContentRow llanding">
+        <Col sm={12}>
 
-              <Col xs={12}>
-                <Container>
-                  <h1>FTP EDI Message to Salesforce Opportunity</h1>
-                </Container>
-              </Col>
+          <Row className="pageContentRow llanding pb-0">
+
+            <Col xs={12}>
+              <Container>
+                <Row>
+                  <Col xs={12} className="patternContent">
+                    <Link href="/learn/pre-built-integrations/" passHref>
+                      <div className="backToLanding">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30"
+                          height="30"
+                          fill="#3ad1ca"
+                          className="bi bi-box-arrow-left ms-0"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"
+                          />
+                          <path
+                            fillRule="evenodd"
+                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+                          />
+                        </svg>
+                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                      </div>
+                    </Link>
+                  </Col>
+                </Row>
+              </Container>
+            </Col>
+          </Row>
 
 
-            </Row>
+          <Row className="pageHeader pageContentRow llanding">
 
-            <Row className="pageContentRow llanding">
+            <Col xs={12}>
+              <Container>
+                <h1>FTP EDI Message to Salesforce Opportunity</h1>
+              </Container>
+            </Col>
 
-              <Col xs={12}>
-                <Container>
-                  <Row>
-                    <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                      <p>Interactions between businesses, such as sending purchase orders and invoices,
+
+          </Row>
+
+          <Row className="pageContentRow llanding">
+
+            <Col xs={12}>
+              <Container>
+                <Row>
+                  <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
+                    <p>Interactions between businesses, such as sending purchase orders and invoices,
                       usually occur over EDI-based B2B channels. On the other hand, sales and customer details
                       related to such transactions are maintained in Salesforce. Therefore, it&apos;s critical to bridge
                       salesforce with B2B channels in order to automate the sales processes. For example, it is
@@ -283,37 +320,28 @@ export default function Learn({ samples, content }) {
                       Such integrations will eliminate the delays and inconsistencies in updating Salesforce and
                       provide up-to-date information for sales staff and decision-makers.</p>
 
-                      <p>The code sample below reads EDI files from a given FTP location and creates a Salesforce Opportunity.</p>
+                    <p>The code sample below reads EDI files from a given FTP location and creates a Salesforce Opportunity.</p>
 
-                    </Col>
-                    <Col xs={12} lg={6} className="text-center">
+                  </Col>
+                  <Col xs={12} lg={6} className="text-center">
 
-                      {/* Use when there is an image from README */}
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
-                       <img src={`${prefix}/images/pre-built/flow_diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                  </Col>
+                </Row>
 
-                      {/* Use when there is no image from README and to show the diagram */}
+              </Container>
+            </Col>
+          </Row>
 
-                      {/*<LightBoxImage*/}
-                      {/*    thumbnail={`${prefix}/images/pre-built/sample2-thumb.png`}*/}
-                      {/*    diagram={`${prefix}/images/gmail-diagram.png`} />*/}
+          <Row className="pageContentRow llanding" >
+            <Col xs={12}>
+              <Container>
 
-
-
-                    </Col>
-                  </Row>
-
-                </Container>
-              </Col>
-            </Row>
-
-            <Row className="pageContentRow llanding" >
-              <Col xs={12}>
-                <Container>
-
-                  {/* Use the following section if there the diagram shown above */}
-
-                  {/* <div style={{
+                {/* Use tabs if there the diagram is not shown above */}
+                <Tabs className="mb-3 preBuilt">
+                  <Tab eventKey="code" title="Code">
+                    <div style={{
                       background: "#eeeeee", padding: "10px",
                       borderRadius: "5px",
                       marginTop: "20px",
@@ -327,48 +355,28 @@ export default function Learn({ samples, content }) {
                       </CopyToClipboard>
 
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                    </div> */}
+                    </div>
+                  </Tab>
+                  <Tab eventKey="diagram" title="Diagram">
+
+                    <Col xs={12} lg={6} className="text-center">
+                      <LightBoxImage
+                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity_cropped.png`}
+                        diagram={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} />
+
+                    </Col>
+
+                  </Tab>
+                </Tabs>
+
+              </Container>
+            </Col>
+          </Row>
+
+        </Col>
 
 
-                  {/* Use tabs if there the diagram is not shown above */}
-                  <Tabs className="mb-3 preBuilt">
-                    <Tab eventKey="code" title="Code">
-                      <div style={{
-                        background: "#eeeeee", padding: "10px",
-                        borderRadius: "5px",
-                        marginTop: "20px",
-                        backgroundColor: "#eeeeee !important"
-                      }}>
-                        <CopyToClipboard text={content}
-                                         onCopy={() => codeCopy()} style={{ float: "right" }}>
-                          {
-                            copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                          }
-                        </CopyToClipboard>
-
-                        <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
-                      </div>
-                    </Tab>
-                    <Tab eventKey="diagram" title="Diagram">
-
-                      <Col xs={12} lg={6} className="text-center">
-                        <LightBoxImage
-                            thumbnail={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity_cropped.png`}
-                            diagram={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} />
-
-                      </Col>
-
-                    </Tab>
-                  </Tabs>
-
-                </Container>
-              </Col>
-            </Row>
-
-          </Col>
-
-
-        </Layout>
-      </>
+      </Layout>
+    </>
   );
 }

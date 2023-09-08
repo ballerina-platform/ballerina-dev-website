@@ -32,7 +32,7 @@ export default function SampleList(props) {
           <Container> */}
               <Col xl={{span: 6 }} style={{display: "flex", flexWrap: "row wrap"}}>
 
-                <Card className={`${styles.card} mb-3`}>
+                <Card className={`mb-3`} style={{width:"100%", justifyContent:"center"}}>
                   <Row className="g-0 align-items-center">
                     <Col md={2} className='text-center'>
                       <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />

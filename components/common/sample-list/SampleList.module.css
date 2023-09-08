@@ -27,12 +27,13 @@
 @media (max-width: 768px) {
     .icon {
         padding-top: 1rem;
+        width: auto;
     }
-}
-
-@media (min-width: 768px) {
+  }
+  
+  @media (min-width: 768px) {
     .icon {
         padding-top: 0;
+        margin-left: 8px;
     }
-}
-
+  }

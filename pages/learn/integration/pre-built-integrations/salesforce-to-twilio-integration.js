@@ -140,7 +140,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Salesforce to Twilio Integration</title>
+        <title>Salesforce to Twilio integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -233,7 +233,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Salesforce to Twilio Integration</h1>
+                <h1>Salesforce to Twilio integration</h1>
               </Container>
             </Col>
 
@@ -248,14 +248,14 @@ export default function Learn({ samples, content }) {
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>Sales-related events need to be acted upon as soon as possible. For example, when a new lead is
                       received, sales staff need to evaluate it and get in contact with the lead immediately. When an
-                      opportunity is won, support staff need to be informed so that they can attend to any issues
-                      reported by new customers without delay. As all customer-related events are captured in
-                      Salesforce, it is the best place to look for such events. Ballerina can listen for any interested
-                      events in Salesforce and notify relevant employees over their preferred channels, ensuring that
-                      all customer events are attended in a timely manner.</p>
+                      opportunity is won, support staff need to be informed about it so that they can attend to any
+                      issues reported by the new customers without any delay. As all customer-related events are
+                      captured in Salesforce, it is the best place to look for such events. Ballerina can listen for
+                      any interested events in Salesforce and notify relevant employees over their preferred channels,
+                      ensuring that all customer events are attended in a timely manner.</p>
 
-                    <p>The following example shows Ballerina code for listening for new leads in Salesforce and sending
-                      an SMS to sales staff upon receiving a lead.
+                    <p>The example below demonstrates how to listen for new leads in Salesforce and send an
+                      SMS to the sales staff upon receiving one.
                     </p>
 
                   </Col>

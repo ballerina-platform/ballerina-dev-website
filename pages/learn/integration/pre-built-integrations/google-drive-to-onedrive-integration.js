@@ -136,7 +136,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Google Drive to OneDrive Integration</title>
+        <title>Google Drive to OneDrive integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -230,7 +230,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Google Drive to OneDrive Integration</h1>
+                <h1>Google Drive to OneDrive integration</h1>
               </Container>
             </Col>
 
@@ -247,7 +247,7 @@ export default function Learn({ samples, content }) {
                       multiple cloud storage services to cater to diverse needs. Synchronizing data across such
                       storages is essential for ensuring that all interested parties access the latest versions of relevant data.</p>
 
-                    <p>The code sample below illustrates how to sync OneDrive and Google Drive files using Ballerina integrations.
+                    <p>The example below demonstrates how to sync OneDrive and Google Drive files using Ballerina integration features.
                     </p>
 
                   </Col>
@@ -288,9 +288,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-drive-to-onedrive-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

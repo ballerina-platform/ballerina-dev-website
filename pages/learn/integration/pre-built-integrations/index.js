@@ -141,31 +141,31 @@ export default function Learn() {
                 <Row>
                 {/* Left Column */}
                 <SampleList
-                    name="Google Sheets to Salesforce Integration"
+                    name="Google Sheets to Salesforce integration"
                     description="Create a new contact in Salesforce for each new row added to a Google Sheet"
                     tags={["Google Sheets", "Salesforce", "Integration", "CRM"]}
                 />
 
                 <SampleList
-                    name="Kafka to Salesforce Integration"
-                    description="Update pricebook in Salesforce for each new message in Kafka"
-                    tags={["Kafka", "Salesforce", "Integration", "CRM"]}
+                    name="GitHub to email integration"
+                    description="Generate a GitHub issue summary report and email it to a specified email address"
+                    tags={["Github", "Integration", "Email"]}
                 />
 
                 <SampleList
-                    name="MySQL to Salesforce Integration"
+                    name="MySQL to Salesforce integration"
                     description="Create a new product in Salesforce for each new record added to a MySQL table"
                     tags={["Salesforce", "Integration", "CRM", "MySQL"]}
                 />
 
                 <SampleList
-                    name="Salesforce to Twilio Integration"
-                    description="Send an SMS for each new lead in Salesforce"
-                    tags={["Salesforce", "Integration", "CRM", "Twilio"]}
+                    name="Google Drive to OneDrive integration"
+                    description="Sync Google Drive files to Microsoft OneDrive"
+                    tags={["OneDrive", "Integration", "Google Drive"]}
                 />
 
                 <SampleList
-                    name="GMail to Salesforce Integration"
+                    name="Gmail to Salesforce integration"
                     description="Create a lead for each new marketing email in GMail"
                     tags={["Salesforce", "Integration", "CRM", "GMail"]}
                 />
@@ -176,37 +176,37 @@ export default function Learn() {
             {/*  <Container>*/}
                 {/* Right Column */}
                 <SampleList
-                    name="NewsAPI to Email Integration"
+                    name="NewsAPI to email integration"
                     description="Fetch BBC top headlines and send as an email to the recipient"
                     tags={["NewsAPI", "Integration", "Email"]}
                 />
 
                 <SampleList
-                    name="GitHub to Email Integration"
-                    description="Generate a GitHub issue summary report and email it to a specified email address"
-                    tags={["Github", "Integration", "Email"]}
+                    name="Kafka to Salesforce integration"
+                    description="Update pricebook in Salesforce for each new message in Kafka"
+                    tags={["Kafka", "Salesforce", "Integration", "CRM"]}
                 />
 
                 <SampleList
-                    name="Shopify to Outlook Integration"
+                    name="Shopify to Outlook integration"
                     description="Send a Welcome Email using MS Outlook to New Shopify Customers"
                     tags={["Outlook", "Integration", "Shopify"]}
                 />
 
                 <SampleList
-                    name="Google Drive to OneDrive Integration"
-                    description="Sync Google Drive files to Microsoft OneDrive"
-                    tags={["OneDrive", "Integration", "Google Drive"]}
+                    name="Salesforce to Twilio integration"
+                    description="Send an SMS for each new lead in Salesforce"
+                    tags={["Salesforce", "Integration", "CRM", "Twilio"]}
                 />
 
                 <SampleList
-                    name="Hubspot contacts to Google Contacts Integration"
+                    name="Hubspot contacts to Google Contacts integration"
                     description="Sync Hubspot Contacts with Google Contacts"
                     tags={["Hubspot", "Integration", "Google Contacts"]}
                 />
 
                 <SampleList
-                    name="FTP EDI Message to Salesforce Opportunity"
+                    name="FTP EDI message to Salesforce Opportunity"
                     description="Read EDI files from a given FTP location and create a Salesforce Opportunity"
                     tags={["Hubspot", "Integration", "Google Contacts"]}
                 />

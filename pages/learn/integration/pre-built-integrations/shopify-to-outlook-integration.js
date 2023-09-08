@@ -143,7 +143,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Shopify to Outlook Integration</title>
+        <title>Shopify to Outlook integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -236,7 +236,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Shopify to Outlook Integration</h1>
+                <h1>Shopify to Outlook integration</h1>
               </Container>
             </Col>
 
@@ -254,8 +254,8 @@ export default function Learn({ samples, content }) {
                       email platforms, companies can automate essential communications like order confirmations and
                       shipping updates, while also personalizing product suggestions.</p>
 
-                    <p>The code sample below illustrates how to integrate Shopify and Outlook to send
-                      automatic welcome emails to new customers.</p>
+                    <p>The example below demonstrates how to integrate Shopify and Outlook to send automatic
+                      welcome emails to new customers.</p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
@@ -295,9 +295,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/shopify-to-outlook-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

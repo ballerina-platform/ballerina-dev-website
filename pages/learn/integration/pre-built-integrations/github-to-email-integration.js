@@ -123,7 +123,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>GitHub to Email Integration</title>
+        <title>GitHub to email integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -216,7 +216,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>GitHub to Email Integration</h1>
+                <h1>GitHub to Email integration</h1>
               </Container>
             </Col>
 
@@ -229,14 +229,13 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Fetching GitHub issue summaries directly to email through seamless integration holds significant value
-                      for streamlined project management and efficient collaboration.
-                      By receiving summarized updates on GitHub issues directly in their email inboxes, team members can stay
-                      informed about the project&apos;s progress without the need to constantly visit the GitHub platform.
-                      This integration not only simplifies communication but also ensures that crucial issue updates are never missed,
-                      enhancing responsiveness and facilitating prompt issue resolution</p>
+                    <p>By periodically sending GitHub issue summaries directly to email through seamless integration,
+                      team members can stay informed about the project's progress without the need to constantly
+                      visit the GitHub platform. This integration also ensures that crucial issue updates are never
+                      missed, enhancing responsiveness and facilitating prompt issue resolution.
+                    </p>
 
-                    <p>The code sample below illustrates how to get GitHub issues summary as a email using ballerina integration.
+                    <p>The example below demonstrates how to get a GitHub issues summary as an email using Ballerina integration features.
                     </p>
 
                   </Col>
@@ -277,9 +276,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <LightBoxImage
-                        thumbnail={`${prefix}/images/pre-built/sequence-diagrams/github-to-email-integration_cropped.png`}
-                        diagram={`${prefix}/images/pre-built/sequence-diagrams/github-to-email-integration.png`} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/github-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

@@ -36,6 +36,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Proposal: Map Ballerina Constraints to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/4788)|[SachinAkash01](https://github.com/SachinAkash01)|0|2023-09-08|N/A|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-standard-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|
 |[[Proposal] Decoupling GraphQL API development from API design](https://github.com/ballerina-platform/ballerina-standard-library/issues/4620)|[shafreenAnfar](https://github.com/shafreenAnfar)|3|2023-06-27|Active|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-standard-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|

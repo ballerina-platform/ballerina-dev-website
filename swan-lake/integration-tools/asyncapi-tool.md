@@ -119,7 +119,7 @@ The below command-line arguments can be used with the command.
 | `-i, --input`  | The `asyncapi-contract-path` parameter specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                               | mandatory           |
 | `-o, --output`     | The Ballerina files get generated at the same location from which the `bal asyncapi` command is executed. Optionally, you can point to another directory location by using this flag.                                                                                                                                           | optional           |
 
-This command generates a Ballerina source (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
+This command generates Ballerina service and listener skeletons (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
 
 1. `data_types.bal` - contains all the Ballerina data types extracted from the AsyncAPI definition
 2. `service_types.bal` - contains all the service types relevant to the event API described in the AsyncAPI definition

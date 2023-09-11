@@ -21,15 +21,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { Row, Col, Container, Tab, Tabs } from "react-bootstrap";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { FaRegCopy, FaCheck } from 'react-icons/fa';
+import { FaRegCopy, FaCheck, FaGithub } from 'react-icons/fa';
 
 import Layout from "../../../../layouts/LayoutLearn";
 import { prefix } from '../../../../utils/prefix';
 import { getHighlighter } from "shiki";
 import LightBoxImage from "../../../../components/common/lightbox/LightBoxImage";
-
-
-
 
 export async function getStaticProps() {
   const highlighter = await getHighlighter({
@@ -349,13 +346,17 @@ export default function Learn({ samples, content }) {
                       marginTop: "20px",
                       backgroundColor: "#eeeeee !important"
                     }}>
-                      <CopyToClipboard text={content}
-                        onCopy={() => codeCopy()} style={{ float: "right" }}>
-                        {
-                          copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                        }
-                      </CopyToClipboard>
-
+                      <div style={{display: "flex", justifyContent: "end"}}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/ftp-edi-message-to-salesforce-opportunity" target="_blank" rel="noreferrer" passHref title="Open on GitHub" style={{marginTop:"-5px"}}>
+                          <FaGithub style ={{marginRight:"10px", color: "black"}}/>
+                        </a>
+                        <CopyToClipboard text={content}
+                          onCopy={() => codeCopy()}>
+                          {
+                            copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                          }
+                        </CopyToClipboard>
+                      </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: samples.code }} />
                     </div>
                   </Tab>

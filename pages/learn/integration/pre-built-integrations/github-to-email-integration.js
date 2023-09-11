@@ -230,7 +230,7 @@ export default function Learn({ samples, content }) {
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>By periodically sending GitHub issue summaries directly to email through seamless integration,
-                      team members can stay informed about the project's progress without the need to constantly
+                      team members can stay informed about the project&apos;s progress without the need to constantly
                       visit the GitHub platform. This integration also ensures that crucial issue updates are never
                       missed, enhancing responsiveness and facilitating prompt issue resolution.
                     </p>

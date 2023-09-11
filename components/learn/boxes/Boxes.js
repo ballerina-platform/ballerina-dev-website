@@ -319,22 +319,6 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
-                            Strand dump tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Dump the status of currently running strands.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn/ballerina-profiler`} className={styles.titleLink}>
-                            Ballerina Profiler (experimental)
-                          </a>
-                        </p>
-                        <p className={styles.description}>Profile a Ballerina package and create a flame graph.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/generate-code-documentation`} className={styles.titleLink}>
                             Document Ballerina code
                           </a>
@@ -582,6 +566,31 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Publish your library package to Ballerina Central.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
+                <div className={styles.cardWrapper}>
+                  <div>
+                    <h3>Troubleshoot the runtime</h3>
+                    <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                            Strand dump tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Dump the status of currently running strands.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-profiler`} className={styles.titleLink}>
+                            Ballerina Profiler (experimental)
+                          </a>
+                        </p>
+                        <p className={styles.description}>Profile a Ballerina package and create a flame graph.</p>
                       </div>
                     </div>
                   </div>

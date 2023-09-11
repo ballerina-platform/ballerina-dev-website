@@ -134,11 +134,11 @@ const nextConfig = {
       },
       {
         source: `/${redirectBase}learn/strand-dump-tool`,
-        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/strand-dump-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/troubleshoot-the-runtime/strand-dump-tool`,
       },
       {
         source: `/${redirectBase}learn/ballerina-profiler`,
-        destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/ballerina-profiler`,
+        destination: `/${redirectBase}learn/development-tutorials/troubleshoot-the-runtime/ballerina-profiler`,
       },
       {
         source: `/${redirectBase}learn/edi-tool`,

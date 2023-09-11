@@ -44,7 +44,7 @@ $ bal openapi [-i | --input] <ballerina-service-file-path> [--json]
             [-o | --output] <output-location>
 ```
 
-## Available parameters
+## Command Options
 
 The below command-line arguments can be used with the command.
 

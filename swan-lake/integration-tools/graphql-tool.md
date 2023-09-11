@@ -37,32 +37,32 @@ $ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
             [-s | --service] <service-base-path>
 ```
 
-## Available parameters 
+## Available command options 
 
 The below command-line arguments can be used with the command.
 
-### GraphQL to Ballerina parameters
+### GraphQL to Ballerina command options
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
-| Argument       | Description                                                                                                                                                                                                                                                   |
+| Command option       | Description                                                                                                                                                                                                                                                   |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-i, --input`  | The `input` parameter specifies the path of the GraphQL config file (e.g., `graphql.config.yaml`) configured with GraphQL schemas specified by the Schema Definition Language and GraphQL documents. This parameter is mandatory.                             |
-| `-o, --output` | The `output` parameter specifies the path of the output location of the generated files. This parameter is optional. If this parameter is not specified, the Ballerina files will be generated at the same location in which the `bal graphql` command is executed. |
+| `-i, --input`  | The `input` command option specifies the path of the GraphQL config file (e.g., `graphql.config.yaml`) configured with GraphQL schemas specified by the Schema Definition Language and GraphQL documents. This command option is mandatory.                             |
+| `-o, --output` | The `output` command option specifies the path of the output location of the generated files. This command option is optional. If this command option is not specified, the Ballerina files will be generated at the same location in which the `bal graphql` command is executed. |
 
 This generates a Ballerina client with remote operations corresponding to each GraphQL query/mutation in the GraphQL document (`.graphql document`). The generated sources gets written into the same directory from which the command is executed (i.e., the Ballerina package root directory).
 
 The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package.
 
-### Ballerina to GraphQL parameters
+### Ballerina to GraphQL command options
 
 The command-line arguments below can be used with the command for each particular purpose as described below.
 
-| Argument        | Description                                                                                                                                                                                                                                                               |
+| Command option       | Description                                                                                                                                                                                                                                                               |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-i, --input`   | The `input` parameter specifies the path of the Ballerina GraphQL service file (e.g., `service.bal`). This parameter is mandatory.                                                                                                                                        |
-| `-o, --output`  | The `output` parameter specifies the output location of the generated GraphQL schema files. This parameter is optional. If this parameter is not specified, the schema files will be generated at the same location in which the `bal graphql` command is executed.             |
-| `-o, --service` | The `service` parameter specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This parameter is optional. If this parameter is not specified, schemas will be generated for each of the GraphQL services in the given file. |
+| `-i, --input`   | The `input` command option specifies the path of the Ballerina GraphQL service file (e.g., `service.bal`). This command option is mandatory.                                                                                                                                        |
+| `-o, --output`  | The `output` command option specifies the output location of the generated GraphQL schema files. This command option is optional. If this command option is not specified, the schema files will be generated at the same location in which the `bal graphql` command is executed.             |
+| `-o, --service` | The `service` command option specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This command option is optional. If this command option is not specified, schemas will be generated for each of the GraphQL services in the given file. |
 
 ## Client generation
 
@@ -311,9 +311,9 @@ For example,
 $ bal graphql -i service.bal -o ./schema
 ```
 
-The `input` parameter specifies the path of the ballerina service file (e.g., `service.bal`) and is mandatory.
+The `input` command option specifies the path of the ballerina service file (e.g., `service.bal`) and is mandatory.
 
->**Info:** For more command options, see [Ballerina to GraphQL parameters](#ballerina-to-graphql-parameters).
+>**Info:** For more command options, see [Ballerina to GraphQL command options](#ballerina-to-graphql-command-options).
 
 ### Generate a schema for a specific service
 
@@ -329,6 +329,6 @@ For example,
 $ bal graphql -i service.bal -o ./schema -s /starwars
 ```
 
-The `service` parameter specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
+The `service` command option specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
 
->**Info:** For more command options, see [Ballerina to GraphQL parameters](#ballerina-to-graphql-parameters).
+>**Info:** For more command options, see [Ballerina to GraphQL command options](#ballerina-to-graphql-command-options).

@@ -22,11 +22,11 @@ This tool generates a Ballerina package for a given FHIR implementation guide. T
 
 FHIR integration developers can leverage the generated package when transforming custom health data into FHIR format without referring to the specification.
 
-## Available parameters
+## Available command options
 
 The parameters that are available with the tool are listed below.
 
-| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `-m, --mode`     | Mode can be `package`. If `mode` is set to `package`, a Ballerina package will be generated including all the records and types. New modes will be added in future releases.                                                                                                                                                                                                      | mandatory          |
 | `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | optional           |

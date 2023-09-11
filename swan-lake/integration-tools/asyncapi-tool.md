@@ -110,13 +110,13 @@ For example,
 $ bal asyncapi -i hello.yaml
 ```
 
-## Available parameters
+## Available command options
 
 The below command-line arguments can be used with the command.
 
-| Parameter      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i, --input`  | The `asyncapi-contract-path` parameter specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                               | mandatory           |
+| `-i, --input`  | The `asyncapi-contract-path` command option specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                               | mandatory           |
 | `-o, --output`     | The Ballerina files get generated at the same location from which the `bal asyncapi` command is executed. Optionally, you can point to another directory location by using this flag.                                                                                                                                           | optional           |
 
 This command generates Ballerina service and listener skeletons (i.e., the four Ballerina files below) from the given AsyncAPI definition file.

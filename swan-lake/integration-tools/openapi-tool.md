@@ -282,7 +282,7 @@ Use the `--client-methods <resource|remote>` option to select the client method 
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
 
->**Info:** For more command options, see [OpenAPI to Ballerina parameters](##openapi-to-ballerina-parameters).
+>**Info:** For more command options, see [OpenAPI to Ballerina CLI options](##openapi-to-ballerina-parameters).
 
 ## Publish your client
 

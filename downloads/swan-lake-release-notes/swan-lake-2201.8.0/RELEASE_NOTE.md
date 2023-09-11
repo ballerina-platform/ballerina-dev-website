@@ -186,6 +186,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     type A int[] & readonly;
     ```
 
+- Support for the `AES/GCM/PKCS5Padding` encryption algorithm has been removed from the `crypto` package.
+
 ## Platform updates
 
 ### New features

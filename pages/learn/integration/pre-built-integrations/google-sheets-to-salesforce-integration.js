@@ -242,7 +242,7 @@ export default function Learn({ samples, content }) {
                     </p>
 
                     <p>The  example below demonstrates an integration scenario in which contact details
-                      added to Google Sheets get periodically synced with the Salesforce Contacts.
+                      added to Google Sheets get synced with the Salesforce Contacts.
                     </p>
 
                   </Col>

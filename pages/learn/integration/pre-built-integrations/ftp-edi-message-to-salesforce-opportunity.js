@@ -33,10 +33,10 @@ export async function getStaticProps() {
     theme: 'github-light'
   });
   const content = `
-import ballerinax/edifact.d03a.retail.mREQOTE;
 import ballerina/file;
 import ballerina/ftp;
 import ballerina/io;
+import ballerinax/edifact.d03a.retail.mREQOTE;
 import ballerinax/salesforce as sf;
 
 configurable ftp:ClientConfiguration ftpConfig = ?;
@@ -66,9 +66,10 @@ public function main() returns error? {
 
         // Get the corresponding account Id and oppurtunity Id from Salesforce.
         // Create a new opportunity if an opportunity with the given name does not exist. 
-        stream<AccountId, error?> accQuery = check sfClient->query(
+        stream<Id, error?> accQuery = check sfClient->query(
             string \`SELECT Id FROM Account WHERE Name = '\${quoteRequest.accountName}'\`);
-        record {|AccountId value;|}? account = check accQuery.next();
+        record {|Id value;|}? account = check accQuery.next();
+        check accQuery.close();
         if account is () {
             return error("Account not found. Account name: " + quoteRequest.accountName);
         }
@@ -78,9 +79,10 @@ public function main() returns error? {
             Pricebook2Id: salesforcePriceBookId
         };
         string oppId = "";
-        stream<OpportunityId, error?> oppQuery = check sfClient->query(
+        stream<Id, error?> oppQuery = check sfClient->query(
             string \`SELECT Id FROM Opportunity WHERE Name = '\${quoteRequest.oppName}'\`);
-        record {|OpportunityId value;|}? existingOpp = check oppQuery.next();
+        record {|Id value;|}? existingOpp = check oppQuery.next();
+        check oppQuery.close();
         if existingOpp is () {
             sf:CreationResponse oppResult = check sfClient->create("Opportunity", opp);
             oppId = oppResult.id;
@@ -93,6 +95,7 @@ public function main() returns error? {
             stream<PriceBookEntry, error?> query = check sfClient->query(
                 string \`SELECT UnitPrice FROM PricebookEntry WHERE Pricebook2Id = '01s6C000000UN4PQAW' AND Product2Id = '\${item.itemId}'\`);
             record {|PriceBookEntry value;|}? unionResult = check query.next();
+            check query.close();
             if unionResult is () {
                 return error(string \`Pricebook entry not found. Opportunity name: \${quoteRequest.oppName}, Item ID: \${item.itemId}\`);
             }

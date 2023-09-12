@@ -49,25 +49,23 @@ configurable string oneDrivePath = ?;
 configurable boolean filesOverridable = ?;
 
 public function main() returns error? {
-  
-    drive:Client gDriveEndpoint = check new ({auth: {token: gDriveAccessToken}});
-
-    onedrive:Client onedriveEndpoint = check new ({auth: {token: oneDriveAccessToken}});
+    drive:Client gDrive = check new ({auth: {token: gDriveAccessToken}});
+    onedrive:Client oneDrive = check new ({auth: {token: oneDriveAccessToken}});
 
     string gDriveQuery = string \`'\${gDriveFolderId}' in parents and trashed = false\`;
-    stream<drive:File> filesInGDrive = check gDriveEndpoint->getAllFiles(gDriveQuery);
+    stream<drive:File> filesInGDrive = check gDrive->getAllFiles(gDriveQuery);
 
     foreach drive:File file in filesInGDrive {
         string? fileName = file?.name;
         string? fileId = file?.id;
         boolean writable = false;
 
-        if fileName !is string || fileId !is string {
+        if fileName is () || fileId is () {
             log:printError("File name or ID not found");
             continue;
         }
         if !filesOverridable {
-            boolean|error isExistingFile = checkIfFileExistsInOneDrive(fileName, onedriveEndpoint);
+            boolean|error isExistingFile = checkIfFileExistsInOneDrive(fileName, oneDrive);
             if isExistingFile is error {
                 log:printError("Searching files in Microsoft OneDrive failed!", isExistingFile);
                 continue;
@@ -75,28 +73,27 @@ public function main() returns error? {
             writable = !isExistingFile;
         }
         if filesOverridable || writable {
-            drive:FileContent|error fileContent = gDriveEndpoint->getFileContent(fileId);
+            drive:FileContent|error fileContent = gDrive->getFileContent(fileId);
             if fileContent is error {
                 log:printError("Retrieving file from Google Drive failed!", fileContent);
                 continue;
             }
-            onedrive:DriveItemData|error uploadFileToFolderByPath = onedriveEndpoint->
+            onedrive:DriveItemData|error driveItemData = oneDrive->
                     uploadFileToFolderByPath(oneDrivePath, fileName, fileContent?.content,
                     fileContent?.mimeType);
-            if uploadFileToFolderByPath is error {
-                log:printError("Uploading file to Microsoft OneDrive failed!", uploadFileToFolderByPath);
+            if driveItemData is error {
+                log:printError("Uploading file to Microsoft OneDrive failed!", driveItemData);
                 continue;
             }
             log:printInfo(string \`File \${fileName} uploaded successfully!\`);
         }
     }
 }
-  
+
 isolated function checkIfFileExistsInOneDrive(string fileName, onedrive:Client onedriveEndpoint) returns boolean|error {
     stream<onedrive:DriveItemData, onedrive:Error?> searchDriveItems = check onedriveEndpoint->searchDriveItems(
         fileName);
-    record {|onedrive:DriveItemData value;|}? next = check searchDriveItems.next();
-    return next !is ();
+    return check searchDriveItems.next() !is ();
 }
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };

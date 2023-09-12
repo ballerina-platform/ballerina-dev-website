@@ -170,20 +170,20 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="NewsAPI to email integration"
+                      name="News API to email integration"
                       description="Fetch BBC top headlines and send as an email to the recipient"
                       tags={["NewsAPI", "Integration", "Email"]}
                   />
 
                   <SampleList
                       name="Shopify to Outlook integration"
-                      description="Send a Welcome Email using MS Outlook to New Shopify Customers"
+                      description="Send a welcome email using Microsoft Outlook to new Shopify customers"
                       tags={["Outlook", "Integration", "Shopify"]}
                   />
 
                   <SampleList
                       name="Kafka to Salesforce integration"
-                      description="Update pricebook in Salesforce for each new message in Kafka"
+                      description="Update price book in Salesforce for each new message in Kafka"
                       tags={["Kafka", "Salesforce", "Integration", "CRM"]}
                   />
 
@@ -194,9 +194,9 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="Hubspot contacts to Google Contacts integration"
+                      name="HubSpot contacts to Google Contacts integration"
                       description="Sync Hubspot Contacts with Google Contacts"
-                      tags={["Hubspot", "Integration", "Google Contacts"]}
+                      tags={["HubSpot", "Integration", "Google Contacts"]}
                   />
 
                   <SampleList

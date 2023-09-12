@@ -11,10 +11,11 @@ intro: This guide walks you through compiling a Ballerina application to a nativ
 
 To complete this part of the guide, you need:
 1. Latest [Ballerina Swan Lake](/downloads) distribution
-2. A text editor
+   > **Note:** If you are using a macOS with ARM64 processor, then install Ballerina using the ARM64 installer available in the [downloads](/downloads) page.
+3. A text editor
    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-3. GraalVM installed and configured appropriately
-4. A command terminal
+4. GraalVM installed and configured appropriately
+5. A command terminal
 
 ## Configure GraalVM
 

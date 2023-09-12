@@ -36,54 +36,75 @@ export async function getStaticProps() {
     theme: 'github-light'
   });
   const content = `
+import ballerina/email;
 import ballerina/log;
 import ballerinax/github;
-import wso2/choreo.sendemail as email;
 
+// Github client configuration parameters
 configurable string githubAccessToken = ?;
-configurable string repositoryName = ?;
-configurable string repositoryOwner = ?;
+configurable string orgName = ?;
+configurable string repoName = ?;
 
+// Email client configuration parameters
+configurable string smtpPassword = ?;
+configurable string smtpUsername = ?;
+configurable string smtpHost = ?;
+
+// Email configuration parameters 
 configurable string recipientAddress = ?;
+configurable string fromAddress = ?;
 
 public function main() returns error? {
-    github:Client githubClient = check new ({auth: {token: githubAccessToken}});
-    stream<github:User,github:Error?> collaborators = check githubClient->getCollaborators(repositoryOwner, repositoryName);
-    log:printInfo("Started compiling the report");
-    string assigneeSummary = "";
-    
-    check collaborators.forEach(function (github:User user ){
-        string query = "repo:" + repositoryOwner + "/" + repositoryName + " is:issue assignee:" + user.login;
-        github:SearchResult|github:Error issuesForAssignee = githubClient-> search(query, github:SEARCH_TYPE_ISSUE, 1);
-        if issuesForAssignee is github:SearchResult {
-            string userName = user?.name ?: "Unknown Name";
-            assigneeSummary += string \`\${userName} : \${issuesForAssignee.issueCount} \${"\\n"}\`;
-        } else {
-            log:printError("Error while searching issues of an assignee.",'error = issuesForAssignee);
+    github:Client github = check new ({
+        auth: {
+            token: githubAccessToken
         }
     });
-  
-    string query1 = "repo:" + repositoryOwner + "/" + repositoryName + " is:issue is:open";
-    github:SearchResult|github:Error openIssues = githubClient-> search(query1, github:SEARCH_TYPE_ISSUE, 1);
+    email:SmtpClient smtpClient = check new (host = smtpHost, username = smtpUsername, password = smtpPassword);
+
+    //Get collaborator list
+    string assigneeSummary = "";
+    stream<github:User, github:Error?> collaborators = check github->getCollaborators(orgName, repoName);
+    check collaborators.forEach(function(github:User user) {
+        string query = string \`repo:\${orgName}/\${repoName} is:issue assignee:\${user.login}\`;
+        github:SearchResult|github:Error issuesForAssignee = github->search(query, github:SEARCH_TYPE_ISSUE, 1);
+        if issuesForAssignee is github:SearchResult {
+            string userName = user?.name ?: "Unknown";
+            assigneeSummary += string \`\${userName} : \${issuesForAssignee.issueCount} \${"\\n"}\`;
+        } else {
+            log:printError("Error while searching issues of an assignee.", 'error = issuesForAssignee);
+        }
+    });
+
+    //Get open issues
+    string query = string \`repo:\${orgName}/\${repoName} is:issue is:open\`;
+    github:SearchResult|github:Error openIssues = github->search(query, github:SEARCH_TYPE_ISSUE, 1);
     if openIssues is github:Error {
         log:printError("Error while searching open issues.", 'error = openIssues);
     }
-    int totalOpenIssueCount = openIssues is github:SearchResult? openIssues.issueCount : 0;
+    int totalOpenIssueCount = openIssues is github:SearchResult ? openIssues.issueCount : 0;
 
-    string query2 = "repo:" + repositoryOwner + "/" + repositoryName + " is:issue is:closed";
-    github:SearchResult|github:Error closedIssues = githubClient-> search(query2, github:SEARCH_TYPE_ISSUE, 1);
+    //Get closed issues
+    query = string \`repo:\${orgName}/\${repoName} is:issue is:closed\`;
+    github:SearchResult|github:Error closedIssues = github->search(query, github:SEARCH_TYPE_ISSUE, 1);
     if closedIssues is github:Error {
         log:printError("Error while searching closed issues.", 'error = closedIssues);
     }
-    int totalClosedIssueCount = closedIssues is github:SearchResult? closedIssues.issueCount :0;
+    int totalClosedIssueCount = closedIssues is github:SearchResult ? closedIssues.issueCount : 0;
 
-    string issueSummary = string \`ISSUE SUMMARY REPORT\${"\\n\\n"}Repository Name: \${repositoryName}
+    //Send email
+    string issueSummary = string \`ISSUE SUMMARY REPORT\${"\\n\\n"}Repository Name: \${repoName}
         \${"\\n"}Total Issues Open: \${totalOpenIssueCount} \${"\\n"}Total Issues Closed: \${totalClosedIssueCount}
         \${"\\n\\n"}Issue Count by Assignee: \${"\\n"}\${assigneeSummary} \${"\\n"}\`;
-    email:Client emailClient = check new ();
-    string sendEmailResponse = check emailClient->sendEmail(recipientAddress, "Git Issue Summary", issueSummary);
-    log:printInfo("Email sent successfully \\n " + sendEmailResponse);
-  }
+    email:Message email = {
+        to: recipientAddress,
+        'from: fromAddress,
+        subject: "Git Issue Summary",
+        body: issueSummary
+    };
+    check smtpClient->sendMessage(email);
+    log:printInfo("Email sent successfully!");
+}
   
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };

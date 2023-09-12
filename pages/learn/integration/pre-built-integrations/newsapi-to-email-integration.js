@@ -65,7 +65,7 @@ public function main() returns error? {
     foreach newsapi:WSNewsArticle article in articles {
         string? title = article?.title;
         if title is string {
-            mailBody = mailBody + string \`\${title}\${"\n"}\`;
+            mailBody = mailBody + string \`\${title}\${"\\n"}\`;
         }
     }
     email:Message email = {

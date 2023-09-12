@@ -170,14 +170,14 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="NewsAPI to email integration"
+                      name="News API to email integration"
                       description="Fetch BBC top headlines and send as an email to the recipient"
                       tags={["NewsAPI", "Integration", "Email"]}
                   />
 
                   <SampleList
                       name="Shopify to Outlook integration"
-                      description="Send a Welcome Email using MS Outlook to New Shopify Customers"
+                      description="Send a welcome email using Microsoft Outlook to new Shopify customers"
                       tags={["Outlook", "Integration", "Shopify"]}
                   />
 

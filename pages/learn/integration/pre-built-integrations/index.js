@@ -183,7 +183,7 @@ export default function Learn() {
 
                   <SampleList
                       name="Kafka to Salesforce integration"
-                      description="Update pricebook in Salesforce for each new message in Kafka"
+                      description="Update price book in Salesforce for each new message in Kafka"
                       tags={["Kafka", "Salesforce", "Integration", "CRM"]}
                   />
 
@@ -194,9 +194,9 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="Hubspot contacts to Google Contacts integration"
+                      name="HubSpot contacts to Google Contacts integration"
                       description="Sync Hubspot Contacts with Google Contacts"
-                      tags={["Hubspot", "Integration", "Google Contacts"]}
+                      tags={["HubSpot", "Integration", "Google Contacts"]}
                   />
 
                   <SampleList

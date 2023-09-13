@@ -37,7 +37,7 @@ export async function getStaticProps() {
   });
   const content = `
 import ballerinax/kafka;
-import ballerinax/salesforce as sfdc;
+import ballerinax/salesforce as sf;
 
 configurable string salesforceAccessToken = ?;
 configurable string salesforceBaseUrl = ?;
@@ -57,7 +57,7 @@ listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
     topics: "product_price_updates"
 });
 
-final sfdc:Client sfdcClient = check new ({
+final sf:Client sfdcClient = check new ({
     baseUrl: salesforceBaseUrl,
     auth: {
         token: salesforceAccessToken

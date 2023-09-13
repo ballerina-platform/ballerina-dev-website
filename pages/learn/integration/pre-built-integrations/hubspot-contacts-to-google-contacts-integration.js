@@ -46,9 +46,9 @@ configurable string hubspotAccessToken = ?;
 final gPeople:FieldMask[] personFields = [gPeople:NAME, gPeople:EMAIL_ADDRESS];
 public function main() returns error? {
     gPeople:Client gPeople = check new ({auth: {token: gPeopleAccessToken}});
-    hubspotContact:Client hubspot = check new ({auth: {token: hubspotAccessToken}});
+    hubspotContact:Client hubSpot = check new ({auth: {token: hubspotAccessToken}});
     hubspotContact:CollectionResponseSimplePublicObjectWithAssociationsForwardPaging hubspotResponse 
-        = check hubspot->getPage();
+        = check hubSpot->getPage();
 
     foreach hubspotContact:SimplePublicObjectWithAssociations hubspotContact in hubspotResponse.results {
         map<anydata> contactProperties = hubspotContact.properties;
@@ -84,6 +84,7 @@ public function main() returns error? {
         log:printInfo(string \`Contact \${hubspotContact.id} added to Google Contacts successfully!\`);
     }
 }
+  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 

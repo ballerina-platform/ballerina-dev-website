@@ -54,29 +54,29 @@ configurable string emailAddress = ?;
 
 public function main() returns error? {
     newsapi:Client newsapi = check new (apiKeyConfig, {}, "https://newsapi.org/v2");
-    email:SmtpClient smtpClient = check new (smtpHost, smtpUsername, smtpPassword);
+    email:SmtpClient email = check new (smtpHost, smtpUsername, smtpPassword);
     newsapi:WSNewsTopHeadlineResponse topHeadlines = check newsapi->listTopHeadlines(sources = "bbc-news", page = 1);
     newsapi:WSNewsArticle[]? articles = topHeadlines?.articles;
     if articles is () || articles.length() == 0 {
         log:printInfo("No news found");
         return;
     }
-    string mailBody = "BBC top news are,\\n";
+    string mailBody = "BBC top news are,\n";
     foreach newsapi:WSNewsArticle article in articles {
         string? title = article?.title;
         if title is string {
-            mailBody = mailBody + string \`\${title}\${"\\n"}\`;
+            mailBody = mailBody + string \`\${title}\${"\n"}\`;
         }
     }
-    email:Message email = {
+    email:Message message = {
         to: emailAddress,
         'from: fromAddress,
         subject: "BBC Headlines",
         body: mailBody
     };
-    check smtpClient->sendMessage(email);
+    check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-}
+}  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 

@@ -46,9 +46,9 @@ configurable string hubspotAccessToken = ?;
 final gPeople:FieldMask[] personFields = [gPeople:NAME, gPeople:EMAIL_ADDRESS];
 public function main() returns error? {
     gPeople:Client gPeople = check new ({auth: {token: gPeopleAccessToken}});
-    hubspotContact:Client hubSpot = check new ({auth: {token: hubspotAccessToken}});
+    hubspotContact:Client hubspot = check new ({auth: {token: hubspotAccessToken}});
     hubspotContact:CollectionResponseSimplePublicObjectWithAssociationsForwardPaging hubspotResponse 
-        = check hubSpot->getPage();
+        = check hubspot->getPage();
 
     foreach hubspotContact:SimplePublicObjectWithAssociations hubspotContact in hubspotResponse.results {
         map<anydata> contactProperties = hubspotContact.properties;

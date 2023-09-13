@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-release-notes
 title: 2201.8.0 (Swan Lake) 
 permalink: /downloads/swan-lake-release-notes/2201.8.0/
-active: 2201.7.0
+active: 2201.8.0
 redirect_from: 
     - /downloads/swan-lake-release-notes/2201.8.0
     - /downloads/swan-lake-release-notes/2201.8.0-swan-lake/
@@ -165,7 +165,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- A bug which caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
+- A bug that caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
   
     ```ballerina
     type AC map<int>|string;
@@ -186,7 +186,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     type A int[] & readonly;
     ```
 
-- Support for the `AES/GCM/PKCS5Padding` encryption algorithm has been removed from the `crypto` package.
+- Removed the support for the `AES/GCM/PKCS5Padding` encryption algorithm from the `crypto` package.
 
 ## Platform updates
 
@@ -212,7 +212,8 @@ const data64 = base64 `ABCD pqrs`;
 
 #### Make `async-send` an action
 
-- Reclassified `async-send` from a statement to an action in alignment with the Ballerina specification.
+
+Reclassified `async-send` from a statement to an action in alignment with the Ballerina specification.
 
 The following case is now supported.
 
@@ -226,14 +227,6 @@ public function main() {
 
 ### Bug fixes
 
-## Language updates
-
-### New features
-
-### Improvements
-
-### Bug fixes
-
 To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
@@ -242,7 +235,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### New Runtime Java APIs
 
-- Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
+Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
 
     ```ballerina
     // `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the referred type of the type reference type, which will be an intersection type, and then retrieving the effective type of the intersection type.

@@ -28,6 +28,8 @@ Previously, WSO2 had many manual operations involved in its internal application
 
 WSO2 initiated a strategic plan to modernize its applications, migrate to cloud-based solutions, and introduce automation for repetitive tasks using Ballerina services and connectors as illustrated in the diagram below. The backend of the apps was written in Ballerina, the front end was developed using React, and they were deployed in [WSO2 Choreo](https://wso2.com/choreo/).
 
+<img src="/images/case-studies/wso2-vs-ballerina.png" alt="WSO2 vs. Ballerina">
+
 The key components of the solution are listed below.
 
 - **Application modernization:** WSO2 revamped its internal apps, adopting Ballerina, which is a modern programming language, together with the React web library to create a more intuitive and user-friendly interface. The Ballerina language provided advantages in handling data manipulation, logical operations, and error handling. The redesigned applications provided a seamless user experience across devices, enhancing employee productivity.

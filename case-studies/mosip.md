@@ -21,7 +21,7 @@ Countries can use MOSIP freely to build their own identity systems and address c
 
 Due to its modular architecture, MOSIP provides flexibility in how governments can implement and configure their foundation ID system on top of MOSIP, as shown in the diagram below.
 
-<img src="/images/case-studies/mosip-modular-architecture.png" alt="MOSIP modular architecture" width="200" height="800">
+<img src="/images/case-studies/mosip-modular-architecture.png" alt="MOSIP modular architecture" width="546" height="400" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 ## Challenges
 
@@ -55,9 +55,9 @@ A single publisher is an implementation that advertises a topic and hub URL on o
 
 MOSIP currently uses this WebSub implementation for event-based communication between internal subsystems, such as ID repository and identity authentication, and to communicate with printing partners, to which the platform will convey the details to be printed on the identity card once the identity is created or updated.
 
-### MOSIP’s WebSubHub Implementation
+### MOSIP’s WebSubHub implementation
 
-<img src="/images/case-studies/mosip-websubhub-implementation.png" alt="MOSIP WebSubHub implementation" width="200" height="800">
+<img src="/images/case-studies/mosip-websubhub-implementation.png" alt="MOSIP WebSubHub implementation" width="546" height="400" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 As illustrated above, the [MOSIP WebSub hub](https://github.com/mosip/websub) contains the key components required to talk to publishers and subscribers and performs the following functions:
 

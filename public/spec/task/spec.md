@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the Task standard library of [Ballerina language](https://ballerina.io/), which provides APIs to schedule a Ballerina job either once or periodically and manage the execution of those jobs.
+This is the specification for the Task Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to schedule a Ballerina job either once or periodically and manage the execution of those jobs.
 
 The Task library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

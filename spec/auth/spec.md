@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the Auth standard library of [Ballerina language](https://ballerina.io/), which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.).
+This is the specification for the Auth Ballerina library of [Ballerina language](https://ballerina.io/), which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.).
 
 The Auth library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

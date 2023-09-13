@@ -7,7 +7,7 @@ _Updated_: 2022/02/08
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the Log standard library of [Ballerina language](https://ballerina.io/), which provides APIs to log information when running applications.
+This is the specification for the Log Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to log information when running applications.
 
 The Log library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag.
 

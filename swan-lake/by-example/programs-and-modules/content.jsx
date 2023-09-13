@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `// This import declaration binds the prefix \`io\` to the \`ballerina/io\` module. 
 // The prefix by default comes form the last part of the module name.
-// The \`ballerina\` org name is reserved for the standard library modules.
+// The \`ballerina\` org name is reserved for the Ballerina library modules.
 import ballerina/io;
 
 // \`main\` function is the program entry point. 

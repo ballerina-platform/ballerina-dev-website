@@ -1213,7 +1213,7 @@ function newArrayDeque3(Collection arg0) returns ArrayDeque {
 </code></pre>
 
 <h4 id="ballerina-jobject">Ballerina JObject</h4>
-<p>A Ballerina binding object representing a Java class will always be implemented using the abstract class <code class="language-plaintext highlighter-rouge">JObject</code>. This is present inside the <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina standard library and could be accessed as <code class="language-plaintext highlighter-rouge">java:JObject</code> if the java module is imported into a project.</p>
+<p>A Ballerina binding object representing a Java class will always be implemented using the abstract class <code class="language-plaintext highlighter-rouge">JObject</code>. This is present inside the <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina library and could be accessed as <code class="language-plaintext highlighter-rouge">java:JObject</code> if the java module is imported into a project.</p>
 
 <p>To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s <code class="language-plaintext highlighter-rouge">jObj</code> field.</p>
 
@@ -1245,7 +1245,7 @@ function newArrayDeque3(Collection arg0) returns ArrayDeque {
 </blockquote>
 
 <h3 id="support-for-java-casting">Support for Java Casting</h3>
-<p>The <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina standard library provides the <code class="language-plaintext highlighter-rouge">cast</code> function to support Java casting. This could be used to cast Ballerina binding objects into their subtypes based on assignability.</p>
+<p>The <code class="language-plaintext highlighter-rouge">ballerina/java</code> module of the Ballerina library provides the <code class="language-plaintext highlighter-rouge">cast</code> function to support Java casting. This could be used to cast Ballerina binding objects into their subtypes based on assignability.</p>
 
 <p>E.g., A Ballerina binding object instance mapping the <code class="language-plaintext highlighter-rouge">java.io.InputStream</code> Java class <code class="language-plaintext highlighter-rouge">inputStream</code> could be casted onto a Ballerina binding object mapping the <code class="language-plaintext highlighter-rouge">java.io.FileInputStream</code> Java class as follows.</p>
 <pre><code class="language-ballerina">FileInputStream fileInputStream = &lt;FileInputStream&gt;check java:cast(inputStream, typedesc&lt;FileInputStream&gt;);

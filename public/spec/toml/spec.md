@@ -7,7 +7,7 @@ _Updated_: 2023/04/04
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the Toml standard library of [Ballerina language](https://ballerina.io/), which provides APIs to convert a TOML configuration file to `map<json>`, and vice-versa.
+This is the specification for the Toml Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to convert a TOML configuration file to `map<json>`, and vice-versa.
 
 Since the parser is following LL(1) grammar, it follows a non-recursive predictive parsing algorithm that operates in a linear time complexity.
 

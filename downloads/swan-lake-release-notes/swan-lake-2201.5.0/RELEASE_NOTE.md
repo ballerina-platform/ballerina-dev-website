@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.5.0
 
-<em>2201.5.0 (Swan Lake Update 5) is the fifth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
+<em>2201.5.0 (Swan Lake Update 5) is the fifth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -304,7 +304,7 @@ public static void getResource(BObject client, BArray path, BString str) {
 
 To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.5.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
-## Standard library updates
+## Ballerina library updates
 
 ### New features
 

@@ -22,7 +22,7 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-#### Standard Library
+#### Ballerina library
 
 ##### I/O
 

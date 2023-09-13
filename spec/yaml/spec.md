@@ -7,7 +7,7 @@ _Updated_: 2023/04/04
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the Yaml standard library of [Ballerina language](https://ballerina.io/), which provides APIs to convert a YAML configuration file to JSON, and vice-versa. The module supports both the functions of reading and writing either a single YAML document or a YAML stream.
+This is the specification for the Yaml Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to convert a YAML configuration file to JSON, and vice-versa. The module supports both the functions of reading and writing either a single YAML document or a YAML stream.
 
 The Yaml library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

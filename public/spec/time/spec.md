@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake 
 
 ## Introduction
-This is the specification for the Time standard library of [Ballerina language](https://ballerina.io/), which provides time generation and conversion APIs.
+This is the specification for the Time Ballerina library of [Ballerina language](https://ballerina.io/), which provides time generation and conversion APIs.
 
 The Time library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -26,7 +26,7 @@ The conforming implementation of the specification is released and included in t
 6. [Time Zone Handling](#time-zone-handling)
 
 ## 1. Overview
-Ballerina time standard library has five primary aspects in handling time values.
+Ballerina time Ballerina library has five primary aspects in handling time values.
 1. Time representations
 2. Time generation
 3. Time-related operations
@@ -73,7 +73,7 @@ public isolated function monotonicNow() returns decimal;
 
 ## 4. Time related operations
 
-Time standard library supports time-related operations such as addition, subtraction, and date validations.
+Time Ballerina library supports time-related operations such as addition, subtraction, and date validations.
 
 Use the following API to add a given number of seconds to a UTC value.
 

@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake 
 
 ## Introduction
-This is the specification for the I/O standard library of [Ballerina language](https://ballerina.io/), which provides file related I/O operations.  
+This is the specification for the I/O Ballerina library of [Ballerina language](https://ballerina.io/), which provides file related I/O operations.  
 
 The I/O library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 
@@ -26,7 +26,7 @@ The conforming implementation of the specification is released and included in t
 
 
 ## 1. Overview
-Ballerina I/O standard library has six aspects of I/O operations.
+Ballerina I/O Ballerina library has six aspects of I/O operations.
 1. Console I/O
 2. Bytes I/O
 3. Strings I/O

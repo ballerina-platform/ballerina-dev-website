@@ -8,7 +8,7 @@ redirect_from:
 ---
 ### Overview of Ballerina Swan Lake Preview 4 
 
-This release is the fourth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+This release is the fourth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, Ballerina libraries, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
@@ -30,7 +30,7 @@ This release is the fourth preview version of Ballerina Swan Lake. This release 
     - [Runtime](#runtime)
         - [jBallerina runtime APIs](#jballerina-runtime-apis)
         - [Asynchronous Java interoperability](#asynchronous-java-interoperability)
-    - [Standard library](#standard-library)
+    - [Ballerina library](#standard-library)
     - [Developer tools](#developer-tools)
         - [The OpenAPI tool](#the-openapi-tool)
         - [Improvements related to code actions](#improvements-related-to-code-actions)
@@ -415,7 +415,7 @@ The BIR is now improved by including local variable scope information. With this
 
 Along with the scoping, BIR now contains a new variable kind named `SYNTHETIC`, which identifies the variables generated at the de-sugar phase. These are skipped when adding meta-data so that generated variables do not appear in the scope with a debug hit.
 
-#### Standard library
+#### Ballerina library
 
 Re-align organization names of the connectors. 
 

@@ -11,7 +11,7 @@ redirect_from:
 
 <em>This is the sixth Beta release in a series of planned Alpha and Beta releases leading up to the Ballerina Swan Lake GA release.</em> 
 
-It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Beta5 release.
+It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, Ballerina library, and developer tooling after the Swan Lake Beta5 release.
 
 ## Updating Ballerina
 
@@ -64,7 +64,7 @@ public function main() {
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta6](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta6%22+label%3AType%2FBug+label%3ATeam%2FCompilerFE).
 
-## Standard library updates
+## Ballerina library updates
 
 ### New features
 

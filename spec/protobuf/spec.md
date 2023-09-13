@@ -7,7 +7,7 @@ _Updated_: 2022/02/08
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the Protobuf standard library of [Ballerina language](https://ballerina.io/), which provides APIs to represent a set of pre-defined protobuf types.
+This is the specification for the Protobuf Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to represent a set of pre-defined protobuf types.
 
 The Protobuf library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag.
 

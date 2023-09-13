@@ -8,7 +8,7 @@ redirect_from:
 ---
 ### Overview of Ballerina Swan Lake Preview 3
 
-This release is the third preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
+This release is the third preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, Ballerina libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 3 as follows.
 
@@ -127,7 +127,7 @@ DeptPerson[] deptPersonList =
         };
 ```
 
-#### Standard library
+#### Ballerina library
 
 ##### SQL connectors
 

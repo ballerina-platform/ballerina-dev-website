@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 ## Introduction
 
-This is the specification for the SQL standard library of [Ballerina language](https://ballerina.io/), which provides the generic interface and functionality to interact with a SQL database.  
+This is the specification for the SQL Ballerina library of [Ballerina language](https://ballerina.io/), which provides the generic interface and functionality to interact with a SQL database.  
 
 The SQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 

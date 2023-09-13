@@ -1,4 +1,4 @@
-name: Update Ballerina Standard Library Specifications
+name: Update Ballerina library Specifications
 
 on:
   repository_dispatch:
@@ -25,7 +25,7 @@ jobs:
           echo SHORT_NAME=${{ github.event.client_payload.short_name }} >> $GITHUB_ENV
           echo FILE_DIR=${{ github.event.client_payload.file_dir }} >> $GITHUB_ENV
 
-      - name: Clone standard library repository
+      - name: Clone the Ballerina library repository
         run: git clone https://github.com/ballerina-platform/$MODULE_NAME.git
 
       - name: Update specifications
@@ -47,7 +47,7 @@ jobs:
 
           git add spec
           git add public/spec
-          git commit --allow-empty -m "Update ballerina standard library specifications"
+          git commit --allow-empty -m "Update Ballerina library specifications"
 
           git push --set-upstream origin automate-specs-$SHORT_NAME-$GITHUB_SHA
           echo 'Successfully pushed to automate-specs-$GITHUB_SHA branch'
@@ -56,6 +56,6 @@ jobs:
         shell: bash
         run: |
           curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b master -m "[AUTOMATE] Update Ballerina Standard Library ($SHORT_NAME) Specifications"
+          bin/hub pull-request -b master -m "[AUTOMATE] Update Ballerina library ($SHORT_NAME) Specifications"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

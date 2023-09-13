@@ -7,7 +7,7 @@ _Updated_: 2022/06/17
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the MIME standard library of [Ballerina language](https://ballerina.io/), which provides 
+This is the specification for the MIME Ballerina library of [Ballerina language](https://ballerina.io/), which provides 
 a set of APIs to work with messages, which follow the Multipurpose Internet Mail Extensions (MIME) specification as 
 specified in the [RFC 2045](https://datatracker.ietf.org/doc/html/rfc2045) standard.  
 
@@ -41,11 +41,11 @@ from the specification is considered a bug.
 7. [Error handling ](#7-error-handling)
 
 ## 1. Overview
-Ballerina language provides support for writing network-oriented programs. The standard libraries such as
+Ballerina language provides support for writing network-oriented programs. The Ballerina libraries such as
 HTTP, Email uses the messages or entities to transfer data between endpoints. MIME is the standard way to organize the
 message according to the universal specifications.
 
-The MIME standard library is designed to work independently as a support package to handle the entity. It includes 
+The MIME Ballerina library is designed to work independently as a support package to handle the entity. It includes 
 high-level abstractions such as `mime:Entity`, `mime:ContentDisposition`, and `mime:MediaType` which allow users 
 to handle the exchanging message.
 

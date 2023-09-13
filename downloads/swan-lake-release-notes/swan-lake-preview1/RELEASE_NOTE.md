@@ -9,7 +9,7 @@ redirect_from:
 ### Overview of Ballerina Swan Lake - Preview 1
 Ballerina Swan Lake will be a major new version of Ballerina that we plan to release in January 2021. We will be doing major releases every 6 months from then on. We also plan to use popular ballet names as the codename for each release - so the 2021-07 release will be the Nutcracker release. We will announce details on maintenance of released versions and will also have an LTS release model similar to Ubuntu or Java.
 
-This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
+This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, Ballerina libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 1 as follows.
 
@@ -562,7 +562,7 @@ public function main() {
 - Error binding patterns and structured match patterns are not yet supported with the new parser.
 
 
-#### Standard library
+#### Ballerina library
 
 ##### Introduced new `sql` module
 
@@ -755,10 +755,10 @@ scope = "provided"
 - Java Subtyping support is added to the generated bindings.
 - Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.
 - Error mappings are improved by generating Ballerina error types for Java exceptions.
-- Introduces a function in the `java` module of the Ballerina standard library to support Java Casting.
+- Introduces a function in the `java` module of the Ballerina library to support Java Casting.
 - Introduces the generation of API documentation comments in the generated bindings.
 - Introduces a `--public` flag to change the visibility modifier (which is module private by default) to public.
-- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the tool is executed.
+- Moves the array util functions into the `java.arrays` module in the Ballerina library instead of generating it each time when the tool is executed.
 - Bug fixes and improvements to usability and generated bindings.
 
 The bindgen tool command after the newly-introduced options is as follows.

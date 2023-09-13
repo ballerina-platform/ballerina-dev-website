@@ -8,7 +8,7 @@ redirect_from:
 ---
 ### Overview of Ballerina Swan Lake Alpha3
 
-The Ballerina Swan Lake Alpha3 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
+The Ballerina Swan Lake Alpha3 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, Ballerina library, and developer tooling. This release note lists only the features and updates added after the Alpha2 release of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -16,7 +16,7 @@ The Ballerina Swan Lake Alpha3 release includes the language features planned fo
 - [What is New in Ballerina Swan Lake Alpha3](#what-is-new-in-ballerina-swan-lake-alpha3)
     - [Language](#language)
     - [Runtime](#runtime)
-    - [Standard Library](#standard-library)
+    - [Ballerina library](#standard-library)
     - [Code to Cloud](#code-to-cloud)
     - [Ballerina Packages](#ballerina-packages)
     - [Developer Tools](#developer-tools)
@@ -156,7 +156,7 @@ The `createDistinctError` API has been deprecated and should not be used to crea
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Alpha3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Alpha3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-#### Standard library
+#### Ballerina library
 
 ##### Log package updates
 
@@ -330,7 +330,7 @@ json|xmldata:Error j = xmldata:toJson(xml `foo`);
 
 ##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages
 
-The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Standard Libraries.
+The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Ballerina libraries.
 
 The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now supported by the `xmldata` package.
 
@@ -799,7 +799,7 @@ service class EchoService {
 
 - Renamed the `ConnectionConfig` record to `ConnectionConfiguration`. 
 
-##### Common standard library updates
+##### Common Ballerina library updates
 
 - All the timeout configurations are converted to accept decimal values and the time unit is in seconds.
 
@@ -895,7 +895,7 @@ bal openapi -i <ballerina file> --json
 
 #### Documentation
 
-- Moved the standard library API documentation out to Ballerina Central Docs from the Ballerina Website.
+- Moved the Ballerina library API documentation out to Ballerina Central Docs from the Ballerina Website.
 
 ##### Language Server
 - The Ballerina Language Server now supports telemetry-based crash reporting. This was enabled through the LSP protocol's [telemetry events](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#telemetry_event). If you wish to disable Ballerina Telemetry, uncheck the **Ballerina: Enable Telemetry** setting from VSCode.

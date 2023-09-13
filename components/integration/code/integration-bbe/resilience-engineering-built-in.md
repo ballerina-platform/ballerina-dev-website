@@ -1,6 +1,6 @@
 ---
 title: 'Resilience engineering, built-in'
-description: Ballerina’s built-in language and standard library features make programming in the failure-is-normal world of distributed systems as easy for every developer.
+description: Ballerina’s built-in language and Ballerina library features make programming in the failure-is-normal world of distributed systems as easy for every developer.
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/gcalendar-new-event-to-trello-card/main.bal#L18'
 ---
 ```

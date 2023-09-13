@@ -111,7 +111,7 @@
 
 </code></pre>
 
-<p>Now services are first-class values and are like singleton objects. Resource definition has been modified slightly. Now a resource definition looks like a function definition with the resource qualifier. For more information, refer to standard library syntax section.</p>
+<p>Now services are first-class values and are like singleton objects. Resource definition has been modified slightly. Now a resource definition looks like a function definition with the resource qualifier. For more information, refer to Ballerina library syntax section.</p>
 <pre class="line-numbers language-ballerina"><code class="language-ballerina">service hello on httpEp {
     resource function hi (http:Caller caller, http:Request req) {
         _ = caller-&gt;respond(&quot;Hello, World!&quot;);
@@ -122,7 +122,7 @@
 
 <ul>
 <li>
-<p>The syntax of defining client endpoints (outbound endpoints) has been simplified. For more information, refer to the <a href="#standard-library">standard library syntax section</a>.</p>
+<p>The syntax of defining client endpoints (outbound endpoints) has been simplified. For more information, refer to the <a href="#standard-library">Ballerina library syntax section</a>.</p>
 </li>
 <li>
 <p>The annotations <code>@final</code> and <code>@readonly</code> have been removed from this release onwards. Now you can declare final variables using the <code>final</code> keyword. For example, <code>final int port = readPortFromConfig();</code>.</p>
@@ -582,7 +582,7 @@ resource function participantRemote(http:Caller ep, http:Request req) {
 
 </code></pre>
 
-<h1>Standard Library</h1>
+<h1>Ballerina library</h1>
 <h2>HTTP Listener/Client</h2>
 <p>With endpoints and service syntax changes, HTTP endpoint and service are changed as follows:</p>
 <p>HTTP Listener:</p>

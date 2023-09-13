@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 ## Introduction 
 
-This is the specification for the WebSub standard library of [Ballerina language](https://ballerina.io/), which provides WebSub compliant `subscriber` related functionalities.
+This is the specification for the WebSub Ballerina library of [Ballerina language](https://ballerina.io/), which provides WebSub compliant `subscriber` related functionalities.
 
 The WebSub library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag. 
 

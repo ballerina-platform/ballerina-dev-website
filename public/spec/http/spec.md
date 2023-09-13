@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 
 ## Introduction
-This is the specification for the HTTP standard library of [Ballerina language](https://ballerina.io/), which provides HTTP client-server functionalities to produce and consume HTTP APIs.  
+This is the specification for the HTTP Ballerina library of [Ballerina language](https://ballerina.io/), which provides HTTP client-server functionalities to produce and consume HTTP APIs.  
 
 The HTTP library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 
@@ -137,9 +137,9 @@ The conforming implementation of the specification is released and included in t
         * 10.1.1. [Push promise and promise response](#1011-push-promise-and-promise-response)
 
 ## 1. Overview
-Ballerina language provides first-class support for writing network-oriented programs. The HTTP standard library uses these language constructs and creates the programming model to produce and consume HTTP APIs.
+Ballerina language provides first-class support for writing network-oriented programs. The HTTP Ballerina library uses these language constructs and creates the programming model to produce and consume HTTP APIs.
 
-The HTTP standard library is designed to work with HTTP protocol. It includes high-level abstractions such as `http:Request`, `http:Response`, `http:Service`, and `http:Client` which allow users to produce and consume HTTP API. Further, developers can use this library to build other libraries. The standard libraries such as GraphQL, Websub, and WebSubHub use this library internally.
+The HTTP Ballerina library is designed to work with HTTP protocol. It includes high-level abstractions such as `http:Request`, `http:Response`, `http:Service`, and `http:Client` which allow users to produce and consume HTTP API. Further, developers can use this library to build other libraries. The Ballerina libraries such as GraphQL, Websub, and WebSubHub use this library internally.
 
 In addition to functional requirements, this library deals with nonfunctional requirements such as security, observability, and resiliency. Each requirement is discussed in detail in the coming sections.
 

@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 ## Introduction
 
-This is the specification for the WebSocket standard library of [Ballerina language](https://ballerina.io/), which provides WebSocket client-server functionalities.
+This is the specification for the WebSocket Ballerina library of [Ballerina language](https://ballerina.io/), which provides WebSocket client-server functionalities.
 
 The WebSocket library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

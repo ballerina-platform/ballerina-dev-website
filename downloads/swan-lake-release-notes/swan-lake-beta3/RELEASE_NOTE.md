@@ -10,7 +10,7 @@ redirect_from:
 
 <em>This is the third beta release leading up to the Ballerina Swan Lake GA release.</em> 
 
-It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Beta2 release.
+It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, Ballerina library, and developer tooling after the Swan Lake Beta2 release.
 
 ## Updating Ballerina
 
@@ -522,7 +522,7 @@ boolean streamCheck = stm is stream<int>;
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta3](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta3%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-## Standard library updates
+## Ballerina library updates
 
 ### New features
 

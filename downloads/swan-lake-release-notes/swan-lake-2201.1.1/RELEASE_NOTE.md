@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.1.1
 
-<em>Swan Lake 2201.1.1 is the first patch release of Ballerina 2201.1.0 (Swan Lake Update 1) and it includes a new set of bug fixes to the compiler, runtime, standard library, and developer tooling.</em> 
+<em>Swan Lake 2201.1.1 is the first patch release of Ballerina 2201.1.0 (Swan Lake Update 1) and it includes a new set of bug fixes to the compiler, runtime, Ballerina library, and developer tooling.</em> 
 
 ## Update Ballerina
 

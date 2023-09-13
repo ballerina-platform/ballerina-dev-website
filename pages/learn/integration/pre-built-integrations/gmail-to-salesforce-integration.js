@@ -40,7 +40,7 @@ import ballerina/lang.runtime;
 import ballerina/log;
 import ballerina/mime;
 import ballerinax/googleapis.gmail;
-import ballerinax/openai.chat as openAI;
+import ballerinax/openai.chat;
 import ballerinax/salesforce as sf;
 
 type Email record {|
@@ -70,7 +70,7 @@ configurable string salesforceAccessToken = ?;
 const LABEL = "Lead";
 
 final gmail:Client gmail = check new ({auth: {token: gmailAccessToken}});
-final openAI:Client openAI = check new ({auth: {token: openAIKey}});
+final chat:Client openAiChat = check new ({auth: {token: openAIKey}});
 final sf:Client salesforce = check new ({baseUrl: salesforceBaseUrl, auth: {token: salesforceAccessToken}});
 
 public function main() returns error? {
@@ -168,7 +168,7 @@ function parseEmail(gmail:Message message) returns Email|error {
 }
 
 function generateLead(Email email) returns Lead? {
-    openAI:CreateChatCompletionRequest request = {
+    chat:CreateChatCompletionRequest request = {
         model: "gpt-3.5-turbo",
         messages: [
             {
@@ -196,7 +196,7 @@ function generateLead(Email email) returns Lead? {
     };
 
     do {
-        openAI:CreateChatCompletionResponse response = check openAI->/chat/completions.post(request);
+        chat:CreateChatCompletionResponse response = check openAiChat->/chat/completions.post(request);
         if response.choices.length() < 1 {
             check error("Unable to find any choices in the response.");
         }

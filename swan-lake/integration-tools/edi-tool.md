@@ -22,7 +22,7 @@ The functionalities of the above usages are described below.
 The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
 
 ```
-$ bal edi codegen <EDI schema path> <output path>
+$ bal edi codegen <edi-schema-path> <output-path>
 ```
 
 The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
@@ -34,7 +34,7 @@ Usually, organizations have to work with many EDI formats, and integration devel
 The below command can be used to generate the EDI package.
 
 ```
-$ bal edi libgen -O <org name> -n <package name> -s <EDI schema folder> -o <output folder>
+$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-folder> -o <output-folder>
 ```
 
 A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.

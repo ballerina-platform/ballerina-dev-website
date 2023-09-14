@@ -175,6 +175,27 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         AC|boolean _ = check x.cloneWithType();
     }
     ```
+  
+- A bug that resulted in an incorrect value when using a global variable, as a default value for the class field and function parameter has been fixed.
+    
+    ```ballerina
+    import ballerina/io;
+    
+    final int value = 100;
+    
+    class Foo {
+        int i = value;
+    }
+    
+    function bar(int k = value) returns int {
+        return k;
+    }
+    
+    public function main() {
+        Foo foo = new;
+        io:println(foo.i); // Prints `100` now.
+    }
+    ```
 
     This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
 

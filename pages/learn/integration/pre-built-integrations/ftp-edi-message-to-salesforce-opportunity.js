@@ -93,7 +93,8 @@ public function main() returns error? {
 
         // Create opportunity line items for each item in the quote.
         foreach ItemData item in quoteRequest.itemData {
-            stream<PriceBookEntry, error?> query = check salesforce->query(string \`SELECT UnitPrice FROM PricebookEntry WHERE Pricebook2Id = '01s6C000000UN4PQAW' AND Product2Id = '\${item.itemId}'\`);
+            stream<PriceBookEntry, error?> query = check salesforce->query(
+              string \`SELECT UnitPrice FROM PricebookEntry WHERE Pricebook2Id = '01s6C000000UN4PQAW' AND Product2Id = '\${item.itemId}'\`);
             record {|PriceBookEntry value;|}? unionResult = check query.next();
             check query.close();
             if unionResult is () {
@@ -166,8 +167,6 @@ function streamToString(stream<byte[] & readonly, io:Error?> inStream) returns s
     });
     return string:fromBytes(content);
 }
-
-
     
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };

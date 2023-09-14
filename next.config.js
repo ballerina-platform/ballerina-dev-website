@@ -401,8 +401,8 @@ const nextConfig = {
         destination: `/learn/integration/pre-built-integrations/salesforce-to-twilio-integration`,
       },
       {
-        source: `/learn/pre-built-integrations/newsapi-to-email-integration`,
-        destination: `/learn/integration/pre-built-integrations/newsapi-to-email-integration`,
+        source: `/learn/pre-built-integrations/news-api-to-email-integration`,
+        destination: `/learn/integration/pre-built-integrations/news-api-to-email-integration`,
       },
       {
         source: `/learn/pre-built-integrations/github-to-email-integration`,

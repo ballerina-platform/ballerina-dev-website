@@ -54,29 +54,29 @@ configurable string emailAddress = ?;
 
 public function main() returns error? {
     newsapi:Client newsapi = check new (apiKeyConfig, {}, "https://newsapi.org/v2");
-    email:SmtpClient smtpClient = check new (smtpHost, smtpUsername, smtpPassword);
+    email:SmtpClient email = check new (smtpHost, smtpUsername, smtpPassword);
     newsapi:WSNewsTopHeadlineResponse topHeadlines = check newsapi->listTopHeadlines(sources = "bbc-news", page = 1);
     newsapi:WSNewsArticle[]? articles = topHeadlines?.articles;
     if articles is () || articles.length() == 0 {
         log:printInfo("No news found");
         return;
     }
-    string mailBody = "BBC top news are,\\n";
+    string mailBody = "BBC top news are,\n";
     foreach newsapi:WSNewsArticle article in articles {
         string? title = article?.title;
         if title is string {
-            mailBody = mailBody + string \`\${title}\${"\\n"}\`;
+            mailBody = mailBody + string \`\${title}\${"\n"}\`;
         }
     }
-    email:Message email = {
+    email:Message message = {
         to: emailAddress,
         'from: fromAddress,
         subject: "BBC Headlines",
         body: mailBody
     };
-    check smtpClient->sendMessage(email);
+    check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-}
+}  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 
@@ -115,7 +115,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>NewsAPI to Email integration</title>
+        <title>News API to Email integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -209,7 +209,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>NewsAPI to Email integration</h1>
+                <h1>News API to Email integration</h1>
               </Container>
             </Col>
 
@@ -233,7 +233,7 @@ export default function Learn({ samples, content }) {
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/newsapi-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/news-api-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                   </Col>
                 </Row>
@@ -273,7 +273,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <img src={`${prefix}/images/pre-built/sequence-diagrams/newsapi-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/news-api-to-email-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

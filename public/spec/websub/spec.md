@@ -280,6 +280,8 @@ should be `websub:SubscriberServiceConfig` a service-level-annotation for `websu
 # + unsubscribeOnShutdown - This flag notifies whether or not to initiate unsubscription when the service is shutting down
 # + httpConfig - The configuration for the subscriber client used to interact with the discovered/specified hub
 # + discoveryConfig - HTTP client configurations for resource discovery
+# + customParams - Additional parameters which need to be sent with the subscription request
+# + customHeaders - Additional HTTP headers which need to be sent with the subscription request
 # + servicePath - The generated service-path if the service-path is not provided. This is auto-generated at the compile-time
 public type SubscriberServiceConfiguration record {|
     string|[string, string] target?;
@@ -294,6 +296,8 @@ public type SubscriberServiceConfiguration record {|
         string|string[] acceptLanguage?;
         ClientConfiguration httpConfig?;
     |} discoveryConfig?;
+    map<string> customParams?;
+    map<string> customHeaders?;
     readonly byte[] servicePath = [];
 |};
 ```

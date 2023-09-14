@@ -60,7 +60,7 @@ public function main() returns error? {
             token: githubAccessToken
         }
     });
-    email:SmtpClient smtpClient = check new (host = smtpHost, username = smtpUsername, password = smtpPassword);
+    email:SmtpClient email = check new (host = smtpHost, username = smtpUsername, password = smtpPassword);
 
     //Get collaborator list
     string assigneeSummary = "";
@@ -96,15 +96,15 @@ public function main() returns error? {
     string issueSummary = string \`ISSUE SUMMARY REPORT\${"\\n\\n"}Repository Name: \${repoName}
         \${"\\n"}Total Issues Open: \${totalOpenIssueCount} \${"\\n"}Total Issues Closed: \${totalClosedIssueCount}
         \${"\\n\\n"}Issue Count by Assignee: \${"\\n"}\${assigneeSummary} \${"\\n"}\`;
-    email:Message email = {
+    email:Message message = {
         to: recipientAddress,
         'from: fromAddress,
         subject: "Git Issue Summary",
         body: issueSummary
     };
-    check smtpClient->sendMessage(email);
+    check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-}
+}  
   
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };

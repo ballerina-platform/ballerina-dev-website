@@ -13,12 +13,10 @@ logo: '/images/home-page/user-logos/wso2.svg'
 
 [WSO2](https://wso2.com/) offers a suite of application development and IAM technologies available as open source or SaaS. These technologies enable thousands of enterprises, including hundreds of the world’s largest corporations, top universities, and governments, to drive their digital efforts rapidly, efficiently, and cost-effectively. However, WSO2’s digital transformation team realized that they needed to modernize the company’s own internal applications to improve operational efficiency, collaboration, and productivity. To drive these efforts, the company leveraged the Ballerina language to achieve remarkable results and empower its workforce.
 
-## Testimonial
+>Ballerina language has played a vital role as a key enabler in our digital transformation strategy of internal apps. The main reason why we chose Ballerina is its ability to facilitate seamless integrations with a vast number of third-party applications. The fully automated internal operations reduce the waste due to manual tasks, which resulted in focusing more on what truly matters for wso2: becoming the market leader of building great technologies.
 
-*“Ballerina language has played a vital role as a key enabler in our digital transformation strategy of internal apps. The main reason why we chose Ballerina is its ability to facilitate seamless integrations with a vast number of third-party applications. The fully automated internal operations reduce the waste due to manual tasks, which resulted in focusing more on what truly matters for wso2: becoming the market leader of building great technologies."*
-
-Head of Digital Transformation Team,
-WSO2 LLC.
+*Head of Digital Transformation Team,
+WSO2 LLC.*
 
 ## Challenges
 

@@ -38,7 +38,7 @@ export async function getStaticProps() {
   const content = `
 import ballerina/log;
 import ballerinax/googleapis.sheets;
-import ballerinax/salesforce as sfdc;
+import ballerinax/salesforce as sf;
 
 public type Contact record {|
     string Id;
@@ -51,15 +51,15 @@ const int HEADINGS_ROW = 1;
 configurable string spreadsheetId = ?;
 configurable string worksheetName = ?;
 configurable string duplicateWorksheetName = ?;
-configurable string gSheetsAccessToken = ?;
+configurable string sheetsAccessToken = ?;
 
 // Salesforce configuration parameters
 configurable string salesforceAccessToken = ?;
 configurable string salesforceBaseUrl = ?;
 
-sheets:Client sheetsClient = check new ({auth: {token: gSheetsAccessToken}});
+sheets:Client sheets = check new ({auth: {token: sheetsAccessToken}});
 
-sfdc:Client sfdcClient = check new ({
+sf:Client salesforce = check new ({
     baseUrl: salesforceBaseUrl,
     auth: {
         token: salesforceAccessToken
@@ -67,27 +67,28 @@ sfdc:Client sfdcClient = check new ({
 });
 
 public function main() returns error? {
-    sheets:Range range = check sheetsClient->getRange(spreadsheetId, worksheetName, "A1:G");
+    sheets:Range range = check sheets->getRange(spreadsheetId, worksheetName, "A1:G");
     (int|string|decimal)[] headers = range.values[0];
     foreach (int|string|decimal)[] item in range.values.slice(HEADINGS_ROW) {
         int? indexOfEmail = headers.indexOf("Email");
         if indexOfEmail is () {
             return error("Email column not found");
         }
-        stream<Contact, error?> retrievedStream = check sfdcClient->query(
+        stream<Contact, error?> retrievedStream = check salesforce->query(
             string \`SELECT Id, Email FROM Contact WHERE Email='\${item[indexOfEmail]}'\`);
         if retrievedStream.next() !is () {
             log:printInfo(string \`Contact already exists. Email : \${item[indexOfEmail]}\`);
-            _ = check sheetsClient->appendValue(spreadsheetId, item, {sheetName: duplicateWorksheetName});
+            _ = check sheets->appendValue(spreadsheetId, item, {sheetName: duplicateWorksheetName});
             continue;
         }
         record {} newContact = map from int index in 0 ..< headers.length()
             let int|string|decimal header = headers[index]
             select [header.toString(), item[index]];
-        _ = check sfdcClient->create("Contact", newContact);
+        _ = check salesforce->create("Contact", newContact);
         log:printInfo(string \`Contact created successfully!. Email : \${item[indexOfEmail]}\`);
     }
 }
+
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 

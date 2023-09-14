@@ -40,8 +40,8 @@ import ballerina/lang.runtime;
 import ballerina/log;
 import ballerina/mime;
 import ballerinax/googleapis.gmail;
-import ballerinax/openai.chat as openAI;
-import ballerinax/salesforce as sfdc;
+import ballerinax/openai.chat;
+import ballerinax/salesforce as sf;
 
 type Email record {|
     string 'from;
@@ -69,9 +69,9 @@ configurable string salesforceAccessToken = ?;
 
 const LABEL = "Lead";
 
-final gmail:Client gmailClient = check new ({auth: {token: gmailAccessToken}});
-final openAI:Client openAIClient = check new ({auth: {token: openAIKey}});
-final sfdc:Client sfdcClient = check new ({baseUrl: salesforceBaseUrl, auth: {token: salesforceAccessToken}});
+final gmail:Client gmail = check new ({auth: {token: gmailAccessToken}});
+final chat:Client openAiChat = check new ({auth: {token: openAIKey}});
+final sf:Client salesforce = check new ({baseUrl: salesforceBaseUrl, auth: {token: salesforceAccessToken}});
 
 public function main() returns error? {
     while true {
@@ -86,14 +86,14 @@ public function main() returns error? {
 }
 
 function getEmails(string label) returns Email[]|error {
-    string[] labelIdsToMatch = check getLabelIds(gmailClient, [label]);
+    string[] labelIdsToMatch = check getLabelIds(gmail, [label]);
     if labelIdsToMatch.length() == 0 {
         return error("Unable to find any labels to match.");
     }
 
-    gmail:MailThread[] matchingMailThreads = check getMatchingMailThreads(gmailClient, labelIdsToMatch);
-    removeLabels(gmailClient, matchingMailThreads, labelIdsToMatch);
-    gmail:Message[] matchingEmails = getMatchingEmails(gmailClient, matchingMailThreads);
+    gmail:MailThread[] matchingMailThreads = check getMatchingMailThreads(gmail, labelIdsToMatch);
+    removeLabels(gmail, matchingMailThreads, labelIdsToMatch);
+    gmail:Message[] matchingEmails = getMatchingEmails(gmail, matchingMailThreads);
 
     return from gmail:Message message in matchingEmails
            let Email|error email = parseEmail(message)
@@ -101,26 +101,26 @@ function getEmails(string label) returns Email[]|error {
            select email;
 }
 
-function getLabelIds(gmail:Client gmailClient, string[] labelsToMatch) returns string[]|error {
-    gmail:LabelList labelList = check gmailClient->listLabels("me");
+function getLabelIds(gmail:Client gmail, string[] labelsToMatch) returns string[]|error {
+    gmail:LabelList labelList = check gmail->listLabels("me");
     return from gmail:Label {name, id} in labelList.labels
            where labelsToMatch.indexOf(name) != ()
            select id;
 }
 
-function getMatchingMailThreads(gmail:Client gmailClient, string[] labelIdsToMatch) returns gmail:MailThread[]|error {
+function getMatchingMailThreads(gmail:Client gmail, string[] labelIdsToMatch) returns gmail:MailThread[]|error {
     gmail:MsgSearchFilter searchFilter = {
         includeSpamTrash: false,
         labelIds: labelIdsToMatch
     };
 
-    return from gmail:MailThread mailThread in check gmailClient->listThreads(filter = searchFilter)
+    return from gmail:MailThread mailThread in check gmail->listThreads(filter = searchFilter)
            select mailThread;
 }
 
-function removeLabels(gmail:Client gmailClient, gmail:MailThread[] mailThreads, string[] labelIds) {
+function removeLabels(gmail:Client gmail, gmail:MailThread[] mailThreads, string[] labelIds) {
     foreach gmail:MailThread mailThread in mailThreads {
-        gmail:MailThread|error removeLabelResponse = gmailClient->modifyThread(mailThread.id, [], labelIds);
+        gmail:MailThread|error removeLabelResponse = gmail->modifyThread(mailThread.id, [], labelIds);
         if removeLabelResponse is error {
             log:printError("An error occured in removing the labels from the thread.",
                 removeLabelResponse, removeLabelResponse.stackTrace(), threadId = mailThread.id, labelIds = labelIds);
@@ -128,11 +128,11 @@ function removeLabels(gmail:Client gmailClient, gmail:MailThread[] mailThreads, 
     }
 }
 
-function getMatchingEmails(gmail:Client gmailClient, gmail:MailThread[] mailThreads) returns gmail:Message[] {
+function getMatchingEmails(gmail:Client gmail, gmail:MailThread[] mailThreads) returns gmail:Message[] {
     gmail:Message[] messages = [];
 
     foreach gmail:MailThread mailThread in mailThreads {
-        gmail:MailThread|error response = gmailClient->readThread(mailThread.id);
+        gmail:MailThread|error response = gmail->readThread(mailThread.id);
         if response is error {
             log:printError("An error occured while reading the email.", 
                 response, response.stackTrace(), threadId = mailThread.id);
@@ -168,7 +168,7 @@ function parseEmail(gmail:Message message) returns Email|error {
 }
 
 function generateLead(Email email) returns Lead? {
-    openAI:CreateChatCompletionRequest request = {
+    chat:CreateChatCompletionRequest request = {
         model: "gpt-3.5-turbo",
         messages: [
             {
@@ -196,7 +196,7 @@ function generateLead(Email email) returns Lead? {
     };
 
     do {
-        openAI:CreateChatCompletionResponse response = check openAIClient->/chat/completions.post(request);
+        chat:CreateChatCompletionResponse response = check openAiChat->/chat/completions.post(request);
         if response.choices.length() < 1 {
             check error("Unable to find any choices in the response.");
         }
@@ -211,7 +211,7 @@ function generateLead(Email email) returns Lead? {
 function addLeadsToSalesforce(Lead[] leads) {
     from Lead lead in leads
     do {
-        sfdc:CreationResponse|error createResponse = sfdcClient->create("EmailLead__c", lead);
+        sf:CreationResponse|error createResponse = salesforce->create("EmailLead__c", lead);
         if createResponse is error {
             log:printError("An error occured while creating a Lead object on salesforce.", 
                 createResponse, createResponse.stackTrace(), lead = lead);
@@ -220,6 +220,7 @@ function addLeadsToSalesforce(Lead[] leads) {
         }
     };
 }
+  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 

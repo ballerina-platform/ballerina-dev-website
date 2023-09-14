@@ -98,7 +98,3 @@ MOSIP benefitted by using the Ballerina WebSubHub package in its current deploym
 - There are more than eight internal deployments for dev, QA, testing, and production worldwide.
 
 For more information on the ongoing partnerships with countries, see [MOSIP news and events](https://www.mosip.io/news-events.php).
-
-## Conclusion
-
-Incorporating the Ballerina WebSubHub package into the architecture of the Modular Open Source Identity Platform (MOSIP) represents a significant advancement in its event-driven implementation. This integration enhances MOSIP's responsiveness, scalability, and overall efficiency in handling real-time identity-related events, such as user subscriptions and authentication requests, within its ecosystem. Leveraging Ballerina as the programming language simplifies the development process, emphasizing MOSIP's commitment to staying at the forefront of providing more agile and responsive identity platforms in the ever-evolving digital landscape.

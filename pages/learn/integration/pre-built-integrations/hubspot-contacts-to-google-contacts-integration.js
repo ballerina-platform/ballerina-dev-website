@@ -84,6 +84,7 @@ public function main() returns error? {
         log:printInfo(string \`Contact \${hubspotContact.id} added to Google Contacts successfully!\`);
     }
 }
+  
 `;
   var samples = { code: highlighter.codeToHtml(content.replaceAll('```', '').trim(), { lang: 'ballerina' }) };
 

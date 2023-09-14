@@ -206,7 +206,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>FTP EDI message to Salesforce Opportunity</title>
+        <title>FTP EDI messages and Salesforce opportunities</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -286,7 +286,7 @@ export default function Learn({ samples, content }) {
                             d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                           />
                         </svg>
-                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                        <p className="m-0 p-0">Back to pre-built integrations</p>
                       </div>
                     </Link>
                   </Col>
@@ -300,7 +300,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>FTP EDI message to Salesforce Opportunity</h1>
+                <h1>FTP EDI messages and Salesforce opportunities</h1>
               </Container>
             </Col>
 
@@ -315,15 +315,15 @@ export default function Learn({ samples, content }) {
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>Interactions between businesses, such as sending purchase orders and invoices, usually occur over
                       EDI-based B2B channels. On the other hand, sales and customer details related to such transactions
-                      are maintained in Salesforce. Therefore, it&apos;s critical to bridge salesforce with B2B channels in
-                      order to automate the sales processes. For example, it is It is possible to update the status and
-                      details of opportunities in Salesforce based on the exchange of EDI messages like EDIFACT REQOTE
-                      (Request for quotation), EDIFACT QUOTES (Quotation response), EDIFACT ORDERS (Purchase order), etc.
+                      are maintained in Salesforce. Therefore, it&apos;s critical to bridge Salesforce with B2B channels in
+                      order to automate the sales processes. For example, it is possible to update the status and
+                      details of opportunities in Salesforce based on the exchange of EDI messages like `EDIFACT REQOTE
+                      (Request for quotation)`, `EDIFACT QUOTES (Quotation response)`, `EDIFACT ORDERS (Purchase order)`, etc.
                       Such integrations will eliminate the delays and inconsistencies in updating Salesforce and provide
-                      up-to-date information for sales staff and decision-makers.
+                      up-to-date information for sales staff and decision makers.
                     </p>
 
-                    <p>The code sample below reads EDIFACT REQOTE EDI files from a given FTP location and creates a Salesforce Opportunity.
+                    <p>The code sample below reads `EDIFACT REQOTE` EDI files from a given FTP location and creates a Salesforce opportunity.
                     </p>
 
                   </Col>

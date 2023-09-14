@@ -119,7 +119,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Kafka to Salesforce integration</title>
+        <title>Kafka and Salesforce</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -198,7 +198,7 @@ export default function Learn({ samples, content }) {
                             d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                           />
                         </svg>
-                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                        <p className="m-0 p-0">Back to pre-built integrations</p>
                       </div>
                     </Link>
                   </Col>
@@ -211,7 +211,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Kafka to Salesforce integration</h1>
+                <h1>Kafka and Salesforce</h1>
               </Container>
             </Col>
 
@@ -227,14 +227,14 @@ export default function Learn({ samples, content }) {
                     <p>In enterprises, business data like inventory levels, order statuses, or product prices change
                       constantly, and multiple entities require access to these updates. Utilizing messaging systems
                       like Kafka enables the real-time consumption of this information by multiple parties. Keeping
-                      Salesforce updated with frequently changing information, such as current pricing, is vital for
+                      Salesforce updated with frequently changing information such as current pricing is vital for the
                       sales staff. Ballerina&apos;s connectors and streaming capabilities facilitate this integration,
                       allowing seamless connections between Salesforce and streaming data sources. It ensures that
                       transformed and filtered data is constantly pushed to Salesforce, keeping all relevant information
                       current and accessible.</p>
 
                     <p>The example below demonstrates how to update Salesforce price books in real-time
-                      based on prices published to a Kafka topic.</p>
+                      based on the prices published to a Kafka topic.</p>
 
                   </Col>
                   <Col xs={12} lg={6} className="text-center">

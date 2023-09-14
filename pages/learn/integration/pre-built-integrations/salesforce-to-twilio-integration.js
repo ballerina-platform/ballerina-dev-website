@@ -140,7 +140,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Salesforce to Twilio integration</title>
+        <title>Salesforce and Twilio</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -220,7 +220,7 @@ export default function Learn({ samples, content }) {
                             d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                           />
                         </svg>
-                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                        <p className="m-0 p-0">Back to pre-built integrations</p>
                       </div>
                     </Link>
                   </Col>
@@ -233,7 +233,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Salesforce to Twilio integration</h1>
+                <h1>Salesforce and Twilio</h1>
               </Container>
             </Col>
 
@@ -247,8 +247,8 @@ export default function Learn({ samples, content }) {
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
                     <p>Sales-related events need to be acted upon as soon as possible. For example, when a new lead is
-                      received, sales staff need to evaluate it and get in contact with the lead immediately. When an
-                      opportunity is won, support staff need to be informed about it so that they can attend to any
+                      received, the sales staff need to evaluate it and get in contact with the lead immediately. When an
+                      opportunity is won, the support staff need to be informed about it so that they can attend to any
                       issues reported by the new customers without any delay. As all customer-related events are
                       captured in Salesforce, it is the best place to look for such events. Ballerina can listen for
                       any interested events in Salesforce and notify relevant employees over their preferred channels,

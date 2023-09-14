@@ -22,7 +22,7 @@ This tool generates a Ballerina package for a given FHIR implementation guide. T
 
 FHIR integration developers can leverage the generated package when transforming custom health data into FHIR format without referring to the specification.
 
-## Available command options
+## Command options
 
 The parameters that are available with the tool are listed below.
 

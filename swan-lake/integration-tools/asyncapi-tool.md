@@ -110,7 +110,7 @@ For example,
 $ bal asyncapi -i hello.yaml
 ```
 
-## Available command options
+## Command options
 
 The below command-line arguments can be used with the command.
 

@@ -70,23 +70,25 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
     >**Info:** The below schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`.
 
-    ```json
-    {
-        "name": "SimpleOrder",
-        "delimiters" : {"segment" : "~", "field" : "*"},
-        "segments" : {
-            "HDR": {
-                "tag" : "header",
-                "fields" : [{"tag" : "code"}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
-            },
-            "ITM": {
-                "tag" : "items",
-                "maxOccurances" : -1,
-                "fields" : [{"tag" : "code"}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
-            }
+```json
+{
+    "name": "SimpleOrder",
+    "delimiters" : {"segment" : "~", "field" : "*", "component": ":", "repetition": "^"},
+    "segments" : [
+        {
+            "code": "HDR",
+            "tag" : "header",
+            "fields" : [{"tag": "code"}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
+        },
+        {
+            "code": "ITM",
+            "tag" : "items",
+            "maxOccurances" : -1,
+            "fields" : [{"tag": "code"}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
         }
-    }
-    ```   
+    ]
+}
+```   
 
 2. Generate Ballerina records for the above EDI schema.
 

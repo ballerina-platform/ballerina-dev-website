@@ -112,8 +112,8 @@ const CustomMenu = React.forwardRef(
                                 </ul>
                             </div>
 
-                            <div className={styles.subSection}>
-                                <p>Case studies</p>
+                            <div className={styles.subSection} style={{marginRight:"20px"}}>
+                                <p style={{whiteSpace:"nowrap"}}>Case studies</p>
                                 <ul className="list-unstyled">
                                     {
                                         React.Children.toArray(children).filter(

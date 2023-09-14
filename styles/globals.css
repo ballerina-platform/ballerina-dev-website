@@ -1360,6 +1360,45 @@ table.cTopControlsContainer tbody {
     left: 260px;
 } */
 
+.caseStudies blockquote p::before {
+  content: "“";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+
+.caseStudies blockquote p::after {
+  content: "”";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-left: 5px;
+} 
+
+.caseStudies blockquote p {
+  font-size: 1.8rem !important;
+  font-weight: 200 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  /* margin-top: 10px; */
+  padding: 0;
+  border: none;
+      /* padding: 10px 20px !important; */
+    /* font-size: 17.5px; */
+    /* border-left: 5px solid #eee;*/
+}
+
+.mdContent.caseStudies blockquote {
+  font-size: 1.8rem !important;
+  font-weight: 200 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  padding: 0;
+  border: none;
+}
+
 /* ---------- lightbox -------------- */
 .lg-backdrop.in {
   opacity: 0.8 !important;

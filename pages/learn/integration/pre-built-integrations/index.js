@@ -166,7 +166,7 @@ export default function Learn() {
                   <SampleList
                       name="Gmail to Salesforce integration"
                       description="Create a lead for each new marketing email in Gmail"
-                      tags={["Salesforce", "Integration", "CRM", "Gmail"]}
+                      tags={["Salesforce", "Integration", "CRM", "Gmail", "OpenAI"]}
                   />
 
                   <SampleList
@@ -202,7 +202,7 @@ export default function Learn() {
                   <SampleList
                       name="FTP EDI message to Salesforce Opportunity"
                       description="Read EDI files from a given FTP location and create a Salesforce Opportunity"
-                      tags={["Hubspot", "Integration", "Google Contacts"]}
+                      tags={["FTP", "EDI", "Salesforce", "Integration", "CRM"]}
                   />
                 </Row>
               </Container>

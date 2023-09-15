@@ -200,7 +200,7 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="FTP EDI message to Salesforce opportunity"
+                      name="FTP EDI message to Salesforce Opportunity"
                       description="Read EDI files from a given FTP location and create a Salesforce opportunity"
                       tags={["FTP", "EDI", "Salesforce", "Integration", "CRM"]}
                   />

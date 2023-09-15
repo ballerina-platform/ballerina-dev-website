@@ -93,7 +93,7 @@ The solution includes the customizations below.
 
 MOSIP benefitted by using the Ballerina WebSubHub package in its current deployments as described below.
 
-- The [deployment in the Philippines](https://mosip.io/news-events/the-philippine-statistics-authority-psa-crosses-critical-milestones-for-the-philippine-identification-system-philsys) has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The hub, sans the Kafka integration, is live in production. The latest version was deployed in production in 2022.
+- The [deployment in the Philippines](https://mosip.io/news-events/the-philippine-statistics-authority-psa-crosses-critical-milestones-for-the-philippine-identification-system-philsys) has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The latest version was deployed in production in 2022.
 - Morocco has a [small deployment](https://www.mosip.io/news-events/mou-between-government-of-morocco-and-iiit-b), an on-premise deployment on Openshift with a few components on AWS.
 - There are more than eight internal deployments for dev, QA, testing, and production worldwide.
 

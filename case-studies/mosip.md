@@ -49,7 +49,7 @@ MOSIP needed an integration mechanism to communicate some key events. They used 
 
 ### Leveraging Ballerina WebSubHub
 
-The Ballerina [WebSubHub package/library](https://lib.ballerina.io/ballerina/websubhub/latest) provides APIs for a WebSubHub service and WebSub publisher client. A WebSubHub is an implementation that handles subscription requests and distributes the content to subscribers when the corresponding topic URL has been updated. The hub, shown in Diagram 2 below, is implemented using Ballerina, and event transmission happens over WebSub.
+The Ballerina [WebSubHub package](https://lib.ballerina.io/ballerina/websubhub/latest) provides APIs for a WebSubHub service and WebSub publisher client. A WebSubHub is an implementation that handles subscription requests and distributes the content to subscribers when the corresponding topic URL has been updated. The hub, shown in the diagram below, is implemented using Ballerina, and event transmission happens over WebSub.
 
 A single publisher is an implementation that advertises a topic and hub URL on one or more resource URLs. Subscribers are Java implementations since they must integrate with existing modules.
 
@@ -91,9 +91,9 @@ The solution includes the customizations below.
 
 ## Benefits
 
-MOSIP benefitted by using the Ballerina WebSubHub package in its current deployments as described below.
+MOSIP benefitted by using Ballerina in its current deployments as described below.
 
-- The [deployment in the Philippines](https://mosip.io/news-events/the-philippine-statistics-authority-psa-crosses-critical-milestones-for-the-philippine-identification-system-philsys) has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The hub, sans the Kafka integration, is live in production. The latest version is still undergoing testing and is expected to be deployed in production in 2022.
+- The [deployment in the Philippines](https://mosip.io/news-events/the-philippine-statistics-authority-psa-crosses-critical-milestones-for-the-philippine-identification-system-philsys) has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The latest version was deployed in production in 2022.
 - Morocco has a [small deployment](https://www.mosip.io/news-events/mou-between-government-of-morocco-and-iiit-b), an on-premise deployment on Openshift with a few components on AWS.
 - There are more than eight internal deployments for dev, QA, testing, and production worldwide.
 

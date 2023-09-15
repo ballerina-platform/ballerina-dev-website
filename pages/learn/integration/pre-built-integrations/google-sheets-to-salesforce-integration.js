@@ -249,7 +249,7 @@ export default function Learn({ samples, content }) {
                   </Col>
                   <Col xs={12} lg={6} className="text-center">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/google-sheets-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/google-sheets-to-salesforce-integration.png`} alt="Flow Diagram" style={{ width: "-webkit-fill-available" }} />
 
                   </Col>
                 </Row>
@@ -289,7 +289,7 @@ export default function Learn({ samples, content }) {
                   <Tab eventKey="diagram" title="Diagram">
 
                     <Col xs={12} lg={6} className="text-center">
-                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} alt="Position Ballerina" style={{ width: "-webkit-fill-available" }} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} alt="Sequence Diagram" style={{ width: "-webkit-fill-available" }} />
 
                     </Col>
 

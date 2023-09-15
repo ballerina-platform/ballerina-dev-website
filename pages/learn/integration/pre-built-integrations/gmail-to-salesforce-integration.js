@@ -369,7 +369,7 @@ export default function Learn({ samples, content }) {
                       In today&apos;s fast-paced business landscape, effective customer relationship management (CRM) has become a linchpin of success.
                       Salesforce, a leading CRM platform, empowers organizations to streamline their sales, marketing, and customer support efforts,
                       providing invaluable insights into customer interactions. However, to truly harness the full potential of Salesforce,
-                      seamless integration with essential communication tools like emailing clients is imperative.</p>
+                      seamless integration with essential communication tools like email clients is imperative.</p>
 
                     <p>The example below demonstrates how to integrate Gmail and Salesforce to create new leads in Salesforce for each new marketing email.
                     </p>

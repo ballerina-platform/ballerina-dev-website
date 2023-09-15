@@ -49,7 +49,7 @@ MOSIP needed an integration mechanism to communicate some key events. They used 
 
 ### Leveraging Ballerina WebSubHub
 
-The Ballerina [WebSubHub package/library](https://lib.ballerina.io/ballerina/websubhub/latest) provides APIs for a WebSubHub service and WebSub publisher client. A WebSubHub is an implementation that handles subscription requests and distributes the content to subscribers when the corresponding topic URL has been updated. The hub, shown in Diagram 2 below, is implemented using Ballerina, and event transmission happens over WebSub.
+The Ballerina [WebSubHub package](https://lib.ballerina.io/ballerina/websubhub/latest) provides APIs for a WebSubHub service and WebSub publisher client. A WebSubHub is an implementation that handles subscription requests and distributes the content to subscribers when the corresponding topic URL has been updated. The hub, shown in the diagram below, is implemented using Ballerina, and event transmission happens over WebSub.
 
 A single publisher is an implementation that advertises a topic and hub URL on one or more resource URLs. Subscribers are Java implementations since they must integrate with existing modules.
 

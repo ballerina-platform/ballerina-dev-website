@@ -62,7 +62,7 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
+                          <a href={`${prefix}/learn/integration-tutorials`} className={styles.titleLink}>
                             Integration tutorials
                           </a>
                         </p>

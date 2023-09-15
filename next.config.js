@@ -423,6 +423,14 @@ const nextConfig = {
       {
         source: `/learn/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
         destination: `/learn/integration/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
+      },
+      {
+        source: `/learn/integration-tutorials`,
+        destination: `/learn/integration/integration-tutorials`,
+      },
+      {
+        source: `/learn/integration-tutorials/:slug`,
+        destination: `/learn/integration/integration-tutorials/:slug`,
       }
     ];
   },

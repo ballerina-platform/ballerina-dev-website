@@ -13,11 +13,6 @@ logo: '/images/home-page/user-logos/wso2.svg'
 
 [WSO2](https://wso2.com/) offers a suite of application development and IAM technologies available as open source or SaaS. These technologies enable thousands of enterprises, including hundreds of the world’s largest corporations, top universities, and governments, to drive their digital efforts rapidly, efficiently, and cost-effectively. However, WSO2’s digital transformation team realized that they needed to modernize the company’s own internal applications to improve operational efficiency, collaboration, and productivity. To drive these efforts, the company leveraged the Ballerina language to achieve remarkable results and empower its workforce.
 
->Ballerina language has played a vital role as a key enabler in our digital transformation strategy of internal apps. The main reason why we chose Ballerina is its ability to facilitate seamless integrations with a vast number of third-party applications. The fully automated internal operations reduce the waste due to manual tasks, which resulted in focusing more on what truly matters for wso2: becoming the market leader of building great technologies.
-
-*Head of Digital Transformation Team,
-WSO2 LLC.*
-
 ## Challenges
 
 Previously, WSO2 had many manual operations involved in its internal applications based on multiple domains such as sales, finance, customer success, marketing, legal, and procurement and it was considerably time-consuming to build and release new applications using conventional technologies. Also, performing internal operations manually by maintaining Google Sheets and Google Forms, etc., caused delays, redundancies, and inefficiencies in various parts of the processes. Employees faced difficulties when accessing critical information from remote locations, hindering their ability to work flexibly and efficiently. Also, there were requirements from the different domains to connect to various third-party systems such as NetSuite, PeopleHR, and Salesforce, necessitating additional customizations.
@@ -57,3 +52,7 @@ WSO2 benefitted by using the Ballerina language for the digital transformation o
 ## Conclusion
 
 The flexibility provided by the Ballerina language to integrate with various third-party endpoints together with its other integration-focused features such as the support provided for cloud adoption, effective data storage mechanisms, and data analytics leveraged the digital transformation strategy of WSO2 internal apps. The combination of all these factors contributed towards achieving the established time, cost, and quality objectives in successfully completing the WSO2 internal apps digital transformation effort. 
+
+>Ballerina language has played a vital role as a key enabler in our digital transformation strategy of internal apps. The main reason why we chose Ballerina is its ability to facilitate seamless integrations with a vast number of third-party applications. The fully automated internal operations reduce the waste due to manual tasks, which resulted in focusing more on what truly matters for wso2: becoming the market leader of building great technologies.
+
+*Yasith Nakandala - Director Digital Operations, WSO2 LLC.*

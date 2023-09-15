@@ -48,9 +48,9 @@ export default function Users(props) {
 
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <a href="https://wso2.com/" target='_blank' rel="noreferrer" ><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
+              <a href="/case-studies/wso2" target='_blank' rel="noreferrer" ><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
               <a href="https://choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
-              <a href="https://mosip.io/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
+              <a href="/case-studies/mosip" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
               <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
 
           </Col>

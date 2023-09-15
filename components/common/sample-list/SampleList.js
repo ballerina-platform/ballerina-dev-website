@@ -24,37 +24,47 @@ import { prefix } from '../../../utils/prefix';
 
 export default function SampleList(props) {
   const href = props.name.replace(/\s+/g, '-').toLowerCase();
+
+  const cardBody = <Card.Body>
+    <a href={href} className={styles.cardLink}>
+      <h5 className="card-title">{props.name}</h5>
+    </a>
+    <p className="card-text">{props.description}</p>
+    <p className={`${styles.tagWrapper} card-text text-body-secondary`} style={{ display: "flex", flexWrap: "wrap" }}>
+      {props.tags.map((tag) => (<Badge className={styles.tag} key={tag}>{tag}</Badge>))}
+    </p>
+  </Card.Body>;
+
   return (
     <>
-      
+
       {/* <Row className="pageContentRow llanding" >
         <Col xs={12}>
           <Container> */}
-            <Row>
-              <Col xs={12}>
+      <Col xl={{ span: 6 }} style={{ display: "flex", flexWrap: "row wrap" }}>
 
-                <Card className={`${styles.card} mb-3`}>
-                  <Row className="g-0 align-items-center">
-                    <Col md={2} className='text-center'>
-                      <Card.Img src={`${prefix}/images/pre-built/${href}.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
-                    </Col>
-                    <Col md={10}>
-                      <Card.Body>
-                        <a href={href} className={styles.cardLink}>
-                          <h5 className="card-title">{props.name}</h5>
-                        </a>
-                        <p className="card-text">{props.description}</p>
-                        <p className={`${styles.tagWrapper} card-text text-body-secondary`} style={{display:"flex", flexWrap:"wrap"}}>
-                          {props.tags.map((tag) => (<Badge className={styles.tag} key={tag}>{tag}</Badge>))}
-                        </p>
-                      </Card.Body>
-                    </Col>
-                  </Row>
-                </Card>
+        <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
+          <Row className="g-0 align-items-center">
+            {
+              props.icon === false ?
+                <Col md={12}>
+                  {cardBody}
+                </Col>
+                :
+                <>
+                  <Col md={2} className='text-center'>
+                    <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  </Col>
+                  <Col md={10}>
+                    {cardBody}
+                  </Col>
+                </>
+            }
+          </Row>
+        </Card>
 
-              </Col>
-            </Row>
-          {/* </Container>
+      </Col>
+      {/* </Container>
         </Col>
       </Row> */}
 

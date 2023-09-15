@@ -83,15 +83,15 @@
                 {
                     "dirName": "Enterprise Integration Patterns (EIP)",
                     "level": 2,
-                    "position": 0,
+                    "position": 3,
                     "isDir": false,
-                    "url": "/learn/patterns",
+                    "url": "/learn/enterprise-integration-patterns",
                     "id": "patterns"
                 },
                 {
                     "dirName": "Pre-built integrations",
                     "level": 2,
-                    "position": 0,
+                    "position": 2,
                     "isDir": false,
                     "url": "/learn/pre-built-integrations",
                     "id": "pre-built-integrations"

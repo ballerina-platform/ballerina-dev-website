@@ -1,0 +1,31 @@
+.lightThumb {
+    width: 50px;
+      height: 50px;
+      display: block;
+      position: relative;
+      z-index: 16;
+      background-image: url(/images/zoom.svg);
+  }
+
+  
+
+@media (max-width: 768px) {
+    .lightThumb {
+        top: -107px;
+      left: 131px;
+    }
+}
+
+@media (min-width: 576px) {
+    .lightThumb {
+        top: -152px;
+      left: 222px;
+    }
+}
+
+@media (min-width: 768px) {
+    .lightThumb {
+        top: -179px;
+      left: 295px;
+    }
+}

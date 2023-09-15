@@ -1360,7 +1360,7 @@ table.cTopControlsContainer tbody {
     left: 260px;
 } */
 
-.caseStudies blockquote p::before {
+.caseStudies blockquote em::before {
   content: "“";
   font-size: 3rem;
   font-weight: 400;
@@ -1369,7 +1369,7 @@ table.cTopControlsContainer tbody {
   margin-top: 20px;
 }
 
-.caseStudies blockquote p::after {
+.caseStudies blockquote em::after {
   content: "”";
   font-size: 3rem;
   font-weight: 400;
@@ -1377,7 +1377,7 @@ table.cTopControlsContainer tbody {
   margin-left: 5px;
 } 
 
-.caseStudies blockquote p {
+.caseStudies blockquote em {
   font-size: 1.8rem !important;
   font-weight: 200 !important;
   font-style: normal;
@@ -1396,7 +1396,9 @@ table.cTopControlsContainer tbody {
   font-style: normal;
   line-height: 2.5rem !important;
   padding: 0;
-  border: none;
+  border: 1px solid #eeee;
+  box-shadow: 1px 1px #eee;
+  margin-top: 30px;
 }
 
 /* ---------- lightbox -------------- */

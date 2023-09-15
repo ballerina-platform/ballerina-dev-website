@@ -670,14 +670,15 @@ ul.eventsTabs {
   border: none;
 }
 
-.eventsTabs .nav-link,
-.eventsTabs .nav-link:hover,
+.eventsTabs .nav-link, .preBuilt .nav-link,
+.eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
   border: none;
 }
 
 .eventsTabs li button,
+.preBuilt li button,
 .codeTabs li button {
   color: #20b6b0;
   cursor: default;
@@ -687,6 +688,8 @@ ul.eventsTabs {
 
 .eventsTabs li button:focus,
 .eventsTabs li button:hover,
+.preBuilt li button:focus,
+.preBuilt li button:hover,
 .codeTabs li button:focus,
 .codeTabs li button:hover {
   color: #57595d !important;
@@ -698,6 +701,9 @@ ul.eventsTabs {
 .eventsTabs li button[aria-selected="true"],
 .eventsTabs li button[aria-selected="true"]:focus,
 .eventsTabs li button[aria-selected="true"]:hover,
+.preBuilt li button[aria-selected="true"],
+.preBuilt li button[aria-selected="true"]:focus,
+.preBuilt li button[aria-selected="true"]:hover,
 .codeTabs li button[aria-selected="true"],
 .codeTabs li button[aria-selected="true"]:focus,
 .codeTabs li button[aria-selected="true"]:hover {
@@ -1341,6 +1347,47 @@ table.cTopControlsContainer tbody {
 .backToLanding:hover p {
   font-weight: 400;
   color: #57595d;
+}
+
+.caseStudies blockquote em::before {
+  content: "“";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+
+.caseStudies blockquote em::after {
+  content: "”";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-left: 5px;
+} 
+
+.caseStudies blockquote em {
+  font-size: 1.3rem !important;
+  font-weight: 300 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  /* margin-top: 10px; */
+  padding: 0;
+  border: none;
+      /* padding: 10px 20px !important; */
+    /* font-size: 17.5px; */
+    /* border-left: 5px solid #eee;*/
+}
+
+.mdContent.caseStudies blockquote {
+  font-size: 1.8rem !important;
+  font-weight: 200 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  padding: 0;
+  border: 1px solid #eeee;
+  box-shadow: 1px 1px #eee;
+  margin-top: 30px;
 }
 
 /* ----------- draggable code blocks -------------- */

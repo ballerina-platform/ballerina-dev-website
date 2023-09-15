@@ -144,7 +144,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Shopify and Outlook</title>
+        <title>Shopify to Outlook integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -237,7 +237,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Shopify and Outlook</h1>
+                <h1>Shopify to Outlook integration</h1>
               </Container>
             </Col>
 

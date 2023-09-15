@@ -123,7 +123,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>HubSpot Contacts and Google Contacts</title>
+        <title>HubSpot contacts to Google Contacts integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -217,7 +217,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>HubSpot Contacts and Google Contacts</h1>
+                <h1>HubSpot contacts to Google Contacts integration</h1>
               </Container>
             </Col>
 

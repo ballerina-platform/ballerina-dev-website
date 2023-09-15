@@ -144,7 +144,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>GitHub and email</title>
+        <title>GitHub to email integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -237,7 +237,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>GitHub and email</h1>
+                <h1>GitHub to email integration</h1>
               </Container>
             </Col>
 

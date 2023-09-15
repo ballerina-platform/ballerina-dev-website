@@ -141,66 +141,66 @@ export default function Learn() {
                 <Row>
                 {/* Left Column */}
                   <SampleList
-                      name="Google Sheets and Salesforce"
+                      name="Google Sheets to Salesforce integration"
                       description="Create a new contact in Salesforce for each new row added to a Google Sheet"
                       tags={["Google Sheets", "Salesforce", "Integration", "CRM"]}
                   />
 
                   <SampleList
-                      name="GitHub and email"
+                      name="GitHub to email integration"
                       description="Generate a GitHub issue summary report and email it to a specified email address"
                       tags={["GitHub", "Integration", "Email"]}
                   />
                   <SampleList
-                      name="Google Drive and OneDrive"
+                      name="Google Drive to OneDrive integration"
                       description="Sync Google Drive files to Microsoft OneDrive"
                       tags={["OneDrive", "Integration", "Google Drive"]}
                   />
 
                   <SampleList
-                      name="MySQL and Salesforce"
+                      name="MySQL to Salesforce integration"
                       description="Create a new product in Salesforce for each new record added to a MySQL table"
                       tags={["Salesforce", "Integration", "CRM", "MySQL"]}
                   />
 
                   <SampleList
-                      name="Gmail and Salesforce"
+                      name="Gmail to Salesforce integration"
                       description="Create a lead for each new marketing email in Gmail"
                       tags={["Salesforce", "Integration", "CRM", "Gmail", "OpenAI"]}
                   />
 
                   <SampleList
-                      name="News API and email"
+                      name="News to and email integration"
                       description="Fetch BBC top headlines and send as an email to the recipient"
                       tags={["NewsAPI", "Integration", "Email"]}
                   />
 
                   <SampleList
-                      name="Shopify and Outlook"
+                      name="Shopify to Outlook integration"
                       description="Send a welcome email using Microsoft Outlook to new Shopify customers"
                       tags={["Outlook", "Integration", "Shopify"]}
                   />
 
                   <SampleList
-                      name="Kafka and Salesforce"
+                      name="Kafka to Salesforce integration"
                       description="Update price book in Salesforce for each new message in Kafka"
                       tags={["Kafka", "Salesforce", "Integration", "CRM"]}
                   />
 
                   <SampleList
-                      name="Salesforce and Twilio"
+                      name="Salesforce to Twilio integration"
                       description="Send an SMS for each new lead in Salesforce"
                       tags={["Salesforce", "Integration", "CRM", "Twilio"]}
                   />
 
                   <SampleList
-                      name="HubSpot contacts and Google Contacts"
+                      name="HubSpot contacts to Google Contacts integration"
                       description="Sync HubSpot Contacts with Google Contacts"
                       tags={["HubSpot", "Integration", "Google Contacts"]}
                   />
 
                   <SampleList
-                      name="FTP EDI messages and Salesforce opportunities"
+                      name="FTP EDI messages to Salesforce opportunities integration"
                       description="Read EDI files from a given FTP location and create a Salesforce opportunity"
                       tags={["FTP", "EDI", "Salesforce", "Integration", "CRM"]}
                   />

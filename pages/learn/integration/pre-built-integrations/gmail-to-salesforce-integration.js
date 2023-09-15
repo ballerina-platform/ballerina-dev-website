@@ -259,7 +259,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Gmail and Salesforce</title>
+        <title>Gmail to Salesforce integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -352,7 +352,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Gmail and Salesforce</h1>
+                <h1>Gmail to Salesforce integration</h1>
               </Container>
             </Col>
 

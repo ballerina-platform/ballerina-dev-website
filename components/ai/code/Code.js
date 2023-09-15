@@ -232,7 +232,7 @@ export default function UseCases(props) {
                                             </div>
                                         </Tab>
                                         <Tab eventKey="diagram" title="Diagram">
-                                            <Image src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
+                                            <img src={`${prefix}/images/ai-diagram.png`} width={520} height={548} alt="Diagram" />
                                         </Tab>
                                     </Tabs>
                                 </div>

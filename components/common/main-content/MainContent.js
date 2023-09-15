@@ -20,6 +20,7 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkExternalLinks from 'remark-external-links'
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -259,7 +260,7 @@ export default function MainContent(props) {
           return <div className='mdTable'><table {...props}>{children}</table></div>
         }
       }}
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm, remarkExternalLinks]}
       rehypePlugins={[rehypeRaw]}
     >
       {content}

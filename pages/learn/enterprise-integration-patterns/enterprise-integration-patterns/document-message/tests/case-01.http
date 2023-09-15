@@ -1,0 +1,6 @@
+POST http://localhost:8080/crm/bulkUploadLeads
+
+{
+    "org": "4564567",
+    "filename": "leads-2023-1-1.csv"
+}

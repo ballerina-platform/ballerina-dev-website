@@ -230,7 +230,7 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Synchronizing contact storages across platforms like smart phones, emails, and social networks
+                    <p>Synchronizing contact storages across platforms like smartphones, emails, and social networks
                       ensures seamless organization and communication. By keeping contacts updated and consistent,
                       synchronization saves time and prevents errors, enabling quick and reliable interactions with
                       friends, colleagues, and clients.</p>

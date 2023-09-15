@@ -206,7 +206,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>FTP EDI messages to Salesforce opportunities integration</title>
+        <title>FTP EDI message to Salesforce opportunity</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -300,7 +300,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>FTP EDI messages to Salesforce opportunities integration</h1>
+                <h1>FTP EDI message to Salesforce opportunity</h1>
               </Container>
             </Col>
 
@@ -317,8 +317,8 @@ export default function Learn({ samples, content }) {
                       EDI-based B2B channels. On the other hand, sales and customer details related to such transactions
                       are maintained in Salesforce. Therefore, it&apos;s critical to bridge Salesforce with B2B channels in
                       order to automate the sales processes. For example, it is possible to update the status and
-                      details of opportunities in Salesforce based on the exchange of EDI messages like `EDIFACT REQOTE
-                      (Request for quotation)`, `EDIFACT QUOTES (Quotation response)`, `EDIFACT ORDERS (Purchase order)`, etc.
+                      details of opportunities in Salesforce based on the exchange of EDI messages like `EDIFACT REQOTE`
+                      (Request for quotation), `EDIFACT QUOTES` (Quotation response), `EDIFACT ORDERS` (Purchase order), etc.
                       Such integrations will eliminate the delays and inconsistencies in updating Salesforce and provide
                       up-to-date information for sales staff and decision makers.
                     </p>

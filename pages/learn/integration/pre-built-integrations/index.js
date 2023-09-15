@@ -170,7 +170,7 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="News to and email integration"
+                      name="News API to email integration"
                       description="Fetch BBC top headlines and send as an email to the recipient"
                       tags={["NewsAPI", "Integration", "Email"]}
                   />
@@ -200,7 +200,7 @@ export default function Learn() {
                   />
 
                   <SampleList
-                      name="FTP EDI messages to Salesforce opportunities integration"
+                      name="FTP EDI message to Salesforce opportunity"
                       description="Read EDI files from a given FTP location and create a Salesforce opportunity"
                       tags={["FTP", "EDI", "Salesforce", "Integration", "CRM"]}
                   />

@@ -208,7 +208,7 @@ export default function Learn({ samples, content }) {
                             d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                           />
                         </svg>
-                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                        <p className="m-0 p-0">Back to pre-built integrations</p>
                       </div>
                     </Link>
                   </Col>
@@ -235,7 +235,7 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Data about products, customers, and sales transactions is often scattered across various systems,
+                    <p>Data about products, customers, and sales transactions are often scattered across various systems,
                       databases, and business units. Extracting this information and integrating it into Salesforce
                       is essential for a unified view. Ballerina, with its rich set of connectors and data
                       handling capabilities, can connect to multiple data sources and fetch data in any format.

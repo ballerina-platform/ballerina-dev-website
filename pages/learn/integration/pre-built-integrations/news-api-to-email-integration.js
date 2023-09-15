@@ -115,7 +115,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>News API to Email integration</title>
+        <title>News API to email integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -195,7 +195,7 @@ export default function Learn({ samples, content }) {
                 d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
               />
             </svg>
-            <p className="m-0 p-0">Back to Pre-built integrations</p>
+            <p className="m-0 p-0">Back to pre-built integrations</p>
           </div>
         </Link>
       </Col>
@@ -209,7 +209,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>News API to Email integration</h1>
+                <h1>News API to email integration</h1>
               </Container>
             </Col>
 
@@ -222,12 +222,12 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Integrating news headlines directly into Gmail through the NewsAPI and email integration carries
+                    <p>Integrating news headlines directly into Gmail through the News API and email integration carries
                       significant advantages in today&apos;s fast-paced information landscape. By seamlessly delivering
                       relevant and timely news updates within the familiar interface of Gmail, users can effortlessly
                       stay informed without the need to toggle between multiple platforms.</p>
 
-                    <p>The example below demonstrates how to integrate the news API to receive an email containing BBC headlines.
+                    <p>The example below demonstrates how to integrate the News API to receive an email containing BBC headlines.
                     </p>
 
                   </Col>

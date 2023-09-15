@@ -123,7 +123,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Hubspot Contacts to Google Contacts integration</title>
+        <title>HubSpot contacts to Google Contacts integration</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -203,7 +203,7 @@ export default function Learn({ samples, content }) {
                             d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
                           />
                         </svg>
-                        <p className="m-0 p-0">Back to Pre-built integrations</p>
+                        <p className="m-0 p-0">Back to pre-built integrations</p>
                       </div>
                     </Link>
                   </Col>
@@ -217,7 +217,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>Hubspot Contacts to Google Contacts integration</h1>
+                <h1>HubSpot contacts to Google Contacts integration</h1>
               </Container>
             </Col>
 
@@ -230,12 +230,12 @@ export default function Learn({ samples, content }) {
               <Container>
                 <Row>
                   <Col xs={12} lg={6} style={{ fontSize: "18px" }}>
-                    <p>Synchronizing contact storages across platforms like smartphones, email, and social networks
+                    <p>Synchronizing contact storages across platforms like smartphones, emails, and social networks
                       ensures seamless organization and communication. By keeping contacts updated and consistent,
                       synchronization saves time and prevents errors, enabling quick and reliable interactions with
                       friends, colleagues, and clients.</p>
 
-                    <p>The example below demonstrates how to sync Hubspot and Google Contacts using Ballerina integration features.
+                    <p>The example below demonstrates how to sync HubSpot and Google Contacts using Ballerina integration features.
                     </p>
 
                   </Col>

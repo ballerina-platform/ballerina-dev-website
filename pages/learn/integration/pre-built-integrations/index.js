@@ -129,7 +129,7 @@ export default function Learn() {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Pre-built integration samples using Ballerina language. These samples are built using Ballerina connectors and can be used as a starting point for your integration use cases.
+                  These pre-built integration samples are built using Ballerina connectors and can be used as a starting point for your integration use cases.
                 </p>
               </Container>
             </Col>
@@ -195,7 +195,7 @@ export default function Learn() {
 
                   <SampleList
                       name="HubSpot contacts to Google Contacts integration"
-                      description="Sync Hubspot Contacts with Google Contacts"
+                      description="Sync HubSpot Contacts with Google Contacts"
                       tags={["HubSpot", "Integration", "Google Contacts"]}
                   />
 

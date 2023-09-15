@@ -66,7 +66,7 @@ public function main() returns error? {
         QuoteRequest quoteRequest = check transformQuoteRequest(quote);
 
         // Get the corresponding account Id and oppurtunity Id from Salesforce.
-        // Create a new opportunity if an opportunity with the given name does not exist. 
+        // Create a new Opportunity if an Opportunity with the given name does not exist. 
         stream<Id, error?> accQuery = check salesforce->query(
             string \`SELECT Id FROM Account WHERE Name = '\${quoteRequest.accountName}'\`);
         record {|Id value;|}? account = check accQuery.next();
@@ -91,7 +91,7 @@ public function main() returns error? {
             oppId = existingOpp.value.Id;
         }
 
-        // Create opportunity line items for each item in the quote.
+        // Create Opportunity line items for each item in the quote.
         foreach ItemData item in quoteRequest.itemData {
             stream<PriceBookEntry, error?> query = check salesforce->query(
               string \`SELECT UnitPrice FROM PricebookEntry WHERE Pricebook2Id = '01s6C000000UN4PQAW' AND Product2Id = '\${item.itemId}'\`);
@@ -206,7 +206,7 @@ export default function Learn({ samples, content }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>FTP EDI message to Salesforce opportunity</title>
+        <title>FTP EDI message to Salesforce Opportunity</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -300,7 +300,7 @@ export default function Learn({ samples, content }) {
 
             <Col xs={12}>
               <Container>
-                <h1>FTP EDI message to Salesforce opportunity</h1>
+                <h1>FTP EDI message to Salesforce Opportunity</h1>
               </Container>
             </Col>
 
@@ -323,7 +323,7 @@ export default function Learn({ samples, content }) {
                       up-to-date information for sales staff and decision makers.
                     </p>
 
-                    <p>The code sample below reads `EDIFACT REQOTE` EDI files from a given FTP location and creates a Salesforce opportunity.
+                    <p>The code sample below reads `EDIFACT REQOTE` EDI files from a given FTP location and creates a Salesforce Opportunity.
                     </p>
 
                   </Col>

@@ -59,7 +59,7 @@ export default function Intro() {
           <p className={styles.desItem}><BsCheck className={styles.check}/><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
           <p className={styles.desItem}><BsCheck className={styles.check}/><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
           <p className={styles.desItem}><BsCheck className={styles.check}/><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2021</span></p>
+          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2022</span></p>
 
            
 

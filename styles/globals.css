@@ -267,14 +267,15 @@ a {
   overflow-x: auto;
 }
 
-.mdContent table {
+.mdContent table, .patternContent table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
 .mdContent table td, .policyContent table td,
-.mdContent table th, .policyContent table th {
+.mdContent table th, .policyContent table th,
+.patternContent table td, .patternContent table th {
   border: 1px solid #e1e4e5 !important;
 }
 
@@ -283,7 +284,8 @@ a {
 }
 
 .mdContent table th, .policyContent table th,
-.mdContent table td, .policyContent table td {
+.mdContent table td, .policyContent table td,
+.patternContent table td, .patternContent table th {
   padding: 10px;
 }
 
@@ -668,14 +670,15 @@ ul.eventsTabs {
   border: none;
 }
 
-.eventsTabs .nav-link,
-.eventsTabs .nav-link:hover,
+.eventsTabs .nav-link, .preBuilt .nav-link,
+.eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
   border: none;
 }
 
 .eventsTabs li button,
+.preBuilt li button,
 .codeTabs li button {
   color: #20b6b0;
   cursor: default;
@@ -685,6 +688,8 @@ ul.eventsTabs {
 
 .eventsTabs li button:focus,
 .eventsTabs li button:hover,
+.preBuilt li button:focus,
+.preBuilt li button:hover,
 .codeTabs li button:focus,
 .codeTabs li button:hover {
   color: #57595d !important;
@@ -696,6 +701,9 @@ ul.eventsTabs {
 .eventsTabs li button[aria-selected="true"],
 .eventsTabs li button[aria-selected="true"]:focus,
 .eventsTabs li button[aria-selected="true"]:hover,
+.preBuilt li button[aria-selected="true"],
+.preBuilt li button[aria-selected="true"]:focus,
+.preBuilt li button[aria-selected="true"]:hover,
 .codeTabs li button[aria-selected="true"],
 .codeTabs li button[aria-selected="true"]:focus,
 .codeTabs li button[aria-selected="true"]:hover {
@@ -1264,6 +1272,16 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 65px;
 }
 
+.llanding .intro a {
+  color: #20b6b0;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.llanding .intro a:hover {
+  color: #57595d;
+}
+
 .integration h3 {
   scroll-margin-top: 65px;
 }
@@ -1302,6 +1320,74 @@ table.cTopControlsContainer tbody {
 .usecases .wrap-page-content {
   padding-bottom: 0 !important;
   font-size: 18px;
+}
+
+.backToLanding {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+}
+
+.backToLanding * {
+  margin: 16px 16px;
+  cursor: pointer;
+}
+
+.backToLanding p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #20b6b0;
+}
+
+.backToLanding:hover svg {
+  fill: #57595d;
+}
+
+.backToLanding:hover p {
+  font-weight: 400;
+  color: #57595d;
+}
+
+.caseStudies blockquote em::before {
+  content: "“";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-right: 5px;
+  margin-top: 20px;
+}
+
+.caseStudies blockquote em::after {
+  content: "”";
+  font-size: 3rem;
+  font-weight: 400;
+  color: #20b6b0;
+  margin-left: 5px;
+} 
+
+.caseStudies blockquote em {
+  font-size: 1.3rem !important;
+  font-weight: 300 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  /* margin-top: 10px; */
+  padding: 0;
+  border: none;
+      /* padding: 10px 20px !important; */
+    /* font-size: 17.5px; */
+    /* border-left: 5px solid #eee;*/
+}
+
+.mdContent.caseStudies blockquote {
+  font-size: 1.8rem !important;
+  font-weight: 200 !important;
+  font-style: normal;
+  line-height: 2.5rem !important;
+  padding: 0;
+  border: 1px solid #eeee;
+  box-shadow: 1px 1px #eee;
+  margin-top: 30px;
 }
 
 /* ----------- draggable code blocks -------------- */

@@ -41,32 +41,24 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Install Ballerina, set it all up, and take it for a spin.</p>
                       </div>
-                      {/* <div className={styles.content}>
-                        <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Enterprise Integration Patterns (EIP)
-                          </a>
-                        </p>
-                        <p className={styles.description}>Learn how common EIPs can be implemented using Ballerina.</p>
-                      </div> */}
 
-                      {/* <div className={styles.content}>
+                      <div className={styles.content}>
                         <p className={styles.title}>
                           <a href={`${prefix}/learn/pre-built-integrations/`} className={styles.titleLink}>
                             Pre-built integrations
                           </a>
                         </p>
                         <p className={styles.description}>Explore and try out a series of guided integration examples.</p>
-                      </div> */}
+                      </div>
 
-                      {/* <div className={styles.content}>
+                      <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn2/#`} className={styles.titleLink}>
-                            Integration tutorials
+                          <a href={`${prefix}/learn/enterprise-integration-patterns/`} className={styles.titleLink}>
+                            Enterprise integration patterns
                           </a>
                         </p>
-                        <p className={styles.description}>Explore and try out a series of guided integration tutorials.</p>
-                      </div> */}
+                        <p className={styles.description}>Usage patterns for implementing robust integrations.</p>
+                      </div>
 
                       <div className={styles.content}>
                         <p className={styles.title}>

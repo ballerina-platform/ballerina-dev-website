@@ -1,0 +1,8 @@
+[package]
+org = "baleip"
+name = "mock_http"
+version = "0.1.0"
+distribution = "2201.7.0"
+
+[build-options]
+observabilityIncluded = false

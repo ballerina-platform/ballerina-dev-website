@@ -52,7 +52,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Analysis in the `init` method of an `isolated` object has been updated to disallow invalid transferring in/out of values that violated the isolated root invariant.
+- Analysis of the `init` method of an `isolated` object has been updated to disallow invalid transferring in/out of values that violated the isolated root invariant.
 
     ```ballerina
     type Node record {|
@@ -95,7 +95,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     xml x = check m.a; // Compilation error now.
     ```
 
-- Ballerina interoperability implementation may have an impact with the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the Java 17 release notes.
+- The Ballerina interoperability implementation may be impacted by the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
 
 - A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
 
@@ -112,25 +112,25 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   }
   ```
 
-- A bug that resulted incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
-  
-- ```ballerina
-  function filterEmployeesByDepartment(map<Employee> employees, string department) {
-    var result = from var e in employees // Compilation error now.
-        where e.department == department
-        select e.name;
-  }
-  ```
+- A bug that resulted in incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
+    
+    ```ballerina
+    function filterEmployeesByDepartment(map<Employee> employees, string department) {
+        var result = from var e in employees // Compilation error now.
+            where e.department == department
+            select e.name;
+    }
+    ```
 
 - A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
- 
-- ```ballerina
-  function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
-    int total = from var {department, salary} in strm // Compilation error now.
-        where department == dept
-        collect sum(salary);
-  }
-  ```
+    
+    ```ballerina
+    function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
+        int total = from var {department, salary} in strm // Compilation error now.
+            where department == dept
+            collect sum(salary);
+    }
+    ```
 
 - A bug related to deciding the types of numeric literals has been fixed.
 
@@ -258,10 +258,12 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
 
-    ```ballerina
-    // `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the referred type of the type reference type, which will be an intersection type, and then retrieving the effective type of the intersection type.
-    type A int[] & readonly;
-    ```
+```ballerina
+// `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the 
+// referred type of the type reference type, which will be an intersection type, and then, 
+// retrieving the effective type of the intersection type.
+type A int[] & readonly;
+```
 
 #### Ballerina Profiler (experimental)
 
@@ -275,7 +277,7 @@ $ bal profile
 
 - The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
 
->**Note:** This is an experimental feature, which supports only a limited set of functionality.
+    >**Note:** This is an experimental feature, which supports only a limited set of functionality.
 
 ### Improvements
 
@@ -285,7 +287,7 @@ Ballerina now supports code compilation and execution with Java 17.
 
 #### Support large list and mapping constructors
 
-The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger in size.
+The number of members supported in a list constructor expression, and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger.
 
 For example, the following array constructor is now supported.
 
@@ -387,11 +389,11 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### Language Server
 
-- Add custom completions for HTTP services.
+- Added custom completions for HTTP services.
 
 #### CLI
 
-- Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from the Ballerina Central and are managed using the `bal tool` command. For more information, see [Tool commands](https://ballerina.io/learn/cli-documentation/cli-commands/#tool-commands).
+- Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from Ballerina Central and are managed using the `bal tool` command. For more information, see [CLI commands](/learn/cli-commands/).
 
 #### OpenAPI tool
 - Added support to generate Ballerina client and service declarations from OpenAPI v3.1.x definitions.
@@ -400,19 +402,19 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### Language Server
 
-- Suggest Ballerina Central packages when they are partially typed.
-- Improve sorting in the record type descriptor node context.
-- Introduce a code action to add local module dependencies to the `Ballerina.toml` file.
-- Introduce a code action to change the variable type of a `let` expression.
-- Introduce a code action to create a function for the expression of a `select` clause.
-- Improve completions in the service declaration node context.
+- Improved the search to suggest Ballerina Central packages when they are partially typed.
+- Improved sorting in the record type descriptor node context.
+- Introduced a code action to add local module dependencies to the `Ballerina.toml` file.
+- Introduced a code action to change the variable type of a `let` expression.
+- Introduced a code action to create a function for the expression of a `select` clause.
+- Improved completions in the service declaration node context.
 - Improved the LS simulator.
 
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repositories below.
 
-- [Language Server](https://github.com/orgs/ballerina-platform/projects/356/views/55?filterQuery=task-approved%3AYes+release%3A%22Swan+Lake+-+U8%22+subteam%3ALS+label%3A%22Type%2FBug%22+status%3ADone)
+- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.8.0%22+is%3Aclosed)
 
 ## Ballerina packages updates

@@ -110,7 +110,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                 <Col xs={12} sm={10} className="mdContent">
                 <Row>
                   <Col xs={12} className="patternContent" style={{marginBottom:"20px;"}}>
-                    <Link href="/learn/integrations-tutorials" passHref>
+                    <Link href="/learn/integration-tutorials" passHref>
                       <div className="backToLanding">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

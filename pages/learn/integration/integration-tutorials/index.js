@@ -141,44 +141,44 @@ export default function Learn() {
                 <Row>
                   {/* Left Column */}
                   <SampleList
-                    name="Write a RESTful API with Ballerina"
-                    description="Create a new contact in Salesforce for each new row added to a Google Sheet"
-                    tags={["Google Sheets", "Salesforce", "Integration", "CRM"]}
+                    name="Sending a message to a service"
+                    description="Use an HTTP client in a service to send a message to another service"
+                    tags={["HTTP client", "REST API", "data binding", "integration"]}
                     icon={false}
                   />
 
                   <SampleList
-                    name="GitHub to email integration"
-                    description="Generate a GitHub issue summary report and email it to a specified email address"
-                    tags={["GitHub", "Integration", "Email"]}
+                    name="Routing requests based on message content"
+                    description="Route requests based on message content"
+                    tags={["content based routing", "integration"]}
                     icon={false}
                   />
 
                   <SampleList
-                    name="Google Drive to OneDrive integration"
-                    description="Sync Google Drive files to Microsoft OneDrive"
-                    tags={["OneDrive", "Integration", "Google Drive"]}
+                    name="Service orchestration"
+                    description="Integrate several services and expose them as a single service."
+                    tags={["HTTP client", "REST API", "data binding", "integration", "service orchestration"]}
                     icon={false}
                   />
 
                   <SampleList
-                    name="MySQL to Salesforce integration"
-                    description="Create a new product in Salesforce for each new record added to a MySQL table"
-                    tags={["Salesforce", "Integration", "CRM", "MySQL"]}
+                    name="Translating message formats"
+                    description="Translating message formats"
+                    tags={["integration"]}
                     icon={false}
                   />
 
                   <SampleList
-                    name="Gmail to Salesforce integration"
-                    description="Create a lead for each new marketing email in Gmail"
-                    tags={["Salesforce", "Integration", "CRM", "Gmail", "OpenAI"]}
+                    name="Connecting Web APIs/Cloud Services"
+                    description="Connectin web APIs/cloud services"
+                    tags={["integration"]}
                     icon={false}
                   />
 
                   <SampleList
-                    name="News API to email integration"
-                    description="Fetch BBC top headlines and send as an email to the recipient"
-                    tags={["NewsAPI", "Integration", "Email"]}
+                    name="File processing"
+                    description="File processing"
+                    tags={["file processing", "persistence", "integration"]}
                     icon={false}
                   />
 

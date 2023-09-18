@@ -1,0 +1,5 @@
+tagline: Capture message information in a central location
+desc: Message store captures information about each message in a central location.
+helps: Ballerina can send messages to multiple channels during a single service invocation. Ballerina's concurrency model helps to send messages asynchronously without blocking the main channel. The wildcard binding pattern is used to indicate a 'fire-and-forget' invocation, where the response is not used.
+tags: ["Message Store", "Message Channel", "Wire Tap", "Message Endpoint", "Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageStore.html

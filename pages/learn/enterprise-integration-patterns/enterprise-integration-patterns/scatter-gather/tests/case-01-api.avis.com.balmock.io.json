@@ -1,0 +1,24 @@
+{
+    "status": "success",
+    "timestamp": "2023-07-29T10:10:10Z",
+    "result": [
+        {
+            "vendor": "Avis",
+            "carType": "Chevy Uplander",
+            "price": "USD 229.84",
+            "resultLink": "http://avis.com/quote?id=95900",
+            "status": "Available",
+            "insuranceDetails": {
+                "provider": "XYZ Insurance",
+                "policyNumber": "ABC12345",
+                "coverageType": "Comprehensive"
+            },
+            "disclaimers": [
+                "Terms and conditions apply."
+            ],
+            "uuid": [
+                "c71a7aef-8c3f-4c7c-8796-1a57dd36567e"
+            ]
+        }
+    ]
+}

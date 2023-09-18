@@ -1,0 +1,8 @@
+{
+    "parentHandlingUnitUUID": "12345678-abc",
+    "StockItemUUID": "87654321-dcba-4321-hgfe-123456789876",
+    "EWMWarehouse": "Warehouse123",
+    "HandlingUnitNumber": "HU-789",
+    "ShelfLifeExpirationDate": "2023-12-31",
+    "CountryOfOrigin": "USA"
+}

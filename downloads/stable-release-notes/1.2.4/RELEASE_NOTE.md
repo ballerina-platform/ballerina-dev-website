@@ -26,5 +26,5 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - SASL/PLAIN authentication support for Kafka module
 
 #### Dev Tools
-- Improved API documentation and error mappings in the Bindgen Tool
+- Improved API documentation and error mappings in the Bindgen tool
 

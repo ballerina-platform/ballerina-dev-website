@@ -509,11 +509,19 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
-                            Java interoperability guide
+                          <a href={`${prefix}/learn/the-bindgen-tool`} className={styles.titleLink}>
+                            The BindGen tool
                           </a>
                         </p>
-                        <p className={styles.description}>Instructions on the supported Java interoperability features.</p>
+                        <p className={styles.description}>The CLI tool that generates Ballerina bindings for Java classes.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-ffi`} className={styles.titleLink}>
+                            Ballerina FFI
+                          </a>
+                        </p>
+                        <p className={styles.description}>List of language features that enable Ballerina developers to call foreign code written in other programming languages.</p>
                       </div>
                     </div>
                   </div>

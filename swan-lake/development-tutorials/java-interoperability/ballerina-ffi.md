@@ -1,14 +1,14 @@
 ---
 layout: ballerina-java-interoperability-left-nav-pages-swanlake
 title: Ballerina FFI
-description: The reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
+description: This is a reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
 keywords: ballerina, programming language, ffi, foreign function invocation
 permalink: /learn/java-interoperability/ballerina-ffi/
 active: ballerina-ffi
-intro: The reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
+intro: This is a reference guide on the list of language features that enable Ballerina developers to call foreign code written in other programming languages.
 ---
 
-Let's look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler allows you to call any `C` Code.
+For example, while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler allows you to call any `C` Code.
 
 ## The external function body
 Usually, the body or the implementation of a function is specified in the same source file. The part, which is enclosed by curly braces is called the function body.
@@ -338,7 +338,7 @@ public function main() {
 
 ### Call overloaded Java methods
 
-The [Instantiate Java Classes](/learn/java-interoperability-guide/ballerina-ffi/#instantiate-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
+The [Instantiate Java Classes](/learn/ballerina-ffi/#instantiate-java-classes) section presents how to deal with overloaded constructors. You need to use the same approach to deal with overloaded Java methods. Try to call the overloaded `append` methods in the `java.lang.StringBuffer` class. Below is a subset of those methods.
 
 ```java
 StringBuffer append(boolean b);
@@ -348,7 +348,7 @@ StringBuffer append(StringBuffer sb);
 StringBuffer append(char[] str);
 ```
 
-Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiate Java classes](/learn/java-interoperability-guide/ballerina-ffi/#instantiate-java-classes) section.
+Below is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the [Instantiate Java classes](/learn/ballerina-ffi/#instantiate-java-classes) section.
 
 ```ballerina
 function appendBool(handle sbObj, boolean b) returns handle = @java:Method {

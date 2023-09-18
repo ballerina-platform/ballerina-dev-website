@@ -173,6 +173,14 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/java-interoperability/call-java-code-from-ballerina`,
       },
       {
+        source: `/${redirectBase}learn/the-bindgen-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/the-bindgen-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-ffi`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/ballerina-ffi`,
+      },
+      {
         source: `/${redirectBase}learn/debug-ballerina-programs`,
         destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/debug-ballerina-programs`,
       },
@@ -251,10 +259,6 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/ballerina-shell/`,
         destination: `/${redirectBase}learn/development-tutorials/build-and-run/ballerina-shell/`,
-      },
-      {
-        source: `/${redirectBase}learn/java-interoperability-guide/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/java-interoperability-guide/:slug`,
       },
       {
         source: `/${redirectBase}learn/style-guide/:slug`,

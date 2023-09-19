@@ -28,7 +28,7 @@ var filtered = numbers.filter(function (int i) returns boolean {
 <h2>Language &amp; Runtime</h2>
 <p>In Ballerina, floating point types (<code>float</code> and <code>decimal</code>) adheres to the IEEE754-2008 standard. Hence, floating point types accommodate NaN and Infinity concepts. Now, along with the <code>float</code> type, <code>decimal</code> type also supports NaN and Infinity concepts.</p>
 <p>Dividing a number by zero will no longer result in a panic situation. Rather, it will result in infinity(+/-) for all non-zero real numbers and NaN. Now, in addition to this, the <code>decimal</code> type supports three built-in functions namely <code>isNaN()</code>, <code>isInfinite()</code>, and <code>inFinite()</code> to check whether a given number is NaN, Infinity, or a finite number.</p>
-<h2>Standard library</h2>
+<h2>Standard Library</h2>
 <ul>
 <li>Now, the type <code>time:Time</code>, which represents an instance of time with the associated timezone is a <code>record type</code> (not an <code>object type</code>). Member functions of the previous <code>time:Time</code> object are now provided as utility functions.</li>
 <li>Support for using the <code>optional</code> configuration for client authentication in SSL.</li>

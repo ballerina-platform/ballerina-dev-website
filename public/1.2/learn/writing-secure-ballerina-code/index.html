@@ -717,7 +717,7 @@
 
 <h3 id="ensuring-security-of-ballerina-standard-libraries">Ensuring Security of Ballerina Standard Libraries</h3>
 
-<p>Security-sensitive functions and remote methods of Ballerina standard libraries are annotated with the <code class="language-plaintext highlighter-rouge">@untainted</code> parameter annotation. This denotes that untrusted (tainted) data should not be passed to the parameter.</p>
+<p>Security-sensitive functions and remote methods of Ballerina library packages are annotated with the <code class="language-plaintext highlighter-rouge">@untainted</code> parameter annotation. This denotes that untrusted (tainted) data should not be passed to the parameter.</p>
 
 <p>For example, the <code class="language-plaintext highlighter-rouge">sqlQuery</code> parameter of the <code class="language-plaintext highlighter-rouge">ballerinax/java.jdbc</code> <code class="language-plaintext highlighter-rouge">select</code> remote method is annotated as <code class="language-plaintext highlighter-rouge">@untainted</code>.</p>
 

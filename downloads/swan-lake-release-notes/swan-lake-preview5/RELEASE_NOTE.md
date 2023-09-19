@@ -21,7 +21,7 @@ This release is the fifth preview version of Ballerina Swan Lake. This release i
         - [Unified object method scope and object field scope](#unified-object-method-scope-and-object-field-scope)
         - [Improved lang library functions](#improved-lang-library-functions)
     - [Runtime](#runtime)
-    - [Standard library](#standard-library)
+    - [Standard Library](#standard-library)
         - [HTTP client remote method API improvement with data-binding support](#http-client-remote-method-api-improvement-with-data-binding-support)
         - [SQL procedure call API improvement](#sql-procedure-call-api-improvement)
         - [Misfire policy support for tasks](#misfire-policy-support-for-tasks)
@@ -229,7 +229,7 @@ isolated function validateArray() {
 
 The Ballerina runtime Java API package name has been changed from `org.ballerinalang.jvm` to `io.ballerina.runtime`. A new `io.ballerina.api.TypeCreator` API is introduced to create Ballerina types at runtime.
 
-#### Standard library
+#### Standard Library
 
 ##### HTTP client remote method API improvement with data-binding support
 
@@ -276,5 +276,5 @@ Improved formatting support for all the language features. The new formatter als
 
 #### Known issues
 
-- The `websub` standard library module (`ballerina/websub`) is not working with Swan Lake Preview 5.
-- The `socket` standard library module (`ballerina/socket`) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.
+- The `websub` Standard Library module (`ballerina/websub`) is not working with Swan Lake Preview 5.
+- The `socket` Standard Library module (`ballerina/socket`) can only be built offline (i.e., with the `--offline` parameter) with Swan Lake Preview 5.

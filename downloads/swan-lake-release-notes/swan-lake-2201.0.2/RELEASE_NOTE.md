@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.0.2
 
-<em>Swan Lake 2201.0.2 is the second patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of bug fixes to the compiler, runtime, standard library, and developer tooling.</em> 
+<em>Swan Lake 2201.0.2 is the second patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of bug fixes to the compiler, runtime, Standard Library, and developer tooling.</em> 
 
 ## Updating Ballerina
 
@@ -40,7 +40,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.2 (Swan Lake)](https://g
 
 To view bug fixes, see the [GitHub milestone for 2201.0.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%22Ballerina+2201.0.2%22).
 
-## Standard library updates
+## Standard Library updates
 
 To view bug fixes, see the [GitHub milestone for 2201.0.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.2%22+label%3AType%2FBug).
 

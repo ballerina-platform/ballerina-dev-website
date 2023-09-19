@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina 2201.3.0 (Swan Lake)
 
-<em>2201.3.0 (Swan Lake) is the third major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
+<em>2201.3.0 (Swan Lake) is the third major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, Standard Library, and developer tooling. It is based on the 2022R4 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -360,7 +360,7 @@ It will create an array with the `[1,2,0,0,0]` elements because the filler value
 
 To view bug fixes, see the [GitHub milestone for 2201.3.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.3.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed+).
 
-## Standard library updates
+## Standard Library updates
 
 ### New features
 

@@ -9,7 +9,7 @@ redirect_from:
 
 ### Overview of Ballerina Swan Lake Alpha1  
 
-This Alpha1 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
+This Alpha1 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, Standard Library, and developer tooling. This release note lists only the features and updates added after the eighth preview of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
@@ -45,7 +45,7 @@ This Alpha1 release includes the language features planned for the Ballerina Swa
         - [Maven resolver](#maven-resolver)
         - [Ballerina Shell REPL [EXPERIMENTAL]](#ballerina-shell-repl-experimental)
         - [Documentation](#documentation)
-    - [Standard library](#standard-library)
+    - [Standard Library](#standard-library)
         - [HTTP module improvements](#http-module-improvements)
         - [WebSocket module improvements](#websocket-module-improvements)
         - [gRPC module improvements](#grpc-module-improvements)
@@ -103,8 +103,8 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of the `Dependencies.toml` file
 - Introduction of REPL support for Ballerina via the `bal shell` command
 - Improvements to developer tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
-- Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub standard library modules
-- Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
+- Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub Standard Library modules
+- Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub Standard Library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin
 
 ### What is new in Ballerina Swan Lake Alpha1
@@ -641,7 +641,7 @@ Type /exit to exit and /help to list available commands.
 
 Now, documentation URLs follow the `orgName/packageName/version/moduleName` structure.
 
-#### Standard library
+#### Standard Library
 
 ##### HTTP module improvements
 

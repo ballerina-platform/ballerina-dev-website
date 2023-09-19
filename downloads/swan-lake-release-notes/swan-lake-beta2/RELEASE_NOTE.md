@@ -10,7 +10,7 @@ redirect_from:
 
 <em>This is the second beta release leading up to the Ballerina Swan Lake GA release.</em> 
 
-It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Beta1 release.
+It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, Standard Library, and developer tooling after the Swan Lake Beta1 release.
 
 ## Updating Ballerina
 
@@ -93,7 +93,7 @@ age = 10
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta2](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta2%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-## Standard library updates
+## Standard Library updates
 
 ### New features
 

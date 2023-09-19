@@ -1,6 +1,6 @@
 <div class="release_notes">
 <h1>Overview of Ballerina 0.990.3</h1>
-<p>Ballerina 0.990.3 is a release iteration done based on the 0.990 language specification. It includes improvements on standard library modules, extensions, tooling, and language syntax.</p>
+<p>Ballerina 0.990.3 is a release iteration done based on the 0.990 language specification. It includes improvements on Standard Library modules, extensions, tooling, and language syntax.</p>
 <h1>Compatibility and Support</h1>
 <ul>
 <li>The record <code>rest-fields</code> descriptor should now be followed by a semi colon.</li>
@@ -35,11 +35,11 @@ var filtered = numbers.filter(function (int i) returns boolean {
 <li>The SimpleDurableTopicSubscriber, SimpleQueueReceiver, SimpleQueueSender, SimpleTopicPublisher, and SimpleTopicSubscriber were removed from the JMS API. The initialization API of the TopicPublisher, TopicSubscriber, DurableTopicSubscriber, QueueReceiver, and QueueSender has been modified to support all simple use cases as well.</li>
 <li>Support on WebSub Hub persistence.</li>
 <li>Basic auth support for WebSub Hub.</li>
-<li>Ballerina <code>crypto</code> standard library is reorganized to enhance the extensibility of the library and to increase reusability across other standard libraries.</li>
-<li>Now, the <code>crypto</code> standard library provides RSA-signing capabilities in addition to hashing operations, HMAC generation, and CRC32B checksum generation.</li>
-<li>Instead of returning Hex encoded <code>string</code> values, crypto operations now return <code>byte[]</code> (byte array). This allows users to consume raw bytes as well as to use the newly added <code>encoding</code> standard library, to get string values encoded using different encoding algorithms.</li>
-<li>Also, the <code>crypto</code> standard library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other standard libraries to represent key stores, private keys, and public keys.</li>
-<li>Ballerina <code>encoding</code> standard library provides functions to perform the following:</li>
+<li>Ballerina <code>crypto</code> Standard Library is reorganized to enhance the extensibility of the library and to increase reusability across other standard libraries.</li>
+<li>Now, the <code>crypto</code> Standard Library provides RSA-signing capabilities in addition to hashing operations, HMAC generation, and CRC32B checksum generation.</li>
+<li>Instead of returning Hex encoded <code>string</code> values, crypto operations now return <code>byte[]</code> (byte array). This allows users to consume raw bytes as well as to use the newly added <code>encoding</code> Standard Library, to get string values encoded using different encoding algorithms.</li>
+<li>Also, the <code>crypto</code> Standard Library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other standard libraries to represent key stores, private keys, and public keys.</li>
+<li>Ballerina <code>encoding</code> Standard Library provides functions to perform the following:</li>
 <li>Encode <code>byte[]</code> (byte arrays) to <code>string</code> using different encoding algorithms.</li>
 <li>Decode <code>string</code> values into <code>byte[]</code> (byte array) using different decoding algorithms.</li>
 <li>The <code>byteArrayToString</code> function that can be used to encode <code>byte[]</code> into a <code>string</code> using a selected character encoding.</li>

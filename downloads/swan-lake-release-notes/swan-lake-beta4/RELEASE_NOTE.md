@@ -10,7 +10,7 @@ redirect_from:
 
 <em>This is the fourth Beta release in a series of planned Alpha and Beta releases leading up to the Ballerina Swan Lake GA release.</em> 
 
-It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, standard library, and developer tooling after the Swan Lake Beta3 release.
+It introduces the new language features planned for the Swan Lake GA release and includes improvements and bug fixes done to the compiler, runtime, Standard Library, and developer tooling after the Swan Lake Beta3 release.
 
 ## Updating Ballerina
 
@@ -760,7 +760,7 @@ error: [Config.toml:(5:1,5:7)] unused configuration value 'c.d'
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+Swan+Lake+-+Beta4%22+label%3AType%2FBug+label%3ATeam%2FjBallerina).
 
-## Standard library updates
+## Standard Library updates
 
 ### New features
 
@@ -794,7 +794,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Beta4](https://github
 - Updated to not change the generated unique-service-path after compilation
 
 ### Changes
-- Marked all the standard library services as `distinct`
+- Marked all the Standard Library services as `distinct`
 - Removed all the `info` logs printed from the listeners
 
 ### Bug fixes

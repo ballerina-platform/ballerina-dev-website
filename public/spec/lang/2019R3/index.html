@@ -480,11 +480,11 @@ local.
 The Ballerina language includes a small library, the lang library, which
 provides fundamental operations on the data types defined by the language; the
 lang library is defined by this specification. The Ballerina platform includes
-an extensive Ballerina library, which includes not only the usual low-level,
+an extensive standard library, which includes not only the usual low-level,
 general-purpose functionality, but also support for a wide variety of network
 protocols, interface standards, data formats and authentication/authorization
 standards, which make writing secure, resilient distributed applications
-significantly easier than with other languages. The Ballerina library is not
+significantly easier than with other languages. The standard library is not
 specified in this document.
 </p>
 </section>
@@ -6021,7 +6021,7 @@ module will be the last function called during a program's initialization phase.
 <p>
 This specification does not define any mechanism for processing the program
 command-line arguments typically provided by an operating system. The Ballerina
-Ballerina library provides a function to retrieve these command-line arguments.
+standard library provides a function to retrieve these command-line arguments.
 In addition, the Ballerina platform provides a convenient mechanism for
 processing these arguments. This works by generating a new command-line
 processing module from the specified root module. The <code>__init</code>
@@ -6081,7 +6081,7 @@ unsuccessfully with this error value as its return value.
 </p>
 <p>
 The listening phase of program execution continues until either the program
-explicitly exits, by calling a Ballerina library function, or the user explicitly
+explicitly exits, by calling a standard library function, or the user explicitly
 requests the termination of the program using an implementation-dependent
 operating system facility (such as a signal on a POSIX system). In the latter
 case, the <code>__gracefulStop</code> or <code>__immediateStop</code> method of

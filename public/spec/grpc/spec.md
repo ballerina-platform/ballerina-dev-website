@@ -53,7 +53,7 @@ The conforming implementation of the specification is released and included in t
 
 
 ## 1. Overview
-The gRPC Ballerina library has five primary aspects in handling values.
+The gRPC standard library has five primary aspects in handling values.
 1. gRPC CLI (command line interface)
 2. Protocol buffers to Ballerina data mapping
 3. gRPC communication

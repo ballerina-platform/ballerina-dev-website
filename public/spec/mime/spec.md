@@ -45,7 +45,7 @@ Ballerina language provides support for writing network-oriented programs. The B
 HTTP, Email uses the messages or entities to transfer data between endpoints. MIME is the standard way to organize the
 message according to the universal specifications.
 
-The MIME Ballerina library is designed to work independently as a support package to handle the entity. It includes 
+The MIME standard library is designed to work independently as a support package to handle the entity. It includes 
 high-level abstractions such as `mime:Entity`, `mime:ContentDisposition`, and `mime:MediaType` which allow users 
 to handle the exchanging message.
 

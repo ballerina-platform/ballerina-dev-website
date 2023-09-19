@@ -26,7 +26,7 @@ The conforming implementation of the specification is released and included in t
 
 
 ## 1. Overview
-The I/O Ballerina library has six aspects of I/O operations.
+The I/O standard library has six aspects of I/O operations.
 1. Console I/O
 2. Bytes I/O
 3. Strings I/O

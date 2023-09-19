@@ -139,12 +139,12 @@ management, testing, documentation, building and sharing are part of the
 language platform design architecture and not left for later add-on tools.
 </p>
 <p>
-Ballerina is a "batteries included" language: it comes with a Ballerina library,
+Ballerina is a "batteries included" language: it comes with a standard library,
 which includes not only the usual low-level, general-purpose functionality, but
 also support for a wide variety of network protocols, interface standards, data
 formats and authentication/authorization standards, which make writing secure,
 resilient distributed applications significantly easier than with other
-languages. The Ballerina library is not specified in this document.
+languages. The standard library is not specified in this document.
 </p>
 <h2 id="notation">2. Notation</h2>
 <p>
@@ -4752,7 +4752,7 @@ listener will have been registered.)
 </p>
 <p>
 The listen phase continues to execute until either the program explicitly exits,
-by calling a Ballerina library function, or the user explicitly requests the
+by calling a standard library function, or the user explicitly requests the
 termination the program using an implementation-dependent operating system
 facility (such as a signal on a POSIX system). In the latter case, the program
 will call the __stop request on each registered listener before terminating.

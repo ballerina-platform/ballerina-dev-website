@@ -196,9 +196,9 @@ The conforming implementation of the specification is released and included in t
 
 ## 1. Overview
 
-The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL Ballerina library uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
+The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL standard Library uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
 
-The GraphQL Ballerina library is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL Ballerina library uses the code-first first approach to write GraphQL APIs. This means no GraphQL schema is required to create a GraphQL service.
+The GraphQL standard Library is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL standard Library uses the code-first first approach to write GraphQL APIs. This means no GraphQL schema is required to create a GraphQL service.
 
 In addition to functional requirements, this library deals with none functional requirements such as security. Each requirement is discussed in detail in the coming sections.
 

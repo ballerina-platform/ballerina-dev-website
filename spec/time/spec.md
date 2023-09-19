@@ -26,7 +26,7 @@ The conforming implementation of the specification is released and included in t
 6. [Time Zone Handling](#time-zone-handling)
 
 ## 1. Overview
-Ballerina time Ballerina library has five primary aspects in handling time values.
+Ballerina time standard Library has five primary aspects in handling time values.
 1. Time representations
 2. Time generation
 3. Time-related operations
@@ -73,7 +73,7 @@ public isolated function monotonicNow() returns decimal;
 
 ## 4. Time related operations
 
-Time Ballerina library supports time-related operations such as addition, subtraction, and date validations.
+Time standard Library supports time-related operations such as addition, subtraction, and date validations.
 
 Use the following API to add a given number of seconds to a UTC value.
 

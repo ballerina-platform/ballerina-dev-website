@@ -55,7 +55,7 @@ been updated.
 
 `WebSubHub` is a library which is derived from the WebSub specification which could be used by developers to implement 
 WebSub compliant `hub` services and `publisher` clients. Since WebSub specification has limited details on the 
-relationship between `publisher` and `hub`, the Ballerina Library team has made minor improvements to the 
+relationship between `publisher` and `hub`, the standard Library team has made minor improvements to the 
 original protocol to provide a seamless developer experience.
 
 ## 2. Hub

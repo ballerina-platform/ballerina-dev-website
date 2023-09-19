@@ -43,7 +43,7 @@ The conforming implementation of the specification is released and included in t
 5. [Directory Listener](#5-directory-listener)
 
 ## 1. Overview
-The file Ballerina library provides functionalities related to manipulating and working with files and directories.
+The file standard Library provides functionalities related to manipulating and working with files and directories.
 All operations are supported on both Windows and Unix-based operating systems. 
 
 ## 2. File Metadata

@@ -226,7 +226,7 @@ public function main() {
 }
 ```
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP
 

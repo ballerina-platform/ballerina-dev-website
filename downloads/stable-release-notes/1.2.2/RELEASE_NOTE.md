@@ -20,7 +20,7 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-#### Standard Library
+#### Standard library
 - Attachment/MIME Support to Email Connector: Introduce email attachments with MIME entities where attachment(s) can be attached to an email with an array of MIME Entities and read attachment(s) by reading - an array of MIME Entities
 - Improved API documentation
 - Introduce a few status code specific error remote functions to `http:Caller`. 

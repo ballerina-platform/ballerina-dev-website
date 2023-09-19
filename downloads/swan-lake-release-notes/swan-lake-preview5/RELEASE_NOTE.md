@@ -229,7 +229,7 @@ isolated function validateArray() {
 
 The Ballerina runtime Java API package name has been changed from `org.ballerinalang.jvm` to `io.ballerina.runtime`. A new `io.ballerina.api.TypeCreator` API is introduced to create Ballerina types at runtime.
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP client remote method API improvement with data-binding support
 

@@ -22,7 +22,7 @@ However, if you are using
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
-#### Standard Library
+#### Standard library
 - SASL/PLAIN authentication support for Kafka module
 
 #### Dev Tools

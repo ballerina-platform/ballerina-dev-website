@@ -641,7 +641,7 @@ Type /exit to exit and /help to list available commands.
 
 Now, documentation URLs follow the `orgName/packageName/version/moduleName` structure.
 
-#### Standard Library
+#### Standard library
 
 ##### HTTP module improvements
 

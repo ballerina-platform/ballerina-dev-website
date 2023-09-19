@@ -7,7 +7,7 @@ _Updated_: 2022/06/17
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the MIME Ballerina library of [Ballerina language](https://ballerina.io/), which provides 
+This is the specification for the MIME standard library of [Ballerina language](https://ballerina.io/), which provides 
 a set of APIs to work with messages, which follow the Multipurpose Internet Mail Extensions (MIME) specification as 
 specified in the [RFC 2045](https://datatracker.ietf.org/doc/html/rfc2045) standard.  
 

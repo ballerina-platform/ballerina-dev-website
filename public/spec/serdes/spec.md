@@ -7,7 +7,7 @@ _Updated_: 2022/08/01
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the SerDes Ballerina library of [Ballerina language](https://ballerina.io/), which is used for serializing and deserializing subtypes of Ballerina anydata type.
+This is the specification for the SerDes standard library of [Ballerina language](https://ballerina.io/), which is used for serializing and deserializing subtypes of Ballerina anydata type.
 
 The SerDes library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

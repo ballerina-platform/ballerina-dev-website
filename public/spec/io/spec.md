@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake 
 
 ## Introduction
-This is the specification for the I/O Ballerina library of [Ballerina language](https://ballerina.io/), which provides file related I/O operations.  
+This is the specification for the I/O standard library of [Ballerina language](https://ballerina.io/), which provides file related I/O operations.  
 
 The I/O library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 
 

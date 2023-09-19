@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the Cache Ballerina library of [Ballerina language](https://ballerina.io/), which provides a mechanism to manage frequently accessed data in-memory by using a semi-persistent mapping from key to value.
+This is the specification for the Cache standard library of [Ballerina language](https://ballerina.io/), which provides a mechanism to manage frequently accessed data in-memory by using a semi-persistent mapping from key to value.
 
 The Cache library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

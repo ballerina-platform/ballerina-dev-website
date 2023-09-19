@@ -8,7 +8,7 @@ _Edition_: Swan Lake
 
 ## Introduction
 
-This is the specification for the Email Ballerina library of [Ballerina language](https://ballerina.io/), which provides functionalities related to
+This is the specification for the Email standard library of [Ballerina language](https://ballerina.io/), which provides functionalities related to
 sending/receiving emails via SMTP, POP3, and IMAP protocols.  
 
 The Email library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag. 

@@ -562,7 +562,7 @@ public function main() {
 - Error binding patterns and structured match patterns are not yet supported with the new parser.
 
 
-#### Standard library
+#### Standard Library
 
 ##### Introduced new `sql` module
 

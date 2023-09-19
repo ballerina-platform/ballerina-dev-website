@@ -285,7 +285,7 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 
 None of the Ballerina runtime internal exceptions will be exposed. The `BError` class should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` class provides the required APIs to create runtime errors.                                                                         
 
-#### Standard library
+#### Standard Library
 
 ##### Revamp `file` and `filepath` modules
 

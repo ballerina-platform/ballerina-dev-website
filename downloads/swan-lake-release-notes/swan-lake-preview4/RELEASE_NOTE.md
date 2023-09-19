@@ -415,7 +415,7 @@ The BIR is now improved by including local variable scope information. With this
 
 Along with the scoping, BIR now contains a new variable kind named `SYNTHETIC`, which identifies the variables generated at the de-sugar phase. These are skipped when adding meta-data so that generated variables do not appear in the scope with a debug hit.
 
-#### Standard library
+#### Standard Library
 
 Re-align organization names of the connectors. 
 

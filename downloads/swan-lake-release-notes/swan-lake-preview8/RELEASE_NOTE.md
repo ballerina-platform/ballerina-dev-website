@@ -279,7 +279,7 @@ transaction {
 }
 ```                                                             
 
-#### Standard library
+#### Standard Library
 
 ##### `http` module changes
 

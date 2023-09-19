@@ -200,7 +200,7 @@ public function main() {
 }
 ```
 
-#### Standard library
+#### Standard Library
 
 ##### HTTP module improvements
 

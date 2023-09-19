@@ -330,7 +330,7 @@ json|xmldata:Error j = xmldata:toJson(xml `foo`);
 
 ##### Removed `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages
 
-The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from Ballerina libraries.
+The `jsonutils`, `xmlutils`, `runtime`, and `reflect` packages were removed from standard libraries.
 
 The XML/JSON conversation APIs in `jsonutils` and `xmltutils` packages are now supported by the `xmldata` package.
 

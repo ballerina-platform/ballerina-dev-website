@@ -9,7 +9,7 @@ redirect_from:
 ### Overview of Ballerina Swan Lake - Preview 1
 Ballerina Swan Lake will be a major new version of Ballerina that we plan to release in January 2021. We will be doing major releases every 6 months from then on. We also plan to use popular ballet names as the codename for each release - so the 2021-07 release will be the Nutcracker release. We will announce details on maintenance of released versions and will also have an LTS release model similar to Ubuntu or Java.
 
-This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, Ballerina libraries, and developer tooling.
+This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 1 as follows.
 

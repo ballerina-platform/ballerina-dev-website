@@ -830,7 +830,7 @@ caller->writeBinaryMessage(byteArr);
 
 ##### Security improvements
 
-Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the Ballerina libraries like HTTP, gRPC, WebSocket, etc.,
+Ballerina listener authentication and authorization, and client authentication were completely redesigned. The new design is compatible with most of the standard libraries like HTTP, gRPC, WebSocket, etc.,
 
 ###### HTTP listener authentication and authorization
 

@@ -14,7 +14,7 @@ redirect_from:
 
 <em>Swan Lake 2201.0.4 is the fourth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of bug fixes to the compiler, runtime, standard library, and developer tooling.</em> 
 
->**Note:** It is recommended to update your active Ballerina distribution to 2201.0.4 as soon as possible because from now onwards, new updates of Ballerina libraries and extensions will not be available for the previous releases. 
+>**Note:** It is recommended to update your active Ballerina distribution to 2201.0.4 as soon as possible because from now onwards, new updates of standard libraries and extensions will not be available for the previous releases. 
 
 ## Updating Ballerina
 

@@ -8,7 +8,7 @@ redirect_from:
 ---
 ### Overview of Ballerina Swan Lake Preview 4 
 
-This release is the fourth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, Ballerina libraries, and developer tooling.
+This release is the fourth preview version of Ballerina Swan Lake. This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard libraries, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)

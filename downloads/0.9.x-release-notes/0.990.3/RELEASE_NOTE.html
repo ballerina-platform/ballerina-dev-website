@@ -35,10 +35,10 @@ var filtered = numbers.filter(function (int i) returns boolean {
 <li>The SimpleDurableTopicSubscriber, SimpleQueueReceiver, SimpleQueueSender, SimpleTopicPublisher, and SimpleTopicSubscriber were removed from the JMS API. The initialization API of the TopicPublisher, TopicSubscriber, DurableTopicSubscriber, QueueReceiver, and QueueSender has been modified to support all simple use cases as well.</li>
 <li>Support on WebSub Hub persistence.</li>
 <li>Basic auth support for WebSub Hub.</li>
-<li>Ballerina <code>crypto</code> standard library is reorganized to enhance the extensibility of the library and to increase reusability across other Ballerina libraries.</li>
+<li>Ballerina <code>crypto</code> standard library is reorganized to enhance the extensibility of the library and to increase reusability across other standard libraries.</li>
 <li>Now, the <code>crypto</code> standard library provides RSA-signing capabilities in addition to hashing operations, HMAC generation, and CRC32B checksum generation.</li>
 <li>Instead of returning Hex encoded <code>string</code> values, crypto operations now return <code>byte[]</code> (byte array). This allows users to consume raw bytes as well as to use the newly added <code>encoding</code> standard library, to get string values encoded using different encoding algorithms.</li>
-<li>Also, the <code>crypto</code> standard library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other Ballerina libraries to represent key stores, private keys, and public keys.</li>
+<li>Also, the <code>crypto</code> standard library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other standard libraries to represent key stores, private keys, and public keys.</li>
 <li>Ballerina <code>encoding</code> standard library provides functions to perform the following:</li>
 <li>Encode <code>byte[]</code> (byte arrays) to <code>string</code> using different encoding algorithms.</li>
 <li>Decode <code>string</code> values into <code>byte[]</code> (byte array) using different decoding algorithms.</li>

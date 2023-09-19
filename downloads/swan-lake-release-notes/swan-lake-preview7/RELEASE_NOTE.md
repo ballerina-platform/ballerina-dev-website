@@ -73,7 +73,7 @@ If you have not installed Ballerina, then download the [installers](https://ball
 
 #### Ballerina packages 
 
-With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share Ballerina libraries. 
+With this release we will be introducing Ballerina Packages. Ballerina Package is a bundle that consist of one or more Ballerina modules. Going forward, the Ballerina Package will be used to share standard libraries. 
 
 
 With the introduction of Ballerina packages Ballerina project structure and build tools has also been changed. Please refer to the [Organize Ballerina Code](/learn/organize-ballerina-code/) for more details. 

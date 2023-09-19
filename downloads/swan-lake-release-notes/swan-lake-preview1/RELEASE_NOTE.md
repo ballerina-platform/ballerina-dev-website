@@ -562,7 +562,7 @@ public function main() {
 - Error binding patterns and structured match patterns are not yet supported with the new parser.
 
 
-#### Ballerina library
+#### Standard library
 
 ##### Introduced new `sql` module
 
@@ -755,10 +755,10 @@ scope = "provided"
 - Java Subtyping support is added to the generated bindings.
 - Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.
 - Error mappings are improved by generating Ballerina error types for Java exceptions.
-- Introduces a function in the `java` module of the Ballerina library to support Java Casting.
+- Introduces a function in the `java` module of the standard library to support Java Casting.
 - Introduces the generation of API documentation comments in the generated bindings.
 - Introduces a `--public` flag to change the visibility modifier (which is module private by default) to public.
-- Moves the array util functions into the `java.arrays` module in the Ballerina library instead of generating it each time when the tool is executed.
+- Moves the array util functions into the `java.arrays` module in the standard library instead of generating it each time when the tool is executed.
 - Bug fixes and improvements to usability and generated bindings.
 
 The bindgen tool command after the newly-introduced options is as follows.

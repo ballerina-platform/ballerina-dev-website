@@ -8,7 +8,7 @@ redirect_from:
 ---
 ### Overview of Ballerina Swan Lake Alpha2
 
-This Alpha2 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, Ballerina library, and developer tooling. This release note lists only the features and updates added after the Alpha1 release of Ballerina Swan Lake.
+This Alpha2 release includes the language features planned for the Ballerina Swan Lake release. Moreover, this release includes improvements and bug fixes to the compiler, runtime, standard library, and developer tooling. This release note lists only the features and updates added after the Alpha1 release of Ballerina Swan Lake.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For existing users](#for-existing-users)
@@ -20,7 +20,7 @@ This Alpha2 release includes the language features planned for the Ballerina Swa
     - [Runtime](#runtime)
         - [Support for configurable variables of record and table types](#support-for-configurable-variables-of-record-and-table-types)
         - [Support for decrypting string values using the new config lang library](#support-for-decrypting-string-values-using-the-new-config-lang-library)
-    - [Ballerina library](#standard-library)
+    - [Standard library](#standard-library)
         - [HTTP module improvements](#http-module-improvements)
         - [MIME module improvements](#mime-module-improvements)
         - [WebSocket module improvements](#websocket-module-improvements)
@@ -62,7 +62,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Support for mapping and error binding patterns in the `match` statement
 - Support for configurable variables of `record` and `table` types
 - Support for decrypting string values using the new `lang.config` lang library
-- Improvements to the HTTP, MIME, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, UDP, crypto, and JWT Ballerina library modules
+- Improvements to the HTTP, MIME, WebSocket, GraphQL, WebSub, WebSubHub, IO, email, UDP, crypto, and JWT standard library modules
 - The extension of the Ballerina package distribution file has been changed from `.balo` to `.bala`
 - Improvements to developer tools such as the Language Server and debugger
 
@@ -200,7 +200,7 @@ public function main() {
 }
 ```
 
-#### Ballerina library
+#### Standard library
 
 ##### HTTP module improvements
 

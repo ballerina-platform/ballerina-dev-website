@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.0.5
 
-<em>Swan Lake 2201.0.5 is the fifth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of improvements to the compiler, runtime, Ballerina library, and developer tooling.</em> 
+<em>Swan Lake 2201.0.5 is the fifth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of improvements to the compiler, runtime, standard library, and developer tooling.</em> 
 
 ## Updating Ballerina
 

@@ -12,7 +12,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.0.4
 
-<em>Swan Lake 2201.0.4 is the fourth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of bug fixes to the compiler, runtime, Ballerina library, and developer tooling.</em> 
+<em>Swan Lake 2201.0.4 is the fourth patch release of Ballerina 2201.0.0 (Swan Lake) and it includes a new set of bug fixes to the compiler, runtime, standard library, and developer tooling.</em> 
 
 >**Note:** It is recommended to update your active Ballerina distribution to 2201.0.4 as soon as possible because from now onwards, new updates of Ballerina libraries and extensions will not be available for the previous releases. 
 
@@ -38,7 +38,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 To view bug fixes, see the [GitHub milestone for 2201.0.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FCompilerFE+milestone%3A%222201.0.4%22).
 
-## Ballerina library updates
+## Standard library updates
 
 To view bug fixes, see the [GitHub milestone for 2201.0.4 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%22Swan+Lake+2201.0.4%22+label%3AType%2FBug).
 

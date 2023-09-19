@@ -14,7 +14,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.1.2
 
-<em>Swan Lake 2201.1.2 is the second patch release of Ballerina 2201.1.0 (Swan Lake Update 1) and it includes a new set of bug fixes to the compiler, runtime, Ballerina library, and developer tooling.</em> 
+<em>Swan Lake 2201.1.2 is the second patch release of Ballerina 2201.1.0 (Swan Lake Update 1) and it includes a new set of bug fixes to the compiler, runtime, standard library, and developer tooling.</em> 
 
 ## Update Ballerina
 
@@ -38,7 +38,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 
 To view bug fixes, see the [GitHub milestone for 2201.1.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3ATeam%2FCompilerFE+milestone%3A2201.1.2).
 
-## Ballerina library updates
+## Standard library updates
 
 To view bug fixes, see the [GitHub milestone for 2201.1.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+is%3Aclosed+milestone%3A2201.1.2).
 

@@ -40,7 +40,7 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 - [Config-schema is generated with unused configurables](https://github.com/ballerina-platform/ballerina-lang/issues/38518)
 - [Config schema generator maps byte values to float instead of integer](https://github.com/ballerina-platform/ballerina-lang/issues/36270)
 
-## Ballerina library updates
+## Standard library updates
 
 ### Bug fixes
 

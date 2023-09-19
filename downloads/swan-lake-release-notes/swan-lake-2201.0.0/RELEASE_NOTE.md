@@ -12,7 +12,7 @@ redirect_from:
 
 ### Overview of Ballerina 2201.0.0 (Swan Lake)
 
-<em>2201.0.0 (Swan Lake) is the first major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2022R1 version of the Language Specification.</em> 
+<em>2201.0.0 (Swan Lake) is the first major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R1 version of the Language Specification.</em> 
 
 ### Updating Ballerina
 
@@ -308,7 +308,7 @@ To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://g
 
 To view bug fixes, see the [GitHub milestone for 2201.0.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+label%3ATeam%2FjBallerina+milestone%3A%22Ballerina+2201.0.0%22).
 
-### Ballerina library Updates
+### Standard library updates
 
 #### New Features
 

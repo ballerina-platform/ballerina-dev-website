@@ -12,7 +12,7 @@ redirect_from:
 
 ### Overview of Ballerina 2201.2.0 (Swan Lake)
 
-<em>2201.2.0 (Swan Lake) is the second major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2022R3 version of the Language Specification.</em> 
+<em>2201.2.0 (Swan Lake) is the second major release of 2022, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R3 version of the Language Specification.</em> 
 
 ### Update Ballerina
 
@@ -466,7 +466,7 @@ The `getReferredType()` call on the `ReferenceType` will return another `BTypeRe
 
 To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.2.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
-### Ballerina library updates
+### Standard library updates
 
 #### New features
 
@@ -476,7 +476,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://g
 
 ##### `constraint` package
 
-- Introduced the `constraint` Ballerina library package, which provides features to validate the values that have been assigned to Ballerina types
+- Introduced the `constraint` standard library package, which provides features to validate the values that have been assigned to Ballerina types
 
 ##### `http` package
 
@@ -498,7 +498,7 @@ To view bug fixes, see the [GitHub milestone for 2201.2.0 (Swan Lake)](https://g
 
 ##### `serdes` package
 
-- Introduced the `serdes` Ballerina library package for serializing and deserializing Ballerina `anydata` subtypes
+- Introduced the `serdes` standard library package for serializing and deserializing Ballerina `anydata` subtypes
 - Proto3 is the underlying technology used by this package to achieve serialization and deserialization
 
 ##### `os` Package
@@ -642,7 +642,7 @@ digraph "org/package:0.1.0" {
 - Added completion support for the resource access action context
 
 ##### OpenAPI Tool
-Added support for OpenAPI schema constraint properties in client/service generation. With this improvement, the OpenAPI constraints will be applied as `ballerina/constraint` Ballerina library package annotations when generating Ballerina clients and services from the OpenAPI definition.
+Added support for OpenAPI schema constraint properties in client/service generation. With this improvement, the OpenAPI constraints will be applied as `ballerina/constraint` standard library package annotations when generating Ballerina clients and services from the OpenAPI definition.
 The following OpenAPI properties are currently supported in the Ballerina OpenAPI generation tool.
 - `minimum`, `maximum`, `exclusiveMinimum`, and `exclusiveMaximum` for `integer` and `number` types
 - `minLength` and `maxLength` for `string` type

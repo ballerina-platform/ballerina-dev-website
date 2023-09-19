@@ -9,7 +9,7 @@ redirect_from:
 
 ### Overview of Ballerina Swan Lake Preview 8 
 
-This release is the eighth preview version of Ballerina Swan Lake. It includes a new set of language features along with improvements and bug fixes to the compiler, runtime, Ballerina library, and developer tooling.
+This release is the eighth preview version of Ballerina Swan Lake. It includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -22,7 +22,7 @@ This release is the eighth preview version of Ballerina Swan Lake. It includes a
         - [Service Typing Changes](#service-typing-changes)
         - [Listener Object](#listener-object)
         - [Transactional Services](#transactional-services)
-    - [Ballerina library](#standard-library)
+    - [Standard library](#standard-library)
         - [HTTP Module Changes](#http-module-changes)
         - [Log Module Changes](#log-module-changes)
         - [Email Module Changes](#email-module-changes)
@@ -55,8 +55,8 @@ If you have not installed Ballerina, then download the [installers](https://ball
 - Introduction of included record parameters
 - Introduction of service typing changes basing services on objects
 - Extension of Ballerina transaction capabilities to define transactional resource functions and transactional remote functions
-- Improvements to the HTTP, Log, Email, and WebSub Ballerina library modules
-- Introduction of the new GraphQL, NATS Streaming (STAN), UUID, and WebSocket Ballerina library modules
+- Improvements to the HTTP, Log, Email, and WebSub standard library modules
+- Introduction of the new GraphQL, NATS Streaming (STAN), UUID, and WebSocket standard library modules
 
 ### What is new in Ballerina Swan Lake Preview 8
 
@@ -279,7 +279,7 @@ transaction {
 }
 ```                                                             
 
-#### Ballerina library
+#### Standard library
 
 ##### `http` module changes
 

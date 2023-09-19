@@ -23,7 +23,7 @@ However, you need to use the following commands instead of the above if you have
 
 If you have not installed jBallerina, then download the [installers](/downloads/) to install.
 
-#### Ballerina library
+#### Standard library
 
 ##### HTTP
 

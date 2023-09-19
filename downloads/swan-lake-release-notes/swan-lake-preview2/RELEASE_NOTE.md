@@ -226,7 +226,7 @@ public function main() {
 }
 ```
 
-#### Ballerina library
+#### Standard library
 
 ##### HTTP
 

@@ -1,6 +1,6 @@
 <div class="release_notes">
 <h1>Overview of jBallerina 1.2.0</h1>
-<p>jBallerina 1.2.0 is the first major release of 2020 and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2020R1 version of the Language Specification.</p>
+<p>jBallerina 1.2.0 is the first major release of 2020 and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2020R1 version of the Language Specification.</p>
 <h1>Highlights</h1>
 <ul>
 <li>Redesigned XML, Stream and Query support</li>
@@ -333,7 +333,7 @@ public function main() {
 </ul>
 <p>In some situations, it would be desirable to assign strands to different threads. You can change this behavior with an annotation but such an annotation was not available in Ballerina releases prior to 1.2.0. This has been a major spec deviation. </p>
 <p>A major revamp of our strand scheduler was done in this release to address the spec deviation. </p>
-<h2>Ballerina library</h2>
+<h2>Standard library</h2>
 <h3>Enhanced HTTP module</h3>
 <h4>Cookie support</h4>
 <p>A new cookie API has been introduced for easily handling HTTP cookies. It provides the following features:
@@ -439,7 +439,7 @@ Retry functionality can be enabled using the following retry configuration.</p>
 <li><code>custom</code></li>
 </ul>
 <h4>Avro Serializer/Deserializer</h4>
-<p>The Kafka module now supports Avro serialization/deserialization. This only supports Kafka values yet. Key serialization support will be added later. For more information, go to <a href="https://ballerina.io/v1-2/learn/api-docs/ballerina/">the Ballerina library</a>.</p>
+<p>The Kafka module now supports Avro serialization/deserialization. This only supports Kafka values yet. Key serialization support will be added later. For more information, go to <a href="https://ballerina.io/v1-2/learn/api-docs/ballerina/">the standard library</a>.</p>
 <h3>Enhanced Task module</h3>
 <p>The Ballerina Task module is enhanced with multiple attachment support.</p>
 <h4>Breaking changes</h4>
@@ -699,8 +699,8 @@ service helloWorld on new http:Listener(8080) {
 <p><strong>Note:</strong> This is only supported with project-based execution in v1.2.0.</p>
 </blockquote>
 <h2>IDE Plugins &amp; Language Server</h2>
-<h3>Go to Definition support for Ballerina library content</h3>
-<p>You can go to <a href="https://ballerina.io/v1-2/learn/api-docs/ballerina/">the Ballerina library</a> content such as functions, action invocations, types, etc. by executing the <code>Go to Definition</code> action.</p>
+<h3>Go to Definition support for standard library content</h3>
+<p>You can go to <a href="https://ballerina.io/v1-2/learn/api-docs/ballerina/">the standard library</a> content such as functions, action invocations, types, etc. by executing the <code>Go to Definition</code> action.</p>
 <h3>New code actions</h3>
 <ul>
 <li>All imports are optimized</li>

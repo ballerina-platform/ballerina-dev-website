@@ -11,7 +11,7 @@ redirect_from:
 
 This release is the seventh preview version of Ballerina Swan Lake. It is the successor of the fifth preview version (SLP5) and SLP6 is an internal-only release. 
 
-This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, Ballerina library, and developer tooling.
+This release includes a new set of language features along with improvements and bug fixes to the compiler, runtime, standard library, and developer tooling.
 
 - [Updating Ballerina](#updating-ballerina)
     - [For Existing Users](#for-existing-users)
@@ -26,7 +26,7 @@ This release includes a new set of language features along with improvements and
     - [Runtime](#runtime)
         - [Support for DynamicListener](#support-for-dynamiclistener)
         - [New Runtime APIs](#new-runtime-apis)
-    - [Ballerina library](#standard-library)
+    - [Standard library](#standard-library)
         - [Revamp File and Filepath Modules](#revamp-file-and-filepath-modules)
         - [Improved IO Module](#improved-io-module)
     - [Language Server](#language-server)
@@ -285,7 +285,7 @@ The `io.ballerina.runtime.api.` package will only be exposed to the outside. The
 
 None of the Ballerina runtime internal exceptions will be exposed. The `BError` class should be used to handle Ballerina runtime errors. The `io.ballerina.runtime.api.creators.ErrorCreator` class provides the required APIs to create runtime errors.                                                                         
 
-#### Ballerina library
+#### Standard library
 
 ##### Revamp `file` and `filepath` modules
 

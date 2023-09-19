@@ -127,7 +127,7 @@ DeptPerson[] deptPersonList =
         };
 ```
 
-#### Ballerina library
+#### Standard library
 
 ##### SQL connectors
 

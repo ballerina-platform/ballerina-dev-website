@@ -1,6 +1,6 @@
 <div class="release_notes">
 <h1>Overview of Ballerina 0.990.3</h1>
-<p>Ballerina 0.990.3 is a release iteration done based on the 0.990 language specification. It includes improvements on Ballerina library modules, extensions, tooling, and language syntax.</p>
+<p>Ballerina 0.990.3 is a release iteration done based on the 0.990 language specification. It includes improvements on standard library modules, extensions, tooling, and language syntax.</p>
 <h1>Compatibility and Support</h1>
 <ul>
 <li>The record <code>rest-fields</code> descriptor should now be followed by a semi colon.</li>
@@ -28,18 +28,18 @@ var filtered = numbers.filter(function (int i) returns boolean {
 <h2>Language &amp; Runtime</h2>
 <p>In Ballerina, floating point types (<code>float</code> and <code>decimal</code>) adheres to the IEEE754-2008 standard. Hence, floating point types accommodate NaN and Infinity concepts. Now, along with the <code>float</code> type, <code>decimal</code> type also supports NaN and Infinity concepts.</p>
 <p>Dividing a number by zero will no longer result in a panic situation. Rather, it will result in infinity(+/-) for all non-zero real numbers and NaN. Now, in addition to this, the <code>decimal</code> type supports three built-in functions namely <code>isNaN()</code>, <code>isInfinite()</code>, and <code>inFinite()</code> to check whether a given number is NaN, Infinity, or a finite number.</p>
-<h2>Ballerina library</h2>
+<h2>Standard library</h2>
 <ul>
 <li>Now, the type <code>time:Time</code>, which represents an instance of time with the associated timezone is a <code>record type</code> (not an <code>object type</code>). Member functions of the previous <code>time:Time</code> object are now provided as utility functions.</li>
 <li>Support for using the <code>optional</code> configuration for client authentication in SSL.</li>
 <li>The SimpleDurableTopicSubscriber, SimpleQueueReceiver, SimpleQueueSender, SimpleTopicPublisher, and SimpleTopicSubscriber were removed from the JMS API. The initialization API of the TopicPublisher, TopicSubscriber, DurableTopicSubscriber, QueueReceiver, and QueueSender has been modified to support all simple use cases as well.</li>
 <li>Support on WebSub Hub persistence.</li>
 <li>Basic auth support for WebSub Hub.</li>
-<li>Ballerina <code>crypto</code> Ballerina library is reorganized to enhance the extensibility of the library and to increase reusability across other Ballerina libraries.</li>
-<li>Now, the <code>crypto</code> Ballerina library provides RSA-signing capabilities in addition to hashing operations, HMAC generation, and CRC32B checksum generation.</li>
-<li>Instead of returning Hex encoded <code>string</code> values, crypto operations now return <code>byte[]</code> (byte array). This allows users to consume raw bytes as well as to use the newly added <code>encoding</code> Ballerina library, to get string values encoded using different encoding algorithms.</li>
-<li>Also, the <code>crypto</code> Ballerina library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other Ballerina libraries to represent key stores, private keys, and public keys.</li>
-<li>Ballerina <code>encoding</code> Ballerina library provides functions to perform the following:</li>
+<li>Ballerina <code>crypto</code> standard library is reorganized to enhance the extensibility of the library and to increase reusability across other Ballerina libraries.</li>
+<li>Now, the <code>crypto</code> standard library provides RSA-signing capabilities in addition to hashing operations, HMAC generation, and CRC32B checksum generation.</li>
+<li>Instead of returning Hex encoded <code>string</code> values, crypto operations now return <code>byte[]</code> (byte array). This allows users to consume raw bytes as well as to use the newly added <code>encoding</code> standard library, to get string values encoded using different encoding algorithms.</li>
+<li>Also, the <code>crypto</code> standard library now provides the <code>crypto:KeyStore</code>, <code>crypto:PrivateKey</code>, and  <code>crypto:PublicKey</code> records. These are usable across other Ballerina libraries to represent key stores, private keys, and public keys.</li>
+<li>Ballerina <code>encoding</code> standard library provides functions to perform the following:</li>
 <li>Encode <code>byte[]</code> (byte arrays) to <code>string</code> using different encoding algorithms.</li>
 <li>Decode <code>string</code> values into <code>byte[]</code> (byte array) using different decoding algorithms.</li>
 <li>The <code>byteArrayToString</code> function that can be used to encode <code>byte[]</code> into a <code>string</code> using a selected character encoding.</li>

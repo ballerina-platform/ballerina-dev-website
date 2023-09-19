@@ -11,7 +11,7 @@ redirect_from:
 
 ## Overview of Ballerina 2201.1.0 (Swan Lake Update 1)
 
-<em>2201.1.0 (Swan Lake Update 1) is the first update of 2201.0.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
+<em>2201.1.0 (Swan Lake Update 1) is the first update of 2201.0.0 (Swan Lake), and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2022R2 version of the Language Specification.</em>
 
 
 ## Update Ballerina
@@ -524,7 +524,7 @@ public static UnionType createUnionType(List<Type> memberTypes, String name, Mod
 
 To view bug fixes, see the [GitHub milestone for Ballerina 2201.1.0 (Swan Lake Update 1)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+milestone%3A%22Ballerina+2201.1.0%22+label%3AType%2FBug+label%3ATeam%2FjBallerina+).
 
-## Ballerina library updates
+## Standard library updates
 
 ### New features
 

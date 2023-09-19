@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake  
 
 ## Introduction  
-This is the specification for the Regex Ballerina library of [Ballerina language](https://ballerina.io/), which provides functionalities such as matching, replacing and splitting strings based on regular expressions.
+This is the specification for the Regex standard library of [Ballerina language](https://ballerina.io/), which provides functionalities such as matching, replacing and splitting strings based on regular expressions.
 
 The Regex library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

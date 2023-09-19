@@ -7,7 +7,7 @@ _Updated_: 2022/02/17
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the File Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to perform file, file path, and directory operations.
+This is the specification for the File standard library of [Ballerina language](https://ballerina.io/), which provides APIs to perform file, file path, and directory operations.
 
 The File library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

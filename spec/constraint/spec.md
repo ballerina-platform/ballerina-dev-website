@@ -7,7 +7,7 @@ _Updated_: 2023/05/18
 _Edition_: Swan Lake
 
 ## Introduction
-This is the specification for the Constraint Ballerina library of [Ballerina language](https://ballerina.io/), which 
+This is the specification for the Constraint standard library of [Ballerina language](https://ballerina.io/), which 
 provides APIs to validate the values that have been assigned to Ballerina types.
 
 The Constraint library specification has evolved and may continue to evolve in the future. The released versions of the 

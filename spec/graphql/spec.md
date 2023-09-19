@@ -9,7 +9,7 @@ _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
 ## Introduction
 
-This is the specification for the GraphQL Ballerina library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL standard library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 

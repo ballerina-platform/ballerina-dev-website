@@ -7,7 +7,7 @@ _Updated_: 2022/02/08
 _Edition_: Swan Lake  
 
 ## Introduction
-This is the specification for the OS Ballerina library of [Ballerina language](https://ballerina.io/), which provides APIs to retrieve information about the operating system and its current users.
+This is the specification for the OS standard library of [Ballerina language](https://ballerina.io/), which provides APIs to retrieve information about the operating system and its current users.
 
 The OS library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant Github tag.
 

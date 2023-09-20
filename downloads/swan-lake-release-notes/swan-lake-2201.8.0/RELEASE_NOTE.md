@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 8 (2201.8.0)
 
-<em>2201.8.0 (Swan Lake Update 8) is the eighth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
+<em>2201.8.0 (Swan Lake Update 8) is the eighth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -26,9 +26,9 @@ Update your current Ballerina installation directly to 2201.8.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
->**Info:** From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
-
 ## Backward-incompatible changes
+
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
 
 - A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
 
@@ -94,8 +94,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     map<xml> m = {a: xml `foo`};
     xml x = check m.a; // Compilation error now.
     ```
-    
-- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
 
 - A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
 
@@ -202,6 +200,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 
 - Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).
+
     ```ballerina
     // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `ArrayTypeSymbol`.
     type A int[] & readonly;
@@ -209,7 +208,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - Removed the support for the `AES/GCM/PKCS5Padding` encryption algorithm from the `crypto` package.
 
-## Platform updates
+## Language updates
 
 ### New features
 
@@ -350,17 +349,17 @@ the results of the runtime API calls will be as follows.
 
 To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
-## Standard library updates
+## Ballerina library updates
 
 ### New features
 
 #### `mqtt` package
 
-- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
+- Introduced the `mqtt` package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` package
 
-- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
+- Introduced the `java.jms` package, which provides an implementation to interact with message brokers using the JMS protocol.
 
 #### `graphql` package
 
@@ -436,9 +435,7 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 The Swan Lake Update 8 release introduces support for incorporating custom user repositories into the package management system in addition to the Ballerina Central repository. 
 
-This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file.
-Now, you can both publish your packages to your preferred repositories and retrieve packages from these repositories. 
-Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the Ballerina.toml file.
+This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file. Now, you can both publish your packages to your preferred repositories and retrieve packages from these repositories. Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the Ballerina.toml file.
 
 Each repository enjoys the privilege of maintaining a local filesystem cache, conveniently located at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina initiates queries to remote repositories exclusively when the specified dependency version is absent from its local cache. 
 

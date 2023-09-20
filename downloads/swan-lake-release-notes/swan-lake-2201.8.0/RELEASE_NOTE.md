@@ -153,10 +153,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     public type A readonly & service object {
         isolated remote function execute() returns int;
     };
-  
+
     readonly client class B {
         *A; // Compilation error now.
-  
+
         isolated remote function execute() returns int {
             return 2;
         }
@@ -167,7 +167,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
   
     ```ballerina
     type AC map<int>|string;
-    
+
     public function main() returns error? {
         map<anydata> x = {a: "Ballerina"};
         AC|boolean _ = check x.cloneWithType();
@@ -178,17 +178,17 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     
     ```ballerina
     import ballerina/io;
-    
+
     final int value = 100;
-    
+
     class Foo {
         int i = value;
     }
-    
+
     function bar(int k = value) returns int {
         return k;
     }
-    
+
     public function main() {
         Foo foo = new;
         io:println(foo.i); // Prints `100` now.
@@ -333,7 +333,6 @@ For example, if an intersection type is defined in the following way,
 
 ```ballerina
 type ReadonlyIntArray readonly & int[];
-
 ReadonlyIntArray array = [1, 2, 3, 4];
 ```
 

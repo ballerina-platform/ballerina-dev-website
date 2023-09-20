@@ -88,7 +88,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     annotation AnnotationData config on type; // Compilation error now.
     ```
     
-- Fixed a bug that allowed using field access with a map of `xml`. 
+- Disallowed using field access with a map of `xml`. This was previously allowed incorrectly.
 
     ```ballerina
     map<xml> m = {a: xml `foo`};

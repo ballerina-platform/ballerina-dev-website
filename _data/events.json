@@ -3,7 +3,7 @@
        {
             "date": "September 28, 2023",
             "day": "Thur.",
-            "time": "5.00 p.m. GMT",
+            "time": "10.00 a.m. PDT",
             "expire": "2023-09-29T00:00:00.0000-00:00",
             "location": "Virtual",
             "url": "https://www.conf42.com/Kube_Native_2023_Anuruddha_Liyanarachchi_network_services_realworld_ballerina",
@@ -12,6 +12,22 @@
             "presenterTwitter": "https://www.linkedin.com/in/anuruddha-liyanarachchi-6b259652/",
             "presenter": "Anuruddha Liyanarachchi",
             "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "September 26, 2023",
+            "day": "Tue.",
+            "time": "9.30 a.m. PDT",
+            "expire": "2023-09-27T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/296223015/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "The Developer's Journey: Building Integrations the Ballerina Way",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

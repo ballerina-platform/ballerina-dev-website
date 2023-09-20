@@ -11,7 +11,7 @@ redirect_from:
     - /downloads/swan-lake-release-notes
 ---
 
-## Overview of Ballerina Swan Lake 2201.8.0
+## Overview of Ballerina Swan Lake Update 8 (2201.8.0)
 
 <em>2201.8.0 (Swan Lake Update 8) is the eighth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
 

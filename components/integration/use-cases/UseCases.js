@@ -56,7 +56,7 @@ export default function UseCases(props) {
                                 <div className={styles.cardDescription}>
                                     <p>Automation is just code after all - write a main() and do whatever you want.</p>
 
-                                    <p>Use the  extended Ballerina library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
+                                    <p>Use the Ballerina library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
 
                                     <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
 

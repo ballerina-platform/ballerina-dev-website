@@ -10,7 +10,7 @@ intro: This tutorial helps you understand the basics of Ballerina constructs, wh
 
 ## Overview
 
-In this tutorial, we will develop a service that allows a user to retrieve a list of doctors based on the doctor's specialization (category). The information about the doctors is retrieved from a separate microservice. 
+In this tutorial, you will develop a service that allows a user to retrieve a list of doctors based on the doctor's specialization (category). The information about the doctors is retrieved from a separate microservice. 
 
 To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then, run the service. The resource will receive the user request, retrieve details from the backend service, and respond to the user request with the relevant doctor details.
 
@@ -139,9 +139,9 @@ if resp is http:ClientRequestError {
 return <http:InternalServerError> {body: resp.message()};
 ```
 
-#### Complete source
-
 You have successfully developed the required service.
+
+#### Complete source
 
 ```
 import ballerina/http;
@@ -325,6 +325,10 @@ time = 2023-08-17T09:01:23.758+05:30 level = INFO module = integration_tutorials
 ```
 
 You have now developed and tested a simple Ballerina REST service, which receives a request, logs a message, sends a request to a backend service, and responds to the original request with the response from the backend service.
+
+## Complete implementation
+
+Check out the [complete implementation](https://github.com/ballerina-guides/integration-tutorials/tree/main/sending-a-message-to-a-service) on GitHub.
 
 ## References
 

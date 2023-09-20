@@ -94,8 +94,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     map<xml> m = {a: xml `foo`};
     xml x = check m.a; // Compilation error now.
     ```
-
-- The Ballerina interoperability implementation may be impacted by the Java 17 support due to any incompatible changes. For example, Java 17 has some restrictions on using Java reflections with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
+    
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
 
 - A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
 
@@ -233,7 +233,6 @@ const data64 = base64 `ABCD pqrs`;
 
 #### Make `async-send` an action
 
-
 Reclassified `async-send` from a statement to an action in alignment with the Ballerina specification.
 
 The following case is now supported.
@@ -356,9 +355,11 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 ### New features
 
 #### `mqtt` package
+
 - Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` package
+
 - Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
 
 #### `graphql` package
@@ -380,10 +381,12 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Added support for generating a subgraph SDL schema at compile time.
 
 #### `log` package
+
 - Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. In the previous version, it would only display the error message. However, in the updated version, it now provides more detailed information, including both the error message and the stack trace for the current error, as well as any underlying errors that contributed to the current error.
 - Removed the extra space that was printed between the key and value when printing in logFMT format.
 
 #### `persist` package
+
 - Added support for printing executed SQL statement as debug logs.
 - Added support for executing native queries in SQL databases.
 - Improved advanced filter query support for SQL databases to filter at DB level.
@@ -405,6 +408,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Added a new `bal tool` command to manage tools that extend the functionality of the CLI. Tools can be pulled from Ballerina Central and are managed using the `bal tool` command. For more information, see [CLI commands](/learn/cli-commands/).
 
 #### OpenAPI tool
+
 - Added support to generate Ballerina client and service declarations from OpenAPI v3.1.x definitions.
 
 ### Improvements
@@ -414,7 +418,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Improved the search to suggest Ballerina Central packages when they are partially typed.
 - Improved sorting in the record type descriptor node context.
 - Introduced a code action to add local module dependencies to the `Ballerina.toml` file.
-- Introduced a code action to change the variable type of a `let` expression.
+- Introduced a code action to change the type of a variable in a `let` expression.
 - Introduced a code action to create a function for the expression of a `select` clause.
 - Improved completions in the service declaration node context.
 - Improved the LS simulator.

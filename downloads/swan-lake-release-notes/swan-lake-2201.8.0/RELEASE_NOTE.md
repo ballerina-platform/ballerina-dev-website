@@ -421,4 +421,12 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 ### New features
 
-Added support for custom package repositories for dependency resolution. This feature enables configuring commonly used package repositories to publish Ballerina libraries and to use them in Ballerina projects. 
+The Swan Lake Update 8 release introduces support for incorporating custom user repositories into the package management system in addition to the Ballerina Central repository. 
+
+This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file.
+Now, you can both publish your packages to your preferred repositories and retrieve packages from these repositories. 
+Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the Ballerina.toml file.
+
+Each repository enjoys the privilege of maintaining a local filesystem cache, conveniently located at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina initiates queries to remote repositories exclusively when the specified dependency version is absent from its local cache. 
+
+For more information on the custom package repositories support, see [Manage dependencies](https://ballerina.io/learn/manage-dependencies/).

@@ -143,44 +143,44 @@ export default function Learn() {
                   <SampleList
                     name="Sending a message to a service"
                     description="Use an HTTP client in a service to send a message to another service"
-                    tags={["HTTP client", "REST API", "data binding", "integration"]}
+                    tags={["HTTP client", "REST API", "Data Binding", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Routing requests based on message content"
                     description="Route requests based on message content"
-                    tags={["content based routing", "integration"]}
+                    tags={["Content-based Routing", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Service orchestration"
                     description="Integrate several services and expose them as a single service."
-                    tags={["HTTP client", "REST API", "data binding", "integration", "service orchestration"]}
+                    tags={["HTTP Client", "REST API", "Data Binding", "Integration", "Service Orchestration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Translating message formats"
                     description="Translating message formats"
-                    tags={["integration"]}
+                    tags={["Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Connecting Web APIs/Cloud Services"
                     description="Connectin web APIs/cloud services"
-                    tags={["integration"]}
+                    tags={["Integration"]}
                     icon={false}
                   />
 
-                  <SampleList
+                  {/* <SampleList
                     name="File processing"
                     description="File processing"
-                    tags={["file processing", "persistence", "integration"]}
+                    tags={["File Processing", "Persistence", "Integration"]}
                     icon={false}
-                  />
+                  /> */}
 
 
                 </Row>

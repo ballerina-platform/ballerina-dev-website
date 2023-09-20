@@ -97,18 +97,18 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 - A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
 
-  ```ballerina
-  public function main() {
-    int resultInt;
-    transaction {
-        resultInt = check calculateDefaultValue(true);
-        check commit;
-    } on fail {
-        io:println("Failed to initialize resultInt");
+    ```ballerina
+    public function main() {
+        int resultInt;
+        transaction {
+            resultInt = check calculateDefaultValue(true);
+            check commit;
+        } on fail {
+            io:println("Failed to initialize resultInt");
+        }
+        resultInt += 1; // Compilation error now.
     }
-    resultInt += 1; // Compilation error now.
-  }
-  ```
+    ```
 
 - A bug that resulted in incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
     

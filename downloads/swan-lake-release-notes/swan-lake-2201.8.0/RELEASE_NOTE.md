@@ -457,8 +457,8 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
         isolated resource function get books(graphql:Context ctx) returns Book[]|error {
             dataloader:DataLoader bookLoader = ctx.getDataLoader("bookLoader");
             // Obtain the data from the dataloader using the primary key of the data.
-            BookRow[] bookrows = check bookLoader.get(self.author.id);
-            return from BookRow bookRow in bookrows
+            BookRow[] bookRows = check bookLoader.get(self.author.id);
+            return from BookRow bookRow in bookRows
                 select {id: bookRow.id, title: bookRow.title};
         }
     }

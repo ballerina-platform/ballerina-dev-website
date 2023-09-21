@@ -176,24 +176,37 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
   
-- A bug that resulted in an incorrect value when using a global variable, as a default value for the class field and function parameter has been fixed.
-    
+- A bug that resulted in an incorrect value being used as the default value of a class field when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
+
     ```ballerina
     import ballerina/io;
     
-    final int value = 100;
+    int defaultTemperature = 25;
     
-    class Foo {
-        int i = value;
+    public class TemperatureSensor {
+        public string location;
+        public int temperature = defaultTemperature;
+    
+        public function init(string location) {
+            self.location = location;
+        }
+    
+        public function setDefaultTemperature(int temp) {
+            self.temperature = temp;
+        }
     }
-    
-    function bar(int k = value) returns int {
-        return k;
+
+    public function getTemperature(string location, int temperature = defaultTemperature) returns int {
+        return temperature;
     }
-    
+
     public function main() {
-        Foo foo = new;
-        io:println(foo.i); // Prints `100` now.
+        TemperatureSensor livingRoomSensor = new ("Living Room");
+        io:println("Current temperature in the " + livingRoomSensor.location + ": " + livingRoomSensor.temperature.toString() + "°C");
+        // Prints `Current temperature in the Living Room: 25°C` now.
+        int defaultTemp = getTemperature("Kitchen");
+        io:println("Default temperature in the Kitchen: " + defaultTemp.toString() + "°C");
+        // Prints `Default temperature in the Kitchen: 25°C` now.
     }
     ```
 

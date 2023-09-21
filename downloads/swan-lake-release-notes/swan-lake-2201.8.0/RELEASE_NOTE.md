@@ -403,6 +403,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Removed the extra space that was printed between the key and value when printing in logFMT format.
 
 #### `persist` package
+
 - Added support for printing executed SQL statement as debug logs.
 - Added support for executing native queries in SQL databases.
 - Improved advanced filter query support for SQL databases to filter at DB level.

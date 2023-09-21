@@ -398,6 +398,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Added support for generating a subgraph SDL schema at compile time.
 
 #### `log` package
+
 - Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. In the previous version, it would only display the error message. However, in the updated version, it now provides more detailed information, including both the error message and the stack trace for the current error, as well as any underlying errors that contributed to the current error.
 - Removed the extra space that was printed between the key and value when printing in logFMT format.
 

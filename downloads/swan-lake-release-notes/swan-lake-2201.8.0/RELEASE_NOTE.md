@@ -219,7 +219,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     type A int[] & readonly;
     ```
 
-- Removed the support for the `AES/GCM/PKCS5Padding` encryption algorithm from the `crypto` package.
+- Removed support for the `AES/GCM/PKCS5Padding` encryption algorithm due to its incompatibility with Java 17 in the `crypto` package.
 
 ## Language updates
 

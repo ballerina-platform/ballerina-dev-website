@@ -3598,6 +3598,154 @@
     ]
   },
   {
+    "title": "MQTT service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Subscribe to messages",
+        "url": "mqtt-service-subscribe-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Publish message",
+        "url": "mqtt-client-publish-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-service-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-service-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-client-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-client-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-service-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message producer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "jms-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactions",
+        "url": "jms-producer-transaction",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message consumer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-consumer-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Manual acknowledgment",
+        "url": "jms-consumer-acknowledgement",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "TCP service",
     "column": 3,
     "category": "Network libraries",
@@ -4265,20 +4413,6 @@
     ]
   },
   {
-    "title": "Regex",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Regular expressions",
-        "url": "regular-expressions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "OS",
     "column": 3,
     "category": "Common libraries",
@@ -4396,25 +4530,25 @@
         "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
-      },
-      {
-        "name": "S3 trigger",
-        "url": "aws-lambda-s3-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "DynamoDB trigger",
-        "url": "aws-lambda-dynamodb-trigger",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
       }
+      // {
+      //   "name": "S3 trigger",
+      //   "url": "aws-lambda-s3-trigger",
+      //   "verifyBuild": false,
+      //   "verifyOutput": false,
+      //   "disableVerificationReason": "Needs prerequisite condition",
+      //   "disablePlayground": true,
+      //   "isLearnByExample": false
+      // },
+      // {
+      //   "name": "DynamoDB trigger",
+      //   "url": "aws-lambda-dynamodb-trigger",
+      //   "verifyBuild": false,
+      //   "verifyOutput": false,
+      //   "disableVerificationReason": "Needs prerequisite condition",
+      //   "disablePlayground": true,
+      //   "isLearnByExample": false
+      // }
     ]
   },
   {

@@ -173,6 +173,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         AC|boolean _ = check x.cloneWithType();
     }
     ```
+
+    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
   
 - A bug that resulted in an incorrect value when using a global variable, as a default value for the class field and function parameter has been fixed.
     
@@ -194,8 +196,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
         io:println(foo.i); // Prints `100` now.
     }
     ```
-
-    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
 
 - Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
 

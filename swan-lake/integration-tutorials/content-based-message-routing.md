@@ -286,7 +286,8 @@ service /healthcare on new http:Listener(port) {
         ...reservationRequest
     });
     ```
-The expected payload in the request to make the reservation consists of four fields, namely `patient`, `doctor`, `hospital`, and `appointment_date`. The `reservationRequest` variable is used as a rest argument since it contains `hospital`, and `appointment_date`. The payload is specified directly as an argument to the remote method call.
+
+    The expected payload in the request to make the reservation consists of four fields, namely `patient`, `doctor`, `hospital`, and `appointment_date`. The `reservationRequest` variable is used as a rest argument since it contains `hospital`, and `appointment_date`. The payload is specified directly as an argument to the remote method call.
 
     ```
     {patient, doctor, ...reservationRequest}

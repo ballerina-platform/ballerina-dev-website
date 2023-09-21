@@ -289,7 +289,7 @@ Introduced the `profile` CLI command, which runs a Ballerina package and does a 
 $ bal profile
 ```
 
-- For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
+- For example, if you run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
 
 - The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
 

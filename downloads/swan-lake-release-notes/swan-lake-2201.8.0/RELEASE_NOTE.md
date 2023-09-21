@@ -28,7 +28,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support".
 
 - A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
 
@@ -298,7 +298,14 @@ $ bal profile
 
 #### Java 17 support
 
-Ballerina now supports code compilation and execution with Java 17.
+The Java 11 Long term Support (LTS) active support will end in September 2023. Therefore, the jBallerina runtime is now upgraded to support Java 17 LTS, which is the latest long-term support release of the Java SE platform.
+
+- Users will not have an impact on the Java version upgrade except for the following.If you are specifically using Java 11 to run Ballerina programs, you would have to switch to Java 17.
+
+- Ballerina interoperability implementation will have an impact on Java 17 support due to any incompatible changes. As an example, Java 17 will have some restrictions on using Java reflections with internal Java packages.
+
+For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
+
 
 #### Support large list and mapping constructors
 

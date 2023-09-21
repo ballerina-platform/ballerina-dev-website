@@ -86,7 +86,7 @@ Follow the instructions given in this section to develop the service.
 
 1. Create a new Ballerina project using the `bal` command and open it in VS Code.
 
-```bash
+```
 $ bal new content-based-message-routing
 ```
 
@@ -421,13 +421,13 @@ service /healthcare on new http:Listener(port) {
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
-![sequence diagram](./resources/tutorial_content_based_message_routing_diagrm.png)
+![sequence diagram](/learn/images/tutorial_content_based_message_routing_diagrm.png)
 
 ### Step 3: Build and run the service
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-```bash
+```
 content-based-message-routing$ bal run
 Compiling source
         integration_tutorials/content_based_message_routing:0.1.0
@@ -443,7 +443,7 @@ Let's test the use case by sending a request to the service.
 
 Download the JAR file for the backend service from [here](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/) and execute the following command to start the service:
 
-```bash
+```
 bal run hospitalservice.jar
 ```
 
@@ -474,7 +474,7 @@ Let's send a request to the service using cURL as follows.
 
 3. Execute the following command.
 
-```bash
+```
 curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
 ```
 #### Verify the response

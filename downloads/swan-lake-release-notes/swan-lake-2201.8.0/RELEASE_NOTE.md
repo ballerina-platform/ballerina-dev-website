@@ -253,7 +253,11 @@ The following case is now supported.
 ```ballerina
 public function main() {
     worker w1 {
-        _ = 5 -> w2;
+        () res = 5 -> w2;
+    }
+    
+    worker w2 {
+        int val = <- w1;
     }
 }
 ```

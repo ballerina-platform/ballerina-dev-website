@@ -1,6 +1,6 @@
 ---
 layout: ballerina-content-based-message-routing-left-nav-pages-swanlake
-title: Content based message routing 
+title: Content-based message routing 
 permalink: /learn/content-based-message-routing/
 description: Integration tutorial for message routing based on the content.
 keywords: ballerina, programming language, client, restful-api, integration

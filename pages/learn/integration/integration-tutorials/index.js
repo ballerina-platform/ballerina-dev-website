@@ -156,7 +156,7 @@ export default function Learn() {
 
                   <SampleList
                     name="Service orchestration"
-                    description="Integrate several services and expose them as a single service."
+                    description="Integrate several services and expose them as a single service"
                     tags={["HTTP Client", "REST API", "Data Binding", "Integration", "Service Orchestration"]}
                     icon={false}
                   />

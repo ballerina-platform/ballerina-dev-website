@@ -5,15 +5,15 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `// This import declaration binds the prefix \`io\` to the \`ballerina/io\` module. 
-// The prefix by default comes form the last part of the module name.
-// The \`ballerina\` org name is reserved for the standard library modules.
+  `// This import declaration binds the prefix \`io\` to the \`ballerina/io\` package. 
+// The prefix by default comes from the last part of the package name.
+// The \`ballerina\` org name is reserved for the Ballerina library packages.
 import ballerina/io;
 
 // \`main\` function is the program entry point. 
-// \`public\` makes function visible outside the module.
+// \`public\` makes the function visible outside the package.
 public function main() {
-    // Here \`io:println\` means function \`println\` is in the module bound to prefix \`io\`.
+    // Here \`io:println\` means function \`println\` is in the package bound to prefix \`io\`.
     io:println("Hello, World!");
 }
 `,
@@ -47,11 +47,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=98b0f8b8f5cc50a30cf9b058b7f94ca9&file=programs_and_modules.bal",
-=======
-                "https://play.ballerina.io/?gist=10303f0c81088bb4051ea1f58c5013e0&file=programs_and_modules.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=b7c1e81764e064f539282b13b20c305f&file=programs_and_modules.bal",
                 "_blank",
               );
             }}
@@ -76,7 +72,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/programs-and-modules",
                 "_blank",
               );
             }}

@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 password grant type",
+  "description": "BBE on how to secure WebSocket client with OAuth2 password grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "auth",
+    "oauth2",
+    "password grant type"
+  ],
+  "permalink": "/learn/by-example/websocket-client-oauth2-password-grant-type",
+  "active": "websocket-client-oauth2-password-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-client-oauth2-password-grant-type",
+    "/swan-lake/learn/by-example/websocket-client-oauth2-password-grant-type.html"
+  ]
+}

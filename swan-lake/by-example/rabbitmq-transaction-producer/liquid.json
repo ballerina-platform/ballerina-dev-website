@@ -1,0 +1,18 @@
+{
+  "title": "Transactional producer",
+  "description": "BBE on transactionally producing messages to a RabbitMQ queue using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "producer",
+    "bbe",
+    "transaction"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-transaction-producer",
+  "active": "rabbitmq-transaction-producer",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-transaction-producer",
+    "/swan-lake/learn/by-example/rabbitmq-transaction-producer.html"
+  ]
+}

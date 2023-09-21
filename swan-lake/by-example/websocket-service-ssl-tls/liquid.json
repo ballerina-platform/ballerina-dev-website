@@ -1,0 +1,19 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to secure WebSocket listener with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websocket",
+    "wss",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/websocket-service-ssl-tls",
+  "active": "websocket-service-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websocket-service-ssl-tls",
+    "/swan-lake/learn/by-example/websocket-service-ssl-tls.html"
+  ]
+}

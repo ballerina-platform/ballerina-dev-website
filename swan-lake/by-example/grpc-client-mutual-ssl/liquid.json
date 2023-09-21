@@ -1,0 +1,19 @@
+{
+  "title": "Mutual SSL",
+  "description": "BBE on how to secure gRPC client with mutual SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "mutual ssl",
+    "ssl protocols",
+    "ciphers"
+  ],
+  "permalink": "/learn/by-example/grpc-client-mutual-ssl",
+  "active": "grpc-client-mutual-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-mutual-ssl",
+    "/swan-lake/learn/by-example/grpc-client-mutual-ssl.html"
+  ]
+}

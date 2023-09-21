@@ -1,0 +1,18 @@
+{
+  "title": "Schedule job recurrence by frequency",
+  "description": "BBE on how to schedule the frequency job execution in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "task",
+    "job",
+    "scheduler"
+  ],
+  "permalink": "/learn/by-example/task-frequency-job-execution",
+  "active": "task-frequency-job-execution",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/task-frequency-job-execution",
+    "/swan-lake/learn/by-example/task-frequency-job-execution.html"
+  ]
+}

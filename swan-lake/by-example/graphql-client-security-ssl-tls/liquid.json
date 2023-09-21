@@ -1,0 +1,18 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to secure HTTP client with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/graphql-client-security-ssl-tls",
+  "active": "graphql-client-security-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-client-security-ssl-tls",
+    "/swan-lake/learn/by-example/graphql-client-security-ssl-tls.html"
+  ]
+}

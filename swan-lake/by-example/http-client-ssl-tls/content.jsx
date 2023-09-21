@@ -54,11 +54,7 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=071944125b99b359b742d9a8ebc4a701&file=http_client_ssl_tls.bal",
-=======
-                "https://play.ballerina.io/?gist=5747345717b46a068f71f16384f13767&file=http_client_ssl_tls.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=06c032a311c29152af3683f3b152e36d&file=http_client_ssl_tls.bal",
                 "_blank",
               );
             }}
@@ -83,7 +79,7 @@ export function HttpClientSslTls({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-ssl-tls",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-client-ssl-tls",
                 "_blank",
               );
             }}

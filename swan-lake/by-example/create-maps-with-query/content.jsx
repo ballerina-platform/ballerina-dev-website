@@ -66,11 +66,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=b4c5491517364ad3c5e08536d5dcf280&file=create_maps_with_query.bal",
-=======
-                "https://play.ballerina.io/?gist=e57c72957c1667882e1cdf5ebcf02c8a&file=create_maps_with_query.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=ea57de91ac2b3ee71d70e462d3c3b847&file=create_maps_with_query.bal",
                 "_blank",
               );
             }}
@@ -95,7 +91,7 @@ export function CreateMapsWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/create-maps-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/create-maps-with-query",
                 "_blank",
               );
             }}

@@ -107,11 +107,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=c28d48573f839260ac4fbf4b9752314c&file=http_interceptor_error_handling.bal",
-=======
-                "https://play.ballerina.io/?gist=5eea081d4f79a5971e87ac66978d4255&file=http_interceptor_error_handling.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=f2d5951b77be0ab1b48075325b5ff64d&file=http_interceptor_error_handling.bal",
                 "_blank",
               );
             }}
@@ -136,7 +132,7 @@ export function HttpInterceptorErrorHandling({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-interceptor-error-handling",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-interceptor-error-handling",
                 "_blank",
               );
             }}

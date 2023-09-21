@@ -1,0 +1,11 @@
+{
+  "title": "Random numbers",
+  "description": "BBE on how to to generate random numbers.",
+  "keywords": ["ballerina", "ballerina by examples", "bbe", "random"],
+  "permalink": "/learn/by-example/random-numbers",
+  "active": "random-numbers",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/random-numbers",
+    "/swan-lake/learn/by-example/random-numbers.html"
+  ]
+}

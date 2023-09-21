@@ -63,11 +63,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=593522f9e12669bf100a6d46c8863f62&file=limit_clause.bal",
-=======
-                "https://play.ballerina.io/?gist=e465f113170bc7a76f30d064482177ce&file=limit_clause.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=fa03028ec73bad47456d605d5faa7708&file=limit_clause.bal",
                 "_blank",
               );
             }}
@@ -92,7 +88,7 @@ export function LimitClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/limit-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/limit-clause",
                 "_blank",
               );
             }}

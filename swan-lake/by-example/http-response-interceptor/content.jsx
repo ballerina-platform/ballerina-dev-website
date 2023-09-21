@@ -103,11 +103,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=667a8cd87f795edd402ad05a2279a02a&file=http_response_interceptor.bal",
-=======
-                "https://play.ballerina.io/?gist=37fe19f74d9e7f12c63a6b48a6606a87&file=http_response_interceptor.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=b3a786f91e0070f62f7046cecc82595e&file=http_response_interceptor.bal",
                 "_blank",
               );
             }}
@@ -132,7 +128,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-response-interceptor",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-response-interceptor",
                 "_blank",
               );
             }}

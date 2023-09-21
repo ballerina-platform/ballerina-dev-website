@@ -1,0 +1,18 @@
+{
+  "title": "Basic authentication",
+  "description": "BBE on how to secure gRPC client with Basic Auth in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "basic auth"
+  ],
+  "permalink": "/learn/by-example/grpc-client-basic-auth",
+  "active": "grpc-client-basic-auth",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-basic-auth",
+    "/swan-lake/learn/by-example/grpc-client-basic-auth.html"
+  ]
+}

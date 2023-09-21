@@ -1,0 +1,17 @@
+{
+  "title": "Consume github events",
+  "description": "This BBE demonstrates how a WebSub Subscriber service could be registered as a WebHook Service for GitHub.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "websub",
+    "subscriber"
+  ],
+  "permalink": "/learn/by-example/websub-webhook-sample",
+  "active": "websub-webhook-sample",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/websub-webhook-sample",
+    "/swan-lake/learn/by-example/websub-webhook-sample.html"
+  ]
+}

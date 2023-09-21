@@ -1,0 +1,18 @@
+{
+  "title": "Transactional consumer",
+  "description": "BBE on transactionally acknowledging messages consumed from a RabbitMQ queue using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "rabbitmq",
+    "bbe",
+    "consumer",
+    "transaction"
+  ],
+  "permalink": "/learn/by-example/rabbitmq-transaction-consumer",
+  "active": "rabbitmq-transaction-consumer",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/rabbitmq-transaction-consumer",
+    "/swan-lake/learn/by-example/rabbitmq-transaction-consumer.html"
+  ]
+}

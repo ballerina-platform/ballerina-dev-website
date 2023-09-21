@@ -65,11 +65,7 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=02a89ff1c9cd55364c8a6452e8419a3e&file=http_service_and_resource_paths.bal",
-=======
-                "https://play.ballerina.io/?gist=336f1894b3d76c9b4c1db1a3fc9cdd3f&file=http_service_and_resource_paths.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=a05a03d4df479ab86b596db14edbc2da&file=http_service_and_resource_paths.bal",
                 "_blank",
               );
             }}
@@ -94,7 +90,7 @@ export function HttpServiceAndResourcePaths({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-service-and-resource-paths",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-service-and-resource-paths",
                 "_blank",
               );
             }}

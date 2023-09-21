@@ -63,11 +63,7 @@ export function ReadonlyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=8742179572362498377ccf54b17a8b7d&file=readonly_type.bal",
-=======
-                "https://play.ballerina.io/?gist=26dd79d5dcf4f504222f1390305ae0b1&file=readonly_type.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=c60883eceb1b45c491aef9093dc0ecca&file=readonly_type.bal",
                 "_blank",
               );
             }}
@@ -92,7 +88,7 @@ export function ReadonlyType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/readonly-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/readonly-type",
                 "_blank",
               );
             }}

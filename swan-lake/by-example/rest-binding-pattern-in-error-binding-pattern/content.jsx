@@ -73,11 +73,7 @@ export function RestBindingPatternInErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=299cc04979b53ebda28d448827c9fc0b&file=rest_binding_pattern_in_error_binding_pattern.bal",
-=======
-                "https://play.ballerina.io/?gist=940cd89cb98dc63a46e56e27aa91c52d&file=rest_binding_pattern_in_error_binding_pattern.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=f994fd69fb932a463253514adcb96caa&file=rest_binding_pattern_in_error_binding_pattern.bal",
                 "_blank",
               );
             }}
@@ -102,7 +98,7 @@ export function RestBindingPatternInErrorBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/rest-binding-pattern-in-error-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/rest-binding-pattern-in-error-binding-pattern",
                 "_blank",
               );
             }}

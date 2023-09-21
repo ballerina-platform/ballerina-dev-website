@@ -1,0 +1,18 @@
+{
+  "title": "Temp files and directories",
+  "description": "This BBE shows how to perform file-system operations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "file",
+    "path",
+    "temp"
+  ],
+  "permalink": "/learn/by-example/temp-files-directories",
+  "active": "temp-files-directories",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/temp-files-directories",
+    "/swan-lake/learn/by-example/temp-files-directories.html"
+  ]
+}

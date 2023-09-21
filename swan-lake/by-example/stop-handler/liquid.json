@@ -1,0 +1,17 @@
+{
+  "title": "StopHandler",
+  "description": "Registering a function that will be executed during the graceful shutdown.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "stop handler",
+    "bbe",
+    "service"
+  ],
+  "permalink": "/learn/by-example/stop-handler",
+  "active": "stop-handler",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/stop-handler",
+    "/swan-lake/learn/by-example/stop-handler.html"
+  ]
+}

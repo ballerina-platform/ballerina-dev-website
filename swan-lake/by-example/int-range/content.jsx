@@ -60,11 +60,7 @@ export function IntRange({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=d4b1084802b3cef313343d0aa9c80532&file=int_range.bal",
-=======
-                "https://play.ballerina.io/?gist=9205f5310fc90b8596e6ad02619968ef&file=int_range.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=2fae1cedd882f705a8e32ce300fedac8&file=int_range.bal",
                 "_blank",
               );
             }}
@@ -89,7 +85,7 @@ export function IntRange({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/int-range",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/int-range",
                 "_blank",
               );
             }}

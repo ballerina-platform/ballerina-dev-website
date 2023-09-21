@@ -1,0 +1,19 @@
+{
+  "title": "DML and DDL operations",
+  "description": "This BBE demonstrates the use of a MySQL client with DDL and DML operations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mysql",
+    "insert",
+    "update",
+    "delete"
+  ],
+  "permalink": "/learn/by-example/mysql-execute-operation",
+  "active": "mysql-execute-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-execute-operation",
+    "/swan-lake/learn/by-example/mysql-execute-operation.html"
+  ]
+}

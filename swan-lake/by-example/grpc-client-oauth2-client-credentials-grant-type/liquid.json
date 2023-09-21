@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2 client credentials grant type",
+  "description": "BBE on how to secure gRPC client with OAuth2 client credentials grant type in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "oauth2",
+    "client credentials grant type"
+  ],
+  "permalink": "/learn/by-example/grpc-client-oauth2-client-credentials-grant-type",
+  "active": "grpc-client-oauth2-client-credentials-grant-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-oauth2-client-credentials-grant-type",
+    "/swan-lake/learn/by-example/grpc-client-oauth2-client-credentials-grant-type.html"
+  ]
+}

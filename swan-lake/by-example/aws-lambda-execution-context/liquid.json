@@ -1,0 +1,19 @@
+{
+  "title": "Execution context",
+  "description": "The example below demonstrates how the execution context information of an AWS function can be retrieved.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "aws lambda",
+    "execution context",
+    "serverless",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/aws-lambda-execution-context",
+  "active": "aws-lambda-execution-context",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/aws-lambda-execution-context",
+    "/swan-lake/learn/by-example/aws-lambda-execution-context.html"
+  ]
+}

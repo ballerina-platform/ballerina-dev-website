@@ -53,11 +53,7 @@ export function WildcardBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=7148b12ba77fe62d85f142be5540dbb9&file=wildcard_binding_pattern.bal",
-=======
-                "https://play.ballerina.io/?gist=9381f4eaf9becb6a8ec714428dd0498d&file=wildcard_binding_pattern.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=894c939eba537b20a9ca666e8385374b&file=wildcard_binding_pattern.bal",
                 "_blank",
               );
             }}
@@ -82,7 +78,7 @@ export function WildcardBindingPattern({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/wildcard-binding-pattern",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/wildcard-binding-pattern",
                 "_blank",
               );
             }}

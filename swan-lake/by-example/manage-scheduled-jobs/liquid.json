@@ -1,0 +1,18 @@
+{
+  "title": "Manage scheduled jobs",
+  "description": "This BBE shows how to manage the scheduled jobs in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "task",
+    "job",
+    "scheduler"
+  ],
+  "permalink": "/learn/by-example/manage-scheduled-jobs",
+  "active": "manage-scheduled-jobs",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/manage-scheduled-jobs",
+    "/swan-lake/learn/by-example/manage-scheduled-jobs.html"
+  ]
+}

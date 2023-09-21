@@ -54,11 +54,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=33008b24a4ba6e83eca110f3f644067e&file=nested_query_expressions.bal",
-=======
-                "https://play.ballerina.io/?gist=a9a046d9e396c4dbaf47d9871bfedd4e&file=nested_query_expressions.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=e6b29cf25e3d3a20c28e73476cad6dd1&file=nested_query_expressions.bal",
                 "_blank",
               );
             }}
@@ -83,7 +79,7 @@ export function NestedQueryExpressions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/nested-query-expressions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/nested-query-expressions",
                 "_blank",
               );
             }}

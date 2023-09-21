@@ -148,9 +148,9 @@ export default function Learn() {
                   />
 
                   <SampleList
-                    name="Routing requests based on message content"
+                    name="Content-based message routing"
                     description="Route requests based on message content"
-                    tags={["Content-based Routing", "Integration"]}
+                    tags={["HTTP client", "REST API", "Data Binding", "Content-based Routing", "Integration"]}
                     icon={false}
                   />
 

@@ -28,7 +28,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support".
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support">Java 17 support
+
+</a>.
 
 - A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
 
@@ -300,7 +302,7 @@ $ bal profile
 
 The Java 11 Long term Support (LTS) active support will end in September 2023. Therefore, the jBallerina runtime is now upgraded to support Java 17 LTS, which is the latest long-term support release of the Java SE platform.
 
-- Users will not have an impact on the Java version upgrade except for the following.If you are specifically using Java 11 to run Ballerina programs, you would have to switch to Java 17.
+- Users will not have an impact on the Java version upgrade except for the following. If you are specifically using Java 11 to run Ballerina programs, you would have to switch to Java 17.
 
 - Ballerina interoperability implementation will have an impact on Java 17 support due to any incompatible changes. As an example, Java 17 will have some restrictions on using Java reflections with internal Java packages.
 
@@ -309,7 +311,7 @@ For more information, see the <a href="https://www.oracle.com/java/technologies/
 
 #### Support large list and mapping constructors
 
-The number of members supported in a list constructor expression, and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger.
+The number of members supported in a list constructor expression and the number of fields supported in a mapping constructor expression have been increased to create new array, tuple, map, and record values that are larger.
 
 For example, the following array constructor is now supported.
 
@@ -491,14 +493,14 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `log` package
 
-- Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. In the previous version, it would only display the error message. However, in the updated version, it now provides more detailed information, including both the error message and the stack trace for the current error, as well as any underlying errors that contributed to the current error.
-- Removed the extra space that was printed between the key and value when printing in logFMT format.
+- Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. Updated the previous version, which displayed only the error message to now provide more detailed information, including both the error message and the stack trace for the current error as well as any underlying errors that contributed to the current error.
+- Removed the extra space that was printed between the key and value when printing in the LogFMT format.
 
 #### `persist` package
 
-- Added support for printing executed SQL statement as debug logs.
+- Added support for printing an executed SQL statement as debug logs.
 - Added support for executing native queries in SQL databases.
-- Improved advanced filter query support for SQL databases to filter at DB level.
+- Improved advanced filter query support for SQL databases to filter at the database level.
 
 ### Bug fixes
 

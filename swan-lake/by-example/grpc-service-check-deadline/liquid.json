@@ -1,0 +1,19 @@
+{
+  "title": "Check deadline",
+  "description": "This Ballerina by Example has a gRPC service with a deadline check.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "unary",
+    "service",
+    "deadline"
+  ],
+  "permalink": "/learn/by-example/grpc-service-check-deadline",
+  "active": "grpc-service-check-deadline",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-service-check-deadline",
+    "/swan-lake/learn/by-example/grpc-service-check-deadline.html"
+  ]
+}

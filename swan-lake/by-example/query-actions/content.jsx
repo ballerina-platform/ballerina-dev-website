@@ -69,11 +69,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=9272800a6a906dec89c8ffa20ad48688&file=query_actions.bal",
-=======
-                "https://play.ballerina.io/?gist=310c143879bdca5c60fd634352d77899&file=query_actions.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=0fe16f5b62cd2d22aa0bcf241809f43a&file=query_actions.bal",
                 "_blank",
               );
             }}
@@ -98,7 +94,7 @@ export function QueryActions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/query-actions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/query-actions",
                 "_blank",
               );
             }}

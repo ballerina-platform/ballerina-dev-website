@@ -67,11 +67,7 @@ export function HttpPathParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=fa7b9b198de01e5fc2064dc64f12f304&file=http_path_param.bal",
-=======
-                "https://play.ballerina.io/?gist=a9f589a154fee4ebea32a4530c6d91b7&file=http_path_param.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=9a041cd33c56f6b4f5cec2da6324285a&file=http_path_param.bal",
                 "_blank",
               );
             }}
@@ -96,7 +92,7 @@ export function HttpPathParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-path-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-path-param",
                 "_blank",
               );
             }}

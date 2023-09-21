@@ -71,11 +71,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=1c4e6a10795fb61f47c1e6ccd1f968b6&file=http_client_header_parameter.bal",
-=======
-                "https://play.ballerina.io/?gist=430d97713a678c2430ecc873f6d93ac3&file=http_client_header_parameter.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=fe1728cc1fd4dfaf5a54497400672fd7&file=http_client_header_parameter.bal",
                 "_blank",
               );
             }}
@@ -100,7 +96,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-client-header-parameter",
                 "_blank",
               );
             }}
@@ -266,11 +262,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=319d78e8354c22e9cb0c1b40be2813d6&file=http_client_header_parameter_post.bal",
-=======
-                "https://play.ballerina.io/?gist=ac80799aa6d69d714d7728c3914c9a8a&file=http_client_header_parameter_post.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=e4830f9dc6505fce4df326afc3bfdcf5&file=http_client_header_parameter_post.bal",
                 "_blank",
               );
             }}
@@ -295,7 +287,7 @@ export function HttpClientHeaderParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-header-parameter",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-client-header-parameter",
                 "_blank",
               );
             }}

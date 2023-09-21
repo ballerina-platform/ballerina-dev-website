@@ -1,0 +1,19 @@
+{
+  "title": "Get by key",
+  "description": "This BBE demonstrates the usage of get by key resource method in generated persistence client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "persistence",
+    "data store",
+    "get by key",
+    "entity"
+  ],
+  "permalink": "/learn/by-example/persist-get-by-key",
+  "active": "persist-get-by-key",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/persist-get-by-key",
+    "/swan-lake/learn/by-example/persist-get-by-key.html"
+  ]
+}

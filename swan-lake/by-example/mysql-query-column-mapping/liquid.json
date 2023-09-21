@@ -1,0 +1,11 @@
+{
+  "title": "Query with advanced mapping",
+  "description": "This BBE demonstrates how to use the MySQL client for query operations with advanced mapping for column names.",
+  "keywords": ["ballerina", "ballerina by example", "bbe", "mysql"],
+  "permalink": "/learn/by-example/mysql-query-column-mapping",
+  "active": "mysql-query-column-mapping",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-query-column-mapping",
+    "/swan-lake/learn/by-example/mysql-query-column-mapping.html"
+  ]
+}

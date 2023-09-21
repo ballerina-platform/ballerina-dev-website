@@ -1,0 +1,17 @@
+{
+  "title": "Environment variables",
+  "description": "BBE on how to to retrieve information about the OS.",
+  "keywords": [
+    "ballerina",
+    "ballerina by examples",
+    "BBE",
+    "OS",
+    "environment"
+  ],
+  "permalink": "/learn/by-example/environment-variables",
+  "active": "environment-variables",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/environment-variables",
+    "/swan-lake/learn/by-example/environment-variables.html"
+  ]
+}

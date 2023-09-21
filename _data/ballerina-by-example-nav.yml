@@ -1435,38 +1435,92 @@ sublinks:
           - title: Basic authentication
             id: 2
             url: rabbitmq-client-basic-auth
-      - title: TCP service
+      - title: MQTT service
         id: 39
+        sublinks:
+          - title: Subscribe to messages
+            id: 1
+            url: mqtt-service-subscribe-message
+      - title: MQTT client
+        id: 40
+        sublinks:
+          - title: Publish message
+            id: 1
+            url: mqtt-client-publish-message
+      - title: MQTT service security
+        id: 41
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: mqtt-service-ssl
+          - title: Basic authentication
+            id: 2
+            url: mqtt-service-basic-authentication
+      - title: MQTT client security
+        id: 42
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: mqtt-client-ssl
+          - title: Basic authentication
+            id: 2
+            url: mqtt-client-basic-authentication
+      - title: JMS service
+        id: 43
+        sublinks:
+          - title: Consume message
+            id: 1
+            url: jms-service-consume-message
+      - title: JMS message producer
+        id: 44
+        sublinks:
+          - title: Produce message
+            id: 1
+            url: jms-producer-produce-message
+          - title: Transactions
+            id: 2
+            url: jms-producer-transaction
+      - title: JMS message consumer
+        id: 45
+        sublinks:
+          - title: Consume message
+            id: 1
+            url: jms-consumer-consume-message
+          - title: Manual acknowledgment
+            id: 2
+            url: jms-consumer-acknowledgement
+      - title: TCP service
+        id: 46
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 40
+        id: 47
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 41
+        id: 48
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 42
+        id: 49
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 43
+        id: 50
         sublinks:
           - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 44
+        id: 51
         sublinks:
           - title: Send/Receive datagram
             id: 1
@@ -1475,13 +1529,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 45
+        id: 52
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 46
+        id: 53
         sublinks:
           - title: Send email
             id: 1
@@ -1490,19 +1544,19 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: Email service security
-        id: 47
+        id: 54
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-service-ssl-tls
       - title: Email client security
-        id: 48
+        id: 55
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-client-ssl-tls
       - title: FTP Service
-        id: 49
+        id: 56
         sublinks:
           - title: Receive file
             id: 1
@@ -1511,7 +1565,7 @@ sublinks:
             id: 2
             url: ftp-service-send-file
       - title: FTP client
-        id: 50
+        id: 57
         sublinks:
           - title: Receive file
             id: 1
@@ -1520,7 +1574,7 @@ sublinks:
             id: 2
             url: ftp-client-send-file
       - title: SFTP Service
-        id: 51
+        id: 58
         sublinks:
           - title: Receive file
             id: 1
@@ -1529,7 +1583,7 @@ sublinks:
             id: 2
             url: sftp-service-send-file
       - title: SFTP client
-        id: 52
+        id: 59
         sublinks:
           - title: Receive file
             id: 1
@@ -1538,7 +1592,7 @@ sublinks:
             id: 2
             url: sftp-client-send-file
       - title: Database access
-        id: 53
+        id: 60
         sublinks:
           - title: Simple query
             id: 1
@@ -1693,20 +1747,14 @@ sublinks:
           - title: XSLT transformation
             id: 1
             url: xslt-transformation
-      - title: Regex
-        id: 13
-        sublinks:
-          - title: Regular expressions
-            id: 1
-            url: regular-expressions
       - title: OS
-        id: 14
+        id: 13
         sublinks:
           - title: Environment variables
             id: 1
             url: environment-variables
       - title: XML data
-        id: 15
+        id: 14
         sublinks:
           - title: XML to JSON conversion
             id: 1
@@ -1721,7 +1769,7 @@ sublinks:
             id: 4
             url: xml-from-record-conversion
       - title: Constraint
-        id: 16
+        id: 15
         sublinks:
           - title: Constraint validations
             id: 1

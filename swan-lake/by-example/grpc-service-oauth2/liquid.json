@@ -1,0 +1,19 @@
+{
+  "title": "OAuth2",
+  "description": "BBE on how to secure gRPC service with OAuth2 in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "auth",
+    "oauth2",
+    "introspection"
+  ],
+  "permalink": "/learn/by-example/grpc-service-oauth2",
+  "active": "grpc-service-oauth2",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-service-oauth2",
+    "/swan-lake/learn/by-example/grpc-service-oauth2.html"
+  ]
+}

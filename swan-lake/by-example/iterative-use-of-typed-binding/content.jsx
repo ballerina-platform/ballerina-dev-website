@@ -78,11 +78,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=5d7b92c5390af14dc9a6ef002a70352a&file=iterative_use_of_typed_binding.bal",
-=======
-                "https://play.ballerina.io/?gist=353299627df9df70e585542867abdd89&file=iterative_use_of_typed_binding.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=a10ba9cf6ef30b6278b241b9eea8a60a&file=iterative_use_of_typed_binding.bal",
                 "_blank",
               );
             }}
@@ -107,7 +103,7 @@ export function IterativeUseOfTypedBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/iterative-use-of-typed-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/iterative-use-of-typed-binding",
                 "_blank",
               );
             }}

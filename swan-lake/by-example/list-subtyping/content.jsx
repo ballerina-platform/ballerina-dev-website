@@ -65,11 +65,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-<<<<<<< HEAD
-                "https://play.ballerina.io/?gist=4699fd44726c17aeb8db6c2b08e81caf&file=list_subtyping.bal",
-=======
-                "https://play.ballerina.io/?gist=dffa5c7f5c882b192acd388d5864272e&file=list_subtyping.bal",
->>>>>>> 4544b7b84e3fbafce0347071b7db377f1be8adda
+                "https://play.ballerina.io/?gist=30f99e31e123eb2c67b5588f4c20c2a6&file=list_subtyping.bal",
                 "_blank",
               );
             }}
@@ -94,7 +90,7 @@ export function ListSubtyping({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/list-subtyping",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/list-subtyping",
                 "_blank",
               );
             }}

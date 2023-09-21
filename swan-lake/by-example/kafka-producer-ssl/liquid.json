@@ -1,0 +1,19 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to configure a Kafka producer to use SSL encryption.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "kafka",
+    "producer",
+    "encryption",
+    "SSL"
+  ],
+  "permalink": "/learn/by-example/kafka-producer-ssl",
+  "active": "kafka-producer-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/kafka-producer-ssl",
+    "/swan-lake/learn/by-example/kafka-producer-ssl.html"
+  ]
+}

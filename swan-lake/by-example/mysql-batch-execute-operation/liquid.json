@@ -1,0 +1,20 @@
+{
+  "title": "Batch execution",
+  "description": "This BBE demonstrates how to use the MySQL client to execute a batch of DDL/DML operations in Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mysql",
+    "insert",
+    "update",
+    "delete",
+    "batch update"
+  ],
+  "permalink": "/learn/by-example/mysql-batch-execute-operation",
+  "active": "mysql-batch-execute-operation",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mysql-batch-execute-operation",
+    "/swan-lake/learn/by-example/mysql-batch-execute-operation.html"
+  ]
+}

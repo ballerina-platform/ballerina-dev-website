@@ -1,0 +1,19 @@
+{
+  "title": "Basic authentication",
+  "description": "How to configure an MQTT client to use basic authentication.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mqtt",
+    "client",
+    "authentication",
+    "iot"
+  ],
+  "permalink": "/learn/by-example/mqtt-client-basic-authentication",
+  "active": "mqtt-client-basic-authentication",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mqtt-client-basic-authentication",
+    "/swan-lake/learn/by-example/mqtt-client-basic-authentication.html"
+  ]
+}

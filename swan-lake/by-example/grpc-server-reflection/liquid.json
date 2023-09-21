@@ -1,0 +1,20 @@
+{
+  "title": "Server reflection",
+  "description": "This Ballerina by Example show how to enabled server reflection for a gRPC service.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "unary",
+    "simple",
+    "service",
+    "reflection"
+  ],
+  "permalink": "/learn/by-example/grpc-server-reflection",
+  "active": "grpc-server-reflection",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-server-reflection",
+    "/swan-lake/learn/by-example/grpc-server-reflection.html"
+  ]
+}

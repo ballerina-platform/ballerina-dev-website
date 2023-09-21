@@ -1,0 +1,20 @@
+{
+  "title": "Timer trigger",
+  "description": "This example demonstrates how a function can be scheduled to execute periodically by the Azure Functions app.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "aws lambda",
+    "timer",
+    "trigger",
+    "serverless",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/azure-functions-timer-trigger",
+  "active": "azure-functions-timer-trigger",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/azure-functions-timer-trigger",
+    "/swan-lake/learn/by-example/azure-functions-timer-trigger.html"
+  ]
+}

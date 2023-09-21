@@ -1,0 +1,18 @@
+{
+  "title": "SSL/TLS",
+  "description": "BBE on how to secure gRPC client with SSL.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "grpc",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/grpc-client-ssl-tls",
+  "active": "grpc-client-ssl-tls",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/grpc-client-ssl-tls",
+    "/swan-lake/learn/by-example/grpc-client-ssl-tls.html"
+  ]
+}

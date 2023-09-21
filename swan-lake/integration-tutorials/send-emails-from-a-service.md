@@ -62,7 +62,7 @@ The flow is as follows.
 }
 ```
 
-3. Call the payment backend service to make the payment and retrieve the reservation response which will have a payload similar to the following. If the payment is successful, send an email to the user with the appointment details.
+3. Call the payment backend service to make the payment and retrieve the reservation response which will have a payload similar to that shown below. If the payment is successful, send an email to the user with the appointment details.
 
 ```
 {

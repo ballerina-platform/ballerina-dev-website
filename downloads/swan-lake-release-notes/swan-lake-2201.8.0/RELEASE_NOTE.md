@@ -88,7 +88,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     annotation AnnotationData config on type; // Compilation error now.
     ```
     
-- Fixed a bug that allowed using field access with a map of `xml`. 
+- Disallowed using field access with a map of `xml`. This was previously allowed incorrectly.
 
     ```ballerina
     map<xml> m = {a: xml `foo`};
@@ -176,24 +176,37 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
     This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
   
-- A bug that resulted in an incorrect value when using a global variable, as a default value for the class field and function parameter has been fixed.
-    
+- A bug that resulted in an incorrect value being used as the default value of a class field when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
+
     ```ballerina
     import ballerina/io;
-
-    final int value = 100;
-
-    class Foo {
-        int i = value;
+    
+    int defaultTemperature = 25;
+    
+    public class TemperatureSensor {
+        public string location;
+        public int temperature = defaultTemperature;
+    
+        public function init(string location) {
+            self.location = location;
+        }
+    
+        public function setDefaultTemperature(int temp) {
+            self.temperature = temp;
+        }
     }
 
-    function bar(int k = value) returns int {
-        return k;
+    public function getTemperature(string location, int temperature = defaultTemperature) returns int {
+        return temperature;
     }
 
     public function main() {
-        Foo foo = new;
-        io:println(foo.i); // Prints `100` now.
+        TemperatureSensor livingRoomSensor = new ("Living Room");
+        io:println("Current temperature in the " + livingRoomSensor.location + ": " + livingRoomSensor.temperature.toString() + "°C");
+        // Prints `Current temperature in the Living Room: 25°C` now.
+        int defaultTemp = getTemperature("Kitchen");
+        io:println("Default temperature in the Kitchen: " + defaultTemp.toString() + "°C");
+        // Prints `Default temperature in the Kitchen: 25°C` now.
     }
     ```
 
@@ -239,7 +252,11 @@ The following case is now supported.
 ```ballerina
 public function main() {
     worker w1 {
-        _ = 5 -> w2;
+        () res = 5 -> w2;
+    }
+    
+    worker w2 {
+        int val = <- w1;
     }
 }
 ```
@@ -271,7 +288,7 @@ Introduced the `profile` CLI command, which runs a Ballerina package and does a 
 $ bal profile
 ```
 
-- For example, if we run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
+- For example, if you run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
 
 - The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
 
@@ -354,11 +371,11 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `mqtt` package
 
-- Introduced the `mqtt` package, which provides an implementation to interact with message brokers using the MQTT protocol.
+- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` package
 
-- Introduced the `java.jms` package, which provides an implementation to interact with message brokers using the JMS protocol.
+- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
 
 #### `graphql` package
 
@@ -434,7 +451,6 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 The Swan Lake Update 8 release introduces support for incorporating custom user repositories into the package management system in addition to the Ballerina Central repository. 
 
-This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file. Now, you can both publish your packages to your preferred repositories and retrieve packages from these repositories. Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the `Ballerina.toml`
- file.
+This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file. Now, you can both publish your packages to your preferred repositories and retrieve packages from these repositories. Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the `Ballerina.toml` file.
 
 For more information on the custom package repositories support, see [Manage dependencies](/learn/manage-dependencies/).

@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 8 (2201.8.0)
 
-<em>2201.8.0 (Swan Lake Update 8) is the eighth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
+<em> Swan Lake Update 8 (2201.8.0) is the eighth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
 
 ## Update Ballerina
 
@@ -489,7 +489,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `log` package
 
-- Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. Updated the previous version, which displayed only the error message to now provide more detailed information, including both the error message and the stack trace for the current error as well as any underlying errors that contributed to the current error.
+- Made adjustments to the behavior of the log print functions when an error object is provided for the `error` key. Updated the previous version, which displayed only the error message to provide more detailed information, including both the error message and the stack trace for the current error as well as any underlying errors that contributed to the current error.
 - Removed the extra space that was printed between the key and value when printing in the LogFMT format.
 
 #### `persist` package

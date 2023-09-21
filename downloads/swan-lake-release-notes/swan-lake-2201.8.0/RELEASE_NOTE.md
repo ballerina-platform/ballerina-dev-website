@@ -28,9 +28,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Backward-incompatible changes
 
-- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support">Java 17 support
-
-</a>.
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support">Java 17 support</a>.
 
 - A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
 
@@ -54,7 +52,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Analysis of the `init` method of an `isolated` object has been updated to disallow invalid transferring in/out of values that violated the isolated root invariant.
+- Updated the analysis of the `init` method of an `isolated` object to disallow invalid transferring in/out of values that violated the isolated root invariant.
 
     ```ballerina
     type Node record {|
@@ -75,7 +73,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     }
     ```
 
-- Mutable objects have been disallowed in annotations.
+- Disallowed mutable objects in annotations.
 
     ```ballerina
     type Validator object {
@@ -178,7 +176,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
     This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
   
-- A bug that resulted in an incorrect value being used as the default value of a class field when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
+- A bug that resulted in an incorrect value being used as the default value of a class field, when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
 
     ```ballerina
     import ballerina/io;
@@ -221,7 +219,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
     type A int[] & readonly;
     ```
 
-- Removed support for the `AES/GCM/PKCS5Padding` encryption algorithm due to its incompatibility with Java 17 in the `crypto` package.
+- Removed support for the `AES/GCM/PKCS5Padding` encryption algorithm in the `crypto` package due to its incompatibility with Java 17.
 
 ## Language updates
 
@@ -236,7 +234,7 @@ const int[] ERROR_CODES = [404, 500, 503];
 const ERROR_MESSAGES = ["Not Found", "Internal Server Error", "Service Unavailable"];
 ```
 
-Also, you can declare a list constant using a byte array literal.
+Also, you can declare a list constant using a byte array literal as shown below.
 
 ```ballerina
 const byte[] data16 = base16 `55 EE 66`;
@@ -271,9 +269,9 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 ### New features
 
-#### New Runtime Java APIs
+#### New runtime Java APIs
 
-Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type reference types (to get referred types) and/or intersection types (to get effective types).
+Introduced the `Type getImpliedType(Type)` API in the `io.ballerina.runtime.api.utils.TypeUtils` class to recursively resolve type-reference types (to get referred types) and/or intersection types (to get effective types).
 
 ```ballerina
 // `getImpliedType` on type A returns a `BArrayType`. This is achieved by first retrieving the 
@@ -284,17 +282,17 @@ type A int[] & readonly;
 
 #### Ballerina Profiler (experimental)
 
-Introduced the `profile` CLI command, which runs a Ballerina package and does a CPU profile of it during runtime.
+Introduced the CLI command below, which runs a Ballerina package and does a CPU profile of it during runtime.
 
 ```
 $ bal profile
 ```
 
-- For example, if you run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function.
+For example, if you run the above command in the root directory of a Ballerina package, it generates a flame graph that shows the time taken to execute each function. The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
 
-- The output is given by the `ProfilerOutput.html` file, which can be opened using a web browser.
+>**Note:** This is an experimental feature, which supports only a limited set of functionality.
 
-    >**Note:** This is an experimental feature, which supports only a limited set of functionality.
+For more information, see <a href="/learn/ballerina-profiler/" target="_blank">Ballerina Profiler</a>.
 
 ### Improvements
 
@@ -302,9 +300,7 @@ $ bal profile
 
 The Java 11 Long term Support (LTS) active support will end in September 2023. Therefore, the jBallerina runtime is now upgraded to support Java 17 LTS, which is the latest long-term support release of the Java SE platform.
 
-- Users will not have an impact on the Java version upgrade except for the following. If you are specifically using Java 11 to run Ballerina programs, you would have to switch to Java 17.
-
-- Ballerina interoperability implementation will have an impact on Java 17 support due to any incompatible changes. As an example, Java 17 will have some restrictions on using Java reflections with internal Java packages.
+>**Note:** Users will not have an impact on the Java version upgrade except for the following. If you are specifically using Java 11 to run Ballerina programs, you would have to switch to Java 17. However, the Ballerina interoperability implementation will have an impact on Java 17 support due to any incompatible changes. As an example, Java 17 will have some restrictions on using Java reflections with internal Java packages.
 
 For more information, see the <a href="https://www.oracle.com/java/technologies/javase/17-relnote-issues.html" target="_blank">Java 17 release notes</a>.
 
@@ -380,15 +376,15 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `mqtt` package
 
-- Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
+- Introduced the `mqtt` package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` package
 
-- Introduced the `java.jms` standard library package, which provides an implementation to interact with message brokers using the JMS protocol.
+- Introduced the `java.jms` package, which provides an implementation to interact with message brokers using the JMS protocol.
 
 #### `graphql` package
 
-- Introduced the `DataLoader` functionality.
+- Introduced the `DataLoader` functionality as shown in the example below.
     
     ```ballerina
     import ballerina/graphql;
@@ -487,8 +483,8 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 
 #### `graphql` package
 
-- Added support for the `@deprecated` directive to output objects defined using record types.
-- Added support for printing the GraphiQL URL to `stdout`.
+- Added support for the `@deprecated` directive in output objects defined using record types.
+- Added support for printing the GraphQL URL to `stdout`.
 - Added support for generating a subgraph SDL schema at compile time.
 
 #### `log` package
@@ -532,13 +528,13 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 - Introduced a code action to change the type of a variable in a `let` expression.
 - Introduced a code action to create a function for the expression of a `select` clause.
 - Improved completions in the service declaration node context.
-- Improved the LS simulator.
+- Improved the language server simulator.
 
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repositories below.
 
-- [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug+)
+- [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.8.0+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.8.0%22+is%3Aclosed)
 
 ## Ballerina packages updates
@@ -547,6 +543,6 @@ To view bug fixes, see the GitHub milestone for 2201.8.0 (Swan Lake) of the repo
 
 Introduced the support for incorporating custom user repositories into the package management system in addition to the Ballerina Central repository. 
 
-This feature empowers you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file to publish your packages to your preferred repositories and retrieve packages from these repositories. Furthermore, you can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the `Ballerina.toml` file.
+This feature allows you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file to publish your packages to your preferred repositories and retrieve packages from these repositories. You can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the `Ballerina.toml` file.
 
 For more information on the custom package repositories support, see [Manage dependencies](/learn/manage-dependencies/).

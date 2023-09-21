@@ -372,6 +372,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.0 (Swan Lake)](https://g
 ### New features
 
 #### `mqtt` package
+
 - Introduced the `mqtt` standard library package, which provides an implementation to interact with message brokers using the MQTT protocol.
 
 #### `java.jms` package

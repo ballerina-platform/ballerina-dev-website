@@ -79,7 +79,7 @@ export function Table({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=89b37587c6944f8efaa6dda5c77ad279&file=table.bal",
+                "https://play.ballerina.io/?gist=b783334fb847419603bd1f8b70a4e339&file=table.bal",
                 "_blank",
               );
             }}

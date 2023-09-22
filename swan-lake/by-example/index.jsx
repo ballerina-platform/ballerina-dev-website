@@ -1156,6 +1156,10 @@ import {
   codeSnippetData as GraphqlDirectivesCodeSnippetData,
 } from "./graphql-directives/content.jsx";
 import {
+  GraphqlHierarchicalResourcePaths,
+  codeSnippetData as GraphqlHierarchicalResourcePathsCodeSnippetData,
+} from "./graphql-hierarchical-resource-paths/content.jsx";
+import {
   GraphqlContext,
   codeSnippetData as GraphqlContextCodeSnippetData,
 } from "./graphql-context/content.jsx";
@@ -1183,10 +1187,6 @@ import {
   GraphqlFileUpload,
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
 } from "./graphql-file-upload/content.jsx";
-import {
-  GraphqlHierarchicalResourcePaths,
-  codeSnippetData as GraphqlHierarchicalResourcePathsCodeSnippetData,
-} from "./graphql-hierarchical-resource-paths/content.jsx";
 import {
   GraphqlDataloader,
   codeSnippetData as GraphqlDataloaderCodeSnippetData,
@@ -2577,6 +2577,8 @@ const BBEs = {
   GraphqlDocumentationCodeSnippetData,
   GraphqlDirectives,
   GraphqlDirectivesCodeSnippetData,
+  GraphqlHierarchicalResourcePaths,
+  GraphqlHierarchicalResourcePathsCodeSnippetData,
   GraphqlContext,
   GraphqlContextCodeSnippetData,
   GraphqlServiceFieldObject,
@@ -2591,8 +2593,6 @@ const BBEs = {
   GraphqlInputConstraintValidationCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
-  GraphqlHierarchicalResourcePaths,
-  GraphqlHierarchicalResourcePathsCodeSnippetData,
   GraphqlDataloader,
   GraphqlDataloaderCodeSnippetData,
   CustomPrefetchMethods,

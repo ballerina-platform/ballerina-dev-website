@@ -70,7 +70,7 @@ export function SynchronizeMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2c356924c2648473c8b6125fb8a0e9c3&file=synchronize_message_passing.bal",
+                "https://play.ballerina.io/?gist=32ffd5ebdfc007ec79ab17986ec98204&file=synchronize_message_passing.bal",
                 "_blank",
               );
             }}

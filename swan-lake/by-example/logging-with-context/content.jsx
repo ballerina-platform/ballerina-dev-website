@@ -59,7 +59,7 @@ export function LoggingWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=dba0fefc2d5fdfba4f7096bdf890a10a&file=logging_with_context.bal",
+                "https://play.ballerina.io/?gist=0594f42191391bbdda6d5b5e2c1f9e50&file=logging_with_context.bal",
                 "_blank",
               );
             }}

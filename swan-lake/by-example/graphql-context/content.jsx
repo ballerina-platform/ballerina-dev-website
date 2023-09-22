@@ -513,7 +513,10 @@ export function GraphqlContext({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Directives" href="/learn/by-example/graphql-directives">
+          <Link
+            title="Hierarchical resource paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -539,7 +542,7 @@ export function GraphqlContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Directives
+                  Hierarchical resource paths
                 </span>
               </div>
             </div>

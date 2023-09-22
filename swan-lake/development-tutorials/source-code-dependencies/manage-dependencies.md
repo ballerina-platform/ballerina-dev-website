@@ -31,7 +31,7 @@ For more information, see [Use dependencies from the local repository](/learn/ma
 
 **Custom repositories**
 
-Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use dependencies from a custom repository](/learn/manage-dependencies/#use-dependencies-from-a-custom-repository).
+Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use custom repositories for package management](/learn/manage-dependencies/#use-custom-repositories-for-package-management).
 
 ### Import a module
 
@@ -162,18 +162,23 @@ However, the compiler gives priority to the latest version if a new patch versio
 At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
 
 
-## Use dependencies from a custom repository
+## Use custom repositories for package management
 
-Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. You can configure the custom repository in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate it into the package resolution.
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. 
+
+### Define the custom repository
+
+You can configure one or multiple custom repositories in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate them into the package resolution.
 
 ```toml
 [[repository.maven]]
-id = "<repository-id>" # This ID is used when pushing/ pulling balas
+id = "<repository-id>" # This ID is used when pushing/ pulling packages
 url = "<repository-url>"
-username = "<username/userId>"
-accesstoken = "<password/accesstoken>"
+username = "<username>/<userId>"
+accesstoken = "<password>/<accesstoken>"
 ```
-The below steps show how to configure a GitHub package repository to resolve a specific dependency.
+
+Below is a sample repository configuration.
 
 ```toml
 [[repository.maven]]
@@ -183,35 +188,37 @@ username = "jackson12"
 accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"
 ```
 
-### Publish a Ballerina library package to a custom repository
+The sections below show how to configure the above GitHub package repository to resolve a specific dependency.
+
+### Publish a Ballerina archive to the custom repository
+
+Follow the steps below to publish a Ballerina archive to the custom repository you configured above.
 
 1. Generate the Ballerina archive. 
+
    ```
    $ bal pack
    ```
 
 2. Publish to the custom repository.
+
    ```
    $ bal push --repository <repository-id>
    ```
 
-    If you already have the path of the Ballerina archive, execute the below command.
+    If you already have the path of the Ballerina archive, execute the command below.
 
     ```
     $ bal push --repository <repository-id> <path-to-bala-archive>
     ```
 
-### Pull a Ballerina library package from a custom repository
+### Use the package from the custom repository
 
-Execute the following command to pull a Ballerina package from a custom repository.
+You can use the package you pushed to the custom repository in the ways below.
 
-```
-$ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
-```
+#### Specify the dependency in the `Ballerina.toml`
 
-### Use a dependency from a custom repository
-
-Similar to the `local` repository, custom repository packages can be specified in the `Ballerina.toml` file and utilized in a similar manner.
+Similar to the local repository, dependencies from the custom repository can be specified in the Ballerina.toml file and utilized as shown below.
 
 ```toml
 [[dependency]]
@@ -219,6 +226,14 @@ org = "jackson"
 name = "encrypter"
 version = "2.1.1"
 repository = "github_1" # Must match a repository ID configured in the Settings.toml file.
+```
+
+#### Pull the package from a custom repository
+
+Execute the command below to pull a Ballerina package from a custom repository.
+
+```
+$ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
 ```
 
 ## Achieve reproducible builds

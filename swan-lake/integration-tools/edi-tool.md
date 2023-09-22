@@ -8,19 +8,21 @@ active: edi-tool
 intro: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
 --- 
 
+## Usage
+
+The tool supports two main usages as follows.
+
 - **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
 - **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
-## Usage
-
-The usages of the above functionalities are described below.
+The functionalities of the above usages are described below.
 
 ### Code generation usage
 
 The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
 
 ```
-$ bal edi codegen <EDI schema path> <output path>
+$ bal edi codegen <edi-schema-path> <output-path>
 ```
 
 The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
@@ -32,11 +34,30 @@ Usually, organizations have to work with many EDI formats, and integration devel
 The below command can be used to generate the EDI package.
 
 ```
-$ bal edi libgen -O <org name> -n <package name> -s <EDI schema folder> -o <output folder>
+$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-folder> -o <output-folder>
 ```
 
 A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
 
+## Available command options 
+
+The command options that are available with the tool are listed below.
+
+### Code generation command options
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `EDI schema path`     | Path of the EDI schema which will be used to generate the code.                                                                                                                                                                                                      | Mandatory          |
+| `output path`   | The path in which the output file will be created.                                                                                                                                                                                                   | Mandatory           |
+
+### Package generation command options
+
+| Command option     | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-O, --org`     | Organization of the package.                                                                                                                                                                                                    | Mandatory          |
+| `-n, --name`   | Name of the package.                                                                                                                                                                                                                   | Mandatory          |
+| `-s, --schema`     | Location of the EDI schema.                                                                                                                                                                                                      | Mandatory          |
+| `-o, --output`   | Location of the generated package.                                                                                                                                                                                                                    | Mandatory           |
 ## Example
 
 Examples of the above usages are described below.
@@ -49,23 +70,25 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
     >**Info:** The below schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`.
 
-    ```json
-    {
-        "name": "SimpleOrder",
-        "delimiters" : {"segment" : "~", "field" : "*"},
-        "segments" : {
-            "HDR": {
-                "tag" : "header",
-                "fields" : [{"tag" : "code"}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
-            },
-            "ITM": {
-                "tag" : "items",
-                "maxOccurances" : -1,
-                "fields" : [{"tag" : "code"}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
-            }
+```json
+{
+    "name": "SimpleOrder",
+    "delimiters" : {"segment" : "~", "field" : "*", "component": ":", "repetition": "^"},
+    "segments" : [
+        {
+            "code": "HDR",
+            "tag" : "header",
+            "fields" : [{"tag": "code"}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
+        },
+        {
+            "code": "ITM",
+            "tag" : "items",
+            "maxOccurances" : -1,
+            "fields" : [{"tag": "code"}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
         }
-    }
-    ```   
+    ]
+}
+```   
 
 2. Generate Ballerina records for the above EDI schema.
 

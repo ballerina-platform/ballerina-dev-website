@@ -16,7 +16,6 @@ It also enables you to easily install, update, and switch among Ballerina distri
 
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
-```text
 $ bal help
 NAME
        The build system and package manager of Ballerina

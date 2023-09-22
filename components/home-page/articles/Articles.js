@@ -49,6 +49,23 @@ export default function Articles(props) {
           </Row>
 
           <Row>
+          <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+              <Card className={styles.cardBox}>
+                <Card.Body className={styles.cardBody}>
+                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
+                      <h4 className="card-title" >10 Most Popular Microservices Frameworks
+</h4>
+                    </a>
+                  </Card.Text>
+                  <div>
+                    <p className={styles.author}> By <span>Harnil Oza</span> in Hyperlink InfoSystem</p>
+                    <p className={styles.date}>Sep 14, 2023</p>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
             <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
@@ -82,8 +99,11 @@ export default function Articles(props) {
                 </Card.Body>
               </Card>
             </Col>
+          </Row>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+
+          <Row>
+          <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -99,10 +119,6 @@ export default function Articles(props) {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
-
-
-          <Row>
             <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>

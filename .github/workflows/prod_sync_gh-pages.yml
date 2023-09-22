@@ -20,6 +20,7 @@ jobs:
         git checkout -b deploy-website-$GITHUB_SHA origin/gh-pages
         mkdir lang-bk
         cp -r ./spec/lang/* ./lang-bk
+        rm -rf ./_next/* ./learn/*
         
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"

@@ -83,15 +83,15 @@
                 {
                     "dirName": "Enterprise Integration Patterns (EIP)",
                     "level": 2,
-                    "position": 0,
+                    "position": 3,
                     "isDir": false,
-                    "url": "/learn/patterns",
+                    "url": "/learn/enterprise-integration-patterns",
                     "id": "patterns"
                 },
                 {
                     "dirName": "Pre-built integrations",
                     "level": 2,
-                    "position": 0,
+                    "position": 2,
                     "isDir": false,
                     "url": "/learn/pre-built-integrations",
                     "id": "pre-built-integrations"
@@ -659,46 +659,28 @@
                     "id": "java-interoperability",
                     "subDirectories": [
                         {
-                            "dirName": "Java interoperability guide",
-                            "level": 3,
-                            "position": 2,
-                            "isDir": true,
-                            "url": "/learn/java-interoperability/java-interoperability-guide",
-                            "id": "java-interoperability-guide",
-                            "subDirectories": [
-                                {
-                                    "dirName": "Java interoperability",
-                                    "level": 4,
-                                    "position": 1,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/java-interoperability",
-                                    "id": "java-interoperability"
-                                },
-                                {
-                                    "dirName": "Ballerina FFI",
-                                    "level": 4,
-                                    "position": 3,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/ballerina-ffi",
-                                    "id": "ballerina-ffi"
-                                },
-                                {
-                                    "dirName": "The Bindgen Tool",
-                                    "level": 4,
-                                    "position": 2,
-                                    "isDir": false,
-                                    "url": "/learn/java-interoperability-guide/the-bindgen-tool",
-                                    "id": "the-bindgen-tool"
-                                }
-                            ]
-                        },
-                        {
                             "dirName": "Call Java code from Ballerina",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
                             "url": "/learn/call-java-code-from-ballerina",
                             "id": "call-java-code-from-ballerina"
+                        },
+                        {
+                            "dirName": "Ballerina FFI",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/ballerina-ffi",
+                            "id": "ballerina-ffi"
+                        },
+                        {
+                            "dirName": "The Bindgen tool",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/the-bindgen-tool",
+                            "id": "the-bindgen-tool"
                         }
                     ]
                 },
@@ -1475,7 +1457,7 @@
                             "id": "ballerina-ffi"
                         },
                         {
-                            "dirName": "The Bindgen Tool",
+                            "dirName": "The Bindgen tool",
                             "level": 3,
                             "position": 0,
                             "isDir": false,

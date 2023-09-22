@@ -686,7 +686,7 @@ const generate = async (examplesDir, outputDir) => {
                 codeSnippetMarginLeftMultiplier = 0,
                 codeSnippetLang,
                 codeSnippetArray = [],
-                listRegex = /^(\s*)(\d|-)(?:\.?)+\s*(.*)/;
+                listRegex = /^(\s*)(\d+|-)(?:\.?)+\s*(.*)/;
                 relatedLinks = false;
 
               for (const line of contentArray) {

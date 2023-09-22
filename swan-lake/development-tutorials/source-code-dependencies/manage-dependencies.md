@@ -31,7 +31,7 @@ For more information, see [Use dependencies from the local repository](/learn/ma
 
 **Custom repositories**
 
-Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use dependencies from a custom repository](/learn/manage-dependencies/#use-custom-repositories-for-package-management).
+Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use custom repositories for package management](/learn/manage-dependencies/#use-custom-repositories-for-package-management).
 
 ### Import a module
 

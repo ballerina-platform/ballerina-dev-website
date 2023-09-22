@@ -41,7 +41,7 @@ After the environment is set up, follow the steps below to build the native exec
 
 3. Execute `bal build --graalvm --cloud=docker` to generate the artifacts with the native executable. 
 
-   >**Info:** Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](/learn/by-example/c2c-docker-deployment/) and [Kubernetes](/learn/by-example/c2c-k8s-deployment/) documentation.
+   >**Info:** Optionally, you can create a file named `Cloud.toml` in the package directory to add cloud related configurations. For more information, see [Docker](/learn/by-example/#docker) and [Kubernetes](/learn/by-example/#kubernetes) documentation.
 
    ```
    $ bal build --graalvm --cloud=docker

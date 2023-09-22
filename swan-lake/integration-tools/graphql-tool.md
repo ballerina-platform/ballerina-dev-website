@@ -336,7 +336,7 @@ $ bal graphql -i schema.graphql -m service -o ./service
 
 The output flag is optional. If it is omitted, the generated files will be written to the current directory. 
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+>**Info:** For more information on the command, see [Service generation command options](#service-generation-command-options).
 
 ### Generate a service with GraphQL object types represented in record types
 
@@ -357,7 +357,7 @@ Even if the `[-r | --use-records-for-objects]` flag is used, the following objec
 - types being a subtype of a union type 
 - types implementing an interface 
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+>**Info:** For more information on the command, see [Service generation command options](#service-generation-command-options).
 
 ## Schema generation
 
@@ -400,7 +400,7 @@ $ bal graphql -i service.bal -o ./schema
 
 The `input` command option specifies the path of the ballerina service file (e.g., `service.bal`) and is mandatory.
 
->**Info:** For more command options, see [Ballerina to GraphQL command options](#ballerina-to-graphql-command-options).
+>**Info:** For more information on the command, see [Schema generation command options](#schema-generation-command-options).
 
 ### Generate a schema for a specific service
 
@@ -418,4 +418,4 @@ $ bal graphql -i service.bal -o ./schema -s /starwars
 
 The `service` command option specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
 
->**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+>**Info:** For more information on the command, see [Schema generation command options](#schema-generation-command-options).

@@ -12,46 +12,45 @@ intro: The Ballerina GraphQL tool makes it easy to start the development of a Gr
 
 The Ballerina GraphQL tooling support provides the following capabilities.
 
-1. Generate a Ballerina client from a given GraphQL config file configured with a GraphQL schema, which is specified by the GraphQL schema definition language and a GraphQL document/documents.
-
-2. Generate multiple Ballerina modules from a given GraphQL config file configured with multiple GraphQL projects.
-
-3. Generate the GraphQL schema for a given Ballerina GraphQL service(s) and write the schema(s) to a file/files using the GraphQL schema definition language.
-
-4. Generating a Ballerina service from a given GraphQL schema which is specified by the GraphQL schema definition language. 
-
-
 ### GraphQL to Ballerina usage
 
 The GraphQL to Ballerina command supports several usages as follows.
 
-#### Client generation usage
+#### Client generation
+
+- Generate a Ballerina client from a given GraphQL config file configured with a GraphQL schema, which is specified by the GraphQL schema definition language and a GraphQL document/documents.
+
+- Generate multiple Ballerina modules from a given GraphQL config file configured with multiple GraphQL projects.
 
 ```
 $ bal graphql [-i | --input] <graphql-configuration-file-path>
             [-o | --output] <output-location>
 ```
 
-#### Service generation usage
+#### Service generation
 
-```
-$ bal graphql [-i | --input] <graphql-schema-file-path>
-            [-o | --output] <output-location>
-            [-m | --mode] <operation-mode>
-            [-r | --use-records-for-objects]
-```
+- Generating a Ballerina service from a given GraphQL schema which is specified by the GraphQL schema definition language.
+
+   ```
+   $ bal graphql [-i | --input] <graphql-schema-file-path>
+               [-o | --output] <output-location>
+               [-m | --mode] <operation-mode>
+               [-r | --use-records-for-objects]
+   ```
 
 ### Ballerina to GraphQL usage
 
 The Ballerina to GraphQL command supports the usage below.
 
-#### Schema generation usage
+#### Schema generation
 
-```
-$ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
-            [-o | --output] <output-location>
-            [-s | --service] <service-base-path>
-```
+- Generate the GraphQL schema for a given Ballerina GraphQL service(s) and write the schema(s) to a file/files using the GraphQL schema definition language.
+
+   ```
+   $ bal graphql [-i | --input] <ballerina-graphql-service-file-path>
+               [-o | --output] <output-location>
+               [-s | --service] <service-base-path>
+   ```
 
 ## Command options usage
 
@@ -94,7 +93,7 @@ The command-line arguments below can be used with the command for each particula
 | `-o, --output`   | The `output` command option specifies the output location of the generated GraphQL schema files. If this command option is not specified, the schema files will be generated at the same location in which the `bal graphql` command is executed.                                                                                                                                                                                                                   | Optional           |
 | `-s, --service`   | The `service` command option specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. If this command option is not specified, schemas will be generated for each of the GraphQL services in the given file.                                                                                                                                                                                                                  | Optional           |
 
-## Generate clients
+## Client generation
 
 The Ballerina GraphQL tool makes it easy to generate a client in Ballerina using a given GraphQL schema (SDL) and GraphQL queries.
 
@@ -323,7 +322,7 @@ This generates a separate Ballerina module (with the project name configured) fo
 
 You can use the generated modules to work with multiple GraphQL APIs. Use the client that is generated within each module to execute the queries/mutations on the relevant GraphQL API. Also, use the clients that are generated **within** the same Ballerina package by importing the generated modules. For more information, see [Import a module from the same package](/learn/organize-ballerina-code/#import-a-module-from-the-same-package).
 
-## Generate schema
+## Schema generation
 
 The GraphQL tool supports generating the GraphQL schema for a given Ballerina GraphQL service and writing it to a file using the GraphQL schema definition language (SDL). You will be able to export the generated schema file to the given location. The tool can be used in the following ways to generate the schema.
 

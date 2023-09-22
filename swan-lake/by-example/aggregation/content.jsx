@@ -84,7 +84,7 @@ export function Aggregation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47f5bb09eae57cb95dd071b54f7fcaac&file=aggregation.bal",
+                "https://play.ballerina.io/?gist=b701d158a72062e65cd965f09935e5de&file=aggregation.bal",
                 "_blank",
               );
             }}

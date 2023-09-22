@@ -1006,38 +1006,38 @@ sublinks:
           - title: Directives
             id: 14
             url: graphql-directives
-          - title: Context object
-            id: 15
-            url: graphql-context
-          - title: Field object
-            id: 16
-            url: graphql-service-field-object
-          - title: Service interceptors
-            id: 17
-            url: graphql-service-interceptors
-          - title: Field interceptors
-            id: 18
-            url: graphql-field-interceptors
-          - title: Interceptor configurations
-            id: 19
-            url: graphql-interceptor-configurations
-          - title: Input constraint validation
-            id: 20
-            url: graphql-input-constraint-validation
-          - title: File upload
-            id: 21
-            url: graphql-file-upload
           - title: Hierarchical resource paths
-            id: 22
+            id: 15
             url: graphql-hierarchical-resource-paths
       - title: '  GraphQL service advanced'
         id: 10
         sublinks:
-          - title: Dataloader
+          - title: Context object
             id: 1
+            url: graphql-context
+          - title: Field object
+            id: 2
+            url: graphql-service-field-object
+          - title: Service interceptors
+            id: 3
+            url: graphql-service-interceptors
+          - title: Field interceptors
+            id: 4
+            url: graphql-field-interceptors
+          - title: Interceptor configurations
+            id: 5
+            url: graphql-interceptor-configurations
+          - title: Input constraint validation
+            id: 6
+            url: graphql-input-constraint-validation
+          - title: File upload
+            id: 7
+            url: graphql-file-upload
+          - title: Dataloader
+            id: 8
             url: graphql-dataloader
           - title: Custom prefetch methods
-            id: 2
+            id: 9
             url: custom-prefetch-methods
       - title: GraphQL client
         id: 11

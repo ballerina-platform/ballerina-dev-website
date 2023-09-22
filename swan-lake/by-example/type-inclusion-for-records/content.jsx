@@ -67,7 +67,7 @@ export function TypeInclusionForRecords({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=298d6273efa1bd7345d9356174eab9f6&file=type_inclusion_for_records.bal",
+                "https://play.ballerina.io/?gist=a4b6df01fd39a6fa85c530562e889e3b&file=type_inclusion_for_records.bal",
                 "_blank",
               );
             }}

@@ -481,8 +481,8 @@ export function GraphqlDataloader({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Hierarchical resource paths"
-            href="/learn/by-example/graphql-hierarchical-resource-paths"
+            title="File upload"
+            href="/learn/by-example/graphql-file-upload"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -509,7 +509,7 @@ export function GraphqlDataloader({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hierarchical resource paths
+                  File upload
                 </span>
               </div>
             </div>

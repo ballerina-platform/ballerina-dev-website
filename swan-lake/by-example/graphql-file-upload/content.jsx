@@ -376,10 +376,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Hierarchical resource paths"
-            href="/learn/by-example/graphql-hierarchical-resource-paths"
-          >
+          <Link title="Dataloader" href="/learn/by-example/graphql-dataloader">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -388,7 +385,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hierarchical resource paths
+                  Dataloader
                 </span>
               </div>
               <svg

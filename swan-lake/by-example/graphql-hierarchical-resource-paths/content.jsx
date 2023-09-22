@@ -403,10 +403,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link
-            title="File upload"
-            href="/learn/by-example/graphql-file-upload"
-          >
+          <Link title="Directives" href="/learn/by-example/graphql-directives">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -432,14 +429,14 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  File upload
+                  Directives
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Dataloader" href="/learn/by-example/graphql-dataloader">
+          <Link title="Context object" href="/learn/by-example/graphql-context">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -448,7 +445,7 @@ export function GraphqlHierarchicalResourcePaths({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Dataloader
+                  Context object
                 </span>
               </div>
               <svg

@@ -59,7 +59,7 @@ export function BuiltInStringSubtype({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=450bf3afa6d9008fd428588f75c03373&file=built_in_string_subtype.bal",
+                "https://play.ballerina.io/?gist=1ab37b2179dfb2894aa6a6b059057700&file=built_in_string_subtype.bal",
                 "_blank",
               );
             }}

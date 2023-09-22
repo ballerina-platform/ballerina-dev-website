@@ -78,13 +78,13 @@ Follow the steps below to try out an example of generating Ballerina code from a
         {
             "code": "HDR",
             "tag" : "header",
-            "fields" : [{"tag": "code"}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
+            "fields" : [{"tag": "code", "required": true}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
         },
         {
             "code": "ITM",
             "tag" : "items",
             "maxOccurances" : -1,
-            "fields" : [{"tag": "code"}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
+            "fields" : [{"tag": "code", "required": true}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
         }
     ]
 }
@@ -129,8 +129,8 @@ Follow the steps below to try out an example of generating Ballerina code from a
     
     public function main() returns error? {
         string ediText = check io:fileReadString("resources/edi-sample.edi");
-        SimpleOrder order = check hmartOrder:fromEdiString(ediText);
-        io:println(order.header.date);
+        SimpleOrder newOrder = check hmartOrder:fromEdiString(ediText);
+        io:println(newOrder.header.date);
     }
     ```
 

@@ -93,6 +93,6 @@ To deploy the function, execute the command, which you get in the CLI output log
 
 In a more practical scenario, the AWS Lambda functions will be used by associating them with an external event source such as Amazon DynamoDB or Amazon SQS. For more information on this, go to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html" target="_blank">AWS Lambda event source mapping documentation</a>.
 
-For an example of the usage of AWS Lambda functions, see [AWS Lambda](/learn/by-example/aws-lambda-deployment/).
+For examples of the usage of AWS Lambda functions, see [AWS Lambda](learn/by-example/#aws-lambda).
 
 <style> #tree-expand-all , #tree-collapse-all, .cTocElements {display:none;} .cGitButtonContainer {padding-left: 40px;} </style>

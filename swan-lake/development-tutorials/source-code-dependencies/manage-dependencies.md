@@ -203,29 +203,29 @@ accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"
 
 ### Pull a Ballerina library package from a custom repository
 
-1. Execute the following command to pull a Ballerina package from a custom repository.
-    ```
-   $ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
-    ```
+Execute the following command to pull a Ballerina package from a custom repository.
+
+```
+$ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
+```
 
 ### Use a dependency from a custom repository
 
-1. Similar to the `local` repository, custom repository packages can be specified in the `Ballerina.toml` file and utilized in a similar manner.
+Similar to the `local` repository, custom repository packages can be specified in the `Ballerina.toml` file and utilized in a similar manner.
 
-    ```toml
-    [[dependency]]
-    org = "jackson"
-    name = "encrypter"
-    version = "2.1.1"
-    repository = "github_1" # Must match a repository ID configured in the Settings.toml file.
-    ```
+```toml
+[[dependency]]
+org = "jackson"
+name = "encrypter"
+version = "2.1.1"
+repository = "github_1" # Must match a repository ID configured in the Settings.toml file.
+```
 
 ## Achieve reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
 
-It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
- However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
+It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time. However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
 ### The sticky mode
 
@@ -240,8 +240,7 @@ $ bal build --sticky
 
 ### The offline mode
 
-Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
-This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
+Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 

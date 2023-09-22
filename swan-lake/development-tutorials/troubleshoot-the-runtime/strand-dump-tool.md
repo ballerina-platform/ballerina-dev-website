@@ -21,8 +21,7 @@ a Ballerina program. This can be used to:
 
 - inspect strand and strand group status
 
->**Note:** Currently, this ability is only available in the operating systems in which the `SIGTRAP` POSIX signal is 
-supported (`SIGTRAP` is not available on Windows).
+>**Note:** Currently, this ability is only available in the operating systems in which the `SIGTRAP` POSIX signal is supported (`SIGTRAP` is not available on Windows).
 
 ### Get the strand dump
 

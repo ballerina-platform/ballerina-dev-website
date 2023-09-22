@@ -224,7 +224,7 @@ file under the section '[platform.<java*>]' with the attribute
 **********************************************************************************
 ```
 
-In that scenario, the package owner should evaluate the GraalVM-compatibility with `bal test --graalvm`. If the package has sufficient test cases to verify the compatibility, the package can be marked as GraalVM-compatible by adding the following to the Ballerin.toml file.
+In that scenario, the package owner should evaluate the GraalVM-compatibility with `bal test --graalvm`. If the package has sufficient test cases to verify the compatibility, the package can be marked as GraalVM-compatible by adding the following to the Ballerina.toml file.
 ```toml
 [platform.java17]
 graalvmCompatible = true

@@ -26,201 +26,6 @@ Update your current Ballerina installation directly to 2201.8.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
-## Backward-incompatible changes
-
-- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support">Java 17 support</a>.
-
-- A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
-
-    ```ballerina
-    import ballerina/io;
-
-    type Person record {
-        string name;
-    };
-
-    type Employee record {
-        string name;
-        int id?;
-    };
-
-    public function main() {
-        Person person = {name: "May"};
-        Employee employee = person; // Compilation error now.
-
-        io:println(person is Employee); // Prints `false` now.
-    }
-    ```
-
-- Updated the analysis of the `init` method of an `isolated` object to disallow invalid transferring in/out of values that violated the isolated root invariant.
-
-    ```ballerina
-    type Node record {|
-        readonly string path;
-        map<string[]>? app = ();
-    |};
-
-    isolated class Class {
-        private Node node;
-        private Node[] arr = [];
-
-        function init(Node node) {
-            self.node = node.clone();
-
-            self.arr.push(node); // Compilation error now.
-            self.arr[0] = node; // Compilation error now.
-        }
-    }
-    ```
-
-- Disallowed mutable objects in annotations.
-
-    ```ballerina
-    type Validator object {
-        function validate(anydata data) returns error?;
-    };
-
-    type AnnotationData record {|
-        string name;
-        Validator validator;
-    |};
-
-    annotation AnnotationData config on type; // Compilation error now.
-    ```
-    
-- Disallowed using field access with a map of `xml`. This was previously allowed incorrectly.
-
-    ```ballerina
-    map<xml> m = {a: xml `foo`};
-    xml x = check m.a; // Compilation error now.
-    ```
-
-- A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
-
-    ```ballerina
-    public function main() {
-        int resultInt;
-        transaction {
-            resultInt = check calculateDefaultValue(true);
-            check commit;
-        } on fail {
-            io:println("Failed to initialize resultInt");
-        }
-        resultInt += 1; // Compilation error now.
-    }
-    ```
-
-- A bug that resulted in incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
-    
-    ```ballerina
-    function filterEmployeesByDepartment(map<Employee> employees, string department) {
-        var result = from var e in employees // Compilation error now.
-            where e.department == department
-            select e.name;
-    }
-    ```
-
-- A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
-    
-    ```ballerina
-    function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
-        int total = from var {department, salary} in strm // Compilation error now.
-            where department == dept
-            collect sum(salary);
-    }
-    ```
-
-- A bug related to deciding the types of numeric literals has been fixed.
-
-    ```ballerina
-    2f|1 a = 2; // Compilation error now, `2` is considered to be `int`.
-    3d|6 b = 3; // Compilation error now, `3` is considered to be `int`.
-    3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
-    ```
-
-- A bug that allowed an `anydata` value to be used in contexts expecting an `anydata & readonly` value has been fixed.
-
-    ```ballerina
-    public function main() {
-        anydata a = [];
-        anydata & readonly b = a; // Compilation error now.
-    }
-    ```
-  
-- A bug that allowed using object type inclusion with a `readonly` `service` object in a `readonly` non-`service` class has been fixed.
-
-    ```ballerina
-    public type A readonly & service object {
-        isolated remote function execute() returns int;
-    };
-
-    readonly client class B {
-        *A; // Compilation error now.
-
-        isolated remote function execute() returns int {
-            return 2;
-        }
-    }
-    ```
-
-- A bug that caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
-  
-    ```ballerina
-    type AC map<int>|string;
-
-    public function main() returns error? {
-        map<anydata> x = {a: "Ballerina"};
-        AC|boolean _ = check x.cloneWithType();
-    }
-    ```
-
-    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
-  
-- A bug that resulted in an incorrect value being used as the default value of a class field, when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
-
-    ```ballerina
-    import ballerina/io;
-    
-    int defaultTemperature = 25;
-    
-    public class TemperatureSensor {
-        public string location;
-        public int temperature = defaultTemperature;
-    
-        public function init(string location) {
-            self.location = location;
-        }
-    
-        public function setDefaultTemperature(int temp) {
-            self.temperature = temp;
-        }
-    }
-
-    public function getTemperature(string location, int temperature = defaultTemperature) returns int {
-        return temperature;
-    }
-
-    public function main() {
-        TemperatureSensor livingRoomSensor = new ("Living Room");
-        io:println("Current temperature in the " + livingRoomSensor.location + ": " + livingRoomSensor.temperature.toString() + "°C");
-        // Prints `Current temperature in the Living Room: 25°C` now.
-        int defaultTemp = getTemperature("Kitchen");
-        io:println("Default temperature in the Kitchen: " + defaultTemp.toString() + "°C");
-        // Prints `Default temperature in the Kitchen: 25°C` now.
-    }
-    ```
-
-- Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
-
-- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).
-
-    ```ballerina
-    // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `ArrayTypeSymbol`.
-    type A int[] & readonly;
-    ```
-
-- Removed support for the `AES/GCM/PKCS5Padding` encryption algorithm in the `crypto` package due to its incompatibility with Java 17.
-
 ## Language updates
 
 ### New features
@@ -546,3 +351,198 @@ Introduced the support for incorporating custom user repositories into the packa
 This feature allows you to configure multiple repositories within the `<USER_HOME>/.ballerina/Settings.toml` file to publish your packages to your preferred repositories and retrieve packages from these repositories. You can seamlessly utilize these packages during the package-building process by explicitly defining dependencies in the `Ballerina.toml` file.
 
 For more information on the custom package repositories support, see [Manage dependencies](/learn/manage-dependencies/).
+
+## Backward-incompatible changes
+
+- The switch to Java 17 may have an impact on Ballerina interoperability usage if there are incompatible changes. For example, Java 17 has some restrictions on using Java reflection with internal Java packages. For more information, see <a href="#java-17-support">Java 17 support</a>.
+
+- A type-checking bug that resulted in incorrect subtype relationships between records with optional fields and open records has been fixed.
+
+    ```ballerina
+    import ballerina/io;
+
+    type Person record {
+        string name;
+    };
+
+    type Employee record {
+        string name;
+        int id?;
+    };
+
+    public function main() {
+        Person person = {name: "May"};
+        Employee employee = person; // Compilation error now.
+
+        io:println(person is Employee); // Prints `false` now.
+    }
+    ```
+
+- Updated the analysis of the `init` method of an `isolated` object to disallow invalid transferring in/out of values that violated the isolated root invariant.
+
+    ```ballerina
+    type Node record {|
+        readonly string path;
+        map<string[]>? app = ();
+    |};
+
+    isolated class Class {
+        private Node node;
+        private Node[] arr = [];
+
+        function init(Node node) {
+            self.node = node.clone();
+
+            self.arr.push(node); // Compilation error now.
+            self.arr[0] = node; // Compilation error now.
+        }
+    }
+    ```
+
+- Disallowed mutable objects in annotations.
+
+    ```ballerina
+    type Validator object {
+        function validate(anydata data) returns error?;
+    };
+
+    type AnnotationData record {|
+        string name;
+        Validator validator;
+    |};
+
+    annotation AnnotationData config on type; // Compilation error now.
+    ```
+    
+- Disallowed using field access with a map of `xml`. This was previously allowed incorrectly.
+
+    ```ballerina
+    map<xml> m = {a: xml `foo`};
+    xml x = check m.a; // Compilation error now.
+    ```
+
+- A bug that permitted uninitialized variables to evade detection when utilizing the `on fail` clause has been fixed.
+
+    ```ballerina
+    public function main() {
+        int resultInt;
+        transaction {
+            resultInt = check calculateDefaultValue(true);
+            check commit;
+        } on fail {
+            io:println("Failed to initialize resultInt");
+        }
+        resultInt += 1; // Compilation error now.
+    }
+    ```
+
+- A bug that resulted in incorrect type inference within query expressions when there is no expected type has been addressed. Previously, when iterating over a map without explicitly specifying an expected type, the resulting type of the query expression was erroneously inferred as an array. This misinterpretation has now been rectified and is properly restricted.
+    
+    ```ballerina
+    function filterEmployeesByDepartment(map<Employee> employees, string department) {
+        var result = from var e in employees // Compilation error now.
+            where e.department == department
+            select e.name;
+    }
+    ```
+
+- A bug that allowed ignoring possible completion with an error when using the `collect` clause in a query expression has been fixed.
+    
+    ```ballerina
+    function calculateTotalSalary(stream<Employee, error?> strm, string dept) {
+        int total = from var {department, salary} in strm // Compilation error now.
+            where department == dept
+            collect sum(salary);
+    }
+    ```
+
+- A bug related to deciding the types of numeric literals has been fixed.
+
+    ```ballerina
+    2f|1 a = 2; // Compilation error now, `2` is considered to be `int`.
+    3d|6 b = 3; // Compilation error now, `3` is considered to be `int`.
+    3d|4f|6 b = 4; // Compilation error now, `4` is considered to be `int`.
+    ```
+
+- A bug that allowed an `anydata` value to be used in contexts expecting an `anydata & readonly` value has been fixed.
+
+    ```ballerina
+    public function main() {
+        anydata a = [];
+        anydata & readonly b = a; // Compilation error now.
+    }
+    ```
+  
+- A bug that allowed using object type inclusion with a `readonly` `service` object in a `readonly` non-`service` class has been fixed.
+
+    ```ballerina
+    public type A readonly & service object {
+        isolated remote function execute() returns int;
+    };
+
+    readonly client class B {
+        *A; // Compilation error now.
+
+        isolated remote function execute() returns int {
+            return 2;
+        }
+    }
+    ```
+
+- A bug that caused the runtime error messages to include the flattened representation of a union type instead of the name used in the type definition has been fixed.
+  
+    ```ballerina
+    type AC map<int>|string;
+
+    public function main() returns error? {
+        map<anydata> x = {a: "Ballerina"};
+        AC|boolean _ = check x.cloneWithType();
+    }
+    ```
+
+    This now fails with `"'map<anydata>' value cannot be converted to '(AC|boolean)'"` instead of `"'map<anydata>' value cannot be converted to '(map<int>|string|boolean)'"`.
+  
+- A bug that resulted in an incorrect value being used as the default value of a class field, when the default value refers to a module-level variable that is also used in the default value of a function parameter has been fixed.
+
+    ```ballerina
+    import ballerina/io;
+    
+    int defaultTemperature = 25;
+    
+    public class TemperatureSensor {
+        public string location;
+        public int temperature = defaultTemperature;
+    
+        public function init(string location) {
+            self.location = location;
+        }
+    
+        public function setDefaultTemperature(int temp) {
+            self.temperature = temp;
+        }
+    }
+
+    public function getTemperature(string location, int temperature = defaultTemperature) returns int {
+        return temperature;
+    }
+
+    public function main() {
+        TemperatureSensor livingRoomSensor = new ("Living Room");
+        io:println("Current temperature in the " + livingRoomSensor.location + ": " + livingRoomSensor.temperature.toString() + "°C");
+        // Prints `Current temperature in the Living Room: 25°C` now.
+        int defaultTemp = getTemperature("Kitchen");
+        io:println("Default temperature in the Kitchen: " + defaultTemp.toString() + "°C");
+        // Prints `Default temperature in the Kitchen: 25°C` now.
+    }
+    ```
+
+- Modified the behavior of the [runtime Java APIs to support the intersection type](/downloads/swan-lake-release-notes/swan-lake-2201.8.0#intersection-type-support-in-runtime-java-apis).
+
+- Modified the behavior of the Semantic API `typeDescriptor()` methods to return the intersection type symbol instead of the effective type symbol (i.e., the symbol of the corresponding non-intersection type that is computed to represent the same value space).
+
+    ```ballerina
+    // `TypeSymbol` of `A` will now be an `IntersectionTypeSymbol` instead of `ArrayTypeSymbol`.
+    type A int[] & readonly;
+    ```
+
+- Removed support for the `AES/GCM/PKCS5Padding` encryption algorithm in the `crypto` package due to its incompatibility with Java 17.

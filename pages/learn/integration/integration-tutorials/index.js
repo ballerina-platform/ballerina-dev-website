@@ -169,9 +169,9 @@ export default function Learn() {
                   />
 
                   <SampleList
-                    name="Connecting Web APIs/Cloud Services"
-                    description="Connectin web APIs/cloud services"
-                    tags={["Integration"]}
+                    name="Send emails from a service"
+                    description="Connecting web APIs/cloud services"
+                    tags={["Integration", "REST API", "Email", "SMTP Client"]}
                     icon={false}
                   />
 

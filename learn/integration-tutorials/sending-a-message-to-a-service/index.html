@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/><meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language"/><title>Sending a message to a service</title><meta property="og:type" content="article"/><meta property="og:title" content="Ballerina - Sending a message to a service"/><meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/><meta property="og:title" content="Ballerina"/><meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/><meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services."/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"/><meta property="og:title" content="Ballerina"/><meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"/><meta name="twitter:site" content="@ballerinalang"/><meta name="twitter:creator" content="@ballerinalang"/><meta name="twitter:title" content="Ballerina"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"/><meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"/><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PSL2TX4');</script><script type="text/javascript" crossorigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script><script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js" type="text/javascript" charSet="UTF-8" data-domain-script="630ad396-5fd5-4745-92ae-2765dc8841ee" defer=""></script><meta name="next-head-count" content="23"/><meta charSet="utf-8"/><meta name="author" content="WSO2 LLC"/><meta HTTP-EQUIV="X-Frame-Options" CONTENT="SAMEORIGIN"/><meta HTTP-EQUIV="Content-Security-Policy" CONTENT="frame-ancestors &#x27;none&#x27;;"/><link rel="shortcut icon" href="/images/favicon.ico"/><link rel="stylesheet" href="/css/roboto.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"/><link rel="stylesheet" href="/css/ballerina-search-button.css"/><link rel="stylesheet" href="/css/ballerina-search-modal.css"/><link rel="stylesheet" href="/css/ballerina-search-variables.css"/><link rel="stylesheet" href="/css/ballerina-search-style.css"/><link rel="preload" href="/_next/static/css/4912777e2cfb47d2.css" as="style"/><link rel="stylesheet" href="/_next/static/css/4912777e2cfb47d2.css" data-n-g=""/><link rel="preload" href="/_next/static/css/ed928f4e0113510f.css" as="style"/><link rel="stylesheet" href="/_next/static/css/ed928f4e0113510f.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="/_next/static/chunks/webpack-676a25c773882039.js" defer=""></script><script src="/_next/static/chunks/framework-a070cbfff3c750c5.js" defer=""></script><script src="/_next/static/chunks/main-a66eb456a358e5ca.js" defer=""></script><script src="/_next/static/chunks/pages/_app-49e87402e1a02b9d.js" defer=""></script><script src="/_next/static/chunks/9733-caeb053dcf01b5fd.js" defer=""></script><script src="/_next/static/chunks/8999-b1f394634e8708da.js" defer=""></script><script src="/_next/static/chunks/5530-9e94516ef785d153.js" defer=""></script><script src="/_next/static/chunks/2092-643ce819261b95c6.js" defer=""></script><script src="/_next/static/chunks/4564-079435fb4878d182.js" defer=""></script><script src="/_next/static/chunks/5795-c59bab88fcc5a40c.js" defer=""></script><script src="/_next/static/chunks/pages/learn/integration/integration-tutorials/%5Bslug%5D-98bdeb669cbe7491.js" defer=""></script><script src="/_next/static/_NXmwwwGwdudHNwO_MRg3/_buildManifest.js" defer=""></script><script src="/_next/static/_NXmwwwGwdudHNwO_MRg3/_ssgManifest.js" defer=""></script><script src="/_next/static/_NXmwwwGwdudHNwO_MRg3/_middlewareManifest.js" defer=""></script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="__next" data-reactroot=""><div class="main-wrapper other vstack gap-0"><div class="wrap-page-content container"><div class="row"><div class="mdContent col-sm-10 col-12"><div class="row"><div style="margin-bottom:20px;" class="patternContent col-12"><div class="backToLanding" href="/learn/integration-tutorials/"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#3ad1ca" class="bi bi-box-arrow-left ms-0" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"></path><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"></path></svg><p class="m-0 p-0">Back to integration tutorials</p></div></div></div><div class="topRow innerRow row"><div class="col-11"><h1>Sending a message to a service</h1></div><div class="gitIcon col-1"><a href="https://github.com/ballerina-platform/ballerina-dev-website/blob/master/swan-lake/integration-tutorials/sending-a-message-to-a-service.md" target="_blank" rel="noreferrer" title="Edit in GitHub"></a></div></div><div style="margin-top:40px;margin-bottom:0;align-items:center" class="pageContentRow innerRow row"><div class="col-md-8 col-12"><p>This tutorial helps you understand the basics of Ballerina constructs, which allow you to do client calls and develop RESTful APIs.</p></div><div class="col-md-3 col-12"><img/></div></div><div class="pageContentRow innerRow row"><div class="col-12"><h2 id="overview" data-section="overview" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Overview</h2>
+<p>In this tutorial, you will develop a service that allows a user to retrieve a list of doctors based on the doctor&#x27;s specialization (category). The information about the doctors is retrieved from a separate microservice.</p>
+<p>To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then, run the service. The resource will receive the user request, retrieve details from the backend service, and respond to the user request with the relevant doctor details.</p>
+<h3 id="concepts-covered" data-section="concepts-covered" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Concepts covered</h3>
+<ul>
+<li>REST API</li>
+<li>HTTP client</li>
+</ul>
+<h2 id="develop-the-application" data-section="develop-the-application" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Develop the application</h2>
+<h3 id="step-1-set-up-the-workspace" data-section="step-1-set-up-the-workspace" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Step 1: Set up the workspace</h3>
+<p>Install <a href="https://ballerina.io/downloads/">Ballerina Swan Lake</a> and the <a href="https://marketplace.visualstudio.com/items?itemName=wso2.ballerina">Ballerina Swan Lake VS Code extension</a> on VS Code.</p>
+<h3 id="step-2-develop-the-service" data-section="step-2-develop-the-service" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Step 2: Develop the service</h3>
+<p>Follow the instructions given in this section to develop the service.</p>
+<ol>
+<li>Create a new Ballerina project using the <code>bal</code> command and open it in VS Code.</li>
+</ol>
+<pre><pre class="default"><code>$ bal new sending-a-message-to-a-service
+</code></pre></pre>
+<ol start="2">
+<li>Introduce the source code in files with the <code>.bal</code> extension (e.g., the <code>main.bal</code> file).</li>
+</ol>
+<p>Import the</p>
+<ul>
+<li><code>ballerina/http</code> module to develop the REST API and define the client that can be used to send requests to the backend service</li>
+<li><code>ballerina/log</code> module to log some information for each client request</li>
+</ul>
+<pre><pre class="default"><code>import ballerina/http;
+import ballerina/log;
+</code></pre></pre>
+<ol start="3">
+<li>Define two <a href="https://ballerina.io/learn/by-example/#configurability">configurable variables</a> for the port on which the listener should listen and the URL of the backend service.</li>
+</ol>
+<pre><pre class="default"><code>configurable int port = 8290;
+configurable string healthcareBackend = &quot;http://localhost:9090/healthcare&quot;;
+</code></pre></pre>
+<ol start="4">
+<li>Define an <a href="https://ballerina.io/learn/by-example/#http-client"><code>http:Client</code> client</a> to send requests to the backend service.</li>
+</ol>
+<pre><pre class="default"><code>final http:Client queryDoctorEP = check initializeHttpClient();
+
+function initializeHttpClient() returns http:Client|error =&gt; new (healthcareBackend);
+</code></pre></pre>
+<p>The argument to the <code>new</code> expression is the URL for the backend service.</p>
+<ol start="5">
+<li>Define a record corresponding to the payload from the backend service.</li>
+</ol>
+<pre><pre class="default"><code>type Doctor record {|
+    string name;
+    string hospital;
+    string category;
+    string availability;
+    decimal fee;
+|};
+</code></pre></pre>
+<p>The payload will be an array of JSON objects in which, the structure of each JSON object matches this record. Note that you can use the &quot;Paste JSON as record&quot; VS Code command to generate the record if you have the JSON payload.</p>
+<ol start="6">
+<li>Define the <a href="https://ballerina.io/learn/by-example/#rest-service">HTTP service (REST API)</a> that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request. Use <code>/healthcare</code> as the service path (or the context) of the service, which is attached to the listener listening on port <code>port</code>. Define an HTTP resource that allows the <code>GET</code> operation on resource path <code>/querydoctor</code> and accepts the <code>category</code> (corresponding to the specialization) as a path parameter.</li>
+</ol>
+<pre><pre class="default"><code>service /healthcare on new http:Listener(port) {
+    resource function get querydoctor/[string category]() {
+        
+    }
+}
+</code></pre></pre>
+<ol start="7">
+<li>Implement the logic to retrieve and respond with relevant details.</li>
+</ol>
+<pre><pre class="default"><code>service /healthcare on new http:Listener(port) {
+    resource function get querydoctor/[string category]() 
+            returns Doctor[]|http:NotFound|http:InternalServerError {
+        log:printInfo(&quot;Retrieving information&quot;, specialization = category);
+        
+        Doctor[]|http:ClientError resp = queryDoctorEP-&gt;/[category];
+        if resp is Doctor[] {
+            return resp;
+        }
+
+        if resp is http:ClientRequestError {
+            return &lt;http:NotFound&gt; {body: string `category not found: ${category}`};
+        }
+
+        return &lt;http:InternalServerError&gt; {body: resp.message()};
+    }
+}
+</code></pre></pre>
+<ul>
+<li>The <code>log:printInfo</code> statement <a href="https://ballerina.io/learn/by-example/#log">logs</a> information about the request.</li>
+</ul>
+<pre><pre class="default"><code>log:printInfo(&quot;Retrieving information&quot;, specialization = category);
+</code></pre></pre>
+<ul>
+<li>The call to the backend is done using a remote method call expression (using <code>-&gt;</code>), which distinguishes network calls from normal method calls. <a href="https://ballerina.io/learn/by-example/http-client-data-binding/">Client data binding</a> is used to directly try and bind the JSON response on success to the expected array of records.</li>
+</ul>
+<pre><pre class="default"><code>Doctor[]|http:ClientError resp = queryDoctorEP-&gt;/[category];
+</code></pre></pre>
+<ul>
+<li>Use the <code>is</code> check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of <code>Doctor</code>s (as expected), then, directly return the array from the resource. If the request failed, send a &quot;NotFound&quot; response if the client call failed with a 4xx status code or return an &quot;InternalServerError&quot; response for other failures.</li>
+</ul>
+<pre><pre class="default"><code>log:printInfo(&quot;Retrieving information&quot;, specialization = category);
+
+Doctor[]|http:ClientError resp = queryDoctorEP-&gt;/[category];
+if resp is Doctor[] {
+    return resp;
+}
+
+log:printError(&quot;Retrieving doctor information failed&quot;, resp);
+if resp is http:ClientRequestError {
+    return &lt;http:NotFound&gt; {body: string `category not found: ${category}`};
+}
+
+return &lt;http:InternalServerError&gt; {body: resp.message()};
+</code></pre></pre>
+<p>You have successfully developed the required service.</p>
+<h4 id="complete-source" data-section="complete-source" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Complete source</h4>
+<pre><pre class="default"><code>import ballerina/http;
+import ballerina/log;
+
+type Doctor record {|
+    string name;
+    string hospital;
+    string category;
+    string availability;
+    decimal fee;
+|};
+
+configurable int port = 8290;
+configurable string healthcareBackend = &quot;http://localhost:9090/healthcare&quot;;
+
+final http:Client queryDoctorEP = check initializeHttpClient();
+
+function initializeHttpClient() returns http:Client|error =&gt; new (healthcareBackend);
+
+service /healthcare on new http:Listener(port) {
+    resource function get querydoctor/[string category]() 
+            returns Doctor[]|http:NotFound|http:InternalServerError {
+        log:printInfo(&quot;Retrieving information&quot;, specialization = category);
+        
+        Doctor[]|http:ClientError resp = queryDoctorEP-&gt;/[category];
+        if resp is Doctor[] {
+            return resp;
+        }
+        
+        log:printError(&quot;Retrieving doctor information failed&quot;, resp);
+        if resp is http:ClientRequestError {
+            return &lt;http:NotFound&gt; {body: string `category not found: ${category}`};
+        }
+
+        return &lt;http:InternalServerError&gt; {body: resp.message()};
+    }
+}
+</code></pre></pre>
+<h4 id="diagram" data-section="diagram" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Diagram</h4>
+<p>The <a href="https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/">sequence diagram view</a> for the implemented resource method is the following.</p>
+<p><img src="/learn/images/tutorial_sending_a_message_to_a_service.png" alt="sequence diagram"/></p>
+<h3 id="step-3-build-and-run-the-service" data-section="step-3-build-and-run-the-service" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Step 3: Build and run the service</h3>
+<p>You can run this service by navigating to the project root and using the <code>bal run</code> command.</p>
+<pre><pre class="default"><code>sending-a-message-to-a-service$ bal run
+Compiling source
+        integration_tutorials/sending_a_message_to_a_service:0.1.0
+
+Running executable
+</code></pre></pre>
+<h3 id="step-4-try-out-the-use-case" data-section="step-4-try-out-the-use-case" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Step 4: Try out the use case</h3>
+<p>Let&#x27;s test the use case by sending a request to the service.</p>
+<h4 id="start-the-backend-service" data-section="start-the-backend-service" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Start the backend service</h4>
+<p>Download the JAR file for the backend service for the <a href="https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/">backend service</a>, and execute the following command to start the service:</p>
+<pre><pre class="default"><code>bal run hospitalservice.jar
+</code></pre></pre>
+<h4 id="send-a-request" data-section="send-a-request" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Send a request</h4>
+<p>Let&#x27;s send a request to the service using cURL as follows.</p>
+<ol>
+<li>
+<p>Install and set up <a href="https://curl.se/">cURL</a> as your client.</p>
+</li>
+<li>
+<p>Execute the following command.</p>
+</li>
+</ol>
+<pre><pre class="default"><code>curl -v http://localhost:8290/healthcare/querydoctor/surgery
+</code></pre></pre>
+<h4 id="verify-the-response" data-section="verify-the-response" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Verify the response</h4>
+<p>You will see the response message from the backend with a list of details of the available doctors.</p>
+<pre><pre class="default"><code>[
+    {
+        &quot;name&quot;: &quot;thomas collins&quot;,
+        &quot;hospital&quot;: &quot;grand oak community hospital&quot;,
+        &quot;category&quot;: &quot;surgery&quot;,
+        &quot;availability&quot;: &quot;9.00 a.m - 11.00 a.m&quot;,
+        &quot;fee&quot;: 7000.0
+    },
+    {
+        &quot;name&quot;: &quot;anne clement&quot;,
+        &quot;hospital&quot;: &quot;clemency medical center&quot;,
+        &quot;category&quot;: &quot;surgery&quot;,
+        &quot;availability&quot;: &quot;8.00 a.m - 10.00 a.m&quot;,
+        &quot;fee&quot;: 12000.0
+    },
+    {
+        &quot;name&quot;: &quot;seth mears&quot;,
+        &quot;hospital&quot;: &quot;pine valley community hospital&quot;,
+        &quot;category&quot;: &quot;surgery&quot;,
+        &quot;availability&quot;: &quot;3.00 p.m - 5.00 p.m&quot;,
+        &quot;fee&quot;: 8000.0
+    }
+]
+</code></pre></pre>
+<p>Now, check the terminal in which you ran the Ballerina service. You should see a log similar to the following.</p>
+<pre><pre class="default"><code>time = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = &quot;Retrieving information&quot; specialization = &quot;surgery&quot;
+</code></pre></pre>
+<h3 id="step-5-write-tests-for-the-use-case" data-section="step-5-write-tests-for-the-use-case" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Step 5: Write tests for the use case</h3>
+<p>Let&#x27;s test the use case by writing a test case that sends a request to the service and validates the payload for a successful request. Testing is enabled by the <a href="https://ballerina.io/learn/test-ballerina-code/test-services-and-clients/">Ballerina test framework</a>.</p>
+<ol>
+<li>Introduce the tests in a <code>.bal</code> file within a directory named <code>tests</code> in the package. Import the <code>ballerina/test</code> module to use the Ballerina test framework and the <code>ballerina/http</code> module to use an <code>http:Client</code> client object to send requests to the implemented service and mock the backend service.</li>
+</ol>
+<pre><pre class="default"><code>import ballerina/http;
+import ballerina/test;
+</code></pre></pre>
+<ol start="2">
+<li>Mock the backend service by mocking the <code>http:Client</code> and the <code>get</code> resource method. Then, mock the <code>initializeHttpClient</code> function, using the <code>@test:Mock</code> annotation, to return the mock HTTP client.</li>
+</ol>
+<pre><pre class="default"><code>public client class MockHttpClient {
+    isolated resource function get [string... path](map&lt;string|string[]&gt;? headers = (), http:TargetType targetType = http:Response,
+            *http:QueryParams params) returns http:Response|anydata|http:ClientError {
+        match path[0] {
+            &quot;surgery&quot; =&gt; {
+                return getSurgeryResponsePayload();
+            }
+        }
+        return &lt;http:ClientRequestError&gt; error (&quot;unknown specialization&quot;, 
+                                            body = string `unknown specialization: ${path[0]}`, 
+                                            headers = {}, 
+                                            statusCode = http:STATUS_NOT_FOUND);
+    }
+}
+
+@test:Mock {
+    functionName: &quot;initializeHttpClient&quot;
+}
+function initializeHttpClientMock() returns http:Client|error =&gt;
+    test:mock(http:Client, new MockHttpClient());
+</code></pre></pre>
+<ol start="3">
+<li>Use the <code>@test:Config</code> annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the <code>test:assertEquals</code> function.</li>
+</ol>
+<pre><pre class="default"><code>@test:Config
+function testSuccessfulRequest() returns error? {
+    Doctor[] doctors = check cl-&gt;/surgery;
+    test:assertEquals(doctors, getSurgeryResponsePayload());
+}
+</code></pre></pre>
+<ol start="4">
+<li>Run the <code>bal test</code> command from the project root to run the tests.</li>
+</ol>
+<pre><pre class="default"><code>sending-a-message-to-a-service$ bal test
+Compiling source
+        integration_tutorials/sending_a_message_to_a_service:0.1.0
+
+Running Tests
+
+        sending_a_message_to_a_service
+time = 2023-08-17T09:01:23.758+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = &quot;Retrieving information&quot; specialization = &quot;surgery&quot;
+
+
+                1 passing
+                0 failing
+                0 skipped
+</code></pre></pre>
+<p>You have now developed and tested a simple Ballerina REST service, which receives a request, logs a message, sends a request to a backend service, and responds to the original request with the response from the backend service.</p>
+<h2 id="complete-implementation" data-section="complete-implementation" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>Complete implementation</h2>
+<p>Check out the <a href="https://github.com/ballerina-guides/integration-tutorials/tree/main/sending-a-message-to-a-service">complete implementation</a> on GitHub.</p>
+<h2 id="references" data-section="references" class="section"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-link-45deg mdButton pe-2" viewBox="0 0 16 16"><path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"></path><path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"></path></svg>References</h2>
+<ul>
+<li><a href="https://lib.ballerina.io/ballerina/http/latest"><code>ballerina/http</code> API docs</a></li>
+<li><a href="https://lib.ballerina.io/ballerina/log/latest"><code>ballerina/log</code> API docs</a></li>
+<li><a href="https://lib.ballerina.io/ballerina/test/latest"><code>ballerina/test</code> API docs</a></li>
+</ul></div></div></div><div class="pageToc d-none d-sm-block col-sm-2"></div></div></div><div class="Footer_stack__Y9iHo vstack gap-0"><div class="Footer_footer__gXdNn container"><div class="row"><div class="col-lg-6 col-md-6 col-sm-12 col-12"><div class="row"><div class="col-lg-6 col-md-12 col-sm-12 col-12"><div class="Footer_socialMedia__99VpI"><div class="Footer_smIcons__HD9f7"><ul><li><a href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub"></a></li><li><a href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="Twitter"></a></li><li><a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord"></a></li><li><a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow"></a></li><li><a href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube"></a></li><li><a href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn"></a></li></ul></div></div><div class="Footer_footerLinks__M9jUM"><ul><li><a href="/downloads/">DOWNLOAD</a></li><li><a class="footerLink" target="_blank" rel="noreferrer" href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">REPORT ISSUES</a></li></ul></div></div><div class="col-lg-6 col-md-12 col-sm-12 col-12"><div class="Footer_subscription__N96Xy"><div class="Footer_subscribe__6aRU2"><a href="/community/#subscribe-to-our-newsletter">Subscribe to our newsletter</a></div><div class="Footer_subscribe__6aRU2"><a class="Footer_subRss__E8gAT" href="https://blog.ballerina.io/feed.xml" target="_blank" rel="noreferrer">Subscribe via RSS</a></div></div></div></div></div><div class="Footer_inspire__ZAi5V col-lg-6 col-md-6 col-sm-12 col-12"><p>In the creation of Ballerina, we were inspired by many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub, and WSO2.</p></div></div><div class="Footer_policyLinks__q3ge1 row"><div class="col-sm-2 col-12"><span class="footerLink">© 2018-2023 WSO2 LLC</span></div><div class="col-sm-10 col-12"><ul><li><a class="footerLink" target="_blank" rel="noreferrer" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">CODE LICENSE</a></li><li><a href="/license-of-site/">SITE LICENSE</a></li><li><a href="/terms-of-service/">TERMS OF SERVICE</a></li><li><a href="/privacy-policy/">PRIVACY POLICY</a></li><li><a href="/cookie-policy/">COOKIE POLICY</a></li><li><a href="/security-policy/">SECURITY POLICY</a></li><li><a href="/trademark-usage-policy/">TRADEMARK USAGE POLICY</a></li></ul></div></div></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"frontmatter":{"layout":"ballerina-sending-a-message-to-a-service-left-nav-pages-swanlake","title":"Sending a message to a service","permalink":"/learn/sending-a-message-to-a-service/","description":"Integration tutorial for sending a message to a service.","keywords":"ballerina, programming language, client, restful-api, integration","active":"sending-a-message-to-a-service","intro":"This tutorial helps you understand the basics of Ballerina constructs, which allow you to do client calls and develop RESTful APIs."},"content":"\n## Overview\n\nIn this tutorial, you will develop a service that allows a user to retrieve a list of doctors based on the doctor's specialization (category). The information about the doctors is retrieved from a separate microservice. \n\nTo implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then, run the service. The resource will receive the user request, retrieve details from the backend service, and respond to the user request with the relevant doctor details.\n\n### Concepts covered\n\n- REST API\n- HTTP client\n\n## Develop the application\n\n### Step 1: Set up the workspace\n\nInstall [Ballerina Swan Lake](https://ballerina.io/downloads/) and the [Ballerina Swan Lake VS Code extension](https://marketplace.visualstudio.com/items?itemName=wso2.ballerina) on VS Code.\n\n### Step 2: Develop the service\n\nFollow the instructions given in this section to develop the service.\n\n1. Create a new Ballerina project using the `bal` command and open it in VS Code.\n\n```\n$ bal new sending-a-message-to-a-service\n```\n\n2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). \n\nImport the \n- `ballerina/http` module to develop the REST API and define the client that can be used to send requests to the backend service\n- `ballerina/log` module to log some information for each client request\n\n```\nimport ballerina/http;\nimport ballerina/log;\n```\n\n3. Define two [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URL of the backend service.\n\n```\nconfigurable int port = 8290;\nconfigurable string healthcareBackend = \"http://localhost:9090/healthcare\";\n```\n\n4. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.\n\n```\nfinal http:Client queryDoctorEP = check initializeHttpClient();\n\nfunction initializeHttpClient() returns http:Client|error =\u003e new (healthcareBackend);\n```\n\nThe argument to the `new` expression is the URL for the backend service.\n\n5. Define a record corresponding to the payload from the backend service.\n\n```\ntype Doctor record {|\n    string name;\n    string hospital;\n    string category;\n    string availability;\n    decimal fee;\n|};\n```\n\nThe payload will be an array of JSON objects in which, the structure of each JSON object matches this record. Note that you can use the \"Paste JSON as record\" VS Code command to generate the record if you have the JSON payload.\n\n6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request. Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`. Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.\n\n```\nservice /healthcare on new http:Listener(port) {\n    resource function get querydoctor/[string category]() {\n        \n    }\n}\n```\n\n7. Implement the logic to retrieve and respond with relevant details.\n\n```\nservice /healthcare on new http:Listener(port) {\n    resource function get querydoctor/[string category]() \n            returns Doctor[]|http:NotFound|http:InternalServerError {\n        log:printInfo(\"Retrieving information\", specialization = category);\n        \n        Doctor[]|http:ClientError resp = queryDoctorEP-\u003e/[category];\n        if resp is Doctor[] {\n            return resp;\n        }\n\n        if resp is http:ClientRequestError {\n            return \u003chttp:NotFound\u003e {body: string `category not found: ${category}`};\n        }\n\n        return \u003chttp:InternalServerError\u003e {body: resp.message()};\n    }\n}\n```\n\n- The `log:printInfo` statement [logs](https://ballerina.io/learn/by-example/#log) information about the request.\n\n```\nlog:printInfo(\"Retrieving information\", specialization = category);\n```\n\n- The call to the backend is done using a remote method call expression (using `-\u003e`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.\n\n```\nDoctor[]|http:ClientError resp = queryDoctorEP-\u003e/[category];\n```\n\n- Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor`s (as expected), then, directly return the array from the resource. If the request failed, send a \"NotFound\" response if the client call failed with a 4xx status code or return an \"InternalServerError\" response for other failures.\n\n```\nlog:printInfo(\"Retrieving information\", specialization = category);\n\nDoctor[]|http:ClientError resp = queryDoctorEP-\u003e/[category];\nif resp is Doctor[] {\n    return resp;\n}\n\nlog:printError(\"Retrieving doctor information failed\", resp);\nif resp is http:ClientRequestError {\n    return \u003chttp:NotFound\u003e {body: string `category not found: ${category}`};\n}\n\nreturn \u003chttp:InternalServerError\u003e {body: resp.message()};\n```\n\nYou have successfully developed the required service.\n\n#### Complete source\n\n```\nimport ballerina/http;\nimport ballerina/log;\n\ntype Doctor record {|\n    string name;\n    string hospital;\n    string category;\n    string availability;\n    decimal fee;\n|};\n\nconfigurable int port = 8290;\nconfigurable string healthcareBackend = \"http://localhost:9090/healthcare\";\n\nfinal http:Client queryDoctorEP = check initializeHttpClient();\n\nfunction initializeHttpClient() returns http:Client|error =\u003e new (healthcareBackend);\n\nservice /healthcare on new http:Listener(port) {\n    resource function get querydoctor/[string category]() \n            returns Doctor[]|http:NotFound|http:InternalServerError {\n        log:printInfo(\"Retrieving information\", specialization = category);\n        \n        Doctor[]|http:ClientError resp = queryDoctorEP-\u003e/[category];\n        if resp is Doctor[] {\n            return resp;\n        }\n        \n        log:printError(\"Retrieving doctor information failed\", resp);\n        if resp is http:ClientRequestError {\n            return \u003chttp:NotFound\u003e {body: string `category not found: ${category}`};\n        }\n\n        return \u003chttp:InternalServerError\u003e {body: resp.message()};\n    }\n}\n```\n\n#### Diagram\n\nThe [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.\n\n![sequence diagram](/learn/images/tutorial_sending_a_message_to_a_service.png)\n\n### Step 3: Build and run the service\n\nYou can run this service by navigating to the project root and using the `bal run` command.\n\n```\nsending-a-message-to-a-service$ bal run\nCompiling source\n        integration_tutorials/sending_a_message_to_a_service:0.1.0\n\nRunning executable\n```\n\n### Step 4: Try out the use case\n\nLet's test the use case by sending a request to the service.\n\n#### Start the backend service\n\nDownload the JAR file for the backend service for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/), and execute the following command to start the service:\n\n```\nbal run hospitalservice.jar\n```\n\n#### Send a request\n\nLet's send a request to the service using cURL as follows.\n\n1. Install and set up [cURL](https://curl.se/) as your client.\n\n2. Execute the following command.\n\n```\ncurl -v http://localhost:8290/healthcare/querydoctor/surgery\n```\n\n#### Verify the response\n\nYou will see the response message from the backend with a list of details of the available doctors.\n\n```\n[\n    {\n        \"name\": \"thomas collins\",\n        \"hospital\": \"grand oak community hospital\",\n        \"category\": \"surgery\",\n        \"availability\": \"9.00 a.m - 11.00 a.m\",\n        \"fee\": 7000.0\n    },\n    {\n        \"name\": \"anne clement\",\n        \"hospital\": \"clemency medical center\",\n        \"category\": \"surgery\",\n        \"availability\": \"8.00 a.m - 10.00 a.m\",\n        \"fee\": 12000.0\n    },\n    {\n        \"name\": \"seth mears\",\n        \"hospital\": \"pine valley community hospital\",\n        \"category\": \"surgery\",\n        \"availability\": \"3.00 p.m - 5.00 p.m\",\n        \"fee\": 8000.0\n    }\n]\n```\n\nNow, check the terminal in which you ran the Ballerina service. You should see a log similar to the following.\n\n```\ntime = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = \"Retrieving information\" specialization = \"surgery\"\n```\n\n### Step 5: Write tests for the use case\n\nLet's test the use case by writing a test case that sends a request to the service and validates the payload for a successful request. Testing is enabled by the [Ballerina test framework](https://ballerina.io/learn/test-ballerina-code/test-services-and-clients/).\n\n1. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.\n\n```\nimport ballerina/http;\nimport ballerina/test;\n```\n\n2. Mock the backend service by mocking the `http:Client` and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.\n\n```\npublic client class MockHttpClient {\n    isolated resource function get [string... path](map\u003cstring|string[]\u003e? headers = (), http:TargetType targetType = http:Response,\n            *http:QueryParams params) returns http:Response|anydata|http:ClientError {\n        match path[0] {\n            \"surgery\" =\u003e {\n                return getSurgeryResponsePayload();\n            }\n        }\n        return \u003chttp:ClientRequestError\u003e error (\"unknown specialization\", \n                                            body = string `unknown specialization: ${path[0]}`, \n                                            headers = {}, \n                                            statusCode = http:STATUS_NOT_FOUND);\n    }\n}\n\n@test:Mock {\n    functionName: \"initializeHttpClient\"\n}\nfunction initializeHttpClientMock() returns http:Client|error =\u003e\n    test:mock(http:Client, new MockHttpClient());\n```\n\n3. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.\n\n```\n@test:Config\nfunction testSuccessfulRequest() returns error? {\n    Doctor[] doctors = check cl-\u003e/surgery;\n    test:assertEquals(doctors, getSurgeryResponsePayload());\n}\n```\n\n4. Run the `bal test` command from the project root to run the tests.\n\n```\nsending-a-message-to-a-service$ bal test\nCompiling source\n        integration_tutorials/sending_a_message_to_a_service:0.1.0\n\nRunning Tests\n\n        sending_a_message_to_a_service\ntime = 2023-08-17T09:01:23.758+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = \"Retrieving information\" specialization = \"surgery\"\n\n\n                1 passing\n                0 failing\n                0 skipped\n```\n\nYou have now developed and tested a simple Ballerina REST service, which receives a request, logs a message, sends a request to a backend service, and responds to the original request with the response from the backend service.\n\n## Complete implementation\n\nCheck out the [complete implementation](https://github.com/ballerina-guides/integration-tutorials/tree/main/sending-a-message-to-a-service) on GitHub.\n\n## References\n\n- [`ballerina/http` API docs](https://lib.ballerina.io/ballerina/http/latest)\n- [`ballerina/log` API docs](https://lib.ballerina.io/ballerina/log/latest)\n- [`ballerina/test` API docs](https://lib.ballerina.io/ballerina/test/latest)\n","slug":"sending-a-message-to-a-service"},"__N_SSG":true},"page":"/learn/integration/integration-tutorials/[slug]","query":{"slug":"sending-a-message-to-a-service"},"buildId":"_NXmwwwGwdudHNwO_MRg3","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>

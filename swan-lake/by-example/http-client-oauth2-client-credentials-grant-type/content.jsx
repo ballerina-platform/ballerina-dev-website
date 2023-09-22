@@ -67,7 +67,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e6dcd3b6cf2d4b5dc3f915fb9e530ac8&file=http_client_oauth2_client_credentials_grant_type.bal",
+                "https://play.ballerina.io/?gist=8145ab54d701316872af7c308fee4ab0&file=http_client_oauth2_client_credentials_grant_type.bal",
                 "_blank",
               );
             }}
@@ -92,7 +92,7 @@ export function HttpClientOauth2ClientCredentialsGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-oauth2-client-credentials-grant-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-client-oauth2-client-credentials-grant-type",
                 "_blank",
               );
             }}

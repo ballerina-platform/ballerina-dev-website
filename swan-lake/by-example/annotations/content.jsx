@@ -72,7 +72,7 @@ export function Annotations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=0439e48de090c442ebfea40ec0623a82&file=annotations.bal",
+                "https://play.ballerina.io/?gist=b2dbf83d9703c0dcefaff8cc71d1027f&file=annotations.bal",
                 "_blank",
               );
             }}
@@ -97,7 +97,7 @@ export function Annotations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/annotations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/annotations",
                 "_blank",
               );
             }}

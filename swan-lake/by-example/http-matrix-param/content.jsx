@@ -68,7 +68,7 @@ export function HttpMatrixParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=47dc11aa23b6b7828edb0236ea039832&file=http_matrix_param.bal",
+                "https://play.ballerina.io/?gist=0af7c91a1cc82ddd3077e30b98f305df&file=http_matrix_param.bal",
                 "_blank",
               );
             }}
@@ -93,7 +93,7 @@ export function HttpMatrixParam({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-matrix-param",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-matrix-param",
                 "_blank",
               );
             }}

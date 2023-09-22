@@ -172,7 +172,7 @@ export function XmlDataModel({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=bd367e763929b33c720eb6f4ffdc54b6&file=xml_data_model.bal",
+                "https://play.ballerina.io/?gist=1ca3e7f36855b5a20f4bad5d230d9319&file=xml_data_model.bal",
                 "_blank",
               );
             }}
@@ -197,7 +197,7 @@ export function XmlDataModel({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xml-data-model",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/xml-data-model",
                 "_blank",
               );
             }}

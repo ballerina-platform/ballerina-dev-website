@@ -1,0 +1,20 @@
+{
+  "title": "Subscribe to messages",
+  "description": "Create an MQTT service to subscribe to messages from an MQTT server using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mqtt",
+    "subscriber",
+    "listener",
+    "service",
+    "iot"
+  ],
+  "permalink": "/learn/by-example/mqtt-service-subscribe-message",
+  "active": "mqtt-service-subscribe-message",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mqtt-service-subscribe-message",
+    "/swan-lake/learn/by-example/mqtt-service-subscribe-message.html"
+  ]
+}

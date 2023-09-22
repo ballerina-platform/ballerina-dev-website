@@ -69,7 +69,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=57b55340d8fa2ae7940b684d6dc8f65a&file=xmlns_declarations.bal",
+                "https://play.ballerina.io/?gist=18fae6585e83ea450596715f21ef593e&file=xmlns_declarations.bal",
                 "_blank",
               );
             }}
@@ -94,7 +94,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/xmlns-declarations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/xmlns-declarations",
                 "_blank",
               );
             }}

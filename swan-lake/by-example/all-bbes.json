@@ -2494,6 +2494,29 @@
     ]
   },
   {
+    "title": "  GraphQL service advanced",
+    "column": 1,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Dataloader",
+        "url": "graphql-dataloader",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Custom prefetch methods",
+        "url": "custom-prefetch-methods",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "GraphQL client",
     "column": 1,
     "category": "Network libraries",
@@ -3575,6 +3598,154 @@
     ]
   },
   {
+    "title": "MQTT service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Subscribe to messages",
+        "url": "mqtt-service-subscribe-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Publish message",
+        "url": "mqtt-client-publish-message",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT service security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-service-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-service-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "MQTT client security",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "mqtt-client-ssl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Basic authentication",
+        "url": "mqtt-client-basic-authentication",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Requires an MQTT server",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS service",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-service-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message producer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Produce message",
+        "url": "jms-producer-produce-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Transactions",
+        "url": "jms-producer-transaction",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "JMS message consumer",
+    "column": 3,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Consume message",
+        "url": "jms-consumer-consume-message",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Manual acknowledgment",
+        "url": "jms-consumer-acknowledgement",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "TCP service",
     "column": 3,
     "category": "Network libraries",
@@ -3978,7 +4149,7 @@
       {
         "name": "Cryptographic operations",
         "url": "security-crypto",
-        "verifyBuild": true,
+        "verifyBuild": false,
         "verifyOutput": false,
         "disablePlayground": true,
         "isLearnByExample": false
@@ -4242,20 +4413,6 @@
     ]
   },
   {
-    "title": "Regex",
-    "column": 3,
-    "category": "Common libraries",
-    "samples": [
-      {
-        "name": "Regular expressions",
-        "url": "regular-expressions",
-        "verifyBuild": true,
-        "verifyOutput": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
     "title": "OS",
     "column": 3,
     "category": "Common libraries",
@@ -4315,6 +4472,124 @@
         "url": "constraint-validations",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Docker",
+    "column": 0,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "docker-hello-world",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Kubernetes",
+    "column": 1,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "kubernetes-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "AWS Lambda",
+    "column": 2,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "aws-lambda-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Execution context",
+        "url": "aws-lambda-execution-context",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "S3 trigger",
+        "url": "aws-lambda-s3-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "DynamoDB trigger",
+        "url": "aws-lambda-dynamodb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Azure Functions",
+    "column": 3,
+    "category": "Deployment",
+    "samples": [
+      {
+        "name": "Hello world",
+        "url": "azure-functions-hello-world",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Timer trigger",
+        "url": "azure-functions-timer-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "HTTP trigger with queue",
+        "url": "azure-functions-http-trigger-with-queue",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cosmos DB trigger",
+        "url": "azure-functions-cosmosdb-trigger",
+        "verifyBuild": false,
+        "verifyOutput": false,
+        "disableVerificationReason": "Needs prerequisite condition",
+        "disablePlayground": true,
         "isLearnByExample": false
       }
     ]
@@ -4441,56 +4716,6 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Code to Cloud",
-    "column": 0,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Docker",
-        "url": "c2c-docker-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "Kubernetes",
-        "url": "c2c-k8s-deployment",
-        "verifyBuild": true,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      }
-    ]
-  },
-  {
-    "title": "Function as a Service",
-    "column": 1,
-    "category": "Deployment",
-    "samples": [
-      {
-        "name": "Azure Functions",
-        "url": "azure-functions-deployment",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
-        "disablePlayground": true,
-        "isLearnByExample": false
-      },
-      {
-        "name": "AWS Lambda",
-        "url": "aws-lambda-deployment",
-        "verifyBuild": false,
-        "verifyOutput": false,
-        "disableVerificationReason": "Needs prerequisite condition",
         "disablePlayground": true,
         "isLearnByExample": false
       }

@@ -1,11 +1,11 @@
 ---
 layout: ballerina-graphql-support-left-nav-pages-swanlake
 title: GraphQL tool
-description: Check out how the Ballerina GraphQL tool makes it easy to generate a client in Ballerina using a given GraphQL config file and generate a GraphQL schema using a given Ballerina GraphQL service.
+description: Check out how the Ballerina GraphQL tool makes it easy to generate a client in Ballerina using a given GraphQL config file, generate a GraphQL schema using a given Ballerina GraphQL service, and generate a Ballerina service using a given GraphQL schema file.
 keywords: ballerina, programming language, graphql, sdl, schema definition language
 permalink: /learn/graphql-tool/
 active: graphql-tool
-intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL client. It generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document. In addition, the GraphQL tool supports generating the GraphQL schema for a given Ballerina GraphQL service and writing it to a file in GraphQL schema definition language (SDL).
+intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL. It generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document. In addition, the GraphQL tool supports generating the GraphQL schema for a given Ballerina GraphQL service and writing it to a file in GraphQL schema definition language (SDL). The GraphQL tool generates the Ballerina service skeletons for a given GraphQL schema.
 --- 
 
 ## Usage
@@ -18,7 +18,13 @@ The Ballerina GraphQL tooling support provides the following capabilities.
 
 3. Generate the GraphQL schema for a given Ballerina GraphQL service(s) and write the schema(s) to a file/files using the GraphQL schema definition language.
 
+<<<<<<< HEAD
+4. Generating a Ballerina service from a given GraphQL schema which is specified by the GraphQL schema definition language. 
+
+> **Prerequisites:** Install the latest <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan Lake distribution</a>.
+=======
 ### GraphQL to Ballerina usage
+>>>>>>> 874aa315a170ac1b71d11bf9992550cb1df4a4d6
 
 The GraphQL to Ballerina command supports several usages in the Ballerina GraphQL tool as follows.
 
@@ -332,4 +338,51 @@ $ bal graphql -i service.bal -o ./schema -s /starwars
 
 The `service` command option specifies the base path of the Ballerina GraphQL service of which the schema needs to be generated. This generates the GraphQL schema for the Ballerina GraphQL service in the `service.bal` file of which the `service-base-path` is `/starwars`.
 
+<<<<<<< HEAD
+>**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+
+## Service generation
+
+The GraphQL tool supports generating a Ballerina GraphQL service from a given GraphQL schema. Successful execution will generate two files. One contains the service and the other contains the types needed. You can export the generated files to a given location. The tool can be used in the following ways to generate a Ballerina GraphQL service.
+
+### Generate a service with GraphQL object types represented in service class types 
+
+Execute the command below to generate service class types for GraphQL object types in the GraphQL schema.
+
+```
+$ bal graphql [-i | --input] <graphql-schema-file-path> [-m | --mode] <operation-mode> [-o | --output <output-location>] 
+```
+
+For example, see the command below.
+
+```
+$ bal graphql -i schema.graphql -m service -o ./service
+```
+
+The output flag is optional. If it is omitted, the generated files will be written to the current directory. 
+
+>**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+
+### Generate a service with GraphQL object types represented in record types
+
+Execute the command below to generate record types for GraphQL object types in the GraphQL schema. 
+
+```
+$ bal graphql [-i | --input] <graphql-schema-file-path> [-m | --mode] <operation-mode> [-o | --output <output-location>] [-r | --use-records-for-objects]
+```
+
+For example, see the command below.
+   
+```
+$ bal graphql -i schema.graphql -m service -o ./service -r
+```
+
+Even if the `[-r | --use-records-for-objects]` flag is used, the following object types will be generated using the service types because these types cannot be represented by Ballerina record types.
+- types having a field with input arguments 
+- types being a subtype of a union type 
+- types implementing an interface 
+
+>**Info:** For more information on the command, see [Ballerina to GraphQL](/learn/cli-documentation/graphql/#ballerina-to-graphql).
+=======
 >**Info:** For more command options, see [Ballerina to GraphQL command options](#ballerina-to-graphql-command-options).
+>>>>>>> 874aa315a170ac1b71d11bf9992550cb1df4a4d6

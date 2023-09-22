@@ -1,0 +1,20 @@
+{
+  "title": "Cosmos DB trigger",
+  "description": "This example demonstrates using a Cosmos DB trigger to invoke an AWS Lambda function and a queue output binding to write an entry to a queue.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "aws lambda",
+    "cosmos db",
+    "trigger",
+    "serverless",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/azure-functions-cosmosdb-trigger",
+  "active": "azure-functions-cosmosdb-trigger",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/azure-functions-cosmosdb-trigger",
+    "/swan-lake/learn/by-example/azure-functions-cosmosdb-trigger.html"
+  ]
+}

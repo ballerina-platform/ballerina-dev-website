@@ -385,7 +385,7 @@
                         {
                             "dirName": "Generate code documentation",
                             "level": 3,
-                            "position": 4,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/generate-code-documentation",
                             "id": "generate-code-documentation"
@@ -487,14 +487,6 @@
                             "isDir": false,
                             "url": "/learn/debug-ballerina-programs",
                             "id": "debug-ballerina-programs"
-                        },
-                        {
-                            "dirName": "Strand dump tool",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/strand-dump-tool",
-                            "id": "strand-dump-tool"
                         }
                     ]
                 },
@@ -743,7 +735,33 @@
                             "id": "publish-packages-to-ballerina-central"
                         }
                     ]
-                } 
+                },
+                {
+                    "dirName": "Troubleshoot the runtime",
+                    "level": 2,
+                    "position": 11,
+                    "isDir": true,
+                    "url": "/learn/troubleshoot-the-runtime",
+                    "id": "troubleshoot-the-runtime",
+                    "subDirectories": [
+                        {
+                            "dirName": "Strand dump tool",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/strand-dump-tool",
+                            "id": "strand-dump-tool"
+                        },
+                        {
+                            "dirName": "Ballerina Profiler",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/ballerina-profiler",
+                            "id": "ballerina-profiler"
+                        }
+                    ]
+                }
             ]
         },
         {

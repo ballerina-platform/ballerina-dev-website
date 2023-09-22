@@ -1,0 +1,20 @@
+{
+  "title": "HTTP trigger with queue",
+  "description": "This example demonstrates using an HTTP trigger to invoke an Azure function with multiple output bindings to return the HTTP response and queue output binding to write an entry to a queue.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "aws lambda",
+    "http",
+    "trigger",
+    "serverless",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/azure-functions-http-trigger-with-queue",
+  "active": "azure-functions-http-trigger-with-queue",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/azure-functions-http-trigger-with-queue",
+    "/swan-lake/learn/by-example/azure-functions-http-trigger-with-queue.html"
+  ]
+}

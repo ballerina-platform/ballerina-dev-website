@@ -55,12 +55,8 @@ export function PersistGetAll({ codeSnippets }) {
         The bal persist feature provides support to manage data persistence in a
         Ballerina package. It starts with defining the application's data model.
         Once the model is defined, the client API is generated with resources
-        based on the model. The generated
-      </p>
-
-      <p>
-        API can be used to query and manipulate the persistent data in the
-        application.
+        based on the model. The generated API can be used to query and
+        manipulate the persistent data in the application.
       </p>
 
       <p>
@@ -171,7 +167,7 @@ export function PersistGetAll({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/persist-get-all",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/persist-get-all",
                 "_blank",
               );
             }}
@@ -330,7 +326,7 @@ export function PersistGetAll({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/persist-get-all",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/persist-get-all",
                 "_blank",
               );
             }}
@@ -482,8 +478,8 @@ export function PersistGetAll({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Constraint validations"
-            href="/learn/by-example/constraint-validations"
+            title="Cosmos DB trigger"
+            href="/learn/by-example/azure-functions-cosmosdb-trigger"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -510,7 +506,7 @@ export function PersistGetAll({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Constraint validations
+                  Cosmos DB trigger
                 </span>
               </div>
             </div>

@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/io;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -16,7 +16,7 @@ public type Order readonly & record {
 };
 
 // Create a subtype of \`kafka:AnydataConsumerRecord\`.
-public type OrderConsumerRecord record {|
+type OrderConsumerRecord record {|
     *kafka:AnydataConsumerRecord;
     Order value;
 |};
@@ -30,7 +30,7 @@ public function main() returns error? {
     while true {
         // Polls the consumer for order records.
         OrderConsumerRecord[] records = check orderConsumer->poll(15);
-        check from OrderConsumerRecord orderRecord in records
+        from OrderConsumerRecord orderRecord in records
             where orderRecord.value.isValid
             do {
                 io:println(string \`Received valid order for \${orderRecord.value.productName}\`);
@@ -83,7 +83,7 @@ export function KafkaConsumerConsumerRecordDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/kafka-consumer-consumer-record-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/kafka-consumer-consumer-record-data-binding",
                 "_blank",
               );
             }}

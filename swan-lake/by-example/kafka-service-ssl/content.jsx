@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -32,8 +32,8 @@ listener kafka:Listener orderListener = new ("localhost:9094", {
 
 service on orderListener {
 
-    remote function onConsumerRecord(Order[] orders) returns error? {
-        check from Order 'order in orders
+    remote function onConsumerRecord(Order[] orders) {
+        from Order 'order in orders
             where 'order.isValid
             do {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -75,7 +75,7 @@ export function KafkaServiceSsl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/kafka-service-ssl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/kafka-service-ssl",
                 "_blank",
               );
             }}

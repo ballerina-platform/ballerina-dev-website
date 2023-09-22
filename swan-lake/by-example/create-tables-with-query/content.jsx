@@ -69,7 +69,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7690b148d54b13e6418fcb9b17434d89&file=create_tables_with_query.bal",
+                "https://play.ballerina.io/?gist=dd44cc1e1fdc7170d9a177b742ac69f3&file=create_tables_with_query.bal",
                 "_blank",
               );
             }}
@@ -94,7 +94,7 @@ export function CreateTablesWithQuery({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/create-tables-with-query",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/create-tables-with-query",
                 "_blank",
               );
             }}

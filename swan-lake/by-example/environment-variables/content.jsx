@@ -59,7 +59,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a20fb86d8d593259a307632aa4c335f8&file=environment_variables.bal",
+                "https://play.ballerina.io/?gist=d842af72a0760f5d528ec54c70a12ec1&file=environment_variables.bal",
                 "_blank",
               );
             }}
@@ -84,7 +84,7 @@ export function EnvironmentVariables({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/environment-variables",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/environment-variables",
                 "_blank",
               );
             }}
@@ -227,8 +227,8 @@ export function EnvironmentVariables({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Regular expressions"
-            href="/learn/by-example/regular-expressions"
+            title="XSLT transformation"
+            href="/learn/by-example/xslt-transformation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -255,7 +255,7 @@ export function EnvironmentVariables({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Regular expressions
+                  XSLT transformation
                 </span>
               </div>
             </div>

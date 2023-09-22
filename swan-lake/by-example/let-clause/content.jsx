@@ -71,7 +71,7 @@ export function LetClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6d2d82e95de178fb95f57b528f5b2373&file=let_clause.bal",
+                "https://play.ballerina.io/?gist=057e69af08cc11d76d6ad0822c16bc9d&file=let_clause.bal",
                 "_blank",
               );
             }}
@@ -96,7 +96,7 @@ export function LetClause({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/let-clause",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/let-clause",
                 "_blank",
               );
             }}

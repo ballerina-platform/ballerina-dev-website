@@ -1,12 +1,14 @@
 ---
 layout: ballerina-calling-java-code-left-nav-pages-swanlake
 title: Call Java code from Ballerina
-description: Ballerina offers a straightforward way to call the existing Java code from Ballerina. Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
+description: Ballerina offers a straightforward way to call the existing Java code from Ballerina. 
 keywords: ballerina, programming language, java api, interoperability
 permalink: /learn/call-java-code-from-ballerina/
 active: call-java-code-from-ballerina
-intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina. Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
+intro: Ballerina offers a straightforward way to call the existing Java code from Ballerina.
 ---
+
+Although Ballerina is not designed to be a JVM language, the current implementation, which targets the JVM, aka jBallerina, provides Java interoperability by adhering to the Ballerina language semantics.
 
 ## Ballerina bindings to Java code
 
@@ -26,7 +28,7 @@ Alternatively, you can use the [Bindgen tool](/learn/the-bindgen-tool/) to gener
 
 The [Package layout](/learn/package-references/#package-layout) explains how to package Java libraries (JAR files) with Ballerina programs to produce self-contained executable programs. When you generate bindings for a Java library using the Bindgen tool, this part is already handled.
 
-## Example
+## Use the SnakeYAML Java library in Ballerina
 
 The below sections explain how to use the Bindgen tool to generate Ballerina bindings for Java classes and how to use them.
 

@@ -17,7 +17,7 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to 2201.8.0 using the [Ballerina Update Tool](/learn/cli-documentation/update-tool/) as follows.
+Update your current Ballerina installation directly to 2201.8.0 using the [Ballerina Update Tool](/learn/update-tool/) as follows.
 
 1. Run `bal update` to get the latest version of the Update Tool.
 2. Run `bal dist update` to update to this latest distribution.

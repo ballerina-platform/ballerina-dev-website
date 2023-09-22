@@ -16,7 +16,7 @@ It also enables you to easily install, update, and switch among Ballerina distri
 
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
-```sh
+```text
 $ bal help
 NAME
        The build system and package manager of Ballerina
@@ -71,11 +71,11 @@ COMMANDS
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL [Experimental]
         version         Print the Ballerina version
+        profile         Start Ballerina Profiler [Experimental]
 
    Update Commands:
         dist            Manage Ballerina distributions
         update          Update the Ballerina tool
-
 ```
 
 You can use it in the following format.
@@ -86,7 +86,7 @@ $ bal <COMMAND> <ARGUMENTS>
 
 > **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
-```sh
+```text
 $ bal help pull
 NAME
        ballerina-pull - Fetch packages from Ballerina Central
@@ -245,6 +245,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <tr>
 <td class="cCommand">version</td>
 <td class="cDescription">Tells you the version of the distribution you are currently using, the language specification version on which it is based, and the update tool version, which is currently in use.</td>
+</tr>
+<tr>
+<td class="cCommand">profile</td>
+<td class="cDescription">Profile a Ballerina package and generate a flame graph. For more information, see <a href="/learn/ballerina-profiler">Ballerina Profiler</a>.
+</td>
 </tr>
 <tr>
 <td class="cCommand">help</td>

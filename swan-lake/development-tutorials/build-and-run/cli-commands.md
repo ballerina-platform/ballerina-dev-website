@@ -85,7 +85,6 @@ $ bal <COMMAND> <ARGUMENTS>
 
 > **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
-```text
 $ bal help pull
 NAME
        ballerina-pull - Fetch packages from Ballerina Central

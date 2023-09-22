@@ -1,0 +1,8 @@
+POST http://localhost:8080/finance/customers/1/accounts
+
+{
+    "name": "Johann Gambolputty",
+    "accountNumber": "567123489",
+    "routingNumber": "000400209",
+    "country": "CA"
+}

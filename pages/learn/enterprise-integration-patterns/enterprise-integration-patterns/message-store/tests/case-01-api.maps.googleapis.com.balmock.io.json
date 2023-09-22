@@ -1,0 +1,78 @@
+{
+    "results": [
+        {
+            "address_components": [
+                {
+                    "long_name": "Airport",
+                    "short_name": "Airport",
+                    "types": [
+                        "airport"
+                    ]
+                },
+                {
+                    "long_name": "Sacramento",
+                    "short_name": "Sacramento",
+                    "types": [
+                        "locality",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "Sacramento County",
+                    "short_name": "Sacramento County",
+                    "types": [
+                        "administrative_area_level_2",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "California",
+                    "short_name": "CA",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                        "country",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "95837",
+                    "short_name": "95837",
+                    "types": [
+                        "postal_code"
+                    ]
+                }
+            ],
+            "formatted_address": "Airport, Sacramento, CA 95837, USA",
+            "geometry": {
+                "location": {
+                    "lat": 38.6959645,
+                    "lng": -121.5906633
+                },
+                "location_type": "APPROXIMATE",
+                "viewport": {
+                    "northeast": {
+                        "lat": 38.6973134802915,
+                        "lng": -121.5893143197085
+                    },
+                    "southwest": {
+                        "lat": 38.6946155197085,
+                        "lng": -121.5920122802915
+                    }
+                }
+            },
+            "place_id": "ChIJHXJFy6dTmoARrc4p03KZFDo",
+            "types": [
+                "airport",
+                "point_of_interest",
+                "establishment"
+            ]
+        }
+    ]
+}

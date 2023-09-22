@@ -1,0 +1,1 @@
+GET http://localhost:8080/warehouse/stock?parentId=12345678-abc&productId=87654321-dcba-4321-hgfe-123456789876

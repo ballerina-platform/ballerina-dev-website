@@ -1,0 +1,12 @@
+{
+    "projectID": "460000000044019",
+    "projectName": "REAL TIME TRAFFIC FLUX",
+    "customerName": "SAF Instruments Inc",
+    "description": "A simple algorithm is to be tested with vehicle detection application.",
+    "tasks": [
+        {
+            "taskID": "460000000044009",
+            "description": "A simple algorithm is to be tested with vehicle detection application."
+        }
+    ]
+}

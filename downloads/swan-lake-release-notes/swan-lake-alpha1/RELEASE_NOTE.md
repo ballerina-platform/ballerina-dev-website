@@ -102,7 +102,7 @@ If you have not installed Ballerina, then download the [installers](/downloads/#
 - Introduction of hierarchical package names
 - Introduction of the `Dependencies.toml` file
 - Introduction of REPL support for Ballerina via the `bal shell` command
-- Improvements to developer tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen Tool, Maven Resolver, and Documentation
+- Improvements to developer tools such as the Language Server, Project API, Debugger, Test Framework, Bindgen tool, Maven Resolver, and Documentation
 - Improvements to the HTTP, WebSocket, gRPC, security, GraphQL, Kafka, NATS, NATS Streaming, RabbitMQ, Time, Runtime, Email, and WebSub standard library modules
 - Introduction of the new Random, RegEx, TCP, UDP, and WebSubHub standard library modules
 - Code action and code completion support for Code to Cloud libraries in the VS Code plugin

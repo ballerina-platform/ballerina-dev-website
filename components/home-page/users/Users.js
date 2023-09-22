@@ -48,19 +48,19 @@ export default function Users(props) {
 
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" />
-              <img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" />
-              <img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`} width={180}  alt="Fat Tuesday" title="Fat Tuesday" />
-              <img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" />
+              <a href="/case-studies/wso2" target='_blank' rel="noreferrer" ><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
+              <a href="https://choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
+              <a href="/case-studies/mosip" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
+              <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
 
           </Col>
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" />
-              <img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" />
-              <img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" />
-              <img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" />
+              <a href="https://central.ballerina.io/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
+              <a href="https://elixir.redcross.lk/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
+              <a href="https://www.raapid.ai/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
+              <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
           </Col>
         </Row>
       </Container>

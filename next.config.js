@@ -177,6 +177,14 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/java-interoperability/call-java-code-from-ballerina`,
       },
       {
+        source: `/${redirectBase}learn/the-bindgen-tool`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/the-bindgen-tool`,
+      },
+      {
+        source: `/${redirectBase}learn/ballerina-ffi`,
+        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/ballerina-ffi`,
+      },
+      {
         source: `/${redirectBase}learn/debug-ballerina-programs`,
         destination: `/${redirectBase}learn/development-tutorials/test-document-the-code/debug-ballerina-programs`,
       },
@@ -255,10 +263,6 @@ const nextConfig = {
       {
         source: `/${redirectBase}learn/ballerina-shell/`,
         destination: `/${redirectBase}learn/development-tutorials/build-and-run/ballerina-shell/`,
-      },
-      {
-        source: `/${redirectBase}learn/java-interoperability-guide/:slug`,
-        destination: `/${redirectBase}learn/development-tutorials/java-interoperability/java-interoperability-guide/:slug`,
       },
       {
         source: `/${redirectBase}learn/style-guide/:slug`,
@@ -385,8 +389,48 @@ const nextConfig = {
         destination: `/learn/integration/pre-built-integrations`,
       },
       {
-        source: `/learn/pre-built-integrations/sample1`,
-        destination: `/learn/integration/pre-built-integrations/sample1`,
+        source: `/learn/pre-built-integrations/google-sheets-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/google-sheets-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/kafka-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/kafka-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/mysql-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/mysql-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/gmail-to-salesforce-integration`,
+        destination: `/learn/integration/pre-built-integrations/gmail-to-salesforce-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/salesforce-to-twilio-integration`,
+        destination: `/learn/integration/pre-built-integrations/salesforce-to-twilio-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/news-api-to-email-integration`,
+        destination: `/learn/integration/pre-built-integrations/news-api-to-email-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/github-to-email-integration`,
+        destination: `/learn/integration/pre-built-integrations/github-to-email-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/shopify-to-outlook-integration`,
+        destination: `/learn/integration/pre-built-integrations/shopify-to-outlook-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/google-drive-to-onedrive-integration`,
+        destination: `/learn/integration/pre-built-integrations/google-drive-to-onedrive-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
+        destination: `/learn/integration/pre-built-integrations/hubspot-contacts-to-google-contacts-integration`,
+      },
+      {
+        source: `/learn/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
+        destination: `/learn/integration/pre-built-integrations/ftp-edi-message-to-salesforce-opportunity`,
       }
     ];
   },

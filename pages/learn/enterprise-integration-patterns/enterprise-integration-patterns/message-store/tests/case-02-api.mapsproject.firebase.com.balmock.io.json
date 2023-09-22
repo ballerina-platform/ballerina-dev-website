@@ -1,0 +1,93 @@
+{
+    "results": [
+        {
+            "address_components": [
+                {
+                    "long_name": "New York University",
+                    "short_name": "NYU",
+                    "types": [
+                        "university"
+                    ]
+                },
+                {
+                    "long_name": "70 Washington Square S",
+                    "short_name": "70 Washington Square S",
+                    "types": [
+                        "street_address"
+                    ]
+                },
+                {
+                    "long_name": "Greenwich Village",
+                    "short_name": "Greenwich Village",
+                    "types": [
+                        "neighborhood",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "New York",
+                    "short_name": "New York",
+                    "types": [
+                        "locality",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "New York County",
+                    "short_name": "New York County",
+                    "types": [
+                        "administrative_area_level_2",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "New York",
+                    "short_name": "NY",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                        "country",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "10012",
+                    "short_name": "10012",
+                    "types": [
+                        "postal_code"
+                    ]
+                }
+            ],
+            "formatted_address": "70 Washington Square S, New York, NY 10012, USA",
+            "geometry": {
+                "location": {
+                    "lat": 40.7295134,
+                    "lng": -73.9964614
+                },
+                "location_type": "ROOFTOP",
+                "viewport": {
+                    "northeast": {
+                        "lat": 40.7308623802915,
+                        "lng": -73.9951124197085
+                    },
+                    "southwest": {
+                        "lat": 40.7281644197085,
+                        "lng": -73.99781038029151
+                    }
+                }
+            },
+            "place_id": "ChIJd8BlQ2BZwokRAFUEcm_qrcA",
+            "types": [
+                "university",
+                "point_of_interest",
+                "establishment"
+            ]
+        }
+    ]
+}

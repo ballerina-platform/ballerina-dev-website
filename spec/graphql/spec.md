@@ -3,9 +3,9 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/09/14 \
+_Updated_: 2023/08/22 \
 _Edition_: Swan Lake \
-_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
+_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
 ## Introduction
 
@@ -254,7 +254,7 @@ Since the GraphQL listener uses the `http:Listener` and the `websocket:Listener`
 ###### Example: Listener Configuration
 
 ```ballerina
-listener graphql:Listener graphqlListener = new (9090, timeout = 10);
+listener graphql:Listener graphqlListener = = new (9090, timeout = 10);
 ```
 
 >**Note:** If the GraphQL service includes subscription operations, the `httpVersion` of the `graphql:ListenerConfiguration` must be either `"1.0"` or `"1.1"`. Otherwise, this will cause a runtime error when attaching the service to the listener.
@@ -695,7 +695,7 @@ When the `@graphql:ID` annotation is used, the generated schema will show the fi
 
 >**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
 
->**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements.
+>**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements. 
 
 ###### Example: ID Scalar Type
 ```ballerina
@@ -3332,15 +3332,14 @@ type Product @key(fields: "id", resolvable: false) {
 Reference resolver is a function that resolves an entity of a specific type using its primary key. When the router requires a particular entity to be resolved, it invokes the corresponding entity's reference resolver. Following is the type definition of a reference resolver defined in `graphql.subgraph` module.
 
 ```ballerina
-public type ReferenceResolver isolated function (subgraph:Representation representation)
-returns map<any>|service object {}|error?;
+public type ReferenceResolver function (subgraph:Representation representation) returns record {}|service object {}|error?;
 ```
 Here, `subgraph:Representation` is a type definition of the entity representation outlined in the federation specification, which includes the GraphQL `__typename` field of the entity being resolved and its primary key.
 
 ###### Example: A Product Entity Defined with Its Resolver
 
 ```ballerina
-isolated function resolveProduct(subgraph:Representation representation) returns Product|error? {
+function resolveProduct(subgraph:Representation representation) returns Product|error? {
     string id = check representation["id"].ensureType(); // obtain the primary key of the entity
     return findProduct(id);
 }
@@ -3607,7 +3606,7 @@ isolated distinct service class User {
 
         dataloader:DataLoader rePostsLoader = ctx.getDataLoader("rePostsLoader");
         Post[] rePosts = check rePostsLoader.get(self.userId);
-
+        
         return [...posts, ...rePosts];
     }
 

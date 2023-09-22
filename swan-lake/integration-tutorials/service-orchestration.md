@@ -10,9 +10,9 @@ intro: This tutorial helps you understand the basics of how Ballerina can be use
 
 ## Overview
 
-In this tutorial, you will develop a service that accepts requests to make an appointment at a hospital, makes multiple calls to different backend services to make the appointment, and responds to the client with the relevant details. Calls to the backend services are made one after the other given that information from one call is required for the next. This effectively integrates several services and exposes them as a single service, also known as service orchestration.
+In this tutorial, you will develop a service that accepts requests to make an appointment at a hospital, makes multiple calls to different backend services to make the appointment, and responds to the client with the relevant details. Calls to the backend services are made one after the other, given that information from one call is required for the next. This effectively integrates several services and exposes them as a single service, also known as service orchestration.
 
-To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then run the service. This resource  will receive the user request, retrieve details from the backend services, and respond to the user request with the appointment details.
+To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then run the service. This resource will receive the user request, retrieve details from the backend services, and respond to the user request with the appointment details.
 
 The flow is as follows.
 
@@ -356,7 +356,7 @@ service /healthcare on new http:Listener(port) {
     });
     ```
 
-    Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code respond with a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an "InternalServerError" response. If the client call was successful and the response payload was successfully bound to `Appointment` we can proceed with the subsequent calls. 
+    Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, respond with a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an "InternalServerError" response. If the client call was successful and the response payload was successfully bound to `Appointment` we can proceed with the subsequent calls. 
 
     ```
     if appointment !is Appointment {
@@ -575,9 +575,9 @@ Running executable
 
 Let's test the use case by sending a request to the service.
 
-#### Start the back end service
+#### Start the backend service
 
-Download the JAR file for the backend service from [here](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/) and execute the following command to start the service:
+Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
 ```
 bal run hospitalservice.jar

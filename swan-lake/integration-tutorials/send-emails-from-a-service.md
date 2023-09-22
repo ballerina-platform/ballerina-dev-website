@@ -62,7 +62,7 @@ The flow is as follows.
 }
 ```
 
-3. Call the payment backend service to make the payment and retrieve the reservation response which will have a payload similar to that shown below. If the payment is successful, send an email to the user with the appointment details.
+3. Call the payment backend service to make the payment and retrieve the reservation response, which will have a payload similar to that shown below. If the payment is successful, send an email to the user with the appointment details.
 
 ```
 {
@@ -112,9 +112,9 @@ import ballerina/http;
 import ballerina/log;
 ```
 
-3. Define [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URLs of the backend services. Also define configurable variables for the host, username, and password of the SMTP client.
+3. Define [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URLs of the backend services. Also, define configurable variables for the host, username, and password of the SMTP client.
 
-> **Note:** Enable two factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
+> **Note:** Enable two-factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
 
 ```
 configurable int port = 8290;
@@ -628,7 +628,7 @@ Let's test the use case by sending a request to the service.
 
 #### Start the backend service
 
-Download the JAR file for the backend service from the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/) and execute the following command to start the service:
+Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
 ```
 bal run hospitalservice.jar

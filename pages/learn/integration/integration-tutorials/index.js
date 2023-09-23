@@ -164,7 +164,7 @@ export default function Learn() {
                   <SampleList
                     name="Transform message formats"
                     description="Transform messages from one format to another"
-                    tags={["HTTP Client", "REST API", "Data Binding", "Data mapper", "Integration"]}
+                    tags={["HTTP Client", "REST API", "Data Binding", "Data Mapper", "Integration"]}
                     icon={false}
                   />
 

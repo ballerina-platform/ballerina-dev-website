@@ -114,12 +114,9 @@ Follow the instructions given in this section to develop the service.
     final http:Client clemencyEP = check initializeHttpClient("http://localhost:9090/clemency/categories");
     final http:Client pineValleyEP = check initializeHttpClient("http://localhost:9090/pinevalley/categories");
 
-function initializeHttpClient(string url) returns http:Client|error => new (url);
-function initializeHttpClient(string url) returns http:Client|error => new (url);
-
     function initializeHttpClient(string url) returns http:Client|error => new (url);
-
     ```
+
     > **Note:** The argument passed to the `new` expression is the URL of the backend service.
     >
     > Here, a separate function is used to initialize the clients to aid with testing. Alternatively, the `new` expression can be used directly to initialize the clients.
@@ -187,6 +184,7 @@ function initializeHttpClient(string url) returns http:Client|error => new (url)
                 returns ReservationResponse|http:NotFound|http:BadRequest|http:InternalServerError {
             
         }
+    }
     ```
 
     - Use `/healthcare` as the service path (or the context) of the service which is attached to the listener listening on port `port`. 

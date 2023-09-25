@@ -114,7 +114,7 @@ Import the
 
 3. Define [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URLs of the backend services. Also, define configurable variables for the host, username, and password of the SMTP client.
 
-> **Note:** Enable two-factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
+    > **Note:** Enable two-factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
 
     ```ballerina
     configurable int port = 8290;
@@ -137,14 +137,14 @@ Import the
     function initializeEmailClient() returns email:SmtpClient|error => new (host, username, password);
     ```
 
-> **Note:** The argument to the `new` expression is the URL for the backend service. 
-> 
-> Alternatively, the clients can be initialized directly with `new` expressions, but a separate function is used to aid with testing.
-> 
-> ```ballerina
-> final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
-> final http:Client paymentEP = check new (paymentBackend);
-> ```
+    > **Note:** The argument to the `new` expression is the URL for the backend service. 
+    > 
+    > Alternatively, the clients can be initialized directly with `new` expressions, but a separate function is used to aid with testing.
+    > 
+    > ```ballerina
+    > final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
+    > final http:Client paymentEP = check new (paymentBackend);
+    > ```
 
 5. Define records corresponding to the request payload and response payloads.
 

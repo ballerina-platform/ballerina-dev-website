@@ -68,7 +68,7 @@ export function HttpClientOauth2JwtBearerGrantType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=796676ea6f60f39c70c6b636352b2eb3&file=http_client_oauth2_jwt_bearer_grant_type.bal",
+                "https://play.ballerina.io/?gist=8655f2d649043aac28ed26460283c67e&file=http_client_oauth2_jwt_bearer_grant_type.bal",
                 "_blank",
               );
             }}

@@ -56,7 +56,7 @@ export function HttpClientPathParameter({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=664b328d0b39592f1e71c48dc0e97c10&file=http_client_path_parameter.bal",
+                "https://play.ballerina.io/?gist=ae9e9aa6c5734f6cab78f9609e9ecb45&file=http_client_path_parameter.bal",
                 "_blank",
               );
             }}

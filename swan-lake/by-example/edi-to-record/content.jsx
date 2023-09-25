@@ -101,7 +101,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6961ee34a17148c61ad51320a2488f3a&file=schema.json",
+                "https://play.ballerina.io/?gist=0f664265c8be814d057315d775a625bc&file=schema.json",
                 "_blank",
               );
             }}
@@ -214,7 +214,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6961ee34a17148c61ad51320a2488f3a&file=schema.json",
+                "https://play.ballerina.io/?gist=0f664265c8be814d057315d775a625bc&file=schema.json",
                 "_blank",
               );
             }}
@@ -329,7 +329,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=6961ee34a17148c61ad51320a2488f3a&file=schema.json",
+                "https://play.ballerina.io/?gist=0f664265c8be814d057315d775a625bc&file=schema.json",
                 "_blank",
               );
             }}
@@ -654,7 +654,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=ed968df759837675fd33040dbf03a74c&file=edi_to_record.bal",
+                "https://play.ballerina.io/?gist=f8b6a2ea534da4b993fb25b7c93ad6bf&file=edi_to_record.bal",
                 "_blank",
               );
             }}

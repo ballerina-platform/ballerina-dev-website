@@ -47,12 +47,7 @@ isolated function bookLoaderFunction(readonly & anydata[] ids) returns BookRow[]
 }
 
 @graphql:ServiceConfig {
-    contextInit: isolated function(http:RequestContext requestContext, http:Request request) 
-    returns graphql:Context {
-        graphql:Context ctx = new;
-        ctx.registerDataLoader("bookLoader", new dataloader:DefaultDataLoader(bookLoaderFunction));
-        return ctx;
-    }
+    contextInit
 }
 service /graphql on new graphql:Listener(9090) {
     resource function get authors() returns Author[] {
@@ -90,6 +85,12 @@ public isolated distinct service class Author {
         return from BookRow bookRow in bookrows
             select {id: bookRow.id, title: bookRow.title};
     }
+}
+
+isolated function contextInit(http:RequestContext requestContext, http:Request request)  returns graphql:Context {
+    graphql:Context ctx = new;
+    ctx.registerDataLoader("bookLoader", new dataloader:DefaultDataLoader(bookLoaderFunction));
+    return ctx;
 }
 `,
   `{

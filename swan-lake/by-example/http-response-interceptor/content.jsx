@@ -103,7 +103,7 @@ export function HttpResponseInterceptor({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=f71f5c9e09161380cbd3010a8bb91889&file=http_response_interceptor.bal",
+                "https://play.ballerina.io/?gist=e9966f80397ba88441db038f3bc4167b&file=http_response_interceptor.bal",
                 "_blank",
               );
             }}

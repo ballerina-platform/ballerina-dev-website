@@ -2,13 +2,13 @@
 layout: ballerina-graphql-guide-left-nav-pages-swanlake
 title: Write a GraphQL API with Ballerina
 description: This guide walks through the steps of writing a GraphQL API in Ballerina.
-keywords: ballerina, graphql, ballerina packages, language-guide, standard library
+keywords: ballerina, graphql, ballerina packages, language-guide, Ballerina library
 permalink: /learn/write-a-graphql-api-with-ballerina/
 active: write-a-graphql-api-with-ballerina
 intro: This guide walks you through writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
 ---
 
->**Info:** Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina standard library itself is adequate. 
+>**Info:** Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina library itself is adequate. 
 
 ## Set up the prerequisites
 

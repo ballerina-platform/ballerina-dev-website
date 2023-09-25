@@ -204,7 +204,7 @@ Now, you tested a simple Ballerina HTTP server application for GraalVM compatibi
 
 ## Create GraalVM-compatible library packages
 
-Packages that solely use Ballerina standard libraries and connectors or those that use platform Java libraries provided by the distribution are inferred to be compatible with GraalVM.
+Packages that solely use Ballerina library packages or those that use platform Java libraries provided by the distribution are inferred to be compatible with GraalVM.
 
 If the package utilizes any Java platform libraries specified in the `Ballerina.toml`, it falls upon the package author to ensure that it remains compatible with GraalVM even after incorporating these platform dependencies. In the event that GraalVM compatibility has not been confirmed by the user, the bal pack command will trigger a warning message.
 

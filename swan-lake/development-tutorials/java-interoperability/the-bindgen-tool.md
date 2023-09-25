@@ -222,7 +222,7 @@ In that way, users can populate null values to the underneath Java API by provid
 the generated functions will return nil values in case the counterpart Java method returns null.
 
 ## Support for Java casting
-The `ballerina/jballerina.java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.
+The `ballerina/jballerina.java` package of the Ballerina library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding classes into their subtypes based on assignability.
 
 E.g., a Ballerina binding class instance mapping the `java.io.InputStream` Java class `inputStream` could be cast onto a Ballerina binding class mapping the `java.io.FileInputStream` Java class as follows.
 

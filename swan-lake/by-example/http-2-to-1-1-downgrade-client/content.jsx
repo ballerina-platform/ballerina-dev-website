@@ -54,7 +54,7 @@ export function Http2To11DowngradeClient({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2ad1268785589e33550aa5bacb863879&file=http_2_to_1_1_downgrade_client.bal",
+                "https://play.ballerina.io/?gist=dc629a7f3ccd2817c4b43527150284ba&file=http_2_to_1_1_downgrade_client.bal",
                 "_blank",
               );
             }}

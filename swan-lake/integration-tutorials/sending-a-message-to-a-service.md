@@ -37,9 +37,9 @@ Follow the instructions given in this section to develop the service.
 
 2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). 
 
-Import the 
-- `ballerina/http` module to develop the REST API and define the client that can be used to send requests to the backend service
-- `ballerina/log` module to log some information for each client request
+    Import the 
+    - `ballerina/http` module to develop the REST API and define the client that can be used to send requests to the backend service
+    - `ballerina/log` module to log some information for each client request
 
     ```ballerina
     import ballerina/http;
@@ -61,7 +61,7 @@ Import the
     function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
     ```
 
-The argument to the `new` expression is the URL for the backend service.
+    The argument to the `new` expression is the URL for the backend service.
 
 5. Define a record corresponding to the payload from the backend service.
 
@@ -75,7 +75,7 @@ The argument to the `new` expression is the URL for the backend service.
     |};
     ```
 
-The payload will be an array of JSON objects in which, the structure of each JSON object matches this record. Note that you can use the "Paste JSON as record" VS Code command to generate the record if you have the JSON payload.
+    The payload will be an array of JSON objects in which, the structure of each JSON object matches this record. Note that you can use the "Paste JSON as record" VS Code command to generate the record if you have the JSON payload.
 
 6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request. Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`. Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.
 
@@ -109,35 +109,35 @@ The payload will be an array of JSON objects in which, the structure of each JSO
     }
     ```
 
-- The `log:printInfo` statement [logs](https://ballerina.io/learn/by-example/#log) information about the request.
+    - The `log:printInfo` statement [logs](https://ballerina.io/learn/by-example/#log) information about the request.
 
-    ```ballerina
-    log:printInfo("Retrieving information", specialization = category);
-    ```
+        ```ballerina
+        log:printInfo("Retrieving information", specialization = category);
+        ```
 
-- The call to the backend is done using a remote method call expression (using `->`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.
+    - The call to the backend is done using a remote method call expression (using `->`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.
 
-    ```ballerina
-    Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
-    ```
+        ```ballerina
+        Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
+        ```
 
-- Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor`s (as expected), then, directly return the array from the resource. If the request failed, send a "NotFound" response if the client call failed with a 4xx status code or return an "InternalServerError" response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor`s (as expected), then, directly return the array from the resource. If the request failed, send a "NotFound" response if the client call failed with a 4xx status code or return an "InternalServerError" response for other failures.
 
-    ```ballerina
-    log:printInfo("Retrieving information", specialization = category);
+        ```ballerina
+        log:printInfo("Retrieving information", specialization = category);
 
-    Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
-    if resp is Doctor[] {
-        return resp;
-    }
+        Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
+        if resp is Doctor[] {
+            return resp;
+        }
 
-    log:printError("Retrieving doctor information failed", resp);
-    if resp is http:ClientRequestError {
-        return <http:NotFound> {body: string `category not found: ${category}`};
-    }
+        log:printError("Retrieving doctor information failed", resp);
+        if resp is http:ClientRequestError {
+            return <http:NotFound> {body: string `category not found: ${category}`};
+        }
 
-    return <http:InternalServerError> {body: resp.message()};
-    ```
+        return <http:InternalServerError> {body: resp.message()};
+        ```
 
 You have successfully developed the required service.
 

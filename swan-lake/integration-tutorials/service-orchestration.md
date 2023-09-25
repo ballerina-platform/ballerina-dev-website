@@ -110,9 +110,9 @@ Follow the instructions given in this section to develop the service.
 
 2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). 
 
-Import the 
-- `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
-- `ballerina/log` module to log debug/error information for each client request
+    Import the 
+    - `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
+    - `ballerina/log` module to log debug/error information for each client request
 
     ```ballerina
     import ballerina/http;
@@ -136,14 +136,14 @@ Import the
     function initializeHttpClient(string url) returns http:Client|error => new (url);
     ```
 
-> **Note:** The argument to the `new` expression is the URL for the backend service. 
-> 
-> Alternatively, the clients can be initialized directly with `new` expressions, but a separate function is used to aid with testing.
-> 
-> ```ballerina
-> final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
-> final http:Client paymentEP = check new (paymentBackend);
-> ```
+    > **Note:** The argument to the `new` expression is the URL for the backend service. 
+    > 
+    > Alternatively, the clients can be initialized directly with `new` expressions, but a separate function is used to aid with testing.
+    > 
+    > ```ballerina
+    > final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
+    > final http:Client paymentEP = check new (paymentBackend);
+    > ```
 
 5. Define records corresponding to the request payload and response payloads.
 
@@ -203,9 +203,9 @@ Import the
     |};
     ```
 
-- The `ReservationRequest` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) in the type of the `patient` field to include all the fields from the `Patient` record along with the `cardNo` field.
+    - The `ReservationRequest` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) in the type of the `patient` field to include all the fields from the `Patient` record along with the `cardNo` field.
 
-- The initial record definitions can be generated using the "Paste JSON as record" VS Code command with the relevant JSON payloads and the records can then be modified as necessary.
+    - The initial record definitions can be generated using the "Paste JSON as record" VS Code command with the relevant JSON payloads and the records can then be modified as necessary.
 
 6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, makes calls to the backend services to retrieve relevant details, and responds to the client.
 
@@ -218,13 +218,13 @@ Import the
     }
     ```
 
-- Use `/healthcare` as the service path (or the context) of the service which is attached to the listener listening on port `port`. 
+    - Use `/healthcare` as the service path (or the context) of the service which is attached to the listener listening on port `port`. 
 
-- The HTTP resource allows the `POST` operation on resource path `/categories/{category}/reserve`, where `category` (corresponding to the specialization) is a path parameter. 
+    - The HTTP resource allows the `POST` operation on resource path `/categories/{category}/reserve`, where `category` (corresponding to the specialization) is a path parameter. 
 
-- Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
+    - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
 
-- Use `ReservationStatus|http:NotFound|http:InternalServerError` as the return type to indicate that the response will have a JSON payload corresponding to `ReservationStatus` on success or the response will be a "NotFound" or "InternalServerError" response on error.
+    - Use `ReservationStatus|http:NotFound|http:InternalServerError` as the return type to indicate that the response will have a JSON payload corresponding to `ReservationStatus` on success or the response will be a "NotFound" or "InternalServerError" response on error.
 
 7. Implement the logic.
 
@@ -304,114 +304,114 @@ Import the
     }
     ```
 
-- Use a [typed binding pattern with a mapping binding pattern to destructure](https://ballerina.io/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern/) the payload and assign required components of the value to separate variables.
+    - Use a [typed binding pattern with a mapping binding pattern to destructure](https://ballerina.io/learn/by-example/rest-binding-pattern-in-mapping-binding-pattern/) the payload and assign required components of the value to separate variables.
 
-    ```ballerina
-    ReservationRequest {
-        patient: {cardNo, ...patient},
-        doctor, 
-        hospital,
-        hospital_id,
-        appointment_date
-    } = payload;
-    ```
+        ```ballerina
+        ReservationRequest {
+            patient: {cardNo, ...patient},
+            doctor, 
+            hospital,
+            hospital_id,
+            appointment_date
+        } = payload;
+        ```
 
-    The value assigned to the `patient` variable will belong to the `Patient` type since the fields are exactly those expected by the `Patient` record.
+        The value assigned to the `patient` variable will belong to the `Patient` type since the fields are exactly those expected by the `Patient` record.
 
-- The `log` functions are used to [log](https://ballerina.io/learn/by-example/#log) information at `DEBUG` and `ERROR` log levels.
+    - The `log` functions are used to [log](https://ballerina.io/learn/by-example/#log) information at `DEBUG` and `ERROR` log levels.
 
-- The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
+    - The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
 
-    ```ballerina
-    Appointment|http:ClientError appointment =
-            hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
-        patient,
-        doctor,
-        hospital,
-        appointment_date
-    });
-    ```
+        ```ballerina
+        Appointment|http:ClientError appointment =
+                hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
+            patient,
+            doctor,
+            hospital,
+            appointment_date
+        });
+        ```
 
-    The expected payload in the request to reserve the appointment consists of four fields, namely `patient`, `doctor`, `hospital`, and `appointment_date`. The payload is specified directly as an argument to the remote method call. 
+        The expected payload in the request to reserve the appointment consists of four fields, namely `patient`, `doctor`, `hospital`, and `appointment_date`. The payload is specified directly as an argument to the remote method call. 
 
-    ```ballerina
-    {patient, doctor, hospital, appointment_date}
-    ```
+        ```ballerina
+        {patient, doctor, hospital, appointment_date}
+        ```
 
-    This is shorthand for
+        This is shorthand for
 
-    ```ballerina
-    {patient: patient, doctor: doctor, hospital: hospital, appointment_date: appointment_date}
-    ```
+        ```ballerina
+        {patient: patient, doctor: doctor, hospital: hospital, appointment_date: appointment_date}
+        ```
 
-    [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected record.
+        [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected record.
 
-    ```ballerina
-    Appointment|http:ClientError appointment =
-            hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
-        patient,
-        doctor,
-        hospital,
-        appointment_date
-    });
-    ```
+        ```ballerina
+        Appointment|http:ClientError appointment =
+                hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
+            patient,
+            doctor,
+            hospital,
+            appointment_date
+        });
+        ```
 
-    Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, respond with a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an "InternalServerError" response. If the client call was successful and the response payload was successfully bound to `Appointment` we can proceed with the subsequent calls. 
+        Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, respond with a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an "InternalServerError" response. If the client call was successful and the response payload was successfully bound to `Appointment` we can proceed with the subsequent calls. 
 
-    ```ballerina
-    if appointment !is Appointment {
-        log:printError("Appointment reservation failed", appointment);
-        if appointment is http:ClientRequestError {
-            return <http:NotFound> {body: string `unknown hospital, doctor, or category`};
+        ```ballerina
+        if appointment !is Appointment {
+            log:printError("Appointment reservation failed", appointment);
+            if appointment is http:ClientRequestError {
+                return <http:NotFound> {body: string `unknown hospital, doctor, or category`};
+            }
+            return <http:InternalServerError> {body: appointment.message()};
         }
-        return <http:InternalServerError> {body: appointment.message()};
-    }
-    ```
+        ```
 
-- If the appointment reservation was successful, we can now retrieve the fee, by making a `GET` request to the hospital service, with `hospital_id` and `appointmentNumber` from the `Appointment` payload as path parameters.
+    - If the appointment reservation was successful, we can now retrieve the fee, by making a `GET` request to the hospital service, with `hospital_id` and `appointmentNumber` from the `Appointment` payload as path parameters.
 
-    ```ballerina
-    int appointmentNumber = appointment.appointmentNumber;
+        ```ballerina
+        int appointmentNumber = appointment.appointmentNumber;
 
-    Fee|http:ClientError fee = 
-            hospitalServicesEP->/[hospital_id]/categories/appointments/[appointmentNumber]/fee;
+        Fee|http:ClientError fee = 
+                hospitalServicesEP->/[hospital_id]/categories/appointments/[appointmentNumber]/fee;
 
-    if fee !is Fee {
-        log:printError("Retrieving fee failed", fee);
-        if fee is http:ClientRequestError {
-            return <http:NotFound> {body: string `unknown appointment ID`};
+        if fee !is Fee {
+            log:printError("Retrieving fee failed", fee);
+            if fee is http:ClientRequestError {
+                return <http:NotFound> {body: string `unknown appointment ID`};
+            }
+            return <http:InternalServerError> {body: fee.message()};
         }
-        return <http:InternalServerError> {body: fee.message()};
-    }
-    ```
+        ```
 
-- If fee retrieval is successful, the next and last step is to make the payment by making a `POST` request to the payment service. The payload includes details extracted out from the original request (for `patient` and `card_number`), the appointment reservation response (for `appointmentNumber` and `doctor`), and the response to the fee retrieval request (for `fee`).
+    - If fee retrieval is successful, the next and last step is to make the payment by making a `POST` request to the payment service. The payload includes details extracted out from the original request (for `patient` and `card_number`), the appointment reservation response (for `appointmentNumber` and `doctor`), and the response to the fee retrieval request (for `fee`).
 
-    ```ballerina
-    ReservationStatus|http:ClientError status = paymentEP->/.post({
-        appointmentNumber,
-        doctor: appointment.doctor,
-        patient,
-        fee: actualFee,
-        confirmed: false,
-        card_number: cardNo
-    });
+        ```ballerina
+        ReservationStatus|http:ClientError status = paymentEP->/.post({
+            appointmentNumber,
+            doctor: appointment.doctor,
+            patient,
+            fee: actualFee,
+            confirmed: false,
+            card_number: cardNo
+        });
 
-    if status !is ReservationStatus {
-        log:printError("Payment failed", status);
-        if status is http:ClientRequestError {
-            return <http:NotFound> {body: string `unknown appointment ID`};
+        if status !is ReservationStatus {
+            log:printError("Payment failed", status);
+            if status is http:ClientRequestError {
+                return <http:NotFound> {body: string `unknown appointment ID`};
+            }
+            return <http:InternalServerError> {body: status.message()};
         }
-        return <http:InternalServerError> {body: status.message()};
-    }
 
-    log:printDebug("Appointment reservation successful", 
-                    name = patient.name, 
-                    appointmentNumber = appointmentNumber);
-    return status;
-    ```
+        log:printDebug("Appointment reservation successful", 
+                        name = patient.name, 
+                        appointmentNumber = appointmentNumber);
+        return status;
+        ```
 
-    If the payment request fails, the response to the original request will be an appropriate error response. If not, the response will be the response from the payment service.
+        If the payment request fails, the response to the original request will be an appropriate error response. If not, the response will be the response from the payment service.
 
 You have successfully developed the required service.
 

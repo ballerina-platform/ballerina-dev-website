@@ -615,9 +615,9 @@ function getEmailContent(int appointmentNumber, Appointment appointment, Payment
 You can run this service by navigating to the project root and using the `bal run` command.
 
 ```bash
-send-emails-from-a-service$ bal run
+sending-emails-from-a-service$ bal run
 Compiling source
-        integration_tutorials/send_emails_from_a_service:0.1.0
+        integration_tutorials/sending_emails_from_a_service:0.1.0
 
 Running executable
 ```

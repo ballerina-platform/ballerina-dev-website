@@ -1,11 +1,11 @@
 ---
 layout: ballerina-transforming-message-formats-left-nav-pages-swanlake
-title: Transform message formats
-permalink: /learn/transform-message-formats
+title: Transforming message formats
+permalink: /learn/transforming-message-formats
 description: Integration tutorial to transform messages into different formats.
 keywords: ballerina, programming language, client, restful-api, integration
-active: transform-message-formats
-intro: This tutorial helps you understand how Ballerina can be used to transforma messages.
+active: transforming-message-formats
+intro: This tutorial helps you understand how Ballerina can be used to transform messages.
 ---
 
 ## Overview
@@ -99,7 +99,7 @@ Follow the instructions given in this section to develop the service.
 1. Create a new Ballerina project using the `bal` command and open it in VS Code.
 
     ```bash
-    $ bal new transform-message-formats
+    $ bal new transforming-message-formats
     ```
 
 2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file).
@@ -138,11 +138,11 @@ Follow the instructions given in this section to develop the service.
 
 5. Use the data mapper to define the `transform` function which transforms a `HealthcareReservation` record, representing the payload, to a `HospitalReservation` record.
 
-    ![Data mapper guide](/learn/images/tutorial_transform_message_formats_data_mapper_guide.gif)
+    ![Data mapper guide](/learn/images/tutorial_transforming_message_formats_data_mapper_guide.gif)
 
     The data mapper view of the completed `transform` function is shown below.
 
-    ![Data mapper view](/learn/images/tutorial_transform_message_formats_data_mapper_view.png)
+    ![Data mapper view](/learn/images/tutorial_transforming_message_formats_data_mapper_view.png)
 
     The source code of the `transform` function will be as follows.
 
@@ -191,7 +191,7 @@ Follow the instructions given in this section to develop the service.
         isolated resource function post categories/[string category]/reserve(HealthcareReservation payload)
                 returns ReservationResponse|http:NotFound|http:BadRequest|http:InternalServerError {
             
-    }
+        }
     }
     ```
 
@@ -374,16 +374,16 @@ isolated function transform(HealthcareReservation healthcareReservation) returns
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
-![sequence diagram](/learn/images/tutorial_transform_message_formats_diagram.png)
+![sequence diagram](/learn/images/tutorial_transforming_message_formats_diagram.png)
 
 ### Step 3: Build and run the service
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
 ```bash
-transform-message-formats$ bal run
+transforming-message-formats$ bal run
 Compiling source
-        integration_tutorials/transform_message_formats:0.1.0
+        integration_tutorials/transforming_message_formats:0.1.0
 
 Running executable
 ```
@@ -461,7 +461,7 @@ You will see a response similar to the following for a successful appointment re
 
 ## Complete implementation
 
-Check out the [complete implementation](https://github.com/ballerina-guides/integration-tutorials/tree/main/transform-message-formats) on GitHub.
+Check out the [complete implementation](https://github.com/ballerina-guides/integration-tutorials/tree/main/transforming-message-formats) on GitHub.
 
 ## References
 

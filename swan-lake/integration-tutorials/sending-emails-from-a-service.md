@@ -101,10 +101,10 @@ Follow the instructions given in this section to develop the service.
 
 2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). 
 
-Import the 
-- `ballerina/email` module to send emails using the SMTP protocol
-- `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
-- `ballerina/log` module to log debug, error or info level information for each client request
+    Import the 
+    - `ballerina/email` module to send emails using the SMTP protocol
+    - `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
+    - `ballerina/log` module to log debug, error or info level information for each client request
 
     ```ballerina
     import ballerina/email;
@@ -218,9 +218,9 @@ Import the
     |};
     ```
 
-- The `ReservationRequest` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) in the type of the `patient` field to include all the fields from the `Patient` record along with the `cardNo` field.
+   - The `ReservationRequest` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) in the type of the `patient` field to include all the fields from the `Patient` record along with the `cardNo` field.
 
-- The initial record definitions can be generated using the "Paste JSON as record" VSCode command with the relevant JSON payloads and the records can then be modified as necessary.
+   - The initial record definitions can be generated using the "Paste JSON as record" VSCode command with the relevant JSON payloads and the records can then be modified as necessary.
 
 6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource function that accepts user requests, makes calls to the backend services to retrieve relevant details, and sends emails to the client with appointment details.
 
@@ -233,13 +233,13 @@ Import the
     }
     ```
 
-- Use `/healthcare` as the service path (or the context) for the service attached to the listener that is listening on port `port`.
-  
-- The HTTP resource allows the `POST` operation on resource path `/categories/{category}/reserve`, where `category` (corresponding to the specialization) is a path parameter.
+   - Use `/healthcare` as the service path (or the context) for the service attached to the listener that is listening on port `port`.
+     
+   - The HTTP resource allows the `POST` operation on resource path `/categories/{category}/reserve`, where `category` (corresponding to the specialization) is a path parameter.
 
-- Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
+   - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
 
-- Use `http:Created|http:InternalServerError|http:NotFound` as the return type to indicate that the response will be a "Created" response when the email is sent successfully to the user or the response will be an "InternalServerError" or "NotFound" response on error.
+   - Use `http:Created|http:InternalServerError|http:NotFound` as the return type to indicate that the response will be a "Created" response when the email is sent successfully to the user or the response will be an "InternalServerError" or "NotFound" response on error.
 
 7. Implement the logic.
 
@@ -332,103 +332,103 @@ Import the
             Payment Status: ${payment.status}`;
     ```
 
-- The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
+   - The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
 
-    ```ballerina
-    Appointment|http:ClientError appointment =
-            hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
-        patient,
-        doctor,
-        hospital,
-        appointment_date
-    });
-    ```
+       ```ballerina
+       Appointment|http:ClientError appointment =
+               hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
+           patient,
+           doctor,
+           hospital,
+           appointment_date
+       });
+       ```
 
-- Use the `is` check to decide the flow based on the response to the client call. If the request failed, return a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an "InternalServerError" response.
+   - Use the `is` check to decide the flow based on the response to the client call. If the request failed, return a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an "InternalServerError" response.
 
-    ```ballerina
-    if appointment !is Appointment {
-        log:printError("Appointment reservation failed", appointment);
-        if appointment is http:ClientRequestError {
-            return <http:NotFound>{body: string `unknown hospital, doctor, or category`};
-        }
-        return <http:InternalServerError>{body: appointment.message()};
-    }
-    ```
+       ```ballerina
+       if appointment !is Appointment {
+           log:printError("Appointment reservation failed", appointment);
+           if appointment is http:ClientRequestError {
+               return <http:NotFound>{body: string `unknown hospital, doctor, or category`};
+           }
+           return <http:InternalServerError>{body: appointment.message()};
+       }
+       ```
 
-- If the appointment reservation was successful, we can make the payment by making a `POST` request to the payment service. The payload includes details extracted out from the original request (for `card_number`) and the appointment reservation response (for `appointmentNumber`, `doctor`, `patient`, `fee`, and `confirmed`).
+   - If the appointment reservation was successful, we can make the payment by making a `POST` request to the payment service. The payload includes details extracted out from the original request (for `card_number`) and the appointment reservation response (for `appointmentNumber`, `doctor`, `patient`, `fee`, and `confirmed`).
 
-    ```ballerina
-    Payment|http:ClientError payment = paymentEP->/.post({
-        appointmentNumber,
-        doctor: appointment.doctor,
-        patient: appointment.patient,
-        fee: appointment.doctor.fee,
-        confirmed: appointment.confirmed,
-        card_number: cardNo
-    });
+       ```ballerina
+       Payment|http:ClientError payment = paymentEP->/.post({
+           appointmentNumber,
+           doctor: appointment.doctor,
+           patient: appointment.patient,
+           fee: appointment.doctor.fee,
+           confirmed: appointment.confirmed,
+           card_number: cardNo
+       });
 
-    if payment !is Payment {
-        log:printError("Payment settlement failed", payment);
-        if payment is http:ClientRequestError {
-            return <http:NotFound>{body: string `payment failed: unknown appointment number`};
-        }
-        return <http:InternalServerError>{body: payment.message()};
-    }
-    ```
+       if payment !is Payment {
+           log:printError("Payment settlement failed", payment);
+           if payment is http:ClientRequestError {
+               return <http:NotFound>{body: string `payment failed: unknown appointment number`};
+           }
+           return <http:InternalServerError>{body: payment.message()};
+       }
+       ```
 
-- If the payment was successful, the next and final step is to send an email to the user with the appointment details. We send the email specifying the user's email address, the subject, and the email body.
+   - If the payment was successful, the next and final step is to send an email to the user with the appointment details. We send the email specifying the user's email address, the subject, and the email body.
 
-    ```ballerina
-    email:Error? sendMessage = smtpClient->sendMessage({
-        to: patient.email,
-        subject: "Appointment reservation confirmed at " + hospital,
-        body: getEmailContent(appointmentNumber, appointment, payment)
-    });
-    ```
+       ```ballerina
+       email:Error? sendMessage = smtpClient->sendMessage({
+           to: patient.email,
+           subject: "Appointment reservation confirmed at " + hospital,
+           body: getEmailContent(appointmentNumber, appointment, payment)
+       });
+       ```
 
-    ```ballerina
-    function getEmailContent(int appointmentNumber, Appointment appointment, Payment payment)
-            returns string =>
-        let Patient patient = appointment.patient, Doctor doctor = appointment.doctor in
-        string `Appointment Confirmation
+       ```ballerina
+       function getEmailContent(int appointmentNumber, Appointment appointment, Payment payment)
+               returns string =>
+           let Patient patient = appointment.patient, Doctor doctor = appointment.doctor in
+           string `Appointment Confirmation
 
-        Appointment Details
-            Appointment Number: ${appointmentNumber}
-            Appointment Date: ${appointment.appointmentDate}
+           Appointment Details
+               Appointment Number: ${appointmentNumber}
+               Appointment Date: ${appointment.appointmentDate}
 
-        Patient Details
-            Name: ${patient.name}
-            Contact Number: ${patient.phone}
+           Patient Details
+               Name: ${patient.name}
+               Contact Number: ${patient.phone}
 
-        Doctor Details
-            Name: ${doctor.name}
-            Specialization: ${doctor.category}
+           Doctor Details
+               Name: ${doctor.name}
+               Specialization: ${doctor.category}
 
-        Payment Details
-            Doctor Fee: ${payment.actualFee}
-            Discount: ${payment.discount}
-            Total Fee: ${payment.discounted}
-            Payment Status: ${payment.status}`;
-    ```
+           Payment Details
+               Doctor Fee: ${payment.actualFee}
+               Discount: ${payment.discount}
+               Total Fee: ${payment.discounted}
+               Payment Status: ${payment.status}`;
+       ```
 
-- If the email is sent successfully, the response will be a "Created" response. If the email sending process resulted in an error, an "InternalServerError" response will be returned.
+   - If the email is sent successfully, the response will be a "Created" response. If the email sending process resulted in an error, an "InternalServerError" response will be returned.
 
-    ```ballerina
-    email:Error? sendMessage = smtpClient->sendMessage({
-        to: patient.email,
-        subject: "Appointment reservation confirmed at " + hospital,
-        body: getEmailContent(appointmentNumber, appointment, payment)
-    });
+       ```ballerina
+       email:Error? sendMessage = smtpClient->sendMessage({
+           to: patient.email,
+           subject: "Appointment reservation confirmed at " + hospital,
+           body: getEmailContent(appointmentNumber, appointment, payment)
+       });
 
-    if sendMessage is email:Error {
-        return <http:InternalServerError>{body: sendMessage.message()};
-    }
-    log:printDebug("Email sent successfully",
-                    name = patient.name,
-                    appointmentNumber = appointmentNumber);
-    <http:Created>{};
-    ```
+       if sendMessage is email:Error {
+           return <http:InternalServerError>{body: sendMessage.message()};
+       }
+       log:printDebug("Email sent successfully",
+                       name = patient.name,
+                       appointmentNumber = appointmentNumber);
+       <http:Created>{};
+       ```
 
 You have successfully developed the required service.
 
@@ -614,13 +614,13 @@ function getEmailContent(int appointmentNumber, Appointment appointment, Payment
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-    ```bash
-    sending-emails-from-a-service$ bal run
-    Compiling source
-            integration_tutorials/sending_emails_from_a_service:0.1.0
+```bash
+sending-emails-from-a-service$ bal run
+Compiling source
+        integration_tutorials/sending_emails_from_a_service:0.1.0
 
-    Running executable
-    ```
+Running executable
+```
 
 ### Step 4: Try out the use case
 
@@ -630,9 +630,9 @@ Let's test the use case by sending a request to the service.
 
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
-    ```bash
-    bal run hospitalservice.jar
-    ```
+```bash
+bal run hospitalservice.jar
+```
 
 #### Send a request
 

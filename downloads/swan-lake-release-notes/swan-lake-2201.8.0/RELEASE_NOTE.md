@@ -289,7 +289,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 8 (2201.8.0)](
 #### `graphql` package
 
 - Added support for the `@deprecated` directive in output objects defined using record types.
-- Added support for printing the GraphQL URL to `stdout`.
+- Added support for printing the GraphiQL URL to `stdout`.
 - Added support for generating a subgraph SDL schema at compile time.
 
 #### `log` package

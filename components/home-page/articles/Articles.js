@@ -30,7 +30,7 @@ export default function Articles(props) {
         <Container>
           <Row>
             <Col sm={12} className='sectionTitle'>
-              <h2 id="ballerina-in-the-news" className='ballerina-in-the-news'>
+              <h2 id="ballerina-in-the-news" className='section'>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -38,7 +38,7 @@ export default function Articles(props) {
                   fill="currentColor"
                   className="bi bi-link-45deg mdButton pe-2"
                   viewBox="0 0 16 16"
-                  onClick={(e) => props.getLink(e.target, 'ballerina-mentions')}
+                  onClick={(e) => props.getLink(e.target, 'ballerina-in-the-news')}
                 >
                   <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -49,7 +49,39 @@ export default function Articles(props) {
           </Row>
 
           <Row>
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
+              <Card className={styles.cardBox}>
+                <Card.Body className={styles.cardBody}>
+                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://www.slant.co/topics/20337/~visual-programming-languages">
+                      <h4 className="card-title" >What are the best visual programming languages?</h4>
+                    </a>
+                  </Card.Text>
+                  <div>
+                    <p className={styles.author}> By <span>Slant</span></p>
+                    <p className={styles.date}>Sep 15, 2023</p>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
+              <Card className={styles.cardBox}>
+                <Card.Body className={styles.cardBody}>
+                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
+                  <Card.Text className={styles.cardText}>
+                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
+                      <h4 className="card-title" >10 Most Popular Microservices Framework</h4>
+                    </a>
+                  </Card.Text>
+                  <div>
+                    <p className={styles.author}> By <span>Harnil Oza</span> in Hyperlink InfoSystem</p>
+                    <p className={styles.date}>Sep 14, 2023</p>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -66,7 +98,7 @@ export default function Articles(props) {
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -83,7 +115,12 @@ export default function Articles(props) {
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+           
+          </Row>
+
+
+          <Row>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -99,11 +136,7 @@ export default function Articles(props) {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
-
-
-          <Row>
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
@@ -120,7 +153,7 @@ export default function Articles(props) {
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
@@ -137,7 +170,7 @@ export default function Articles(props) {
               </Card>
             </Col>
 
-            <Col sm={12} md={12} lg={4} styles={styles.newsCard}>
+            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
               <Card className={styles.cardBox}>
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}

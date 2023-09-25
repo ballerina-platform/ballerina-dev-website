@@ -60,7 +60,7 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=2f62ce8cae8b98368f04c2a22732b906&file=check_expression.bal",
+                "https://play.ballerina.io/?gist=bc2b3b154bda4ff8afc19e211d4acf3e&file=check_expression.bal",
                 "_blank",
               );
             }}
@@ -85,7 +85,7 @@ export function CheckExpression({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/check-expression",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/check-expression",
                 "_blank",
               );
             }}

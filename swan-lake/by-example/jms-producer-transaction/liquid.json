@@ -1,0 +1,18 @@
+{
+  "title": "Transactions",
+  "description": "BBE on sending messages transactionally to a JMS destination using a `jms:MessageProducer` client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "JMS",
+    "message producer",
+    "transaction"
+  ],
+  "permalink": "/learn/by-example/jms-producer-transaction",
+  "active": "jms-producer-transaction",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jms-producer-transaction",
+    "/swan-lake/learn/by-example/jms-producer-transaction.html"
+  ]
+}

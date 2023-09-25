@@ -55,13 +55,13 @@ export function StopHandler({ codeSnippets }) {
       </h1>
 
       <p>
-        The <code>StopHandler</code> registers a function that will be called
-        during the graceful shutdown.
+        A <code>StopHandler</code> is a function that is registered at runtime
+        with a module and invoked during graceful shutdown.
       </p>
 
       <p>
-        This example demonstrates how to register a function that will be
-        executed at the end of the program.
+        This example demonstrates how to register a <code>StopHandler</code>{" "}
+        that will be executed at the end of the program.
       </p>
 
       <Row
@@ -74,7 +74,7 @@ export function StopHandler({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/stop-handler",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/stop-handler",
                 "_blank",
               );
             }}
@@ -148,6 +148,11 @@ export function StopHandler({ codeSnippets }) {
         </Col>
       </Row>
 
+      <p>
+        Navigate to the directory that contains the 'stop_handler.bal' file, and
+        run the 'bal run' command.
+      </p>
+
       <Row
         className="bbeOutput mx-0 py-0 rounded "
         style={{ marginLeft: "0px" }}
@@ -201,13 +206,25 @@ export function StopHandler({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`# Invoke the service using cURL to add a fruit item.`}</span>
-              <span>{`\$ curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
-              <span>{`["Apple", "Orange", "Guava"]`}</span>
+              <span>{`\$ bal run stop_handler.bal`}</span>
+              <span>{`initial items in fruit basket: ["Apple","Orange"]`}</span>
+              <span>{`
+`}</span>
+              <span>{`# Invoke the service using cURL command as mentioned below in a new terminal.`}</span>
+              <span>{`after adding a fruit item: ["Apple","Orange","Guava"]`}</span>
+              <span>{`
+`}</span>
+              <span>{`# Send the interrupt signal SIGINT (Ctrl+C) to terminate the current process.`}</span>
+              <span>{`after removing all fruit items: []`}</span>
             </code>
           </pre>
         </Col>
       </Row>
+
+      <p>
+        Invoke the service by executing the following cURL command in a new
+        terminal to add a fruit item.
+      </p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -262,18 +279,8 @@ export function StopHandler({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref2}>
             <code className="d-flex flex-column">
-              <span>{`# Navigate to the directory that contains the`}</span>
-              <span>{`# 'stop_handler.bal' file, and run the 'bal run' command below.`}</span>
-              <span>{`
-`}</span>
-              <span>{`\$ bal run stop_handler.bal`}</span>
-              <span>{`
-`}</span>
-              <span>{`# Send the interrupt signal SIGINT to terminate the current process.`}</span>
-              <span>{`Ctrl+c`}</span>
-              <span>{`initial items in fruit basket: ["Apple","Orange"]`}</span>
-              <span>{`after adding a fruit item: ["Apple","Orange","Guava"]`}</span>
-              <span>{`after removing all fruit items: []`}</span>
+              <span>{`\$ curl http://localhost:9090/addToBasket -d 'Guava'`}</span>
+              <span>{`["Apple", "Orange", "Guava"]`}</span>
             </code>
           </pre>
         </Col>

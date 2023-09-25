@@ -1,6 +1,38 @@
 {
     "events": [
        {
+            "date": "September 28, 2023",
+            "day": "Thur.",
+            "time": "10.00 a.m. PDT",
+            "expire": "2023-09-29T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.conf42.com/Kube_Native_2023_Anuruddha_Liyanarachchi_network_services_realworld_ballerina",
+            "eventType": "Conf42: Kube Native 2023",
+            "eventName": "Simplify Network Services for Real-World, Cloud Native Applications with Ballerina",
+            "presenterTwitter": "https://www.linkedin.com/in/anuruddha-liyanarachchi-6b259652/",
+            "presenter": "Anuruddha Liyanarachchi",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "September 26, 2023",
+            "day": "Tue.",
+            "time": "9.30 a.m. PDT",
+            "expire": "2023-09-27T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/296223015/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "The Developer's Journey: Building Integrations the Ballerina Way",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Ballerina Platform Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "August 17, 2023",
             "day": "Thur.",
             "time": "9.30 a.m. PDT",
@@ -13,8 +45,8 @@
             "presenter": "Tharmigan Krishnananthalingam",
             "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP here"
+            "videoURL": "https://www.youtube.com/watch?v=fDRi3rNiFqo",
+            "buttonText": "Watch recording"
         },
         {
             "date": "July 13, 2023",
@@ -141,8 +173,8 @@
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Senior Director, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=v2C19hbTFgY",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 10, 2023",
@@ -173,8 +205,8 @@
             "presenter": "Ted Neward",
             "presenterDesignation": "Co-founder, Solidify",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/hd7N_vWLwgU?si=aOYrosPcr9mma5qO",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 4, 2023",
@@ -183,14 +215,14 @@
             "expire": "2023-05-05T00:00:00.0000-00:00",
             "location": "Virtual",
             "url": "https://bit.ly/3Li5ST0",
-            "eventType": "Ballerina Community Call",
+            "eventType": "Ballerina Tech Talk",
             "eventName": "Bend it like Ballerina - Unveiling our Regex Support",
-            "presenterTwitter": "https://www.linkedin.com/in/sasindu-alahakoon/",
+            "presenterTwitter": "https://twitter.com/Sasindu3625",
             "presenter": "Sasindu Alahakoon",
             "presenterDesignation": "Software Engineer, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "Add to calendar"
+            "videoURL": "https://youtu.be/jmSy_n6VUPk?si=qa024WQ397bwqwFb",
+            "buttonText": "Watch recording"
         },
         {
             "date": "April 12, 2023",

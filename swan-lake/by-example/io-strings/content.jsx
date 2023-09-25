@@ -78,7 +78,7 @@ export function IoStrings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=30af890808f1c179547908118a6367fd&file=io_strings.bal",
+                "https://play.ballerina.io/?gist=87c272e90050860ae8a5499351251998&file=io_strings.bal",
                 "_blank",
               );
             }}
@@ -103,7 +103,7 @@ export function IoStrings({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/io-strings",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/io-strings",
                 "_blank",
               );
             }}

@@ -75,7 +75,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c74f49b87d89c37d12b3d46347fb4999&file=inter_worker_failure_propagation.bal",
+                "https://play.ballerina.io/?gist=beee9d7d09ef37001ed1171fe2d8a40c&file=inter_worker_failure_propagation.bal",
                 "_blank",
               );
             }}
@@ -100,7 +100,7 @@ export function InterWorkerFailurePropagation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/inter-worker-failure-propagation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/inter-worker-failure-propagation",
                 "_blank",
               );
             }}

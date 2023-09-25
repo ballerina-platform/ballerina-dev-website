@@ -143,7 +143,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -299,7 +299,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -453,7 +453,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -604,7 +604,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -812,7 +812,10 @@ export function GraphqlDirectives({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Context object" href="/learn/by-example/graphql-context">
+          <Link
+            title="Hierarchical resource paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -821,7 +824,7 @@ export function GraphqlDirectives({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Context object
+                  Hierarchical resource paths
                 </span>
               </div>
               <svg

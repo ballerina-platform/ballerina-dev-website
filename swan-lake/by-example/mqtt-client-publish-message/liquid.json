@@ -1,0 +1,18 @@
+{
+  "title": "Publish message",
+  "description": "How to send messages to a MQTT topic using a `mqtt:Client`.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mqtt",
+    "publisher",
+    "iot"
+  ],
+  "permalink": "/learn/by-example/mqtt-client-publish-message",
+  "active": "mqtt-client-publish-message",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mqtt-client-publish-message",
+    "/swan-lake/learn/by-example/mqtt-client-publish-message.html"
+  ]
+}

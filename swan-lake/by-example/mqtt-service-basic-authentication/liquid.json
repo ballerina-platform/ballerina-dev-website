@@ -1,0 +1,19 @@
+{
+  "title": "Basic authentication",
+  "description": "How to configure a MQTT listener to use basic authentication.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mqtt",
+    "listener",
+    "service",
+    "iot"
+  ],
+  "permalink": "/learn/by-example/mqtt-service-basic-authentication",
+  "active": "mqtt-service-basic-authentication",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mqtt-service-basic-authentication",
+    "/swan-lake/learn/by-example/mqtt-service-basic-authentication.html"
+  ]
+}

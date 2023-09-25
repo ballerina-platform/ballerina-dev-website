@@ -1,0 +1,18 @@
+{
+  "title": "Hello world",
+  "description": "This example demonstrates how to write a simple echo function in AWS Lambda.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "serverless",
+    "aws lambda",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/aws-lambda-hello-world",
+  "active": "aws-lambda-hello-world",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/aws-lambda-hello-world",
+    "/swan-lake/learn/by-example/aws-lambda-hello-world.html"
+  ]
+}

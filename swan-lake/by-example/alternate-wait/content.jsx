@@ -68,7 +68,7 @@ export function AlternateWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a2217b4f32f3d8f1b42645fe8ae03594&file=alternate_wait.bal",
+                "https://play.ballerina.io/?gist=ee5a195493a9c91761f58b44fcf5ae87&file=alternate_wait.bal",
                 "_blank",
               );
             }}
@@ -93,7 +93,7 @@ export function AlternateWait({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/alternate-wait",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/alternate-wait",
                 "_blank",
               );
             }}

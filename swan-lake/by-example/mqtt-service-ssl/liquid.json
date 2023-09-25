@@ -1,0 +1,20 @@
+{
+  "title": "SSL/TLS",
+  "description": "How to configure an MQTT listener to use SSL encryption.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "mqtt",
+    "listener",
+    "service",
+    "iot",
+    "SSL"
+  ],
+  "permalink": "/learn/by-example/mqtt-service-ssl",
+  "active": "mqtt-service-ssl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/mqtt-service-ssl",
+    "/swan-lake/learn/by-example/mqtt-service-ssl.html"
+  ]
+}

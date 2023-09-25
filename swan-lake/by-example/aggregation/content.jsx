@@ -84,7 +84,7 @@ export function Aggregation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=396f8aeffa952b607a836791411af39b&file=aggregation.bal",
+                "https://play.ballerina.io/?gist=333cd26d653231237aee45e0d2977468&file=aggregation.bal",
                 "_blank",
               );
             }}
@@ -109,7 +109,7 @@ export function Aggregation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/aggregation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/aggregation",
                 "_blank",
               );
             }}

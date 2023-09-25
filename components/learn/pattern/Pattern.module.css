@@ -3,6 +3,9 @@
   flex-wrap: row wrap;
 }
 
+.card div {
+  border-radius: 0;
+}
 .cardLink {
   text-decoration: none;
   color: #464646;

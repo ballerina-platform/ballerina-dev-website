@@ -85,7 +85,7 @@ export function InferringIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=9fe3ff8dccd00af9faa7eb40a62f1f6e&file=inferring_isolated.bal",
+                "https://play.ballerina.io/?gist=84c8de9ec2e70f08a2782c93c6193fe4&file=inferring_isolated.bal",
                 "_blank",
               );
             }}
@@ -110,7 +110,7 @@ export function InferringIsolated({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/inferring-isolated",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/inferring-isolated",
                 "_blank",
               );
             }}

@@ -62,15 +62,6 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/integration-tutorials`} className={styles.titleLink}>
-                            Integration tutorials
-                          </a>
-                        </p>
-                        <p className={styles.description}>Explore and try out a series of guided integration tutorials.</p>
-                      </div>
-
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/supported-data-formats`} className={styles.titleLink}>
                             Supported data formats
                           </a>
@@ -320,14 +311,6 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
-                            Strand dump tool
-                          </a>
-                        </p>
-                        <p className={styles.description}>Dump the status of currently running strands.</p>
-                      </div>
-                      <div className={styles.content}>
-                        <p className={styles.title}>
                           <a href={`${prefix}/learn/generate-code-documentation`} className={styles.titleLink}>
                             Document Ballerina code
                           </a>
@@ -518,11 +501,19 @@ export default function Boxes(props) {
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>
-                          <a href={`${prefix}/learn/java-interoperability-guide/java-interoperability`} className={styles.titleLink}>
-                            Java interoperability guide
+                          <a href={`${prefix}/learn/the-bindgen-tool`} className={styles.titleLink}>
+                            The BindGen tool
                           </a>
                         </p>
-                        <p className={styles.description}>Instructions on the supported Java interoperability features.</p>
+                        <p className={styles.description}>The CLI tool that generates Ballerina bindings for Java classes.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-ffi`} className={styles.titleLink}>
+                            Ballerina FFI
+                          </a>
+                        </p>
+                        <p className={styles.description}>List of language features that enable Ballerina developers to call foreign code written in other programming languages.</p>
                       </div>
                     </div>
                   </div>
@@ -575,6 +566,31 @@ export default function Boxes(props) {
                           </a>
                         </p>
                         <p className={styles.description}>Publish your library package to Ballerina Central.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={4} lg={4} className={styles.boxCol}>
+                <div className={styles.cardWrapper}>
+                  <div>
+                    <h3>Troubleshoot the runtime</h3>
+                    <div className={styles.cardDescription}>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/strand-dump-tool`} className={styles.titleLink}>
+                            Strand dump tool
+                          </a>
+                        </p>
+                        <p className={styles.description}>Dump the status of currently running strands.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/ballerina-profiler`} className={styles.titleLink}>
+                            Ballerina Profiler (experimental)
+                          </a>
+                        </p>
+                        <p className={styles.description}>Profile a Ballerina package and create a flame graph.</p>
                       </div>
                     </div>
                   </div>

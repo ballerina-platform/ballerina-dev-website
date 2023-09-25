@@ -16,7 +16,7 @@ It also enables you to easily install, update, and switch among Ballerina distri
 
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
-```sh
+```
 $ bal help
 NAME
        The build system and package manager of Ballerina
@@ -43,6 +43,7 @@ COMMANDS
         test            Run package tests
         doc             Generate current package's documentation
         pack            Create distribution format of the current package
+        tool            Manage Ballerina tools
 
    Package Commands:
         new             Create a new Ballerina package
@@ -60,21 +61,21 @@ COMMANDS
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
-        graphql         Generate the Ballerina client sources for a given GraphQL config
-                        file and generate the GraphQL schema for a given Ballerina
-                        GraphQL service.
+        graphql         Generate the Ballerina client sources for a GraphQL config file,
+                        generate the GraphQL schema for a Ballerina GraphQL service, and 
+                        generate the Ballerina GraphQL service for a GraphQL schema
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
         persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
-        shell           Run Ballerina interactive REPL
+        shell           Run Ballerina interactive REPL [Experimental]
         version         Print the Ballerina version
+        profile         Start Ballerina Profiler [Experimental]
 
    Update Commands:
         dist            Manage Ballerina distributions
         update          Update the Ballerina tool
-
 ```
 
 You can use it in the following format.
@@ -85,7 +86,7 @@ $ bal <COMMAND> <ARGUMENTS>
 
 > **Tip:** You can view details of the commands by executing the `bal help <COMMAND>`. For example, the following is the output of the `bal help pull` command.
 
-```sh
+```
 $ bal help pull
 NAME
        ballerina-pull - Fetch packages from Ballerina Central
@@ -142,7 +143,12 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">pack</td>
-<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package
+<td class="cDescription">Create the distribution format (<code>.bala</code>) of the current package.
+</td>
+</tr>
+<tr>
+<td class="cCommand">tool</td>
+<td class="cDescription">Pull, remove, update, switch between versions, and search Ballerina command line tools.
 </td>
 </tr>
 </table>
@@ -210,11 +216,11 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/grpc">gRPC/Protocol Buffers</a>.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/grpc-tool">gRPC tool</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">graphql</td>
-<td class="cDescription">This is the GraphQL client/schema generation tool. For more information, see <a href="/learn/graphql-tool/">Ballerina GraphQL tool support</a>.</td>
+<td class="cDescription">This is the GraphQL client/schema/service generation tool. For more information, see <a href="/learn/graphql-tool/">Ballerina GraphQL tool support</a>.</td>
 </tr>
 <tr>
 <td class="cCommand">openapi</td>
@@ -241,8 +247,52 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <td class="cDescription">Tells you the version of the distribution you are currently using, the language specification version on which it is based, and the update tool version, which is currently in use.</td>
 </tr>
 <tr>
+<td class="cCommand">profile</td>
+<td class="cDescription">Profile a Ballerina package and generate a flame graph. For more information, see <a href="/learn/ballerina-profiler">Ballerina Profiler</a>.
+</td>
+</tr>
+<tr>
 <td class="cCommand">help</td>
 <td class="cDescription">Prints the usage details of any Ballerina command (e.g., <code>bal help pull</code>).
+</td>
+</tr>
+</table>
+
+## Tool commands
+
+These tools extend the Ballerina CLI to support additional functionalities and are not installed by default. They can be pulled from the Ballerina Central and are managed using the `bal tool` command.
+
+The following tool sub commands can be used to manage the tools.
+
+<table class="cComandTable">
+<tr>
+<td class="cCommand">pull</td>
+<td class="cDescription">Pull a tool from Ballerina Central.
+</td>
+</tr>
+<tr>
+<td class="cCommand">remove</td>
+<td class="cDescription">Remove a tool from the local bal tool chain.
+</td>
+</tr>
+<tr>
+<td class="cCommand">update</td>
+<td class="cDescription">Update to the latest patch version of the currently active version.
+</td>
+</tr>
+<tr>
+<td class="cCommand">use</td>
+<td class="cDescription">Set the specified version of a tool as the active version.
+</td>
+</tr>
+<tr>
+<td class="cCommand">list</td>
+<td class="cDescription">List the tool IDs and the versions of all locally available tools.
+</td>
+</tr>
+<tr>
+<td class="cCommand">search</td>
+<td class="cDescription">Search Ballerina Central for tools using a given keyword.
 </td>
 </tr>
 </table>

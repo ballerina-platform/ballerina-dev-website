@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerina/http;
 import ballerinax/kafka;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -79,7 +79,7 @@ export function KafkaProducerSasl({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/kafka-producer-sasl",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/kafka-producer-sasl",
                 "_blank",
               );
             }}

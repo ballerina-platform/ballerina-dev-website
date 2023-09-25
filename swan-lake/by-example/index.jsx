@@ -1156,6 +1156,10 @@ import {
   codeSnippetData as GraphqlDirectivesCodeSnippetData,
 } from "./graphql-directives/content.jsx";
 import {
+  GraphqlHierarchicalResourcePaths,
+  codeSnippetData as GraphqlHierarchicalResourcePathsCodeSnippetData,
+} from "./graphql-hierarchical-resource-paths/content.jsx";
+import {
   GraphqlContext,
   codeSnippetData as GraphqlContextCodeSnippetData,
 } from "./graphql-context/content.jsx";
@@ -1184,9 +1188,13 @@ import {
   codeSnippetData as GraphqlFileUploadCodeSnippetData,
 } from "./graphql-file-upload/content.jsx";
 import {
-  GraphqlHierarchicalResourcePaths,
-  codeSnippetData as GraphqlHierarchicalResourcePathsCodeSnippetData,
-} from "./graphql-hierarchical-resource-paths/content.jsx";
+  GraphqlDataloader,
+  codeSnippetData as GraphqlDataloaderCodeSnippetData,
+} from "./graphql-dataloader/content.jsx";
+import {
+  CustomPrefetchMethods,
+  codeSnippetData as CustomPrefetchMethodsCodeSnippetData,
+} from "./custom-prefetch-methods/content.jsx";
 import {
   GraphqlClientQueryEndpoint,
   codeSnippetData as GraphqlClientQueryEndpointCodeSnippetData,
@@ -1604,6 +1612,50 @@ import {
   codeSnippetData as RabbitmqClientBasicAuthCodeSnippetData,
 } from "./rabbitmq-client-basic-auth/content.jsx";
 import {
+  MqttServiceSubscribeMessage,
+  codeSnippetData as MqttServiceSubscribeMessageCodeSnippetData,
+} from "./mqtt-service-subscribe-message/content.jsx";
+import {
+  MqttClientPublishMessage,
+  codeSnippetData as MqttClientPublishMessageCodeSnippetData,
+} from "./mqtt-client-publish-message/content.jsx";
+import {
+  MqttServiceSsl,
+  codeSnippetData as MqttServiceSslCodeSnippetData,
+} from "./mqtt-service-ssl/content.jsx";
+import {
+  MqttServiceBasicAuthentication,
+  codeSnippetData as MqttServiceBasicAuthenticationCodeSnippetData,
+} from "./mqtt-service-basic-authentication/content.jsx";
+import {
+  MqttClientSsl,
+  codeSnippetData as MqttClientSslCodeSnippetData,
+} from "./mqtt-client-ssl/content.jsx";
+import {
+  MqttClientBasicAuthentication,
+  codeSnippetData as MqttClientBasicAuthenticationCodeSnippetData,
+} from "./mqtt-client-basic-authentication/content.jsx";
+import {
+  JmsServiceConsumeMessage,
+  codeSnippetData as JmsServiceConsumeMessageCodeSnippetData,
+} from "./jms-service-consume-message/content.jsx";
+import {
+  JmsProducerProduceMessage,
+  codeSnippetData as JmsProducerProduceMessageCodeSnippetData,
+} from "./jms-producer-produce-message/content.jsx";
+import {
+  JmsProducerTransaction,
+  codeSnippetData as JmsProducerTransactionCodeSnippetData,
+} from "./jms-producer-transaction/content.jsx";
+import {
+  JmsConsumerConsumeMessage,
+  codeSnippetData as JmsConsumerConsumeMessageCodeSnippetData,
+} from "./jms-consumer-consume-message/content.jsx";
+import {
+  JmsConsumerAcknowledgement,
+  codeSnippetData as JmsConsumerAcknowledgementCodeSnippetData,
+} from "./jms-consumer-acknowledgement/content.jsx";
+import {
   TcpListener,
   codeSnippetData as TcpListenerCodeSnippetData,
 } from "./tcp-listener/content.jsx";
@@ -1836,10 +1888,6 @@ import {
   codeSnippetData as XsltTransformationCodeSnippetData,
 } from "./xslt-transformation/content.jsx";
 import {
-  RegularExpressions,
-  codeSnippetData as RegularExpressionsCodeSnippetData,
-} from "./regular-expressions/content.jsx";
-import {
   EnvironmentVariables,
   codeSnippetData as EnvironmentVariablesCodeSnippetData,
 } from "./environment-variables/content.jsx";
@@ -1863,6 +1911,46 @@ import {
   ConstraintValidations,
   codeSnippetData as ConstraintValidationsCodeSnippetData,
 } from "./constraint-validations/content.jsx";
+import {
+  DockerHelloWorld,
+  codeSnippetData as DockerHelloWorldCodeSnippetData,
+} from "./docker-hello-world/content.jsx";
+import {
+  KubernetesHelloWorld,
+  codeSnippetData as KubernetesHelloWorldCodeSnippetData,
+} from "./kubernetes-hello-world/content.jsx";
+import {
+  AwsLambdaHelloWorld,
+  codeSnippetData as AwsLambdaHelloWorldCodeSnippetData,
+} from "./aws-lambda-hello-world/content.jsx";
+import {
+  AwsLambdaExecutionContext,
+  codeSnippetData as AwsLambdaExecutionContextCodeSnippetData,
+} from "./aws-lambda-execution-context/content.jsx";
+import {
+  AwsLambdaS3Trigger,
+  codeSnippetData as AwsLambdaS3TriggerCodeSnippetData,
+} from "./aws-lambda-s3-trigger/content.jsx";
+import {
+  AwsLambdaDynamodbTrigger,
+  codeSnippetData as AwsLambdaDynamodbTriggerCodeSnippetData,
+} from "./aws-lambda-dynamodb-trigger/content.jsx";
+import {
+  AzureFunctionsHelloWorld,
+  codeSnippetData as AzureFunctionsHelloWorldCodeSnippetData,
+} from "./azure-functions-hello-world/content.jsx";
+import {
+  AzureFunctionsTimerTrigger,
+  codeSnippetData as AzureFunctionsTimerTriggerCodeSnippetData,
+} from "./azure-functions-timer-trigger/content.jsx";
+import {
+  AzureFunctionsHttpTriggerWithQueue,
+  codeSnippetData as AzureFunctionsHttpTriggerWithQueueCodeSnippetData,
+} from "./azure-functions-http-trigger-with-queue/content.jsx";
+import {
+  AzureFunctionsCosmosdbTrigger,
+  codeSnippetData as AzureFunctionsCosmosdbTriggerCodeSnippetData,
+} from "./azure-functions-cosmosdb-trigger/content.jsx";
 import {
   PersistGetAll,
   codeSnippetData as PersistGetAllCodeSnippetData,
@@ -1907,22 +1995,6 @@ import {
   GaugeMetrics,
   codeSnippetData as GaugeMetricsCodeSnippetData,
 } from "./gauge-metrics/content.jsx";
-import {
-  C2cDockerDeployment,
-  codeSnippetData as C2cDockerDeploymentCodeSnippetData,
-} from "./c2c-docker-deployment/content.jsx";
-import {
-  C2cK8sDeployment,
-  codeSnippetData as C2cK8sDeploymentCodeSnippetData,
-} from "./c2c-k8s-deployment/content.jsx";
-import {
-  AzureFunctionsDeployment,
-  codeSnippetData as AzureFunctionsDeploymentCodeSnippetData,
-} from "./azure-functions-deployment/content.jsx";
-import {
-  AwsLambdaDeployment,
-  codeSnippetData as AwsLambdaDeploymentCodeSnippetData,
-} from "./aws-lambda-deployment/content.jsx";
 
 const BBEs = {
   HelloWorld,
@@ -2505,6 +2577,8 @@ const BBEs = {
   GraphqlDocumentationCodeSnippetData,
   GraphqlDirectives,
   GraphqlDirectivesCodeSnippetData,
+  GraphqlHierarchicalResourcePaths,
+  GraphqlHierarchicalResourcePathsCodeSnippetData,
   GraphqlContext,
   GraphqlContextCodeSnippetData,
   GraphqlServiceFieldObject,
@@ -2519,8 +2593,10 @@ const BBEs = {
   GraphqlInputConstraintValidationCodeSnippetData,
   GraphqlFileUpload,
   GraphqlFileUploadCodeSnippetData,
-  GraphqlHierarchicalResourcePaths,
-  GraphqlHierarchicalResourcePathsCodeSnippetData,
+  GraphqlDataloader,
+  GraphqlDataloaderCodeSnippetData,
+  CustomPrefetchMethods,
+  CustomPrefetchMethodsCodeSnippetData,
   GraphqlClientQueryEndpoint,
   GraphqlClientQueryEndpointCodeSnippetData,
   GraphqlClientHandlePartialResponse,
@@ -2729,6 +2805,28 @@ const BBEs = {
   RabbitmqClientSecureConnectionCodeSnippetData,
   RabbitmqClientBasicAuth,
   RabbitmqClientBasicAuthCodeSnippetData,
+  MqttServiceSubscribeMessage,
+  MqttServiceSubscribeMessageCodeSnippetData,
+  MqttClientPublishMessage,
+  MqttClientPublishMessageCodeSnippetData,
+  MqttServiceSsl,
+  MqttServiceSslCodeSnippetData,
+  MqttServiceBasicAuthentication,
+  MqttServiceBasicAuthenticationCodeSnippetData,
+  MqttClientSsl,
+  MqttClientSslCodeSnippetData,
+  MqttClientBasicAuthentication,
+  MqttClientBasicAuthenticationCodeSnippetData,
+  JmsServiceConsumeMessage,
+  JmsServiceConsumeMessageCodeSnippetData,
+  JmsProducerProduceMessage,
+  JmsProducerProduceMessageCodeSnippetData,
+  JmsProducerTransaction,
+  JmsProducerTransactionCodeSnippetData,
+  JmsConsumerConsumeMessage,
+  JmsConsumerConsumeMessageCodeSnippetData,
+  JmsConsumerAcknowledgement,
+  JmsConsumerAcknowledgementCodeSnippetData,
   TcpListener,
   TcpListenerCodeSnippetData,
   TcpClient,
@@ -2845,8 +2943,6 @@ const BBEs = {
   UuidOperationsCodeSnippetData,
   XsltTransformation,
   XsltTransformationCodeSnippetData,
-  RegularExpressions,
-  RegularExpressionsCodeSnippetData,
   EnvironmentVariables,
   EnvironmentVariablesCodeSnippetData,
   XmlToJsonConversion,
@@ -2859,6 +2955,26 @@ const BBEs = {
   XmlFromRecordConversionCodeSnippetData,
   ConstraintValidations,
   ConstraintValidationsCodeSnippetData,
+  DockerHelloWorld,
+  DockerHelloWorldCodeSnippetData,
+  KubernetesHelloWorld,
+  KubernetesHelloWorldCodeSnippetData,
+  AwsLambdaHelloWorld,
+  AwsLambdaHelloWorldCodeSnippetData,
+  AwsLambdaExecutionContext,
+  AwsLambdaExecutionContextCodeSnippetData,
+  AwsLambdaS3Trigger,
+  AwsLambdaS3TriggerCodeSnippetData,
+  AwsLambdaDynamodbTrigger,
+  AwsLambdaDynamodbTriggerCodeSnippetData,
+  AzureFunctionsHelloWorld,
+  AzureFunctionsHelloWorldCodeSnippetData,
+  AzureFunctionsTimerTrigger,
+  AzureFunctionsTimerTriggerCodeSnippetData,
+  AzureFunctionsHttpTriggerWithQueue,
+  AzureFunctionsHttpTriggerWithQueueCodeSnippetData,
+  AzureFunctionsCosmosdbTrigger,
+  AzureFunctionsCosmosdbTriggerCodeSnippetData,
   PersistGetAll,
   PersistGetAllCodeSnippetData,
   PersistGetByKey,
@@ -2881,14 +2997,6 @@ const BBEs = {
   CounterMetricsCodeSnippetData,
   GaugeMetrics,
   GaugeMetricsCodeSnippetData,
-  C2cDockerDeployment,
-  C2cDockerDeploymentCodeSnippetData,
-  C2cK8sDeployment,
-  C2cK8sDeploymentCodeSnippetData,
-  AzureFunctionsDeployment,
-  AzureFunctionsDeploymentCodeSnippetData,
-  AwsLambdaDeployment,
-  AwsLambdaDeploymentCodeSnippetData,
 };
 
 export default BBEs;

@@ -2,7 +2,7 @@
 layout: ballerina-grpc-getting-started-left-nav-pages-swanlake
 title: Write a gRPC service with Ballerina
 description: This guide will walk you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
-keywords: ballerina, grpc, protocol buffers, protobuf, ballerina packages, language-guide, standard library
+keywords: ballerina, grpc, protocol buffers, protobuf, ballerina packages, language-guide, Ballerina library
 permalink: /learn/write-a-grpc-service-with-ballerina/
 active: write-a-grpc-service-with-ballerina
 intro: This guide walks you through writing a simple Ballerina gRPC service and invoking the service through a Ballerina gRPC client application.
@@ -274,5 +274,5 @@ Response : Hello Ballerina
 
 To learn more about gRPC support in Ballerina, see the following:
 - [`grpc` module documentation](https://lib.ballerina.io/ballerina/grpc/latest)
-- [gRPC CLI tooling guide](/learn/grpc/)
+- [gRPC CLI tooling guide](/learn/grpc-tool/)
 - [Simple RPC](/learn/by-example/grpc-service-simple/)

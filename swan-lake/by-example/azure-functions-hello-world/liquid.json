@@ -1,0 +1,17 @@
+{
+  "title": "Hello world",
+  "description": "This example demonstrates how to write a hello world function with http trigger and output in Azure Functions.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "azure functions",
+    "function as a service",
+    "serverless"
+  ],
+  "permalink": "/learn/by-example/azure-functions-hello-world",
+  "active": "azure-functions-hello-world",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/azure-functions-hello-world",
+    "/swan-lake/learn/by-example/azure-functions-hello-world.html"
+  ]
+}

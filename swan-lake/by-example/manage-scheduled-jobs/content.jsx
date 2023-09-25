@@ -112,7 +112,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=e2910e42fff3c9cbe03a4e600f55658b&file=manage_scheduled_jobs.bal",
+                "https://play.ballerina.io/?gist=2f6f66ac499e66a5d1d8a0c6d3624f42&file=manage_scheduled_jobs.bal",
                 "_blank",
               );
             }}
@@ -137,7 +137,7 @@ export function ManageScheduledJobs({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/manage-scheduled-jobs",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/manage-scheduled-jobs",
                 "_blank",
               );
             }}

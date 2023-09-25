@@ -7,11 +7,11 @@ redirect_from:
 
 ---
 
-Below is information about how the <a target="_blank" href="https://ballerina.io/">Ballerina site</a> (the “Site”) uses cookies.
+Below is information about how <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://play.ballerina.io/">Ballerina Playground</a>, <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear, use cookies.
 
 The Site stores and retrieves information on your browser using cookies. This information is used to make the Site work as you expect it to. It is not personally identifiable to you, but it can be used to give you a more personalized web experience.
 
-This cookie policy is part of our [Privacy policy](/privacy-policy/). It explains the following:
+This cookie policy is part of our <a target="_blank" href="/privacy-policy/">privacy policy</a>. It explains the following:
 
 ## What are cookies?
 
@@ -61,48 +61,195 @@ Most browsers allow you to control cookies through their settings preferences. H
 
 These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you, which amount to a request for services such as setting your privacy preferences, logging in, or filling in forms. You can set your browser to block or alert you about these cookies but some parts of the site will not then work. These cookies do not store any personally identifiable information.
 
-| Cookie subgroup      	| Cookies            	| Cookies used 	| Lifespan  	|
-|----------------------	|--------------------	|--------------	|-----------	|
-| central.ballerina.io 	| USER_EMAIL         	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_ID            	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_LOGGED        	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| admin_org_names    	| First party  	| Session   	|
-| central.ballerina.io 	| is_first_time      	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| ACCESS_TOKEN       	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| USER_PROFILE_IMAGE 	| First party  	| 7.5 hours 	|
-| central.ballerina.io 	| token_expired      	| First party  	| Session   	|
-| central.ballerina.io 	| access_token       	| First party  	| 7.5 hours 	|
+<table>
+  <thead>
+    <tr>
+      <th>Cookies used</th>
+      <th>Cookie subgroup</th>
+      <th>Cookies</th>
+      <th>Lifespan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="11" colspan="1">First party</div></td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>OptanonConsent</code></td>
+      <td rowspan="2" colspan="1">364 days</td>
+    </tr>
+    <tr>
+      <td><code>OptanonAlertBoxClosed</code></td>
+    </tr>
+    <tr>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td><code>USER_EMAIL</code></td>
+      <td rowspan="7" colspan="1">7.5 hours</td>
+    </tr>
+    <tr>
+      <td><code>USER_ID</code></td>
+    </tr>
+    <tr>
+      <td><code>USER_LOGGED</code></td>
+    </tr>
+    <tr>
+      <td><code>USER_PROFILE_IMAGE</code></td>
+    </tr>
+    <tr>
+      <td><code>is_first_time</code></td>
+    </tr>
+    <tr>
+      <td><code>ACCESS_TOKEN</code></td>
+    </tr>
+    <tr>
+      <td><code>access_token</code></td>
+    </tr>
+    <tr>
+      <td><code>admin_org_names</code></td>
+      <td rowspan="2" colspan="1">Session</td>
+    </tr>
+    <tr>
+      <td><code>token_expired</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Performance cookies
 
 These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
 
-| Cookie subgroup   	| Cookies                      	| Cookies used 	| Lifespan (Days) 	|
-|-------------------	|------------------------------	|--------------	|-----------------	|
-| ballerina.io      	| _hjIncludedInPageviewSample  	| First party  	| 0               	|
-| ballerina.io      	| _gid                         	| First party  	| 0               	|
-| ballerina.io      	| _hjAbsoluteSessionInProgress 	| First party  	| 0               	|
-| ballerina.io      	| _hjSessionUser_865786        	| First party  	| 364             	|
-| ballerina.io      	| _hjFirstSeen                 	| First party  	| 0               	|
-| ballerina.io      	| _hjSession_865786            	| First party  	| 0               	|
-| ballerina.io      	| _ga                          	| First party  	| 729             	|
-| ballerina.io      	| _hjIncludedInSessionSample   	| First party  	| 0               	|
-| script.hotjar.com 	| _hjIncludedInSessionSample   	| Third party  	| 0               	|
-| script.hotjar.com 	| _hjIncludedInPageviewSample  	| Third party  	| 0               	|
+<table>
+  <thead>
+    <tr>
+      <th>Cookies used</th>
+      <th>Cookie subgroup</th>
+      <th>Cookies</th>
+      <th>Lifespan (Days)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="12" colspan="1">First party</td>
+      <td rowspan="9" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>_hjSessionUser_865786</code></td>
+      <td>364</td>
+    </tr>
+    <tr>
+      <td><code>_ga</code></td>
+      <td rowspan="2" colspan="1">729</div></td>
+    </tr>
+    <tr>
+      <td><code>_ga_xxxxxxxxxx</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjIncludedInPageviewSample</code></td>
+      <td rowspan="12" colspan="1">0</td>
+    </tr>
+    <tr>
+      <td><code>_gi</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjAbsoluteSessionInProgress</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjFirstSeen</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjSession_865786</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjIncludedInSessionSample</code></td>
+    </tr>
+    <tr>
+      <td><a class="in-cell-link" href="http://central.ballerina.io" target="_blank">central.ballerina.io</a></td>
+      <td><code>route</code></td>
+    </tr>
+    <tr>
+      <td><a class="in-cell-link" href="http://api.central.ballerina.io" target="_blank">api.central.ballerina.io</a></td>
+      <td><code>route</code></td>
+    </tr>
+    <tr>
+      <td><a class="in-cell-link" href="http://lib.ballerina.io" target="_blank">lib.ballerina.io</a></td>
+      <td><code>route</code></td>
+    </tr>
+    <tr>
+      <td rowspan="3" colspan="1">Third party</td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://script.hotjar.com" target="_blank">script.hotjar.com</a></td>
+      <td><code>_hjIncludedInSessionSample</code></td>
+    </tr>
+    <tr>
+      <td><code>_hjIncludedInPageviewSample</<code>code></td>
+    </tr>
+    <tr>
+      <td><code>_hjIncludedInSessionSample_865786</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Targeting cookies
 
 These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.
 
-| Cookie subgroup    	| Cookies                               	| Cookies used 	| Lifespan (Days) 	|
-|--------------------	|---------------------------------------	|--------------	|-----------------	|
-| ballerina.io       	| _gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx 	| First party  	| 0               	|
-| resources.wso2.com 	| visitor_id142131-hash                 	| Third party  	| 3649            	|
-| resources.wso2.com 	| pardot                                	| Third party  	| 0               	|
-| resources.wso2.com 	| visitor_id#####                       	| Third party  	| 3649            	|
-| pardot.com         	| visitor_id#####                       	| Third party  	| 3649            	|
-| pi.pardot.com      	| pardot                                	| Third party  	| 0               	|
-| pardot.com         	| visitor_id142131-hash                 	| Third party  	| 3649            	|
+<table>
+  <thead>
+    <tr>
+      <th>Cookies used</th>
+      <th>Cookie subgroup</th>
+      <th>Cookies</th>
+      <th>Lifespan (Days)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2" colspan="1">First party</td>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://ballerina.io" target="_blank">ballerina.io</a></td>
+      <td><code>_gat_gtag_xxxxxxxxxxxxxxxxxxxxxxxxxxx</code></td>
+      <td rowspan="3" colspan="1">0</td>
+    </tr>
+    <tr>
+      <td><code>_gat_UA-nnnnnnn-nn</code></td>
+    </tr>
+    <tr>
+      <td rowspan="10" colspan="1">Third party</td>
+      <td rowspan="3" colspan="1"><a class="in-cell-link" href="http://resources.wso2.com" target="_blank">resources.wso2.com</a></td>
+      <td><code>pardot</code></td>
+    </tr>
+    <tr>
+      <td><code>visitor_id142131-hash</code></td>
+      <td rowspan="4" colspan="1">3649</div></td>
+    </tr>
+    <tr>
+      <td><code>visitor_id#####</code></td>
+    </tr>
+    <tr>
+      <td rowspan="2" colspan="1"><a class="in-cell-link" href="http://pardot.com" target="_blank">pardot.com</a></td>
+      <td><code>visitor_id#####</code></td>
+    </tr>
+    <tr>
+      <td><code>visitor_id142131-hash</code></td>
+    </tr>
+    <tr>
+      <td><a class="in-cell-link" href="http://pi.pardot.com" target="_blank">pi.pardot.com</a></td>
+      <td><code>pardot</code></td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td rowspan="4" colspan="1"><a class="in-cell-link" href="http://youtube.com" target="_blank">youtube.com</a></td>
+      <td><code>CONSENT</code></td>
+      <td>729</td>
+    </tr>
+    <tr>
+      <td><code>VISITOR_INFO1_LIVE</code></td>
+      <td rowspan="2" colspan="1">179</td>
+    </tr>
+    <tr>
+      <td><code>VISITOR_PRIVACY_METADATA</code></td>
+    </tr>
+    <tr>
+      <td><code>YSC</code></td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table><br/>
 
-**Effective August 20, 2022**
+**Effective August 28, 2023**
 

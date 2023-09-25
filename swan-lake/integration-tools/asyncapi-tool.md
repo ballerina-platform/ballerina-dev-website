@@ -10,15 +10,6 @@ intro: AsyncAPI is a specification, which is used to describe and document messa
 
 The Ballerina AsyncAPI tool makes it easy for you to start the development of an event API documented in an AsyncAPI contract in Ballerina by generating a Ballerina service and listener skeletons.
 
-## Set up the prerequisites
-
-To run this tutorial, you need the following prerequisites:
-
-1. [Ballerina 2202.1.0 (Swan Lake)](/downloads/) or greater
-2. A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-
 ## Prepare the AsyncAPI contract
 
 Before using the tool, there are some modifications that should be made by adding some custom tags to the contract.
@@ -104,7 +95,7 @@ There are custom tags in this YAML starting with `x-ballerina`. It is very impor
 
 2\. `x-ballerina-event-type` - This should be there in every event inside the channel. This is the name of the event or the value of the attribute mentioned above for a specific event.
 
-## Generate Ballerina services from AsyncAPI contracts
+## Usage
 
 After modifying the AsyncAPI contract, the Ballerina sources can be generated using the commands below.
 
@@ -119,14 +110,29 @@ For example,
 $ bal asyncapi -i hello.yaml
 ```
 
-This generates a Ballerina source (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
+## Command options
+
+The below command-line arguments can be used with the command.
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i, --input`  | The `asyncapi-contract-path` command option specifies the path of the AsyncAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                               | Mandatory           |
+| `-o, --output`     | The Ballerina files get generated at the same location from which the `bal asyncapi` command is executed. Optionally, you can point to another directory location by using this flag.                                                                                                                                           | Optional           |
+
+This command generates Ballerina service and listener skeletons (i.e., the four Ballerina files below) from the given AsyncAPI definition file.
 
 1. `data_types.bal` - contains all the Ballerina data types extracted from the AsyncAPI definition
 2. `service_types.bal` - contains all the service types relevant to the event API described in the AsyncAPI definition
 3. `listener.bal` - contains the HTTP listener, which listens to the relevant third-party service
 4. `dispacther_service.bal` - contains the event dispatching logic
 
-The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
+The generated Ballerina sources are written into the same directory from which the command is run. The above command can be run from anywhere on the execution path. It is not mandatory to run it from within a Ballerina package. 
+
+The above AsyncAPI to Ballerina command supports several usages in the Ballerina AsyncAPI tool as follows.
+
+## Generate to a specified location
+
+If you want to generate Ballerina sources to a specific provided output location, you can modify the above command as below.
 
 ```
 $ bal asyncapi -i hello.yaml -o ./output_path
@@ -137,7 +143,14 @@ Then, the generated files can be modified according to the custom requirements. 
 - All the incoming requests are received by the resource method in the `dispatcher_service.bal` file. Hence, if there is a necessity to add an authentication logic for the incoming calls, that logic can be included there before processing the incoming HTTP request.
 - If more information is needed when initializing the listener such as secrets, endpoint URLs, tokens, refresh tokens, etc., update the `init` function in the `listener.bal` file.
 
-## Execute the generated sources
+Below are some example libraries generated using the tool.
+
+| Module     | AsyncAPI specification                                                                                                                | Generated and modified code                                                                                                | Published module                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Slack**  | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">`asyncapi.yml` of Slack</a>   | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/slack" target="_blank">`asyncapi-triggers/slack`</a>   | <a href="https://central.ballerina.io/ballerinax/trigger.slack" target="_blank">`ballerinax/trigger.slack`</a>   |
+| **Twilio** | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/twilio/asyncapi.yml" target="_blank">`asyncapi.yml` of Twilio</a> | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/twilio" target="_blank">`asyncapi-triggers/twilio`</a> | <a href="https://central.ballerina.io/ballerinax/trigger.twilio" target="_blank">`ballerinax/trigger.twilio`</a> |
+
+## Example
 
 Follow the steps below to execute the generated Ballerina sources.
 
@@ -164,10 +177,3 @@ service AppService on webhookListener {
 ```
 
 4\. Execute the `bal run` command to execute this.
-
-Below are some example libraries generated using the tool.
-
-| Module     | AsyncAPI specification                                                                                                                | Generated and modified code                                                                                                | Published module                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Slack**  | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/slack/asyncapi.yml" target="_blank">`asyncapi.yml` of Slack</a>   | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/slack" target="_blank">`asyncapi-triggers/slack`</a>   | <a href="https://central.ballerina.io/ballerinax/trigger.slack" target="_blank">`ballerinax/trigger.slack`</a>   |
-| **Twilio** | <a href="https://github.com/ballerina-platform/asyncapi-triggers/blob/main/asyncapi/twilio/asyncapi.yml" target="_blank">`asyncapi.yml` of Twilio</a> | <a href="https://github.com/ballerina-platform/asyncapi-triggers/tree/main/asyncapi/twilio" target="_blank">`asyncapi-triggers/twilio`</a> | <a href="https://central.ballerina.io/ballerinax/trigger.twilio" target="_blank">`ballerinax/trigger.twilio`</a> |

@@ -18,20 +18,7 @@ type Profile record {|
 
 @graphql:ServiceConfig {
     // Initialization of the \`graphqlContext\` should be provided to the \`contextInit\` field.
-    contextInit: isolated function(http:RequestContext requestContext, http:Request request)
-    returns graphql:Context|error {
-
-        // Initialize the \`graphql:Context\` object.
-        graphql:Context context = new;
-
-        // Retrieves the header named \`scope\` from the \`http:request\` and set it to the context with
-        // the \`scope\` key. If the header does not exist, this will return an \`error\`, and thereby,
-        // the request will not be processed.
-        context.set("scope", check request.getHeader("scope"));
-
-        // Finally, the context object should be returned.
-        return context;
-    }
+    contextInit
 }
 service /graphql on new graphql:Listener(9090) {
     // Defines a \`Profile\` field inside the service.
@@ -56,6 +43,19 @@ service /graphql on new graphql:Listener(9090) {
         // Returns an \`error\` if the required scope is not found.
         return error("Permission denied");
     }
+}
+
+isolated function contextInit(http:RequestContext requestContext, http:Request request) returns graphql:Context|error {
+    // Initialize the \`graphql:Context\` object.
+    graphql:Context context = new;
+
+    // Retrieves the header named \`scope\` from the \`http:request\` and set it to the context with
+    // the \`scope\` key. If the header does not exist, this will return an \`error\`, and thereby,
+    // the request will not be processed.
+    context.set("scope", check request.getHeader("scope"));
+
+    // Finally, the context object should be returned.
+    return context;
 }
 `,
   `{
@@ -122,7 +122,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-context",
                 "_blank",
               );
             }}
@@ -271,7 +271,7 @@ export function GraphqlContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-context",
                 "_blank",
               );
             }}
@@ -513,7 +513,10 @@ export function GraphqlContext({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Directives" href="/learn/by-example/graphql-directives">
+          <Link
+            title="Hierarchical resource paths"
+            href="/learn/by-example/graphql-hierarchical-resource-paths"
+          >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -539,7 +542,7 @@ export function GraphqlContext({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Directives
+                  Hierarchical resource paths
                 </span>
               </div>
             </div>

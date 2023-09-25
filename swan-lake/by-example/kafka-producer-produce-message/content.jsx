@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/http;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -22,7 +22,7 @@ service / on new http:Listener(9090) {
         self.orderProducer = check new (kafka:DEFAULT_URL);
     }
 
-    resource function post orders(@http:Payload anydata newOrder) returns http:Accepted|error {
+    resource function post orders(Order newOrder) returns http:Accepted|error {
         check self.orderProducer->send({
             topic: "order-topic",
             value: newOrder
@@ -69,7 +69,7 @@ export function KafkaProducerProduceMessage({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/kafka-producer-produce-message",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/kafka-producer-produce-message",
                 "_blank",
               );
             }}

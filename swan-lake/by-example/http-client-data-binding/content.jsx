@@ -65,7 +65,7 @@ export function HttpClientDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=141e6f4e254f980c08eee7a55c222fbc&file=http_client_data_binding.bal",
+                "https://play.ballerina.io/?gist=f9e022d24c6b0e6ef708f54df20d092b&file=http_client_data_binding.bal",
                 "_blank",
               );
             }}
@@ -90,7 +90,7 @@ export function HttpClientDataBinding({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-client-data-binding",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-client-data-binding",
                 "_blank",
               );
             }}

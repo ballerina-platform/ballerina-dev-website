@@ -78,7 +78,7 @@ export function TcpListener({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/tcp-listener",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/tcp-listener",
                 "_blank",
               );
             }}
@@ -248,8 +248,8 @@ export function TcpListener({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Basic authentication"
-            href="/learn/by-example/rabbitmq-client-basic-auth"
+            title="Manual acknowledgment"
+            href="/learn/by-example/jms-consumer-acknowledgement"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export function TcpListener({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Basic authentication
+                  Manual acknowledgment
                 </span>
               </div>
             </div>

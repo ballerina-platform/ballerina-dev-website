@@ -70,7 +70,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-client-query-endpoint",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-client-query-endpoint",
                 "_blank",
               );
             }}
@@ -248,8 +248,8 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Hierarchical resource paths"
-            href="/learn/by-example/graphql-hierarchical-resource-paths"
+            title="Custom prefetch methods"
+            href="/learn/by-example/custom-prefetch-methods"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Hierarchical resource paths
+                  Custom prefetch methods
                 </span>
               </div>
             </div>

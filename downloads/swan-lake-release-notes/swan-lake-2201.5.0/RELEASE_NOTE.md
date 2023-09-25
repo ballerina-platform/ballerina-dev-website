@@ -399,7 +399,7 @@ To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://g
 
 ### Improvements
 
-#### Bindgen Tool 
+#### Bindgen tool 
 
 - Added the `--with-optional-types`, `--with-optional-types-param`, and `--with-optional-types-return` command options to the `bal bindgen` command, to support handling Java null values via generated bindings. These command options will generate optional (i.e., nilable) types for parameter or/and return types in generated Ballerina binding functions.
 

@@ -28,6 +28,7 @@ import Layout from "../../../../layouts/LayoutOther";
 import MainContent from "../../../../components/common/main-content/MainContent";
 import { prefix } from "../../../../utils/prefix";
 import Toc from "../../../../components/common/pg-toc/Toc";
+import { highlight } from "../../../../utils/highlighter";
 
 export async function getStaticPaths() {
     // Retrieve all our slugs
@@ -48,17 +49,18 @@ export async function getStaticProps({ params: { slug } }) {
 
     const fileName = fs.readFileSync(`swan-lake/integration-tutorials/${slug}.md`, 'utf-8');
     const { data: frontmatter, content } = matter(fileName);
-
+    let codes = await highlight(content);
     return {
         props: {
             frontmatter,
             content,
-            slug
+            slug,
+            codes
         },
     };
 }
 
-export default function PostPage({ frontmatter, content, slug }) {
+export default function PostPage({ frontmatter, content, slug, codes }) {
 
     // Show page toc
     const [showToc, setShowToc] = React.useState(false);
@@ -168,7 +170,8 @@ export default function PostPage({ frontmatter, content, slug }) {
                         <Col xs={12}>
                             <MainContent
                                 content={content}
-                                handleToc={handleToc} />
+                                handleToc={handleToc}
+                                codes={codes}  />
                         </Col>
                     </Row>
                 </Col>

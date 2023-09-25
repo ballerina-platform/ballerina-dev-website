@@ -129,7 +129,7 @@ export default function Learn() {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Pre-built integration samples using Ballerina language. These samples are built using Ballerina connectors and can be used as a starting point for your integration use cases.
+                  Step-by-step guides on how you can develop your integration scenarios in Ballerina.
                 </p>
               </Container>
             </Col>

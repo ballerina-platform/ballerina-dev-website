@@ -380,13 +380,13 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-    ```bash
-    transform-message-formats$ bal run
-    Compiling source
-            integration_tutorials/transform_message_formats:0.1.0
+```bash
+transform-message-formats$ bal run
+Compiling source
+        integration_tutorials/transform_message_formats:0.1.0
 
-    Running executable
-    ```
+Running executable
+```
 
 ### Step 4: Try out the use case
 

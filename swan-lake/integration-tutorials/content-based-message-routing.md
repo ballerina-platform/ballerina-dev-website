@@ -94,7 +94,7 @@ $ bal new content-based-message-routing
 
 Import the
 - `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
-- `ballerina/log` module to log the debug, error, or info level information for each client request
+- `ballerina/log` module to log debug, error, or info level information for each client request
 
 ```
 import ballerina/http;
@@ -304,7 +304,7 @@ service /healthcare on new http:Listener(port) {
     }
     ```
 
-- If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is an `http:ClientRequestError`, or an "InternalServerError" response if the response is a `http:ServerError`.
+- If the response is not `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is `http:ClientRequestError`, or an "InternalServerError" response if the response is `http:ServerError`.
 
     ```
     log:printError("Reservation request failed", resp);

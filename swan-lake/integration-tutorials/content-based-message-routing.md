@@ -42,7 +42,7 @@ The flow is as follows:
 - clemency -> `http://localhost:9090/clemency/categories`
 - pinevalley -> `http://localhost:9090/pinevalley/categories`
 
-3. Send a request to the selected hospital endpoint and retrieve the response which will be similar to the following.
+3. Send a request to the selected hospital endpoint and retrieve the response, which will be similar to the following.
 
 ```
 {
@@ -94,7 +94,7 @@ $ bal new content-based-message-routing
 
 Import the
 - `ballerina/http` module to develop the REST API and define the clients that can be used to send requests to the backend services
-- `ballerina/log` module to log debug, error, or info level information for each client request
+- `ballerina/log` module to log the debug, error, or info level information for each client request
 
 ```
 import ballerina/http;
@@ -304,7 +304,7 @@ service /healthcare on new http:Listener(port) {
     }
     ```
 
-- If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is a `http:ClientRequestError`, or an "InternalServerError" response if the response is a `http:ServerError`.
+- If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is an `http:ClientRequestError`, or an "InternalServerError" response if the response is a `http:ServerError`.
 
     ```
     log:printError("Reservation request failed", resp);
@@ -417,7 +417,7 @@ service /healthcare on new http:Listener(port) {
 }
 ```
 
-#### Diagram
+#### Sequence diagram
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
@@ -439,9 +439,9 @@ Running executable
 
 Let's test the use case by sending a request to the service.
 
-#### Start the back end service
+#### Start the backend service
 
-Download the JAR file for the backend service from [here](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/) and execute the following command to start the service:
+Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
 ```
 bal run hospitalservice.jar

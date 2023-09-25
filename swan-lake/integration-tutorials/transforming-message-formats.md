@@ -374,7 +374,7 @@ isolated function transform(HealthcareReservation healthcareReservation) returns
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
-![sequence diagram](/learn/images/tutorial_transforming_message_formats_diagram.png)
+<img src="/learn/images/tutorial_transforming_message_formats_diagram.png" alt="Sequence Diagram" height="800" style="width:auto; max-width:100%">
 
 ### Step 3: Build and run the service
 

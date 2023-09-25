@@ -31,7 +31,7 @@ Follow the instructions given in this section to develop the service.
 
 1. Create a new Ballerina project using the `bal` command and open it in VS Code.
 
-    ```
+    ```bash
     $ bal new sending-a-message-to-a-service
     ```
 
@@ -41,21 +41,21 @@ Import the
 - `ballerina/http` module to develop the REST API and define the client that can be used to send requests to the backend service
 - `ballerina/log` module to log some information for each client request
 
-    ```
+    ```ballerina
     import ballerina/http;
     import ballerina/log;
     ```
 
 3. Define two [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URL of the backend service.
 
-    ```
+    ```ballerina
     configurable int port = 8290;
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
     ```
 
 4. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
 
-    ```
+    ```ballerina
     final http:Client queryDoctorEP = check initializeHttpClient();
 
     function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
@@ -65,7 +65,7 @@ The argument to the `new` expression is the URL for the backend service.
 
 5. Define a record corresponding to the payload from the backend service.
 
-    ```
+    ```ballerina
     type Doctor record {|
         string name;
         string hospital;
@@ -79,7 +79,7 @@ The payload will be an array of JSON objects in which, the structure of each JSO
 
 6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request. Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`. Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.
 
-    ```
+    ```ballerina
     service /healthcare on new http:Listener(port) {
         resource function get querydoctor/[string category]() {
             
@@ -89,7 +89,7 @@ The payload will be an array of JSON objects in which, the structure of each JSO
 
 7. Implement the logic to retrieve and respond with relevant details.
 
-    ```
+    ```ballerina
     service /healthcare on new http:Listener(port) {
         resource function get querydoctor/[string category]() 
                 returns Doctor[]|http:NotFound|http:InternalServerError {
@@ -111,19 +111,19 @@ The payload will be an array of JSON objects in which, the structure of each JSO
 
 - The `log:printInfo` statement [logs](https://ballerina.io/learn/by-example/#log) information about the request.
 
-    ```
+    ```ballerina
     log:printInfo("Retrieving information", specialization = category);
     ```
 
 - The call to the backend is done using a remote method call expression (using `->`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.
 
-    ```
+    ```ballerina
     Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
     ```
 
 - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor`s (as expected), then, directly return the array from the resource. If the request failed, send a "NotFound" response if the client call failed with a 4xx status code or return an "InternalServerError" response for other failures.
 
-    ```
+    ```ballerina
     log:printInfo("Retrieving information", specialization = category);
 
     Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
@@ -143,7 +143,7 @@ You have successfully developed the required service.
 
 #### Complete source
 
-```
+```ballerina
 import ballerina/http;
 import ballerina/log;
 
@@ -192,7 +192,7 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-```
+```bash
 sending-a-message-to-a-service$ bal run
 Compiling source
         integration_tutorials/sending_a_message_to_a_service:0.1.0
@@ -208,7 +208,7 @@ Let's test the use case by sending a request to the service.
 
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service:
 
-```
+```bash
 bal run hospitalservice.jar
 ```
 
@@ -220,7 +220,7 @@ Let's send a request to the service using cURL as follows.
 
 2. Execute the following command.
 
-    ```
+    ```bash
     curl -v http://localhost:8290/healthcare/querydoctor/surgery
     ```
 
@@ -228,7 +228,7 @@ Let's send a request to the service using cURL as follows.
 
 You will see the response message from the backend with a list of details of the available doctors.
 
-```
+```json
 [
     {
         "name": "thomas collins",
@@ -256,7 +256,7 @@ You will see the response message from the backend with a list of details of the
 
 Now, check the terminal in which you ran the Ballerina service. You should see a log similar to the following.
 
-```
+```bash
 time = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = "Retrieving information" specialization = "surgery"
 ```
 
@@ -266,14 +266,14 @@ Let's test the use case by writing a test case that sends a request to the servi
 
 1. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
 
-    ```
+    ```ballerina
     import ballerina/http;
     import ballerina/test;
     ```
 
 2. Mock the backend service by mocking the `http:Client` and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
 
-    ```
+    ```ballerina
     public client class MockHttpClient {
         isolated resource function get [string... path](map<string|string[]>? headers = (), http:TargetType targetType = http:Response,
                 *http:QueryParams params) returns http:Response|anydata|http:ClientError {
@@ -298,7 +298,7 @@ Let's test the use case by writing a test case that sends a request to the servi
 
 3. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
 
-    ```
+    ```ballerina
     @test:Config
     function testSuccessfulRequest() returns error? {
         Doctor[] doctors = check cl->/surgery;
@@ -308,7 +308,7 @@ Let's test the use case by writing a test case that sends a request to the servi
 
 4. Run the `bal test` command from the project root to run the tests.
 
-    ```
+    ```bash
     sending-a-message-to-a-service$ bal test
     Compiling source
             integration_tutorials/sending_a_message_to_a_service:0.1.0

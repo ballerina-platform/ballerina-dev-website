@@ -186,7 +186,7 @@ service /healthcare on new http:Listener(port) {
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
-![sequence diagram](/learn/images/tutorial_sending_a_message_to_a_service.png)
+<img src="/learn/images/tutorial_sending_a_message_to_a_service.png" alt="Sequence Diagram" height="800" style="width:auto; max-width:100%">
 
 ### Step 3: Build and run the service
 

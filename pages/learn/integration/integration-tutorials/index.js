@@ -170,7 +170,7 @@ export default function Learn() {
 
                   <SampleList
                     name="Sending emails from a service"
-                    description="Connecting web APIs/cloud services"
+                    description="Use the SMTP protocol to send emails from a service"
                     tags={["Integration", "REST API", "Email", "SMTP Client"]}
                     icon={false}
                   />

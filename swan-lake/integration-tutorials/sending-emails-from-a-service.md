@@ -5,7 +5,7 @@ permalink: /learn/sending-emails-from-a-service/
 description: Integration tutorial for sending emails from a service.
 keywords: ballerina, programming language, client, restful-api, integration, smtp, email
 active: sending-emails-from-a-service
-intro: This tutorial helps you understand the basics of Ballerina constructs, which allow you to do client calls and develop RESTful APIs.
+intro: This tutorial helps you understand the basics of Ballerina constructs, which allow you to do client calls, develop RESTful APIs, and send emails using the SMTP protocol.
 ---
 
 ## Overview
@@ -614,13 +614,13 @@ function getEmailContent(int appointmentNumber, Appointment appointment, Payment
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-```bash
-sending-emails-from-a-service$ bal run
-Compiling source
-        integration_tutorials/sending_emails_from_a_service:0.1.0
+    ```bash
+    sending-emails-from-a-service$ bal run
+    Compiling source
+            integration_tutorials/sending_emails_from_a_service:0.1.0
 
-Running executable
-```
+    Running executable
+    ```
 
 ### Step 4: Try out the use case
 
@@ -630,9 +630,9 @@ Let's test the use case by sending a request to the service.
 
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
-```bash
-bal run hospitalservice.jar
-```
+    ```bash
+    bal run hospitalservice.jar
+    ```
 
 #### Send a request
 
@@ -642,29 +642,29 @@ Let's send a request to the service using cURL as follows.
 
 2. Create a file named `request.json` with the request payload.
 
-```json
-{
-    "patient": {
-        "name": "John Doe",
-        "dob": "1940-03-19",
-        "ssn": "234-23-525",
-        "address": "California",
-        "phone": "8770586755",
-        "email": "johndoe@gmail.com",
-        "cardNo": "7844481124110331"
-    },
-    "doctor": "thomas collins",
-    "hospital_id": "grandoaks",
-    "hospital": "grand oak community hospital",
-    "appointment_date": "2023-10-02"
-}
-```
+    ```json
+    {
+        "patient": {
+            "name": "John Doe",
+            "dob": "1940-03-19",
+            "ssn": "234-23-525",
+            "address": "California",
+            "phone": "8770586755",
+            "email": "johndoe@gmail.com",
+            "cardNo": "7844481124110331"
+        },
+        "doctor": "thomas collins",
+        "hospital_id": "grandoaks",
+        "hospital": "grand oak community hospital",
+        "appointment_date": "2023-10-02"
+    }
+    ```
 
 3. Execute the following command.
 
-```bash
-curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
-```
+    ```bash
+    curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
+    ```
 
 #### Verify the email
 

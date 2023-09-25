@@ -5,7 +5,7 @@ permalink: /learn/sending-a-message-to-a-service/
 description: Integration tutorial for sending a message to a service.
 keywords: ballerina, programming language, client, restful-api, integration
 active: sending-a-message-to-a-service
-intro: This tutorial helps you understand the basics of Ballerina constructs, which allow you to do client calls and develop RESTful APIs.
+intro: This tutorial helps you understand the basics of how Ballerina can be used to do client calls and develop RESTful APIs.
 ---
 
 ## Overview

@@ -143,35 +143,35 @@ export default function Learn() {
                   <SampleList
                     name="Sending a message to a service"
                     description="Use an HTTP client in a service to send a message to another service"
-                    tags={["HTTP client", "REST API", "Data Binding", "Integration"]}
+                    tags={["HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Content-based message routing"
                     description="Route requests based on message content"
-                    tags={["HTTP client", "REST API", "Data Binding", "Content-based Routing", "Integration"]}
+                    tags={["Content-based Routing", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Service orchestration"
                     description="Integrate several services and expose them as a single service"
-                    tags={["HTTP Client", "REST API", "Data Binding", "Integration", "Service Orchestration"]}
+                    tags={["Service Orchestration", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Transforming message formats"
                     description="Transform messages from one format to another"
-                    tags={["HTTP Client", "REST API", "Data Binding", "Data Mapper", "Integration"]}
+                    tags={["Data Mapper", "Data Transformation", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
                     icon={false}
                   />
 
                   <SampleList
                     name="Sending emails from a service"
                     description="Use the SMTP protocol to send emails from a service"
-                    tags={["Integration", "REST API", "Email", "SMTP Client"]}
+                    tags={["Email", "SMTP Client", "HTTP Client", "HTTP Service", "REST API", "Integration"]}
                     icon={false}
                   />
 

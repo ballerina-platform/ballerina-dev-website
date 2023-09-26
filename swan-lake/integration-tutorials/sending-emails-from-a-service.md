@@ -227,7 +227,7 @@ Follow the instructions given in this section to develop the service.
     ```ballerina
     service /healthcare on new http:Listener(port) {
         resource function post categories/[string category]/reserve(ReservationRequest payload) 
-                returns http:Created|http:InternalServerError|http:NotFound {
+                returns http:Created|http:NotFound|http:InternalServerError {
             
         }
     }
@@ -239,7 +239,7 @@ Follow the instructions given in this section to develop the service.
 
    - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
 
-   - Use `http:Created|http:InternalServerError|http:NotFound` as the return type to indicate that the response will be an `http:Created` response when the email is sent successfully to the user or the response will be an `http:InternalServerError` or `http:NotFound` response on error.
+   - Use `http:Created|http:NotFound|http:InternalServerError` as the return type to indicate that the response will be an `http:Created` response when the email is sent successfully to the user or the response will be an `http:NotFound` or `http:InternalServerError` response on error.
 
 7. Implement the logic.
 
@@ -247,7 +247,7 @@ Follow the instructions given in this section to develop the service.
     service /healthcare on new http:Listener(port) {
 
         resource function post categories/[string category]/reserve(ReservationRequest payload)
-                returns http:Created|http:InternalServerError|http:NotFound {
+                returns http:Created|http:NotFound|http:InternalServerError {
 
             ReservationRequest {
                 patient: {cardNo, ...patient},
@@ -344,7 +344,7 @@ Follow the instructions given in this section to develop the service.
        });
        ```
 
-   - Use the `is` check to decide the flow based on the response to the client call. If the request failed, return a "NotFound" response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an "InternalServerError" response.
+   - Use the `is` check to decide the flow based on the response to the client call. If the request failed, return an `http:NotFound` response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an `http:InternalServerError` response.
 
        ```ballerina
        if appointment !is Appointment {
@@ -412,7 +412,7 @@ Follow the instructions given in this section to develop the service.
                Payment Status: ${payment.status}`;
        ```
 
-   - If the email is sent successfully, the response will be a "Created" response. If the email sending process resulted in an error, an "InternalServerError" response will be returned.
+   - If the email is sent successfully, the response will be an `http:Created` response. If the email sending process resulted in an error, an `http:InternalServerError` response will be returned.
 
        ```ballerina
        email:Error? sendMessage = smtpClient->sendMessage({
@@ -525,7 +525,7 @@ function initializeEmailClient() returns email:SmtpClient|error => new (host, us
 service /healthcare on new http:Listener(port) {
 
     resource function post categories/[string category]/reserve(ReservationRequest payload)
-            returns http:Created|http:InternalServerError|http:NotFound {
+            returns http:Created|http:NotFound|http:InternalServerError {
 
         ReservationRequest {
             patient: {cardNo, ...patient},

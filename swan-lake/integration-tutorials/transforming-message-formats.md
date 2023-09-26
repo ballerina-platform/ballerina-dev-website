@@ -20,17 +20,18 @@ The flow is as follows
 
     ```json
     {
-        "name": "John Doe",
+        "firstName": "John",
+        "lastName": "Doe",
         "dob": "1940-03-19",
-        "ssn": "234-23-525",
+        "ssn": [234, 23, 525],
         "address": "California",
         "phone": "8770586755",
         "email": "johndoe@gmail.com",
         "doctor": "thomas collins",
-        "hospital_id": "grandoak",
+        "hospitalId": "grandoak",
         "hospital": "grand oak community hospital",
-        "card_no": "7844481124110331",
-        "appointment_date": "2017-04-02"
+        "cardNo": "7844481124110331",
+        "appointmentDate": "2017-04-02"
     }
     ```
 
@@ -147,19 +148,20 @@ Follow the instructions given in this section to develop the service.
     The source code of the `transform` function will be as follows.
 
     ```ballerina
-    isolated function transform(HealthcareReservation healthcareReservation) returns HospitalReservation => {
-        patient: {
-            name: healthcareReservation.name,
-            dob: healthcareReservation.dob,
-            ssn: healthcareReservation.ssn,
-            address: healthcareReservation.address,
-            phone: healthcareReservation.phone,
-            email: healthcareReservation.email
-        },
-        doctor: healthcareReservation.doctor,
-        hospital: healthcareReservation.hospital,
-        appointment_date: healthcareReservation.appointment_date
-    };
+    isolated function transform(HealthcareReservation reservation) returns HospitalReservation => 
+        let var ssn = reservation.ssn in {
+            patient: {
+                name: reservation.firstName + " " + reservation.lastName,
+                dob: reservation.dob,
+                ssn: string `${ssn[0]}-${ssn[1]}-${ssn[2]}`,
+                address: reservation.address,
+                phone: reservation.phone,
+                email: reservation.email
+            },
+            doctor: reservation.doctor,
+            hospital: reservation.hospital,
+            appointment_date: reservation.appointmentDate
+        };
     ```
 
 6. Define the rest of the records corresponding to the response payload from the hospital service.
@@ -189,7 +191,7 @@ Follow the instructions given in this section to develop the service.
     ```ballerina
     service /healthcare on new http:Listener(port) {
         isolated resource function post categories/[string category]/reserve(HealthcareReservation payload)
-                returns ReservationResponse|http:NotFound|http:BadRequest|http:InternalServerError {
+                returns ReservationResponse|http:NotFound|http:InternalServerError {
             
         }
     }
@@ -212,11 +214,11 @@ Follow the instructions given in this section to develop the service.
             HospitalReservation hospitalReservation = transform(payload);
 
             ReservationResponse|http:ClientError resp =
-                        hospitalServiceEP->/[payload.hospital_id]/categories/[category]/reserve.post(hospitalReservation);
+                        hospitalServiceEP->/[payload.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
 
             if resp is ReservationResponse {
                 log:printDebug("Reservation request successful",
-                                name = payload.name,
+                                name = hospitalReservation.patient.name,
                                 appointmentNumber = resp.appointmentNumber);
                 return resp;
             }
@@ -237,11 +239,11 @@ Follow the instructions given in this section to develop the service.
         HospitalReservation hospitalReservation = transform(payload);
         ```
 
-    - Use the transformed payload in the request to the hospital service and get the response. Here, The `hospital_id` and `category` values are used as path parameters.
+    - Use the transformed payload in the request to the hospital service and get the response. Here, The `hospitalId` and `category` values are used as path parameters.
 
         ```ballerina
         ReservationResponse|http:ClientError resp =
-                        hospitalServiceEP->/[payload.hospital_id]/categories/[category]/reserve.post(hospitalReservation);
+                        hospitalServiceEP->/[payload.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
         ```
 
     - The `log` functions are used to [log](https://ballerina.io/learn/by-example/#log) information at `INFO`, `DEBUG`, and `ERROR` log levels.
@@ -251,7 +253,7 @@ Follow the instructions given in this section to develop the service.
         ```ballerina
         if resp is ReservationResponse {
             log:printDebug("Reservation request successful",
-                            name = payload.name,
+                            name = hospitalReservation.patient.name,
                             appointmentNumber = resp.appointmentNumber);
             return resp;
         }
@@ -284,17 +286,18 @@ final http:Client hospitalServiceEP = check initializeHttpClient();
 function initializeHttpClient() returns http:Client|error => new (hospitalServiceUrl);
 
 type HealthcareReservation record {|
-    string name;
+    string firstName;
+    string lastName;
     string dob;
-    string ssn;
+    int[3] ssn;
     string address;
     string phone;
     string email;
     string doctor;
-    string hospital_id;
+    string hospitalId;
     string hospital;
-    string card_no;
-    string appointment_date;
+    string cardNo;
+    string appointmentDate;
 |};
 
 type Patient record {|
@@ -337,11 +340,11 @@ service /healthcare on new http:Listener(port) {
         HospitalReservation hospitalReservation = transform(payload);
 
         ReservationResponse|http:ClientError resp =
-                    hospitalServiceEP->/[payload.hospital_id]/categories/[category]/reserve.post(hospitalReservation);
+                    hospitalServiceEP->/[payload.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
 
         if resp is ReservationResponse {
             log:printDebug("Reservation request successful",
-                            name = payload.name,
+                            name = hospitalReservation.patient.name,
                             appointmentNumber = resp.appointmentNumber);
             return resp;
         }
@@ -355,19 +358,20 @@ service /healthcare on new http:Listener(port) {
     }
 }
 
-isolated function transform(HealthcareReservation healthcareReservation) returns HospitalReservation => {
-    patient: {
-        name: healthcareReservation.name,
-        dob: healthcareReservation.dob,
-        ssn: healthcareReservation.ssn,
-        address: healthcareReservation.address,
-        phone: healthcareReservation.phone,
-        email: healthcareReservation.email
-    },
-    doctor: healthcareReservation.doctor,
-    hospital: healthcareReservation.hospital,
-    appointment_date: healthcareReservation.appointment_date
-};
+isolated function transform(HealthcareReservation reservation) returns HospitalReservation => 
+    let var ssn = reservation.ssn in {
+        patient: {
+            name: reservation.firstName + " " + reservation.lastName,
+            dob: reservation.dob,
+            ssn: string `${ssn[0]}-${ssn[1]}-${ssn[2]}`,
+            address: reservation.address,
+            phone: reservation.phone,
+            email: reservation.email
+        },
+        doctor: reservation.doctor,
+        hospital: reservation.hospital,
+        appointment_date: reservation.appointmentDate
+    };
 ```
 
 #### Sequence Diagram
@@ -410,17 +414,18 @@ Let's send a request to the service using cURL as follows.
 
     ```json
     {
-        "name": "John Doe",
+        "firstName": "John",
+        "lastName": "Doe",
         "dob": "1940-03-19",
-        "ssn": "234-23-525",
+        "ssn": [234, 23, 525],
         "address": "California",
         "phone": "8770586755",
         "email": "johndoe@gmail.com",
         "doctor": "thomas collins",
-        "hospital_id": "grandoak",
+        "hospitalId": "grandoak",
         "hospital": "grand oak community hospital",
-        "card_no": "7844481124110331",
-        "appointment_date": "2017-04-02"
+        "cardNo": "7844481124110331",
+        "appointmentDate": "2017-04-02"
     }
     ```
 

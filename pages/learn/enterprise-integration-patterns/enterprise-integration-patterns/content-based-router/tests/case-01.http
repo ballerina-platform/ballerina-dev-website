@@ -1,0 +1,7 @@
+POST http://localhost:8080/shipments/status
+content-type: application/json
+
+{
+    "country": "UK",
+    "tracking_id":"123A"
+}

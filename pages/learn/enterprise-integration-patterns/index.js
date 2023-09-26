@@ -30,7 +30,7 @@ const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/
 
 export async function getStaticProps() {
   const files = fs.readdirSync(baseDirectory);
-  var patterns = [];
+  var patterns = {};
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     const filePath = path.join(baseDirectory, file);
@@ -43,17 +43,34 @@ export async function getStaticProps() {
 
       const ymlPath = path.join(baseDirectory, file, file + ".yml");
       const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
-      if (!fs.existsSync(ymlPath)) {
-        patterns.push({ name });
-        continue;
-      }
-      const yml = fs.readFileSync(ymlPath, "utf-8");
-      var pattern = load(yml);
+      var pattern = loadYml(ymlPath);
       pattern.name = pattern.name ?? name;
-      patterns.push(pattern);
+      const category = pattern.category ?? "uncategorized";
+      const existingCategory = patterns[category];
+      if (existingCategory) {
+        existingCategory.push(pattern);
+      } else {
+        patterns[category] = [pattern];
+      }
     }
   }
-  return { props: { patterns } };
+  for (const category of Object.values(patterns)) {
+    category.sort((a, b) => {
+      const ai = a.index ?? -1;
+      const bi = b.index ?? -1;
+      return ai - bi;
+    });
+  }
+  // list of categories, sorted by index
+  const categories = Object.keys(patterns).sort((a, b) => { return (patterns[a][0].index ?? -1) - (patterns[b][0].index ?? -1) });
+  return { props: { categories, patterns } };
+}
+
+function loadYml(ymlPath) {
+  if (!fs.existsSync(ymlPath)) {
+    return {};
+  }
+  return load(fs.readFileSync(ymlPath, "utf-8"));
 }
 
 export default function PatternList(props) {
@@ -150,15 +167,21 @@ export default function PatternList(props) {
 
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
-              <Container>
+              {
+                // Object.entries(props.patterns).map(([categoryName, patters]) => (
+                props.categories.map((categoryName) => (
+                  <Container>
+                    <h2>{categoryName}</h2>
                     <Row>
-                {
-                  props.patterns.map((p) => (
-                    <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name}/>
-                  ))
-                }
+                      {
+                        props.patterns[categoryName].map((p) => (
+                          <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name} />
+                        ))
+                      }
                     </Row>
-              </Container>
+                  </Container>
+                ))
+              }
             </Col>
           </Row>
 

@@ -62,6 +62,15 @@ export default function Boxes(props) {
 
                       <div className={styles.content}>
                         <p className={styles.title}>
+                          <a href={`${prefix}/learn/integration-tutorials`} className={styles.titleLink}>
+                            Integration tutorials
+                          </a>
+                        </p>
+                        <p className={styles.description}>Explore and try out a series of guided integration tutorials.</p>
+                      </div>
+
+                      <div className={styles.content}>
+                        <p className={styles.title}>
                           <a href={`${prefix}/learn/supported-data-formats`} className={styles.titleLink}>
                             Supported data formats
                           </a>

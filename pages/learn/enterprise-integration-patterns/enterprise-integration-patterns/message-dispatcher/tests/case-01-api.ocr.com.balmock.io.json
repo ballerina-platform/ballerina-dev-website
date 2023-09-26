@@ -1,0 +1,5 @@
+{
+    "lines" : ["Lorem ipsum dolor sit amet,", "consectetur adipiscing elit"],
+    "noOfLines" : 2,
+    "pdfUrl" : "http://api.ocr.com.balmock.io/pdf/imageadt4761"
+}

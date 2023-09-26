@@ -1,0 +1,8 @@
+POST http://localhost:8080/finance/reimburse
+content-type: application/json
+
+{
+    "employee_id": "8923",
+    "reason": "Travel for business",
+    "amount": "1230.00"
+}

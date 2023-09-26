@@ -1,0 +1,36 @@
+POST http://localhost:8080/api/v1/incidents
+
+{
+  "phoneNo": "+94749933244",
+  "incident": {
+      "description": "System breakdown",
+      "date": "2023-10-10",
+      "time": "10:00"
+    }
+}
+
+###
+
+POST http://localhost:8080/api/v1/incidents
+
+{
+  "phoneNo": "+94784434456",
+  "incident": {
+      "description": "Rate exceeded",
+      "date": "2023-10-11",
+        "time": "13:00"
+    }
+}
+
+###
+
+POST http://localhost:8080/api/v1/incidents
+
+{
+  "phoneNo": "+94785734245",
+  "incident": {
+      "description": "Bug in application",
+      "date": "2023-10-13",
+        "time": "09:00"
+    }
+}

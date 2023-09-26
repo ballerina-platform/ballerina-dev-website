@@ -1,9 +1,9 @@
 ---
 layout: ballerina-platform-specifications-left-nav-pages-swanlake
 title: Ballerina specifications
-intro: Read the Ballerina language specification and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
-description: Read the Ballerina language specification and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
-keywords: ballerina, specifications, spec, language specifications, platform specifications, standard library specifications
+intro: Read the Ballerina language specification and other specifications that cover the Ballerina library, built-in language extensions, testing, documentation, and more.
+description: Read the Ballerina language specification and other specifications that cover the Ballerina library, built-in language extensions, testing, documentation, and more.
+keywords: ballerina, specifications, spec, language specifications, platform specifications, Ballerina library specifications
 permalink: /learn/platform-specifications/
 redirect_from:
   - /learn/language-specification
@@ -19,7 +19,7 @@ redirect_from:
 
 As a language, which is designed to have multiple implementations, Ballerina semantics are defined by a series of specifications and not by the implementation. Currently, there is only one implementation (i.e., jBallerina that compiles Ballerina to Java bytecodes). Others will follow including a compiler, which generates native binaries using LLVM.
 
-Ballerina has a collection of specifications starting with the Ballerina Language Specification. Other specifications (which are yet to be moved to the specification repository or, in some cases, yet to be written) will cover the standard library, built-in language extensions such as security, immutability & deprecation, module and project management, testing, documentation, compiler extensions for cloud, and Ballerina Central.
+Ballerina has a collection of specifications starting with the Ballerina Language Specification. Other specifications (which are yet to be moved to the specification repository or, in some cases, yet to be written) will cover the Ballerina library, built-in language extensions such as security, immutability & deprecation, module and project management, testing, documentation, compiler extensions for cloud, and Ballerina Central.
 
 ## Language specifications 
 
@@ -27,7 +27,7 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ### Released specifications
 
-The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
+Below are the most stable versions of the language specification, which are in sync with the Ballerina releases.
 
 > **Note:** The changes since previous releases section of the specification identifies the changes that have occurred in each version of the specification.
 
@@ -51,7 +51,7 @@ For a snapshot of the current language specification including all changes, see 
 
 For previous draft language specifications of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/">draft language specification</a>.
 
-## Standard library specifications
+## Ballerina library specifications
 
 | Package | Edition | Current snapshot | Description |
 | ------- | ------- | ---------------- | ----------- |

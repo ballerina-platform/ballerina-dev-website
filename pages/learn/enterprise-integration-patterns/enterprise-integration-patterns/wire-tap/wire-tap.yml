@@ -1,5 +1,7 @@
 tagline: Publish to a secondary channel for inspection
 desc: Wire tap publishes each incoming message unmodified to a secondary channel for inspection and analysis.
+category: System Management
+index: 55
 helps: Ballerina has a lightweight concurrency model with built-in syntax support. This helps to send messages to a secondary channel parallelly without blocking the main channel.
 tags: ["Wire Tap", "Message Channel", "Message Endpoint"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/WireTap.html

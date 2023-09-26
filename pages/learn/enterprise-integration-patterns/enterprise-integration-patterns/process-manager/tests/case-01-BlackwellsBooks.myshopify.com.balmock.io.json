@@ -1,0 +1,21 @@
+{
+    "email": "bobNor@example.com",
+    "currency": "EUR",
+    "total": 224.97,
+    "address": {
+        "fullName": "Bob Norman",
+        "address1": "Chestnut Street 92",
+        "phone": "+1(502)-459-2181",
+        "city": "Louisville",
+        "country": "United States"
+    },
+    "orderItems": [
+        {
+            "itemName": "Atomic Habits",
+            "price": 74.99,
+            "currencyCode": "EUR",
+            "quantity": 3
+        }
+    ],
+    "trackingNumber": "123AbV4567nKd890"
+}

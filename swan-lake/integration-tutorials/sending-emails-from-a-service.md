@@ -239,7 +239,7 @@ Follow the instructions given in this section to develop the service.
 
    - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
 
-   - Use `http:Created|http:InternalServerError|http:NotFound` as the return type to indicate that the response will be a "Created" response when the email is sent successfully to the user or the response will be an "InternalServerError" or "NotFound" response on error.
+   - Use `http:Created|http:InternalServerError|http:NotFound` as the return type to indicate that the response will be an `http:Created` response when the email is sent successfully to the user or the response will be an `http:InternalServerError` or `http:NotFound` response on error.
 
 7. Implement the logic.
 

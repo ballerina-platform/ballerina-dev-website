@@ -1,0 +1,12 @@
+{
+    "id": "0VF41793826897254",
+    "status": "CAPTURED",
+    "amount": {
+        "value": "10.99",
+        "currency_code": "USD"
+    },
+    "payee": {
+        "email_address": "johnDoe@example.com",
+        "merchant_id": "6LMFBSH2R56HP"
+    }
+}

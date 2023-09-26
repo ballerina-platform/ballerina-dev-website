@@ -1,6 +1,8 @@
 name: Scatter-Gather
 tagline: Send messages to multiple recipients and re-aggregate the responses
 desc: Scatter-gather broadcasts a message to multiple recipients and re-aggregates the responses back into a single message.
+category: Message Routing
+index: 32
 helps: Ballerina has a lightweight [concurrency](/learn/by-example/named-workers/) model with built-in syntax support. This helps to send messages parallelly and to wait on aggregation. Query expressions are convenient for transforming, ordering, and filtering the aggregated data.
 tags: ["Scatter-Gather", "Aggregator", "Message Channel", "Message Endpoint", "Message Router", "Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/BroadcastAggregate.html

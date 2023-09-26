@@ -1,5 +1,7 @@
 tagline: Connect messaging systems
 desc: Massaging bridge connects multiple messaging systems by mapping channels and transforming message formats.
+category: Messaging Channels
+index: 13
 helps: Single Ballerina program can connect to multiple messaging systems. Each system may utilize different protocols and message formats. Protocols such as HTTP, GRPC, Kafka, JDBC, etc. are supported via Ballerina's rich set of stranded libraries. JSON and XML are supported at the type system level. Other formats such as CSV and EDI are supported via libraries.
 tags: ["Messaging Bridge", "Message Channel", "Message Endpoint", "Channel Adapter", "Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html

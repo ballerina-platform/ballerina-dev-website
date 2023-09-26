@@ -1,0 +1,8 @@
+name: Content-Based Router
+tagline: Route messages based on message content
+desc: Content-based router routes each message to the correct recipient based on message content.
+helps: Ballerina supports conditional logic with if-else and match statements. This can be used to route messages based on message content, header, or any custom logic. Ballerina type system supports union types (e.g., `Country` enum below is a union), which helps to define choices in a type-safe and readable manner.
+category: Message Routing
+index: 24
+tags: ["Content Based Router", "Message Filter", "Dynamtic Router"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentBasedRouter.html

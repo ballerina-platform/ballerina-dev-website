@@ -121,7 +121,7 @@ Follow the instructions given in this section to develop the service.
         Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
         ```
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor`s (as expected), then, directly return the array from the resource. If the request failed, send a "NotFound" response if the client call failed with a 4xx status code or return an "InternalServerError" response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then, directly return the array from the resource. If the request failed, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
 
         ```ballerina
         log:printInfo("Retrieving information", specialization = category);
@@ -271,12 +271,14 @@ Let's test the use case by writing a test case that sends a request to the servi
     import ballerina/test;
     ```
 
-2. Mock the backend service by mocking the `http:Client` and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
+2. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
 
     ```ballerina
     public client class MockHttpClient {
-        isolated resource function get [string... path](map<string|string[]>? headers = (), http:TargetType targetType = http:Response,
-                *http:QueryParams params) returns http:Response|anydata|http:ClientError {
+        isolated resource function get [string... path](map<string|string[]>? headers = (), 
+                                                        http:TargetType targetType = http:Response,
+                                                        *http:QueryParams params) 
+                                                    returns http:Response|anydata|http:ClientError {
             match path[0] {
                 "surgery" => {
                     return getSurgeryResponsePayload();

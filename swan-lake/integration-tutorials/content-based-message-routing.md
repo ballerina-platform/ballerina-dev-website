@@ -193,7 +193,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
 
-    - Use `ReservationResponse|http:NotFound|http:BadRequest|http:InternalServerError` as the return type to indicate that the response will have a JSON payload corresponding to `ReservationResponse` on success or the response will be a "NotFound", "BadRequest" or "InternalServerError" response on error.
+    - Use `ReservationResponse|http:NotFound|http:InternalServerError` as the return type to indicate that the response will have a JSON payload corresponding to `ReservationResponse` on success or the response will be an `http:NotFound` or `http:InternalServerError` response on error.
 
 8. Implement the logic.
 

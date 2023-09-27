@@ -33,10 +33,10 @@ export default function Intro() {
                         <Col xs={12} lg={5} className={styles.introText}>
                             <div>
 
-                                <p className={styles.introText2}>A revolutionary programming language meticulously crafted to be the epitome of microservices development.
+                                <p className={styles.introText2}>With its visionary design and cutting-edge features, Ballerina empowers developers to create robust, scalable, and easily maintainable microservices architectures.
                                 </p>
 
-                                <p className={styles.introText3}>With its visionary design and cutting-edge features, Ballerina empowers developers to create robust, scalable, and easily maintainable microservices architectures.
+                                <p className={styles.introText3}>The Ballerina programming language effortlessly facilitates the construction and seamless deployment of microservices, making the process remarkably straightforward for developers.
                                 </p>
 
                                 <p className={styles.dVersion}>

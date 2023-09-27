@@ -1,6 +1,6 @@
 ---
-title: 'Purposefully designed for microservices'
-description: Ballerina is tailor-made to excel in the realm of distributed systems. Every aspect of Ballerina, from its syntax to its constructs and abstractions, is meticulously crafted to simplify the development, deployment, and management of microservices.
+title: 'Purposefully crafted for microservices integration'
+description: Ballerina is specifically engineered to thrive in the domain of distributed systems. Every facet of Ballerina, from its syntax to its constructs and abstractions, is thoughtfully designed to streamline the integration, development, deployment, and management of microservices.
 url: 'https://github.com/ballerina-guides/integration-samples/tree/main/restful_api/main.bal'
 ---
 ```

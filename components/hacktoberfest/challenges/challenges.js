@@ -18,9 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 
-import { prefix } from '../../../utils/prefix';
 import styles from './Challenges.module.css';
 
 export default function Intro(props) {
@@ -62,7 +60,7 @@ export default function Intro(props) {
                       <div className={styles.cardDescription}>
                           <p className={styles.content}>If you're up for a coding challenge. Take on tasks labeled with <code className="highlighter-rouge language-plaintext">Hacktoberfest<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> from our <a className={styles.titleLink} target='_blank' href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Ballerina Hacktoberfest 2023 project</a>.</p>
                           <p className={styles.content}>Refer <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started.</p>
-                          <p className={styles.content}>Join Our Community: Connect with the Ballerina community on our forums, mailing lists, and social media channels.</p>
+                          <p className={styles.content}>Join <a className={styles.titleLink} target='_blank' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
                           <p className={styles.content}>Star <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-lang'>ballerina-lang repository</a> if you like Ballerina</p>
                       </div>
                     </div>

@@ -19,7 +19,6 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 
-import { prefix } from '../../../utils/prefix';
 import styles from './Rewards.module.css';
 
 export default function Rewards(props) {

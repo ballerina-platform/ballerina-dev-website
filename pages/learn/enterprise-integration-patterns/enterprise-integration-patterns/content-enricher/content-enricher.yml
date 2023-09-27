@@ -1,5 +1,7 @@
 tagline: Add data to message
 desc: Content enricher adds data that was not sent by the original sender to the message.
+category: Message Transformation
+index: 37
 helps: Ballerina enables additional lookups to enrich the message, such as database lookups, REST API calls, etc.
        Spread operator (...) helps to create new records out of existing records while enriching them with additional data.
 tags: ["Content Enricher", "Message Channel", "Message Endpoint", "Message"]

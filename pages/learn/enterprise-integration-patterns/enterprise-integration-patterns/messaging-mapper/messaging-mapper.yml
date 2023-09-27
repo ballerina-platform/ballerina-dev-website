@@ -1,0 +1,7 @@
+tagline: Mapping infrastructure messages to domain objects
+desc: The Messaging Mapper maps infrastructure messages to domain objects.
+category: Messaging Endpoints
+index: 43
+helps: Ballerina services facilitate the direct mapping of incoming and outgoing domain objects to JSON values. Ballerina's table data structure offers the ability to store domain objects in memory, closely resembling the functionality of SQL-based tables.
+tags: ["Messaging Mapper", "Message Translator"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingMapper.html

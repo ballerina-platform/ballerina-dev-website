@@ -1,0 +1,7 @@
+tagline: Filter uninterested messages
+desc: Message filter neglects the uninterested messages based on criteria and publishes the filtered message to another channel.
+category: Message Routing
+index: 25
+helps: Ballerina enables filtering messages using basic control structures such as if and switch statements.
+tags: ["Message Filter", "Message Channel", "Message Endpoint"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Filter.html

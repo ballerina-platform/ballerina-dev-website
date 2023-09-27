@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/v1/data/patient
+
+{
+    "versoion": "1.0",
+    "firstName": "John",
+    "lastName": "Cook",
+    "dob": "1977-12-06",
+    "diagnosis": "Migraine"
+}

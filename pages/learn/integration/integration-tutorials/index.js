@@ -175,14 +175,6 @@ export default function Learn() {
                     icon={false}
                   />
 
-                  {/* <SampleList
-                    name="File processing"
-                    description="File processing"
-                    tags={["File Processing", "Persistence", "Integration"]}
-                    icon={false}
-                  /> */}
-
-
                 </Row>
               </Container>
             </Col>

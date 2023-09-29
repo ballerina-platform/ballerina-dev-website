@@ -48,7 +48,7 @@ export default function Intro(props) {
           </Row>
           <Row>
             <div>
-              <p className={styles.introText2}>We have prepared several categories of open issues that are ideal for first-time developers, low-code, and no-code contributors. They fall into the following categories:</p>
+              <p className={styles.introText2}>We have prepared several categories of open issues that are ideal for first-time developers and low-code/no-code contributors. They fall into the following categories:</p>
             </div>
           </Row>
 
@@ -59,9 +59,7 @@ export default function Intro(props) {
                       <h3>Code contributions</h3>
                       <div className={styles.cardDescription}>
                           <p className={styles.content}>If you're up for a coding challenge. Take on tasks labeled with <code className="highlighter-rouge language-plaintext">Hacktoberfest<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> from our <a className={styles.titleLink} target='_blank' href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Ballerina Hacktoberfest 2023 project</a>.</p>
-                          <p className={styles.content}>Refer <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started.</p>
-                          <p className={styles.content}>Join <a className={styles.titleLink} target='_blank' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
-                          <p className={styles.content}>Star <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-lang'>ballerina-lang repository</a> if you like Ballerina</p>
+                          <p className={styles.content}>Refer to the <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started, and leave a comment on the issue when you start working on it.</p>
                       </div>
                     </div>
                   </div>
@@ -72,15 +70,22 @@ export default function Intro(props) {
                       <h3>Low/No Code contributions</h3>
                       <div className={styles.cardDescription}>
                           <p className={styles.content}>
-                            Are you a content creator? Do you love sharing your knowledge and helping others learn? This is your chance to shine! Create informative and engaging tutorial videos or blogs about Ballerina. 
+                            Are you a content creator? Do you love sharing your knowledge and helping others learn? This is your chance to shine! 
                           </p>
                           <p className={styles.content}>
-                            Whether you're a seasoned expert or just getting started, your insights can make a difference in someone else's journey. Plus, you'll be helping more developers adopt Ballerina.
+                          Create informative and engaging videos(tutorials, introductory or comparison videos) or written content (articles/blogs) about Ballerina.
+                          </p>
+                          <p className={styles.content}>
+                          Whether you're a seasoned expert or just getting started, your insights can make a difference in someone else's journey. Plus, you'll be helping more developers adopt Ballerina.
                           </p>
                       </div>
                     </div>
                   </div>
               </Col>
+            </Row>
+
+            <Row>
+              <p className={styles.introText2}>Join <a className={styles.titleLink} target='_blank' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
             </Row>
 
             </Container>

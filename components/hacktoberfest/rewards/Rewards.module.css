@@ -1,20 +1,3 @@
-.logo img {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-
-
-.logo {
-  text-align: center;
-}
-
-
-/* .introCard {
-    text-align: center;
-} */
-
 .boxCol {
   display: flex;
   flex-flow: row wrap;
@@ -23,7 +6,6 @@
 
 .boxCol .cardWrapper {
   border: #a7a8ab solid 0.3px;
-  /* background-color: #ffffff; */
   width: 100%;
   padding: 20px;
   border-radius: 4px;
@@ -35,7 +17,6 @@
 .pGroup {
   border: #a7a8ab solid 0.3px;
   padding: 25px;
-  /* height: 120px; */
   margin-bottom: 30px;
 }
 
@@ -51,16 +32,6 @@
   color: #585a5e;
   height: auto;
   margin-bottom: 10;
-}
-
-.pGroup h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #585a5e;
-}
-
-.pGroup:hover {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .titleLink {
@@ -83,7 +54,6 @@
 }
 
 .contentCol {
-  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
 }

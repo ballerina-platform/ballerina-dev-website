@@ -46,7 +46,7 @@ export default function Rewards(props) {
         </Row>
         <Row>
           <p className={styles.title}>
-          All your contributions during Hacktoberfest will be carefully evaluated by us, and you'll be rewarded accordingly. Not only will you gain recognition for your work, but you'll also be contributing to the growth and improvement of Ballerina.
+          We will carefully evaluate all your contributions during Hacktoberfest, and you'll be rewarded accordingly. You will not only gain recognition for your work but also contribute to the growth and improvement of Ballerina.
           </p>
         </Row>
         <Row>
@@ -60,7 +60,8 @@ export default function Rewards(props) {
                         <ul>
                           <li>$25 Amazon voucher</li>
                           <li>Ballerina branded sticker pack</li>
-                          <li>WSO2 practitioner and developer <a className={styles.titleLink} target="_blank" href="https://wso2.com/training/certification/">certification coupons</a></li>
+                          <li>WSO2 free vouchers for <a className={styles.titleLink} target="_blank" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
+                          <li><a className={styles.titleLink} target="_blank" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>
                       </div>
                     </div>
@@ -86,7 +87,8 @@ export default function Rewards(props) {
                         <ul>
                           <li>Ballerina T-shirt</li>
                           <li>Ballerina branded sticker pack</li>
-                          <li>WSO2 practitioner and developer <a className={styles.titleLink} target="_blank" href="https://wso2.com/training/certification/">certification coupons</a></li>
+                          <li>WSO2 free vouchers for <a className={styles.titleLink} target="_blank" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
+                          <li><a className={styles.titleLink} target="_blank" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>
                       </div>
                     </div>

@@ -25,7 +25,7 @@ import Intro from '../../components/hacktoberfest/intro/Intro';
 import Challenges from '../../components/hacktoberfest/challenges/challenges';
 import Rewards from '../../components/hacktoberfest/rewards/Rewards';
 import Rules from '../../components/hacktoberfest/rules/Rules';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Hacktoberfest.module.css';
 
 export default function Home({ }) {
   return (
@@ -96,19 +96,19 @@ export default function Home({ }) {
         <Layout>
           <Col sm={12}>
 
-            <Row className={styles.homeIntro}>
+            <Row className={styles.hacktoberfestIntro}>
               <Intro />
             </Row>
 
-            <Row className={styles.homeIntegration}>
+            <Row className={styles.hacktoberfestChallenges}>
               <Challenges />
             </Row>
 
-            <Row className={styles.homeUsers}>
+            <Row className={styles.hacktoberfestRewards}>
               <Rewards />
             </Row>
 
-            <Row className={styles.homeIntegration}>
+            <Row className={styles.hacktoberfestRules}>
               <Rules />
             </Row>
           </Col>

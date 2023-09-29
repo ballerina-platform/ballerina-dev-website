@@ -51,20 +51,20 @@ export default function Rules(props) {
                     <ol>
                       <li>For all code contributions,
                           <ol type="a">
-                              <li>Refer to the Hacktoberfest project board and pick issues to work on from <a target='_blank' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Project Board</a>.</li>
+                              <li>Refer to the Hacktoberfest project board and pick issues to work on from <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Project Board</a>.</li>
                               <li>Once you start on the issue, leave a comment saying you are working on the issue. Then, that issue will be reserved for you.</li>
                               <li>Once ready, submit the PR, address the review comments if there are any, and get it merged.</li>
-                              <li>If your PR is merged, submit the <a target='_blank' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> with the PR details and other information.</li>
+                              <li>If your PR is merged, submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> with the PR details and other information.</li>
                           </ol>
                       </li>
                       <li>For low-code/no-code contributions,
                           <ol type="a">
                               <li>Any type of written or video content is accepted. E.g., Tutorials, comparisons, introductory content, etc.</li>
-                              <li>Publish your content and share the URLs via the <a target='_blank' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a>.</li>
+                              <li>Publish your content and share the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a>.</li>
                           </ol>
                       </li>
-                      <li>The deadline to submit the <a target='_blank' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> is October 31, 2023, 11:59 PM PST.</li>
-                      <li>All the announcements and discussions will be done via Discord. Join our <a target='_blank' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> in order not to miss any important updates.</li>
+                      <li>The deadline to submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> is October 31, 2023, 11:59 PM PST.</li>
+                      <li>All the announcements and discussions will be done via Discord. Join our <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://discord.gg/ballerinalang">Discord</a> in order not to miss any important updates.</li>
                       <li>All decisions made by the Ballerina Hacktoberfest panel shall be deemed final, conclusive, and binding.</li>
                     </ol>
                     </div>

@@ -55,7 +55,7 @@ export default function Intro() {
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
           <h1>Hacktoberfest 2023</h1>
 
-          <p className={styles.desItem}><span>We're thrilled to have you on board for Hacktoberfest and have some fantastic opportunities lined up for you. See the many ways you can support the open source community and contribute to Ballerina.</span></p>
+          <p className={styles.desItem}><span>We&apos;re thrilled to have you on board for Hacktoberfest and have some fantastic opportunities lined up for you. See the many ways you can support the open source community and contribute to Ballerina.</span></p>
           </Col>
           <Col xs={12} sm={12} md={12} lg={4} className={styles.description}>
           <Col xs={12} lg={7} className={styles.introImg}>

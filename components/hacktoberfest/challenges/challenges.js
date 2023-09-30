@@ -58,8 +58,8 @@ export default function Intro(props) {
                     <div>
                       <h3>Code contributions</h3>
                       <div className={styles.cardDescription}>
-                          <p className={styles.content}>If you're up for a coding challenge. Take on tasks labeled with <code className="highlighter-rouge language-plaintext">Hacktoberfest<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> from our <a className={styles.titleLink} target='_blank' href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Ballerina Hacktoberfest 2023 project</a>.</p>
-                          <p className={styles.content}>Refer to the <a className={styles.titleLink} target='_blank' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started, and leave a comment on the issue when you start working on it.</p>
+                          <p className={styles.content}>If you&apos;re up for a coding challenge. Take on tasks labeled with <code className="highlighter-rouge language-plaintext">Hacktoberfest<span aria-hidden="true" className="line-numbers-rows"><span></span></span></code> from our <a className={styles.titleLink} target='_blank' rel='noreferrer' href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Ballerina Hacktoberfest 2023 project</a>.</p>
+                          <p className={styles.content}>Refer to the <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://github.com/ballerina-platform/ballerina-release/blob/master/CONTRIBUTING.md'>contributing guide</a> to get started, and leave a comment on the issue when you start working on it.</p>
                       </div>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ export default function Intro(props) {
                           Create informative and engaging videos(tutorials, introductory or comparison videos) or written content (articles/blogs) about Ballerina.
                           </p>
                           <p className={styles.content}>
-                          Whether you're a seasoned expert or just getting started, your insights can make a difference in someone else's journey. Plus, you'll be helping more developers adopt Ballerina.
+                          Whether you&apos;re a seasoned expert or just getting started, your insights can make a difference in someone else&apos;s journey. Plus, you&apos;ll be helping more developers adopt Ballerina.
                           </p>
                       </div>
                     </div>
@@ -85,7 +85,7 @@ export default function Intro(props) {
             </Row>
 
             <Row>
-              <p className={styles.introText2}>Join <a className={styles.titleLink} target='_blank' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
+              <p className={styles.introText2}>Join <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
             </Row>
 
             </Container>

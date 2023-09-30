@@ -55,14 +55,14 @@ export default function Home({ }) {
           <meta
             property="og:image"
             itemProp="image"
-            content="https://ballerina.io/images/hacktoberfest/hacktoberfest-logo.png"
+            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
           />
 
           {/* LINKED IN */}
           <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
           <meta
             property="og:image"
-            content="https://ballerina.io/images/hacktoberfest/hacktoberfest-logo.png"
+            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
           />
           <meta
             property="og:description"
@@ -82,7 +82,7 @@ export default function Home({ }) {
           />
           <meta
             name="twitter:image"
-            content="https://ballerina.io/images/hacktoberfest/hacktoberfest-logo.png"
+            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
           />
           <meta
             property="twitter:text:description"
@@ -90,7 +90,7 @@ export default function Home({ }) {
           />
           <meta
             property="twitter:image"
-            content="https://ballerina.io/images/hacktoberfest/hacktoberfest-logo.png"
+            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
           />
         </Head>
         <Layout>

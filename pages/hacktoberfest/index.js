@@ -47,7 +47,7 @@ export default function Home({ }) {
 
           {/* FB */}
           <meta property="og:type" content="article" />
-          <meta property="og:title" content="Ballerina - Learn" />
+          <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
           <meta
             property="og:description"
             content="Ballerina participates Hacktoberfest 2023."

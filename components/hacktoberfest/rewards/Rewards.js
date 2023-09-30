@@ -83,7 +83,7 @@ export default function Rewards(props) {
                           <li>3rd Place : $100</li>
                         </ul>
                         <p>6 more winners will get Amazon vouchers valued at $50 USD.</p>
-                        <p>Additionally all of above will receive;</p>
+                        <p>Additionally, all of the above will receive:</p>
                         <ul>
                           <li>Ballerina T-shirt</li>
                           <li>Ballerina branded sticker pack</li>

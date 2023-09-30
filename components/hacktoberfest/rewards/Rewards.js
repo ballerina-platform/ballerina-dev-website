@@ -60,7 +60,7 @@ export default function Rewards(props) {
                         <ul>
                           <li>$25 Amazon voucher</li>
                           <li>Ballerina branded sticker pack</li>
-                          <li>WSO2 free vouchers for <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
+                          <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                           <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>
                       </div>
@@ -87,7 +87,7 @@ export default function Rewards(props) {
                         <ul>
                           <li>Ballerina T-shirt</li>
                           <li>Ballerina branded sticker pack</li>
-                          <li>WSO2 free vouchers for <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
+                          <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                           <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>
                       </div>

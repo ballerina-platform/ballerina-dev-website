@@ -51,7 +51,7 @@ export default function Rules(props) {
                     <ol>
                       <li>For all code contributions,
                           <ol type="a">
-                              <li>Refer to the Hacktoberfest project board and pick issues to work on from <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">Project Board</a>.</li>
+                              <li>Refer to the Hacktoberfest <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/orgs/ballerina-platform/projects/362/views/1">project board</a> and pick issues to work on.</li>
                               <li>Once you start on the issue, leave a comment saying you are working on the issue. Then, that issue will be reserved for you.</li>
                               <li>Once ready, submit the PR, address the review comments if there are any, and get it merged.</li>
                               <li>If your PR is merged, submit the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a> with the PR details and other information.</li>

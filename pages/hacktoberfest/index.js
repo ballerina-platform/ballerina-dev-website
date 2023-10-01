@@ -20,7 +20,7 @@ import * as React from 'react';
 import Head from 'next/head';
 import { Col, Row } from 'react-bootstrap';
 
-import Layout from '../../layouts/LayoutHome';
+import Layout from '../../layouts/LayoutHacktoberfest';
 import Intro from '../../components/hacktoberfest/intro/Intro';
 import Challenges from '../../components/hacktoberfest/challenges/challenges';
 import Rewards from '../../components/hacktoberfest/rewards/Rewards';
@@ -30,69 +30,6 @@ import styles from '../../styles/Hacktoberfest.module.css';
 export default function Home({ }) {
   return (
     <>
-      <Head>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta
-            name="description"
-            content="Ballerina participates Hacktoberfest 2023."
-          />
-          <meta name="author" content="WSO2 LLC" />
-          <meta
-            name="keywords"
-            content="ballerina, hackoberfest, integration"
-          />
-          <link rel="shortcut icon" href="/img/favicon.ico" />
-          <title>Ballerina - Hacktoberfest 2023</title>
-
-          {/* FB */}
-          <meta property="og:type" content="article" />
-          <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
-          <meta
-            property="og:description"
-            content="Ballerina participates Hacktoberfest 2023."
-          />
-          <meta
-            property="og:image"
-            itemProp="image"
-            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
-          />
-
-          {/* LINKED IN */}
-          <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
-          <meta
-            property="og:image"
-            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
-          />
-          <meta
-            property="og:description"
-            itemProp="image"
-            content="Ballerina participates Hacktoberfest 2023."
-          />
-
-          {/* TWITTER */}
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:site" content="@ballerinalang" />
-          <meta name="twitter:creator" content="@ballerinalang" />
-          <meta name="twitter:title" content="Ballerina" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            property="twitter:description"
-            content="Ballerina participates Hacktoberfest 2023."
-          />
-          <meta
-            name="twitter:image"
-            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
-          />
-          <meta
-            property="twitter:text:description"
-            content="Ballerina participates Hacktoberfest 2023."
-          />
-          <meta
-            property="twitter:image"
-            content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
-          />
-        </Head>
         <Layout>
           <Col sm={12}>
 

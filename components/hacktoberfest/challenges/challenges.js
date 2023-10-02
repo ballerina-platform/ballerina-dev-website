@@ -85,7 +85,7 @@ export default function Intro(props) {
             </Row>
 
             <Row>
-              <p className={styles.introText2}>Join <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> to connect with the Ballerina community.</p>
+              <p className={styles.introText2}>Join the <a className={styles.titleLink} target='_blank' rel='noreferrer' href='https://discord.gg/ballerinalang'>Ballerina Discord</a> server to connect with the Ballerina community.</p>
             </Row>
 
             </Container>

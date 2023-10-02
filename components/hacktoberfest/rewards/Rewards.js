@@ -58,8 +58,8 @@ export default function Rewards(props) {
                       <div className={styles.content}>
                         <p className={styles.content}>Any accepted PR fixing a Hacktoberfest Issue will receive; </p>
                         <ul>
-                          <li>$25 Amazon voucher</li>
-                          <li>Ballerina branded sticker pack</li>
+                          <li>A $25 Amazon voucher</li>
+                          <li>A Ballerina branded sticker pack</li>
                           <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                           <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>
@@ -85,8 +85,8 @@ export default function Rewards(props) {
                         <p>6 more winners will get Amazon vouchers valued at $50 USD.</p>
                         <p>Additionally, all of the above will receive:</p>
                         <ul>
-                          <li>Ballerina T-shirt</li>
-                          <li>Ballerina branded sticker pack</li>
+                          <li>A Ballerina T-shirt</li>
+                          <li>A Ballerina branded sticker pack</li>
                           <li>Free vouchers for WSO2 <a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/training/certification/">practitioner and developer certifications</a></li>
                           <li><a className={styles.titleLink} target="_blank" rel="noreferrer" href="https://wso2.com/choreo/">Choreo</a> credits (10 components for free for 3 months + $1,000 infrastructure credits)</li>
                         </ul>

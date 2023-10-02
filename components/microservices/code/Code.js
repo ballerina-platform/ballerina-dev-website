@@ -97,7 +97,7 @@ export default function UseCases(props) {
                                 }
                                 {
                                     (purposefulBuild.frontmatter.image && purposefulBuild.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${purposefulBuild.frontmatter.image}`} alt={purposefulBuild.frontmatter.title}  />
+                                        <img src={`${prefix}/${purposefulBuild.frontmatter.image}`} alt={purposefulBuild.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -106,63 +106,63 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* Data persistence */}
-                        <Row className="pageContentRow integration code">
-                            <Col xs={12}>
-                                <Container>
-                                    <Row>
-                                        <Col xs={12} className={styles.box}>
-                                            <h2 id='data-persistence' className='section'>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="30"
-                                                    height="30"
-                                                    fill="currentColor"
-                                                    className="bi bi-link-45deg mdButton pe-2"
-                                                    viewBox="0 0 16 16"
-                                                    onClick={(e) => props.getLink(e.target, 'data-persistence')}
-                                                >
-                                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                                </svg>
-                                                {dataPersistence.frontmatter.title}
-                                            </h2>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col xs={12} md={5} lg={5} className={styles.box}>
-                                            <div className={styles.wrapper}>
-                                                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataPersistence.frontmatter.description}</ReactMarkdown>
-
-                                                {
-                                                    (dataPersistence.frontmatter.url && dataPersistence.frontmatter.url !== '') ?
-                                                        <div className={styles.dVersion}>
-                                                            <a href={dataPersistence.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                                Learn how to manage data persistence using bal persist
-                                                            </a>
-                                                        </div>
-                                                        : null
-                                                }
-
-                                            </div>
-                                        </Col>
-                                        <Col xs={12} md={7} lg={7} className={styles.box}>
-                                            {
-                                                (dataPersistence.code && dataPersistence.code !== '') ?
-                                                    <div className={styles.codeSnippet}>
-                                                        <div className="highlight" dangerouslySetInnerHTML={{ __html: dataPersistence.code }} />
-                                                    </div>
-                                                    : null
-                                            }
-                                            {
-                                                (dataPersistence.frontmatter.image && dataPersistence.frontmatter.image !== '') ?
-                                                    <img src={`${prefix}/${dataPersistence.frontmatter.image}`} alt={dataPersistence.frontmatter.title}  />
-                                                    : null
-                                            }
-                                        </Col>
-                                    </Row>
-                                </Container>
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='data-persistence' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'data-persistence')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {dataPersistence.frontmatter.title}
+                                </h2>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataPersistence.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (dataPersistence.frontmatter.url && dataPersistence.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={dataPersistence.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    Learn how to manage data persistence using bal persist
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (dataPersistence.code && dataPersistence.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: dataPersistence.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (dataPersistence.frontmatter.image && dataPersistence.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${dataPersistence.frontmatter.image}`} alt={dataPersistence.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
             {/*concurrent */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
@@ -222,65 +222,65 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/*type-safe */}
-                        <Row className="pageContentRow integration code">
-                            <Col xs={12}>
-                                <Container>
-                                    <Row>
-                                        <Col xs={12} className={styles.box}>
-                                            <h2 id='type-safe' className='section'>
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="30"
-                                                    height="30"
-                                                    fill="currentColor"
-                                                    className="bi bi-link-45deg mdButton pe-2"
-                                                    viewBox="0 0 16 16"
-                                                    onClick={(e) => props.getLink(e.target, 'type-safe')}
-                                                >
-                                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                                </svg>
-                                                {typeSafe.frontmatter.title}
-                                            </h2>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col xs={12} md={5} lg={5} className={styles.box}>
-                                            <div className={styles.wrapper}>
-                                                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{typeSafe.frontmatter.description}</ReactMarkdown>
-
-                                                {
-                                                    (typeSafe.frontmatter.url && typeSafe.frontmatter.url !== '') ?
-                                                        <div className={styles.dVersion}>
-                                                            <a href={typeSafe.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                                View on Ballerina Central
-                                                            </a>
-                                                        </div>
-                                                        : null
-                                                }
-
-                                            </div>
-                                        </Col>
-                                        <Col xs={12} md={7} lg={7} className={styles.box}>
-                                            {
-                                                (typeSafe.code && concurrent.code !== '') ?
-                                                    <div className={styles.codeSnippet}>
-                                                        <div className="highlight" dangerouslySetInnerHTML={{ __html: typeSafe.code }} />
-                                                    </div>
-                                                    : null
-                                            }
-                                            {
-                                                (typeSafe.frontmatter.image && concurrent.frontmatter.image !== '') ?
-                                                    <img src={`${prefix}/${typeSafe.frontmatter.image}`} alt={typeSafe.frontmatter.title} />
-                                                    : null
-                                            }
-                                        </Col>
-                                    </Row>
-                                </Container>
+            <Row className="pageContentRow integration code">
+                <Col xs={12}>
+                    <Container>
+                        <Row>
+                            <Col xs={12} className={styles.box}>
+                                <h2 id='type-safe' className='section'>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="30"
+                                        height="30"
+                                        fill="currentColor"
+                                        className="bi bi-link-45deg mdButton pe-2"
+                                        viewBox="0 0 16 16"
+                                        onClick={(e) => props.getLink(e.target, 'type-safe')}
+                                    >
+                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                    </svg>
+                                    {typeSafe.frontmatter.title}
+                                </h2>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                                <div className={styles.wrapper}>
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{typeSafe.frontmatter.description}</ReactMarkdown>
+
+                                    {
+                                        (typeSafe.frontmatter.url && typeSafe.frontmatter.url !== '') ?
+                                            <div className={styles.dVersion}>
+                                                <a href={typeSafe.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    View on Ballerina Central
+                                                </a>
+                                            </div>
+                                            : null
+                                    }
+
+                                </div>
+                            </Col>
+                            <Col xs={12} md={7} lg={7} className={styles.box}>
+                                {
+                                    (typeSafe.code && concurrent.code !== '') ?
+                                        <div className={styles.codeSnippet}>
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: typeSafe.code }} />
+                                        </div>
+                                        : null
+                                }
+                                {
+                                    (typeSafe.frontmatter.image && concurrent.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${typeSafe.frontmatter.image}`} alt={typeSafe.frontmatter.title} />
+                                        : null
+                                }
+                            </Col>
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
             {/* designed for failure */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -338,7 +338,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* Test framework */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -396,7 +396,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* network-aware */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -455,7 +455,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* powerful integration capabilities */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -513,7 +513,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* http2 */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -571,7 +571,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* graalvm */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -629,7 +629,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* bottom up top down */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -687,7 +687,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* devops-agility */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -746,7 +746,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
             {/* tracing */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

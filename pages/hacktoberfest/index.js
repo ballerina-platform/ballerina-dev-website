@@ -17,7 +17,6 @@
  */
 
 import * as React from 'react';
-import Head from 'next/head';
 import { Col, Row } from 'react-bootstrap';
 
 import Layout from '../../layouts/LayoutHacktoberfest';
@@ -28,6 +27,25 @@ import Rules from '../../components/hacktoberfest/rules/Rules';
 import styles from '../../styles/Hacktoberfest.module.css';
 
 export default function Home({ }) {
+
+  const getLink = (element, id) => {
+    if (element.tagName.toLowerCase() === "path")
+      element = element.parentElement;
+
+    const elementNodeList = document.querySelectorAll(`#${id}`);
+    const elementArray = Array.prototype.slice.call(elementNodeList);
+    const count = elementArray.indexOf(element.parentElement);
+
+    if (count === 0) {
+      location.hash = `#${id}`;
+    } else {
+      location.hash = `#${id}-${count}`;
+    }
+
+    navigator.clipboard.writeText(window.location.href);
+    element.parentElement.scrollIntoView();
+  };
+
   return (
     <>
         <Layout>
@@ -38,15 +56,15 @@ export default function Home({ }) {
             </Row>
 
             <Row className={styles.hacktoberfestChallenges}>
-              <Challenges />
+              <Challenges getLink={getLink}/>
             </Row>
 
             <Row className={styles.hacktoberfestRewards}>
-              <Rewards />
+              <Rewards getLink={getLink}/>
             </Row>
 
             <Row className={styles.hacktoberfestRules}>
-              <Rules />
+              <Rules getLink={getLink}/>
             </Row>
           </Col>
         </Layout>

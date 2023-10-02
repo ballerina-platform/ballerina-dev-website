@@ -50,7 +50,7 @@ export default function Rewards(props) {
           </p>
         </Row>
         <Row>
-          <Col xs={12} md={4} lg={6} className={styles.boxCol}>
+          <Col xs={12} md={6} lg={6} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
                     <h3>Code contributions</h3>
@@ -68,7 +68,7 @@ export default function Rewards(props) {
                   </div>
                 </div>
           </Col>
-          <Col xs={12} md={4} lg={6} className={styles.boxCol}>
+          <Col xs={12} md={6} lg={6} className={styles.boxCol}>
                 <div className={styles.cardWrapper}>
                   <div>
                     <h3>Low/No Code contributions</h3>

@@ -102,7 +102,7 @@ export default function Footer() {
 
         <Row className={styles.policyLinks}>
           <Col xs={12} sm={2}>
-            <span className="footerLink">© 2018-2023 WSO2 LLC</span>
+            <span className="footerLink">© 2023 WSO2 LLC</span>
           </Col>
           <Col xs={12} sm={10}>
             <ul>

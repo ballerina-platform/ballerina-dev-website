@@ -43,6 +43,8 @@ export default function Layout({ children }) {
           <link rel="shortcut icon" href="/img/favicon.ico" />
           <title>Ballerina - Hacktoberfest 2023</title>
 
+          <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
+
           {/* FB */}
           <meta property="og:type" content="article" />
           <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />

@@ -9,7 +9,7 @@ _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
 ## Introduction
 
-This is the specification for the GraphQL standard library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL package of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -196,9 +196,9 @@ The conforming implementation of the specification is released and included in t
 
 ## 1. Overview
 
-The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL standard library uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
+The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL package uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
 
-The GraphQL standard library is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL standard library uses the code-first first approach to write GraphQL APIs. This means no GraphQL schema is required to create a GraphQL service.
+The GraphQL package is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL package uses the code-first first approach to write GraphQL APIs (which means no GraphQL schema is required to create a GraphQL service), while it also supports the schema-first approach through Ballerina GraphQL CLI tool.
 
 In addition to functional requirements, this library deals with none functional requirements such as security. Each requirement is discussed in detail in the coming sections.
 

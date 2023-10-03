@@ -188,16 +188,6 @@ public type RequestLimitConfigs record {|
 The WebSocket listener can be initialized by providing the `port` or a `http:Listener` and optionally a `ListenerConfiguration`.
 ```ballerina
 # Gets invoked during the module initialization to initialize the listener.
-# ```ballerina
-# listener websocket:Listener securedEP = new(9090,
-#   secureSocket = {
-#       key: {
-#           certFile: "../resource/path/to/public.crt",
-#           keyFile: "../resource/path/to/private.key"
-#       }
-#   }
-# );
-# ```
 #
 # + port - Listening port of the WebSocket service listener
 # + config - Configurations for the WebSocket service listener
@@ -425,9 +415,6 @@ public type ClientConfiguration record {|
 A client can be initialized by providing the WebSocket server url and optionally the `ClientConfiguration`.
 ```ballerina
 # Initializes the synchronous client when called.
-# ```ballerina
-# websocket:Client wsClient = check new("ws://localhost:9090/foo", { retryConfig: { maxCount: 20 } });
-# ```
 #
 # + url - URL of the target service
 # + config - The configurations to be used when initializing the client
@@ -443,9 +430,6 @@ public isolated function init(string url, *ClientConfiguration config) returns E
 ```ballerina
 # Writes text messages to the connection. If an error occurs while sending the text message to the connection, that message
 # will be lost.
-# ```ballerina
-# check wsClient->writeTextMessage("Text message");
-# ```
 #
 # + data - Data to be sent.
 # + return  - A `websocket:Error` if an error occurs when sending
@@ -459,9 +443,6 @@ remote isolated function writeTextMessage(string data) returns Error? {}
 ```ballerina
 # Writes binary data to the connection. If an error occurs while sending the binary message to the connection,
 # that message will be lost.
-# ```ballerina
-# check wsClient->writeBinaryMessage("Text message".toBytes());
-# ```
 #
 # + data - Binary data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending
@@ -479,9 +460,6 @@ The input data is internally converted to relevant frame type as follows,
 ```ballerina
 # Writes messages to the connection. If an error occurs while sending the message to the connection, that message
 # will be lost.
-# ```ballerina
-# check wsClient->writeMessage({x: 1, y: 2});
-# ```
 #
 # + data - Data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending
@@ -494,9 +472,6 @@ remote isolated function writeMessage(anydata data) returns Error? {
 
 ```ballerina
 # Reads text messages in a synchronous manner
-# ```ballerina
-# string textResp = check wsClient->readTextMessage();
-# ```
 #
 # + return  - The text data sent by the server or a `websocket:Error` if an error occurs when receiving
 remote isolated function readTextMessage() returns string|Error {}
@@ -508,9 +483,6 @@ remote isolated function readTextMessage() returns string|Error {}
 
 ```ballerina
 # Reads binary data in a synchronous manner
-# ```ballerina
-# byte[] textResp = check wsClient->readBinaryMessage();
-# ```
 #
 # + return  - The binary data sent by the server or an `websocket:Error` if an error occurs when receiving
 remote isolated function readBinaryMessage() returns byte[]|Error {}
@@ -523,16 +495,6 @@ The contextually-expected data type is inferred from the LHS variable type. If t
 
 ```ballerina
 # Reads data from the WebSocket connection
-# ```ballerina
-# byte[]|string|websocket:Error data = wsClient->readMessage();
-# if (data is string) {
-#     io:println(data);
-# } else if (data is byte[]) {
-#     io:println(data);
-# } else {
-#     io:println("Error occurred", data.message());
-# }
-#```
 #
 # + targetType - The payload type (sybtype of `anydata`), which is expected to be returned after data binding
 # + return - The data sent by the server or a `websocket:Error` if an error occurs when receiving
@@ -558,9 +520,6 @@ Data deserialization for binary messages happens similar to the following,
 
 ```ballerina
 # Closes the connection.
-# ```ballerina
-# check wsClient->close();
-# ```
 #
 # + statusCode - Status code for closing the connection
 # + reason - Reason for closing the connection
@@ -579,9 +538,6 @@ remote isolated function close(int? statusCode = 1000, string? reason = (), deci
 
 ```ballerina
 # Pings the connection. If an error occurs while sending the ping frame to the server, that frame will be lost.
-# ```ballerina
-# check wsClient->ping([5, 24, 56, 243]);
-# ```
 #
 # + data - Binary data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending
@@ -595,9 +551,6 @@ remote isolated function ping(byte[] data) returns Error? {}
 ```ballerina
 # Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
 # the frame will be lost.
-# ```ballerina
-# check wsClient->pong([5, 24, 56, 243]);
-# ```
 #
 # + data - Binary data to be sent
 # + return  - A `websocket:Error` if an error occurs when sending

@@ -67,21 +67,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edi.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edi.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (edi.frontmatter.url && edi.frontmatter.url !== '') ?
-                                        <div className={styles.dVersion}>
-                                            <a href={edi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                View code on GitHub
-                                            </a>
-                                        </div>
-                                            : null
-                                    }
+                                        {
+                                            (edi.frontmatter.url && edi.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={edi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{flex:"1 0 0"}}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height:"auto", marginTop:"1.3rem", marginBottom:"1rem", borderRadius:"1.2rem"}} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {

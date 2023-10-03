@@ -97,8 +97,8 @@ export default function Intro() {
                 <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
-                <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={25} height={25} alt="X" />
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="X">
+                <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={24} height={24} alt="X" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">

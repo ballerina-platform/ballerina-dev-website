@@ -42,8 +42,8 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="Twitter">
-                          <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={19} height={19} alt="X" />
+                        <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
+                          <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={16} height={16} alt="X" />
                         </a>
                       </li>
                       <li>

@@ -33,7 +33,7 @@ export default function Layout({ children }) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta
             name="description"
-            content="Ballerina participates Hacktoberfest 2023."
+            content="Ballerina participates in Hacktoberfest 2023"
           />
           <meta name="author" content="WSO2 LLC" />
           <meta
@@ -48,7 +48,7 @@ export default function Layout({ children }) {
           <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
           <meta
             property="og:description"
-            content="Ballerina participates Hacktoberfest 2023."
+            content="Ballerina participates in Hacktoberfest 2023"
           />
           <meta
             property="og:image"
@@ -65,7 +65,7 @@ export default function Layout({ children }) {
           <meta
             property="og:description"
             itemProp="image"
-            content="Ballerina participates Hacktoberfest 2023."
+            content="Ballerina participates in Hacktoberfest 2023."
           />
 
           {/* TWITTER */}
@@ -76,7 +76,7 @@ export default function Layout({ children }) {
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:description"
-            content="Ballerina participates Hacktoberfest 2023."
+            content="Ballerina participates in Hacktoberfest 2023"
           />
           <meta
             name="twitter:image"
@@ -84,7 +84,7 @@ export default function Layout({ children }) {
           />
           <meta
             property="twitter:text:description"
-            content="Ballerina participates Hacktoberfest 2023."
+            content="Ballerina participates in Hacktoberfest 2023"
           />
           <meta
             property="twitter:image"

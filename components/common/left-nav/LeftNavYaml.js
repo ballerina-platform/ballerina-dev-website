@@ -17,6 +17,7 @@
  */
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Accordion from "react-bootstrap/Accordion";
 import { prefix } from "../../../utils/prefix";
 import styles from "./LeftNav.module.css";
@@ -95,7 +96,7 @@ export default function LeftNavYaml({ navContent, bbe = null, viewer = null }) {
           </>
         ) : (
           <li key={directory.id}>
-            <a
+            <Link
               id={directory.id}
               className={bbe === directory.url ? styles.active : null}
               href={
@@ -104,8 +105,10 @@ export default function LeftNavYaml({ navContent, bbe = null, viewer = null }) {
                   : `/learn/by-example/${directory.url}`
               }
             >
-              {directory.title}
-            </a>
+              <a className={bbe === directory.url ? styles.active : null}>
+                {directory.title}
+              </a>
+            </Link>
           </li>
         )}
       </>

@@ -84,8 +84,8 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{flex:"1 0 0"}}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height:"auto", marginTop:"1.3rem", marginBottom:"1rem", borderRadius:"1.2rem"}} alt="Rest" />
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"}}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -132,21 +132,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{bapps.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{bapps.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (bapps.frontmatter.url && bapps.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={bapps.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (bapps.frontmatter.url && bapps.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={bapps.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/payload_validations.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
@@ -192,27 +197,33 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{editransform.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{editransform.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (editransform.frontmatter.url && editransform.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={editransform.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (editransform.frontmatter.url && editransform.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={editransform.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{flex: "1 0 0", border: "1px solid #eeeeee"}}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/graphql.gif`} style={{ height: "59vh", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
+
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
                                     (editransform.code && editransform.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: editransform.code }} />
+                                            <div style={{ height: "auto"}} className="highlight" dangerouslySetInnerHTML={{ __html: editransform.code }} />
                                         </div>
                                         : null
                                 }
@@ -252,21 +263,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{x12.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{x12.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (x12.frontmatter.url && x12.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={x12.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (x12.frontmatter.url && x12.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={x12.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/websocket.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
@@ -312,21 +328,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edifact.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edifact.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (edifact.frontmatter.url && edifact.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={edifact.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (edifact.frontmatter.url && edifact.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={edifact.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/r_j.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
@@ -372,21 +393,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{spec.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{spec.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (spec.frontmatter.url && spec.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={spec.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (spec.frontmatter.url && spec.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={spec.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem"}} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
@@ -432,21 +458,26 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{customEdi.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{customEdi.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (customEdi.frontmatter.url && customEdi.frontmatter.url !== '') ?
-                                            <div className={styles.dVersion}>
-                                                <a href={customEdi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
-                                                    View code on GitHub
-                                                </a>
-                                            </div>
-                                            : null
-                                    }
+                                        {
+                                            (customEdi.frontmatter.url && customEdi.frontmatter.url !== '') ?
+                                                <div className={styles.dVersion}>
+                                                    <a href={customEdi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                        View code on GitHub
+                                                    </a>
+                                                </div>
+                                                : null
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
@@ -492,20 +523,24 @@ export default function UseCases(props) {
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
-                                <div className={styles.wrapper}>
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{persist.frontmatter.description}</ReactMarkdown>
+                                <Row>
+                                    <div className={styles.wrapper}>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{persist.frontmatter.description}</ReactMarkdown>
 
-                                    {
-                                        (persist.frontmatter.url && persist.frontmatter.url !== '') ?
+                                        {
                                             <div className={styles.dVersion}>
-                                                <a href={persist.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
-                                                    Get started with Choreo IDevP for free
+                                                <a href={customEdi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
+                                                    View code on GitHub
                                                 </a>
                                             </div>
-                                            : null
-                                    }
+                                        }
 
-                                </div>
+                                    </div>
+                                </Row>
+                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"  }}>
+                                    <img src={`${prefix}/images/usecases/integration/bff/persists.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
                                 {

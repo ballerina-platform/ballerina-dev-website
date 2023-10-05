@@ -346,7 +346,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/r_j.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/react_jwt.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>

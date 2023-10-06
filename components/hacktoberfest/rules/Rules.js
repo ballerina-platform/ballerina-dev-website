@@ -60,6 +60,7 @@ export default function Rules(props) {
                       <li>For low-code/no-code contributions,
                           <ol type="a">
                               <li>Any type of written or video content is accepted. E.g., Tutorials, comparisons, introductory content, etc.</li>
+                              <li>Once the contribution is ready, send a pull request (PR) by adding the contribution to the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://github.com/ballerina-platform/ballerina-dev-website/blob/hacktoberfest-contrib/community/hacktoberfest/nocode_contrib.md">contribution list</a></li>
                               <li>Publish your content and share the URLs via the <a target='_blank' rel='noreferrer' className={styles.titleLink} href="https://forms.gle/EuekCiRMrpqmJE6K6">form</a>.</li>
                           </ol>
                       </li>

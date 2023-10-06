@@ -59,6 +59,16 @@ To view bug fixes, see the [GitHub milestone for 2201.8.1 (Swan Lake)](https://g
 ### New features
 
 ### Improvements
+Added code lens support to visualize blocks with `regex` statements.
+```ballerina
+var regexr = re `^test all\s*(?:resources?|endpoints?|paths?)?.?$`;
+``` 
 
 ### Bug fixes
+Fixed visible endpoint generation for connector endpoints declared with access modifiers and display annotations.
+```ballerina
+import ballerinax/googleapis.sheets;
 
+@display {label: "Google Sheets API"}
+private sheets:Client sheetsEp;
+```

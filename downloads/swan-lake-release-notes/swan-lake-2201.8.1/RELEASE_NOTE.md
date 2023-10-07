@@ -28,35 +28,17 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Language updates
 
-### New features
-
-### Improvements
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.8.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.8.1).
 
-## Runtime updates
-
-### New features
-
-### Improvements
-
-### Bug fixes
-
 ## Ballerina library updates
-
-### New features
-
-### Improvements
 
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.8.1 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.8.1).
 
 ## Developer tools updates
-
-### New features
 
 #### Ballerina Update Tool
 - Added distribution update support through a proxy server.

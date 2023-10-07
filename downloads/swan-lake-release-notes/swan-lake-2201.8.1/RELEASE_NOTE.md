@@ -59,7 +59,7 @@ To view bug fixes, see the [GitHub milestone for 2201.8.1 (Swan Lake)](https://g
 ### New features
 
 ### Improvements
-Added code lens support to visualize blocks with `regex` statements.
+Added CodeLens support to visualize blocks with `regex` statements.
 ```ballerina
 var regexr = re `^test all\s*(?:resources?|endpoints?|paths?)?.?$`;
 ``` 

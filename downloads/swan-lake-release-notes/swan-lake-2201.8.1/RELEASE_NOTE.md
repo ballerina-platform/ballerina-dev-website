@@ -58,6 +58,10 @@ To view bug fixes, see the [GitHub milestone for 2201.8.1 (Swan Lake)](https://g
 
 ### New features
 
+#### Ballerina Update Tool
+- Added distribution update support through a proxy server.
+
+
 ### Improvements
 Added CodeLens support to visualize blocks with `regex` statements.
 ```ballerina

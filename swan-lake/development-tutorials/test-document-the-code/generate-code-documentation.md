@@ -90,9 +90,7 @@ type Record record {|
 # interactions with the endpoint.
 #
 # Example:
-# ```ballerina
 # HttpFuture future = myMsg.submit("GET", "/test", req);
-# ```
 #
 # + httpVerb - The HTTP verb value
 # + path - The resource path
@@ -162,9 +160,7 @@ Now, let's add a function to the `math` module to be documented. Copy and paste 
 
 ```ballerina
 # Calculates the value of the 'a' raised to the power of 'b'.
-# ```ballerina
 # float aPowerB = math:pow(3.2, 2.4);
-# ```
 # 
 # + a - Base value
 # + b - Exponential value

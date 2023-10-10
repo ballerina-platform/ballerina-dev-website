@@ -47,7 +47,8 @@ a {
   padding-right: 0.4rem !important; */
 }
 
-.llanding, .integration {
+.llanding,
+.integration {
   padding-left: 0.4rem !important;
   padding-right: 0.4rem !important;
 }
@@ -243,7 +244,7 @@ a {
 
 .mdContent li pre {
   line-height: 18.375px !important;
-} 
+}
 
 .mdContent a:hover,
 .policyContent a:hover {
@@ -274,29 +275,38 @@ a {
   overflow-x: auto;
 }
 
-.mdContent table, .patternContent table {
+.mdContent table,
+.patternContent table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
 }
 
-.mdContent table td, .policyContent table td,
-.mdContent table th, .policyContent table th,
-.patternContent table td, .patternContent table th {
+.mdContent table td,
+.policyContent table td,
+.mdContent table th,
+.policyContent table th,
+.patternContent table td,
+.patternContent table th {
   border: 1px solid #e1e4e5 !important;
 }
 
-.mdContent table td, .policyContent table td {
+.mdContent table td,
+.policyContent table td {
   font-weight: 400;
 }
 
-.mdContent table th, .policyContent table th,
-.mdContent table td, .policyContent table td,
-.patternContent table td, .patternContent table th {
+.mdContent table th,
+.policyContent table th,
+.mdContent table td,
+.policyContent table td,
+.patternContent table td,
+.patternContent table th {
   padding: 10px;
 }
 
-.mdContent table thead tr, .policyContent table thead tr,
+.mdContent table thead tr,
+.policyContent table thead tr,
 .cCodeTable tr th {
   background-color: #464646;
   /* font-weight: 400; */
@@ -328,8 +338,8 @@ pre.default {
 }
 
 .mdContent img {
-  width: -moz-available;         
-  width: -webkit-fill-available;  
+  width: -moz-available;
+  width: -webkit-fill-available;
   width: fill-available;
 }
 
@@ -577,7 +587,7 @@ pre[class*="language-"] {
 
 .communityRow {
   padding-top: 15px;
-  /* padding-bottom: 15px; */
+  padding-bottom: 15px;
   /* margin-bottom: 0 !important; */
 }
 
@@ -701,8 +711,10 @@ ul.eventsTabs {
   border: none;
 }
 
-.eventsTabs .nav-link, .preBuilt .nav-link,
-.eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
+.eventsTabs .nav-link,
+.preBuilt .nav-link,
+.eventsTabs .nav-link:hover,
+.preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
   border: none !important;
@@ -765,7 +777,7 @@ ul.eventsTabs {
   padding-top: 30px;
 }
 
-.cardBottomExtraMargin{
+.cardBottomExtraMargin {
   margin-bottom: 5px;
 }
 
@@ -846,7 +858,7 @@ ul.eventsTabs {
   margin: 0 0 0 21px;
 }
 
-.archivedNote{
+.archivedNote {
   margin-top: 30px !important;
 }
 
@@ -857,7 +869,7 @@ ul.eventsTabs {
   letter-spacing: 0.2px;
 }
 
-@media (max-width: 750px){
+@media (max-width: 750px) {
   .DocSearch-Modal {
     margin: 60px auto auto;
   }
@@ -1011,7 +1023,7 @@ ul.eventsTabs {
 }
 
 .langDraft {
-  height: 100vh;;
+  height: 100vh;
 }
 
 /*------------------- Old Versions ------------------*/
@@ -1142,7 +1154,8 @@ table.cTopControlsContainer tbody {
   background-color: var(--output-color-background);
 }
 
-.bbeCode.indent, .bbeOutput.indent {
+.bbeCode.indent,
+.bbeOutput.indent {
   margin-left: 10px !important;
 }
 
@@ -1299,7 +1312,8 @@ table.cTopControlsContainer tbody {
   table-layout: fixed;
 }
 
-.cBallerina-Box p, .colorDesc {
+.cBallerina-Box p,
+.colorDesc {
   /* margin-left: 20px; */
   padding-left: 25px !important;
 }
@@ -1309,7 +1323,8 @@ table.cTopControlsContainer tbody {
   padding-right: 0 !important;
 }
 
-.integration h2, .llanding h2 {
+.integration h2,
+.llanding h2 {
   margin-top: 50px;
   margin-bottom: 30px;
   scroll-margin-top: 65px;
@@ -1350,12 +1365,14 @@ table.cTopControlsContainer tbody {
   padding-bottom: 0 !important;
 } */
 
-.integration.code pre.shiki, #code-container {
+.integration.code pre.shiki,
+#code-container {
   background-color: #ffffff !important;
   border: 1px solid #eeeeee;
 }
 
-.pageContentRow.integration, .pageContentRow.llanding {
+.pageContentRow.integration,
+.pageContentRow.llanding {
   margin-bottom: 0 !important;
   padding-bottom: 50px;
 }
@@ -1411,7 +1428,7 @@ table.cTopControlsContainer tbody {
   font-weight: 400;
   color: #20b6b0;
   margin-left: 5px;
-} 
+}
 
 .caseStudies blockquote em {
   font-size: 1.3rem !important;
@@ -1421,9 +1438,9 @@ table.cTopControlsContainer tbody {
   /* margin-top: 10px; */
   padding: 0;
   border: none;
-      /* padding: 10px 20px !important; */
-    /* font-size: 17.5px; */
-    /* border-left: 5px solid #eee;*/
+  /* padding: 10px 20px !important; */
+  /* font-size: 17.5px; */
+  /* border-left: 5px solid #eee;*/
 }
 
 .mdContent.caseStudies blockquote {
@@ -1467,7 +1484,7 @@ table.cTopControlsContainer tbody {
     -webkit-overflow-scrolling: none !important;
     overflow: hidden !important;
     overscroll-behavior: none !important; */
-    z-index: 1;
+  z-index: 1;
 }
 
 #right_panel {
@@ -1511,7 +1528,6 @@ table.cTopControlsContainer tbody {
   z-index: 1000;
 }
 
-
 #code-container .title-new {
   background-color: #20b6b0;
   color: #fff;
@@ -1547,12 +1563,12 @@ table.cTopControlsContainer tbody {
   display: block; */
   /* vertical-align: middle; */
   top: calc(50% - 23px);
-    left: calc(50% - 23px);
-    position: absolute;
-    display: block;
-    vertical-align: middle;
-    z-index: 1001;
-    cursor: grabbing;
+  left: calc(50% - 23px);
+  position: absolute;
+  display: block;
+  vertical-align: middle;
+  z-index: 1001;
+  cursor: grabbing;
 }
 
 .code-panel {
@@ -1560,8 +1576,6 @@ table.cTopControlsContainer tbody {
   white-space: nowrap;
   /* height: 556px;
   margin-top: 0; */
-
-
 
   /* overflow-y: hidden;
   height: 600px;
@@ -1577,19 +1591,17 @@ table.cTopControlsContainer tbody {
   margin-top: 0;
 
   padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    font-size: 11.375px;
-    line-height: 18px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-size: 11.375px;
+  line-height: 18px;
 
-
-
-    /* touch-action: none !important; */
-    /* -webkit-overflow-scrolling: none !important; */
-    /* overflow: hidden !important; */
-    /* overscroll-behavior: none !important; */
-    overflow-x: scroll;
+  /* touch-action: none !important; */
+  /* -webkit-overflow-scrolling: none !important; */
+  /* overflow: hidden !important; */
+  /* overscroll-behavior: none !important; */
+  overflow-x: scroll;
 }
 
 @media (min-width: 1200px) {
@@ -1615,97 +1627,4 @@ table.cTopControlsContainer tbody {
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;
-}
-
-
-.cInlineImage-small {
-  display: inline-block;
-  text-align: center;
-  height:45% !important;
-  width:30% !important;
-  border: 1px solid gray;
-}
-    
-.cInlineImage-full {
-  display: inline-block;
-  text-align: center;
-  height:75% !important;
-  width:90% !important;
-  border: 1px solid gray;
-}
-  
-.cInlineImage-threeQuarter {
-  display: inline-block;
-  text-align: center;
-  width:65%;
-  border: 1px solid gray;
-}
-  
-.cInlineImage-half {
-  display: inline-block;
-  text-align: center;
-  width:50% !important;
-  border: 1px solid gray;
-}
-  
-.cInlineImage-bordered {
-  display: inline-block;
-  text-align: center;
-  border: 1px solid gray;
-}
-
-img + blockquote{
-  margin-top: 20px;
-}
-
-.mdTable + img {
-  margin-top: 20px;
-}
-
-/* ---------------------Carousal-------------------- */
-#myCarousel {
-  /* margin-left: 50px;
-  margin-right: 50px; */
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 70px;
-}
-
-.item .row {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.selected .row {
-	opacity:0.5;
-}
-
-.carousel-caption {
-    position: relative;
-    left: auto;
-    right: auto;
-}
-
-.carousel-control.left,
-.carousel-control.right {
-  background: none;
-  border: none;
-}
-
-.carousel-control-prev {
-  margin-left: -25px !important;
-  justify-content: start !important;
-}
-
-.carousel-control-next {
-  margin-right: -25px !important;
-  justify-content: end !important;
-}
-
-.carousel-control {
-  width: 0%;
-}
-
-.carousel-indicators {
-  margin-bottom: 0 !important;
 }

@@ -144,10 +144,11 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
 .hackathonBanner {
     text-align: center;
     color: #fff;
-    background-color: #20b6b0 !important;
+    /* background-color: #20b6b0 !important; */
     padding: 10px 0 10px 0;
     font-weight: 400;
     font-size: 20px;
+    background-image: linear-gradient(to right, #000000 , #20b6b0);
 }
 
 .hackathonBanner a {

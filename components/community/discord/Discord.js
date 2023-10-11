@@ -19,7 +19,6 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
-
 import styles from './Discord.module.css';
 import { prefix } from '../../../utils/prefix';
 
@@ -43,7 +42,7 @@ export default function Discord(props) {
                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
               </svg>
-              Ballerina Discord community
+              Join with us
             </h2>
           </Col>
         </Row>
@@ -51,24 +50,51 @@ export default function Discord(props) {
         <Row>
           <Col sm={12} md={6} lg={6}>
             <p>
-              Our 1000+ Discord community includes experienced Ballerina engineers and experts from some of the world&apos;s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+              lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
             </p>
-
-            <p className={styles.member}>
+            {/* <p className={styles.member}>
               Join the <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref>Discord community</a>
-            </p>
+            </p> */}
           </Col>
 
-
-          <Col sm={12} md={6} lg={6}>
-            <Row className={styles.slackCount}>
-              <Col sm={12} md={6} lg={6}>
-                <p className={styles.slackNum}>1000+</p>
-                <p className={styles.slackFoot}>Discord members</p>
-              </Col>
-              <Col sm={12} md={6} lg={6} className="discordImage">
-                <Image src={`${prefix}/images/discord-community.svg`} width={132} height={92} alt="Slack Community" />
-              </Col>
+          <Col xs={12} sm={12} md={6} lg={6}>
+            <Row>
+              <div className={styles.socialMedia}>
+                <div className={styles.smIcons}>
+                  <ul>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
+                        <Image src={`${prefix}/images/sm-icons/stackoverflow-grey.svg`} width={60} height={60} alt="Stackoverflow" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
+                        <Image src={`${prefix}/images/sm-icons/discord-grey.svg`} width={70} height={60} alt="Discord" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
+                        <Image src={`${prefix}/images/sm-icons/linkedin-grey.svg`} width={70} height={70} alt="LinkedIn" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
+                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={70} height={70} alt="GitHub" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
+                        <Image src={`${prefix}/images/sm-icons/twitter-x-black.png`} width={60} height={60} alt="X" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="Meetup">
+                        <Image src={`${prefix}/images/sm-icons/meetup-black.svg`} width={80} height={80} alt="Meetup" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </Row>
           </Col>
         </Row>

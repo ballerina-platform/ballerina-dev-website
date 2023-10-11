@@ -30,19 +30,19 @@ export default function UseCases(props) {
 
     const samples = props.samples;
 
-    const edi = samples['rest-support'];
-    const bapps = samples['json-support'];
-    const editransform = samples['graphql'];
-    const x12 = samples['websockets'];
-    const edifact = samples['server-auth'];
-    const spec = samples['security'];
-    const customEdi = samples['client-auth'];
+    const rest = samples['rest-support'];
+    const jsonSupport = samples['json-support'];
+    const graphql = samples['graphql'];
+    const websocket = samples['websockets'];
+    const serverAuth = samples['server-auth'];
+    const security = samples['security'];
+    const clientAuth = samples['client-auth'];
     const persist = samples['persist'];
     const deployment = samples['deployment'];
     
     return (
         <>
-            {/* edi */}
+            {/* rest */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
@@ -61,7 +61,7 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {edi.frontmatter.title}
+                                    {rest.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -69,12 +69,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edi.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{rest.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (edi.frontmatter.url && edi.frontmatter.url !== '') ?
+                                            (rest.frontmatter.url && rest.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={edi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={rest.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -90,15 +90,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (edi.code && edi.code !== '') ?
+                                    (rest.code && rest.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: edi.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: rest.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (edi.frontmatter.image && edi.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${edi.frontmatter.image}`} alt={edi.frontmatter.title} />
+                                    (rest.frontmatter.image && rest.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${rest.frontmatter.image}`} alt={rest.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -107,13 +107,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* bapps */}
+            {/* jsonSupport */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='edi-business-apps' className='section'>
+                                <h2 id='rest-business-apps' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -121,12 +121,12 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'edi-business-apps')}
+                                        onClick={(e) => props.getLink(e.target, 'rest-business-apps')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {bapps.frontmatter.title}
+                                    {jsonSupport.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -134,12 +134,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{bapps.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{jsonSupport.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (bapps.frontmatter.url && bapps.frontmatter.url !== '') ?
+                                            (jsonSupport.frontmatter.url && jsonSupport.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={bapps.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={jsonSupport.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -155,15 +155,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (bapps.code && bapps.code !== '') ?
+                                    (jsonSupport.code && jsonSupport.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: bapps.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: jsonSupport.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (bapps.frontmatter.image && bapps.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${bapps.frontmatter.image}`} alt={bapps.frontmatter.title} />
+                                    (jsonSupport.frontmatter.image && jsonSupport.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${jsonSupport.frontmatter.image}`} alt={jsonSupport.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -172,13 +172,13 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* editransform */}
+            {/* graphql */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='edi-transform' className='section'>
+                                <h2 id='rest-transform' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -186,12 +186,12 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'edi-transform')}
+                                        onClick={(e) => props.getLink(e.target, 'rest-transform')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {editransform.frontmatter.title}
+                                    {graphql.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -199,12 +199,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{editransform.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{graphql.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (editransform.frontmatter.url && editransform.frontmatter.url !== '') ?
+                                            (graphql.frontmatter.url && graphql.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={editransform.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={graphql.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -221,15 +221,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (editransform.code && editransform.code !== '') ?
+                                    (graphql.code && graphql.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div style={{ height: "auto"}} className="highlight" dangerouslySetInnerHTML={{ __html: editransform.code }} />
+                                            <div style={{ height: "auto"}} className="highlight" dangerouslySetInnerHTML={{ __html: graphql.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (editransform.frontmatter.image && editransform.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${editransform.frontmatter.image}`} alt={editransform.frontmatter.title} />
+                                    (graphql.frontmatter.image && graphql.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${graphql.frontmatter.image}`} alt={graphql.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -238,7 +238,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* x12 */}
+            {/* websocket */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
@@ -257,7 +257,7 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {x12.frontmatter.title}
+                                    {websocket.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -265,12 +265,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{x12.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{websocket.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (x12.frontmatter.url && x12.frontmatter.url !== '') ?
+                                            (websocket.frontmatter.url && websocket.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={x12.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={websocket.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -286,15 +286,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (x12.code && x12.code !== '') ?
+                                    (websocket.code && websocket.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: x12.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: websocket.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (x12.frontmatter.image && x12.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${x12.frontmatter.image}`} alt={x12.frontmatter.title} />
+                                    (websocket.frontmatter.image && websocket.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${websocket.frontmatter.image}`} alt={websocket.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -309,7 +309,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='ballerina-is-edifact' className='section'>
+                                <h2 id='ballerina-is-serverAuth' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -317,12 +317,12 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'ballerina-is-edifact')}
+                                        onClick={(e) => props.getLink(e.target, 'ballerina-is-serverAuth')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {edifact.frontmatter.title}
+                                    {serverAuth.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -330,12 +330,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{edifact.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{serverAuth.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (edifact.frontmatter.url && edifact.frontmatter.url !== '') ?
+                                            (serverAuth.frontmatter.url && serverAuth.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={edifact.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={serverAuth.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -351,15 +351,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (edifact.code && edifact.code !== '') ?
+                                    (serverAuth.code && serverAuth.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: edifact.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: serverAuth.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (edifact.frontmatter.image && edifact.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${edifact.frontmatter.image}`} alt={edifact.frontmatter.title} />
+                                    (serverAuth.frontmatter.image && serverAuth.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${serverAuth.frontmatter.image}`} alt={serverAuth.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -368,7 +368,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* spec */}
+            {/* security */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
@@ -387,7 +387,7 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {spec.frontmatter.title}
+                                    {security.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -395,12 +395,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{spec.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{security.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (spec.frontmatter.url && spec.frontmatter.url !== '') ?
+                                            (security.frontmatter.url && security.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={spec.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={security.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -416,15 +416,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (spec.code && spec.code !== '') ?
+                                    (security.code && security.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: spec.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: security.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (spec.frontmatter.image && spec.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${spec.frontmatter.image}`} alt={spec.frontmatter.title} />
+                                    (security.frontmatter.image && security.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${security.frontmatter.image}`} alt={security.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -439,7 +439,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='custom-edi' className='section'>
+                                <h2 id='custom-rest' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -447,12 +447,12 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'custom-edi')}
+                                        onClick={(e) => props.getLink(e.target, 'custom-rest')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {customEdi.frontmatter.title}
+                                    {clientAuth.frontmatter.title}
                                 </h2>
                             </Col>
                         </Row>
@@ -460,12 +460,12 @@ export default function UseCases(props) {
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
-                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{customEdi.frontmatter.description}</ReactMarkdown>
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{clientAuth.frontmatter.description}</ReactMarkdown>
 
                                         {
-                                            (customEdi.frontmatter.url && customEdi.frontmatter.url !== '') ?
+                                            (clientAuth.frontmatter.url && clientAuth.frontmatter.url !== '') ?
                                                 <div className={styles.dVersion}>
-                                                    <a href={customEdi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                    <a href={clientAuth.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                         <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                         View code on GitHub
                                                     </a>
@@ -481,15 +481,15 @@ export default function UseCases(props) {
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
-                                    (customEdi.code && customEdi.code !== '') ?
+                                    (clientAuth.code && clientAuth.code !== '') ?
                                         <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: customEdi.code }} />
+                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: clientAuth.code }} />
                                         </div>
                                         : null
                                 }
                                 {
-                                    (customEdi.frontmatter.image && customEdi.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${customEdi.frontmatter.image}`} alt={customEdi.frontmatter.title} />
+                                    (clientAuth.frontmatter.image && clientAuth.frontmatter.image !== '') ?
+                                        <img src={`${prefix}/${clientAuth.frontmatter.image}`} alt={clientAuth.frontmatter.title} />
                                         : null
                                 }
                             </Col>
@@ -529,7 +529,7 @@ export default function UseCases(props) {
 
                                         {
                                             <div className={styles.dVersion}>
-                                                <a href={customEdi.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
+                                                <a href={persist.frontmatter.url} className={styles.cDownload} target="_blank" rel="noreferrer">
                                                     <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                                     View code on GitHub
                                                 </a>

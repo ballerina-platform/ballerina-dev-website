@@ -1,7 +1,7 @@
 ---
 title: 'Expose real-time data to front-ends via WebSockets'
 description: Modern web and mobile app users expect real-time updates, whether it's tracking a cab's live location or viewing up-to-the-minute inventory levels. Ballerina allows real-time data to be streamed just by implementing a service. This comes with enterprise-ready security features like TLS, mutual TLS, and OAuth2, ensuring authenticated and authorized streaming data transfers.
-url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/ballerina-x12/main.bal'
+url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_websocket'
 ---
 ```
 import ballerina/lang.runtime;

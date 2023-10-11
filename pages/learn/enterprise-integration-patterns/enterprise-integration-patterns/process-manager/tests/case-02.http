@@ -1,0 +1,18 @@
+POST http://localhost:8080/api/v1/orders
+
+{
+    "email": "john@example.com",
+    "address": {
+    "fullName": "John Doe",
+    "address1": "Flower Street 45",
+    "phone": "+947456893",
+    "city": "Colombo",
+    "country": "Sri Lanka"
+    },
+    "orderItems": [
+    {
+        "itemName": "The Da Vinci Code",
+        "quantity": 4
+    }
+    ]
+}

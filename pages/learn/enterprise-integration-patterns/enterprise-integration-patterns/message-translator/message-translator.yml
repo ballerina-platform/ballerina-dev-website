@@ -1,0 +1,8 @@
+tagline: Transform one message format to another
+desc: The Message Translator transforms messages from one structure to another.
+category: Messaging Systems
+index: 4
+helps: Ballerina comes with a data mapper as part of its Visual Studio Code extension, allowing you to effortlessly map data from one record to another.
+       Ballerina query expression syntax enables you to filter, order, and aggregate values to craft custom message values. Ballerina provides convenient tools like `JSON as Record` and `XML as Record`, which automatically generate Ballerina records based on sample JSON or XML input values.
+tags: ["Message Translator", "Message Endpoint"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html

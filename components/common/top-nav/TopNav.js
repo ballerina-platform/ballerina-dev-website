@@ -48,15 +48,31 @@ const TopNav = (props) => {
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='8'>EDA</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='9'>B2B</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='10'>WSO2</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='10'>MOSIP</Dropdown.Item>
+    <Dropdown.Item category='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='8'>B2B</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='10'>Microservices</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='9'>WSO2</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='11'>MOSIP</Dropdown.Item>
   ];
+
+
+  const now = new Date();
+  let showBanner = false;
+
+  if (now < Date.parse('2023-10-31T00:00:00.0000-00:00')) {
+    showBanner = true;
+  }
 
 
   return (
     <>
+      {
+        (showBanner) ?
+          <div className={styles.hackathonBanner}>
+            Ballerina Hacktoberfest is happening now. <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>!
+          </div>
+        : null
+      }
       <>
         <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
           <Container fluid>

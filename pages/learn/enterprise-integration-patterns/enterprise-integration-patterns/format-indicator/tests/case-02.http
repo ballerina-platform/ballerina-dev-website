@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/v1/data/patient
+
+{
+    "version": "2.0",
+    "patient": {
+        "fullName": "John Cook",
+        "diagnosis": "Migraine",
+        "dob": "1977-12-06"
+    }
+}

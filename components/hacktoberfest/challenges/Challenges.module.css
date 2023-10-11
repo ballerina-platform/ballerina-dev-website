@@ -1,0 +1,75 @@
+.boxCol {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 20px !important;
+    margin-bottom: 20px;
+  }
+  
+  .boxCol .cardWrapper {
+    border: #a7a8ab solid 0.3px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .pGroup {
+    border: #a7a8ab solid 0.3px;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .cardWrapper h3 {
+    font-size: 22px;
+    color: #585a5e;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .cardWrapper h4 {
+    font-size: 18px;
+    color: #585a5e;
+    height: auto;
+    margin-bottom: 10;
+  }
+  
+  .pGroup h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #585a5e;
+  }
+  
+  .pGroup:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .titleLink {
+    text-decoration: none;
+    color: #20b6b0;
+    font-size: 16px;
+  }
+  
+  .titleLink:hover {
+    color: #57595d;
+  }
+  
+  .title {
+    margin-bottom: 0;
+  }
+  
+  .description {
+    color: #57595d;
+    font-size: 14px;
+  }
+  
+  .contentCol {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sub {
+    margin-left: 10px;
+  }
+  

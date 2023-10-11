@@ -1,0 +1,25 @@
+POST http://localhost:8080/api/v1/payments
+
+{
+    "mobileNumber": "0773334443",
+    "customerName": "Rexton",
+    "totalAmount": 7846.50,
+    "storeCode": "ST-01",
+    "items": [
+        {
+            "name": "item1",
+            "quantity": 2,
+            "price": 1000
+        },
+        {
+            "name": "item2",
+            "quantity": 1,
+            "price": 2000
+        },
+        {
+            "name": "item3",
+            "quantity": 1,
+            "price": 4846.50
+        }
+    ]
+}

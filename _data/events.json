@@ -1,6 +1,38 @@
 {
     "events": [
        {
+            "date": "October 1-31, 2023",
+            "day": "",
+            "time": "",
+            "expire": "2023-11-31T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://ballerina.io/hacktoberfest/",
+            "eventType": "Hacktoberfest 2023",
+            "eventName": "Contribute towards the growth and improvement of Ballerina Swan Lake",
+            "presenterTwitter": "https://ballerina.io/hacktoberfest/#rewards",
+            "presenter": "Exciting prizes to be won!",
+            "presenterDesignation": "",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "October 7, 2023",
+            "day": "Sat.",
+            "time": "12.00 p.m. IST",
+            "expire": "2023-10-08T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://reskilll.com/event/intwithballerina",
+            "eventType": "Azure Serverless Day",
+            "eventName": "Getting Started With Ballerina",
+            "presenterTwitter": "https://twitter.com/shafreen101",
+            "presenter": "Shafreen Anfar",
+            "presenterDesignation": "Associate Director, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "September 28, 2023",
             "day": "Thur.",
             "time": "10.00 a.m. PDT",

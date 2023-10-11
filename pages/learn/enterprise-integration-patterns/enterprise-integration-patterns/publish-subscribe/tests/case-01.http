@@ -1,0 +1,74 @@
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:00", 
+    "event": "0",
+    "description": "No run"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:01", 
+    "event": "1",
+    "description": "1 run"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:03", 
+    "event": "1",
+    "description": "2 run"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:04", 
+    "event": "0",
+    "description": "No run"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:05", 
+    "event": "4",
+    "description": "4 runs"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:07", 
+    "event": "6",
+    "description": "6 runs"
+}
+
+###
+
+POST http://localhost:8080/api/cricket/matches/IndVsAus/event
+
+{
+    "matchId": "IndVsAus", 
+    "time": "10:10", 
+    "event": "W",
+    "description": "Wicket"
+}

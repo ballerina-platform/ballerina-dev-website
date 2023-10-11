@@ -54,12 +54,12 @@ export default function Articles(props) {
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
                   <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://www.slant.co/topics/20337/~visual-programming-languages">
-                      <h4 className="card-title" >What are the best visual programming languages?</h4>
+                    <a target="_blank" rel="noreferrer" href="https://bestcodinglanguage.com/for-cloud-computing/">
+                      <h4 className="card-title" >Best Programming Languages For Cloud Computing</h4>
                     </a>
                   </Card.Text>
                   <div>
-                    <p className={styles.author}> By <span>Slant</span></p>
+                    <p className={styles.author}> By <span>Awais Yaseen</span> in Best coding language</p>
                     <p className={styles.date}>Sep 15, 2023</p>
                   </div>
                 </Card.Body>
@@ -70,7 +70,7 @@ export default function Articles(props) {
                 <Card.Body className={styles.cardBody}>
                   {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
                   <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
+                    <a target="_blank" rel="noreferrer" href="https://www.hyperlinkinfosystem.com/blog/popular-microservices-frameworks">
                       <h4 className="card-title" >10 Most Popular Microservices Framework</h4>
                     </a>
                   </Card.Text>
@@ -115,7 +115,7 @@ export default function Articles(props) {
               </Card>
             </Col>
 
-           
+
           </Row>
 
 

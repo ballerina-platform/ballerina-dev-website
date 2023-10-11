@@ -1,0 +1,27 @@
+.hacktoberfestIntro {
+  padding: 80px 0 80px 0;
+}
+
+.hacktoberfestChallenges, .hacktoberfestRules {
+  background: #fff;
+}
+
+.hacktoberfestRewards {
+  background: #f5f5f5;
+}
+
+.hacktoberfestChallenges, .hacktoberfestRules, .hacktoberfestRewards {
+  padding-bottom: 6rem;
+}
+
+.hacktoberfestChallenges h2, .hacktoberfestRules h2, .hacktoberfestRewards h2 {
+  font-size: 32px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: #464646;
+  border-bottom: 2px solid #464646;
+  display: inline-block;
+  padding-bottom: 10px;
+  scroll-margin-top: 65px;
+}

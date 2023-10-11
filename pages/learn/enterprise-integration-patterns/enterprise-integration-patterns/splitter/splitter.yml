@@ -1,0 +1,7 @@
+tagline: Process messages with multiple elements
+desc: Splitter splits the message into multiple messages, each containing one of the elements.
+helps: Ballerina supports arrays and maps as first-class data structures. These structures can be iterated over using `foreach` and query expressions.
+category: Message Routing
+index: 28
+tags: ["Splitter", "Content Filter", "Event Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Sequencer.html

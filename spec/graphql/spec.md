@@ -3,13 +3,13 @@
 _Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
 _Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
 _Created_: 2022/01/06 \
-_Updated_: 2023/09/14 \
+_Updated_: 2023/08/22 \
 _Edition_: Swan Lake \
-_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
+_GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)  
 
 ## Introduction
 
-This is the specification for the GraphQL package of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL standard library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -196,9 +196,9 @@ The conforming implementation of the specification is released and included in t
 
 ## 1. Overview
 
-The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL package uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
+The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL standard library uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
 
-The GraphQL package is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL package uses the code-first first approach to write GraphQL APIs (which means no GraphQL schema is required to create a GraphQL service), while it also supports the schema-first approach through Ballerina GraphQL CLI tool.
+The GraphQL standard library is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL standard library uses the code-first first approach to write GraphQL APIs. This means no GraphQL schema is required to create a GraphQL service.
 
 In addition to functional requirements, this library deals with none functional requirements such as security. Each requirement is discussed in detail in the coming sections.
 
@@ -254,7 +254,7 @@ Since the GraphQL listener uses the `http:Listener` and the `websocket:Listener`
 ###### Example: Listener Configuration
 
 ```ballerina
-listener graphql:Listener graphqlListener = new (9090, timeout = 10);
+listener graphql:Listener graphqlListener = = new (9090, timeout = 10);
 ```
 
 >**Note:** If the GraphQL service includes subscription operations, the `httpVersion` of the `graphql:ListenerConfiguration` must be either `"1.0"` or `"1.1"`. Otherwise, this will cause a runtime error when attaching the service to the listener.
@@ -695,7 +695,7 @@ When the `@graphql:ID` annotation is used, the generated schema will show the fi
 
 >**Note:** If the `@graphql:ID` annotation is used for a field, the values of those fields will always be serialized as strings.
 
->**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements.
+>**Note:** Applying a `@graphql:ID` annotation to an array indicates it as a list of `ID` elements. 
 
 ###### Example: ID Scalar Type
 ```ballerina
@@ -3332,15 +3332,14 @@ type Product @key(fields: "id", resolvable: false) {
 Reference resolver is a function that resolves an entity of a specific type using its primary key. When the router requires a particular entity to be resolved, it invokes the corresponding entity's reference resolver. Following is the type definition of a reference resolver defined in `graphql.subgraph` module.
 
 ```ballerina
-public type ReferenceResolver isolated function (subgraph:Representation representation)
-returns map<any>|service object {}|error?;
+public type ReferenceResolver function (subgraph:Representation representation) returns record {}|service object {}|error?;
 ```
 Here, `subgraph:Representation` is a type definition of the entity representation outlined in the federation specification, which includes the GraphQL `__typename` field of the entity being resolved and its primary key.
 
 ###### Example: A Product Entity Defined with Its Resolver
 
 ```ballerina
-isolated function resolveProduct(subgraph:Representation representation) returns Product|error? {
+function resolveProduct(subgraph:Representation representation) returns Product|error? {
     string id = check representation["id"].ensureType(); // obtain the primary key of the entity
     return findProduct(id);
 }
@@ -3607,7 +3606,7 @@ isolated distinct service class User {
 
         dataloader:DataLoader rePostsLoader = ctx.getDataLoader("rePostsLoader");
         Post[] rePosts = check rePostsLoader.get(self.userId);
-
+        
         return [...posts, ...rePosts];
     }
 

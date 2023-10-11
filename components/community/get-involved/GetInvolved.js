@@ -47,13 +47,13 @@ export default function GetInvolved(props) {
         </Row>
 
         <Row>
-          <Col xs={12} md={4} lg={4} className={styles.card}>
+          {/* <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="report-issues"></span>
             <h4 id="report-issues-title">
               Report issues
             </h4>
             <p><a id="reportissues" target='_blank' rel="noreferrer" className={styles.getStartLinks} href="https://github.com/ballerina-platform/ballerina-lang/issues/new/choose">Report issues</a> in the respective GitHub repositories of the areas and components.</p>
-          </Col>
+          </Col> */}
           <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="contribute-to-the-source-code"></span>
             <h4 id="contribute-to-the-source-code-title">
@@ -69,10 +69,16 @@ export default function GetInvolved(props) {
             <p>Let the whole community benefit from your work by <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="/learn/publish-packages-to-ballerina-central/" >
               creating and publishing</a> your module to <a className={styles.getStartLinks} target="_blank" rel="noreferrer" href="https://central.ballerina.io/" >Ballerina Central</a>. </p>
           </Col>
+          <Col xs={12} md={4} lg={4} className={styles.card}>
+            <span className="bookMarkOnPage" id="host-a-ballerina-event"></span>
+            <h4 id="host-a-ballerina-event-title">
+              Host a Ballerina event
+            </h4>
+            <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a className={styles.getStartLinks} href="mailto:contact@ballerina.io">contact@ballerina.io</a>.</p>
+          </Col>
         </Row>
 
-
-        <Row>
+        {/* <Row>
           <Col xs={12} md={4} lg={4} className={styles.card}>
             <span className="bookMarkOnPage" id="join-dev-google-group"></span>
             <h4 id="join-dev-google-group-title">
@@ -88,7 +94,7 @@ export default function GetInvolved(props) {
             <p>Want to talk about Ballerina at your local tech meetup? Reach us at <a className={styles.getStartLinks} href="mailto:contact@ballerina.io">contact@ballerina.io</a>.</p>
           </Col>
 
-        </Row>
+        </Row> */}
 
       </Container>
     </Col>

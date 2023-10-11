@@ -1,70 +1,74 @@
 .viewAll {
-    color: #20b6b0;
-    text-decoration: none;
-    text-align: right;
-    font-weight: 400;
-    font-size: 18px;
+  color: #20b6b0;
+  text-decoration: none;
+  text-align: right;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .viewAll:hover {
-    text-decoration: none !important;
-    color: #464646 !important;
+  text-decoration: none !important;
+  color: #464646 !important;
 }
 
 .linkWrap {
-    text-align: right;
+  text-align: right;
 }
 
 .resourceRow {
-    /* padding-bottom: 20px; */
-    margin-top: 10px;
+  /* padding-bottom: 20px; */
+  margin-top: 10px;
 }
 
 .cardBox {
-    border: #E6EAEB solid 0.1px;
-    /* text-align: left;
+  border: #e6eaeb solid 0.1px;
+  background-color: #585a5e;
+  /* text-align: left;
     padding: 10px;
     background-color: #ffffff; */
-    border-radius: 0;
-    /* box-shadow: 0;
+  border-radius: 0;
+  /* box-shadow: 0;
     margin-bottom: 15px;
     margin-top: 15px;
     box-shadow: none; */
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .cardBox:hover {
-    border: #464646 solid 0.1px;;
+  border: #464646 solid 0.1px;
 }
 
 .cardBody {
-    padding: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardTitle {
-    font-size: 16px;
-    margin: 10px 0;
+  font-size: 16px;
+  margin: 10px 0;
 }
 
 .cardText {
-    height: 100px;
+  padding-bottom: 20px;
+  color: white;
 }
 
-.cardText a {
-    color: #20b6b0;
-    text-decoration: none;
-    /* text-align: right;
-    font-weight: 400;
-    font-size: 18px; */
+.cardText h5 {
+  line-height: 30px;
+  font-size: 22px;
 }
 
-.cardText h4 {
-    line-height: 30px;
-    font-size: 22px ;
+.cardImg {
+  margin: 20px;
 }
 
-.cardText a:hover {
-    text-decoration: none !important;
-    color: #464646 !important;
-    line-height: 30px;
+.resourceCardLink {
+  text-decoration: none;
+}
+
+.resourceCardLink:hover {
+  text-decoration: none;
 }

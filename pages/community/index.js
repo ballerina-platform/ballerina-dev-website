@@ -101,7 +101,6 @@ export default function Community() {
             <Discord getLink={getLink} />
           </Row>
 
-
           <Row className="pageContentRow communityRow slackRow">
             <Resources getLink={getLink} />
           </Row>

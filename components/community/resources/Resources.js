@@ -18,7 +18,7 @@
 
 import * as React from 'react';
 import { Row, Col, Card, Container } from 'react-bootstrap';
-
+import Image from 'next-image-export-optimizer';
 import styles from './Resources.module.css';
 import { prefix } from '../../../utils/prefix';
 
@@ -45,7 +45,7 @@ export default function Resources(props) {
                 <Row>
                     <Col xs={12}>
                         <h2 id='resources' className='section'>
-                        <svg
+                            <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="30"
                                 height="30"
@@ -58,7 +58,7 @@ export default function Resources(props) {
                                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                             </svg>
                             Resources
-                            </h2>
+                        </h2>
                     </Col>
                 </Row>
 
@@ -86,48 +86,50 @@ export default function Resources(props) {
                 </Row>
 
 
-
                 <Row className={styles.resourceRow}>
                     <Col sm={12} md={12} lg={4}>
-                        <Card className={styles.cardBox}>
-                            <Card.Body className={styles.cardBody}>
-                                <Card.Title className={styles.cardTitle}>Articles</Card.Title>
-                                <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://thenewstack.io/how-mosip-uses-ballerina-websubhub-for-event-driven-integration/">
-                                        <h4 className="card-title" >How MOSIP Uses Ballerina WebSubHub for Event-Driven Integration</h4>
-                                    </a>
-                                </Card.Text>
-                                <p className="card-text"> By Dakshitha Ratnayake </p>
-                            </Card.Body>
-                        </Card>
+                        <a href='#' className={styles.resourceCardLink}>
+                            <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                    <div className={styles.cardImg}>
+                                        <Image src={prefix + '/images/sm-icons/youtube-updated-white.svg'} alt="Tech Talks" width={90} height={90} />
+                                    </div>
+                                    <Card.Text className={styles.cardText}>
+                                        <h5 className="card-text"> Tech Talks </h5>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </a>
                     </Col>
 
                     <Col sm={12} md={12} lg={4}>
-                        <Card className={styles.cardBox}>
-                            <Card.Body className={styles.cardBody}>
-                                <Card.Title className={styles.cardTitle}>Blog posts</Card.Title>
-                                <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://blog.jclark.com/2022/05/why-ballerina-is-language.html">
-                                        <h4 className="card-title" >Why Ballerina is a language</h4>
-                                    </a>
-                                </Card.Text>
-                                <p className="card-text"> By James Clark </p>
-                            </Card.Body>
-                        </Card>
+                        <a href='#' className={styles.resourceCardLink}>
+                            <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                    <div className={styles.cardImg}>
+                                        <Image src={prefix + '/images/sm-icons/medium-white.png'} alt="Blogs on Medium" width={90} height={90} />
+                                    </div>
+                                    <Card.Text className={styles.cardText}>
+                                        <h5 className="card-text"> Blogs on Medium </h5>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </a>
                     </Col>
 
                     <Col sm={12} md={12} lg={4}>
-                        <Card className={styles.cardBox}>
-                            <Card.Body className={styles.cardBody}>
-                                <Card.Title className={styles.cardTitle}>Videos & podcasts</Card.Title>
-                                <Card.Text className={styles.cardText}>
-                                    <a target="_blank" rel="noreferrer" href="https://youtu.be/Pal5QZJyloY">
-                                        <h4>Simplifying Cloud Native Application Development with Ballerina</h4>
-                                    </a>
-                                </Card.Text>
-                                <p className="card-text"> By Eric Newcomer and Darryl Taft </p>
-                            </Card.Body>
-                        </Card>
+                        <a href='#' className={styles.resourceCardLink}>
+                            <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                    <div className={styles.cardImg}>
+                                        <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
+                                    </div>
+                                    <Card.Text className={styles.cardText}>
+                                        <h5 className="card-text"> Articles on Stack overflow </h5>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </a>
                     </Col>
                 </Row>
             </Container>

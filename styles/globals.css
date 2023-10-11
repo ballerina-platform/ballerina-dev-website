@@ -516,6 +516,7 @@ a.cGreenLinkArrow:hover {
 
 .pageHeader h1 {
   padding-top: 35px;
+  padding-bottom: 0px;
   color: #464646;
   /* color: #585a5e; */
   font-weight: 500;
@@ -555,8 +556,8 @@ pre[class*="language-"] {
 /*------------Community----------------*/
 
 .communityRow {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   /* margin-bottom: 0 !important; */
 }
 

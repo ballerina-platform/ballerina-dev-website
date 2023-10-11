@@ -28,16 +28,6 @@ export default function NewsletterSubscription() {
     let linkArrowPath = prefix + '/images/toc-bg.svg';
     let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
 
-    const linkArrow = {
-        background: 'url(' + linkArrowPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
-
-    const linkArrowHover = {
-        background: 'url(' + linkArrowHoverPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
-
     return (
         <>
             <p>
@@ -49,13 +39,13 @@ export default function NewsletterSubscription() {
                 }}
                 onMouseLeave={() => {
                     setHoverBtn(false);
-                }}>
+                }}
+            >
                 <a href={`${prefix}/community/ballerina-newsletter`} target="_blank" rel="noreferrer" className={styles.viewAll}>
-                    <span>View all newsletters</span>
-                    {/* <Image src={`${linkArrowPath}`} width={20} height={20} alt="Left Arrow" /> */}
+                    View all newsletters <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
                 </a>
 
-            </p>
+            </p >
         </>
     );
 }

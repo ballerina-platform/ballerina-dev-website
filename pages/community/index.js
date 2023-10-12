@@ -93,34 +93,34 @@ export default function Community() {
             </Col>
           </Row>
 
-          <Row className="pageContentRow communityRow">
-            <Newsletter getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Events getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Resources getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow slackRow">
             <Discord getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
-            <TechTalk getLink={getLink} />
+          <Row className="pageContentRow communityRow slackRow">
+            <Resources getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
+            <Newsletter getLink={getLink} />
+          </Row>
+
+          {/* <Row className="pageContentRow communityRow">
+            <TechTalk getLink={getLink} />
+          </Row> */}
+
+          <Row className="pageContentRow communityRow slackRow">
             <GetInvolved getLink={getLink} />
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          {/* <Row className="pageContentRow communityRow">
             <Blog getLink={getLink} />
-          </Row>
-          
+          </Row> */}
+
           <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>

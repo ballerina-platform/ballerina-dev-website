@@ -68,7 +68,7 @@ export default function PastEvents() {
                 <h5>{item.eventName}</h5>
                 {
                   (item.presenter !== '') ?
-                    <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>, {item.presenterDesignation}</>
+                    <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</>: null }</>
                     : <>{item.otherInfo}</>
                 }
               </Col>

@@ -2,10 +2,10 @@
     "events": [
        {
             "date": "October 1-31, 2023",
-            "day": "Virtual",
+            "day": "",
             "time": "",
             "expire": "2023-11-31T00:00:00.0000-00:00",
-            "location": "",
+            "location": "Virtual",
             "url": "https://ballerina.io/hacktoberfest/",
             "eventType": "Hacktoberfest 2023",
             "eventName": "Contribute towards the growth and improvement of Ballerina Swan Lake",

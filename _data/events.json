@@ -1,5 +1,37 @@
 {
     "events": [
+        {
+            "date": "October 26, 2023",
+            "day": "Thur.",
+            "time": "6.00 p.m. EAT",
+            "expire": "2023-10-27T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://summit.africastalking.com/#speakers",
+            "eventType": "Africa's Talking Summit",
+            "eventName": "Empowering Integration Development with Ballerina: A Developer's Perspective",
+            "presenterTwitter": "https://twitter.com/pcnfernando",
+            "presenter": "Chiran Fernando",
+            "presenterDesignation": "Associate Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "October 24, 2023",
+            "day": "Tue.",
+            "time": "9.30 a.m. IST",
+            "expire": "2023-10-25T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/296693791/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "The Developer's Journey: Building Integrations the Ballerina Way (Part 2)",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Ballerina Platform Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
        {
             "date": "October 1-31, 2023",
             "day": "",
@@ -29,8 +61,8 @@
             "presenter": "Shafreen Anfar",
             "presenterDesignation": "Associate Director, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/live/qierfHRpn6I?si=YoKe4y3hYJP_b6Qv&t=7075",
+            "buttonText": "Watch recording"
         },
         {
             "date": "September 28, 2023",
@@ -61,8 +93,8 @@
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=CJm_Z2CDEQ8",
+            "buttonText": "Watch recording"
         },
         {
             "date": "August 17, 2023",

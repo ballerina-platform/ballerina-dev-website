@@ -64,7 +64,7 @@ The supported structure of documentation syntax for functions is as follows:
 # + i - One sentence only
 # + s - Sentence one. Sentence two.
 # + return - Return description
-public function foo(int i, string s) returns boolean {
+#public function foo(int i, string s) returns boolean {
     return true;
 }
 ```
@@ -73,7 +73,7 @@ Members of record and object types can be documented at member-level.
 
 ```ballerina
 # Description of the record.
-type Record record {|
+#type Record record {|
     # Description of field `f1`
     string f1;    
     # Description of field `f2`
@@ -90,16 +90,14 @@ type Record record {|
 # interactions with the endpoint.
 #
 # Example:
-# ```ballerina
 # HttpFuture future = myMsg.submit("GET", "/test", req);
-# ```
 #
 # + httpVerb - The HTTP verb value
 # + path - The resource path
 # + message - An HTTP outbound request or any allowed payload
 # + return - An `http:HttpFuture` that represents an asynchronous service invocation 
 #            or an `http:ClientError` if the submission fails
-remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {
+#remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {
     // function body
 }
 ```
@@ -161,15 +159,12 @@ $ tree
 Now, let's add a function to the `math` module to be documented. Copy and paste the following code into the `math/main.bal` file.
 
 ```ballerina
-# Calculates the value of the 'a' raised to the power of 'b'.
-# ```ballerina
+# //Calculates the value of the 'a' raised to the power of 'b'.
 # float aPowerB = math:pow(3.2, 2.4);
-# ```
-# 
 # + a - Base value
 # + b - Exponential value
 # + return - Calculated exponential value
-public isolated function pow(float a, float b) returns float {
+#public isolated function pow(float a, float b) returns float {
     return 0;
 }
 ```

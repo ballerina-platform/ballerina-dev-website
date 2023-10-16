@@ -458,6 +458,14 @@
                     "id": "1.2.x-api-docs"
                 },
                 {
+                    "dirName": "1.2.45",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.45",
+                    "id": "1.2.45v"
+                },
+                {
                     "dirName": "1.2.44",
                     "level": 2,
                     "position": 1,

@@ -237,9 +237,9 @@ export default function Learn({ samples, content }) {
                       based on the prices published to a Kafka topic.</p>
 
                   </Col>
-                  <Col xs={12} lg={6} className="text-center">
+                  <Col xs={12} lg={6} className="text-center mdContent">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/kafka-to-salesforce-integration.png`} alt="Sequence Diagram" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/kafka-to-salesforce-integration.png`} alt="Sequence Diagram" />
 
                   </Col>
                 </Row>

@@ -68,7 +68,7 @@ export default function Rules(props) {
                       <li>All decisions made by the Ballerina Hacktoberfest panel shall be deemed final, conclusive, and binding.</li>
                     </ol>
                     </div>
-                    <p className={styles.content}>By participating the competitions, you agree to our  <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">Terms and Conditions</a>.</p>
+                    <p className={styles.content}>By participating in this competition, you agree to our  <a target='_blank' rel='noreferrer' className={styles.titleLink} href="/hacktoberfest/ballerina-hacktoberfest-2023-terms-and-onditions.pdf">Terms & Conditions</a>.</p>
                   </div>
                 </div>
         </Row>

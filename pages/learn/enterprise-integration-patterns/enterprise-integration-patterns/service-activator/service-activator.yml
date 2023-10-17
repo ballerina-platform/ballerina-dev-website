@@ -1,0 +1,7 @@
+tagline: Make available a service to other applications
+desc: Service activator provides an endpoint to invoke a private service through messaging.
+category: Messaging Endpoints
+index: 52
+helps: 
+tags: ["Service Activator", "Request-Reply", "Command Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingAdapter.html

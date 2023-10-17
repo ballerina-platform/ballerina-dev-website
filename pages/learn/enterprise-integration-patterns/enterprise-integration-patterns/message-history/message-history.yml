@@ -1,5 +1,5 @@
 tagline: Analyze and debug message flow in a loosely coupled system
-desc: Message history maintains a list of all components that the message passed through. Every component that processes the message adds one entry to the list.
+desc: Message History maintains a list of all components that the message passed through. Every component that processes the message adds one entry to the list.
 helps: Depending on the protocol, Ballerina provides APIs to manipulate message content, including headers.
 index: 56
 category: System Management

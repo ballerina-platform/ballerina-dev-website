@@ -1,0 +1,17 @@
+{
+    "formatVersion": "0.0.12",
+    "routes": [
+        {
+            "points": [
+                {
+                    "latitude": "52.50931",
+                    "longitude": "13.42937"
+                },
+                {
+                    "latitude": "52.50904",
+                    "longitude": "13.42912"
+                }
+            ]
+        }
+    ]
+}

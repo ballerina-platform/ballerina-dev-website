@@ -1,0 +1,15 @@
+{
+    "ok": true,
+    "usergroup": {
+        "id": "S0615G0KT",
+        "team_id": "T12345678",
+        "is_usergroup": true,
+        "name": "Team Leads Group",
+        "description": "This group is for the team leads internal communication.",
+        "handle": "marketing-team",
+        "is_external": false,
+        "date_create": 1446746793,
+        "created_by": "U060RNRCZ",
+        "user_count": "0"
+    }
+}

@@ -44,7 +44,7 @@ export async function getStaticProps({ params }) {
     return { props: { code, name, content } };
   }
   const yml = fs.readFileSync(ymlPath, "utf-8");
-  var props = load(yml);
+  var props = load(yml) || {};
   props.code = code;
   props.name = props.name ?? name;
   props.content = content;

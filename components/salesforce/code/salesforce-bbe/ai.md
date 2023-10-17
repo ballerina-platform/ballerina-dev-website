@@ -1,6 +1,7 @@
 ---
 title: 'Utilize AI to extract sales information'
 description: A Great amount of valuable sales-related information is captured in ad-hoc form such as emails, Word documents, and slides. Ballerina AI capabilities can be used to update Salesforce with information extracted from such unstructured data.
+url: 'https://github.com/chathurace/integration-samples/blob/main/gmail-to-salesforce-lead/main.bal'
 ---
 ```
 import ballerina/lang.runtime;

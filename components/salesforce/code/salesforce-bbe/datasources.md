@@ -2,7 +2,7 @@
 title: 'Bridge Salesforce with disparate data sources'
 description: Data about products, customers, and sales transactions are often scattered across various systems, databases, and business units. Ballerina, with its rich set of connectors and data handling capabilities, can link Salesforce with all relevant data sources, providing a consolidated view of customers and sales.
 
-url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/edi-in-business-apps/main.bal'
+url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/mysql-record-to-sfdc-new-product/main.bal'
 ---
 ```
 import ballerinax/mysql;

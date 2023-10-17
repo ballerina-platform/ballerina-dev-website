@@ -1,7 +1,7 @@
 ---
 title: 'Synchronize Salesforce with real-time data'
 description: In enterprises, business data like inventory levels, order statuses, or product prices change constantly. Ballerina, with its large set of connectors and streaming capabilities, can keep Salesforce in sync with such real-time data sources.
-url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/ballerina-edifact/main.bal'
+url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/kafka_salesforce_integration/kafka-salesforce-pricebook_update/main.bal'
 ---
 ```
 import ballerinax/kafka;

@@ -1,7 +1,7 @@
 ---
 title: 'Connect Salesforce with e-commerce platforms'
 description: E-commerce platforms like Shopify and WooCommerce are the main points of customer interactions. Ballerina can listen for events from such platforms like customer registrations, contact updates, or order placements, and propagate those changes to Salesforce.
-url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/simple-edi-schema/main.bal'
+url: 'https://github.com/chathurace/integration-samples/blob/main/shopify-customer-to-salesforce-customer/main.bal'
 ---
 ```
 import ballerina/http;

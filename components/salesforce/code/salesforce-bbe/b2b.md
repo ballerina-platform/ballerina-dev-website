@@ -1,6 +1,7 @@
 ---
 title: "Integrate Salesforce with EDI-Based B2B Channels"
 description: Interactions between businesses, such as sending purchase orders and invoices, usually occur over EDI-based B2B channels. Built-in EDI capabilities of Ballerina can directly integrate B2B channels with Salesforce. For example, it is possible to update Opportunities in Salesforce based on the exchange of EDI 840, 843, and 850 messages.
+url: 'https://github.com/chathurace/integration-samples/blob/main/ftp-edi-message-to-salesforce-opportunity/main.bal'
 ---
 ```
 import ballerina/file;

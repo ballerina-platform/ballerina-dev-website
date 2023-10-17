@@ -1,7 +1,7 @@
 ---
 title: 'Make sales staff aware of customer issues'
 description: Customer issues are tracked in support systems such as JIRA or ServiceNow. However, sales staff also need to be informed about the issues faced by their customers. This synchronization can be done with Ballerina using a few simple steps.
-url: 'https://github.com/ballerina-guides/b2b-samples/blob/main/simple-edi-schema/main.bal'
+url: 'https://github.com/chathurace/integration-samples/blob/main/servicenow-case-to-salesforce-case/main.bal'
 ---
 ```
 import ballerina/http;

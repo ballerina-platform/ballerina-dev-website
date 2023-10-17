@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 8 (2201.8.2)
 
-<em>Swan Lake 2201.8.2 is the second patch release of Ballerina 2201.8.0 (Swan Lake Update 8) and it includes a bug fix to the standard library.</em>
+<em>Swan Lake 2201.8.2 is the second patch release of Ballerina 2201.8.0 (Swan Lake Update 8) and it includes a few security improvements.</em>
 
 ## Update Ballerina
 
@@ -25,10 +25,3 @@ Update your current Ballerina installation directly to 2201.8.2 using the [Balle
 ## Install Ballerina
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
-
-## Ballerina library updates
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for 2201.8.2 (Swan Lake)](https://github.com/ballerina-platform/ballerina-standard-library/milestone/40).
-

@@ -1,0 +1,14 @@
+POST http://localhost:8080/api/v1/claim
+
+{
+    "customerId": "987654321",
+    "policyNumber": "POL123456",
+    "claimAmount": 5000.00,
+    "accidentType": "Auto",
+    "claimLocation": "123 Main St, Cityville, CA",
+    "claimDate": {
+        "year": "2023",
+        "month": "9",
+        "day": "19"
+    }
+}

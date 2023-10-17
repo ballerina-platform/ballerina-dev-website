@@ -1,0 +1,7 @@
+tagline: 
+desc: 
+category: Message Transformation
+index: 36
+helps: 
+tags: ["Envelope Wrapper", "Content Enricher", "Message Channel", "Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/EnvelopeWrapper.html

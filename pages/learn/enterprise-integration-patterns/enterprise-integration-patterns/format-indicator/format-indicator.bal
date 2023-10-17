@@ -13,7 +13,7 @@ public type PatientReqV2 record {|
     Patient patient;
 |};
 
-type PatientReq PatientReqV1|PatientReqV2;  
+type PatientReq PatientReqV1|PatientReqV2;
 
 public type Patient record {|
     string fullName;
@@ -24,7 +24,7 @@ public type Patient record {|
 final http:Client patientClient = check new ("http://api.patients.com.balmock.io");
 
 service /api/v1 on new http:Listener(8080) {
-    
+
     resource function post data/patient(PatientReq patintReq) returns error? {
         Patient patient;
         if patintReq is PatientReqV1 {

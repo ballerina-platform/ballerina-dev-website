@@ -23,8 +23,8 @@ final http:Client xero = check new ("http://api.xero.com.balmock.io");
 
 service /payroll on new http:Listener(8080) {
 
-    resource function post employees/[string id]/paytemplate/reimbursements(DetailedReimbursementTemplate[] templates) 
-            returns Reimbursement|error {  
+    resource function post employees/[string id]/paytemplate/reimbursements(DetailedReimbursementTemplate[] templates)
+            returns Reimbursement|error {
         ReimbursementTemplate[] reimbursementRequests = from var {reimbursementTypeID, fixedAmount} in templates
                                                         select {reimbursementTypeID, fixedAmount};
         return xero->/payrollxro/employees/[id]/paytemplate/reimbursements.post(reimbursementRequests);

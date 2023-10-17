@@ -1,4 +1,4 @@
-tagline: Process the data based on received message format
+tagline: Process the data based on the received message format
 desc: The Format Indicator will identify the message format based on the version or structure and process it.
 category: Message Construction
 index: 23

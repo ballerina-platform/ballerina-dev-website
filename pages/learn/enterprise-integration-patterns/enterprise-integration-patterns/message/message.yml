@@ -1,0 +1,7 @@
+tagline: Data transmitted through a message channel
+desc: Message is a data record that the messaging system can transmit through a message channel.
+category: Messaging Systems
+index: 1
+helps: Ballerina is a data-oriented language. It has first-class support for data to be repressed as arrays, maps, records, and tuples. These values can be read and written to message channels.
+tags: ["Message", "Command Message", "Document Message", "Message Channel"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Message.html

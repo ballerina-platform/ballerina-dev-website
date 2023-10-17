@@ -2,6 +2,6 @@ tagline: Make services available via both messaging and non-messaging techniques
 desc: Service activator provides a service that can be invoked via both messaging and non-messaging techniques.
 category: Messaging Endpoints
 index: 52
-helps: Ballerina can expose public functions/classes that can be invoked by other Ballerina programs. This allows sharing common logic between services and applications. Such Ballerina libraries can be published using Ballerina Central.
+helps: Ballerina can expose public functions/classes that can be invoked by other Ballerina programs. This allows sharing common logic between services and applications. Such Ballerina packages can be published using Ballerina Central.
 tags: ["Service Activator", "Request-Reply", "Command Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingAdapter.html

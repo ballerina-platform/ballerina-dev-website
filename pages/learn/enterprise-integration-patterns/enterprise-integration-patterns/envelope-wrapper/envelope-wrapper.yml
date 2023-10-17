@@ -1,7 +1,7 @@
-tagline: 
-desc: 
+tagline: Wrap application data inside an envelope that is compliant with the messaging infrastructure
+desc: Envelope Wrapper wraps application data inside an envelope that is compliant with the messaging infrastructure.
 category: Message Transformation
 index: 36
-helps: 
+helps: Ballerina provides a rich set of libraries to interact with various messaging protocols. Ballerina allows you to extract information from messages and create new messages, manipulating data in both the body and the header.
 tags: ["Envelope Wrapper", "Content Enricher", "Message Channel", "Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/EnvelopeWrapper.html

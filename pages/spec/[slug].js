@@ -139,6 +139,7 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title || extractLibraryNameFromContent()}`} />
         <meta property="twitter:description" content={frontmatter.description} />
         <meta property="twitter:text:description" content={frontmatter.description} />
 

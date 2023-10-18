@@ -62,7 +62,7 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
+                        <a className={styles.footerLinkSM} href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
                           <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={16} height={16} alt="LinkedIn" />
                         </a>
                       </li>

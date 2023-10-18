@@ -34,36 +34,22 @@ Follow the instructions given in this section to develop the service.
     ```bash
     $ bal new sending-a-message-to-a-service
     ```
+2. Remove the example content and open Ballerina diagram view with [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 
-2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). 
-
-    Import the 
-    - `ballerina/http` module to develop the REST API and define the client that can be used to send requests to the backend service
-    - `ballerina/log` module to log some information for each client request
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/log;
-    ```
+    ![Open diagram view](/learn/images/tutorial_sending_a_message_to_a_service_open_diagram_view.gif)
 
 3. Define two [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URL of the backend service.
+
+    ![Define configurable variables](/learn/images/tutorial_sending_a_message_to_a_service_define_configurable_variables.gif)
+
+    The source code we generated is as follows.
 
     ```ballerina
     configurable int port = 8290;
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
     ```
 
-4. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
-
-    ```ballerina
-    final http:Client queryDoctorEP = check initializeHttpClient();
-
-    function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
-    ```
-
-    The argument to the `new` expression is the URL for the backend service.
-
-5. Define a record corresponding to the payload from the backend service.
+4. Define a record corresponding to the payload from the backend service.
 
     ```ballerina
     type Doctor record {|
@@ -74,18 +60,63 @@ Follow the instructions given in this section to develop the service.
         decimal fee;
     |};
     ```
+    
+    > **Note:** You can use the "Paste JSON as record" VS Code command to generate the record if you have the JSON payload.
+    > 
+    > Doctor response as JSON:
+    >
+    > {
+            "name": "thomas collins",
+            "hospital": "grand oak community hospital",
+            "category": "surgery",
+            "availability": "9.00 a.m - 11.00 a.m",
+            "fee": 7000
+        }
+    >
+    > ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
+    > 
+    > 1. Copy the JSON with `ctrl+c` or `cmd+c`.
+    > 2. Open Command pallette using `Ctrl+Shift+P` or `Cmd+Shift+P`.
+    > 3. Search for `Ballerina: Paste JSON as record` and select it or hit `Enter`.
 
-    The payload will be an array of JSON objects in which, the structure of each JSON object matches this record. Note that you can use the "Paste JSON as record" VS Code command to generate the record if you have the JSON payload.
+    The payload will be an array of JSON objects in which, the structure of each JSON object matches this record.
 
-6. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request. Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`. Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.
+5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
+    - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`.
+
+        ![Define the service](/learn/images/tutorial_sending_a_message_to_a_service_define_a_service.gif)
+
+    - Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.
+
+        ![Define the resource](/learn/images/tutorial_sending_a_message_to_a_service_define_a_resource.gif)
+
+    Generated service will be as follows.
+    
     ```ballerina
     service /healthcare on new http:Listener(port) {
-        resource function get querydoctor/[string category]() {
+        resource function get querydoctor/[string category]() 
+                returns Doctor[]|http:NotFound|http:InternalServerError {
             
         }
     }
     ```
+
+6. Before implementing the logic, define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
+
+    ```ballerina
+    final http:Client queryDoctorEP = check new (healthcareBackend);
+    ```
+
+    > **Note:** The argument to the `new` expression is the URL for the backend service. 
+    > 
+    > Later, the client will be initialized using a seperate function to aid with testing.
+    > 
+    >   ```ballerina
+    >   final http:Client queryDoctorEP = check initializeHttpClient();
+    >
+    >   function initializeHttpClient(string url) returns http:Client|error => new (healthcareBackend);
+    >   ```
 
 7. Implement the logic to retrieve and respond with relevant details.
 

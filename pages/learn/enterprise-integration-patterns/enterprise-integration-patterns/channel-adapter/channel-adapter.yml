@@ -2,6 +2,6 @@ tagline: Object to interact with messaging channels
 desc: The channel adapter is an interface to interact with a channel.
 category: Messaging Channels
 index: 12
-helps: Ballerina supports a rich set of Connectors to interact with different applications. Developers can create their connectors and publish them as a Library.
+helps: Ballerina supports a rich set of Connectors to interact with different applications. Developers can create their connectors and publish them as a package.
 tags: ["Channel Adapter", "Message Channel", "Messaging"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/ChannelAdapter.html

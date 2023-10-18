@@ -2,6 +2,6 @@ tagline: Filters the received messages using a criteria
 desc: Selective consumer filters the messages which come from a message channel using a criteria.
 category: Messaging Endpoints
 index: 49
-helps: 
+helps: Ballerina supports rich set of messaging protocols. Some of these protocols supports channels with filtering capabilities.  Below example uses GraphQL's filtering capabilities to select the data it receives.  If a protocol does not support filtering, user may write their own logic using Ballerina control flow constructs such as `if`-`else` and `match` statements.
 tags: ["Selective Consumer", "Message Filter", "Content Based Router", "Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageSelector.html

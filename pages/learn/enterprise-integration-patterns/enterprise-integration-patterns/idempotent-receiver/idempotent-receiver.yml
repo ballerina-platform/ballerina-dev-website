@@ -2,6 +2,6 @@ tagline: Safely receive the same message multiple times
 desc: An idempotent receiver is a receiver that can safely receive the same message multiple times.
 category: Messaging Endpoints
 index: 51
-helps: When implementing idempotent endpoints, such as HTTP PUT, users may use Ballerina to create logic that leaves the state in the same state even if the same message is received multiple times. Explicit de-duping can be implemented using Ballerina's rich set of libraries to interact with databases and key-value stores, such as SQL, and Redis.
+helps: When implementing idempotent endpoints, such as HTTP PUT, users may use Ballerina to create logic that leaves the state in the same state even if the same message is received multiple times. Explicit de-duping can be implemented using Ballerina's rich set of packages to interact with databases and key-value stores, such as SQL and Redis.
 tags: ["Idempotent Receiver", "Message", "Message Channel"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/IdempotentReceiver.html

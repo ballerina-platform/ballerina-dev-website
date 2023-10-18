@@ -2,6 +2,6 @@ tagline: Connects an application to a messaging channel
 desc: Message Endpoint is a client of the messaging channel. It abstracts the details of communication to the application.
 category: Messaging Systems
 index: 5
-helps: Ballerina supports a rich set of libraries that abstract various messaging protocols (such as HTTP, GRPC, and Kafka) and provides a `Client` interface that acts as a message endpoint.
+helps: Ballerina supports a rich set of libraries that abstract various messaging protocols (such as HTTP, gRPC, and Kafka) and provides a `Client` interface that acts as a message endpoint.
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageEndpoint.html
 tags: ["Message Endpoint", "Message Channel"]

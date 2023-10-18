@@ -3,6 +3,6 @@ tagline: Ensures that only one receiver will receive a particular message
 desc: Point-to-Point Channel ensures that only one receiver consumes any given message.
 category: Messaging Channels
 index: 6
-helps: "Ballerina supports a rich set of libraries to support various messaging protocols. These protocols support point-to-point messaging semantics. Eg: HTTP, GRPC, GraphQL."
+helps: "Ballerina supports a rich set of libraries to support various messaging protocols. These protocols support point-to-point messaging semantics. E.g.: HTTP, gRPC, GraphQL."
 tags: ["Point-to-Point Channel", "Message Channel", "Command Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/PointToPointChannel.html

@@ -2,6 +2,6 @@ tagline: Identify the message that a reply is for
 desc: A correlation Identifier is a unique identifier that indicates which request message this reply is for.
 category: Message Construction
 index: 20
-helps: Ballerina can send and receive messages over multiple protocols. Ballerina supports extracting and injecting information into the messages. The extracted information can be stored for later use as a correlation identifier. Module-level variables can be used for temporary storage. For a more robust solution, Ballerina provides a rich set of libraries to interact with databases and key-value stores, such as SQL, and Redis.
+helps: Ballerina can send and receive messages over multiple protocols. Ballerina supports extracting and injecting information into the messages. The extracted information can be stored for later use as a correlation identifier. Module-level variables can be used for temporary storage. For a more robust solution, Ballerina provides a rich set of packages to interact with databases and key-value stores, such as SQL and Redis.
 tags: ["Correlation Identifier", "Request Reply", "Selective Consumer", "Messsage"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/CorrelationIdentifier.html

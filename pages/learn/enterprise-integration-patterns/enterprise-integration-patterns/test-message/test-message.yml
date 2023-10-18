@@ -1,4 +1,4 @@
-tagline: Assure health of messaging components
+tagline: Assure the health of messaging components
 desc: "Assure the health of messaging components by sending test messages. Note: Instead of the original pattern, we have selected a modern version where infrastructure polls for the health of the components."
 helps: Ballerina provides built-in support for creating, propagating(`check` keyword), and handling errors. Error handling logic can be performed after testing if a given value is an error using the `is` keyword.
 category: System Management

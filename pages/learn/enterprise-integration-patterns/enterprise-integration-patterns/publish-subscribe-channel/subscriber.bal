@@ -1,6 +1,6 @@
-import ballerinax/kafka;
 import ballerina/uuid;
 import ballerina/websocket;
+import ballerinax/kafka;
 
 service /ws on new websocket:Listener(8081) {
 

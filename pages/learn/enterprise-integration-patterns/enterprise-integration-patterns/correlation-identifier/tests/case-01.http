@@ -1,0 +1,20 @@
+POST http://localhost:8080/api/v1/process/order
+
+{
+  "orderId": "OR123456789",
+  "name": "John Doe",
+  "address": "123 Main Street",
+  "phoneNumber": "+1 (123) 456-7890",
+  "items": [
+    {
+      "itemCode": "ITM001",
+      "quantity": 2,
+      "unitPrice": 19.99
+    },
+    {
+      "itemCode": "ITM002",
+      "quantity": 3,
+      "unitPrice": 14.50
+    }
+  ]
+}

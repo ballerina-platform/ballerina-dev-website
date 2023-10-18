@@ -1,0 +1,7 @@
+tagline: Process a composite message
+desc: Composed Message Processor splits the message up, routes the sub-messages to the appropriate destinations and re-aggregates the responses back into a single message.
+category: Message Routing
+index: 31
+helps: Ballerina has `foreach`, `while` and query expressions to iterate over data. During iteration, Ballerina can send and receive messages. Ballerina can extract, manipulate and store data in messages using variables.
+tags: ["Composed Message Processor", "Aggregator", "Content Based Router"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/DistributionAggregate.html

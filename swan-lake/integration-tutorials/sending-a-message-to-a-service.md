@@ -52,8 +52,6 @@ Follow the instructions given in this section to develop the service.
 
 4. Generate the record corresponding to the payload from the backend service using the "Paste JSON as record" VS Code command by providing a sample of the expected JSON payload.
 
-    Sample expected payload (`Doctor`) as JSON:
-
     ```json
     {
         "name": "thomas collins",
@@ -66,9 +64,9 @@ Follow the instructions given in this section to develop the service.
 
     ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
     
-    1. Copy the JSON with `ctrl+c` or `cmd+c`.
-    2. Open Command pallette using `Ctrl+Shift+P` or `Cmd+Shift+P`.
-    3. Search for `Ballerina: Paste JSON as record` and select it or hit `Enter`.
+    1. Copy the JSON.
+    2. Open VS [Code Command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+    3. Search and select `Ballerina: Paste JSON as record` command.
     
     > **Note:** You can manually define the record, if there is no sample JSON.
     > 
@@ -110,7 +108,7 @@ Follow the instructions given in this section to develop the service.
     ![Define the client](/learn/images/tutorial_sending_a_message_to_a_service_define_client_endpoint.gif)
 
     The generated code will be as follows.
-    
+
     ```ballerina
     final http:Client queryDoctorEP = check new (healthcareBackend);
     ```
@@ -149,7 +147,7 @@ Follow the instructions given in this section to develop the service.
         Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
         ```
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then, directly return the array from the resource. If the request failed, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then, directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
 
         ```ballerina
         log:printInfo("Retrieving information", specialization = category);
@@ -290,9 +288,9 @@ time = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials
 
 Let's test the use case by writing a test case that sends a request to the service and validates the payload for a successful request. Testing is enabled by the [Ballerina test framework](https://ballerina.io/learn/test-ballerina-code/test-services-and-clients/).
 
-1. Change `queryDoctorEP` initialization in the source code to use a seperate function that can be mocked.
+1. Change `queryDoctorEP` initialization in the source code to use a separate function that can be mocked.
 
-    Replace this
+    Replace
 
     ```ballerina
     final http:Client queryDoctorEP = check new (healthcareBackend);
@@ -306,14 +304,14 @@ Let's test the use case by writing a test case that sends a request to the servi
     function initializeHttpClient(string url) returns http:Client|error => new (healthcareBackend);
     ```
 
-1. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
+2. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
 
     ```ballerina
     import ballerina/http;
     import ballerina/test;
     ```
 
-2. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
+3. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
 
     ```ballerina
     public client class MockHttpClient {
@@ -340,7 +338,7 @@ Let's test the use case by writing a test case that sends a request to the servi
         test:mock(http:Client, new MockHttpClient());
     ```
 
-3. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
+4. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
 
     ```ballerina
     @test:Config
@@ -350,7 +348,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     }
     ```
 
-4. Run the `bal test` command from the project root to run the tests.
+5. Run the `bal test` command from the project root to run the tests.
 
     ```bash
     sending-a-message-to-a-service$ bal test

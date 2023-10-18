@@ -107,6 +107,10 @@ Follow the instructions given in this section to develop the service.
 
 6. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
 
+    ![Define the client](/learn/images/tutorial_sending_a_message_to_a_service_define_client_endpoint.gif)
+
+    The generated code will be as follows.
+    
     ```ballerina
     final http:Client queryDoctorEP = check new (healthcareBackend);
     ```

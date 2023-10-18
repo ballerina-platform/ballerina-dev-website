@@ -34,7 +34,8 @@ Follow the instructions given in this section to develop the service.
     ```bash
     $ bal new sending-a-message-to-a-service
     ```
-2. Remove the example content and open Ballerina diagram view with [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
+
+2. Remove the generated content in the `main.bal` file and open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 
     ![Open diagram view](/learn/images/tutorial_sending_a_message_to_a_service_open_diagram_view.gif)
 
@@ -42,42 +43,44 @@ Follow the instructions given in this section to develop the service.
 
     ![Define configurable variables](/learn/images/tutorial_sending_a_message_to_a_service_define_configurable_variables.gif)
 
-    The source code we generated is as follows.
+    The corresponding source code that is generated is as follows.
 
     ```ballerina
     configurable int port = 8290;
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
     ```
 
-4. Define a record corresponding to the payload from the backend service.
+4. Generate the record corresponding to the payload from the backend service using the "Paste JSON as record" VS Code command by providing a sample of the expected JSON payload.
 
-    ```ballerina
-    type Doctor record {|
-        string name;
-        string hospital;
-        string category;
-        string availability;
-        decimal fee;
-    |};
+    Sample expected payload (`Doctor`) as JSON:
+
+    ```json
+    {
+        "name": "thomas collins",
+        "hospital": "grand oak community hospital",
+        "category": "surgery",
+        "availability": "9.00 a.m - 11.00 a.m",
+        "fee": 7000
+    }
     ```
+
+    ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
     
-    > **Note:** You can use the "Paste JSON as record" VS Code command to generate the record if you have the JSON payload.
+    1. Copy the JSON with `ctrl+c` or `cmd+c`.
+    2. Open Command pallette using `Ctrl+Shift+P` or `Cmd+Shift+P`.
+    3. Search for `Ballerina: Paste JSON as record` and select it or hit `Enter`.
+    
+    > **Note:** You can manually define the record, if there is no sample JSON.
     > 
-    > Doctor response as JSON:
-    >
-    > {
-            "name": "thomas collins",
-            "hospital": "grand oak community hospital",
-            "category": "surgery",
-            "availability": "9.00 a.m - 11.00 a.m",
-            "fee": 7000
-        }
-    >
-    > ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
-    > 
-    > 1. Copy the JSON with `ctrl+c` or `cmd+c`.
-    > 2. Open Command pallette using `Ctrl+Shift+P` or `Cmd+Shift+P`.
-    > 3. Search for `Ballerina: Paste JSON as record` and select it or hit `Enter`.
+    > ```ballerina
+    > type Doctor record {|
+    >     string name;
+    >     string hospital;
+    >     string category;
+    >     string availability;
+    >     decimal fee;
+    > |};
+    > ```
 
     The payload will be an array of JSON objects in which, the structure of each JSON object matches this record.
 
@@ -91,32 +94,22 @@ Follow the instructions given in this section to develop the service.
 
         ![Define the resource](/learn/images/tutorial_sending_a_message_to_a_service_define_a_resource.gif)
 
-    Generated service will be as follows.
+        The generated service will be as follows.
     
-    ```ballerina
-    service /healthcare on new http:Listener(port) {
-        resource function get querydoctor/[string category]() 
-                returns Doctor[]|http:NotFound|http:InternalServerError {
-            
+        ```ballerina
+        service /healthcare on new http:Listener(port) {
+            resource function get querydoctor/[string category]() 
+                    returns Doctor[]|http:NotFound|http:InternalServerError {
+                
+            }
         }
-    }
-    ```
+        ```
 
-6. Before implementing the logic, define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
+6. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
 
     ```ballerina
     final http:Client queryDoctorEP = check new (healthcareBackend);
     ```
-
-    > **Note:** The argument to the `new` expression is the URL for the backend service. 
-    > 
-    > Later, the client will be initialized using a seperate function to aid with testing.
-    > 
-    >   ```ballerina
-    >   final http:Client queryDoctorEP = check initializeHttpClient();
-    >
-    >   function initializeHttpClient(string url) returns http:Client|error => new (healthcareBackend);
-    >   ```
 
 7. Implement the logic to retrieve and respond with relevant details.
 
@@ -189,9 +182,7 @@ type Doctor record {|
 configurable int port = 8290;
 configurable string healthcareBackend = "http://localhost:9090/healthcare";
 
-final http:Client queryDoctorEP = check initializeHttpClient();
-
-function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
+final http:Client queryDoctorEP = check new (healthcareBackend);
 
 service /healthcare on new http:Listener(port) {
     resource function get querydoctor/[string category]() 
@@ -294,6 +285,22 @@ time = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials
 ### Step 5: Write tests for the use case
 
 Let's test the use case by writing a test case that sends a request to the service and validates the payload for a successful request. Testing is enabled by the [Ballerina test framework](https://ballerina.io/learn/test-ballerina-code/test-services-and-clients/).
+
+1. Change `queryDoctorEP` initialization in the source code to use a seperate function that can be mocked.
+
+    Replace this
+
+    ```ballerina
+    final http:Client queryDoctorEP = check new (healthcareBackend);
+    ```
+
+    with
+
+    ```ballerina
+    final http:Client queryDoctorEP = check initializeHttpClient();
+
+    function initializeHttpClient(string url) returns http:Client|error => new (healthcareBackend);
+    ```
 
 1. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
 

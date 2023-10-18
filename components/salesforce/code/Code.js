@@ -103,7 +103,7 @@ export default function UseCases(props) {
             </Row>
             
             {/* edi */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -163,7 +163,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* bapps */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -223,7 +223,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* editransform */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -283,7 +283,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* x12 */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -343,7 +343,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* emr connectors */}
-            <Row className="pageContentRow integration code odd">
+            <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
                         <Row>
@@ -523,7 +523,7 @@ export default function UseCases(props) {
             </Row>
 
             {/* apisNewDll */}
-            <Row className="pageContentRow integration code">
+            <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
                         <Row>

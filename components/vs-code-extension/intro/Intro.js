@@ -19,11 +19,32 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import Carousel from 'react-bootstrap/Carousel';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './Intro.module.css';
 
+
+
 export default function Intro() {
+
+    const [hoverBtn, setHoverBtn] = React.useState(false);
+
+    let linkArrowPath = prefix + '/images/toc-bg.svg';
+    let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
+
+    const linkArrow = {
+        background: 'url(' + linkArrowPath + ') no-repeat right scroll',
+        width: 'fit-content',
+        paddingRight: '20px'
+
+    }
+
+    const linkArrowHover = {
+        background: 'url(' + linkArrowHoverPath + ') no-repeat scroll',
+        width: 'fit-content',
+        paddingRight: '20px'
+    }
 
     return (
         <>
@@ -32,25 +53,57 @@ export default function Intro() {
             <Row className='pageContentRow integration'>
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
-
-                        <p className={styles.introText2}>Ballerina is the only integration language built for healthcare.  With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
+                        <br/>
+                        <h1 className={styles.title}>Code and visualize<br/>Ballerina</h1>
+                        
+                        <br/>
+                        <p className={styles.introText3}>
+                        The VS Code extension provides robust language support with visualization and design tools for Ballerina.
                         </p>
-
-                        <p className={styles.introText3}>Build with Ballerina and make a difference in the world today.
-                        </p>
-
+                        <br/>  
+                        
                         <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
+                    
+                        <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
+                            className={styles.cDownload} target="_blank" rel="noreferrer">
+                            Install the extension
                         </a>
+                    
+
                     </p>
+                    <p className={styles.dGetBallerinaText}>If you are new to Ballerina,</p>
+                        <p>
+                        <a href={`https://ballerina.io/downloads/`}
+                            className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
+                            <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
+                            Get Ballerina
+                            
+                        </a>
+                        </p>
                     </div>
+                    <br/>    
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/health-intro.png`} alt="Position Ballerina" />
+                
+
+                <Carousel controls={false}>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-5.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-4.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-1.png`} alt="AI" />
+      </Carousel.Item>
+      <Carousel.Item>
+      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-3.png`} alt="AI" />
+      </Carousel.Item>
+    </Carousel>
+
                 </Col>
             </Row>
+
             </Container>
             </Col>
         </>

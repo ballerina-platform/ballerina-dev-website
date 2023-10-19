@@ -42,34 +42,31 @@ export default function MainContent(props) {
 
   // Synatax highlighting
   const HighlightSyntax = (code, language) => {
-    try {
-      const [codeSnippet, setCodeSnippet] = React.useState([]);
+    if (!language) return code;
 
-      React.useEffect(() => {
-        async function fetchData() {
-          getHighlighter({
-            theme: "github-light",
-            langs: [
-              "bash",
-              "ballerina",
-              "toml",
-              "yaml",
-              "sh",
-              "json",
-              "graphql",
-              "sql",
-            ],
-          }).then((highlighter) => {
-            setCodeSnippet(highlighter.codeToHtml(code, language));
-          });
-        }
-        fetchData();
-      }, [code, language]);
+    const [codeSnippet, setCodeSnippet] = React.useState([]);
+    React.useEffect(() => {
+      async function fetchData() {
+        getHighlighter({
+          theme: "github-light",
+          langs: [
+            "bash",
+            "ballerina",
+            "toml",
+            "yaml",
+            "sh",
+            "json",
+            "graphql",
+            "sql",
+          ],
+        }).then((highlighter) => {
+          setCodeSnippet(highlighter.codeToHtml(code, language));
+        });
+      }
+      fetchData();
+    }, [code, language]);
 
-      return [codeSnippet];
-    } catch {
-      return code;
-    }
+    return [codeSnippet];
   };
 
   // Add id attributes to headings
@@ -320,7 +317,7 @@ export default function MainContent(props) {
               dangerouslySetInnerHTML={{
                 __html: HighlightSyntax(
                   String(children).replace(/\n$/, ""),
-                  match[1].toLowerCase()
+                  match[1]?.toLowerCase()
                 ),
               }}
             />

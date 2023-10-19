@@ -52,6 +52,8 @@ Follow the instructions given in this section to develop the service.
 
 4. Generate the record corresponding to the payload from the backend service using the ["Paste JSON as record"](https://wso2.com/ballerina/vscode/docs/references/convert-json-to-records/#via-the-command-palette) VS Code command by providing a sample of the expected JSON payload.
 
+    The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following.
+
     ```json
     {
         "name": "thomas collins",
@@ -62,25 +64,11 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-    1. Copy the JSON.
+    1. Copy the sample JSON payload.
     2. Open VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
     3. Search and select `Ballerina: Paste JSON as record` command.
 
     ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
-    
-    > **Note:** You can manually define the record, if there is no sample JSON.
-    > 
-    > ```ballerina
-    > type Doctor record {|
-    >     string name;
-    >     string hospital;
-    >     string category;
-    >     string availability;
-    >     decimal fee;
-    > |};
-    > ```
-
-    The payload will be an array of JSON objects in which the structure of each JSON object matches this record.
 
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 

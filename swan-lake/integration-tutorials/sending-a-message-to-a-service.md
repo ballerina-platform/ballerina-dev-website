@@ -88,7 +88,7 @@ Follow the instructions given in this section to develop the service.
 
         ![Define the service](/learn/images/tutorial_sending_a_message_to_a_service_define_a_service.gif)
 
-    - Define an HTTP resource that allows the `GET` operation on resource path `/querydoctor` and accepts the `category` (corresponding to the specialization) as a path parameter.
+    - Define an HTTP resource that allows the `GET` operation on resource path `/doctors` and accepts the `category` (corresponding to the specialization) as a path parameter.
 
         ![Define the resource](/learn/images/tutorial_sending_a_message_to_a_service_define_a_resource.gif)
 
@@ -96,7 +96,7 @@ Follow the instructions given in this section to develop the service.
     
         ```ballerina
         service /healthcare on new http:Listener(port) {
-            resource function get querydoctor/[string category]() 
+            resource function get doctors/[string category]() 
                     returns Doctor[]|http:NotFound|http:InternalServerError {
                 
             }
@@ -117,7 +117,7 @@ Follow the instructions given in this section to develop the service.
 
     ```ballerina
     service /healthcare on new http:Listener(port) {
-        resource function get querydoctor/[string category]() 
+        resource function get doctors/[string category]() 
                 returns Doctor[]|http:NotFound|http:InternalServerError {
             log:printInfo("Retrieving information", specialization = category);
             
@@ -187,7 +187,7 @@ configurable string healthcareBackend = "http://localhost:9090/healthcare";
 final http:Client queryDoctorEP = check new (healthcareBackend);
 
 service /healthcare on new http:Listener(port) {
-    resource function get querydoctor/[string category]() 
+    resource function get doctors/[string category]() 
             returns Doctor[]|http:NotFound|http:InternalServerError {
         log:printInfo("Retrieving information", specialization = category);
         
@@ -245,7 +245,7 @@ Let's send a request to the service using cURL as follows.
 2. Execute the following command.
 
     ```bash
-    curl -v http://localhost:8290/healthcare/querydoctor/surgery
+    curl -v http://localhost:8290/healthcare/doctors/surgery
     ```
 
 #### Verify the response

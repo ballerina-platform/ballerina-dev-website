@@ -21,7 +21,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import remarkExternalLinks from "remark-external-links";
-import { getHighlighter } from "shiki";
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -39,35 +38,6 @@ String.prototype.hashCode = function () {
 export default function MainContent(props) {
   const content = props.content;
   const codes = props.codes ? new Map(JSON.parse(props.codes)) : new Map();
-
-  // Synatax highlighting
-  const HighlightSyntax = (code, language) => {
-    if (!language) return code;
-
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-    React.useEffect(() => {
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: [
-            "bash",
-            "ballerina",
-            "toml",
-            "yaml",
-            "sh",
-            "json",
-            "graphql",
-            "sql",
-          ],
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        });
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet];
-  };
 
   // Add id attributes to headings
   const extractText = (value) => {
@@ -315,10 +285,7 @@ export default function MainContent(props) {
           ) : match ? (
             <div
               dangerouslySetInnerHTML={{
-                __html: HighlightSyntax(
-                  String(children).replace(/\n$/, ""),
-                  match[1]?.toLowerCase()
-                ),
+                __html: String(children).replace(/\n$/, ""),
               }}
             />
           ) : (

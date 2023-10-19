@@ -11,7 +11,7 @@ permalink: /community/active-proposals
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
 |[[Improvement]: Redesign the Ballerina Shell architecture ](https://github.com/ballerina-platform/ballerina-lang/issues/41296)|[nipunayf](https://github.com/nipunayf)|4|2023-08-28|N/A|
-|[[New Feature]: Formatting a Ballerina module through project-level configurations](https://github.com/ballerina-platform/ballerina-lang/issues/41280)|[poorna2152](https://github.com/poorna2152)|10|2023-08-23|N/A|
+|[[New Feature]: Formatting a Ballerina module through project-level configurations](https://github.com/ballerina-platform/ballerina-lang/issues/41280)|[poorna2152](https://github.com/poorna2152)|11|2023-08-23|N/A|
 
 ## [ballerina-distribution](https://github.com/ballerina-platform/ballerina-distribution)
 

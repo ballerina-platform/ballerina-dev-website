@@ -347,6 +347,3 @@ export default function MainContent(props) {
     </ReactMarkdown>
   );
 }
-
-// content -> data
-// codes -> codeSnippets

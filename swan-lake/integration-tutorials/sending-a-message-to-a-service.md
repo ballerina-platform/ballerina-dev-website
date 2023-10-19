@@ -12,7 +12,7 @@ intro: This tutorial helps you understand the basics of how Ballerina can be use
 
 In this tutorial, you will develop a service that allows a user to retrieve a list of doctors based on the doctor's specialization (category). The information about the doctors is retrieved from a separate microservice. 
 
-To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then, run the service. The resource will receive the user request, retrieve details from the backend service, and respond to the user request with the relevant doctor details.
+To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension and then run the service. The resource will receive the user request, retrieve details from the backend service, and respond to the user request with the relevant doctor details.
 
 ### Concepts covered
 
@@ -50,7 +50,7 @@ Follow the instructions given in this section to develop the service.
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
     ```
 
-4. Generate the record corresponding to the payload from the backend service using the "Paste JSON as record" VS Code command by providing a sample of the expected JSON payload.
+4. Generate the record corresponding to the payload from the backend service using the ["Paste JSON as record"](https://wso2.com/ballerina/vscode/docs/references/convert-json-to-records/#via-the-command-palette) VS Code command by providing a sample of the expected JSON payload.
 
     ```json
     {
@@ -62,11 +62,11 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-    ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
-    
     1. Copy the JSON.
-    2. Open VS [Code Command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+    2. Open VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
     3. Search and select `Ballerina: Paste JSON as record` command.
+
+    ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
     
     > **Note:** You can manually define the record, if there is no sample JSON.
     > 
@@ -80,7 +80,7 @@ Follow the instructions given in this section to develop the service.
     > |};
     > ```
 
-    The payload will be an array of JSON objects in which, the structure of each JSON object matches this record.
+    The payload will be an array of JSON objects in which the structure of each JSON object matches this record.
 
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
@@ -103,7 +103,7 @@ Follow the instructions given in this section to develop the service.
         }
         ```
 
-6. Define an [`http:Client` client](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
+6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
 
     ![Define the client](/learn/images/tutorial_sending_a_message_to_a_service_define_client_endpoint.gif)
 
@@ -147,7 +147,7 @@ Follow the instructions given in this section to develop the service.
         Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
         ```
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then, directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
 
         ```ballerina
         log:printInfo("Retrieving information", specialization = category);

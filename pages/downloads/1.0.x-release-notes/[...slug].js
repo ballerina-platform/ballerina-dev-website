@@ -19,13 +19,10 @@
 import fs from "fs";
 import matter from "gray-matter";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { getHighlighter, setCDN } from "shiki";
+import { setCDN } from "shiki";
 
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
@@ -39,7 +36,7 @@ import LeftNav from "../../../components/common/left-nav/LeftNav";
 import { prefix } from "../../../utils/prefix";
 import RNToc from "../../../utils/rl.json";
 import Toc from "../../../components/common/pg-toc/Toc";
-import RenderHeading from "../../../components/common/heading/RenderHeading";
+import MainContent from "../../../components/common/main-content/MainContent";
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -115,34 +112,6 @@ export default function PostPage({ frontmatter, content, id }) {
       // make sure to catch any error
       .catch(console.error);
   }, [fetchData]);
-
-  // Synatax highlighting
-  const HighlightSyntax = (code, language) => {
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-
-    React.useEffect(() => {
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: [
-            "bash",
-            "ballerina",
-            "toml",
-            "yaml",
-            "sh",
-            "json",
-            "graphql",
-            "sql",
-          ],
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        });
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet];
-  };
 
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
@@ -237,51 +206,7 @@ export default function PostPage({ frontmatter, content, id }) {
                 </a>
               </Col>
             </div>
-
-            <ReactMarkdown
-              components={{
-                h1: RenderHeading(1, setShowToc),
-                h2: RenderHeading(2, setShowToc),
-                h3: RenderHeading(3, setShowToc),
-                h4: RenderHeading(4, setShowToc),
-                h5: RenderHeading(5, setShowToc),
-                h6: RenderHeading(6, setShowToc),
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  return inline ? (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  ) : match ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: HighlightSyntax(
-                          String(children).replace(/\n$/, ""),
-                          match[1].toLowerCase()
-                        ),
-                      }}
-                    />
-                  ) : (
-                    <pre className="default">
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    </pre>
-                  );
-                },
-                table({ node, className, children, ...props }) {
-                  return (
-                    <div className="mdTable">
-                      <table {...props}>{children}</table>
-                    </div>
-                  );
-                },
-              }}
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
-            >
-              {data}
-            </ReactMarkdown>
+            <MainContent content={data} handleToc={setShowToc} />
           </Container>
         </Col>
         <Col sm={2} xxl={3} className="pageToc d-none d-sm-block">

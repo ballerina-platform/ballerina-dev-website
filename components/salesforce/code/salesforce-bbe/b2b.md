@@ -1,23 +1,9 @@
 ---
-title: "Integrate Salesforce with EDI-Based B2B Channels"
-description: Interactions between businesses, such as sending purchase orders and invoices, usually occur over EDI-based B2B channels. Built-in EDI capabilities of Ballerina can directly integrate B2B channels with Salesforce. For example, it is possible to update Opportunities in Salesforce based on the exchange of EDI 840, 843, and 850 messages.
+title: "Integrate Salesforce with B2B Channels"
+description: 'Interactions between businesses, such as sending purchase orders and invoices, usually occur over EDI-based B2B channels. Built-in EDI capabilities of Ballerina can directly integrate B2B channels with Salesforce and update sales data based on B2B transactions.<br/><br/><i>Example: Update products associated with Salesforce opportunities based on products listed in EDIFACT Request for Quotation (REQOTE) messages.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/ftp-edi-message-to-salesforce-opportunity/main.bal'
 ---
 ```
-import ballerina/file;
-import ballerina/ftp;
-import ballerina/io;
-import ballerina/log;
-
-import ballerinax/edifact.d03a.retail.mREQOTE;
-import ballerinax/salesforce as sf;
-
-configurable ftp:ClientConfiguration ftpConfig = ?;
-configurable string ftpNewQuotesPath = ?;
-configurable string ftpProcessedQuotesPath = ?;
-configurable sf:ConnectionConfig salesforceConfig = ?;
-configurable string salesforcePriceBookId = ?;
-
 ftp:Client fileServer = check new ftp:Client(ftpConfig);
 sf:Client salesforce = check new (salesforceConfig);
 

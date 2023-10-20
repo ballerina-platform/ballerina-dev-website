@@ -33,7 +33,7 @@ export default function Intro() {
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
 
-                        <p className={styles.introText2}>Salesforce is used by many organizations to centralize customer information, aiming to enhance customer service and sales processes. In this context, it is critical to integrate Salesforce with all relevant customer touch points in order to unlock its full potential.
+                        <p className={styles.introText2}>Salesforce is used by many organizations to centralize customer information, aiming to enhance customer service and sales processes. In this context, it is critical to integrate Salesforce with all customer touch points in order to unlock its full potential.
                         </p>
 
                         <p className={styles.introText3}>Ballerina, being a language specifically designed for integrations, can facilitate the integration of Salesforce with all relevant systems and support any complex Salesforce integration use case.

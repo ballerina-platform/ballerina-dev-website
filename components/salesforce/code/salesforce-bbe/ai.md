@@ -1,21 +1,9 @@
 ---
 title: 'Utilize AI to extract sales information'
-description: A Great amount of valuable sales-related information is captured in ad-hoc form such as emails, Word documents, and slides. Ballerina AI capabilities can be used to update Salesforce with information extracted from such unstructured data.
+description: 'A Great amount of valuable sales-related information is captured in ad-hoc form such as emails, Word documents, and slides. Ballerina AI capabilities can be used to update Salesforce with information extracted from such unstructured data.<br/><br/><i>Example: Extract lead details such as name, phone number and company from emails using OpenAI, and create corresponding leads in Salesforce.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/gmail-to-salesforce-lead/main.bal'
 ---
 ```
-import ballerina/lang.runtime;
-import ballerina/log;
-import ballerina/mime;
-import ballerinax/googleapis.gmail;
-import ballerinax/openai.chat;
-import ballerinax/salesforce as sf;
-
-configurable string gmailAccessToken = ?;
-configurable string openAIKey = ?;
-configurable string salesforceBaseUrl = ?;
-configurable string salesforceAccessToken = ?;
-
 const LABEL = "Lead";
 final gmail:Client gmail = check new ({auth: {token: gmailAccessToken}});
 final chat:Client openAiChat = check new ({auth: {token: openAIKey}});

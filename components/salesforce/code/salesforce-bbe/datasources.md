@@ -1,39 +1,9 @@
 ---
 title: 'Bridge Salesforce with disparate data sources'
-description: Data about products, customers, and sales transactions are often scattered across various systems, databases, and business units. Ballerina, with its rich set of connectors and data handling capabilities, can link Salesforce with all relevant data sources, providing a consolidated view of customers and sales.
-
+description: 'Data about products, customers, and sales transactions are often scattered across various systems, databases, and business units. Ballerina, with its rich set of connectors and data handling capabilities, can link Salesforce with all relevant data sources.<br/><br/><i>Example: Load product data from a MySQL database to Salesforce.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/mysql-record-to-sfdc-new-product/main.bal'
 ---
 ```
-import ballerinax/mysql;
-import ballerinax/salesforce;
-
-type Product record {
-    string Name;
-    string Product_Unit__c;
-    string CurrencyIsoCode;
-};
-
-type ProductRecieved record {
-    string name;
-    string unitType;
-    string currencyISO;
-    string productId;
-};
-
-const int HEADINGS_ROW = 1;
-
-//mySQL configuration parameters
-configurable int port = ?;
-configurable string host = ?;
-configurable string user = ?;
-configurable string database = ?;
-configurable string password = ?;
-
-// Salesforce configuration parameters
-configurable string salesforceAccessToken = ?;
-configurable string salesforceBaseUrl = ?;
-
 salesforce:Client salesforce = check new ({
     baseUrl: salesforceBaseUrl,
     auth: {

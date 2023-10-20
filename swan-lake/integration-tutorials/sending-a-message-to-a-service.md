@@ -202,15 +202,19 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 
 ### Step 3: Build and run the service
 
-You can run this service by navigating to the project root and using the `bal run` command.
+![Run the service](/learn/images/tutorial_sending_a_message_to_a_service_run_the_service.gif)
 
-```bash
-sending-a-message-to-a-service$ bal run
-Compiling source
-        integration_tutorials/sending_a_message_to_a_service:0.1.0
-
-Running executable
-```
+> **Note:**
+> Alternatively, you can run this service by navigating to the project root and using the `bal run` command.
+>
+> ```bash
+> sending-a-message-to-a-service$ bal run
+> Compiling source
+>         integration_tutorials/sending_a_message_to_a_service:0.1.0
+>
+> Running executable
+> ```
+>
 
 ### Step 4: Try out the use case
 
@@ -226,15 +230,10 @@ bal run hospitalservice.jar
 
 #### Send a request
 
-Let's send a request to the service using cURL as follows.
+> **Note:** The healthcare service has to be running to send a request to it. If you have stopped the service, start it again.
+>
 
-1. Install and set up [cURL](https://curl.se/) as your client.
-
-2. Execute the following command.
-
-    ```bash
-    curl -v http://localhost:8290/healthcare/doctors/surgery
-    ```
+![Send a request](/learn/images/tutorial_sending_a_message_to_a_service_try_it.gif)
 
 #### Verify the response
 
@@ -289,7 +288,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     ```ballerina
     final http:Client queryDoctorEP = check initializeHttpClient();
 
-    function initializeHttpClient(string url) returns http:Client|error => new (healthcareBackend);
+    function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
     ```
 
 2. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
@@ -299,7 +298,41 @@ Let's test the use case by writing a test case that sends a request to the servi
     import ballerina/test;
     ```
 
-3. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
+3. Create an http:Client to send requests to the healthcare service.
+
+    ```ballerina
+    final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
+    ```
+
+4. Define a function to return the expected payload from the backend service.
+
+    ```ballerina
+    isolated function getSurgeryResponsePayload() returns map<json>[] & readonly => [
+        {
+            "name": "thomas collins",
+            "hospital": "grand oak community hospital",
+            "category": "surgery",
+            "availability": "9.00 a.m - 11.00 a.m",
+            "fee": 7000.0d
+        },
+        {
+            "name": "anne clement",
+            "hospital": "clemency medical center",
+            "category": "surgery",
+            "availability": "8.00 a.m - 10.00 a.m",
+            "fee": 12000.0d
+        },
+        {
+            "name": "seth mears",
+            "hospital": "pine valley community hospital",
+            "category": "surgery",
+            "availability": "3.00 p.m - 5.00 p.m",
+            "fee": 8000.0d
+        }
+    ];
+    ```
+
+5. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
 
     ```ballerina
     public client class MockHttpClient {
@@ -326,7 +359,7 @@ Let's test the use case by writing a test case that sends a request to the servi
         test:mock(http:Client, new MockHttpClient());
     ```
 
-4. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
+6. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
 
     ```ballerina
     @test:Config
@@ -336,7 +369,11 @@ Let's test the use case by writing a test case that sends a request to the servi
     }
     ```
 
-5. Run the `bal test` command from the project root to run the tests.
+7. Run the tests.
+
+    ![Run the tests](/learn/images/tutorial_sending_a_message_to_a_service_run_tests.gif)
+
+    Alternatively, you can run the tests from the terminal using the `bal test` command from the project root to run the tests.
 
     ```bash
     sending-a-message-to-a-service$ bal test

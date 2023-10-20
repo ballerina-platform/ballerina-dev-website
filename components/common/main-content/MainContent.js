@@ -43,21 +43,24 @@ export default function MainContent(props) {
   // Synatax highlighting
   const HighlightSyntax = (code, language) => {
     if (language !== "ballerina") return code;
+    try {
+      const [codeSnippet, setCodeSnippet] = React.useState([]);
+      React.useEffect(() => {
+        async function fetchData() {
+          getHighlighter({
+            theme: "github-light",
+            langs: ["ballerina"],
+          }).then((highlighter) => {
+            setCodeSnippet(highlighter.codeToHtml(code, language));
+          });
+        }
+        fetchData();
+      }, [code, language]);
 
-    const [codeSnippet, setCodeSnippet] = React.useState([]);
-    React.useEffect(() => {
-      async function fetchData() {
-        getHighlighter({
-          theme: "github-light",
-          langs: ["ballerina"],
-        }).then((highlighter) => {
-          setCodeSnippet(highlighter.codeToHtml(code, language));
-        });
-      }
-      fetchData();
-    }, [code, language]);
-
-    return [codeSnippet];
+      return [codeSnippet];
+    } catch {
+      return code;
+    }
   };
 
   // Add id attributes to headings

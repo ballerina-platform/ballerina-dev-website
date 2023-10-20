@@ -29,96 +29,22 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/vs-code-ext.json";
 import Toc from "../../../components/common/pg-toc/Toc";
-import { highlight } from "../../../utils/highlighter";
 
-String.prototype.hashCode = function () {
-  var hash = 0,
-    i, chr;
-  if (this.length === 0) return hash;
-  for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = ((hash << 5) - hash) + chr;
-    hash |= 0;
-  }
-  return hash;
-}
-
-var traverseFolder = function (dir) {
-  var results = [];
-  var list = fs.readdirSync(dir);
-  list.forEach(function (file) {
-    var filex = dir + "/" + file;
-    var stat = fs.statSync(filex);
-    if (stat && stat.isDirectory()) {
-      /* Recurse into a subdirectory */
-      results = results.concat(traverseFolder(filex));
-    } else {
-      /* Is a file */
-      filex = filex.replace(/swan-lake\/vs-code-extension\//g, "");
-      results.push(filex);
-    }
-  });
-  return results;
-};
-
-export async function getStaticPaths() {
-  // Retrieve all our slugs
-  const files = traverseFolder("swan-lake/vs-code-extension");
-  const paths = files.map((fileName) => ({
-    params: {
-      slug: fileName.replace(".md", "").split("/"),
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }) {
-  const id = slug[slug.length - 1];
-  let sub = "";
-  let third = "";
-  if (slug.length == 2) {
-    sub = slug[slug.length - 2];
-  }
-  if (slug.length == 3) {
-    sub = slug[slug.length - 3];
-    third = slug[slug.length - 2];
-  }
-
-  slug = slug.join("/");
-  const fileName = fs.readFileSync(
-    `swan-lake/vs-code-extension/${slug}.md`,
-    "utf-8"
-  );
+export async function getStaticProps() {
+  const fileName = fs.readFileSync(`swan-lake/vs-code-extension/notebooks.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-
-  let codes = await highlight(content);
+  const id = "ballerina-specifications";
 
   return {
     props: {
       frontmatter,
       content,
       id,
-      sub,
-      third,
-      slug,
-      codes
     },
   };
 }
 
-export default function PostPage({
-  frontmatter,
-  content,
-  id,
-  sub,
-  third,
-  slug,
-  codes
-}) {
+export default function PostPage({ frontmatter, content, id }) {
 
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
@@ -150,12 +76,22 @@ export default function PostPage({
           property="og:description"
           content={frontmatter.description}
         ></meta>
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+        />
 
         {/* <!--LINKED IN  --> */}
+        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
         <meta property="og:description" content={frontmatter.description} />
+        <meta
+          property="og:image"
+          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+        />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`} />
         <meta
           property="twitter:description"
           content={frontmatter.description}
@@ -164,15 +100,17 @@ export default function PostPage({
           property="twitter:text:description"
           content={frontmatter.description}
         />
+        <meta
+          name="twitter:image"
+          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+        />
       </Head>
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">
           <LeftNav
             launcher="learn"
             id={id}
-            mainDir="integration"
-            sub={sub}
-            third={third}
+            mainDir="notebooks"
             Toc={LearnToc}
           />
         </Col>
@@ -184,12 +122,11 @@ export default function PostPage({
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
               <LeftNav
-                launcher="learn"
+                launcher="vs-code"
                 id={id}
-                mainDir="integration"
-                sub={sub}
-                third={third}
+                mainDir="notebooks"
                 Toc={LearnToc}
+                sub={id}
               />
             </Offcanvas.Body>
           </Offcanvas>
@@ -202,7 +139,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/integration/${slug}.md`}
+                  href={`${process.env.gitHubPath}spec/spec.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"
@@ -221,8 +158,7 @@ export default function PostPage({
 
             <MainContent
               content={content}
-              handleToc={handleToc}
-              codes={codes} />
+              handleToc={handleToc} />
 
           </Container>
         </Col>

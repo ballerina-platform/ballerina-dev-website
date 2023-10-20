@@ -71,12 +71,12 @@ export default function Intro() {
                     
 
                     </p>
-                    <p className={styles.dGetBallerinaText}>If you are new to Ballerina,</p>
+                    <p className={styles.dGetBallerinaText}>If you are new to the Ballerina VS Code extension,</p>
                         <p>
-                        <a href={`https://ballerina.io/downloads/`}
-                            className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
+                        <a href={`${prefix}/learn/vs-code-extension/get-started`}
+                            className={styles.cVideoBtn}> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
-                            Get Ballerina
+                            Get started
                             
                         </a>
                         </p>

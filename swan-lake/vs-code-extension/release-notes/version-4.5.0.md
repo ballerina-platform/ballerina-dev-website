@@ -1,4 +1,4 @@
-# Ballerina VS Code Extension Version 4.5.0
+# Version 4.5.0
 
 Hello, Ballerina community,
 

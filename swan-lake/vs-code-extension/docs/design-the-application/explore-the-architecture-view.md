@@ -79,7 +79,7 @@ This guide uses the [Online Boutique microservices demo](https://github.com/ball
     !!! Info 
         This will add all the required packages to the current workspace. When the workspace is set up, you will see the following folder structure in the **Explorer**. The workspace name may be different if you set up the workspace from scratch.
 
-    <img src="../../img/visual-programming/architecture-view/architecture-diagram/project-workspace.png" class="cInlineImage-small"/>
+    <img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/project-workspace.png" class="cInlineImage-small"/>
 
 2. Click the `Ballerina: Architecture View` command in the Command palette to open the Architecture View.
 
@@ -87,13 +87,13 @@ This guide uses the [Online Boutique microservices demo](https://github.com/ball
 
 Once you open the Architecture View, you will see the following types of diagrams.
 
-<img src="../../img/visual-programming/architecture-view/architecture-diagram/diagram-types.gif" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/diagram-types.gif" class="cInlineImage-full"/>
 
 ### Service Diagram Level 1
 
 This diagram displays all the services available within the workspace with links representing any interactions between them. The basic Service Diagram Level 1 generated for the 10 Ballerina packages in the Online Boutique microservices demo project is shown below.
 
-<img src="../../img/visual-programming/architecture-view/architecture-diagram/service-level-one-copy.png" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/service-level-one-copy.png" class="cInlineImage-full"/>
 
 !!! Info
     The link between the `Checkout` service and the `Email` service indicates that a resource of the `Checkout` service invokes the `Email` service. In addition to this, the `Email` service also invokes an `external` service via a connector.
@@ -102,25 +102,25 @@ This diagram displays all the services available within the workspace with links
 
 The detailed Service Diagram Level 2 (resources) dives deeper into the compositions of the services and the interactions between them. Below is the detailed representation of the demo project, which depicts the individual resource/remote functions of the services and their invocations.
 
-<img src="../../img/visual-programming/architecture-view/architecture-diagram/service-level-two-copy.png" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/service-level-two-copy.png" class="cInlineImage-full"/>
 
 The data types of the request and response bodies of the interactions can be viewed by hovering over a particular invocation.
 
-<img src="../../img/visual-programming/architecture-view/architecture-diagram/level-two-invocation-data-types.gif" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/level-two-invocation-data-types.gif" class="cInlineImage-full"/>
 
 If these data types are Ballerina records, click on them to access the composition of the particular record.
 
-<img src="../../img/visual-programming/architecture-view/architecture-diagram/level-two-to-type-composition.gif" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/level-two-to-type-composition.gif" class="cInlineImage-full"/>
 
 ### Type diagram
 
 The type diagram provides a comprehensive view of all the Ballerina record types defined in the project workspace and their associations. This can be accessed via the **Architecture View** command, as shown below.
 
-<img src="../../img/visual-programming/architecture-view/type-diagram/type-diagram.gif" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/type-diagram/type-diagram.gif" class="cInlineImage-full"/>
 
 The following is a snippet of the type diagram generated for the [Online Boutique Microservices demo](https://github.com/ballerina-guides/gcp-microservices-demo). 
 
-<img src="../../img/visual-programming/architecture-view/type-diagram/gcp-type-diagram.png" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/type-diagram/gcp-type-diagram.png" class="cInlineImage-full"/>
 
 !!! Tip 
     The multiplicities of the associations are represented on either side of the connector while the type inclusions are differentiated using a directed link (represents inheritance).
@@ -135,7 +135,7 @@ You can also view the composition of an individual record type. Use either of th
 
 Below is the composition diagram generated for the `ContextSearchProductsResponse` record type shown in the type diagram above.
 
-<img src="../../img/visual-programming/architecture-view/type-diagram/gcp-type-composition.png" class="cInlineImage-full"/>
+<img src="/images/vs-code-extension/visual-programming/architecture-view/type-diagram/gcp-type-composition.png" class="cInlineImage-full"/>
 
 ## Other capabilities of the Architecture View
 

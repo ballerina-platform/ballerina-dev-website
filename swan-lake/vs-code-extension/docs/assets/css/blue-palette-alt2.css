@@ -1,0 +1,72 @@
+
+:root {
+    --md-primary-fg-color: #545cec;
+    --md-primary-fg-color--light: #545cec;
+    --md-primary-fg-color--dark: #147ecc;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: #ffffffb3;
+    --md-accent-fg-color: #033982;
+    --md-accent-fg-color--transparent: #0339821a;
+    --md-accent-bg-color: #fff;
+    --md-accent-bg-color--light: #ffffffb3;
+    --md-banner: url(../img/banner-for-blue-alt-light.png) no-repeat left top;
+    --md-default-fg-color: black;
+    --md-default-fg-color--light: black;
+
+}
+:root {
+    --md-text-font: 'Source Sans Pro', sans-serif;
+    --md-code-font: 'Source Sans Pro', sans-serif;
+}
+/* colors for dark theme */
+[data-md-color-scheme="slate"] {
+    --md-primary-fg-color: #545cec;
+    --md-primary-fg-color-header: white;
+    --md-primary-fg-color-header-text: #f5f6f7;
+    --md-primary-fg-color-header-text-active: #259dc9;
+    --md-accent-fg-color: #3d8fca;
+    --md-default-bg-color: #23272f;
+    --md-typeset-a-color: #75c9e7;
+    --md-banner: url(../img/banner-for-blue-alt-dark.png) no-repeat left top;
+    --md-hjs-color: rgb(186, 186, 255);
+    --md-hjs-attr-color: #96ffc5;
+    --md-hjs-other-color: #f2b4b4;
+    --md-default-fg-color: white;
+    --md-default-fg-color--light: white;
+
+
+}
+/* colors for the light theme */
+[data-md-color-scheme="default"] {
+    --md-primary-fg-color-header: #f5f6f7;
+    --md-primary-fg-color-header-text: #1d1d1d;
+    --md-primary-fg-color-header-text-active: #094570;
+    --md-default-bg-color: #ffffff;
+    --md-typeset-a-color: var(--md-primary-fg-color);
+    --md-hjs-color: #00f;
+    --md-hjs-attr-color: #1aab5b;
+    --md-hjs-other-color: #a31515;
+    --md-default-fg-color: black;
+    --md-default-fg-color--light: black;
+
+}
+.md-tabs {
+    background-color: var(--md-primary-fg-color-header);
+    color: var(--md-primary-fg-color-header-text);
+}
+.md-tabs__link--active, .md-tabs__link:focus, .md-tabs__link:hover {
+    color: var(--md-primary-fg-color-header-text-active);
+}
+.hljs-attr {
+    color: var(--md-hjs-attr-color);
+}
+.hljs-built_in, .hljs-keyword, .hljs-name, .hljs-selector-tag, .hljs-tag {
+    color: var( --md-hjs-color);
+}
+.hljs-addition, .hljs-attribute, .hljs-literal, .hljs-section, .hljs-string, .hljs-template-tag, .hljs-template-variable, .hljs-title, .hljs-type{
+    color: var(--md-hjs-other-color);
+}
+.banner-link {
+    width: 711px;
+    height: 363px;
+}

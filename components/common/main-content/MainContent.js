@@ -51,9 +51,13 @@ export default function MainContent(props) {
           getHighlighter({
             theme: "github-light",
             langs: ["ballerina"],
-          }).then((highlighter) => {
-            setCodeSnippet(highlighter.codeToHtml(code, language));
-          });
+          })
+            .then((highlighter) => {
+              setCodeSnippet(highlighter.codeToHtml(code, language));
+            })
+            .catch(() => {
+              return code;
+            });
         }
         fetchData();
       }, [code, language]);

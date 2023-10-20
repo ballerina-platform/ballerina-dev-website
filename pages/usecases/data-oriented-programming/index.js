@@ -129,14 +129,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/usecases/integration/dop-banner.png"
+          content="https://ballerina.io/images/usecases/integration/ballerina-use-cases-data-oriented-programming-sm-banner.png"
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/usecases/integration/dop-banner.png"
+          content="https://ballerina.io/images/usecases/integration/ballerina-use-cases-data-oriented-programming-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -148,7 +148,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -156,7 +156,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/usecases/integration/dop-banner.png"
+          content="https://ballerina.io/images/usecases/integration/ballerina-use-cases-data-oriented-programming-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -164,7 +164,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/usecases/integration/dop-banner.png"
+          content="https://ballerina.io/images/usecases/integration/ballerina-use-cases-data-oriented-programming-sm-banner.png"
         />
       </Head>
 

@@ -63,7 +63,7 @@ export default function Learn() {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content="Ballerina: Integration tutorials" />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -71,14 +71,14 @@ export default function Learn() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina: Integration tutorials" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -90,7 +90,7 @@ export default function Learn() {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Ballerina: Integration tutorials" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -98,7 +98,7 @@ export default function Learn() {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -106,7 +106,7 @@ export default function Learn() {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
       </Head>
 

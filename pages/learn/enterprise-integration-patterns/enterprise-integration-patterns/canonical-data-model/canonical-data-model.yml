@@ -1,0 +1,7 @@
+tagline: Common message format for communication between applications
+desc: The Canonical Data Model is a common message format used by different applications for communication.
+category: Message Transformation
+index: 41
+helps: Ballerina provides powerful data modelling capabilities through its Type System. You can define data types like JSON and xml, and structures like records to represent your canonical data model. This ensures interoperability when integrating different components in your system, making it easier to exchange data seamlessly.
+tags: ["Canonical Data Model", "Message Router", "Message Translator", "Format Indicator"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html

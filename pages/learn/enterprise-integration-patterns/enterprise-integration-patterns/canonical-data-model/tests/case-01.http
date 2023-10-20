@@ -1,0 +1,22 @@
+POST http://localhost:8080/map/uploadPlaceMarks
+
+[
+    {
+        "X": -122.082203542568,
+        "Y": 37.4222899014025,
+        "Name": "Simple placemark",
+        "Description": "Attached to the ground. Intelligently places itself at the height of the underlying terrain."
+    },
+    {
+        "X": -122.084075,
+        "Y": 37.4220033612141,
+        "Name": "Floating placemark",
+        "Description": "Floats a defined distance above the ground."
+    },
+    {
+        "X": -122.085766700618,
+        "Y": 37.4215692786755,
+        "Name": "Extruded placemark",
+        "Description": "Tethered to the ground by a customizable tail"
+    }
+]

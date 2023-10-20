@@ -1,0 +1,32 @@
+POST http://localhost:8080/map/getRouteDirection?query=52.50931,13.42936:52.50274,13.43872
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+  <gpx>
+    <wpt lat="37.4222899014025" lon="-122.082203542568">
+      <extensions>
+        <X>-122.082203542568</X>
+        <Y>37.4222899014025</Y>
+        <Name>Simple placemark</Name>
+        <description>Attached to the ground. Intelligently places itself at the
+        height of the underlying terrain.</description>
+      </extensions>
+    </wpt>
+    <wpt lat="37.4220033612141" lon="-122.084075">
+      <extensions>
+        <X>-122.084075</X>
+        <Y>37.4220033612141</Y>
+        <Name>Floating placemark</Name>
+        <description>Floats a defined distance above the ground.</description>
+      </extensions>
+    </wpt>
+    <wpt lat="37.4215692786755" lon="-122.085766700618">
+      <extensions>
+        <X>-122.085766700618</X>
+        <Y>37.4215692786755</Y>
+        <Name>Extruded placemark</Name>
+        <description>Tethered to the ground by a customizable
+        "tail"</description>
+      </extensions>
+    </wpt>
+  </gpx>

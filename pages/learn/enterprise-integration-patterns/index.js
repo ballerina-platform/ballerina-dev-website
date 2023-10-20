@@ -36,22 +36,19 @@ export async function getStaticProps() {
     const filePath = path.join(baseDirectory, file);
     const stats = fs.statSync(filePath);
     const bal = path.join(filePath, file + ".bal");
-    if (stats.isDirectory() && fs.existsSync(bal)) {
-      if (!fs.existsSync(path.resolve(""))) {
-
-      }
-
-      const ymlPath = path.join(baseDirectory, file, file + ".yml");
-      const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
-      var pattern = loadYml(ymlPath);
-      pattern.name = pattern.name ?? name;
-      const category = pattern.category ?? "uncategorized";
-      const existingCategory = patterns[category];
-      if (existingCategory) {
-        existingCategory.push(pattern);
-      } else {
-        patterns[category] = [pattern];
-      }
+    if (!stats.isDirectory() || !fs.existsSync(bal)) {
+      continue;
+    }
+    const ymlPath = path.join(baseDirectory, file, file + ".yml");
+    const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
+    var pattern = loadYml(ymlPath) || {};
+    pattern.name = pattern.name ?? name;
+    const category = pattern.category ?? "uncategorized";
+    const existingCategory = patterns[category];
+    if (existingCategory) {
+      existingCategory.push(pattern);
+    } else {
+      patterns[category] = [pattern];
     }
   }
   for (const category of Object.values(patterns)) {

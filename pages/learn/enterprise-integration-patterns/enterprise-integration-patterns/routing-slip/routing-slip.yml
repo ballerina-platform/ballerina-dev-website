@@ -2,6 +2,6 @@ tagline: Route message according to an order.
 desc: Route the message to the next component according to the sequence of processing steps specified in a routing slip.
 category: Message Routing
 index: 33
-helps: Ballerina excels in enabling seamless integration of diverse services with inherent concurrent support, as well as in data binding, type enforcement, and native error-handling capabilities.
+helps: Ballerina excels in enabling the seamless integration of diverse services with inherent concurrent support, as well as in data binding, type enforcement, and native error-handling capabilities.
 tags: ["Routing Slip", "Message Channel", "Message Endpoint", "Message Router"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html

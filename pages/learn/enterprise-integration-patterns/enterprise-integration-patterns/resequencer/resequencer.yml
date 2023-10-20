@@ -1,4 +1,4 @@
-tagline: Reorder a sequence of messages recived.
+tagline: Reorder a received sequence of messages.
 desc: Resequencer reorders the sequence of messages received in the incorrect order.
 category: Message Routing
 index: 30

@@ -166,14 +166,14 @@
          <meta
            property="og:image"
            itemProp="image"
-           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-learn-ballerina-by-example-page-sm-banner.png"
          />
  
          {/* LINKED IN */}
          <meta property="og:title" content="Ballerina - By Example" />
          <meta
            property="og:image"
-           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-learn-ballerina-by-example-page-sm-banner.png"
          />
          <meta
            property="og:description"
@@ -193,7 +193,7 @@
          />
          <meta
            name="twitter:image"
-           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-learn-ballerina-by-example-page-sm-banner.png"
          />
          <meta
            property="twitter:text:description"
@@ -201,7 +201,7 @@
          />
          <meta
            property="twitter:image"
-           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+           content="https://ballerina.io/images/ballerina-learn-ballerina-by-example-page-sm-banner.png"
          />
        </Head>
  

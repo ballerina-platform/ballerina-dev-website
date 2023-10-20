@@ -50,8 +50,9 @@ export default function Users(props) {
           <Col sm={18} md={12} className={styles.logo}>
               <a href="/case-studies/wso2" target='_blank' rel="noreferrer" ><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
               <a href="https://choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
+              <a href="https://fattuesday.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
               <a href="/case-studies/mosip" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
-              <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
+              <a href="https://quantil.readthedocs.io/en/latest/user-guide/qhana/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>
 
           </Col>
         </Row>
@@ -60,7 +61,12 @@ export default function Users(props) {
               <a href="https://central.ballerina.io/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
               <a href="https://elixir.redcross.lk/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
               <a href="https://www.raapid.ai/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={18} md={12} className={styles.logo}>
               <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
+              <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
           </Col>
         </Row>
       </Container>

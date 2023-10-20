@@ -7,6 +7,7 @@ permalink: /learn/case-studies/wso2
 active: wso2
 intro: WSO2’s digital transformation team realized that they needed to modernize the company’s own internal applications to improve operational efficiency, collaboration, and productivity. To drive these efforts, the company leveraged the Ballerina language to achieve remarkable results and empower its workforce.
 logo: '/images/home-page/user-logos/wso2.svg'
+user: 'wso2'
 ---
 
 ## Overview

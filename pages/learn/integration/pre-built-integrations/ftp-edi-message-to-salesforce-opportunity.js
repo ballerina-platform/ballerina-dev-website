@@ -327,9 +327,9 @@ export default function Learn({ samples, content }) {
                     </p>
 
                   </Col>
-                  <Col xs={12} lg={6} className="text-center">
+                  <Col xs={12} lg={6} className="text-center mdContent">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Flow Diagram" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Flow Diagram" />
 
                   </Col>
                 </Row>
@@ -367,9 +367,9 @@ export default function Learn({ samples, content }) {
                   </Tab>
                   <Tab eventKey="diagram" title="Diagram">
 
-                    <Col xs={12} lg={6} className="text-center">
+                    <Col xs={12} lg={6} className="text-center mdContent">
                       
-                      <img src={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Sequence Diagram" style={{ width: "-webkit-fill-available" }} />
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/ftp-edi-message-to-salesforce-opportunity.png`} alt="Sequence Diagram" />
 
                     </Col>
 

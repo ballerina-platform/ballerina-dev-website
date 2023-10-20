@@ -37,11 +37,11 @@ Follow the instructions given in this section to develop the service.
 
 2. Remove the generated content in the `main.bal` file and open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 
-    ![Open diagram view](/learn/images/tutorial_sending_a_message_to_a_service_open_diagram_view.gif)
+    ![Open diagram view](/learn/images/integration-tutorials/sending-a-message-to-a-service/open_diagram_view.gif)
 
 3. Define two [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URL of the backend service.
 
-    ![Define configurable variables](/learn/images/tutorial_sending_a_message_to_a_service_define_configurable_variables.gif)
+    ![Define configurable variables](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_configurable_variables.gif)
 
     The corresponding source code that is generated is as follows.
 
@@ -68,17 +68,17 @@ Follow the instructions given in this section to develop the service.
     2. Open VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
     3. Search and select `Ballerina: Paste JSON as record` command.
 
-    ![Paste JSON as record](/learn/images/tutorial_sending_a_message_to_a_service_paste_json_as_record.gif)
+    ![Paste JSON as record](/learn/images/integration-tutorials/sending-a-message-to-a-service/paste_json_as_record.gif)
 
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
     - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`.
 
-        ![Define the service](/learn/images/tutorial_sending_a_message_to_a_service_define_a_service.gif)
+        ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
 
     - Define an HTTP resource that allows the `GET` operation on resource path `/doctors` and accepts the `category` (corresponding to the specialization) as a path parameter.
 
-        ![Define the resource](/learn/images/tutorial_sending_a_message_to_a_service_define_a_resource.gif)
+        ![Define the resource](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_resource.gif)
 
         The generated service will be as follows.
     
@@ -93,7 +93,7 @@ Follow the instructions given in this section to develop the service.
 
 6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
 
-    ![Define the client](/learn/images/tutorial_sending_a_message_to_a_service_define_client_endpoint.gif)
+    ![Define the client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_client_endpoint.gif)
 
     The generated code will be as follows.
 
@@ -202,7 +202,7 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 
 ### Step 3: Build and run the service
 
-![Run the service](/learn/images/tutorial_sending_a_message_to_a_service_run_the_service.gif)
+![Run the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/run_the_service.gif)
 
 > **Note:**
 > Alternatively, you can run this service by navigating to the project root and using the `bal run` command.
@@ -233,7 +233,7 @@ bal run hospitalservice.jar
 > **Note:** The healthcare service has to be running to send a request to it. If you have stopped the service, start it again.
 >
 
-![Send a request](/learn/images/tutorial_sending_a_message_to_a_service_try_it.gif)
+![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 
 #### Verify the response
 
@@ -371,7 +371,7 @@ Let's test the use case by writing a test case that sends a request to the servi
 
 7. Run the tests.
 
-    ![Run the tests](/learn/images/tutorial_sending_a_message_to_a_service_run_tests.gif)
+    ![Run the tests](/learn/images/integration-tutorials/sending-a-message-to-a-service/run_tests.gif)
 
     Alternatively, you can run the tests from the terminal using the `bal test` command from the project root to run the tests.
 

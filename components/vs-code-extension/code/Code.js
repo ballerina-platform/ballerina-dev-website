@@ -72,11 +72,11 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{architectureView.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                          {/* <span>Sample 1: Summarize text using OpenAI</span>  */}
-                                        <a href='https://wso2.com/ballerina/vscode/docs/design-the-application/' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/design-the-application/explore-the-architecture-view/`}className={styles.cDownload} target="_blank" rel="noreferrer">
                                              {/* <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />  */}
                                             
                                             <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Design your project" />
-                                            Design the application
+                                            Explore the Architecture View
                                         </a>
                                         <a href='https://github.com/ballerina-guides/gcp-microservices-demo' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
@@ -149,7 +149,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{serviceDesigning.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/design-the-services/http-api-designer/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="HTTP API designer" />
                                             HTTP API Designer
                                         </a>
@@ -160,7 +160,7 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/design-the-services/graphql-api-designer/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/design-the-services/graphql-api-designer/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL service designer" />
                                         GraphQL API Designer
                                         </a>
@@ -222,7 +222,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{codeEditing.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/write-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/write-the-code/intellisense/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Implement the code" />
                                             Write the code
                                         </a>
@@ -293,14 +293,14 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{runAndDebug.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/run-a-program/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/run-a-program/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Run a program" />
                                             Run a program
                                         </a>
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/debug-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/debug-the-code/debug-sessions/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Debug the code" />
                                         Debug the code
                                         </a>
@@ -360,7 +360,7 @@ export default function UseCases(props) {
                                 <div className={styles.wrapper}>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{tryIt.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/try-the-services/try-http-services/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="HTTP API designer" />
                                             Try HTTP services
                                         </a>
@@ -371,7 +371,7 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/try-the-services/try-graphql-services/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/try-the-services/try-graphql-services/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="GraphQL designer" />
                                         Try GraphQL services
                                         </a>
@@ -387,7 +387,7 @@ export default function UseCases(props) {
                             <Col xs={12} md={7} lg={7} className={styles.box}>
                                 <div id="code-tab">
                                     <Tabs defaultActiveKey="serviceDesigning1" id="code" className="mb-3 codeTabs">
-                                        <Tab eventKey="serviceDesigning1" title="Try HTTP services">
+                                        <Tab eventKey="serviceDesigning1" title="Try GraphQL services">
                                             <div className={styles.codeSnippet}>
                                             <img src={`${prefix}/images/http-try-it.png`}/>
                                             </div>
@@ -434,7 +434,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{tests.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/test-the-code/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/test-the-code/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Test the code" />
                                             Test the code
                                         </a>
@@ -490,7 +490,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataMapper.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/implement-the-code/data-mapper/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/implement-the-code/data-mapper/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Data Mapper" />
                                             Data Mapper
                                         </a>
@@ -550,7 +550,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{notebooks.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/notebooks/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/notebooks/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Notebooks" />
                                             Notebooks
                                         </a>
@@ -610,7 +610,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{choreo.frontmatter.description}</ReactMarkdown>
 
                                     <div className={styles.dVersion}>
-                                        <a href="https://wso2.com/ballerina/vscode/docs/deploy-with-wso2-choreo/" className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href={`${prefix}/learn/vs-code-extension/deploy-with-wso2-choreo/`} className={styles.cDownload} target="_blank" rel="noreferrer">
                                         <Image src={`${prefix}/images/docs-grey.svg`} width={20} height={20} alt="Deploy the code" />
                                             Deploy with WSO2 Choreo
                                         </a>

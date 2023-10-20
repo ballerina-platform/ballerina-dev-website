@@ -152,7 +152,7 @@
             "id": "try-the-services",
             "subDirectories": [
                 {
-                    "dirName": "Try the services",
+                    "dirName": "Try HTTP services",
                     "level": 2,
                     "position": 1,
                     "isDir": false,

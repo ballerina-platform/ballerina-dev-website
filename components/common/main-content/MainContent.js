@@ -41,8 +41,9 @@ export default function MainContent(props) {
   const codes = props.codes ? new Map(JSON.parse(props.codes)) : new Map();
 
   // Synatax highlighting
-  const HighlightSyntax = (code, language) => {
-    if (language !== "ballerina") return code;
+  const HighlightSyntax = (code = undefined, language = undefined) => {
+    if (!code || language !== "ballerina") return code;
+
     try {
       const [codeSnippet, setCodeSnippet] = React.useState([]);
       React.useEffect(() => {

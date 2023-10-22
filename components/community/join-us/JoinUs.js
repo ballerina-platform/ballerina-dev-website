@@ -19,10 +19,10 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
-import styles from './Discord.module.css';
+import styles from './JoinUs.module.css';
 import { prefix } from '../../../utils/prefix';
 
-export default function Discord(props) {
+export default function JoinUs(props) {
 
   return (
     <Col xs={12}>
@@ -48,38 +48,35 @@ export default function Discord(props) {
         </Row>
 
         <Row>
-          <Col sm={12} md={6} lg={6}>
-            <p>
-              lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            </p>
-            {/* <p className={styles.member}>
-              Join the <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref>Discord community</a>
-            </p> */}
-          </Col>
 
-          <Col xs={12} sm={12} md={6} lg={6}>
+          <Col xs={12}>
             <Row>
               <div className={styles.socialMedia}>
                 <div className={styles.smIcons}>
                   <ul>
                     <li>
                       <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                        <Image src={`${prefix}/images/sm-icons/stackoverflow-grey.svg`} width={60} height={60} alt="Stackoverflow" />
+                        <Image src={`${prefix}/images/sm-icons/stackoverflow-color.svg`} width={60} height={60} alt="Stackoverflow" />
                       </a>
                     </li>
                     <li>
                       <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                        <Image src={`${prefix}/images/sm-icons/discord-grey.svg`} width={70} height={60} alt="Discord" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
-                        <Image src={`${prefix}/images/sm-icons/linkedin-grey.svg`} width={70} height={70} alt="LinkedIn" />
+                        <Image src={`${prefix}/images/sm-icons/discord-color.svg`} width={70} height={60} alt="Discord" />
                       </a>
                     </li>
                     <li>
                       <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
-                        <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={70} height={70} alt="GitHub" />
+                        <Image src={`${prefix}/images/sm-icons/github-black.svg`} width={70} height={70} alt="GitHub" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
+                        <Image src={`${prefix}/images/sm-icons/linkedin-color.svg`} width={70} height={70} alt="LinkedIn" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="Meetup">
+                        <Image src={`${prefix}/images/sm-icons/meetup-color.svg`} width={80} height={80} alt="Meetup" />
                       </a>
                     </li>
                     <li>
@@ -88,8 +85,8 @@ export default function Discord(props) {
                       </a>
                     </li>
                     <li>
-                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="Meetup">
-                        <Image src={`${prefix}/images/sm-icons/meetup-black.svg`} width={80} height={80} alt="Meetup" />
+                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="YouTube">
+                        <Image src={`${prefix}/images/sm-icons/youtube-color.svg`} width={80} height={80} alt="YouTube" />
                       </a>
                     </li>
                   </ul>

@@ -147,7 +147,8 @@
 .socialMedia ul {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .socialMedia ul li {
@@ -160,6 +161,6 @@
 }
 
 .smIcons {
-  display: inline-block;
+  /* display: inline-block; */
   align-items: center;
 }

@@ -69,7 +69,7 @@ export default function Resources(props) {
                         </p>
                     </Col>
 
-                    <Col sm={12} md={6} lg={6}>
+                    {/* <Col sm={12} md={6} lg={6}>
                         <p className={styles.linkWrap}
                             onMouseEnter={() => {
                                 setHoverBtn(true);
@@ -82,12 +82,12 @@ export default function Resources(props) {
                             }>
                             <a href={`${prefix}/community/resources`} rel="noreferrer" target="_blank" className={styles.viewAll}>View all resources </a>
                         </p>
-                    </Col>
+                    </Col> */}
                 </Row>
 
 
                 <Row className={styles.resourceRow}>
-                    <Col sm={12} md={12} lg={4}>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -102,7 +102,7 @@ export default function Resources(props) {
                         </a>
                     </Col>
 
-                    <Col sm={12} md={12} lg={4}>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -117,7 +117,22 @@ export default function Resources(props) {
                         </a>
                     </Col>
 
-                    <Col sm={12} md={12} lg={4}>
+                    <Col sm={12} md={12} lg={3}>
+                        <a href='#' className={styles.resourceCardLink}>
+                            <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                    <div className={styles.cardImg}>
+                                        <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
+                                    </div>
+                                    <Card.Text className={styles.cardText}>
+                                        <h5 className="card-text"> Articles on Stack overflow </h5>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </a>
+                    </Col>
+
+                    <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>

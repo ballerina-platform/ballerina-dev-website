@@ -1,12 +1,9 @@
 ---
-title: 'Efficiently expose complex data with GraphQL'
-description: Web and mobile apps act as the interface for vast amounts of consolidated data, often requiring users to perform advanced data retrieval operations. With Ballerina's built-in GraphQL functionality, backend developers can simply expose Ballerina records via GraphQL services, facilitating querying and selectively fetching complex data structures. 
+title: 'Efficiently Expose Complex Data with GraphQL'
+description: Web/mobile apps often perform advanced data retrieval operations. With Ballerina's built-in GraphQL functionality, backend developers can simply expose Ballerina records via GraphQL services, facilitating querying and selectively fetching complex data structures.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_graphql'
 ---
 ```
-import ballerina/graphql;
-import ballerina/log;
-
 @graphql:ServiceConfig {
     cors: {
         allowOrigins: ["*"]

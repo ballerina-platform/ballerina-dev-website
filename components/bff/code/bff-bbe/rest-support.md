@@ -1,12 +1,9 @@
 ---
-title: 'Simplify backend development with native REST features'
-description: Most web apps rely on REST APIs, with JSON serving as the predominant data exchange format. Handling REST API elements like path parameters, query parameters, HTTP headers, status codes, and complex JSON structures is crucial for web app backends. Ballerina addresses these needs effectively by incorporating all these REST features as first-class citizens within the language itself.
+title: 'Simplified Backend with Native REST'
+description: Most web/mobile apps rely on REST APIs, predominantly using JSON for data exchange. Effectively managing path and query parameters, HTTP headers, status codes, and complex JSON structures is crucial for web backends. Ballerina seamlessly integrates these REST features as first-class citizens within the language itself.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest'
 ---
 ```
-import ballerina/http;
-import ballerina/log;
-
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["*"]

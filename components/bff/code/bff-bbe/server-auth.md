@@ -1,15 +1,9 @@
 ---
-title: 'Enable advanced user authentications and authorizations with simple annotations'
-description: Authenticating users and authorizing access are critical requirements for any front-end application. This is usually facilitated by integrating with identity providers, enabling advanced security features like centralized user management, multi-factor authentication, social logins, and role-based access control. <br><br>Ballerina apps can be seamlessly integrated with any OAuth2-compatible identity provider using a simple set of annotations. All requests for such annotated services will be authenticated and authorized based on tokens issued by corresponding identity providers.
+title: 'Simplify User Auth and AuthZ with Annotations'
+description: Ballerina apps can be seamlessly integrated with any OAuth2-compatible identity provider using a simple set of annotations. This enables advanced security features like centralized user management, multi-factor authentication, social logins, and role-based access control for Ballerina-powered apps.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest_asgardio_jwt'
 ---
 ```
-import ballerina/http;
-
-configurable string issuer = ?;
-configurable string audience = ?;
-configurable string jwksUrl = ?;
-
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["*"]

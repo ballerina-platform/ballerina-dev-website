@@ -1,11 +1,9 @@
 ---
-title: 'Let Ballerina write data access code for your apps'
-description: Ballerina's persistence features offer a straightforward way to work with data sources, making it easier to build applications' data access layer. By simply defining the required Ballerina records, the persistence package can generate all data access functions. This eliminates repetitive code, providing a simplified interface for inserting, updating, and querying data where data tables are directly mapped to Ballerina records.
+title: 'Automate Data Access with Ballerina'
+description: Ballerina's persistence features offer a straightforward way to create a data access layer for any complex application. The persistence package can generate all data access functions by directly mapping database tables to Ballerina's built-in record types, providing a simplified interface for CRUD operations.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_persists'
 ---
 ```
-import ballerina/http;
-
 Client ordersDatabase = check new ();
 
 @http:ServiceConfig {

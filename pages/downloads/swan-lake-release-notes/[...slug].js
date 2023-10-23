@@ -32,20 +32,19 @@ import { prefix } from "../../../utils/prefix";
 import RNToc from "../../../utils/rl.json";
 import Toc from "../../../components/common/pg-toc/Toc";
 import { highlight } from "../../../utils/highlighter";
-import RenderHeading from "../../../components/common/heading/RenderHeading";
+import GenerateHeadingComponent from "../../../components/common/heading/RenderHeading";
 
 String.prototype.hashCode = function () {
   var hash = 0,
-    i,
-    chr;
+      i, chr;
   if (this.length === 0) return hash;
   for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
+      chr = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0;
   }
   return hash;
-};
+}
 
 // import { Liquid } from 'liquidjs';
 
@@ -103,7 +102,7 @@ export async function getStaticProps({ params: { slug } }) {
       frontmatter,
       content,
       id,
-      codeSnippets,
+      codeSnippets
     },
   };
 }
@@ -207,52 +206,34 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
 
             <ReactMarkdown
               components={{
-                h1: RenderHeading(1, setShowToc),
-                h2: RenderHeading(2, setShowToc),
-                h3: RenderHeading(3, setShowToc),
-                h4: RenderHeading(4, setShowToc),
-                h5: RenderHeading(5, setShowToc),
-                h6: RenderHeading(6, setShowToc),
+                h1: GenerateHeadingComponent(1, setShowToc),
+                h2: GenerateHeadingComponent(2, setShowToc),
+                h3: GenerateHeadingComponent(3, setShowToc),
+                h4: GenerateHeadingComponent(4, setShowToc),
+                h5: GenerateHeadingComponent(5, setShowToc),
+                h6: GenerateHeadingComponent(6, setShowToc),
                 code({ node, inline, className, children, ...props }) {
-                  const key = children[0]
-                    .trim()
-                    .split(/\r?\n/)
-                    .map((row) => row.trim())
-                    .join("\n");
+                  const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
                   const highlightedCode = codes.get(key.hashCode());
                   if (highlightedCode) {
-                    return (
-                      <div
-                        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-                      />
-                    );
+                    return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
                   }
-                  const match = /language-(\w+)/.exec(className || "");
-                  return inline ? (
+                  const match = /language-(\w+)/.exec(className || '')
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  ) : match ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: String(children).replace(/\n$/, ""),
-                      }}
-                    />
-                  ) : (
-                    <pre className="default">
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    </pre>
-                  );
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
                 },
-                table({ node, className, children, ...props }) {
-                  return (
-                    <div className="mdTable">
-                      <table {...props}>{children}</table>
-                    </div>
-                  );
-                },
+                table({node, className, children, ...props}) { 
+                  return <div className='mdTable'><table {...props}>{children}</table></div>
+                }
               }}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}

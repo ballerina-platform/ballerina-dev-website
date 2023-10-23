@@ -32,7 +32,7 @@ import { prefix } from "../../../utils/prefix";
 import RNToc from "../../../utils/rl.json";
 import Toc from "../../../components/common/pg-toc/Toc";
 import { highlight } from "../../../utils/highlighter";
-import RenderHeading from "../../../components/common/heading/RenderHeading";
+import GenerateHeadingComponent from "../../../components/common/heading/RenderHeading";
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -202,12 +202,12 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
 
             <ReactMarkdown
               components={{
-                h1: RenderHeading(1, setShowToc),
-                h2: RenderHeading(2, setShowToc),
-                h3: RenderHeading(3, setShowToc),
-                h4: RenderHeading(4, setShowToc),
-                h5: RenderHeading(5, setShowToc),
-                h6: RenderHeading(6, setShowToc),
+                h1: GenerateHeadingComponent(1, setShowToc),
+                h2: GenerateHeadingComponent(2, setShowToc),
+                h3: GenerateHeadingComponent(3, setShowToc),
+                h4: GenerateHeadingComponent(4, setShowToc),
+                h5: GenerateHeadingComponent(5, setShowToc),
+                h6: GenerateHeadingComponent(6, setShowToc),
                 code({ node, inline, className, children, ...props }) {
                   const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
                   const highlightedCode = codes.get(key.hashCode());

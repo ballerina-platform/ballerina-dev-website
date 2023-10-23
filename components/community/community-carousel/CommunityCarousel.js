@@ -19,23 +19,23 @@
 import Carousel from 'react-bootstrap/Carousel';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
-import styles from './CommunityCarousel.module.css';
+// import styles from './CommunityCarousel.module.css';
 
 export default function CommunityCarousel(props) {
 
   return (
     <Carousel>
       <Carousel.Item>
-        <img src='/images/community/1.jpg'/>
+        <img src='/images/community/1.png'/>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/2.jpeg'/>
+      <img src='/images/community/2.png'/>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/3.JPG'/>
+      <img src='/images/community/3.png'/>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/4.jpg'/>
+      <img src='/images/community/4.png'/>
       </Carousel.Item>
     </Carousel>
   );

@@ -46,7 +46,6 @@ function Heading(level, children, setShowToc) {
       : scanArray(children);
 
   setShowToc(true);
-
   const handleLinkClick = (e) => getLink(e.target, id);
 
   return React.createElement(

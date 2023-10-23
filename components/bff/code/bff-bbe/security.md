@@ -1,11 +1,9 @@
 ---
-title: "Enable comprehensive security for web app backends"
-description: Web app backends face several security challenges beyond user authentication and authorization. These include securing sensitive data during transit, server identity validation, CORS management, and message type restrictions. <br><br>Ballerina-based backends simplify these functions, enabling security features via annotations on relevant services. Additionally, Ballerina services can easily generate HTTP access logs and trace logs, providing deeper insights into message exchanges.
+title: "Comprehensive Security for Web Backends"
+description: Ballerina-based backends simplify securing sensitive data during transit, validating server identity, managing CORS, and enforcing message type restrictions through annotations on relevant services. Additionally, Ballerina services can easily generate HTTP access logs and trace logs, offering deeper insights into message exchanges.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_comprehensive_security'
 ---
 ```
-import ballerina/http;
-
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://localhost:3000", "http://www.hmart-dev.com", "http://www.hmart.com"],

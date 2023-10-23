@@ -85,7 +85,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"}}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest-API" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -150,7 +150,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/payload_validations.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/payload_validations.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Advanced Payload Validation" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -215,7 +215,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{flex: "1 0 0", border: "1px solid #eeeeee"}}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/graphql.gif`} style={{ height: "59vh", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/graphql.gif`} style={{ height: "59vh", borderRadius: "1.2rem" }} alt="GraphQl" />
                                 </Row>
 
                             </Col>
@@ -281,7 +281,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/websocket.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/websocket.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Websockets" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -303,7 +303,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* emr connectors */}
+            {/* server auth */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
@@ -346,7 +346,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/react_jwt.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/react_jwt.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Auth & AuthZ" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -411,7 +411,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/comprehensive-security.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem"}} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/comprehensive-security.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem"}} alt="Comprehensive-Security" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -433,7 +433,7 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* ai pair programming */}
+            {/* internal/external services */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
@@ -476,7 +476,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Internal/External services" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={styles.box}>
@@ -539,7 +539,7 @@ export default function UseCases(props) {
                                     </div>
                                 </Row>
                                 <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"  }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/persists.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest" />
+                                    <img src={`${prefix}/images/usecases/integration/bff/persists.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Persist Support" />
                                 </Row>
                             </Col>
                             <Col xs={12} md={7} lg={7} className={`${styles.box}`}>

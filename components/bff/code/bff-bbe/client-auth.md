@@ -1,24 +1,10 @@
 ---
-title: 'Securely interact with internal and external services'
-description: In today's IT environments where services are scattered across on-premises and cloud, no link is guaranteed to be secure. Therefore, strict security measures need to be enforced on all links. Ballerina-powered backends can securely call services - whether on-premise, in a private cloud, or SaaS - with the necessary security features such as client-side OAuth2, mutual TLS, and JWT-encapsulated user data.
+title: 'Securely interact with internal/external services'
+description: In the modern software industry, strict security measures need to be enforced on all service endpoints. Ballerina backends can securely call services - whether on-premise, in a private cloud, or SaaS - with the necessary security features such as client-side OAuth2, mutual TLS, and JWT-encapsulated user data.
+
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_microservices_jwt_asgardio'
 ---
 ```
-import ballerina/http;
-import ballerina/log;
-
-import ballerina_microservices_jwt_asgardio.cargoWave as _;
-import ballerina_microservices_jwt_asgardio.tradeLogix as _;
-import ballerina_microservices_jwt_asgardio.shipEx as _;
-
-configurable string issuer = ?;
-configurable string audience = ?;
-configurable string jwksUrl = ?;
-configurable string clientSecret = ?;
-configurable string cargoWaveUrl = ?;
-configurable string shipExUrl = ?;
-configurable string tradeLogixUrl = ?;
-
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["*"]

@@ -1,15 +1,10 @@
 ---
-title: 'Streamline web data handling in backends'
-description: Web and mobile apps often transmit users' input as JSON payloads, requiring backends to handle JSON data extensively. It is also common to exchange large binary payloads between front ends and back ends. <br><br>With Ballerina's native JSON capabilities, JSON data can be mapped to Ballerina records, enabling simple and flexible data manipulation with features like constraint validations, transformations, and enrichments. In addition, Ballerina has built-in support for intutuively and efficiently handle web-based data with multi-part payloads, compressions, caching and content type enforcements. 
+title: 'Streamline Backend Data Handling'
+description: Web and mobile apps frequently use JSON payloads. With Ballerina's native JSON capabilities, JSON data can be mapped to Ballerina records with features like constraint validations, transformations, and enrichments. In addition, Ballerina has built-in support for multi-part payloads, compressions, caching, and content type enforcements. 
 
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest_payload_validation'
 ---
 ```
-import ballerina/constraint;
-import ballerina/http;
-import ballerina/io;
-import ballerina/mime;
-
 public type CustomerRegistrationData record {|
     @constraint:String {
         pattern: {

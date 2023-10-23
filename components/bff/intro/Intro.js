@@ -48,7 +48,7 @@ export default function Intro() {
                     </div>
                 </Col>
                 <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/edi-intro.png`} alt="Position Ballerina" />
+                    <img src={`${prefix}/images/bff-intro.png`} alt="Position Ballerina" />
                 </Col>
             </Row>
             </Container>

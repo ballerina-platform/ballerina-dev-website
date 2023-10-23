@@ -19,10 +19,14 @@
 import fs from "fs";
 import matter from "gray-matter";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import { setCDN } from "shiki";
+import { getHighlighter, setCDN } from "shiki";
+
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
@@ -111,6 +115,34 @@ export default function PostPage({ frontmatter, content, id }) {
       // make sure to catch any error
       .catch(console.error);
   }, [fetchData]);
+
+  // Synatax highlighting
+  const HighlightSyntax = (code, language) => {
+    const [codeSnippet, setCodeSnippet] = React.useState([]);
+
+    React.useEffect(() => {
+      async function fetchData() {
+        getHighlighter({
+          theme: "github-light",
+          langs: [
+            "bash",
+            "ballerina",
+            "toml",
+            "yaml",
+            "sh",
+            "json",
+            "graphql",
+            "sql",
+          ],
+        }).then((highlighter) => {
+          setCodeSnippet(highlighter.codeToHtml(code, language));
+        });
+      }
+      fetchData();
+    }, [code, language]);
+
+    return [codeSnippet];
+  };
 
   // Show mobile left nav
   const [show, setShow] = React.useState(false);

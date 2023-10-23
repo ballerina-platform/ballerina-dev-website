@@ -19,7 +19,10 @@
 import fs from "fs";
 import matter from "gray-matter";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
 
@@ -33,16 +36,15 @@ import GenerateHeadingComponent from "../../../components/common/heading/RenderH
 
 String.prototype.hashCode = function () {
   var hash = 0,
-    i,
-    chr;
+      i, chr;
   if (this.length === 0) return hash;
   for (i = 0; i < this.length; i++) {
-    chr = this.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
+      chr = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0;
   }
   return hash;
-};
+}
 
 var traverseFolder = function (dir) {
   var results = [];
@@ -96,12 +98,14 @@ export async function getStaticProps({ params: { slug } }) {
       frontmatter,
       content,
       id,
-      codeSnippets,
+      codeSnippets
     },
   };
 }
 
 export default function PostPage({ frontmatter, content, id, codeSnippets }) {
+  const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
+
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
@@ -198,12 +202,12 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
 
             <ReactMarkdown
               components={{
-                h1: RenderHeading(1, setShowToc),
-                h2: RenderHeading(2, setShowToc),
-                h3: RenderHeading(3, setShowToc),
-                h4: RenderHeading(4, setShowToc),
-                h5: RenderHeading(5, setShowToc),
-                h6: RenderHeading(6, setShowToc),
+                h1: GenerateHeadingComponent(1, setShowToc),
+                h2: GenerateHeadingComponent(2, setShowToc),
+                h3: GenerateHeadingComponent(3, setShowToc),
+                h4: GenerateHeadingComponent(4, setShowToc),
+                h5: GenerateHeadingComponent(5, setShowToc),
+                h6: GenerateHeadingComponent(6, setShowToc),
                 code({ node, inline, className, children, ...props }) {
                   const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
                   const highlightedCode = codes.get(key.hashCode());

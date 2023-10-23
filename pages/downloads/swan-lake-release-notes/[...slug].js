@@ -19,7 +19,10 @@
 import fs from "fs";
 import matter from "gray-matter";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
 
@@ -105,6 +108,8 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 export default function PostPage({ frontmatter, content, id, codeSnippets }) {
+  const codes = codeSnippets ? new Map(JSON.parse(codeSnippets)) : new Map();
+
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);
@@ -201,52 +206,34 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
 
             <ReactMarkdown
               components={{
-                h1: RenderHeading(1, setShowToc),
-                h2: RenderHeading(2, setShowToc),
-                h3: RenderHeading(3, setShowToc),
-                h4: RenderHeading(4, setShowToc),
-                h5: RenderHeading(5, setShowToc),
-                h6: RenderHeading(6, setShowToc),
+                h1: GenerateHeadingComponent(1, setShowToc),
+                h2: GenerateHeadingComponent(2, setShowToc),
+                h3: GenerateHeadingComponent(3, setShowToc),
+                h4: GenerateHeadingComponent(4, setShowToc),
+                h5: GenerateHeadingComponent(5, setShowToc),
+                h6: GenerateHeadingComponent(6, setShowToc),
                 code({ node, inline, className, children, ...props }) {
-                  const key = children[0]
-                    .trim()
-                    .split(/\r?\n/)
-                    .map((row) => row.trim())
-                    .join("\n");
+                  const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
                   const highlightedCode = codes.get(key.hashCode());
                   if (highlightedCode) {
-                    return (
-                      <div
-                        dangerouslySetInnerHTML={{ __html: highlightedCode }}
-                      />
-                    );
+                    return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
                   }
-                  const match = /language-(\w+)/.exec(className || "");
-                  return inline ? (
+                  const match = /language-(\w+)/.exec(className || '')
+                  return inline ?
                     <code className={className} {...props}>
                       {children}
                     </code>
-                  ) : match ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: String(children).replace(/\n$/, ""),
-                      }}
-                    />
-                  ) : (
-                    <pre className="default">
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    </pre>
-                  );
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
+                      : <pre className='default'>
+                        <code className={className} {...props}>
+                          {children}
+                        </code>
+                      </pre>
                 },
-                table({ node, className, children, ...props }) {
-                  return (
-                    <div className="mdTable">
-                      <table {...props}>{children}</table>
-                    </div>
-                  );
-                },
+                table({node, className, children, ...props}) { 
+                  return <div className='mdTable'><table {...props}>{children}</table></div>
+                }
               }}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}

@@ -64,19 +64,18 @@ export default function Intro() {
                         
                         <p className={styles.dVersion}>
                     
-                        <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
+                        <a href={`${prefix}/learn/vs-code-extension/get-started/`}
                             className={styles.cDownload} target="_blank" rel="noreferrer">
-                            Install the extension
-                        </a>
-                    
+                            See documentation
+                        </a>                    
 
                     </p>
                     <p className={styles.dGetBallerinaText}>If you are new to the Ballerina VS Code extension,</p>
                         <p>
-                        <a href={`${prefix}/learn/vs-code-extension/get-started`}
-                            className={styles.cVideoBtn}> 
+                        <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
+                            className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
                             <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
-                            Get started
+                            Install the extension
                             
                         </a>
                         </p>

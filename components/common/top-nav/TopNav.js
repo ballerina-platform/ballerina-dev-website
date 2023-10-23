@@ -28,6 +28,7 @@ import styles from './TopNav.module.css';
 
 const TopNav = (props) => {
   const launcher = props.launcher;
+  console.log(launcher);
   const versionPicker = 'Swan Lake';
 
   if (global.location.pathname.indexOf('learn') > 0) {

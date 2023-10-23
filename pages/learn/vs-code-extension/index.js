@@ -20,7 +20,7 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
-import Layout from "/layouts/LayoutUseCase";
+import Layout from "/layouts/LayoutLearn";
 import Intro from "../../../components/vs-code-extension/intro/Intro";
 import Code from "../../../components/vs-code-extension/code/Code";
 import { prefix } from '../../../utils/prefix';

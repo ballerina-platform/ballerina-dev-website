@@ -70,7 +70,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
       <Meta />
       <Stack gap={0} className='main-wrapper other'>
         <TopNav launcher='docs' />
-        <div className='wrap-page-content'>
+        <div className='wrap-page-content' style={{paddingBottom:"0"}}>
           <Row className='community-wrap-row'>
             {children}
           </Row>

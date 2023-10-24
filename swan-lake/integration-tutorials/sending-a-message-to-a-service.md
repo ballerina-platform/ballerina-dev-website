@@ -298,10 +298,10 @@ Let's test the use case by writing a test case that sends a request to the servi
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
     ```
 
-3. Define a function that returns the expected payload from the backend service. This function will be used to mock the payload from the backend and to verify the received payload.
+3. Define a variable to keep the expected payload from the backend service. This variable will be used to mock the payload from the backend and to verify the received payload.
 
     ```ballerina
-    isolated function getSurgeryResponsePayload() returns map<json>[] & readonly => [
+    map<json>[] & readonly surgeons = [
         {
             "name": "thomas collins",
             "hospital": "grand oak community hospital",
@@ -330,13 +330,13 @@ Let's test the use case by writing a test case that sends a request to the servi
 
     ```ballerina
     public client class MockHttpClient {
-        isolated resource function get [string... path](map<string|string[]>? headers = (), 
+        resource function get [string... path](map<string|string[]>? headers = (), 
                                                         http:TargetType targetType = http:Response,
                                                         *http:QueryParams params) 
                                                     returns http:Response|anydata|http:ClientError {
             match path[0] {
                 "surgery" => {
-                    return getSurgeryResponsePayload();
+                    return surgeons;
                 }
             }
             return <http:ClientRequestError> error ("unknown specialization", 
@@ -359,7 +359,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     @test:Config
     function testSuccessfulRequest() returns error? {
         Doctor[] doctors = check cl->/surgery;
-        test:assertEquals(doctors, getSurgeryResponsePayload());
+        test:assertEquals(doctors, surgeons);
     }
     ```
 

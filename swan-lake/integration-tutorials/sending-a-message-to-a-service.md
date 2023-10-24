@@ -35,7 +35,7 @@ Follow the instructions given in this section to develop the service.
     $ bal new sending-a-message-to-a-service
     ```
 
-2. Remove the generated content in the `main.bal` file, open the diagram view in VS Code.
+2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
 
     ![Open diagram view](/learn/images/integration-tutorials/sending-a-message-to-a-service/open_diagram_view.gif)
 
@@ -50,7 +50,7 @@ Follow the instructions given in this section to develop the service.
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
     ```
 
-4. Generate the record corresponding to the payload from the backend service using the ["Paste JSON as record"](https://wso2.com/ballerina/vscode/docs/references/convert-json-to-records/#via-the-command-palette) VS Code command by providing a sample of the expected JSON payload.
+4. Generate a record type corresponding to the payload from the backend service using the ["Paste JSON as record"](https://wso2.com/ballerina/vscode/docs/references/convert-json-to-records/#via-the-command-palette) VS Code command by providing a sample of the expected JSON payload.
 
     The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following.
 
@@ -65,8 +65,8 @@ Follow the instructions given in this section to develop the service.
     ```
 
     1. Copy the sample JSON payload.
-    2. Open VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
-    3. Search and select `Ballerina: Paste JSON as record` command.
+    2. Open the VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
+    3. Search and select the `Ballerina: Paste JSON as record` command.
 
     ![Paste JSON as record](/learn/images/integration-tutorials/sending-a-message-to-a-service/paste_json_as_record.gif)
 
@@ -78,7 +78,7 @@ Follow the instructions given in this section to develop the service.
 
         ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
 
-    - Define an HTTP resource that allows the `GET` operation on resource path `/doctors` and accepts the `category` (corresponding to the specialization) as a path parameter.
+    - Define an HTTP resource that allows the `GET` operation on resource path `/doctors` and accepts the `category` path parameter (corresponding to the specialization).
 
         ![Define the resource](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_resource.gif)
 
@@ -93,7 +93,7 @@ Follow the instructions given in this section to develop the service.
         }
         ```
 
-6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) to send requests to the backend service.
+6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
 
     ![Define the client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_client_endpoint.gif)
 
@@ -137,7 +137,7 @@ Follow the instructions given in this section to develop the service.
         Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
         ```
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or return an `http:InternalServerError` response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
 
         ```ballerina
         log:printInfo("Retrieving information", specialization = category);

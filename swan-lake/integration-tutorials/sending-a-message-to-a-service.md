@@ -232,7 +232,7 @@ bal run hospitalservice.jar
 
 #### Send a request
 
-Use [Try HTTP Service](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) in the VS Code to send an HTTP request to the service.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter.
 
 ![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 
@@ -299,7 +299,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     import ballerina/test;
     ```
 
-3. Create an http:Client to send requests to the healthcare service.
+3. Define an `http:Client` object to send requests to the healthcare service.
 
     ```ballerina
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);

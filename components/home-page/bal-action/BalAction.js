@@ -195,6 +195,14 @@ export default function BalAction(props) {
                   </Col>
                   <Col lg={5} md={12} sm={12} id="grpc-api-proto" className={styles.col2}>
                     <div className={styles.focusPane}>
+                      <div className={styles.codeActionIcons}>
+                          <CopyToClipboard text={htmlToCode(grpcCode2)}
+                              onCopy={() => codeCopy()} style={{ float: "right" }}>
+                              {
+                                copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                              }
+                          </CopyToClipboard>
+                        </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode2 }} />
                     </div>
                   </Col>

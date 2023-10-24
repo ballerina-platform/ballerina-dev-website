@@ -17,22 +17,6 @@
             "buttonText": "More info"
         },
         {
-            "date": "October 24, 2023",
-            "day": "Tue.",
-            "time": "9.30 a.m. IST",
-            "expire": "2023-10-25T00:00:00.0000-00:00",
-            "location": "Virtual",
-            "url": "https://www.meetup.com/ballerinalang-community/events/296693791/",
-            "eventType": "Ballerina Tech Talk",
-            "eventName": "The Developer's Journey: Building Integrations the Ballerina Way (Part 2)",
-            "presenterTwitter": "https://twitter.com/sameerajayasoma",
-            "presenter": "Sameera Jayasoma",
-            "presenterDesignation": "Ballerina Platform Architect",
-            "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
-        },
-       {
             "date": "October 1-31, 2023",
             "day": "",
             "time": "",

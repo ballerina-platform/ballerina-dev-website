@@ -7,7 +7,7 @@ permalink: /learn/case-studies/fat-tuesday
 active: fat-tuesday
 intro: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as a humble establishment specializing in superior frozen beverages. As time progressed, Fat Tuesday was able to achieve a commendable expansion. From its solitary inception, it has grown to an extensive network of 90 outlets across the globe. With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages.
 logo: '/images/home-page/user-logos/fat-tuesday.svg'
-user: 'mosip'
+user: 'fat-tuesday'
 ---
 
 ## Overview

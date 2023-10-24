@@ -232,6 +232,8 @@ bal run hospitalservice.jar
 
 #### Send a request
 
+Use [Try HTTP Service](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) in the VS Code to send an HTTP request to the service.
+
 ![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 
 #### Verify the response

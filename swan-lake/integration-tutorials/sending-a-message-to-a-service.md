@@ -72,6 +72,8 @@ Follow the instructions given in this section to develop the service.
 
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
+    - Open [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
+   
     - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`.
 
         ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
@@ -222,16 +224,13 @@ Let's test the use case by sending a request to the service.
 
 #### Start the backend service
 
-Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service:
+Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service.
 
 ```bash
 bal run hospitalservice.jar
 ```
 
 #### Send a request
-
-> **Note:** The healthcare service has to be running to send a request to it. If you have stopped the service, start it again.
->
 
 ![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 
@@ -304,7 +303,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
     ```
 
-4. Define a function to return the expected payload from the backend service.
+4. Define a function that returns the expected payload from the backend service. This function will be used to mock the payload from the backend and to verify the received payload.
 
     ```ballerina
     isolated function getSurgeryResponsePayload() returns map<json>[] & readonly => [
@@ -373,7 +372,7 @@ Let's test the use case by writing a test case that sends a request to the servi
 
     ![Run the tests](/learn/images/integration-tutorials/sending-a-message-to-a-service/run_tests.gif)
 
-    Alternatively, you can run the tests from the terminal using the `bal test` command from the project root to run the tests.
+   Alternatively, you can run all the tests in a package by navigating to the project root and using the `bal test` command.
 
     ```bash
     sending-a-message-to-a-service$ bal test

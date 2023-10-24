@@ -92,6 +92,19 @@ export default function MainContent(props) {
     props.handleToc(show)
   }
 
+  const filterText = (children) => {
+    var filteredText = '';
+    var arr = children.split(/\r?\n/);
+    React.Children.toArray(arr).filter(
+      (child, index) => {
+        if (child.toLowerCase().startsWith('$')) {
+          filteredText += child.replace('$ ', '') + '\n';
+        }
+      }
+    )
+    return filteredText;
+  }
+
   return (
 
     <ReactMarkdown
@@ -252,7 +265,7 @@ export default function MainContent(props) {
             const highlightedCode = codes.get(key.hashCode());
             if (highlightedCode) {
               return <div style={{
-                background: "#eeeeee", padding: "10px 10px 10px 0px",
+                background: "#eeeeee", padding: "10px 10px 0px 0px",
                 borderRadius: "5px",
                 marginTop: "20px",
                 backgroundColor: "#eeeeee !important"
@@ -271,23 +284,24 @@ export default function MainContent(props) {
           }
 
           const match = /language-(\w+)/.exec(className || '')
+          var filteredText;
+          if (!match) {
+            filteredText = filterText(children[0]);
+          }
           return inline ?
             <code className={className} {...props}>
               {children}
             </code>
             : match ?
               <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
-              : <pre className='default' style={{
-                padding: "10px",
-                marginTop: "20px",
-              }}>
+              : <pre className='default'>
                 <div style={{ display: "flex", justifyContent: "end" }}>
-                  <CopyToClipboard text={children}
-                    onCopy={() => codeCopy(children)} style={{ float: "right" }}>
+                  { filteredText && <CopyToClipboard text={filteredText}
+                    onCopy={() => codeCopy(filteredText)} style={{ float: "right" }}>
                     {
-                      copied && copiedText[0] == children[0] ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                      copied && copiedText == filteredText ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
                     }
-                  </CopyToClipboard>
+                  </CopyToClipboard> }
                 </div>
                 <code className={className} {...props}>
                   {children}

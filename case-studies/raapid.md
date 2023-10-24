@@ -30,7 +30,7 @@ RAAPID faced the challenges below in the implementation of their previous integr
 
 Despite these challenges, RAAPID.AI's innovative use of Ballerina and their commitment to overcoming these obstacles has positioned them as a pioneer in healthcare integration, ultimately driving transformative results in the industry as shown below.
 
-<img src="/images/case-studies/raapid-ai-solution.png" alt="Fat Tuesday implementation" width="546" height="400" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
+<img src="/images/case-studies/raapid-ai-solution.png" alt="RAAPID.AI implementation" width="546" height="400" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 - **Project creation:** RAAPID.AI administrators created a dedicated project for each healthcare provider within WSO2 Choreo intending to connect and sync data with the RAAPID.AI platform. Each project contains a set of components designed to fulfill specific functionalities needed for data synchronization.
 

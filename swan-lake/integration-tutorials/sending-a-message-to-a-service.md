@@ -35,7 +35,7 @@ Follow the instructions given in this section to develop the service.
     $ bal new sending-a-message-to-a-service
     ```
 
-2. Remove the generated content in the `main.bal` file and open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
+2. Remove the generated content in the `main.bal` file, open the diagram view in VS Code.
 
     ![Open diagram view](/learn/images/integration-tutorials/sending-a-message-to-a-service/open_diagram_view.gif)
 
@@ -98,7 +98,7 @@ Follow the instructions given in this section to develop the service.
     The generated code will be as follows.
 
     ```ballerina
-    final http:Client queryDoctorEP = check new (healthcareBackend);
+    final http:Client queryDoctorEP = check new (url = healthcareBackend);
     ```
 
 7. Implement the logic to retrieve and respond with relevant details.
@@ -198,7 +198,7 @@ service /healthcare on new http:Listener(port) {
 
 The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the-code/sequence-diagram-view/) for the implemented resource method is the following.
 
-<img src="/learn/images/tutorial_sending_a_message_to_a_service.png" alt="Sequence Diagram" height="800" style="width:auto; max-width:100%">
+<img src="/learn/images/integration-tutorials/sending-a-message-to-a-service/sequence_diagram.png" alt="Sequence Diagram" height="800" style="width:auto; max-width:100%">
 
 ### Step 3: Build and run the service
 

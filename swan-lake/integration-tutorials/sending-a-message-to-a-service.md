@@ -292,20 +292,13 @@ Let's test the use case by writing a test case that sends a request to the servi
     function initializeHttpClient() returns http:Client|error => new (healthcareBackend);
     ```
 
-2. Introduce the tests in a `.bal` file within a directory named `tests` in the package. Import the `ballerina/test` module to use the Ballerina test framework and the `ballerina/http` module to use an `http:Client` client object to send requests to the implemented service and mock the backend service.
-
-    ```ballerina
-    import ballerina/http;
-    import ballerina/test;
-    ```
-
-3. Define an `http:Client` object to send requests to the healthcare service.
+2. Define an `http:Client` object to send requests to the healthcare service.
 
     ```ballerina
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
     ```
 
-4. Define a function that returns the expected payload from the backend service. This function will be used to mock the payload from the backend and to verify the received payload.
+3. Define a function that returns the expected payload from the backend service. This function will be used to mock the payload from the backend and to verify the received payload.
 
     ```ballerina
     isolated function getSurgeryResponsePayload() returns map<json>[] & readonly => [
@@ -333,7 +326,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     ];
     ```
 
-5. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
+4. Mock the backend service by mocking the `http:Client` object and the `get` resource method. Then, mock the `initializeHttpClient` function, using the `@test:Mock` annotation, to return the mock HTTP client.
 
     ```ballerina
     public client class MockHttpClient {
@@ -360,7 +353,7 @@ Let's test the use case by writing a test case that sends a request to the servi
         test:mock(http:Client, new MockHttpClient());
     ```
 
-6. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
+5. Use the `@test:Config` annotation to indicate that a function is a test function. Implement the test to send a request to the service and test for value equality between the retrieved payload and the expected payload using the `test:assertEquals` function.
 
     ```ballerina
     @test:Config
@@ -370,7 +363,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     }
     ```
 
-7. Run the tests.
+6. Run the tests.
 
     ![Run the tests](/learn/images/integration-tutorials/sending-a-message-to-a-service/run_tests.gif)
 

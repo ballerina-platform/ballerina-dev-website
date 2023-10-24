@@ -50,12 +50,13 @@ const TopNav = (props) => {
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='8'>B2B</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='10'>Microservices</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='9'>WSO2</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='9'>Microservices</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='10'>WSO2</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='11'>MOSIP</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='11'>Fat Tuesday</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid`} className={styles.dropDownItem} key='11'>RAAPID.AI</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/central`} className={styles.dropDownItem} key='11'>Ballerina Central</Dropdown.Item>
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='12'>Fat Tuesday</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid`} className={styles.dropDownItem} key='13'>RAAPID.AI</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/central`} className={styles.dropDownItem} key='14'>Ballerina Central</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/elixir`} className={styles.dropDownItem} key='15'>Red Cross Elixir</Dropdown.Item>
   ];
 
 

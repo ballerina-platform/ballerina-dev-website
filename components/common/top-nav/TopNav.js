@@ -54,7 +54,8 @@ const TopNav = (props) => {
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='9'>WSO2</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='11'>MOSIP</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='11'>Fat Tuesday</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid`} className={styles.dropDownItem} key='11'>RAAPID.AI</Dropdown.Item>
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid`} className={styles.dropDownItem} key='11'>RAAPID.AI</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/central`} className={styles.dropDownItem} key='11'>Ballerina Central</Dropdown.Item>
   ];
 
 

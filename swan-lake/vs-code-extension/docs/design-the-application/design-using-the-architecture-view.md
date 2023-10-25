@@ -8,8 +8,7 @@ Use the **Add Component** option of the Architecture View to add the first compo
 
 <img src="/learn/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/add-component.gif" class="cInlineImage-full"/>
 
-!!! Info
-    If your project has components, you can use the **Add Component** option on the top left corner of the diagram to do the same.
+>**Info:** If your project has components, you can use the **Add Component** option on the top left corner of the diagram to do the same.
 
 ## Delete components
 

@@ -23,8 +23,7 @@ The Ballerina extension provides multiple options to debug Ballerina application
 
 You can use the CodeLens for program and test debug sessions as shown in the sections below.
 
-!!! Info
-    Use the `launch.json` configurations to launch debug sessions with additional configurations (i.e., program arguments, environment variables), or to start a remote debug session. For more information, see [Debug using configurations](#debug-using-configurations).
+>**Info:** Use the `launch.json` configurations to launch debug sessions with additional configurations (i.e., program arguments, environment variables), or to start a remote debug session. For more information, see [Debug using configurations](#debug-using-configurations).
 
 ### Program debug sessions
 
@@ -53,8 +52,7 @@ Follow the steps below to start a debug session with configurations. All the con
 
 1. Create the `launch.json` file. For instructions, see [Create the configuration file](../../debug-the-code/debug-configurations/#create-the-configuration-file).
 
-    !!! Info
-        This enables the **Ballerina Program**, **Ballerina Test**, and **Ballerina Remote** options that are required to debug your code using configurations.
+    >**Info:**   This enables the **Ballerina Program**, **Ballerina Test**, and **Ballerina Remote** options that are required to debug your code using configurations.
 
 2. Click in front of the line numbers of the file you want to debug to add the required debug points.
 
@@ -90,8 +88,7 @@ Follow the steps below to start a remote debug session.
 
 1. Create the `launch.json` configuration file if it is not created already. 
 
-    !!! Info
-        For instructions on creating the `launch.json` file, see [Set up debugging configurations](#debugging-configurations).
+    >**Info:**   For instructions on creating the `launch.json` file, see [Set up debugging configurations](#debugging-configurations).
 
 2. Open the `launch.json` file and configure the `debuggeeHost` and `debuggeePort` attributes under the `Ballerina Remote` configurations section accordingly.
 

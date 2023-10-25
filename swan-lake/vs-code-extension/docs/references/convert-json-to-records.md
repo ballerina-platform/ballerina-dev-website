@@ -8,8 +8,7 @@ Follow the steps below to convert a JSON to a record via the Record Editor.
 
 1.  Create a file with the data below in JSON format.
 
-    !!! Info
-        The example below converts a `person` and a list of `courses` to a `Student` record. 
+    >**Info:**   The example below converts a `person` and a list of `courses` to a `Student` record. 
     
     ```
     {
@@ -94,7 +93,6 @@ Follow the steps below to convert a JSON to a record via the Command Palette.
 
 3. Select the **Paste JSON as Record** option.
 
-    !!! Info
-        The command will generate separate record definitions accordingly.
+    >**Info:**   The command will generate separate record definitions accordingly.
 
     <img src="/learn/images/vs-code-extension/record-editor/paste-JSON.gif" class="cInlineImage-full"/>

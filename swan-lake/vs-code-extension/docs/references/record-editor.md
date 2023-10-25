@@ -22,8 +22,7 @@ Follow the steps below to create records from scratch.
 
 4. Click the plus button at the end of the field to add new fields to the record.
 
-    !!! Info
-        Use the **Expressions** tab in the record editor to create nested records by selecting the particular record expression.
+    >**Info:**   Use the **Expressions** tab in the record editor to create nested records by selecting the particular record expression.
 
     <img src="/learn/images/vs-code-extension/record-editor/add-fields.gif" class="cInlineImage-half"/>
 

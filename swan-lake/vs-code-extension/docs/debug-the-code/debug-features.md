@@ -10,8 +10,7 @@ The Ballerina VS Code extension currently supports the debug features below.
 - [Launch/Attach](https://code.visualstudio.com/docs/editor/debugging#_launch-versus-attach-configurations)
 - [Step in/out/over](https://code.visualstudio.com/docs/editor/debugging#_debug-actions)
 
-!!! Info
-      The key features of the above list are described below. For information on the other VS Code debugging features, go to the <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank">VS Code documentation</a>.
+>**Info:** The key features of the above list are described below. For information on the other VS Code debugging features, go to the <a href="https://code.visualstudio.com/docs/editor/debugging" target="_blank">VS Code documentation</a>.
 
 ## Breakpoints
 
@@ -27,8 +26,7 @@ The Ballerina debugger provides the ability to set Ballerina expression-based co
 
 Logpoints are another variant of breakpoints, which do not *break* the program execution and instead, logs a message on the console. Logpoints are especially useful for injecting logging while debugging production servers that cannot be paused or stopped.
 
-!!! Info
-    Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
+>**Info:** Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
 
 <img src="/learn/images/vs-code-extension/debug/debugger-logpoints.gif" class="cInlineImage-full"/>
 
@@ -42,8 +40,7 @@ Any running Ballerina programs can be suspended immediately at the current execu
 
 With this feature, you can suspend (and resume) the remote VM resulting in a debug hit at the current execution line of the program.
 
-!!! Info
-    This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops and when you want to know the exact line that the program is waiting on.
+>**Info:** This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops and when you want to know the exact line that the program is waiting on.
 
 <img src="/learn/images/vs-code-extension/debug/debugger-pause-resume-commands.gif" class="cInlineImage-full"/>
 

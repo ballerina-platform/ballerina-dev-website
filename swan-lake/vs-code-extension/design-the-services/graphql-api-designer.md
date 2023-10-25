@@ -50,8 +50,7 @@ You can perform the above functionalities using the GraphQL API Designer as foll
 
 Add a query to the GraphQL service with a `Profile` record as the output object.
 
-!!! Info
-    Hover over each field to view the provided **Edit**, **Delete**, and **Design** GraphQL operations.
+>**Info:** Hover over each field to view the provided **Edit**, **Delete**, and **Design** GraphQL operations.
 
 <img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/query-creation.gif" class="cInlineImage-full"/> 
 
@@ -65,7 +64,6 @@ Navigate to the source code of the newly created `profile` query and update the 
 
 Create a record within the GraphQL API Designer itself.
 
-!!! Info
-    You can use this same approach to create service classes as well.
+>**Info:** You can use this same approach to create service classes as well.
 
 <img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/add-new-construct.gif" class="cInlineImage-full"/>

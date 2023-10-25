@@ -95,8 +95,7 @@ This diagram displays all the services available within the workspace with links
 
 <img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/service-level-one-copy.png" class="cInlineImage-full"/>
 
-!!! Info
-    The link between the `Checkout` service and the `Email` service indicates that a resource of the `Checkout` service invokes the `Email` service. In addition to this, the `Email` service also invokes an `external` service via a connector.
+>**Info:** The link between the `Checkout` service and the `Email` service indicates that a resource of the `Checkout` service invokes the `Email` service. In addition to this, the `Email` service also invokes an `external` service via a connector.
 
 ### Service Diagram Level 2
 

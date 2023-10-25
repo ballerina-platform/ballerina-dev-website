@@ -32,15 +32,13 @@ Once you add the above function, the VS Code extension will display a CodeLens c
 
 1. Click the **Run** CodeLens to run the program. 
     
-    !!! Info
-        This opens the terminal and starts running the service.
+    >**Info:**   This opens the terminal and starts running the service.
 
     <img src="/learn/images/vs-code-extension/build-and-try/try-graphql-services/graphql-run.png" class="cInlineImage-full"/>
 
 2. Click the **Try it** CodeLens to open the GraphQL Try it view.
 
-    !!! Note
-        The service must be in the running state to use GraphQL Try it view.
+    >**Note:**   The service must be in the running state to use GraphQL Try it view.
 
     <img src="/learn/images/vs-code-extension/build-and-try/try-graphql-services/graphql-tryit.png" class="cInlineImage-full"/>
 
@@ -51,8 +49,7 @@ Once you add the above function, the VS Code extension will display a CodeLens c
 
 4. Select the APIs that you want to try from the **Explorer** menu.
 
-    !!! Info
-        This will automatically generate the payload in the editor. You can edit the payload and add the required parameters (e.g., type your name under the name parameter). Click **Prettify** to format the code.
+    >**Info:**   This will automatically generate the payload in the editor. You can edit the payload and add the required parameters (e.g., type your name under the name parameter). Click **Prettify** to format the code.
 
 5. Click **Run** to send the request.
 

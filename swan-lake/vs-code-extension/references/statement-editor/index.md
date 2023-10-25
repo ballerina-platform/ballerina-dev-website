@@ -40,8 +40,7 @@ Follow the steps below to build the statement.
 
 2.  Click the **var** type descriptor on the statement and click **string** on the **Suggestions** tab.
 
-    !!! Info
-        The **Suggestions** tab provides contextual suggestions based on the selected item. It lists type suggestions in this example because you selected the type descriptor. Here, you are specifying that the variable value is a string.   
+    >**Info:**   The **Suggestions** tab provides contextual suggestions based on the selected item. It lists type suggestions in this example because you selected the type descriptor. Here, you are specifying that the variable value is a string.   
 
     <img src="/learn/images/vs-code-extension/statement-editor/change-type-descriptor.gif" class="cInlineImage-half"/>
 
@@ -54,8 +53,7 @@ Follow the steps below to build the statement.
 
 4. Double click **`<add-expression>`** and type `"UserID : "` in the text box.
 
-    !!! Info
-        To navigate from one item on the statement to another, you can also press **Tab** or **Shift** + **Tab**. In this example, you are entering static text as a part of the variable value.
+    >**Info:**   To navigate from one item on the statement to another, you can also press **Tab** or **Shift** + **Tab**. In this example, you are entering static text as a part of the variable value.
 
     <img src="/learn/images/vs-code-extension/statement-editor/edit-variable-expression.gif" class="cInlineImage-half"/>
 
@@ -84,20 +82,17 @@ Follow the steps below to build the statement.
     
     The **Suggestions** tab will also provide other supported functions that can be called for the given expression.
 
-    !!! Info
-        When you select a function or a method call, the **Parameters** tab opens by default. This tab displays information about the selected function or method call, including details about parameters, descriptions, and return type descriptions. You can add parameters to the expression On this tab by selecting the checkboxes of the relevant parameters.
+    >**Info:**   When you select a function or a method call, the **Parameters** tab opens by default. This tab displays information about the selected function or method call, including details about parameters, descriptions, and return type descriptions. You can add parameters to the expression On this tab by selecting the checkboxes of the relevant parameters.
 
     <img src="/learn/images/vs-code-extension/statement-editor/convert-to-string.gif" class="cInlineImage-half"/>
 
-    !!! Note
-        The Statement Editor clears all the diagnostic messages indicating that the statement is valid.
+    >**Note:**   The Statement Editor clears all the diagnostic messages indicating that the statement is valid.
 
      Now, follow the steps below to make the variable a final. 
 
 8. Click on the globe icon in the toolbar and select the **final** keyword. 
 
-    !!! Info
-        The dropdown shows the possible modifiers for the statement that is currently being edited.
+    >**Info:**   The dropdown shows the possible modifiers for the statement that is currently being edited.
 
      <img src="/learn/images/vs-code-extension/statement-editor/add-stmt-qualifier.gif" class="cInlineImage-half"/>
 

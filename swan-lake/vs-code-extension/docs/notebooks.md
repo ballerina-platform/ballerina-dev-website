@@ -2,8 +2,7 @@
 
 A Ballerina notebook is a canvas, which combines Markdown text and executable Ballerina source code. Markdown and Ballerina code snippets are supported by Ballerina notebook cells.
 
-!!! Info
-    Make sure your VS Code version is `1.67.0` or higher when using Ballerina notebooks.
+>**Info:** Make sure your VS Code version is `1.67.0` or higher when using Ballerina notebooks.
 
 ## Create a notebook 
 

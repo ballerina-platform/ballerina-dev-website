@@ -18,10 +18,9 @@ Follow the steps below to set up the required prerequisites and install the Ball
 
 You can either work on a single [Ballerina package](https://ballerina.io/learn/package-references/) at a time or use [multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces) of VS Code to work on several related Ballerina packages at the same time. 
 
-!!! Info
-    When the extension is activated properly, you can see the `Ballerina SDK: <version>` in the status bar at the bottom left corner.
+>**Info:** When the extension is activated properly, you can see the `Ballerina SDK: <version>` in the status bar at the bottom left corner.
 
-<img src="/learn/images/vs-code-extension/get-started/show-version-on-vscode.png" class="cInlineImage-threeQuarter"/>
+<img src="/learn/images/vs-code-extension/get-started/show-version-on-vscode.png" class="cInlineImage-half"/>
 
 ### Open a single Ballerina package
 
@@ -35,8 +34,7 @@ Use one of the following options to open a Ballerina package:
 
 To open multiple Ballerina packages as a VS Code workspace, add all the related Ballerina packages to the workspace using one of the following methods. 
 
-!!! Info
-    If you already have one Ballerina package opened in the VS Code editor, you can add other related packages to the same workspace. For instructions, see [adding folders to multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_adding-folders).
+>**Info:** If you already have one Ballerina package opened in the VS Code editor, you can add other related packages to the same workspace. For instructions, see [adding folders to multi-root workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces#_adding-folders).
 
 1. Add each Ballerina package to the workspace using the **Add folder to workspace** option in the top menu of the VS Code editor.
 

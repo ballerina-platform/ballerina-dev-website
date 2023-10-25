@@ -15,7 +15,7 @@ Follow the steps below to generate the `launch.json` configurations file with th
 
 3. Click **create a launch.json** file and then select **Ballerina Debug** as the **Environment**. 
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/debug/start-debug-session.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/debug/start-debug-session.gif" class="cInlineImage-full"/>
 
     !!! Info
         This generates a `launch.json` file in your workspace root under the `.vscode` directory. You can edit the [configuration attributes](#configuration-attributes) to perform advanced debugging operations.

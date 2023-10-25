@@ -21,7 +21,7 @@ The VS Code extension provides the ability to add two types of breakpoints when 
 
 The Ballerina debugger provides the ability to set Ballerina expression-based conditions for regular breakpoints. The debugger will suspend at the breakpoint whenever the expression evaluates to true.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-conditional-breakpoints.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-conditional-breakpoints.gif" class="cInlineImage-full"/>
 
 ### Logpoints
 
@@ -30,11 +30,11 @@ Logpoints are another variant of breakpoints, which do not *break* the program e
 !!! Info
     Logpoints can also be enabled/disabled and can be controlled by conditions similar to regular breakpoints.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-logpoints.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-logpoints.gif" class="cInlineImage-full"/>
 
 Also, log messages can either be plain texts or string templates, which can contain expressions to be evaluated within the `${}` syntax.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-logpoints-template.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-logpoints-template.gif" class="cInlineImage-full"/>
 
 ## Pause and continue
 
@@ -45,7 +45,7 @@ With this feature, you can suspend (and resume) the remote VM resulting in a deb
 !!! Info
     This feature will be useful in contexts where the program seems to be hanged due to blocking operations/infinite loops and when you want to know the exact line that the program is waiting on.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-pause-resume-commands.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-pause-resume-commands.gif" class="cInlineImage-full"/>
 
 ## Expression evaluation
 
@@ -57,16 +57,16 @@ The Ballerina VSCode debugger lets you evaluate expressions in the ways below.
 
 You can evaluate expressions using the debug console as shown below.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-evaluation-console.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-evaluation-console.gif" class="cInlineImage-full"/>
 
 ### Use the watch window
 
 You can evaluate expressions using the watch window as shown below.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/debugger-watch-window.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/debugger-watch-window.gif" class="cInlineImage-full"/>
 
 ## Strand and stack trace view
 
 The Ballerina strand and stack trace view provides information about the call stack of the running program or the stack when the defined debug breakpoint is hit.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/stack-trace-view.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/stack-trace-view.gif" class="cInlineImage-full"/>

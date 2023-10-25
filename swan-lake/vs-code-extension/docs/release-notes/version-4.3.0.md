@@ -15,7 +15,7 @@ Below are the new features introduced by this release.
 
 With the latest Ballerina VS Code extension release (version 4.3.0) and <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan lake Update 6 release</a>, now, you can generate the entity relationship diagram for your Ballerina persist model. This feature can be accessed using the icon available on the top-right corner of the editor panel or using the `Ballerina: Entity Relationship Diagram` command available in the VS Code command palette.
 
-![Entity Relationship Diagram](../img/release-notes/v-4.3.0/er-diagram.gif){.cInlineImage-full}
+![Entity Relationship Diagram](/learn/images/vs-code-extension/release-notes/v-4.3.0/er-diagram.gif){.cInlineImage-full}
 
 ## TOML config generator
 
@@ -24,7 +24,7 @@ You can now automatically generate the `Config.toml` file for your Ballerina pro
 !!! Tip
     The `Config.toml` file will be added to the `.gitignore` file to prevent keys from getting committed to the GitHub repository.
 
-![TOML config generator](../img/release-notes/v-4.3.0/toml-config-creator.gif){.cInlineImage-full}
+![TOML config generator](/learn/images/vs-code-extension/release-notes/v-4.3.0/toml-config-creator.gif){.cInlineImage-full}
 
 ## Improvements
 
@@ -34,4 +34,4 @@ Below are the improvements included in this release.
 
 A new option is added to the GraphQL service designer to filter between queries, mutations, and subscriptions.
 
-![GraphQL filtering](../img/release-notes/v-4.3.0/graphql-filtering.gif){.cInlineImage-full}
+![GraphQL filtering](/learn/images/vs-code-extension/release-notes/v-4.3.0/graphql-filtering.gif){.cInlineImage-full}

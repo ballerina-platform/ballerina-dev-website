@@ -36,13 +36,13 @@ Follow the steps below to start a quick debug session using the CodeLens.
 
 3. Click the `Debug` CodeLens, which will appear just above the `main()` method.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/start-quick-main-debug-session.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/start-quick-main-debug-session.gif" class="cInlineImage-full"/>
 
 ### Test debug sessions
 
 You can use the CodeLens to debug Ballerina test functions as well. The `debug` CodeLens will automatically appear on top of each Ballerina test function. Click on the corresponding CodeLens as shown below to execute/debug only the selected test case.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/debug/start-quick-test-debug-session.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/debug/start-quick-test-debug-session.gif" class="cInlineImage-full"/>
 
 ## Debug using configurations
 
@@ -70,7 +70,7 @@ Follow the steps below to start a program debug session.
 
     You will see the output in the **DEBUG CONSOLE**.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/debug/program-debug.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/debug/program-debug.gif" class="cInlineImage-full"/>
 
 ### Test debug sessions 
 
@@ -82,7 +82,7 @@ Follow the steps below to start a test debug session.
 
     You will see the output in the **DEBUG CONSOLE** as shown below.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/debug/test-debug.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/debug/test-debug.gif" class="cInlineImage-full"/>
 
 ### Remote debug sessions
 
@@ -115,7 +115,7 @@ Follow the steps below to start a remote debug session.
 
       You will see the output in the **DEBUG CONSOLE** as shown below.
 
-      <img src="https://wso2.com/ballerina/vscode/docs/img/debug/remote-debug.gif" class="cInlineImage-full"/>
+      <img src="/learn/images/vs-code-extension/debug/remote-debug.gif" class="cInlineImage-full"/>
 
 !!!Info 
     For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, see [Debugging features](../debug-features/).

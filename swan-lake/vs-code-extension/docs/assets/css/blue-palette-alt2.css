@@ -9,7 +9,7 @@
     --md-accent-fg-color--transparent: #0339821a;
     --md-accent-bg-color: #fff;
     --md-accent-bg-color--light: #ffffffb3;
-    --md-banner: url(../img/banner-for-blue-alt-light.png) no-repeat left top;
+    --md-banner: url(/learn/images/vs-code-extension/banner-for-blue-alt-light.png) no-repeat left top;
     --md-default-fg-color: black;
     --md-default-fg-color--light: black;
 
@@ -27,7 +27,7 @@
     --md-accent-fg-color: #3d8fca;
     --md-default-bg-color: #23272f;
     --md-typeset-a-color: #75c9e7;
-    --md-banner: url(../img/banner-for-blue-alt-dark.png) no-repeat left top;
+    --md-banner: url(/learn/images/vs-code-extension/banner-for-blue-alt-dark.png) no-repeat left top;
     --md-hjs-color: rgb(186, 186, 255);
     --md-hjs-attr-color: #96ffc5;
     --md-hjs-other-color: #f2b4b4;

@@ -14,28 +14,28 @@ Follow the steps below to create records from scratch.
 
 2. Navigate to the record editor and select **Create New**.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/create-new.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/record-editor/create-new.gif" class="cInlineImage-full"/>
 
 3. Double-click the default record name to change it.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/change-record-name.png" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/record-editor/change-record-name.png" class="cInlineImage-half"/>
 
 4. Click the plus button at the end of the field to add new fields to the record.
 
     !!! Info
         Use the **Expressions** tab in the record editor to create nested records by selecting the particular record expression.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/add-fields.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/record-editor/add-fields.gif" class="cInlineImage-half"/>
 
 5. Select the semicolon(;) of a field and select the default value expression to add default values.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/default-value.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/record-editor/default-value.gif" class="cInlineImage-half"/>
 
 6. Use the **isClosed** option to switch between the open and closed records.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/open-close-switch.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/record-editor/open-close-switch.gif" class="cInlineImage-half"/>
 
 7. Once the record field configuration is done, click **Save**.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/record-editor/save-create-new.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/record-editor/save-create-new.gif" class="cInlineImage-full"/>
 

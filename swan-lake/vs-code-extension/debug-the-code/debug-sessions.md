@@ -47,8 +47,7 @@ You can use the CodeLens to debug Ballerina test functions as well. The `debug` 
 
 Follow the steps below to start a debug session with configurations. All the configurations need to be added in the `launch.json` file.
 
-!!!Info 
-    If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
+>**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
 1. Create the `launch.json` file. For instructions, see [Create the configuration file](../../debug-the-code/debug-configurations/#create-the-configuration-file).
 
@@ -114,5 +113,4 @@ Follow the steps below to start a remote debug session.
 
       <img src="/learn/images/vs-code-extension/debug/remote-debug.gif" class="cInlineImage-full"/>
 
-!!!Info 
-    For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, see [Debugging features](../debug-features/).
+    >**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, see [Debugging features](../debug-features/).

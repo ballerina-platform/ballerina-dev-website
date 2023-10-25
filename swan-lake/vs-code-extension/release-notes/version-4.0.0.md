@@ -2,8 +2,7 @@
 
 We are delighted to announce the v4.0.0 release of the Ballerina VS Code extension with new features and enhancements. The key highlights of this release include the following.
 
-!!! Compatibility
-    If you are new to Ballerina, you can download the [installers](https://ballerina.io/downloads/) to install it. You can install the Ballerina VS Code extension from the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina). To ensure all features work correctly, **install the latest patch release of Update 4 or later**.
+>**Compatibility:** If you are new to Ballerina, you can download the [installers](https://ballerina.io/downloads/) to install it. You can install the Ballerina VS Code extension from the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina). To ensure all features work correctly, **install the latest patch release of Update 4 or later**.
 
 - [New unified visual and code editing experience](#new-unified-visual-and-code-editing-experience)
 - [HTTP API Designer](#http-api-designer)
@@ -63,8 +62,7 @@ The combination of the Ballerina extension together with the [Choreo extension](
 - Visualize the deployment of a Choreo project via the **Cell view**.
 - View performance information in diagrams. 
     
-!!! Note
-    With this integration, now, you do not need to log into Choreo from the Ballerina extension. You must have the Choreo extension installed to view performance data.
+>**Note:** With this integration, now, you do not need to log into Choreo from the Ballerina extension. You must have the Choreo extension installed to view performance data.
 
 
 

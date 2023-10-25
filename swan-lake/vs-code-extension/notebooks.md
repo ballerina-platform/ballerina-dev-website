@@ -14,8 +14,7 @@ You can create Ballerina notebooks in the VS Code editor (by adding the `.balnot
 
 Click the **Run** button available at the left-hand side of the cell or press the `shift` + `enter` keys to execute the Notebook cells. 
 
-!!! Tip
-     Additionally, the `Run All`, `Execute Above Cells`, `Execute Cell and Below`, `Clear outputs of All Cells`, and `Restart Notebook` actions are available in the user interface.
+>**Tip:** Additionally, the `Run All`, `Execute Above Cells`, `Execute Cell and Below`, `Clear outputs of All Cells`, and `Restart Notebook` actions are available in the user interface.
 
 <img src="/learn/images/vs-code-extension/notebooks/notebook-code-execution.gif" class="cInlineImage-full"/>
 
@@ -35,8 +34,7 @@ You can view variables in notebooks as shown below.
 
 Use the provided option to debug Ballerina notebooks as shown below.
 
-!!! Tip 
-    You need to enable the debug mode via the VS Code extension settings as shown below.
+>**Tip:** You need to enable the debug mode via the VS Code extension settings as shown below.
 
     <img src="/learn/images/vs-code-extension/notebooks/enable-notebook-debug.png" class="cInlineImage-full"/>
 

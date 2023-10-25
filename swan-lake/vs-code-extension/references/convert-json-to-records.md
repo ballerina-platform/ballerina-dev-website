@@ -58,8 +58,7 @@ Follow the steps below to convert a JSON to a record via the Command Palette.
 
 1.  Copy the JSON code block to the Clipboard (`Ctrl + C`).
 
-    !!! Info 
-        The example below converts a `person` and a list of `courses` to a `Student` record. 
+    >**Info:** The example below converts a `person` and a list of `courses` to a `Student` record. 
     
     ```
     {

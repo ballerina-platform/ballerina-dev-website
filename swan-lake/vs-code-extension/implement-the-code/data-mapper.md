@@ -257,8 +257,7 @@ Once the array is initialized, click the **+ Add Element** button to add the arr
 
 #### Add/Edit constant values/expressions 
 
-!!! Info 
-    If a particular field is empty and accepting a constant/expression, you will see the **Add value** action after clicking the triple dots button. This will open up the expression editor. You can provide a constant value or construct any complex expression via it.
+>**Info:** If a particular field is empty and accepting a constant/expression, you will see the **Add value** action after clicking the triple dots button. This will open up the expression editor. You can provide a constant value or construct any complex expression via it.
 
 1. Add a hard-coded visa type for foreign students.
 
@@ -272,8 +271,7 @@ Once the array is initialized, click the **+ Add Element** button to add the arr
 
 3. Fill in the `totalCredits` field by getting the summation of the credits in each CS course.
 
-    !!! Tip 
-        You can use the [`reduce()`](https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#reduce) array function for this by passing the combining function below to get the sum.
+    >**Tip:** You can use the [`reduce()`](https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#reduce) array function for this by passing the combining function below to get the sum.
 
     ```ballerina
     var totalCredits = function(int total, record {string id; string name; int credits;} course) returns int => total + (course.id.startsWith("CS") ? course.credits : 0);

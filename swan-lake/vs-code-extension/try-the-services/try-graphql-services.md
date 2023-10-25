@@ -44,8 +44,7 @@ Once you add the above function, the VS Code extension will display a CodeLens c
 
 3. Once the GraphQL view is opened, click **Explorer** to open the **Explorer** view.
 
-    !!! Tip 
-        You can find all the available APIs from the side menu that opens.
+    >**Tip:** You can find all the available APIs from the side menu that opens.
 
 4. Select the APIs that you want to try from the **Explorer** menu.
 
@@ -53,7 +52,6 @@ Once you add the above function, the VS Code extension will display a CodeLens c
 
 5. Click **Run** to send the request.
 
-    !!! Info 
-        The response gets displayed in the right-side window.
+    >**Info:** The response gets displayed in the right-side window.
     
     <img src="/learn/images/vs-code-extension/build-and-try/try-graphql-services/graphql-tryit.gif" class="cInlineImage-full"/>

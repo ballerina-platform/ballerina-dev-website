@@ -2,8 +2,7 @@
 
 You can use the commands below when editing Ballerina code via the VS Code extension. Click **View** in the menu bar of the editor, and then, click **Command Palette** to access them.
 
-!!! Tip
-    Alternatively, you can use the `⌘ + ↑ + P` shortcut methods on Mac and `Ctrl + Shift + P` on Windows and Linux to open the **Command Palette**.
+>**Tip:** Alternatively, you can use the `⌘ + ↑ + P` shortcut methods on Mac and `Ctrl + Shift + P` on Windows and Linux to open the **Command Palette**.
    
 
 | Command              	| Description                                                                                                                                                                                                                                               	|

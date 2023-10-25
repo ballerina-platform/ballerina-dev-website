@@ -14,8 +14,7 @@ Before getting started with the Architecture View, the following are a few conce
 
 A Ballerina project is contained in a [VS Code workspace](https://code.visualstudio.com/docs/editor/workspaces). To use the Architecture View, you need to have all the required Ballerina packages added to the VS Code editor as a workspace.
 
-!!! Tip
-    You can save your VS Code workspace as a file and use this file to access the workspace thereafter.
+>**Tip:** You can save your VS Code workspace as a file and use this file to access the workspace thereafter.
 
 ### Service identifiers
 
@@ -63,8 +62,7 @@ isolated function getSupportedCurrencies() returns string[]|error {
 }
 ```
 
-!!! Tip
-    The label attribute of the display annotation can be used to label the services in the diagram.
+>**Tip:** The label attribute of the display annotation can be used to label the services in the diagram.
 
 ### Service resources
 
@@ -76,8 +74,7 @@ This guide uses the [Online Boutique microservices demo](https://github.com/ball
 
 1. Click the **VS Code workspace file** option in the top menu of the VS Code editor to import the [workspace file of the Online Boutique microservices demo](https://github.com/ballerina-guides/gcp-microservices-demo/blob/main/project.code-workspace).
 
-    !!! Info 
-        This will add all the required packages to the current workspace. When the workspace is set up, you will see the following folder structure in the **Explorer**. The workspace name may be different if you set up the workspace from scratch.
+    >**Info:** This will add all the required packages to the current workspace. When the workspace is set up, you will see the following folder structure in the **Explorer**. The workspace name may be different if you set up the workspace from scratch.
 
     <img src="/images/vs-code-extension/visual-programming/architecture-view/architecture-diagram/project-workspace.png" class="cInlineImage-small"/>
 
@@ -121,8 +118,7 @@ The following is a snippet of the type diagram generated for the [Online Boutiqu
 
 <img src="/images/vs-code-extension/visual-programming/architecture-view/type-diagram/gcp-type-diagram.png" class="cInlineImage-full"/>
 
-!!! Tip 
-    The multiplicities of the associations are represented on either side of the connector while the type inclusions are differentiated using a directed link (represents inheritance).
+>**Tip:** The multiplicities of the associations are represented on either side of the connector while the type inclusions are differentiated using a directed link (represents inheritance).
 
 ### Composition diagram
 

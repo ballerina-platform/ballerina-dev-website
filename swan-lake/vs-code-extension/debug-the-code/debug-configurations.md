@@ -16,7 +16,7 @@ Follow the steps below to generate the `launch.json` configurations file with th
 
     <img src="/learn/images/vs-code-extension/debug/start-debug-session.gif" class="cInlineImage-full"/>
 
-    >**Info:**   This generates a `launch.json` file in your workspace root under the `.vscode` directory. You can edit the [configuration attributes](#configuration-attributes) to perform advanced debugging operations.
+    >**Info:** This generates a `launch.json` file in your workspace root under the `.vscode` directory. You can edit the [configuration attributes](#configuration-attributes) to perform advanced debugging operations.
 
 4. Add/edit the relevant configurations for debugging in the opened `launch.json` file.   
 

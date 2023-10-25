@@ -46,8 +46,7 @@ Follow the steps below to build the statement.
 
 3. To edit the variable name, double-click **`variable`** and type `userIdMsg` in the text box.
 
-    !!! Info 
-        Another way to make a part of a statement editable is to click on the required statement component and press **Enter**/**Return**. If you want to make changes to the content you have added to the statement, you can undo and redo your actions via the relevant icons on the top left of the toolbar. You can also remove content via the icon for deleting.
+    >**Info:** Another way to make a part of a statement editable is to click on the required statement component and press **Enter**/**Return**. If you want to make changes to the content you have added to the statement, you can undo and redo your actions via the relevant icons on the top left of the toolbar. You can also remove content via the icon for deleting.
 
     <img src="/learn/images/vs-code-extension/statement-editor/edit-variable-name.gif" class="cInlineImage-half"/>
 
@@ -64,8 +63,7 @@ Follow the steps below to build the statement.
 
     Both of these methods will append another expression template to the existing expression. 
 
-    !!! Info 
-        The **Expressions** tab lists all the pre-defined templates that you can use to define complex expressions. In the `Es + Ex` expression template, `Es` refers to the existing expression you clicked and selected. `+ Ex` combines another expression with `Es`.
+    >**Info:** The **Expressions** tab lists all the pre-defined templates that you can use to define complex expressions. In the `Es + Ex` expression template, `Es` refers to the existing expression you clicked and selected. `+ Ex` combines another expression with `Es`.
 
     <img src="/learn/images/vs-code-extension/statement-editor/select-expression-template.gif" class="cInlineImage-half"/>
 

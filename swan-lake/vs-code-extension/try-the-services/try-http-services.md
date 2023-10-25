@@ -36,13 +36,11 @@ Once you add the above function, the VS Code extension will display a CodeLens c
 
 3. Once the Swagger view is opened, click **Try it out**.
 
-    !!! Tip 
-        You can find all the available APIs from the opened side menu.
+    >**Tip:** You can find all the available APIs from the opened side menu.
 
     <img src="/learn/images/vs-code-extension/build-and-try/try-http-services/http-try-it-out.png" class="cInlineImage-full"/>
 
-    !!! Info 
-        If the HTTP service requires any data/parameters, they will be shown in the **Parameters** section. If you have the [Choreo VS Code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.choreo) installed and signed in, you will get test data that are generated automatically (e.g., the value of the `name` parameter will be generated as shown below.)
+    >**Info:** If the HTTP service requires any data/parameters, they will be shown in the **Parameters** section. If you have the [Choreo VS Code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.choreo) installed and signed in, you will get test data that are generated automatically (e.g., the value of the `name` parameter will be generated as shown below.)
 
     <img src="/learn/images/vs-code-extension/build-and-try/try-http-services/http-try-it-parameters.png" class="cInlineImage-full"/>
 

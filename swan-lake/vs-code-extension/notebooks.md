@@ -36,6 +36,4 @@ Use the provided option to debug Ballerina notebooks as shown below.
 
 >**Tip:** You need to enable the debug mode via the VS Code extension settings as shown below.
 
-    <img src="/learn/images/vs-code-extension/notebooks/enable-notebook-debug.png" class="cInlineImage-full"/>
-
 <img src="/learn/images/vs-code-extension/notebooks/notebook-debug.gif" class="cInlineImage-full"/>

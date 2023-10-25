@@ -6,7 +6,7 @@ This guide helps you to understand how to call a Ballerina library function usin
 
 Let's call the Ballerina [`printError`](https://lib.ballerina.io/ballerina/log/2.5.0/functions#printError) function of the [`log` module](https://lib.ballerina.io/ballerina/log/2.5.0) to log an error in the given sample code below.
 
-```
+```ballerina
 public function main() returns error? {
 
     error e = error("something went wrong!");
@@ -45,7 +45,7 @@ Follow the steps below to build the log statement.
 
     You view the function call as follows without any diagnostics:
 
-    ```
+    ```bash
     log:printError("error log", 'error = e);
     ```
     

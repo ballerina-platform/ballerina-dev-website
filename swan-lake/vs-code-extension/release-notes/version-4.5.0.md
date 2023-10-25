@@ -8,7 +8,7 @@ We're excited to present the Ballerina VS Code extension version 4.5.0! Here's w
 
 - **XML Import Option:** Now you can effortlessly create records by importing XML data. Building with XML in Ballerina is more convenient than ever.
 
-    <img src="/learn/images/vs-code-extension/release-notes/v-4.3.0/v-4.5.0/xml-import.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/release-notes/v-4.5.0/xml-import.gif" class="cInlineImage-full"/>
 
 ### What's Improved
 

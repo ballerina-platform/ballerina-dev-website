@@ -8,7 +8,7 @@ There are two methods for switching to the graphical mode using the VS Code exte
 
 1.  Click the `Visualize` CodeLens that appears in the editor.
     
-    <img src="/images/vs-code-extension/visual-programming/sequence-diagram-view/visualize-code-block.png" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/visual-programming/sequence-diagram-view/visualize-code-block.png" class="cInlineImage-full"/>
 
 -   Click `Show Diagram` in the editor group.
     

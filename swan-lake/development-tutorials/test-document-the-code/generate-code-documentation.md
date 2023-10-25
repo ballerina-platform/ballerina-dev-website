@@ -30,7 +30,7 @@ If necessary, you can have multiple lines of documentation, which you can group 
 # <documentation line 1>
 # <documentation line 2>
 # ...
-```
+``` 
 
 When writing the documentation for Ballerina APIs, you can use the standard markdown documentation syntax as shown below.
 
@@ -38,7 +38,7 @@ When writing the documentation for Ballerina APIs, you can use the standard mark
 # Provides the HTTP actions for interacting with an HTTP server. Apart from the standard 
 # HTTP methods, `forward()` and `execute()` functions are provided.
 # ...
-```
+``` 
 
 The supported structure of documentation syntax for functions is as follows:
 
@@ -54,7 +54,7 @@ The supported structure of documentation syntax for functions is as follows:
 # ...
 # + return - <return_parameter_description_line_1>
 #            <return_parameter_description_line_2>
-```
+``` 
 
 >**Tip:** Always add a period (**.**) at the end of a function description. However, for the parameter and return type descriptions, omit the period if you have only one sentence. If there are multiple sentences, add the period at the end of each sentence. For example,
 
@@ -67,7 +67,7 @@ The supported structure of documentation syntax for functions is as follows:
 public function foo(int i, string s) returns boolean {
     return true;
 }
-```
+``` 
 
 Members of record and object types can be documented at member-level.
 
@@ -79,7 +79,7 @@ type Record record {|
     # Description of field `f2`
     int f2;
 |};
-```
+``` 
 
 **Sample usage**
 
@@ -102,7 +102,7 @@ type Record record {|
 remote isolated function submit(string httpVerb, string path, RequestMessage message) returns HttpFuture|ClientError {
     // function body
 }
-```
+``` 
 
 ## Document a module
 
@@ -135,7 +135,7 @@ A typical package structure of a Ballerina package is like this:
   [resources/]         # Resources included in every module in the package.
 
   target/              # Compiled executables and other artifacts end up here.
-```
+``` 
 
 The `bal doc` command will read the `Package.md` and `Module.md` files and prepend them to the generated HTML file.
 
@@ -172,7 +172,7 @@ Now, let's add a function to the `math` module to be documented. Copy and paste 
 public isolated function pow(float a, float b) returns float {
     return 0;
 }
-```
+``` 
 
 Now, navigate to the `math` directory, and run the `bal doc` command to generate the documentation of the package.
 ```

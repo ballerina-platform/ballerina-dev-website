@@ -1,0 +1,7 @@
+tagline: Process the data based on the received message format
+desc: The Format Indicator will identify the message format based on the version or structure and process it.
+category: Message Construction
+index: 23
+helps: The `is` keyword in Ballerina distinguishes between structured types, aiding in distinguishing various message versions.
+tags: ["Format Indicator", "Cannonical Data Model"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/FormatIndicator.html

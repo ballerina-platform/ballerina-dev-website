@@ -1,0 +1,7 @@
+tagline: Route messages to multiple recipients
+desc: The recipient list pattern inspects an incoming message, determines the list of desired recipients, and forwards the message to all channels associated with the recipients in the list.
+category: Message Routing
+index: 27
+helps: Ballerina can extract information from messages and execute logic based on that. Iteration constructs such as `foreach` and `while` and query expressions can be used to execute a given logic for each recipient. Ballerina supports sending multiple messages in a single incoming message.
+tags: ["Recipient List", "Content Based Router", "Message Router"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/RecipientList.html

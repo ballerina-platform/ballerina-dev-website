@@ -9,7 +9,7 @@ _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
 ## Introduction
 
-This is the specification for the GraphQL standard library of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
+This is the specification for the GraphQL package of the [Ballerina language](https://ballerina.io), which provides GraphQL server functionalities to produce GraphQL APIs and GraphQL client functionalities to communicate with GraphQL APIs.
 
 The GraphQL library specification has evolved and may continue to evolve in the future. The released versions of the specification can be found under the relevant GitHub tag.
 
@@ -196,9 +196,9 @@ The conforming implementation of the specification is released and included in t
 
 ## 1. Overview
 
-The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL standard library uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
+The Ballerina language provides first-class support for writing network-oriented programs. The GraphQL package uses these language constructs and creates the programming model to produce/consume GraphQL APIs.
 
-The GraphQL standard library is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL standard library uses the code-first first approach to write GraphQL APIs. This means no GraphQL schema is required to create a GraphQL service.
+The GraphQL package is designed to work with [GraphQL specification](https://spec.graphql.org). There are two main approaches when writing GraphQL APIs. The schema-first approach and the code-first approach. The Ballerina GraphQL package uses the code-first first approach to write GraphQL APIs (which means no GraphQL schema is required to create a GraphQL service), while it also supports the schema-first approach through Ballerina GraphQL CLI tool.
 
 In addition to functional requirements, this library deals with none functional requirements such as security. Each requirement is discussed in detail in the coming sections.
 
@@ -896,6 +896,8 @@ enum Direction {
 }
 ```
 
+>**Note:** While it is possible to assign a `string` value to an `enum` member in the Ballerina language, the GraphQL specification does not support this behaviour. Therefore, it's not recommended to use `string` values for `enum` members when defining an `enum` type for use in a `graphql:Service`. Using `string` values for `enum` members may result in an invalid generated schema.
+
 ### 4.5 Input Types
 
 In GraphQL, a field can have zero or more input arguments. These arguments can be either a [`Scalar` type](#41-scalars), an [`Enum` type](#44-enums), or an [`INPUT_OBJECT` type](#452-input-objects).
@@ -958,7 +960,7 @@ type Book record {|
 
 The input arguments of a GraphQL field can have default values. In Ballerina, this is allowed by providing default values to input parameters of a `resource` or `remote` method that represents a GraphQL field. When a `resource` or `remote` method input parameter has a default value, it will be added to the generated GraphQL schema. Then, the input parameter can be omitted in the GraphQL document, even if the input type is `NON_NULL`.
 
->**Note:** Currently, the generated schema does not include the default value of an input parameter due to a Ballerina language limitation. It shows an empty string instead of the default value. This only affects when accessing the generated schema via introspection or file generation. It does not affect the functionality of the default values.
+>**Note:** To generate a schema with a valid default value, remember to use either a literal value, a list constructor expression, or a mapping constructor expression for the default parameters or input object fields. The generated schema will use an empty string if the default value is not one of the mentioned types of expressions. Avoid using other types of expressions, such as variable assignment, as they may result in an invalid schema.
 
 ###### Example: Default Values
 

@@ -1,0 +1,7 @@
+tagline: Wait for a sequence of messages and combine them
+desc: Aggregator patiently collects a sequence of messages and combines them once all have been received.
+category: Message Routing
+index: 29
+helps: Ballerina provides convenient map and table data structures for temporary message storage. Ballerina provides robust support for distributed storage with the Redis package. Additionally, it offers seamless integration with various SQL and NoSQL databases for persistent data storage. Ballerina's cache package is an efficient in-memory cache solution that includes automatic cleanup mechanisms.
+tags: ["Aggregator"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/Aggregator.html

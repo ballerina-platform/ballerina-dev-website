@@ -30,7 +30,7 @@ export default function Other() {
                     <h2 className="removeTopMargin">Other resources</h2>
 
                     <div className={styles.otherInfo}>
-                        <a target="_blank" rel="noreferrer" href="/learn/references/language-introduction/Ballerina%20_Swan_Lake_Presentation_Deck_V2.0.pdf">
+                        <a target="_blank" rel="noreferrer" href="/community/slides/Ballerina_Language_Presentation-2021-03-08.pdf">
                             <h4>Language introduction slides </h4>
                         </a>
                         <p>A high-level overview of the Ballerina language</p>

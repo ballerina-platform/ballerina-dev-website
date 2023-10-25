@@ -1,0 +1,7 @@
+tagline: Use message to invoke a procedure in another application
+desc: Command message invokes a remote procedure via messages to receive a response.
+category: Message Construction
+index: 15
+helps: Ballerina supports a rich set of network protocol connectors which you can use to invoke remote applications.
+tags: ["Command Message", "Messaging", "Point-to-Point Channel"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html

@@ -1,0 +1,10 @@
+{
+    "loyaltyId": "f3304536-f1ed-45d4-a070-e157c3a09001",
+    "customerData": {
+        "customerName": "Rexton",
+        "phone": "0773334443"
+    },
+    "redemptionDate": "2023-01-01T00:00:00.000Z",
+    "usedAt": "2023-02-01T00:00:00.000Z",
+    "mobilePoints": 10.5
+}

@@ -11,7 +11,6 @@ If you are new to Ballerina, you can download the [installers](https://ballerina
       - vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal
       - vscode://wso2.ballerina/open-repo?repoUrl=https://github.com/wso2/choreo-sample-apps
 
-
 ## Improvements
 
 - The GraphQL designer, Entity-relationship diagram, and Type diagram, now provide support for users to navigate to a specific node based on their selection in the field type.

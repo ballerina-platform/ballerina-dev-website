@@ -65,7 +65,7 @@ export default function Intro() {
                         <p className={styles.dVersion}>
                     
                         <a href={`${prefix}/learn/vs-code-extension/get-started/`}
-                            className={styles.cDownload} target="_blank" rel="noreferrer">
+                            className={styles.cDownload}>
                             See documentation
                         </a>                    
 

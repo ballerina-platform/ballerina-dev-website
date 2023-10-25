@@ -268,7 +268,7 @@
                             "position": 1,
                             "isDir": false,
                             "url": "/learn/vs-code-extension/references/statement-editor/call-a-ballerina-library-function",
-                            "id": "statement-editor"
+                            "id": "call-a-ballerina-library-function"
                         },
                         {
                             "dirName": "Construct a record",
@@ -331,20 +331,20 @@
             "id": "release-notes",
             "subDirectories": [
                 {
-                    "dirName": "Version 3.3.0",
+                    "dirName": "Version 4.5.0",
                     "level": 2,
                     "position": 1,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/release-notes/version-3.3.0",
-                    "id": "version-3.3.0"
+                    "url": "/learn/vs-code-extension/release-notes/version-4.5.0",
+                    "id": "version-4.5.0"
                 },
                 {
-                    "dirName": "Version 4.0.0",
+                    "dirName": "Version 4.4.0",
                     "level": 2,
                     "position": 2,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/release-notes/version-4.0.0",
-                    "id": "version-4.0.0"
+                    "url": "/learn/vs-code-extension/release-notes/version-4.4.0",
+                    "id": "version-4.4.0"
                 },
                 {
                     "dirName": "Version 4.3.0",
@@ -355,20 +355,20 @@
                     "id": "version-4.3.0"
                 },
                 {
-                    "dirName": "Version 4.4.0",
+                    "dirName": "Version 4.0.0",
                     "level": 2,
-                    "position": 3,
+                    "position": 4,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/release-notes/version-4.4.0",
-                    "id": "version-4.4.0"
+                    "url": "/learn/vs-code-extension/release-notes/version-4.0.0",
+                    "id": "version-4.0.0"
                 },
                 {
-                    "dirName": "Version 4.5.0",
+                    "dirName": "Version 3.3.0",
                     "level": 2,
-                    "position": 3,
+                    "position": 5,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/release-notes/version-4.5.0",
-                    "id": "version-4.5.0"
+                    "url": "/learn/vs-code-extension/release-notes/version-3.3.0",
+                    "id": "version-3.3.0"
                 }
             ]
         },

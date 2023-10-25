@@ -32,7 +32,7 @@ service /graphql on new graphql:Listener(9090) {
 }
 ```
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/visual-programming/graphql-designer/visualize.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/visualize.gif" class="cInlineImage-full"/>
 
 ## Explore the GraphQL API Designer 
 
@@ -50,22 +50,20 @@ You can perform the above functionalities using the GraphQL API Designer as foll
 
 Add a query to the GraphQL service with a `Profile` record as the output object.
 
-!!! Info
-    Hover over each field to view the provided **Edit**, **Delete**, and **Design** GraphQL operations.
+>**Info:** Hover over each field to view the provided **Edit**, **Delete**, and **Design** GraphQL operations.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/visual-programming/graphql-designer/query-creation.gif" class="cInlineImage-full"/> 
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/query-creation.gif" class="cInlineImage-full"/> 
 
 ### Access the query source
 
 Navigate to the source code of the newly created `profile` query and update the resource body. Use **Ctrl + Click** shortcut on the specific field to navigate to the respective source code. 
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/visual-programming/graphql-designer/navigate.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/navigate.gif" class="cInlineImage-full"/>
 
 ### Create a record construct
 
 Create a record within the GraphQL API Designer itself.
 
-!!! Info
-    You can use this same approach to create service classes as well.
+>**Info:** You can use this same approach to create service classes as well.
 
-<img src="https://wso2.com/ballerina/vscode/docs/img/visual-programming/graphql-designer/add-new-construct.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/graphql-designer/add-new-construct.gif" class="cInlineImage-full"/>

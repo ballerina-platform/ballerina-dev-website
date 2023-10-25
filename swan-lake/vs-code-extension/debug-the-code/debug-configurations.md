@@ -6,8 +6,7 @@ The Ballerina debugger supports various debug configuration options via the `lau
 
 Follow the steps below to generate the `launch.json` configurations file with the [default attributes](#default-configurations).
 
-!!! Info
-      Creating the `launch.json` file enables the **Ballerina Program**, **Ballerina Test**, and **Ballerina Remote** options that are required to [debug your code using configurations](#default-configurations).
+>**Info:** Creating the `launch.json` file enables the **Ballerina Program**, **Ballerina Test**, and **Ballerina Remote** options that are required to [debug your code using configurations](#default-configurations).
 
 1. Open the folder, which includes the Ballerina program you want to debug and select the file.
 
@@ -15,10 +14,9 @@ Follow the steps below to generate the `launch.json` configurations file with th
 
 3. Click **create a launch.json** file and then select **Ballerina Debug** as the **Environment**. 
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/debug/start-debug-session.gif" class="cInlineImage-full"/>
+    <img src="/learn/images/vs-code-extension/debug/start-debug-session.gif" class="cInlineImage-full"/>
 
-    !!! Info
-        This generates a `launch.json` file in your workspace root under the `.vscode` directory. You can edit the [configuration attributes](#configuration-attributes) to perform advanced debugging operations.
+    >**Info:** This generates a `launch.json` file in your workspace root under the `.vscode` directory. You can edit the [configuration attributes](#configuration-attributes) to perform advanced debugging operations.
 
 4. Add/edit the relevant configurations for debugging in the opened `launch.json` file.   
 
@@ -65,8 +63,7 @@ Given below are the default configurations generated in the `launch.json` file f
 
 You can edit the configurations of the auto-generated `launch.json` file, which is located in your workspace root under the `.vscode` directory. 
 
-!!! Info
-    This file consists of three debug configurations named `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports a different set of attributes, which will be provided via IntelliSense completion suggestions.
+>**Info:** This file consists of three debug configurations named `Ballerina Debug`, `Ballerina Test`, and `Ballerina Remote`. Each configuration supports a different set of attributes, which will be provided via IntelliSense completion suggestions.
 
 ### Attributes for all configurations
 

@@ -6,7 +6,7 @@ This guide helps you to understand how to call a Ballerina library function usin
 
 Let's call the Ballerina [`printError`](https://lib.ballerina.io/ballerina/log/2.5.0/functions#printError) function of the [`log` module](https://lib.ballerina.io/ballerina/log/2.5.0) to log an error in the given sample code below.
 
-```
+```ballerina
 public function main() returns error? {
 
     error e = error("something went wrong!");
@@ -19,36 +19,33 @@ Follow the steps below to build the log statement.
 
 1. On the low-code diagram, click **+** within the main method and click **Function** in the **Add Constructs** opened panel.
         
-    <img src="https://wso2.com/ballerina/vscode/docs/img/statement-editor/add-function-statement.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/statement-editor/add-function-statement.gif" class="cInlineImage-half"/>
 
-    !!! Info 
-        The **Libraries** tab will be selected by default listing all the supported Ballerina libraries.
+    >**Info:** The **Libraries** tab will be selected by default listing all the supported Ballerina libraries.
 
 2. Search for **log** and select the `log` module (this will list all the supported functions, errors, records, types, etc. of the `log` module), and select the **log:printError** function.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/statement-editor/select-printError.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/statement-editor/select-printError.gif" class="cInlineImage-half"/>
 
-    !!! Info 
-        When you select a function or a method call, the **Parameters** tab opens by default. This tab displays information about the selected function or method call including details about the parameters, descriptions, and return type descriptions. On this tab, you can easily add parameters to the expression by selecting the checkboxes of the relevant parameters.
+    >**Info:** When you select a function or a method call, the **Parameters** tab opens by default. This tab displays information about the selected function or method call including details about the parameters, descriptions, and return type descriptions. On this tab, you can easily add parameters to the expression by selecting the checkboxes of the relevant parameters.
 
 3. Double-click on the **`<add-mgs>`** template and type "error log".
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/statement-editor/update-error-msg.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/statement-editor/update-error-msg.gif" class="cInlineImage-half"/>
 
     Now, follow the steps below to pass the **error - e** to the `printError` function.
 
 4. Select the checkbox of the **error** from the parameter list. 
 
-    !!! Info 
-        This will update the function with the correct syntax to add the error.
+    >**Info:** This will update the function with the correct syntax to add the error.
 
 5. Go to the **Suggestions** tab and select **e**, which is the previously defined error.
 
-    <img src="https://wso2.com/ballerina/vscode/docs/img/statement-editor/add-error-cause.gif" class="cInlineImage-half"/>
+    <img src="/learn/images/vs-code-extension/statement-editor/add-error-cause.gif" class="cInlineImage-half"/>
 
     You view the function call as follows without any diagnostics:
 
-    ```
+    ```bash
     log:printError("error log", 'error = e);
     ```
     

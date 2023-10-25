@@ -10,7 +10,7 @@ Diagnostics will show up in multiple places:
 * The **Summary** view and the **PROBLEMS** panel lists all of the current errors.
 * Errors or warnings in a Ballerina file will be rendered in line with the text and in the **Overview** ruler.
 
-![Diagnostics](../img/edit-the-code/diagnostics/diagnostics.png){.cInlineImage-full}
+<img src="/learn/images/vs-code-extension/edit-the-code/diagnostics/diagnostics.png" class="cInlineImage-full"/>
 
 ## Perform quick fixes
 
@@ -20,4 +20,4 @@ For example, the `variable assignment is required` diagnostic suggests two quick
 - Create a new variable
 - Ignore the return value
 
-![Quickfixes](../img/edit-the-code/diagnostics/quickfixes.gif){.cInlineImage-threeQuarter}
+<img src="/learn/images/vs-code-extension/edit-the-code/diagnostics/quickfixes.gif" class="cInlineImage-threeQuarter"/>

@@ -120,6 +120,8 @@ export default function PostPage({
   codes
 }) {
 
+  console.log(id);
+
   // Show mobile left nav
   const [show, setShow] = React.useState(false);
   const handleClose = () => setShow(false);

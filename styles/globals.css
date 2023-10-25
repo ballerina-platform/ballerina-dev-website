@@ -1569,3 +1569,40 @@ table.cTopControlsContainer tbody {
 .odd .nav-link.active {
   background-color: #eeeeee !important;
 }
+
+
+.cInlineImage-small {
+  display: inline-block;
+  text-align: center;
+  height:45% !important;
+  width:30% !important;
+  border: 1px solid gray;
+}
+    
+.cInlineImage-full {
+  display: inline-block;
+  text-align: center;
+  height:75% !important;
+  width:90% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-threeQuarter {
+  display: inline-block;
+  text-align: center;
+  width:65%;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-half {
+  display: inline-block;
+  text-align: center;
+  width:50% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-bordered {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid gray;
+}

@@ -138,7 +138,7 @@ public function main() {
 
 Use either of the methods below to open the Data Mapper.
 
-### Open via the **Visualize** CodeLens
+### Open via the CodeLens
 
 Follow the steps below to open the Data Mapper via the **Visualize** CodeLens.
 

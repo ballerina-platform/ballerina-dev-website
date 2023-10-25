@@ -11,7 +11,7 @@ Follow the steps below to convert a JSON to a record via the Record Editor.
     !!! Info
         The example below converts a `person` and a list of `courses` to a `Student` record. 
     
-    ```
+    ```json
     {
         "person": {
             "id": 1001,

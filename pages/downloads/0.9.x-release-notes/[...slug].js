@@ -239,7 +239,6 @@ export default function PostPage({ frontmatter, content, id }) {
             </div>
 
             <ReactMarkdown
-              const
               components={{
                 h1: GenerateHeadingComponent(1, setShowToc),
                 h2: GenerateHeadingComponent(2, setShowToc),
@@ -247,41 +246,23 @@ export default function PostPage({ frontmatter, content, id }) {
                 h4: GenerateHeadingComponent(4, setShowToc),
                 h5: GenerateHeadingComponent(5, setShowToc),
                 h6: GenerateHeadingComponent(6, setShowToc),
-                code: ({ node, inline, className, children, ...props }) => {
-                  const match = /language-(\w+)/.exec(className || "");
-
-                  if (inline) {
-                    return (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    );
-                  } else if (match) {
-                    return (
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: HighlightSyntax(
-                            String(children).replace(/\n$/, ""),
-                            match[1].toLowerCase()
-                          ),
-                        }}
-                      />
-                    );
-                  } else {
-                    return (
-                      <pre className="default">
+                code({ node, inline, className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || '')
+                  return inline ?
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                    : match ?
+                      <div dangerouslySetInnerHTML={{ __html: HighlightSyntax(String(children).replace(/\n$/, ''), match[1].toLowerCase()) }} />
+                      : <pre className='default'>
                         <code className={className} {...props}>
                           {children}
                         </code>
                       </pre>
-                    );
-                  }
                 },
-                table: ({ node, className, children, ...props }) => (
-                  <div className="mdTable">
-                    <table {...props}>{children}</table>
-                  </div>
-                ),
+                table({node, className, children, ...props}) { 
+                  return <div className='mdTable'><table {...props}>{children}</table></div>
+                }
               }}
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
@@ -300,43 +281,5 @@ export default function PostPage({ frontmatter, content, id }) {
         </Col>
       </Layout>
     </>
-  );
-}
-
-function Heading({ level, children, setShowToc }) {
-  const id =
-    Array.isArray(children) && children.length === 1
-      ? children[0]
-          .toLowerCase()
-          .replace(/[&\/\\#,+()!$~%.'’":*?<>{}]/g, "")
-          .replace(/ /g, "-")
-      : scanArray(children);
-
-  setShowToc(true);
-
-  const handleLinkClick = (e) => getLink(e.target, id);
-
-  return React.createElement(
-    `h${level}`,
-    { id, "data-section": id, className: "section" },
-    React.createElement(
-      "svg",
-      {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "30",
-        height: "30",
-        fill: "currentColor",
-        className: "bi bi-link-45deg mdButton pe-2",
-        viewBox: "0 0 16 16",
-        onClick: handleLinkClick,
-      },
-      React.createElement("path", {
-        d: "M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z",
-      }),
-      React.createElement("path", {
-        d: "M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z",
-      })
-    ),
-    children
   );
 }

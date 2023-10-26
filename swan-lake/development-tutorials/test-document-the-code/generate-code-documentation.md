@@ -172,7 +172,7 @@ Now, let's add a function to the `math` module to be documented. Copy and paste 
 public isolated function pow(float a, float b) returns float {
     return 0;
 }
-``` 
+```
 
 Now, navigate to the `math` directory, and run the `bal doc` command to generate the documentation of the package.
 ```

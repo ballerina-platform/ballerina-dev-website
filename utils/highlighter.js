@@ -36,7 +36,6 @@ const highlight = async (content) => {
     const regex = /```(\w+)([\s\S]*?)\n```/g;
     let match = [];
     while (match = regex.exec(content)) {
-        console.log(`match:\n  ${match[0]}`);
         let code = match[2];
         const firstLine = code.split('/n')[0];
         const indent = firstLine.length - firstLine.trimStart().length;

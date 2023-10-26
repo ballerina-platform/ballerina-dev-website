@@ -77,6 +77,7 @@ port = 3128
 username = ""
 password = ""
 ```
+For more details, Please look into [`Configure proxy`](/learn/configure-proxy/)
 
 ### Define the organization
 

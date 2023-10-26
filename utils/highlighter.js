@@ -33,7 +33,7 @@ const highlight = async (content) => {
     });
 
     let codes = new Map();
-    const regex = /```(\w+)([\s\S]*?)\n```/g;
+    const regex = /```(\w+)([\s\S]*?)\n\s*```/g;
     let match = [];
     while (match = regex.exec(content)) {
         let code = match[2];

@@ -39,20 +39,9 @@ Follow the instructions given in this section to develop the service.
 
     ![Open diagram view](/learn/images/integration-tutorials/sending-a-message-to-a-service/open_diagram_view.gif)
 
-3. Define two [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URL of the backend service.
+3. Define a record type named `Doctor` corresponding to the payload from the backend service.
 
-    ![Define configurable variables](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_configurable_variables.gif)
-
-    The corresponding source code that is generated is as follows.
-
-    ```ballerina
-    configurable int port = 8290;
-    configurable string healthcareBackend = "http://localhost:9090/healthcare";
-    ```
-
-4. Generate a record type corresponding to the payload from the backend service using the ["Paste JSON as record"](https://wso2.com/ballerina/vscode/docs/references/convert-json-to-records/#via-the-command-palette) VS Code command by providing a sample of the expected JSON payload.
-
-    The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following.
+    The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following and can be modeled as `Doctor` record type.
 
     ```json
     {
@@ -63,16 +52,9 @@ Follow the instructions given in this section to develop the service.
         "fee": 7000
     }
     ```
+   ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
 
-   <ol type="i">
-    <li>Copy the sample JSON payload.</li>
-    <li>Open the VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).</li> 
-    <li>Search and select the `Ballerina: Paste JSON as record` command.</li>
-   </ol>
-
-    ![Paste JSON as record](/learn/images/integration-tutorials/sending-a-message-to-a-service/paste_json_as_record.gif)
-
-5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
+4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
     - Open [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
    
@@ -95,17 +77,18 @@ Follow the instructions given in this section to develop the service.
         }
         ```
 
-6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
+5. Define a [configurable variable](https://ballerina.io/learn/by-example/#configurability) for the URL of the backend service and an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
 
-    ![Define the client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_client_endpoint.gif)
+    ![Define a configurable and a client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_configurable_and_a_client.gif)
 
     The generated code will be as follows.
 
     ```ballerina
+    configurable string healthcareBackend = "http://localhost:9090/healthcare";
     final http:Client queryDoctorEP = check new (url = healthcareBackend);
     ```
 
-7. Implement the logic to retrieve and respond with relevant details.
+6. Implement the logic to retrieve and respond with relevant details.
 
     ```ballerina
     service /healthcare on new http:Listener(port) {
@@ -167,12 +150,11 @@ type Doctor record {|
     decimal fee;
 |};
 
-configurable int port = 8290;
 configurable string healthcareBackend = "http://localhost:9090/healthcare";
 
 final http:Client queryDoctorEP = check new (healthcareBackend);
 
-service /healthcare on new http:Listener(port) {
+service /healthcare on new http:Listener(8290) {
     resource function get doctors/[string category]() 
             returns Doctor[]|http:NotFound|http:InternalServerError {
         log:printInfo("Retrieving information", specialization = category);

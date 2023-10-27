@@ -2,17 +2,21 @@
 
 The visual representation provided by the Ballerina VS Code extension has its roots in sequence diagrams. They can capture how the logic of your program flows, how the concurrent execution flow works, which remote endpoints are involved, and how those endpoints interact with the different workers in the program.
 
-## Switch to graphical mode
+## Access the Sequence Diagram View
 
-There are two methods for switching to the graphical mode using the VS Code extension as shown below.
+There are two methods for switching to the graphical mode and accessing the Sequence Diagram View using the VS Code extension as shown below.
 
-1.  Click the `Visualize` CodeLens that appears in the editor.
+### Via the CodeLens
+
+Click the **Visualize** CodeLens that appears in the editor.
     
-    <img src="/learn/images/vs-code-extension/visual-programming/sequence-diagram-view/visualize-code-block.png" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/sequence-diagram-view/visualize-code-block.png" class="cInlineImage-full"/>
 
--   Click `Show Diagram` in the editor group.
+### Via the editor group button
+
+Click the **Show Diagram** button in the editor group.
     
-    <img src="/learn/images/vs-code-extension/visual-programming/sequence-diagram-view/editor-group-button.png" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/visual-programming/sequence-diagram-view/editor-group-button.png" class="cInlineImage-full"/>
 
 Shown below is the code editor and graphical editor in the split view. The graphical mode is focused on the main function.
 

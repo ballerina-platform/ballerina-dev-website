@@ -673,7 +673,7 @@ ul.eventsTabs {
 .eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
-  border: none;
+  border: none !important;
 }
 
 .eventsTabs li button,

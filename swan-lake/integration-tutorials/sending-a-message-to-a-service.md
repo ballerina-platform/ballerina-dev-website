@@ -70,7 +70,7 @@ Follow the instructions given in this section to develop the service.
         The generated service will be as follows.
     
         ```ballerina
-        service /healthcare on new http:Listener(port) {
+        service /healthcare on new http:Listener(8290) {
             resource function get doctors/[string category]() 
                     returns Doctor[]|http:NotFound|http:InternalServerError {
                 
@@ -86,13 +86,13 @@ Follow the instructions given in this section to develop the service.
 
     ```ballerina
     configurable string healthcareBackend = "http://localhost:9090/healthcare";
-    final http:Client queryDoctorEP = check new (url = healthcareBackend);
+    final http:Client queryDoctorEP = check new (healthcareBackend);
     ```
 
 6. Implement the logic to retrieve and respond with relevant details.
 
     ```ballerina
-    service /healthcare on new http:Listener(port) {
+    service /healthcare on new http:Listener(8290) {
         resource function get doctors/[string category]() 
                 returns Doctor[]|http:NotFound|http:InternalServerError {
             log:printInfo("Retrieving information", specialization = category);

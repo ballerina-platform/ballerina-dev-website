@@ -65,7 +65,7 @@ export default function Learn() {
   function handleFilteredTags() {
     if (selectedTags.length > 0) {
       const filteredItems = data.filter((item) => {
-        return item.tags.some((tag) => selectedTags.includes(tag));
+        return selectedTags.every((tag) => item.tags.includes(tag));
       });
       setFilteredTags(filteredItems);
     } else {

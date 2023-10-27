@@ -98,7 +98,7 @@ export default function PatternList(props) {
       for (const category of props.categories) {
         if (props.patterns[category]) {
           const filteredCategoryItems = props.patterns[category].filter((data) => {
-            return data.tags.some((tag) => selectedTags.includes(tag));
+            return selectedTags.every((tag) => data.tags.includes(tag));
           });
   
           if (filteredCategoryItems.length > 0) {
@@ -112,13 +112,15 @@ export default function PatternList(props) {
   
       setFilteredTags(filteredItems);
     } else {
-      setFilteredTags(props.categories.map(category => ({
-        category,
-        data: props.patterns[category] || [],
-      })))
+      setFilteredTags(
+        props.categories.map((category) => ({
+          category,
+          data: props.patterns[category] || [],
+        }))
+      );
     }
   }
-  
+
   return (
     <>
       <Head>

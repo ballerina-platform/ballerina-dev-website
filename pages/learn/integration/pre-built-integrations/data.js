@@ -42,9 +42,9 @@ export const data = [
     },
 
     {
-        name: "Gmail to Salesforce integration",
-        description: "Create a lead for each new marketing email in Gmail",
-        tags:["Salesforce", "Integration", "CRM", "Gmail", "OpenAI"],
+        name: "Kafka to Salesforce integration",
+        description: "Update price book in Salesforce for each new message in Kafka",
+        tags:["Kafka", "Salesforce", "Integration", "CRM"],
     },
 
     {

@@ -13,13 +13,12 @@ url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_comprehe
         maxAge: 84900
     }
 }
-service /sales on new http:Listener(9090, 
-        secureSocket = {
-            key: {
-                certFile: "../resources/public.crt",
-                keyFile: "../resources/private.key"
-            }
-        }) {
+service /sales on new http:Listener(9090, secureSocket = {
+        key: {
+            certFile: "../resources/public.crt",
+            keyFile: "../resources/private.key"
+        }
+    }) {
 
     @http:ResourceConfig {
         cors: {
@@ -27,13 +26,9 @@ service /sales on new http:Listener(9090,
             allowCredentials: true
         }
     }
-    resource function post orders(Order 'order) returns http:Ok {
+    resource function post orders(Order 'order) returns Order {
         orderTable.add('order);
-        return <http:Ok> { body: { message: "Order submitted successfully" }};
-    };
-
-    resource function get orders() returns Order[] {
-        return orderTable.toArray();
+        return 'order;
     };
 }
 ```

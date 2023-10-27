@@ -183,8 +183,7 @@
             "position": 7,
             "isDir": false,
             "url": "/learn/vs-code-extension/notebooks",
-            "id": "notebooks"
-            
+            "id": "notebooks"   
         },
         {
             "dirName": "Run a program",

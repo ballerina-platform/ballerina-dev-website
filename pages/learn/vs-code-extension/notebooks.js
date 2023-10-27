@@ -22,6 +22,7 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../layouts/LayoutDocs";
 import LeftNav from "../../../components/common/left-nav/LeftNav";
@@ -108,7 +109,7 @@ export default function PostPage({ frontmatter, content, id }) {
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">
           <LeftNav
-            launcher="learn"
+            launcher="vs-code"
             id={id}
             mainDir="notebooks"
             Toc={LearnToc}

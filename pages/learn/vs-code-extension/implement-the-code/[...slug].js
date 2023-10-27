@@ -22,6 +22,7 @@ import React from "react";
 import { Container, Col, Button, Offcanvas } from "react-bootstrap";
 import Image from "next-image-export-optimizer";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "../../../../layouts/LayoutDocs";
 import LeftNav from "../../../../components/common/left-nav/LeftNav";

@@ -84,12 +84,12 @@
                     "id": "sequence-diagram-view"
                 },
                 {
-                    "dirName": "Entity Relationship View",
+                    "dirName": "Entity Relationship Diagram View",
                     "level": 2,
                     "position": 2,
                     "isDir": false,
-                    "url": "/learn/vs-code-extension/implement-the-code/entity-relationship-view",
-                    "id": "entity-relationship-view"
+                    "url": "/learn/vs-code-extension/implement-the-code/entity-relationship-diagram-view",
+                    "id": "entity-relationship-diagram-view"
                 },
                 {
                     "dirName": "Data Mapper",

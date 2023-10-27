@@ -4,7 +4,7 @@ The visual representation provided by the Ballerina VS Code extension has its ro
 
 ## Switch to graphical mode
 
-There are two methods for switching to the graphical mode using the VS Code extension.
+There are two methods for switching to the graphical mode using the VS Code extension as shown below.
 
 1.  Click the `Visualize` CodeLens that appears in the editor.
     

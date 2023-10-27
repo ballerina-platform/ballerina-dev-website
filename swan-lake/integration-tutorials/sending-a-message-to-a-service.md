@@ -52,6 +52,7 @@ Follow the instructions given in this section to develop the service.
         "fee": 7000
     }
     ```
+   
    ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
 
 4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
@@ -79,7 +80,7 @@ Follow the instructions given in this section to develop the service.
 
 5. Define a [configurable variable](https://ballerina.io/learn/by-example/#configurability) for the URL of the backend service and an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
 
-    ![Define a configurable and a client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_configurable_and_a_client.gif)
+    ![Define a configurable variable and a client](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_configurable_variable_and_a_client.gif)
 
     The generated code will be as follows.
 
@@ -112,27 +113,11 @@ Follow the instructions given in this section to develop the service.
 
     - The `log:printInfo` statement [logs](https://ballerina.io/learn/by-example/#log) information about the request.
 
-        ```ballerina
-        log:printInfo("Retrieving information", specialization = category);
-        ```
-
     - The call to the backend is done using a remote method call expression (using `->`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.
-
-        ```ballerina
-        Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
-        ```
 
     - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. 
 
     - If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
-
-        ```ballerina
-        if resp is http:ClientRequestError {
-            return <http:NotFound> {body: string `category not found: ${category}`};
-        }
-
-        return <http:InternalServerError> {body: resp.message()};
-        ```
 
 You have successfully developed the required service.
 

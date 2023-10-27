@@ -34,7 +34,7 @@ import Toc from "../../../components/common/pg-toc/Toc";
 export async function getStaticProps() {
   const fileName = fs.readFileSync(`swan-lake/vs-code-extension/test-the-code.md`, "utf-8");
   const { data: frontmatter, content } = matter(fileName);
-  const id = "ballerina-specifications";
+  const id = "test-the-code";
 
   return {
     props: {

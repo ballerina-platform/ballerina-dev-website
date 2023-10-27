@@ -118,7 +118,7 @@
                     "id": "intellisense"
                 },
                 {
-                    "dirName": "Code Navigation",
+                    "dirName": "Code navigation",
                     "level": 2,
                     "position": 2,
                     "isDir": false,
@@ -126,7 +126,7 @@
                     "id": "code-navigation"
                 },
                 {
-                    "dirName": "Code Actions",
+                    "dirName": "Code actions",
                     "level": 2,
                     "position": 3,
                     "isDir": false,

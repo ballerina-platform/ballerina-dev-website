@@ -84,9 +84,17 @@
                     "id": "sequence-diagram-view"
                 },
                 {
-                    "dirName": "Data Mapper",
+                    "dirName": "Entity Relationship Diagram View",
                     "level": 2,
                     "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/implement-the-code/entity-relationship-diagram-view",
+                    "id": "entity-relationship-diagram-view"
+                },
+                {
+                    "dirName": "Data Mapper",
+                    "level": 2,
+                    "position": 3,
                     "isDir": false,
                     "url": "/learn/vs-code-extension/implement-the-code/data-mapper",
                     "id": "data-mapper"
@@ -110,7 +118,7 @@
                     "id": "intellisense"
                 },
                 {
-                    "dirName": "Code Navigation",
+                    "dirName": "Code navigation",
                     "level": 2,
                     "position": 2,
                     "isDir": false,
@@ -118,7 +126,7 @@
                     "id": "code-navigation"
                 },
                 {
-                    "dirName": "Code Actions",
+                    "dirName": "Code actions",
                     "level": 2,
                     "position": 3,
                     "isDir": false,
@@ -175,8 +183,7 @@
             "position": 7,
             "isDir": false,
             "url": "/learn/vs-code-extension/notebooks",
-            "id": "notebooks"
-            
+            "id": "notebooks"   
         },
         {
             "dirName": "Run a program",

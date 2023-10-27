@@ -1606,3 +1606,7 @@ table.cTopControlsContainer tbody {
   text-align: center;
   border: 1px solid gray;
 }
+
+img + blockquote{
+  margin-top: 20px;
+}

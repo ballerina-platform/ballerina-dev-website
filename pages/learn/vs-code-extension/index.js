@@ -19,6 +19,7 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
+import Link from "next/link";
 
 import Layout from "/layouts/LayoutLearn";
 import Intro from "../../../components/vs-code-extension/intro/Intro";

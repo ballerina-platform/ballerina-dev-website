@@ -64,9 +64,11 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-    1. Copy the sample JSON payload.
-    2. Open the VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).
-    3. Search and select the `Ballerina: Paste JSON as record` command.
+   <ol type="i">
+    <li>Copy the sample JSON payload.</li>
+    <li>Open the VS Code [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette).</li> 
+    <li>Search and select the `Ballerina: Paste JSON as record` command.</li>
+   </ol>
 
     ![Paste JSON as record](/learn/images/integration-tutorials/sending-a-message-to-a-service/paste_json_as_record.gif)
 
@@ -137,17 +139,11 @@ Follow the instructions given in this section to develop the service.
         Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
         ```
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
+    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. 
+
+    - If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
 
         ```ballerina
-        log:printInfo("Retrieving information", specialization = category);
-
-        Doctor[]|http:ClientError resp = queryDoctorEP->/[category];
-        if resp is Doctor[] {
-            return resp;
-        }
-
-        log:printError("Retrieving doctor information failed", resp);
         if resp is http:ClientRequestError {
             return <http:NotFound> {body: string `category not found: ${category}`};
         }

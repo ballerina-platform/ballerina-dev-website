@@ -1,6 +1,6 @@
 ---
 title: 'Simplify User Auth and AuthZ with Annotations'
-description: Ballerina apps can be seamlessly integrated with any OAuth2-compatible identity provider using a simple set of annotations. This enables advanced security features like centralized user management, multi-factor authentication, social logins, and role-based access control for Ballerina-powered apps.
+description: Ballerina apps can be seamlessly integrated with any OAuth2-compatible identity provider using a simple set of annotations. 
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest_asgardio_jwt'
 ---
 ```

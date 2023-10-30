@@ -1,6 +1,6 @@
 ---
 title: 'Streamline Backend Data Handling'
-description: Web and mobile apps frequently use JSON payloads. With Ballerina's native JSON capabilities, JSON data can be mapped to Ballerina records with features like constraint validations, transformations, and enrichments. In addition, Ballerina has built-in support for multi-part payloads, compressions, caching, and content type enforcements. 
+description: Ballerina has built-in support for multi-part payloads, along with constraint validations, transformations, and enrichments for complex JSON payloads.
 
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest_payload_validation'
 ---

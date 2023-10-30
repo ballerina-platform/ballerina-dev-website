@@ -1,13 +1,12 @@
 ---
 title: "Comprehensive Security for Web Backends"
-description: Ballerina-based backends simplify securing sensitive data during transit, validating server identity, managing CORS, and enforcing message type restrictions through annotations on relevant services. Additionally, Ballerina services can easily generate HTTP access logs and trace logs, offering deeper insights into message exchanges.
+description: Ballerina-based backends simplify securing sensitive data during transit, validating server identity, managing CORS, and enforcing message type restrictions through a simple set of annotations.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_comprehensive_security'
 ---
 ```
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["http://localhost:3000", "http://www.hmart-dev.com", "http://www.hmart.com"],
-        allowCredentials: false,
         allowHeaders: ["REQUEST_ID"],
         exposeHeaders: ["RESPONSE_ID"],
         maxAge: 84900

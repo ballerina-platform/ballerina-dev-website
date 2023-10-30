@@ -20,11 +20,12 @@ import { load } from "js-yaml";
 import Head from "next/head";
 import fs from "fs";
 import path from 'path';
-import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import Pattern from "../../../components/learn/pattern/Pattern";
+import {RxCross2} from "react-icons/rx"
 
 const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
 
@@ -71,7 +72,55 @@ function loadYml(ymlPath) {
 }
 
 export default function PatternList(props) {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredTags, setFilteredTags] = useState(props.categories);
+
   const router = useRouter();
+
+  function handleSelectedTag(selectedCategory) {
+    if (selectedTags.includes(selectedCategory)) {
+      let filters = selectedTags.filter((el) => el !== selectedCategory);
+      setSelectedTags(filters);
+    } else {
+      setSelectedTags([...selectedTags, selectedCategory]);
+    }
+  }
+
+  useEffect(() => {
+    handleFilteredTags();
+  }, [selectedTags]);
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = [];
+  
+      for (const category of props.categories) {
+        if (props.patterns[category]) {
+          const filteredCategoryItems = props.patterns[category].filter((data) => {
+            return selectedTags.every((tag) => data.tags.includes(tag));
+          });
+  
+          if (filteredCategoryItems.length > 0) {
+            filteredItems.push({
+              category: category,
+              data: filteredCategoryItems,
+            });
+          }
+        }
+      }
+  
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags(
+        props.categories.map((category) => ({
+          category,
+          data: props.patterns[category] || [],
+        }))
+      );
+    }
+  }
+
   return (
     <>
       <Head>
@@ -162,23 +211,39 @@ export default function PatternList(props) {
             </Col>
           </Row>
 
+          <Row className="selectedTagContainer">
+            <Col xs={12}>
+              <Container>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
+              </Container>
+            </Col>
+          </Row>
+
           <Row className="pageContentRow llanding" >
             <Col xs={12}>
-              {
-                // Object.entries(props.patterns).map(([categoryName, patters]) => (
-                props.categories.map((categoryName) => (
-                  <Container key={categoryName}>
-                    <h2>{categoryName}</h2>
-                    <Row>
-                      {
-                        props.patterns[categoryName].map((p) => (
-                          <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name} />
-                        ))
-                      }
-                    </Row>
-                  </Container>
-                ))
-              }
+            {filteredTags.map((categoryData) => (
+              <Container key={categoryData.category}>
+                <h2>{categoryData.category}</h2>
+                <Row>
+                  {categoryData.data && categoryData.data.map((p) => (
+                    <Pattern
+                      name={p.name}
+                      description={p.tagline ?? p.desc}
+                      tags={p.tags ?? []}
+                      key={p.name}
+                      handleSelectedTag={handleSelectedTag}
+                    />
+                  ))}
+                </Row>
+              </Container>
+            ))}
+
             </Col>
           </Row>
 

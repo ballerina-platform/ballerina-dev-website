@@ -3,5 +3,5 @@ desc: Message channel connects one application to another, where one application
 category: Messaging Systems
 index: 0
 helps: Ballerina supports message systems via its rich set of libraries. These libraries have `Client`s and `Listener`s to write and read messages.
-tags: ["Message Channel", "Point to Point Channel", "Message"]
+tags: ["Message Channel", "Point-to-Point Channel", "Message"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageChannel.html

@@ -18,7 +18,7 @@ export default function Pattern(props) {
                 </a>
                 <p className="card-text">{props.description}</p>
                 <p className={`${styles.tagWrapper} card-text text-body-secondary`} style={{ display: "flex", flexWrap: "wrap" }}>
-                  {props.tags.map((tag) => (<Badge className={styles.tag} key={tag}>{tag}</Badge>))}
+                  {props.tags.map((tag) => (<Badge as={"a"} className={styles.tag} key={tag} onClick={()=>props.handleSelectedTag(tag)}>{tag}</Badge>))}
                 </p>
               </Card.Body>
             </Col>

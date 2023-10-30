@@ -118,9 +118,9 @@ Follow the instructions given in this section to develop the service.
 
     - The call to the backend is done using a remote method call expression (using `->`), which distinguishes network calls from normal method calls. [Client data binding](https://ballerina.io/learn/by-example/http-client-data-binding/) is used to directly try and bind the JSON response on success to the expected array of records.
 
-    - Use the `is` check to decide the response based on the response to the client call. If the client call was successful and the respond payload was an array of `Doctor` records (as expected), then directly return the array from the resource. 
+    - Use the `is` check to decide the response based on the response to the backend call. If the backend call was successful and the response payload was an array of `Doctor` records (as expected), then directly return the array from the resource. 
 
-    - If the request fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
+    - If the backend call fails, send an `http:NotFound` response if the client call failed with a `4xx` status code or send an `http:InternalServerError` response for other failures.
 
 You have successfully developed the required service.
 

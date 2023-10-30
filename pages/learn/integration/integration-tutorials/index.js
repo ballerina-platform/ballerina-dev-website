@@ -16,15 +16,20 @@
  * under the License.
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 
 import Layout from "../../../../layouts/LayoutLearn";
 import SampleList from "../../../../components/common/sample-list/SampleList";
 import { prefix } from '../../../../utils/prefix';
-
+import { data } from "./data";
+import {RxCross2} from "react-icons/rx"
+ 
 export default function Learn() {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredTags, setFilteredTags] = useState(data);
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -43,6 +48,31 @@ export default function Learn() {
     navigator.clipboard.writeText(window.location.href);
     element.parentElement.scrollIntoView();
   };
+
+  function handleSelectedTag(selectedCategory){
+    if(selectedTags.includes(selectedCategory)){
+      let filters = selectedTags.filter((el)=>el!==selectedCategory)
+      setSelectedTags(filters);
+    }else{
+      setSelectedTags([...selectedTags, selectedCategory])
+    }
+  }
+
+  useEffect(() => {
+    handleFilteredTags()
+  }, [selectedTags])
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = data.filter((item) => {
+        return selectedTags.every((tag) => item.tags.includes(tag));
+      });
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags([...data]);
+    }
+  }
+
 
   return (
     <>
@@ -135,46 +165,31 @@ export default function Learn() {
             </Col>
           </Row>
 
+          <Row className="selectedTagContainer">
+            <Col xs={12}>
+              <Container>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
+              </Container>
+            </Col>
+          </Row>
+
           <Row className="pageContentRow llanding">
             <Col xs={12} md={12}>
               <Container>
                 <Row>
                   {/* Left Column */}
-                  <SampleList
-                    name="Sending a message to a service"
-                    description="Use an HTTP client in a service to send a message to another service"
-                    tags={["HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Content-based message routing"
-                    description="Route requests based on message content"
-                    tags={["Content-based Routing", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Service orchestration"
-                    description="Integrate several services and expose them as a single service"
-                    tags={["Service Orchestration", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Transforming message formats"
-                    description="Transform messages from one format to another"
-                    tags={["Data Mapper", "Data Transformation", "HTTP Client", "HTTP Service", "REST API", "Data Binding", "Integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Sending emails from a service"
-                    description="Use the SMTP protocol to send emails from a service"
-                    tags={["Email", "SMTP Client", "HTTP Client", "HTTP Service", "REST API", "Integration"]}
-                    icon={false}
-                  />
-
+                  {filteredTags.map((item)=>{
+                    return(
+                      <SampleList name={item.name} key={item.name} description={item.description} tags={item.tags} icon={item.icon} handleSelectedTag={handleSelectedTag}>
+                      </SampleList>
+                    )
+                  })}
                 </Row>
               </Container>
             </Col>

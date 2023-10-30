@@ -31,7 +31,7 @@ Follow the instructions given in this section to develop the service.
 
 1. Create a new Ballerina project using the `bal` command and open it in VS Code.
 
-    ```bash
+    ```
     $ bal new sending-a-message-to-a-service
     ```
 
@@ -56,7 +56,7 @@ Follow the instructions given in this section to develop the service.
     ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
 
     > **Note:**
-    > While it's possible to work with JSON payloads directly, utilizing record types in your code offers several advantages. Records provide enhanced type safety, validation capabilities, and automated code generation, and are maintainable when handling structured data.
+    > While it is possible to work with the JSON payload directly, utilizing record types in your code offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
 
 4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
@@ -66,7 +66,13 @@ Follow the instructions given in this section to develop the service.
 
         ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
 
-    - Define an HTTP resource that allows the `GET` operation on resource path `/doctors` and accepts the `category` path parameter (corresponding to the specialization).
+    - Define an HTTP resource for the `GET` operation on the resource path `/doctors` and accepts the `category` path parameter (corresponding to the specialization) 
+    
+        The response can be one of the following:
+
+        - On success, it returns a JSON payload of type `Doctor[]`.
+
+        - On error, it returns either an `http:NotFound` or an `http:InternalServerError` response.
 
         ![Define the resource](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_resource.gif)
 
@@ -175,14 +181,13 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 > **Note:**
 > Alternatively, you can run this service by navigating to the project root and using the `bal run` command.
 >
-> ```bash
+> ```
 > sending-a-message-to-a-service$ bal run
 > Compiling source
 >         integration_tutorials/sending_a_message_to_a_service:0.1.0
 >
 > Running executable
 > ```
->
 
 ### Step 4: Try out the use case
 
@@ -190,10 +195,10 @@ Let's test the use case by sending a request to the service.
 
 #### Start the backend service
 
-Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service.
+Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service:
 
-```bash
-bal run hospitalservice.jar
+```
+$ bal run hospitalservice.jar
 ```
 
 #### Send a request
@@ -234,7 +239,7 @@ You will see the response message from the backend with a list of details of the
 
 Now, check the terminal in which you ran the Ballerina service. You should see a log similar to the following.
 
-```bash
+```
 time = 2023-08-15T13:01:34.022+05:30 level = INFO module = integration_tutorials/sending_a_message_to_a_service message = "Retrieving information" specialization = "surgery"
 ```
 
@@ -264,7 +269,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
     ```
 
-3. Assign the mock payload from the backend service to a variable.
+3. Assign the mock payload from the backend service to a variable. This variable will be used to mock the payload from the backend and to verify the received payload
 
     ```ballerina
     map<json>[] & readonly surgeons = [
@@ -335,7 +340,7 @@ Let's test the use case by writing a test case that sends a request to the servi
 
    Alternatively, you can run all the tests in a package by navigating to the project root and using the `bal test` command.
 
-    ```bash
+    ```
     sending-a-message-to-a-service$ bal test
     Compiling source
             integration_tutorials/sending_a_message_to_a_service:0.1.0

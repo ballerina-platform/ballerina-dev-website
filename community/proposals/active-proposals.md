@@ -36,7 +36,8 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|0|2023-10-25|N/A|
+|[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-standard-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
+|[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|2|2023-10-25|N/A|
 |[Proposal: Ballerina GraphQL Schema Registry](https://github.com/ballerina-platform/ballerina-standard-library/issues/4820)|[zetcco](https://github.com/zetcco)|0|2023-09-19|Active|
 |[Proposal: Map Ballerina Constraints to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/4788)|[SachinAkash01](https://github.com/SachinAkash01)|1|2023-09-08|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-standard-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|

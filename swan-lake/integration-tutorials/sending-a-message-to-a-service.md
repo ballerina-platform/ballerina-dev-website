@@ -60,19 +60,13 @@ Follow the instructions given in this section to develop the service.
 
 4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
-    - Open [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
+    - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
    
     - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`.
 
         ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
 
-    - Define an HTTP resource for the `GET` operation on the resource path `/doctors` and accepts the `category` path parameter (corresponding to the specialization) 
-    
-        The response can be one of the following:
-
-        - On success, it returns a JSON payload of type `Doctor[]`.
-
-        - On error, it returns either an `http:NotFound` or an `http:InternalServerError` response.
+    - Define an HTTP resource that allows the `GET` operation on the resource path `/doctors` and accepts the `category` path parameter (corresponding to the specialization). Use `Doctor[]`, `http:NotFound`, and `http:InternalServerError` as the response types.
 
         ![Define the resource](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_resource.gif)
 

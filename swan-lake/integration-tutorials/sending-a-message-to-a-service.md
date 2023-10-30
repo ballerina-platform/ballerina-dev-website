@@ -62,7 +62,7 @@ Follow the instructions given in this section to develop the service.
 
     - Open [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
    
-    - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `port`.
+    - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `8290`.
 
         ![Define the service](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_service.gif)
 
@@ -203,7 +203,7 @@ $ bal run hospitalservice.jar
 
 #### Send a request
 
-Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Use `surgery` as the path parameter.
 
 ![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 
@@ -266,10 +266,10 @@ Let's test the use case by writing a test case that sends a request to the servi
 2. Define an `http:Client` object to send requests to the healthcare service.
 
     ```ballerina
-    final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
+    final http:Client cl = check new (string `http://localhost:8290/healthcare/doctors`);
     ```
 
-3. Assign the mock payload from the backend service to a variable. This variable will be used to mock the payload from the backend and to verify the received payload
+3. Define a variable with mock payload from the backend service. This variable will be used to mock the payload from the backend and to verify the received payload
 
     ```ballerina
     map<json>[] & readonly surgeons = [

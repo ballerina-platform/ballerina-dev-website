@@ -39,9 +39,9 @@ Follow the instructions given in this section to develop the service.
 
     ![Open diagram view](/learn/images/integration-tutorials/sending-a-message-to-a-service/open_diagram_view.gif)
 
-3. Define a record type named `Doctor` corresponding to the payload from the backend service.
+3. Generate a record type corresponding to the payload from the backend service by providing a sample of the expected JSON payload.
 
-    The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following and can be modeled as `Doctor` record type.
+    The payload from the backend service will be an array of JSON objects, where each JSON object will be similar to the following.
 
     ```json
     {
@@ -53,7 +53,10 @@ Follow the instructions given in this section to develop the service.
     }
     ```
    
-   ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
+    ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
+
+    > **Note:**
+    > While it's possible to work with JSON payloads directly, utilizing record types in your code offers several advantages. Records provide enhanced type safety, validation capabilities, and automated code generation, and are maintainable when handling structured data.
 
 4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
@@ -261,7 +264,7 @@ Let's test the use case by writing a test case that sends a request to the servi
     final http:Client cl = check new (string `http://localhost:${port}/healthcare/doctors`);
     ```
 
-3. Define a variable to keep the expected payload from the backend service. This variable will be used to mock the payload from the backend and to verify the received payload.
+3. Assign the mock payload from the backend service to a variable.
 
     ```ballerina
     map<json>[] & readonly surgeons = [

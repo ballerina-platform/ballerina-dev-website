@@ -117,7 +117,7 @@ export default function Downloads() {
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
                <Col xs={12} sm={12} md={12} lg={3}>
-                  <a id="packWindows" href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" 
+                  <a id="packVsCode" href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" 
                   className={styles.cVSCodeSample} data-download="downloads" 
                   target="_blank" rel="noreferrer">
                      <div className={styles.cSize}>Open `hello_world.bal` on <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visual Studio Code</p></div>

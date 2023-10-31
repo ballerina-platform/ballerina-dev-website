@@ -1,7 +1,6 @@
 ---
 title: 'Make data extraction smarter'
-description: "With Ballerina, AI integration paves the way for a transformed data extraction process, 
-effortlessly unlocking the doors to valuable insights with precision and simplicity.
+description: "Ballerina AI integrations can extract information from unstructured data, unlocking vast amounts of information captured in emails, documents, comments, etc. in the extraction process.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
 phase: 'Extractions'

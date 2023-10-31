@@ -27,35 +27,35 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row className='pageContentRow integration'>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row className='pageContentRow integration'>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>
-                            Extracting, transforming, and loading data often involves dealing with intricate, time-consuming processes, leading to high costs and operational inefficiencies.
-                        </p>
+                                <p className={styles.introText2}>
+                                    Extracting, transforming, and loading data often involves dealing with intricate, time-consuming processes, leading to high costs and operational inefficiencies.
+                                </p>
 
-                        <p className={styles.introText3}>
-                            Ballerina revolutionizes ETL with its streamlined approach, offering robust and efficient solution. It excels in simplifying complex data operations, ensuring a smooth and adaptable ETL experience.
-                        </p>
+                                <p className={styles.introText3}>
+                                    Balllerina simplifies ETL with its programmable approach. It excels in complex data operations, integrations, and deployment flexibility, ensuring a scalable and adaptable ETL experience.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                    <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
-                </Col>
-            </Row>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+                            {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
+                            <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
+                        </Col>
+                    </Row>
 
-            {/* <Row className='pageContentRow integration'>
+                    {/* <Row className='pageContentRow integration'>
                 <Col xs={12}>
                     <div className={styles.introText3}>
                         <p>Just write the code using the only language with integration friendly abstractions</p>
@@ -73,7 +73,7 @@ export default function Intro() {
 
 
 
-            </Container>
+                </Container>
             </Col>
         </>
     );

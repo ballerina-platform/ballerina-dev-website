@@ -20,7 +20,7 @@ Click the **Run** button available at the left-hand side of the cell or press th
 
 ## Edit the code
 
-You can use the [IntelliSense features](https://wso2.com/ballerina/vscode/docs/write-the-code/intellisense/) to edit the code on notebooks as shown below.
+You can use the [IntelliSense features](/learn/vs-code-extension/write-the-code/intellisense/) to edit the code on notebooks as shown below.
 
 <img src="/learn/images/vs-code-extension/notebooks/notebook-code-completion.gif" class="cInlineImage-full"/>
 

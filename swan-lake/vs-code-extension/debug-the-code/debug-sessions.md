@@ -49,7 +49,7 @@ Follow the steps below to start a debug session with configurations. All the con
 
 >**Info:** If you launch the debug session through VS Code, the working directory will be the Ballerina package root. However, you can use remote debugging for alternative working directories.
 
-1. Create the `launch.json` file. For instructions, see [Create the configuration file](../../debug-the-code/debug-configurations/#create-the-configuration-file).
+1. Create the `launch.json` file. For instructions, see [Create the configuration file](/learn/vs-code-extension/debug-the-code/debug-configurations/#create-the-configuration-file).
 
     >**Info:**   This enables the **Ballerina Program**, **Ballerina Test**, and **Ballerina Remote** options that are required to debug your code using configurations.
 
@@ -87,7 +87,7 @@ Follow the steps below to start a remote debug session.
 
 1. Create the `launch.json` configuration file if it is not created already. 
 
-    >**Info:**   For instructions on creating the `launch.json` file, see [Set up debugging configurations](#debugging-configurations).
+    >**Info:**   For instructions on creating the `launch.json` file, see [debug configurations](/learn/vs-code-extension/debug-the-code/debug-configurations/#create-the-configuration-file).
 
 2. Open the `launch.json` file and configure the `debuggeeHost` and `debuggeePort` attributes under the `Ballerina Remote` configurations section accordingly.
 
@@ -113,4 +113,4 @@ Follow the steps below to start a remote debug session.
 
       <img src="/learn/images/vs-code-extension/debug/remote-debug.gif" class="cInlineImage-full"/>
 
-    >**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, see [Debugging features](../debug-features/).
+    >**Info:** For detailed information on the feature-rich debugging experience for troubleshooting Ballerina applications provided via the Ballerina VS Code extension, see [Debug features](/learn/vs-code-extension/debug-the-code/debug-features/).

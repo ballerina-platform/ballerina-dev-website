@@ -66,4 +66,4 @@ The integrated terminal will open automatically and run the program.
 
 <img src="/learn/images/vs-code-extension/build-and-try/build-and-run/run-output.png" class="cInlineImage-full"/>
 
->**Tip:** Click the **Debug** CodeLens to debug the Ballerina program you ran. For more information, see [Debug the code](../debug-the-code/).
+>**Tip:** Click the **Debug** CodeLens to debug the Ballerina program you ran. For more information, see [Debug the code](/learn/vs-code-extension/debug-the-code/debug-sessions/).

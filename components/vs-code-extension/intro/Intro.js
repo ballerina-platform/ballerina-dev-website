@@ -85,7 +85,7 @@ export default function Intro() {
                 <Col xs={12} lg={7} className={styles.introImg}>
                 
 
-                <Carousel controls={false}>
+                <Carousel controls={false} variant="dark">
       <Carousel.Item>
       <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-5.png`} alt="AI" />
       </Carousel.Item>

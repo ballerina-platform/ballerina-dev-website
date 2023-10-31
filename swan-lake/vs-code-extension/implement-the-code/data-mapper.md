@@ -172,7 +172,7 @@ Follow the steps below to open the Data Mapper via the Diagram View.
 
 Once the Data mapper is opened, it will prompt you to provide inputs and output of the transformation function. Inputs and output can be any data type in Ballerina. This example converts JSON and an array of JSON to JSON, and thereby, you can use Ballerina record types as inputs and output.
 
-In the Data Mapper form, you have several options to provide the input and output records. If the records are already defined in your package, you can select one of those. If you are starting from scratch, you can either create the record from the [Record Editor view](https://wso2.com/ballerina/vscode/docs/references/record-editor/) or import a JSON to create a matching record.
+In the Data Mapper form, you have several options to provide the input and output records. If the records are already defined in your package, you can select one of those. If you are starting from scratch, you can either create the record from the [Record Editor view](/learn/vs-code-extension/references/record-editor/) or import a JSON to create a matching record.
 
 This example imports JSON files and creates the records as shown below.
 

@@ -4,13 +4,13 @@ Hello, Ballerina community,
 
 We're excited to present the Ballerina VS Code extension version 4.5.0! Here's what's new:
 
-### What's Added
+## New features
 
-- **XML Import Option:** Now you can effortlessly create records by importing XML data. Building with XML in Ballerina is more convenient than ever.
+The **XML Import Option:** Now, you can effortlessly create records by importing XML data. Building with XML in Ballerina is more convenient than ever.
 
-    <img src="/learn/images/vs-code-extension/release-notes/v-4.5.0/xml-import.gif" class="cInlineImage-full"/>
+<img src="/learn/images/vs-code-extension/release-notes/v-4.5.0/xml-import.gif" class="cInlineImage-full"/>
 
-### What's Improved
+## Improvements
 
 - **Ballerina Documentation Link:** Easily access the Ballerina documentation when you select a function in the statement editor. Seamlessly switch between your code and the documentation.
 
@@ -26,5 +26,3 @@ We're excited to present the Ballerina VS Code extension version 4.5.0! Here's w
 
 
 Thank you for your support! To get the latest version, visit the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
-
-For more details, check out [Ballerina website](https://ballerina.io) 

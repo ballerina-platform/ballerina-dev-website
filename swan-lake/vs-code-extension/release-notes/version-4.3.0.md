@@ -11,13 +11,13 @@ If you are new to Ballerina, you can download the [installers](https://ballerina
 
 Below are the new features introduced by this release.
 
-## Entity Relationship Diagram
+### Entity Relationship Diagram
 
 With the latest Ballerina VS Code extension release (version 4.3.0) and <a href="https://ballerina.io/downloads/" target="_blank">Ballerina Swan lake Update 6 release</a>, now, you can generate the entity relationship diagram for your Ballerina persist model. This feature can be accessed using the icon available on the top-right corner of the editor panel or using the `Ballerina: Entity Relationship Diagram` command available in the VS Code command palette.
 
 <img src="/learn/images/vs-code-extension/release-notes/v-4.3.0/er-diagram.gif" class="cInlineImage-full"/>
 
-## TOML config generator
+### TOML config generator
 
 You can now automatically generate the `Config.toml` file for your Ballerina project. If there are mandatory configurable variables when you run the program via VS Code, it will prompt asking if you would like to create the `Config.toml` file. If you select **Create Config.toml**, it will create the `Config.toml` file in the package root. If a `Config.toml` file is already available, it will update it with new configurable fields. 
 

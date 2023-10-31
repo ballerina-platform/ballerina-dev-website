@@ -26,6 +26,6 @@ Follow the steps below to change the currently active Ballerina distribution and
 
 ## Enable debug logs
 
-You can also enable the [debug logs](https://wso2.com/ballerina/vscode/docs/configure-the-extension/#advanced-configurations) from the Ballerina extension settings to view any issues arising from the extension features.
+You can also enable the [debug logs](/learn/vs-code-extension/configure-the-extension/#advanced-configurations) from the Ballerina extension settings to view any issues arising from the extension features.
 
 <img src="/learn/images/vs-code-extension/troubleshoot/enable-debug-log.png" class="cInlineImage-full"/>

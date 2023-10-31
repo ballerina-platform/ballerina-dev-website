@@ -74,7 +74,6 @@ The flow is as follows
             "phone": "8770586755",
             "email": "johndoe@gmail.com"
         },
-        "fee": 7000.0,
         "hospital": "grand oak community hospital",
         "confirmed": false,
         "appointmentDate": "2017-04-02"
@@ -172,14 +171,13 @@ Follow the instructions given in this section to develop the service.
         string hospital;
         string category;
         string availability;
-        float fee;
+        decimal fee;
     |};
 
     type ReservationResponse record {|
         int appointmentNumber;
         Doctor doctor;
         Patient patient;
-        float fee;
         string hospital;
         boolean confirmed;
         string appointmentDate;
@@ -321,14 +319,13 @@ type Doctor record {|
     string hospital;
     string category;
     string availability;
-    float fee;
+    decimal fee;
 |};
 
 type ReservationResponse record {|
     int appointmentNumber;
     Doctor doctor;
     Patient patient;
-    float fee;
     string hospital;
     boolean confirmed;
     string appointmentDate;
@@ -457,7 +454,6 @@ You will see a response similar to the following for a successful appointment re
         "phone": "8770586755",
         "email": "johndoe@gmail.com"
     },
-    "fee": 7000.0,
     "hospital": "grand oak community hospital",
     "confirmed": false,
     "appointmentDate": "2017-04-02"

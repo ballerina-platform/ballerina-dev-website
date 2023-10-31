@@ -23,7 +23,7 @@ import { Row, Col, Container, Badge } from "react-bootstrap";
 import Layout from "../../../../layouts/LayoutLearn";
 import SampleList from "../../../../components/common/sample-list/SampleList";
 import { prefix } from '../../../../utils/prefix';
-import { data } from "./data";
+import { data } from "../../../../components/learn/pre-built-integrations/data";
 import {RxCross2} from "react-icons/rx"
 
 export default function Learn() {

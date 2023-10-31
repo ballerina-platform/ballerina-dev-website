@@ -28,7 +28,7 @@ service /sales on new http:Listener(9090) {
     };
 
     @http:ResourceConfig {
-        auth: { scopes: ["order_read", "order_insert"] }
+        auth: { scopes: ["order_read"] }
     }
     resource function get orders() returns Order[] {
         return orderTable.toArray();

@@ -55,13 +55,13 @@ export default function JoinUs(props) {
                 <div className={styles.smIcons}>
                   <ul>
                     <li>
-                      <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                        <Image src={`${prefix}/images/sm-icons/stackoverflow-color.svg`} width={60} height={60} alt="Stackoverflow" />
+                      <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
+                        <Image src={`${prefix}/images/sm-icons/discord-color.svg`} width={70} height={60} alt="Discord" />
                       </a>
                     </li>
                     <li>
-                      <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                        <Image src={`${prefix}/images/sm-icons/discord-color.svg`} width={70} height={60} alt="Discord" />
+                      <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
+                        <Image src={`${prefix}/images/sm-icons/stackoverflow-color.svg`} width={60} height={60} alt="Stackoverflow" />
                       </a>
                     </li>
                     <li>
@@ -70,23 +70,23 @@ export default function JoinUs(props) {
                       </a>
                     </li>
                     <li>
-                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
-                        <Image src={`${prefix}/images/sm-icons/linkedin-color.svg`} width={70} height={70} alt="LinkedIn" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="Meetup">
-                        <Image src={`${prefix}/images/sm-icons/meetup-color.svg`} width={80} height={80} alt="Meetup" />
-                      </a>
-                    </li>
-                    <li>
                       <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
                         <Image src={`${prefix}/images/sm-icons/twitter-x-black.png`} width={60} height={60} alt="X" />
                       </a>
                     </li>
                     <li>
-                      <a className={styles.footerLinkSM} href="#" target="_blank" rel="noreferrer" title="YouTube">
+                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
+                        <Image src={`${prefix}/images/sm-icons/linkedin-color.svg`} width={70} height={70} alt="LinkedIn" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://www.youtube.com/c/Ballerinalang?reload=9" target="_blank" rel="noreferrer" title="YouTube">
                         <Image src={`${prefix}/images/sm-icons/youtube-color.svg`} width={80} height={80} alt="YouTube" />
+                      </a>
+                    </li>
+                    <li>
+                      <a className={styles.footerLinkSM} href="https://www.meetup.com/ballerinalang-community/" target="_blank" rel="noreferrer" title="Meetup">
+                        <Image src={`${prefix}/images/sm-icons/meetup-color.svg`} width={80} height={80} alt="Meetup" />
                       </a>
                     </li>
                   </ul>

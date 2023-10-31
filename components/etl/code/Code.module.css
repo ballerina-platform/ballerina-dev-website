@@ -43,6 +43,10 @@ a.cDownload span {
     width: fill-available !important;
 }
 
+.box img {
+    margin-bottom: 1rem;
+}
+
 .box.ipaas {
     text-align: center;
 }
@@ -97,4 +101,8 @@ a.cDownload span {
 
 .dVersions .dVersion:hover {
     background-color: #585a5e;
+}
+
+.subsection + .subsection {
+    margin-top: 40px;
 }

@@ -8,8 +8,6 @@ public type SalesOrder record {|
 |};
 
 public function removeDuplicates(SalesOrder[] orders) returns SalesOrder[] {
-    // group the orders with the same itemId, customerId and itemName
-    // and select only one of those duplicate values
     return from var {itemId, customerId, itemName, quantity, date} in orders
             group by itemId, customerId, itemName
             select {itemId, 

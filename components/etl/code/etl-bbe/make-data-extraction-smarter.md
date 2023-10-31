@@ -24,21 +24,17 @@ service /api/reviews on new http:Listener(8080) {
                         }
                     The fields should contain points extracted from all reviews
                     Here are the reviews:
-                    ${string:'join(",", ...summaryRequest.reviews)}
-                    `
+                    ${string:'join(",", ...summaryRequest.reviews)}`
                 }
             ]
         };
-        do {
-            chat:CreateChatCompletionResponse SummaryResponse = check openAiChat->/chat/completions.post(request);
-            if SummaryResponse.choices.length() < 1 {
-                check error("No summary received.");
-            }
-            string content = check SummaryResponse.choices[0].message?.content.ensureType(string);
-            io:println(content);
-        } on fail error e {
-            io:println(e.message());
+        chat:CreateChatCompletionResponse summary =
+                            check openAiChat->/chat/completions.post(request);
+        if summary.choices.length() < 1 {
+            return error("Failed to summarize reviews");
         }
+        string content = check summary.choices[0].message?.content.ensureType();
+        io:println(content);
     }
 }
 ```

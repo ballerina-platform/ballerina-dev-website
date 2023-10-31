@@ -6,8 +6,7 @@ url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/errorCorrection/serv
 phase: 'Transformations'
 ---
 ```
-// make a connection with sapiling API with ballerina http client
-final http:Client saplingClient = check new ("https://api.sapling.ai");
+final http:Client saplingEP = check new ("https://api.sapling.ai");
 
 service /api/posts on new http:Listener(8080) {
     resource function post spellings(SpellCheckRequest request) returns error? {
@@ -16,7 +15,7 @@ service /api/posts on new http:Listener(8080) {
             text: request.content,
             session_id: "session1"
         };
-        SaplingResponse response = check saplingClient->/api/v1/spellcheck.post(saplingRequest);
+        SaplingResponse response = check saplingEP->/api/v1/spellcheck.post(saplingRequest);
         int errorCount = 0;
         foreach EditBody edit in response.edits {
             io:println(string `${edit.sentence} : ${edit.replacement}`);

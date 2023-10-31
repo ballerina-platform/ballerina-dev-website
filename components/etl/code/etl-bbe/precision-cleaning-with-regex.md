@@ -4,6 +4,7 @@ description: "Discover how Ballerina's regex-powered data cleaning effortlessly 
 leaving your data refined and ready for insights.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Transformations'
 ---
 ```
 public function removeEmailStrings(string inputString) returns string {

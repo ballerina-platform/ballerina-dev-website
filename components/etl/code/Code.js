@@ -93,8 +93,6 @@ export default function UseCases(props) {
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
-                        
-                        {/* dataInteractions */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='where-models-drive-data-interactions' className='section'>
@@ -114,10 +112,11 @@ export default function UseCases(props) {
                                 </h2>
                             </Col>
                         </Row>
+                        {/* dataInteractions */}
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
-                                <h3>{dataInteractions.frontmatter.title}</h3>
+                                    <h3>{dataInteractions.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataInteractions.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -151,27 +150,9 @@ export default function UseCases(props) {
 
                         {/* smarterExtractiion */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='make-data-extraction-smarter' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'make-data-extraction-smarter')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {smarterExtractiion.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{smarterExtractiion.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{smarterExtractiion.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -205,27 +186,9 @@ export default function UseCases(props) {
 
                         {/* githubExtract */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='extract-data-from-github' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'extract-data-from-github')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {githubExtract.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{githubExtract.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{githubExtract.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -264,8 +227,6 @@ export default function UseCases(props) {
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
-                        <h2>Transformations</h2>
-                        {/* clean */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='eleminating-redundency-for-cleaner-data' className='section'>
@@ -281,13 +242,15 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {clean.frontmatter.title}
+                                    Transformations
                                 </h2>
                             </Col>
                         </Row>
+                        {/* clean */}
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{clean.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{clean.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Remove duplicates using a Ballerina query</span>
@@ -326,27 +289,9 @@ export default function UseCases(props) {
 
                         {/* errorCorrection */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='refining-data-excellence' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'refining-data-excellence')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {errorCorrection.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{errorCorrection.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{errorCorrection.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -380,27 +325,9 @@ export default function UseCases(props) {
 
                         {/* enrich */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='data-enrichment-magic' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'fine-tune-models-with-your-own-data')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {enrich.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{enrich.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{enrich.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -434,27 +361,9 @@ export default function UseCases(props) {
 
                         {/* dataMapper */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='reshaping-data-with-data-mapper' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'reshaping-data-with-data-mapper')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {dataMapper.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{dataMapper.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataMapper.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -488,27 +397,9 @@ export default function UseCases(props) {
 
                         {/* cleanUsingRegex */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='precision-cleaning-with-regex' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'precision-cleaning-with-regex')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {cleanUsingRegex.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{cleanUsingRegex.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{cleanUsingRegex.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -547,8 +438,6 @@ export default function UseCases(props) {
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
-                        <h2>Loadings</h2>
-                        {/* loadFromKafka */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='load-from-kafka-topics' className='section'>
@@ -564,13 +453,15 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {loadFromKafka.frontmatter.title}
+                                    Loadings
                                 </h2>
                             </Col>
                         </Row>
+                        {/* loadFromKafka */}
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{loadFromKafka.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{loadFromKafka.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -604,27 +495,9 @@ export default function UseCases(props) {
 
                         {/* loadToBigQuery */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='load-data-to-data-warehouse' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'load-data-to-data-warehouse')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {loadToBigQuery.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{loadToBigQuery.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{loadToBigQuery.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -658,27 +531,9 @@ export default function UseCases(props) {
 
                         {/* loadToGSheets */}
                         <Row>
-                            <Col xs={12} className={styles.box}>
-                                <h2 id='load-data-to-google-sheets' className='section'>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
-                                        fill="currentColor"
-                                        className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'load-data-to-google-sheets')}
-                                    >
-                                        <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
-                                        <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
-                                    </svg>
-                                    {loadToGSheets.frontmatter.title}
-                                </h2>
-                            </Col>
-                        </Row>
-                        <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                    <h3>{loadToGSheets.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{loadToGSheets.frontmatter.description}</ReactMarkdown>
 
                                     {

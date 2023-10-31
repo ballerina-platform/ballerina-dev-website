@@ -4,6 +4,7 @@ description: "Experience the simplicity of loading data values into Google Sheet
 turning your spreadsheets into dynamic, data-driven tools.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Loadings'
 ---
 ```
 public function aggregateSalesData(ItemData[] salesData) returns SalesSummary[] {

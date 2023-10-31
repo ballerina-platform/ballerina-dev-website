@@ -5,6 +5,7 @@ including HTTP and GraphQL clients,
 making it easy to secinteract with APIs for efficient data extraction in your ETL pipeline.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Extractions'
 ---
 ```
 const REPO_OWNER = "ballerina-platform";

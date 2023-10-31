@@ -3,7 +3,7 @@ title: 'Where Models Drive Data Interactions'
 description: "Ballerina's persist feature seamlessly connects to databases, retrieves data, and kickstarts your ETL process. With its intuitive syntax and built-in database support, Ballerina empowers developers to effortlessly interact with databases.
 "
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'
-phase: 'Extractions'
+phase: 'Extraction'
 ---
 ```
 public function getOrderData() returns error? {

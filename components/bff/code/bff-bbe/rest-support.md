@@ -1,6 +1,6 @@
 ---
-title: 'Simplified Backend with Native REST'
-description: Ballerina seamlessly integrates REST features like path/query parameters, HTTP headers, status codes and complex JSON structures as first-class citizens within the language itself.
+title: 'Simplify backend development with native REST features'
+description: Ballerina provides REST features like path/query parameters, HTTP headers, status codes, and complex JSON structures as first-class citizens within the language itself.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_rest'
 ---
 ```

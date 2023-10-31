@@ -4,6 +4,7 @@ description: "Experience the effortless integration as Ballerina streamlines the
 loading data from Kafka topics into databases, ensuring real-time data flows with precision.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Loadings'
 ---
 ```
 final kafka:ConsumerConfiguration consumerConfiguration = {

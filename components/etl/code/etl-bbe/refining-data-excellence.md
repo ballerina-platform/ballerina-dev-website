@@ -3,6 +3,7 @@ title: 'Refining Data Excellence'
 description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/errorCorrection/service.bal'
+phase: 'Transformations'
 ---
 ```
 // make a connection with sapiling API with ballerina http client

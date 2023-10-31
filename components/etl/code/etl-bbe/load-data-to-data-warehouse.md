@@ -4,6 +4,7 @@ description: "Unlock the power of Ballerina for smooth and efficient data loadin
 from CSV to a data warehouse, making your data analysis journey a breeze.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Loadings'
 ---
 ```
 configurable string bigQueryAccessToken = ?;

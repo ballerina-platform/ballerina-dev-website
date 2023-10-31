@@ -3,6 +3,7 @@ title: 'Data Enrichment Magic'
 description: "Watch your data come to life as Ballerina's enchanting data enrichment capabilities add depth and context to your insights.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/DataEnrich/main.bal'
+phase: 'Transformations'
 ---
 ```
 final http:Client geocodingClient = check new ("https://maps.googleapis.com");

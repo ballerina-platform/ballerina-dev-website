@@ -21,7 +21,7 @@ service /logistics on new http:Listener(9090) {
                 cert: "./resources/public.cer"
             }
         );
-        http:Response serviceClientResponse = check serviceClient->post("/shipments", cargo);
+        http:Response res = check serviceClient->post("/shipments", cargo);
         return cargo;
     }
 }

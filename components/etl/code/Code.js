@@ -113,7 +113,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         {/* dataInteractions */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{dataInteractions.frontmatter.title}</h3>
@@ -149,7 +149,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* smarterExtractiion */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{smarterExtractiion.frontmatter.title}</h3>
@@ -185,7 +185,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* githubExtract */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{githubExtract.frontmatter.title}</h3>
@@ -247,7 +247,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         {/* clean */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{clean.frontmatter.title}</h3>
@@ -288,7 +288,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* errorCorrection */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{errorCorrection.frontmatter.title}</h3>
@@ -324,7 +324,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* enrich */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{enrich.frontmatter.title}</h3>
@@ -360,7 +360,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* dataMapper */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{dataMapper.frontmatter.title}</h3>
@@ -396,7 +396,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* cleanUsingRegex */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{cleanUsingRegex.frontmatter.title}</h3>
@@ -458,7 +458,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         {/* loadFromKafka */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{loadFromKafka.frontmatter.title}</h3>
@@ -494,7 +494,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* loadToBigQuery */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{loadToBigQuery.frontmatter.title}</h3>
@@ -530,7 +530,7 @@ export default function UseCases(props) {
                         </Row>
 
                         {/* loadToGSheets */}
-                        <Row>
+                        <Row className={styles.subsection}>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
                                     <h3>{loadToGSheets.frontmatter.title}</h3>

@@ -15,14 +15,12 @@ public function aggregateSalesData(ItemData[] salesData) returns SalesSummary[] 
 }
 
 public function loadToGoogleSheet(string sheetName, SalesSummary[] salesSummary) returns error? {
-    // create a new spread sheet to load data
     sheets:Spreadsheet spreadsheet = check spreadsheetClient->createSpreadsheet(sheetName);
     string spreadSheetId = spreadsheet.spreadsheetId;
 
-    // add legends to the sheet
-    _ = check spreadsheetClient->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: sheetName});
+    _ = check spreadsheetClient
+            ->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: sheetName});
     foreach var {productId, sales} in salesSummary {
-        // add values to the sheet
         _ = check spreadsheetClient->appendValue(
             spreadSheetId, [productId, sales], {sheetName});
     }

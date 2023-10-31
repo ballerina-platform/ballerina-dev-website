@@ -6,7 +6,7 @@ url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/ballerina_comprehe
 ```
 @http:ServiceConfig {
     cors: {
-        allowOrigins: ["http://localhost:3000", "http://www.hmart-dev.com", "http://www.hmart.com"],
+        allowOrigins: ["http://localhost:3000", "http://www.hmart.com"],
         allowHeaders: ["REQUEST_ID"],
         exposeHeaders: ["RESPONSE_ID"],
         maxAge: 84900
@@ -21,7 +21,7 @@ service /sales on new http:Listener(9090, secureSocket = {
 
     @http:ResourceConfig {
         cors: {
-            allowOrigins: ["http://localhost:3000", "http://www.hmart-dev.com", "http://www.hmart.com"],
+            allowOrigins: ["http://localhost:3000", "http://www.hmart.com"],
             allowCredentials: true
         }
     }

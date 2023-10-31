@@ -39,7 +39,7 @@ export default function UseCases(props) {
     const clientAuth = samples['client-auth'];
     const persist = samples['persist'];
     const deployment = samples['deployment'];
-    
+
     return (
         <>
             {/* rest */}
@@ -66,7 +66,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{rest.frontmatter.description}</ReactMarkdown>
@@ -84,23 +84,24 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"}}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Rest-API" />
+                                <Row>
+                                    {
+                                        (rest.code && rest.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: rest.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (rest.frontmatter.image && rest.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${rest.frontmatter.image}`} alt={rest.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (rest.code && rest.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: rest.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (rest.frontmatter.image && rest.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${rest.frontmatter.image}`} alt={rest.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/rest.gif`} style={{ height: "auto", borderRadius: "0.7rem" }} alt="Rest-API" />
+
                             </Col>
                         </Row>
                     </Container>
@@ -131,7 +132,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{jsonSupport.frontmatter.description}</ReactMarkdown>
@@ -149,23 +150,23 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/payload_validations.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Advanced Payload Validation" />
+                                <Row>
+                                    {
+                                        (jsonSupport.code && jsonSupport.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: jsonSupport.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (jsonSupport.frontmatter.image && jsonSupport.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${jsonSupport.frontmatter.image}`} alt={jsonSupport.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (jsonSupport.code && jsonSupport.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: jsonSupport.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (jsonSupport.frontmatter.image && jsonSupport.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${jsonSupport.frontmatter.image}`} alt={jsonSupport.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/payload_validations.gif`} style={{ height: "auto", borderRadius: "0.7rem" }} alt="Advanced Payload Validation" />
                             </Col>
                         </Row>
                     </Container>
@@ -196,7 +197,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{graphql.frontmatter.description}</ReactMarkdown>
@@ -214,24 +215,24 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{flex: "1 0 0", border: "1px solid #eeeeee"}}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/graphql.gif`} style={{ height: "59vh", borderRadius: "1.2rem" }} alt="GraphQl" />
+                                <Row>
+                                    {
+                                        (graphql.code && graphql.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div style={{ height: "auto" }} className="highlight" dangerouslySetInnerHTML={{ __html: graphql.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (graphql.frontmatter.image && graphql.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${graphql.frontmatter.image}`} alt={graphql.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
 
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (graphql.code && graphql.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div style={{ height: "auto"}} className="highlight" dangerouslySetInnerHTML={{ __html: graphql.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (graphql.frontmatter.image && graphql.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${graphql.frontmatter.image}`} alt={graphql.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/graphql.gif`} alt="GraphQl" />
                             </Col>
                         </Row>
                     </Container>
@@ -262,7 +263,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{websocket.frontmatter.description}</ReactMarkdown>
@@ -280,23 +281,24 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/websocket.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Websockets" />
+                                <Row>
+                                    {
+                                        (websocket.code && websocket.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: websocket.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (websocket.frontmatter.image && websocket.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${websocket.frontmatter.image}`} alt={websocket.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (websocket.code && websocket.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: websocket.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (websocket.frontmatter.image && websocket.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${websocket.frontmatter.image}`} alt={websocket.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/websocket.gif`} style={{ height: "auto", borderRadius: "1.2rem" }} alt="Websockets" />
+
                             </Col>
                         </Row>
                     </Container>
@@ -327,7 +329,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{serverAuth.frontmatter.description}</ReactMarkdown>
@@ -345,23 +347,24 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/react_jwt.gif`} style={{ height: "58.5vh", marginTop: "0.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Auth & AuthZ" />
+                                <Row>
+                                    {
+                                        (serverAuth.code && serverAuth.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: serverAuth.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (serverAuth.frontmatter.image && serverAuth.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${serverAuth.frontmatter.image}`} alt={serverAuth.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (serverAuth.code && serverAuth.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: serverAuth.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (serverAuth.frontmatter.image && serverAuth.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${serverAuth.frontmatter.image}`} alt={serverAuth.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/react_jwt.gif`} style={{ borderRadius: "1.2rem" }} alt="Auth & AuthZ" />
+
                             </Col>
                         </Row>
                     </Container>
@@ -392,7 +395,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{security.frontmatter.description}</ReactMarkdown>
@@ -410,11 +413,6 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/comprehensive-security.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem"}} alt="Comprehensive-Security" />
-                                </Row>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
                                 {
                                     (security.code && security.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -427,6 +425,11 @@ export default function UseCases(props) {
                                         <img src={`${prefix}/${security.frontmatter.image}`} alt={security.frontmatter.title} />
                                         : null
                                 }
+                                <Row>
+                                </Row>
+                            </Col>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/comprehensive-security.gif`} style={{ height: "auto", borderRadius: "1.2rem" }} alt="Comprehensive-Security" />
                             </Col>
                         </Row>
                     </Container>
@@ -457,7 +460,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{clientAuth.frontmatter.description}</ReactMarkdown>
@@ -475,23 +478,23 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee" }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Internal/External services" />
+                                <Row>
+                                    {
+                                        (clientAuth.code && clientAuth.code !== '') ?
+                                            <div className={styles.codeSnippet}>
+                                                <div className="highlight" dangerouslySetInnerHTML={{ __html: clientAuth.code }} />
+                                            </div>
+                                            : null
+                                    }
+                                    {
+                                        (clientAuth.frontmatter.image && clientAuth.frontmatter.image !== '') ?
+                                            <img src={`${prefix}/${clientAuth.frontmatter.image}`} alt={clientAuth.frontmatter.title} />
+                                            : null
+                                    }
                                 </Row>
                             </Col>
-                            <Col xs={12} md={7} lg={7} className={styles.box}>
-                                {
-                                    (clientAuth.code && clientAuth.code !== '') ?
-                                        <div className={styles.codeSnippet}>
-                                            <div className="highlight" dangerouslySetInnerHTML={{ __html: clientAuth.code }} />
-                                        </div>
-                                        : null
-                                }
-                                {
-                                    (clientAuth.frontmatter.image && clientAuth.frontmatter.image !== '') ?
-                                        <img src={`${prefix}/${clientAuth.frontmatter.image}`} alt={clientAuth.frontmatter.title} />
-                                        : null
-                                }
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
+                                <img src={`${prefix}/images/usecases/integration/bff/microservices.gif`} style={{ height: "auto", borderRadius: "1.2rem" }} alt="Internal/External services" />
                             </Col>
                         </Row>
                     </Container>
@@ -522,7 +525,7 @@ export default function UseCases(props) {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={5} lg={5} className={styles.box}>
+                            <Col xs={12} md={6} lg={6} className={styles.box}>
                                 <Row>
                                     <div className={styles.wrapper}>
                                         <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{persist.frontmatter.description}</ReactMarkdown>
@@ -538,11 +541,7 @@ export default function UseCases(props) {
 
                                     </div>
                                 </Row>
-                                <Row style={{ flex: "1 0 0", border: "1px solid #eeeeee"  }}>
-                                    <img src={`${prefix}/images/usecases/integration/bff/persists.gif`} style={{ height: "auto", marginTop: "1.3rem", marginBottom: "1rem", borderRadius: "1.2rem" }} alt="Persist Support" />
-                                </Row>
-                            </Col>
-                            <Col xs={12} md={7} lg={7} className={`${styles.box}`}>
+                                <Row>
                                 {
                                     (persist.code && persist.code !== '') ?
                                         <div className={styles.codeSnippet}>
@@ -555,6 +554,9 @@ export default function UseCases(props) {
                                         <img src={`${prefix}/${persist.frontmatter.image}`} alt={persist.frontmatter.title} className={styles.doNotFill} width='60%' />
                                         : null
                                 }
+                                </Row>
+                            </Col>
+                            <Col xs={12} md={6} lg={6} className={`${styles.box}`}><img src={`${prefix}/images/usecases/integration/bff/persists.gif`} style={{ height: "auto", borderRadius: "1.2rem" }} alt="Persist Support" />
                             </Col>
                         </Row>
                     </Container>

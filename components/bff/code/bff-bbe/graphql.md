@@ -11,7 +11,7 @@ public type Order record {|
 |};
 
 service /sales on new graphql:Listener(9090) {
-    resource function get orders(string? customerId) returns Order[]|error {
+    resource function get orders(string? customerId) returns Order[] {
         if customerId is () {
             return orderTable.toArray();
         }

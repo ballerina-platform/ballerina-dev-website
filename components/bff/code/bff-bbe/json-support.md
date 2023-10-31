@@ -14,7 +14,8 @@ type Customer record {|
 |};
 
 service /crm on new http:Listener(9090) {
-    resource function post customers/[string customerId]/agreement(http:Request request) returns http:Created|error {
+    resource function post customers/[string customerId]
+            /agreement(http:Request request) returns http:Created|error {
         mime:Entity[] bodyParts = check request.getBodyParts();
         byte[] agreemntForm = check bodyParts[0].getByteArray();
         check submitAgreementForm(customerId, agreemntForm);

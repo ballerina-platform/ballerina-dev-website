@@ -512,6 +512,30 @@ a.cGreenLinkArrow:hover {
   font-size: 3rem;
 }
 
+.selectedTagContainer{
+  margin-bottom: 10px;
+}
+
+.selectedTagBadge{
+  margin-right: 5px;
+  background-color: #888 !important;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedTagIcon{
+  margin-left: 3px;
+}
+
+.selectedTagBadge:hover{
+  opacity: 0.8;
+  color: #ffffff;
+}
+
 /*--------downloads page -------*/
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
@@ -673,7 +697,7 @@ ul.eventsTabs {
 .eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
-  border: none;
+  border: none !important;
 }
 
 .eventsTabs li button,

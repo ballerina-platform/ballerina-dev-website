@@ -4,15 +4,6 @@ We are delighted to announce the v4.0.0 release of the Ballerina VS Code extensi
 
 >**Compatibility:** If you are new to Ballerina, you can download the [installers](https://ballerina.io/downloads/) to install it. You can install the Ballerina VS Code extension from the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina). To ensure all features work correctly, **install the latest patch release of Update 4 or later**.
 
-- [New unified visual and code editing experience](#new-unified-visual-and-code-editing-experience)
-- [HTTP API Designer](#http-api-designer)
-- [GraphQL API Designer](#graphql-api-designer)
-- [Architecture View](#architecture-view)
-- [Type Diagram](#type-diagram)
-- [Data Mapper improvements](#data-mapper-improvements)
-- [Language Server updates](#language-server-updates)
-- [Choreo extension integration](#choreo-extension-integration)
-
 ## New unified visual and code editing experience
 
 In response to the valuable feedback received from developers, this release introduces a new unified development experience that seamlessly integrates code and visual development. This allows you to easily switch between code and visual development and leverage the benefits of both modes.
@@ -27,9 +18,9 @@ The extension now offers an HTTP Service Designer, which enables you to design H
 
 <img src="/learn/images/vs-code-extension/release-notes/v-4.0.0/service-design.gif" class="cInlineImage-full"/>
 
-## GraphQL Designer
+## GraphQL API Designer
 
-The GraphQL Designer is introduced to streamline the visual creation of GraphQL APIs in Ballerina. This powerful tool simplifies understanding and navigating complex GraphQL services by letting you browse through them effortlessly without examining code directly. To open the GraphQL designer, add a GraphQL service from code using the service template and then, click the **Visualize** CodeLens above the service.
+The GraphQL API Designer is introduced to streamline the visual creation of GraphQL APIs in Ballerina. This powerful tool simplifies understanding and navigating complex GraphQL services by letting you browse through them effortlessly without examining code directly. To open the GraphQL designer, add a GraphQL service from code using the service template and then, click the **Visualize** CodeLens above the service.
 
 <img src="/learn/images/vs-code-extension/release-notes/v-4.0.0/graphql.gif" class="cInlineImage-full"/>
 

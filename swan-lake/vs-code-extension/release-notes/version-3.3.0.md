@@ -2,14 +2,11 @@
 
 We are happy to announce the Ballerina VS Code extension 3.3.0 release, which has some exciting new features. Following are the highlights of this release.
 
-- [Visual Data Mapper](#data-mapper) - Helps you write and visualize data transformations easily.
-- [GraphQL Tryit](#integrated-graphql-tryit) - Facilitates trying out the GraphQL services with the integrated client.
-- [Record Editor](#record-editor) - Provides a better editing experience with suggestions. 
-- [Project Design View](#record-editor) - Facilitates visualizing service interactions in your project.
-
 If you are new to Ballerina, you can download the [installers](https://ballerina.io/downloads/) to install it. You can install the Ballerina VS Code extension from the [VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina).
 
 ## Visual Data Mapper
+
+Helps you write and visualize data transformations easily.
 
 <img src="/learn/images/vs-code-extension/release-notes/v-3.3.0/data-mapper.gif" class="cInlineImage-full"/>
 
@@ -20,6 +17,8 @@ If you are new to Ballerina, you can download the [installers](https://ballerina
 
 ## GraphQL Tryit
 
+Facilitates trying out the GraphQL services with the integrated client.
+
 <img src="/learn/images/vs-code-extension/release-notes/v-3.3.0/graphql-tryit.gif" class="cInlineImage-full"/>
 
 - You can try out the GraphQL services using the `Tryit` CodeLens.
@@ -28,6 +27,8 @@ If you are new to Ballerina, you can download the [installers](https://ballerina
 
 ## Record Editor
 
+Provides a better editing experience with suggestions. 
+
 <img src="/learn/images/vs-code-extension/release-notes/v-3.3.0/record-editor.gif" class="cInlineImage-full"/>
 
 - The expression editor is now combined with the record editor, which will give a better editing experience with suggestions and library support.
@@ -35,6 +36,8 @@ If you are new to Ballerina, you can download the [installers](https://ballerina
 - Record creation using JSON samples now supports separate record creation for complex JSON records. 
 
 ## Project Design View (experimental)
+
+Facilitates visualizing service interactions in your project.
 
 <img src="/learn/images/vs-code-extension/release-notes/v-3.3.0/design-view.gif" class="cInlineImage-full"/>
 

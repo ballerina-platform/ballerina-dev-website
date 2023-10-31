@@ -6,4 +6,4 @@ Click the **Run** CodeLens, which appears when you hover over the `@test:Config:
 
 <img src="/learn/images/vs-code-extension/test-the-code/write-tests.png" class="cInlineImage-full"/>
 
->**Info:** For more information on debugging tests, see [Test debug sessions](../debug-the-code/debug-sessions/#test-debug-sessions_1).
+>**Info:** For more information on debugging tests, see [Test debug sessions](/learn/vs-code-extension/debug-the-code/debug-sessions/#test-debug-sessions).

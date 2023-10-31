@@ -37,6 +37,12 @@ export default function CommunityCarousel(props) {
       <Carousel.Item>
       <img src='/images/community/4.png'/>
       </Carousel.Item>
+      <Carousel.Item>
+      <img src='/images/community/5.png'/>
+      </Carousel.Item>
+      <Carousel.Item>
+      <img src='/images/community/6.png'/>
+      </Carousel.Item>
     </Carousel>
   );
 }

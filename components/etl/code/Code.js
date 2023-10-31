@@ -51,7 +51,7 @@ export default function UseCases(props) {
             var container = document.getElementById("code-container"),
                 left = document.getElementById("left_panel"),
                 right = document.getElementById("right_panel");
-                // handle = document.getElementById("drag");
+            // handle = document.getElementById("drag");
 
             // handle.onmousedown = function (e) {
             //     isResizing = true;
@@ -89,10 +89,12 @@ export default function UseCases(props) {
 
     return (
         <>
-            {/* dataInteractions */}
+            {/* Extractions */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
+                        
+                        {/* dataInteractions */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='where-models-drive-data-interactions' className='section'>
@@ -108,13 +110,14 @@ export default function UseCases(props) {
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                                     </svg>
-                                    {dataInteractions.frontmatter.title}
+                                    Extractions
                                 </h2>
                             </Col>
                         </Row>
                         <Row>
                             <Col xs={12} md={5} lg={5} className={styles.box}>
                                 <div className={styles.wrapper}>
+                                <h3>{dataInteractions.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{dataInteractions.frontmatter.description}</ReactMarkdown>
 
                                     {
@@ -145,14 +148,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* smarterExtractiion */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
+                        {/* smarterExtractiion */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='make-data-extraction-smarter' className='section'>
@@ -205,14 +202,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* githubExtract */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
+                        {/* githubExtract */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='extract-data-from-github' className='section'>
@@ -269,10 +260,12 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* clean */}
+            {/* Transformations */}
             <Row className="pageContentRow integration code">
                 <Col xs={12}>
                     <Container>
+                        <h2>Transformations</h2>
+                        {/* clean */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='eleminating-redundency-for-cleaner-data' className='section'>
@@ -330,14 +323,8 @@ export default function UseCases(props) {
                                 </div>
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* errorCorrection */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
+                        {/* errorCorrection */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='refining-data-excellence' className='section'>
@@ -390,14 +377,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* enrich */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
+                        {/* enrich */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='data-enrichment-magic' className='section'>
@@ -450,14 +431,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* dataMapper */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
+                        {/* dataMapper */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='reshaping-data-with-data-mapper' className='section'>
@@ -510,14 +485,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* cleanUsingRegex */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
+                        {/* cleanUsingRegex */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='precision-cleaning-with-regex' className='section'>
@@ -574,10 +543,12 @@ export default function UseCases(props) {
                 </Col>
             </Row>
 
-            {/* loadFromKafka */}
+            {/* loading */}
             <Row className="pageContentRow integration code odd">
                 <Col xs={12}>
                     <Container>
+                        <h2>Loadings</h2>
+                        {/* loadFromKafka */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='load-from-kafka-topics' className='section'>
@@ -630,14 +601,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* loadToBigQuery */}
-            <Row className="pageContentRow integration code">
-                <Col xs={12}>
-                    <Container>
+                        {/* loadToBigQuery */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='load-data-to-data-warehouse' className='section'>
@@ -690,14 +655,8 @@ export default function UseCases(props) {
                                 }
                             </Col>
                         </Row>
-                    </Container>
-                </Col>
-            </Row>
 
-            {/* loadToGSheets */}
-            <Row className="pageContentRow integration code odd">
-                <Col xs={12}>
-                    <Container>
+                        {/* loadToGSheets */}
                         <Row>
                             <Col xs={12} className={styles.box}>
                                 <h2 id='load-data-to-google-sheets' className='section'>

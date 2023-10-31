@@ -4,6 +4,7 @@ description: "With Ballerina, AI integration paves the way for a transformed dat
 effortlessly unlocking the doors to valuable insights with precision and simplicity.
 "
 url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+phase: 'Extractions'
 ---
 ```
 final chat:Client openAiChat = check new ({auth: {token: openAIKey}});

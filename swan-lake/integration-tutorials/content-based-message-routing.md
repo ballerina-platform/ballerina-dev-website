@@ -31,7 +31,7 @@ The flow is as follows:
         "doctor": "thomas collins",
         "hospital": "grand oak community hospital",
         "hospital_id": "grandoak",
-        "appointment_date": "2017-04-02"
+        "appointment_date": "2023-10-02"
     }
     ```
 
@@ -63,7 +63,7 @@ The flow is as follows:
         },
         "hospital": "grand oak community hospital",
         "confirmed": false,
-        "appointmentDate": "2017-04-02"
+        "appointmentDate": "2023-10-02"
     }
     ```
 
@@ -453,7 +453,7 @@ Let's send a request to the service using cURL as follows.
 
 1. Install and set up [cURL](https://curl.se/) as your client.
 
-3. Create a file named `request.json` with the request payload.
+2. Create a file named `request.json` with the request payload.
 
     ```json
     {
@@ -502,7 +502,7 @@ You will see a response similar to the following for a successful appointment re
     },
     "hospital": "grand oak community hospital",
     "confirmed": false,
-    "appointmentDate": "2017-04-02"
+    "appointmentDate": "2023-10-02"
 }
 ```
 

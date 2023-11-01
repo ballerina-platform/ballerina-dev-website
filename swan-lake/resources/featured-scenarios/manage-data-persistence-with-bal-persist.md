@@ -172,7 +172,7 @@ final store:Client sClient = check new();
 
 public function main() returns error? {
    store:EmployeeInsert employee1 = {
-       id: uuid:createType4AsString(),
+       id: "16c6553a-373c-4b29-b1c8-c282f444248c",
        firstName: "John",
        lastName: "Doe",
        email: "johnd@xyz.com",

@@ -26,13 +26,12 @@ The flow is as follows:
             "ssn": "234-23-525",
             "address": "California",
             "phone": "8770586755",
-            "email": "johndoe@gmail.com",
-            "card_no": "7844481124110331"
+            "email": "johndoe@gmail.com"
         },
         "doctor": "thomas collins",
         "hospital": "grand oak community hospital",
         "hospital_id": "grandoak",
-        "appointment_date": "2017-04-02"
+        "appointment_date": "2023-10-02"
     }
     ```
 
@@ -62,10 +61,9 @@ The flow is as follows:
             "phone": "8770586755",
             "email": "johndoe@gmail.com"
         },
-        "fee": 7000.0,
         "hospital": "grand oak community hospital",
         "confirmed": false,
-        "appointmentDate": "2017-04-02"
+        "appointmentDate": "2023-10-02"
     }
     ```
 
@@ -152,8 +150,8 @@ Follow the instructions given in this section to develop the service.
     type ReservationRequest record {|
         Patient patient;
         string doctor;
-        string hospital_id;
-        HospitalId hospital;
+        HospitalId hospital_id;
+        string hospital;
         string appointment_date;
     |};
 
@@ -162,14 +160,13 @@ Follow the instructions given in this section to develop the service.
         string hospital;
         string category;
         string availability;
-        float fee;
+        decimal fee;
     |};
 
     type ReservationResponse record {|
         int appointmentNumber;
         Doctor doctor;
         Patient patient;
-        float fee;
         string hospital;
         boolean confirmed;
         string appointmentDate;
@@ -180,7 +177,7 @@ Follow the instructions given in this section to develop the service.
 
     ```ballerina
     service /healthcare on new http:Listener(port) {
-        resource function post categories/[string category]/reserve(ReservationRequest payload) 
+        resource function post categories/[string category]/reserve(ReservationRequest payload)
                 returns ReservationResponse|http:NotFound|http:InternalServerError {
             
         }
@@ -201,12 +198,12 @@ Follow the instructions given in this section to develop the service.
     service /healthcare on new http:Listener(port) {
         resource function post categories/[string category]/reserve(ReservationRequest payload)
                 returns ReservationResponse|http:NotFound|http:InternalServerError {
-            ReservationRequest {hospital_id, patient, ...reservationRequest} = payload;
+            ReservationRequest {hospital_id, patient, doctor, ...reservationRequest} = payload;
 
             log:printDebug("Routing reservation request",
-                            hospital_id = hospital_id,
-                            patient = patient.name,
-                            doctor = reservationRequest.doctor);
+                        hospital_id = hospital_id,
+                        patient = patient.name,
+                        doctor = doctor);
 
             http:Client hospitalEP;
             match hospital_id {
@@ -223,6 +220,7 @@ Follow the instructions given in this section to develop the service.
 
             ReservationResponse|http:ClientError resp = hospitalEP->/[category]/reserve.post({
                 patient,
+                doctor,
                 ...reservationRequest
             });
 
@@ -257,7 +255,8 @@ Follow the instructions given in this section to develop the service.
     
         Here,
         - The `hospital_id` value is assigned to the `hospital_id` variable. 
-        - The `patient` value is assigned to the `patient` variable of type `Patient` (fields are exactly those expected by the `Patient` record). 
+        - The `patient` value is assigned to the `patient` variable of type `Patient` (fields are exactly those expected by the `Patient` record).
+        - The `doctor` value is assigned to the `doctor` variable of string type.
         - The remaining components of the payload are collected in a mapping value and assigned to the `reservationRequest` variable.
 
     - The `log` functions are used to [log](https://ballerina.io/learn/by-example/#log) information at `INFO`, `DEBUG`, and `ERROR` log levels.
@@ -360,14 +359,13 @@ type Doctor record {|
     string hospital;
     string category;
     string availability;
-    float fee;
+    decimal fee;
 |};
 
 type ReservationResponse record {|
     int appointmentNumber;
     Doctor doctor;
     Patient patient;
-    float fee;
     string hospital;
     boolean confirmed;
     string appointmentDate;
@@ -376,12 +374,12 @@ type ReservationResponse record {|
 service /healthcare on new http:Listener(port) {
     resource function post categories/[string category]/reserve(ReservationRequest payload)
             returns ReservationResponse|http:NotFound|http:InternalServerError {
-        ReservationRequest {hospital_id, patient, ...reservationRequest} = payload;
+        ReservationRequest {hospital_id, patient, doctor, ...reservationRequest} = payload;
 
         log:printDebug("Routing reservation request",
                         hospital_id = hospital_id,
                         patient = patient.name,
-                        doctor = reservationRequest.doctor);
+                        doctor = doctor);
 
         http:Client hospitalEP;
         match hospital_id {
@@ -398,6 +396,7 @@ service /healthcare on new http:Listener(port) {
 
         ReservationResponse|http:ClientError resp = hospitalEP->/[category]/reserve.post({
             patient,
+            doctor,
             ...reservationRequest
         });
 
@@ -454,7 +453,7 @@ Let's send a request to the service using cURL as follows.
 
 1. Install and set up [cURL](https://curl.se/) as your client.
 
-3. Create a file named `request.json` with the request payload.
+2. Create a file named `request.json` with the request payload.
 
     ```json
     {
@@ -476,7 +475,7 @@ Let's send a request to the service using cURL as follows.
 3. Execute the following command.
 
     ```
-    curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
+    $ curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
     ```
 
 #### Verify the response
@@ -501,10 +500,9 @@ You will see a response similar to the following for a successful appointment re
         "phone": "8770586755",
         "email": "johndoe@gmail.com"
     },
-    "fee": 7000.0,
     "hospital": "grand oak community hospital",
     "confirmed": false,
-    "appointmentDate": "2017-04-02"
+    "appointmentDate": "2023-10-02"
 }
 ```
 

@@ -221,7 +221,7 @@ Let's send a request to the service using cURL as follows.
 2. Execute the following command.
 
     ```
-    curl -v http://localhost:8290/healthcare/querydoctor/surgery
+    $ curl -v http://localhost:8290/healthcare/querydoctor/surgery
     ```
 
 #### Verify the response

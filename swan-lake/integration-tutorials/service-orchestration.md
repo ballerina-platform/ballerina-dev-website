@@ -146,7 +146,7 @@ Follow the instructions given in this section to develop the service.
     > ```
 
 5. Define records corresponding to the request payload and response payloads.
-
+   
     ```ballerina
     type Patient record {|
         string name;
@@ -580,7 +580,7 @@ Let's test the use case by sending a request to the service.
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
 ```
-bal run hospitalservice.jar
+$ bal run hospitalservice.jar
 ```
 
 #### Send a request
@@ -612,7 +612,7 @@ Let's send a request to the service using cURL as follows.
 3. Execute the following command.
 
     ```
-    curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
+    $ curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
     ```
 
 #### Verify the response

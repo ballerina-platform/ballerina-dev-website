@@ -429,7 +429,7 @@ Let's send a request to the service using cURL as follows.
 3. Execute the following command.
 
     ```
-    curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
+    $ curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
     ```
 
 #### Verify the response

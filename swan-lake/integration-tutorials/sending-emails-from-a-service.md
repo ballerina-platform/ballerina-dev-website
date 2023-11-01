@@ -20,7 +20,7 @@ The flow is as follows.
 
     ```json
     {
-        "patient": {
+        "patientWithCardNo": {
             "name": "John Doe",
             "dob": "1940-03-19",
             "ssn": "234-23-525",
@@ -148,11 +148,7 @@ Follow the instructions given in this section to develop the service.
 
         ![Define the service](/learn/images/integration-tutorials/sending-emails-from-a-service/define_a_service.gif)
      
-    - Define an HTTP resource that allows the `POST` operation on the resource path `/categories/{category}/reserve`, where `category` (corresponding to the specialization) is a path parameter.
-
-    - Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. 
-
-    - Use `http:Created|http:NotFound|http:InternalServerError` as the return type to indicate that the response will be an `http:Created` response when the email is sent successfully to the user or the response will be an `http:NotFound` or `http:InternalServerError` response on error.
+    - Define an HTTP resource that allows the `POST` operation on the resource path `/categories/{category}/reserve` and accepts the `category` path parameter (corresponding to the specialization). Use `ReservationRequest` as a parameter indicating that the resource expects a JSON object corresponding to `ReservationRequest` as the payload. Use `http:Created`, `http:NotFound`, and `http:InternalServerError` as the response types.
 
         ![Define the resource](/learn/images/integration-tutorials/sending-emails-from-a-service/define_a_resource.gif)
 
@@ -167,9 +163,9 @@ Follow the instructions given in this section to develop the service.
         }
         ```
 
-5. Define [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the port on which the listener should listen and the URLs of the backend services. Also, define configurable variables for the host, username, and password of the SMTP client.
+5. Define [configurable variables](https://ballerina.io/learn/by-example/#configurability) for the URLs of the backend services. Also, define configurable variables for the host, username, and password of the SMTP client.
 
-    ![Define a configurable variable](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_a_configurable_variable.gif)
+    ![Define a configurable variable](/learn/images/integration-tutorials/sending-emails-from-a-service/define_a_configurable_variable.gif)
 
     The generated code will be as follows.
 
@@ -211,11 +207,16 @@ Follow the instructions given in this section to develop the service.
                 appointment_date
             } = payload;
 
-            record {|*Patient; string cardNo;|} {cardNo, ...patientWithoutCardNo} = patient;
-
             Appointment|http:ClientError appointment =
                     hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
-                patient: patientWithoutCardNo,
+                patient: {
+                    name: patientWithCardNo.name,
+                    dob: patientWithCardNo.dob,
+                    ssn: patientWithCardNo.ssn,
+                    address: patientWithCardNo.address,
+                    phone: patientWithCardNo.phone,
+                    email: patientWithCardNo.email
+                },
                 doctor,
                 hospital,
                 appointment_date
@@ -237,7 +238,7 @@ Follow the instructions given in this section to develop the service.
                 patient: appointment.patient,
                 fee: appointment.doctor.fee,
                 confirmed: appointment.confirmed,
-                card_number: cardNo
+                card_number: patientWithCardNo.cardNo
             });
 
             if payment !is Payment {
@@ -249,7 +250,7 @@ Follow the instructions given in this section to develop the service.
             }
 
             email:Error? sendMessage = smtpClient->sendMessage({
-                to: patient.email,
+                to: patientWithCardNo.email,
                 subject: "Appointment reservation confirmed at " + hospital,
                 body: getEmailContent(appointmentNumber, appointment, payment)
             });
@@ -258,7 +259,7 @@ Follow the instructions given in this section to develop the service.
                 return <http:InternalServerError>{body: sendMessage.message()};
             }
             log:printDebug("Email sent successfully",
-                            name = patient.name,
+                            name = patientWithCardNo.name,
                             appointmentNumber = appointmentNumber);
             return <http:Created>{};
         }
@@ -333,15 +334,6 @@ type Appointment record {|
     string appointmentDate;
 |};
 
-type PaymentSettlement record {|
-    int appointmentNumber;
-    Doctor doctor;
-    Patient patient;
-    decimal fee;
-    boolean confirmed;
-    string card_number;
-|};
-
 type Payment record {|
     int appointmentNo;
     string doctorName;
@@ -402,11 +394,16 @@ service /healthcare on new http:Listener(8290) {
             appointment_date
         } = payload;
 
-        record {|*Patient; string cardNo;|} {cardNo, ...patientWithoutCardNo} = patient;
-
         Appointment|http:ClientError appointment =
                 hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
-            patient: patientWithoutCardNo,
+            patient: {
+                name: patientWithCardNo.name,
+                dob: patientWithCardNo.dob,
+                ssn: patientWithCardNo.ssn,
+                address: patientWithCardNo.address,
+                phone: patientWithCardNo.phone,
+                email: patientWithCardNo.email
+            },
             doctor,
             hospital,
             appointment_date
@@ -428,7 +425,7 @@ service /healthcare on new http:Listener(8290) {
             patient: appointment.patient,
             fee: appointment.doctor.fee,
             confirmed: appointment.confirmed,
-            card_number: cardNo
+            card_number: patientWithCardNo.cardNo
         });
 
         if payment !is Payment {
@@ -440,7 +437,7 @@ service /healthcare on new http:Listener(8290) {
         }
 
         email:Error? sendMessage = smtpClient->sendMessage({
-            to: patient.email,
+            to: patientWithCardNo.email,
             subject: "Appointment reservation confirmed at " + hospital,
             body: getEmailContent(appointmentNumber, appointment, payment)
         });
@@ -449,7 +446,7 @@ service /healthcare on new http:Listener(8290) {
             return <http:InternalServerError>{body: sendMessage.message()};
         }
         log:printDebug("Email sent successfully",
-                        name = patient.name,
+                        name = patientWithCardNo.name,
                         appointmentNumber = appointmentNumber);
         return <http:Created>{};
     }
@@ -516,27 +513,7 @@ Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-htt
 
 You will receive an email with information similar to the following for a successful appointment reservation.
 
-```
-Appointment Confirmation
-
-    Appointment Details
-        Appointment Number: 1
-        Appointment Date: 2023-10-02
-
-    Patient Details
-        Name: John Doe
-        Contact Number : 8770586755
-
-    Doctor Details
-        Name: thomas collins
-        Specialization: surgery
-
-    Payment Details
-        Doctor Fee: 7000.0
-        Discount: 20
-        Total Fee: 5600.0
-        Payment Status: settled
-```
+![Email](/learn/images/integration-tutorials/sending-emails-from-a-service/email.png)
 
 ## Complete implementation
 

@@ -62,10 +62,9 @@ export default function PrevNext(props) {
     if(Array.isArray(innerDirIndex)){
       let [middleDirIndex,thirdDirIndex] = innerDirIndex
       if(thirdDirIndex===0){
-        thirdDirIndex=SortedDir[middleDirIndex].subDirectories.length-1;
+        thirdDirIndex=SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories.length-1;
         if(middleDirIndex===0){
-          setPrevDetails(SortedDir[outDirIndex-1].subDirectories[SortedDir[outDirIndex-1].subDirectories.length-1].subDirectories[SortedDir[outDirIndex-1].subDirectories[SortedDir[outDirIndex-1].subDirectories.length-1].subDirectories.length-1])
-
+          setPrevDetails(SortedDir[outDirIndex-1].subDirectories[SortedDir[outDirIndex-1].subDirectories.length-1])
         }
         else{
           setPrevDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex-1].subDirectories[SortedDir[outDirIndex].subDirectories[middleDirIndex-1].subDirectories.length-1])
@@ -77,10 +76,13 @@ export default function PrevNext(props) {
       }
     }else{
       if(innerDirIndex===0){
-        outDirIndex--;
+        
+        if(outDirIndex!==0){
+            outDirIndex--;
         innerDirIndex=SortedDir[outDirIndex].subDirectories.length-1;
         setPrevDetails(SortedDir[outDirIndex].subDirectories[innerDirIndex])
-      }
+        }
+    }
       else{
         setPrevDetails(SortedDir[outDirIndex].subDirectories[innerDirIndex-1])
       }
@@ -89,22 +91,25 @@ export default function PrevNext(props) {
   const handleNext = (outDirIndex , innerDirIndex )=>{
     if(Array.isArray(innerDirIndex)){
       let [middleDirIndex,thirdDirIndex] = innerDirIndex
-      console.log(outDirIndex,middleDirIndex,thirdDirIndex)
-      console.log(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories)
       if(thirdDirIndex===SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories.length-1){
-        middleDirIndex++;
-        thirdDirIndex=0;
-        setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex])
-      }
+       if(middleDirIndex!==SortedDir[outDirIndex].subDirectories.length-1){
+            middleDirIndex++;
+            thirdDirIndex=0;
+            setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex])
+        }
+        }
       else{
         setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex+1])
       }
     }else{
       if(innerDirIndex===SortedDir[outDirIndex].subDirectories.length-1){
-        outDirIndex++;
-        innerDirIndex=0;
-        setNextDetails(SortedDir[outDirIndex].subDirectories[innerDirIndex])
-      }
+        
+        if(outDirIndex!==SortedDir.length-1){
+            outDirIndex++;
+            innerDirIndex=0;
+            setNextDetails(SortedDir[outDirIndex].subDirectories[innerDirIndex])
+        }
+    }
       else{
         setNextDetails(SortedDir[outDirIndex].subDirectories[innerDirIndex+1])
       }
@@ -117,10 +122,9 @@ export default function PrevNext(props) {
     handleNext(outDirIndex , innerDirIndex )
   },[])
 
-
   return (
     <>
-      <Row className="mt-auto mb-5">
+      <Row className="mt-5 mb-5">
         <Col sm={6}>
         {prevDetails.url!=="" && (<Link title={prevDetails.dirName} href={`${prefix}` + prevDetails.url}>
             <div className="btnContainer d-flex align-items-center me-auto">
@@ -130,7 +134,7 @@ export default function PrevNext(props) {
                 height="20"
                 fill="#3ad1ca"
                 className={`${
-                  btnHover[0] ? "btnArrowHover" : "btnArrow"
+                  btnHover[0] ? "prevNextBtnArrowHover" : "btnArrow"
                 } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
@@ -144,7 +148,7 @@ export default function PrevNext(props) {
               <div className="d-flex flex-column ms-4">
                 <span className="btnPrev">Previous</span>
                 <span
-                  className={btnHover[0] ? "btnTitleHover" : "btnTitle"}
+                  className={btnHover[0] ? "prevNextBtnHover" : "btnTitle"}
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
@@ -155,7 +159,7 @@ export default function PrevNext(props) {
           </Link>)}
         </Col>
         <Col sm={6}>
-        {nextDetails.url!=="" && (<Link
+        {Object.keys(nextDetails).length!==0 && (<Link
             title={nextDetails.dirName}
             href={`${prefix}` + nextDetails.url}
           >
@@ -163,7 +167,7 @@ export default function PrevNext(props) {
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
                 <span
-                  className={btnHover[1] ? "btnTitleHover" : "btnTitle"}
+                  className={btnHover[1] ? "prevNextBtnHover" : "btnTitle"}
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
@@ -176,7 +180,7 @@ export default function PrevNext(props) {
                 height="20"
                 fill="#3ad1ca"
                 className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
+                  btnHover[1] ? "prevNextBtnArrowHover" : "btnArrow"
                 } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}

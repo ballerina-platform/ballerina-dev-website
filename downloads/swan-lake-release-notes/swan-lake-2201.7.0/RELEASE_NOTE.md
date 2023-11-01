@@ -28,61 +28,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 >**Info:** From this release onwards, you can verify Ballerina artifacts using the Cosign CLI and Rekor APIs. For more information, see [Verify Ballerina artifacts](/downloads/verify-ballerina-artifacts).
 
-## Backward-incompatible changes
-
-- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
-
-    ```ballerina
-    type Employee record {|
-        string name;
-        int id;
-        string department;
-    |};
-
-    isolated function createEmployee(string[] name,
-            function () returns int idFunction,
-            string department)
-            returns Employee => {
-        name: string:'join(" ", ...name),
-        // Compilation error now, since `idFunction` is not `isolated`.
-        id: idFunction(),
-        department
-    };  
-    ```
-  
-- A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
-
-  This may result in compilation errors that were previously not identified.
-
-    ```ballerina
-    const int CONST = 1 + 7;
-    CONST num = 2; // Compilation error now.
-    ```
-  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
-  
-- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
-
-    ```ballerina
-    const MESSAGE = "message";
-    const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
-    ```
-
-- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message for an invalid TOML module structure is now improved to provide the variable name.
-
-    For example, consider a non-default module named `foo.bar`, which contains the following configurable variables.
-
-    ```ballerina
-    configurable int intVar = ?;
-    configurable string stringVar = ?;
-    ```
-
-    If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it results in the following error messages.
-
-    ```
-    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar' with variable 'intVar'. Please provide the module name as '[foo.bar]'
-    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar' with variable 'stringVar'. Please provide the module name as '[foo.bar]'
-    ```
-
 ## Platform updates
 
 ### Official support for generating GraalVM native executables
@@ -247,3 +192,58 @@ To view bug fixes, see the [GitHub milestone for 2201.7.0 (Swan Lake)](https://g
 To view bug fixes, see the GitHub milestone for 2201.7.0 (Swan Lake) of the repositories below.
 
 - [Language Server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.7.0+is%3Aclosed+label%3AType%2FBug)
+
+## Backward-incompatible changes
+
+- A bug that allowed using a function reference of a non-`isolated` function type in a function or method call expression within an `isolated` function or method has been fixed.
+
+    ```ballerina
+    type Employee record {|
+        string name;
+        int id;
+        string department;
+    |};
+
+    isolated function createEmployee(string[] name,
+            function () returns int idFunction,
+            string department)
+            returns Employee => {
+        name: string:'join(" ", ...name),
+        // Compilation error now, since `idFunction` is not `isolated`.
+        id: idFunction(),
+        department
+    };  
+    ```
+  
+- A bug that caused the broader type to be used instead of the singleton type when a constant is used as a type descriptor has been fixed.
+
+  This may result in compilation errors that were previously not identified.
+
+    ```ballerina
+    const int CONST = 1 + 7;
+    CONST num = 2; // Compilation error now.
+    ```
+  This results in a compilation error now since `num`, which is of type `CONST`, can only be integer `8`.
+  
+- A bug that resulted in compilation errors not being logged for duplicate keys via computed name fields of a mapping constructor in a mapping constant declaration has been fixed. This previously resulted in a panic at runtime instead.
+
+    ```ballerina
+    const MESSAGE = "message";
+    const map<string> HTTP_OK = {httpCode: "200", message: "OK", [MESSAGE] : "BAD REQUEST"}; // Compilation error now.
+    ```
+
+- Fixed a bug in the configurable TOML syntax validation for the module structure. The error message for an invalid TOML module structure is now improved to provide the variable name.
+
+    For example, consider a non-default module named `foo.bar`, which contains the following configurable variables.
+
+    ```ballerina
+    configurable int intVar = ?;
+    configurable string stringVar = ?;
+    ```
+
+    If an invalid TOML structure is found for the `foo.bar` module in the `Config.toml` file, it results in the following error messages.
+
+    ```
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar' with variable 'intVar'. Please provide the module name as '[foo.bar]'
+    [Config.toml:(1:1,2:23)] invalid TOML structure found for module 'foo.bar' with variable 'stringVar'. Please provide the module name as '[foo.bar]'
+    ```

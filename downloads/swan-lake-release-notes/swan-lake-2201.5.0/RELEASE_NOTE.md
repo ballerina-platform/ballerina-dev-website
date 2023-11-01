@@ -28,144 +28,6 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 >**Note:** From the 2201.5.0 release onwards, a [new installer](https://dist.ballerina.io/downloads/2201.5.0/ballerina-2201.5.0-swan-lake-macos-arm-x64.pkg) is introduced to support the macOS-ARM platform.
 
-## Backward-incompatible changes
-
-- Fixed a bug that resulted in invalid usage of additive expressions with operands of different incompatible basic types not resulting in a compilation error.
-
-    ```ballerina
-    public function main() {
-        "abc"|string:Char a = "a";
-        var b = a + 1; // Compilation error now.
-        var c = ["a", "b", "c"].map(s => s + 1); // Compilation error now.
-    }
-    ```
-
-- Fixed a bug that previously resulted in incorrect type checking for an intersection with `readonly` against an incompatible union type as the expected type.
-
-    ```ballerina
-    type Employee record {|
-        string[] name;
-        int id;
-    |};
-
-    public function main() {
-        json & readonly v = {};
-
-        string|error r = v; // Compilation error now.
-        Employee|string s = v.cloneReadOnly(); // Compilation error now.
-    }
-    ```
-
-- Fixed a bug that previously resulted in variables that were initialized with non-isolated expressions being inferred as `isolated` variables.
-
-    ```ballerina
-    int[] config = [];
-
-    // `configs` was previously inferred as an `isolated` variable
-    // incorrectly. It will no longer be inferred as an `isolated` 
-    // variable since `config` is not an isolated expression.
-    int[][] configs = [[1, 2], config];
-
-    // Since `configs` is not inferred as an `isolated` variable now,
-    // `getConfig` is not inferred as an `isolated` function.
-    function getConfig(int index) returns int[] {
-        lock {
-            return configs[index].clone();
-        }
-    }
-    ```
-
-- Fixed a bug in dependently-typed function analysis. Previously, compilation errors were not logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) in which basic types for `T` and `t` are not disjoint.
-
-    ```ballerina
-    public type TargetType typedesc<anydata>;
-
-    // Already a compilation error.
-    function f1(typedesc<anydata> targetType = <>) returns targetType|json = external;
-
-    // Also a compilation error now.
-    function f2(TargetType targetType = <>) returns targetType|json = external;
-    ```
-
-- Fixed a bug that allowed using an included record parameter of the same name as that of a field of the parameter record type.
-    
-    ```ballerina
-    type ErrorDetail record {|
-        string 'error;
-        int code;
-        int[] locations?;
-    |};
-    
-    function getError(*ErrorDetail 'error) { // Compilation error now.
-    }
-    ```
-
-- Improved how the inherent type is chosen when constructing a structural value in the `value:cloneWithType` and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor. Hence, the inherent type of the constructed value may differ from what it was previously.
-    
-    ```ballerina
-    type FloatSubtype record {|
-        float value;
-    |};
-
-    type DecimalSubtype record {|
-        decimal value;
-    |};
-
-    public function main() returns error? {
-        FloatSubtype x = {value: 0.0};
-        DecimalSubtype|FloatSubtype y = check x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
-    }
-    ```
-
-- Fixed a bug that resulted in inconsistent error messages with the `value:cloneWithType` function.
-    
-    ```ballerina
-    type OpenRecord record {
-    };
-
-    public function main() returns error? {
-        [OpenRecord...] tupleVal = [{"nonJson": xml `<a>abc</a>`}];
-        json jsonVal = check tupleVal.cloneWithType();
-    }
-    ```
-    Now, this gives the error below.
-    
-    ```
-    error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}    
-    ```
-
-- Improved the message given by an error returned from the `value:cloneWithType` and `value:fromJsonWithType` functions when the target type is a union type.
-    
-    ```ballerina
-    public function main() returns error? {
-        json j = [1, 1.2, "hello"];
-        int[]|float[] val = check j.fromJsonWithType();
-    }
-    ```
-    Now, this gives the error below.
-    
-    ```
-    error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '(int[]|float[])': 
-                {
-                  array element '[2]' should be of type 'int', found '"hello"'
-                or
-                  array element '[2]' should be of type 'float', found '"hello"'
-                }"}
-    ```
-
-- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource methods and object methods). Previously, the annotation was ignored and the code compiled successfully.
-
-    ```ballerina
-    distinct service class Book {
-        @test:Config // Compilation error now.
-        resource function get id() {
-        }
-        
-        resource function get title() {
-        }
-    }
-    ```
-
 ## Language updates
 
 ### New features
@@ -503,3 +365,141 @@ To view bug fixes, see the GitHub milestone for 2201.5.0 (Swan Lake) of the repo
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.5.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.5.0+label%3AArea%2FProjectAPI).
+
+## Backward-incompatible changes
+
+- Fixed a bug that resulted in invalid usage of additive expressions with operands of different incompatible basic types not resulting in a compilation error.
+
+    ```ballerina
+    public function main() {
+        "abc"|string:Char a = "a";
+        var b = a + 1; // Compilation error now.
+        var c = ["a", "b", "c"].map(s => s + 1); // Compilation error now.
+    }
+    ```
+
+- Fixed a bug that previously resulted in incorrect type checking for an intersection with `readonly` against an incompatible union type as the expected type.
+
+    ```ballerina
+    type Employee record {|
+        string[] name;
+        int id;
+    |};
+
+    public function main() {
+        json & readonly v = {};
+
+        string|error r = v; // Compilation error now.
+        Employee|string s = v.cloneReadOnly(); // Compilation error now.
+    }
+    ```
+
+- Fixed a bug that previously resulted in variables that were initialized with non-isolated expressions being inferred as `isolated` variables.
+
+    ```ballerina
+    int[] config = [];
+
+    // `configs` was previously inferred as an `isolated` variable
+    // incorrectly. It will no longer be inferred as an `isolated` 
+    // variable since `config` is not an isolated expression.
+    int[][] configs = [[1, 2], config];
+
+    // Since `configs` is not inferred as an `isolated` variable now,
+    // `getConfig` is not inferred as an `isolated` function.
+    function getConfig(int index) returns int[] {
+        lock {
+            return configs[index].clone();
+        }
+    }
+    ```
+
+- Fixed a bug in dependently-typed function analysis. Previously, compilation errors were not logged when the `typedesc` argument is defined using a type definition (`T`) and the return type is a union (`T|t`) in which basic types for `T` and `t` are not disjoint.
+
+    ```ballerina
+    public type TargetType typedesc<anydata>;
+
+    // Already a compilation error.
+    function f1(typedesc<anydata> targetType = <>) returns targetType|json = external;
+
+    // Also a compilation error now.
+    function f2(TargetType targetType = <>) returns targetType|json = external;
+    ```
+
+- Fixed a bug that allowed using an included record parameter of the same name as that of a field of the parameter record type.
+    
+    ```ballerina
+    type ErrorDetail record {|
+        string 'error;
+        int code;
+        int[] locations?;
+    |};
+    
+    function getError(*ErrorDetail 'error) { // Compilation error now.
+    }
+    ```
+
+- Improved how the inherent type is chosen when constructing a structural value in the `value:cloneWithType` and `value:fromJsonWithType` functions. Now, if the target type is a union that includes more than one type descriptor such that a value belonging to that type can be constructed, then, the inherent type used will be the first (leftmost) such type descriptor. Hence, the inherent type of the constructed value may differ from what it was previously.
+    
+    ```ballerina
+    type FloatSubtype record {|
+        float value;
+    |};
+
+    type DecimalSubtype record {|
+        decimal value;
+    |};
+
+    public function main() returns error? {
+        FloatSubtype x = {value: 0.0};
+        DecimalSubtype|FloatSubtype y = check x.cloneWithType(); // Inherent type of `y` will be `DecimalSubtype`.
+    }
+    ```
+
+- Fixed a bug that resulted in inconsistent error messages with the `value:cloneWithType` function.
+    
+    ```ballerina
+    type OpenRecord record {
+    };
+
+    public function main() returns error? {
+        [OpenRecord...] tupleVal = [{"nonJson": xml `<a>abc</a>`}];
+        json jsonVal = check tupleVal.cloneWithType();
+    }
+    ```
+    Now, this gives the error below.
+    
+    ```
+    error: {ballerina/lang.value}ConversionError {"message":"'[OpenRecord...]' value cannot be converted to 'json'"}    
+    ```
+
+- Improved the message given by an error returned from the `value:cloneWithType` and `value:fromJsonWithType` functions when the target type is a union type.
+    
+    ```ballerina
+    public function main() returns error? {
+        json j = [1, 1.2, "hello"];
+        int[]|float[] val = check j.fromJsonWithType();
+    }
+    ```
+    Now, this gives the error below.
+    
+    ```
+    error: {ballerina/lang.value}ConversionError {"message":"'json[]' value cannot be converted to '(int[]|float[])': 
+                {
+                  array element '[2]' should be of type 'int', found '"hello"'
+                or
+                  array element '[2]' should be of type 'float', found '"hello"'
+                }"}
+    ```
+
+- Added validations for the incorrect use of the `@test` annotation (i.e., disallowed the usage of it on resource methods and object methods). Previously, the annotation was ignored and the code compiled successfully.
+
+    ```ballerina
+    distinct service class Book {
+        @test:Config // Compilation error now.
+        resource function get id() {
+        }
+        
+        resource function get title() {
+        }
+    }
+    ```

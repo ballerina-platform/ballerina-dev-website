@@ -96,7 +96,17 @@ export default function PrevNext(props) {
             middleDirIndex++;
             thirdDirIndex=0;
             setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex])
+          }
+          else{
+            if(outDirIndex!==SortedDir.length-1){
+              outDirIndex++;
+              middleDirIndex=0;
+              thirdDirIndex=0;
+              console.log(outDirIndex,middleDirIndex,thirdDirIndex)
+              setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex])
+            }
         }
+  
         }
       else{
         setNextDetails(SortedDir[outDirIndex].subDirectories[middleDirIndex].subDirectories[thirdDirIndex+1])
@@ -122,11 +132,12 @@ export default function PrevNext(props) {
     handleNext(outDirIndex , innerDirIndex )
   },[])
 
+  console.log(prevDetails)
   return (
     <>
       <Row className="mt-5 mb-5">
         <Col sm={6}>
-        {prevDetails.url!=="" && (<Link title={prevDetails.dirName} href={`${prefix}` + prevDetails.url}>
+        {prevDetails!==undefined && prevDetails.url!=="" && (<Link title={prevDetails.dirName} href={`${prefix}` + prevDetails.url}>
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +170,7 @@ export default function PrevNext(props) {
           </Link>)}
         </Col>
         <Col sm={6}>
-        {Object.keys(nextDetails).length!==0 && (<Link
+        {nextDetails!==undefined && Object.keys(nextDetails).length!==0 && (<Link
             title={nextDetails.dirName}
             href={`${prefix}` + nextDetails.url}
           >

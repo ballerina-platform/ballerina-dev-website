@@ -163,7 +163,6 @@ Let’s start with a query to create a new `Employee` record in the database and
 
 ```ballerina
 import ballerina/io;
-import ballerina/uuid;
 import rainier.store;
 
 

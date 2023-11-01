@@ -444,7 +444,7 @@ Let's test the use case by sending a request to the service.
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar), and execute the following command to start the service:
 
 ```
-bal run hospitalservice.jar
+$ bal run hospitalservice.jar
 ```
 
 #### Send a request to the service

@@ -26,7 +26,7 @@ The flow is as follows:
             "ssn": "234-23-525",
             "address": "California",
             "phone": "8770586755",
-            "email": "johndoe@gmail.com",
+            "email": "johndoe@gmail.com"
         },
         "doctor": "thomas collins",
         "hospital": "grand oak community hospital",

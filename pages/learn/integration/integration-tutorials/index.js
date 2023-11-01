@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2023, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,15 +16,20 @@
  * under the License.
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 
 import Layout from "../../../../layouts/LayoutLearn";
 import SampleList from "../../../../components/common/sample-list/SampleList";
 import { prefix } from '../../../../utils/prefix';
-
+import { data } from "../../../../components/learn/integration-tutorials/data";
+import {RxCross2} from "react-icons/rx"
+ 
 export default function Learn() {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredTags, setFilteredTags] = useState(data);
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -43,6 +48,31 @@ export default function Learn() {
     navigator.clipboard.writeText(window.location.href);
     element.parentElement.scrollIntoView();
   };
+
+  function handleSelectedTag(selectedCategory){
+    if(selectedTags.includes(selectedCategory)){
+      let filters = selectedTags.filter((el)=>el!==selectedCategory)
+      setSelectedTags(filters);
+    }else{
+      setSelectedTags([...selectedTags, selectedCategory])
+    }
+  }
+
+  useEffect(() => {
+    handleFilteredTags()
+  }, [selectedTags])
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = data.filter((item) => {
+        return selectedTags.every((tag) => item.tags.includes(tag));
+      });
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags([...data]);
+    }
+  }
+
 
   return (
     <>
@@ -63,7 +93,7 @@ export default function Learn() {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content="Ballerina: Integration tutorials" />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -71,14 +101,14 @@ export default function Learn() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina: Integration tutorials" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -90,7 +120,7 @@ export default function Learn() {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Ballerina: Integration tutorials" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -98,7 +128,7 @@ export default function Learn() {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -106,7 +136,7 @@ export default function Learn() {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-learn-integration-tutorials-page-sm-banner.png"
         />
       </Head>
 
@@ -129,8 +159,22 @@ export default function Learn() {
             <Col xs={12} md={12}>
               <Container>
                 <p>
-                  Pre-built integration samples using Ballerina language. These samples are built using Ballerina connectors and can be used as a starting point for your integration use cases.
+                  Step-by-step guides on how you can develop your integration scenarios in Ballerina.
                 </p>
+              </Container>
+            </Col>
+          </Row>
+
+          <Row className="selectedTagContainer">
+            <Col xs={12}>
+              <Container>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
               </Container>
             </Col>
           </Row>
@@ -140,49 +184,12 @@ export default function Learn() {
               <Container>
                 <Row>
                   {/* Left Column */}
-                  <SampleList
-                    name="Sending a message to a service"
-                    description="Use an HTTP client in a service to send a message to another service"
-                    tags={["HTTP client", "REST API", "data binding", "integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Routing requests based on message content"
-                    description="Route requests based on message content"
-                    tags={["content based routing", "integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Service orchestration"
-                    description="Integrate several services and expose them as a single service."
-                    tags={["HTTP client", "REST API", "data binding", "integration", "service orchestration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Translating message formats"
-                    description="Translating message formats"
-                    tags={["integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="Connecting Web APIs/Cloud Services"
-                    description="Connectin web APIs/cloud services"
-                    tags={["integration"]}
-                    icon={false}
-                  />
-
-                  <SampleList
-                    name="File processing"
-                    description="File processing"
-                    tags={["file processing", "persistence", "integration"]}
-                    icon={false}
-                  />
-
-
+                  {filteredTags.map((item)=>{
+                    return(
+                      <SampleList name={item.name} key={item.name} description={item.description} tags={item.tags} icon={item.icon} handleSelectedTag={handleSelectedTag}>
+                      </SampleList>
+                    )
+                  })}
                 </Row>
               </Container>
             </Col>

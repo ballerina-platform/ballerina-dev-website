@@ -138,7 +138,7 @@ export function BuiltInIntegerSubtypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=addaebbc232e3df63c1dbeae693de129&file=built_in_integer_subtypes.bal",
+                "https://play.ballerina.io/?gist=c995e7a6ae739ceb72fe8fa9243bd8b9&file=built_in_integer_subtypes.bal",
                 "_blank",
               );
             }}
@@ -163,7 +163,7 @@ export function BuiltInIntegerSubtypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/built-in-integer-subtypes",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/built-in-integer-subtypes",
                 "_blank",
               );
             }}

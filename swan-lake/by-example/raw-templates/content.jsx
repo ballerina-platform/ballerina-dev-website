@@ -37,7 +37,7 @@ function getOrders(int customerId) returns stream<record {| anydata...; |}, sql:
     return dbClient->query(\`SELECT * FROM orders WHERE customerId = \${customerId}\`);
 }
 `,
-  `[[platform.java11.dependency]]
+  `[[platform.java17.dependency]]
 path = "h2-2.1.210.jar"
 `,
 ];
@@ -116,7 +116,7 @@ export function RawTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/raw-templates",
                 "_blank",
               );
             }}
@@ -205,7 +205,7 @@ export function RawTemplates({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/raw-templates",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/raw-templates",
                 "_blank",
               );
             }}

@@ -20,6 +20,9 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkExternalLinks from 'remark-external-links'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -37,6 +40,16 @@ export default function MainContent(props) {
 
   const content = props.content;
   const codes = props.codes ? new Map(JSON.parse(props.codes)) : new Map();
+  const [copied, setCopied] = React.useState(false);
+  const [copiedText, setCopiedText] = React.useState(false);
+
+  const codeCopy = (text) => {
+    setCopied(true);
+    setCopiedText(text);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  }
 
   // Add id attributes to headings
   const extractText = (value) => {
@@ -77,6 +90,19 @@ export default function MainContent(props) {
 
   const toc = (show) => {
     props.handleToc(show)
+  }
+
+  const filterText = (children) => {
+    var filteredText = '';
+    var arr = children.split(/\r?\n/);
+    React.Children.toArray(arr).filter(
+      (child, index) => {
+        if (child.toLowerCase().startsWith('$')) {
+          filteredText += child.replace('$ ', '') + '\n';
+        }
+      }
+    )
+    return filteredText;
   }
 
   return (
@@ -238,11 +264,30 @@ export default function MainContent(props) {
             const key = (children[0]).trim().split(/\r?\n/).map(row => row.trim()).join('\n');
             const highlightedCode = codes.get(key.hashCode());
             if (highlightedCode) {
-              return <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+              return <div style={{
+                background: "#eeeeee", padding: "10px 10px 0px 0px",
+                borderRadius: "5px",
+                marginTop: "20px",
+                backgroundColor: "#eeeeee !important"
+              }}>
+                <div style={{ display: "flex", justifyContent: "end" }}>
+                  <CopyToClipboard text={key}
+                    onCopy={() => codeCopy(key)} style={{ float: "right" }}>
+                    {
+                      copied && copiedText == key ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                    }
+                  </CopyToClipboard>
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+              </div>
             }
           }
 
           const match = /language-(\w+)/.exec(className || '')
+          var filteredText;
+          if (!match) {
+            filteredText = filterText(children[0]);
+          }
           return inline ?
             <code className={className} {...props}>
               {children}
@@ -250,6 +295,14 @@ export default function MainContent(props) {
             : match ?
               <div dangerouslySetInnerHTML={{ __html: String(children).replace(/\n$/, '') }} />
               : <pre className='default'>
+                <div style={{ display: "flex", justifyContent: "end" }}>
+                  { filteredText && <CopyToClipboard text={filteredText}
+                    onCopy={() => codeCopy(filteredText)} style={{ float: "right" }}>
+                    {
+                      copied && copiedText == filteredText ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                    }
+                  </CopyToClipboard> }
+                </div>
                 <code className={className} {...props}>
                   {children}
                 </code>
@@ -259,7 +312,7 @@ export default function MainContent(props) {
           return <div className='mdTable'><table {...props}>{children}</table></div>
         }
       }}
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm, remarkExternalLinks]}
       rehypePlugins={[rehypeRaw]}
     >
       {content}

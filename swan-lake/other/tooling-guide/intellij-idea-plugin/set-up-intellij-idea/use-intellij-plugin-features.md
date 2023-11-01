@@ -149,7 +149,7 @@ You expand/collapse the following Ballerina code segments using the icons in the
 
 ## Go to definition
 
-This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object etc., within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Ballerina library](https://central.ballerina.io/search?q=org%3Aballerina%2Cballerinax&page=1).
 
 ![Go to definition](/learn/images/go-to-definition-intellij.gif)
 

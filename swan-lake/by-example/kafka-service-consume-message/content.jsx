@@ -8,7 +8,7 @@ export const codeSnippetData = [
   `import ballerinax/kafka;
 import ballerina/log;
 
-public type Order readonly & record {
+type Order readonly & record {
     int orderId;
     string productName;
     decimal price;
@@ -22,9 +22,9 @@ listener kafka:Listener orderListener = new (kafka:DEFAULT_URL, {
 
 service on orderListener {
 
-    remote function onConsumerRecord(Order[] orders) returns error? {
+    remote function onConsumerRecord(Order[] orders) {
         // The set of orders received by the service are processed one by one.
-        check from Order 'order in orders
+        from Order 'order in orders
             where 'order.isValid
             do {
                 log:printInfo(string \`Received valid order for \${'order.productName}\`);
@@ -75,7 +75,7 @@ export function KafkaServiceConsumeMessage({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/kafka-service-consume-message",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/kafka-service-consume-message",
                 "_blank",
               );
             }}

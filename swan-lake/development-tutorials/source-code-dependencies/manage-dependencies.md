@@ -14,7 +14,7 @@ A package can depend on other packages that are available in Ballerina repositor
 * The distribution repository
 * The Ballerina Central repository
 
-It also supports a third repository named the `local repository`. It temporarily overrides dependencies, which is useful for the package development and bug fixing phases.
+It also supports a third repository named the `local repository`, and temporarily overrides dependencies, which is useful for the package-development and bug-fixing phases. Additionally, a predefined set of custom package repositories are also supported, which are useful to bring third-party repositories into dependency management.
 
 **Distribution repository**
 
@@ -28,6 +28,10 @@ The Ballerina Central is a remote repository and creates a local file system cac
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/bala`. 
 For more information, see [Use dependencies from the local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+
+**Custom repositories**
+
+Ballerina supports one or more custom remote repositories, which can be configured in the `<USER_HOME>/.ballerina/Settings.toml` file. A local filesystem cache is maintained per repository at `<USER_HOME>/.ballerina/repositories/<REPOSITORY_ID>/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache. For more information, see [Use custom repositories for package management](/learn/manage-dependencies/#use-custom-repositories-for-package-management).
 
 ### Import a module
 
@@ -153,16 +157,90 @@ The local repository is useful to test a package in the development phase or to 
     ```
 
 Once you complete the above steps, the dependency will be picked from the local repository when building the package.
-Ballerina considers the version specified in the Ballerina.toml as the minimum required version and uses the local repository to resolve the dependency.
-However, the compiler gives priority to the latest version if a new patch version is found in distribution or Ballerina Central repositories.
+Ballerina considers the version specified in the `Ballerina.toml` file as the minimum required version and uses the local repository to resolve the dependency.
+However, the compiler gives priority to the latest version if a new patch version is found in the distribution or Ballerina Central repositories.
 At this point, the compiler resolves the latest version and ignores the dependency version in the local repository.
+
+
+## Use custom repositories for package management
+
+Ballerina supports Maven repositories such as [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository), [Artifactory](https://jfrog.com/artifactory/) and [Github packages](https://github.com/features/packages) to be set up as custom repositories. 
+
+### Define the custom repository
+
+You can configure one or multiple custom repositories in the `<USER_HOME>/.ballerina/Settings.toml` file to integrate them into the package resolution.
+
+```toml
+[[repository.maven]]
+id = "<repository-id>" # This ID is used when pushing/ pulling packages
+url = "<repository-url>"
+username = "<username>/<userId>"
+accesstoken = "<password>/<accesstoken>"
+```
+
+Below is a sample repository configuration.
+
+```toml
+[[repository.maven]]
+id = "github_1" # This ID is used when pushing/ pulling balas
+url = "https://maven.pkg.github.com/jackson12/jackson-encrypt-module"
+username = "jackson12"
+accesstoken = "ghp_nMlJsjshhdtdt5367389920020hHfrdrd"
+```
+
+The sections below show how to configure the above GitHub package repository to resolve a specific dependency.
+
+### Publish a Ballerina archive to the custom repository
+
+Follow the steps below to publish a Ballerina archive to the custom repository you configured above.
+
+1. Generate the Ballerina archive. 
+
+   ```
+   $ bal pack
+   ```
+
+2. Publish to the custom repository.
+
+   ```
+   $ bal push --repository <repository-id>
+   ```
+
+    If you already have the path of the Ballerina archive, execute the command below.
+
+    ```
+    $ bal push --repository <repository-id> <path-to-bala-archive>
+    ```
+
+### Use the package from the custom repository
+
+You can use the package you pushed to the custom repository in the ways below.
+
+#### Specify the dependency in the `Ballerina.toml`
+
+Similar to the local repository, dependencies from the custom repository can be specified in the Ballerina.toml file and utilized as shown below.
+
+```toml
+[[dependency]]
+org = "jackson"
+name = "encrypter"
+version = "2.1.1"
+repository = "github_1" # Must match a repository ID configured in the Settings.toml file.
+```
+
+#### Pull the package from a custom repository
+
+Execute the command below to pull a Ballerina package from a custom repository.
+
+```
+$ bal pull <package-org>/<package-name>:<version> --repository <repository-id>
+```
 
 ## Achieve reproducible builds
 
 By default, the compiler always looks up the latest compatible versions of the dependencies in the repositories when building a package.
 
-It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time.
- However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
+It minimizes the hassle of managing dependency versions to the package developer since the compiler is smart enough to keep the package updated with the latest compatible dependencies all the time. However, if you need to repeat a constant behavior to make the build more predictable, Ballerina facilitates this using offline and sticky modes.
 
 ### The sticky mode
 
@@ -177,8 +255,7 @@ $ bal build --sticky
 
 ### The offline mode
 
-Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. 
-This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
+Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 

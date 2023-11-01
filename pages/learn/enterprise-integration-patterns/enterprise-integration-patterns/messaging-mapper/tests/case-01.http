@@ -1,0 +1,15 @@
+POST http://localhost:8080/api/v1
+content-type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query ($invoiceId: String!) {
+  invoice(invoiceId: $invoiceId) {
+    customerId,
+    agentId,
+    total
+  }
+}
+
+{
+  "invoiceId": "4600000000444a2487cf-49c2-4b97-89ab-4b6e6e9829a1019"
+}

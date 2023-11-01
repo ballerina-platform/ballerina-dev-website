@@ -1,0 +1,1 @@
+GET http://localhost:8080/ocr?url="image.com/adt4761.png"

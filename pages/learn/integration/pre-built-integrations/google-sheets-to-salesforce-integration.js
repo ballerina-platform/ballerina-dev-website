@@ -139,14 +139,14 @@ export default function Learn({ samples, content }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -166,7 +166,7 @@ export default function Learn({ samples, content }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -174,7 +174,7 @@ export default function Learn({ samples, content }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
         />
       </Head>
 
@@ -247,9 +247,9 @@ export default function Learn({ samples, content }) {
                     </p>
 
                   </Col>
-                  <Col xs={12} lg={6} className="text-center">
+                  <Col xs={12} lg={6} className="text-center mdContent">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/google-sheets-to-salesforce-integration.png`} alt="Flow Diagram" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/google-sheets-to-salesforce-integration.png`} alt="Flow Diagram" />
 
                   </Col>
                 </Row>
@@ -288,8 +288,8 @@ export default function Learn({ samples, content }) {
                   </Tab>
                   <Tab eventKey="diagram" title="Diagram">
 
-                    <Col xs={12} lg={6} className="text-center">
-                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} alt="Sequence Diagram" style={{ width: "-webkit-fill-available" }} />
+                    <Col xs={12} lg={6} className="text-center mdContent">
+                      <img src={`${prefix}/images/pre-built/sequence-diagrams/google-sheets-to-salesforce-integration.png`} alt="Sequence Diagram" />
 
                     </Col>
 

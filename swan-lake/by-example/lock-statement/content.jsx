@@ -55,7 +55,7 @@ export function LockStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=a3f181f917403af885d0d8492905e4ef&file=lock_statement.bal",
+                "https://play.ballerina.io/?gist=6745c95bdcd086b3106e04818b1cc35e&file=lock_statement.bal",
                 "_blank",
               );
             }}
@@ -80,7 +80,7 @@ export function LockStatement({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/lock-statement",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/lock-statement",
                 "_blank",
               );
             }}

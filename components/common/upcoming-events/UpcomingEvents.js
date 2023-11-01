@@ -59,7 +59,7 @@ export default function UpcomingEvents() {
               <Row className={styles.eventRows} key={index}>
                 <Col sm={12} md={2} className={styles.eventDateContainer}>
                   <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
-                  <p className={styles.eventDate}>{item.day}, {item.time}</p>
+                  {item.day ? <p className={styles.eventDate}>{item.day}, {item.time}</p> : null}
                   <p className="eventLocation">{item.location}</p>
                 </Col>
                 <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
@@ -69,7 +69,7 @@ export default function UpcomingEvents() {
                   <h5>{item.eventName}</h5>
                   {
                     (item.presenter !== '') ?
-                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>, {item.presenterDesignation}</>
+                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</>: null }</>
                       : <>{item.otherInfo}</>
                   }
                 </Col>

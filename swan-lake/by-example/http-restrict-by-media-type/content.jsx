@@ -63,7 +63,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=456625285340f44cb9ce80937fe5edf8&file=http_restrict_by_media_type.bal",
+                "https://play.ballerina.io/?gist=82a7b7b1b5c937419ebffae5dcc34199&file=http_restrict_by_media_type.bal",
                 "_blank",
               );
             }}
@@ -88,7 +88,7 @@ export function HttpRestrictByMediaType({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/http-restrict-by-media-type",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/http-restrict-by-media-type",
                 "_blank",
               );
             }}

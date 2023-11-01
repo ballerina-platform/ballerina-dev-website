@@ -20,44 +20,107 @@ import { load } from "js-yaml";
 import Head from "next/head";
 import fs from "fs";
 import path from 'path';
-import React from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import Pattern from "../../../components/learn/pattern/Pattern";
+import {RxCross2} from "react-icons/rx"
 
 const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
 
 export async function getStaticProps() {
   const files = fs.readdirSync(baseDirectory);
-  var patterns = [];
+  var patterns = {};
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     const filePath = path.join(baseDirectory, file);
     const stats = fs.statSync(filePath);
     const bal = path.join(filePath, file + ".bal");
-    if (stats.isDirectory() && fs.existsSync(bal)) {
-      if (!fs.existsSync(path.resolve(""))) {
-
-      }
-
-      const ymlPath = path.join(baseDirectory, file, file + ".yml");
-      const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
-      if (!fs.existsSync(ymlPath)) {
-        patterns.push({ name });
-        continue;
-      }
-      const yml = fs.readFileSync(ymlPath, "utf-8");
-      var pattern = load(yml);
-      pattern.name = pattern.name ?? name;
-      patterns.push(pattern);
+    if (!stats.isDirectory() || !fs.existsSync(bal)) {
+      continue;
+    }
+    const ymlPath = path.join(baseDirectory, file, file + ".yml");
+    const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
+    var pattern = loadYml(ymlPath) || {};
+    pattern.name = pattern.name ?? name;
+    const category = pattern.category ?? "uncategorized";
+    const existingCategory = patterns[category];
+    if (existingCategory) {
+      existingCategory.push(pattern);
+    } else {
+      patterns[category] = [pattern];
     }
   }
-  return { props: { patterns } };
+  for (const category of Object.values(patterns)) {
+    category.sort((a, b) => {
+      const ai = a.index ?? -1;
+      const bi = b.index ?? -1;
+      return ai - bi;
+    });
+  }
+  // list of categories, sorted by index
+  const categories = Object.keys(patterns).sort((a, b) => { return (patterns[a][0].index ?? -1) - (patterns[b][0].index ?? -1) });
+  return { props: { categories, patterns } };
+}
+
+function loadYml(ymlPath) {
+  if (!fs.existsSync(ymlPath)) {
+    return {};
+  }
+  return load(fs.readFileSync(ymlPath, "utf-8"));
 }
 
 export default function PatternList(props) {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredTags, setFilteredTags] = useState(props.categories);
+
   const router = useRouter();
+
+  function handleSelectedTag(selectedCategory) {
+    if (selectedTags.includes(selectedCategory)) {
+      let filters = selectedTags.filter((el) => el !== selectedCategory);
+      setSelectedTags(filters);
+    } else {
+      setSelectedTags([...selectedTags, selectedCategory]);
+    }
+  }
+
+  useEffect(() => {
+    handleFilteredTags();
+  }, [selectedTags]);
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = [];
+  
+      for (const category of props.categories) {
+        if (props.patterns[category]) {
+          const filteredCategoryItems = props.patterns[category].filter((data) => {
+            return selectedTags.every((tag) => data.tags.includes(tag));
+          });
+  
+          if (filteredCategoryItems.length > 0) {
+            filteredItems.push({
+              category: category,
+              data: filteredCategoryItems,
+            });
+          }
+        }
+      }
+  
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags(
+        props.categories.map((category) => ({
+          category,
+          data: props.patterns[category] || [],
+        }))
+      );
+    }
+  }
+
   return (
     <>
       <Head>
@@ -73,7 +136,7 @@ export default function PatternList(props) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Integrations Patterns</title>
+        <title>Enterprise Integrations Patterns</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -85,14 +148,14 @@ export default function PatternList(props) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina: Pre-built integrations" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -112,7 +175,7 @@ export default function PatternList(props) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -120,7 +183,7 @@ export default function PatternList(props) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
         />
       </Head>
 
@@ -148,17 +211,39 @@ export default function PatternList(props) {
             </Col>
           </Row>
 
-          <Row className="pageContentRow llanding" >
+          <Row className="selectedTagContainer">
             <Col xs={12}>
               <Container>
-                    <Row>
-                {
-                  props.patterns.map((p) => (
-                    <Pattern name={p.name} description={p.tagline ?? p.desc} tags={p.tags ?? []} key={p.name}/>
-                  ))
-                }
-                    </Row>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
               </Container>
+            </Col>
+          </Row>
+
+          <Row className="pageContentRow llanding" >
+            <Col xs={12}>
+            {filteredTags.map((categoryData) => (
+              <Container key={categoryData.category}>
+                <h2>{categoryData.category}</h2>
+                <Row>
+                  {categoryData.data && categoryData.data.map((p) => (
+                    <Pattern
+                      name={p.name}
+                      description={p.tagline ?? p.desc}
+                      tags={p.tags ?? []}
+                      key={p.name}
+                      handleSelectedTag={handleSelectedTag}
+                    />
+                  ))}
+                </Row>
+              </Container>
+            ))}
+
             </Col>
           </Row>
 

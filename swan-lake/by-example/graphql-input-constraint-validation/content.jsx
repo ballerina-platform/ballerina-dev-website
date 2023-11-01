@@ -75,7 +75,7 @@ export function GraphqlInputConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-input-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-input-constraint-validation",
                 "_blank",
               );
             }}
@@ -224,7 +224,7 @@ export function GraphqlInputConstraintValidation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/graphql-input-constraint-validation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/graphql-input-constraint-validation",
                 "_blank",
               );
             }}
@@ -389,7 +389,7 @@ export function GraphqlInputConstraintValidation({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/graphql/#1018-constraint-configurations">
+            <a href="/spec/graphql/#718-constraint-configurations">
               GraphQL constraint config - Specification
             </a>
           </span>

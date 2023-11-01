@@ -77,7 +77,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/grpc-client-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/grpc-client-server-streaming",
                 "_blank",
               );
             }}
@@ -285,7 +285,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/grpc-client-server-streaming",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/grpc-client-server-streaming",
                 "_blank",
               );
             }}
@@ -454,9 +454,7 @@ export function GrpcClientServerStreaming({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/learn/grpc/">
-              Ballerina protocol buffers guide
-            </a>
+            <a href="/learn/grpc-tool/">gRPC tool</a>
           </span>
         </li>
       </ul>

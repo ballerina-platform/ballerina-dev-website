@@ -72,7 +72,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=7d49261863915b9f1e9e20023c392b02&file=inter_worker_message_passing.bal",
+                "https://play.ballerina.io/?gist=406baa900a993113173448e818db6fb8&file=inter_worker_message_passing.bal",
                 "_blank",
               );
             }}
@@ -97,7 +97,7 @@ export function InterWorkerMessagePassing({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/inter-worker-message-passing",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/inter-worker-message-passing",
                 "_blank",
               );
             }}

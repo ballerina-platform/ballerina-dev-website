@@ -21,7 +21,7 @@ public function main() {
     io:println(evenFunc1(5));
     io:println(evenFunc1(6));
 
-    // Type of the \`evenFunc1\` variable is the \`function(int num = 5) returns boolean\` function type.
+    // Type of the \`evenFunc2\` variable is the \`function (int num = 5) returns boolean\` function type.
     function (int num = 5) returns boolean evenFunc2 = isEven;
 
     // Invoke the function with the default value defined in the function type.
@@ -76,7 +76,7 @@ export function FunctionTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=c36036785abc2f35d75923853551cea5&file=function_types.bal",
+                "https://play.ballerina.io/?gist=2672c7ff52ad532afd6023106330e89e&file=function_types.bal",
                 "_blank",
               );
             }}
@@ -101,7 +101,7 @@ export function FunctionTypes({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/function-types",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/function-types",
                 "_blank",
               );
             }}

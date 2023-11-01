@@ -1,0 +1,20 @@
+{
+  "title": "S3 trigger",
+  "description": "This example creates a function, which will be executed for each object creation in AWS S3.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "aws lambda",
+    "s3",
+    "trigger",
+    "serverless",
+    "cloud",
+    "function as a service"
+  ],
+  "permalink": "/learn/by-example/aws-lambda-s3-trigger",
+  "active": "aws-lambda-s3-trigger",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/aws-lambda-s3-trigger",
+    "/swan-lake/learn/by-example/aws-lambda-s3-trigger.html"
+  ]
+}

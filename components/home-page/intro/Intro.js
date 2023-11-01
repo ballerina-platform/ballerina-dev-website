@@ -50,18 +50,18 @@ export default function Intro() {
 
     <Col sm={12}>
       <Container>
-        
+
         <Row className={styles.introBottomRow}>
           <Col xs={12} sm={12} md={12} lg={8} className={styles.description}>
-          <h1>Flexible, Powerful, Beautiful<br/>Integrations as Code with Ballerina</h1>
+            <h1>Flexible, Powerful, Beautiful<br />Integrations as Code with Ballerina</h1>
 
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Open source, cloud-native programming language optimized for integration</span></p>
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
-          <p className={styles.desItem}><BsCheck className={styles.check}/><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2021</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Open source, cloud-native programming language optimized for integration</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Batteries included: Rich ecosystem of network protocols, data formats, and connectors</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Edit/view source code textually or graphically as sequence diagrams and flowcharts</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Built-in, easy and efficient concurrency with sequence diagrams and safety primitives</span></p>
+            <p className={styles.desItem}><BsCheck className={styles.check} /><span>Developed by <a href="https://wso2.com/" target='_blank' rel="noreferrer" className={styles.introLinks}>WSO2</a> since 2016 and first released in February 2022</span></p>
 
-           
+
 
           </Col>
 
@@ -97,8 +97,8 @@ export default function Intro() {
                 <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="Twitter">
-                <Image src={`${prefix}/images/sm-icons/twitter-white.svg`} width={25} height={25} alt="Twitter" />
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="X">
+                <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={24} height={24} alt="X" />
               </a>
 
               <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
@@ -120,7 +120,7 @@ export default function Intro() {
           </Col>
         </Row>
 
-       
+
       </Container>
     </Col>
 

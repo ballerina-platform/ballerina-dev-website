@@ -59,7 +59,7 @@ export function BuiltInStringSubtype({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=78977d6732ad9f96c5a5daa12642bdf7&file=built_in_string_subtype.bal",
+                "https://play.ballerina.io/?gist=dd111515dfed33ad3a508e8766ffc2f4&file=built_in_string_subtype.bal",
                 "_blank",
               );
             }}
@@ -84,7 +84,7 @@ export function BuiltInStringSubtype({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.7.0/examples/built-in-string-subtype",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/built-in-string-subtype",
                 "_blank",
               );
             }}

@@ -1,0 +1,7 @@
+tagline: Encapsulates the messaging from the application
+desc: Messaging Gateway wraps messaging-specific method calls and exposes domain-specific methods to the application.
+helps: Ballerina's classes and modules help to create wrappers and expose domain-specific functions and methods.
+category: Messaging Endpoints
+index: 42
+tags: ["Messaging Gateway", "Message"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingGateway.html

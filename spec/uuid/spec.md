@@ -3,7 +3,7 @@
 _Owners_: @daneshk @MadhukaHarith92  
 _Reviewers_: @daneshk  
 _Created_: 2021/11/16  
-_Updated_: 2022/02/08  
+_Updated_: 2023/10/04  
 _Edition_: Swan Lake   
 
 ## Introduction
@@ -17,16 +17,19 @@ The conforming implementation of the specification is released and included in t
 
 ## Contents
 
-1. [Overview](#1-overview)
-2. [Generating UUIDs](#2-generating-uuids)
-    * 2.1. [Version 1](#21-version-1)
-    * 2.2. [Version 3](#22-version-3)
-    * 2.3. [Version 4](#23-version-4)
-    * 2.4. [Version 5](#24-version-5)
-    * 2.5. [Nil UUID](#25-nil-uuid)
-3. [Checking the Version of UUIDs](#3-checking-the-version-of-uuids)
-4. [Validating UUIDs](#4-validating-uuids)
-5. [UUID Operations](#5-uuid-operations)
+- [Specification: Ballerina UUID Library](#specification-ballerina-uuid-library)
+  - [Introduction](#introduction)
+  - [Contents](#contents)
+  - [1. Overview](#1-overview)
+  - [2. Generating UUIDs](#2-generating-uuids)
+    - [2.1. Version 1](#21-version-1)
+    - [2.2. Version 3](#22-version-3)
+    - [2.3. Version 4](#23-version-4)
+    - [2.4. Version 5](#24-version-5)
+    - [2.5. Nil UUID](#25-nil-uuid)
+  - [3. Checking the Version of UUIDs](#3-checking-the-version-of-uuids)
+  - [4. Validating UUIDs](#4-validating-uuids)
+  - [5. UUID operations](#5-uuid-operations)
 
 ## 1. Overview
 This specification elaborates on the functions available in the UUID library.
@@ -51,6 +54,14 @@ public type Uuid readonly & record {
     int node;
 };
 ```
+
+The `uuid:createRandomUuid()` function is a convenient alias for `uuid:createType4AsString()` 
+that returns a random UUID as a string.
+```ballerina
+string uuid = uuid:createRandomUuid();
+```
+This function is sufficient for most use cases. However, if a specific UUID type is required, 
+the following APIs are also available.
 
 ### 2.1. Version 1
 This is generated using the MAC address of the computer and the time of generation. 

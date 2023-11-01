@@ -1,0 +1,7 @@
+tagline: Coordinate message processing
+desc: Message dispatcher coordinates message processing among multiple performers.
+helps: Ballerina programs can maintain the state internally using variables and perform logic based on the state.
+category: Messaging Endpoints
+index: 48
+tags: ["Message Dispatcher", "Competing Consumers", "Transactional Client"]
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageDispatcher.html

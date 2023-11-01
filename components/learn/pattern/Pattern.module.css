@@ -3,6 +3,9 @@
   flex-wrap: row wrap;
 }
 
+.card div {
+  border-radius: 0;
+}
 .cardLink {
   text-decoration: none;
   color: #464646;
@@ -21,6 +24,13 @@
   margin-right: 5px;
   margin-top: 5px;
   background-color: #888 !important;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tag:hover{
+  opacity: 0.8;
   color: #ffffff;
 }
 

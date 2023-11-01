@@ -1,0 +1,22 @@
+{
+    "expand": "description,lead,components,issueTypes,url,email,assigneeType,versions,name,roles,projectCategory",
+    "self": "http://example.com/jira/project/12345",
+    "id": "12345",
+    "key": "PROJ123",
+    "description": "Sample project for demonstration purposes",
+    "lead": {
+        "name": "John Doe",
+        "key": "johndoe",
+        "emailAddress": "johndoe@example.com"
+    },
+    "components": [
+        {
+            "id": "1",
+            "name": "Component A"
+        },
+        {
+            "id": "2",
+            "name": "Component B"
+        }
+    ]
+}

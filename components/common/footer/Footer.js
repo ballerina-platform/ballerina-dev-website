@@ -42,8 +42,8 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="Twitter">
-                          <Image src={`${prefix}/images/sm-icons/twitter-white.svg`} width={19} height={15} alt="Twitter" />
+                        <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
+                          <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={16} height={16} alt="X" />
                         </a>
                       </li>
                       <li>
@@ -62,7 +62,7 @@ export default function Footer() {
                         </a>
                       </li>
                       <li>
-                        <a className={styles.footerLinkSM} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" title="LinkedIn">
+                        <a className={styles.footerLinkSM} href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
                           <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={16} height={16} alt="LinkedIn" />
                         </a>
                       </li>
@@ -102,7 +102,7 @@ export default function Footer() {
 
         <Row className={styles.policyLinks}>
           <Col xs={12} sm={2}>
-            <span className="footerLink">© 2018-2023 WSO2 LLC</span>
+            <span className="footerLink">© 2023 WSO2 LLC</span>
           </Col>
           <Col xs={12} sm={10}>
             <ul>

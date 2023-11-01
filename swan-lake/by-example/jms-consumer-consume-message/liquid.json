@@ -1,0 +1,17 @@
+{
+  "title": "Consume message",
+  "description": "BBE on consuming messages from a JMS provider using Ballerina.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "JMS",
+    "message consumer",
+    "bbe"
+  ],
+  "permalink": "/learn/by-example/jms-consumer-consume-message",
+  "active": "jms-consumer-consume-message",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/jms-consumer-consume-message",
+    "/swan-lake/learn/by-example/jms-consumer-consume-message.html"
+  ]
+}

@@ -105,7 +105,7 @@ You can use these build options along with the graalvm build option (`--graalvm`
 
 The example command below will build the package and run it locally.
 
-```bash
+```
 $ bal build --cloud="azure_functions_local" --graalvm
 ```
 
@@ -115,7 +115,7 @@ $ bal build --cloud="azure_functions_local" --graalvm
 
 The example command below will build the package for the Azure Functions cloud. 
 
-```bash
+```
 $ bal build --cloud="azure_functions" --graalvm
 ```
 
@@ -129,7 +129,7 @@ You can either deploy the Azure Functions package locally or on the Azure Functi
 
 The example command below will deploy the package locally.
 
-```bash
+```
 $ func start --script-root target/azure_functions
 ```
 
@@ -137,7 +137,7 @@ $ func start --script-root target/azure_functions
 
 The example command below will deploy the package on the Azure Functions cloud. 
 
-```bash
+```
 $ func azure functionapp publish <function_app_name> --script-root target/azure_functions
 ```
 

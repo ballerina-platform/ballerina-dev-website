@@ -55,6 +55,18 @@ Follow the instructions given in this section to develop the service.
    
     ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
 
+    The generated record type is as follows.
+
+    ```ballerina
+    type Doctor record {|
+        string name;
+        string hospital;
+        string category;
+        string availability;
+        decimal fee;
+    |};
+    ```
+
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
 

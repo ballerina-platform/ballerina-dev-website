@@ -1,6 +1,9 @@
-# Get started
-
-The sections below walk you through how to get started with the Ballerina VS Code extension by installing it and opening a Ballerina package via it.
+---
+title: Get started
+description: The sections below walk you through how to get started with the Ballerina VS Code extension by installing it and opening a Ballerina package via it. 
+keywords: ballerina, vs code extension, get started, quick start
+intro: The sections below walk you through how to get started with the Ballerina VS Code extension by installing it and opening a Ballerina package via it.
+---
 
 ## Install the Ballerina extension
 

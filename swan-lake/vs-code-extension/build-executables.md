@@ -1,6 +1,9 @@
-# Build executables
-
-Follow the steps below to create an executable JAR file to deploy. 
+---
+title: Build executables
+description: Follow the steps below to create an executable JAR file to deploy.
+keywords: ballerina, vs code extension, executable, jar file
+intro: Follow the steps below to create an executable JAR file to deploy.
+---  
   
 1. Click **View** in the menu bar of the editor, and click **Command Palette**.
 

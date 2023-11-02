@@ -1,8 +1,9 @@
-# Version 4.5.0
-
-Hello, Ballerina community,
-
-We're excited to present the Ballerina VS Code extension version 4.5.0! Here's what's new:
+---
+title: Version 4.5.0
+description: We're excited to present the Ballerina VS Code extension version 4.5.0! Here's what's new.
+keywords: ballerina, vs code extension, release notes, 4.5.0
+intro: We're excited to present the Ballerina VS Code extension version 4.5.0! Here's what's new.
+---
 
 ## New features
 

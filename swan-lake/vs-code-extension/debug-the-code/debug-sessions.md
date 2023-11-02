@@ -1,6 +1,9 @@
-# Debug sessions
-
-The VS Code extension provides the three types of sessions below to debug your Ballerina code.
+---
+title: Debug sessions 
+description: The VS Code extension provides the three types of sessions below to debug your Ballerina code.
+keywords: ballerina, vs code extension, debug, features
+intro: The VS Code extension provides the three types of sessions below to debug your Ballerina code.
+---
 
 - **Program debug sessions** - debug a Ballerina program
 - **Test debug sessions** - debug a test function

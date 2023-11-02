@@ -1,6 +1,11 @@
-# Design using the Architecture View
+---
+title: Design using the Architecture View
+description: The Architecture View includes various editing capabilities that make it possible to design applications. 
+keywords: ballerina, vs code extension, architecture view, design
+intro: The Architecture View includes various editing capabilities that make it possible to design applications. 
+---
 
-The Architecture View includes various editing capabilities that make it possible to design applications. The sections below explore these capabilities by executing the **Architecture View** command on an empty workspace.
+The sections below explore these capabilities by executing the **Architecture View** command on an empty workspace.
 
 ## Add components
 

@@ -142,9 +142,8 @@ export default function PostPage({
         <meta name="keywords" content={frontmatter.keywords} />
 
         <title>{frontmatter.title}</title>
-
-        {/* <!--FB--> */}
-        <meta property="og:type" content="article" />
+  {/* <!--FB--> */}
+  <meta property="og:type" content="article" />
         <meta
           property="og:title"
           content={`Ballerina - ${frontmatter.title}`}
@@ -153,12 +152,22 @@ export default function PostPage({
           property="og:description"
           content={frontmatter.description}
         ></meta>
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
+        />
 
         {/* <!--LINKED IN  --> */}
+        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
         <meta property="og:description" content={frontmatter.description} />
+        <meta
+          property="og:image"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
+        />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`} />
         <meta
           property="twitter:description"
           content={frontmatter.description}
@@ -166,6 +175,10 @@ export default function PostPage({
         <meta
           property="twitter:text:description"
           content={frontmatter.description}
+        />
+        <meta
+          name="twitter:image"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
         />
       </Head>
       <Layout>
@@ -249,7 +262,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/integration/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/vs-code-extension/references/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"

@@ -1,6 +1,9 @@
-# IntelliSense
-
-The sections below describe the IntelliSense features that can be used to edit Ballerina code via the VS Code extension.
+---
+title: IntelliSense
+description: The sections below describe the IntelliSense features that can be used to edit Ballerina code via the VS Code extension. 
+keywords: ballerina, vs code extension, intellisense
+intro: The sections below describe the IntelliSense features that can be used to edit Ballerina code via the VS Code extension. 
+--- 
 
 ## Code completion and snippets
 The extension provides suggestions on variables, keywords, and code snippets of language constructs (such as functions, type definitions, services, iterable constructs, etc.).

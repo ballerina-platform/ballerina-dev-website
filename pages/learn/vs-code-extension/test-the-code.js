@@ -80,7 +80,7 @@ export default function PostPage({ frontmatter, content, id }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
         />
 
         {/* <!--LINKED IN  --> */}
@@ -88,7 +88,7 @@ export default function PostPage({ frontmatter, content, id }) {
         <meta property="og:description" content={frontmatter.description} />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
         />
 
         {/* <!--TWITTER--> */}
@@ -103,7 +103,7 @@ export default function PostPage({ frontmatter, content, id }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-learn-ballerina-specifications-page-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"
         />
       </Head>
       <Layout>
@@ -184,7 +184,7 @@ export default function PostPage({ frontmatter, content, id }) {
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}spec/spec.md`}
+                  href={`${process.env.gitHubPath}swan-lake/vs-code-extension/test-the-code.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"

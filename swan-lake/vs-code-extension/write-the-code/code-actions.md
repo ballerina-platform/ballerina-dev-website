@@ -1,6 +1,12 @@
-# Code actions
+---
+title: Code actions
+description: The Ballerina VS Code extension provides code actions to simplify the developing process of your code. 
+keywords: ballerina, vs code extension, code actions
+intro: The Ballerina VS Code extension provides code actions to simplify the developing process of your code. 
+---
 
 [Code actions](https://code.visualstudio.com/docs/editor/refactoring#_code-actions-quick-fixes-and-refactorings) is a feature in the VS Code Editor that enables **quick fixes** and code **refactoring** suggestions.
+
 The Ballerina VS Code extension enables the following code actions.
 
 ## Quick fixes

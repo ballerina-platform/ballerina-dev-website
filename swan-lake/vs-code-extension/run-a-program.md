@@ -1,6 +1,9 @@
-# Run a program
-
-Follow the steps below to run a sample Ballerina program in VS Code. 
+---
+title: Run a program
+description: Follow the steps below to run a sample Ballerina program in VS Code. 
+keywords: ballerina, vs code extension, run, execute, program
+intro: Follow the steps below to run a sample Ballerina program in VS Code. 
+---
 
 ## Use the code view
 

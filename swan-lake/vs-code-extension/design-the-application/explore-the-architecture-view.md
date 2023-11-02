@@ -1,6 +1,11 @@
-# Explore the Architecture View
+---
+title: Explore the Architecture View
+description: The Architecture View of the Ballerina VS Code extension provides a high-level picture of the components and their interactions in Ballerina projects purely based on the source code.
+keywords: ballerina, vs code extension, architecture view, features
+intro: The Architecture View of the Ballerina VS Code extension provides a high-level picture of the components and their interactions in Ballerina projects purely based on the source code. 
+---
 
-Explore the features of the Architecture View using the [Online Boutique microservices demo](https://github.com/ballerina-guides/gcp-microservices-demo) Ballerina project.
+The sections below explore the features of the Architecture View using the [Online Boutique microservices demo](https://github.com/ballerina-guides/gcp-microservices-demo) Ballerina project.
 
 ## Related concepts
 

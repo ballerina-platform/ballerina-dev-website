@@ -1,4 +1,9 @@
-# Deploy with WSO2 Choreo
+---
+title: Deploy with WSO2 Choreo
+description: The extension offers in-built deployment capabilities for WSO2 Choreo. 
+keywords: ballerina, vs code extension, deploy, wso2 choreo
+intro: The extension offers in-built deployment capabilities for WSO2 Choreo. 
+---  
 
 You can deploy the Ballerina projects you create in [WSO2 Choreo](https://wso2.com/choreo/). The combination of the Ballerina VS Code extension and [Choreo VS Code extension](https://marketplace.visualstudio.com/items?itemName=WSO2.choreo) enables this functionality. 
 

@@ -1,6 +1,9 @@
-# Define a configurable variable
-
-As you develop your construct, you may identify a parameter for which the value needs to be configurable and for which you have not already defined the required configurable. Then, you can access the configurable variable template while defining/editing the current statement. 
+---
+title: Define a configurable variable
+description: As you develop your construct, you may identify a parameter for which the value needs to be configurable and for which you have not already defined the required configurable. Then, you can access the configurable variable template while defining/editing the current statement.
+keywords: ballerina, vs code extension, configurable variable, statement editor
+intro: As you develop your construct, you may identify a parameter for which the value needs to be configurable and for which you have not already defined the required configurable. Then, you can access the configurable variable template while defining/editing the current statement.
+--- 
 
 Follow the steps below to add a variable and make its value configurable.
 

@@ -1,6 +1,9 @@
-# Convert JSON to records
-
-The Ballerina language provides several options to convert JSON files into record definitions. 
+---
+title: Convert JSON to records
+description: The Ballerina language provides several options to convert JSON files into record definitions.
+keywords: ballerina, vs code extension, json, statement editor, records, conversion
+intro: The Ballerina language provides several options to convert JSON files into record definitions.
+--- 
 
 ## Via the Record Editor
 

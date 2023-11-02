@@ -1,6 +1,9 @@
-# Debug features
-
-The Ballerina VS Code extension currently supports the debug features below.
+---
+title: Debug features 
+description: The Ballerina VS Code extension currently supports the debug features below.
+keywords: ballerina, vs code extension, debug, features
+intro: The Ballerina VS Code extension currently supports the debug features below.
+---
 
 - [Breakpoints](#breakpoints)
 - [Pause & continue](#pause-and-continue)

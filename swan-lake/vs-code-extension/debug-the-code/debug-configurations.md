@@ -1,6 +1,9 @@
-# Debug configurations
-
-The Ballerina debugger supports various debug configuration options via the `launch.json` file.
+---
+title: Debug configurations 
+description: The Ballerina debugger supports various debug configuration options added via a JSON configuration file.
+keywords: ballerina, vs code extension, debug, configurations
+intro: The Ballerina debugger supports various debug configuration options added via a JSON configuration file.
+---
 
 ## Create the configuration file
 

@@ -1,6 +1,11 @@
-# Configure the extension
+---
+title: Configure the extension
+description: The extension offers a number of configuration settings.
+keywords: ballerina, vs code extension, configurations, settings
+intro: The extension offers a number of configuration settings.
+---  
 
-The extension offers a number of settings. These can be configured by modifying the [user or workspace settings](https://code.visualstudio.com/docs/getstarted/settings) or the `settings.json` file of VS Code.
+These can be configured by modifying the [user or workspace settings](https://code.visualstudio.com/docs/getstarted/settings) or the `settings.json` file of VS Code.
 
 ## Basic configurations
 

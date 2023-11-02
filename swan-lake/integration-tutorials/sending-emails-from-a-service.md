@@ -201,7 +201,7 @@ Follow the instructions given in this section to develop the service.
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
 
-4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
+4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and sends an email to the client.
 
     - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 
@@ -240,7 +240,7 @@ Follow the instructions given in this section to develop the service.
 
     > **Note:** Enable two factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
 
-6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) client to send emails.
+6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) object to send emails.
    
    ![Define the clients](/learn/images/integration-tutorials/sending-emails-from-a-service/define_a_client.gif)
 
@@ -546,7 +546,25 @@ $ bal run hospitalservice.jar
 
 #### Send a request
 
-Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter and send a request with a JSON payload in the following form.
+
+    ```json
+    {
+        "patient": {
+            "name": "John Doe",
+            "dob": "1940-03-19",
+            "ssn": "234-23-525",
+            "address": "California",
+            "phone": "8770586755",
+            "email": "johndoe@gmail.com",
+            "cardNo": "7844481124110331"
+        },
+        "doctor": "thomas collins",
+        "hospital_id": "grandoaks",
+        "hospital": "grand oak community hospital",
+        "appointment_date": "2023-10-02"
+    }
+    ```
 
 ![Send a request](/learn/images/integration-tutorials/sending-emails-from-a-service/try_it.gif)
 

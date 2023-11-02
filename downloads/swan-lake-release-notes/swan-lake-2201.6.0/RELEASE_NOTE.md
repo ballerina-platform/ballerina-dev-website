@@ -26,122 +26,6 @@ Update your current Ballerina installation directly to 2201.6.0 using the [Balle
 
 If you have not installed Ballerina, download the [installers](/downloads/#swanlake) to install.
 
-## Backward-incompatible changes
-
-- `self` of an object is now implicitly final and cannot be assigned to.
-
-    ```ballerina
-    class Counter {
-        private int i = 0;
-
-        function updateSelf() {
-            self = new; // Compilation error now.
-        }
-
-        function increment() {
-            lock {
-                self.i += 1;
-            }
-        }
-    }    
-    ```
-
-  This also allows using `self` of an object that is a subtype of `readonly` or `isolated object {}` as a captured variable within an `isolated` anonymous function.
-
-    ```ballerina
-    isolated class Filter {
-        final string[] & readonly words;
-        private int length;
-
-        isolated function init(string[] & readonly words, int length) {
-            self.words = words;
-            self.length = length;
-        }
-
-        isolated function setLength(int length) {
-            lock {
-                self.length = length;
-            }
-        }
-
-        isolated function getCount() returns int =>
-            self.words.filter(
-                // Allowed now.
-                word => word.length() == self.length).length();
-    }
-    ```
-
-- Fixed a bug that allowed assigning `nil` to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
-
-    ```ballerina
-    type Employee record {|
-        string id;
-        string name;
-    |};
-
-    public function main() {
-        Employee employee = {
-            name: "Jo",
-            id: "E12321"
-        };
-
-        string key = "name";
-        employee[key] = (); // Compilation error now.
-
-        map<string> data = {
-            name: "Jo Doe",
-            dept: "IT"
-        };
-
-        foreach string mkey in employee.keys() {
-            // `data[key]` will be nil if the key is not present in `data`.
-            // E.g., `data[key]` is nil when `key` is `name`.
-            employee[mkey] = data[mkey]; // Compilation error now.
-        }
-    }
-    ```
-    
-- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml` to have a single prefix for all the XML-parsing error messages.
-
-    For example, consider the content below of the `invalid_xml.txt` file.
-
-    ```
-    <!-- comments cannot have -- in it -->
-    ```
-
-    When the following Ballerina code is run,
-
-    ```ballerina
-    import ballerina/io;
-
-    public function main() returns error? {
-        xml readResult = check io:fileReadXml("invalid_xml.txt");
-    }
-    ```
-
-    it gives the error below.
-
-    ```
-    error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
-     at [row,col {unknown-source}]: [1,4]
-    ```
-
-- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package, are refactored to abstract classes. Creating an instance of those classes is incorrect.
-
-- A `typedesc` value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
-
-    ```ballerina
-    import ballerina/io;
-
-    type IntArray int[];
-
-    public function main() returns error? {
-        float[] arr = [1.0, 2.0];
-        IntArray result = check arr.cloneWithType();
-        io:println(typeof result); // Prints 'typedesc IntArray'.
-    }
-    ```
-
 ## Language updates
 
 ### New features
@@ -456,3 +340,119 @@ To view bug fixes, see the GitHub milestone for 2201.6.0 (Swan Lake) of the repo
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.6.0 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+is%3Aclosed+label%3AType%2FBug+milestone%3A2201.6.0+label%3AArea%2FProjectAPI).
+
+## Backward-incompatible changes
+
+- `self` of an object is now implicitly final and cannot be assigned to.
+
+    ```ballerina
+    class Counter {
+        private int i = 0;
+
+        function updateSelf() {
+            self = new; // Compilation error now.
+        }
+
+        function increment() {
+            lock {
+                self.i += 1;
+            }
+        }
+    }    
+    ```
+
+  This also allows using `self` of an object that is a subtype of `readonly` or `isolated object {}` as a captured variable within an `isolated` anonymous function.
+
+    ```ballerina
+    isolated class Filter {
+        final string[] & readonly words;
+        private int length;
+
+        isolated function init(string[] & readonly words, int length) {
+            self.words = words;
+            self.length = length;
+        }
+
+        isolated function setLength(int length) {
+            lock {
+                self.length = length;
+            }
+        }
+
+        isolated function getCount() returns int =>
+            self.words.filter(
+                // Allowed now.
+                word => word.length() == self.length).length();
+    }
+    ```
+
+- Fixed a bug that allowed assigning `nil` to a record field with member access expressions when there are no fields of optional types. This previously resulted in a runtime panic if the value was `nil`.
+
+    ```ballerina
+    type Employee record {|
+        string id;
+        string name;
+    |};
+
+    public function main() {
+        Employee employee = {
+            name: "Jo",
+            id: "E12321"
+        };
+
+        string key = "name";
+        employee[key] = (); // Compilation error now.
+
+        map<string> data = {
+            name: "Jo Doe",
+            dept: "IT"
+        };
+
+        foreach string mkey in employee.keys() {
+            // `data[key]` will be nil if the key is not present in `data`.
+            // E.g., `data[key]` is nil when `key` is `name`.
+            employee[mkey] = data[mkey]; // Compilation error now.
+        }
+    }
+    ```
+    
+- Fixed a bug with the XML parser error messages that showed dependency information. The error message prefix `failed to create xml` is now changed to `failed to parse xml` to have a single prefix for all the XML-parsing error messages.
+
+    For example, consider the content below of the `invalid_xml.txt` file.
+
+    ```
+    <!-- comments cannot have -- in it -->
+    ```
+
+    When the following Ballerina code is run,
+
+    ```ballerina
+    import ballerina/io;
+
+    public function main() returns error? {
+        xml readResult = check io:fileReadXml("invalid_xml.txt");
+    }
+    ```
+
+    it gives the error below.
+
+    ```
+    error: failed to parse xml: String '--' not allowed in comment (missing '>'?)
+     at [row,col {unknown-source}]: [1,4]
+    ```
+
+- The `Environment`, `Future`, and `Runtime` classes in the `io.ballerina.runtime.api` package, are refactored to abstract classes. Creating an instance of those classes is incorrect.
+
+- A `typedesc` value (returned by evaluating the `typeof` expression on a result of the `value:cloneWithType` and `value:fromJsonWithType` functions) is changed to give the correct type-reference type.
+
+    ```ballerina
+    import ballerina/io;
+
+    type IntArray int[];
+
+    public function main() returns error? {
+        float[] arr = [1.0, 2.0];
+        IntArray result = check arr.cloneWithType();
+        io:println(typeof result); // Prints 'typedesc IntArray'.
+    }
+    ```

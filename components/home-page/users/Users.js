@@ -58,7 +58,7 @@ export default function Users(props) {
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
-              <a href="https://central.ballerina.io/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
+              <a href="https://central.ballerina.io/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/ballerina-central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
               <a href="https://elixir.redcross.lk/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
               <a href="https://www.raapid.ai/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
           </Col>

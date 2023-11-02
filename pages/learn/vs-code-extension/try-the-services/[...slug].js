@@ -247,7 +247,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/integration/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/vs-code-extension/try-the-services/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"

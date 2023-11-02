@@ -1,0 +1,31 @@
+{
+    "customerId": "987654321",
+    "claims": [
+        {
+            "customerId": "987654321",
+            "policyNumber": "POL987654",
+            "claimAmount": 7500.00,
+            "accidentType": "Auto",
+            "claimLocation": "456 Elm St, Townsville, CA",
+            "claimDate": {
+                "year": "2023",
+                "month": "9",
+                "day": "10"
+            },
+            "status": "APPROVED"
+        },
+        {
+            "customerId": "987654321",
+            "policyNumber": "POL123456",
+            "claimAmount": 6000.00,
+            "accidentType": "Property",
+            "claimLocation": "789 Oak Ave, Villagetown, NY",
+            "claimDate": {
+                "year": "2023",
+                "month": "2",
+                "day": "12"
+            },
+            "status": "APPROVED"
+        }
+    ]
+}

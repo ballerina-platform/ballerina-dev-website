@@ -1,0 +1,7 @@
+tagline: Divide the processing task into a sequence of smaller, independent processing steps
+desc: The pipes and Filters pattern divides a larger processing task into a sequence of smaller, independent processing steps (Filters) that are connected by channels (Pipes).
+category: Messaging Systems
+index: 2
+helps: Ballerina has a query expression syntax that acts as a pipeline of data. Within a query expression, the `where` clause can be used to filter data. Existing functions can be called within the query expression to compose complex message processing logic.
+link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html
+tags: ["Pipes and Filters", "Message Filter", "Message Channel", "Message"]

@@ -330,7 +330,7 @@ WARNING [mypackage] detected conflicting jar files. 'commons-logging-1.1.1.jar' 
 ```
 
 Note: Ignoring the `groupId` and `artifactId` will result in picking a random jar with the following warning reported by the compiler.
-```bash
+```
 warning: Detected conflicting jar files:
         'commons-logging-1.1.1.jar' dependency of 'myorg/pkg1' conflict with 'commons-logging-1.2.jar' dependency of 'myorg/pkg2'
 ```

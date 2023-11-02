@@ -317,7 +317,6 @@ pre.shiki,
 pre.default {
   padding: 10px;
   border-radius: 5px;
-  margin-top: 20px;
   background-color: #eeeeee !important;
 }
 
@@ -513,6 +512,30 @@ a.cGreenLinkArrow:hover {
   font-size: 3rem;
 }
 
+.selectedTagContainer{
+  margin-bottom: 10px;
+}
+
+.selectedTagBadge{
+  margin-right: 5px;
+  background-color: #888 !important;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedTagIcon{
+  margin-left: 3px;
+}
+
+.selectedTagBadge:hover{
+  opacity: 0.8;
+  color: #ffffff;
+}
+
 /*--------downloads page -------*/
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
@@ -674,7 +697,7 @@ ul.eventsTabs {
 .eventsTabs .nav-link:hover, .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
-  border: none;
+  border: none !important;
 }
 
 .eventsTabs li button,
@@ -1568,4 +1591,53 @@ table.cTopControlsContainer tbody {
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;
+}
+
+
+/* ---------------------Carousal-------------------- */
+#myCarousel {
+  /* margin-left: 50px;
+  margin-right: 50px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 70px;
+}
+
+.item .row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selected .row {
+	opacity:0.5;
+}
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background: none;
+  border: none;
+}
+
+.carousel-control-prev {
+  margin-left: -25px !important;
+  justify-content: start !important;
+}
+
+.carousel-control-next {
+  margin-right: -25px !important;
+  justify-content: end !important;
+}
+
+.carousel-control {
+  width: 0%;
+}
+
+.carousel-indicators {
+  margin-bottom: 0 !important;
 }

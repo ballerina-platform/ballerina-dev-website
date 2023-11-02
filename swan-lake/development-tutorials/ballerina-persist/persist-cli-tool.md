@@ -14,7 +14,7 @@ redirect_from:
 
 The Ballerina project should be initialized with `bal persist` before generating the derived types, clients, and script files. This can be done using the `init` command. You can specify the preferred data store and the module, which you need to generate files. If you do not specify the data store and the module, the default values will be used.
 
-```bash
+```
 $ bal persist init --datastore="mysql" --module="store"
 ```
 
@@ -58,7 +58,7 @@ Behaviour of the `init` command,
 
 The command below is used to generate the derived types, clients, and script files based on the data model definition file. This command is executed from within the project root directory as follows.
 
-```bash
+```
 $ bal persist generate
 ```
 
@@ -112,7 +112,7 @@ Behaviour of the `generate` command
 
 The command below generates the migration scripts for the model definition changes. This command is executed in the project root directory. This command will generate the migration scripts based on the changes in the model definition file. The generated migration scripts will be added to the `migrations` directory inside the `persist` directory.
 
-```bash
+```
 $ bal persist migrate add_employee
 ```
 

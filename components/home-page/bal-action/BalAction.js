@@ -18,14 +18,36 @@
 
 import * as React from 'react';
 import { Row, Col, Tabs, Tab, Container } from 'react-bootstrap';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Image from 'next-image-export-optimizer';
+import { FaRegCopy, FaCheck } from 'react-icons/fa';
 
 import { prefix } from '../../../utils/prefix';
 import styles from './BalAction.module.css';
 
+
 export default function BalAction(props) {
   const [key, setKey] = React.useState('consuming-services');
   const samples = props.samples;
+  const codeSamples = props.codeSamples;
+  const [copied, setCopied] = React.useState(false);
+  const [protoCopied, setProtoCopied] = React.useState(false);
+
+  const codeCopy = () => {
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  }
+
+  const protoCodeCopy = () => {
+    setProtoCopied(true);
+
+    setTimeout(() => {
+      setProtoCopied(false);
+    }, 3000);
+  }
 
   React.useEffect(() => {
     let hash = global.location.hash;
@@ -40,7 +62,7 @@ export default function BalAction(props) {
       }
     }
   }, []);
-
+  
   const consumingServices = samples['consuming-services'];
   const workingWithData = samples['working-with-data'];
   const restfulApi = samples['restful-api'];
@@ -49,7 +71,6 @@ export default function BalAction(props) {
   const graphqlApi = samples['graphql-api'];
   const kafkaConsumer = samples['kafka-consumer-producer'];
   const workingWithDataBases = samples['working-with-databases'];
-
   return (
     <Col sm={12}>
       <Container>
@@ -90,6 +111,12 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/consuming_services" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['consuming-services']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: consumingServices }} />
                     </div>
@@ -102,16 +129,23 @@ export default function BalAction(props) {
                 </Row>
               </Tab>
 
-
               <Tab eventKey="working-with-data" title="Working with data">
                 <Row>
                   <Col lg={7} md={12} sm={12} className={styles.col1}>
                     <div className={styles.focusPane}>
-                      <div className={styles.codeActionIcons}>
-                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_data" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
-                          <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
-                        </a>
-                      </div>
+                      
+                        <div className={styles.codeActionIcons}>
+                          <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_data" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
+                            <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
+                          </a>
+                          <CopyToClipboard text={codeSamples['working-with-data']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                          </CopyToClipboard>
+                        </div>
+                      
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithData }} />
                     </div>
                   </Col>
@@ -134,6 +168,12 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/restful_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['restful-api']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: restfulApi }} />
                     </div>
@@ -149,12 +189,26 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/grpc_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['grpc-api']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode1 }} />
                     </div>
                   </Col>
                   <Col lg={5} md={12} sm={12} id="grpc-api-proto" className={styles.col2}>
                     <div className={styles.focusPane}>
+                      <div className={styles.codeActionIcons}>
+                          <CopyToClipboard text={codeSamples['grpc-api-proto']}
+                              onCopy={() => protoCodeCopy()} style={{ float: "right" }}>
+                              {
+                                protoCopied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                              }
+                          </CopyToClipboard>
+                        </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: grpcCode2 }} />
                     </div>
                   </Col>
@@ -169,6 +223,12 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/graphql_api" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['graphql-api']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: graphqlApi }} />
                     </div>
@@ -184,6 +244,12 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/kafka_consumer_producer" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['kafka-consumer-producer']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: kafkaConsumer }} />
                     </div>
@@ -199,6 +265,12 @@ export default function BalAction(props) {
                         <a href="https://github.com/ballerina-guides/integration-samples/tree/main/working_with_databases" target="_blank" rel="noreferrer" passHref title="Open on GitHub">
                           <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={18} height={18} alt="GitHub" />
                         </a>
+                        <CopyToClipboard text={codeSamples['working-with-databases']}
+                            onCopy={() => codeCopy()} style={{ float: "right", marginLeft:'5px' }}>
+                            {
+                              copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
+                            }
+                        </CopyToClipboard>
                       </div>
                       <div className="highlight" dangerouslySetInnerHTML={{ __html: workingWithDataBases }} />
                     </div>

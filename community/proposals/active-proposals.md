@@ -11,7 +11,7 @@ permalink: /community/active-proposals
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
 |[[Improvement]: Redesign the Ballerina Shell architecture ](https://github.com/ballerina-platform/ballerina-lang/issues/41296)|[nipunayf](https://github.com/nipunayf)|4|2023-08-28|N/A|
-|[[New Feature]: Formatting a Ballerina module through project-level configurations](https://github.com/ballerina-platform/ballerina-lang/issues/41280)|[poorna2152](https://github.com/poorna2152)|10|2023-08-23|N/A|
+|[[New Feature]: Formatting a Ballerina module through project-level configurations](https://github.com/ballerina-platform/ballerina-lang/issues/41280)|[poorna2152](https://github.com/poorna2152)|11|2023-08-23|N/A|
 
 ## [ballerina-distribution](https://github.com/ballerina-platform/ballerina-distribution)
 
@@ -36,6 +36,8 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-standard-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
+|[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|6|2023-10-25|N/A|
 |[Proposal: Ballerina GraphQL Schema Registry](https://github.com/ballerina-platform/ballerina-standard-library/issues/4820)|[zetcco](https://github.com/zetcco)|0|2023-09-19|Active|
 |[Proposal: Map Ballerina Constraints to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-standard-library/issues/4788)|[SachinAkash01](https://github.com/SachinAkash01)|1|2023-09-08|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-standard-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|

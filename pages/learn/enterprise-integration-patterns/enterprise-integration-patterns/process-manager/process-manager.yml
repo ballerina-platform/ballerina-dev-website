@@ -1,5 +1,5 @@
 tagline: Process messages with steps unknown at design time
-desc: Process manager orchestrates a sequence of steps that are not known at design time.
+desc: The process manager orchestrates a sequence of steps that are not known at design time.
 helps: Ballerina provides control flow constructs such as `if`-`else` and `match` statements to implement complex process flows.
 category: Message Routing
 index: 34

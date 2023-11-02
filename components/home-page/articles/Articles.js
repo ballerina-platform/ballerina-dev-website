@@ -17,12 +17,26 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Card } from 'react-bootstrap';
+import { Row, Col, Container, Card, Carousel } from 'react-bootstrap';
+import ArticleList from '../../../_data/articles.json';
 
-import { prefix } from '../../../utils/prefix';
 import styles from './Articles.module.css';
 
 export default function Articles(props) {
+  const [index, setIndex] = React.useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
+  let dataRows = [];
+  if (ArticleList.articles && ArticleList.articles != undefined) {
+    const chunkSize = 3;
+    for (let i = 0; i < ArticleList.articles.length; i += chunkSize) {
+      const chunk = ArticleList.articles.slice(i, i + chunkSize);
+      dataRows.push(chunk);
+    }
+  }
 
   return (
     <>
@@ -49,146 +63,46 @@ export default function Articles(props) {
           </Row>
 
           <Row>
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://bestcodinglanguage.com/for-cloud-computing/">
-                      <h4 className="card-title" >Best Programming Languages For Cloud Computing</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Awais Yaseen</span> in Best coding language</p>
-                    <p className={styles.date}>Sep 15, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://www.hyperlinkinfosystem.com/blog/popular-microservices-frameworks">
-                      <h4 className="card-title" >10 Most Popular Microservices Framework</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Harnil Oza</span> in Hyperlink InfoSystem</p>
-                    <p className={styles.date}>Sep 14, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d">
-                      <h4 className="card-title" >10 lesser-known programming languages revolutionizing the tech industry</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Arslan Mirza</span> in Level Up Coding</p>
-                    <p className={styles.date}>Jul 4, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
+            <Col xs={12}>
+              <Carousel controls={true} activeIndex={index} onSelect={handleSelect} variant='dark' id="myCarousel">
 
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://www.cmarix.com/blog/best-microservices-frameworks/">
-                      <h4 className="card-title" >Top microservices frameworks to build scalable applications</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Parth Patel</span> in Cmarix</p>
-                    <p className={styles.date}>June 19, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
+                {dataRows.map((dataRow, index) => {
+                  return (
+                    <Carousel.Item key={index}>
+                      <Row>
+                        {dataRow.map((article, index) => {
+                          return (
+                            <Col sm={12} md={12} lg={4} styles={styles.newsCard} key={index}>
+                              <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                  <Card.Text className={styles.cardText}>
+                                    <a target="_blank" rel="noreferrer" href={article.url}>
+                                      <h4 className="card-title" >{article.title}</h4>
+                                    </a>
+                                  </Card.Text>
+                                  <div>
 
-
-          </Row>
-
-
-          <Row>
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://www.codelivly.com/lesser-known-programming-languages-worth-exploring/">
-                      <h4>8 lesser-known programming languages worth exploring</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Rocky Sah</span> in Codelivly</p>
-                    <p className={styles.date}>June 13, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Blog posts</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://www.tatvasoft.com/blog/top-12-microservices-frameworks/">
-                      <h4 className="card-title" >Top 12 microservices frameworks</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Vishal Shah</span> in Tatvasoft</p>
-                    <p className={styles.date}>Apr 25, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://levelup.gitconnected.com/14-mind-blowing-programming-languages-youve-probably-never-heard-of-b96550980661">
-                      <h4 className="card-title" >14 programming languages you&apos;ve probably never heard of</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Clement Brian</span> in Level Up Coding</p>
-                    <p className={styles.date}>Apr 12, 2023</p>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={12} md={12} lg={3} styles={styles.newsCard}>
-              <Card className={styles.cardBox}>
-                <Card.Body className={styles.cardBody}>
-                  {/* <Card.Title className={styles.cardTitle}>Article</Card.Title> */}
-                  <Card.Text className={styles.cardText}>
-                    <a target="_blank" rel="noreferrer" href="https://camunda.com/blog/2022/09/seven-best-programming-languages-for-microservices/">
-                      <h4>7 best programming languages for microservices</h4>
-                    </a>
-                  </Card.Text>
-                  <div>
-                    <p className={styles.author}> By <span>Josh Wulf</span> in Camunda</p>
-                    <p className={styles.date}>September 29, 2022</p>
-                  </div>
-                </Card.Body>
-              </Card>
+                                    <p className={styles.author}>
+                                      {article.author !== "" ? <>By <span>{article.author}</span></> : null}
+                                      {article.author !== "" ?
+                                        article.source !== "" ? <> in {article.source}</> : null
+                                        : article.source !== "" ? <> In {article.source}</> : null
+                                      }
+                                    </p>
+                                    <p className={styles.date}>{article.date}</p>
+                                  </div>
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                          )
+                        })}
+                      </Row>
+                    </Carousel.Item>
+                  )
+                })}
+              </Carousel>
             </Col>
           </Row>
-
-
         </Container>
       </Col>
     </>

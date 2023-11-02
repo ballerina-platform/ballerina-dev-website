@@ -67,23 +67,26 @@ export async function getStaticProps() {
   });
   const files = traverseFolder("components/home-page/bal-action/action-bbe");
   var samples = {};
+  var codeSamples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
     const sampleName = item.replace('components/home-page/bal-action/action-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     samples[sampleName] = highlighter.codeToHtml(content.replaceAll('```', ''), { lang: 'ballerina' });
+    codeSamples[sampleName] = content.replaceAll('```','');
   });
 
   return {
     props: {
-      samples
+      samples,
+      codeSamples
     },
   };
 }
 
 
-export default function Home({ samples }) {
+export default function Home({ samples, codeSamples }) {
   const BalAction = dynamic(() => import('../components/home-page/bal-action/BalAction'), { ssr: false });
 
   const getLink = (element, id) => {
@@ -127,7 +130,7 @@ export default function Home({ samples }) {
         </Row>
 
         <Row className={styles.homeBalAction}>
-          <BalAction samples={samples} getLink={getLink} />
+          <BalAction samples={samples} codeSamples={codeSamples} getLink={getLink} />
         </Row>
 
         <Row className={styles.homeWhyBal}>

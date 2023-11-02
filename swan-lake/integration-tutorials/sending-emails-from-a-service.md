@@ -20,7 +20,7 @@ The flow is as follows.
 
     ```json
     {
-        "patientWithCardNo": {
+        "patient": {
             "name": "John Doe",
             "dob": "1940-03-19",
             "ssn": "234-23-525",
@@ -103,9 +103,9 @@ Follow the instructions given in this section to develop the service.
 
     ![Open diagram view](/learn/images/integration-tutorials/sending-emails-from-a-service/open_diagram_view.gif)
 
-3. Generate a record type corresponding to the payload from the backend service by providing a sample of the expected JSON payload.
+3. Generate record types corresponding to the payloads from the hospital and payment backend services by providing samples of the expected JSON payloads.
 
-    The payload from the backend service will be a JSON object similar to the following.
+    The payload from the hospital backend service will be a JSON object similar to the following.
 
     ```json
     {
@@ -133,9 +133,70 @@ Follow the instructions given in this section to develop the service.
 
     ![Define records](/learn/images/integration-tutorials/sending-emails-from-a-service/define_records.gif)
 
-    Similarly, generate record types for other payloads from the backend service.
+    The generated records will be as follows.
 
-    We can use [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) for the `ReservationRequest` record type to include the `Patient` record along with the `cardNo` field within the type of the `patient` field.
+    ```ballerina
+    type Patient record {|
+        string name;
+        string dob;
+        string ssn;
+        string address;
+        string phone;
+        string email;
+    |};
+
+    type Doctor record {|
+        string name;
+        string hospital;
+        string category;
+        string availability;
+        decimal fee;
+    |};
+
+    type Appointment record {|
+        int appointmentNumber;
+        Doctor doctor;
+        Patient patient;
+        boolean confirmed;
+        string hospital;
+        string appointmentDate;
+    |};
+
+    type Payment record {|
+        int appointmentNo;
+        string doctorName;
+        string patient;
+        decimal actualFee;
+        int discount;
+        decimal discounted;
+        string paymentID;
+        string status;
+    |};
+
+    type PatientWithCardNo record {|
+        *Patient;
+        string cardNo;
+    |};
+
+    type ReservationRequest record {|
+        PatientWithCardNo patient;
+        string doctor;
+        string hospital_id;
+        string hospital;
+        string appointment_date;
+    |};
+
+    type ReservationResponse record {|
+        int appointmentNo;
+        string doctorName;
+        string patient;
+        decimal actualFee;
+        int discount;
+        decimal discounted;
+        string paymentID;
+        string status;
+    |};
+    ```
 
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
@@ -179,7 +240,7 @@ Follow the instructions given in this section to develop the service.
 
     > **Note:** Enable two factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
 
-6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) clients to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) client to send emails.
+6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) client to send emails.
    
    ![Define the clients](/learn/images/integration-tutorials/sending-emails-from-a-service/define_clients.gif)
 
@@ -210,12 +271,12 @@ Follow the instructions given in this section to develop the service.
             Appointment|http:ClientError appointment =
                     hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
                 patient: {
-                    name: patientWithCardNo.name,
-                    dob: patientWithCardNo.dob,
-                    ssn: patientWithCardNo.ssn,
-                    address: patientWithCardNo.address,
-                    phone: patientWithCardNo.phone,
-                    email: patientWithCardNo.email
+                    name: patient.name,
+                    dob: patient.dob,
+                    ssn: patient.ssn,
+                    address: patient.address,
+                    phone: patient.phone,
+                    email: patient.email
                 },
                 doctor,
                 hospital,
@@ -238,7 +299,7 @@ Follow the instructions given in this section to develop the service.
                 patient: appointment.patient,
                 fee: appointment.doctor.fee,
                 confirmed: appointment.confirmed,
-                card_number: patientWithCardNo.cardNo
+                card_number: patient.cardNo
             });
 
             if payment !is Payment {
@@ -250,7 +311,7 @@ Follow the instructions given in this section to develop the service.
             }
 
             email:Error? sendMessage = smtpClient->sendMessage({
-                to: patientWithCardNo.email,
+                to: patient.email,
                 subject: "Appointment reservation confirmed at " + hospital,
                 body: getEmailContent(appointmentNumber, appointment, payment)
             });
@@ -259,7 +320,7 @@ Follow the instructions given in this section to develop the service.
                 return <http:InternalServerError>{body: sendMessage.message()};
             }
             log:printDebug("Email sent successfully",
-                            name = patientWithCardNo.name,
+                            name = patient.name,
                             appointmentNumber = appointmentNumber);
             return <http:Created>{};
         }
@@ -345,11 +406,13 @@ type Payment record {|
     string status;
 |};
 
+type PatientWithCardNo record {|
+    *Patient;
+    string cardNo;
+|};
+
 type ReservationRequest record {|
-    record {|
-        *Patient;
-        string cardNo;
-    |} patient;
+    PatientWithCardNo patient;
     string doctor;
     string hospital_id;
     string hospital;
@@ -397,12 +460,12 @@ service /healthcare on new http:Listener(8290) {
         Appointment|http:ClientError appointment =
                 hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
             patient: {
-                name: patientWithCardNo.name,
-                dob: patientWithCardNo.dob,
-                ssn: patientWithCardNo.ssn,
-                address: patientWithCardNo.address,
-                phone: patientWithCardNo.phone,
-                email: patientWithCardNo.email
+                name: patient.name,
+                dob: patient.dob,
+                ssn: patient.ssn,
+                address: patient.address,
+                phone: patient.phone,
+                email: patient.email
             },
             doctor,
             hospital,
@@ -425,7 +488,7 @@ service /healthcare on new http:Listener(8290) {
             patient: appointment.patient,
             fee: appointment.doctor.fee,
             confirmed: appointment.confirmed,
-            card_number: patientWithCardNo.cardNo
+            card_number: patient.cardNo
         });
 
         if payment !is Payment {
@@ -437,7 +500,7 @@ service /healthcare on new http:Listener(8290) {
         }
 
         email:Error? sendMessage = smtpClient->sendMessage({
-            to: patientWithCardNo.email,
+            to: patient.email,
             subject: "Appointment reservation confirmed at " + hospital,
             body: getEmailContent(appointmentNumber, appointment, payment)
         });
@@ -446,7 +509,7 @@ service /healthcare on new http:Listener(8290) {
             return <http:InternalServerError>{body: sendMessage.message()};
         }
         log:printDebug("Email sent successfully",
-                        name = patientWithCardNo.name,
+                        name = patient.name,
                         appointmentNumber = appointmentNumber);
         return <http:Created>{};
     }
@@ -500,7 +563,7 @@ Let's test the use case by sending a request to the service.
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service.
 
 ```
-bal run hospitalservice.jar
+$ bal run hospitalservice.jar
 ```
 
 #### Send a request

@@ -247,9 +247,9 @@ Follow the instructions given in this section to develop the service.
    The generated code will be as follows.
 
    ```ballerina
-   final http:Client hospitalServicesEP = check new(hospitalServicesBackend);
-   final http:Client paymentEP = check new(paymentBackend);
-   final email:SmtpClient smtpClient = check new(host, username, password);
+   final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
+   final http:Client paymentEP = check new (paymentBackend);
+   final email:SmtpClient smtpClient = check new (host, username, password);
    ```
 
 7. Implement the logic.
@@ -260,16 +260,10 @@ Follow the instructions given in this section to develop the service.
         resource function post categories/[string category]/reserve(ReservationRequest payload)
                 returns http:Created|http:NotFound|http:InternalServerError {
 
-            ReservationRequest {
-                patient,
-                doctor,
-                hospital,
-                hospital_id,
-                appointment_date
-            } = payload;
+            PatientWithCardNo patient = payload.patient;
 
             Appointment|http:ClientError appointment =
-                    hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
+                    hospitalServicesEP->/[payload.hospital_id]/categories/[category]/reserve.post({
                 patient: {
                     name: patient.name,
                     dob: patient.dob,
@@ -278,9 +272,9 @@ Follow the instructions given in this section to develop the service.
                     phone: patient.phone,
                     email: patient.email
                 },
-                doctor,
-                hospital,
-                appointment_date
+                doctor: payload.doctor,
+                hospital: payload.hospital,
+                appointment_date: payload.appointment_date
             });
 
             if appointment !is Appointment {
@@ -312,16 +306,13 @@ Follow the instructions given in this section to develop the service.
 
             email:Error? sendMessage = smtpClient->sendMessage({
                 to: patient.email,
-                subject: "Appointment reservation confirmed at " + hospital,
+                subject: "Appointment reservation confirmed at " + payload.hospital,
                 body: getEmailContent(appointmentNumber, appointment, payment)
             });
 
             if sendMessage is email:Error {
                 return <http:InternalServerError>{body: sendMessage.message()};
             }
-            log:printDebug("Email sent successfully",
-                            name = patient.name,
-                            appointmentNumber = appointmentNumber);
             return <http:Created>{};
         }
     }
@@ -436,29 +427,19 @@ configurable string host = "smtp.gmail.com";
 configurable string username = ?;
 configurable string password = ?;
 
-final http:Client hospitalServicesEP = check new(hospitalServicesBackend);
-final http:Client paymentEP = check new(paymentBackend);
-final email:SmtpClient smtpClient = check new(host, username, password);
-
-function initializeHttpClient(string url) returns http:Client|error => new (url);
-
-function initializeEmailClient() returns email:SmtpClient|error => new (host, username, password);
+final http:Client hospitalServicesEP = check new (hospitalServicesBackend);
+final http:Client paymentEP = check new (paymentBackend);
+final email:SmtpClient smtpClient = check new (host, username, password);
 
 service /healthcare on new http:Listener(8290) {
 
     resource function post categories/[string category]/reserve(ReservationRequest payload)
             returns http:Created|http:NotFound|http:InternalServerError {
 
-        ReservationRequest {
-            patient,
-            doctor,
-            hospital,
-            hospital_id,
-            appointment_date
-        } = payload;
+        PatientWithCardNo patient = payload.patient;
 
         Appointment|http:ClientError appointment =
-                hospitalServicesEP->/[hospital_id]/categories/[category]/reserve.post({
+                hospitalServicesEP->/[payload.hospital_id]/categories/[category]/reserve.post({
             patient: {
                 name: patient.name,
                 dob: patient.dob,
@@ -467,9 +448,9 @@ service /healthcare on new http:Listener(8290) {
                 phone: patient.phone,
                 email: patient.email
             },
-            doctor,
-            hospital,
-            appointment_date
+            doctor: payload.doctor,
+            hospital: payload.hospital,
+            appointment_date: payload.appointment_date
         });
 
         if appointment !is Appointment {
@@ -501,16 +482,13 @@ service /healthcare on new http:Listener(8290) {
 
         email:Error? sendMessage = smtpClient->sendMessage({
             to: patient.email,
-            subject: "Appointment reservation confirmed at " + hospital,
+            subject: "Appointment reservation confirmed at " + payload.hospital,
             body: getEmailContent(appointmentNumber, appointment, payment)
         });
 
         if sendMessage is email:Error {
             return <http:InternalServerError>{body: sendMessage.message()};
         }
-        log:printDebug("Email sent successfully",
-                        name = patient.name,
-                        appointmentNumber = appointmentNumber);
         return <http:Created>{};
     }
 }

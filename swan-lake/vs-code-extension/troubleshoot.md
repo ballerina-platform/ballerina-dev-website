@@ -1,6 +1,9 @@
-# Troubleshoot
-
-You can troubleshoot the Ballerina VS Code extension as follows.
+---
+title: Troubleshoot
+description: You can troubleshoot the Ballerina VS Code extension as follows.
+keywords: ballerina, vs code extension, test, annotation
+intro: You can troubleshoot the Ballerina VS Code extension as follows.
+---
 
 ## View the Ballerina output
 

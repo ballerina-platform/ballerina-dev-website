@@ -1,8 +1,13 @@
-# Entity Relationship Diagram View
+---
+title: Entity Relationship Diagram View
+description: The Entity Diagram View can capture entities defined in your data model, their primary keys, and how they are related to each other.  
+keywords: ballerina, vs code extension, entity relationship diagram, data model 
+intro: The Entity Diagram View can capture entities defined in your data model, their primary keys, and how they are related to each other. 
+---
 
 The visual representation provided by the Ballerina VS Code extension supports the rendering of the entity diagram for `bal persist` model definitions. The `bal persist` enables seamless data persistence by allowing you to define the data model and utilize the generated client API. For more information, see [Bal persist overview](/learn/bal-persist-overview/).
 
-The Entity Diagram View can capture entities defined in your data model, their primary keys, and how they are related to each other. This visualization feature allows you to view the data model in a clear diagrammatic representation. By visualizing the relationships between entities, you can gain a comprehensive understanding of the structure and associations within your data model and also validate the accuracy of the model.
+This visualization feature allows you to view the data model in a clear diagrammatic representation. By visualizing the relationships between entities, you can gain a comprehensive understanding of the structure and associations within your data model and also validate the accuracy of the model.
 
 ## Access the Entity Relationship Diagram View
 

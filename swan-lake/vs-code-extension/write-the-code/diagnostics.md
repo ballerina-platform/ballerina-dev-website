@@ -1,6 +1,9 @@
-# Diagnostics
-
-Diagnostics are the syntax and semantic errors that are identified in the source code. These may include a variety of errors and warnings. 
+---
+title: Diagnostics
+description: Diagnostics are the syntax and semantic errors that are identified in the source code. These may include a variety of errors and warnings. 
+keywords: ballerina, vs code extension, diagnostics
+intro: Diagnostics are the syntax and semantic errors that are identified in the source code. These may include a variety of errors and warnings. 
+---
 
 ## View diagnostics
 

@@ -1,6 +1,9 @@
-# Version 4.3.0
-
-We are happy to announce the Ballerina VS Code extension 4.3.0 release with a few exciting new features and improvements. Following are the highlights of this release.
+---
+title: Version 4.3.0
+description: We are happy to announce the Ballerina VS Code extension 4.3.0 release with a few exciting new features and improvements. Following are the highlights of this release.
+keywords: ballerina, vs code extension, release notes, 4.3.0
+intro: We are happy to announce the Ballerina VS Code extension 4.3.0 release with a few exciting new features and improvements. Following are the highlights of this release.
+---
 
 - [Entity Relationship Diagram](#entity-relationship-diagram) - Helps you visualize the ER diagram for your persist model file.
 - [TOML config generator](#toml-config-generator) - Facilitates automatically generating the `Config.toml` file of your Ballerina project.

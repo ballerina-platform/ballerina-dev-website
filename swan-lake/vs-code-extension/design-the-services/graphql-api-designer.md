@@ -1,6 +1,9 @@
-# GraphQL API Designer
-
-The GraphQL API Designer streamlines the visual creation of GraphQL APIs in Ballerina. This powerful tool simplifies understanding and navigating of complex GraphQL services and lets you browse through them effortlessly without examining the code directly.
+---
+title: GraphQL API Designer
+description: The GraphQL API Designer streamlines the visual creation of GraphQL APIs in Ballerina. This powerful tool simplifies understanding and navigating of complex GraphQL services and lets you browse through them effortlessly without examining the code directly.
+keywords: ballerina, vs code extension, graphql, service, api, design
+intro: The GraphQL API Designer streamlines the visual creation of GraphQL APIs in Ballerina. This powerful tool simplifies understanding and navigating of complex GraphQL services and lets you browse through them effortlessly without examining the code directly.
+---
 
 ## Open the GraphQL API Designer 
 

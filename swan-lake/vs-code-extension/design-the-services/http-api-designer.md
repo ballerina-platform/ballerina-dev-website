@@ -1,4 +1,9 @@
-# HTTP API Designer
+---
+title: HTTP API Designer
+description: The new HTTP API Designer enables you to design HTTP services interactively. This feature allows you to design services rapidly without the need to have extensive knowledge of the HTTP service syntax of Ballerina. 
+keywords: ballerina, vs code extension, http, service, api, design
+intro: The new HTTP API Designer enables you to design HTTP services interactively. This feature allows you to design services rapidly without the need to have extensive knowledge of the HTTP service syntax of Ballerina. 
+---
 
 The new HTTP API Designer enables you to design HTTP services interactively. This feature allows you to design services rapidly without the need to have extensive knowledge of the HTTP service syntax of Ballerina. 
 

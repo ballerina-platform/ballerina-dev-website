@@ -1,4 +1,9 @@
-# Code navigation
+---
+title: Code navigation
+description: The Ballerina VS Code extension provides code navigation to simplify the developing process of your code. 
+keywords: ballerina, vs code extension, code navigation
+intro: The Ballerina VS Code extension provides code actions to simplify the developing process of your code. 
+---
 
 The Ballerina VSCode extension provides support for [code navigation](https://code.visualstudio.com/docs/editor/editingevolved). Different kinds of supported navigations are described in the following sections.
 

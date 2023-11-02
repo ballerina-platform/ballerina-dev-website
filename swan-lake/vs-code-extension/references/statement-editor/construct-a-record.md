@@ -1,6 +1,9 @@
-# Construct a record
-
-Follow the steps below to construct a record using the Statement Editor.
+---
+title: Construct a record
+description: Follow the steps below to construct a record using the Statement Editor.
+keywords: ballerina, vs code extension, record construction, statement editor
+intro: Follow the steps below to construct a record using the Statement Editor.
+---
 
 1. Navigate to the Record Editor and select **Create New**.
 

@@ -242,7 +242,7 @@ Follow the instructions given in this section to develop the service.
 
 6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) client to send emails.
    
-   ![Define the clients](/learn/images/integration-tutorials/sending-emails-from-a-service/define_clients.gif)
+   ![Define the clients](/learn/images/integration-tutorials/sending-emails-from-a-service/define_a_client.gif)
 
    The generated code will be as follows.
 

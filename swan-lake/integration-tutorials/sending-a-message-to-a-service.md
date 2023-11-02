@@ -55,7 +55,7 @@ Follow the instructions given in this section to develop the service.
    
     ![Define a record](/learn/images/integration-tutorials/sending-a-message-to-a-service/define_record.gif)
 
-    The generated record type is as follows.
+    The generated record type will be as follows.
 
     ```ballerina
     type Doctor record {|

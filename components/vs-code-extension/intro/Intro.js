@@ -50,7 +50,7 @@ export default function Intro() {
         <>
         <Col xs={12}>
             <Container>
-            <Row className='pageContentRow integration'>
+            <Row className='pageContentRow integration' style={{paddingBottom:"0"}}>
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
                         <br/>

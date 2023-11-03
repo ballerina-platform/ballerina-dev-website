@@ -58,13 +58,13 @@ Follow the instructions given in this section to develop the service.
     The generated record type will be as follows.
 
     ```ballerina
-    type Doctor record {|
+    type Doctor record {
         string name;
         string hospital;
         string category;
         string availability;
         decimal fee;
-    |};
+    };
     ```
 
     > **Note:**
@@ -142,13 +142,13 @@ You have successfully developed the required service.
 import ballerina/http;
 import ballerina/log;
 
-type Doctor record {|
+type Doctor record {
     string name;
     string hospital;
     string category;
     string availability;
     decimal fee;
-|};
+};
 
 configurable string healthcareBackend = "http://localhost:9090/healthcare";
 

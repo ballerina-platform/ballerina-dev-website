@@ -65,8 +65,9 @@ Execute the command below to pull the EDI tool from Ballerina Central.
 
 ```
 $ bal tool pull edi
-edi:1.0.0 pulled successfully.
-edi:1.0.0 successfully set as the active version.
+ballerina/editoolspackage:0.8.4 pulled from central successfully
+tool 'edi:0.8.4' pulled successfully.
+tool 'edi:0.8.4' successfully set as the active version.
 ```
 
 ## Example

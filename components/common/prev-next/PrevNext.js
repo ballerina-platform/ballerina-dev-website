@@ -65,23 +65,22 @@ export default function PrevNext(props) {
     let newInnerDirIndex = innerDirIndex;
 
     if(Array.isArray(innerDirIndex)){
-      console.log(innerDirIndex)
       if(Array.isArray(innerDirIndex[1])){
         if(innerDirIndex[1][1] > 0){
           newInnerDirIndex[1][1]--;
-          console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]])
+          
           setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]]);
         }
         else{
-          console.log(innerDirIndex[1][0])
+          
           if(innerDirIndex[1][0] > 0){
             newInnerDirIndex[1][0]--;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
+            
             setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
           }
           else if(innerDirIndex[0] > 0){
             newInnerDirIndex[0]--;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories.length-1]);
+            
             setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories.length-1]);
           }
         }
@@ -89,18 +88,18 @@ export default function PrevNext(props) {
       else{
         if(innerDirIndex[1] > 0){
           newInnerDirIndex[1]--;
-          console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
+          
           setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
         }
         else{
           if(innerDirIndex[0] > 0){
             newInnerDirIndex[0]--;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1]);
+            
             setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1]);
           }
           else if(outDirIndex > 0){
             newOutDirIndex--;
-            console.log(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
+            
             setPrevDetails(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
           }
         }
@@ -110,33 +109,18 @@ export default function PrevNext(props) {
     else{
       if(innerDirIndex > 0){
         newInnerDirIndex--;
-        console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex]);
+        
         setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex]);
       }
       else{
         if(outDirIndex > 0){
           newOutDirIndex--;
-          console.log(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
+          
           setPrevDetails(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
         }
       }
     }
 
-    // if (innerDirIndex[2] > 0) {
-    //   newInnerDirIndex[2]--;
-    // } else if (innerDirIndex[1] > 0) {
-    //   newInnerDirIndex[1]--;
-    //   newInnerDirIndex[2] = SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories.length - 1;
-    // } else if (innerDirIndex[0] > 0) {
-    //   newInnerDirIndex[0]--;
-    //   newInnerDirIndex[1] = SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length - 1;
-    //   newInnerDirIndex[2] = SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories.length - 1;
-    // } else if (outDirIndex > 0) {
-    //   newOutDirIndex--;
-    //   newInnerDirIndex = SortedDir[newOutDirIndex].subDirectories.length - 1;
-    // }
-
-    // setPrevDetails(getDirectoryDetails(newOutDirIndex, newInnerDirIndex));
   };
 
   const handleNext = () => {
@@ -145,19 +129,19 @@ export default function PrevNext(props) {
     let newInnerDirIndex = innerDirIndex;
 
     if(Array.isArray(innerDirIndex)){
-      console.log(innerDirIndex)
+      
       if(Array.isArray(innerDirIndex[1])){
         if(innerDirIndex[1][1] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories[innerDirIndex[1][0]].subDirectories.length-1){
           newInnerDirIndex[1][1]++;
-          console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]])
+          
           setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]]);
         }
         else{
-          console.log(SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1)
+          
           if(innerDirIndex[1][0] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1){
             newInnerDirIndex[1][0]++;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories!==undefined)
+            
+            
             if(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories!==undefined)
               setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][0]]);
             else{
@@ -167,7 +151,7 @@ export default function PrevNext(props) {
           }
           else if(innerDirIndex[0] < SortedDir[outDirIndex].subDirectories.length-1){
             newInnerDirIndex[0]++;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0].subDirectories[0]);
+            
             setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0].subDirectories[0]);
           }
         }
@@ -175,7 +159,7 @@ export default function PrevNext(props) {
       else{
         if(innerDirIndex[1] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1){
           newInnerDirIndex[1]++;
-          console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
+          
           if(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories!==undefined){
             setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories[0]);
           }
@@ -187,12 +171,12 @@ export default function PrevNext(props) {
         else{
           if(innerDirIndex[0] < SortedDir[outDirIndex].subDirectories.length-1){
             newInnerDirIndex[0]++;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0]);
+            
             setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0]);
           }
           else if(outDirIndex < SortedDir.length-1){
             newOutDirIndex++;
-            console.log(SortedDir[newOutDirIndex].subDirectories[0].subDirectories[0]);
+            
             setNextDetails(SortedDir[newOutDirIndex].subDirectories[0].subDirectories[0]);
           }
         }
@@ -202,13 +186,13 @@ export default function PrevNext(props) {
     else{
       if(innerDirIndex < SortedDir[outDirIndex].subDirectories.length-1){
         newInnerDirIndex++;
-        console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex]);
+        
         setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex]);
       }
       else{
         if(outDirIndex < SortedDir.length-1){
           newOutDirIndex++;
-          console.log(SortedDir[newOutDirIndex].subDirectories[0]);
+          
           setNextDetails(SortedDir[newOutDirIndex].subDirectories[0]);
         }
       }

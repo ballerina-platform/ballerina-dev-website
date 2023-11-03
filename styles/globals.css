@@ -1634,6 +1634,10 @@ img + blockquote{
   margin-top: 20px;
 }
 
+.mdTable + img {
+  margin-top: 20px;
+}
+
 /* ---------------------Carousal-------------------- */
 #myCarousel {
   /* margin-left: 50px;

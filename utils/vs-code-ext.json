@@ -270,7 +270,7 @@
                     "id": "statement-editor",
                     "subDirectories": [
                         {
-                            "dirName": "Call a Ballerina library function",
+                            "dirName": "Call a Ballerina package function",
                             "level": 3,
                             "position": 1,
                             "isDir": false,

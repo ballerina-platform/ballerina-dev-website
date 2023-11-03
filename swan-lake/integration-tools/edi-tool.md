@@ -39,7 +39,7 @@ $ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-folder> -o <outp
 
 A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
 
-## Available command options 
+## Command options 
 
 The command options that are available with the tool are listed below.
 
@@ -58,6 +58,17 @@ The command options that are available with the tool are listed below.
 | `-n, --name`   | Name of the package.                                                                                                                                                                                                                   | Mandatory          |
 | `-s, --schema`     | Location of the EDI schema.                                                                                                                                                                                                      | Mandatory          |
 | `-o, --output`   | Location of the generated package.                                                                                                                                                                                                                    | Mandatory           |
+
+## Install the tool
+
+Execute the command below to pull the EDI tool from Ballerina Central.
+
+```
+$ bal tool pull edi
+edi:1.0.0 pulled successfully.
+edi:1.0.0 successfully set as the active version.
+```
+
 ## Example
 
 Examples of the above usages are described below.
@@ -70,25 +81,25 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
     >**Info:** The below schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`.
 
-```json
-{
-    "name": "SimpleOrder",
-    "delimiters" : {"segment" : "~", "field" : "*", "component": ":", "repetition": "^"},
-    "segments" : [
-        {
-            "code": "HDR",
-            "tag" : "header",
-            "fields" : [{"tag": "code", "required": true}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
-        },
-        {
-            "code": "ITM",
-            "tag" : "items",
-            "maxOccurances" : -1,
-            "fields" : [{"tag": "code", "required": true}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
-        }
-    ]
-}
-```   
+    ```json
+    {
+        "name": "SimpleOrder",
+        "delimiters" : {"segment" : "~", "field" : "*", "component": ":", "repetition": "^"},
+        "segments" : [
+            {
+                "code": "HDR",
+                "tag" : "header",
+                "fields" : [{"tag": "code", "required": true}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
+            },
+            {
+                "code": "ITM",
+                "tag" : "items",
+                "maxOccurances" : -1,
+                "fields" : [{"tag": "code", "required": true}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
+            }
+        ]
+    }
+    ```   
 
 2. Generate Ballerina records for the above EDI schema.
 
@@ -136,22 +147,22 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
 4. Use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text, as shown below.
 
-    ```ballerina
-    import ballerina/io;
+```ballerina
+import test_edi.hmartOrder;
+import ballerina/io;
 
-    public function main() returns error? {
-        SimpleOrder salesOrder = {SimpleOrder    salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
-        salesOrder.items.push({item: "A680", quantity: 15});
-        salesOrder.items.push({item: "A530", quantity: 2});
-        salesOrder.items.push({item: "A500", quantity: 4});
-    };
+public function main() returns error? {
+    hmartOrder:SimpleOrder salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
+    salesOrder.items.push({item: "A680", quantity: 15});
+    salesOrder.items.push({item: "A530", quantity: 2});
+    salesOrder.items.push({item: "A500", quantity: 4});
 
-    string orderEDI = check hmartOrder:toEdiString(salesOrder);
-    io:println (orderEDI) ;
-    }
-    ```
+string orderEDI = check hmartOrder:toEdiString(salesOrder);
+io:println (orderEDI);
+}
+```
 
-    Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
+Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
 
     ```
     HDRORDER_200HMart17-05-2023~

@@ -343,24 +343,6 @@
                                     "isDir": false,
                                     "url": "/learn/style-guide/annotations-documentation-and-comments",
                                     "id": "annotations-documentation-and-comments"
-                                },
-                                {
-                                    "dirName": "coding conventions",
-                                    "level": 4,
-                                    "position": 0,
-                                    "isDir": true,
-                                    "url": "/learn/style-guide/coding-conventions",
-                                    "id": "coding-conventions",
-                                    "subDirectories": [
-                                        {
-                                            "dirName": "README.md",
-                                            "level": 5,
-                                            "position": 0,
-                                            "isDir": false,
-                                            "url": "/learn/style-guide/coding-conventions/README",
-                                            "id": "README"
-                                        }
-                                    ]
                                 }
                             ]
                         },

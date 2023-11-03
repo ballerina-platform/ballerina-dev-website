@@ -73,10 +73,16 @@ export default function PrevNext(props) {
           setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]]);
         }
         else{
+          console.log(innerDirIndex[1][0])
           if(innerDirIndex[1][0] > 0){
             newInnerDirIndex[1][0]--;
             console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
             setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
+          }
+          else if(innerDirIndex[0] > 0){
+            newInnerDirIndex[0]--;
+            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories.length-1]);
+            setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1].subDirectories.length-1]);
           }
         }
       }
@@ -133,43 +139,61 @@ export default function PrevNext(props) {
     // setPrevDetails(getDirectoryDetails(newOutDirIndex, newInnerDirIndex));
   };
 
-  const handleNext = (outDirIndex, innerDirIndex) => {
+  const handleNext = () => {
+    let [outDirIndex , innerDirIndex ] = findIndexOfDir(SortedDir);
     let newOutDirIndex = outDirIndex;
     let newInnerDirIndex = innerDirIndex;
 
     if(Array.isArray(innerDirIndex)){
       console.log(innerDirIndex)
       if(Array.isArray(innerDirIndex[1])){
-        if(innerDirIndex[1][1] > 0){
-          newInnerDirIndex[1][1]--;
+        if(innerDirIndex[1][1] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories[innerDirIndex[1][0]].subDirectories.length-1){
+          newInnerDirIndex[1][1]++;
           console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]])
-          setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]]);
+          setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][1]]);
         }
         else{
-          if(innerDirIndex[1][0] > 0){
-            newInnerDirIndex[1][0]--;
+          console.log(SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1)
+          if(innerDirIndex[1][0] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1){
+            newInnerDirIndex[1][0]++;
             console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
-            setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
+            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories!==undefined)
+            if(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories!==undefined)
+              setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]].subDirectories[newInnerDirIndex[1][0]]);
+            else{
+              setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1][0]]);
+              
+            }
+          }
+          else if(innerDirIndex[0] < SortedDir[outDirIndex].subDirectories.length-1){
+            newInnerDirIndex[0]++;
+            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0].subDirectories[0]);
+            setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0].subDirectories[0]);
           }
         }
       }
       else{
-        console.log(innerDirIndex)
         if(innerDirIndex[1] < SortedDir[outDirIndex].subDirectories[innerDirIndex[0]].subDirectories.length-1){
           newInnerDirIndex[1]++;
           console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
-          setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
+          if(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories!==undefined){
+            setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]].subDirectories[0]);
+          }
+          else{
+
+            setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[newInnerDirIndex[1]]);
+          }
         }
         else{
-          if(innerDirIndex[0] > 0){
-            newInnerDirIndex[0]--;
-            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1]);
-            setPrevDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[SortedDir[newOutDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories.length-1]);
+          if(innerDirIndex[0] < SortedDir[outDirIndex].subDirectories.length-1){
+            newInnerDirIndex[0]++;
+            console.log(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0]);
+            setNextDetails(SortedDir[outDirIndex].subDirectories[newInnerDirIndex[0]].subDirectories[0]);
           }
-          else if(outDirIndex > 0){
-            newOutDirIndex--;
-            console.log(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
-            setPrevDetails(SortedDir[newOutDirIndex].subDirectories[SortedDir[newOutDirIndex].subDirectories.length-1]);
+          else if(outDirIndex < SortedDir.length-1){
+            newOutDirIndex++;
+            console.log(SortedDir[newOutDirIndex].subDirectories[0].subDirectories[0]);
+            setNextDetails(SortedDir[newOutDirIndex].subDirectories[0].subDirectories[0]);
           }
         }
       }
@@ -194,7 +218,7 @@ export default function PrevNext(props) {
   React.useEffect(()=>{
     let [outDirIndex , innerDirIndex ] = findIndexOfDir(SortedDir);
     handlePrev(outDirIndex , innerDirIndex )
-    // handleNext(outDirIndex , innerDirIndex )
+    handleNext()
   },[])
 
   function goto(url) {
@@ -237,7 +261,7 @@ export default function PrevNext(props) {
           
         </Col>
         <Col sm={6}>
-          {/* {Object.keys(nextDetails).length!==0 ? <div className="btnContainer d-flex align-items-center ms-auto" onClick={()=>goto(nextDetails.url)}>
+          {Object.keys(nextDetails).length!==0 ? <div className="btnContainer d-flex align-items-center ms-auto" onClick={()=>goto(nextDetails.url)}>
             <div className="d-flex flex-column me-4">
               <span className="btnNext">Next</span>
               <span
@@ -265,7 +289,7 @@ export default function PrevNext(props) {
                 d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
               />
             </svg>
-          </div>:''} */}
+          </div>:''}
         </Col>
       </Row>
 

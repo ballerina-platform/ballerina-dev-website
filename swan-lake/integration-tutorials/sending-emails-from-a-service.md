@@ -348,7 +348,7 @@ Follow the instructions given in this section to develop the service.
 
    - The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
 
-   - Use the `is` check to decide the flow based on the response to the client call. If the request failed, return an `http:NotFound` response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an `http:InternalServerError` response.
+   - Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, return an `http:NotFound` response. Else, if the payload could not be bound to `Appointment` as expected or if there were any other failures, respond with an `http:InternalServerError` response.
 
    - If the appointment reservation was successful, we can make the payment by making a `POST` request to the payment service. The payload includes details extracted out from the original request (for `card_number`) and the appointment reservation response (for `appointmentNumber`, `doctor`, `patient`, `fee`, and `confirmed`).
 
@@ -532,7 +532,7 @@ function getEmailContent(int appointmentNumber, Appointment appointment, Payment
 > ```
 > sending-a-message-to-a-service$ bal run
 > Compiling source
->         integration_tutorials/sending_a_message_to_a_service:0.1.0
+>         integration_tutorials/sending-emails-from-a-service:0.1.0
 >
 > Running executable
 > ```

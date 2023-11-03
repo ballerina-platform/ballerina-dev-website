@@ -62,7 +62,7 @@ The flow is as follows.
     }
     ```
 
-3. Call the payment backend service to make the payment and retrieve the reservation response, which will have a payload similar to that shown below. If the payment is successful, send an email to the user with the appointment details.
+3. Call the payment backend service to make the payment to confirm the appointment. If the payment is successful, the response payload will be similar to that shown below.
 
     ```json
     {
@@ -76,6 +76,8 @@ The flow is as follows.
         "status": "settled"
     }
     ```
+
+4. If the payment is successful, send an email to the user with the appointment details. 
 
 ### Concepts covered
 
@@ -360,33 +362,33 @@ import ballerina/email;
 import ballerina/http;
 import ballerina/log;
 
-type Patient record {
+type Patient record {|
     string name;
     string dob;
     string ssn;
     string address;
     string phone;
     string email;
-};
+|};
 
-type Doctor record {
+type Doctor record {|
     string name;
     string hospital;
     string category;
     string availability;
     decimal fee;
-};
+|};
 
-type Appointment record {
+type Appointment record {|
     int appointmentNumber;
     Doctor doctor;
     Patient patient;
     boolean confirmed;
     string hospital;
     string appointmentDate;
-};
+|};
 
-type Payment record {
+type Payment record {|
     int appointmentNo;
     string doctorName;
     string patient;
@@ -395,22 +397,22 @@ type Payment record {
     decimal discounted;
     string paymentID;
     string status;
-};
+|};
 
-type PatientWithCardNo record {
+type PatientWithCardNo record {|
     *Patient;
     string cardNo;
-};
+|};
 
-type ReservationRequest record {
+type ReservationRequest record {|
     PatientWithCardNo patient;
     string doctor;
     string hospital_id;
     string hospital;
     string appointment_date;
-};
+|};
 
-type ReservationResponse record {
+type ReservationResponse record {|
     int appointmentNo;
     string doctorName;
     string patient;
@@ -419,7 +421,7 @@ type ReservationResponse record {
     decimal discounted;
     string paymentID;
     string status;
-};
+|};
 
 configurable string hospitalServicesBackend = "http://localhost:9090";
 configurable string paymentBackend = "http://localhost:9090/healthcare/payments";
@@ -546,9 +548,9 @@ $ bal run hospitalservice.jar
 
 #### Send a request
 
-Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter and send a request with a JSON payload in the following form.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter. Use the following as the request payload.
 
-    ```json
+```json
     {
         "patient": {
             "name": "John Doe",
@@ -564,7 +566,7 @@ Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-htt
         "hospital": "grand oak community hospital",
         "appointment_date": "2023-10-02"
     }
-    ```
+```
 
 ![Send a request](/learn/images/integration-tutorials/sending-emails-from-a-service/try_it.gif)
 

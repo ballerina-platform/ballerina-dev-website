@@ -201,15 +201,23 @@ export default function PrevNext(props) {
     handleNext()
   },[])
 
-  function goto(url) {
-    window.location.href=`${prefix}` + url;
+  function goto(url,dir) {
+    if((dir === 'API Docs' || dir === "Ballerina by Example" || 
+    dir === "Visual Studio Code extension" || dir === "Ballerina API Docs" ||
+    dir === "Enterprise Integration Patterns (EIP)" || dir === "Pre-built integrations") ||
+    dir === "Integration tutorials"){
+      window.open(`${prefix}` + url,"_blank")
+    }
+    else{
+      window.location.href=`${prefix}` + url;
+    }
   }
   
   return (
     <>
       <Row className="mt-5 mb-5">
         <Col sm={6}>
-            {prevDetails.url!=="" ? <div className="btnContainer d-flex align-items-center me-auto" onClick={()=>goto(prevDetails.url)}>
+            {prevDetails.url!=="" ? <div className="btnContainer d-flex align-items-center me-auto" onClick={()=>goto(prevDetails.url,prevDetails.dirName)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -241,7 +249,7 @@ export default function PrevNext(props) {
           
         </Col>
         <Col sm={6}>
-          {Object.keys(nextDetails).length!==0 ? <div className="btnContainer d-flex align-items-center ms-auto" onClick={()=>goto(nextDetails.url)}>
+          {Object.keys(nextDetails).length!==0 ? <div className="btnContainer d-flex align-items-center ms-auto" onClick={()=>goto(nextDetails.url,nextDetails.dirName)}>
             <div className="d-flex flex-column me-4">
               <span className="btnNext">Next</span>
               <span

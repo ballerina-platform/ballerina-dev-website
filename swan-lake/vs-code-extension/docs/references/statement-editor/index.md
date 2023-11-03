@@ -110,6 +110,6 @@ Follow the steps below to build the statement.
 
 To explore more on the Statement Editor functionalities, see the use cases below.
 
-- [Call a Ballerina library function](call-a-ballerina-library-function.md)
+- [Call a Ballerina package function](call-a-ballerina-package-function.md)
 - [Construct a record](construct-a-record.md)
 - [Define a configurable variable](define-a-configurable-variable.md)

@@ -47,11 +47,11 @@ The parameters that are available with the tool are listed below.
 
 Execute the command below to pull the Health tool from Ballerina Central.
 
-    ```
-    $ bal tool pull health
-    health:1.0.0 pulled successfully.
-    health:1.0.0 successfully set as the active version.
-    ```
+```
+$ bal tool pull health
+health:1.0.0 pulled successfully.
+health:1.0.0 successfully set as the active version.
+```
 
 ## Example
 

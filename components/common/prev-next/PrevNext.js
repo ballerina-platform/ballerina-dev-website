@@ -21,11 +21,7 @@ import { useState } from 'react';
 import { Row,Col } from 'react-bootstrap';
 import Link from "next/link";
 
-
-
 import { prefix } from '../../../utils/prefix';
-
-// import styles from './LeftNav.module.css';
 
 export default function PrevNext(props) {
   const launcher = props.launcher;

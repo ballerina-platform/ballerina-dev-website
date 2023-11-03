@@ -71,7 +71,7 @@ Follow the instructions given in this section to develop the service.
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
 
     > **Note:**
-    > Opted for a [closed record](https://ballerina.io/learn/by-example/records/) in the source code to emphasize the type-safety and maintainability.
+    > When the JSON object fields are intended to precisely match the sample payload, the generated records can be updated to be [closed records](https://ballerina.io/learn/by-example/controlling-openness/), which would indicate that no other fields are allowed or expected.
 
 4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 

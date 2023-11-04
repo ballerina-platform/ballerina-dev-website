@@ -270,12 +270,12 @@
                     "id": "statement-editor",
                     "subDirectories": [
                         {
-                            "dirName": "Call a Ballerina library function",
+                            "dirName": "Call a Ballerina package function",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/vs-code-extension/references/statement-editor/call-a-ballerina-library-function",
-                            "id": "call-a-ballerina-library-function"
+                            "url": "/learn/vs-code-extension/references/statement-editor/call-a-ballerina-package-function",
+                            "id": "call-a-ballerina-package-function"
                         },
                         {
                             "dirName": "Construct a record",

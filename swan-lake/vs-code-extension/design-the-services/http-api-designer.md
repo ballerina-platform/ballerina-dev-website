@@ -15,7 +15,7 @@ To open the HTTP API Designer, add an HTTP service using the code or the **Add**
 
 ## Visualize the service
 
-The HTTP API Designer provides an overview of the design of the service resources. This gives a broad idea of the behavior of the service. It will visualize the service similar to the OpenAPI viewer. You can see the parameters and response details. Also, you can interact with record types and modify type definitions from the [Statement Editor](/learn/vs-code-extension/references/statement-editor/call-a-ballerina-library-function/).
+The HTTP API Designer provides an overview of the design of the service resources. This gives a broad idea of the behavior of the service. It will visualize the service similar to the OpenAPI viewer. You can see the parameters and response details. Also, you can interact with record types and modify type definitions from the [Statement Editor](/learn/vs-code-extension/references/statement-editor/call-a-ballerina-package-function/).
 
 <img src="/learn/images/vs-code-extension/visual-programming/http-api-designer/visualize.gif" class="cInlineImage-full"/>
 

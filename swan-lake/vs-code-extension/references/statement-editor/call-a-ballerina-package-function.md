@@ -1,13 +1,11 @@
 ---
-title: Call a Ballerina library function
+title: Call a Ballerina package function
 description: The Statement Editor allows you to easily navigate between Ballerina standard libraries and language libraries.
 keywords: ballerina, vs code extension, library function, statement editor
 intro: The Statement Editor allows you to easily navigate between Ballerina standard libraries and language libraries. 
 ---
 
-The **libraries** tab in the Statement Editor lists all the supported standard and language libraries.
-
-This guide helps you to understand how to call a Ballerina library function using the Statement Editor.
+The **libraries** tab in the Statement Editor lists all the supported standard and language libraries. This guide helps you to understand how to call a Ballerina package function using the Statement Editor.
 
 Let's call the Ballerina [`printError`](https://lib.ballerina.io/ballerina/log/2.5.0/functions#printError) function of the [`log` module](https://lib.ballerina.io/ballerina/log/2.5.0) to log an error in the given sample code below.
 

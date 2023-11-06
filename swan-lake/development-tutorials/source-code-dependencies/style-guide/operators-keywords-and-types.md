@@ -16,14 +16,14 @@ intro: The sections below include the coding conventions with respect to operato
 ```ballerina
 type method "POST"|"GET"|"PUT";
     
-(int|string) variable = 0;
+int|string variable = 0;
   
-function getValue(string key) returns (string|error) {
+function getValue(string key) returns string|error {
     ...
 }
   
 function getName() returns string|error {
-    (string|error) valueOrError = getValue("name");
+    string|error valueOrError = getValue("name");
     ...
 }
 ```
@@ -90,15 +90,6 @@ var elvisOperator = name ?: "Unknown";
 
 ```ballerina
 name += lastName;
-```
-
-* When accessing a function, object, class or record from another module, do not keep spaces around `:`.
-  
-**Example,**
-  
-```ballerina
-io:println("john");
-http:Response res = new();
 ```
 
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>

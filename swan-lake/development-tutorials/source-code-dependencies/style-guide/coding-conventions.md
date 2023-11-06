@@ -107,7 +107,7 @@ function setAge(int age) {
 **Do's**
 
 ```ballerina
-if true {
+if isValid {
 }
   
 function setName(string name) {
@@ -118,7 +118,7 @@ function setName(string name) {
 **Don'ts**
 
 ```ballerina
-if true
+if isValid
 {
     
 }
@@ -135,7 +135,7 @@ function setName(string name)
 
 ```ballerina
 function func1() {
-    if true {
+    if isValid {
     }
 }
 ```
@@ -155,7 +155,7 @@ function func1() {
 **Example,**
   
 ```ballerina
-if false {
+if isValid {
    int x = 2;
    string a = "hello";
 }
@@ -188,7 +188,7 @@ public function main() {
 
 ```ballerina
 int[] a = [];
-int|() result = getResult();
+int? result = getResult();
 ```
   
 ## Line breaks

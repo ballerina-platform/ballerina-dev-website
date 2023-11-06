@@ -360,6 +360,7 @@ pre.default {
   align-items: center;
 } */
 
+
 .mdButton {
   visibility: hidden;
   margin-left: -30px;
@@ -1177,6 +1178,13 @@ table.cTopControlsContainer tbody {
   cursor: pointer;
 }
 
+.prevNextBtnHover {
+  font-size: 16px;
+  font-weight: 400;
+  color: #57595d;
+  cursor: pointer;
+}
+
 .btnArrow {
   cursor: pointer;
 }
@@ -1184,6 +1192,11 @@ table.cTopControlsContainer tbody {
 .btnArrowHover {
   cursor: pointer;
   fill: var(--button-hover-color-text);
+}
+
+.prevNextBtnArrowHover {
+  cursor: pointer;
+  fill: #57595d;
 }
 
 .bbeCode .shiki {

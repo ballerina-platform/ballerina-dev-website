@@ -29,6 +29,7 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+import PrevNext from "../../../components/common/prev-next/PrevNext";
 
 export async function getStaticProps() {
   const fileName = fs.readFileSync(`spec/spec.md`, "utf-8");
@@ -159,7 +160,13 @@ export default function PostPage({ frontmatter, content, id }) {
             <MainContent
               content={content}
               handleToc={handleToc} />
-
+              <PrevNext
+                launcher="learn"
+                id={id}
+                mainDir="references"
+                Toc={LearnToc}
+                sub={id}
+              />
           </Container>
         </Col>
         <Col sm={2} xxl={3} className="pageToc d-none d-sm-block">

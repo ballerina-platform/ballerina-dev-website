@@ -95,7 +95,7 @@ export default function Resources(props) {
                                         <Image src={prefix + '/images/sm-icons/youtube-updated-white.svg'} alt="Tech Talks" width={90} height={90} />
                                     </div>
                                     <Card.Text className={styles.cardText}>
-                                        <h5 className="card-text"> Tech Talks </h5>
+                                        <h5 className="card-text"> Tech talks </h5>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

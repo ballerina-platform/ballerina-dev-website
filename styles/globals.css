@@ -531,7 +531,7 @@ a.cGreenLinkArrow:hover {
 .background-image {
   opacity: 0.1; 
   position: absolute;
-  top: 0;
+  top: 165px;
   left: 0;
   width: 100%;
   height: auto;

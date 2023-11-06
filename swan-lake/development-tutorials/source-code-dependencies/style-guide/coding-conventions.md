@@ -209,7 +209,7 @@ string s = person
   
 // Binary operations in if condition
 if isNameAvailable
-    && (i == 1) {
+    && i == 1 {
     ...
 }
 ```
@@ -247,7 +247,7 @@ string s2 =
 
 ```ballerina
 if isNameAvailable
-    && (i == 1) {
+    && i == 1 {
     ...
 }
   

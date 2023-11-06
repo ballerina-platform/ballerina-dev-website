@@ -106,8 +106,8 @@ function func1() {
 }
 
 function func2() {
-    if (true) {
-        if (true) {
+    if true {
+        if true {
             // This is a nested if block-level comment.
             string a = "hello";
         }

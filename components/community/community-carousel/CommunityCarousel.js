@@ -26,22 +26,25 @@ export default function CommunityCarousel(props) {
   return (
     <Carousel>
       <Carousel.Item>
-        <img src='/images/community/1.png'/>
+        <img src='/images/community/1.png' />
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/2.png'/>
+        <img src='/images/community/2.png' />
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/3.png'/>
+        <img src='/images/community/3.png' />
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/4.png'/>
+        <img src='/images/community/4.png' />
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/5.png'/>
+        <img src='/images/community/5.png' />
       </Carousel.Item>
       <Carousel.Item>
-      <img src='/images/community/6.png'/>
+        <img src='/images/community/6.png' />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src='/images/community/7.png' />
       </Carousel.Item>
     </Carousel>
   );

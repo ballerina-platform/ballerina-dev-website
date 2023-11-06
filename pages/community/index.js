@@ -72,22 +72,27 @@ export default function Community() {
       <Layout>
         <Col sm={12}>
 
-          <Row className="pageHeader pageContentRow communityRow">
+          {/* <Row className="pageHeader pageContentRow communityRow">
             <Col xs={12}>
               <Container>
                 <h1>Community</h1>
               </Container>
             </Col>
-          </Row>
+          </Row> */}
 
-          <Row className="pageContentRow communityRow">
+          <Row className="pageHeader pageContentRow communityRow communityIntro">
             <Col xs={12}>
               <Container>
                 <Row>
+                <img src="/images/ballerina-mesh-grey-cropped.svg" class="background-image" alt="Background"/>
+                  {/* <Col xs={12} md={12} lg={12}>
+                  <CommunityCarousel />
+                  </Col> */}
                   <Col xs={12} md={12} lg={6}>
+                  <h1>Community</h1>
                     <p>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
                   </Col>
-                  <Col xs={12} md={12} lg={6}>
+                  <Col xs={12} md={12} lg={6} style={{paddingTop:"35px"}}>
                     <CommunityCarousel />
                   </Col>
                 </Row>

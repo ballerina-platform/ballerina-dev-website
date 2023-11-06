@@ -524,6 +524,24 @@ a.cGreenLinkArrow:hover {
   font-size: 3rem;
 }
 
+/* .communityIntro {
+  background-image: url("/images/ballerina-mesh-grey-cropped.svg");
+} */
+
+.communityIntro {
+  position: relative;
+}
+
+.background-image {
+  opacity: 0.1; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
 /*--------downloads page -------*/
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {

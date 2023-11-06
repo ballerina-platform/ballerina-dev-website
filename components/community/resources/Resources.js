@@ -88,7 +88,7 @@ export default function Resources(props) {
 
                 <Row className={styles.resourceRow}>
                     <Col sm={12} md={12} lg={3}>
-                        <a href='#' className={styles.resourceCardLink}>
+                        <a href='https://youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU&si=zIc_Kha48qV4aEvM' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
@@ -103,6 +103,21 @@ export default function Resources(props) {
                     </Col>
 
                     <Col sm={12} md={12} lg={3}>
+                        <a href='https://lms.wso2.com/collections/ballerina' className={styles.resourceCardLink}>
+                            <Card className={styles.cardBox}>
+                                <Card.Body className={styles.cardBody}>
+                                    <div className={styles.cardImg}>
+                                        <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
+                                    </div>
+                                    <Card.Text className={styles.cardText}>
+                                        <h5 className="card-text"> Trainings </h5>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </a>
+                    </Col>
+
+                    <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -110,7 +125,7 @@ export default function Resources(props) {
                                         <Image src={prefix + '/images/sm-icons/medium-white.png'} alt="Blogs on Medium" width={90} height={90} />
                                     </div>
                                     <Card.Text className={styles.cardText}>
-                                        <h5 className="card-text"> Blogs on Medium </h5>
+                                        <h5 className="card-text"> Articles on Medium </h5>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -118,35 +133,21 @@ export default function Resources(props) {
                     </Col>
 
                     <Col sm={12} md={12} lg={3}>
-                        <a href='#' className={styles.resourceCardLink}>
+                        <a href='https://blog.ballerina.io/' className={styles.resourceCardLink}>
                             <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
                                         <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
                                     </div>
                                     <Card.Text className={styles.cardText}>
-                                        <h5 className="card-text"> Articles on Stack overflow </h5>
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </a>
-                    </Col>
-
-                    <Col sm={12} md={12} lg={3}>
-                        <a href='#' className={styles.resourceCardLink}>
-                            <Card className={styles.cardBox}>
-                                <Card.Body className={styles.cardBody}>
-                                    <div className={styles.cardImg}>
-                                        <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
-                                    </div>
-                                    <Card.Text className={styles.cardText}>
-                                        <h5 className="card-text"> Articles on Stack overflow </h5>
+                                        <h5 className="card-text"> Blog </h5>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </a>
                     </Col>
                 </Row>
+
             </Container>
         </Col>
     );

@@ -42,22 +42,22 @@ function testFunction() {
   
 ```ballerina
 // Parameter annotation.
-public function secureFunction1(@untainted string secureInName, @untainted int secureInId, string insecureIn) {
+public function secureFunction1(string secureInName, int secureInId, string insecureIn) {
     ...
 }
   
-public function secureFunction2(@untainted string secureInName,
-    @untainted int secureInId, string insecureIn) {
+public function secureFunction2(string secureInName,
+    int secureInId, string insecureIn) {
     ...
 }
   
 // Return type annotation.
-public function taintedReturn1() returns @tainted string {
+public function taintedReturn1() returns string {
     ...
 }
     
 public function taintedReturn2() returns 
-    @tainted string {
+    string {
     ...
 }
   

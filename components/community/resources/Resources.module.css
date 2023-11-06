@@ -35,7 +35,8 @@
 }
 
 .cardBox:hover {
-  border: #464646 solid 0.1px;
+  background-color: #20b6b0;
+  border: #20b6b0 solid 0.1px;
 }
 
 .cardBody {

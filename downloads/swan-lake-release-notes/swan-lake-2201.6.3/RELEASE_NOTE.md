@@ -25,3 +25,9 @@ Update your current Ballerina installation directly to 2201.6.1 by using the [Ba
 ## Install Ballerina
 
 If you have not installed Ballerina, then, download the [installers](/downloads/#swanlake) to install.
+
+## Language updates
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for 2201.6.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/milestone/161?closed=1).

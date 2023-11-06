@@ -12,8 +12,8 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake 2201.6.3
 
-<em>Swan Lake 2201.6.3 is the third patch release of Ballerina 2201.6.0 (Swan Lake Update 6) and it includes a new set of bug fixes to the language,
-and includes a few security improvements</em>
+<em>Swan Lake 2201.6.3 is the third patch release of Ballerina 2201.6.0 (Swan Lake Update 6) and it includes a new set of bug fixes,
+and a few security improvements</em>
 
 ## Update Ballerina
 

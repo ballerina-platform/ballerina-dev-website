@@ -1,0 +1,392 @@
+{
+    "dirName": "swan lake",
+    "level": 0,
+    "position": 0,
+    "isDir": true,
+    "url": "",
+    "id": "swan-lake",
+    "subDirectories": [
+        {
+            "dirName": "Get started",
+            "level": 1,
+            "position": 1,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/get-started",
+            "id": "get-started"
+            
+        },
+        {
+            "dirName": "Design the application",
+            "level": 1,
+            "position": 2,
+            "isDir": true,
+            "url": "swan-lake/vs-code-extension/design-the-application",
+            "id": "design-the-application",
+            "subDirectories": [
+                {
+                    "dirName": "Explore the Architecture View",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/design-the-application/explore-the-architecture-view",
+                    "id": "explore-the-architecture-view"
+                },
+                {
+                    "dirName": "Design using the Architecture View",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/design-the-application/design-using-the-architecture-view",
+                    "id": "design-using-the-architecture-view"
+                }
+            ]
+        },
+        {
+            "dirName": "Design the services",
+            "level": 1,
+            "position": 3,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/design-the-services",
+            "id": "design-the-services",
+            "subDirectories": [
+                {
+                    "dirName": "HTTP API Designer",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/design-the-services/http-api-designer/",
+                    "id": "http-api-designer"
+                },
+                {
+                    "dirName": "GraphQL API Designer",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/design-the-services/graphql-api-designer",
+                    "id": "graphql-api-designer"
+                }
+            ]
+        },
+        {
+            "dirName": "Implement the code",
+            "level": 1,
+            "position": 4,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/implement-the-code",
+            "id": "implement-the-code",
+            "subDirectories": [
+                {
+                    "dirName": "Sequence Diagram View",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/implement-the-code/sequence-diagram-view",
+                    "id": "sequence-diagram-view"
+                },
+                {
+                    "dirName": "Entity Relationship Diagram View",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/implement-the-code/entity-relationship-diagram-view",
+                    "id": "entity-relationship-diagram-view"
+                },
+                {
+                    "dirName": "Data Mapper",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/implement-the-code/data-mapper",
+                    "id": "data-mapper"
+                }
+            ]
+        },
+        {
+            "dirName": "Write the code",
+            "level": 1,
+            "position": 5,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/write-the-code",
+            "id": "write-the-code",
+            "subDirectories": [
+                {
+                    "dirName": "Intellisense",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/write-the-code/intellisense",
+                    "id": "intellisense"
+                },
+                {
+                    "dirName": "Code navigation",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/write-the-code/code-navigation",
+                    "id": "code-navigation"
+                },
+                {
+                    "dirName": "Code actions",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/write-the-code/code-actions",
+                    "id": "code-actions"
+                },
+                {
+                    "dirName": "Diagnostics",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/write-the-code/diagnostics",
+                    "id": "diagnostics"
+                },
+                {
+                    "dirName": "Commands",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/write-the-code/commands",
+                    "id": "commands"
+                }
+            ]
+        },
+        {
+            "dirName": "Try the services",
+            "level": 1,
+            "position": 6,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/try-the-services",
+            "id": "try-the-services",
+            "subDirectories": [
+                {
+                    "dirName": "Try HTTP services",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/try-the-services/try-http-services",
+                    "id": "try-http-services"
+                },
+                {
+                    "dirName": "Try GraphQL services",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/try-the-services/try-graphql-services",
+                    "id": "try-graphql-services"
+                }
+            ]
+        },
+        {
+            "dirName": "Notebooks",
+            "level": 1,
+            "position": 7,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/notebooks",
+            "id": "notebooks"   
+        },
+        {
+            "dirName": "Run a program",
+            "level": 1,
+            "position": 8,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/run-a-program",
+            "id": "run-a-program"
+            
+        },
+        {
+            "dirName": "Test the code",
+            "level": 1,
+            "position": 9,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/test-the-code",
+            "id": "test-the-code"
+            
+        },
+        {
+            "dirName": "Debug the code",
+            "level": 1,
+            "position": 10,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/debug-the-code",
+            "id": "debug-the-code",
+            "subDirectories": [
+                {
+                    "dirName": "Debug sessions",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/debug-the-code/debug-sessions",
+                    "id": "debug-sessions"
+                },
+                {
+                    "dirName": "Debug features",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/debug-the-code/debug-features",
+                    "id": "debug-features"
+                },
+                {
+                    "dirName": "Debug configurations",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/debug-the-code/debug-configurations",
+                    "id": "debug-configurations"
+                }
+            ]
+        },
+        {
+            "dirName": "Deploy with WSO2 Choreo",
+            "level": 1,
+            "position": 11,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/deploy-with-wso2-choreo",
+            "id": "deploy-with-wso2-choreo"
+        },
+        {
+            "dirName": "Build executables",
+            "level": 1,
+            "position": 12,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/build-executables",
+            "id": "build-executables"   
+        },
+        {
+            "dirName": "References",
+            "level": 1,
+            "position": 13,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/references",
+            "id": "references",
+            "subDirectories": [
+                {
+                    "dirName": "Statement Editor",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/vs-code-extension/references/statement-editor",
+                    "id": "statement-editor",
+                    "subDirectories": [
+                        {
+                            "dirName": "Call a Ballerina package function",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/vs-code-extension/references/statement-editor/call-a-ballerina-package-function",
+                            "id": "call-a-ballerina-package-function"
+                        },
+                        {
+                            "dirName": "Construct a record",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/vs-code-extension/references/statement-editor/construct-a-record/",
+                            "id": "construct-a-record"
+                        },
+                        {
+                            "dirName": "Define a configurable variable",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/vs-code-extension/references/statement-editor/define-a-configurable-variable",
+                            "id": "define-a-configurable-variable"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "Record Editor",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/references/record-editor",
+                    "id": "record-editor"
+                },
+                {
+                    "dirName": "Convert JSON to records",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/references/convert-json-to-records",
+                    "id": "convert-json-to-records"
+                }
+            ]
+        },
+        {
+            "dirName": "Configure the extension",
+            "level": 1,
+            "position": 14,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/configure-the-extension",
+            "id": "configure-the-extension"   
+        },
+        {
+            "dirName": "Troubleshoot",
+            "level": 1,
+            "position": 15,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/troubleshoot",
+            "id": "troubleshoot"   
+        },
+        {
+            "dirName": "Release notes",
+            "level": 1,
+            "position": 16,
+            "isDir": true,
+            "url": "/learn/vs-code-extension/release-notes",
+            "id": "release-notes",
+            "subDirectories": [
+                {
+                    "dirName": "Version 4.5.0",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/release-notes/version-4.5.0",
+                    "id": "version-4.5.0"
+                },
+                {
+                    "dirName": "Version 4.4.0",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/release-notes/version-4.4.0",
+                    "id": "version-4.4.0"
+                },
+                {
+                    "dirName": "Version 4.3.0",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/release-notes/version-4.3.0",
+                    "id": "version-4.3.0"
+                },
+                {
+                    "dirName": "Version 4.0.0",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/release-notes/version-4.0.0",
+                    "id": "version-4.0.0"
+                },
+                {
+                    "dirName": "Version 3.3.0",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/vs-code-extension/release-notes/version-3.3.0",
+                    "id": "version-3.3.0"
+                }
+            ]
+        },
+        {
+            "dirName": "License",
+            "level": 1,
+            "position": 17,
+            "isDir": false,
+            "url": "/learn/vs-code-extension/license",
+            "id": "license"   
+        }
+
+    ]
+}

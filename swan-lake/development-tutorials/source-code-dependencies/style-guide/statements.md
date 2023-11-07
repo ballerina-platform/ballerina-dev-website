@@ -80,10 +80,10 @@ function foo(string|int|boolean a) returns string {
 
 ```ballerina
 match x {
-    var (s, i) if s is string => {
+    var [s, i] if s is string => {
         io:println("string");
     }
-    var (s, i) if s is int => {
+    var [s, i] if s is int => {
         io:println("int");
     }
 }
@@ -96,7 +96,7 @@ match x {
 
 ```ballerina
 match x {
-    var (s, i) if s is string => {}
-    var (s, i) if s is int => {}
+    var [s, i] if s is string => {}
+    var [s, i] if s is int => {}
 }
 ```

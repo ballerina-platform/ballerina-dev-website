@@ -19,9 +19,10 @@ final leads:Client leadsDbClient = check new;
 listener kafka:Listener kafkaListener = new (kafka:DEFAULT_URL, consumerConfiguration);
 
 service on kafkaListener {
-    remote function onConsumerRecord(kafka:Caller caller, LeadAnalyticsData[] leadsData) returns error? {
+    remote function onConsumerRecord(kafka:Caller caller, LeadAnalyticsData[] leadsData) 
+                                                                            returns error? {
         leads:LeadAnalyticsDataInsert[] insertData = from var lead in leadsData 
-                                                        select {id: uuid:createType1AsString(), ...lead};
+                                        select {id: uuid:createType1AsString(), ...lead};
         _ = check leadsDbClient->/leadanalyticsdata.post(insertData);
     }
 }

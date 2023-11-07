@@ -360,6 +360,7 @@ pre.default {
   align-items: center;
 } */
 
+
 .mdButton {
   visibility: hidden;
   margin-left: -30px;
@@ -1177,6 +1178,13 @@ table.cTopControlsContainer tbody {
   cursor: pointer;
 }
 
+.prevNextBtnHover {
+  font-size: 16px;
+  font-weight: 400;
+  color: #57595d;
+  cursor: pointer;
+}
+
 .btnArrow {
   cursor: pointer;
 }
@@ -1184,6 +1192,11 @@ table.cTopControlsContainer tbody {
 .btnArrowHover {
   cursor: pointer;
   fill: var(--button-hover-color-text);
+}
+
+.prevNextBtnArrowHover {
+  cursor: pointer;
+  fill: #57595d;
 }
 
 .bbeCode .shiki {
@@ -1593,6 +1606,50 @@ table.cTopControlsContainer tbody {
   background-color: #eeeeee !important;
 }
 
+
+.cInlineImage-small {
+  display: inline-block;
+  text-align: center;
+  height:45% !important;
+  width:30% !important;
+  border: 1px solid gray;
+}
+    
+.cInlineImage-full {
+  display: inline-block;
+  text-align: center;
+  height:75% !important;
+  width:90% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-threeQuarter {
+  display: inline-block;
+  text-align: center;
+  width:65%;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-half {
+  display: inline-block;
+  text-align: center;
+  width:50% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-bordered {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+img + blockquote{
+  margin-top: 20px;
+}
+
+.mdTable + img {
+  margin-top: 20px;
+}
 
 /* ---------------------Carousal-------------------- */
 #myCarousel {

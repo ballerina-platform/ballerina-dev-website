@@ -34,7 +34,7 @@ export default function LeftNav(props) {
     return a.position - b.position;
   }
 
-  function CheckActive(eventKey) {
+  function CheckActive(eventKey) {console.log(eventKey);
 
     if (mainDir !== eventKey) {
       document.querySelectorAll('[item-id=' + "\'" + mainDir + "\'" + ']')[0].getElementsByTagName('button')[0].style.color = '#20b6b0';
@@ -193,6 +193,7 @@ export default function LeftNav(props) {
             'learn': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
             'rn': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
             'archived': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
+            'vs-code': (category.position > 0) ? <MainDir category={category} key={index}/> : null,
           }[launcher]
         ))}
       </Accordion>

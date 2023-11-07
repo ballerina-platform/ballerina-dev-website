@@ -38,7 +38,7 @@ export default function Intro() {
                                 </p>
 
                                 <p className={styles.introText3}>
-                                    Balllerina simplifies ETL with its programmable approach. It excels in complex data operations, integrations, and deployment flexibility, ensuring a scalable and adaptable ETL experience.
+                                    Ballerina simplifies ETL with its programmable approach. It excels in complex data operations, integrations, and deployment flexibility, ensuring a scalable and adaptable ETL experience.
                                 </p>
 
                                 <p className={styles.dVersion}>

@@ -61,8 +61,8 @@ public function taintedReturn1() returns @validated string {
 }
 
 public function taintedReturn2() returns
-@validated string {
-...
+    @validated string {
+    ...
 }
 ```
 

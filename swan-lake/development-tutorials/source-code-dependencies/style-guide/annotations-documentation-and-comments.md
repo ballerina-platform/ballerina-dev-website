@@ -46,18 +46,25 @@ annotation record {||} validated on parameter, return;
 
 // Parameter annotation.
 public function secureFunction1(@validated string secureInName, int secureInId, string insecureIn) {
-...
+    ...
 }
 
 public function secureFunction2(string secureInName,
-        int secureInId, string insecureIn) {
-...
+    @validated int secureInId, string insecureIn) {
+    ...
 }
 
 // Return type annotation.
-public function taintedReturn2() returns
-@validated string {
+<<<<<<< HEAD
+=======
+public function taintedReturn1() returns @validated string {
 ...
+}
+
+>>>>>>> 196f3d1e6e9b8c091c32f2ae2d92d45ca9002d09
+public function taintedReturn2() returns
+    @validated string {
+    ...
 }
 ```
 

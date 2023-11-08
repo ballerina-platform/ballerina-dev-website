@@ -79,7 +79,7 @@ a = -a;
 ```ballerina
 var fullName = firstName + lastName;
   
-string|() name = isNameAvailable() ? getName() : "Unknown";
+string? name = isNameAvailable() ? getName() : "Unknown";
   
 var elvisOperator = name ?: "Unknown";
 ```

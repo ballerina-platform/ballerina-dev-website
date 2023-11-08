@@ -329,7 +329,7 @@ Execute the cURL command below.
 
 | Linux/macOS                                         | Windows                                             |
 |-----------------------------------------------------|-----------------------------------------------------|
-| $ curl http://localhost:9000/covid/status/countries | $ curl http://localhost:9000/covid/status/countries |
+| <code>$ curl http://localhost:9000/covid/status/countries</code> | <code>$ curl http://localhost:9000/covid/status/countries</code> |
 
 You view the output below.
 
@@ -341,9 +341,9 @@ You view the output below.
 
 Execute the cURL command below.
 
-```
-$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"
-```
+| Linux/macOS                                         | Windows                                             |
+|-----------------------------------------------------|-----------------------------------------------------|
+| <code>$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"</code> | <code>$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"</code> |
 
 You view the output below.
 
@@ -355,9 +355,9 @@ You view the output below.
 
 Execute the cURL command below.
 
-```
-$ curl http://localhost:9000/covid/status/countries/AFG
-```
+| Linux/macOS                                         | Windows                                             |
+|-----------------------------------------------------|-----------------------------------------------------|
+| <code>$ curl http://localhost:9000/covid/status/countries/AFG</code> | <code>$ curl http://localhost:9000/covid/status/countries/AFG</code> |
 
 You view the output below.
 

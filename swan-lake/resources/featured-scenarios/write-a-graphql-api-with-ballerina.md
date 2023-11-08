@@ -420,9 +420,9 @@ type Mutation {
 
 Execute the cURL command below to retrieve all the data from the endpoint.
 
-```
-$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'
-```
+| Linux/macOS                                         | Windows                                             |
+|-----------------------------------------------------|-----------------------------------------------------|
+| <code>$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d '{ "query": "query { all { country cases active}  }" }' 'http://localhost:9000/covid19'</code> | <code>$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d "{ \"query\": \"query { all { country cases active} }\" }" http://localhost:9000/covid19</code> |
 
 In this request:
 - An HTTP POST request is sent to the GraphQL endpoint. 

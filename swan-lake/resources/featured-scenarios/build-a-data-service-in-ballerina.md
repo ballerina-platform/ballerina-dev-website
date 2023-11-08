@@ -466,8 +466,9 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
-```
-$ curl -X POST http://localhost:8080/employees/
+| Linux/macOS                                         | Windows                                             |
+|-----------------------------------------------------|-----------------------------------------------------|
+| <code>$ curl -X POST http://localhost:8080/employees/
     -H 'Content-Type: application/json'
     -d '{
         "employee_id": 6,
@@ -482,8 +483,7 @@ $ curl -X POST http://localhost:8080/employees/
         },
         "manager_id": 1,
         "job_title": "Sales Manager"
-    }'
-```
+    }'</code> | <code>$curl -X POST http://localhost:8080/employees/ -H "Content-Type: application/json" -d "{ \"employee_id\": 6, \"first_name\": \"test\", \"last_name\": \"test\", \"email\": \"test@test.com\", \"phone\": \"882 771 110\", \"hire_date\": { \"year\": 2021, \"month\": 12, \"day\": 16 }, \"manager_id\": 1, \"job_title\": \"Sales Manager\" }"</code> |
 
 ## Learn more
 

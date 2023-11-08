@@ -50,8 +50,8 @@ public function secureFunction1(@validated string secureInName, int secureInId, 
 }
 
 public function secureFunction2(string secureInName,
-        int secureInId, string insecureIn) {
-...
+    @validated int secureInId, string insecureIn) {
+    ...
 }
 
 // Return type annotation.

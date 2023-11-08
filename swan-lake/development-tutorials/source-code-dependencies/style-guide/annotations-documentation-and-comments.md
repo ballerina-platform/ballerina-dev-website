@@ -83,7 +83,7 @@ function func1() {
 
 function func2() {
     if isValid {
-        if isValid {
+        if isActive {
             // This is a nested if block-level comment.
             string a = "hello";
         }

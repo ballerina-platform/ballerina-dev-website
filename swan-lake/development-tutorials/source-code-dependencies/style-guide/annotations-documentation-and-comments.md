@@ -46,7 +46,7 @@ annotation record {||} validated on parameter, function, return;
 
 // Parameter annotation.
 public function secureFunction1(@validated string secureInName, int secureInId, string insecureIn) {
-...
+    ...
 }
 
 public function secureFunction2(string secureInName,

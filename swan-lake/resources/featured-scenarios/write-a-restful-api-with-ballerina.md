@@ -327,9 +327,9 @@ In another terminal, execute the cURL commands below one by one to try out the s
 
 Execute the cURL command below.
 
-```
-$ curl http://localhost:9000/covid/status/countries
-```
+| Linux/macOS                                         | Windows                                             |
+|-----------------------------------------------------|-----------------------------------------------------|
+| $ curl http://localhost:9000/covid/status/countries | $ curl http://localhost:9000/covid/status/countries |
 
 You view the output below.
 

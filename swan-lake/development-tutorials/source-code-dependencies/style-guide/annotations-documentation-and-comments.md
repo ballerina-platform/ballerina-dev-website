@@ -42,7 +42,7 @@ function testFunction() {
   
 ```ballerina
 // Declares an annotation tag on the type.
-annotation record {||} validated on parameter, function, return;
+annotation record {||} validated on parameter, return;
 
 // Parameter annotation.
 public function secureFunction1(@validated string secureInName, int secureInId, string insecureIn) {
@@ -55,11 +55,6 @@ public function secureFunction2(string secureInName,
 }
 
 // Return type annotation.
-@validated
-public function taintedReturn1() returns @validated string {
-...
-}
-
 public function taintedReturn2() returns
 @validated string {
 ...

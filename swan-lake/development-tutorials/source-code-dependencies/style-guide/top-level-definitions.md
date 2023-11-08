@@ -77,7 +77,7 @@ function getAddress(int value,
 
 ```ballerina
 function getAddress(int value, string name)
-    returns string|() {
+    returns string? {
     ...
 }    
 ```

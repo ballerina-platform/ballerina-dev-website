@@ -9,7 +9,6 @@ phase: 'Extractions'
 const REPO_OWNER = "ballerina-platform";
 const REPO_NAME = "ballerina-lang";
 
-// create a connection with github API using ballerina github client
 final github:Client githubClient = check new ({
     auth: {
         token: githubPAT

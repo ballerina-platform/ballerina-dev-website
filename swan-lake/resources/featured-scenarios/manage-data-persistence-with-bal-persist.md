@@ -486,7 +486,7 @@ $ curl -X POST http://localhost:8080/employees/
             "month": 12,
             "day": 16
         },
-        "managerId": "1",
+        "managerId": "mng_01",
         "jobTitle": "Sales Manager"
     }'
 ```

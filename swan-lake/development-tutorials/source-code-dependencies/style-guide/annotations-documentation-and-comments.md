@@ -55,13 +55,10 @@ public function secureFunction2(string secureInName,
 }
 
 // Return type annotation.
-<<<<<<< HEAD
-=======
 public function taintedReturn1() returns @validated string {
 ...
 }
 
->>>>>>> 196f3d1e6e9b8c091c32f2ae2d92d45ca9002d09
 public function taintedReturn2() returns
     @validated string {
     ...

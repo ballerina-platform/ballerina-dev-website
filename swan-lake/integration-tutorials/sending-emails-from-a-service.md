@@ -530,7 +530,7 @@ function getEmailContent(int appointmentNumber, Appointment appointment, Payment
 > Alternatively, you can run this service by navigating to the project root and using the `bal run` command.
 >
 > ```
-> sending-a-message-to-a-service$ bal run
+> sending-emails-from-a-service$ bal run
 > Compiling source
 >         integration_tutorials/sending-emails-from-a-service:0.1.0
 >

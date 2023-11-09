@@ -78,92 +78,82 @@ Examples of the above usages are described below.
 
 Follow the steps below to try out an example of generating Ballerina code from an EDI schema file.
 
-1. Create a sample EDI schema (`edi-schema.json` file) with the code below.
+#### Clone the sample project
 
-    >**Info:** The below schema can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`.
+Clone the [artifacts of the example](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation) and extract them to a preferred location.
 
-    ```json
-    {
-        "name": "SimpleOrder",
-        "delimiters" : {"segment" : "~", "field" : "*", "component": ":", "repetition": "^"},
-        "segments" : [
-            {
-                "code": "HDR",
-                "tag" : "header",
-                "fields" : [{"tag": "code", "required": true}, {"tag" : "orderId"}, {"tag" : "organization"}, {"tag" : "date"}]
-            },
-            {
-                "code": "ITM",
-                "tag" : "items",
-                "maxOccurances" : -1,
-                "fields" : [{"tag": "code", "required": true}, {"tag" : "item"}, {"tag" : "quantity", "dataType" : "int"}]
-            }
-        ]
-    }
-    ```   
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the schema file, which can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`. Also, the `edi_read.bal` and `edi_write.bal`files include the business logic/usage of the package.
 
-2. Generate Ballerina records for the above EDI schema.
+#### Generate the code
 
-    >**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal`.
+Follow the steps below to generate Ballerina records for the above EDI schema.
+
+1. Navigate to the cloned `edi_code_generation` directory.
+
+2. Run the tool with the [required arguments](#command-options) to generate the package.
 
     ```
-    $ bal edi codegen -s resources/edi-schema.json -o modules/hmartOrder/orderRecords.bal
+    $ bal edi codegen -s hmartOrder/schemas/edi-schema.json -o hmartOrder/modules/hmartOrder/orderRecords.bal
     ```
 
-    The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
-
-    ```ballerina
-    type Header_Type record {|
-        string code?;
-        string orderId?;
-        string organization?;
-        string date?;
-    |};
-
-    type Items_Type record {|
-        string code?;
-        string item?;
-        int quantity?;
-    |};
-
-    type SimpleOrder record {|
-        Header_Type header;
-        Items_Type[] items?;
-    |};
-    ```
-
-3. Use the generated `fromEdiString` function to read EDI text files into the generated Ballerina record, as shown below. 
-
-    >**Note:** Any data item in the EDI can be accessed using the record's fields, as shown in the example code below.
-
-    ```ballerina
-    import ballerina/io;
-    
-    public function main() returns error? {
-        string ediText = check io:fileReadString("resources/edi-sample.edi");
-        SimpleOrder newOrder = check hmartOrder:fromEdiString(ediText);
-        io:println(newOrder.header.date);
-    }
-    ```
-
-4. Use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text, as shown below.
+>**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal` inside the `<edi_code_generation>/modules/hmartOrder/` directory. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
 
 ```ballerina
-import test_edi.hmartOrder;
-import ballerina/io;
+type Header_Type record {|
+    string code?;
+    string orderId?;
+    string organization?;
+    string date?;
+|};
 
-public function main() returns error? {
-    hmartOrder:SimpleOrder salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
-    salesOrder.items.push({item: "A680", quantity: 15});
-    salesOrder.items.push({item: "A530", quantity: 2});
-    salesOrder.items.push({item: "A500", quantity: 4});
+type Items_Type record {|
+    string code?;
+    string item?;
+    int quantity?;
+|};
 
-string orderEDI = check hmartOrder:toEdiString(salesOrder);
-io:println (orderEDI);
-}
+type SimpleOrder record {|
+    Header_Type header;
+    Items_Type[] items?;
+|};
 ```
 
-Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
+#### Use the generated package
+
+Follow the steps below to use the generated `fromEdiString` function to read EDI text files into the generated Ballerina record.
+
+##### Read from EDI files
+
+1. Navigate to the cloned `edi_code_generation/hmartOrder` directory.
+
+2. Run the `read_edi.bal` file.
+
+    >**Note:** Any data item in the EDI (`edi-sample`.edi file) can be accessed using the record's fields.
+
+       ```
+    $ bal run read_edi.bal
+    Compiling source
+            edi_code_generation/hmartOrder:1.0.0
+
+    Running executable
+    ```
+
+    You can view the response shown below.
+
+    ```
+    ```
+
+##### Write to EDI files
+
+Follow the steps below use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text.
+
+1. Navigate to the cloned `edi_code_generation/hmartOrder` directory.
+
+2. Run the `write_edi.bal` file. 
+
+    >**Info:** This shows how to 
+
+    Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
 
     ```
     HDRORDER_200HMart17-05-2023~
@@ -180,7 +170,7 @@ Follow the steps below to try out an example package generation use case of the 
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/integration-samples/edi_package_generation/) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the schemas of the `EDIFACT` specifications required for an organization (`CityMart`) to work with the `INVOICE`, `ORDERS`, and `ORDRSP` EDI operations for handling purchase orders. Also, the `main.bal` file, which gets generated by the EDI tool includes the business logic/usage of the package.
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the JSON schema source file of the `EDIFACT` specifications required for an organization (`CityMart`) to work with the `ORDERS`operations for handling purchase orders. Also, the `main.bal` file includes the business logic/usage of the package.
 
 #### Generate the package
 
@@ -200,36 +190,6 @@ Follow the steps below to run the EDI tool and create the Ballerina package.
     The generated Ballerina package will be, as shown below.
 
     >**Info:** The code for each EDI schema is generated into a separate module to prevent possible conflicts.
-
-    ```
-    |-- CityMart
-        |--lib  
-        |--porder
-        |     |--modules
-        |	  |   |--m850
-        |	  |	  |  |--G_850.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m810
-        |	  |	  |  |--G_810.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m820
-        |	  |	  |  |--G_820.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m855
-        |	  |	    |--G_855.bal
-        |     |     |--transformer.bal
-        |	  |--Ballerina.toml
-        |	  |--Module.md
-        |	  |--Package.md
-        |	  |--porder.bal
-        |	  |--rest_connector.bal
-        |
-        |--schemas
-        |--850.json
-        |--810.json
-        |--820.json
-        |--855.json
-    ``` 
 
 3. Build the generated package.
 
@@ -252,170 +212,53 @@ It is quite common for different trading partners to use variations of the stand
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
->**Info:** Now, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this package for reading an `ORDERS` file and writing an `INVOIC` file is shown below. 
+>**Info:** Now, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this package for reading an `ORDERS` file is shown below. 
 
 1. Navigate to the `edi_package-generation` directory.
 
     >**Info:** You can change the dependency (name and version) of the generated package in the `Ballerina.toml` file of this cloned Ballerina project directory as preferred.
-
 
 2. Run the cloned Ballerina project and validate the output.
 
     ```
     $ bal run
     Compiling source
-            healthcare_samples/carinbb_ballerina:1.0.0
+            integration_samples/edi_package-generation:1.0.0
 
     Running executable
     ```
 
 3. Invoke the API to try it out.
 
-    >**Info:** You can convert `X12 850` EDI text to JSON using a cURL command, as shown below. 
+    >**Info:** You can convert EDI text to JSON using a cURL command, as shown below. 
 
     ```
-    $curl --request POST \
-    --url http://localhost:9090/porderParser/edis/850 \
+    curl --location 'http://localhost:8090' \
     --header 'Content-Type: text/plain' \
-    --data 'ST*834*12345*005010X220A1~
-    BGN*00*12456*20020601*1200****~
-    REF*38*ABCD012354~
-    AMT*cc payment*467.34*~
-    N1*P5**FI*999888777~
-    N1*IN**FI*654456654~
-    INS*Y*18*025**A***FT~
-    REF*0F*202443307~
-    REF*1L*123456001~
-    NM1*IL*1*SMITH*WILLIAM****ZZ*202443307~
-    HD*025**DEN~
-    DTP*348*D8*20020701~
-    SE*12*12345~'    
+    --data 'BGM+380+4467862+9'\''
+    DTM+137:20230719:102'\''
+    RFF+ON:123456'\''
+    NAD+BY+WALMARTUS::92++WALMART US'\''
+    NAD+SU+GLAXOSMITHK::92++GLAXOSMITHK'\''
+    LIN+1++PRD1234567890:EN'\''
+    QTY+47:10:PCE'\''
+    MOA+203:150'\''
+    ALC+C+AAB'\''
+    MOA+8:15'\''
+    TAX+7+VAT+++:::20'\''
+    MOA+124:30'\''
+    UNS+S'\''
+    MOA+77:195'\'''  
     ```
 
 The above REST call will return a JSON response, as shown below.
 
 ```json
-{
-    "Transaction_Set_Header": {
-        "Transaction_Set_Identifier_Code": "834",
-        "Transaction_Set_Control_Number": "12345",
-        "Implementation_Convention_Reference": "005010X220A1"
-    },
-    "Beginning_Segment": {
-        "Transaction_Set_Purpose_Code": "00",
-        "Reference_Identification": "12456",
-        "Date": "20020601",
-        "Time": "1200"
-    },
-    "Reference_Information": [
-        {
-            "Reference_Identification_Qualifier": "38",
-            "Reference_Identification": "ABCD012354"
-        }
-    ],
-    "Date_or_Time_or_Period": [],
-    "Monetary_Amount_Information": [
-        {
-            "Amount_Qualifier_Code": "cc payment",
-            "Monetary_Amount": 467.34
-        }
-    ],
-    "Quantity_Information": [],
-    "A_1000_Loop": [
-        {
-            "Party_Identification": {
-                "Entity_Identifier_Code": "P5",
-                "Identification_Code_Qualifier": "FI",
-                "Identification_Code": "999888777"
-            },
-            "Additional_Name_Information": [],
-            "Party_Location": [],
-            "Administrative_Communications_Contact": [],
-            "A_1100_Loop": []
-        },
-        {
-            "Party_Identification": {
-                "Entity_Identifier_Code": "IN",
-                "Identification_Code_Qualifier": "FI",
-                "Identification_Code": "654456654"
-            },
-            "Additional_Name_Information": [],
-            "Party_Location": [],
-            "Administrative_Communications_Contact": [],
-            "A_1100_Loop": []
-        }
-    ],
-    "A_2000_Loop": [
-        {
-            "Insured_Benefit": {
-                "Yes_No_Condition_or_Response_Code": "Y",
-                "Individual_Relationship_Code": "18",
-                "Maintenance_Type_Code": "025",
-                "Benefit_Status_Code": "A",
-                "Employment_Status_Code": "FT"
-            },
-            "Reference_Information_2": [
-                {
-                    "Reference_Identification_Qualifier": "0F",
-                    "Reference_Identification": "202443307"
-                },
-                {
-                    "Reference_Identification_Qualifier": "1L",
-                    "Reference_Identification": "123456001"
-                }
-            ],
-            "Date_or_Time_or_Period_2": [],
-            "A_2100_Loop": [
-                {
-                    "Individual_or_Organizational_Name": {
-                        "Entity_Identifier_Code": "IL",
-                        "Entity_Type_Qualifier": "1",
-                        "Name_Last_or_Organization_Name": "SMITH",
-                        "Name_First": "WILLIAM",
-                        "Identification_Code_Qualifier": "ZZ",
-                        "Identification_Code": "202443307"
-                    },
-                    "Employment_Class": [],
-                    "Monetary_Amount_Information_2": [],
-                    "Health_Care_Information_Codes": [],
-                    "Language_Use": []
-                }
-            ],
-            "A_2200_Loop": [],
-            "A_2300_Loop": [
-                {
-                    "Health_Coverage": {
-                        "Maintenance_Type_Code": "025",
-                        "Insurance_Line_Code": "DEN"
-                    },
-                    "Date_or_Time_or_Period_4": [
-                        {
-                            "Date_Time_Qualifier": "348",
-                            "Date_Time_Period_Format_Qualifier": "D8",
-                            "Date_Time_Period": "20020701"
-                        }
-                    ],
-                    "Monetary_Amount_Information_3": [],
-                    "Reference_Information_3": [],
-                    "Identification_Card": [],
-                    "A_2310_Loop": [],
-                    "A_2320_Loop": []
-                }
-            ],
-            "A_2400_Loop": [],
-            "A_2500_Loop": [],
-            "A_2600_Loop": []
-        }
-    ],
-    "Transaction_Set_Trailer": {
-        "Number_of_Included_Segments": 12,
-        "Transaction_Set_Control_Number": "12345"
-    }
-}
+{"buyerName":"WALMARTUS","date":"20230719","productIdentifier":"PRD1234567890","productQty":10}
 ```
 
 #### Use the generated EDI package as a standalone REST service
 
 The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
 
-For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with the `INVOICE`, `ORDERS`, and `ORDRSP` files. 
+For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with the `ORDERS` files. 

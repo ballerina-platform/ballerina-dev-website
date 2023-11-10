@@ -263,7 +263,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use the `is` check to check whether the response is a `ReservationResponse` and return it as is (i.e., reservation successful).
 
-    - If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is a `http:ClientRequestError`, or an "InternalServerError" response if the response is a `http:ServerError`.
+    - If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is an `http:ClientRequestError`, or an "InternalServerError" response if the response is an `http:ServerError`.
 
 You have successfully developed the required service.
 

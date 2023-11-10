@@ -127,7 +127,7 @@ Follow the instructions given in this section to develop the service.
     configurable string paymentBackend = "http://localhost:9090/healthcare/payments";
     ```
 
-4. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) clients to send requests to the backend services.
+4. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services.
 
     ```ballerina
     final http:Client hospitalServicesEP = check initializeHttpClient(hospitalServicesBackend);

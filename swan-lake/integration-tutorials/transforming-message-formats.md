@@ -238,7 +238,7 @@ Follow the instructions given in this section to develop the service.
             appointment_date: reservation.appointmentDate
         };
     ```
-6. Define a [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
+6. Define an [`http:Client`](https://ballerina.io/learn/by-example/#http-client) object to send requests to the backend service.
    
     ![Define a client](/learn/images/integration-tutorials/transforming-message-formats/define_a_client.gif)
 

@@ -105,7 +105,7 @@ Follow the instructions given in this section to develop the service.
     configurable int port = 8290;
     ```
 
-4. Define three [`http:Client`](https://ballerina.io/learn/by-example/#http-client) clients to send requests to the backend services.
+4. Define three [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services.
 
     ```ballerina
     final http:Client grandOakEP = check initializeHttpClient("http://localhost:9090/grandoak/categories");

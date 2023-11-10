@@ -14,7 +14,7 @@ In this tutorial, you will develop a service via which you can reserve appointme
 
 To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension. The resource will receive the user request, transform the payload to the format expected by the hospital service, send a request with the transformed payload to the hospital service to make a reservation, and respond with the reservation details.
 
-The flow is as follows
+The flow is as follows.
 
 1. Receive a request with a JSON payload similar to the following.
 
@@ -31,7 +31,7 @@ The flow is as follows
         "hospitalId": "grandoak",
         "hospital": "grand oak community hospital",
         "cardNo": "7844481124110331",
-        "appointmentDate": "2017-04-02"
+        "appointmentDate": "2023-10-02"
     }
     ```
 
@@ -49,7 +49,7 @@ The flow is as follows
         },
         "doctor": "thomas collins",
         "hospital": "grand oak community hospital",
-        "appointment_date": "2017-04-02"
+        "appointment_date": "2023-10-02"
     }
     ```
 
@@ -57,7 +57,7 @@ The flow is as follows
 
     ```json
     {
-        "appointmentNumber": 8,
+        "appointmentNumber": 1,
         "doctor": {
             "name": "thomas collins",
             "hospital": "grand oak community hospital",
@@ -75,7 +75,7 @@ The flow is as follows
         },
         "hospital": "grand oak community hospital",
         "confirmed": false,
-        "appointmentDate": "2017-04-02"
+        "appointmentDate": "2023-10-02"
     }
     ```
 
@@ -251,18 +251,15 @@ Follow the instructions given in this section to develop the service.
 7. Implement the logic.
 
     ```ballerina
-    service /healthcare on new http:Listener(port) {
-        isolated resource function post categories/[string category]/reserve(HealthcareReservation payload)
+    service /healthcare on new http:Listener(8290) {
+        isolated resource function post categories/[string category]/reserve(HealthcareReservation reservation)
                 returns ReservationResponse|http:NotFound|http:InternalServerError {
-            HospitalReservation hospitalReservation = transform(payload);
+            HospitalReservation hospitalReservation = transform(reservation);
 
             ReservationResponse|http:ClientError resp =
-                        hospitalServiceEP->/[payload.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
+                        hospitalServiceEP->/[reservation.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
 
             if resp is ReservationResponse {
-                log:printDebug("Reservation request successful",
-                                name = hospitalReservation.patient.name,
-                                appointmentNumber = resp.appointmentNumber);
                 return resp;
             }
 
@@ -348,7 +345,7 @@ service /healthcare on new http:Listener(8290) {
         HospitalReservation hospitalReservation = transform(reservation);
 
         ReservationResponse|http:ClientError resp =
-                    hospitalServiceEP->/[payload.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
+                    hospitalServiceEP->/[reservation.hospitalId]/categories/[category]/reserve.post(hospitalReservation);
 
         if resp is ReservationResponse {
             return resp;
@@ -429,7 +426,7 @@ Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-htt
     "hospitalId": "grandoak",
     "hospital": "grand oak community hospital",
     "cardNo": "7844481124110331",
-    "appointmentDate": "2017-04-02"
+    "appointmentDate": "2023-10-02"
 }
 ```
 

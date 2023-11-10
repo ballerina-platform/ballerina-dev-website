@@ -279,7 +279,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use the `is` check to check whether the response is `ReservationResponse` and return it as is (i.e., reservation successful).
 
-    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return a "NotFound" response if the response from the hospital service is a `http:ClientRequestError` response or an "InternalServerError" response otherwise.
+    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return a "NotFound" response if the response from the hospital service is an `http:ClientRequestError` response or an "InternalServerError" response otherwise.
 
 You have successfully developed the required service.
 

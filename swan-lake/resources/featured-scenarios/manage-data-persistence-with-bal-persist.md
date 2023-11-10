@@ -171,7 +171,7 @@ final store:Client sClient = check new();
 
 public function main() returns error? {
    store:EmployeeInsert employee1 = {
-       id: "16c6553a-373c-4b29-b1c8-c282f444248c",
+       id: "emp_01",
        firstName: "John",
        lastName: "Doe",
        email: "johnd@xyz.com",
@@ -181,7 +181,7 @@ public function main() returns error? {
            month: 10,
            day: 10
        },
-       managerId: "123e4567-e89b-12d3-a456-426614174000",
+       managerId: "mng_01",
        jobTitle: "Software Engineer"
    };
 
@@ -201,7 +201,7 @@ Compiling source
 
 Running executable
 
-Inserted employee id: 16c6553a-373c-4b29-b1c8-c282f444248c
+Inserted employee id: emp_01
 ```
 
 This creates the first database record with the client API. The next sections describe how to read data from the database.
@@ -257,9 +257,9 @@ Compiling source
 
 Running executable
 
-{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"manager_id":"123e4567-e89b-12d3-a456-426614174000","job_title":"Software Engineer"}
+{"id":"emp_01","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"manager_id":"mng_01","job_title":"Software Engineer"}
 
-{"employee_id":"16c6553a-373c-4b29-b1c8-c282f444248c","first_name":"John","last_name":"Doe"}
+{"employee_id":"emp_01","first_name":"John","last_name":"Doe"}
 ```
 
 >**Note:** Even if there is a single `Employee` record, the resource method returns a Ballerina stream object and you need to iterate through the stream to access the records.
@@ -280,7 +280,7 @@ final store:Client sClient = check new ();
 
 
 public function main() returns error? {
-   string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
+   string empId = "emp_01";
    // Get the complete `Employee` record.
    store:Employee employee = check sClient->/employees/[empId];
    io:println(employee);
@@ -310,9 +310,9 @@ Compiling source
 
 Running executable
 
-{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"123e4567-e89b-12d3-a456-426614174000","jobTitle":"Software Engineer"}
+{"id":"emp_01","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"mng_01","jobTitle":"Software Engineer"}
 
-{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe"}
+{"id":"emp_01","firstName":"John","lastName":"Doe"}
 ```
 
 You will get the same results as you have only one record. Let’s explore the `update` function.
@@ -332,7 +332,7 @@ final store:Client sClient = check new ();
 
 
 public function main() returns error? {
-   string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
+   string empId = "emp_01";
 
 
    // Update the job title of the employee with the given ID.
@@ -354,7 +354,7 @@ Compiling source
 
 Running executable
 
-{"id":"16c6553a-373c-4b29-b1c8-c282f444248c","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"123e4567-e89b-12d3-a456-426614174000","jobTitle":"Senior Software Engineer"}
+{"id":"emp_01","firstName":"John","lastName":"Doe","email":"johnd@xyz.com","phone":"1234567890","hireDate":{"year":2020,"month":10,"day":10},"managerId":"mng_01","jobTitle":"Senior Software Engineer"}
 ```
 
 Now, you have successfully executed the `CREATE`, `READ`, and `UPDATE` queries against your database. Let’s explore the final `DELETE` query in the next section.
@@ -375,7 +375,7 @@ final store:Client sClient = check new ();
 
 
 public function main() returns error? {
-   string empId = "16c6553a-373c-4b29-b1c8-c282f444248c";
+   string empId = "emp_01";
 
 
    // Delete the employee with the given ID.
@@ -486,7 +486,7 @@ $ curl -X POST http://localhost:8080/employees/
             "month": 12,
             "day": 16
         },
-        "managerId": "1",
+        "managerId": "mng_01",
         "jobTitle": "Sales Manager"
     }'
 ```

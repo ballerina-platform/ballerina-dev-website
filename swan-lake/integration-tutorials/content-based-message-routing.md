@@ -14,7 +14,7 @@ In this tutorial, you will develop a service via which you can reserve appointme
 
 To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension. The resource will receive the user request, select the hospital endpoint based on the hospital ID, send a request to the relevant hospital service to make a reservation, and respond with the reservation details.
 
-The flow is as follows:
+The flow is as follows.
 
 1. Receive a request with a JSON payload similar to the following.
 
@@ -182,7 +182,7 @@ Follow the instructions given in this section to develop the service.
 
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
-    - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
+    - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 
     - Use `/healthcare` as the service path (or the context) of the service, which is attached to the listener listening on port `8290`.
 

@@ -318,7 +318,7 @@ Follow the instructions given in this section to develop the service.
 
     - The first backend call is a `POST` request to the hospital service to reserve the appointment. The `hospital_id` and `category` values are used as path parameters.
 
-    - Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, respond with an `http:NotFound` response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an `http:InternalServerError` response. If the client call was successful and the response payload was successfully bound to `Appointment` we can proceed with the subsequent calls.  
+    - Use the `is` check to decide the flow based on the response to the client call. If the request failed with a `4xx` status code, respond with an `http:NotFound` response. Else, if the payload could not be bound to `Appointment` as expected or there was some other failure, respond with an `http:InternalServerError` response. If the client call was successful and the response payload was successfully bound to `Appointment`, we can proceed with the subsequent calls.  
 
     - If the appointment reservation was successful, we can now retrieve the fee, by making a `GET` request to the hospital service, with `hospital_id` and `appointmentNumber` from the `Appointment` payload as path parameters.
 

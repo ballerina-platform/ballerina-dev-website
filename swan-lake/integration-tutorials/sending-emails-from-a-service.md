@@ -243,7 +243,7 @@ Follow the instructions given in this section to develop the service.
     configurable string password = ?;
     ```
 
-    > **Note:** Enable two factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4Mf5XDD4rE79YJpP5E2NoNwhvXMET_TWyBcQRn-HMzt0PI8BmptpMGRiBVIamW-0ECgVZtXxMRA19bL4Wfnq_hmjBEMqA).
+    > **Note:** Enable two factor authentication on your Google account, generate an app password, and use the app password in place of your email password. The app password can be generated with [this link](https://myaccount.google.com/apppasswords).
 
 6. Define two [`http:Client`](https://ballerina.io/learn/by-example/#http-client) objects to send requests to the backend services and one [`email:SmtpClient`](https://ballerina.io/learn/by-example/#email-client) object to send emails.
    

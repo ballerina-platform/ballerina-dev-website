@@ -174,6 +174,12 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
+    > **Note:**
+    > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
+
+    > **Note:**
+    > When the fields of the JSON objects are expected to be exactly those specified in the sample payload, the generated records can be updated to be [closed records](https://ballerina.io/learn/by-example/controlling-openness/), which would indicate that no other fields are allowed or expected.
+
 5. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, retrieves relevant details from the backend service, and responds to the request.
 
     - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code
@@ -212,7 +218,7 @@ Follow the instructions given in this section to develop the service.
 7. Implement the logic.
 
     ```ballerina
-    service /healthcare on new http:Listener(port) {
+    service /healthcare on new http:Listener(8290) {
         resource function post categories/[string category]/reserve(ReservationRequest reservation)
                 returns ReservationResponse|http:NotFound|http:InternalServerError {
             http:Client hospitalEP;
@@ -266,8 +272,6 @@ You have successfully developed the required service.
 ```ballerina
 import ballerina/http;
 import ballerina/log;
-
-configurable int port = 8290;
 
 final http:Client grandOakEP = check new ("http://localhost:9090/grandoak/categories");
 final http:Client clemencyEP = check new ("http://localhost:9090/clemency/categories");
@@ -394,10 +398,10 @@ Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-htt
         "ssn": "234-23-525",
         "address": "California",
         "phone": "8770586755",
-        "email": "johndoe@gmail.com",
+        "email": "johndoe@gmail.com"
     },
     "doctor": "thomas collins",
-    "hospital_id": "grandoaks",
+    "hospital_id": "grandoak",
     "hospital": "grand oak community hospital",
     "appointment_date": "2023-10-02"
 }

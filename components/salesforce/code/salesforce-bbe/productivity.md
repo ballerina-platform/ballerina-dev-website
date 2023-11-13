@@ -1,6 +1,6 @@
 ---
 title: 'Connect Salesforce with productivity tools'
-description: 'Sales and customer data are often captured via office productivity tools such as Google Docs, Sheets, and Slack. Ballerina can pump data from such office tools into Salesforce by performing validation and cleansing where necessary to standardize manually entered data.<br/><br/><i>Example: Create contacts in Salesforce by reading contact details given in a Google Sheet.</i>'
+description: 'Ballerina can be used to seamlessly transfer sales and customer data from office productivity tools like Google Docs, Sheets, and Slack to Salesforce, performing validation and cleansing as needed to standardize manually entered data.<br/><br/><i>Example: Create contacts in Salesforce by reading contact details given in a Google Sheet.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/gsheet-new-row-to-sfdc-new-contact/main.bal'
 ---
 ```

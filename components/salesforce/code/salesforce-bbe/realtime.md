@@ -1,6 +1,6 @@
 ---
 title: 'Synchronize Salesforce with real-time data'
-description: 'Information such as inventory levels, order statuses, or product prices change constantly. Ballerina, with its large set of connectors and streaming capabilities, can keep Salesforce in sync with such real-time data sources.<br/><br/><i>Example: Update Salesforce price books by listening to price details published to a Kafka topic.</i>'
+description: 'Ballerina, with extensive connectors and streaming capabilities, ensures real-time updates for dynamic information like inventory levels, order statuses, and product prices, keeping Salesforce synchronized with real-time data sources.<br/><br/><i>Example: Update Salesforce price books by listening to price details published to a Kafka topic.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/kafka_salesforce_integration/kafka-salesforce-pricebook_update/main.bal'
 ---
 ```

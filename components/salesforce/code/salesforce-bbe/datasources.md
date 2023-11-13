@@ -1,6 +1,6 @@
 ---
 title: 'Bridge Salesforce with disparate data sources'
-description: 'Data about products, customers, and sales transactions are often scattered across various systems, databases, and business units. Ballerina, with its rich set of connectors and data handling capabilities, can link Salesforce with all relevant data sources.<br/><br/><i>Example: Load product data from a MySQL database to Salesforce.</i>'
+description: 'Ballerina, equipped with versatile connectors and robust data handling capabilities, can seamlessly link Salesforce with scattered data sources across various systems, databases, and business units related to products, customers, and sales transactions.<br/><br/><i>Example: Load product data from a MySQL database to Salesforce.</i>'
 url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/mysql-record-to-sfdc-new-product/main.bal'
 ---
 ```

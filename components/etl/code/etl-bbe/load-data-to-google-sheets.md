@@ -17,6 +17,5 @@ function loadToGoogleSheet(string sheetName, string workSheetName, SalesSummary[
     foreach var {product, sales} in salesSummary {
         _ = check spreadsheetClient->appendValue(spreadSheetId, [product, sales], {sheetName: workSheetName});
     }
-}}
 }
 ```

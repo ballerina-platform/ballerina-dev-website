@@ -31,19 +31,6 @@ service salesforce:RecordService on sfdcEventListener {
         twilio:SmsResponse response = check twilio->sendSms(fromNumber, toNumber,
             string `New contact is created! | Name: ${firstName} ${lastName} | Created Date: 
             ${(check payload.changedData.CreatedDate).toString()}`);
-        log:printInfo("SMS(SID: " + response.sid + ") sent successfully");
-    }
-
-    isolated remote function onUpdate(salesforce:EventData payload) returns error? {
-        return;
-    }
-
-    isolated remote function onDelete(salesforce:EventData payload) returns error? {
-        return;
-    }
-
-    isolated remote function onRestore(salesforce:EventData payload) returns error? {
-        return;
     }
 }
 ```

@@ -16,23 +16,18 @@ salesforce:Client salesforce = check new ({
 public function main() returns error? {
     sheets:Range range = check sheets->getRange(spreadsheetId, worksheetName, "A1:G");
     (int|string|decimal)[] headers = range.values[0];
-    foreach (int|string|decimal)[] item in range.values.slice(HEADINGS_ROW) {
+    foreach (int|string|decimal)[] item in range.values.slice(1) {
         int? indexOfEmail = headers.indexOf("Email");
-        if indexOfEmail is () {
-            return error("Email column not found");
+        if indexOfEmail is int {
+            stream<Contact, error?> retrievedStream = check salesforce->query(
+                string `SELECT Id, Email FROM Contact WHERE Email='${item[indexOfEmail]}'`);
+            if retrievedStream.next() is () {
+                record {} newContact = map from int index in 0 ..< headers.length()
+                    let int|string|decimal header = headers[index]
+                    select [header.toString(), item[index]];
+                _ = check salesforce->create("Contact", newContact);
+            }
         }
-        stream<Contact, error?> retrievedStream = check salesforce->query(
-            string `SELECT Id, Email FROM Contact WHERE Email='${item[indexOfEmail]}'`);
-        if retrievedStream.next() !is () {
-            log:printInfo(string `Contact already exists. Email : ${item[indexOfEmail]}`);
-            _ = check sheets->appendValue(spreadsheetId, item, {sheetName: duplicateWorksheetName});
-            continue;
-        }
-        record {} newContact = map from int index in 0 ..< headers.length()
-            let int|string|decimal header = headers[index]
-            select [header.toString(), item[index]];
-        _ = check salesforce->create("Contact", newContact);
-        log:printInfo(string `Contact created successfully!. Email : ${item[indexOfEmail]}`);
     }
 }
 ```

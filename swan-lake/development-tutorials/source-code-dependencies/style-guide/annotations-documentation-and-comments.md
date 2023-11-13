@@ -55,7 +55,7 @@ public function secureFunction2(string secureInName,
 
 // Return type annotation.
 public function taintedReturn1() returns @validated string {
-...
+    ...
 }
 
 public function taintedReturn2() returns

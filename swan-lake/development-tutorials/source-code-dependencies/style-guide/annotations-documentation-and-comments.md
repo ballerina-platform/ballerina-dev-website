@@ -41,7 +41,6 @@ function testFunction() {
 **Example,**
   
 ```ballerina
-// Declares an annotation tag on the type.
 annotation record {||} validated on parameter, return;
 
 // Parameter annotation.

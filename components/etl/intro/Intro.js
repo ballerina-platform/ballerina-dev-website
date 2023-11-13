@@ -51,7 +51,7 @@ export default function Intro() {
                         </Col>
                         <Col xs={12} lg={7} className={styles.introImg}>
                             {/* <Image src='/images/maxresdefault.jpg' alt='Integration' width={1280} height={780} /> */}
-                            <img src={`${prefix}/images/Vectors-05.png`} alt="AI" />
+                            <img src={`${prefix}/images/etl-sm-banner.png`} alt="AI" />
                         </Col>
                     </Row>
 

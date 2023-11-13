@@ -89,7 +89,7 @@ export default function Resources(props) {
                 <Row className={styles.resourceRow}>
                     <Col sm={12} md={12} lg={3}>
                         <a href='https://youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU&si=zIc_Kha48qV4aEvM' className={styles.resourceCardLink}>
-                            <Card className={styles.cardBox}>
+                            {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
                                         <Image src={prefix + '/images/sm-icons/youtube-updated-white.svg'} alt="Tech Talks" width={90} height={90} />
@@ -97,14 +97,16 @@ export default function Resources(props) {
                                     <Card.Text className={styles.cardText}>
                                         <h5 className="card-text"> Tech talks </h5>
                                     </Card.Text>
+                                    <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
                     <Col sm={12} md={12} lg={3}>
                         <a href='https://lms.wso2.com/collections/ballerina' className={styles.resourceCardLink}>
-                            <Card className={styles.cardBox}>
+                            {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
                                         <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
@@ -113,13 +115,14 @@ export default function Resources(props) {
                                         <h5 className="card-text"> Trainings </h5>
                                     </Card.Text>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
                     <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
-                            <Card className={styles.cardBox}>
+                            {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
                                         <Image src={prefix + '/images/sm-icons/medium-white.png'} alt="Blogs on Medium" width={90} height={90} />
@@ -128,13 +131,14 @@ export default function Resources(props) {
                                         <h5 className="card-text"> Articles on Medium </h5>
                                     </Card.Text>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
                     <Col sm={12} md={12} lg={3}>
                         <a href='https://blog.ballerina.io/' className={styles.resourceCardLink}>
-                            <Card className={styles.cardBox}>
+                            {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
                                         <Image src={prefix + '/images/sm-icons/stackoverflow-white.svg'} alt="Articles on Stack overflow " width={90} height={90} />
@@ -143,7 +147,8 @@ export default function Resources(props) {
                                         <h5 className="card-text"> Blog </h5>
                                     </Card.Text>
                                 </Card.Body>
-                            </Card>
+                            </Card> */}
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
                 </Row>

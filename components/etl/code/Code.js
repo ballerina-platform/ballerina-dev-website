@@ -30,7 +30,7 @@ export default function UseCases(props) {
 
     const samples = props.samples;
 
-    const dataInteractions = samples['where-models-drive-data-interactions'];
+    const dataInteractions = samples['drive-data-interactions-with-models'];
     const smarterExtractiion = samples['make-data-extraction-smarter'];
     const githubExtract = samples['extract-data-from-github'];
     const clean = samples['eleminating-redundency-for-cleaner-data'];
@@ -95,7 +95,7 @@ export default function UseCases(props) {
                     <Container>
                         <Row>
                             <Col xs={12} className={styles.box}>
-                                <h2 id='where-models-drive-data-interactions' className='section'>
+                                <h2 id='drive-data-interactions-with-models' className='section'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="30"
@@ -103,7 +103,7 @@ export default function UseCases(props) {
                                         fill="currentColor"
                                         className="bi bi-link-45deg mdButton pe-2"
                                         viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, 'where-models-drive-data-interactions')}
+                                        onClick={(e) => props.getLink(e.target, 'drive-data-interactions-with-models')}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -254,7 +254,7 @@ export default function UseCases(props) {
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{clean.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
                                         <span>Sample 1: Remove duplicates using a Ballerina query</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/summarize_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/etl-samples/blob/main/remove-duplicates/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>
@@ -262,7 +262,7 @@ export default function UseCases(props) {
 
                                     <div className={styles.dVersion}>
                                         <span>Sample 2: Find duplicates using a custom logic</span>
-                                        <a href='https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
+                                        <a href='https://github.com/ballerina-guides/etl-samples/blob/main/remove-approximate-duplicates/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
                                         </a>

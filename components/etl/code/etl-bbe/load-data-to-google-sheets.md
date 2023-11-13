@@ -3,26 +3,20 @@ title: 'Seamless Data Loading to Google Sheets with Ballerina'
 description: "Experience the simplicity of loading data values into Google Sheets using Ballerina, 
 turning your spreadsheets into dynamic, data-driven tools.
 "
-url: 'https://github.com/ShammiL/ETL-code-samples/blob/main/reviewSummary/main.bal'
+url: 'https://github.com/ballerina-guides/etl-samples/blob/main/load-data-to-gsheet/main.bal'
 phase: 'Loadings'
 ---
 ```
-public function aggregateSalesData(ItemData[] salesData) returns SalesSummary[] {
-    return from var {productId, unitPrice, quantity} in salesData
-        let float productSales = unitPrice * quantity
-        group by productId
-        select {productId, sales: sum(productSales)};
-}
-
-public function loadToGoogleSheet(string sheetName, SalesSummary[] salesSummary) returns error? {
+function loadToGoogleSheet(string sheetName, string workSheetName, SalesSummary[] salesSummary) returns error? {
     sheets:Spreadsheet spreadsheet = check spreadsheetClient->createSpreadsheet(sheetName);
     string spreadSheetId = spreadsheet.spreadsheetId;
 
-    _ = check spreadsheetClient
-            ->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: sheetName});
-    foreach var {productId, sales} in salesSummary {
-        _ = check spreadsheetClient->appendValue(
-            spreadSheetId, [productId, sales], {sheetName});
+    check spreadsheetClient->renameSheet(spreadSheetId, "Sheet1", workSheetName);
+
+    _ = check spreadsheetClient->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: workSheetName});
+    foreach var {product, sales} in salesSummary {
+        _ = check spreadsheetClient->appendValue(spreadSheetId, [product, sales], {sheetName: workSheetName});
     }
+}}
 }
 ```

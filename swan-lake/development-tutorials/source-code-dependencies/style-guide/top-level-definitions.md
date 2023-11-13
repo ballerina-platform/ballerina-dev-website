@@ -164,10 +164,10 @@ Block indent each of the field definitions (including the rest field) in their o
 **Example,**
 
 ```ballerina
-type Person record {
+type Person record {|
     string name;
     int...;
-};
+|};
 
 // or
 

@@ -1,5 +1,5 @@
 ```
-public type SalesOrder record {|
+type SalesOrder record {|
     string itemId;
     string customerId;
     string itemName;
@@ -7,14 +7,15 @@ public type SalesOrder record {|
     int date;
 |};
 
-public function removeDuplicates(SalesOrder[] orders) returns SalesOrder[] {
+function removeDuplicates(SalesOrder[] orders) returns SalesOrder[] {
     return from var {itemId, customerId, itemName, quantity, date} in orders
-            group by itemId, customerId, itemName
-            select {itemId, 
-                    customerId, 
-                    itemName, 
-                    quantity: [quantity][0], 
-                    date: [date][0]
-                };
+        group by itemId, customerId, itemName
+        select {
+            itemId,
+            customerId,
+            itemName,
+            quantity: [quantity][0],
+            date: [date][0]
+        };
 }
 ```

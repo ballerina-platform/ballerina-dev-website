@@ -1,11 +1,11 @@
 ---
 title: 'Drive data interactions with models'
 description: "Ballerina's 'persist' feature seamlessly connects to databases, retrieves data, and kickstarts your ETL process"
-url: 'https://github.com/ballerina-guides/ai-samples/blob/main/convert_audio_to_text_and_translate_using_openai/main.bal'
+url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-data-from-database/main.bal'
 phase: 'Extraction'
 ---
 ```
-public function getOrderData() returns error? {
+function getOrderData() returns error? {
     stream<OrderData, persist:Error?> orders = dbClient->/orderdata();
     check from var orderData in orders
         do {
@@ -13,16 +13,16 @@ public function getOrderData() returns error? {
         };
 }
 
-public function getCustomerData() returns error? {
-    stream<Customer, persist:Error?> customers = dbClient->/customers();
+function getCustomerData() returns error? {
+    stream<CustomerData, persist:Error?> customers = dbClient->/customers();
     check from var customerData in customers
         do {
             io:println(customerData);
         };
 }
 
-public function getOrderWithCustomer(string orderId) returns error? {
-    OrderWithCustomer orderWithCustomer = check dbClient->/orderdata/[orderId];
-    io:println(orderWithCustomer);
+function getOrderWithCustomer(string orderId) returns error? {
+    OrderWithCustomer orderwithCustomer = check dbClient->/orderdata/[orderId];
+    io:println(orderwithCustomer);
 }
 ```

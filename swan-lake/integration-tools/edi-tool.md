@@ -93,10 +93,10 @@ Follow the steps below to generate Ballerina records for the above EDI schema.
 2. Run the tool with the [required arguments](#command-options) to generate the package.
 
     ```
-    $ bal edi codegen -s hmartOrder/schemas/edi-schema.json -o hmartOrder/modules/hmartOrder/orderRecords.bal
+    $ bal edi codegen -s schemas/edi-schema.json -o orderRecords.bal
     ```
 
->**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal` inside the `<edi_code_generation>/modules/hmartOrder/` directory. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
+>**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal`. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
 
 ```ballerina
 type Header_Type record {|
@@ -126,40 +126,36 @@ Follow the steps below to use the generated `fromEdiString` function to read EDI
 
 1. Navigate to the cloned `edi_code_generation/hmartOrder` directory.
 
-2. Run the `read_edi.bal` file.
+2. Run the `read_edi()` function.
 
-    >**Note:** Any data item in the EDI (`edi-sample`.edi file) can be accessed using the record's fields.
+    >**Note:** Any data item in the EDI (`edi-sample.edi` file) can be accessed using the record's fields.
 
-       ```
-    $ bal run read_edi.bal
-    Compiling source
-            edi_code_generation/hmartOrder:1.0.0
-
-    Running executable
+    ```
+    bal run -- read
     ```
 
     You can view the response shown below.
 
     ```
+    Order date: 2008-01-01
     ```
 
 ##### Write to EDI files
 
 Follow the steps below use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text.
 
-1. Navigate to the cloned `edi_code_generation/hmartOrder` directory.
+1. Navigate to the cloned `edi_code_generation` directory.
 
-2. Run the `write_edi.bal` file. 
+2. Run the `write_edi()` function. 
 
-    >**Info:** This shows how to 
-
-    Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
+    >**Info:** Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
 
     ```
-    HDRORDER_200HMart17-05-2023~
-    ITMA68015~
-    ITMA5302~
-    ITMA500*4~
+    EDI message: 
+    HDR*ORDER_200*HMart*17-05-2023~
+    ITM*A680*15~
+    ITM*A530*2~
+    ITM*A500*4~
     ```
 
 ### Package generation example
@@ -176,7 +172,7 @@ Clone the [artifacts of the example](https://github.com/ballerina-guides/integra
 
 Follow the steps below to run the EDI tool and create the Ballerina package.
 
-1. Navigate to the `edi_package_generation` directory.
+1. Navigate to the `edi_package_generation/CityMart` directory.
 
 2. Run the tool with the [required arguments](#command-options) to generate the package.
 
@@ -184,10 +180,10 @@ Follow the steps below to run the EDI tool and create the Ballerina package.
 
 
     ```
-    $ bal edi libgen -O citymart -n porder -s CityMart/schemas -o CityMart/lib
+    $ bal edi libgen -O citymart -n porder -s schemas -o lib
     ```
 
-    The generated Ballerina package will be, as shown below.
+    The generated Ballerina package will be as shown below.
 
     >**Info:** The code for each EDI schema is generated into a separate module to prevent possible conflicts.
 

@@ -36,11 +36,11 @@ export async function getStaticProps() {
     const file = files[i];
     const filePath = path.join(baseDirectory, file);
     const stats = fs.statSync(filePath);
-    const bal = path.join(filePath, file + ".bal");
-    if (!stats.isDirectory() || !fs.existsSync(bal)) {
+    const balPath = path.join(filePath, file + ".bal");
+    const ymlPath = path.join(baseDirectory, file, file + ".yml");
+    if (!stats.isDirectory() || !(fs.existsSync(balPath) || fs.existsSync(ymlPath))) {
       continue;
     }
-    const ymlPath = path.join(baseDirectory, file, file + ".yml");
     const name = file.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase()).trim();
     var pattern = loadYml(ymlPath) || {};
     pattern.name = pattern.name ?? name;

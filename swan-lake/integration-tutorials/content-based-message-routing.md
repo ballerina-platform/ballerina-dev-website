@@ -267,7 +267,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use the `is` check to check whether the response is a `ReservationResponse` record, which would indicate a successful reservation. If the response is a `ReservationResponse` record, return the record from the resource method to send a `201 Created` response with the `ReservationResponse` value as the payload.
 
-    - If the response is not a `ReservationResponse` record (i.e., `http:ClientError`) which indicates that the request failed, log the failure at `ERROR` level.  Return a `http:NotFound` response if the response is an `http:ClientRequestError`, or an `http:InternalServerError` response if the response is an `http:ServerError`.
+    - If the response is not a `ReservationResponse` record (i.e., `http:ClientError`) which indicates that the request failed, log the failure at `ERROR` level.  Return an `http:NotFound` response if the response is  `http:ClientRequestError`, or an `http:InternalServerError` response if the response is `http:ServerError`.
 
 You have successfully developed the required service.
 

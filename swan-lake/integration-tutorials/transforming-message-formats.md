@@ -189,7 +189,7 @@ Follow the instructions given in this section to develop the service.
     ```
 
     > **Note:**
-    > Since `ssn` must definitely be an array of three integers, make it a fixed-length [array](https://ballerina.io/learn/by-example/arrays/).
+    > Since the `ssn` field is required to be an array of three integers, update the type to a [fixed-length array](https://ballerina.io/learn/by-example/arrays/).
 
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
@@ -287,7 +287,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use the `is` check to check whether the response is `ReservationResponse` and return it as is (i.e., reservation successful).
 
-    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return a `http:NotFound` response if the response from the hospital service is an `http:ClientRequestError` response or an `http:InternalServerError` response otherwise.
+    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return an `http:NotFound` response if the response from the hospital service is an `http:ClientRequestError` response or an `http:InternalServerError` response otherwise.
 
 You have successfully developed the required service.
 

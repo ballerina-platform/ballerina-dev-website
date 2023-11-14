@@ -5,3 +5,4 @@ index: 33
 helps: Ballerina excels in enabling the seamless integration of diverse services with inherent concurrent support, as well as in data binding, type enforcement, and native error-handling capabilities.
 tags: ["Routing Slip", "Message Channel", "Message Endpoint", "Message Router"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html
+files: ["routing-slip-main.bal", "loyalty-point-service.bal"]

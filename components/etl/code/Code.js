@@ -253,7 +253,7 @@ export default function UseCases(props) {
                                     <h3>{clean.frontmatter.title}</h3>
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{clean.frontmatter.description}</ReactMarkdown>
                                     <div className={styles.dVersion}>
-                                        <span>Sample 1: Remove duplicates using a Ballerina query</span>
+                                        <span>Sample 1: Remove duplicates based on composite fields</span>
                                         <a href='https://github.com/ballerina-guides/etl-samples/blob/main/remove-duplicates/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub
@@ -261,7 +261,7 @@ export default function UseCases(props) {
                                     </div>
 
                                     <div className={styles.dVersion}>
-                                        <span>Sample 2: Find duplicates using a custom logic</span>
+                                        <span>Sample 2: Remove duplicates based on approximation</span>
                                         <a href='https://github.com/ballerina-guides/etl-samples/blob/main/remove-approximate-duplicates/main.bal' className={styles.cDownload} target="_blank" rel="noreferrer">
                                             <Image src={`${prefix}/images/sm-icons/github-grey.svg`} width={20} height={20} alt="View code on GitHub" />
                                             View code on GitHub

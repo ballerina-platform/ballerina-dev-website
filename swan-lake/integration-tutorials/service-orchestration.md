@@ -12,7 +12,7 @@ intro: This tutorial helps you understand the basics of how Ballerina can be use
 
 In this tutorial, you will develop a service that accepts requests to make an appointment at a hospital, makes multiple calls to different backend services to make the appointment, and responds to the client with the relevant details. Calls to the backend services are made one after the other, given that information from one call is required for the next. This effectively integrates several services and exposes them as a single service, also known as service orchestration.
 
-To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then run the service. This resource will receive the user request, retrieve details from the backend services, and respond to the user request with the appointment details.
+To implement this use case, you will develop a REST service with a single resource using Visual Studio Code with the Ballerina Swan Lake extension, and then run the service. This resource will receive the user request, call the backend services to make the appointment, and respond to the user request with the appointment details.
 
 The flow is as follows.
 
@@ -72,7 +72,7 @@ The flow is as follows.
     }
     ```
 
-4. Finally, call the payment backend service to make the payment and retrieve the reservation status. Log some information and respond to the client with the reservation status as the payload.
+4. Finally, call the payment backend service to make the payment and retrieve the reservation status.
 
     ```json
     {
@@ -170,7 +170,11 @@ Follow the instructions given in this section to develop the service.
         string hospital;
         string appointmentDate;
     };
+    ```
 
+    Similarly, generate records corresponding to the request payload (e.g., `ReservationRequest`). Remove the duplicate `Patient` record since the same type has already been generated.
+
+    ```ballerina
     type PatientWithCardNo record {
         *Patient;
         string cardNo;
@@ -202,13 +206,15 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
+    The `PatientWithCardNo` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) to include all the fields from the `Patient` record along with the `cardNo` field.
+
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
 
     > **Note:** 
     > When the fields of the JSON objects are expected to be exactly those specified in the sample payload, the generated records can be updated to be [closed records](https://ballerina.io/learn/by-example/controlling-openness/), which would indicate that no other fields are allowed or expected.
 
-4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, makes calls to the backend services to retrieve relevant details, and responds to the client.
+4. Define the [HTTP service (REST API)](https://ballerina.io/learn/by-example/#rest-service) that has the resource that accepts user requests, makes calls to the backend services to make an appointment, and responds to the client.
 
     - Open the [Ballerina HTTP API Designer](https://wso2.com/ballerina/vscode/docs/design-the-services/http-api-designer) in VS Code.
 

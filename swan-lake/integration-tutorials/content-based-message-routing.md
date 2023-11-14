@@ -106,7 +106,7 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-4. Generate record types corresponding to the payloads from the hospital backend services by providing samples of the expected JSON payloads.
+4. Generate record types corresponding to the payload from the hospital backend service by providing samples of the expected JSON payloads.
 
     The payload from the hospital backend service will be a JSON object similar to the following.
 
@@ -164,7 +164,11 @@ Follow the instructions given in this section to develop the service.
         boolean confirmed;
         string appointmentDate;
     };
+    ```
 
+    Similarly, generate the `ReservationRequest` record type and update the `hospital_id` field with the `HospitalId` type. Remove a one `Patient` record if it gets generated twice.
+
+    ```ballerina
     type ReservationRequest record {
         Patient patient;
         string doctor;
@@ -255,15 +259,15 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-    - Define the `hospitalEP` variable. Later, the relevant client is assigned to this variable based on the `hospital_id` value.
+    - Define an `http:Client` variable named `hospitalEP`. Later, the relevant client is assigned to this variable based on the `hospital_id` value.
 
     - Use a [match statement](https://ballerina.io/learn/by-example/match-statement) to assign the relevant client to the `hospitalEP` variable based on the `hospital_id` value.
 
-    - Make a `POST` request to the backend hospital service to make the reservation. The `category` value is used as a path parameter.
+    - Make a `POST` request to the relevant backend hospital service to make the reservation. The `category` value is used as a path parameter.
 
-    - Use the `is` check to check whether the response is a `ReservationResponse` and return it as is (i.e., reservation successful).
+    - Use the `is` check to check whether the response is a `ReservationResponse` record, which would indicate a successful reservation. If the response is a `ReservationResponse` record, return the record from the resource method to send a `201 Created` response with the `ReservationResponse` value as the payload.
 
-    - If the response is not a `ReservationResponse`, log the failure at `ERROR` level.  Return a "NotFound" response if the response is an `http:ClientRequestError`, or an "InternalServerError" response if the response is an `http:ServerError`.
+    - If the response is not a `ReservationResponse` record (i.e., `http:ClientError`) which indicates that the request failed, log the failure at `ERROR` level.  Return a `http:NotFound` response if the response is an `http:ClientRequestError`, or an `http:InternalServerError` response if the response is an `http:ServerError`.
 
 You have successfully developed the required service.
 

@@ -19,12 +19,12 @@
 import Carousel from 'react-bootstrap/Carousel';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
-// import styles from './CommunityCarousel.module.css';
+import styles from './CommunityCarousel.module.css';
 
 export default function CommunityCarousel(props) {
 
   return (
-    <Carousel>
+    <Carousel className={styles.communityCarousel}>
       <Carousel.Item>
         <img src='/images/community/1.png' />
       </Carousel.Item>

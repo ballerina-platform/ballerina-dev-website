@@ -106,7 +106,7 @@ Follow the instructions given in this section to develop the service.
     }
     ```
 
-4. Generate record types corresponding to the payload from the hospital backend service by providing samples of the expected JSON payloads.
+4. Generate record types corresponding to the payload from the hospital backend service by providing a sample of the expected JSON payload.
 
     The payload from the hospital backend service will be a JSON object similar to the following.
 
@@ -166,7 +166,7 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
-    Similarly, generate the `ReservationRequest` record type and update the `hospital_id` field with the `HospitalId` type. Remove a one `Patient` record if it gets generated twice.
+    Similarly, generate a record corresponding to the request payload (e.g., `ReservationRequest`) and update the `hospital_id` field to be of the `HospitalId` type that was defined previously. Remove the duplicate `Patient` record if the same type has already been generated.
 
     ```ballerina
     type ReservationRequest record {

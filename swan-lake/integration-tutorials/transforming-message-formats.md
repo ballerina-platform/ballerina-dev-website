@@ -162,7 +162,7 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
-    Similarly, generate the `HealthcareReservation` and `HospitalReservation` record types corresponding to the parameter and return types of the transforming function. Remove a one `Patient` record if it gets generated twice.
+    Similarly, generate the `HealthcareReservation` and `HospitalReservation` record types corresponding to the request payload, parameter and return types of the transforming function. Remove the duplicate `Patient` record if the same type has already been generated.
 
     ```ballerina
     type HospitalReservation record {
@@ -189,7 +189,7 @@ Follow the instructions given in this section to develop the service.
     ```
 
     > **Note:**
-    > Since `ssn` must definitely be an array of three integers, make it as a fixed-length [array](https://ballerina.io/learn/by-example/arrays/).
+    > Since `ssn` must definitely be an array of three integers, make it a fixed-length [array](https://ballerina.io/learn/by-example/arrays/).
 
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).

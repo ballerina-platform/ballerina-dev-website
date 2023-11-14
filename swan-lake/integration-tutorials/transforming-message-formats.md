@@ -162,7 +162,7 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
-    Similarly, generate the `HealthcareReservation` and `HospitalReservation` record types corresponding to the request payload, parameter and return types of the transforming function. Remove the duplicate `Patient` record if the same type has already been generated.
+    Similarly, generate the record types corresponding to the request payload, parameter and return types of the transforming function (e.g. `HealthcareReservation`, `HospitalReservation`). Remove the duplicate `Patient` record if the same type has already been generated.
 
     ```ballerina
     type HospitalReservation record {

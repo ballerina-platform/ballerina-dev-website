@@ -4,7 +4,7 @@ import { FaRegCopy, FaCheck } from 'react-icons/fa';
 import styles from './CodeView.module.css';
 import { useState } from 'react'
 
-export default function Counter(props) {
+export default function CodeView(props) {
   const [visible, setVisible] = useState(false);
 
   const [copied, setCopied] = useState(false);
@@ -21,6 +21,7 @@ export default function Counter(props) {
   return (
     <div>
         <div className={styles.code}>
+            {props.name && <h5 className={styles.title}>{props.name}</h5>}
             <CopyToClipboard className={styles.copyToClipboard} text={props.raw} onCopy={() => codeCopy()}>
             {
                 copied ? <FaCheck className={styles.copied} title="Copied" /> : <FaRegCopy title="Copy" />

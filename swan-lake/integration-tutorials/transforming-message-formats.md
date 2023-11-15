@@ -104,7 +104,7 @@ Follow the instructions given in this section to develop the service.
 
     ![Open diagram view](/learn/images/integration-tutorials/transforming-message-formats/open_diagram_view.gif)
 
-3. Generate record types corresponding to the payloads from the hospital service and input/output of the transforming function by providing samples of the expected JSON payloads.
+3. Generate record types corresponding to the response from the hospital service by providing a sample of the expected JSON payload.
 
     ```json
     {
@@ -160,7 +160,11 @@ Follow the instructions given in this section to develop the service.
         boolean confirmed;
         string appointmentDate;
     };
+    ```
 
+    Similarly, generate the record types corresponding to the request payloads to the healthcare service being developed (e.g. `HealthcareReservation`) and the request payload expected by the backend hospital service (e.g.,`HospitalReservation`). The transformation will be done from the former type to the latter. Also remove the duplicate `Patient` record if the same type has already been generated.
+
+    ```ballerina
     type HospitalReservation record {
         Patient patient;
         string doctor;
@@ -172,7 +176,7 @@ Follow the instructions given in this section to develop the service.
         string firstName;
         string lastName;
         string dob;
-        int[] ssn;
+        int[3] ssn;
         string address;
         string phone;
         string email;
@@ -183,6 +187,9 @@ Follow the instructions given in this section to develop the service.
         string appointmentDate;
     };
     ```
+
+    > **Note:**
+    > Since the `ssn` field is required to be an array of three integers, update the type to a [fixed-length array](https://ballerina.io/learn/by-example/arrays/).
 
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).
@@ -212,6 +219,7 @@ Follow the instructions given in this section to develop the service.
             }
         }
         ```
+
 5. Use the data mapper to define the `transform` function which transforms a `HealthcareReservation` record, representing the payload (`reservation`), to a `HospitalReservation` record.
 
     ![Data mapper guide](/learn/images/integration-tutorials/transforming-message-formats/data_mapper_guide.gif)
@@ -279,7 +287,7 @@ Follow the instructions given in this section to develop the service.
 
     - Use the `is` check to check whether the response is `ReservationResponse` and return it as is (i.e., reservation successful).
 
-    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return a "NotFound" response if the response from the hospital service is an `http:ClientRequestError` response or an "InternalServerError" response otherwise.
+    - If the response is not a `ReservationResponse` record, log the information at `ERROR` level. Return an `http:NotFound` response if the response from the hospital service is an `http:ClientRequestError` response or an `http:InternalServerError` response otherwise.
 
 You have successfully developed the required service.
 

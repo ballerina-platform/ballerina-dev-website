@@ -28,7 +28,7 @@ if valid {
 ```ballerina
 if valid {
     ...
-} else if valid {
+} else if (valid) {
     ...
 }
 ```

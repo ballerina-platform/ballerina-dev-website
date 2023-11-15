@@ -104,7 +104,7 @@ Follow the instructions given in this section to develop the service.
 
     ![Open diagram view](/learn/images/integration-tutorials/transforming-message-formats/open_diagram_view.gif)
 
-3. Generate record types corresponding to the response from the hospital service by providing samples of the expected JSON payload.
+3. Generate record types corresponding to the response from the hospital service by providing a sample of the expected JSON payload.
 
     ```json
     {

@@ -41,7 +41,7 @@ function testFunction() {
 **Example,**
   
 ```ballerina
-annotation record {||} validated on parameter, return;
+annotation validated on parameter, return;
 
 // Parameter annotation.
 public function secureFunction1(@validated string secureInName, int secureInId, string insecureIn) {

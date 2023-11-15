@@ -3,7 +3,7 @@ category: Messaging Channels
 tagline: Delivers a copy of a particular event to each receiver
 index: 7
 desc: Publish-Subscribe Channel delivers a copy of a particular event to each receiver.
-helps: Ballerina has a rich set of libraries to interact with various messaging protocols. These include protocols that support publish-subscribe semantics such as Kafka, MQTT, and WebSocket.
+helps: Ballerina has a rich set of packages to interact with various messaging protocols. These include protocols that support publish-subscribe semantics such as Kafka, MQTT, and WebSocket.
 tags: ["Publish-Subscribe Channel", "Message Channel", "Message Endpoint", "Message Router"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/PublishSubscribeChannel.html
 files: ["publisher.bal", "subscriber.bal"]

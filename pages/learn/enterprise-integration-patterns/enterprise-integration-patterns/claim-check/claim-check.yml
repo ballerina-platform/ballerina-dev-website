@@ -2,7 +2,7 @@ tagline: Reduce message volume and send across the system without losing message
 desc: Claim Check will store messages in a persistent storage and send a claim to another application to access the origin stored message.
 category: Message Transformation
 index: 39
-helps: Ballerina supports the persistent storage of messages. Popular storage technologies such as SQL, AWS S3 and Redis are available as Ballerina packages.
+helps: Ballerina supports the persistent storage of messages. Popular storage technologies such as SQL, AWS S3, and Redis are available as Ballerina packages.
 tags: ["Claim Check", "Content Enricher", "Content Filter"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/StoreInLibrary.html
 files: ["claim-check-consumer.bal", "claim-check-producer.bal"]

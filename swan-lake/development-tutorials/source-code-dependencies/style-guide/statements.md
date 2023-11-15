@@ -17,7 +17,7 @@ intro: The sections below include the coding conventions with respect to stateme
 ```ballerina
 if valid {
     ...
-} else if valid {
+} else if active {
     ...
 }
 ```

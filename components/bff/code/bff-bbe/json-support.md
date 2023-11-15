@@ -11,36 +11,23 @@ service /crm on new http:Listener(9090) {
             returns byte[]|http:InternalServerError {
         byte[]|error agreementForm = getAgreementForm(customerId);
         if agreementForm is error {
-            return <http:InternalServerError>{
-                body: {
-                    message: "Agreement form not found"
-                }
-            };
+            return http:INTERNAL_SERVER_ERROR;
         }
         return agreementForm;
     }
 
     resource function post customers(http:Request request) 
-            returns http:Created|http:InternalServerError {
+                returns http:Created|http:InternalServerError {
         do {
             mime:Entity[] bodyParts = check request.getBodyParts();
             string formData = check bodyParts[0].getText();
             CustomerData data = check formData.fromJsonStringWithType();
             byte[] image = check bodyParts[1].getByteArray();
             byte[] agreemntForm = check bodyParts[2].getByteArray();
-            string customerId = check registerCustomer(data, agreemntForm, image);
-            return <http:Created>{
-                body: {
-                    message: "Customer registered successfully.", customerId
-                }
-            };
-        } on fail error e {
-            return <http:InternalServerError>{
-                body: {
-                    message: string `Error while processing
-                                    the request: ${e.message()}`
-                }
-            };
+            check registerCustomer(data, agreemntForm, image);
+            return http:CREATED;
+        } on fail {
+            return http:INTERNAL_SERVER_ERROR;
         }
     }
 }

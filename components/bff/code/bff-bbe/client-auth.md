@@ -5,9 +5,10 @@ url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/microservices'
 ---
 ```
 service /logistics on new http:Listener(9090) {
-    resource function post cargos(Cargo cargo)
+    resource function post cargos(Cargo cargo) 
             returns http:Ok|http:InternalServerError {
         cargoTable.add(cargo);
+        http:Client serviceClient = getServiceClient(cargo.cargoType);
         http:Response|error res = serviceClient->post("/shipments", cargo);
         if res is http:Response && res.statusCode == 202 {
             return <http:Ok>{body: "Successfully submitted the shipment"};

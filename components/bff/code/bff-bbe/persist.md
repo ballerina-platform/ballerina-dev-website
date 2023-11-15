@@ -21,17 +21,10 @@ service /sales on new http:Listener(9090) {
         } 
         if result is persist:ConstraintViolationError {
             return <http:BadRequest>{
-                body: {
-                    message: string `Invalid cargo id: ${orderEntry.cargoId}`
-                }
+                body: {message: string `Invalid cargo id: ${orderEntry.cargoId}`}
             };
         }
-        return <http:InternalServerError>{
-            body: {
-                message: string `Error while inserting 
-                                 the order ${result.message()}`
-            }
-        };
+        return http:INTERNAL_SERVER_ERROR;
     };
 }
 ```

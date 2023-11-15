@@ -172,7 +172,7 @@ Follow the instructions given in this section to develop the service.
     };
     ```
 
-    Similarly, generate records corresponding to the request payload (e.g., `ReservationRequest`). Remove the duplicate `Patient` record since the same type has already been generated.
+    Similarly, generate records corresponding to the request payload (e.g., `ReservationRequest`). Update the duplicate `Patient` record to `PatientWithCardNo` and use [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) to include all the fields from the `Patient` record along with the `cardNo` field.
 
     ```ballerina
     type PatientWithCardNo record {
@@ -205,8 +205,6 @@ Follow the instructions given in this section to develop the service.
         string status;
     };
     ```
-
-    The `PatientWithCardNo` record uses [record type inclusion](https://ballerina.io/learn/by-example/type-inclusion-for-records/) to include all the fields from the `Patient` record along with the `cardNo` field.
 
     > **Note:**
     > While it is possible to work with the JSON payload directly, using record types offers several advantages including enhanced type safety, data validation, and better tooling experience (e.g., completion).

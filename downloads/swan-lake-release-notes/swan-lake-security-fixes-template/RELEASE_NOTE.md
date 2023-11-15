@@ -21,10 +21,11 @@ redirect_from:
 
 ## Update Ballerina
 
-Update your current Ballerina installation directly to <RELEASE_VERSION> using the [Ballerina Update Tool](/learn/update-tool/) as follows.
+Run the command below to update your current Ballerina installation directly to <RELEASE_VERSION> by using the [Ballerina Update Tool](/learn/update-tool/).
 
-1. Run `bal update` to get the latest version of the Update Tool.
-2. Run `bal dist update` to update to this latest distribution.
+```
+$ bal dist pull <RELEASE_VERSION>
+```
 
 ## Install Ballerina
 

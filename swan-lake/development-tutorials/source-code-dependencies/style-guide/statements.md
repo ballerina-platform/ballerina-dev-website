@@ -15,9 +15,9 @@ intro: The sections below include the coding conventions with respect to stateme
 **Do's**
 
 ```ballerina
-if isValid {
+if valid {
     ...
-} else if isValid {
+} else if valid {
     ...
 }
 ```
@@ -26,9 +26,9 @@ if isValid {
 
 
 ```ballerina
-if isValid {
+if valid {
     ...
-} else if isValid {
+} else if valid {
     ...
 }
 ```

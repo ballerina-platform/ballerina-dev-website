@@ -107,7 +107,7 @@ function setAge(int age) {
 **Do's**
 
 ```ballerina
-if isValid {
+if valid {
 }
   
 function setName(string name) {
@@ -118,7 +118,7 @@ function setName(string name) {
 **Don'ts**
 
 ```ballerina
-if isValid
+if valid
 {
     
 }
@@ -135,7 +135,7 @@ function setName(string name)
 
 ```ballerina
 function func1() {
-    if isValid {
+    if valid {
     }
 }
 ```
@@ -155,7 +155,7 @@ function func1() {
 **Example,**
   
 ```ballerina
-if isValid {
+if valid {
    int x = 2;
    string a = "hello";
 }

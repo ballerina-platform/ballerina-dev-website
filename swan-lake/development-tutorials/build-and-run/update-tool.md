@@ -78,13 +78,13 @@ You can [change this active distribution](#change-the-active-distribution) at an
 
 The `bal update` command updates the Ballerina Tool itself to the latest version. Ballerina Tool versions are independent of the Ballerina distribution versions. These tool updates are expected to be rare compared to distribution releases.
 
-```bash
+```
 $ bal update
 ```
 
 You view the output below.
 
-```bash
+```
 Fetching the latest tool version from the remote server...
 Downloading ballerina-command-1.3.15 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00) 
 Updating environment variables
@@ -99,13 +99,13 @@ If you want to update the Ballerina distribution, use 'bal dist update'
 
 After updating the Ballerina Tool, you can use the `bal dist` command to manage Ballerina distributions. The `bal help dist` output below shows all the details about the `bal dist` command.
 
-```bash
+```
 $ bal help dist
 ```
 
 You view the output below.
 
-```bash
+```
 NAME
        bal dist - Manage Ballerina distributions
 
@@ -151,13 +151,13 @@ Most of these subcommands are self-explanatory. Therefore, the sections below in
 
 The `bal dist list` command lists the installed distributions in your local environment. It also lists the distributions available for you to download.
 
-```bash
+```
 $ bal dist list
 ```
 
 You view the output below.
 
-```bash
+```
 Distributions available locally: 
 
 * 2201.5.0
@@ -205,13 +205,13 @@ Use 'bal help dist' for more information on specific commands.
 
 The `bal dist update` command updates your distribution to the latest Ballerina version.
 
-```bash
+```
 $ sudo bal dist update
 ```
 
 You view the output below.
 
-```bash
+```
 Fetching the latest distribution from the remote server...
 Fetching the '2201.6.0' distribution from the remote server...
 Downloading 2201.6.0 100% [================================================================================================================================================================================] 319/319 MB (0:01:21 / 0:00:00) 
@@ -225,13 +225,13 @@ Successfully set the distribution '2201.6.0' as the active distribution
 
 The `bal dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
-```bash
+```
 $ bal dist pull 2201.4.1
 ```
 
 You view the output below.
 
-```bash
+```
 Fetching the '2201.4.1' distribution from the remote server...
 Downloading 2201.4.1 100% [================================================================================================================================================================================] 287/287 MB (0:01:26 / 0:00:00) 
   
@@ -244,13 +244,13 @@ Dependency 'jdk-11.0.15+10-jre' is already available locally
 
 The `bal dist use <distribution>` command sets a particular distribution version as the active one.
 
-```bash
+```
 $ bal dist use 2201.4.2
 ```
 
 You view the output below.
 
-```bash
+```
 2201.4.2 successfully set as the active distribution
 ```
 
@@ -258,12 +258,12 @@ You view the output below.
 
 The `bal dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you have been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
-```bash
+```
 $ bal dist remove 2201.4.0
 ```
 
 You view the output below.
 
-```bash
+```
 Distribution '2201.4.0' successfully removed
 ```

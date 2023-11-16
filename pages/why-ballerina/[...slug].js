@@ -30,6 +30,7 @@ import { prefix } from "../../utils/prefix";
 import LearnToc from "../../utils/learn-lm.json";
 import Toc from "../../components/common/pg-toc/Toc";
 import { highlight } from "../../utils/highlighter";
+import PrevNext from "../../components/common/prev-next/PrevNext";
 
 String.prototype.hashCode = function () {
   var hash = 0,
@@ -199,7 +200,12 @@ export default function PostPage({ frontmatter, content, id, slug, codes }) {
               content={content}
               handleToc={handleToc}
               codes={codes} />
-
+              <PrevNext
+                launcher="learn"
+                id={id}
+                mainDir="why-ballerina"
+                Toc={LearnToc}
+              />
           </Container>
         </Col>
         <Col sm={2} className="pageToc d-none d-sm-block">

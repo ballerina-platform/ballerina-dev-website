@@ -79,6 +79,22 @@
                     "id": "2201.7.0v"
                 },
                 {
+                    "dirName": "2201.6.3",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.6.3",
+                    "id": "2201.6.3v"
+                },
+                {
+                    "dirName": "2201.6.2",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.6.2",
+                    "id": "2201.6.2v"
+                },
+                {
                     "dirName": "2201.6.1",
                     "level": 2,
                     "position": 1,
@@ -93,6 +109,14 @@
                     "isDir": false,
                     "url": "#2201.6.0",
                     "id": "2201.6.0v"
+                },
+                {
+                    "dirName": "2201.5.4",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.5.4",
+                    "id": "2201.5.4v"
                 },
                 {
                     "dirName": "2201.5.3",
@@ -480,6 +504,22 @@
                     "isDir": false,
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
+                },
+                {
+                    "dirName": "1.2.47",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.47",
+                    "id": "1.2.47v"
+                },
+                {
+                    "dirName": "1.2.46",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.46",
+                    "id": "1.2.46v"
                 },
                 {
                     "dirName": "1.2.45",

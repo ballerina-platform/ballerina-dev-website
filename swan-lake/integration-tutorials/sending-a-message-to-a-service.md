@@ -212,7 +212,7 @@ $ bal run hospitalservice.jar
 
 #### Send a request
 
-Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Use `surgery` as the path parameter.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify `surgery` as the path parameter.
 
 ![Send a request](/learn/images/integration-tutorials/sending-a-message-to-a-service/try_it.gif)
 

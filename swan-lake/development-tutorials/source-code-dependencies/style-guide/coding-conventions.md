@@ -188,7 +188,7 @@ public function main() {
 
 ```ballerina
 int[] a = [];
-int? result = getResult();
+int|() result = getResult();
 ```
   
 ## Line breaks

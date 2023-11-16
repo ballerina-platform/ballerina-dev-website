@@ -421,7 +421,7 @@ type Mutation {
 Execute the cURL command below to retrieve all the data from the endpoint.
 
 ```
-curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d "{ \"query\": \"query { all { country cases active} }\" }" http://localhost:9000/covid19
+$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d "{ \"query\": \"query { all { country cases active} }\" }" http://localhost:9000/covid19
 ```
 
 In this request:

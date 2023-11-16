@@ -1,0 +1,8 @@
+POST http://localhost:8080/paypal/refund
+
+{
+    "request_id": "123e4342-e89b-12d3-a456-426655440020",
+    "email": "JamesGunN2@wso2.com",
+    "client_id": "Acuy17z2LcOf9RMv8SUVBb3wic3FPEP2NHFFqfSCBRFrNFdmbC1JQ0w8HIKRxW3RDy2R8QTL93eptFYl",
+    "capture_id": "2AG279541U471931W"
+}

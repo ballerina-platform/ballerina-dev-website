@@ -59,7 +59,7 @@ const TopNav = (props) => {
   const now = new Date();
   let showBanner = false;
 
-  if (now < Date.parse('2023-10-31T00:00:00.0000-00:00')) {
+  if (now < Date.parse('2023-11-01T00:00:00.0000-00:00')) {
     showBanner = true;
   }
 

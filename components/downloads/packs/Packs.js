@@ -67,7 +67,7 @@ export default function Packs(props) {
             <h3 className={styles.dLinux} style={linuxIcon}>Linux </h3>
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>
-                  <a id="packLinux" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}`}
+                  <a id="packLinuxDeb" href={`${distServer}/downloads/${swanlake.version}/${swanlake['linux-installer']}`}
                      className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['linux-installer']}>
@@ -75,7 +75,7 @@ export default function Packs(props) {
                   </a>
                </div>
                <div className={styles.dVersion}>
-                  <a id="packLinux" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}`}
+                  <a id="packLinuxRpm" href={`${distServer}/downloads/${swanlake.version}/${swanlake['rpm-installer']}`}
                      className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['rpm-installer']}>
@@ -88,7 +88,7 @@ export default function Packs(props) {
             <h3 className={styles.dMac} style={macIcon}>macOS</h3>
             <div className={styles.dVersions}>
                <div className={styles.dVersion}>
-                  <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
+                  <a id="packMacX64" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-installer']}`}
                      className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['macos-installer']}>
@@ -96,7 +96,7 @@ export default function Packs(props) {
                   </a>
                </div>
                <div className={styles.dVersion}>
-                  <a id="packMac" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-arm-installer']}`}
+                  <a id="packMacARM" href={`${distServer}/downloads/${swanlake.version}/${swanlake['macos-arm-installer']}`}
                      className={`${styles.cDownload} cGTMDownload`}
                      data-download="downloads"
                      data-pack={swanlake['macos-arm-installer']}>

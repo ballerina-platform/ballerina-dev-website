@@ -1,9 +1,7 @@
-tagline: Remove data from message
+tagline: Remove data from the message
 desc: The content filter removes data from the original message and can also be employed to simplify the message structure.
 category: Message Transformation
 index: 38
-helps: Ballerina excels at manipulating data and handling diverse formats, structures, and transformations. The [query expression](/learn/by-example/query-expressions/) (`from` keyword)
-       is useful for transforming messages. The `select` clause, as shown below, can be used to create new records from existing ones while refining data.
-       The `where` clause can be used to filter items from an array.
+helps: Ballerina excels at manipulating data and handling diverse formats, structures, and transformations. The [query expression](/learn/by-example/query-expressions/) (`from` keyword) is useful for transforming messages. The `select` clause, as shown below, can be used to create new records from existing ones while refining data. The `where` clause can be used to filter items from an array.
 tags: ["Content Filter", "Message Channel", "Message Endpoint"]
 link: https://www.enterpriseintegrationpatterns.com/patterns/messaging/ContentFilter.html

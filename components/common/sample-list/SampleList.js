@@ -21,7 +21,6 @@ import Image from 'next-image-export-optimizer';
 import styles from './SampleList.module.css';
 import { prefix } from '../../../utils/prefix';
 
-
 export default function SampleList(props) {
   const href = props.name.replace(/\s+/g, '-').toLowerCase();
 
@@ -31,7 +30,7 @@ export default function SampleList(props) {
     </a>
     <p className="card-text">{props.description}</p>
     <p className={`${styles.tagWrapper} card-text text-body-secondary`} style={{ display: "flex", flexWrap: "wrap" }}>
-      {props.tags.map((tag) => (<Badge className={styles.tag} key={tag}>{tag}</Badge>))}
+      {props.tags.map((tag) => (<Badge as={"a"} className={styles.tag} key={tag} onClick={()=>props.handleSelectedTag(tag)}>{tag}</Badge>))}
     </p>
   </Card.Body>;
 

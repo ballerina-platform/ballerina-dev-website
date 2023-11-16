@@ -1,10 +1,6 @@
 tagline: Notify other applications about something that happened
-helps: Ballerina packages such as http, kafka, websocket, etc., in the Ballerina library provide listeners,
-  through which you can consume events from other applications. Each such
-  package provides protocol-specific message sending APIs as well.
-desc: Event message notifies other applications about something that happened.
-  Unlike document message, the focus is on the timing of the message rather than
-  the content.
+helps: Ballerina packages such as HTTP, Kafka, Websocket, etc., in the Ballerina library provide listeners, through which you can consume events from other applications. Each such package provides protocol-specific message sending APIs as well.
+desc: Event message notifies other applications about something that happened. Unlike document message, the focus is on the timing of the message rather than the content.
 category: Message Construction
 index: 17
 tags: ["Event Message", "Command Message", "Point-to-Point Channel"]

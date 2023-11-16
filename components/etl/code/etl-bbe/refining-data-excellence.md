@@ -1,7 +1,6 @@
 ---
 title: 'Refining Data Excellence'
-description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation.
-"
+description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/error-correction/service.bal'
 phase: 'Transformations'
 ---

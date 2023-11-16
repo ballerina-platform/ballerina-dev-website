@@ -1,6 +1,6 @@
 ---
 title: 'Data Enrichment Magic'
-description: "Watch your data come to life as Ballerina's enchanting data enrichment capabilities add depth and context to your insights.
+description: "Ballerina streamlines data enrichment, simplifying the journey from data extraction from databases or APIs to adding depth and context to your insights.
 "
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/enrich-data/main.bal'
 phase: 'Transformations'

@@ -1,8 +1,6 @@
 ---
-title: 'Loading Data to a Data Warehouse with Ballerina'
-description: "Unlock the power of Ballerina for smooth and efficient data loading 
-from CSV to a data warehouse, making your data analysis journey a breeze.
-"
+title: 'Loading Data to a Data Warehouse'
+description: "Ballerina's integration and security capabilities simplify the loading of transformed data securely into on-prem or SaaS data warehouses."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/load-data-to-bigquery/main.bal'
 phase: 'Loadings'
 ---

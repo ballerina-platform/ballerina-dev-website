@@ -118,23 +118,28 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
     return newId;
   }
 
+  const extractLibraryNameFromContent = () => {
+    return content.split("\n")[0].substring(2);
+  }
+
   return (
     <>
       <Head>
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title}</title>
+        <title>{frontmatter.title || extractLibraryNameFromContent()}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta property="og:title" content={`Ballerina - ${frontmatter.title  || extractLibraryNameFromContent()}`} />
         <meta property="og:description" content={frontmatter.description}></meta>
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title || extractLibraryNameFromContent()}`} />
         <meta property="twitter:description" content={frontmatter.description} />
         <meta property="twitter:text:description" content={frontmatter.description} />
 

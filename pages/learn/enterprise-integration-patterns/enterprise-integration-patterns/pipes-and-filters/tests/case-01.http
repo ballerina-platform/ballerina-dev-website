@@ -1,0 +1,64 @@
+POST http://localhost:8080/api/v1/employee/top-performers?count=5
+
+[
+    {
+        "empId": "E001",
+        "productivity": 7,
+        "customerSatisfaction": 9,
+        "goalAchievement": 8
+    },
+    {
+        "empId": "E002",
+        "productivity": 6,
+        "customerSatisfaction": 7,
+        "goalAchievement": 9
+    },
+    {
+        "empId": "E003",
+        "productivity": 8,
+        "customerSatisfaction": 8,
+        "goalAchievement": 7
+    },
+    {
+        "empId": "E004",
+        "productivity": 5,
+        "customerSatisfaction": 6,
+        "goalAchievement": 8
+    },
+    {
+        "empId": "E005",
+        "productivity": 9,
+        "customerSatisfaction": 7,
+        "goalAchievement": 9
+    },
+    {
+        "empId": "E006",
+        "productivity": 7,
+        "customerSatisfaction": 8,
+        "goalAchievement": 6
+    },
+    {
+        "empId": "E007",
+        "productivity": 6,
+        "customerSatisfaction": 9,
+        "goalAchievement": 7
+    },
+    {
+        "empId": "E008",
+        "productivity": 8,
+        "customerSatisfaction": 7,
+        "goalAchievement": 8
+    },
+    {
+        "empId": "E009",
+        "productivity": 9,
+        "customerSatisfaction": 8,
+        "goalAchievement": 9
+    },
+    {
+        "empId": "E010",
+        "productivity": 7,
+        "customerSatisfaction": 9,
+        "goalAchievement": 7
+    }
+]

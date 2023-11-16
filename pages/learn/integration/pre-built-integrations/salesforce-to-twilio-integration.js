@@ -259,9 +259,9 @@ export default function Learn({ samples, content }) {
                     </p>
 
                   </Col>
-                  <Col xs={12} lg={6} className="text-center">
+                  <Col xs={12} lg={6} className="text-center mdContent">
 
-                    <img src={`${prefix}/images/pre-built/flow_diagrams/salesforce-to-twilio-integration.png`} alt="Flow Diagram" style={{ width: "-webkit-fill-available" }} />
+                    <img src={`${prefix}/images/pre-built/flow_diagrams/salesforce-to-twilio-integration.png`} alt="Flow Diagram" />
 
                   </Col>
                 </Row>

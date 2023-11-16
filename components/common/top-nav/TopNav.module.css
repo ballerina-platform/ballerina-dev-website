@@ -155,9 +155,9 @@ nav.community, .brokenLink, .brokenLink-learn, nav.rn {
     color: #fff;
 }
 
-.hackathonBanner a:hover{
+/* .hackathonBanner a:hover{
     color: #545454 !important;
-}
+} */
 
 a.dropDownItem:focus, a.dropDownItem:hover {
     /* background-color: #20b6b0 !important;

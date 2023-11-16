@@ -11,8 +11,12 @@
   background: #f5f5f5;
 }
 
-.homeBalAction, .homeIntegration, .homeArticles, .homeUsers {
+.homeBalAction, .homeIntegration {
   padding-bottom: 6rem;
+}
+
+.homeArticles, .homeUsers {
+  padding-bottom: 3rem;
 }
 
 .home h2, .homeBalAction h2, .homeWhyBal h2, .homeIntegration h2,

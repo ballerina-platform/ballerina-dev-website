@@ -74,7 +74,6 @@ The flow is as follows
             "phone": "8770586755",
             "email": "johndoe@gmail.com"
         },
-        "fee": 7000.0,
         "hospital": "grand oak community hospital",
         "confirmed": false,
         "appointmentDate": "2017-04-02"
@@ -99,7 +98,7 @@ Follow the instructions given in this section to develop the service.
 
 1. Create a new Ballerina project using the `bal` command and open it in VS Code.
 
-    ```bash
+    ```
     $ bal new transforming-message-formats
     ```
 
@@ -172,14 +171,13 @@ Follow the instructions given in this section to develop the service.
         string hospital;
         string category;
         string availability;
-        float fee;
+        decimal fee;
     |};
 
     type ReservationResponse record {|
         int appointmentNumber;
         Doctor doctor;
         Patient patient;
-        float fee;
         string hospital;
         boolean confirmed;
         string appointmentDate;
@@ -321,14 +319,13 @@ type Doctor record {|
     string hospital;
     string category;
     string availability;
-    float fee;
+    decimal fee;
 |};
 
 type ReservationResponse record {|
     int appointmentNumber;
     Doctor doctor;
     Patient patient;
-    float fee;
     string hospital;
     boolean confirmed;
     string appointmentDate;
@@ -384,7 +381,7 @@ The [sequence diagram view](https://wso2.com/ballerina/vscode/docs/implement-the
 
 You can run this service by navigating to the project root and using the `bal run` command.
 
-```bash
+```
 transforming-message-formats$ bal run
 Compiling source
         integration_tutorials/transforming_message_formats:0.1.0
@@ -400,8 +397,8 @@ Let's test the use case by sending a request to the service.
 
 Download the JAR file for the [backend service](https://github.com/ballerina-guides/integration-tutorials/blob/main/backends/hospital-service/hospitalservice.jar) and execute the following command to start the service:
 
-```bash
-bal run hospitalservice.jar
+```
+$ bal run hospitalservice.jar
 ```
 
 #### Send a request
@@ -431,8 +428,8 @@ Let's send a request to the service using cURL as follows.
 
 3. Execute the following command.
 
-    ```bash
-    curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
+    ```
+    $ curl -v -X POST --data @request.json http://localhost:8290/healthcare/categories/surgery/reserve --header "Content-Type:application/json"
     ```
 
 #### Verify the response
@@ -457,7 +454,6 @@ You will see a response similar to the following for a successful appointment re
         "phone": "8770586755",
         "email": "johndoe@gmail.com"
     },
-    "fee": 7000.0,
     "hospital": "grand oak community hospital",
     "confirmed": false,
     "appointmentDate": "2017-04-02"

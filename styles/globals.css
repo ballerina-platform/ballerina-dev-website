@@ -327,7 +327,6 @@ pre.shiki,
 pre.default {
   padding: 10px;
   border-radius: 5px;
-  margin-top: 20px;
   background-color: #eeeeee !important;
 }
 
@@ -370,6 +369,7 @@ pre.default {
   display: flex;
   align-items: center;
 } */
+
 
 .mdButton {
   visibility: hidden;
@@ -538,6 +538,30 @@ a.cGreenLinkArrow:hover {
   z-index: -1;
 }
 
+.selectedTagContainer{
+  margin-bottom: 10px;
+}
+
+.selectedTagBadge{
+  margin-right: 5px;
+  background-color: #888 !important;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedTagIcon{
+  margin-left: 3px;
+}
+
+.selectedTagBadge:hover{
+  opacity: 0.8;
+  color: #ffffff;
+}
+
 /*--------downloads page -------*/
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
@@ -692,7 +716,7 @@ ul.eventsTabs {
 .preBuilt .nav-link:hover,
 .codeTabs .nav-link,
 .codeTabs .nav-link:hover {
-  border: none;
+  border: none !important;
 }
 
 .eventsTabs li button,
@@ -1173,6 +1197,13 @@ table.cTopControlsContainer tbody {
   cursor: pointer;
 }
 
+.prevNextBtnHover {
+  font-size: 16px;
+  font-weight: 400;
+  color: #57595d;
+  cursor: pointer;
+}
+
 .btnArrow {
   cursor: pointer;
 }
@@ -1180,6 +1211,11 @@ table.cTopControlsContainer tbody {
 .btnArrowHover {
   cursor: pointer;
   fill: var(--button-hover-color-text);
+}
+
+.prevNextBtnArrowHover {
+  cursor: pointer;
+  fill: #57595d;
 }
 
 .bbeCode .shiki {
@@ -1588,4 +1624,97 @@ table.cTopControlsContainer tbody {
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;
+}
+
+
+.cInlineImage-small {
+  display: inline-block;
+  text-align: center;
+  height:45% !important;
+  width:30% !important;
+  border: 1px solid gray;
+}
+    
+.cInlineImage-full {
+  display: inline-block;
+  text-align: center;
+  height:75% !important;
+  width:90% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-threeQuarter {
+  display: inline-block;
+  text-align: center;
+  width:65%;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-half {
+  display: inline-block;
+  text-align: center;
+  width:50% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-bordered {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+img + blockquote{
+  margin-top: 20px;
+}
+
+.mdTable + img {
+  margin-top: 20px;
+}
+
+/* ---------------------Carousal-------------------- */
+#myCarousel {
+  /* margin-left: 50px;
+  margin-right: 50px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 70px;
+}
+
+.item .row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selected .row {
+	opacity:0.5;
+}
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background: none;
+  border: none;
+}
+
+.carousel-control-prev {
+  margin-left: -25px !important;
+  justify-content: start !important;
+}
+
+.carousel-control-next {
+  margin-right: -25px !important;
+  justify-content: end !important;
+}
+
+.carousel-control {
+  width: 0%;
+}
+
+.carousel-indicators {
+  margin-bottom: 0 !important;
 }

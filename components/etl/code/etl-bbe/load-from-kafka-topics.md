@@ -1,8 +1,6 @@
 ---
-title: 'Seamless Realtime Data Flow: Loading Kafka Topics into Databases with Ballerina'
-description: "Experience the effortless integration as Ballerina streamlines the process of 
-loading data from Kafka topics into databases, ensuring real-time data flows with precision.
-"
+title: 'Realtime Data Flow'
+description: "Ballerina's support for various data streaming sources, such as Kafka, RabbitMQ, and NATS, facilitates the creation of real-time streaming ETL pipelines."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/kafka-db-ingestion/main.bal'
 phase: 'Loadings'
 ---

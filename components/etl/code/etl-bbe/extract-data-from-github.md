@@ -1,7 +1,6 @@
 ---
 title: 'Unleash data from APIs'
-description: "Ballerina offers a wide range of built-in connectors, including HTTP and GraphQL clients, making it easy to interact with SaaS APIs for efficient data extraction in your ETL pipeline.
-"
+description: "Ballerina offers a wide range of built-in connectors, including HTTP and GraphQL clients, making it easy to interact with APIs for efficient data extraction in your ETL pipeline."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-data-from-github/main.bal'
 phase: 'Extractions'
 ---

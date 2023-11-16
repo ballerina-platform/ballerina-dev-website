@@ -1,7 +1,6 @@
 ---
 title: 'Make data extraction smarter'
-description: "Ballerina AI integrations can extract information from unstructured data, unlocking vast amounts of information captured in emails, documents, comments, etc. in the extraction process.
-"
+description: "Ballerina AI integrations can extract information from unstructured data, unlocking vast amounts of information captured in emails, documents, comments, etc. in the extraction process."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-information-from-unstructured-data/main.bal'
 phase: 'Extractions'
 ---

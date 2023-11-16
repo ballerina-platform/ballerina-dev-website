@@ -77,7 +77,7 @@ export default function Community() {
             <Col xs={12}>
               <Container>
                 <Row>
-                  <img src="/images/ballerina-mesh-grey-cropped.svg" class="background-image" alt="Background" />
+                  <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Community</h1>
                     <p>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>

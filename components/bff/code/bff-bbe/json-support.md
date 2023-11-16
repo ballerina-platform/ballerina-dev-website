@@ -1,7 +1,6 @@
 ---
 title: 'Streamline Backend Data Handling'
 description: Ballerina has built-in support for multi-part payloads, constraint validations, transformations, and, enrichments for working with complex payloads.
-
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/payload_support'
 ---
 ```

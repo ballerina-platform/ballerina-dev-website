@@ -338,52 +338,52 @@ You have successfully developed the required service.
 import ballerina/http;
 import ballerina/log;
 
-type Doctor record {
+type Doctor record {|
     string name;
     string hospital;
     string category;
     string availability;
     decimal fee;
-};
+|};
 
-type Patient record {
+type Patient record {|
     string name;
     string dob;
     string ssn;
     string address;
     string phone;
     string email;
-};
+|};
 
-type Appointment record {
+type Appointment record {|
     int appointmentNumber;
     Doctor doctor;
     Patient patient;
     boolean confirmed;
     string hospital;
     string appointmentDate;
-};
+|};
 
-type PatientWithCardNo record {
+type PatientWithCardNo record {|
     *Patient;
     string cardNo;
-};
+|};
 
-type ReservationRequest record {
+type ReservationRequest record {|
     PatientWithCardNo patient;
     string doctor;
     string hospital_id;
     string hospital;
     string appointment_date;
-};
+|};
 
-type Fee record {
+type Fee record {|
     string patientName;
     string doctorName;
     string actualFee;
-};
+|};
 
-type ReservationStatus record {
+type ReservationStatus record {|
     int appointmentNo;
     string doctorName;
     string patient;
@@ -392,7 +392,7 @@ type ReservationStatus record {
     decimal discounted;
     string paymentID;
     string status;
-};
+|};
 
 configurable string hospitalServicesBackend = "http://localhost:9090";
 configurable string paymentBackend = "http://localhost:9090/healthcare/payments";
@@ -497,7 +497,7 @@ $ bal run hospitalservice.jar
 
 #### Send a request
 
-Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify the port used in the service and use `surgery` as the path parameter. Use the following as the request payload.
+Use the [Try it](https://wso2.com/ballerina/vscode/docs/try-the-services/try-http-services/) feature to send a request to the service. Specify `surgery` as the path parameter. Use the following as the request payload.
 
 ```json
 {

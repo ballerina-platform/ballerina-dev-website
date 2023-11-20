@@ -102,6 +102,7 @@ export default function Resources(props) {
                                     <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                                 </Card.Body>
                             </Card> */}
+
                             <img src="/images/community/ballerina-community-tech-talks.png" width="100%" alt="Tech Talks"/>
                         </a>
                     </Col>

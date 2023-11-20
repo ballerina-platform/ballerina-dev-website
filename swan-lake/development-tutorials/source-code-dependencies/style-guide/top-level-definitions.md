@@ -66,7 +66,7 @@ function func1() {
 
 ```ballerina
 function getAddress(int value,
-    string name) returns (string|()) {
+    string name) returns string? {
     ...
 }
 ```
@@ -77,7 +77,7 @@ function getAddress(int value,
 
 ```ballerina
 function getAddress(int value, string name)
-    returns (string|()) {
+    returns string? {
     ...
 }    
 ```
@@ -89,7 +89,7 @@ function getAddress(int value, string name)
 
 ```ballerina
 function getAddress(int value, string name) returns
-    (string|()) {
+    string? {
     ...
 }          
 ```
@@ -164,10 +164,10 @@ Block indent each of the field definitions (including the rest field) in their o
 **Example,**
 
 ```ballerina
-type Person record {
+type Person record {|
     string name;
     int...;
-};
+|};
 
 // or
 

@@ -34,7 +34,7 @@ import CodeView from '../../../components/learn/pattern/CodeView';
 import { readPattern } from '../../../components/learn/pattern/readPattern';
 
 export async function getStaticProps({ params }) {
-  return readPattern(params.pattern);
+  return await readPattern(params.pattern);
 }
 
 const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
@@ -46,8 +46,9 @@ export async function getStaticPaths() {
     const file = files[i];
     const filePath = path.join(baseDirectory, file);
     const stats = fs.statSync(filePath);
-    const bal = path.join(filePath, file + ".bal");
-    if (stats.isDirectory() && fs.existsSync(bal)) {
+    const balPath = path.join(filePath, file + ".bal");
+    const ymlPath = path.join(baseDirectory, file, file + ".yml");
+    if (stats.isDirectory() && (fs.existsSync(balPath) || fs.existsSync(ymlPath))) {
       paths.push({ params: { pattern: file } });
     }
   }
@@ -55,7 +56,21 @@ export async function getStaticPaths() {
 }
 
 export default function Pattern(props) {
-  const router = useRouter();
+  const rows = [];
+  const content = props.content;
+  const namedCodeViews = content.length > 1;
+  for (let i = 0; i < content.length; i++) {
+    const row = content[i];
+    rows.push(
+          <Row className="pageContentRow llanding" key={i}>
+            <Col xs={12}>
+              <Container>
+                <CodeView header={row.headerCode} main={row.mainCode} raw={row.raw} name={ namedCodeViews ? row.name : "" }/>
+              </Container>
+            </Col>
+          </Row>
+    );
+  }
   return (
     <>
       <Head>
@@ -198,13 +213,7 @@ export default function Pattern(props) {
             </Col>
           </Row>
 
-          <Row className="pageContentRow llanding" >
-            <Col xs={12}>
-              <Container>
-                <CodeView header={props.headerCode} main={props.mainCode} raw={props.raw}/>
-              </Container>
-            </Col>
-          </Row>
+          {rows}
 
         </Col>
       </Layout >

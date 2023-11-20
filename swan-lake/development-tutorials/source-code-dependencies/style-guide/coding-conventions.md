@@ -107,7 +107,7 @@ function setAge(int age) {
 **Do's**
 
 ```ballerina
-if true {
+if valid {
 }
   
 function setName(string name) {
@@ -118,7 +118,7 @@ function setName(string name) {
 **Don'ts**
 
 ```ballerina
-if true
+if valid
 {
     
 }
@@ -135,7 +135,7 @@ function setName(string name)
 
 ```ballerina
 function func1() {
-    if true {
+    if valid {
     }
 }
 ```
@@ -155,7 +155,7 @@ function func1() {
 **Example,**
   
 ```ballerina
-if false {
+if valid {
    int x = 2;
    string a = "hello";
 }
@@ -209,7 +209,7 @@ string s = person
   
 // Binary operations in if condition
 if isNameAvailable
-    && (i == 1) {
+    && i == 1 {
     ...
 }
 ```
@@ -247,7 +247,7 @@ string s2 =
 
 ```ballerina
 if isNameAvailable
-    && (i == 1) {
+    && i == 1 {
     ...
 }
   

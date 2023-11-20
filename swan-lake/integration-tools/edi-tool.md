@@ -96,7 +96,6 @@ Follow the steps below to generate Ballerina records for the above EDI schema.
     $ bal edi codegen -s schemas/edi-schema.json -o orderRecords.bal
     ```
 
-<<<<<<< HEAD
 >**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal`. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
 
 ```ballerina
@@ -130,63 +129,6 @@ Follow the steps below to use the generated `fromEdiString` function to read EDI
 2. Run the `read_edi()` function.
 
     >**Note:** Any data item in the EDI (`edi-sample.edi` file) can be accessed using the record's fields.
-=======
-    The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
-
-    ```ballerina
-    type Header_Type record {|
-        string code?;
-        string orderId?;
-        string organization?;
-        string date?;
-    |};
-
-    type Items_Type record {|
-        string code?;
-        string item?;
-        int quantity?;
-    |};
-
-    type SimpleOrder record {|
-        Header_Type header;
-        Items_Type[] items?;
-    |};
-    ```
-
-3. Use the generated `fromEdiString` function to read EDI text files into the generated Ballerina record, as shown below. 
-
-    >**Note:** Any data item in the EDI can be accessed using the record's fields, as shown in the example code below.
-
-    ```ballerina
-    import ballerina/io;
-
-    public function main() returns error? {
-        string ediText = check io:fileReadString("resources/edi-sample.edi");
-        SimpleOrder newOrder = check hmartOrder:fromEdiString(ediText);
-        io:println(newOrder.header.date);
-    }
-    ```
-
-4. Use the generated `toEdiString` function to serialize the `SimpleOrder` records into EDI text, as shown below.
-
-    ```ballerina
-    import test_edi.hmartOrder;
-
-    import ballerina/io;
-
-    public function main() returns error? {
-        hmartOrder:SimpleOrder salesOrder = {header: {orderId: "ORDER_200", organization: "HMart", date: "17-05-2023"}};
-        salesOrder.items.push({item: "A680", quantity: 15});
-        salesOrder.items.push({item: "A530", quantity: 2});
-        salesOrder.items.push({item: "A500", quantity: 4});
-
-        string orderEDI = check hmartOrder:toEdiString(salesOrder);
-        io:println(orderEDI);
-    }
-    ```
-
-    Below is the EDI document that gets generated as the output of the above Ballerina code that can be parsed using the above schema.
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75
 
     ```
     bal run -- read

@@ -45,32 +45,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
         />
         {/* End Google Tag Manager */}
 
-        <title>Ballerina downloads</title>
+        <title>Ballerina downloads - The Ballerina Programming Language</title>
         <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
         <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
         {/* <!--FB--> */}
         <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Ballerina downloads - The Ballerina Programming Language" />
         <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina downloads" />
+        <meta name="twitter:title" content="Ballerina downloads - The Ballerina Programming Languages" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
         <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ballerina - Ballerina downloads" />
+        <meta property="og:title" content="Ballerina downloads - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Ballerina downloads - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}

@@ -41,13 +41,13 @@ export default function Layout({ children }) {
             content="ballerina, hackoberfest, integration"
           />
           <link rel="shortcut icon" href="/img/favicon.ico" />
-          <title>Ballerina - Hacktoberfest 2023</title>
+          <title>Ballerina - Hacktoberfest 2023 - The Ballerina Programming Language</title>
 
           <script type="text/javascript" crossOrigin="true" src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha" />
 
           {/* FB */}
           <meta property="og:type" content="article" />
-          <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
+          <meta property="og:title" content="Ballerina - Hacktoberfest 2023 - The Ballerina Programming Language" />
           <meta
             property="og:description"
             content="Ballerina participates in Hacktoberfest 2023"
@@ -59,7 +59,7 @@ export default function Layout({ children }) {
           />
 
           {/* LINKED IN */}
-          <meta property="og:title" content="Ballerina - Hacktoberfest 2023" />
+          <meta property="og:title" content="Ballerina - Hacktoberfest 2023 - The Ballerina Programming Language" />
           <meta
             property="og:image"
             content="https://ballerina.io/images/hacktoberfest/ballerina-hacktoberfest-sm-banner.png"
@@ -74,7 +74,7 @@ export default function Layout({ children }) {
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@ballerinalang" />
           <meta name="twitter:creator" content="@ballerinalang" />
-          <meta name="twitter:title" content="Ballerina" />
+          <meta name="twitter:title" content="Ballerina - Hacktoberfest 2023 - The Ballerina Programming Language" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:description"

@@ -139,13 +139,13 @@ export default function PostPage({
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title}</title>
+        <title>{`${frontmatter.title} - The Ballerina Programming Language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={`Ballerina - ${frontmatter.title}`}
+          content={`${frontmatter.title} - The Ballerina Programming Language`}
         />
         <meta
           property="og:description"
@@ -156,7 +156,7 @@ export default function PostPage({
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`}/>
+        <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina Programming Language`}/>
         <meta
           property="twitter:description"
           content={frontmatter.description}

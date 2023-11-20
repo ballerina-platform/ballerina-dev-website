@@ -117,11 +117,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Data-oriented programming with Ballerina: a comparative analysis</title>
+        <title>Data-oriented programming with Ballerina: a comparative analysis - The Ballerina Programming Language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java" />
+        <meta property="og:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java - The Ballerina Programming Language" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."
@@ -133,7 +133,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java - The Ballerina Programming Language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/usecases/integration/java/java-banner.png"
@@ -148,7 +148,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java - The Ballerina Programming Language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

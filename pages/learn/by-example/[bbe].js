@@ -109,13 +109,13 @@ export default function BBEPage({ frontmatter, navContent, bbe, codes }) {
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title}</title>
+        <title>{`${frontmatter.title} - The Ballerina Programming Language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={`Ballerina - ${frontmatter.title}`}
+          content={`${frontmatter.title} - The Ballerina Programming Language`}
         />
         <meta
           property="og:image"
@@ -124,7 +124,7 @@ export default function BBEPage({ frontmatter, navContent, bbe, codes }) {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta property="og:title" content={`${frontmatter.title} - The Ballerina Programming Language`} />
         <meta property="og:description" content={frontmatter.description} />
         <meta
           property="og:image"
@@ -132,7 +132,7 @@ export default function BBEPage({ frontmatter, navContent, bbe, codes }) {
         />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina Programming Language`} />
         <meta
           property="twitter:description"
           content={frontmatter.description}

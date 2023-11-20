@@ -41,18 +41,19 @@ export default function TechTalk() {
 
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
-        <title>Ballerina tech talk</title>
+        <title>Ballerina tech talk - The Ballerina Programming Language</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina tech talk" />
+        <meta property="og:title" content="Ballerina tech talk - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Ballerina tech talk - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content="Ballerina tech talk - The Ballerina Programming Language" />
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 

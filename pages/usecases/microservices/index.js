@@ -104,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language, microservices"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for microservices</title>
+        <title>Ballerina for microservices - The Ballerina Programming Language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for microservices" />
+        <meta property="og:title" content="Ballerina for microservices - The Ballerina Programming Language" />
         <meta
           property="og:description"
           content="The ultimate toolset for seamless microservices development."
@@ -120,7 +120,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for microservices" />
+        <meta property="og:title" content="Ballerina for microservices - The Ballerina Programming Language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-use-cases-microservices-sm-banner.png"
@@ -135,7 +135,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for microservices" />
+        <meta name="twitter:title" content="Ballerina for microservices - The Ballerina Programming Language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

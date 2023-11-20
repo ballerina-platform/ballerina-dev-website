@@ -53,20 +53,21 @@ export default function Community() {
   return (
     <>
       <Head>
-        <title>Community</title>
+        <title>Community - The Ballerina Programming Language</title>
         <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Community" />
+        <meta property="og:title" content="Community - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="Community - The Ballerina Programming Language" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content="Community - The Ballerina Programming Language" />
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
       </Head>

@@ -154,11 +154,11 @@
            content="hello world, basics, network interaction, working with data, concurrency, transactions, concurrency safety, testing, rest api, rest client, rest api security, rest api advanced, http2, graphql, graphql security, websockets, websocket security, websub, resiliency, listeners, grpc, nats, stan, kafka, rabbitmq, tcp, udp, email, mysql, jdbc, io, security, url, time, cache, log, file, random, task, uuid, xslt, regex, os, xml data, tracing, metrics, code to cloud, function as a service"
          />
          <link rel="shortcut icon" href="/img/favicon.ico" />
-         <title>Ballerina by Example</title>
+         <title>Ballerina by Example - The Ballerina Programming Language</title>
  
          {/* FB */}
          <meta property="og:type" content="article" />
-         <meta property="og:title" content="Ballerina - Ballerina by Example" />
+         <meta property="og:title" content="Ballerina by Example - The Ballerina Programming Language" />
          <meta
            property="og:description"
            content="Ballerina by Example enables you to have complete coverage over the Ballerina language, while emphasizing incremental learning."
@@ -170,7 +170,7 @@
          />
  
          {/* LINKED IN */}
-         <meta property="og:title" content="Ballerina - By Example" />
+         <meta property="og:title" content="Ballerina by Example - The Ballerina Programming Language" />
          <meta
            property="og:image"
            content="https://ballerina.io/images/ballerina-learn-ballerina-by-example-page-sm-banner.png"
@@ -185,7 +185,7 @@
          <meta name="twitter:card" content="summary" />
          <meta name="twitter:site" content="@ballerinalang" />
          <meta name="twitter:creator" content="@ballerinalang" />
-         <meta name="twitter:title" content="Ballerina - By Example" />
+         <meta name="twitter:title" content="Ballerina by Example - The Ballerina Programming Language" />
          <meta name="twitter:card" content="summary_large_image" />
          <meta
            property="twitter:description"

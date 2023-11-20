@@ -24,11 +24,10 @@ import Layout from '../../layouts/LayoutCommunity';
 import Newsletter from '../../components/community/newsletter/Newsletter';
 import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
-import Discord from '../../components/community/discord/Discord';
-import TechTalk from '../../components/community/tech-talk/TechTalk';
-import GetInvolved from '../../components/community/get-involved/GetInvolved';
-import Blog from '../../components/community/blog/Blog';
+import JoinUs from '../../components/community/join-us/JoinUs';
+// import GetInvolved from '../../components/community/get-involved/GetInvolved';
 import Contact from '../../components/community/contact/Contact';
+import CommunityCarousel from '../../components/community/community-carousel/CommunityCarousel';
 
 export default function Community() {
 
@@ -73,55 +72,52 @@ export default function Community() {
       <Layout>
         <Col sm={12}>
 
-          <Row className="pageHeader pageContentRow communityRow">
-            <Col xs={12}>
-              <Container>
-                <h1>Community</h1>
-              </Container>
-            </Col>
-          </Row>
-
-          <Row className="pageContentRow communityRow">
+          <Row className="pageHeader pageContentRow communityRow communityIntro">
             <Col xs={12}>
               <Container>
                 <Row>
+                  <img src="/images/ballerina-mesh-grey-cropped.svg" class="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
+                    <h1>Community</h1>
                     <p>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
+                  </Col>
+                  <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
+                    <CommunityCarousel />
                   </Col>
                 </Row>
               </Container>
             </Col>
           </Row>
 
-          <Row className="pageContentRow communityRow">
-            <Newsletter getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow">
+          <Row className="pageContentRow communityRow slackRow">
             <Events getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Resources getLink={getLink} />
+            <JoinUs getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Discord getLink={getLink} />
+            <Resources getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
+            <Newsletter getLink={getLink} />
+          </Row>
+
+          {/* <Row className="pageContentRow communityRow">
             <TechTalk getLink={getLink} />
-          </Row>
+          </Row> */}
 
-          <Row className="pageContentRow communityRow">
+          {/* <Row className="pageContentRow communityRow slackRow">
             <GetInvolved getLink={getLink} />
-          </Row>
+          </Row> */}
 
-          <Row className="pageContentRow communityRow">
+          {/* <Row className="pageContentRow communityRow">
             <Blog getLink={getLink} />
-          </Row>
-          
-          <Row className="pageContentRow communityRow">
+          </Row> */}
+
+          <Row className="pageContentRow communityRow slackRow">
             <Contact getLink={getLink} />
           </Row>
 

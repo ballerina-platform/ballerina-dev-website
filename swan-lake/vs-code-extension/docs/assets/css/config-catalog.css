@@ -1,0 +1,286 @@
+.mb-config-catalog {
+    display: table;
+    width: 100%;
+    max-width: 770px;
+}
+
+.hide-toc .mb-config-catalog {
+    display: table;
+    max-width: 1000px;
+}
+
+.mb-config-catalog .superfences-tabs {
+    flex-direction: column;
+}
+
+.mb-config-catalog .superfences-tabs .tab-selector {
+    text-align: right;
+}
+
+.mb-config-catalog .superfences-tabs .tab-selector>.icon {
+    margin-right: 5px;
+}
+
+.mb-config-catalog .superfences-content {
+    flex-direction: column;
+    order: 0;
+}
+
+.mb-config-catalog .superfences-tabs>input+label:after {
+    content: "View Sample";
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mb-config-catalog .superfences-tabs>input:checked+label:after {
+    content: "Hide Sample";
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.mb-config-catalog .superfences-tabs .doc-wrapper {
+    padding: .525rem;
+}
+
+.mb-config-catalog>section {
+    display: table-row;
+}
+
+.mb-config-catalog>section>.mb-config-options,
+.mb-config-catalog>section>.mb-config-example {
+    display: table-cell;
+    flex-direction: column;
+    max-width: 770px;
+}
+
+.hide-toc .mb-config-catalog>section>.mb-config-options,
+.hide-toc .mb-config-catalog>section>.mb-config-example {
+    display: table-cell;
+    max-width: 1000px;
+}
+
+.mb-config-catalog>section>.mb-config-example>.example-config-wrap {
+    margin-right: 1em;
+}
+
+.mb-config-catalog .mb-config>.params-wrap {
+    display: table;
+    width: 100%;
+}
+
+.mb-config-catalog>section>.mb-config-example>code {
+    font-weight: bold;
+    font-size: 105%;
+}
+
+
+.mb-config-catalog>section:not(.title)>.mb-config-options {
+    border-bottom: 1px solid #f5f5f5;
+    padding-top: 1em;
+}
+
+.mb-config-catalog>section:last-child>.mb-config-options {
+    border-bottom: none;
+}
+
+.mb-config-catalog>section:not(.title)>.mb-config-example {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.mb-config-catalog>section.title>.mb-config-example {
+    display: none;
+}
+
+.mb-config-catalog .mb-config-example code,
+.mb-config-catalog .mb-config-example pre {
+    margin: 0;
+}
+
+.mb-config-catalog .mb-config-example:hover .md-clipboard:before {
+    color: rgba(0, 0, 0, .54);
+}
+
+[data-md-color-accent=deep-orange] .mb-config-catalog .mb-config-example:hover .md-clipboard:active:before,
+[data-md-color-accent=deep-orange] .mb-config-catalog .mb-config-example:hover .md-clipboard:hover:before {
+    color: var(--md-primary-fg-color--light);
+}
+
+.mb-config-catalog>section.title>.mb-config-options>h2 {
+    margin-bottom: 1rem;
+}
+
+.mb-config-catalog>section>.mb-config-example {
+    background: #f5f5f5;
+    width: 35%;
+    padding: .5em;
+    vertical-align: top;
+}
+
+.mb-config-catalog>section>.mb-config-example code {
+    background: transparent;
+    box-shadow: none;
+    white-space: pre-line;
+}
+
+.mb-config-catalog .badge-required {
+    margin: 0 .29412em;
+    padding: .07353em .3em;
+    border-radius: .2rem;
+    background-color: var(--md-primary-fg-color--light);
+    color: #fff;
+    font-size: 75%;
+}
+
+.mb-config-catalog .mb-config>.config-wrap {
+    margin-right: 1em;
+}
+
+.mb-config-catalog .mb-config>.params-wrap {
+    display: table;
+    width: 100%;
+}
+
+.mb-config-catalog .mb-config>.config-wrap>code {
+    font-weight: bold;
+    font-size: 105%;
+}
+
+.mb-config-catalog .mb-config .param {
+    display: table-row;
+}
+
+.mb-config-catalog .mb-config .param>.param-name {
+    display: table-cell;
+    vertical-align: top;
+    border-left: 2px solid var(--md-primary-fg-color--light);
+    box-sizing: border-box;
+    position: relative;
+    padding: 1.7em 0;
+    vertical-align: top;
+    line-height: 20px;
+    white-space: nowrap;
+    font-size: .929em;
+    font-weight: 400;
+}
+
+.mb-config-catalog .mb-config .param .param-name-wrap {
+    display: inline-block;
+    padding-right: 25px;
+    font-family: Montserrat, sans-serif;
+}
+
+.mb-config-catalog .mb-config .param>.param-name>span::before {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 8px;
+    background-color: var(--md-primary-fg-color--light);
+    margin: -4px 10px 0;
+    vertical-align: middle;
+}
+
+.mb-config-catalog .mb-config .param>.param-name>span::after {
+    content: '';
+    position: absolute;
+    border-top: 2px solid var(--md-primary-fg-color--light);
+    width: 10px;
+    left: 0;
+    top: 2.3em;
+}
+
+.mb-config-catalog .mb-config .param:first-of-type>.param-name::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -2px;
+    top: 0;
+    border-left: 3px solid var(--md-default-bg-color);
+    height: 34px;
+}
+
+.mb-config-catalog .mb-config .param:last-of-type>.param-name,
+.mb-config-catalog .mb-config .param.last>.param-name {
+    position: relative;
+}
+
+.mb-config-catalog .mb-config .param:last-of-type>.param-name::after,
+.mb-config-catalog .mb-config .param.last>.param-name::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -2px;
+    border-left: 3px solid #fff;
+    top: 36px;
+    background-color: #fff;
+    bottom: 0;
+}
+
+.mb-config-catalog .mb-config .param>.param-info {
+    display: table-cell;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding: 10px 10px 10px 0;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.mb-config-catalog .mb-config .param-default {
+    font-size: .95em;
+}
+
+.mb-config-catalog .mb-config .param-type {
+    color: #b5b5b5;
+}
+
+html .md-typeset .superfences-tabs>label {
+    color: var(--md-primary-fg-color);
+    font-weight: normal;
+    padding: 20px;
+    border-bottom: 0.05rem dashed var(--md-primary-fg-color--light);
+}
+
+.md-typeset .superfences-tabs {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    margin: 1em 0;
+    border: 0.05rem solid rgba(0,0,0,.07);
+}
+.md-typeset .superfences-tabs {
+    border: 0.05rem dashed var(--md-primary-fg-color--light);
+    border-radius: 5px;
+}
+
+@media only screen and (min-width: 100em) {
+    .mb-config-catalog .mb-config .param>.param-name>span::before {
+        margin: 0 10px;
+    }
+
+    .mb-config-catalog .mb-config .param:first-of-type>.param-name::before {
+        height: 38px;
+    }
+
+    .mb-config-catalog .mb-config .param:last-of-type>.param-name::after,
+    .mb-config-catalog .mb-config .param.last>.param-name::after {
+        top: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .mb-config-catalog {
+        margin-bottom: 3rem;
+    }
+
+    .mb-config-catalog,
+    .mb-config-catalog>section,
+    .mb-config-catalog>section>.mb-config-options,
+    .mb-config-catalog>section>.mb-config-example {
+        display: block;
+        width: 100% !important;
+    }
+
+    .mb-config-catalog>section:not(.title)>.mb-config-options {
+        padding-bottom: 1rem;
+    }
+}

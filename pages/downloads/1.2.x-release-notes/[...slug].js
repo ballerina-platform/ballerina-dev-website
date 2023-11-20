@@ -126,13 +126,13 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
           content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language"
         />
 
-        <title>{`${frontmatter.title} - The Ballerina Programming Language`}</title>
+        <title>{`${frontmatter.title} - The Ballerina programming language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={`${frontmatter.title} - The Ballerina Programming Language`}
+          content={`${frontmatter.title} - The Ballerina programming language`}
         />
         <meta
           property="og:description"
@@ -140,10 +140,10 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content={`${frontmatter.title} - The Ballerina Programming Language`} />
+        <meta property="og:title" content={`${frontmatter.title} - The Ballerina programming language`} />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina Programming Language`} />
+        <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`} />
         <meta
           property="twitter:description"
           content="A programming language for the cloud that makes it easier to use, combine, and create network services."

@@ -87,7 +87,7 @@ export default function Resources(props) {
 
 
                 <Row className={styles.resourceRow}>
-                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='https://youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU&si=zIc_Kha48qV4aEvM' className={styles.resourceCardLink}>
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -100,11 +100,11 @@ export default function Resources(props) {
                                     <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/community/ballerina-community-tech-talks.png" width="100%"/>
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
-                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='https://lms.wso2.com/collections/ballerina' className={styles.resourceCardLink}>
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -116,11 +116,11 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/community/ballerina-community-training.png" width="100%"/>
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
-                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='#' className={styles.resourceCardLink}>
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -132,11 +132,11 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/community/ballerina-community-medium.png" width="100%"/>
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
 
-                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                    <Col sm={12} md={12} lg={3}>
                         <a href='https://blog.ballerina.io/' className={styles.resourceCardLink}>
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
@@ -148,7 +148,7 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/community/ballerina-community-blog.png" width="100%"/>
+                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                         </a>
                     </Col>
                 </Row>

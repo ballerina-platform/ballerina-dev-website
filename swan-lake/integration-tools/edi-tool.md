@@ -166,19 +166,7 @@ Below is an example of creating an EDI package and using it.
 
 If an organization (`CityMart`) needs to work with `X12 850`, `810`, `820`, and `855` for handling purchase orders, then, its integration developers can put schemas of those `X12` specifications into a folder as follows.
 
-<<<<<<< HEAD
 >**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the JSON schema source file of the `EDIFACT` specifications required for an organization (`CityMart`) to work with the `ORDERS`operations for handling purchase orders. Also, the `main.bal` file includes the business logic/usage of the package.
-=======
-```
-|-- CityMart
-    |--lib
-    |--schemas
-       |--850.json
-       |--810.json
-       |--820.json
-       |--855.json
-```
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75
 
 Execute the `libgen` command to generate a Ballerina package, as shown below.
 
@@ -186,11 +174,7 @@ Execute the `libgen` command to generate a Ballerina package, as shown below.
 $ bal edi libgen -O citymart -n porder -s CityMart/schemas -o CityMart/lib
 ```
 
-<<<<<<< HEAD
 1. Navigate to the `edi_package_generation/CityMart` directory.
-=======
-The generated Ballerina package will be, as shown below.
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75
 
 ```
 |-- CityMart
@@ -226,7 +210,6 @@ As seen in the above project structure, the code for each EDI schema is generate
 
 Then, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this package for reading an `850` file and writing an `855` file is shown below.
 
-<<<<<<< HEAD
     ```
     $ bal edi libgen -O citymart -n porder -s schemas -o lib
     ```
@@ -251,12 +234,6 @@ Then, any Ballerina project can import this package and use it to work with the 
     ````
 
 #### Use the generated package
-=======
-```ballerina
-import ballerina/io;
-import citymart/porder.m850;
-import citymart/porder.m855;
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75
 
 public function main() returns error? {
     string orderText = check io:fileReadString("orders/d15_05_2023/order10.edi");
@@ -271,7 +248,6 @@ It is quite common for different trading partners to use variations of the stand
 
 You can convert `X12 850` EDI text to JSON using a cURL command, as shown below.
 
-<<<<<<< HEAD
 >**Info:** Now, any Ballerina project can import this package and use it to work with the EDI files related to purchase orders. An example of using this package for reading an `ORDERS` file is shown below. 
 
 1. Navigate to the `edi_package-generation` directory.
@@ -310,26 +286,6 @@ You can convert `X12 850` EDI text to JSON using a cURL command, as shown below.
     UNS+S'\''
     MOA+77:195'\'''  
     ```
-=======
-```
-$curl --request POST \
-  --url http://localhost:9090/porderParser/edis/850 \
-  --header 'Content-Type: text/plain' \
-  --data 'ST*834*12345*005010X220A1~
-BGN*00*12456*20020601*1200****~
-REF*38*ABCD012354~
-AMT*cc payment*467.34*~
-N1*P5**FI*999888777~
-N1*IN**FI*654456654~
-INS*Y*18*025**A***FT~
-REF*0F*202443307~
-REF*1L*123456001~
-NM1*IL*1*SMITH*WILLIAM****ZZ*202443307~
-HD*025**DEN~
-DTP*348*D8*20020701~
-SE*12*12345~'
-```
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75
 
 The above REST call will return a JSON response, as shown below.
 
@@ -341,8 +297,4 @@ The above REST call will return a JSON response, as shown below.
 
 The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
 
-<<<<<<< HEAD
 For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with the `ORDERS` files. 
-=======
-For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with `X12 850`, `810`, `820`, and `855` files. 
->>>>>>> ac1a856a693f36feea44a5991bfc22be9e54dc75

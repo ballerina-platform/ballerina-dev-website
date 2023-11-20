@@ -87,8 +87,10 @@ export default function Resources(props) {
 
 
                 <Row className={styles.resourceRow}>
-                    <Col sm={12} md={12} lg={3}>
-                        <a href='https://youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU&si=zIc_Kha48qV4aEvM' className={styles.resourceCardLink}>
+                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                        <a href='https://youtube.com/playlist?list=PL7JOecNWBb0JAdYWqeGmD35MjE0KTjHXU&si=zIc_Kha48qV4aEvM' 
+                            className={styles.resourceCardLink}
+                            title="Tech Talks">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
@@ -100,12 +102,14 @@ export default function Resources(props) {
                                     <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
+                            <img src="/images/community/ballerina-community-tech-talks.png" width="100%" alt="Tech Talks"/>
                         </a>
                     </Col>
 
-                    <Col sm={12} md={12} lg={3}>
-                        <a href='https://lms.wso2.com/collections/ballerina' className={styles.resourceCardLink}>
+                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                        <a href='https://lms.wso2.com/collections/ballerina' 
+                            className={styles.resourceCardLink}
+                            title="Training">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
@@ -116,12 +120,12 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
+                            <img src="/images/community/ballerina-community-training.png" width="100%" alt="Training"/>
                         </a>
                     </Col>
 
-                    <Col sm={12} md={12} lg={3}>
-                        <a href='#' className={styles.resourceCardLink}>
+                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                        <a href='#' className={styles.resourceCardLink} title="Medium Tech Blog">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
@@ -132,12 +136,12 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
+                            <img src="/images/community/ballerina-community-medium.png" width="100%" alt="Medium Tech Blog"/>
                         </a>
                     </Col>
 
-                    <Col sm={12} md={12} lg={3}>
-                        <a href='https://blog.ballerina.io/' className={styles.resourceCardLink}>
+                    <Col sm={6} md={6} lg={3} className='gy-4'>
+                        <a href='https://blog.ballerina.io/' className={styles.resourceCardLink} title="Ballerina Blog">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>
@@ -148,7 +152,7 @@ export default function Resources(props) {
                                     </Card.Text>
                                 </Card.Body>
                             </Card> */}
-                            <img src="/images/ballerina-generic-social-media-image-2023.png" width="100%"/>
+                            <img src="/images/community/ballerina-community-blog.png" width="100%" alt="Ballerina Blog"/>
                         </a>
                     </Col>
                 </Row>

@@ -86,11 +86,11 @@ export default function Pattern(props) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>EIP: {props.name}</title>
+        <title>EIP: {props.name} - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -102,7 +102,7 @@ export default function Pattern(props) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta property="og:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
@@ -117,7 +117,7 @@ export default function Pattern(props) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

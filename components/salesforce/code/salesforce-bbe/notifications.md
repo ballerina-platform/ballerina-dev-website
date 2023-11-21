@@ -1,6 +1,6 @@
 ---
 title: 'Act on Salesforce based notifications'
-description: "Ballerina can be used to promptly respond to sales-related events, such as the reception of a new lead in Salesforce, by listening for updates and notifying relevant employees through their preferred channels, ensuring timely evaluation and immediate contact with potential customers.<br/><br/><i>Example: Send an SMS to a given number (via Twilio) when a new contact is created in Salesforce.</i>"
+description: "Sales related events need to be acted upon as soon as possible. For example, when a new contact is received, sales staff need to evaluate it and get in contact immediately. Ballerina can listen for any event in Salesforce and notify relevant employees over their preferred channels, ensuring that all customer events are attended in a timely manner.<br/><br/><i>Example: Send an SMS to a given number (via Twilio) when a new contact is created in Salesforce.</i>"
 url: 'https://github.com/chathurace/integration-samples/blob/main/salesforce_api/sfdc-new-contact-to-twilio-sms/main.bal'
 ---
 ```

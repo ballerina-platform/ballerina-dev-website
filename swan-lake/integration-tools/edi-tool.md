@@ -239,7 +239,7 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 >**Info:** It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with a particular partner.
 
-1. Navigate to the `edi_package-generation` directory.
+1. Navigate to the `edi_package_generation` directory.
 
     >**Info:** You can change the dependency (name and version) of the generated package in the [`Ballerina.toml`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/lib/porder/Ballerina.toml) file of this cloned Ballerina project directory as preferred.
 
@@ -276,7 +276,7 @@ Follow the steps below to use the generated package by running the cloned Baller
     MOA+77:195'\'''
     ```
 
-    The above REST call will return a JSON response, as shown below.
+    The above REST call will return the JSON response below.
 
     ```json
     {"buyerName":"WALMARTUS","date":"20230719","productIdentifier":"PRD1234567890","productQty":10}

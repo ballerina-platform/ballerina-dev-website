@@ -2,7 +2,7 @@
 layout: ballerina-edi-support-left-nav-pages-swanlake
 title: EDI tool
 description: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
-keywords: ballerina, programming language, edi, contract
+keywords: ballerina, programming language, edi, contract, text, JSON
 permalink: /learn/edi-tool/
 active: edi-tool
 intro: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
@@ -94,6 +94,7 @@ Follow the steps below to generate Ballerina records for the above EDI schema.
 
     ```
     $ bal edi codegen -s schemas/edi-schema.json -o orderRecords.bal
+    Generating code for schemas/edi-schema.json...
     ```
 
     >**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal`. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
@@ -131,7 +132,7 @@ Follow the steps below to use the generated `fromEdiString` function to read EDI
     >**Note:** Any data item in the EDI (`edi-sample.edi` file) can be accessed using the record's fields.
 
     ```
-    bal run -- read
+    $ bal run -- read
     ```
 
     You can view the response shown below.
@@ -149,7 +150,7 @@ Follow the steps below to use the generated `toEdiString` function to serialize 
 2. Execute the command below to run the `write_edi()` function. 
 
     ```
-    bal run -- write
+    $ bal run -- write
     ```
 
     Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
@@ -182,6 +183,7 @@ Follow the steps below to run the EDI tool and create the package.
 
     ```
     $ bal edi libgen -O citymart -n porder -s schemas -o lib
+    Generating library package for citymart - porder : schemas
     ```
 
     >**Info:** The generated package (`lib/porder`) will be as shown below. The code for each EDI schema is generated into a separate module to prevent possible conflicts.
@@ -208,13 +210,18 @@ Follow the steps below to run the EDI tool and create the package.
 3. Navigate to the generated `lib/porder` package.
 
     ```
-    cd lib/porder
+    $ cd lib/porder
     ```
 
 4. Build the generated package.
 
     ```
     $ bal pack
+    Compiling source
+        citymart/porder:0.1.0
+
+    Creating bala
+        target/bala/citymart-porder-any-0.1.0.bala
     ```
 
 5. Push it to a repository.
@@ -223,6 +230,7 @@ Follow the steps below to run the EDI tool and create the package.
 
     ```
     $ bal push --repository local
+    Successfully pushed target/bala/citymart-porder-any-0.1.0.bala to 'local' repository.
     ```
 
 #### Use the generated package

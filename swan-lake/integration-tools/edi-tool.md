@@ -177,7 +177,7 @@ Clone the [artifacts of the example](https://github.com/ballerina-guides/integra
 
 Follow the steps below to run the EDI tool and create the package.
 
-1. Navigate to the `edi_package_generation/example` directory.
+1. Navigate to the `edi_package_generation` directory.
 
 2. Execute the `libgen` command below to generate a Ballerina package.
 

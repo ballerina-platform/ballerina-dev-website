@@ -19,22 +19,22 @@ The functionalities of the above usages are described below.
 
 ### Code generation usage
 
-The below command generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
+The command below generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
 
 ```
 $ bal edi codegen <edi-schema-path> <output-path>
 ```
 
-The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
+The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
 
 ### Package generation usage
 
-Usually, organizations have to work with many EDI formats, and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
+Usually, organizations have to work with many EDI formats and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
 
-The below command can be used to generate the EDI package.
+The command below can be used to generate the EDI package.
 
 ```
-$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-folder> -o <output-folder>
+$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-path> -o <output-path>
 ```
 
 A Ballerina package project will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
@@ -47,8 +47,8 @@ The command options that are available with the tool are listed below.
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `EDI schema path`     | Path of the EDI schema which will be used to generate the code.                                                                                                                                                                                                      | Mandatory          |
-| `output path`   | The path in which the output file will be created.                                                                                                                                                                                                   | Mandatory           |
+| `<edi-schema-path>`     | Path of the EDI schema, which will be used to generate the code.                                                                                                                                                                                                      | Mandatory          |
+| `<output-path>`   | The path in which the output file will be created.                                                                                                                                                                                                   | Mandatory           |
 
 ### Package generation command options
 
@@ -61,7 +61,7 @@ The command options that are available with the tool are listed below.
 
 ## Install the tool
 
-Execute the command below to pull the EDI tool from Ballerina Central.
+Execute the command below to pull the EDI tool from [Ballerina Central](https://central.ballerina.io/ballerina/edi/1.1.1).
 
 ```
 $ bal tool pull edi
@@ -82,7 +82,7 @@ Follow the steps below to try out an example of generating Ballerina code from a
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the schema file ([`edi-schema.json`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/edi-schema.json)), which can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`. The [`main.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/main.bal) file includes the business logic/usage of the package, and the [`resources/edi-sample.edi`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/edi-sample.edi) file includes the EDI message to be read from the generated code.
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example. The `schemas` folder includes the schema file ([`edi-schema.json`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/schemas/edi-schema.json)), which can be used to parse EDI documents with one HDR segment (mapped to `header`) and any number of ITM segments (mapped to `items`). The HDR segment contains three fields, which are mapped to `orderId`, `organization`, and `date`. Each ITM segment contains two fields mapped to `item` and `quantity`. The [`main.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/main.bal) file includes the business logic/usage of the code, and the [`resources/edi-sample.edi`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_code_generation/resources/edi-sample.edi) file includes the EDI message to be read from the generated code.
 
 #### Generate the code
 
@@ -97,25 +97,25 @@ Follow the steps below to generate Ballerina records for the above EDI schema.
     Generating code for schemas/edi-schema.json...
     ```
 
-    >**Info:** The generated Ballerina records will be saved in a file named `orderRecords.bal`. The Ballerina records generated for the above schema in the `orderRecords.bal` file are shown below.
+    >**Info:** The Ballerina records below will be generated and saved in a file named `orderRecords.bal`. 
 
     ```ballerina
-    type Header_Type record {|
-        string code?;
+    public type Header_Type record {|
+        string code = "HDR";
         string orderId?;
         string organization?;
         string date?;
     |};
 
-    type Items_Type record {|
-        string code?;
+    public type Items_Type record {|
+        string code = "ITM";
         string item?;
-        int quantity?;
+        int? quantity?;
     |};
 
-    type SimpleOrder record {|
-        Header_Type header;
-        Items_Type[] items?;
+    public type SimpleOrder record {|
+        Header_Type? header?;
+        Items_Type[] items = [];
     |};
     ```
 
@@ -129,7 +129,7 @@ Follow the steps below to use the generated `fromEdiString` function to read EDI
 
 2. Execute the command below to run the `read_edi()` function.
 
-    >**Note:** Any data item in the EDI (`edi-sample.edi` file) can be accessed using the record's fields.
+    >**Note:** Any data item in the EDI text (`edi-sample.edi` file) can be accessed using the record's fields.
 
     ```
     $ bal run -- read
@@ -153,7 +153,7 @@ Follow the steps below to use the generated `toEdiString` function to serialize 
     $ bal run -- write
     ```
 
-    Below is the EDI document generated as the output of the above Ballerina code that can be parsed using the above schema.
+    Below is the EDI document generated as the output of the Ballerina code that can be parsed using the provided schema.
 
     ```
     EDI message: 
@@ -171,7 +171,7 @@ Below is an example of using the EDI tool to create an EDI package and use it.
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example. The [`schemas/ORDERS.json`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/ORDERS.json) file includes the JSON schema source file of the `EDIFACT` specifications required for an organization (`CityMart`) to work with the `ORDERS`operations for handling purchase orders. Also, the [`main.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/main.bal) file includes the business logic/usage of the package.
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example. The [`schemas`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/schemas) directory includes the JSON schema source files of the `EDIFACT` specifications required for an organization (`CityMart`) to work with the EDI operations for handling purchase orders. Also, the [`main.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/main.bal) file includes the business logic/usage of the package.
 
 #### Generate the package
 
@@ -189,22 +189,31 @@ Follow the steps below to run the EDI tool and create the package.
     >**Info:** The generated package (`lib/porder`) will be as shown below. The code for each EDI schema is generated into a separate module to prevent possible conflicts.
     
     ```
-    |-- edi_package_generation
-        ├── lib
-        │   └── porder
-        │       ├── Ballerina.toml
-        │       ├── Module.md
-        │       ├── Package.md
-        │       ├── modules
-        │       │   └── mORDERS
-        │       │       ├── G_ORDERS.bal
-        │       │       └── transformer.bal
-        │       ├── porder.bal
-        │       └── rest_connector.bal
-        |--schemas
-        |     |--ORDERS.json
-        |--main.bal
-        |--Ballerina.toml
+    edi_package_generation
+    ├── CityMart
+    │   ├── Ballerina.toml
+    │   └── main.bal
+    ├── lib
+    │   └── porder
+    │       ├── Ballerina.toml
+    │       ├── Module.md
+    │       ├── Package.md
+    │       ├── modules
+    │       │   ├── mGENRAL
+    │       │   │   ├── G_GENRAL.bal
+    │       │   │   └── transformer.bal
+    │       │   ├── mINVOIC
+    │       │   │   ├── G_INVOIC.bal
+    │       │   │   └── transformer.bal
+    │       │   └── mORDERS
+    │       │       ├── G_ORDERS.bal
+    │       │       └── transformer.bal
+    │       ├── porder.bal
+    │       └── rest_connector.bal
+    └── schemas
+        ├── GENRAL.json
+        ├── INVOIC.json
+        └── ORDERS.json
     ```
 
 3. Navigate to the generated `lib/porder` package.
@@ -239,7 +248,7 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 >**Info:** It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with a particular partner.
 
-1. Navigate to the `edi_package_generation` directory.
+1. Navigate to the `edi_package_generation/CityMart` directory.
 
     >**Info:** You can change the dependency (name and version) of the generated package in the [`Ballerina.toml`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/lib/porder/Ballerina.toml) file of this cloned Ballerina project directory as preferred.
 

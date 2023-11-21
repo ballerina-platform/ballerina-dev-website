@@ -186,35 +186,23 @@ Follow the steps below to run the EDI tool and create the package.
 
     >**Info:** The generated package (`lib/porder`) will be as shown below. The code for each EDI schema is generated into a separate module to prevent possible conflicts.
     
-
     ```
-    |-- CityMart
-        |--lib  
-        |--porder
-        |     |--modules
-        |	  |   |--m850
-        |	  |	  |  |--G_850.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m810
-        |	  |	  |  |--G_810.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m820
-        |	  |	  |  |--G_820.bal
-        |     |   |  |--transformer.bal
-        |	  |	  |--m855
-        |	  |	    |--G_855.bal
-        |     |     |--transformer.bal
-        |	  |--Ballerina.toml
-        |	  |--Module.md
-        |	  |--Package.md
-        |	  |--porder.bal
-        |	  |--rest_connector.bal
-        |
+    |-- edi_package_generation
+        ├── lib
+        │   └── porder
+        │       ├── Ballerina.toml
+        │       ├── Module.md
+        │       ├── Package.md
+        │       ├── modules
+        │       │   └── mORDERS
+        │       │       ├── G_ORDERS.bal
+        │       │       └── transformer.bal
+        │       ├── porder.bal
+        │       └── rest_connector.bal
         |--schemas
-        |--850.json
-        |--810.json
-        |--820.json
-        |--855.json
+        |     |--ORDERS.json
+        |--main.bal
+        |--Ballerina.toml
     ```
 
 3. Navigate to the generated `lib/porder` package.

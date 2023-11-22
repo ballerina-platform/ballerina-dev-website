@@ -105,22 +105,22 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
   **Generated client resource/remote function - before**
 
   ```ballerina
-      resource isolated function delete user/draft(string? userId = ()) returns http:Response|error {
-          string resourcePath = string `/users/drafts/${getEncodedUri(id)}`;
-          map<anydata> queryParam = {"userId": userId};
-          resourcePath = resourcePath + check getPathForQueryParam(queryParam);
-          http:Response response = check self.clientEp-> delete(resourcePath);
-          return response;
-      }
+  resource isolated function delete user/draft(string? userId = ()) returns http:Response|error {
+      string resourcePath = string `/users/drafts/${getEncodedUri(id)}`;
+      map<anydata> queryParam = {"userId": userId};
+      resourcePath = resourcePath + check getPathForQueryParam(queryParam);
+      http:Response response = check self.clientEp->delete(resourcePath);
+      return response;
+  }
   ```
 
   **Generated client resource/remote function - new**
 
   ```ballerina
-      resource isolated function delete user/draft(string? userId = ()) returns error? {
-          string resourcePath = string `/user/draft`;
-          map<anydata> queryParam = {"userId": userId};
-          resourcePath = resourcePath + check getPathForQueryParam(queryParam);
-          return self.clientEp->delete(resourcePath);
-      }
+  resource isolated function delete user/draft(string? userId = ()) returns error? {
+      string resourcePath = string `/user/draft`;
+      map<anydata> queryParam = {"userId": userId};
+      resourcePath = resourcePath + check getPathForQueryParam(queryParam);
+      return self.clientEp->delete(resourcePath);
+  }
   ```

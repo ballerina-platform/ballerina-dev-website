@@ -27,7 +27,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 To view bug fixes, see the [GitHub milestone for 2201.8.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.3+label%3AType%2FBug+is%3Aclosed+label%3ATeam%2FjBallerina).
 
-## Library updates
+## Ballerina Library updates
 
 ## Developer tools updates
 
@@ -57,7 +57,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
 
 - OpenAPI tool client code generation has transitioned from representing the OpenAPI Specification byte format of string type as the Ballerina `byte[]` to using Ballerina `string` type due to an issue with the previously generated code. This change will break the compatibility with the existing generated code.
 
-**OpenAPI Sample**
+**OpenAPI sample**
 ```yaml
 components:
  schemas:
@@ -65,17 +65,17 @@ components:
    type: string
    format: byte
 ```
-**Old Generated Ballerina code**
+**Old generated Ballerina code**
 ```ballerina
 type ByteExample byte[];
 ```
-**New Generated Ballerina code**
+**New generated Ballerina code**
 ```ballerina
 type ByteExample string;
 ```
 - Changed the OpenAPI tool client resource/remote code generation of `http:Response` to a `nil` return type when the operation in the OpenAPI specification has a response with no content. With this improvement, the already generated code will be altered when regenerated with version the Ballerina 2201.8.3.
 
-**OpenAPI Sample**
+**OpenAPI sample**
 ```yaml
  /user/draft:
     delete:
@@ -89,7 +89,7 @@ type ByteExample string;
         "200":
           description: Successful response //No content type
 ```
-**Old Generated client resource/remote function**
+**Old generated client resource/remote function**
 ```ballerina
     resource isolated function delete user/draft(string? userId = ()) returns http:Response|error {
         string resourcePath = string `/users/drafts/${getEncodedUri(id)}`;
@@ -99,7 +99,7 @@ type ByteExample string;
         return response;
     }
 ```
-**New Generated client resource/remote function**
+**New generated client resource/remote function**
 ```ballerina
     resource isolated function delete user/draft(string? userId = ()) returns error? {
         string resourcePath = string `/user/draft`;

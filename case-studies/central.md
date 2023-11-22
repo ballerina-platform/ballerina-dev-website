@@ -1,11 +1,11 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'Ballerina Central leverages the power of Ballerina for effective package management'
-description: Ballerina code is organized in a single shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
+description: Ballerina code is organized in a single, shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
 keywords: ballerina, programming language, package, management, central
 permalink: /learn/case-studies/central
 active: central
-intro: Ballerina code is organized in a single shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
+intro: Ballerina code is organized in a single, shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
 logo: '/images/home-page/user-logos/ballerina-central.svg'
 user: 'central'
 ---
@@ -16,11 +16,11 @@ With the rapidly increasing growth of a wide range of these Ballerina packages, 
 
 ## Challenges
 
-The primary objective of Ballerina Central is to manage the wide spectrum of Ballerina packages most effectively and optimally. It was critical for Ballerina Central to be a cloud deployment, which can scale the platform on demand when the load is increased by preserving consistent high availability. Designing the solution faced several other secondary challenges such as the requirement to handle JSON, other network-services-related data types, and database connectors, achieve concurrency via isolated services, and generate Docker and Kubernetes images for a robust and resilient cloud deployment.
+The primary objective of Ballerina Central is to manage the wide spectrum of Ballerina packages most effectively and optimally. Therefore, it was critical for Ballerina Central to be a cloud deployment, which can scale the platform on demand when the load is increased by preserving consistent high availability for its users. Designing the solution faced several other secondary challenges such as the requirement to handle JSON, other network-services-related data types, and database connectors, achieve concurrency via isolated services, and generate Docker and Kubernetes images for a robust and resilient cloud deployment.
 
 ## Solution
 
-The Ballerina language was the natural choice when implementing Ballerina Central not only to demonstrate its features in a real-world use case but also because the features of Ballerina were deemed to be the perfect choice to meet the specific requirements and develop the best package repository prompting to come up with a fresh an innovative solution for itself.
+The Ballerina language was the natural choice when implementing Ballerina Central, not only to demonstrate its features in a real-world use case, but also because the features of Ballerina were deemed to be the perfect choice to meet the specific requirements and develop the best package repository, prompting to come up with a fresh an innovative solution for itself.
 
 As for the main highlights of the solution as illustrated in the diagram below, [WSO2 Choreo](https://wso2.com/choreo/) was used to provide the hosting capabilities, [WSO2 Asgardeo](https://wso2.com/asgardeo/) was used as the identity service provider, and Microsoft Azure products and SQL were used in implementing the cloud-based network and data storage requirements.
 

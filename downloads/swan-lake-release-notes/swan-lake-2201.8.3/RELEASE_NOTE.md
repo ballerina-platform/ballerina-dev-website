@@ -27,7 +27,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 To view bug fixes, see the [GitHub milestone for 2201.8.3 (Swan Lake)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.3+label%3AType%2FBug+is%3Aclosed+label%3ATeam%2FjBallerina).
 
-## Ballerina Library updates
+## Ballerina library updates
 
 ## Developer tools updates
 

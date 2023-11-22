@@ -37,11 +37,11 @@ To view bug fixes, see the [GitHub milestone for 2201.8.3 (Swan Lake)](https://g
 
 ##### Provide `response_errors_total_value` metric
 
-Ballerina observability now provides total number of errors in responses as an metric via `response_errors_total_value`.
+Ballerina observability now provides the total number of errors in responses as a metric via `response_errors_total_value`.
 
 ##### Define `service name` in traces
 
-User can now add a suffix to the service name shown in the tracer providers ([Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/) & [New Relic](https://newrelic.com/welcome-back)) by passing an environment variable in the runtime as given below. 
+You can now add a suffix to the service name shown in the tracer providers ([Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/), and [New Relic](https://newrelic.com/welcome-back)) by passing an environment variable in the runtime as given below. 
 
 ```
 $ BAL_OBSERVE_SERVICE_NAME_SUFFIX=<suffix> bal run

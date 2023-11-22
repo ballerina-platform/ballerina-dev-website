@@ -49,6 +49,9 @@ $ BAL_OBSERVE_SERVICE_NAME_SUFFIX=<suffix> bal run
 
 By default, the service name will be the base path of the service or the display name of the service.
 
+#### XML to record converter
+Improved the XML to Ballerina record conversion logic with enhanced support for the intersection of child nodes and XML namespaces, ensuring a more accurate and versatile experience for the Ballerina VSCode extension's `Paste XML as record` feature.
+
 ### Bug fixes
 To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of the repositories below.
 

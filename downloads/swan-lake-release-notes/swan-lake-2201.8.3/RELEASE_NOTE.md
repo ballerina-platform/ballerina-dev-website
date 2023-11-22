@@ -57,7 +57,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
 
 ## Backward-incompatible changes
 
-- OpenAPI tool client code generation has transitioned from representing the OpenAPI Specification byte format of string type as the Ballerina `byte[]` to using Ballerina `string` type due to an issue with the previously generated code. This change will break the compatibility with the existing generated code.
+- OpenAPI tool client code generation has transitioned from representing the OpenAPI Specification byte format of the string type as Ballerina `byte[]` to using Ballerina `string` type due to an issue with the previously generated code. This change will break the compatibility with the existing generated code.
 
 **OpenAPI sample**
 ```yaml
@@ -75,7 +75,7 @@ type ByteExample byte[];
 ```ballerina
 type ByteExample string;
 ```
-- Changed the OpenAPI tool client resource/remote code generation of `http:Response` to a `nil` return type when the operation in the OpenAPI specification has a response with no content. With this improvement, the already generated code will be altered when regenerated with version the Ballerina 2201.8.3.
+- Changed the OpenAPI tool `client resource/remote code` generation of the `http:Response` to a `nil` return type when the operation in the OpenAPI specification has a response with no content. With this improvement, the already generated code will be altered when regenerated with the Ballerina Swan Lake Update 8 (2201.8.3) version.
 
 **OpenAPI sample**
 ```yaml

@@ -20,7 +20,7 @@ The primary objective of Ballerina Central is to manage the wide spectrum of Bal
 
 ## Solution
 
-The Ballerina language was the natural choice when implementing Ballerina Central, not only to demonstrate its features in a real-world use case, but also because the features of Ballerina were deemed to be the perfect choice to meet the specific requirements and develop the best package repository, prompting to come up with a fresh an innovative solution for itself.
+The Ballerina language was the natural choice when implementing Ballerina Central, not only to demonstrate its features in a real-world use case but also because the features of Ballerina were deemed to be the perfect choice to meet the specific requirements and develop the best package repository, prompting to come up with a fresh an innovative solution for itself.
 
 As for the main highlights of the solution as illustrated in the diagram below, [WSO2 Choreo](https://wso2.com/choreo/) was used to provide the hosting capabilities, [WSO2 Asgardeo](https://wso2.com/asgardeo/) was used as the identity service provider, and Microsoft Azure products and SQL were used in implementing the cloud-based network and data storage requirements.
 
@@ -50,4 +50,4 @@ Implementing the Ballerina Central platform had a profound impact on managing Ba
 
 The journey of Ballerina Central to implement a robust and resilient Ballerina package management platform was successful mainly due to the perfect matching of the Ballerina features with the requirements of the planned solution. The platform not only paved the way for them to meet the expectations of managing the Ballerina packages smoothly and effectively but also demonstrated a practical example of utilizing the feature-rich Ballerina language in a real-world scenario, thereby, safeguarding and strengthening the simplicity and powerfulness of the Ballerina language ecosystem for continued growth in the enterprise integration solutions arena.
 
->*"Ballerina Central's successful implementation of a robust package management platform showcases the perfect synergy between Ballerina's features and the solution's needs. This achievement not only ensures efficient Ballerina package management but also also serves as a compelling real-world testament to the language's adaptability by strengthening the simplicity and power of the Ballerina language ecosystem.*<br/><br/>Anuruddha Liyanarachchi - Technical Lead, WSO2 LLC.
+>*"Ballerina Central's successful implementation of a robust package management platform showcases the perfect synergy between Ballerina's features and the solution's needs. This achievement not only ensures efficient Ballerina package management but also serves as a compelling real-world testament to the language's adaptability by strengthening the simplicity and power of the Ballerina language ecosystem.*<br/><br/>Anuruddha Liyanarachchi - Technical Lead, WSO2 LLC.

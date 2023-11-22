@@ -33,11 +33,11 @@ To view bug fixes, see the [GitHub milestone for 2201.8.3 (Swan Lake)](https://g
 
 #### Observability
 
-##### Provide `response_errors_total_value` metric
+##### View the `response_errors_total_value` metric
 
-Ballerina observability now provides the total number of errors in responses as a metric via `response_errors_total_value`.
+Ballerina observability now provides the total number of errors in responses as a metric via the `response_errors_total_value`.
 
-##### Define `service name` in traces
+##### Define the `service name` in traces
 
 You can now add a suffix to the service name shown in the tracer providers ([Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/), and [New Relic](https://newrelic.com/welcome-back)) by passing an environment variable in the runtime as given below. 
 
@@ -49,7 +49,7 @@ By default, the service name will be the base path or the display name of the se
 
 #### XML to record converter
 
-Improved the XML to Ballerina record conversion logic with enhanced support for the intersection of child nodes and XML namespaces, ensuring a more accurate and versatile experience for the Ballerina VSCode extension's `Paste XML as record` feature.
+Improved the XML to Ballerina record conversion logic with enhanced support for the intersection of child nodes and XML namespaces, ensuring a more accurate and versatile experience for the Ballerina VS Code extension's `Paste XML as record` feature.
 
 ### Bug fixes
 
@@ -60,7 +60,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
 
 ## Backward-incompatible changes
 
-- OpenAPI tool client code generation has transitioned from representing the OpenAPI Specification byte format of the string type as Ballerina `byte[]` to using Ballerina `string` type due to an issue with the previously generated code. This change will break the compatibility with the existing generated code.
+- Changed the OpenAPI tool client code generation from representing the OpenAPI Specification byte format of the string type as Ballerina `byte[]`, to using Ballerina `string` type as shown in the example below, due to an issue with the previously generated code. This change will break the compatibility of any existing generated code.
 
   **OpenAPI sample**
 
@@ -78,13 +78,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
   type ByteExample byte[];
   ```
 
-  **Generated Ballerina code - new**
+  **Generated Ballerina code - after**
 
   ```ballerina
   type ByteExample string;
   ```
 
-- Changed the OpenAPI tool `client resource/remote code` generation of the `http:Response` to a `nil` return type when the operation in the OpenAPI specification has a response with no content. With this improvement, the already generated code will be altered when regenerated with the Ballerina Swan Lake Update 8 (2201.8.3) version.
+- Changed the OpenAPI tool `client resource/remote code` generation of the `http:Response` to a `nil` return type when the operation in the OpenAPI specification has a response with no content. With this improvement, the already generated code will be altered when regenerated with the Ballerina Swan Lake Update 8 (2201.8.3) version as shown in the example below.
 
   **OpenAPI sample**
 
@@ -114,7 +114,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
   }
   ```
 
-  **Generated client resource/remote function - new**
+  **Generated client resource/remote function - after**
 
   ```ballerina
   resource isolated function delete user/draft(string? userId = ()) returns error? {

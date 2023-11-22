@@ -41,7 +41,7 @@ Ballerina observability now provides total number of errors in responses as an m
 
 ##### Define `service name` in traces
 
-User can now add a suffix to the service name shown in the tracer providers (Jaeger, Zipkin & New Relic) by passing an environment variable in the runtime as given below. 
+User can now add a suffix to the service name shown in the tracer providers ([Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/) & [New Relic](https://newrelic.com/welcome-back)) by passing an environment variable in the runtime as given below. 
 
 ```
 $ BAL_OBSERVE_SERVICE_NAME_SUFFIX=<suffix> bal run

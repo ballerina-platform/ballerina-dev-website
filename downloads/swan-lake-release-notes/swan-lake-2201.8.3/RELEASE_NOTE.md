@@ -29,6 +29,20 @@ To view bug fixes, see the [GitHub milestone for 2201.8.3 (Swan Lake)](https://g
 
 ## Developer tools updates
 
+### Observability Improvements
+
+#### Provide `response_errors_total_value` metric
+
+Ballerina observability now provides total number of errors in responses as an metric via `response_errors_total_value`.
+
+#### Let the user define `service name` in traces
+
+User can now add a suffix to the service name shown in the tracer providers (Jaeger, Zipkin & New Relic) by passing an environment variable in the runtime as given below. 
+
+`$ BAL_OBSERVE_SERVICE_NAME_SUFFIX=<suffix> bal run`
+
+By default, the service name will be the base path of the service or the display name of the service.
+
 ### Bug fixes
 To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of the repositories below.
 

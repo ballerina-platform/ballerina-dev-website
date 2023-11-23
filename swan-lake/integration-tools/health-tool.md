@@ -61,7 +61,7 @@ Follow the steps below to try out an example use case of the Health tool.
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example (Ballerina project and the FHIR specification files). This Ballerina project includes the [`carinbb_service_api/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_service_api/Ballerina.toml) file, which specifies the dependency of the package (name and version) that is to be generated. Also, the [`carinbb_service_api/service.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_service_api/service.bal) file includes the import of it together with the business logic/mapping implemented using the generated FHIR resource records.
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example (Ballerina project and the FHIR specification files). This Ballerina project includes the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/Ballerina.toml) file, which specifies the dependency of the package (name and version) that is to be generated. Also, the [`carinbb_patient_service/service.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/service.bal) file includes the import of it together with the business logic/mapping implemented using the generated FHIR resource records.
 
 ### Generate the package
 
@@ -103,9 +103,9 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
-1. Navigate to the cloned `working_with_health_tool/carinbb_service_api` directory.
+1. Navigate to the cloned `working_with_health_tool/carinbb_patient_service` directory.
 
-    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb_service_api/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_service_api/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
+    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
 
 2. Run the cloned Ballerina project and validate the output.
 

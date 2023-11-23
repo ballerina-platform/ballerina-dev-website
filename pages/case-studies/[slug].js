@@ -146,7 +146,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                             <p>{frontmatter.intro}</p>
                         </Col>
                         <Col xs={12} md={3}>
-                            <img src={frontmatter.logo} />
+                            <img src={frontmatter.logo} alt={`${slug} logo`} title={`${slug} logo`}/>
                         </Col>
                     </Row>
 

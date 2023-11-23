@@ -57,7 +57,7 @@ health:1.0.0 successfully set as the active version.
 
 Follow the steps below to try out an example use case of the Health tool.
 
-### Clone the sample project
+### Clone the example project
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
 

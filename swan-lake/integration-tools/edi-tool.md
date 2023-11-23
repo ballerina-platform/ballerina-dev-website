@@ -171,7 +171,7 @@ Below is an example of using the EDI tool to create an EDI package and use it.
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example. The [`schemas`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/schemas) directory includes the JSON schema source files of the `EDIFACT` specifications required for an organization to work with the EDI operations for handling purchase orders. Also, the [`example/main.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/example/main.bal) file includes the business logic/usage of the package.
+>**Info:** The cloned directory includes the artifacts that will be required to try out this example. The [`schemas`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/schemas) directory includes the JSON schema source files of the `EDIFACT` specifications required for an organization to work with the EDI operations for handling purchase orders. Also, the [`edi_service/service.bal`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/edi_service/service.bal) file includes the business logic/usage of the package.
 
 #### Generate the package
 
@@ -192,7 +192,7 @@ Follow the steps below to run the EDI tool and create the package.
     edi_package_generation
     ├── example
     │   ├── Ballerina.toml
-    │   └── main.bal
+    │   └── service.bal
     ├── lib
     │   └── porder
     │       ├── Ballerina.toml
@@ -248,7 +248,7 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 >**Info:** It is quite common for different trading partners to use variations of the standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with a particular partner.
 
-1. Navigate to the `edi_package_generation/example` directory.
+1. Navigate to the `edi_package_generation/edi_service` directory.
 
     >**Info:** You can change the dependency (name and version) of the generated package in the [`lib/porder/Ballerina.toml`](https://github.com/ballerina-guides/integration-samples/tree/main/edi_package_generation/lib/porder/Ballerina.toml) file of this cloned Ballerina project directory as preferred.
 

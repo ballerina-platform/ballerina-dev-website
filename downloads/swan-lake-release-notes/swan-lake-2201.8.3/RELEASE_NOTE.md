@@ -66,10 +66,10 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.3) of
 
   ```yaml
   components:
-  schemas:
-    ByteExample:
-    type: string
-    format: byte
+    schemas:
+      ByteExample:
+        type: string
+        format: byte
   ```
 
   **Generated Ballerina code - before**

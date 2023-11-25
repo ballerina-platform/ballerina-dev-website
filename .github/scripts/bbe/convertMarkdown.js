@@ -663,6 +663,12 @@ const generate = async (examplesDir, outputDir) => {
                     let m = line.match(lineReg);
                     codeCount++;
 
+                    let { fileName, codeContent } = extractCode(relPath, m[2]);
+
+                    if (playground) {
+                      playgroundLink = `vscode://wso2.ballerina/open-file?repoFileUrl=${editOnGithubLink}/${file}`;
+                    }
+
                     convertedLine = md.render(m[2], {
                       codeCount,
                       marginLeftMultiplier: m[1].length,

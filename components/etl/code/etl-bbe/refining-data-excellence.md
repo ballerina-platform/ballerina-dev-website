@@ -1,27 +1,29 @@
 ---
 title: 'Refining Data Excellence'
-description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation.
-"
-url: 'https://github.com/ballerina-guides/etl-samples/blob/main/error-correction/service.bal'
+description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation."
+url: 'https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal'
 phase: 'Transformations'
 ---
 ```
-final http:Client saplingClient = check new ("https://api.sapling.ai");
+public function main(string filePath) returns error? {
+    http:RetryConfig retryConfig = {
+        interval: 5, // Initial retry interval in seconds.
+        count: 3, // Number of retry attempts before stopping.
+        backOffFactor: 2.0 // Multiplier of the retry interval.
+    };
+    final text:Client openAIText = check new ({auth: {token: openAIToken}, retryConfig});
 
-isolated service /api/posts on new http:Listener(8080) {
-    resource function post spell\-check(SpellCheckRequest request) returns error? {
-        SaplingRequest saplingRequest = {
-            'key: apiKey,
-            text: request.content,
-            session_id: "session1"
-        };
-        SaplingResponse response = check saplingClient->/api/v1/spellcheck.post(saplingRequest);
-        int errorCount = 0;
-        foreach EditBody edit in response.edits {
-            io:println(string `${edit.sentence}: ${edit.replacement}`);
-            errorCount = errorCount + 1;
-        }
-        io:println(string `Total errors: ${errorCount}`);
+    text:CreateEditRequest editReq = {
+        input: check io:fileReadString(filePath),
+        instruction: "Fix grammar and spelling mistakes.",
+        model: "text-davinci-edit-001"
+    };
+    text:CreateEditResponse editRes = check openAIText->/edits.post(editReq);
+    string? text = editRes.choices[0].text;
+
+    if text is () { 
+        return error("Failed to correct grammar and spelling in the given text.");
     }
+    io:println(string `Corrected: ${text}`);
 }
 ```

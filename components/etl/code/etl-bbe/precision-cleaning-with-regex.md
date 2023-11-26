@@ -1,8 +1,6 @@
 ---
-title: 'Precision Cleaning with regular expressions in Ballerina'
-description: "Discover how Ballerina's regex-powered data cleaning effortlessly removes unwanted clutter, 
-leaving your data refined and ready for insights.
-"
+title: 'Precision Cleaning with regular expressions'
+description: "Ballerina's regex support empowers data cleansing and standardization, enhancing data quality and consistency."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/clean-and-standardize-data/main.bal'
 phase: 'Transformations'
 ---

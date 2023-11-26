@@ -1,8 +1,6 @@
 ---
-title: 'Seamless Data Loading to Google Sheets with Ballerina'
-description: "Experience the simplicity of loading data values into Google Sheets using Ballerina, 
-turning your spreadsheets into dynamic, data-driven tools.
-"
+title: 'Manual data inspection'
+description: "Ballerina can connect with Google Sheets or Excel to load data samples, intermediate data, or processed data for manual inspection."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/load-data-to-gsheet/main.bal'
 phase: 'Loadings'
 ---

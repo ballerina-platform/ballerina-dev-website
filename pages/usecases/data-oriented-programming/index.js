@@ -121,7 +121,7 @@ export default function Integrations({ samples }) {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Enhance data oriented programming with Ballerina - The smarter choice over Java" />
+        <meta property="og:title" content="Enhance data oriented programming with Ballerina" />
         <meta
           property="og:description"
           content="Write code with integration-friendly abstractions."

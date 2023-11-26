@@ -24,32 +24,20 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import { Row, Container, Col, Badge, Table } from "react-bootstrap";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from "../../../layouts/LayoutLearn";
 import { useRouter } from "next/router";
 import { getHighlighter } from "shiki";
 import styles from './Patterns.module.css';
 import ReactMarkdown from 'react-markdown';
-import { FaRegCopy, FaCheck, FaExternalLinkAlt } from 'react-icons/fa';
-
-const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import CodeView from '../../../components/learn/pattern/CodeView';
+import { readPattern } from '../../../components/learn/pattern/readPattern';
 
 export async function getStaticProps({ params }) {
-  const highlighter = await getHighlighter({ theme: 'github-light' });
-  const ymlPath = path.join(baseDirectory, params.pattern, params.pattern + ".yml");
-  const content = fs.readFileSync(path.join(baseDirectory, params.pattern, params.pattern + ".bal"), "utf-8");
-  const code = highlighter.codeToHtml(content, { lang: 'ballerina' });
-  const name = params.pattern.replace(/-.|^./g, x => " " + x.slice(-1).toUpperCase());
-  if (!fs.existsSync(ymlPath)) {
-    return { props: { code, name, content } };
-  }
-  const yml = fs.readFileSync(ymlPath, "utf-8");
-  var props = load(yml) || {};
-  props.code = code;
-  props.name = props.name ?? name;
-  props.content = content;
-  return { props };
+  return await readPattern(params.pattern);
 }
+
+const baseDirectory = path.resolve("pages/learn/enterprise-integration-patterns/enterprise-integration-patterns");
 
 export async function getStaticPaths() {
   const files = fs.readdirSync(baseDirectory);
@@ -58,8 +46,9 @@ export async function getStaticPaths() {
     const file = files[i];
     const filePath = path.join(baseDirectory, file);
     const stats = fs.statSync(filePath);
-    const bal = path.join(filePath, file + ".bal");
-    if (stats.isDirectory() && fs.existsSync(bal)) {
+    const balPath = path.join(filePath, file + ".bal");
+    const ymlPath = path.join(baseDirectory, file, file + ".yml");
+    if (stats.isDirectory() && (fs.existsSync(balPath) || fs.existsSync(ymlPath))) {
       paths.push({ params: { pattern: file } });
     }
   }
@@ -67,17 +56,21 @@ export async function getStaticPaths() {
 }
 
 export default function Pattern(props) {
-  const router = useRouter();
-
-  const [copied, setCopied] = React.useState(false);
-
-  const codeCopy = () => {
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000);
+  const rows = [];
+  const content = props.content;
+  const namedCodeViews = content.length > 1;
+  for (let i = 0; i < content.length; i++) {
+    const row = content[i];
+    rows.push(
+          <Row className="pageContentRow llanding" key={i}>
+            <Col xs={12}>
+              <Container>
+                <CodeView header={row.headerCode} main={row.mainCode} raw={row.raw} name={ namedCodeViews ? row.name : "" }/>
+              </Container>
+            </Col>
+          </Row>
+    );
   }
-
   return (
     <>
       <Head>
@@ -93,11 +86,11 @@ export default function Pattern(props) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>EIP: {props.name}</title>
+        <title>EIP: {props.name} - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -109,7 +102,7 @@ export default function Pattern(props) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta property="og:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-swan-lake-eip-sm-banner.png"
@@ -124,7 +117,7 @@ export default function Pattern(props) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content={`EIP: ${props.name} - The Ballerina programming language`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -220,28 +213,7 @@ export default function Pattern(props) {
             </Col>
           </Row>
 
-          <Row className="pageContentRow llanding" >
-            <Col xs={12}>
-              <Container>
-
-                <div style={{
-                  background: "#eeeeee", padding: "10px",
-                  borderRadius: "5px",
-                  marginTop: "20px",
-                  backgroundColor: "#eeeeee !important"
-                }}>
-                  <CopyToClipboard text={props.content}
-                    onCopy={() => codeCopy()} style={{ float: "right" }}>
-                    {
-                      copied ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />
-                    }
-                  </CopyToClipboard>
-
-                  <div className="highlight" dangerouslySetInnerHTML={{ __html: props.code }} />
-                </div>
-              </Container>
-            </Col>
-          </Row>
+          {rows}
 
         </Col>
       </Layout >

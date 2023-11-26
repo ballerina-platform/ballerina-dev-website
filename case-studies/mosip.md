@@ -1,7 +1,7 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'How MOSIP uses Ballerina WebSubHub for event-driven integration'
-description: 
+description: Ballerina is an open source programming language for the cloud that makes it easier to use, combine, and create network services. In addition to the powerful language features, it comes with a rich Ballerina library, which covers network data, messaging, and communication protocols. The Modular Open Source Identity Platform (MOSIP), an open-source identity platform currently being adopted by several countries to manage the digitization of their civil registries, uses the Ballerina WebSubHub module for event-driven communication.
 keywords: ballerina, programming language, integration, websubhub, mosip
 permalink: /learn/case-studies/mosip
 active: mosip

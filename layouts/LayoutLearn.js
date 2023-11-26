@@ -36,14 +36,14 @@ export default function Layout({ children }) {
          <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
           {/* <!--LINKED IN  --> */}
-          <meta property="og:title" content="Ballerina - Learn" />
+          <meta property="og:title" content="Learn - The Ballerina programming language" />
           <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
           {/* <!--TWITTER--> */}
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@ballerinalang" />
           <meta name="twitter:creator" content="@ballerinalang" />
-          <meta name="twitter:title" content="Ballerina - Learn" />
+          <meta name="twitter:title" content="Learn - The Ballerina programming language" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
           <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
@@ -70,7 +70,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAtt
       <Meta />
       <Stack gap={0} className='main-wrapper other'>
         <TopNav launcher='docs' />
-        <div className='wrap-page-content'>
+        <div className='wrap-page-content' style={{paddingBottom:"0"}}>
           <Row className='community-wrap-row'>
             {children}
           </Row>

@@ -78,13 +78,13 @@ export default function PostPage({ frontmatter, content, slug }) {
                     content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language"
                 />
 
-                <title>{frontmatter.title}</title>
+                <title>{`${frontmatter.title} - The Ballerina programming language`}</title>
 
                 {/* <!--FB--> */}
                 <meta property="og:type" content="article" />
                 <meta
                     property="og:title"
-                    content={`Ballerina - ${frontmatter.title}`}
+                    content={`${frontmatter.title} - The Ballerina programming language`}
                 />
                 <meta
                     property="og:description"
@@ -97,14 +97,14 @@ export default function PostPage({ frontmatter, content, slug }) {
                 />
 
                 {/* <!--LINKED IN  --> */}
-                <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
+                <meta property="og:title" content={`${frontmatter.title} - The Ballerina programming language`} />
                 <meta
                     property="og:image"
                     content={`https://ballerina.io/images/case-studies/${frontmatter.user}-sm-banner.png`}
                 />
 
                 {/* <!--TWITTER--> */}
-                <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`} />
+                <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`} />
                 <meta
                     property="twitter:description"
                     content="A programming language for the cloud that makes it easier to use, combine, and create network services."
@@ -146,7 +146,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                             <p>{frontmatter.intro}</p>
                         </Col>
                         <Col xs={12} md={3}>
-                            <img src={frontmatter.logo} />
+                            <img src={frontmatter.logo} alt={`${slug} logo`} title={`${slug} logo`}/>
                         </Col>
                     </Row>
 

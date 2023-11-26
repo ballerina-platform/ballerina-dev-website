@@ -16,15 +16,20 @@
  * under the License.
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Badge } from "react-bootstrap";
 
 import Layout from "../../../../layouts/LayoutLearn";
 import SampleList from "../../../../components/common/sample-list/SampleList";
 import { prefix } from '../../../../utils/prefix';
+import { data } from "../../../../components/learn/pre-built-integrations/data";
+import {RxCross2} from "react-icons/rx"
 
 export default function Learn() {
+
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [filteredTags, setFilteredTags] = useState(data);
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -44,6 +49,30 @@ export default function Learn() {
     element.parentElement.scrollIntoView();
   };
 
+  function handleSelectedTag(selectedCategory){
+    if(selectedTags.includes(selectedCategory)){
+      let filters = selectedTags.filter((el)=>el!==selectedCategory)
+      setSelectedTags(filters);
+    }else{
+      setSelectedTags([...selectedTags, selectedCategory])
+    }
+  }
+
+  useEffect(() => {
+    handleFilteredTags()
+  }, [selectedTags])
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = data.filter((item) => {
+        return selectedTags.every((tag) => item.tags.includes(tag));
+      });
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags([...data]);
+    }
+  }
+
   return (
     <>
       <Head>
@@ -59,11 +88,11 @@ export default function Learn() {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Pre-built integrations</title>
+        <title>Pre-built integrations - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -75,7 +104,7 @@ export default function Learn() {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta property="og:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
@@ -90,7 +119,7 @@ export default function Learn() {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
@@ -135,75 +164,31 @@ export default function Learn() {
             </Col>
           </Row>
 
+          <Row className="selectedTagContainer">
+            <Col xs={12}>
+              <Container>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
+              </Container>
+            </Col>
+          </Row>
+
           <Row className="pageContentRow llanding">
             <Col xs={12} md={12}>
               <Container>
                 <Row>
                 {/* Left Column */}
-                  <SampleList
-                      name="Google Sheets to Salesforce integration"
-                      description="Create a new contact in Salesforce for each new row added to a Google Sheet"
-                      tags={["Google Sheets", "Salesforce", "Integration", "CRM"]}
-                  />
-
-                  <SampleList
-                      name="GitHub to email integration"
-                      description="Generate a GitHub issue summary report and email it to a specified email address"
-                      tags={["GitHub", "Integration", "Email"]}
-                  />
-                  <SampleList
-                      name="Google Drive to OneDrive integration"
-                      description="Sync Google Drive files to Microsoft OneDrive"
-                      tags={["OneDrive", "Integration", "Google Drive"]}
-                  />
-
-                  <SampleList
-                      name="MySQL to Salesforce integration"
-                      description="Create a new product in Salesforce for each new record added to a MySQL table"
-                      tags={["Salesforce", "Integration", "CRM", "MySQL"]}
-                  />
-
-                  <SampleList
-                      name="Gmail to Salesforce integration"
-                      description="Create a lead for each new marketing email in Gmail"
-                      tags={["Salesforce", "Integration", "CRM", "Gmail", "OpenAI"]}
-                  />
-
-                  <SampleList
-                      name="News API to email integration"
-                      description="Fetch BBC top headlines and send as an email to the recipient"
-                      tags={["NewsAPI", "Integration", "Email"]}
-                  />
-
-                  <SampleList
-                      name="Shopify to Outlook integration"
-                      description="Send a welcome email using Microsoft Outlook to new Shopify customers"
-                      tags={["Outlook", "Integration", "Shopify"]}
-                  />
-
-                  <SampleList
-                      name="Kafka to Salesforce integration"
-                      description="Update price book in Salesforce for each new message in Kafka"
-                      tags={["Kafka", "Salesforce", "Integration", "CRM"]}
-                  />
-
-                  <SampleList
-                      name="Salesforce to Twilio integration"
-                      description="Send an SMS for each new lead in Salesforce"
-                      tags={["Salesforce", "Integration", "CRM", "Twilio"]}
-                  />
-
-                  <SampleList
-                      name="HubSpot contacts to Google Contacts integration"
-                      description="Sync HubSpot Contacts with Google Contacts"
-                      tags={["HubSpot", "Integration", "Google Contacts"]}
-                  />
-
-                  <SampleList
-                      name="FTP EDI message to Salesforce Opportunity"
-                      description="Read EDI files from a given FTP location and create a Salesforce Opportunity"
-                      tags={["FTP", "EDI", "Salesforce", "Integration", "CRM"]}
-                  />
+                {filteredTags.map((item)=>{
+                    return(
+                      <SampleList name={item.name} key={item.name} description={item.description} tags={item.tags} icon={item.icon} handleSelectedTag={handleSelectedTag}>
+                      </SampleList>
+                    )
+                  })}
                 </Row>
               </Container>
             </Col>

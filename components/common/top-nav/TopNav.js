@@ -53,7 +53,8 @@ const TopNav = (props) => {
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/etl`} className={styles.dropDownItem} key='12'>ETL</Dropdown.Item>,
     <Dropdown.Item category='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='10'>Microservices</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='9'>WSO2</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='11'>MOSIP</Dropdown.Item>
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='11'>MOSIP</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='12'>Ballerina Central</Dropdown.Item>
   ];
 
 
@@ -146,7 +147,7 @@ const TopNav = (props) => {
                   <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
                   <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Packages</Nav.Link>
                   <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
-                  <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
+                  {/* <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link> */}
                 </Nav>
                 <Search />
               </Offcanvas.Body>

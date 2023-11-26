@@ -459,6 +459,13 @@ $ bal run
 
 You view the output below.
 
+```
+Compiling source
+        foo/data_service:0.1.0
+
+Running executable
+```
+
 >**Info:** This creates an `/employees` endpoint on port `8080`, which can 
 be accessed via a browser by visiting `http://locahost:8080/employees`.
 
@@ -467,23 +474,12 @@ be accessed via a browser by visiting `http://locahost:8080/employees`.
 Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ```
-$ curl -X POST http://localhost:8080/employees/
-    -H 'Content-Type: application/json'
-    -d '{
-        "employee_id": 6,
-        "first_name": "test",
-        "last_name": "test",
-        "email": "test@test.com",
-        "phone": "882 771 110",
-        "hire_date": {
-            "year": 2021,
-            "month": 12,
-            "day": 16
-        },
-        "manager_id": 1,
-        "job_title": "Sales Manager"
-    }'
+$ curl -X POST http://localhost:8080/employees/ -H "Content-Type: application/json" -d "{ \"employee_id\": 6, \"first_name\": \"test\", \"last_name\": \"test\", \"email\": \"test@test.com\", \"phone\": \"882 771 110\", \"hire_date\": { \"year\": 2021, \"month\": 12, \"day\": 16 }, \"manager_id\": 1, \"job_title\": \"Sales Manager\" }"
 ```
+
+You view a row added to the **Employees** table as shown below.
+
+![data service output](/images/data-service-guide-output.png)
 
 ## Learn more
 

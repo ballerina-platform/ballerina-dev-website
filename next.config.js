@@ -81,6 +81,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration/get-started`,
       },
       {
+        source: `/${redirectBase}learn/vs-code-extension/get-started`,
+        destination: `/${redirectBase}learn/vs-code-extension/get-started`,
+      },
+      {
         source: `/${redirectBase}learn/ballerina-specifications`,
         destination: `/${redirectBase}learn/references/ballerina-specifications`,
       },

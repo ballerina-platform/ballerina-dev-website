@@ -1,0 +1,74 @@
+{
+    "articles": [
+        {
+            "url": "https://www.slant.co/topics/20337/~visual-programming-languages",
+            "title": "What are the best visual programming languages?",
+            "author": "",
+            "source": "Slant",
+            "date": "Oct 3, 2023"
+        },
+        {
+            "url": "https://bestcodinglanguage.com/for-cloud-computing/",
+            "title": "Best Programming Languages For Cloud Computing",
+            "author": "Awais Yaseen",
+            "source": "Best coding language",
+            "date": "Sep 15, 2023"
+        },
+        {
+            "url": "https://www.hyperlinkinfosystem.com/blog/popular-microservices-frameworks",
+            "title": "10 Most Popular Microservices Framework",
+            "author": "Harnil Oza",
+            "source": "Hyperlink InfoSystem",
+            "date": "Sep 14, 2023"
+        },
+        {
+            "url": "https://levelup.gitconnected.com/10-lesser-known-programming-languages-revolutionizing-the-tech-industry-july-2023-edition-64f356d0df8d",
+            "title": "10 lesser-known programming languages revolutionizing the tech industry",
+            "author": "Arslan Mirza",
+            "source": "Level Up Coding",
+            "date": "Jul 4, 2023"
+        },
+        {
+            "url": "https://www.cmarix.com/blog/best-microservices-frameworks/",
+            "title": "Top microservices frameworks to build scalable applications",
+            "author": "Parth Patel",
+            "source": "Cmarix",
+            "date": "June 19, 2023"
+        },
+        {
+            "url": "https://www.codelivly.com/lesser-known-programming-languages-worth-exploring/",
+            "title": "8 lesser-known programming languages worth exploring",
+            "author": "Rocky Sah",
+            "source": "Codelivly",
+            "date": "June 13, 2023"
+        },
+        {
+            "url": "https://www.tatvasoft.com/blog/top-12-microservices-frameworks/",
+            "title": "Top 12 microservices frameworks",
+            "author": "Vishal Shah",
+            "source": "Tatvasoft",
+            "date": "Apr 25, 2023"
+        },
+        {
+            "url": "https://levelup.gitconnected.com/14-mind-blowing-programming-languages-youve-probably-never-heard-of-b96550980661",
+            "title": "14 programming languages you've probably never heard of",
+            "author": "Clement Brian",
+            "source": "Level Up Coding",
+            "date": "Apr 12, 2023"
+        },
+        {
+            "url": "https://camunda.com/blog/2022/09/seven-best-programming-languages-for-microservices/",
+            "title": "7 best programming languages for microservices",
+            "author": "Josh Wulf",
+            "source": "Camunda",
+            "date": "Sep 29, 2022"
+        },
+        {
+            "url": "https://www.simform.com/blog/microservices-framework/",
+            "title": "The Top Go-To Microservices Frameworks for a Scalable Application",
+            "author": "Hiren Dhaduk",
+            "source": "SIMFORM",
+            "date": "March 15, 2022"
+        }
+    ]
+}

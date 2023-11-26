@@ -116,7 +116,7 @@ export default function Downloads() {
             </Row>
 
             <Row className={`${styles.downloadsVSCode} ${styles.downloadContentRow}`}>
-               <Col xs={12} sm={12} md={12} lg={3}>
+               <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={3}>
                   <a id="packVsCode" href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" 
                   className={styles.cVSCodeSample} data-download="downloads" 
                   target="_blank" rel="noreferrer">
@@ -124,7 +124,7 @@ export default function Downloads() {
                   </a>
                </Col>
 
-               <Col xs={12} sm={12} md={12} lg={9}>
+               <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={9}>
                   <p>You will be prompted to install the Ballerina Visual Studio Code extension.</p>
                   <p>For more information, see the <a href="https://wso2.com/ballerina/vscode/" target="_blank" rel="noreferrer">Ballerina Visual Studio Code extension</a>.</p>
                </Col>

@@ -61,22 +61,53 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 >**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
 
 
-### Prepare for publishing
+### Obtain an access token
 
 1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google or GitHub account.
 
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
 3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
-   If you are connected to the internet via an HTTP proxy, add the following section to `Settings.toml` and change accordingly.
+
+### Configure proxy settings (optional)
+
+If you are connected to the internet via an HTTP proxy, you need to configure it in the `Settings.toml` file to carry out the Ballerina Central related operations such as publishing a package, pulling a package or resolving packages. Add the following section to `Settings.toml`.
 
 ```toml
 [proxy]
-host = "localhost"
-port = 3128
+host = "HOST_NAME"
+port = PORT
+username = "PROXY_USERNAME"
+password = "PROXY_PASSWORD"
+```
+
+If your proxy does not require any credentials, keep username, password fields as empty as below.
+
+```toml
+[proxy]
+host = "HOST_NAME"
+port = PORT
 username = ""
 password = ""
 ```
+
+##### Add necessary certificates to the truststore
+
+If you encounter any certificate-related issues such as the one below when connecting via a proxy:
+
+> PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target.
+
+ follow the steps below to trust the certificates associated with the proxy.
+
+1) Navigate to the `dependencies/` folder located in the Ballerina installation directory. Here, you should notice one or more Java Runtime Environment (JRE) instances.
+2) Identify the certificates associated with the proxy. This information is typically found in the documentation provided by your proxy vendor.
+3) Execute the below command in a command line with administrative privileges.
+
+    ```
+    <BALLERINA_JRE>/bin/keytool.exe -import -trustcacerts -file <CERTS_PATH> -alias <ALIAS_NAME> -keystore <BALLERINA_JRE>/lib/security/cacerts
+    ```
+
+> **Note:** If you are using multiple Ballerina distributions, you may need to follow the above steps to all the JRE instances individually for each distribution.
 
 ### Define the organization
 

@@ -35,7 +35,9 @@ export default function PostPage() {
   return (
     <>
       <Head>
-        <title>Ballerina spec - draft build</title>
+        <title>Ballerina spec - draft build -  The Ballerina programming language</title>
+        <meta property="og:title" content="Ballerina spec - draft build -  The Ballerina programming language" />
+        <meta name="twitter:title" content="Ballerina spec - draft build -  The Ballerina programming language" />
       </Head>
       <Layout>
         <Col xs={12} className='mdContent langDraft'>

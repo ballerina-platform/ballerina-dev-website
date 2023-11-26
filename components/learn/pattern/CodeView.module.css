@@ -1,0 +1,29 @@
+.code {
+    background: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: #eeeeee !important;
+}
+
+.collapse {
+    background: #ddd;
+    padding-left: 15px;
+    margin-right: 25px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.copyToClipboard {
+    float: right;
+    margin-top: 4px;
+}
+
+.copied {
+ color: #20b6b0;
+}
+
+.title {
+  font-size: 1rem;
+  color: gray;
+}

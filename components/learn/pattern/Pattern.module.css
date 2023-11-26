@@ -25,6 +25,13 @@
   margin-top: 5px;
   background-color: #888 !important;
   color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tag:hover{
+  opacity: 0.8;
+  color: #ffffff;
 }
 
 

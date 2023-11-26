@@ -3,7 +3,7 @@
 _Owners_: @TharmiganK @shafreenAnfar @chamil321  
 _Reviewers_: @shafreenAnfar @chamil321  
 _Created_: 2022/08/09  
-_Updated_: 2023/05/18   
+_Updated_: 2023/10/26   
 _Edition_: Swan Lake
 
 ## Introduction
@@ -31,6 +31,7 @@ specification is considered a bug.
    * 2.3. [Constraint annotation on array types](#23-constraint-annotation-on-array-types)
    * 2.4. [Constraint annotation on `Date` record types](#24-constraint-annotation-on-date-record-types)
 3. [`validate` function](#3-validate-function)
+4. [Custom error messages](#4-custom-error-messages)
 
 ## 1. Overview
 Validating user input is a common requirement in most applications. This can prevent user entry errors before the app 
@@ -100,6 +101,7 @@ public type IntConstraints record {|
     int maxValue?;
     int minValueExclusive?;
     int maxValueExclusive?;
+    int maxDigits?;
 |};
 
 // Float constraints which applies only when the value is `float`.
@@ -109,6 +111,8 @@ public type FloatConstraints record {|
     float maxValue?;
     float minValueExclusive?;
     float maxValueExclusive?;
+    int maxIntegerDigits?;
+    int maxFractionDigits?;
 |};
 
 // Number constraints which applies when the value is `int|float|decimal`.
@@ -118,6 +122,8 @@ public type NumberConstraints record {|
     decimal maxValue?;
     decimal minValueExclusive?;
     decimal maxValueExclusive?;
+    int maxIntegerDigits?;
+    int maxFractionDigits?;
 |};
 ```
 
@@ -129,6 +135,9 @@ All the supported constraints on number types are illustrated in the following t
 | maxValue          |                                v <= c                                |
 | minValueExclusive |                                v > c                                 |
 | maxValueExclusive |                                v < c                                 |
+|maxDigits          |                      Number of digits in v <= c                      |
+|maxIntegerDigits   |                Number of integer digits in v <= c                    |
+|maxFractionDigits  |               Number of fraction digits in v <= c                    |
 
 When defining constraints on number types, either `minValue` or `minValueExclusive` can be present. Similarly, either 
 `maxValue` or `maxValueExclusive` can be present.
@@ -337,3 +346,59 @@ public function func1() returns error? {
 }
 ```
 
+## 4. Custom error messages
+
+The Constraint library provides default error messages for constraint violations. The default error message include the JSON
+path of the violated constraint with the constraint name. When there are multiple constraint failures the failed constraints
+are separated by a comma. The following is an example of a default error message.
+
+```ballerina
+ Employee employee = {
+   name: "a", // minimum length is 4
+   age: 10, // minimum value is 18
+   interns: ["intern1", "intern2", "intern3", "intern4"], // maximum length is 3
+   dob: {
+       year: 2220,
+       month: 10,
+       day: 2
+   } // should be a past date
+ }
+ 
+ Employee|error validation = constraint:validate(employee);
+ 
+ Error message : Validation failed for '$.name:minLengeth','$.age:minValue','$.interns:maxLength','$.dob:pastDate' constraint(s).
+```
+
+The Constraint library allows the developer to provide custom error messages for each constraint. This can be done by defining
+the constraint as a record with `value` and `message` fields. The `value` field should be the constraint value and the `message`
+field should be the custom error message. The following is an example of defining a custom error message:
+
+```ballerina
+@constraint:String {
+    minLength : {
+        value : 5,
+        message : "UserName should have atleast 5 characters"
+    },
+    maxLength : {
+        value : 12,
+        message : "UserName can have atmost 12 characters"
+    },
+    pattern : {
+        value : re `^[a-zA-Z0-9]+$`,
+        message : "Only alpha numeric characters are allowed in UserName"
+    }
+}
+type UserName string;
+```
+
+In the case of `Date` constraints, the `message` field can be used as an annotation field to provide a custom error message for invalid dates.
+```ballerina
+@constraint:Date {
+    option : {
+        value : constraint:PAST,
+        message : "Date of Birth should be in the past" // Only returned when the past date constraint is violated
+    },
+    message : "Invalid date found for Date of Birth"
+}
+type DateOfBirth time:Date;
+```

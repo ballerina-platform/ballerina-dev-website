@@ -29,6 +29,7 @@ import MainContent from "../../../components/common/main-content/MainContent";
 import { prefix } from "../../../utils/prefix";
 import LearnToc from "../../../utils/learn-lm.json";
 import Toc from "../../../components/common/pg-toc/Toc";
+import PrevNext from "../../../components/common/prev-next/PrevNext";
 
 export async function getStaticProps() {
   const fileName = fs.readFileSync(`spec/spec.md`, "utf-8");
@@ -64,13 +65,13 @@ export default function PostPage({ frontmatter, content, id }) {
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title}</title>
+        <title>{`${frontmatter.title} - The Ballerina programming language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={`Ballerina - ${frontmatter.title}`}
+          content={`${frontmatter.title} - The Ballerina programming language`}
         />
         <meta
           property="og:description"
@@ -83,7 +84,7 @@ export default function PostPage({ frontmatter, content, id }) {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta property="og:title" content={`${frontmatter.title} - The Ballerina programming language`} />
         <meta property="og:description" content={frontmatter.description} />
         <meta
           property="og:image"
@@ -91,7 +92,7 @@ export default function PostPage({ frontmatter, content, id }) {
         />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title}`} />
+        <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`} />
         <meta
           property="twitter:description"
           content={frontmatter.description}
@@ -159,7 +160,13 @@ export default function PostPage({ frontmatter, content, id }) {
             <MainContent
               content={content}
               handleToc={handleToc} />
-
+              <PrevNext
+                launcher="learn"
+                id={id}
+                mainDir="references"
+                Toc={LearnToc}
+                sub={id}
+              />
           </Container>
         </Col>
         <Col sm={2} xxl={3} className="pageToc d-none d-sm-block">

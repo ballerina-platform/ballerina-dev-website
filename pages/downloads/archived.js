@@ -116,17 +116,18 @@ export default function AllArchived() {
 
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
 
-                <title>Archived versions</title>
+                <title>Archived versions - The Ballerina programming language</title>
 
                 {/* <!--FB--> */}
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="Ballerina - Archived versions" />
+                <meta property="og:title" content="Archived versions - The Ballerina programming language" />
                 <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
 
                 {/* <!--LINKED IN  --> */}
                 <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
 
                 {/* <!--TWITTER--> */}
+                <meta name="twitter:title" content="Archived versions - The Ballerina programming language" />
                 <meta name="twitter:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
                 <meta name="twitter:text:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
             </Head>

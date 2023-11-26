@@ -67,7 +67,7 @@ Follow the steps below to obtain the ZIP file by building it from its source.
     > **Info**: In the above step,`<CLONED_BALLERINA_DIRECTORY>` refers to the path of the *ballerina-lang* Git repository, which you cloned locally. 
     > **Tip:** You need to install the [Gradle Build Tool](https://gradle.org/) to execute the below command.
 
-    ```bash
+    ```
     ./gradlew buildPlugin
     ```
 

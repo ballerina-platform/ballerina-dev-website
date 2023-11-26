@@ -3,6 +3,11 @@ layout: ballerina-left-nav-release-notes
 title: Swan Lake Update 8 (<RELEASE_VERSION>) 
 permalink: /downloads/swan-lake-release-notes/<RELEASE_VERSION>/
 active: <RELEASE_VERSION>
+redirect_from: 
+    - /downloads/swan-lake-release-notes/<RELEASE_VERSION>
+    - /downloads/swan-lake-release-notes/<RELEASE_VERSION>/
+    - /downloads/swan-lake-release-notes/<RELEASE_VERSION>-swan-lake/
+    - /downloads/swan-lake-release-notes/<RELEASE_VERSION>-swan-lake
 ---
 
 ## Overview of Ballerina Swan Lake Update 8 (<RELEASE_VERSION>)

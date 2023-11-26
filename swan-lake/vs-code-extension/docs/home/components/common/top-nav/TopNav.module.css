@@ -1,0 +1,286 @@
+.navbar {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+nav.home, nav.usecases {
+    background-color: #494949;
+    /* background-color: #20b6b0; */
+    color: #fff;
+    /* border-bottom: 0.1px solid #ebedf0; */
+    box-shadow: 0 0.0625rem 0.125rem rgb(171 171 171 / 30%);
+}
+
+nav.docs, nav.downloads, nav.other, nav.docs-learn, 
+nav.community, .brokenLink, .brokenLink-learn, nav.rn {
+    background-color: #fff;
+    border-bottom: 1px solid #ebedf0;
+}
+
+/* added to increase spacing on sides */
+.logo {
+    padding-left: 0.4rem;
+}
+
+.navItems {
+    padding-right: 0.4rem;
+}
+/* --------------------------------------- */
+
+.topNav a.navItem, .topNav #navbarScrollingDropdown {
+    color: #20b6b0 !important;
+    font-size: 16px;
+    font-weight: 600 !important;
+}
+
+.topNav a.navItem.active, .topNav .active #navbarScrollingDropdown {
+    color: #57595d !important;
+}
+
+.toggleFloat {
+    justify-content: end !important;
+}
+
+.home .topNav a.navItem, .home .topNav #navbarScrollingDropdown {
+    color: #fff !important;
+}
+
+.home .topNav a.navItem:hover, .home .topNav #navbarScrollingDropdown:hover {
+    color: #20b6b0 !important;
+}
+
+.topNav a.active, .topNav a:hover, .topNav #navbarScrollingDropdown:hover {
+    color: #57595d !important;
+}
+
+.home .topNav #navbarScrollingDropdown::after {
+    /* color: #20b6b0; */
+    color: inherit !important;
+    vertical-align: middle !important;
+}
+
+.topNav #navbarScrollingDropdown::after {
+    /* color: #20b6b0; */
+    color: inherit;
+    vertical-align: middle !important;
+}
+
+.home .topNav #navbarScrollingDropdown::after {
+    color: #ffffff;
+}
+
+.searchButton {
+    align-items: center;
+    background: #ebedf0 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    color: #969faf !important;
+    cursor: pointer;
+    display: flex;
+    height: 36px;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0 100px 0 20px !important;
+    user-select: none;
+}
+
+.searchButton:active,.searchButton:focus,.searchButton:hover {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 2px #20b6b0 !important;
+    color: #1c1e21;
+    outline: none
+}
+
+.searchButtonContainer {
+    align-items: center;
+    display: flex
+}
+
+.searchButtonIcon {
+    stroke-width: 1.6
+}
+
+.searchButton .searchButtonIcon {
+    color: #494949
+}
+
+.DocSearch-Button-Placeholder, .searchButtonIcon {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 12px 0 14px;
+    letter-spacing: 0.2px;
+}
+
+.searchButtonKeys {
+    display: none !important;
+    min-width: calc(40px + .8em);
+/* align-items: flex-end; */
+}
+
+.searchButtonKeys {
+    align-items: center;
+    background: linear-gradient(-225deg,#d5dbe4,#f8f8f8);
+    border-radius: 0px;
+    box-shadow: inset 0 -2px 0 0 #cdcde6,inset 0 0 1px 1px #fff,0 1px 2px 1px rgba(30,35,90,0.4);
+    color: #969faf;
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    margin-right: .4em;
+    padding-bottom: 2px;
+    position: relative;
+    top: -1px;
+    width: 20px;
+} 
+
+@media (min-width: 992px) {
+    .searchButton {
+        /* padding-right: 0.5rem;
+        padding-left: 0.5rem; */
+        margin-left: 0.5rem;
+    }
+}
+
+.hackathonBanner {
+    text-align: center;
+    color: #fff;
+    background-color: #20b6b0 !important;
+    padding: 10px 0 10px 0;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.hackathonBanner a {
+    color: #fff;
+}
+
+.hackathonBanner a:hover{
+    color: #545454 !important;
+}
+
+a.dropDownItem:focus, a.dropDownItem:hover {
+    /* background-color: #20b6b0 !important;
+    color: #ffffff !important; */
+    color: #20b6b0 !important;
+    background-color: transparent !important;
+}
+
+.sub {
+    padding-left: 30px;
+}
+
+.subsub {
+    padding-left: 60px;
+}
+
+.subsub span {
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+}
+
+.sub span {
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+}
+
+.back {
+    color: #20b6b0;
+}
+
+.subSections {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    /* min-width: 900px; */
+    /* margin-left: -275px; */
+}
+
+.subSection p {
+    font-weight: 600;
+    /* color: #57595d; */
+    color: #a3a3a3;
+}
+
+.subSection ul {
+    margin-bottom: 0;
+}
+
+.subSection ul li a {
+    padding: 0.25rem 0 0.25rem 1rem !important;
+}
+
+.subSection ul li a.sub {
+    padding: 0.25rem 0 0.25rem 1.5rem !important;
+}
+
+/* mobile view */
+
+.mobileAccordion {
+    padding-left: 0.4rem;
+}
+
+.mobileAccordion button {
+    padding: 1rem 0.75rem;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: normal;
+    line-height: normal;
+}
+
+.headName {
+    white-space: nowrap;
+}
+
+.acItem {
+    border: none !important;
+}
+
+.acItem a {
+    white-space: break-spaces !important;
+}
+
+.mobileAccordion h2 {
+    margin-top: 0;
+    line-height: 0;
+}
+
+.mainDir button {
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.mobileAccordion button:focus {
+    border: none;
+    box-shadow: none;
+}
+ 
+.mobileAccordion button:not([aria-expanded="false"]) {
+    background: #f7f7f7;
+    color: #20b6b0;
+    font-weight: 500;
+}
+
+.mobileAccordion button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.mobileAccordion button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2320b6b0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.arrow {
+    background-image: url("/images/chevron-right-teal.svg");
+    display: block;
+    transition: none !important;
+    background-repeat: no-repeat;
+    background-position: right 20px top 13px;
+}
+
+.arrow.active {
+    background-image: url("/images/chevron-right-grey.svg");
+    display: block;
+    transition: none !important;
+    background-repeat: no-repeat;
+    background-position: right 20px top 13px;
+}

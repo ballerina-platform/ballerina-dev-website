@@ -1,6 +1,6 @@
 ---
 title: 'Securely interact with internal/external services'
-description: Ballerina backends can securely call services with the necessary security features such as client-side OAuth2, mutual TLS, and JWT-encapsulated user data.
+description: Ballerina back-ends can securely call services with the necessary security features such as client-side OAuth2, mutual TLS, and JWT-encapsulated user data.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/microservices'
 ---
 ```

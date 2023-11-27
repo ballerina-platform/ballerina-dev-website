@@ -33,10 +33,10 @@ export default function Intro() {
                 <Col xs={12} lg={5} className={styles.introText}>
                     <div>
 
-                        <p className={styles.introText2}>Web apps and mobile apps are the face of digital organizations. Therefore, backends powering these apps need to be highly secure, scalable, and responsive. In addition, such backends need to aggregate data from multiple services, transform data as necessary, and transmit those to frontends over required protocols.
+                        <p className={styles.introText2}>Web apps and mobile apps are the face of digital organizations. Therefore, back-ends powering these apps need to be highly secure, scalable, and responsive. In addition, such back-ends need to aggregate data from multiple services, transform data as necessary, and transmit those to front-ends over required protocols.
                         </p>
 
-                        <p className={styles.introText3}>Ballerina&apos;s support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing backends for modern frontends. 
+                        <p className={styles.introText3}>Ballerina&apos;s support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends. 
                         </p>
 
                         <p className={styles.dVersion}>
@@ -47,8 +47,8 @@ export default function Intro() {
                     </p>
                     </div>
                 </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/bff-intro.png`} alt="Position Ballerina" />
+                <Col xs={12} lg={7} className={`${styles.introImg} ${styles.ipaas}`}>
+                    <img src={`${prefix}/images/bff-intro.png`} alt="BFF" className={styles.doNotFill} width='90%' />
                 </Col>
             </Row>
             </Container>

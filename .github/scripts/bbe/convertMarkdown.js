@@ -169,7 +169,7 @@ md.use(container, "code", {
   <Col className="d-flex align-items-start" sm={12}>
     ${(env.editOnGithubLink !== "") ? `
     <button
-      className="bg-transparent border-0 m-0 p-2${env.playgroundLink != undefined ? "" : " ms-auto"}"
+      className="bg-transparent border-0 m-0 p-2 ms-auto"}"
       onClick={() => {
         window.open("${env.editOnGithubLink}", "_blank");
       }}

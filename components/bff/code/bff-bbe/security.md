@@ -1,6 +1,6 @@
 ---
-title: "Comprehensive Security for Web Backends"
-description: Ballerina-based backends can simplify securing sensitive data during transit, validating server identity, managing CORS, and enforcing message type restrictions via annotations.
+title: "Comprehensive security for web back-ends"
+description: Ballerina-based back-ends can simplify securing sensitive data during transit, validating server identity, managing CORS, and enforcing message type restrictions via annotations.
 url: 'hhttps://github.com/SasinduDilshara/BFF-Samples/tree/dev/comprehensive_security'
 ---
 ```

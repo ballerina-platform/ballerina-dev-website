@@ -81,35 +81,10 @@ export function JoiningIterableObjects({ codeSnippets }) {
       >
         <Col className="d-flex align-items-start" sm={12}>
           <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://play.ballerina.io/?gist=6ca7f614c3b1bc522bda58fc5f42bc0d&file=joining_iterable_objects.bal",
-                "_blank",
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
             className="bg-transparent border-0 m-0 p-2"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/joining-iterable-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/joining-iterable-objects",
                 "_blank",
               );
             }}

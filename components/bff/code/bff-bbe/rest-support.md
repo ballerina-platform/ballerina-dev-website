@@ -1,7 +1,7 @@
 ---
 title: 'Simplify back-end development with native REST features'
 description: Ballerina provides REST features like path/query parameters, HTTP headers, status codes, and complex JSON structures as first-class citizens within the language itself.
-url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/rest'
+url: 'https://github.com/ballerina-guides/bff-samples/tree/main/restful-order-service'
 ---
 ```
 service /sales on new http:Listener(9090) {

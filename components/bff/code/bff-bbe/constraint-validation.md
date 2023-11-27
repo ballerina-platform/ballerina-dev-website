@@ -1,7 +1,7 @@
 ---
 title: 'Validate payload constraints in web back-ends'
 description: Ballerina's inherent JSON capabilities enable the direct mapping of JSON data into Ballerina records, incorporating functionalities such as constraint validations.
-url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/constraint_validation'
+url: 'https://github.com/ballerina-guides/bff-samples/tree/main/validate_payloads_constraints_in_web_backends'
 ---
 ```
 type Order record {|

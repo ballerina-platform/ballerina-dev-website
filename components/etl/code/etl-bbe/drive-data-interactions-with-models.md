@@ -1,6 +1,6 @@
 ---
 title: 'Drive data interactions with models'
-description: "Ballerina's "persist" feature seamlessly connects to databases, retrieves data, and kickstarts your ETL process."
+description: "Ballerina's 'persist' feature seamlessly connects to databases, retrieves data, and kickstarts your ETL process."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-data-from-database/main.bal'
 phase: 'Extraction'
 ---

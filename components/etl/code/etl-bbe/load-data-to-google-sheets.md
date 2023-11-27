@@ -5,15 +5,18 @@ url: 'https://github.com/ballerina-guides/etl-samples/blob/main/load-data-to-gsh
 phase: 'Loadings'
 ---
 ```
-function loadToGoogleSheet(string sheetName, string workSheetName, SalesSummary[] salesSummary) returns error? {
+function loadToGoogleSheet(string sheetName, string workSheetName, 
+    SalesSummary[] salesSummary) returns error? {
     sheets:Spreadsheet spreadsheet = check spreadsheetClient->createSpreadsheet(sheetName);
     string spreadSheetId = spreadsheet.spreadsheetId;
 
     check spreadsheetClient->renameSheet(spreadSheetId, "Sheet1", workSheetName);
 
-    _ = check spreadsheetClient->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: workSheetName});
+    _ = check spreadsheetClient
+            ->appendValue(spreadSheetId, ["Product", "Sales"], {sheetName: workSheetName});
     foreach var {product, sales} in salesSummary {
-        _ = check spreadsheetClient->appendValue(spreadSheetId, [product, sales], {sheetName: workSheetName});
+        _ = check spreadsheetClient
+            ->appendValue(spreadSheetId, [product, sales], {sheetName: workSheetName});
     }
 }
 ```

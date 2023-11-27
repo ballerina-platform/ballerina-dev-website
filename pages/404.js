@@ -34,18 +34,19 @@ export default function FourOHFour() {
         <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
-        <title>404</title>
+        <title>404 - The Ballerina programming language</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`Ballerina - 404`} />
+        <meta property="og:title" content={`404 - The Ballerina programming language`} />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
+        <meta property="og:title" content="404 - The Ballerina programming language" />
 
 
         {/* <!--TWITTER--> */}
+        <meta name="twitter:title" content="404 - The Ballerina programming language" />
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 

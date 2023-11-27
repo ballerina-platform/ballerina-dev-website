@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for implementing backends for modern frontends</title>
+        <title>Ballerina for implementing backends for modern front-ends</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for developing backends for modern frontends</h1>
+                <h1>Ballerina for developing back-ends for modern front-ends</h1>
               </Container>
 
             </Col>

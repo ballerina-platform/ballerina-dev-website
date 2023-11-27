@@ -93,8 +93,19 @@ a.cDownload:hover {
     justify-content: center;
 } */
 
-.introImg img {
+/* .introImg img {
     width: -moz-available;         
   width: -webkit-fill-available;  
   width: fill-available;
+} */
+
+.introImg img:not(.doNotFill) {
+    border-radius: 4px;
+    width: -moz-available !important;
+    width: -webkit-fill-available !important;
+    width: fill-available !important;
+}
+
+.ipaas {
+    text-align: center;
 }

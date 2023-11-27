@@ -47,8 +47,8 @@ export default function Intro() {
                     </p>
                     </div>
                 </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/bff-intro.png`} alt="Position Ballerina" />
+                <Col xs={12} lg={7} className={`${styles.introImg} ${styles.ipaas}`}>
+                    <img src={`${prefix}/images/bff-intro.png`} alt="BFF" className={styles.doNotFill} width='90%' />
                 </Col>
             </Row>
             </Container>

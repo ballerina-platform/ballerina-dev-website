@@ -136,29 +136,6 @@ const codeSnippetGenerator = (code, marginLeftMultiplier, lang) => {
   return output;
 };
 
-// playground link generator
-const generatePlaygroundLink = async (content, description, fileName) => {
-  const data = {
-    content,
-    description,
-    fileName,
-  };
-
-  try {
-    sleep(1000);
-    const result = await axios({
-      url: "https://play.ballerina.io/gists",
-      method: "POST",
-      data,
-    });
-
-    playgroundLink = `https://play.ballerina.io/?gist=${result.data.id}&file=${fileName}`;
-  } catch (error) {
-    console.log(error.response.data);
-  }
-  return playgroundLink;
-};
-
 // edit on github link generator
 const generateEditOnGithubLink = (exampleDir) => {
   // Github base URL
@@ -190,33 +167,6 @@ md.use(container, "code", {
       ${env.isIndent ? 'indent' : ''}" 
       style={{ marginLeft: "${env.marginLeftMultiplier * 8}px" }}>
   <Col className="d-flex align-items-start" sm={12}>
-    ${env.playgroundLink != undefined
-          ? `<button
-        className="bg-transparent border-0 m-0 p-2 ms-auto"
-        onClick={() => {
-          window.open(
-            "${env.playgroundLink}",
-            "_blank"
-          );
-        }}
-        target="_blank"
-        aria-label="Open in Ballerina Playground"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="#000"
-          className="bi bi-play-circle"
-          viewBox="0 0 16 16"
-        >
-          <title>Open in Ballerina Playground</title>
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-          <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-        </svg>
-      </button>`
-        : ""
-    } 
     ${(env.editOnGithubLink !== "") ? `
     <button
       className="bg-transparent border-0 m-0 p-2${env.playgroundLink != undefined ? "" : " ms-auto"}"
@@ -716,11 +666,7 @@ const generate = async (examplesDir, outputDir) => {
                     let { fileName, codeContent } = extractCode(relPath, m[2]);
 
                     if (playground) {
-                      playgroundLink = await generatePlaygroundLink(
-                        codeContent,
-                        relPath,
-                        fileName
-                      );
+                      playgroundLink = `vscode://wso2.ballerina/open-file?repoFileUrl=${editOnGithubLink}/${file}`;
                     }
 
                     convertedLine = md.render(m[2], {

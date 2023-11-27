@@ -1,5 +1,5 @@
 ---
-title: 'Automate Data Access with Ballerina'
+title: 'Automate data access with Ballerina'
 description: Ballerina's persistence features offer a straightforward way to create a data access layer for any complex application by providing a simplified interface for CRUD operations.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/persists'
 ---

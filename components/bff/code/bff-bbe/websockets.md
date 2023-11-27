@@ -1,5 +1,5 @@
 ---
-title: 'Expose real-time data to front-ends via WebSockets'
+title: 'Expose real-time data to front-ends via webSockets'
 description: Ballerina allows real-time data to be streamed just by implementing a service. This comes with enterprise-ready security features like TLS, mutual TLS, and OAuth2.
 url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/websocket'
 ---

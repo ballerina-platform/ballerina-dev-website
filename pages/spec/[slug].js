@@ -128,18 +128,18 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
         <meta name="description" content={frontmatter.description} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title || extractLibraryNameFromContent()}</title>
+        <title>{`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title  || extractLibraryNameFromContent()}`} />
+        <meta property="og:title" content={`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`} />
         <meta property="og:description" content={frontmatter.description}></meta>
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:description" content={frontmatter.description} />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title || extractLibraryNameFromContent()}`} />
+        <meta name="twitter:title" content={`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`} />
         <meta property="twitter:description" content={frontmatter.description} />
         <meta property="twitter:text:description" content={frontmatter.description} />
 

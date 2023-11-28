@@ -120,7 +120,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for bff" />
+        <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"

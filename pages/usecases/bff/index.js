@@ -108,7 +108,7 @@ export default function Integrations({ samples }) {
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for bff" />
+        <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:description"
           content="Write code with bff-friendly abstractions."

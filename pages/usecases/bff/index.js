@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for implementing backends for modern front-ends</title>
+        <title>Ballerina for implementing backends for modern front-ends - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
@@ -116,14 +116,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/edi-intro.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina - Ballerina for bff" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/edi-intro.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="og:description"
@@ -143,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/edi-intro.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="twitter:text:description"
@@ -151,7 +151,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/edi-intro.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
       </Head>
 

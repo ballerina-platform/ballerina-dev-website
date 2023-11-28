@@ -1,7 +1,7 @@
 ---
 title: 'Efficiently expose complex data with GraphQL'
 description: With Ballerina's built-in GraphQL functionality, developers can simply expose Ballerina records via GraphQL services, facilitating querying and selectively fetching complex data structures.
-url: 'https://github.com/SasinduDilshara/BFF-Samples/tree/dev/graphql'
+url: 'https://github.com/ballerina-guides/bff-samples/tree/main/expose_complex_data_with_graphql'
 ---
 ```
 type Order record {|

@@ -1,6 +1,38 @@
 {
     "events": [
         {
+            "date": "November 28, 2023",
+            "day": "Tue.",
+            "time": "9.30 a.m. IST",
+            "expire": "2023-11-27T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/297353173/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Crafting Seamless Frontend Experiences with Beautiful Ballerina Backends",
+            "presenterTwitter": "https://twitter.com/Sasindu3625",
+            "presenter": "Sasindu Alahakoon",
+            "presenterDesignation": "Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "November 25, 2023",
+            "day": "Sat.",
+            "time": "11.00 a.m. IST",
+            "expire": "2023-11-27T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.youtube.com/watch?v=Tfgquzq7l6Y",
+            "eventType": "Azure Developer Day",
+            "eventName": "Navigating The Cloud Native Integration Landscape: A Practical Approach with Ballerina and Choreo",
+            "presenterTwitter": "https://twitter.com/A5anka",
+            "presenter": "Asanka Abeyweera",
+            "presenterDesignation": "Senior Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://www.youtube.com/watch?v=Tfgquzq7l6Y",
+            "buttonText": "Watch recording"
+        },
+        {
             "date": "October 26, 2023",
             "day": "Thur.",
             "time": "6.00 p.m. EAT",

@@ -123,7 +123,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
       <Head>
         <meta
           name="description"
-          content="A programming language for the cloud that makes it easier to use, combine, and create network services."
+          content={`${frontmatter.title} - Release note`}
         />
         <meta
           name="keywords"
@@ -140,7 +140,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
         />
         <meta
           property="og:description"
-          content="A programming language for the cloud that makes it easier to use, combine, and create network services."
+          content={`${frontmatter.title} - Release note`}
         />
 
         {/* <!--LINKED IN  --> */}
@@ -150,7 +150,7 @@ export default function PostPage({ frontmatter, content, id, codeSnippets }) {
         <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`} />
         <meta
           property="twitter:description"
-          content="A programming language for the cloud that makes it easier to use, combine, and create network services."
+          content={`${frontmatter.title} - Release note`}
         />
         <meta
           property="twitter:text:description"

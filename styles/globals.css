@@ -593,6 +593,19 @@ pre[class*="language-"] {
 
 /*------------Community----------------*/
 
+.communityRow {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* margin-bottom: 0 !important; */
+}
+
+.communityRow h2 {
+  /* margin-top: 40px; */
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
 .carousel-item img {
   width: 100%;
 }

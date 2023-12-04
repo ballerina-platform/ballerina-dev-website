@@ -125,23 +125,23 @@ export default function PostPage({ frontmatter, content, codeSnippets }) {
   return (
     <>
       <Head>
-        <meta name="description" content={frontmatter.description} />
+        <meta name="description" content={frontmatter.title || extractLibraryNameFromContent()} />
         <meta name="keywords" content={frontmatter.keywords} />
 
-        <title>{frontmatter.title || extractLibraryNameFromContent()}</title>
+        <title>{`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`}</title>
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`Ballerina - ${frontmatter.title  || extractLibraryNameFromContent()}`} />
-        <meta property="og:description" content={frontmatter.description}></meta>
+        <meta property="og:title" content={`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`} />
+        <meta property="og:description" content={frontmatter.title || extractLibraryNameFromContent()}></meta>
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:description" content={frontmatter.title || extractLibraryNameFromContent()} />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content={`Ballerina - ${frontmatter.title || extractLibraryNameFromContent()}`} />
-        <meta property="twitter:description" content={frontmatter.description} />
-        <meta property="twitter:text:description" content={frontmatter.description} />
+        <meta name="twitter:title" content={`${frontmatter.title || extractLibraryNameFromContent()} - The Ballerina programming language`} />
+        <meta property="twitter:description" content={frontmatter.title || extractLibraryNameFromContent()} />
+        <meta property="twitter:text:description" content={frontmatter.title || extractLibraryNameFromContent()} />
 
 
 

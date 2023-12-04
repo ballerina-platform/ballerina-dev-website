@@ -13,11 +13,11 @@ import ballerina/io;
 public function main() returns error? {
     // The diagram also has a lifeline for each client object parameter or variable in 
     // the initialization section, representing the remote system to which the client object is sending messages.
-    http:Client cl = check new ("https://www.mocky.io");
+    http:Client cl = check new ("https://run.mocky.io");
 
     // Each remote method call on a client object is represented as a horizontal line
     // between the lifeline of the worker making the call and the remote system.
-    string payload = check cl->get("/v2/5ae082123200006b00510c3d/");
+    string payload = check cl->get("/v3/7240398e-0435-4457-91b0-0c862f10563f/");
 
     io:println(payload);
     return;
@@ -67,32 +67,7 @@ export function SequenceDiagrams({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://play.ballerina.io/?gist=55dca5ea17d5bf2be51f533e1b514b63&file=sequence_diagrams.bal",
-                "_blank",
-              );
-            }}
-            target="_blank"
-            aria-label="Open in Ballerina Playground"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-play-circle"
-              viewBox="0 0 16 16"
-            >
-              <title>Open in Ballerina Playground</title>
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z" />
-            </svg>
-          </button>
-
-          <button
-            className="bg-transparent border-0 m-0 p-2"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.0/examples/sequence-diagrams",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.3/examples/sequence-diagrams",
                 "_blank",
               );
             }}

@@ -30,18 +30,11 @@ a {
   line-height: 0px;
 }
 
-.main-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .wrap-page-content {
   /* margin-top: 74px; */
   padding-bottom: 30px;
   font-size: 16px;
   font-weight: 300;
-  flex: 1;
 
   /* padding-left: 0.4rem !important;
   padding-right: 0.4rem !important; */
@@ -523,11 +516,26 @@ a.cGreenLinkArrow:hover {
 
 .pageHeader h1 {
   padding-top: 35px;
+  padding-bottom: 0px;
   color: #464646;
   /* color: #585a5e; */
   font-weight: 500;
   /* font-size: 2rem; */
   font-size: 3rem;
+}
+
+.communityIntro {
+  position: relative;
+}
+
+.background-image {
+  opacity: 0.1; 
+  position: absolute;
+  top: 165px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
 }
 
 .selectedTagContainer{
@@ -596,6 +604,10 @@ pre[class*="language-"] {
   margin-top: 10px;
   margin-bottom: 30px;
   font-size: 1.5rem;
+}
+
+.carousel-item img {
+  width: 100%;
 }
 
 .communitySubRow {
@@ -1324,7 +1336,8 @@ table.cTopControlsContainer tbody {
 }
 
 .integration h2,
-.llanding h2 {
+.llanding h2, 
+.communityRow h2 {
   margin-top: 50px;
   margin-bottom: 30px;
   scroll-margin-top: 65px;
@@ -1368,7 +1381,8 @@ table.cTopControlsContainer tbody {
 }
 
 .pageContentRow.integration,
-.pageContentRow.llanding {
+.pageContentRow.llanding,
+.pageContentRow.communityRow {
   margin-bottom: 0 !important;
   padding-bottom: 50px;
 }

@@ -18,6 +18,16 @@ Download a directory containing all FHIR specification definition files. You can
 
 >**Note:** It is recommended to use a Standard for Trial Use (STU) or higher release level of the implementation guides. Make sure that the downloaded specification archive has the StructureDefinition, ValueSet, and CodeSystem files for the Implementation Guide (IG) resources when extracted.
 
+## Install the tool
+
+Execute the command below to pull the Health tool from Ballerina Central.
+
+```
+$ bal tool pull health
+health:1.0.0 pulled successfully.
+health:1.0.0 successfully set as the active version.
+```
+
 ## Usage
 
 This tool uses the command below to generate a Ballerina package for a given FHIR implementation guide. 
@@ -42,16 +52,6 @@ The parameters that are available with the tool are listed below.
 | `--org-name`     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                   | Optional           |
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
-
-## Install the tool
-
-Execute the command below to pull the Health tool from Ballerina Central.
-
-```
-$ bal tool pull health
-health:1.0.0 pulled successfully.
-health:1.0.0 successfully set as the active version.
-```
 
 ## Example
 

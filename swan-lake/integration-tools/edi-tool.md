@@ -26,9 +26,9 @@ The tool supports two main usages as follows.
 - **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
 - **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
-The functionalities of the above usages are described below.
-
 ## Code generation
+
+The sections below describe the code generation functionality in detail.
 
 ### Code generation usage
 
@@ -141,6 +141,8 @@ Follow the steps below to use the generated `toEdiString` function to serialize 
     ```
 
 ## Package generation
+
+The sections below describe the package generation functionality in detail.
 
 ### Package generation usage
 

@@ -29,7 +29,7 @@ In pursuing re-imagining risk adjustment for healthcare, RAAPID.AI encountered t
 
 ## Solution
 
-<img src="/images/case-studies/raapidai-integration-diagram.png" alt="RAAPID.AI integration diagram" width="546" height="400" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
+<img src="/images/case-studies/raapidai-integration-diagram.png" alt="RAAPID.AI integration diagram" width="600" height="500" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 RAAPID.AI's innovative integration solution revolves around creating dedicated projects within [WSO2 Choreo](https://wso2.com/choreo/) for each healthcare provider. This modular approach involves configuring components to pull data from Electronic Health Records (EHR) via various protocols like FHIR, HL7, or CCDA. Ballerina's data transformation capabilities are harnessed to convert the retrieved medical data into FHIR format before pushing it back to RAAPID.AI's platform through FHIR/REST APIs. Additionally, another component facilitates the pulling and transformation of summarized data, ensuring seamless data flow between healthcare providers and the RAAPID.AI platform.
 

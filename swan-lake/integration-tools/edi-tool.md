@@ -8,57 +8,6 @@ active: edi-tool
 intro: The EDI tool provides the below set of command line tools to work with EDI files in Ballerina.
 --- 
 
-## Usage
-
-The tool supports two main usages as follows.
-
-- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
-
-The functionalities of the above usages are described below.
-
-### Code generation usage
-
-The command below generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
-
-```
-$ bal edi codegen <edi-schema-path> <output-path>
-```
-
-The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
-
-### Package generation usage
-
-Usually, organizations have to work with many EDI formats and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
-
-The command below can be used to generate the EDI package.
-
-```
-$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-path> -o <output-path>
-```
-
-A Ballerina package will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
-
-## Command options 
-
-The command options that are available with the tool are listed below.
-
-### Code generation command options
-
-| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `<edi-schema-path>`     | Path of the EDI schema, which will be used to generate the code.                                                                                                                                                                                                      | Mandatory          |
-| `<output-path>`   | The path in which the output file will be created.                                                                                                                                                                                                   | Mandatory           |
-
-### Package generation command options
-
-| Command option     | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-O, --org`     | Organization of the package.                                                                                                                                                                                                    | Mandatory          |
-| `-n, --name`   | Name of the package.                                                                                                                                                                                                                   | Mandatory          |
-| `-s, --schema`     | Location of the EDI schema.                                                                                                                                                                                                      | Mandatory          |
-| `-o, --output`   | Location of the generated package.                                                                                                                                                                                                                    | Mandatory           |
-
 ## Install the tool
 
 Execute the command below to pull the EDI tool from [Ballerina Central](https://central.ballerina.io/ballerina/edi/1.1.1).
@@ -70,9 +19,33 @@ tool 'edi:0.8.5' pulled successfully.
 tool 'edi:0.8.5' successfully set as the active version.
 ```
 
-## Examples
+## Usage
 
-Examples of the above usages are described below.
+The tool supports two main usages as follows.
+
+- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
+- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+
+The functionalities of the above usages are described below.
+
+## Code generation
+
+### Code generation usage
+
+The command below generates all Ballerina records and parsing functions required for working with data in the given EDI schema and writes those into the file specified in the output path.
+
+```
+$ bal edi codegen <edi-schema-path> <output-path>
+```
+
+The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
+
+### Code generation command options
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `<edi-schema-path>`     | Path of the EDI schema, which will be used to generate the code.                                                                                                                                                                                                      | Mandatory          |
+| `<output-path>`   | The path in which the output file will be created.                                                                                                                                                                                                   | Mandatory           |
 
 ### Code generation example
 
@@ -166,6 +139,29 @@ Follow the steps below to use the generated `toEdiString` function to serialize 
     ITM*A530*2~
     ITM*A500*4~
     ```
+
+## Package generation
+
+### Package generation usage
+
+Usually, organizations have to work with many EDI formats and integration developers need to have a convenient way to work on EDI data with minimum effort. The Ballerina EDI package facilitates this by allowing organizations to pack all EDI processing codes of their EDI collections into an importable package. Therefore, integration developers can simply import the package and convert EDI messages into Ballerina records in a single line of code.
+
+The command below can be used to generate the EDI package.
+
+```
+$ bal edi libgen -O <org-name> -n <package-name> -s <edi-schema-path> -o <output-path>
+```
+
+A Ballerina package will be generated in the output folder. This package can be built and published by issuing the `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records.
+
+### Package generation command options
+
+| Command option     | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-O, --org`     | Organization of the package.                                                                                                                                                                                                    | Mandatory          |
+| `-n, --name`   | Name of the package.                                                                                                                                                                                                                   | Mandatory          |
+| `-s, --schema`     | Location of the EDI schema.                                                                                                                                                                                                      | Mandatory          |
+| `-o, --output`   | Location of the generated package.                                                                                                                                                                                                                    | Mandatory           |
 
 ### Package generation example
 
@@ -298,8 +294,8 @@ Follow the steps below to use the generated package by running the cloned Baller
     {"buyerName":"WALMARTUS","date":"20230719","productIdentifier":"PRD1234567890","productQty":10}
     ```
 
-#### Use the generated EDI package as a standalone REST service
+##### Use the package as a service
 
-The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
+The EDI package generated above can also be compiled into a JAR file (using the `bal build` command) and executed as a standalone Ballerina REST service that processes EDI files via a REST interface. This is useful for microservices environments where the EDI processing functionality can be deployed as a separate microservice.
 
 For example, the `citymart` package generated above can be built and executed as a JAR file. Once executed, it will expose a REST service to work with the EDI files. 

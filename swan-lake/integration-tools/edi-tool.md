@@ -25,7 +25,7 @@ The command below generates all Ballerina records and parsing functions required
 $ bal edi codegen <edi-schema-path> <output-path>
 ```
 
-The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
+The generated parsing function (i.e., `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from the Ballerina code, similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e., `toEdiString(...)`) can serialize generated Ballerina records into EDI text.
 
 ### Package generation usage
 

@@ -88,11 +88,11 @@ export default function Learn() {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Pre-built integrations</title>
+        <title>Pre-built integrations - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Learn" />
+        <meta property="og:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta
           property="og:description"
           content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
@@ -104,7 +104,7 @@ export default function Learn() {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina: Pre-built integrations" />
+        <meta property="og:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-swan-lake-pre-built-integrations-sm-banner.png"
@@ -119,7 +119,7 @@ export default function Learn() {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina" />
+        <meta name="twitter:title" content="Pre-built integrations - The Ballerina programming language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

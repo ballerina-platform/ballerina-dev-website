@@ -106,9 +106,9 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
-1. Navigate to the cloned `working_with_health_tool` directory.
+1. Navigate to the cloned `working_with_health_tool/carinbb_patient_service` directory.
 
-    >**Info:** You can change the dependency (name and version) of the generated package in the [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
+    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
 
 2. Run the cloned Ballerina project and validate the output.
 

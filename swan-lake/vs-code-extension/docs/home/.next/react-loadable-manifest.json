@@ -1,8 +1,0 @@
-{
-  "../layouts/LayoutUseCase.js -> ../components/common/meta/Meta": {
-    "id": "../layouts/LayoutUseCase.js -> ../components/common/meta/Meta",
-    "files": [
-      "static/chunks/components_common_meta_Meta_js.js"
-    ]
-  }
-}

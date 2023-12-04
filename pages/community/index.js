@@ -52,21 +52,20 @@ export default function Community() {
   return (
     <>
       <Head>
-        <title>Community - The Ballerina programming language</title>
+        <title>Community</title>
         <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:title" content="Ballerina - Community" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:title" content="Ballerina" />
         <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content="Community - The Ballerina programming language" />
         <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
         <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
       </Head>
@@ -95,13 +94,8 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-<<<<<<< HEAD
-            <Discord getLink={getLink} />
-=======
             <JoinUs getLink={getLink} />
->>>>>>> 02b29314bd51ad979c5c8bf3a353625a9db78202
           </Row>
-
 
           <Row className="pageContentRow communityRow slackRow">
             <Resources getLink={getLink} />
@@ -115,11 +109,7 @@ export default function Community() {
             <TechTalk getLink={getLink} />
           </Row> */}
 
-<<<<<<< HEAD
-          <Row className="pageContentRow communityRow slackRow">
-=======
           {/* <Row className="pageContentRow communityRow slackRow">
->>>>>>> 02b29314bd51ad979c5c8bf3a353625a9db78202
             <GetInvolved getLink={getLink} />
           </Row> */}
 
@@ -127,11 +117,7 @@ export default function Community() {
             <Blog getLink={getLink} />
           </Row> */}
 
-<<<<<<< HEAD
-          <Row className="pageContentRow communityRow">
-=======
           <Row className="pageContentRow communityRow slackRow">
->>>>>>> 02b29314bd51ad979c5c8bf3a353625a9db78202
             <Contact getLink={getLink} />
           </Row>
 

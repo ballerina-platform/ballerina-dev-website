@@ -29,9 +29,11 @@ In pursuing re-imagining risk adjustment for healthcare, RAAPID.AI encountered t
 
 ## Solution
 
+RAAPID.AI's innovative integration solution revolves around creating dedicated projects within [WSO2 Choreo](https://wso2.com/choreo/) for each healthcare provider. This modular approach involves configuring components to pull data from Electronic Health Records (EHR) via various protocols like FHIR, HL7, or CCDA. Ballerina's data transformation capabilities are harnessed to convert the retrieved medical data into FHIR format before pushing it back to RAAPID.AI's platform through FHIR/REST APIs. Additionally, another component facilitates the pulling and transformation of summarized data, ensuring seamless data flow between healthcare providers and the RAAPID.AI platform.
+
 <img src="/images/case-studies/raapidai-integration-diagram.png" alt="RAAPID.AI integration diagram" width="600" height="500" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
-RAAPID.AI's innovative integration solution revolves around creating dedicated projects within [WSO2 Choreo](https://wso2.com/choreo/) for each healthcare provider. This modular approach involves configuring components to pull data from Electronic Health Records (EHR) via various protocols like FHIR, HL7, or CCDA. Ballerina's data transformation capabilities are harnessed to convert the retrieved medical data into FHIR format before pushing it back to RAAPID.AI's platform through FHIR/REST APIs. Additionally, another component facilitates the pulling and transformation of summarized data, ensuring seamless data flow between healthcare providers and the RAAPID.AI platform.
+The key components of the solution are listed below.
 
 - **Project creation:** RAAPID.AI administrators create a dedicated project for each healthcare provider within WSO2 Choreo, intending to connect and sync data with the RAAPID.AI platform. Each project contains a set of components designed to fulfill specific functionalities needed for data synchronization.
 
@@ -45,7 +47,7 @@ RAAPID.AI's innovative integration solution revolves around creating dedicated p
 
 ## Benefits
 
-This case study demonstrates how Ballerina can be effectively used for complex data integration tasks in the healthcare sector. The benefits include the following.
+The benefits of how Ballerina can be effectively used for complex data integration tasks in the healthcare sector include the following.
 
 - **Efficient data synchronization:** Ballerina enables efficient data synchronization between different systems, ensuring data consistency across platforms.
 

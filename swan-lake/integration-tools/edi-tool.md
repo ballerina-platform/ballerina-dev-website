@@ -133,7 +133,7 @@ Follow the steps below to use the generated `fromEdiString` function to read EDI
 
 2. Execute the command below to run the `read_edi()` function.
 
-    >**Note:** Any data item in the EDI text (`edi-sample.edi` file) can be accessed using the record's fields.
+    >**Info:** Any data item in the EDI text (`edi-sample.edi` file) can be accessed using the record's fields.
 
     ```
     $ bal run -- read

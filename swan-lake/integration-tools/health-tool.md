@@ -57,11 +57,14 @@ health:1.0.0 successfully set as the active version.
 
 Follow the steps below to try out an example use case of the Health tool.
 
-### Clone the sample project
+### Clone the example project
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
 
->**Info:** The cloned directory includes the artifacts that will be required to try out this example (Ballerina project and the FHIR specification files). This Ballerina project includes the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/Ballerina.toml) file, which specifies the dependency of the package (name and version) that is to be generated. Also, the [`carinbb_patient_service/service.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/service.bal) file includes the import of it together with the business logic/mapping implemented using the generated FHIR resource records.
+The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
+
+- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
+- The [`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
 
 ### Generate the package
 
@@ -92,7 +95,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 4. Push it to a repository.
 
-    >**Tip:** You can push either to the local repository or the remote repository in Ballerina Central.
+    >**Tip:** You can push either to the local repository or to [Ballerina Central](https://central.ballerina.io/), which is a remote repository.
 
     ```
     $ bal push --repository local

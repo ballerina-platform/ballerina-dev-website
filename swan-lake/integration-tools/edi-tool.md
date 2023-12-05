@@ -12,8 +12,8 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 
 The tool supports two main usages as follows.
 
-- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+- **Code generation:** generate Ballerina records and parsing functions for a given EDI schema
+- **Package generation:** generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
 The functionalities of the above usages are described below.
 

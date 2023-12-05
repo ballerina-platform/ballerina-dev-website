@@ -70,7 +70,11 @@ The cloned directory includes the artifacts below that will be required to try o
 
 Follow the steps below to run the Health tool and create the Ballerina package.
 
-1. Navigate to the cloned `working_with_health_tool` directory.
+1. Navigate to the `working_with_health_tool` directory.
+
+    ```
+    cd healthcare-samples/working_with_health_tool
+    ```
 
 2. Run the tool with the [required arguments](#command-options) to generate the package.
 

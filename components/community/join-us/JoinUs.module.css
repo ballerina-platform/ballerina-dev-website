@@ -134,8 +134,8 @@
 }
 
 .discord {
-  padding-top: 20px;
-  background-color: #ffffff !important;
+  /* padding-top: 20px; */
+  /* background-color: #ffffff !important; */
 }
 
 .socialMedia {
@@ -164,4 +164,56 @@
 .smIcons {
   /* display: inline-block; */
   align-items: center;
+}
+
+.cardCol {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.joinCard {
+  border: none !important;
+  background: transparent !important;
+}
+
+.imageWrap {
+  height: 40px;
+  text-align: center;
+}
+
+.centerLogo {
+  width: 18%;
+  margin: 0 auto;
+}
+
+.centerWideLogo {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.centerExtraWideLogo {
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.join {
+  transition: none !important;
+  font-size: 18px;
+  font-weight: 400;
+  /* background-color: #57595d; */
+  border: 1px solid #57595d;
+  /* color: #ffffff !important; */
+  color: #57595d !important;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  min-height: 60px;
+  line-height: 35px;
+  width: fit-content;
+  border-radius: 4px;
+}
+
+.join:hover {
+  background-color: #20b6b0;
+  color: #ffffff !important;
+  border: 1px solid #20b6b0;
 }

@@ -23,8 +23,8 @@ tool 'edi:0.8.5' successfully set as the active version.
 
 The tool supports two main usages as follows.
 
-- **Code generation:** Generate Ballerina records and parsing functions for a given EDI schema
-- **Package generation:** Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
+- [**Code generation:**](#code-generation) Generate Ballerina records and parsing functions for a given EDI schema
+- [**Package generation:**](#package-generation) Generate Ballerina records, parsing functions, utility methods, and a REST connector for a given collection of EDI schemas, and also organize those as a Ballerina package
 
 ## Code generation
 

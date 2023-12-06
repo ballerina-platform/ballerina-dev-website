@@ -89,22 +89,22 @@ Follow the steps below to try out an example package generation use case of the 
 
 #### Clone the example project
 
-Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
+Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen) and extract them to a preferred location.
 
 The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
 
-- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
-- The [`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
+- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/package_gen/carinbb_patient_service/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
+- The [`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/main.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
 
 #### Generate the package
 
 Follow the steps below to run the Health tool and create the Ballerina package.
 
-1. Navigate to the cloned `working_with_health_tool` directory.
+1. Navigate to the cloned `working_with_health_tool/package_gen` directory.
 
-2. Run the tool with the [required arguments](#command-options) to generate the package.
+2. Run the tool with the [required arguments](#package-generation-command-options) to generate the package.
 
-    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/ig_carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
+    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
 
     ```
     $ bal health fhir -m package -o ig_carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig_carinbb/definitions/
@@ -215,3 +215,165 @@ bal health fhir -m template --dependent-package <fully-qualified-ballerina-packa
 ### Template generation example
 
 Follow the steps below to try out an example template generation use case of the Health tool.
+
+#### Clone the example project
+
+Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/template_gen) and extract them to a preferred location.
+
+#### Generate the template
+
+Follow the steps below to run the Health tool and generate the pre-built service templates for the selected package.
+
+>**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the pre-built service templates for them. This example uses a package in [Ballerina Central]().
+
+1. Navigate to the cloned `working_with_health_tool/template-gen` directory.
+
+2. Run the tool with the [required arguments](#template-generation-command-options) to generate the pre-built services.
+
+    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/ig_carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the templates.
+
+    ```
+    $ bal health fhir -m template -o ig_carinbb/gen --org-name healthcare_samples --dependent-package healthcare_samples/carinbb_package ig_carinbb/definitions/
+    Ballerina FHIR template generation completed successfully.
+    ```
+
+    The generated folder will contain the following directory structure.
+
+    ```
+    .
+    |____organization
+    | 	|____api_config.bal
+    | 	|____service.bal
+    |	|____.gitignore
+    |	|____Package.md
+    | 	|____Ballerina.toml
+    |____relatedperson
+    |	|____api_config.bal
+    | 	|____service.bal
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml
+    |____practitioner
+    | 	|____api_config.bal
+    | 	|____service.bal
+    | 	|____Dependencies.toml
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml
+    |____explanationofbenefit
+    | 	|____api_config.bal
+    | 	|____service.bal
+    | 	|____Dependencies.toml
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml
+    |____patient
+    |	|____api_config.bal
+    |	|____service.bal
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml
+    |____coverage
+    | 	|____api_config.bal
+    | 	|____service.bal
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml  
+    ```
+
+3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `service.bal` file with the code below to implement the business logic.
+
+    >**Info:** Refer to the provided sample when implementing the data element mappings and how the response needs to be set in an FHIR API. You can use VSCode to open the generated pre-built service and implement the business logic. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
+
+    ```
+    isolated resource function get fhir/r4/Practitioner/[string id] (r4:FHIRContext fhirContext) returns Practitioner|r4:OperationOutcome|r4:FHIRError {
+        Practitioner practitioner = {
+            resourceType: "Practitioner",
+            id: "1",
+            meta: {
+                lastUpdated: "2021-08-24T10:10:10Z",
+                profile: [
+                    "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
+                ]
+            },
+            identifier: [
+                {
+                    use: "official",
+                    system: "http://hl7.org/fhir/sid/us-npi",
+                    value: "1234567890"
+                }
+            ],
+            name: [
+                {
+                    use: "official",
+                    family: "Smith",
+                    given: [
+                        "John",
+                        "Jacob"
+                    ],
+                    prefix: [
+                        "Dr."
+                    ]
+                }
+            ]
+        };
+        return practitioner;
+    }
+    ```
+
+#### Use the generated template
+
+Follow the steps below to use the generated service template by running the cloned Ballerina project.
+
+1. Navigate to the `ig_carinbb/gen/practitioner/` directory.
+
+2. Run the service and verify the output response.
+
+    ```
+    $ bal run
+    Compiling source
+            healthcare_samples/health.fhir.r4.uscore501.practitioner:1.0.0
+
+    Running executable
+    ```
+
+3. Invoke the API to try it out.
+
+    ```
+    $ curl http://localhost:9090/fhir/r4/Practitioner/12
+    ```
+
+    You can view the response shown below.
+
+    ```
+    {
+    "resourceType": "Practitioner",
+    "identifier": [
+        {
+            "system": "http://hl7.org/fhir/sid/us-npi",
+            "use": "official",
+            "value": "1234567890"
+        }
+    ],
+    "meta": {
+        "lastUpdated": "2021-08-24T10:10:10Z",
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
+        ]
+    },
+    "name": [
+        {
+            "given": [
+                "John",
+                "Jacob"
+            ],
+            "prefix": [
+                "Dr."
+            ],
+            "use": "official",
+            "family": "Smith"
+        }
+    ],
+    "id": "1"
+    }
+    ```

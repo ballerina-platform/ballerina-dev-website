@@ -24,8 +24,8 @@ Execute the command below to pull the Health tool from Ballerina Central.
 
 ```
 $ bal tool pull health
-health:1.0.0 pulled successfully.
-health:1.0.0 successfully set as the active version.
+health:2.0.0 pulled successfully.
+health:2.0.0 successfully set as the active version.
 ```
 
 ## Usage
@@ -57,7 +57,7 @@ The parameters that are available with the tool are listed below.
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `--included-profile`     | Generate only a specific profile/s as a pre-built Ballerina service.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
-| `--excluded-profile`     | Skip a specific profile/s when generating pre-built services.                                                                                                                                                                                                                                                                                                                                      | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
+| `--excluded-profile`     | Skip a specific profile/s when generating Ballerina APIs.                                                                                                                                                                                                                                                                                                                                      | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 
 ## Package generation
 
@@ -111,6 +111,30 @@ Follow the steps below to run the Health tool and create the Ballerina package.
     Ballerina FHIR package generation completed successfully.
     ```
 
+    The generated folder (i.e., working-with-health-tool/template-generation/ig-uscore/gen) will contain the following directory structure.
+
+    ```
+    └── gen
+    └── carinbb_package
+        ├── Ballerina.toml
+        ├── Package.md
+        ├── initializer.bal
+        ├── resource_c4bbcoverage.bal
+        ├── resource_c4bbexplanation_of_benefit.bal
+        ├── resource_c4bbexplanation_of_benefit_inpatient_institutional.bal
+        ├── resource_c4bbexplanation_of_benefit_oral.bal
+        ├── resource_c4bbexplanation_of_benefit_outpatient_institutional.bal
+        ├── resource_c4bbexplanation_of_benefit_pharmacy.bal
+        ├── resource_c4bbexplanation_of_benefit_professional_non_clinician.bal
+        ├── resource_c4bborganization.bal
+        ├── resource_c4bbpatient.bal
+        ├── resource_c4bbpractitioner.bal
+        ├── resource_c4bbrelated_person.bal
+        ├── resources
+        ├── tests
+        └── variables.bal
+    ```
+
 3. Build the generated package.
 
     ```
@@ -136,7 +160,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
-1. Navigate to the cloned `working-with-health-tool/carinbb-patient-service` directory.
+1. Navigate to the cloned `working-with-health-tool/package-generation/carinbb-patient-service` directory.
 
     >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb-patient-service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-health-tool/package-generation/carinbb-patient-service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
 
@@ -210,7 +234,7 @@ $ bal health fhir -m template --dependent-package <fully-qualified-ballerina-pac
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 | `--included-profile`     | If only a specific profile/s needs to be generated as a pre-built Ballerina service, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
-| `--excluded-profile`     | If only a specific profile/s needs to be skipped when generating pre-built services, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
+| `--excluded-profile`     | If only a specific profile/s needs to be skipped when generating Ballerina APIs, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 
 ### Template generation example
 
@@ -220,22 +244,22 @@ Follow the steps below to try out an example template generation use case of the
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation) and extract them to a preferred location.
 
-The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) directory, which includes the definition files of the FHIR specification.
+The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-uscore/definitions) directory, which includes the definition files of the FHIR specification.
 
 #### Generate the template
 
-Follow the steps below to run the Health tool and generate the pre-built service templates for the selected package.
+Follow the steps below to run the Health tool and generate the Ballerina API templates for the selected package.
 
->**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the pre-built service templates for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/1.2.0) package in Ballerina Central.
+>**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the Ballerina API templates for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/1.2.0) package in Ballerina Central.
 
 1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 
-2. Run the tool with the [required arguments](#template-generation-command-options) to generate the pre-built services.
+2. Run the tool with the [required arguments](#template-generation-command-options) to generate the Ballerina APIs.
 
     >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) downloaded from the **JSON Definitions ZIP archive** of the [US Core implementation guide](https://build.fhir.org/ig/HL7/US-Core/downloads.html) to generate the templates.
 
     ```
-    $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package healthcare_samples/carinbb_package ig-uscore/definitions/
+    $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package ballerinax/health.fhir.r4.uscore501 ig-uscore/definitions
     Ballerina FHIR template generation completed successfully.
     ```
 
@@ -243,15 +267,22 @@ Follow the steps below to run the Health tool and generate the pre-built service
 
     ```
     .
-    |____organization
+    |____device
     | 	|____api_config.bal
     | 	|____service.bal
     |	|____.gitignore
     |	|____Package.md
     | 	|____Ballerina.toml
-    |____relatedperson
+    |____observation
     |	|____api_config.bal
     | 	|____service.bal
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml
+    |____patient
+    | 	|____api_config.bal
+    | 	|____service.bal
+    | 	|____Dependencies.toml
     | 	|____.gitignore
     | 	|____Package.md
     | 	|____Ballerina.toml
@@ -262,30 +293,29 @@ Follow the steps below to run the Health tool and generate the pre-built service
     | 	|____.gitignore
     | 	|____Package.md
     | 	|____Ballerina.toml
-    |____explanationofbenefit
-    | 	|____api_config.bal
-    | 	|____service.bal
-    | 	|____Dependencies.toml
-    | 	|____.gitignore
-    | 	|____Package.md
-    | 	|____Ballerina.toml
-    |____patient
+    |____practitionerrole
     |	|____api_config.bal
     |	|____service.bal
     | 	|____.gitignore
     | 	|____Package.md
     | 	|____Ballerina.toml
-    |____coverage
+    |____procedure
     | 	|____api_config.bal
     | 	|____service.bal
     | 	|____.gitignore
     | 	|____Package.md
-    | 	|____Ballerina.toml  
+    | 	|____Ballerina.toml
+    |____relatedperson
+    | 	|____api_config.bal
+    | 	|____service.bal
+    | 	|____.gitignore
+    | 	|____Package.md
+    | 	|____Ballerina.toml    
     ```
 
-3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `service.bal` file of the `practitioner` pre-built service with the code below to implement the business logic.
+3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/service.bal` file of the ballerina API template with the code below to implement the business logic.
 
-    >**Info:** Refer to the provided sample when implementing the data element mappings and how the response needs to be set in an FHIR API. You can use VS Code to open the generated pre-built service and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
+    >**Info:** Refer to the provided sample when implementing the data element mappings and how the response needs to be set in an FHIR API. You can use VS Code to open the generated Ballerina API and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
 
     ```ballerina
     isolated resource function get fhir/r4/Practitioner/[string id] (r4:FHIRContext fhirContext) returns Practitioner|r4:OperationOutcome|r4:FHIRError {
@@ -342,7 +372,7 @@ Follow the steps below to use the generated service template by running the clon
 3. Invoke the API to try it out.
 
     ```
-    $ curl http://localhost:9090/fhir/r4/Practitioner/12
+    $ curl http://localhost:9090/fhir/r4/Practitioner/1
     ```
 
     You can view the response shown below.

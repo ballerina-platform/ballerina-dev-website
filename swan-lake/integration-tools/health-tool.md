@@ -1,11 +1,11 @@
 ---
 layout: ballerina-health-support-left-nav-pages-swanlake
 title: Health tool (FHIR/HL7)
-description: The health tool generates pre-built Ballerina services and library packages for developing healthcare integrations.
+description: The health tool generates Ballerina API templates and library packages for developing healthcare integrations.
 keywords: ballerina, programming language, healthcare, contract
 permalink: /learn/health-tool/
 active: health-tool
-intro: The health tool generates pre-built Ballerina services and library packages for developing healthcare integrations.
+intro: The health tool generates Ballerina API templates and library packages for developing healthcare integrations.
 ---
 
 They are primarily focused on the [Fast Healthcare Interoperability Resources (FHIR)](https://www.hl7.org/fhir/overview.html) standard and are developed using Ballerina.
@@ -212,14 +212,14 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 ## Template generation
 
-The tool can also be used to generate a pre-built Ballerina service for each FHIR resource in the implementation guide. FHIR integration developers can leverage any of these generated Ballerina packages by implementing the business logic for FHIR RESTful APIs and expose them as standard FHIR APIs.
+The tool can also be used to generate a Ballerina API template for each FHIR resource in the implementation guide. FHIR integration developers can leverage any of these generated Ballerina packages by implementing the business logic for FHIR RESTful APIs and expose them as standard FHIR APIs.
 
 ### Template generation usage
 
 The tool supports the template generation usage as follows.
 
 ```
-$ bal health fhir -m template --dependent-package <fully-qualified-ballerina-package> [OPTIONS] <fhir-specification-directory-path>
+$ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package ballerinax/health.fhir.r4.uscore501 ig-uscore/definitions
 ```
 
 ### Template generation command options
@@ -244,7 +244,7 @@ Follow the steps below to try out an example template generation use case of the
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation) and extract them to a preferred location.
 
-The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-uscore/definitions) directory, which includes the definition files of the FHIR specification.
+The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) directory, which includes the definition files of the FHIR specification.
 
 #### Generate the template
 

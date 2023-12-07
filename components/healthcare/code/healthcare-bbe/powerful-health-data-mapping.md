@@ -2,7 +2,7 @@
 title: 'Powerful health data mapping'
 description: Ballerina makes data mapping seamless through its pre-built HL7v2.x to FHIR transformation functionalities, making short work of healthcare data mapping tasks. Ballerina has cracked the challenge of mapping one kind of data value to another kind of data value, simultaneously as code and picture, so that both are simple, powerful, and boundless.
 image: 'images/health-data-mapping.png'
-url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/hl7v2_to_fhir/main.bal'
+url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/hl7v2-to-fhir/main.bal'
 ---
 ```
 final string msg =

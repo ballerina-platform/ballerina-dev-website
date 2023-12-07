@@ -87,7 +87,7 @@ bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
 
 Follow the steps below to try out an example package generation use case of the Health tool.
 
-#### Clone the example project
+### Clone the example project
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation) and extract them to a preferred location.
 

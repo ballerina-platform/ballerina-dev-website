@@ -16,7 +16,7 @@ They are primarily focused on the [Fast Healthcare Interoperability Resources (F
 
 Download a directory containing all FHIR specification definition files. You can download a preferred standard implementation guide from the [FHIR Implementation Guide registry](https://fhir.org/guides/registry/).
 
->**Note:** It is recommended to use a Standard for Trial Use (STU) or higher release level of the implementation guides. Make sure that the downloaded specification archive has the StructureDefinition, ValueSet, and CodeSystem files for the Implementation Guide (IG) resources when extracted.
+>**Note:** It is recommended to use a Standard for Trial Use (STU) or higher release level of the implementation guides. Make sure that the downloaded specification archive has the `StructureDefinition`, `ValueSet`, and `CodeSystem` files for the Implementation Guide (IG) resources when extracted.
 
 ## Install the tool
 
@@ -49,15 +49,15 @@ The parameters that are available with the tool are listed below.
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Usage |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-m, --mode`     | Generation mode, which can be to generate a `package` or `template`.                                                                                                                                                                                                      | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>          |
+| `-m, --mode`     | Generation mode (i.e., whether to generate a Ballerina package or an API template).                                                                                                                                                                                                      | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>          |
 | `-o, --output`   | Location of the generated Ballerina artifacts.                                                                                                                                                                                                                   | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `--package-name` | Name of the Ballerina package to be generated.   | <ul><li><a href="#package-generation-command-options">package generation</a></li></ul>           |
 | `--dependent-package` | Ballerina package name, which contains the IG resources. | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `--org-name`     | Organization name of the Ballerina package to be generated.                                                                                                                                                                  | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#package-generation-command-options">package generation</a></li><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
-| `--included-profile`     | Generate only a specific profile/s as a pre-built Ballerina service.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
-| `--excluded-profile`     | Skip a specific profile/s when generating Ballerina APIs.                                                                                                                                                                                                                                                                                                                                      | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
+| `--included-profile`     | Generate only a specific profile(s) as a Ballerina API template.                                                                                                                                                                                                                                                                                                                                     | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
+| `--excluded-profile`     | Skip a specific profile(s) when generating Ballerina API templates.                                                                                                                                                                                                                                                                                                                                      | <ul><li><a href="#template-generation-command-options">template generation</a></li></ul>           |
 
 ## Package generation
 
@@ -68,7 +68,7 @@ The FHIR resources in the implementation guide will be represented as Ballerina 
 The tool supports the package generation usage as follows.
 
 ```
-bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
+$ bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
 ```
 
 ### Package generation command options
@@ -76,7 +76,7 @@ bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-m, --mode`     | If `mode` is set to `package`, a Ballerina package will be generated including all the records and types. In the `template` mode, pre-built Ballerina services can be generated for implementing FHIR APIs.                                                                                                                                                                                                      | Mandatory          |
+| `-m, --mode`     | If `mode` is set to `package`, a Ballerina package will be generated including all the records and types.                                                                                                                                                                                                      | Mandatory          |
 | `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | Optional           |
 | `--package-name` | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name of the implementation guide will be taken to construct the name of the package. For more information, see the <a href="https://ballerina.io/learn/package-references/#the-name-field" target="_blank">the <code>name</code> field</a>. | Optional           |
 | `--org-name`     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                   | Optional           |
@@ -93,8 +93,8 @@ Clone the [artifacts of the example](https://github.com/ballerina-guides/healthc
 
 The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
 
-- The [`/ig-carinbb/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) directory: includes the definition files of the FHIR specification.
-- The [`carinbb-patient-service`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/carinbb-patient-service) directory: includes the Ballerina project containing the Ballerina project with the artifacts (i.e., the `Ballerina.toml`, `Dependencies.toml`, and `service.bal` files) to be executed.
+- The [`ig-carinbb/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) directory: includes the definition files of the FHIR specification.
+- The [`carinbb-patient-service`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/carinbb-patient-service) directory: includes the Ballerina project containing the artifacts (i.e., the `Ballerina.toml`, `Dependencies.toml`, and `service.bal` files) to be executed.
 
 #### Generate the package
 
@@ -111,7 +111,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
     Ballerina FHIR package generation completed successfully.
     ```
 
-    The generated folder (i.e., working-with-health-tool/template-generation/ig-uscore/gen) will contain the following directory structure.
+    The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.
 
     ```
     └── gen
@@ -227,14 +227,14 @@ $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --d
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-m, --mode`     | If `mode` is set to `template`, pre-built Ballerina services can be generated for implementing FHIR APIs.                                                                                                                                                                                                      | Mandatory          |
-| `--dependent-package` | Fully qualified name of the published Ballerina package containing the IG resources (e.g., `<org>/<package>`. This option can be used to generate pre-built Ballerina service specifically for the resources in the given IG. The package name part of this value will be added as a prefix to the service name. | Mandatory           |
+| `-m, --mode`     | If `mode` is set to `template`, Ballerina API templates can be generated for implementing FHIR APIs.                                                                                                                                                                                                      | Mandatory          |
+| `--dependent-package` | Fully qualified name of the published Ballerina package containing the IG resources (e.g., `<org>/<package>`). This option can be used to generate Ballerina API templates specifically for the resources in the given IG. The package name part of this value will be added as a prefix to the service name. | Mandatory           |
 | `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | Optional           |
 | `--org-name`     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                   | Optional           |
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
-| `--included-profile`     | If only a specific profile/s needs to be generated as a pre-built Ballerina service, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
-| `--excluded-profile`     | If only a specific profile/s needs to be skipped when generating Ballerina APIs, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
+| `--included-profile`     | If only a specific profile(s) need(s) to be generated as a Ballerina API template, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
+| `--excluded-profile`     | If only a specific profile(s) need(s) to be skipped when generating Ballerina API templates, specify the profile URL as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 
 ### Template generation example
 
@@ -244,7 +244,7 @@ Follow the steps below to try out an example template generation use case of the
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation) and extract them to a preferred location.
 
-The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) directory, which includes the definition files of the FHIR specification.
+The cloned directory includes the [`ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) directory, which includes the definition files of the FHIR specification.
 
 #### Generate the template
 
@@ -313,9 +313,9 @@ Follow the steps below to run the Health tool and generate the Ballerina API tem
     | 	|____Ballerina.toml    
     ```
 
-3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/service.bal` file of the ballerina API template with the code below to implement the business logic.
+3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/service.bal` file of the Ballerina API template with the code below to implement the business logic.
 
-    >**Info:** Refer to the provided sample when implementing the data element mappings and how the response needs to be set in an FHIR API. You can use VS Code to open the generated Ballerina API and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
+    >**Info:** Refer to the generated example code when implementing the data element mappings and how the response needs to be set in an FHIR API. You can use VS Code to open the generated Ballerina API and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
 
     ```ballerina
     isolated resource function get fhir/r4/Practitioner/[string id] (r4:FHIRContext fhirContext) returns Practitioner|r4:OperationOutcome|r4:FHIRError {

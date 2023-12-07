@@ -50,55 +50,10 @@ export default function JoinUs(props) {
         <Row>
 
           <Col xs={12}>
-            {/* <Row>
-              <div className={styles.socialMedia}>
-                <div className={styles.smIcons}>
-                  <ul>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
-                        <Image src={`${prefix}/images/sm-icons/discord-color.svg`} width={70} height={60} alt="Discord" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
-                        <Image src={`${prefix}/images/sm-icons/stackoverflow-color.svg`} width={60} height={60} alt="Stackoverflow" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
-                        <Image src={`${prefix}/images/sm-icons/github-black.svg`} width={70} height={70} alt="GitHub" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
-                        <Image src={`${prefix}/images/sm-icons/twitter-x-black.png`} width={60} height={60} alt="X" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
-                        <Image src={`${prefix}/images/sm-icons/linkedin-color.svg`} width={70} height={70} alt="LinkedIn" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://www.youtube.com/c/Ballerinalang?reload=9" target="_blank" rel="noreferrer" title="YouTube">
-                        <Image src={`${prefix}/images/sm-icons/youtube-color.svg`} width={80} height={80} alt="YouTube" />
-                      </a>
-                    </li>
-                    <li>
-                      <a className={styles.footerLinkSM} href="https://www.meetup.com/ballerinalang-community/" target="_blank" rel="noreferrer" title="Meetup">
-                        <Image src={`${prefix}/images/sm-icons/meetup-color.svg`} width={80} height={80} alt="Meetup" />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </Row> */}
+ 
+            <Row xs={1} md={2} lg={4} className="g-6">
 
-
-
-            <Row xs={1} md={4} className="g-6">
-              {/* {Array.from({ length: 4 }).map((_, idx) => ( */}
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/Discord_logo.svg`} className={styles.centerWideLogo} alt='Discord' />
@@ -113,7 +68,7 @@ export default function JoinUs(props) {
                 </Card>
               </Col>
 
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                 <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/Stack_Overflow_logo.svg`} className={styles.centerWideLogo} alt='Stackoverflow' />
@@ -128,7 +83,7 @@ export default function JoinUs(props) {
                 </Card>
               </Col>
 
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                 <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/github-black.svg`} className={styles.centerLogo} alt='GitHub' />
@@ -143,7 +98,7 @@ export default function JoinUs(props) {
                 </Card>
               </Col>
 
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                 <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/twitter-x-black.png`} className={styles.centerLogo} alt='X' />
@@ -157,12 +112,11 @@ export default function JoinUs(props) {
                   </Card.Body>
                 </Card>
               </Col>
-              {/* ))} */}
+
             </Row>
 
-            <Row xs={1} md={4} className="g-6 justify-content-center mt-5">
-              {/* {Array.from({ length: 3 }).map((_, idx) => ( */}
-              <Col className={styles.cardCol}>
+            <Row xs={1} md={2} lg={4} className="g-6 justify-content-center">
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                 <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/LI-Logo.png`} className={styles.centerExtraWideLogo} alt='LinkedIn' />
@@ -177,7 +131,7 @@ export default function JoinUs(props) {
                 </Card>
               </Col>
 
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                 <div className={styles.imageWrap}>
                   <Card.Img variant="top" src={`${prefix}/images/sm-icons/yt_logo_rgb_light.png`} className={styles.centerExtraWideLogo} alt='YouTube' />
@@ -192,10 +146,10 @@ export default function JoinUs(props) {
                 </Card>
               </Col>
 
-              <Col className={styles.cardCol}>
+              <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/meetup-color.svg`} className={styles.centerLogo} alt='Meetup' />
+                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/logo--mSwarm.svg`} className={styles.centerLogo} style={{width:"20%"}} alt='Meetup' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -206,7 +160,6 @@ export default function JoinUs(props) {
                   </Card.Body>
                 </Card>
               </Col>
-              {/* ))} */}
             </Row>
 
           </Col>

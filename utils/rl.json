@@ -15,14 +15,6 @@
             "id": "swan-lake-release-notes",
             "subDirectories": [
                 {
-                    "dirName": "2201.8.4 (Swan Lake Update 8)",
-                    "level": 2,
-                    "position": 1,
-                    "isDir": false,
-                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.8.4",
-                    "id": "swan-lake-2201.8.4"
-                },
-                {
                     "dirName": "2201.8.3 (Swan Lake Update 8)",
                     "level": 2,
                     "position": 1,

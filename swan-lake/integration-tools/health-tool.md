@@ -89,32 +89,32 @@ Follow the steps below to try out an example package generation use case of the 
 
 #### Clone the example project
 
-Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen) and extract them to a preferred location.
+Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation) and extract them to a preferred location.
 
 The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
 
-- The [`/ig_carinbb/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) directory: includes the definition files of the FHIR specification.
-- The [`carinbb_patient_service`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/carinbb_patient_service) directory: includes the Ballerina project containing the Ballerina project with the artifacts (i.e., the `Ballerina.toml`, `Dependencies.toml`, and `service.bal` files) to be executed.
+- The [`/ig-carinbb/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) directory: includes the definition files of the FHIR specification.
+- The [`carinbb-patient-service`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/carinbb-patient-service) directory: includes the Ballerina project containing the Ballerina project with the artifacts (i.e., the `Ballerina.toml`, `Dependencies.toml`, and `service.bal` files) to be executed.
 
 #### Generate the package
 
 Follow the steps below to run the Health tool and create the Ballerina package.
 
-1. Navigate to the cloned `working_with_health_tool/package_gen` directory.
+1. Navigate to the cloned `working-with-health-tool/package-generation` directory.
 
 2. Run the tool with the [required arguments](#package-generation-command-options) to generate the package.
 
-    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
+    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
 
     ```
-    $ bal health fhir -m package -o ig_carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig_carinbb/definitions/
+    $ bal health fhir -m package -o ig-carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig-carinbb/definitions/
     Ballerina FHIR package generation completed successfully.
     ```
 
 3. Build the generated package.
 
     ```
-    $ cd ig_carinbb/gen/carinbb_package
+    $ cd ig-carinbb/gen/carinbb_package
     $ bal pack
     Compiling source
             healthcare_samples/carinbb_package:0.0.1
@@ -136,9 +136,9 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
-1. Navigate to the cloned `working_with_health_tool/carinbb_patient_service` directory.
+1. Navigate to the cloned `working-with-health-tool/carinbb-patient-service` directory.
 
-    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/package_gen/carinbb_patient_service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
+    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb-patient-service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-health-tool/package-generation/carinbb-patient-service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
 
 2. Run the cloned Ballerina project and validate the output.
 
@@ -218,9 +218,9 @@ Follow the steps below to try out an example template generation use case of the
 
 #### Clone the example project
 
-Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/template_gen) and extract them to a preferred location.
+Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation) and extract them to a preferred location.
 
-The cloned directory includes the [`/ig_uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) directory, which includes the definition files of the FHIR specification.
+The cloned directory includes the [`/ig-uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) directory, which includes the definition files of the FHIR specification.
 
 #### Generate the template
 
@@ -228,18 +228,18 @@ Follow the steps below to run the Health tool and generate the pre-built service
 
 >**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the pre-built service templates for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/1.2.0) package in Ballerina Central.
 
-1. Navigate to the cloned `working_with_health_tool/template-gen` directory.
+1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 
 2. Run the tool with the [required arguments](#template-generation-command-options) to generate the pre-built services.
 
-    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/template_gen/ig_uscore/definitions) downloaded from the **JSON Definitions ZIP archive** of the [US Core implementation guide](https://build.fhir.org/ig/HL7/US-Core/downloads.html) to generate the templates.
+    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) downloaded from the **JSON Definitions ZIP archive** of the [US Core implementation guide](https://build.fhir.org/ig/HL7/US-Core/downloads.html) to generate the templates.
 
     ```
-    $ bal health fhir -m template -o ig_uscore/gen --org-name healthcare_samples --dependent-package healthcare_samples/carinbb_package ig_uscore/definitions/
+    $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package healthcare_samples/carinbb_package ig-uscore/definitions/
     Ballerina FHIR template generation completed successfully.
     ```
 
-    The generated folder (i.e., `working_with_health_tool/template-gen/ig_uscore/gen`) will contain the following directory structure.
+    The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.
 
     ```
     .
@@ -327,7 +327,7 @@ Follow the steps below to run the Health tool and generate the pre-built service
 
 Follow the steps below to use the generated service template by running the cloned Ballerina project.
 
-1. Navigate to the generated `working_with_health_tool/template-gen/ig_uscore/gen/practitioner/` directory.
+1. Navigate to the generated `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/` directory.
 
 2. Run the service and verify the output response.
 

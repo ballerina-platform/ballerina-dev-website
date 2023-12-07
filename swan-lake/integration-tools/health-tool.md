@@ -93,8 +93,8 @@ Clone the [artifacts of the example](https://github.com/ballerina-guides/healthc
 
 The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
 
-- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/package_gen/carinbb_patient_service/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
-- The [`service.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/package_gen/carinbb_patient_service/service.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
+- The [`/ig_carinbb/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) directory: includes the definition files of the FHIR specification.
+- The [`carinbb_patient_service`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/carinbb_patient_service) directory: includes the Ballerina project containing the Ballerina project with the artifacts (i.e., the `Ballerina.toml`, `Dependencies.toml`, and `service.bal` files) to be executed.
 
 #### Generate the package
 
@@ -219,6 +219,8 @@ Follow the steps below to try out an example template generation use case of the
 #### Clone the example project
 
 Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/template_gen) and extract them to a preferred location.
+
+The cloned directory includes the [`/ig_uscore/definitions`](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/package_gen/ig_carinbb/definitions) directory, which includes the definition files of the FHIR specification.
 
 #### Generate the template
 

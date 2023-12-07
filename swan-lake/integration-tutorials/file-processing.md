@@ -26,7 +26,7 @@ The flow is as follows.
     Joy, Williams, 0111111111
     ```
 
-3. Insert the read records to a database. Insert them to a table named `Persons` of which the column names are expected to be `firstName`, `lastName`, and `phone`.
+3. Insert the read records to a database. Insert them to a table named `persons` of which the column names are expected to be `firstName`, `lastName`, and `phone`.
 
 4. If successful, move the file to a directory containing successfully-processed files. If processing failed in step 2 or 3, move the file to a directory containing files for which processing failed.
 
@@ -56,7 +56,7 @@ Follow the instructions given in this section to develop the service.
 2. Introduce the source code in files with the `.bal` extension (e.g., the `main.bal` file). Introduce a constant to represent the `.csv` extension and [configurable variables](https://ballerina.io/learn/by-example/#configurability) to denote the paths to the three directories: directory to listen on and directories to move files to once processing is completed. Also introduce configurable variables for database configuration.
 
     ```ballerina
-    const string CSV_EXT = ".csv";
+    const CSV_EXT = ".csv";
 
     configurable string inPath = "./in";
     configurable string mvOnSuccessPath = "./out";
@@ -124,14 +124,14 @@ Follow the instructions given in this section to develop the service.
         check new mysql:Client(host, user, password, database, port);
     ```
 
-8. Introduce the [module `init` function](https://ballerina.io/learn/by-example/init-function/) and create the output directories if they do not exist. Also use the `db` client to create the `Persons` table if it does not exist already.
+8. Introduce the [module `init` function](https://ballerina.io/learn/by-example/init-function/) and create the output directories if they do not exist. Also use the `db` client to create the `persons` table if it does not exist already.
 
     ```ballerina
     function init() returns error? {
         check createDirIfNotExists(mvOnSuccessPath);
         check createDirIfNotExists(mvOnFailurePath);
 
-        _ = check db->execute(`CREATE TABLE IF NOT EXISTS Persons (
+        _ = check db->execute(`CREATE TABLE IF NOT EXISTS persons (
                                             firstName VARCHAR(50) NOT NULL,
                                             lastName VARCHAR(50) NOT NULL,
                                             phone VARCHAR(10) NOT NULL
@@ -155,7 +155,7 @@ Follow the instructions given in this section to develop the service.
             do {
                 Person[] persons = check io:fileReadCsv(file);
                 sql:ParameterizedQuery[] insertQueries = from Person person in persons
-                    select `INSERT INTO Persons (firstName, lastName, phone)
+                    select `INSERT INTO persons (firstName, lastName, phone)
                             VALUES (${person.First\ Name}, ${person.Last\ Name}, ${person.Phone})`;
                 _ = check db->batchExecute(insertQueries);
                 move(file, mvOnSuccessPath);
@@ -163,7 +163,7 @@ Follow the instructions given in this section to develop the service.
                 if err is io:Error {
                     log:printError("Error occured while reading file", err, filename = file);
                 } else {
-                    log:printError("Error persisting data to database", err, filename = file);
+                    log:printError("Error occured while persisting data", err, filename = file);
                 }
                 move(file, mvOnFailurePath);
             }
@@ -195,7 +195,7 @@ import ballerina/sql;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _;
 
-const string CSV_EXT = ".csv";
+const CSV_EXT = ".csv";
 
 configurable string inPath = "./in";
 configurable string mvOnSuccessPath = "./out";
@@ -242,7 +242,7 @@ function init() returns error? {
     check createDirIfNotExists(mvOnSuccessPath);
     check createDirIfNotExists(mvOnFailurePath);
 
-    _ = check db->execute(`CREATE TABLE IF NOT EXISTS Persons (
+    _ = check db->execute(`CREATE TABLE IF NOT EXISTS persons (
                                         firstName VARCHAR(50) NOT NULL,
                                         lastName VARCHAR(50) NOT NULL,
                                         phone VARCHAR(10) NOT NULL
@@ -260,7 +260,7 @@ service on fileListener {
         do {
             Person[] persons = check io:fileReadCsv(file);
             sql:ParameterizedQuery[] insertQueries = from Person person in persons
-                select `INSERT INTO Persons (firstName, lastName, phone)
+                select `INSERT INTO persons (firstName, lastName, phone)
                         VALUES (${person.First\ Name}, ${person.Last\ Name}, ${person.Phone})`;
             _ = check db->batchExecute(insertQueries);
             move(file, mvOnSuccessPath);
@@ -268,7 +268,7 @@ service on fileListener {
             if err is io:Error {
                 log:printError("Error occured while reading file", err, filename = file);
             } else {
-                log:printError("Error persisting data to database", err, filename = file);
+                log:printError("Error occured while persisting data", err, filename = file);
             }
             move(file, mvOnFailurePath);
         }

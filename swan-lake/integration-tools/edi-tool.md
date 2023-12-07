@@ -257,7 +257,7 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 1. Navigate to the `edi-package-generation/edi_service` directory.
 
-    >**Info:** You can change the dependency (name and version) of the generated package in the [`lib/porder/Ballerina.toml`](https://github.com/ballerina-guides/integration-samples/tree/main/edi-package-generation/lib/porder/Ballerina.toml) file of this cloned Ballerina project directory as preferred.
+    >**Info:** You can change the dependency (name and version) of the generated package in the `lib/porder/Ballerina.toml` file of the generated package as preferred.
 
 2. Run the cloned Ballerina project and validate the output.
 

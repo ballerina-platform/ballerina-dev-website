@@ -108,7 +108,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
     ```
     $ bal health fhir -m package -o ig-carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig-carinbb/definitions/
-    Ballerina FHIR package generation completed successfully.
+    [INFO] Ballerina FHIR package generation completed successfully. Generated package can be found at: /Users/praneesha/Desktop/healthcare-samples/working-with-health-tool/package-generation/ig-carinbb/gen
     ```
 
     The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.
@@ -260,7 +260,7 @@ Follow the steps below to run the Health tool and generate the Ballerina API tem
     ```
     $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package ballerinax/health.fhir.r4.uscore501 ig-uscore/definitions
     [INFO] Generating templates for all FHIR profiles...
-[INFO] Ballerina FHIR API templates generation completed successfully. Generated templates can be found at: <location>
+    [INFO] Ballerina FHIR API templates generation completed successfully. Generated templates can be found at: /Users/praneesha/Desktop/healthcare-samples/working-with-health-tool/template-generation/ig-uscore/gen
     ```
 
     The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.

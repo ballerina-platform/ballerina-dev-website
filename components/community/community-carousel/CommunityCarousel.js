@@ -24,26 +24,29 @@ export default function CommunityCarousel(props) {
 
   return (
     <Carousel className={`${styles.communityCarousel} carousel-border`} variant='dark' controls={false}>
-      <Carousel.Item>
+      {/* <Carousel.Item>
         <img src='/images/community/1.png' />
+      </Carousel.Item> */}
+      <Carousel.Item>
+        <img src='/images/community/2.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/2.png' />
+        <img src='/images/community/3.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/3.png' />
+        <img src='/images/community/4.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/4.png' />
+        <img src='/images/community/5.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/5.png' />
+        <img src='/images/community/6.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/6.png' />
+        <img src='/images/community/7.jpeg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/7.png' />
+        <img src='/images/community/8.jpeg' />
       </Carousel.Item>
     </Carousel>
   );

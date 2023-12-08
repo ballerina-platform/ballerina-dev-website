@@ -18,16 +18,6 @@ Download a directory containing all FHIR specification definition files. You can
 
 >**Note:** It is recommended to use a Standard for Trial Use (STU) or higher release level of the implementation guides. Make sure that the downloaded specification archive has the StructureDefinition, ValueSet, and CodeSystem files for the Implementation Guide (IG) resources when extracted.
 
-## Install the tool
-
-Execute the command below to pull the Health tool from Ballerina Central.
-
-```
-$ bal tool pull health
-health:1.0.0 pulled successfully.
-health:1.0.0 successfully set as the active version.
-```
-
 ## Usage
 
 This tool uses the command below to generate a Ballerina package for a given FHIR implementation guide. 
@@ -53,32 +43,38 @@ The parameters that are available with the tool are listed below.
 | `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
 | `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 
+## Install the tool
+
+Execute the command below to pull the Health tool from Ballerina Central.
+
+```
+$ bal tool pull health
+health:1.0.0 pulled successfully.
+health:1.0.0 successfully set as the active version.
+```
+
 ## Example
 
 Follow the steps below to try out an example use case of the Health tool.
 
 ### Clone the example project
 
-Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool) and extract them to a preferred location.
+Clone the [artifacts of the example](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation) and extract them to a preferred location.
 
 The cloned directory includes the artifacts below that will be required to try out this example (Ballerina project and the FHIR specification files). 
 
-- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
-- The [`main.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/main.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
+- The [`Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-health-tool/package-generation/carinbb-patient-service/Ballerina.toml) file: specifies the dependency of the package (name and version) that is to be generated. 
+- The [`service.bal`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-health-tool/package-generation/carinbb-patient-service/service.bal) file: includes the import of the generated package together with the business logic/mapping implemented using the generated FHIR resource records.
 
 ### Generate the package
 
 Follow the steps below to run the Health tool and create the Ballerina package.
 
-1. Navigate to the `working_with_health_tool` directory.
-
-    ```
-    cd healthcare-samples/working_with_health_tool
-    ```
+1. Navigate to the cloned `working-with-health-tool` directory.
 
 2. Run the tool with the [required arguments](#command-options) to generate the package.
 
-    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working_with_health_tool/ig_carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
+    >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
 
     ```
     $ bal health fhir -m package -o ig_carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig_carinbb/definitions/
@@ -110,9 +106,9 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 Follow the steps below to use the generated package by running the cloned Ballerina project.
 
-1. Navigate to the cloned `working_with_health_tool/carinbb_patient_service` directory.
+1. Navigate to the cloned `working-with-health-tool/carinbb-patient-service` directory.
 
-    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb_patient_service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_health_tool/carinbb_patient_service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
+    >**Info:** You can change the dependency (name and version) of the generated package in the [`carinbb-patient-service/Ballerina.toml`](https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-health-tool/package-generation/carinbb-patient-service/Ballerina.toml) file of this cloned Ballerina project directory as preferred. 
 
 2. Run the cloned Ballerina project and validate the output.
 

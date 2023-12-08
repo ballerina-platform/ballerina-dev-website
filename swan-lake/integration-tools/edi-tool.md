@@ -10,7 +10,7 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 
 ## Install the tool
 
-Execute the command below to pull the EDI tool from [Ballerina Central](https://central.ballerina.io/ballerina/edi/1.1.1).
+Execute the command below to pull the EDI tool from [Ballerina Central](https://central.ballerina.io/ballerina/edi/latest).
 
 ```
 $ bal tool pull edi

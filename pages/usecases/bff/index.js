@@ -20,9 +20,9 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
-import Layout from "/layouts/LayoutUseCase";
-import Intro from "../../../components/healthcare/intro/Intro";
-import Code from "../../../components/healthcare/code/Code";
+import Layout from "../../../layouts/LayoutUseCase";
+import Intro from "../../../components/bff/intro/Intro";
+import Code from "../../../components/bff/code/Code";
 import { prefix } from '../../../utils/prefix';
 
 import fs from "fs";
@@ -43,12 +43,12 @@ export async function getStaticProps() {
   const highlighter = await getHighlighter({
     theme: 'github-light'
   });
-  const files = traverseFolder("components/healthcare/code/healthcare-bbe");
+  const files = traverseFolder("components/bff/code/bff-bbe");
   var samples = {};
 
   files.forEach(function (item, index) {
     const filename = fs.readFileSync(item, "utf-8");
-    const sampleName = item.replace('components/healthcare/code/healthcare-bbe/', '').replace('.md', '');
+    const sampleName = item.replace('components/bff/code/bff-bbe/', '').replace('.md', '');
     const { data: frontmatter, content } = matter(filename);
     samples[sampleName] = {
       frontmatter: {
@@ -96,7 +96,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Write code with bff-friendly abstractions."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -104,54 +104,54 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for healthcare</title>
+        <title>Ballerina for implementing backends for modern front-ends - The Ballerina programming language</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
+        <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Write code with bff-friendly abstractions."
         />
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for healthcare" />
+        <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with healthcare-friendly abstractions."
+          content="Write code with bff-friendly abstractions."
         />
 
         {/* TWITTER */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina - Ballerina for healthcare" />
+        <meta name="twitter:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Write code with bff-friendly abstractions."
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="twitter:text:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Write code with bff-friendly abstractions."
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/health-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
       </Head>
 
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
           <Row className="pageHeader pageContentRow integration">
             <Col xs={12}>
               <Container>
-                <h1>Ballerina for healthcare</h1>
+                <h1>Ballerina for developing back-ends for modern front-ends</h1>
               </Container>
 
             </Col>

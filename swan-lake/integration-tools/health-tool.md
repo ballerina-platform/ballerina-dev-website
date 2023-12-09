@@ -211,7 +211,7 @@ Follow the steps below to use the generated package by running the cloned Baller
 
 ## Template generation
 
-The tool can also be used to generate a Ballerina API template for each FHIR resource in the implementation guide. FHIR integration developers can leverage any of these generated Ballerina packages by implementing the business logic for FHIR RESTful APIs and expose them as standard FHIR APIs.
+The tool can also be used to generate a Ballerina API template for each FHIR resource in the implementation guide. FHIR integration developers can leverage any of these generated Ballerina API templates by implementing the business logic for FHIR RESTful APIs and expose them as standard FHIR APIs.
 
 ### Template generation usage
 

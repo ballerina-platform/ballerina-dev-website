@@ -38,7 +38,7 @@ The Ballerina Health tool support provides the main capabilities below.
 The general usage of the tool is as follows.
 
 ```
-$ bal health fhir -m <Mode: package|template> [OPTIONS] <fhir-specification-directory-path>
+$ bal health fhir -m <package|template> [OPTIONS] <fhir-specification-directory-path>
 ```
 
 >**Note:** Make sure to give the directory path of the downloaded FHIR definitions as the last argument. 
@@ -108,7 +108,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
     ```
     $ bal health fhir -m package -o ig-carinbb/gen --org-name healthcare_samples --package-name carinbb_package ig-carinbb/definitions/
-    [INFO] Ballerina FHIR package generation completed successfully. Generated package can be found at: /Users/healthcare-samples/working-with-health-tool/package-generation/ig-carinbb/gen
+    [INFO] Ballerina FHIR package generation completed successfully. Generated package can be found at: /tmp/healthcare-samples/working-with-health-tool/package-generation/ig-carinbb/gen
     ```
 
     The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.
@@ -218,7 +218,7 @@ The tool can also be used to generate a Ballerina API template for each FHIR res
 The tool supports the template generation usage as follows.
 
 ```
-$ bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
+$ bal health fhir -m template [OPTIONS] <fhir-specification-directory-path>
 ```
 
 ### Template generation command options
@@ -260,7 +260,7 @@ Follow the steps below to run the Health tool and generate the Ballerina API tem
     ```
     $ bal health fhir -m template -o ig-uscore/gen --org-name healthcare_samples --dependent-package ballerinax/health.fhir.r4.uscore501 ig-uscore/definitions
     [INFO] Generating templates for all FHIR profiles...
-    [INFO] Ballerina FHIR API templates generation completed successfully. Generated templates can be found at: /Users/healthcare-samples/working-with-health-tool/template-generation/ig-uscore/gen
+    [INFO] Ballerina FHIR API templates generation completed successfully. Generated templates can be found at: /tmp/healthcare-samples/working-with-health-tool/template-generation/ig-uscore/gen
     ```
 
     The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.

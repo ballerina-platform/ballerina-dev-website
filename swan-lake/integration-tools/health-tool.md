@@ -20,7 +20,7 @@ Download a directory containing all FHIR specification definition files. You can
 
 ## Install the tool
 
-Execute the command below to pull the Health tool from [Ballerina Central](https://central.ballerina.io/search?q=ballerinax%2Fhealth).
+Execute the command below to pull the Health tool from [Ballerina Central](https://central.ballerina.io/ballerinax/health/latest).
 
 ```
 $ bal tool pull health

@@ -253,7 +253,7 @@ Follow the steps below to run the Health tool and generate the Ballerina API tem
 
 1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 
-2. Run the tool with the [required arguments](#template-generation-command-options) to generate the Ballerina APIs.
+2. Run the tool with the [required command options](#template-generation-command-options) to generate the Ballerina APIs.
 
     >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) downloaded from the **JSON Definitions ZIP archive** of the [US Core implementation guide](https://build.fhir.org/ig/HL7/US-Core/downloads.html) to generate the templates.
 

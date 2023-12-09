@@ -102,7 +102,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
 
 1. Navigate to the cloned `working-with-health-tool/package-generation` directory.
 
-2. Run the tool with the [required arguments](#package-generation-command-options) to generate the package.
+2. Run the tool with the [required command options](#package-generation-command-options) to generate the package.
 
     >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/package-generation/ig-carinbb/definitions) downloaded from the **JSON Definitions ZIP archive** of the [Carin BB implementation guide](https://hl7.org/fhir/us/carin-bb/STU2/downloads.html) to generate the package.
 
@@ -253,7 +253,7 @@ Follow the steps below to run the Health tool and generate the Ballerina API tem
 
 1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 
-2. Run the tool with the [required arguments](#template-generation-command-options) to generate the Ballerina APIs.
+2. Run the tool with the [required command options](#template-generation-command-options) to generate the Ballerina APIs.
 
     >**Note:** This example uses the [definitions files](https://github.com/ballerina-guides/healthcare-samples/tree/main/working-with-health-tool/template-generation/ig-uscore/definitions) downloaded from the **JSON Definitions ZIP archive** of the [US Core implementation guide](https://build.fhir.org/ig/HL7/US-Core/downloads.html) to generate the templates.
 

@@ -67,7 +67,7 @@ Follow the steps below to generate Ballerina records for the above EDI schema.
 
 1. Navigate to the cloned `edi-code-generation` directory.
 
-2. Run the tool with the [required arguments](#code-generation-command-options) to generate the package.
+2. Run the tool with the [required command options](#code-generation-command-options) to generate the package.
 
     ```
     $ bal edi codegen -s schemas/edi-schema.json -o orderRecords.bal

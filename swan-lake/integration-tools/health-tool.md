@@ -81,8 +81,6 @@ $ bal health fhir [-m | --mode] package
             [--package-name] <ballerina-package-name>
             [-o | --output] <output-location>
             [--org-name] <package-organization-name>
-            [-v, --version] <tool-version-information> 
-            [-h, --help] <tool-help-information>
             <fhir-specification-directory-path>
 ```
 
@@ -95,8 +93,6 @@ $ bal health fhir [-m | --mode] package
 | `--package-name` | Name of the Ballerina package to be generated. The package name can be explicitly set using this argument. Unless specified, the default name of the implementation guide will be taken to construct the name of the package. For more information, see the <a href="https://ballerina.io/learn/package-references/#the-name-field" target="_blank">the <code>name</code> field</a>. | Mandatory            |
 | `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | Optional           |
 | `--org-name`     | Organization name of the Ballerina package to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                   | Optional           |
-| `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
-| `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 
 ### Package generation example
 
@@ -126,7 +122,7 @@ Follow the steps below to run the Health tool and create the Ballerina package.
     [INFO] Ballerina FHIR package generation completed successfully. Generated package can be found at: /tmp/healthcare-samples/working-with-health-tool/package-generation/ig-carinbb/gen
     ```
 
-    The generated folder (i.e., `working-with-health-tool/template-generation/ig-uscore/gen`) will contain the following directory structure.
+    The generated folder (i.e., `working-with-health-tool/package-generation/ig-carinbb/gen`) will contain the following directory structure.
 
     ```
     └── carinbb_package
@@ -237,8 +233,6 @@ $ bal health fhir [-m | --mode] template
             [--dependent-package] <dependent-ballerina-package-name> 
             [-o | --output] <output-location>
             [--org-name] <template-organization-name>
-            [-v, --version] <tool-version-information> 
-            [-h, --help] <tool-help-information>
             [--included-profile] <profile(s)-to-include-in-generation>
             [--excluded-profile] <profile(s)-to-exclude-in-generation>
             <fhir-specification-directory-path>
@@ -253,8 +247,6 @@ $ bal health fhir [-m | --mode] template
 | `--dependent-package` | Fully qualified name of the published Ballerina package containing the IG resources (e.g., `<org>/<package>`). This option can be used to generate Ballerina templates for FHIR APIs specifically for the resources in the given IG. The package name part of this value will be added as a prefix to the service name. | Mandatory           |
 | `-o, --output`   | Location of the generated Ballerina artifacts. If this path is not specified, the output will be written to the same directory from which the command is run.                                                                                                                                                                                                                   | Optional           |
 | `--org-name`     | Organization name of the Ballerina templates for FHIR APIs to be generated. For more information, see <a href="https://ballerina.io/learn/package-references/#the-org-field" target="_blank"> the <code>org</code> field</a>.                                                                                                                                                                   | Optional           |
-| `-v, --version`  | Print the version information of the Health tool.                                                                                                                                                                                                                                                                                                                               | Optional           |
-| `-h, --help`     | Print the usage information of the Health tool.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 | `--included-profile`     | If one or more specific FHIR profiles need to be generated as Ballerina templates for FHIR APIs, specify the profile URL(s) as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 | `--excluded-profile`     | If one or more specific FHIR profiles need to be skipped when generating Ballerina templates for FHIR APIs, specify the profile URL(s) as the value of this parameter. This argument can be used more than once.                                                                                                                                                                                                                                                                                                                                     | Optional           |
 
@@ -272,7 +264,7 @@ The cloned directory includes the [`ig-uscore/definitions`](https://github.com/b
 
 Follow the steps below to run the Health tool and generate the Ballerina templates for FHIR APIs for the selected package.
 
->**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the API templates for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/latest) package in Ballerina Central.
+>**Note:** You need to have a Ballerina package containing IG-specific FHIR resource data models To generate FHIR IG templates. You can use the package mode of the Health tool for easy generation of this package. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/latest) package in Ballerina Central.
 
 1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 
@@ -336,7 +328,13 @@ Follow the steps below to run the Health tool and generate the Ballerina templat
     | 	|____Ballerina.toml    
     ```
 
-3. Update the `get fhir/r4/Practitioner/[string id]corresponding` method in the `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/service.bal` file of the Ballerina templates for FHIR APIs with the code below to implement the business logic.
+#### Use the generated templates
+
+Follow the steps below to use the generated service templates by running the cloned Ballerina project.
+
+1. Navigate to the generated `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/` directory.
+
+2. Update the `get fhir/r4/Practitioner/[string id]` method in the corresponding `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/service.bal` file with the code below to implement the business logic.
 
     >**Info:** You can use VS Code to open the generated Ballerina templates for FHIR APIs and implement the business logic in it. It has Ballerina language support via an extension, which assists on both syntactic and semantic aspects.
 
@@ -376,13 +374,9 @@ Follow the steps below to run the Health tool and generate the Ballerina templat
     }
     ```
 
-#### Use the generated templates
 
-Follow the steps below to use the generated service templates by running the cloned Ballerina project.
 
-1. Navigate to the generated `working-with-health-tool/template-generation/ig-uscore/gen/practitioner/` directory.
-
-2. Run the service and verify the output response.
+3. Run the service and verify the output response.
 
     ```
     $ bal run
@@ -392,7 +386,7 @@ Follow the steps below to use the generated service templates by running the clo
     Running executable
     ```
 
-3. Invoke the API to try it out.
+4. Invoke the API to try it out.
 
     ```
     $ curl http://localhost:9090/fhir/r4/Practitioner/1

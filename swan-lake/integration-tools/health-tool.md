@@ -272,7 +272,7 @@ The cloned directory includes the [`ig-uscore/definitions`](https://github.com/b
 
 Follow the steps below to run the Health tool and generate the Ballerina templates for FHIR APIs for the selected package.
 
->**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the Ballerina templates for FHIR APIs for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/latest) package in Ballerina Central.
+>**Note:** You need to have a Ballerina package generated using FHIR definitions and the Health tool as a prerequisite for generating the API templates for them. This example uses the [`health.fhir.r4.uscore501`](https://central.ballerina.io/ballerinax/health.fhir.r4.uscore501/latest) package in Ballerina Central.
 
 1. Navigate to the cloned `working-with-health-tool/template-generation` directory.
 

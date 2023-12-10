@@ -33,7 +33,7 @@ health:2.0.0 successfully set as the active version.
 The Ballerina Health tool supports two main usages as follows.
 
 - [**Package generation:**](#package-generation) generate a Ballerina package from a given FHIR implementation guide.
-- [**Template generation:**](#template-generation) generate Ballerina API templates from a given dependent Ballerina package and an FHIR implementation guide.
+- [**Template generation:**](#template-generation) generate Ballerina API templates from a given FHIR implementation guide.
 
 The general usage of the tool is as follows.
 
@@ -75,10 +75,6 @@ The FHIR resources in the implementation guide will be represented as Ballerina 
 ### Package generation usage
 
 The tool supports the package generation usage as follows.
-
-```
-$ bal health fhir -m package [OPTIONS] <fhir-specification-directory-path>
-```
 
 ```
 $ bal health fhir [-m | --mode] <mode-type>

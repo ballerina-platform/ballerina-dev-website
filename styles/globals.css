@@ -526,7 +526,6 @@ a.cGreenLinkArrow:hover {
 
 .communityIntro {
   position: relative;
-<<<<<<< HEAD
 }
 
 .background-image {
@@ -556,8 +555,6 @@ a.cGreenLinkArrow:hover {
 
 .selectedTagIcon{
   margin-left: 3px;
-=======
->>>>>>> f4d88396c1c87cf0724ce4d27a1f5d3f659c8242
 }
 
 .background-image {
@@ -601,7 +598,6 @@ pre[class*="language-"] {
 
 /*------------Community----------------*/
 
-<<<<<<< HEAD
 .communityRow {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -613,10 +609,6 @@ pre[class*="language-"] {
   margin-top: 10px;
   margin-bottom: 30px;
   font-size: 1.5rem;
-=======
-.carousel-item img {
-  width: 100%;
->>>>>>> f4d88396c1c87cf0724ce4d27a1f5d3f659c8242
 }
 
 .carousel-item img {
@@ -1655,7 +1647,6 @@ table.cTopControlsContainer tbody {
 .odd .nav-link.active {
   background-color: #eeeeee !important;
 }
-<<<<<<< HEAD
 
 
 .cInlineImage-small {
@@ -1781,5 +1772,3 @@ a.join:hover {
   /* background-repeat: no-repeat; */
   /* background-position: left 20px top 14px; */
 }
-=======
->>>>>>> f4d88396c1c87cf0724ce4d27a1f5d3f659c8242

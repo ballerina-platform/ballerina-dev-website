@@ -87,6 +87,9 @@ export default function Community() {
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
                     <CommunityCarousel />
                   </Col>
+                  <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
+                    <CommunityCarousel />
+                  </Col>
                 </Row>
               </Container>
             </Col>

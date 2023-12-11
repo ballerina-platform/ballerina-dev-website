@@ -557,9 +557,14 @@ a.cGreenLinkArrow:hover {
   margin-left: 3px;
 }
 
-.selectedTagBadge:hover{
-  opacity: 0.8;
-  color: #ffffff;
+.background-image {
+  opacity: 0.1; 
+  position: absolute;
+  top: 165px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
 }
 
 /*--------downloads page -------*/

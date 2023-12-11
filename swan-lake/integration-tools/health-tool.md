@@ -392,33 +392,33 @@ Follow the steps below to use the generated API templates by running the cloned 
 
     ```json
     {
-    "resourceType": "Practitioner",
-    "identifier": [
+    "resourceType":"Practitioner",
+    "identifier":[
         {
-            "system": "http://hl7.org/fhir/sid/us-npi",
-            "use": "official",
-            "value": "1234567890"
+            "system":"http://hl7.org/fhir/sid/us-npi",
+            "use":"official",
+            "value":"1234567890"
         }
     ],
-    "meta": {
-        "lastUpdated": "2021-08-24T10:10:10Z",
-        "profile": [
+    "meta":{
+        "lastUpdated":"2021-08-24T10:10:10Z",
+        "profile":[
             "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"
         ]
     },
-    "name": [
+    "name":[
         {
-            "given": [
+            "given":[
                 "John",
                 "Jacob"
             ],
-            "prefix": [
+            "prefix":[
                 "Dr."
             ],
-            "use": "official",
-            "family": "Smith"
+            "use":"official",
+            "family":"Smith"
         }
     ],
-    "id": "1"
+    "id":"1"
     }
     ```

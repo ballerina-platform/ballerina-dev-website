@@ -1,6 +1,20 @@
 {
     "articles": [
         {
+            "url": "https://eluminoustechnologies.com/blog/best-microservices-framework/",
+            "title": "Best Microservices Framework: A Handy Listicle",
+            "author": "Robert S",
+            "source": "eLuminous Technologies",
+            "date": "Nov 13, 2023"
+        },
+        {
+            "url": "https://itechnolabs.ca/top-microservices-frameworks-to-build-highly-scalable-applications/",
+            "title": "Top Microservices Frameworks to Build Highly Scalable Applications",
+            "author": "Davesh Sharma",
+            "source": "iTechnoLabs",
+            "date": "Oct 31, 2023"
+        },
+        {
             "url": "https://www.slant.co/topics/20337/~visual-programming-languages",
             "title": "What are the best visual programming languages?",
             "author": "",

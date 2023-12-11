@@ -1343,6 +1343,10 @@ table.cTopControlsContainer tbody {
   scroll-margin-top: 65px;
 }
 
+.llanding h3 {
+  scroll-margin-top: 65px;
+}
+
 .llanding .intro a {
   color: #20b6b0;
   text-decoration: none;

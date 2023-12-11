@@ -75,7 +75,7 @@ public function main() {
 }
 ```
 
-For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://lib.ballerina.io/ballerina/lang.regexp/0.0.0), and [Regular expressions feature guide](/learn/advanced-general-purpose-language-features/#regular-expressions).
+For more information, see the new [RegExp type example](/learn/by-example/regexp-type), [RegExp operations example](/learn/by-example/regexp-operations), [API Documentation](https://central.ballerina.io/ballerina/lang.regexp/latest), and [Regular expressions feature guide](/learn/advanced-general-purpose-language-features/#regular-expressions).
 
 ### Bug fixes
 

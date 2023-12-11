@@ -1,7 +1,7 @@
 ---
 title: 'HL7?  Ballerina is HL7'
 description: Ballerina offers built-in support for the HL7 messaging standard, which is still the most commonly used standard in the healthcare industry to facilitate the exchange of information between different systems. With Ballerina, parsing HL7 messages is a breeze, simplifying the processing and exchange of healthcare data.
-url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/working_with_hl7/working_with_hl7_parsing.bal'
+url: 'https://github.com/ballerina-guides/healthcare-samples/blob/main/working-with-hl7/working_with_hl7_parsing.bal'
 ---
 ```
 // The following example is a simple serialized HL v2.3 ADT A01 message.

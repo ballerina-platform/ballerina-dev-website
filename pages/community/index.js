@@ -105,7 +105,7 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Newsletter getLink={getLink} />
+            <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
           {/* <Row className="pageContentRow communityRow">

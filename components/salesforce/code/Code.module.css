@@ -50,3 +50,13 @@ a.cDownload span {
 .description {
     margin-bottom: 20px;
 }
+
+.box a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+}
+.box a:hover {
+    color: #57595d!important;
+    text-decoration: none;
+}

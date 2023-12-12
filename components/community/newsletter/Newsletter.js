@@ -49,7 +49,7 @@ export default function Newsletter(props) {
 
                 <Row>
                     <Col sm={12} md={6} lg={6}>
-                        <NewsletterSubscription />
+                        <NewsletterSubscription showLink={props.showLink}/>
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>

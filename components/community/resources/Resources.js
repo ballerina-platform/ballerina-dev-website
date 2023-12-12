@@ -63,7 +63,7 @@ export default function Resources(props) {
                 </Row>
 
                 <Row>
-                    <Col sm={12} md={6} lg={6}>
+                    <Col sm={12}>
                         <p>
                             We have curated a list of articles, blogs, and videos that were created by the members of the Ballerina community. These resources cover aspects of the Ballerina language, platform, tools, and use cases with implementation details.
                         </p>

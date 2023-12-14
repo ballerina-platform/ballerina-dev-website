@@ -97,7 +97,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The VS Code extension provides robust language support with visualization and design tools for Ballerina."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -112,7 +112,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Code and visualize Ballerina - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The VS Code extension provides robust language support with visualization and design tools for Ballerina."
         />
         <meta
           property="og:image"
@@ -129,7 +129,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with healthcare-friendly abstractions."
+          content="The VS Code extension provides robust language support with visualization and design tools for Ballerina."
         />
 
         {/* TWITTER */}
@@ -140,7 +140,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The VS Code extension provides robust language support with visualization and design tools for Ballerina."
         />
         <meta
           name="twitter:image"
@@ -148,7 +148,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="The VS Code extension provides robust language support with visualization and design tools for Ballerina."
         />
         <meta
           property="twitter:image"

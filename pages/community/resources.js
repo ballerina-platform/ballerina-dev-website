@@ -34,7 +34,7 @@ export default function Resources() {
     <>
       <Head>
 
-        <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="description" content="We have an extensive list of community-maintained articles, blogs, and videos to get you up to speed with Ballerina." />
 
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
@@ -44,16 +44,16 @@ export default function Resources() {
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Resources - The Ballerina programming language" />
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:description" content="We have an extensive list of community-maintained articles, blogs, and videos to get you up to speed with Ballerina." />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Resources - The Ballerina programming language" />
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:description" content="We have an extensive list of community-maintained articles, blogs, and videos to get you up to speed with Ballerina." />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Resources - The Ballerina programming language" />
-        <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
-        <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="twitter:description" content="We have an extensive list of community-maintained articles, blogs, and videos to get you up to speed with Ballerina." />
+        <meta property="twitter:text:description" content="We have an extensive list of community-maintained articles, blogs, and videos to get you up to speed with Ballerina." />
 
 
       </Head>

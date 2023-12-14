@@ -21,7 +21,7 @@ import { prefix } from '../../../utils/prefix';
 import styles from './NewsletterSubscription.module.css';
 import Image from 'next-image-export-optimizer';
 
-export default function NewsletterSubscription() {
+export default function NewsletterSubscription(props) {
 
     const [hoverBtn, setHoverBtn] = React.useState(false);
 
@@ -41,9 +41,12 @@ export default function NewsletterSubscription() {
                     setHoverBtn(false);
                 }}
             >
-                <a href={`${prefix}/community/ballerina-newsletter`} target="_blank" rel="noreferrer" className={styles.viewAll}>
+                {
+                    props.showLink &&
+                    <a href={`${prefix}/community/ballerina-newsletter`} target="_blank" rel="noreferrer" className={styles.viewAll}>
                     View all newsletters <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
                 </a>
+                }
 
             </p >
         </>

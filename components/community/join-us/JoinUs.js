@@ -48,15 +48,24 @@ export default function JoinUs(props) {
         </Row>
 
         <Row>
+          <Col sm={12}>
+            <p>
+            Our community includes experienced Ballerina engineers and experts from some of the world's top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+            </p>
+          </Col>
+
+        </Row>
+
+        <Row>
 
           <Col xs={12}>
- 
+
             <Row xs={1} md={2} lg={4} className="g-6">
 
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/Discord_logo.svg`} className={styles.centerWideLogo} alt='Discord' />
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/Discord_logo.svg`} className={styles.centerWideLogo} alt='Discord' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -70,9 +79,9 @@ export default function JoinUs(props) {
 
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
-                <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/Stack_Overflow_logo.svg`} className={styles.centerWideLogo} alt='Stackoverflow' />
-                 </div>
+                  <div className={styles.imageWrap}>
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/Stack_Overflow_logo.svg`} className={styles.centerWideLogo} alt='Stackoverflow' />
+                  </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
                       <a href="https://stackoverflow.com/questions/tagged/ballerina" className={styles.join} target="_blank" rel="noreferrer" title="Stackoverflow">
@@ -85,8 +94,8 @@ export default function JoinUs(props) {
 
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
-                <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/github-black.svg`} className={styles.centerLogo} alt='GitHub' />
+                  <div className={styles.imageWrap}>
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/github-black.svg`} className={styles.centerLogo} alt='GitHub' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -100,8 +109,8 @@ export default function JoinUs(props) {
 
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
-                <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/twitter-x-black.png`} className={styles.centerLogo} alt='X' />
+                  <div className={styles.imageWrap}>
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/twitter-x-black.png`} className={styles.centerLogo} alt='X' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -118,8 +127,8 @@ export default function JoinUs(props) {
             <Row xs={1} md={2} lg={4} className="g-6 justify-content-center">
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
-                <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/LI-Logo.png`} className={styles.centerExtraWideLogo} alt='LinkedIn' />
+                  <div className={styles.imageWrap}>
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/LI-Logo.png`} className={styles.centerExtraWideLogo} alt='LinkedIn' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -133,8 +142,8 @@ export default function JoinUs(props) {
 
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
-                <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/yt_logo_rgb_light.png`} className={styles.centerExtraWideLogo} alt='YouTube' />
+                  <div className={styles.imageWrap}>
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/yt_logo_rgb_light.png`} className={styles.centerExtraWideLogo} alt='YouTube' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
@@ -149,7 +158,7 @@ export default function JoinUs(props) {
               <Col className={`${styles.cardCol} mt-5`}>
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
-                  <Card.Img variant="top" src={`${prefix}/images/sm-icons/logo--mSwarm.svg`} className={styles.centerLogo} style={{width:"20%"}} alt='Meetup' />
+                    <Card.Img variant="top" src={`${prefix}/images/sm-icons/logo--mSwarm.svg`} className={styles.centerLogo} style={{ width: "20%" }} alt='Meetup' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>

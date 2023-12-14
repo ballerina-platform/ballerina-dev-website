@@ -1743,7 +1743,7 @@ img + blockquote{
 
 .carousel-border .carousel-inner {
   border-radius: 5px;
-  box-shadow: 3px 4px #EBEDF0;
+  /* box-shadow: 3px 4px #EBEDF0; */
 }
 
 a.join {

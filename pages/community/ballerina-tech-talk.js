@@ -37,7 +37,7 @@ export default function TechTalk() {
     <>
       <Head>
 
-        <meta name="description" content="If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina." />
+        <meta name="description" content="In the regular Tech Talk, the Ballerina team will discuss different technical topics surrounding the world of Ballerina." />
 
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
@@ -46,16 +46,16 @@ export default function TechTalk() {
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Ballerina tech talk - The Ballerina programming language" />
-        <meta property="og:description" content="If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina." />
+        <meta property="og:description" content="In the regular Tech Talk, the Ballerina team will discuss different technical topics surrounding the world of Ballerina." />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Ballerina tech talk - The Ballerina programming language" />
-        <meta property="og:description" content="If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina." />
+        <meta property="og:description" content="In the regular Tech Talk, the Ballerina team will discuss different technical topics surrounding the world of Ballerina." />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Ballerina tech talk - The Ballerina programming language" />
-        <meta property="twitter:description" content="If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina." />
-        <meta property="twitter:text:description" content="If you're looking to meet other Ballerina users and language specialists, this is the place for you. We're excited to bring a regular Tech Talk, where our team will discuss different technical topics surrounding the world of Ballerina." />
+        <meta property="twitter:description" content="In the regular Tech Talk, the Ballerina team will discuss different technical topics surrounding the world of Ballerina." />
+        <meta property="twitter:text:description" content="In the regular Tech Talk, the Ballerina team will discuss different technical topics surrounding the world of Ballerina." />
 
 
       </Head>

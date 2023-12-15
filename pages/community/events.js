@@ -34,22 +34,22 @@ export default function Events() {
       <Head>
         <title>Events - The Ballerina programming language</title>
 
-        <meta name="description" content="Want to connect with other Ballerina users or language experts? Then look no further. We're excited to offer a variety of events that can help you learn more and connect with experts." />
+        <meta name="description" content="Ballerina offers a variety of events that can help you learn more and connect with experts." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Events - The Ballerina programming language" />
-        <meta property="og:description" content="Want to connect with other Ballerina users or language experts? Then look no further. We're excited to offer a variety of events that can help you learn more and connect with experts." />
+        <meta property="og:description" content="Ballerina offers a variety of events that can help you learn more and connect with experts." />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Events - The Ballerina programming language" />
-        <meta property="og:description" content="Want to connect with other Ballerina users or language experts? Then look no further. We're excited to offer a variety of events that can help you learn more and connect with experts." />
+        <meta property="og:description" content="Ballerina offers a variety of events that can help you learn more and connect with experts." />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Events - The Ballerina programming language" />
-        <meta property="twitter:description" content="Want to connect with other Ballerina users or language experts? Then look no further. We're excited to offer a variety of events that can help you learn more and connect with experts." />
-        <meta property="twitter:text:description" content="Want to connect with other Ballerina users or language experts? Then look no further. We're excited to offer a variety of events that can help you learn more and connect with experts." />
+        <meta property="twitter:description" content="Ballerina offers a variety of events that can help you learn more and connect with experts." />
+        <meta property="twitter:text:description" content="Ballerina offers a variety of events that can help you learn more and connect with experts." />
 
       </Head>
       <Layout>

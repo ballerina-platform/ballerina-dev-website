@@ -152,9 +152,12 @@ export default function PostPage({
           property="og:description"
           content={frontmatter.description}
         ></meta>
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:description" content={frontmatter.description} />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`}/>
@@ -166,6 +169,12 @@ export default function PostPage({
           property="twitter:text:description"
           content={frontmatter.description}
         />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ballerinalang" />
+        <meta name="twitter:creator" content="@ballerinalang" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
       </Head>
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">

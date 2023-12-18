@@ -140,8 +140,9 @@ export default function PostPage({
         <meta name="keywords" content={frontmatter.keywords} />
 
         <title>{`${frontmatter.title} - The Ballerina programming language`}</title>
-  {/* <!--FB--> */}
-  <meta property="og:type" content="article" />
+        
+        {/* <!--FB--> */}
+        <meta property="og:type" content="article" />
         <meta
           property="og:title"
           content={`${frontmatter.title} - The Ballerina programming language`}
@@ -174,6 +175,10 @@ export default function PostPage({
           property="twitter:text:description"
           content={frontmatter.description}
         />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@ballerinalang" />
+        <meta name="twitter:creator" content="@ballerinalang" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
           content="https://ballerina.io/images/ballerina-vs-code-ext-sm-banner.png"

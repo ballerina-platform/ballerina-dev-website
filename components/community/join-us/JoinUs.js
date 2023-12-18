@@ -70,7 +70,7 @@ export default function JoinUs(props) {
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
                       <a href="https://discord.gg/ballerinalang" className={styles.join} target="_blank" rel="noreferrer" title="Discord">
-                        Join our community
+                        Join our server
                       </a>
                     </Card.Text>
                   </Card.Body>
@@ -115,7 +115,7 @@ export default function JoinUs(props) {
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
                       <a href="https://twitter.com/ballerinalang" className={styles.join} target="_blank" rel="noreferrer" title="X">
-                        Join our community
+                        Follow us
                       </a>
                     </Card.Text>
                   </Card.Body>
@@ -148,7 +148,7 @@ export default function JoinUs(props) {
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
                       <a href="https://www.youtube.com/c/Ballerinalang?reload=9" className={styles.join} target="_blank" rel="noreferrer" title="YouTube">
-                        Join our community
+                        Subscribe to our channel
                       </a>
                     </Card.Text>
                   </Card.Body>

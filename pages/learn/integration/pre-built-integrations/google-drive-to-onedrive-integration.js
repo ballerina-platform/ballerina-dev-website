@@ -126,7 +126,7 @@ export default function Learn({ samples, content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Sync Google Drive files to Microsoft OneDrive"
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -141,7 +141,7 @@ export default function Learn({ samples, content }) {
         <meta property="og:title" content="Google Drive to OneDrive integration - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Sync Google Drive files to Microsoft OneDrive"
         />
         <meta
           property="og:image"
@@ -158,7 +158,7 @@ export default function Learn({ samples, content }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Sync Google Drive files to Microsoft OneDrive"
         />
 
         {/* TWITTER */}
@@ -169,7 +169,7 @@ export default function Learn({ samples, content }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Sync Google Drive files to Microsoft OneDrive"
         />
         <meta
           name="twitter:image"
@@ -177,7 +177,7 @@ export default function Learn({ samples, content }) {
         />
         <meta
           property="twitter:text:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Sync Google Drive files to Microsoft OneDrive"
         />
         <meta
           property="twitter:image"

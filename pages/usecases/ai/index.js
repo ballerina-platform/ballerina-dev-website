@@ -97,7 +97,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with integration-friendly abstractions."
+          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -112,7 +112,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Ballerina for AI as a Service - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with integration-friendly abstractions."
+          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
         />
         <meta
           property="og:image"
@@ -129,7 +129,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with integration-friendly abstractions."
+          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
         />
 
         {/* TWITTER */}
@@ -140,7 +140,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with integration-friendly abstractions."
+          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
         />
         <meta
           name="twitter:image"
@@ -148,7 +148,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with integration-friendly abstractions."
+          content="Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models."
         />
         <meta
           property="twitter:image"

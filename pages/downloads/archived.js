@@ -111,7 +111,7 @@ export default function AllArchived() {
         <>
             <Head>
 
-                <meta name="description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+                <meta name="description" content="Archived Ballerina distribution versions" />
                 <meta name="author" content="WSO2 LLC." />
 
                 <meta name="keywords" content="ballerina, ballerina downloads, release notes, getting started, programming language" />
@@ -121,15 +121,15 @@ export default function AllArchived() {
                 {/* <!--FB--> */}
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Archived versions - The Ballerina programming language" />
-                <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+                <meta property="og:description" content="Archived Ballerina distribution versions" />
 
                 {/* <!--LINKED IN  --> */}
-                <meta property="og:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+                <meta property="og:description" content="Archived Ballerina distribution versions" />
 
                 {/* <!--TWITTER--> */}
                 <meta name="twitter:title" content="Archived versions - The Ballerina programming language" />
-                <meta name="twitter:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
-                <meta name="twitter:text:description" content="Download the Ballerina programming language for Windows, Linux and MacOS. You can find the release notes, plugin downloads and archived versions here too." />
+                <meta name="twitter:description" content="Archived Ballerina distribution versions" />
+                <meta name="twitter:text:description" content="Archived Ballerina distribution versions" />
             </Head>
             <Layout>
                 <Col sm={3} xxl={2} className='leftNav d-none d-sm-block'>

@@ -60,6 +60,7 @@ The conforming implementation of the specification is released and included in t
       * 6.1.4. [RSA-SHA384](#614-rsa-sha384)
       * 6.1.5. [RSA-SHA512](#615-rsa-sha512)
       * 6.1.6. [SHA384withECDSA](#616-sha384withecdsa)
+      * 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
    * 6.2. [Verify signature](#62-verify-signature)
        * 6.2.1. [RSA-MD5](#621-rsa-md5)
        * 6.2.2. [RSA-SHA1](#622-rsa-sha1)
@@ -67,6 +68,7 @@ The conforming implementation of the specification is released and included in t
        * 6.2.4. [RSA-SHA384](#624-rsa-sha384)
        * 6.2.5. [RSA-SHA512](#625-rsa-sha512)
        * 6.2.6. [SHA384withECDSA](#626-sha384withecdsa)
+       * 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
        
 ## 1. [Overview](#1-overview)
 
@@ -534,6 +536,21 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha384withEcdsa(data, privateKey);
 ```
 
+#### 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
+
+This API can be used to create the SHA256withECDSA based signature value for the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
+```
+
 ### 6.2. [Verify signature](#62-verify-signature)
 
 #### 6.2.1. [RSA-MD5](#621-rsa-md5)
@@ -636,4 +653,21 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha384withEcdsa(data, privateKey);
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keyStore, "keyAlias");
 boolean validity = check crypto:verifySha384withEcdsaSignature(data, signature, publicKey);
+```
+
+#### 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
+
+This API can be used to verify the SHA256withECDSA based signature.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
+crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keyStore, "keyAlias");
+boolean validity = check crypto:verifySha256withEcdsaSignature(data, signature, publicKey);
 ```

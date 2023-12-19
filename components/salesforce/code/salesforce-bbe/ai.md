@@ -10,35 +10,37 @@ sf:Client salesforce = check new ({baseUrl: salesforceBaseUrl, auth: {token: sal
 
 public function main() returns error? {
     gmail:LabelList labelList = check gmail->listLabels("me");
-    string[] labelIdsToMatch = from gmail:Label {name, id} in labelList.labels
-        where ["Lead"].indexOf(name) != ()
-        select id;
-    gmail:MsgSearchFilter searchFilter = {
-        includeSpamTrash: false,
-        labelIds: labelIdsToMatch
-    };
-    gmail:MailThread[] matchingMailThreads = check from gmail:MailThread mailThread
-        in check gmail->listThreads(filter = searchFilter)
-        select mailThread;
-    foreach gmail:MailThread mailThread in matchingMailThreads {
-        _ = check gmail->modifyThread(mailThread.id, [], labelIdsToMatch);
+    Email[] emails = check getMatchingEmails(labelList);
+    foreach Email email in emails {
+        chat:CreateChatCompletionRequest request = {
+            model: "gpt-3.5-turbo",
+            messages: [
+                {
+                    role: "user",
+                    content: string `Extract the following details in JSON from the email.
+                    {
+                        firstName__c: string, // Mandatory
+                        lastName__c: string, // Mandatory
+                        email__c: string // Mandatory
+                        phoneNumber__c: string, // With country code. Use N/A if unable to find
+                        company__c: string, // Mandatory
+                        designation__c: string // Not mandatory. Use N/A if unable to find
+                    }
+                    Here is the email:    
+                    {
+                        from: ${email.'from},
+                        subject: ${email.subject},
+                        body: ${email.body}
+                    }`
+                }
+            ]
+        };
+        chat:CreateChatCompletionResponse response = check openAiChat->/chat/completions.post(request);
+        if response.choices.length() < 1 {
+            return error("Unable to find any choices in the response.");
+        }
+        string content = check response.choices[0].message?.content.ensureType(string);
+        _ = check salesforce->create("EmailLead__c", check content.fromJsonStringWithType(Lead));
     }
-    gmail:Message[] matchingEmails = [];
-    foreach gmail:MailThread mailThread in matchingMailThreads {
-        gmail:MailThread response = check gmail->readThread(mailThread.id);
-        matchingEmails.push((<gmail:Message[]>response.messages)[0]);
-    }
-    Email[] emails = from gmail:Message message in matchingEmails
-        let Email|error email = parseEmail(message)
-        where email is Email
-        select email;
-    Lead[] leads = from Email email in emails
-        let Lead? lead = check generateLead(email, openAiChat)
-        where lead is Lead
-        select lead;
-    from Lead lead in leads
-    do {
-        _ = check salesforce->create("EmailLead__c", lead);
-    };
 }
 ```

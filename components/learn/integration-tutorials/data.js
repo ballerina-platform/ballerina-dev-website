@@ -42,5 +42,12 @@ export const data = [
       ["Email", "SMTP Client", "HTTP Client", "HTTP Service", "REST API", "Integration"]
       ,
       icon: false
+    },
+    
+    {
+      name: "File processing",
+      description: "Use a file listener to process new CSV files and persist data in a database",
+      tags: ["File processing", "CSV", "SQL", "MySQL", "Integration"],
+      icon: false
     }
   ]

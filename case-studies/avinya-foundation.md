@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: "Avinya Academy's triumph in empowering education via effective program delivery and management using Ballerina"
 description: The Avinya Academy is a non-profit organization focused on aiding underprivileged individuals aged 17 to 22 who have opted out of traditional higher education. Its mission is to provide them with 21st-century skills and guide them toward practical training programs that foster the necessary knowledge and skills to seize employment opportunities. 
 keywords: ballerina, programming language, education, avinya foundation, academy

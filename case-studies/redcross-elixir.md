@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: "Ballerina joins forces with Red Cross Sri Lanka to conquer Sri Lanka's medical crisis"
 description: The Red Cross Society of Sri Lanka (SLRCS) is a humanitarian organization that provides assistance to vulnerable people and communities in Sri Lanka.
 keywords: ballerina, programming language, red cross, elixir, wso2, case study

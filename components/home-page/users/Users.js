@@ -66,7 +66,7 @@ export default function Users(props) {
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
               <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
-              <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
+              <a href={`${prefix}/case-studies/avinya-foundation`}><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
           </Col>
         </Row>
       </Container>

@@ -2,6 +2,7 @@
 layout: ballerina-inner-page
 title: Ballerina website license
 permalink: /license-of-site/
+description: License of the Ballerina website
 ---
 
 Except as detailed below, the content on this website is licensed under the [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/us/).

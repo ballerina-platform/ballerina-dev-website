@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'Transform WSO2 internal apps to enhance efficiency and collaboration'
 description: WSO2’s digital transformation team realized that they needed to modernize the company’s own internal applications to improve operational efficiency, collaboration, and productivity. To drive these efforts, the company leveraged the Ballerina language to achieve remarkable results and empower its workforce.
 keywords: ballerina, programming language, digital transformation, internal apps, wso2

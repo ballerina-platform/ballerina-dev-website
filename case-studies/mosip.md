@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'How MOSIP uses Ballerina WebSubHub for event-driven integration'
 description: Ballerina is an open source programming language for the cloud that makes it easier to use, combine, and create network services. In addition to the powerful language features, it comes with a rich Ballerina library, which covers network data, messaging, and communication protocols. The Modular Open Source Identity Platform (MOSIP), an open-source identity platform currently being adopted by several countries to manage the digitization of their civil registries, uses the Ballerina WebSubHub module for event-driven communication.
 keywords: ballerina, programming language, integration, websubhub, mosip
@@ -94,8 +93,8 @@ The solution includes the customizations below.
 
 MOSIP benefitted by using Ballerina in its current deployments as described below.
 
-- The [deployment in the Philippines](https://mosip.io/news-events/the-philippine-statistics-authority-psa-crosses-critical-milestones-for-the-philippine-identification-system-philsys) has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The latest version was deployed in production in 2022.
-- Morocco has a [small deployment](https://www.mosip.io/news-events/mou-between-government-of-morocco-and-iiit-b), an on-premise deployment on Openshift with a few components on AWS.
+- The deployment in the Philippines has generated around 26 million Unique Identification Numbers (UINs) so far, with around 250,000 applications being processed daily to generate the UINs. The latest version was deployed in production in 2022.
+- Morocco has a small deployment, an on-premise deployment on Openshift with a few components on AWS.
 - There are more than eight internal deployments for dev, QA, testing, and production worldwide.
 
 For more information on the ongoing partnerships with countries, see [MOSIP news and events](https://www.mosip.io/news-events.php).

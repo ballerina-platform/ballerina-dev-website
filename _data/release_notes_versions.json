@@ -1356,5 +1356,23 @@
        ],
       "api-docs":"ballerina-api-docs-1.2.47.zip",
       "release-notes":"ballerina-release-notes-1.2.47.md"
+   },
+   {
+      "version":"1.2.48",
+      "release-date":"2023-12-13",
+      "windows-installer":"ballerina-windows-installer-x64-1.2.48.msi",
+      "windows-installer-size":"148mb",
+      "linux-installer":"ballerina-linux-installer-x64-1.2.48.deb",
+      "linux-installer-size":"145mb",
+      "macos-installer":"ballerina-macos-installer-x64-1.2.48.pkg",
+      "macos-installer-size":"165mb",
+      "rpm-installer":"ballerina-linux-installer-x64-1.2.48.rpm",
+      "rpm-installer-size":"167mb",
+      "other-artefacts":[  
+         "ballerina-1.2.48.zip",
+         "ballerina-1.2.48.vsix"
+      ],
+      "api-docs":"ballerina-api-docs-1.2.48.zip",
+      "release-notes":"ballerina-release-notes-1.2.48.md"
    }
 ]

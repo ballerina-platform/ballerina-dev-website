@@ -2,6 +2,7 @@
 layout: ballerina-inner-page
 title: Cookie policy
 permalink: /cookie-policy/
+description: Cookie policy of the Ballerina website
 redirect_from:
 - /cookie-policy
 

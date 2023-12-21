@@ -37,7 +37,7 @@ permalink: /community/active-proposals
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
 |[Write unit test cases for sql clients generated using bal persist tools](https://github.com/ballerina-platform/ballerina-library/issues/5840)|[daneshk](https://github.com/daneshk)|2|2023-11-29|Draft|
-|[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|6|2023-11-16|Draft|
+|[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|12|2023-11-16|Accepted|
 |[Data mapping ballerna openapi extension](https://github.com/ballerina-platform/ballerina-library/issues/5742)|[niveathika](https://github.com/niveathika)|1|2023-11-08|Draft|
 |[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
 |[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|6|2023-10-25|N/A|

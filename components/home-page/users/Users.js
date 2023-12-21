@@ -59,14 +59,14 @@ export default function Users(props) {
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
               <a href={`${prefix}/case-studies/ballerina-central`}><img src={`${prefix}/images/home-page/user-logos/ballerina-central.svg`} width={340} alt="Ballerina Central" title="Ballerina Central" /></a>
-              <a href="https://www.redcross.lk/news/sri-lanka-red-cross-societys-elixir-a-source-of-strength-to-the-health-sector-of-sri-lanka/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
+              <a href={`${prefix}/case-studies/redcross-elixir`}><img src={`${prefix}/images/home-page/user-logos/redcross-elixir.png`} width={280} alt="Redcross Elixir" title="Redcross Elixir" /></a>
               <a href={`${prefix}/case-studies/raapid-ai`}><img src={`${prefix}/images/home-page/user-logos/raapid-ai.png`} width={320} alt="RAAPID" title="RAAPID" /></a>
           </Col>
         </Row>
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
               <a href="https://techventuras.com/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/tech-venturas.png`} width={300} alt="Tech Venturas" title="Tech Venturas" /></a>
-              <a href="https://avinyafoundation.org/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
+              <a href={`${prefix}/case-studies/avinya-foundation`}><img src={`${prefix}/images/home-page/user-logos/avinya-foundation.webp`}  width={280} alt="Avinya Foundation" title="Avinya Foundation" /></a>
           </Col>
         </Row>
       </Container>

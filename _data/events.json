@@ -1,6 +1,22 @@
 {
     "events": [
-       {
+        {
+            "date": "Jan 31, 2024",
+            "day": "Wed.",
+            "time": "",
+            "expire": "2024-02-01T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/microsoft-reactor-bengaluru/events/298084566/?isFirstPublish=true",
+            "eventType": "Microsoft Reactor Bengaluru",
+            "eventName": "Cloud-native Application Development with Ballerina and Azure Functions",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Ballerina Platform Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "May 6-7, 2024",
             "day": "Mon.",
             "time": "",

@@ -2,7 +2,7 @@
 layout: ballerina-left-nav-release-notes
 title: Swan Lake Update 4 (2201.4.3)
 permalink: /downloads/swan-lake-release-notes/2201.4.3/
-active: 2201.8.3
+active: 2201.4.3
 ---
 
 ## Overview of Ballerina Swan Lake Update 4 (2201.4.3)

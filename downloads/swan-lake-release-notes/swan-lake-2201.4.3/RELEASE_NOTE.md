@@ -7,7 +7,7 @@ active: 2201.4.3
 
 ## Overview of Ballerina Swan Lake Update 4 (2201.4.3)
 
-<em>Swan Lake Update 4 (2201.4.3) is the third patch release of Swan Lake Update 4 (2201.4.3) and it includes a security improvement.</em>
+<em>Swan Lake 2201.4.3 is the third patch release of Ballerina 2201.4.0 (Swan Lake Update 4) and it includes security improvements.</em>
 
 ## Update Ballerina
 

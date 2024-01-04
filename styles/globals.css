@@ -1437,6 +1437,14 @@ table.cTopControlsContainer tbody {
   margin-top: 30px;
 }
 
+.vLogo {
+  text-align: center;
+}
+
+.vLogo img {
+  width: 50% !important;
+}
+
 /* ----------- draggable code blocks -------------- */
 #code-container {
   width: 100%;

@@ -108,7 +108,7 @@ export default function Events(props) {
                             style={
                                 (hoverBtn ? linkArrowHover : linkArrow)
                             }>
-                            <a href={`${prefix}/community/events`} rel="noreferrer" target="_blank" className={styles.viewAll}>View all events </a>
+                            <a href={`${prefix}/community/events`} className={styles.viewAll}>View all events </a>
                         </p>
                     </Col>
                 </Row>

@@ -43,7 +43,7 @@ export default function NewsletterSubscription(props) {
             >
                 {
                     props.showLink &&
-                    <a href={`${prefix}/community/ballerina-newsletter`} target="_blank" rel="noreferrer" className={styles.viewAll}>
+                    <a href={`${prefix}/community/ballerina-newsletter`} className={styles.viewAll}>
                     View all newsletters <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
                 </a>
                 }

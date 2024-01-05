@@ -126,7 +126,7 @@ export default function Resources(props) {
                     </Col>
 
                     <Col sm={6} md={6} lg={3} className='gy-4'>
-                        <a href='#' className={styles.resourceCardLink} title="Medium Tech Blog">
+                        <a href='https://medium.com/ballerina-techblog' className={styles.resourceCardLink} title="Medium Tech Blog">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>

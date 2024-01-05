@@ -63,111 +63,125 @@ export default function JoinUs(props) {
             <Row xs={1} md={2} lg={4} className="g-6">
 
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/Discord_logo.svg`} className={styles.centerWideLogo} alt='Discord' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://discord.gg/ballerinalang" className={styles.join} target="_blank" rel="noreferrer" title="Discord">
+                      <div className={styles.join} title="Discord">
                         Join our server
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/Stack_Overflow_logo.svg`} className={styles.centerWideLogo} alt='Stackoverflow' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://stackoverflow.com/questions/tagged/ballerina" className={styles.join} target="_blank" rel="noreferrer" title="Stackoverflow">
+                      <div className={styles.join} title="Stackoverflow">
                         Join our community
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/github-black.svg`} className={styles.centerLogo} alt='GitHub' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://github.com/ballerina-platform" className={styles.join} target="_blank" rel="noreferrer" title="GitHub">
+                      <div href="https://github.com/ballerina-platform" className={styles.join} title="GitHub">
                         Join our community
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/twitter-x-black.png`} className={styles.centerLogo} alt='X' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://twitter.com/ballerinalang" className={styles.join} target="_blank" rel="noreferrer" title="X">
+                      <div className={styles.join} title="X">
                         Follow us
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
             </Row>
 
             <Row xs={1} md={2} lg={4} className="g-6 justify-content-center">
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/LI-Logo.png`} className={styles.centerExtraWideLogo} alt='LinkedIn' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://www.linkedin.com/showcase/ballerinalang/" className={styles.join} target="_blank" rel="noreferrer" title="LinkedIn">
+                      <div className={styles.join} title="LinkedIn">
                         Join our community
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
               <Col className={`${styles.cardCol} mt-5`}>
+                <a href="https://www.youtube.com/c/Ballerinalang?reload=9" target="_blank" rel="noreferrer" title="YouTube">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/yt_logo_rgb_light.png`} className={styles.centerExtraWideLogo} alt='YouTube' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://www.youtube.com/c/Ballerinalang?reload=9" className={styles.join} target="_blank" rel="noreferrer" title="YouTube">
+                      <div className={styles.join} title="YouTube">
                         Subscribe to our channel
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
 
               <Col className={`${styles.cardCol} mt-5`}>
+              <a href="https://www.meetup.com/ballerinalang-community/" target="_blank" rel="noreferrer" title="Meetup">
                 <Card className={styles.joinCard}>
                   <div className={styles.imageWrap}>
                     <Card.Img variant="top" src={`${prefix}/images/sm-icons/logo--mSwarm.svg`} className={styles.centerLogo} style={{ width: "20%" }} alt='Meetup' />
                   </div>
                   <Card.Body>
                     <Card.Text className='text-center mt-3'>
-                      <a href="https://www.meetup.com/ballerinalang-community/" className={styles.join} target="_blank" rel="noreferrer" title="Meetup">
+                      <div className={styles.join} title="Meetup">
                         Join our community
-                      </a>
+                      </div>
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </a>
               </Col>
             </Row>
 

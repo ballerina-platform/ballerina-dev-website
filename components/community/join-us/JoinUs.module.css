@@ -172,8 +172,14 @@
 }
 
 .joinCard {
-  border: none !important;
+  /* border: none !important; */
   background: transparent !important;
+  padding-top: 1rem;
+  box-shadow: 1px 1px #ccc;
+}
+
+.joinCard:hover {
+  border: 1px solid #20b6b0;
 }
 
 .imageWrap {
@@ -200,23 +206,13 @@
   transition: none !important;
   font-size: 18px;
   font-weight: 400;
-  /* background-color: #57595d; */
-  border: 1px solid #57595d;
-  /* color: #ffffff !important; */
   color: #57595d !important;
-  padding: 10px 20px 10px 20px;
+  padding: 0 20px 0 20px;
   text-decoration: none;
-  /* min-height: 60px;
-  line-height: 35px; */
-  /* width: fit-content; */
   min-width: 200px;
-  /* width: 100%; */
-  border-radius: 4px;
   display: inline-block;
 }
 
 .join:hover {
-  background-color: #20b6b0;
-  color: #ffffff !important;
-  border: 1px solid #20b6b0;
+  color: #20b6b0 !important;
 }

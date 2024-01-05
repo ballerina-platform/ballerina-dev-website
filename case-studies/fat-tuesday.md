@@ -11,9 +11,9 @@ user: 'fat-tuesday'
 
 ## Overview
 
-From its solitary inception, [FAT Tuesday](https://fattuesday.com/) has grown to an extensive network of 90 outlets across the globe. With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages.
+From its solitary inception, [FAT Tuesday](https://fattuesday.com/) has grown to an extensive network of 90+ outlets across the globe. With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages.
 
-Across its 90+ worldwide stores, Fat Tuesday collected data from its point of sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
+Across its worldwide stores, Fat Tuesday collected data from its point of sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
 
 ## Challenges
 

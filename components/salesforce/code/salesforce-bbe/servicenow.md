@@ -1,7 +1,7 @@
 ---
 title: 'Make sales staff aware of customer issues'
 description: "Customer issues are tracked in support systems such as JIRA or ServiceNow. However, sales staff also need to be informed about the problems faced by their customers. This synchronization can be done with Ballerina using a few simple steps.<br/><br/><i>Example: Import support cases from ServiceNow to Salesforce for a given time period.</i>"
-url: 'https://github.com/chathurace/integration-samples/blob/main/servicenow-case-to-salesforce-case'
+url: 'https://github.com/ballerina-guides/integration-samples/blob/main/servicenow-case-to-salesforce-case'
 ---
 ```
 sf:Client salesforce = check new (salesforceConfig);

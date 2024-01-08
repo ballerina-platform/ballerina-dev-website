@@ -1,19 +1,17 @@
 ---
 title: "How Ballerina empowered Fat Tuesday's digital transformation"
-description: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion.
+description: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion to an extensive network across the globe.
 keywords: ballerina, programming language, digital transformation, fat tuesday
 permalink: /learn/case-studies/fat-tuesday
 active: fat-tuesday
-intro: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion.
+intro: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion to an extensive network across the globe.
 logo: '/images/home-page/user-logos/fat-tuesday.svg'
 user: 'fat-tuesday'
 ---
 
 ## Overview
 
-From its solitary inception, [FAT Tuesday](https://fattuesday.com/) has grown to an extensive network of 90+ outlets across the globe. With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages.
-
-Across its worldwide stores, Fat Tuesday collected data from its point of sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
+With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages. Across its worldwide stores, [FAT Tuesday](https://fattuesday.com/) collected data from its point-of-sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
 
 ## Challenges
 

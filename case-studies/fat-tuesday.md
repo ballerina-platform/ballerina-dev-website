@@ -33,29 +33,29 @@ The diagram below provides a side-by-side comparison of the traditional legacy s
 
 Fat Tuesday benefitted by using the Ballerina language for its digital transformation in several critical areas, as listed below.
 
-**Modern cloud-ready integration:**
+- **Modern cloud-ready integration:**
 
-By leveraging Ballerina's lightweight, cloud-ready integration features, Fat Tuesday was able to achieve seamless data automation. The Ballerina platform's native data support enhanced task efficiency, streamlining the API-driven integrations and reducing the risk of manual errors.
+  By leveraging Ballerina's lightweight, cloud-ready integration features, Fat Tuesday was able to achieve seamless data automation. The Ballerina platform's native data support enhanced task efficiency, streamlining the API-driven integrations and reducing the risk of manual errors.
 
-**Enhanced system interoperability:**
+- **Enhanced system interoperability:**
 
-Ballerina inherently understands and simplifies network interactions, making API integrations more intuitive and straightforward. Moreover, Ballerina offers a diverse set of connectors, simplifying integrations with various services, databases, and platforms. The data storage integration of Fat Tuesday is conveniently managed using a readily available database connector.
+  Ballerina inherently understands and simplifies network interactions, making API integrations more intuitive and straightforward. Moreover, Ballerina offers a diverse set of connectors, simplifying integrations with various services, databases, and platforms. The data storage integration of Fat Tuesday is conveniently managed using a readily available database connector.
 
-**Improved error handling:**
+- **Improved error handling:**
 
-Ballerina makes error handling of the solution a fundamental part of its design by offering features and constructs that simplify error management and help preserve the resiliency and reliability of the solution. By using error types, propagation, structured error handling, and other language features, the services of the solution are developed to handle errors gracefully to provide a better user experience.
+  Ballerina makes error handling of the solution a fundamental part of its design by offering features and constructs that simplify error management and help preserve the resiliency and reliability of the solution. By using error types, propagation, structured error handling, and other language features, the services of the solution are developed to handle errors gracefully to provide a better user experience.
 
-**Robust monitoring and advanced analytics:**
+- **Robust monitoring and advanced analytics:**
 
-Ballerina programs are inherently observable, providing comprehensive control and insights into the program's execution and efficiency. Observability combined into an API-centric model empowered Fat Tuesday with enhanced analytics capabilities. This led to actionable insights, proactive issue resolution, and improved user satisfaction.
+  Ballerina programs are inherently observable, providing comprehensive control and insights into the program's execution and efficiency. Observability combined into an API-centric model empowered Fat Tuesday with enhanced analytics capabilities. This led to actionable insights, proactive issue resolution, and improved user satisfaction.
 
-**Enhanced development productivity:**
+- **Enhanced development productivity:**
 
-Ballerina's integrated visual tooling enables users to model distributed systems. Coupled with its concise and efficient syntax, this ensures a seamless development experience. The combination of visual tooling and streamlined syntax not only reduced the learning curve but also supported long-term code readability, thereby promoting innovative solutions for Fat Tuesday. 
+  Ballerina's integrated visual tooling enables users to model distributed systems. Coupled with its concise and efficient syntax, this ensures a seamless development experience. The combination of visual tooling and streamlined syntax not only reduced the learning curve but also supported long-term code readability, thereby promoting innovative solutions for Fat Tuesday. 
 
-**Operational efficiency and strategic growth:**
+- **Operational efficiency and strategic growth:**
 
-Transitioning to an API-centric model via Ballerina expanded Fat Tuesday's operational capabilities. This move ensured that its store network operated with enhanced efficiency, accuracy, and flexibility to meet its dynamic business needs.
+  Transitioning to an API-centric model via Ballerina expanded Fat Tuesday's operational capabilities. This move ensured that its store network operated with enhanced efficiency, accuracy, and flexibility to meet its dynamic business needs.
 
 ## Conclusion
 

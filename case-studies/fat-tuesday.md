@@ -1,23 +1,21 @@
 ---
 title: "How Ballerina empowered Fat Tuesday's digital transformation"
-description: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion.
+description: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion to an extensive network across the globe.
 keywords: ballerina, programming language, digital transformation, fat tuesday
 permalink: /learn/case-studies/fat-tuesday
 active: fat-tuesday
-intro: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion.
+intro: In 1984, situated in the vibrant surroundings of Bourbon Street in New Orleans, Fat Tuesday inaugurated its operations as an establishment specializing in superior frozen beverages. As time progressed, it was able to achieve a commendable expansion to an extensive network across the globe.
 logo: '/images/home-page/user-logos/fat-tuesday.svg'
 user: 'fat-tuesday'
 ---
 
 ## Overview
 
-From its solitary inception, [FAT Tuesday](https://fattuesday.com/) has grown to an extensive network of 90 outlets across the globe. With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages.
-
-Across its 90+ worldwide stores, Fat Tuesday collected data from its point of sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
+With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages. Across its worldwide stores, [FAT Tuesday](https://fattuesday.com/) collected data from its point-of-sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
 
 ## Challenges
 
-Collecting data from each store into a single location using file exports was not just time-consuming, but it had significant drawbacks. The main issues were the need for manual intervention and the complexity of error handling, both of which increased the risk of data inaccuracies and threatened the authenticity and precision of the information. Another key concern with this method was its inability to provide real-time updates. After data extraction, any subsequent system changes weren't captured, which resulted in decisions that were based on outdated information that affected maintaining an up-to-date understanding of the business operations through a file-based mechanism.
+Collecting data from each store into a single location using file exports was not just time-consuming, but it had significant drawbacks. The main issues were the need for manual intervention and the complexity of error handling, both of which increased the risk of data inaccuracies and threatened the authenticity and precision of the information. Another key concern with this method was its inability to provide real-time updates. After data extraction, any subsequent system changes weren't captured in real-time, which resulted in decisions that were based on outdated information that affected maintaining an up-to-date understanding of the business operations through a file-based mechanism.
 
 ## Solution
 
@@ -25,7 +23,7 @@ In light of the discussed limitations, Fat Tuesday aspired to shift from its exi
 
 Data is directly accessed using REST APIs from the point of sale service during this digital transformation. This removes the necessity for centralized file storage and manual handling and processing of data. Data is processed in real-time, and errors are handled more efficiently in the updated system.
 
-The new solution is developed using Ballerina, which is an open-source, cloud-native programming language designed for integrations. It played a central role in this transformation via its inherent support for integrations, network protocols, data formats, and connectors, eliminating the need for external tools and simplifying the required system integrations. The visual tooling, service design, and data mapping capabilities streamlined the integration solution development. The Ballerina integration is scheduled to get the data via REST APIs frequently, process the data, and persist the analysis in databases for future reference.
+The new solution is developed using Ballerina, which is an open-source, cloud-native programming language designed for integrations. It played a central role in this transformation via its inherent support for integrations, network protocols, data formats, and connectors, eliminating the need for external tools and simplifying the required system integrations. The visual tooling, service design, and data mapping capabilities streamlined the integration solution development. The Ballerina integration is scheduled to get the data via REST APIs periodically, process the data, and persist the analysis in databases for future reference.
 
 The diagram below provides a side-by-side comparison of the traditional legacy solution and the new solution implemented with Ballerina. It highlights the shift from manual operations to automation.
 

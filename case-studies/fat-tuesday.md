@@ -14,7 +14,7 @@ user: 'fat-tuesday'
 With a strategic presence in renowned tourist destinations, vibrant entertainment hubs, and outdoor malls, the brand has ensured that a diverse range of enthusiasts worldwide enjoy its premium frozen beverages. Across its worldwide stores, [FAT Tuesday](https://fattuesday.com/) collected data from its point-of-sale system using a file-based approach. This data was transferred via file transfer protocols to a central storage server. The legacy integration system then processed this data by preserving crucial information via this data storage mechanism. This stored information was then visualized on dashboards for analysis and decision-making.
 
 ## Challenges
-
+After data extraction, any subsequent system changes weren't captured in realtime, which resulted in decisions that were based on outdated information that affected maintaining an up-to-date understanding of the business operations through a file-based mechanism.
 Collecting data from each store into a single location using file exports was not just time-consuming, but it had significant drawbacks. The main issues were the need for manual intervention and the complexity of error handling, both of which increased the risk of data inaccuracies and threatened the authenticity and precision of the information. Another key concern with this method was its inability to provide real-time updates. After data extraction, any subsequent system changes weren't captured, which resulted in decisions that were based on outdated information that affected maintaining an up-to-date understanding of the business operations through a file-based mechanism.
 
 ## Solution

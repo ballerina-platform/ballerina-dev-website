@@ -36,6 +36,7 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[[Proposal]: Enhancing Ballerina EDI Tool to Handle Length Constraints in EDIs](https://github.com/ballerina-platform/ballerina-library/issues/5913)|[RDPerera](https://github.com/RDPerera)|0|2024-01-05|N/A|
 |[Proposal: GraphQL Server-side Caching](https://github.com/ballerina-platform/ballerina-library/issues/5899)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2023-12-21|Active|
 |[Write unit test cases for sql clients generated using bal persist tools](https://github.com/ballerina-platform/ballerina-library/issues/5840)|[daneshk](https://github.com/daneshk)|2|2023-11-29|Draft|
 |[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|12|2023-11-16|Accepted|

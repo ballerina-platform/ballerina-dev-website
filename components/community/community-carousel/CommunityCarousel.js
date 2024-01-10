@@ -24,17 +24,8 @@ export default function CommunityCarousel(props) {
 
   return (
     <Carousel className={`${styles.communityCarousel} carousel-border`} variant='dark' controls={false}>
-      {/* <Carousel.Item>
-        <img src='/images/community/1.png' />
-      </Carousel.Item> */}
       <Carousel.Item>
         <img src='/images/community/2.jpg' />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src='/images/community/3.jpg' />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img src='/images/community/4.jpg' />
       </Carousel.Item>
       <Carousel.Item>
         <img src='/images/community/5.jpg' />
@@ -46,7 +37,16 @@ export default function CommunityCarousel(props) {
         <img src='/images/community/7.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/8.jpg' />
+        <img src='/images/community/9.png' />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src='/images/community/10.png' />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src='/images/community/11.png' />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src='/images/community/12.png' />
       </Carousel.Item>
     </Carousel>
   );

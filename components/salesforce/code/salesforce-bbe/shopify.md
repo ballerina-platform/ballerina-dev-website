@@ -18,16 +18,16 @@ service /salesforce_bridge on new http:Listener(9090) {
             Email__c: shopifyCustomer.email,
             Address__c: address
         };
-        stream<Id, error?> customerQuery = check salesforce->query(
+        stream<Id, error?> customerStream = check salesforce->query(
             string `SELECT Id FROM HmartCustomer__c WHERE Email__c = '${salesforceCustomer.Email__c}'`);
-        record {|Id value;|}? existingCustomer = check customerQuery.next();
-        check customerQuery.close();
+        record {|Id value;|}? existingCustomer = check customerStream.next();
+        check customerStream.close();
         if existingCustomer is () {
             _ = check salesforce->create("HmartCustomer__c", salesforceCustomer);
         } else {
-            check salesforce->update("HmartCustomer__c", existingCustomer.value.Id, salesforceCustomer);
+            check salesforce->update("HmartCustomer__c",
+                existingCustomer.value.Id, salesforceCustomer);
         }
-
     }
 }
 ```

@@ -8,21 +8,12 @@ sf:Client salesforce = check new (salesforceConfig);
 
 public function main() returns error? {
     DateRange fetchPeriod = check calculateFetchingPeriod();
-    string query = string `sys_created_onBETWEENjavascript:gs.dateGenerate(${fetchPeriod.'start})
-        @javascript:gs.dateGenerate(${fetchPeriod.end})`;
-    http:Client servicenow = check new (string `https://${servicenowInstance}.service-now.com/api/sn_customerservice`);
-    string serviceNowCredentials = check mime:base64Encode(serviceNowUsername + ":" + serviceNowPassword, "UTF-8").ensureType();
-    record {CaseData[] result;} caseResponse = check servicenow->/case(
-        headers = {"Authorization": "Basic " + serviceNowCredentials},
-        sysparm_query = check url:encode(query, "UTF-8")
-    );
-    CaseData[] cases = caseResponse.result;
-    check io:fileWriteString(syncData, check time:civilToString(fetchPeriod.now));
+    CaseData[] cases = check  fetchCasesFromServiceNow(fetchPeriod.'start, fetchPeriod.end);
     foreach CaseData caseData in cases {
-        stream<Id, error?> customerQuery = check salesforce->query(
+        stream<Id, error?> customerStream = check salesforce->query(
             string `SELECT Id FROM Account WHERE Name = '${caseData.account.name}'`);
-        record {|Id value;|}? existingCustomer = check customerQuery.next();
-        check customerQuery.close();
+        record {|Id value;|}? existingCustomer = check customerStream.next();
+        check customerStream.close();
         if existingCustomer is () {
             continue;
         }
@@ -35,6 +26,7 @@ public function main() returns error? {
         };
         _ = check salesforce->create("Support_Case__c", salesforceCase);
     }
+    check io:fileWriteString(syncData, check time:civilToString(fetchPeriod.now));
 }
 
 ```

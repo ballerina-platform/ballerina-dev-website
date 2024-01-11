@@ -1,6 +1,6 @@
 {
   "title": "Consume message with acknowledgement",
-  "description": "BBE on manually acknowledging the messages consumed from a RabbitMQ queue using Ballerina.",
+  "description": "This example demonstrates manually acknowledging the messages consumed from a RabbitMQ queue.",
   "keywords": [
     "ballerina",
     "ballerina by example",

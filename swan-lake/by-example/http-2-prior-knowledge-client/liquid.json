@@ -1,6 +1,6 @@
 {
   "title": "HTTP/2 prior knowledge",
-  "description": "This BBE shows how the Ballerina HTTP client can be configured to enable HTTP/2 prior knowledge.",
+  "description": "This example shows how the Ballerina HTTP client can be configured to enable HTTP/2 prior knowledge.",
   "keywords": [
     "ballerina",
     "ballerina by examples",

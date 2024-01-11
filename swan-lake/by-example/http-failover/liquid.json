@@ -1,6 +1,6 @@
 {
   "title": "Failover",
-  "description": "BBE on how to use an HTTP failover client in Ballerina. The Failover client can be used to handle network-related issues gracefully.",
+  "description": "This example is on how to use an HTTP failover client to handle network-related issues gracefully in Ballerina. ",
   "keywords": [
     "ballerina",
     "ballerina by examples",

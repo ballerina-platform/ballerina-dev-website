@@ -1,6 +1,6 @@
 {
   "title": "Basic REST service",
-  "description": "BBE on basic REST service in ballerina.",
+  "description": "This example demonstrates creating a basic REST service in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

@@ -1,11 +1,13 @@
 {
   "title": "OAuth2",
-  "description": "BBE on how to secure GraphQL service with OAuth2 in Ballerina.",
+  "description": "This example demonstrates securing a GraphQL service with OAuth2.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
+    "security",
     "auth",
     "oauth2",
     "introspection"

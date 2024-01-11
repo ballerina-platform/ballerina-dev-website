@@ -1,6 +1,6 @@
 {
   "title": "File upload",
-  "description": "This BBE demonstrates the file upload capability through Ballerina streams.",
+  "description": "This example demonstrates the file upload capability through Ballerina streams.",
   "keywords": [
     "ballerina",
     "ballerina by example",

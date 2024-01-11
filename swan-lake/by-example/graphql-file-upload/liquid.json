@@ -1,6 +1,6 @@
 {
   "title": "File upload",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates implementing a GraphQL service with the file uploading capability.",
   "keywords": [
     "ballerina",
     "ballerina by example",

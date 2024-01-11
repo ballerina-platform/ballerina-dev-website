@@ -1,6 +1,6 @@
 {
   "title": "SSL/TLS",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates consuming messages from a NATS subject using a secured connection.",
   "keywords": [
     "ballerina",
     "ballerina by example",

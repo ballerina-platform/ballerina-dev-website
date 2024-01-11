@@ -1,6 +1,6 @@
 {
   "title": "Payload data binding",
-  "description": "BBE on how to use a `kafka:Consumer` as a payload consumer.",
+  "description": "This example demonstrates how to use a kafka:Consumer as a payload consumer.",
   "keywords": [
     "ballerina",
     "ballerina by example",

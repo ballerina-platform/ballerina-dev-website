@@ -1,11 +1,13 @@
 {
   "title": "JWT authentication",
-  "description": "BBE on how to secure GraphQL service with JWT Auth in Ballerina.",
+  "description": "This example demonstrates securing a GraphQL service with JWT Auth.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
+    "security",
     "auth",
     "jwt auth"
   ],

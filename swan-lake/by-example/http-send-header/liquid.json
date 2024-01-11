@@ -1,6 +1,6 @@
 {
   "title": "Sending headers",
-  "description": "This BBE demonstrates sending a custom HTTP header from a service in Ballerina.",
+  "description": "This example demonstrates sending a custom HTTP header from a service in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

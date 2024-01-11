@@ -1,6 +1,6 @@
 {
   "title": "Compression",
-  "description": "BBE demonstrates how the Ballerina HTTP service is configured to change the compression behavior.",
+  "description": "This example demonstrates how to configure a Ballerina HTTP service to change its compression behavior.",
   "keywords": [
     "ballerina",
     "ballerina by example",

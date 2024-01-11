@@ -1,6 +1,6 @@
 {
   "title": "Transactional producer",
-  "description": "BBE on transactionally producing messages to a RabbitMQ queue using Ballerina.",
+  "description": "This example demonstrates transactionally producing messages to a RabbitMQ queue.",
   "keywords": [
     "ballerina",
     "ballerina by example",

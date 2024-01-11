@@ -1,6 +1,6 @@
 {
   "title": "Send different status codes",
-  "description": "BBE on how to use the statusCode records in an HTTP resource methods.",
+  "description": "This example is on how to use status code records in an HTTP resource function.",
   "keywords": [
     "ballerina",
     "ballerina by example",

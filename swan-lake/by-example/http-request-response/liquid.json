@@ -1,6 +1,6 @@
 {
   "title": "Request/Response object",
-  "description": "BBE on HTTP request and its usage with client in ballerina.",
+  "description": "This example is on the HTTP request and response usage in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

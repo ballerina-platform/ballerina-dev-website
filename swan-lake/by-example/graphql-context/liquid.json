@@ -1,12 +1,12 @@
 {
   "title": "Context object",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates defining and using a GraphQL context object. ",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql context"
+    "context object"
   ],
   "permalink": "/learn/by-example/graphql-context",
   "active": "graphql-context",

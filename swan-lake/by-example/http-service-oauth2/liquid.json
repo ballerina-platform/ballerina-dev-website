@@ -1,6 +1,6 @@
 {
   "title": "OAuth2",
-  "description": "BBE on how to secure HTTP service with OAuth2 in Ballerina.",
+  "description": "This example is on how to secure an HTTP service with OAuth2 in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

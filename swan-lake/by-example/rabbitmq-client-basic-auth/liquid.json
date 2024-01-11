@@ -1,6 +1,6 @@
 {
   "title": "Basic authentication",
-  "description": "BBE on consuming messages using a secured connection.",
+  "description": "This example demonstrates publishing messages to a RabbitMQ queue using a connection with basic authentication.",
   "keywords": [
     "ballerina",
     "ballerina by example",

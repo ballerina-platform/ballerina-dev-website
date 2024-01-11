@@ -1,6 +1,6 @@
 {
   "title": "Send reply to request message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates sending a reply message to a request received by a NATS subject.",
   "keywords": [
     "ballerina",
     "ballerina by example",

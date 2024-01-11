@@ -1,6 +1,6 @@
 {
   "title": "Restrict by media type",
-  "description": "BBE on how the resources can be configured to restrict the types of media they consume and produce in Ballerina.",
+  "description": "This example is on how resources can be configured to restrict the types of media they consume and produce in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

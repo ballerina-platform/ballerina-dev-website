@@ -1,12 +1,13 @@
 {
   "title": "Documentation",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates adding documentation to a GraphQL service and its subsequent types.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql documentation"
+    "service",
+    "documentation"
   ],
   "permalink": "/learn/by-example/graphql-documentation",
   "active": "graphql-documentation",

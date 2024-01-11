@@ -1,6 +1,6 @@
 {
   "title": "Payload constraint validation",
-  "description": "BBE on how constraint validation can be done in the service.",
+  "description": "This example is on how constraint validation can be done to the payload of a service.",
   "keywords": [
     "ballerina",
     "ballerina by example",

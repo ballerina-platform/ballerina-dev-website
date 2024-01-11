@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'Ballerina Central leverages the power of Ballerina for effective package management'
 description: Ballerina code is organized in a single, shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
 keywords: ballerina, programming language, package, management, central

@@ -93,27 +93,27 @@ export default function Intro() {
 
 
             <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" passHref title="GitHub">
+              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer"  title="GitHub">
                 <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" passHref title="X">
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer"  title="X">
                 <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={24} height={24} alt="X" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" passHref title="Discord">
+              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer"  title="Discord">
                 <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={25} height={25} alt="Discord" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" passHref title="Stackoverflow">
+              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer"  title="Stackoverflow">
                 <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" passHref title="YouTube">
+              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer"  title="YouTube">
                 <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={25} height={25} alt="YouTube" />
               </a>
 
-              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer" passHref title="LinkedIn">
+              {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer"  title="LinkedIn">
                 <Image src={`${prefix}/images/sm-icons/linkedin-white.svg`} width={25} height={25} alt="LinkedIn" />
               </a> */}
             </div>

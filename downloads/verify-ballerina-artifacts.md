@@ -61,7 +61,7 @@ Follow the steps below to send an API call to Rekor to retrieve and verify the d
 3. Invoke the Rekor API to retrieve the entry of the signature and store it as the UUID value.
  
     ```
-    $ curl -X POST -H "Content-type: application/json" 'https://rekor.sigstore.dev/api/v1/index/retrieve' --data-raw "{\"hash\":\"sha256:$SHASUM\"}
+    $ curl -X POST -H "Content-type: application/json" 'https://rekor.sigstore.dev/api/v1/index/retrieve' --data-raw "{\"hash\":\"sha256:$SHASUM\"}"
     ```
     
 4. Assign the UUID returned by the above API call to a variable  as shown below.
@@ -76,7 +76,7 @@ Follow the steps below to send an API call to Rekor to retrieve and verify the d
 
      
     ```
-     $ curl -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID?}"
+     $ curl -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID}"
     ```
 
 6. Retrieve the signature and public certificate, which are required to verify the artifact. 
@@ -84,13 +84,13 @@ Follow the steps below to send an API call to Rekor to retrieve and verify the d
     -   **Retrieve the signature:**
         
         ```
-        $ curl -s -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID?} \ | jq -r '.[] | .body' \ | base64 -d |jq -r '.spec .signature .content' \ | base64 -d > ballerina-{{ version }}-swan-lake-macos-x64.pkg.sig
+        $ curl -s -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID}" | jq -r '.[] | .body' | base64 -d |jq -r '.spec .signature .content' | base64 -d > ballerina-{{ version }}-swan-lake-macos-x64.pkg.sig
         ```
 
     -   **Retrieve the certificate:**
 
         ``` 
-        $ curl -s -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID?}" \ | jq -r '.[] | .body' \ | base64 -d |jq -r '.spec .signature .publicKey .content' \ | base64 -d > ballerina-{{ version }}-swan-lake-macos-x64.pkg.crt
+        $ curl -s -X GET "https://rekor.sigstore.dev/api/v1/log/entries/${UUID}"  | jq -r '.[] | .body' | base64 -d |jq -r '.spec .signature .publicKey .content'  | base64 -d > ballerina-{{ version }}-swan-lake-macos-x64.pkg.crt
         ```
 
 7. Extract the `public key` from the `certificate` file using `openssl`.

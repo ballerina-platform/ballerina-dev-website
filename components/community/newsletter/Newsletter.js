@@ -21,24 +21,8 @@ import { Row, Col, Container } from 'react-bootstrap';
 
 import NewsletterSubscription from '../../common/newsletter-subscription/NewsletterSubscription';
 import styles from './Newsletter.module.css';
-import { prefix } from '../../../utils/prefix';
 
 export default function Newsletter(props) {
-
-    const [hoverBtn, setHoverBtn] = React.useState(false);
-
-    let linkArrowPath = prefix + '/images/toc-bg.svg';
-    let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
-
-    const linkArrow = {
-        background: 'url(' + linkArrowPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
-
-    const linkArrowHover = {
-        background: 'url(' + linkArrowHoverPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
 
     return (
         <Col xs={12}>
@@ -65,22 +49,11 @@ export default function Newsletter(props) {
 
                 <Row>
                     <Col sm={12} md={6} lg={6}>
-                        <NewsletterSubscription />
+                        <NewsletterSubscription showLink={props.showLink}/>
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>
-                        <p className={styles.linkWrap}
-                            onMouseEnter={() => {
-                                setHoverBtn(true);
-                            }}
-                            onMouseLeave={() => {
-                                setHoverBtn(false);
-                            }}
-                            style={
-                                (hoverBtn ? linkArrowHover : linkArrow)
-                            }>
-                            <a href={`${prefix}/community/ballerina-newsletter`} target="_blank" rel="noreferrer" className={styles.viewAll}>View all newsletters </a>
-                        </p>
+                        <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameBorder="0" allowTransparency="true" className={styles.iframe}></iframe>
                     </Col>
                 </Row>
             </Container>

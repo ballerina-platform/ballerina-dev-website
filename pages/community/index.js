@@ -25,7 +25,6 @@ import Newsletter from '../../components/community/newsletter/Newsletter';
 import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
 import JoinUs from '../../components/community/join-us/JoinUs';
-// import GetInvolved from '../../components/community/get-involved/GetInvolved';
 import Contact from '../../components/community/contact/Contact';
 import CommunityCarousel from '../../components/community/community-carousel/CommunityCarousel';
 
@@ -52,22 +51,23 @@ export default function Community() {
   return (
     <>
       <Head>
-        <title>Community</title>
-        <meta name="description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <title>Community - The Ballerina programming language</title>
+        <meta name="description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Community" />
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Ballerina" />
-        <meta property="og:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
 
         {/* <!--TWITTER--> */}
-        <meta property="twitter:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
-        <meta property="twitter:text:description" content="A programming language for the cloud that makes it easier to use, combine, and create network services." />
+        <meta name="twitter:title" content="Community - The Ballerina programming language" />
+        <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
       </Head>
       <Layout>
         <Col sm={12}>
@@ -107,18 +107,6 @@ export default function Community() {
           <Row className="pageContentRow communityRow">
             <Newsletter getLink={getLink} showLink={true}/>
           </Row>
-
-          {/* <Row className="pageContentRow communityRow">
-            <TechTalk getLink={getLink} />
-          </Row> */}
-
-          {/* <Row className="pageContentRow communityRow slackRow">
-            <GetInvolved getLink={getLink} />
-          </Row> */}
-
-          {/* <Row className="pageContentRow communityRow">
-            <Blog getLink={getLink} />
-          </Row> */}
 
           <Row className="pageContentRow communityRow slackRow">
             <Contact getLink={getLink} />

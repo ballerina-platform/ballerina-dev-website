@@ -167,6 +167,14 @@
                     "id": "2201.5.0v"
                 },
                 {
+                    "dirName": "2201.4.3",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#2201.4.3",
+                    "id": "2201.4.3v"
+                },
+                {
                     "dirName": "2201.4.2",
                     "level": 2,
                     "position": 1,
@@ -520,6 +528,14 @@
                     "isDir": false,
                     "url": "/1.2/learn/api-docs/ballerina/",
                     "id": "1.2.x-api-docs"
+                },
+                {
+                    "dirName": "1.2.48",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "#1.2.48",
+                    "id": "1.2.48v"
                 },
                 {
                     "dirName": "1.2.47",

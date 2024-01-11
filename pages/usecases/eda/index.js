@@ -111,7 +111,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Ballerina for EDA - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. Remarkably, Ballerina can produce and consume events like no other."
         />
         <meta
           property="og:image"
@@ -128,7 +128,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with healthcare-friendly abstractions."
+          content="Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. Remarkably, Ballerina can produce and consume events like no other."
         />
 
         {/* TWITTER */}
@@ -139,7 +139,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. Remarkably, Ballerina can produce and consume events like no other."
         />
         <meta
           name="twitter:image"
@@ -147,7 +147,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with healthcare-friendly abstractions."
+          content="Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. Remarkably, Ballerina can produce and consume events like no other."
         />
         <meta
           property="twitter:image"

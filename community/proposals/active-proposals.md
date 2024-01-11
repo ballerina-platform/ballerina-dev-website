@@ -36,11 +36,13 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[[Proposal]: Enhancing Ballerina EDI Tool to Handle Length Constraints in EDIs](https://github.com/ballerina-platform/ballerina-library/issues/5913)|[RDPerera](https://github.com/RDPerera)|1|2024-01-05|Active|
+|[Proposal: GraphQL Server-side Caching](https://github.com/ballerina-platform/ballerina-library/issues/5899)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2023-12-21|Active|
 |[Write unit test cases for sql clients generated using bal persist tools](https://github.com/ballerina-platform/ballerina-library/issues/5840)|[daneshk](https://github.com/daneshk)|2|2023-11-29|Draft|
-|[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|9|2023-11-16|Draft|
+|[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|12|2023-11-16|Accepted|
 |[Data mapping ballerna openapi extension](https://github.com/ballerina-platform/ballerina-library/issues/5742)|[niveathika](https://github.com/niveathika)|1|2023-11-08|Draft|
 |[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
-|[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|6|2023-10-25|N/A|
+|[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|6|2023-10-25|Active|
 |[Proposal: Ballerina GraphQL Schema Registry](https://github.com/ballerina-platform/ballerina-library/issues/4820)|[zetcco](https://github.com/zetcco)|0|2023-09-19|Active|
 |[Proposal: Map Ballerina Constraints to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/4788)|[SachinAkash01](https://github.com/SachinAkash01)|1|2023-09-08|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|

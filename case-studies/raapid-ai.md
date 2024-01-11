@@ -1,5 +1,4 @@
 ---
-layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: 'Harmonize healthcare data integration at RAAPID.AI with Ballerina'
 description: RAAPID.AI's mission is to address a critical challenge within the healthcare, insurance, and technology sectors. They aim to revolutionize risk adjustment by empowering the healthcare ecosystem with comprehensive solutions and Hierarchical Condition Category (HCC) coding services. This transformation enables healthcare providers to secure rightful reimbursements for patient care while upholding the highest standards of healthcare quality.
 keywords: ballerina, programming language, integration, healthcare

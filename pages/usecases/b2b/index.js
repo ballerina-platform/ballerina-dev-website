@@ -96,7 +96,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with b2b-friendly abstractions."
+          content="Ballerina is the only language with native support for B2B integrations. "
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -111,7 +111,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Ballerina for B2B integrations - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with b2b-friendly abstractions."
+          content="Ballerina is the only language with native support for B2B integrations. "
         />
         <meta
           property="og:image"
@@ -128,7 +128,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with b2b-friendly abstractions."
+          content="Ballerina is the only language with native support for B2B integrations. "
         />
 
         {/* TWITTER */}
@@ -139,7 +139,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with b2b-friendly abstractions."
+          content="Ballerina is the only language with native support for B2B integrations. "
         />
         <meta
           name="twitter:image"
@@ -147,7 +147,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with b2b-friendly abstractions."
+          content="Ballerina is the only language with native support for B2B integrations. "
         />
         <meta
           property="twitter:image"

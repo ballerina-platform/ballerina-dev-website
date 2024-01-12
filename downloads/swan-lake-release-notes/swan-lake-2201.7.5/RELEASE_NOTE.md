@@ -10,7 +10,7 @@ redirect_from:
 - /downloads/swan-lake-release-notes/2201.7.5-swan-lake
 ---
 
-## Overview of Ballerina Swan Lake Update 8 (<RELEASE_VERSION>)
+## Overview of Ballerina Swan Lake Update 7 (2201.7.5)
 
 <em>Swan Lake Update 7 (2201.7.5) is the fifth patch release of Ballerina 2201.7.0 (Swan Lake Update 7) and it includes a new set of bug fixes to the <ADD_THE_LIST_OF_COMPONENTS>.</em>
 

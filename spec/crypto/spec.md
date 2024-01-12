@@ -32,11 +32,15 @@ The conforming implementation of the specification is released and included in t
    * 3.4. [SHA384](#34-sha384)
    * 3.5. [SHA512](#35-sha512)
 4. [Decode private/public key](#4-decode-private-public-keys)
-   * 4.1. [Decode Private key from PKCS12 file](#41-decode-private-key-from-pkcs12-file)
+   * 4.1. [Decode RSA Private key from PKCS12 file](#41-rsa-decode-private-key-from-pkcs12-file)
    * 4.2. [Decode RSA Private key using Private key and Password](#42-decode-rsa-private-key-using-private-key-and-password)
    * 4.3. [Decode RSA Public key from PKCS12 file](#43-decode-rsa-public-key-from-pkcs12-file)
    * 4.4. [Decode RSA Public key from the certificate file](#44-decode-rsa-public-key-from-the-certificate-file)
-   * 4.5. [Build RSA Public key from modulus and exponent parameters](#45-build-rsa-public-key-from-modulus-and-exponent-parameters)
+   * 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
+   * 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
+   * 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
+   * 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
+   * 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
 5. [Encrypt-Decrypt](#5-encrypt-decrypt)   
    * 5.1. [Encryption](#51-encryption)
      * 5.1.1. [RSA](#511-rsa)
@@ -56,6 +60,7 @@ The conforming implementation of the specification is released and included in t
       * 6.1.4. [RSA-SHA384](#614-rsa-sha384)
       * 6.1.5. [RSA-SHA512](#615-rsa-sha512)
       * 6.1.6. [SHA384withECDSA](#616-sha384withecdsa)
+      * 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
    * 6.2. [Verify signature](#62-verify-signature)
        * 6.2.1. [RSA-MD5](#621-rsa-md5)
        * 6.2.2. [RSA-SHA1](#622-rsa-sha1)
@@ -63,6 +68,7 @@ The conforming implementation of the specification is released and included in t
        * 6.2.4. [RSA-SHA384](#624-rsa-sha384)
        * 6.2.5. [RSA-SHA512](#625-rsa-sha512)
        * 6.2.6. [SHA384withECDSA](#626-sha384withecdsa)
+       * 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
        
 ## 1. [Overview](#1-overview)
 
@@ -194,9 +200,9 @@ byte[] hmac = check crypto:hmacSha512(data, key);
 
 The `crypto` library supports decoding the RSA private key from a `.p12` file and a key file in the `PEM` format. Also, it supports decoding a public key from a `.p12` file and a certificate file in the `X509` format. Additionally, this supports building an RSA public key with the modulus and exponent parameters.
 
-### 4.1. [Decode Private key from PKCS12 file](#41-decode-private-key-from-pkcs12-file)
+### 4.1. [Decode RSA Private key from PKCS12 file](#41-rsa-decode-private-key-from-pkcs12-file)
 
-This API can be used to decode the private key from the given PKCS#12 file.
+This API can be used to decode the RSA private key from the given PKCS#12 file.
 
 ```ballerina
 crypto:KeyStore keyStore = {
@@ -236,7 +242,49 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 ```
 
-### 4.5. [Build RSA Public key from modulus and exponent parameters](#45-build-rsa-public-key-from-modulus-and-exponent-parameters)
+### 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
+
+This API can be used to decode the EC private key from the given PKCS#12 file.
+
+```ballerina
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+```
+
+### 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
+
+This API can be used to decode the EC private key from the given private key and private key password.
+
+```ballerina
+string keyFile = "/path/to/private.key";
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyFile(keyFile, "keyPassword");
+```
+
+### 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
+
+This API can be used to decode the RSA public key from the given PKCS#12 archive file.
+
+```ballerina
+crypto:TrustStore trustStore = {
+    path: "/path/tp/truststore.p12",
+    password: "truststorePassword"
+};
+crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(trustStore, "keyAlias");
+```
+
+### 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
+
+This API can be used to decode the EC public key from the given public certificate file.
+
+```ballerina
+string certFile = "/path/to/public.cert";
+crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromCertFile(certFile);
+```
+
+### 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
 
 This API can be used to build the RSA public key from the given modulus and exponent parameters.
 
@@ -488,6 +536,21 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha384withEcdsa(data, privateKey);
 ```
 
+#### 6.1.7. [SHA256withECDSA](#617-sha256withecdsa)
+
+This API can be used to create the SHA256withECDSA based signature value for the given data.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
+```
+
 ### 6.2. [Verify signature](#62-verify-signature)
 
 #### 6.2.1. [RSA-MD5](#621-rsa-md5)
@@ -590,4 +653,21 @@ crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keySt
 byte[] signature = check crypto:signSha384withEcdsa(data, privateKey);
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keyStore, "keyAlias");
 boolean validity = check crypto:verifySha384withEcdsaSignature(data, signature, publicKey);
+```
+
+#### 6.2.7. [SHA256withECDSA](#627-sha256withecdsa)
+
+This API can be used to verify the SHA256withECDSA based signature.
+
+```ballerina
+string input = "Hello Ballerina";
+byte[] data = input.toBytes();
+crypto:KeyStore keyStore = {
+    path: "/path/to/keyStore.p12",
+    password: "keyStorePassword"
+};
+crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
+byte[] signature = check crypto:signSha256withEcdsa(data, privateKey);
+crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(keyStore, "keyAlias");
+boolean validity = check crypto:verifySha256withEcdsaSignature(data, signature, publicKey);
 ```

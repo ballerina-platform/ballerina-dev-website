@@ -12,11 +12,11 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 7 (2201.7.5)
 
-<em>Swan Lake Update 7 (2201.7.5) is the fifth patch release of Ballerina 2201.7.0 (Swan Lake Update 7) and it includes a new set of bug fixes to the <ADD_THE_LIST_OF_COMPONENTS>.</em>
+<em>Swan Lake Update 7 (2201.7.5) is the fifth patch release of Ballerina 2201.7.0 (Swan Lake Update 7) and it includes a new set of bug fixes to the developer tools.</em>
 
 ## Update Ballerina
 
-Run the command below to update your current Ballerina installation directly to <RELEASE_VERSION> by using the [Ballerina Update Tool](/learn/update-tool/).
+Run the command below to update your current Ballerina installation directly to 2201.7.5 by using the [Ballerina Update Tool](/learn/update-tool/).
 
 ```
 $ bal dist pull 2201.7.5

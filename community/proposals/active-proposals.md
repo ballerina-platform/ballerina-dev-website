@@ -36,9 +36,10 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
-|[[Proposal]: Enhancing Ballerina EDI Tool to Handle Length Constraints in EDIs](https://github.com/ballerina-platform/ballerina-library/issues/5913)|[RDPerera](https://github.com/RDPerera)|1|2024-01-05|Active|
+|[Add support for mapping table and column name to different entity and field name](https://github.com/ballerina-platform/ballerina-library/issues/5943)|[daneshk](https://github.com/daneshk)|0|2024-01-14|N/A|
+|[[Proposal]: Enhancing Ballerina EDI Tool to Handle Length Constraints in EDIs](https://github.com/ballerina-platform/ballerina-library/issues/5913)|[RDPerera](https://github.com/RDPerera)|2|2024-01-05|Accepted|
 |[Proposal: GraphQL Server-side Caching](https://github.com/ballerina-platform/ballerina-library/issues/5899)|[DimuthuMadushan](https://github.com/DimuthuMadushan)|0|2023-12-21|Active|
-|[Write unit test cases for sql clients generated using bal persist tools](https://github.com/ballerina-platform/ballerina-library/issues/5840)|[daneshk](https://github.com/daneshk)|2|2023-11-29|Draft|
+|[Write unit test cases for sql clients generated using bal persist tools](https://github.com/ballerina-platform/ballerina-library/issues/5840)|[daneshk](https://github.com/daneshk)|2|2023-11-29|Accepted|
 |[Integrate `bal persist` generate to the `bal build` ](https://github.com/ballerina-platform/ballerina-library/issues/5784)|[daneshk](https://github.com/daneshk)|12|2023-11-16|Accepted|
 |[Data mapping ballerna openapi extension](https://github.com/ballerina-platform/ballerina-library/issues/5742)|[niveathika](https://github.com/niveathika)|1|2023-11-08|Draft|
 |[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
@@ -47,6 +48,7 @@ permalink: /community/active-proposals
 |[Proposal: Map Ballerina Constraints to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/4788)|[SachinAkash01](https://github.com/SachinAkash01)|1|2023-09-08|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|
 |[[Proposal] Decoupling GraphQL API development from API design](https://github.com/ballerina-platform/ballerina-library/issues/4620)|[shafreenAnfar](https://github.com/shafreenAnfar)|3|2023-06-27|Active|
+|[Add support for marking certain entity fields as auto increment for DB client](https://github.com/ballerina-platform/ballerina-library/issues/4353)|[daneshk](https://github.com/daneshk)|3|2023-04-18|Draft|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|
 |[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|
 |[Proposal: Introduce a new API to execute batch queries into multiple batches](https://github.com/ballerina-platform/ballerina-library/issues/4141)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|4|2023-03-01|Active|

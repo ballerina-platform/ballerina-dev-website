@@ -43,7 +43,6 @@ COMMANDS
         test            Run package tests
         doc             Generate current package's documentation
         pack            Create distribution format of the current package
-        tool            Manage Ballerina tools
 
    Package Commands:
         new             Create a new Ballerina package
@@ -70,12 +69,20 @@ COMMANDS
         persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL [Experimental]
+        tool            Manage Ballerina CLI tools
         version         Print the Ballerina version
         profile         Start Ballerina Profiler [Experimental]
+
+   Tool Commands:
+        edi             Generates Ballerina service/client for OpenAPI contract and
+                        OpenAPI contract for BallerinaService.
+        health          Ballerina Health Artifact Generator Tool
 
    Update Commands:
         dist            Manage Ballerina distributions
         update          Update the Ballerina tool
+
+Use 'bal help <command>' for more information on a specific command.
 ```
 
 You can use it in the following format.
@@ -89,7 +96,8 @@ $ bal <COMMAND> <ARGUMENTS>
 ```
 $ bal help pull
 NAME
-       ballerina-pull - Fetch packages from Ballerina Central
+       ballerina-pull - Fetch packages from Ballerina Central or a custom
+       package repository
 
 SYNOPSIS
        bal pull <org-name>/<package-name>[:<version>]
@@ -105,15 +113,27 @@ DESCRIPTION
        Organizations are unique within a repository and can be mapped to an
        individual user or organization registered with the repository.
 
+       To download a package from a custom repository, configure it in the Settings.toml
+       file and pass the given id with the --repository flag.
+
+OPTIONS
+       --repository
+           Pull a package from a custom repository.
+           The repository must be configured in the <USER_HOME>/.ballerina/Settings.toml file.
+
 
 EXAMPLES
-       Pull the latest version of the 'gmail' connector in the 'wso2' organization
-       from Ballerina Central.
+       Pull the latest version of the 'gmail' connector in the 'wso2'
+       organization from Ballerina Central.
            $ bal pull wso2/gmail
 
-       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2' organization
-       from Ballerina Central.
+       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2'
+       organization from Ballerina Central.
            $ bal pull wso2/gmail:1.1.0
+
+       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2'
+       organization from the github package repository defined in the Settings.toml file.
+           $ bal pull wso2/gmail:1.1.0 --repository=wso2
 ```
 
 ## Core commands

@@ -153,10 +153,6 @@ const nextConfig = {
         destination: `/${redirectBase}learn/integration-tools/health-tool`,
       },
       {
-        source: `/${redirectBase}learn/ballerina-shell`,
-        destination: `/${redirectBase}learn/integration-tools/ballerina-shell`,
-      },
-      {
         source: `/${redirectBase}learn/bal-persist-overview`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/bal-persist-overview`,
       },

@@ -29,6 +29,10 @@ Execute the command below to start Ballerina Shell.
 ```
 $ bal shell
 Welcome to Ballerina Shell REPL.
+
+Note: This is an experimental feature, which supports only a limited
+set of functionality.
+
 Type /exit to exit and /help to list available commands.
 
 =$ 
@@ -41,6 +45,9 @@ Execute the `/help` command to view the available commands.
 ```
 =$ /help                 
 | Ballerina Shell Help
+| 
+| Note: This is an experimental feature, which supports only a limited
+| set of functionality.
 | 
 | Type a Ballerina language expression, statement, or declaration.
 | Or, type one of the following commands:

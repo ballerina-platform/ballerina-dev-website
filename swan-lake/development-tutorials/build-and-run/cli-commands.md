@@ -76,7 +76,7 @@ COMMANDS
         profile         Start Ballerina Profiler [Experimental]
 
    Tool Commands:
-        edi             Generate Ballerina records and parsing functions or a Ballerina package for a given EDI schema or collection of schemas.
+        edi             Generate Ballerina records and parsing functions or a Ballerina package for a given EDI schema(s).
         health          Ballerina Health Artifact Generator Tool
 
    Update Commands:

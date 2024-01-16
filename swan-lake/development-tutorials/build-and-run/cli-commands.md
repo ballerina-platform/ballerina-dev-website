@@ -16,7 +16,7 @@ It also enables you to easily install, update, and switch among Ballerina distri
 
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
->**Info:** The `Tool Commands` section in the output below will be displayed only if you already installed a tool by executing the `bal tool pull` command. For more information, see [Tool commands](tool-commands).
+>**Info:** The `Tool Commands` section in the output below will be displayed only if you already installed a tool by executing the `bal tool pull` command. For more information, see [Tool commands](#tool-commands).
 
 ```
 $ bal help

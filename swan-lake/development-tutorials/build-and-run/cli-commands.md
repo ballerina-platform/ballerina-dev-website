@@ -76,8 +76,7 @@ COMMANDS
         profile         Start Ballerina Profiler [Experimental]
 
    Tool Commands:
-        edi             Generates Ballerina service/client for OpenAPI contract and
-                        OpenAPI contract for BallerinaService.
+        edi             Generate Ballerina records and parsing functions or a Ballerina package for a given EDI schema or collection of schemas.
         health          Ballerina Health Artifact Generator Tool
 
    Update Commands:

@@ -4,18 +4,6 @@ description: "Information, such as inventory levels, order statuses, or product 
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/kafka_salesforce_integration/kafka-salesforce-pricebook_update'
 ---
 ```
-listener kafka:Listener priceListener = new (kafka:DEFAULT_URL, {
-    groupId: "order-group-id",
-    topics: "product-price-updates"
-});
-
-final salesforce:Client salesforce = check new ({
-    baseUrl: salesforceBaseUrl,
-    auth: {
-        token: salesforceAccessToken
-    }
-});
-
 service on priceListener {
     isolated remote function onConsumerRecord(ProductPrice[] prices) returns error? {
         foreach ProductPrice {name, unitPrice} in prices {

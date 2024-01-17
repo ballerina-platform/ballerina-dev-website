@@ -4,8 +4,6 @@ description: "Customer issues are tracked in support systems such as JIRA or Ser
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/servicenow-case-to-salesforce-case'
 ---
 ```
-sf:Client salesforce = check new (salesforceConfig);
-
 public function main() returns error? {
     DateRange fetchPeriod = check calculateFetchingPeriod();
     CaseData[] cases = check  fetchCasesFromServiceNow(fetchPeriod.'start, fetchPeriod.end);

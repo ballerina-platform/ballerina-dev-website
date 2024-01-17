@@ -4,12 +4,7 @@ description: "Interactions between businesses, such as sending purchase orders a
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/ftp-edi-message-to-salesforce-opportunity'
 ---
 ```
-sf:Client salesforce = check new (salesforceConfig);
-ftp:Client fileServer = check new ftp:Client(ftpConfig);
-
 public function main() returns error? {
-
-    // Get new quotes from the FTP new quotes directory, and iterate through them.
     ftp:FileInfo[] quoteList = check fileServer->list(ftpNewQuotesPath);
     foreach ftp:FileInfo quoteFile in quoteList {
         stream<byte[] & readonly, io:Error?> fileStream = check fileServer->get(quoteFile.path);

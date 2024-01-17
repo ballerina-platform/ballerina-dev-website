@@ -63,9 +63,8 @@ COMMANDS
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
         graphql         Generate the Ballerina client sources for a GraphQL 
-                        config file, generate the GraphQL schema for a Ballerina 
-                        GraphQL service, and generate the Ballerina GraphQL 
-                        service for a GraphQL schema
+                        config file, the GraphQL schema for a GraphQL service, 
+                        and Ballerina service sources for a GraphQL schema
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition

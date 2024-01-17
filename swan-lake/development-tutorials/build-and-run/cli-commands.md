@@ -62,10 +62,14 @@ COMMANDS
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
+<<<<<<< HEAD
         graphql         Generate the Ballerina client sources for a GraphQL 
                         config file, generate the GraphQL schema for a Ballerina 
                         GraphQL service, and generate the Ballerina GraphQL 
                         service for a GraphQL schema
+=======
+        graphql         Generate the Ballerina client sources for a GraphQL config file, the GraphQL schema for a GraphQL service, and Ballerina service sources for a GraphQL schema
+>>>>>>> c907fb97ce7f87d840a6f1a21118ef957bd4c1a3
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
@@ -77,8 +81,7 @@ COMMANDS
         profile         Start Ballerina Profiler [Experimental]
 
    Tool Commands:
-        edi             Generates Ballerina service/client for OpenAPI contract and
-                        OpenAPI contract for BallerinaService.
+        edi             Generate the Ballerina records and parsing functions or a Ballerina package for a given EDI schema or collection of schemas
         health          Ballerina Health Artifact Generator Tool
 
    Update Commands:

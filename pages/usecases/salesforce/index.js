@@ -104,7 +104,7 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for implementing backends for modern frontends</title>
+        <title>Ballerina for implementing integrations with salesforce</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />

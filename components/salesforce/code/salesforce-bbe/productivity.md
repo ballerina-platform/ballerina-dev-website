@@ -4,15 +4,6 @@ description: "Sales and customer data are often captured via office productivity
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/gsheet-new-row-to-sfdc-new-contact'
 ---
 ```
-sheets:Client sheets = check new ({auth: {token: sheetsAccessToken}});
-
-salesforce:Client salesforce = check new ({
-    baseUrl: salesforceBaseUrl,
-    auth: {
-        token: salesforceAccessToken
-    }
-});
-
 public function main() returns error? {
     sheets:Range range = check sheets->getRange(spreadsheetId, worksheetName, "A1:G");
     (int|string|decimal)[] headers = range.values[0];

@@ -4,19 +4,6 @@ description: "Sales-related events need to be acted upon as soon as possible. Fo
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/sfdc-new-contact-to-twilio-sms'
 ---
 ```
-listener salesforce:Listener sfdcEventListener = new ({
-    username: salesforceListenerConfig.username,
-    password: salesforceListenerConfig.password,
-    channelName: CHANNEL_NAME
-});
-
-final twilio:Client twilio = check new ({
-    twilioAuth: {
-        accountSId: twilioClientConfig.accountSId,
-        authToken: twilioClientConfig.authToken
-    }
-});
-
 service salesforce:RecordService on sfdcEventListener {
     isolated remote function onCreate(salesforce:EventData payload) returns error? {
         string firstName = "";

@@ -104,11 +104,11 @@ export default function Integrations({ samples }) {
           content="ballerina, learn, documentation, docs, programming language"
         />
         <link rel="shortcut icon" href="/img/favicon.ico" />
-        <title>Ballerina for implementing backends for modern frontends</title>
+        <title>Ballerina for implementing integrations with salesforce</title>
 
         {/* FB */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Ballerina - Ballerina for B2B integrations" />
+        <meta property="og:title" content="Ballerina - Ballerina for Salesforce" />
         <meta
           property="og:description"
           content="Write code with salesforce-friendly abstractions."
@@ -120,7 +120,7 @@ export default function Integrations({ samples }) {
         />
 
         {/* LINKED IN */}
-        <meta property="og:title" content="Ballerina - Ballerina for B2B integrations" />
+        <meta property="og:title" content="Ballerina - Ballerina for Salesforce" />
         <meta
           property="og:image"
           content="https://ballerina.io/images/Salesforce_Integrations.png"
@@ -135,7 +135,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@ballerinalang" />
         <meta name="twitter:creator" content="@ballerinalang" />
-        <meta name="twitter:title" content="Ballerina for B2B integrations" />
+        <meta name="twitter:title" content="Ballerina for Salesforce" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"

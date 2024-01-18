@@ -4,10 +4,8 @@ description: "E-commerce platforms like Shopify and WooCommerce are the main poi
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/shopify-customer-to-salesforce-customer'
 ---
 ```
-sf:Client salesforce = check new (salesforceConfig);
-
 service /salesforce_bridge on new http:Listener(9090) {
-    resource function post customers(@http:Payload ShopifyCustomer shopifyCustomer) returns error? {
+    resource function post customers(ShopifyCustomer shopifyCustomer) returns error? {
         string firstName = shopifyCustomer.first_name ?: regex:split(shopifyCustomer.email, "@")[0];
         string lastName = shopifyCustomer.last_name ?: "";
         Address? shopifyAddress = shopifyCustomer.default_address;

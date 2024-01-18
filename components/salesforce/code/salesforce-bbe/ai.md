@@ -4,10 +4,6 @@ description: "A Great amount of valuable sales-related information is captured i
 url: 'https://github.com/ballerina-guides/integration-samples/blob/main/gmail-to-salesforce-lead'
 ---
 ```
-gmail:Client gmail = check new ({auth: {token: gmailAccessToken}});
-chat:Client openAiChat = check new ({auth: {token: openAIKey}});
-sf:Client salesforce = check new ({baseUrl: salesforceBaseUrl, auth: {token: salesforceAccessToken}});
-
 public function main() returns error? {
     gmail:LabelList labelList = check gmail->listLabels("me");
     Email[] emails = check getMatchingEmails(labelList);

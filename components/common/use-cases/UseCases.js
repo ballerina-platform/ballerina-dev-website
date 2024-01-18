@@ -26,7 +26,6 @@ export default function UseCases(props) {
 
     const propsData = props.propsData;
 
-
     return (
         <>
             <Col xs={12}>

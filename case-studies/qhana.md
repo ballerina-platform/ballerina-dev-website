@@ -11,7 +11,7 @@ user: 'qhana'
 
 ## Overview
 
-The [Application component](https://quantil.readthedocs.io/en/latest/) of [QuAntiL](https://www.iaas.uni-stuttgart.de/forschung/projekte/quantil/) incorporates tools and quantum algorithm implementations tailored to address specific use cases. Notably, the [Quantum Humanities Analysis (QHAna)](https://quantil.readthedocs.io/en/latest/user-guide/qhana/) features an intelligent tool set that employs machine-learning techniques compatible with classical and quantum hardware. Specifically created for integration with the MUSE Repository, it offers extensive techniques primarily focused on categorical data. The backend driving QHAna is developed using the Ballerina programming language.
+The [Application component](https://quantil.readthedocs.io/en/latest/) of [QuAntiL](https://www.iaas.uni-stuttgart.de/forschung/projekte/quantil/) incorporates tools and quantum algorithm implementations tailored to address specific use cases. Notably, the [Quantum Humanities Analysis (QHAna)](https://quantil.readthedocs.io/en/latest/user-guide/qhana/) features an intelligent tool set that employs machine-learning techniques compatible with classical and quantum hardware. Specifically created for integration with the [MUSE Repository](https://www.iaas.uni-stuttgart.de/publications/INBOOK-2018-05-MUSE.pdf), it offers extensive techniques primarily focused on categorical data. The backend driving QHAna is developed using the Ballerina programming language.
 
 ## Challenges
 
@@ -21,7 +21,7 @@ Developing the QHAna backend presented several challenges that required careful 
 
 As illustrated in the diagram below, the solution encompasses the QHAna backend written in Ballerina, featuring two primary types of Ballerina APIs: `Plugin APIs` and `Experiment APIs`. This backend interfaces with the QHAna website, which serves as the front end and is expected to establish resilient communications with the SQLite database for data storage and retrieval.
 
-<img src="/images/case-studies/qhana-solution-diagram.png" alt="QHAna solution diagram">
+<img src="/images/case-studies/qhana-solution-diagram.png" alt="QHAna solution diagram" width="546" height="780" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
 
 ## Benefits
 

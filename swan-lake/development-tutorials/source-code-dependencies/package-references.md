@@ -65,7 +65,7 @@ Organization names can only contain alphanumerics, underscore, and the maximum l
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 
-As described in [Organizations](/learn/publish-packages-to-ballerina-central/#organizations), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
+As described in [Define the organization](/learn/publish-packages-to-ballerina-central/#define-the-organization), the restrictions for the organization name of a package when publishing to <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a> should also be considered before choosing an organization name.
 
 
 ### The `name` field

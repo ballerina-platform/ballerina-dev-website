@@ -1,6 +1,6 @@
 {
   "title": "Dataloader",
-  "description": "BBE on how to engage dataloaders with GraphQL service",
+  "description": "This example demonstrates engaging data loaders with a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",

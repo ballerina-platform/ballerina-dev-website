@@ -1,11 +1,13 @@
 {
   "title": "Basic authentication file user store",
-  "description": "BBE on how to secure GraphQL service with Basic Auth in Ballerina.",
+  "description": "This example demonstrates securing a GraphQL service with basic authentication by validating via a file user store.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
+    "security",
     "auth",
     "basic auth"
   ],

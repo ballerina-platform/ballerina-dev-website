@@ -1,6 +1,6 @@
 {
   "title": "Payload data binding",
-  "description": "BBE on how data binding helps to access the payload through the resource signature parameter.",
+  "description": "This example is on how data binding helps to access a payload through a resource signature parameter.",
   "keywords": [
     "ballerina",
     "ballerina by example",

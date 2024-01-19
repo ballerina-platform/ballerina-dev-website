@@ -1,6 +1,6 @@
 {
   "title": "Consumer record data binding",
-  "description": "BBE on how to use a `kafka:Consumer` as a simple record consumer.",
+  "description": "This example demonstrates how to use a kafka:Consumer as a simple record consumer.",
   "keywords": [
     "ballerina",
     "ballerina by example",

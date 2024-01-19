@@ -1,11 +1,12 @@
 {
   "title": "Subscriptions",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates defining a GraphQL subscription operation.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
     "subscription"
   ],
   "permalink": "/learn/by-example/graphql-subscriptions",

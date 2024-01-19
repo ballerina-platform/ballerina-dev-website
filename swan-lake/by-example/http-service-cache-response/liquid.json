@@ -1,6 +1,6 @@
 {
   "title": "Send cache response",
-  "description": "BBE on how the HTTP caching is configured and performed in Ballerina.",
+  "description": "This example is on how to configure and perform HTTP caching in Ballerina.",
   "keywords": ["ballerina", "ballerina by example", "bbe", "http", "caching"],
   "permalink": "/learn/by-example/http-service-cache-response",
   "active": "http-service-cache-response",

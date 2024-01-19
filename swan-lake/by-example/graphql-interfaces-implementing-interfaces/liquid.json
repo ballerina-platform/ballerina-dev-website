@@ -1,12 +1,12 @@
 {
   "title": "Interfaces implementing interfaces",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates defining GraphQL interface types that can implement other interfaces.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql interfaces",
+    "interfaces",
     "interfaces implementing interfaces"
   ],
   "permalink": "/learn/by-example/graphql-interfaces-implementing-interfaces",

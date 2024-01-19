@@ -1,6 +1,6 @@
 {
   "title": "Self-signed JWT authentication",
-  "description": "BBE on how to secure HTTP client with self-signed JWT Auth in Ballerina.",
+  "description": "This example is on how to secure an HTTP client with self-signed JWT Auth in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

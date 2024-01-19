@@ -1,6 +1,6 @@
 {
   "title": "HTTP/2 server push",
-  "description": "This BBE demonstrates sending and receiving HTTP/2 Server Push messages in Ballerina HTTP Library.",
+  "description": "This example demonstrates sending and receiving HTTP/2 server push messages by using the Ballerina HTTP package.",
   "keywords": [
     "ballerina",
     "ballerina by examples",

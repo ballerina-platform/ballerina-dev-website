@@ -1,6 +1,6 @@
 {
   "title": "Path parameter",
-  "description": "BBE on how to call a client resource with a path parameter.",
+  "description": "This example is on how to call a client resource with a path parameter.",
   "keywords": [
     "ballerina",
     "ballerina by examples",

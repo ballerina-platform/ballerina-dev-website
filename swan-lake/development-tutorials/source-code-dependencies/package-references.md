@@ -219,7 +219,7 @@ version = "1.5.0"
 repository = "local"
 ```
 
-This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies] (learn/manage-dependencies/#use-dependencies-from-the-local-repository).
+This will resolve the specified dependency from the local repository. For more information on how dependency resolution with the local repository works, see [Manage Dependencies](/learn/manage-dependencies/#use-dependencies-from-the-local-repository).
 
 #### Specify the minimum version for a dependency
 
@@ -232,7 +232,7 @@ name = "sql"
 version = "1.6.0"
 ```
 
-With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies] (learn/manage-dependencies/#update-dependency-versions).
+With this, the compiler considers `1.6.0` as the minimum required version when resolving `ballerinax/sql`. If there are higher versions available in the Ballerina repositories, then, the latest compatible version will be resolved. To learn more about updating versions, see [Manage Dependencies](/learn/manage-dependencies/#update-dependency-versions).
 
 ### Platform dependencies
 

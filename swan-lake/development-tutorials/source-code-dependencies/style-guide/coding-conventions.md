@@ -36,7 +36,7 @@ intro: This Ballerina Style Guide aims at maintaining a standard coding style am
     }
     ```
 
-Few exceptions for this rule are:
+    Few exceptions for this rule are:
 - Do not keep spaces around a type when it is enclosed using angle brackets `<string>`. 
       
     **Example,**
@@ -76,7 +76,7 @@ Few exceptions for this rule are:
 
 ## Blank lines
 
-Separate both statements and top-level definitions by zero or one blank lines.
+* Separate both statements and top-level definitions by zero or one blank lines.
 
     **Example,**
     

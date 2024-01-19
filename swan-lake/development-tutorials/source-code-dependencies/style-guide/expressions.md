@@ -42,11 +42,11 @@ intro: The sections below include the coding conventions with respect to express
 
 * Do not keep any spaces between the key and the colon. Also, keep only one space between the colon and the value.
   
-**Example,**
+    **Example,**
 
     ```ballerina
     Person person = {
-        name: "john" // in this field key is the "name" and value is "john".
+        name: "john" // In this field, key is the "name" and value is "john".
     };
     ```
 
@@ -130,7 +130,7 @@ intro: The sections below include the coding conventions with respect to express
 
 * If an array cannot be placed on a single line due to it exceeding the maximum line length, split each value in the array to its own block-indented line.
     
-**Example,**
+    **Example,**
 
     ```ballerina
     string[] names = [

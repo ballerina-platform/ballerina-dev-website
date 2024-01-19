@@ -121,7 +121,7 @@ intro: The sections below include the coding conventions with respect to annotat
 * Add only one space after the parameter marker (`+`), divider (`-`), and `return`.
 * Begin the param identifier and description with a single space.
 
-**Example,**
+    **Example,**
   
     ```ballerina
     # Description.

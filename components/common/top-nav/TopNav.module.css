@@ -285,3 +285,9 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     background-repeat: no-repeat;
     background-position: right 20px top 13px;
 }
+
+.seeMore {
+    color: #20b6b0;
+    font-style: italic;
+    text-decoration: none;
+}

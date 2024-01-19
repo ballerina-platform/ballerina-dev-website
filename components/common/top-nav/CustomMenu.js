@@ -109,6 +109,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                    <li><a className={styles.seeMore} href="/usecases">See more</a></li>
                                 </ul>
                             </div>
 
@@ -128,6 +129,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                           )
                                     }
+                                    <li><a className={styles.seeMore} href="/case-studies">See more</a></li>
                                 </ul>
                             </div>
 

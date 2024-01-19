@@ -143,7 +143,12 @@ string[] names = [
 
 ## Type casting
 
-* Do not keep spaces between the type and the angle brackets (i.e., `<string>`).
+* Do not keep spaces between the type and the angle brackets. 
+
+**Example,**
+
+`<string>`
+
 * Do not keep spaces between the closing angle bracket and value reference, which will be casted.
 
 **Example,**

@@ -39,7 +39,7 @@ Choreo is an application featuring a [cell-based architecture](https://github.co
 
 Choreo is developed using the [Platformer](https://wso2.com/acquired/platformer/) framework, which was recently acquired by WSO2. In addition to the notable use of Ballerina, a few other programming languages such as Java, Go, and NodeJS were also used in developing some components of the solution mainly due to the official SDK support provided by them for Microsoft Azure, Kubernetes, and Platformer. The user interface features, implemented using React and identity access management functionalities powered by [WSO2 Asgardeo](https://wso2.com/asgardeo/), contribute to a feature-rich solution focused on efficient and comprehensive project management.
 
-<img src="/images/case-studies/choreo-solution-diagram.png" alt="WSO2 Choreo solution" height="700" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
+![WSO2 Choreo solution](/images/case-studies/choreo-solution-diagram.png "WSO2 Choreo solution") 
 
 ## Benefits
 

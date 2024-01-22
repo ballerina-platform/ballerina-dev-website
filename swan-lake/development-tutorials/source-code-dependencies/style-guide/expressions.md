@@ -148,7 +148,7 @@ string[] names = [
 **Example,**
 
 ```ballerina
-<int>id;
+<int>id
 ```
 
 * Do not keep spaces between the closing angle bracket and value reference, which will be casted.

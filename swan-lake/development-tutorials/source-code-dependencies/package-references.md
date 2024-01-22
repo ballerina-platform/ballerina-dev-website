@@ -61,7 +61,7 @@ visibility = "private"
 
 The organization is a logical name used for grouping modules together under a common namespace within a repository. 
 
-Organization names can only contain alphanumerics, underscore, and the maximum length is 256 characters.
+Organization name is mandatory and can only contain alphanumerics, underscore, and the maximum length is 256 characters.
 
 When you run the `bal new` command, the organization name by default will be set to the user name of your machine. You can choose to update the `Ballerina.toml` file to amend the organization name appropriately.
 

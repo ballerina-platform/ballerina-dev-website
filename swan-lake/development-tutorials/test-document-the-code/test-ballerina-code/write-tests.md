@@ -59,7 +59,7 @@ function afterFunc() {
 
 // This test function will not be executed.
 @test:Config {
-enable: false
+    enable: false
 }
 function testFunction1() {
     io:println("I'm in test function 1!");
@@ -68,14 +68,14 @@ function testFunction1() {
 
 // This test function depends on the `testFunction3` and is executed with an 
 // array based data set.
-@test:Config{  
+@test:Config {
     before: beforeFunc,
     after: afterFunc,
     dependsOn: [testFunction3],
     dataProvider: dataGen,
     groups: ["g1"]
 }
-function testFunction2 (int value) returns error? {
+function testFunction2(int value) returns error? {
     test:assertEquals(value, 1, msg = "value is not correct");
 }
 
@@ -115,8 +115,7 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 
 ## Use assertions
 
-The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of
- code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 <table class="table cCodeTable" >
     <tr>
@@ -169,6 +168,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 ### Troubleshoot assertion failures when using `assertEquals`
 
+You can troubleshoot assertion failures of different types when using the `assertEquals` function as shown below.
 
 #### Values with different types
 

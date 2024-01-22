@@ -49,7 +49,7 @@ export default function Users(props) {
         <Row>
           <Col sm={18} md={12} className={styles.logo}>
               <a href={`${prefix}/case-studies/wso2`}><img src={`${prefix}/images/home-page/user-logos/wso2.svg`} width={280} alt="WSO2" title="WSO2" /></a>
-              <a href="https://choreo.dev/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
+              <a href={`${prefix}/case-studies/choreo`}><img src={`${prefix}/images/home-page/user-logos/choreo.svg`} width={280} alt="Choreo" title="Choreo" /></a>
               <a href={`${prefix}/case-studies/fat-tuesday`}><img src={`${prefix}/images/home-page/user-logos/fat-tuesday.svg`}  width={150} alt="Fat Tuesday" title="Fat Tuesday" /></a>
               <a href={`${prefix}/case-studies/mosip`}><img src={`${prefix}/images/home-page/user-logos/mosip.png`}  width={280} alt="MOSIP" title="MOSIP" /></a>
               <a href="https://quantil.readthedocs.io/en/latest/user-guide/qhana/" target='_blank' rel="noreferrer"><img src={`${prefix}/images/home-page/user-logos/qhana.png`}  width={200} alt="QHAna - The Quantum Humanities Analysis Tool" title="QHAna - The Quantum Humanities Analysis Tool" /></a>

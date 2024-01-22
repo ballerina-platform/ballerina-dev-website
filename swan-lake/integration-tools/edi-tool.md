@@ -272,7 +272,7 @@ Follow the steps below to use the generated package by running the cloned Baller
     >**Info:** You can convert EDI text to JSON using a cURL command, as shown below. 
 
     ```
-    curl --location 'http://localhost:8090/getEDI' \ 
+    curl --location 'http://localhost:8090/getEDI' \
     --header 'Content-Type: text/plain' \
     --data 'BGM+380+4467862+9'\''
     DTM+137:20230719:102'\''

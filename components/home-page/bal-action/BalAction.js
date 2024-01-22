@@ -152,9 +152,6 @@ export default function BalAction(props) {
                   <Col lg={5} md={12} sm={12} className={styles.col2}>
                     <div className={styles.focusPane}>
                       <Image src={`${prefix}/images/working-with-data-diagram.svg`} width={433} height={456} alt="working-with-data-diagram" />
-                      <a target="_blank" href="https://play.ballerina.io/?gist=30a51792b6b4d46c2cbdfdd424fb3b45&file=play.bal" rel="noreferrer">
-                        <button className={styles.playgroundButton} id="simple11" > Try in Playground</button>
-                      </a>
                     </div>
                   </Col>
                 </Row>

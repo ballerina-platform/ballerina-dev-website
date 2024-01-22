@@ -168,7 +168,7 @@ The Ballerina test framework supports the following assertions, which help to ve
 
 ### Troubleshoot assertion failures when using `assertEquals`
 
-You can troubleshoot assertion failures of different values when using the `assertEquals` property as shown below.
+You can troubleshoot assertion failures of different types when using the `assertEquals` function as shown below.
 
 #### Values with different types
 

@@ -59,7 +59,7 @@ visibility = "private"
 
 ### The `org` field
 
-The organization is a logical name used for grouping modules together under a common namespace within a repository. Building a library package with `bal build` and pushing a library package into a repository will fail without an organization name.
+The organization is a logical name used for grouping modules together under a common namespace within a repository. Building a library package with `bal pack` and pushing a library package into a repository will fail without an organization name.
 
 Organization names can only contain alphanumerics, underscore, and the maximum length is 256 characters.
 

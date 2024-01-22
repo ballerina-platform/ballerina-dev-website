@@ -270,10 +270,9 @@ username = "<maven-repository-username>"
 password = "<maven-repository-password>"
 ```
 
-
 When working with JAR file dependencies, it is a best practice to attach them to the default root module of your package if your package has only the default root module. This makes it easy to manage and maintain the dependencies. However, if your package is a Ballerina library package, it is recommended that you specify the JAR file dependencies in each Ballerina module that depends on the JAR file.
 
-By default, the `bal build` command will package all JAR files specified in the `Ballerina.toml` file along with the executable JAR file. This ensures that the executable JAR file includes all necessary dependencies making the package self-contained and easy to use. This approach allows for a more organized and efficient way of managing dependencies and ensures that the 
+By default, the `bal build` command will package all JAR files specified in the `Ballerina.toml` file along with the executable JAR file. This ensures that the executable JAR file includes all necessary dependencies making the package self-contained and easy to use.
 
 **Provide the path of JAR file**
 

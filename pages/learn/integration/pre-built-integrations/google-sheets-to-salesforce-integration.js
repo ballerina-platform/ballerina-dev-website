@@ -272,7 +272,7 @@ export default function Learn({ samples, content }) {
                       backgroundColor: "#eeeeee !important"
                     }}>
                       <div style={{display: "flex", justifyContent: "end"}}>
-                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/salesforce_api/gsheet-new-row-to-sfdc-new-contact" target="_blank" rel="noreferrer" passHref title="Open on GitHub" style={{marginTop:"-5px"}}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/gsheet-new-row-to-salesforce-new-contact" target="_blank" rel="noreferrer" passHref title="Open on GitHub" style={{marginTop:"-5px"}}>
                           <FaGithub style ={{marginRight:"10px", color: "black"}}/>
                         </a>
                         <CopyToClipboard text={content}

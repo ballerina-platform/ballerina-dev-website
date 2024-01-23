@@ -62,7 +62,7 @@ $ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
     - **For Linux or macOS:** 
-        - set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
+        - set the PATH environment variable to point to the `bin` directory of the unzipped Ballerina distribution.
             ```
             $ PATH=<YOUR_LOCATION>/ballerina-<VERSION>/bin:$PATH;
             $ export PATH;

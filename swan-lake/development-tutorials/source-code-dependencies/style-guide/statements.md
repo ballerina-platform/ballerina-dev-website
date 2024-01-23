@@ -55,6 +55,8 @@ intro: The sections below include the coding conventions with respect to stateme
 
 ## Match statement
 
+The best practices related to the `match` statement are as follows.
+
 ### Match patterns clause
 
 * Block indent each pattern clause in its own line.

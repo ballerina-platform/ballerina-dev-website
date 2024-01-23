@@ -5,7 +5,7 @@ description: Learn how to write unstructured documents with a bit of structure t
 keywords: ballerina, programming language, api documentation, api docs
 permalink: /learn/generate-code-documentation/
 active: generate-code-documentation
-intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to generate HTML content as API documentation.
+intro: Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework, which allows you to write unstructured documents with a bit of structure to generate HTML content as API documentation.
 ---
 
 ## Generate documentation for modules

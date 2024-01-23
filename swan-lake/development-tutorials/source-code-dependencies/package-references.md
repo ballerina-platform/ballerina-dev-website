@@ -142,9 +142,9 @@ icon = "icon.png"
 
 ### The `include` field
 
-You can provide paths to any additional resources, which need to be packed in the `BALA` file during the use of the `bal pack` command.
+You can provide paths to any additional resources, which need to be packed in the BALA file during the use of the `bal pack` command.
 
-The `include` field accepts a string array, which contains the directory or file paths to include in the `BALA`. The included file paths will be packaged into the root of the `BALA` preserving its original structure. 
+The `include` field accepts a string array, which contains the directory or file paths to include in the BALA. The included file paths will be packaged into the root of the BALA preserving its original structure. 
 
 The paths should be relative to the package root directory and support the following patterns.
 
@@ -175,7 +175,7 @@ include = [
     ]
 
 ```
-The below example shows how a custom directory can be included in the `BALA`.
+The below example shows how a custom directory can be included in the BALA.
 
 ```toml
 [package]

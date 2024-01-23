@@ -87,7 +87,7 @@ For example, if you need to provide a set of APIs to communicate with AWS, you c
 A `split module condition` occurs when the latest versions of two different packages contain the same module, resulting in a build failure. When using hierarchical package names, ensure that the package repository does not hold another package containing a module with the same name in its latest version.
 
 For example, if you created and published to Ballerina Central, the `1.0.0` version of `aws.rds` package containing `aws.rds.mysql` module
- and decide to move the `aws.rds.mysql` module to a separate package later, you need to follow the below steps.
+and decide to move the `aws.rds.mysql` module to a separate package later, you need to follow the below steps.
 
 1. Push a new version(`1.0.1`) of the `aws.rds` package that does not contain the `aws.rds.mysql` module
 2. Push new `aws.rds.mysql` package
@@ -96,19 +96,19 @@ For example, if you created and published to Ballerina Central, the `1.0.0` vers
 
 Ballerina strictly follows the rules of <a href="https://semver.org/" target="_blank">Semantic Versioning</a>. Therefore, in general, you should follow the SemVer best practices when versioning a package.
 
-*   If the package is in the initial stages of development, label the package with the zero major version (0.x.y). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
+*   If the package is in the initial stages of development, label the package with the zero major version (`0.x.y`). This will give the user a hint that API changes are frequent and that the package is far from being production-ready.
 
-*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g., 1.0.0).
+*   Use versions as three numeric parts `MAJOR.MINOR.PATCH` (E.g., `1.0.0`).
     *   Increment the patch version when only backward compatible bug fixes are introduced.
     *   Increment the minor version when new backward compatible functionality is introduced to the public API.
     *   Increment the major version when any backward incompatible changes are introduced to the public API.
 
-*   When you are stabilizing the package to roll out to production, pre-release versions are suitable for versioning (E.g. 1.0.0-alpha).
+*   When you are stabilizing the package to roll out to production, pre-release versions are suitable for versioning (E.g. `1.0.0-alpha`).
     Pre-release versions are not considered production-ready. Even though not frequent compared to the initial development phase, API changes are possible.
 
-*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (E.g. 1.0.0-alpha.1, 1.0.0-alpha.2).
+*   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (E.g. `1.0.0-alpha.1`, `1.0.0-alpha.2`).
 
-*   Once the package is production-ready, you can use a stable version (E.g. 1.0.0). Any subsequent minor or patch releases of the same major version should be backward compatible and, should not break existing builds.
+*   Once the package is production-ready, you can use a stable version (E.g. `1.0.0`). Any subsequent minor or patch releases of the same major version should be backward compatible and, should not break existing builds.
 
 ### The `export` field
 
@@ -142,9 +142,9 @@ icon = "icon.png"
 
 ### The `include` field
 
-You can provide paths to any additional resources, which need to be packed in the BALA file during the use of the `bal pack` command.
+You can provide paths to any additional resources, which need to be packed in the `BALA` file during the use of the `bal pack` command.
 
-The `include` field accepts a string array, which contains the directory or file paths to include in the BALA. The included file paths will be packaged into the root of the BALA preserving its original structure. 
+The `include` field accepts a string array, which contains the directory or file paths to include in the `BALA`. The included file paths will be packaged into the root of the `BALA` preserving its original structure. 
 
 The paths should be relative to the package root directory and support the following patterns.
 
@@ -175,7 +175,7 @@ include = [
     ]
 
 ```
-The below example shows how a custom directory can be included in the BALA.
+The below example shows how a custom directory can be included in the `BALA`.
 
 ```toml
 [package]
@@ -236,11 +236,11 @@ With this, the compiler considers `1.6.0` as the minimum required version when r
 
 ### Platform dependencies
 
-When using the "bal build" command to compile a Ballerina package, the resulting output will either be an executable JAR file or a non-executable JAR file (library package) depending on whether the package contains an entry point. These archives created by the Ballerina compiler are self-contained, meaning that they include all necessary dependencies. It may also be necessary to package external JAR files with these archives.
+When using the `bal build` command to compile a Ballerina package, the resulting output will either be an executable JAR file or a non-executable JAR file (library package) depending on whether the package contains an entry point. These archives created by the Ballerina compiler are self-contained, meaning that they include all necessary dependencies. It may also be necessary to package external JAR files with these archives.
 
 When working with JAR files, it is considered a best practice to keep them organized within the package. This makes it easier to manage and maintain the dependencies. 
 
->**Note:** Additionally, it is important that Java libraries are considered platform-specific, and thereby, their location and usage should be specified in the “Ballerina.toml” file. This can be done by including a dependency on the specific JAR file as demonstrated below in the “Ballerina.toml” file. This helps the Ballerina compiler to include the relevant JAR files when creating the archive. 
+>**Note:** Additionally, it is important that Java libraries are considered platform-specific, and thereby, their location and usage should be specified in the `Ballerina.toml` file. This can be done by including a dependency on the specific JAR file as demonstrated below in the `Ballerina.toml` file. This helps the Ballerina compiler to include the relevant JAR files when creating the archive. 
 
 There are two ways to include the JAR dependency.
 
@@ -336,7 +336,7 @@ warning: Detected conflicting jar files:
 
 **Define the scope for a dependency**
 
-By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependncy to the test runtime but will avoid packing it into the final executable JAR file.
+By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
 
 The following example shows a platform dependency entry with the `scope`.
 
@@ -350,17 +350,16 @@ The following example shows a platform dependency entry with the `scope`.
 
 ## Platform Compatibility
 
-The compatibility of a platform with specific runtimes can be specified in the `Ballerina.toml` file using specific parameters.
- Currently, the `graalvmCompatible` property is supported to indicate the compatibility of a package with GraalVM for Java platforms.
- For packages using `java11` platform dependencies, it can be specified as follows.
+The compatibility of a platform with specific runtimes can be specified in the `Ballerina.toml` file using specific parameters. Currently, the `graalvmCompatible` property is supported to indicate the compatibility of a package with GraalVM for Java platforms.
+
+For packages using `java11` platform dependencies, it can be specified as follows.
 
   ```toml
 [platform.java11]
 graalvmCompatible = true
   ```
 
-If the package does not use any Java dependencies or if only Java dependencies provided by the distribution are used,
- this property is automatically inferred to be `true`.
+If the package does not use any Java dependencies or if only Java dependencies provided by the distribution are used, this property is automatically inferred to be `true`.
 
 ## The `Dependencies.toml` file
 
@@ -369,8 +368,8 @@ This file is auto-generated and managed by the Ballerina CLI. It does not need u
 
 ## The `Package.md` file
 
-The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. 
-It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
+The `Package.md` file provides a human-readable description of a package. This file is required for publishing a package to a repository. It is the first page you will see when you navigate to the package in <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>.
+
 This file is in markdown format. It will be auto-generated when you create a library package. For steps to create a library package, see [Create a Library Package](/learn/publish-packages-to-ballerina-central/#create-a-library-package)
 
 ## The `target/` directory

@@ -67,12 +67,12 @@ $ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
             $ PATH=<YOUR_LOCATION>/ballerina-<VERSION>/bin:$PATH;
             $ export PATH;
             ```
-        - set the JAVA_HOME environment variable to your Java installation directory or to the root directory of installed JRE 
+        - set the `JAVA_HOME` environment variable to your Java installation directory or to the root directory of the installed JRE. 
     - **For Windows:** add a new environment variable specifying the following values:
-        - set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
+        - set the `PATH` environment variable to point to the `bin` directory of the unzipped Ballerina distribution.
             - **Variable name:** PATH
-            - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
-        - set the JAVA_HOME environment variable to your Java installation directory or to the root directory of installed JRE
+            - **Variable value:** The location of the `bin` directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
+        - set the `JAVA_HOME` environment variable to your Java installation directory or to the root directory of the installed JRE.
 
 
 ## Verify the installation

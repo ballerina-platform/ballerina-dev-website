@@ -481,7 +481,7 @@
                     "id": "ballerina-persist",
                     "subDirectories": [
                         {
-                            "dirName": "Overview",
+                            "dirName": "Bal persist overview",
                             "level": 3,
                             "position": 1,
                             "isDir": false,

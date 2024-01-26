@@ -64,35 +64,44 @@ The following is another example that shows the usage of multiple modules from d
 ```ballerina
 // Imports the default module from the `ballerina/log` package.
 import ballerina/log;
-// Imports the default module from the `googleapis.gmail` package
+// Imports the default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/googleapis.gmail as gmail;
-// Imports the only non-default module from the `googleapis.gmail` package
+import ballerinax/salesforce as salesforce;
+// Imports a non-default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/googleapis.gmail.'listener as gmailListener;
+import ballerinax/salesforce.bulk as salesforceBulk;
 
-configurable string refreshToken = ?;
 configurable string clientId = ?;
 configurable string clientSecret = ?;
-configurable int port = ?;
-configurable string project = ?;
-configurable string pushEndpoint = ?;
+configurable string refreshToken = ?;
+configurable string refreshUrl = ?;
+configurable string baseUrl = ?;
 
-gmail:ConnectionConfig gmailConfig = {
+salesforce:ConnectionConfig sfConfig = {
+    baseUrl,
     auth: {
-        refreshUrl: gmail:REFRESH_URL,
-        refreshToken: refreshToken,
-        clientId: clientId,
-        clientSecret: clientSecret
+        clientId,
+        clientSecret,
+        refreshToken,
+        refreshUrl
     }
 };
 
-listener gmailListener:Listener gmailEventListener =
-                            new (port, gmailConfig, project, pushEndpoint);
+public function main() returns error? {
+    salesforceBulk:Client bulkClient = check new (sfConfig);
 
-service / on gmailEventListener {
-    remote function onNewEmail(gmail:Message message) returns error? {
-        log:printInfo("New Email : ", message = message);
+    string contacts = "description,FirstName,LastName,Title,Phone,Email,My_External_Id__c\n"
+        + "Created_from_Ballerina_Sf_Bulk_API,Cuthbert,Binns,Professor Level 02,0332236677,john434@gmail.com,845\n"
+        + "Created_from_Ballerina_Sf_Bulk_API,Burbage,Shane,Professor Level 02,0332211777,peter77@gmail.com,846";
+
+    salesforceBulk:BulkJob insertJob = check bulkClient->createJob("insert", "Contact", "CSV");
+
+    salesforceBulk:BatchInfo|error batch = bulkClient->addBatch(insertJob, contacts);
+    if batch is salesforceBulk:BatchInfo {
+        string message = batch.id.length() > 0 ? "Batch Added Successfully" : "Failed to add the Batch";
+        log:printInfo(message);
+    } else {
+        log:printError(batch.message());
     }
 }
 ```

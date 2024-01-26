@@ -60,7 +60,7 @@ export default function PostPage({ frontmatter, content }) {
   return (
     <>
       <Head>
-        <meta name="description" content={frontmatter.description}/>
+        <meta name="description" content={'Ballerina newsletter - ' + frontmatter.issue}/>
         <meta name="keywords" content={frontmatter.keywords}/>
 
         <title>{`${frontmatter.title} - The Ballerina programming language`}</title>
@@ -68,15 +68,15 @@ export default function PostPage({ frontmatter, content }) {
         {/* <!--FB--> */}
         <meta property="og:type" content="article"/>
         <meta property="og:title" content={`${frontmatter.title} - The Ballerina programming language`}/>
-        <meta property="og:description" content={frontmatter.description}></meta>
+        <meta property="og:description" content={'Ballerina newsletter - ' + frontmatter.issue}></meta>
         
         {/* <!--LINKED IN  --> */}
-        <meta property="og:description" content={frontmatter.description}/>
+        <meta property="og:description" content={'Ballerina newsletter - ' + frontmatter.issue}/>
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content={`${frontmatter.title} - The Ballerina programming language`}/>
-        <meta property="twitter:description" content={frontmatter.description}/>
-        <meta property="twitter:text:description" content={frontmatter.description}/>
+        <meta property="twitter:description" content={'Ballerina newsletter - ' + frontmatter.issue}/>
+        <meta property="twitter:text:description" content={'Ballerina newsletter - ' + frontmatter.issue}/>
 
       </Head>
       <Layout>

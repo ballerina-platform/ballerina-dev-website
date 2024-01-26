@@ -1,6 +1,6 @@
 {
   "title": "Constraint validation",
-  "description": "BBE on validating a payload according to the constraints defined in the payload record.",
+  "description": "This example demonstrates validating a payload according to the constraints defined in the payload record.",
   "keywords": [
     "ballerina",
     "ballerina by example",

@@ -1,6 +1,6 @@
 {
   "title": "Error handling",
-  "description": "This BBE demonstrates how HTTP error handling is done in Ballerina.",
+  "description": "This example demonstrates how to handle HTTP errors manually in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

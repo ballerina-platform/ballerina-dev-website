@@ -1,6 +1,6 @@
 {
   "title": "Cookies",
-  "description": "BBE on how to handle HTTP cookies in a Ballerina service and a client.",
+  "description": "This example is on how to handle HTTP cookies in a Ballerina client.",
   "keywords": [
     "ballerina",
     "ballerina by example",

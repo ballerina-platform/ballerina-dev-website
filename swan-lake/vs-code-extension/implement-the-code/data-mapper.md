@@ -274,7 +274,7 @@ Once the array is initialized, click the **+ Add Element** button to add the arr
 
 3. Fill in the `totalCredits` field by getting the summation of the credits in each CS course.
 
-    >**Tip:** You can use the [`reduce()`](https://lib.ballerina.io/ballerina/lang.array/0.0.0/functions#reduce) array function for this by passing the combining function below to get the sum.
+    >**Tip:** You can use the [`reduce()`](https://central.ballerina.io/ballerina/lang.array/latest#reduce) array function for this by passing the combining function below to get the sum.
 
     ```ballerina
     var totalCredits = function(int total, record {string id; string name; int credits;} course) returns int => total + (course.id.startsWith("CS") ? course.credits : 0);

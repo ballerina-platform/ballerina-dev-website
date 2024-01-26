@@ -1,11 +1,13 @@
 {
   "title": "Mutual SSL",
-  "description": "BBE on how to secure GraphQL listener with mutual SSL.",
+  "description": "This example demonstrates securing a GraphQL service with mutual SSL.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
+    "security",
     "mutual ssl",
     "ssl protocols",
     "ciphers"

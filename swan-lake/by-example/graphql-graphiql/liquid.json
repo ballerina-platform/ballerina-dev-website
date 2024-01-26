@@ -1,6 +1,6 @@
 {
   "title": "GraphiQL client",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates enabling the built-in GraphiQL client for a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",

@@ -1,6 +1,6 @@
 {
   "title": "Publish message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS basic server using Ballerina.",
+  "description": "This example demonstrates producing a message to a subject in the NATS basic server.",
   "keywords": [
     "ballerina",
     "ballerina by example",

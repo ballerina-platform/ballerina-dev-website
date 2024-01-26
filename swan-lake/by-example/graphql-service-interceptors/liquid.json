@@ -1,12 +1,13 @@
 {
   "title": "Service interceptors",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates using interceptors on GraphQL services to execute custom logic.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql service"
+    "service",
+    "interceptors"
   ],
   "permalink": "/learn/by-example/graphql-service-interceptors",
   "active": "graphql-service-interceptors",

@@ -1,6 +1,6 @@
 {
   "title": "Caller object",
-  "description": "This BBE demonstrates the HTTP caller and its usage with an HTTP service in Ballerina.",
+  "description": "This example demonstrates the HTTP caller and its usage with an HTTP service in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

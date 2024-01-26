@@ -1,6 +1,6 @@
 {
   "title": "Chunking",
-  "description": "BBE on how to configure the chunking behavior of the HTTP client in Ballerina.",
+  "description": "This example is on how to configure the chunking behavior of the HTTP client in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

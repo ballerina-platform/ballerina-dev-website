@@ -26,4 +26,4 @@ The [Sequence Diagram View](https://wso2.com/ballerina/vscode/docs/implement-the
 
 ## Data Mapper
 
-The Ballerina VS Code extension supports [creating and updating the data mappings]((https://wso2.com/ballerina/vscode/docs/implement-the-code/data-mapper/)) to convert data between the corresponding input and output types. The user interface eases performing data integration, migration, and transformation elements of the data mapping process via the graphical representation of the source code.
+The Ballerina VS Code extension supports [creating and updating the data mappings](/learn/vs-code-extension/implement-the-code/data-mapper/) to convert data between the corresponding input and output types. The user interface eases performing data integration, migration, and transformation elements of the data mapping process via the graphical representation of the source code.

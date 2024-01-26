@@ -1,0 +1,10 @@
+.communityCarousel {
+    /* box-shadow: 3px 4px #EBEDF0; */
+    padding-bottom: 70px;
+}
+
+.communityCarousel div.carousel-inner {
+    /* padding: 0 15px; */
+    border-radius: 5px;
+    /* box-shadow: 3px 4px #EBEDF0; */
+}

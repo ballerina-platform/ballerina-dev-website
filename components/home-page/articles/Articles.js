@@ -64,7 +64,7 @@ export default function Articles(props) {
 
           <Row>
             <Col xs={12}>
-              <Carousel controls={true} activeIndex={index} onSelect={handleSelect} variant='dark' id="myCarousel">
+              <Carousel controls={true} activeIndex={index} onSelect={handleSelect} variant='dark' id="newsCarousel">
 
                 {dataRows.map((dataRow, index) => {
                   return (

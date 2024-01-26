@@ -1,6 +1,6 @@
 {
   "title": "Handle error response",
-  "description": "A GraphQL client written in Ballerina",
+  "description": "This example demonstrates handling the errors of a GraphQL client.",
   "keywords": [
     "ballerina",
     "ballerina by example",

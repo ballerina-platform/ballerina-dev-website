@@ -16,6 +16,8 @@ It also enables you to easily install, update, and switch among Ballerina distri
 
 In the CLI, execute the `bal help` command to view all the actions you can perform with the Ballerina Tool as shown below.
 
+>**Info:** The `Tool Commands` section in the output below will be displayed only if you already installed a tool by executing the `bal tool pull` command. For more information, see [Tool commands](#tool-commands).
+
 ```
 $ bal help
 NAME
@@ -43,7 +45,6 @@ COMMANDS
         test            Run package tests
         doc             Generate current package's documentation
         pack            Create distribution format of the current package
-        tool            Manage Ballerina tools
 
    Package Commands:
         new             Create a new Ballerina package
@@ -61,21 +62,30 @@ COMMANDS
         format          Format Ballerina source files
         grpc            Generate the Ballerina sources for a given Protocol
                         Buffer definition
-        graphql         Generate the Ballerina client sources for a GraphQL config file,
-                        generate the GraphQL schema for a Ballerina GraphQL service, and 
-                        generate the Ballerina GraphQL service for a GraphQL schema
+        graphql         Generate the Ballerina client sources for a GraphQL 
+                        config file, the GraphQL schema for a GraphQL service, 
+                        and Ballerina service sources for a GraphQL schema
         openapi         Generate the Ballerina sources for a given OpenAPI
                         definition and vice versa
         asyncapi        Generate the Ballerina sources for a given AsyncAPI definition
         persist         Manage data persistence
         bindgen         Generate the Ballerina bindings for Java APIs
         shell           Run Ballerina interactive REPL [Experimental]
+        tool            Manage Ballerina CLI tools
         version         Print the Ballerina version
         profile         Start Ballerina Profiler [Experimental]
+
+   Tool Commands:
+        edi             Generate the Ballerina records and parsing functions or a 
+                        Ballerina package for a given EDI schema or collection of schemas
+        health          Generate the Ballerina packages or API templates for a given 
+                        FHIR implementation guide.
 
    Update Commands:
         dist            Manage Ballerina distributions
         update          Update the Ballerina tool
+
+Use 'bal help <command>' for more information on a specific command.
 ```
 
 You can use it in the following format.
@@ -89,7 +99,8 @@ $ bal <COMMAND> <ARGUMENTS>
 ```
 $ bal help pull
 NAME
-       ballerina-pull - Fetch packages from Ballerina Central
+       ballerina-pull - Fetch packages from Ballerina Central or a custom
+       package repository
 
 SYNOPSIS
        bal pull <org-name>/<package-name>[:<version>]
@@ -105,15 +116,27 @@ DESCRIPTION
        Organizations are unique within a repository and can be mapped to an
        individual user or organization registered with the repository.
 
+       To download a package from a custom repository, configure it in the Settings.toml
+       file and pass the given id with the --repository flag.
+
+OPTIONS
+       --repository
+           Pull a package from a custom repository.
+           The repository must be configured in the <USER_HOME>/.ballerina/Settings.toml file.
+
 
 EXAMPLES
-       Pull the latest version of the 'gmail' connector in the 'wso2' organization
-       from Ballerina Central.
+       Pull the latest version of the 'gmail' connector in the 'wso2'
+       organization from Ballerina Central.
            $ bal pull wso2/gmail
 
-       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2' organization
-       from Ballerina Central.
+       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2'
+       organization from Ballerina Central.
            $ bal pull wso2/gmail:1.1.0
+
+       Pull the '1.1.0' version of the 'gmail' connector in the 'wso2'
+       organization from the github package repository defined in the Settings.toml file.
+           $ bal pull wso2/gmail:1.1.0 --repository=wso2
 ```
 
 ## Core commands

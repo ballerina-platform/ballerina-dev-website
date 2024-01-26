@@ -1,6 +1,6 @@
 {
   "title": "Path parameter",
-  "description": "BBE on how to extract values using the `PathParam` and `MatrixParam` parameters in Ballerina.",
+  "description": "This example is on how to extract the path parameters in a Ballerina resource function.",
   "keywords": [
     "ballerina",
     "ballerina by example",

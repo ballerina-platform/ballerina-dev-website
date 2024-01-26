@@ -35,19 +35,18 @@ Consider the following example in which an `http:Client` interacts with an exter
 
 ```ballerina
 import ballerina/http;
-import ballerina/regex;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
-type Joke readonly & record {|
+type Joke readonly & record {
     string value;
-|};
+};
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // with the name replaced by the provided name or an error if the API invocation fails.
 function getRandomJoke(string name) returns string|error {
     Joke joke = check clientEndpoint->get("/random");
-    string replacedText = regex:replaceAll(joke.value, "Chuck Norris", name);
+    string replacedText = re `Chuck Norris`.replaceAll(joke.value, name);
     return replacedText;
 }
 ```
@@ -110,9 +109,9 @@ import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
-type Joke readonly & record {|
+type Joke readonly & record {
     string value;
-|};
+};
 
 // This function performs a `get` request to the Chuck Norris API and returns a random joke 
 // or an error if the API invocations fail.

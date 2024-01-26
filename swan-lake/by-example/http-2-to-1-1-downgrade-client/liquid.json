@@ -1,6 +1,6 @@
 {
   "title": "HTTP/2 to HTTP/1.1 downgrade",
-  "description": "This BBE shows how the Ballerina HTTP client can be configured to communicate over the HTTP/1.1 protocol.",
+  "description": "This example shows how the Ballerina HTTP client can be configured to communicate over the HTTP/1.1 protocol.",
   "keywords": [
     "ballerina",
     "ballerina by examples",

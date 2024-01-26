@@ -1,0 +1,218 @@
+.viewAll {
+  color: #20b6b0;
+  text-decoration: none;
+  text-align: right;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.viewAll:hover,
+.checkboxLabel a:hover,
+.member a:hover {
+  text-decoration: none !important;
+  color: #464646 !important;
+}
+
+.linkWrap {
+  text-align: right;
+}
+
+.slackCount {
+  text-align: center;
+}
+
+.slackNum {
+  font-size: 60px !important;
+  font-weight: 600 !important;
+  float: center;
+}
+
+.slackFoot {
+  font-size: 23px !important;
+  font-weight: 400 !important;
+  padding: 0 !important;
+  float: center;
+  margin-top: 0px !important;
+}
+
+@media (min-width: 667px) {
+  .slackNum {
+    float: center;
+  }
+
+  .slackFoot {
+    float: center;
+  }
+  .slackCount {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .slackNum {
+    float: right;
+  }
+
+  .slackFoot {
+    float: right;
+  }
+  .slackCount {
+    text-align: left;
+  }
+}
+
+.formControl {
+  display: block;
+  width: 100%;
+  height: 34px;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #585a5e;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0;
+  border: #20b6b0 solid 1px;
+  padding: 20px 20px;
+  margin: 5px 0px;
+}
+
+.checkboxWrapper {
+  white-space: nowrap;
+  text-align: left;
+}
+
+/* .checkbox {
+    vertical-align: top;
+    display: inline-block;
+    margin: 5px 0 0 !important;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 1px solid#c7c7c7;
+    border-radius: 0px;
+} */
+
+.checkboxLabel {
+  white-space: normal;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #57595d;
+  padding-left: 8px;
+}
+
+.checkboxLabel a,
+.member a {
+  color: #20b6b0;
+  text-decoration: none;
+}
+
+.member {
+  padding-bottom: 40px;
+  font-weight: 400 !important;
+}
+
+/* .checkboxLabel a:hover {
+    color: #464646;
+    text-decoration: none;
+} */
+
+.submitButton {
+  padding: 10px 20px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #20b6b0;
+  color: #fff;
+  margin: 5px 0px;
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: #464646;
+  color: #fff !important;
+}
+
+.discord {
+  /* padding-top: 20px; */
+  /* background-color: #ffffff !important; */
+}
+
+.socialMedia {
+  min-height: 27px;
+  margin-top: 7px;
+  display: block;
+  float: left;
+}
+
+.socialMedia ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.socialMedia ul li {
+  list-style: none;
+  display: inline-block;
+  /* float: left; */
+  margin-right: 20px;
+  padding-top: 3px;
+  padding-left: 2px;
+}
+
+.smIcons {
+  /* display: inline-block; */
+  align-items: center;
+}
+
+.cardCol {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.joinCard {
+  /* border: none !important; */
+  background: transparent !important;
+  padding-top: 1rem;
+  box-shadow: 1px 1px #ccc;
+}
+
+.joinCard:hover {
+  border: 1px solid #20b6b0;
+}
+
+.imageWrap {
+  height: 40px;
+  text-align: center;
+}
+
+.centerLogo {
+  width: 18%;
+  margin: 0 auto;
+}
+
+.centerWideLogo {
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.centerExtraWideLogo {
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.join {
+  transition: none !important;
+  font-size: 18px;
+  font-weight: 400;
+  color: #57595d !important;
+  padding: 0 20px 0 20px;
+  text-decoration: none;
+  min-width: 200px;
+  display: inline-block;
+}
+
+.join:hover {
+  color: #20b6b0 !important;
+}

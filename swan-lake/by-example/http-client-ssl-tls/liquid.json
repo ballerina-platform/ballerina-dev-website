@@ -1,6 +1,6 @@
 {
   "title": "SSL/TLS",
-  "description": "BBE on how to secure HTTP client with SSL.",
+  "description": "This example is on how to secure an HTTP client with SSL.",
   "keywords": [
     "ballerina",
     "ballerina by example",

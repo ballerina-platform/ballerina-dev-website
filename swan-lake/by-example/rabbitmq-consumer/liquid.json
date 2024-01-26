@@ -1,6 +1,6 @@
 {
   "title": "Consume message",
-  "description": "BBE on consuming messages from a RabbitMQ queue in an asynchronous manner using Ballerina.",
+  "description": "This example demonstrates consuming messages from a RabbitMQ queue in an asynchronous manner.",
   "keywords": [
     "ballerina",
     "ballerina by example",

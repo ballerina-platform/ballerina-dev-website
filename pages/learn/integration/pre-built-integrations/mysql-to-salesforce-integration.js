@@ -120,7 +120,7 @@ export default function Learn({ samples, content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Create a new product in Salesforce for each new record added to a MySQL table"
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -135,7 +135,7 @@ export default function Learn({ samples, content }) {
         <meta property="og:title" content="MySQL to Salesforce integration - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Create a new product in Salesforce for each new record added to a MySQL table"
         />
         <meta
           property="og:image"
@@ -152,7 +152,7 @@ export default function Learn({ samples, content }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Create a new product in Salesforce for each new record added to a MySQL table"
         />
 
         {/* TWITTER */}
@@ -163,7 +163,7 @@ export default function Learn({ samples, content }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Create a new product in Salesforce for each new record added to a MySQL table"
         />
         <meta
           name="twitter:image"
@@ -171,7 +171,7 @@ export default function Learn({ samples, content }) {
         />
         <meta
           property="twitter:text:description"
-          content="Ballerina is a comprehensive language that is easy to grasp for anyone with prior programming experience. Start learning with the material below."
+          content="Create a new product in Salesforce for each new record added to a MySQL table"
         />
         <meta
           property="twitter:image"
@@ -271,7 +271,7 @@ export default function Learn({ samples, content }) {
                       backgroundColor: "#eeeeee !important"
                     }}>
                       <div style={{display: "flex", justifyContent: "end"}}>
-                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/mysql-record-to-sfdc-new-product" target="_blank" rel="noreferrer" passHref title="Open on GitHub" style={{marginTop:"-5px"}}>
+                        <a href="https://github.com/ballerina-guides/integration-samples/tree/main/mysql-record-to-salesforce-new-product" target="_blank" rel="noreferrer" passHref title="Open on GitHub" style={{marginTop:"-5px"}}>
                           <FaGithub style ={{marginRight:"10px", color: "black"}}/>
                         </a>
                         <CopyToClipboard text={content}

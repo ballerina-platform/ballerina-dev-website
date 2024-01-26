@@ -1,6 +1,6 @@
 {
   "title": "Default resource",
-  "description": "BBE on how to use the `rest-param`, `default` accessor(HTTP verb) in Ballerina to dispatch and constrain the service in a RESTful manner.",
+  "description": "This example is on how to use the `rest-param` and the `default` accessor (HTTP verb) in Ballerina to dispatch and constrain the service in a RESTful manner.",
   "keywords": [
     "ballerina",
     "ballerina by example",

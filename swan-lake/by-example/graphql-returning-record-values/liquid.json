@@ -1,12 +1,13 @@
 {
   "title": "Record as output object",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates returning record types from the resource or remote methods of a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql service"
+    "service",
+    "record types"
   ],
   "permalink": "/learn/by-example/graphql-returning-record-values",
   "active": "graphql-returning-record-values",

@@ -1,11 +1,13 @@
 {
   "title": "SSL/TLS",
-  "description": "BBE on how to secure HTTP client with SSL.",
+  "description": "This example demonstrates securing a GraphQL client with SSL.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "client",
+    "security",
     "ssl",
     "tls"
   ],

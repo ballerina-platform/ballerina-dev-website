@@ -116,14 +116,14 @@ export default function Integrations({ samples }) {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/Salesforce_Integrations.png"
+          content="https://ballerina.io/images/ballerina-use-cases-ballerina-for-salesforce-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina - Ballerina for Salesforce" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/Salesforce_Integrations.png"
+          content="https://ballerina.io/images/ballerina-use-cases-ballerina-for-salesforce-sm-banner.png"
         />
         <meta
           property="og:description"
@@ -143,7 +143,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/Salesforce_Integrations.png"
+          content="https://ballerina.io/images/ballerina-use-cases-ballerina-for-salesforce-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
@@ -151,7 +151,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/Salesforce_Integrations.png"
+          content="https://ballerina.io/images/ballerina-use-cases-ballerina-for-salesforce-sm-banner.png"
         />
       </Head>
 

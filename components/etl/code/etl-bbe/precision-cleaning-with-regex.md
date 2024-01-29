@@ -1,5 +1,5 @@
 ---
-title: 'Precision Cleaning with regular expressions'
+title: 'Precision cleaning with regular expressions'
 description: "Ballerina's regex support empowers data cleansing and standardization, enhancing data quality and consistency."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/clean-and-standardize-data/main.bal'
 phase: 'Transformations'

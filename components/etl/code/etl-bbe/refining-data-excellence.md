@@ -1,5 +1,5 @@
 ---
-title: 'Refining Data Excellence'
+title: 'Refining data excellence'
 description: "Ballerina's seamless integration with AI models enhances error correction, ensuring data integrity and precision during transformation."
 url: 'https://github.com/ballerina-guides/ai-samples/blob/main/correct_grammar_and_spelling_in_text_using_openai/main.bal'
 phase: 'Transformations'

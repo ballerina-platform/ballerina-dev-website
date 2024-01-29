@@ -5,8 +5,8 @@ url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-data-fro
 phase: 'Extractions'
 ---
 ```
-const REPO_OWNER = "ballerina-platform";
-const REPO_NAME = "ballerina-lang";
+configurable string repoOwner = "ballerina-platform";
+configurable string repoName = "ballerina-lang";
 
 final github:Client githubClient = check new ({
     auth: {
@@ -20,7 +20,7 @@ public function main() returns error? {
         states: [github:ISSUE_OPEN]
     };
     stream<github:Issue, github:Error?> openFeatures
-            = check githubClient->getIssues(REPO_OWNER, REPO_NAME, filters);
+            = check githubClient->getIssues(repoOwner, repoName, filters);
     check from var feature in openFeatures
         do {
             io:println(feature.title);

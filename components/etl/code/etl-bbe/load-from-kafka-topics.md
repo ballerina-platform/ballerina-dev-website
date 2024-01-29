@@ -1,5 +1,5 @@
 ---
-title: 'Realtime Data Flow'
+title: 'Real-time data flow'
 description: "Ballerina's support for various data streaming sources, such as Kafka, RabbitMQ, and NATS, facilitates the creation of real-time streaming ETL pipelines."
 url: 'https://github.com/ballerina-guides/etl-samples/blob/main/kafka-db-ingestion/main.bal'
 phase: 'Loadings'

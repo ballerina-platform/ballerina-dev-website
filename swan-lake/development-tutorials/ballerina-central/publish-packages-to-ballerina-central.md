@@ -37,7 +37,7 @@ $ tree .
 * The `Package.md` is required when you publish a package to a repository. You can edit the content to add a meaningful description about the package.
 * The `hello.bal` file, `resources/` directory `tests/` directory, and the `Module.md` file belong to the default module of the package. 
  
-For more information on these files, see [Package layout](/learn/package-references/#package-layout).
+>**Info:** For more information on these files, see [Package layout](/learn/package-references/#package-layout).
 
 To generate the Ballerina archive, execute the command below.
 
@@ -129,34 +129,32 @@ If you require adding new features/improvements/fixes to a package, which you ha
 
 However, it's the package developer's responsibility to be cautious when deciding on the new package versions (especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in package versions that are compatible only by the version but not by the implementation.
 
->**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes
-conform to the version that you are trying to publish to Ballerina central.
+>**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes conform to the version that you are trying to publish to Ballerina central.
 
-By default, running the `bal semver` command on the root directory of the package will compare the local changes with the 
-"closest compatible" published version available in Ballerina Central. 
-(Use `bal semver --help` for the CLI help text which outlines all the available command options)
+By default, running the `bal semver` command on the root directory of the package will compare the local changes with the "closest compatible" published version available in Ballerina Central. (Use `bal semver --help` for the CLI help text which outlines all the available command options)
 
 > **Note:** Semver validator CLI support is only available from Swan Lake Update 2 onwards.
 
 ## Use the packages in Ballerina Central
 
-After publishing your first package, you can create a second package and use the already published package in it.
-Any package published in Ballerina Central is public and can be used in other packages.
- For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
+After publishing your first package, you can create a second package and use the already published package in it. Any package published in Ballerina Central is public and can be used in other packages.
+
+>**Info:** For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
 
 ### Deprecate a published version of a package
 
 If you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
 
 To deprecate a particular version of a package on Ballerina Central, the package owner can run the following command. 
+
 An optional deprecation message can also be included, which will be displayed to current users of the package.
 
 ```
 $ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
 ```
 
-A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
-resolution unless it is already a part of a sticky build or no other compatible package version exists.
+A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency resolution unless it is already a part of a sticky build or no other compatible package version exists.
+
 If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
 
 To reverse the deprecation of a package, execute the same command with the `--undo` flag.

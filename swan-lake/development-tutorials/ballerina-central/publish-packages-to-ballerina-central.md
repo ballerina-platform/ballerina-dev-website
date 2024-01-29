@@ -1,16 +1,16 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: Publish packages to Ballerina Central
-description: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
-keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
+description: Ballerina packages can be used as dependencies. The sections below include information about working with packages.
+keywords: ballerina, programming language, ballerina packages, publishing packages
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central
-intro: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
+intro: Ballerina packages can be used as dependencies. The sections below include information about working with packages.
 ---
 
-## Create a library package
+## Create a package
 
-Execute the command below to create a new library package named `hello`.
+Execute the command below to create a new package named `hello`.
 
 ```
 $ bal new --template lib hello
@@ -54,12 +54,11 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-## Publish a library package to Ballerina Central
+## Publish a package to Ballerina Central
 
 You can publish a Ballerina archive to the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
->**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
-
+>**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the package before publishing it to Ballerina Central.
 
 ### Obtain an access token
 
@@ -126,11 +125,9 @@ $ bal push
 ```
 
 ### Publish a new version of a package
-If you require adding new features/improvements/fixes to a library package which you have already published to Ballerina central, 
-you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
-However, it's the library developer's responsibility to be cautious when deciding on the new package versions
-(especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in library
-versions that are compatible only by the version but not by the implementation.
+If you require adding new features/improvements/fixes to a package, which you have already published to Ballerina central, you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
+
+However, it's the package developer's responsibility to be cautious when deciding on the new package versions (especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in package versions that are compatible only by the version but not by the implementation.
 
 >**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes
 conform to the version that you are trying to publish to Ballerina central.

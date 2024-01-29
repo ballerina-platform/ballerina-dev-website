@@ -1,16 +1,16 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: Publish packages to Ballerina Central
-description: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
-keywords: ballerina, programming language, ballerina packages, libraries, publishing packages
+description: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
+keywords: ballerina, programming language, ballerina packages, publishing packages
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central
-intro: A package uses Ballerina library packages as dependencies. The sections below include information about working with library packages.
+intro: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
 ---
 
-## Create a library package
+## Create a package
 
-Execute the command below to create a new library package named `hello`.
+Execute the command below to create a new package named `hello`.
 
 ```
 $ bal new --template lib hello
@@ -37,7 +37,7 @@ $ tree .
 * The `Package.md` is required when you publish a package to a repository. You can edit the content to add a meaningful description about the package.
 * The `hello.bal` file, `resources/` directory `tests/` directory, and the `Module.md` file belong to the default module of the package. 
  
-For more information on these files, see [Package layout](/learn/package-references/#package-layout).
+>**Info:** For more information on these files, see [Package layout](/learn/package-references/#package-layout).
 
 To generate the Ballerina archive, execute the command below.
 
@@ -54,12 +54,11 @@ Creating bala
 	target/bala/user-hello-any-0.1.0.bala
 ```
 
-## Publish a library package to Ballerina Central
+## Publish a package to Ballerina Central
 
 You can publish a Ballerina archive to the <a href="https://central.ballerina.io/" target="_blank">Ballerina Central</a>. Before you publish, ensure the package works as intended because a publish is **permanent**. Once published to Ballerina Central, you cannot overwrite the version or remove the package. However, the number of package versions you can push to Ballerina Central is not restricted.
 
->**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the library package before publishing it to Ballerina Central.
-
+>**Tip:** As a precaution, use the [local repository](/learn/manage-dependencies/#use-dependencies-from-the-local-repository) first to test out the functionality of the package before publishing it to Ballerina Central.
 
 ### Obtain an access token
 
@@ -126,40 +125,36 @@ $ bal push
 ```
 
 ### Publish a new version of a package
-If you require adding new features/improvements/fixes to a library package which you have already published to Ballerina central, 
-you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
-However, it's the library developer's responsibility to be cautious when deciding on the new package versions
-(especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in library
-versions that are compatible only by the version but not by the implementation.
+If you require adding new features/improvements/fixes to a package, which you have already published to Ballerina central, you are allowed to publish them under a new version, based on the [Semantic Versioning Specification](https://semver.org/).
 
->**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes
-conform to the version that you are trying to publish to Ballerina central.
+However, it's the package developer's responsibility to be cautious when deciding on the new package versions (especially when there are potential breaking/backward-incompatible API changes), as otherwise, it may result in package versions that are compatible only by the version but not by the implementation.
 
-By default, running the `bal semver` command on the root directory of the package will compare the local changes with the 
-"closest compatible" published version available in Ballerina Central. 
-(Use `bal semver --help` for the CLI help text which outlines all the available command options)
+>**Tip:** As a precaution, use the Ballerina semver validator CLI tool (experimental) to check if your new API changes conform to the version that you are trying to publish to Ballerina central.
+
+By default, running the `bal semver` command on the root directory of the package will compare the local changes with the "closest compatible" published version available in Ballerina Central. (Use `bal semver --help` for the CLI help text which outlines all the available command options)
 
 > **Note:** Semver validator CLI support is only available from Swan Lake Update 2 onwards.
 
 ## Use the packages in Ballerina Central
 
 After publishing your first package, you can create a second package and use the already published package in it.
-Any package published in Ballerina Central is public and can be used in other packages.
- For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
+
+>**Info:** For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
 
 ### Deprecate a published version of a package
 
 If you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
 
 To deprecate a particular version of a package on Ballerina Central, the package owner can run the following command. 
+
 An optional deprecation message can also be included, which will be displayed to current users of the package.
 
 ```
 $ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
 ```
 
-A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
-resolution unless it is already a part of a sticky build or no other compatible package version exists.
+A deprecated package version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency resolution unless it is already a part of a sticky build or no other compatible package version exists.
+
 If the deprecated version is in use, a warning message containing the provided deprecation message will be shown during the project build.
 
 To reverse the deprecation of a package, execute the same command with the `--undo` flag.

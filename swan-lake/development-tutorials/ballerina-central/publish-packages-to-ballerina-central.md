@@ -5,7 +5,7 @@ description: Ballerina packages available in Ballerina Central can be used as de
 keywords: ballerina, programming language, ballerina packages, publishing packages
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central
-intro: Ballerina packages can be used as dependencies. The sections below include information about working with packages.
+intro: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
 ---
 
 ## Create a package

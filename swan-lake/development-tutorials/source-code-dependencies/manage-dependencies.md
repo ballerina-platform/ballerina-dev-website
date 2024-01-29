@@ -66,43 +66,28 @@ The following is another example that shows the usage of multiple modules from d
 import ballerina/log;
 // Imports the default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/salesforce as salesforce;
+import ballerinax/salesforce as sf;
 // Imports a non-default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/salesforce.bulk as salesforceBulk;
+import ballerinax/salesforce.bulk as sfBulk;
 
-configurable string clientId = ?;
-configurable string clientSecret = ?;
-configurable string refreshToken = ?;
-configurable string refreshUrl = ?;
 configurable string baseUrl = ?;
+configurable string token = ?;
 
-salesforce:ConnectionConfig sfConfig = {
-    baseUrl,
-    auth: {
-        clientId,
-        clientSecret,
-        refreshToken,
-        refreshUrl
-    }
-};
+sf:ConnectionConfig sfConfig = {baseUrl, auth: {token}};
 
 public function main() returns error? {
-    salesforceBulk:Client bulkClient = check new (sfConfig);
+    sfBulk:Client bulkClient = check new (sfConfig);
 
-    string contacts = "description,FirstName,LastName,Title,Phone,Email,My_External_Id__c\n"
-        + "Created_from_Ballerina_Sf_Bulk_API,Cuthbert,Binns,Professor Level 02,0332236677,john434@gmail.com,845\n"
-        + "Created_from_Ballerina_Sf_Bulk_API,Burbage,Shane,Professor Level 02,0332211777,peter77@gmail.com,846";
+    string contacts = "Name,Email\n"
+        + "John,john434@gmail.com\n"
+        + "Peter,peter77@gmail.com";
 
-    salesforceBulk:BulkJob insertJob = check bulkClient->createJob("insert", "Contact", "CSV");
+    sfBulk:BulkJob insertJob = check bulkClient->createJob("insert", "Contact", "CSV");
 
-    salesforceBulk:BatchInfo|error batch = bulkClient->addBatch(insertJob, contacts);
-    if batch is salesforceBulk:BatchInfo {
-        string message = batch.id.length() > 0 ? "Batch Added Successfully" : "Failed to add the Batch";
-        log:printInfo(message);
-    } else {
-        log:printError(batch.message());
-    }
+    sfBulk:BatchInfo batch = check bulkClient->addBatch(insertJob, contacts);
+
+    log:printInfo(batch.id.length() > 0 ? "Batch Added Successfully" : "Failed to add the Batch");
 }
 ```
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-publishing-to-central-left-nav-pages-swanlake
 title: Publish packages to Ballerina Central
-description: Ballerina packages can be used as dependencies. The sections below include information about working with packages.
+description: Ballerina packages available in Ballerina Central can be used as dependencies. The sections below include information about working with such packages.
 keywords: ballerina, programming language, ballerina packages, publishing packages
 permalink: /learn/publish-packages-to-ballerina-central/
 active: publish-packages-to-ballerina-central

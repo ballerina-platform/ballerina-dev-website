@@ -137,7 +137,7 @@ By default, running the `bal semver` command on the root directory of the packag
 
 ## Use the packages in Ballerina Central
 
-After publishing your first package, you can create a second package and use the already published package in it. Any package published in Ballerina Central is public and can be used in other packages.
+After publishing your first package, you can create a second package and use the already published package in it.
 
 >**Info:** For more information, see [Import a module](/learn/manage-dependencies/#import-a-module).
 

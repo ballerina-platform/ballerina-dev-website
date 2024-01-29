@@ -88,9 +88,9 @@ $ bal version
 Make certain the command output shows the version that you downloaded as shown below.
 
 ```
-Ballerina <VERSION> (Swan Lake)
-Language specification 2022R1
-update tool 1.3.8
+Ballerina <VERSION> (Swan Lake Update <MINOR_VERSION>)
+Language specification <SPEC_VERSION>
+Update Tool <UPDATE_TOOL_VERSION>
 ```
 
 ## Build from source

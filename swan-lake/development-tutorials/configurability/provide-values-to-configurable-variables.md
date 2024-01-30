@@ -1,35 +1,34 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
 title: Provide values to configurable variables
-description: You can supply values to configurable variables using the methods below.
+description: You can provide values for configurable variables through multiple methods as described below.
 keywords: ballerina, programming language, configurable, variables, values, toml
 permalink: /learn/provide-values-to-configurable-variables/
 active: provide-values-to-configurable-variables
+intro: You can provide values for configurable variables through multiple methods as described below.
 ---
 
-The values for configurable variables can be provided through configuration files, command-line arguments, and environment variables. The configuration values will be overridden in the following precedence order if the values are given through multiple ways when retrieving configurable values:
+>**Info:** The configuration values will be overridden in the following precedence order when retrieving them, if they are given through multiple ways.
 
-- **Command-line arguments:** The values can be configured through the command-line arguments when executing the Ballerina program. The configurable value provided through a command-line argument is expected to be the `toString()` representation of the intended value.
+- **Command-line arguments:** The values can be configured through command-line arguments that get executed when running the Ballerina program. 
 
-- **Configuration files:** The values can be configured through the configuration files in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. The file location can be specified through an environment variable with the name `BAL_CONFIG_FILES`. Ballerina supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.  If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory.<br/>Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
+- **Configuration files:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through configuration files. 
 
-- **Environment variables:** Users can provide the configuration values through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a>. 
+- **Environment variables:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through environment variables.
 
     >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
-### Provide via command-line arguments
+## Provide via command-line arguments
 
-The following syntax can be used to provide values for the variables through the command-line parameters:
+The following syntax can be used to provide values for the variables through command-line arguments.
 
 ```
 -Ckey=value
 ```
 
-Currently, the command-line based configuration is only supported for configurable variables of types `int`, `byte`,
-`float`, `boolean`, `string`, `decimal`, `enum` and `xml`.
+>**Info:** The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
 
-The following examples explain the way of providing command-line arguments to configure variables of specific Ballerina
-types.
+The following examples explain how to provide command-line arguments to configure variables of specific Ballerina types.
 
 | Ballerina type | Ballerina example                                                                                                                                                                     | Command-line argument                                             |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
@@ -41,19 +40,29 @@ types.
 | enum           | <code>enum Country { </code><br>    <code>LK = "Sri Lanka", </code><br>    <code>US = "United States" </code><br> <code>} </code><br> <code>configurable Country country = ?; </code> | `bal run -- -Ccountry="Sri Lanka"`                                |
 | union          | <code>configurable float&#124;int&#124;string measurement = ?; </code>                                                                                                                | `bal run -- -Cmeasurement=5.0`                                    |
 
-### Provide via TOML syntax
+## Provide via configuration files
 
-Ballerina defines a specific TOML syntax to be used when configuring the variables through the configuration files and
-environment variables. Depending on the type of the configurable variable, the way of providing values in the TOML
-content differs. Currently, TOML-based configuration is supported for configurable variables of `int`, `float`,
-`boolean`, `string`, `xml`,  `decimal`, `enum`, the arrays of the respective types, map, record, table and the union of
-the respective types.
+You can provide configurable values via a file by specifying its location through an environment variable with the name `BAL_CONFIG_FILES`. Ballerina supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
-The mapping of Ballerina types to TOML types can be explained through the following examples:
+>**Info:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. 
+
+For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
+
+## Provide via environment variables
+
+You can also provide configurable values through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 
+
+## TOML syntax
+
+Ballerina defines a specific TOML syntax based on the <a href="https://toml.io/en/v0.4.0" target="_blank">TOML(v0.4) format</a> to be used when configuring the variables through the configuration files and environment variables. 
+
+>**Info:** The way of providing values in the TOML content differs depending on the type of the configurable variable. Currently, the TOML-based configuration supports configurable variables of types `int`, `float`, `boolean`, `string`, `xml`,  `decimal`, `enum`, the arrays of the respective types, `map`, `record`, `table`, and the union of the respective types.
+
+The examples below explain the mapping of Ballerina types to TOML types.
 
 | Ballerina type           | Ballerina example                                                                                                                                                                                                                                                                                     | TOML type                                                                                                                       | TOML example                                                                                                                                |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| nil                      | <code>configurable string? city = "London";</code><br/><code>type Address record {</code><br/><code>string? city = "Paris";</code><br/><code>};</code><br/><code>configurable Address address = {};</code>                                                                                            | No TOML type is specified for the `()` value.<br/>A default value is expected when a configurable variable contains a nil type. |                                                                                                                                             |
+| nil                      | <code>configurable string? city = "London";</code><br/><code>type Address record {</code><br/><code>string? city = "Paris";</code><br/><code>};</code><br/><code>configurable Address address = {};</code>                                                                                            | No TOML type is specified for the `()` value. A default value is expected when a configurable variable contains a nil type. |                                                                                                                                             |
 | boolean                  | <code>configurable   boolean  isAdmin = ?;</code>                                                                                                                                                                                                                                                     | Boolean                                                                                                                         | `isAdmin = true`                                                                                                                            |
 | int, byte                | <code>configurable   byte  age = ?;</code><br/>  <code>configurable   int  port = ?;</code>                                                                                                                                                                                                           | Integer                                                                                                                         | `age = 25` <br/>  `port = 9090`                                                                                                             |
 | float, decimal           | <code>configurable   float  height = ?;</code><br/>  <code>configurable   decimal  salary = ?;</code>                                                                                                                                                                                                 | Float                                                                                                                           | `height = 5.6`<br/>  `salary = 50500.65 `                                                                                                   |

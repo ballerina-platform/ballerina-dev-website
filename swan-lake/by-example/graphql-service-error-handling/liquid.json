@@ -1,11 +1,12 @@
 {
   "title": "Error handling",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates handling errors in a Ballerina GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
+    "service",
     "error handling"
   ],
   "permalink": "/learn/by-example/graphql-service-error-handling",

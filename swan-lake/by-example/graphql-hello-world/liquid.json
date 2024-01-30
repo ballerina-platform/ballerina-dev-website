@@ -1,12 +1,12 @@
 {
   "title": "Hello world",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates a GraphQL service endpoint written in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql service"
+    "service endpoint"
   ],
   "permalink": "/learn/by-example/graphql-hello-world",
   "active": "graphql-hello-world",

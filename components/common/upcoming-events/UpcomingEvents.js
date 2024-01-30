@@ -59,7 +59,13 @@ export default function UpcomingEvents() {
               <Row className={styles.eventRows} key={index}>
                 <Col sm={12} md={2} className={styles.eventDateContainer}>
                   <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
-                  {item.day ? <p className={styles.eventDate}>{item.day}, {item.time}</p> : null}
+                  {
+                    item.day && item.time ? 
+                      <p className={styles.eventDate}>{item.day}, {item.time}</p> 
+                    : item.day && !item.time ?
+                        <p className={styles.eventDate}>{item.day}</p>
+                      : null
+                  }
                   <p className="eventLocation">{item.location}</p>
                 </Col>
                 <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">

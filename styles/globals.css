@@ -538,6 +538,20 @@ a.cGreenLinkArrow:hover {
   z-index: -1;
 }
 
+.selectedTagContainer{
+  margin-bottom: 10px;
+}
+
+.background-image {
+  opacity: 0.1; 
+  position: absolute;
+  top: 165px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
 /*--------downloads page -------*/
 .downloads :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
@@ -568,6 +582,19 @@ pre[class*="language-"] {
 }
 
 /*------------Community----------------*/
+
+.communityRow {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* margin-bottom: 0 !important; */
+}
+
+.communityRow h2 {
+  /* margin-top: 40px; */
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
 
 .carousel-item img {
   width: 100%;
@@ -1431,6 +1458,14 @@ table.cTopControlsContainer tbody {
   margin-top: 30px;
 }
 
+.vLogo {
+  text-align: center;
+}
+
+.vLogo img {
+  width: 50% !important;
+}
+
 /* ----------- draggable code blocks -------------- */
 #code-container {
   width: 100%;
@@ -1604,4 +1639,129 @@ table.cTopControlsContainer tbody {
 
 .odd .nav-link.active {
   background-color: #eeeeee !important;
+}
+
+
+.cInlineImage-small {
+  display: inline-block;
+  text-align: center;
+  height:45% !important;
+  width:30% !important;
+  border: 1px solid gray;
+}
+    
+.cInlineImage-full {
+  display: inline-block;
+  text-align: center;
+  height:75% !important;
+  width:90% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-threeQuarter {
+  display: inline-block;
+  text-align: center;
+  width:65%;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-half {
+  display: inline-block;
+  text-align: center;
+  width:50% !important;
+  border: 1px solid gray;
+}
+  
+.cInlineImage-bordered {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+img + blockquote{
+  margin-top: 20px;
+}
+
+.mdTable + img {
+  margin-top: 20px;
+}
+
+/* ---------------------Carousal-------------------- */
+#newsCarousel {
+  /* margin-left: 50px;
+  margin-right: 50px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 70px;
+}
+
+.item .row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selected .row {
+	opacity:0.5;
+}
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background: none;
+  border: none;
+}
+
+.carousel-control-prev {
+  margin-left: -25px !important;
+  justify-content: start !important;
+}
+
+.carousel-control-next {
+  margin-right: -25px !important;
+  justify-content: end !important;
+}
+
+.carousel-control {
+  width: 0%;
+}
+
+.carousel-indicators {
+  margin-bottom: 0 !important;
+}
+
+.carousel-border .carousel-inner {
+  border-radius: 5px;
+  /* box-shadow: 3px 4px #EBEDF0; */
+}
+
+a.join {
+  display: block;
+  transition: none !important;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #57595d;
+  color: #ffffff !important;
+  /* padding: 20px 20px 20px 60px; */
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  min-height: 60px;
+  line-height: 35px;
+  /* background-image: url('/images/download-bg.svg');
+  background-repeat: no-repeat; */
+  /* background-position: left 20px top 22px; */
+  /* background-position: left 20px top 14px; */
+  width: fit-content;
+  border-radius: 4px;
+}
+
+a.join:hover {
+  /* background-image: url("/images/download-bg-white.svg"); */
+  background-color: #20b6b0;
+  /* background-repeat: no-repeat; */
+  /* background-position: left 20px top 14px; */
 }

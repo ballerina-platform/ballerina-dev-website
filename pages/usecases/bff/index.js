@@ -96,7 +96,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with bff-friendly abstractions."
+          content="Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -111,24 +111,24 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Write code with bff-friendly abstractions."
+          content="Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends."
         />
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-use-cases-bff-sm-banner.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina for BFF - The Ballerina programming language" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-use-cases-bff-sm-banner.png"
         />
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with bff-friendly abstractions."
+          content="Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends."
         />
 
         {/* TWITTER */}
@@ -139,19 +139,19 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with bff-friendly abstractions."
+          content="Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends."
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-use-cases-bff-sm-banner.png"
         />
         <meta
           property="twitter:text:description"
-          content="Write code with bff-friendly abstractions."
+          content="Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends."
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
+          content="https://ballerina.io/images/ballerina-use-cases-bff-sm-banner.png"
         />
       </Head>
 

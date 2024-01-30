@@ -1,6 +1,6 @@
 {
   "title": "Receive file",
-  "description": "This is a BBE on getting and putting file content on a remote SFTP server.",
+  "description": "This example demonstrates getting file content from a remote SFTP server.",
   "keywords": [
     "ballerina",
     "ballerina by example",

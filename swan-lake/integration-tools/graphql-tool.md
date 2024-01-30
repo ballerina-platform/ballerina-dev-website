@@ -16,7 +16,7 @@ The Ballerina GraphQL tooling support provides the main capabilities below.
 - [Service generation](#service-generation)
 - [Schema generation](#schema-generation)
 
-The general usage of the GraphQL tool are as follows.
+The general usage of the GraphQL tool is as follows.
 
 ```
 $ bal graphql [-i | --input] <graphql-schema-file-path>

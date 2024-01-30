@@ -1,6 +1,6 @@
 {
   "title": "Circuit breaker",
-  "description": "BBE on how to use an HTTP circuit breaker in Ballerina. This will allow to handle requests when a backend is failing.",
+  "description": "This example is on how to use an HTTP circuit breaker to handle requests when a backend is failing.",
   "keywords": [
     "ballerina",
     "ballerina by examples",

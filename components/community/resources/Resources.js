@@ -63,7 +63,7 @@ export default function Resources(props) {
                 </Row>
 
                 <Row>
-                    <Col sm={12} md={6} lg={6}>
+                    <Col sm={12}>
                         <p>
                             We have curated a list of articles, blogs, and videos that were created by the members of the Ballerina community. These resources cover aspects of the Ballerina language, platform, tools, and use cases with implementation details.
                         </p>
@@ -125,7 +125,7 @@ export default function Resources(props) {
                     </Col>
 
                     <Col sm={6} md={6} lg={3} className='gy-4'>
-                        <a href='#' className={styles.resourceCardLink} title="Medium Tech Blog">
+                        <a href='https://medium.com/ballerina-techblog' className={styles.resourceCardLink} title="Medium Tech Blog">
                             {/* <Card className={styles.cardBox}>
                                 <Card.Body className={styles.cardBody}>
                                     <div className={styles.cardImg}>

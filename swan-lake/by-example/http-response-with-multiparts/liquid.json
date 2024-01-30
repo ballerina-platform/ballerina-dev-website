@@ -1,6 +1,6 @@
 {
   "title": "Response with multiparts",
-  "description": "BBE on how Ballerina supports encoding and decoding multipart content in HTTP responses along with nested parts.",
+  "description": "This example is on how Ballerina supports encoding and decoding multipart content in HTTP responses along with nested parts.",
   "keywords": [
     "ballerina",
     "ballerina by example",

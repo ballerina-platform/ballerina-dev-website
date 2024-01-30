@@ -1,13 +1,11 @@
 ---
 title: 'Connect Salesforce with e-commerce platforms'
-description: "E-commerce platforms like Shopify and WooCommerce are the main points of customer interactions. Ballerina can listen for events from such platforms like customer registrations, contact updates, or order placements, and propagate those changes to Salesforce.<br/><br/><i>Example: Update customer records in Salesforce, when customer data is updated in Shopify.</i>"
-url: 'https://github.com/chathurace/integration-samples/blob/main/shopify-customer-to-salesforce-customer/main.bal'
+description: "E-commerce platforms like Shopify and WooCommerce are the main points of customer interactions. Ballerina can utilize packages in its <a href='https://central.ballerina.io/ballerina-library'>library</a> to listen for events like customer registrations, contact updates, or order placements from such platforms and propagate those changes to Salesforce.<br/><br/><i>Example: Update customer records in Salesforce, when customer data is updated in Shopify.</i>"
+url: 'https://github.com/ballerina-guides/integration-samples/blob/main/shopify-customer-to-salesforce-customer'
 ---
 ```
-sf:Client salesforce = check new (salesforceConfig);
-
 service /salesforce_bridge on new http:Listener(9090) {
-    resource function post customers(@http:Payload ShopifyCustomer shopifyCustomer) returns error? {
+    resource function post customers(ShopifyCustomer shopifyCustomer) returns error? {
         string firstName = shopifyCustomer.first_name ?: regex:split(shopifyCustomer.email, "@")[0];
         string lastName = shopifyCustomer.last_name ?: "";
         Address? shopifyAddress = shopifyCustomer.default_address;
@@ -18,16 +16,16 @@ service /salesforce_bridge on new http:Listener(9090) {
             Email__c: shopifyCustomer.email,
             Address__c: address
         };
-        stream<Id, error?> customerQuery = check salesforce->query(
+        stream<Id, error?> customerStream = check salesforce->query(
             string `SELECT Id FROM HmartCustomer__c WHERE Email__c = '${salesforceCustomer.Email__c}'`);
-        record {|Id value;|}? existingCustomer = check customerQuery.next();
-        check customerQuery.close();
+        record {|Id value;|}? existingCustomer = check customerStream.next();
+        check customerStream.close();
         if existingCustomer is () {
             _ = check salesforce->create("HmartCustomer__c", salesforceCustomer);
         } else {
-            check salesforce->update("HmartCustomer__c", existingCustomer.value.Id, salesforceCustomer);
+            check salesforce->update("HmartCustomer__c",
+                existingCustomer.value.Id, salesforceCustomer);
         }
-
     }
 }
 ```

@@ -2,6 +2,7 @@
 layout: ballerina-inner-page
 title: The Ballerina contributor covenant code of conduct
 intro: This code of conduct aims at establishing a baseline standard of behavior to provide a safe and comfortable environment for all members of the Ballerina community who are originated from different backgrounds.
+description: This code of conduct aims at establishing a baseline standard of behavior to provide a safe and comfortable environment for all members of the Ballerina community who are originated from different backgrounds.
 permalink: /code-of-conduct
 ---
 

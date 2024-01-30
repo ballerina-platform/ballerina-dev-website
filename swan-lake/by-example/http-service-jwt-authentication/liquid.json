@@ -1,6 +1,6 @@
 {
   "title": "JWT authentication",
-  "description": "BBE on how to secure HTTP service with JWT Auth in Ballerina.",
+  "description": "This example is on how to secure an HTTP service with JWT authentication in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

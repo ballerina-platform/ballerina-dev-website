@@ -1,6 +1,6 @@
 {
   "title": "Consume JetStream message",
-  "description": "BBE on producing and consuming a message from a subject in the NATS JetStream server using Ballerina.",
+  "description": "This example demonstrates consuming messages from a subject in a NATS JetStream server.",
   "keywords": [
     "ballerina",
     "ballerina by example",

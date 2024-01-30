@@ -22,6 +22,23 @@ import dynamic from 'next/dynamic';
 
 import styles from './Events.module.css';
 import { prefix } from '../../../utils/prefix';
+import EventsData from '../../../_data/events.json';
+
+export function getUpcomingEvents(now) {
+    const events = EventsData.events;
+    let upcomingEvents = false;
+
+    for (var i = 0; i < events.length; i++) {
+        if (now < Date.parse(events[i].expire)) {
+            upcomingEvents = true;
+            break;
+        }
+    }
+
+    return upcomingEvents;
+
+}
+
 
 export default function Events(props) {
 
@@ -42,13 +59,21 @@ export default function Events(props) {
         paddingRight: '25px'
     }
 
+    const [now, setNow] = React.useState(new Date());
+
+    React.useEffect(() => {
+        setNow(new Date());
+    }, [])
+
+    const upcomingEvents = getUpcomingEvents(now);
+
     return (
         <Col xs={12}>
             <Container>
                 <Row>
                     <Col xs={12}>
                         <h2 id='events' className='section'>
-                        <svg
+                            <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="30"
                                 height="30"
@@ -61,7 +86,7 @@ export default function Events(props) {
                                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
                             </svg>
                             Events
-                            </h2>
+                        </h2>
                     </Col>
                 </Row>
 
@@ -83,18 +108,22 @@ export default function Events(props) {
                             style={
                                 (hoverBtn ? linkArrowHover : linkArrow)
                             }>
-                            <a href={`${prefix}/community/events`} rel="noreferrer" target="_blank" className={styles.viewAll}>View all events </a>
+                            <a href={`${prefix}/community/events`} className={styles.viewAll}>View all events </a>
                         </p>
                     </Col>
                 </Row>
+                {
+                    upcomingEvents &&
+                    <>
+                        <Row className={styles.upcomingSection}>
+                            <Col sm={12}>
+                                <h3 className={styles.upcoming}>Upcoming events</h3>
+                            </Col>
+                        </Row>
 
-                <Row className={styles.upcomingSection}>
-                    <Col sm={12}>
-                        <h3 className={styles.upcoming}>Upcoming events</h3>
-                    </Col>
-                </Row>
-
-                <UpcomingEvents />
+                        <UpcomingEvents />
+                    </>
+                }
             </Container>
         </Col>
     );

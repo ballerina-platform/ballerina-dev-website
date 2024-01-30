@@ -1,12 +1,12 @@
 {
   "title": "Service as output object",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates returning service objects from the resource or remote methods of a GraphQL service.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql service"
+    "service objects"
   ],
   "permalink": "/learn/by-example/graphql-returning-service-objects",
   "active": "graphql-returning-service-objects",

@@ -1,6 +1,6 @@
 {
   "title": "Query parameter",
-  "description": "BBE on how to use the `query parameters` in an HTTP service.",
+  "description": "This example is on how to extract the query parameters in an HTTP resource function.",
   "keywords": [
     "ballerina",
     "ballerina by example",

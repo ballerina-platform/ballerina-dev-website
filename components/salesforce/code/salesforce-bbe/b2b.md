@@ -1,15 +1,10 @@
 ---
 title: "Integrate Salesforce with B2B Channels"
-description: "Interactions between businesses, such as sending purchase orders and invoices, usually occur over EDI-based B2B channels. Built-in EDI capabilities of Ballerina can directly integrate B2B channels with Salesforce and update sales data based on B2B transactions.<br/><br/><i>Example: Update products associated with Salesforce opportunities based on products listed in EDIFACT Request for Quotation (REQOTE) messages.</i>"
-url: 'https://github.com/chathurace/integration-samples/blob/main/ftp-edi-message-to-salesforce-opportunity/main.bal'
+description: "Interactions between businesses, such as sending purchase orders and invoices, usually occur over EDI-based B2B channels. Ballerina's built-in EDI capabilities can directly integrate B2B channels with Salesforce and update sales data based on B2B transactions.<br/><br/><i>Example: Update products associated with Salesforce opportunities based on products listed in EDIFACT Request for Quotation (REQOTE) messages.</i>"
+url: 'https://github.com/ballerina-guides/integration-samples/blob/main/ftp-edi-message-to-salesforce-opportunity'
 ---
 ```
-sf:Client salesforce = check new (salesforceConfig);
-ftp:Client fileServer = check new ftp:Client(ftpConfig);
-
 public function main() returns error? {
-
-    // Get new quotes from the FTP new quotes directory, and iterate through them.
     ftp:FileInfo[] quoteList = check fileServer->list(ftpNewQuotesPath);
     foreach ftp:FileInfo quoteFile in quoteList {
         stream<byte[] & readonly, io:Error?> fileStream = check fileServer->get(quoteFile.path);

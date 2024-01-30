@@ -1,12 +1,12 @@
 {
   "title": "Mutations",
-  "description": "A GraphQL service endpoint written in Ballerina",
+  "description": "This example demonstrates defining a GraphQL mutation operation.",
   "keywords": [
     "ballerina",
     "ballerina by example",
     "bbe",
     "graphql",
-    "graphql mutation"
+    "mutation"
   ],
   "permalink": "/learn/by-example/graphql-mutations",
   "active": "graphql-mutations",

@@ -1,6 +1,6 @@
 {
   "title": "Payload data binding",
-  "description": "BBE demonstrates the data-binding capability of an HTTP client.",
+  "description": "This example demonstrates the data-binding capability of an HTTP client.",
   "keywords": [
     "ballerina",
     "ballerina by example",

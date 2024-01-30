@@ -17,34 +17,36 @@
  */
 
 import Carousel from 'react-bootstrap/Carousel';
-// import ExampleCarouselImage from 'components/ExampleCarouselImage';
 
 import styles from './CommunityCarousel.module.css';
 
 export default function CommunityCarousel(props) {
 
   return (
-    <Carousel className={styles.communityCarousel}>
+    <Carousel className={`${styles.communityCarousel} carousel-border`} variant='dark' controls={false}>
       <Carousel.Item>
-        <img src='/images/community/1.png' />
+        <img src='/images/community/2.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/2.png' />
+        <img src='/images/community/5.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/3.png' />
+        <img src='/images/community/6.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/4.png' />
+        <img src='/images/community/7.jpg' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/5.png' />
+        <img src='/images/community/9.png' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/6.png' />
+        <img src='/images/community/10.png' />
       </Carousel.Item>
       <Carousel.Item>
-        <img src='/images/community/7.png' />
+        <img src='/images/community/11.png' />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img src='/images/community/12.png' />
       </Carousel.Item>
     </Carousel>
   );

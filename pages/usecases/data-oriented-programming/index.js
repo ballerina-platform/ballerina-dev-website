@@ -109,7 +109,7 @@ export default function Integrations({ samples }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Write code with integration-friendly abstractions."
+          content="With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -124,7 +124,7 @@ export default function Integrations({ samples }) {
         <meta property="og:title" content="Enhance data oriented programming with Ballerina" />
         <meta
           property="og:description"
-          content="Write code with integration-friendly abstractions."
+          content="With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing."
         />
         <meta
           property="og:image"
@@ -141,7 +141,7 @@ export default function Integrations({ samples }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Write code with integration-friendly abstractions."
+          content="With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing."
         />
 
         {/* TWITTER */}
@@ -152,7 +152,7 @@ export default function Integrations({ samples }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Write code with integration-friendly abstractions."
+          content="With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing."
         />
         <meta
           name="twitter:image"
@@ -160,7 +160,7 @@ export default function Integrations({ samples }) {
         />
         <meta
           property="twitter:text:description"
-          content="Write code with integration-friendly abstractions."
+          content="With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing."
         />
         <meta
           property="twitter:image"

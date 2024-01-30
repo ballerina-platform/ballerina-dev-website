@@ -1,6 +1,6 @@
 {
   "title": "Mutual SSL",
-  "description": "BBE on how to secure HTTP client with mutual SSL.",
+  "description": "This example is on how to secure an HTTP client with mutual SSL.",
   "keywords": [
     "ballerina",
     "ballerina by example",

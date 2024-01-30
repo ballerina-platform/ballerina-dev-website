@@ -1,6 +1,6 @@
 {
   "title": "Error handling",
-  "description": "This BBE demonstrates error handling in Kafka services.",
+  "description": "This example demonstrates error handling in Kafka services.",
   "keywords": [
     "ballerina",
     "ballerina by example",

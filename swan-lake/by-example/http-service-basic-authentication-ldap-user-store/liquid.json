@@ -1,6 +1,6 @@
 {
   "title": "Basic authentication LDAP user store",
-  "description": "BBE on how to secure HTTP service with Basic Auth in Ballerina.",
+  "description": "This example is on how to secure an HTTP service with LDAP Basic Authentication in Ballerina.",
   "keywords": [
     "ballerina",
     "ballerina by example",

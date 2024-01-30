@@ -25,10 +25,6 @@ import Newsletter from '../../components/community/newsletter/Newsletter';
 import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
 import JoinUs from '../../components/community/join-us/JoinUs';
-<<<<<<< HEAD
-// import GetInvolved from '../../components/community/get-involved/GetInvolved';
-=======
->>>>>>> master
 import Contact from '../../components/community/contact/Contact';
 import CommunityCarousel from '../../components/community/community-carousel/CommunityCarousel';
 
@@ -83,18 +79,11 @@ export default function Community() {
                   <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Community</h1>
-<<<<<<< HEAD
-                    <p>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
-=======
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
                     <a href="#join-with-us" className="join">
                     Join our community
                     </a>
                   </Col> 
-                  <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
-                    <CommunityCarousel />
->>>>>>> master
-                  </Col>
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
                     <CommunityCarousel />
                   </Col>
@@ -116,27 +105,9 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-<<<<<<< HEAD
-            <Newsletter getLink={getLink} />
-          </Row>
-
-          {/* <Row className="pageContentRow communityRow">
-            <TechTalk getLink={getLink} />
-          </Row> */}
-
-          {/* <Row className="pageContentRow communityRow slackRow">
-            <GetInvolved getLink={getLink} />
-          </Row> */}
-
-          {/* <Row className="pageContentRow communityRow">
-            <Blog getLink={getLink} />
-          </Row> */}
-
-=======
             <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
->>>>>>> master
           <Row className="pageContentRow communityRow slackRow">
             <Contact getLink={getLink} />
           </Row>

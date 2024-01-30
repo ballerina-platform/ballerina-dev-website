@@ -55,6 +55,14 @@
                     "id": "swan-lake-2201.8.0"
                 },
                 {
+                    "dirName": "2201.7.5 (Swan Lake Update 7)",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.7.5",
+                    "id": "swan-lake-2201.7.5"
+                },
+                {
                     "dirName": "2201.7.4 (Swan Lake Update 7)",
                     "level": 2,
                     "position": 1,
@@ -127,6 +135,14 @@
                     "id": "swan-lake-2201.6.0"
                 },
                 {
+                    "dirName": "2201.5.5 (Swan Lake Update 5)",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.5.5",
+                    "id": "swan-lake-2201.5.5"
+                },
+                {
                     "dirName": "2201.5.4 (Swan Lake Update 5)",
                     "level": 2,
                     "position": 1,
@@ -165,6 +181,14 @@
                     "isDir": false,
                     "url": "/downloads/swan-lake-release-notes/swan-lake-2201.5.0",
                     "id": "swan-lake-2201.5.0"
+                },
+                {
+                    "dirName": "2201.4.3 (Swan Lake Update 4)",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/swan-lake-release-notes/swan-lake-2201.4.3",
+                    "id": "swan-lake-2201.4.3"
                 },
                 {
                     "dirName": "2201.4.2 (Swan Lake Update 4)",
@@ -523,6 +547,14 @@
             "url": "/downloads/1.2.x-release-notes",
             "id": "1.2.x-release-notes",
             "subDirectories": [
+                {
+                    "dirName": "1.2.48",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/downloads/1.2.x-release-notes/1.2.48",
+                    "id": "1.2.48"
+                },
                 {
                     "dirName": "1.2.47",
                     "level": 2,

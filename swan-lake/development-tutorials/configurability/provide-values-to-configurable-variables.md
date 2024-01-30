@@ -1,16 +1,16 @@
 ---
 layout: ballerina-configurable-left-nav-pages-swanlake
 title: Provide values to configurable variables
-description: You can provide values for configurable variables through multiple methods as described below.
+description: You can provide values for configurable variables through multiple methods, as described below.
 keywords: ballerina, programming language, configurable, variables, values, toml
 permalink: /learn/provide-values-to-configurable-variables/
 active: provide-values-to-configurable-variables
-intro: You can provide values for configurable variables through multiple methods as described below.
+intro: You can provide values for configurable variables through multiple methods, as described below.
 ---
 
->**Info:** The configuration values will be overridden in the following precedence order when retrieving them, if they are given through multiple ways.
+>**Info:** The configuration values will be overridden in the following precedence order when retrieving them if given in multiple ways.
 
-- **Command-line arguments:** The values can be configured through command-line arguments that get executed when running the Ballerina program. 
+- **Command-line arguments:** The values can be configured through command-line arguments executed when running the Ballerina program. 
 
 - **Configuration files:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through configuration files. 
 
@@ -26,7 +26,7 @@ The following syntax can be used to provide values for the variables through com
 -Ckey=value
 ```
 
->**Info:** The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
+>**Info:** The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line-based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
 
 The following examples explain how to provide command-line arguments to configure variables of specific Ballerina types.
 
@@ -42,15 +42,15 @@ The following examples explain how to provide command-line arguments to configur
 
 ## Provide via configuration files
 
-You can provide configurable values via a file by specifying its location through an environment variable with the name `BAL_CONFIG_FILES`. Ballerina supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
+You can provide configurable values via a file by specifying its location through an environment variable named `BAL_CONFIG_FILES`. Ballerina supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
->**Info:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. 
+>**Info:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory. You can provide configuration values for testing in a file named `Config.toml` located in the `tests` directory. 
 
 For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 ## Provide via environment variables
 
-You can also provide configurable values through an environment variable with the name `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 
+You can also provide configurable values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 
 
 ## TOML syntax
 

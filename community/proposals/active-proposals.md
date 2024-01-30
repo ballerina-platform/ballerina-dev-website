@@ -50,6 +50,7 @@ permalink: /community/active-proposals
 |[Proposal: Ballerina GraphQL Schema Registry](https://github.com/ballerina-platform/ballerina-library/issues/4820)|[zetcco](https://github.com/zetcco)|0|2023-09-19|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|
 |[[Proposal] Decoupling GraphQL API development from API design](https://github.com/ballerina-platform/ballerina-library/issues/4620)|[shafreenAnfar](https://github.com/shafreenAnfar)|3|2023-06-27|Active|
+|[Aligning `error` mapping with spec generation for new  `HTTP error` structure](https://github.com/ballerina-platform/ballerina-library/issues/5135)|[lnash94](https://github.com/lnash94)|2|2023-05-21|Active|
 |[Add support for marking certain entity fields as auto increment for DB client](https://github.com/ballerina-platform/ballerina-library/issues/4353)|[daneshk](https://github.com/daneshk)|4|2023-04-18|Draft|
 |[Proposal: GraphQL Custom Executable Directives](https://github.com/ballerina-platform/ballerina-library/issues/4327)|[MohamedSabthar](https://github.com/MohamedSabthar)|0|2023-04-11|Draft|
 |[Proposal: Introduce a new config to enable/disable deriving data source configs from connection configs](https://github.com/ballerina-platform/ballerina-library/issues/4279)|[kalaiyarasiganeshalingam](https://github.com/kalaiyarasiganeshalingam)|2|2023-03-29|Active|

@@ -62,7 +62,7 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 
 ### Obtain an access token
 
-1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google or GitHub account.
+1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google, GitHub, Microsoft, or email account.
 
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 

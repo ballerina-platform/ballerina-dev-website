@@ -47,7 +47,6 @@ permalink: /community/active-proposals
 |[Data mapping ballerna openapi extension](https://github.com/ballerina-platform/ballerina-library/issues/5742)|[niveathika](https://github.com/niveathika)|1|2023-11-08|Draft|
 |[Add new APIs to support read/write file operations for ndjson format](https://github.com/ballerina-platform/ballerina-library/issues/5099)|[daneshk](https://github.com/daneshk)|2|2023-10-27|Draft|
 |[Proposal: Map Ballerina HATEOAS Links to OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5087)|[SachinAkash01](https://github.com/SachinAkash01)|6|2023-10-25|Active|
-|[Proposal: Ballerina GraphQL Schema Registry](https://github.com/ballerina-platform/ballerina-library/issues/4820)|[zetcco](https://github.com/zetcco)|0|2023-09-19|Active|
 |[[Proposal] Relax error handling in HTTP](https://github.com/ballerina-platform/ballerina-library/issues/4646)|[shafreenAnfar](https://github.com/shafreenAnfar)|2|2023-07-07|Accepted|
 |[[Proposal] Decoupling GraphQL API development from API design](https://github.com/ballerina-platform/ballerina-library/issues/4620)|[shafreenAnfar](https://github.com/shafreenAnfar)|3|2023-06-27|Active|
 |[Aligning `error` mapping with spec generation for new  `HTTP error` structure](https://github.com/ballerina-platform/ballerina-library/issues/5135)|[lnash94](https://github.com/lnash94)|2|2023-05-21|Active|

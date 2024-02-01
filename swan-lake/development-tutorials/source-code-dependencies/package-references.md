@@ -106,7 +106,9 @@ Ballerina strictly follows the rules of <a href="https://semver.org/" target="_b
 
 ### The `visibility` field
 
-By default, packages published to Ballerina Central are public, allowing visibility to all users. To limit access, you can designate a package as private by adding the `visibility` field to the `[package]` table. Private packages are accessible only to members of the associated organization. Users to configure the access token in the <USER_HOME>/.ballerina/Settings.toml file to utilize the package as a dependency. See [prepare for publishing](/learn/publish-packages-to-ballerina-central/#prepare-for-publishing) section to learn how to obtain an access token.
+By default, packages published to Ballerina Central are public, allowing visibility to all users. To limit access, you can designate a package as private by adding the `visibility` field to the `[package]` table. Private packages are accessible only to members of the associated organization. You can configure the access token in the `<USER_HOME>/.ballerina/Settings.toml` file to utilize the package as a dependency. 
+
+For information on how to obtain an access token, see [prepare for publishing](/learn/publish-packages-to-ballerina-central/#prepare-for-publishing).
 
 Below is an example on setting the visibility of a package to private.
 

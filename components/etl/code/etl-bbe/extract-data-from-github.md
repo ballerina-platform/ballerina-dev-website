@@ -5,6 +5,7 @@ url: 'https://github.com/ballerina-guides/etl-samples/blob/main/extract-data-fro
 phase: 'Extractions'
 ---
 ```
+configurable string githubAccessToken = ?;
 configurable string repoOwner = "ballerina-platform";
 configurable string repoName = "ballerina-lang";
 

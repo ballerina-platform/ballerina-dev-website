@@ -17,6 +17,22 @@
             "buttonText": "More info"
         },
         {
+            "date": "Feb 20, 2024",
+            "day": "Tue.",
+            "time": "",
+            "expire": "2024-02-21T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/298924508/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Meet the Future: Streamlining Integrations with Ballerina AI Agents",
+            "presenterTwitter": "https://www.linkedin.com/in/nadheeshjihan/",
+            "presenter": "Nadheesh Jihan",
+            "presenterDesignation": "Associate Technical Lead",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP today"
+        },
+        {
             "date": "Jan 31, 2024",
             "day": "Wed.",
             "time": "",

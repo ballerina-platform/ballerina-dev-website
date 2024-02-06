@@ -62,7 +62,7 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 
 ### Obtain an access token
 
-1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google or GitHub account.
+1. Create an account on Ballerina Central. To register, <a href="https://central.ballerina.io/" target="_blank">visit the home page</a> and log in via a Google, GitHub, Microsoft, or email account.
 
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
@@ -114,7 +114,7 @@ When you push a package to Ballerina Central, the organizations are validated ag
 
 Also, organization names starting with `ballerina` (e.g., `ballerina`, `ballerinax`, `ballerinai`, etc.) are reserved for system use, and you cannot publish any packages starting with the `ballerina` prefix to Ballerina Central. Therefore, if you have used a name pattern matching this, update the `Ballerina.toml` and rebuild the package.
 
-You can also choose who will have access to the package you are publishing by setting the package visibility in the `Ballerina.toml` file. If you set the visibility as `private`, it will only be visible and accessible to the members within the organization you are pushing the package into. Private packages will be visible on Ballerina Central only if you are logged in. Likewise, if you or a member of your organization wants to pull a private package, the `Settings.toml` file needs to be set up according to the previous section (if not set up already). 
+You can also choose who will have access to the package you are publishing by [setting the package visibility](/learn/package-references/#the-visibility-field) in the `Ballerina.toml` file. If you set the visibility as `private`, it will only be visible and accessible to the members within the organization you are pushing the package into. Private packages will be visible on Ballerina Central only if you are logged in. Likewise, if you or a member of your organization wants to pull a private package, the `Settings.toml` file needs to be set up according to the previous section (if not set up already).
 
 ### Publish the package
 

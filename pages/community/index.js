@@ -67,7 +67,7 @@ export default function Community() {
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Community - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
-        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
       </Head>
       <Layout>
         <Col sm={12}>

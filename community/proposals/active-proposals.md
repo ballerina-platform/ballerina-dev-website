@@ -36,8 +36,9 @@ permalink: /community/active-proposals
 
 |Proposal|Author|Comments|Created date|Status| 
 |---|----|----|----|---| 
+|[Reflect interceptor details in the generated OAS](https://github.com/ballerina-platform/ballerina-library/issues/6028)|[lnash94](https://github.com/lnash94)|0|2024-02-06|N/A|
 |[Add support for marking advanced relations for SQL DB in model definition](https://github.com/ballerina-platform/ballerina-library/issues/5971)|[daneshk](https://github.com/daneshk)|3|2024-01-22|Draft|
-|[Proposal: Mapping Interceptor Responses into Generated OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5956)|[SachinAkash01](https://github.com/SachinAkash01)|5|2024-01-17|Active|
+|[Proposal: Mapping Interceptor Responses into Generated OpenAPI Specification](https://github.com/ballerina-platform/ballerina-library/issues/5956)|[SachinAkash01](https://github.com/SachinAkash01)|6|2024-01-17|Active|
 |[Add support for mapping DB column datatype and length to the model entity fields](https://github.com/ballerina-platform/ballerina-library/issues/5950)|[daneshk](https://github.com/daneshk)|2|2024-01-17|Draft|
 |[Add support for making entity field(s) as unique key and composite unique keys for SQL DB ](https://github.com/ballerina-platform/ballerina-library/issues/5944)|[daneshk](https://github.com/daneshk)|3|2024-01-15|Draft|
 |[Add support for mapping table and column name to different entity and field name](https://github.com/ballerina-platform/ballerina-library/issues/5943)|[daneshk](https://github.com/daneshk)|2|2024-01-14|Draft|

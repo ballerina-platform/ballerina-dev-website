@@ -91,7 +91,6 @@ In this code:
 
 - Ballerina tables are used to store data. Each entry in the table is represented by a Ballerina record.
 
-
 ## Create the service
 
 Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. To create the service, add the code below to the API template file (i.e., `service.bal`).
@@ -113,8 +112,6 @@ The first endpoint has two resources one to get data and the other to add data.
 ### Create the first resource to get data
 
 To create the first resource of the first endpoint to get data, add the code below to the API template file (i.e., `service.bal`).
-
-**Info:** 
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {

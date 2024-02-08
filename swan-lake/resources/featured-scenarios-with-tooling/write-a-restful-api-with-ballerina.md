@@ -143,7 +143,7 @@ The first endpoint has two resources one to get data and the other to add data.
 
 ### Create the first resource to get data
 
-Create the first resource of the first endpoint (to get data) using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
+Create the first resource of the first endpoint to get data, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
 
 <GIF>
 
@@ -162,3 +162,220 @@ In this code:
 - Unlike normal functions, resource methods can have accessors. In this case, the accessor is set to `get`, which means only HTTP `GET` requests could hit this resource. Ballerina automatically serializes Ballerina records as JSON and sends them over the wire. 
 - The default HTTP response status code for a resource method other than `post` is `200 OK`. For an HTTP `POST` resource, the default HTTP response status code is `201 Created`. 
 
+### Create the second resource to add data
+
+Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
+
+<GIF>
+
+The generated resource function will be as follows.
+
+```ballerina
+resource function post countries(@http:Payload CovidEntry[] covidEntries)
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
+
+    string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
+        where covidTable.hasKey(covidEntry.iso_code)
+        select covidEntry.iso_code;
+
+    if conflictingISOs.length() > 0 {
+        return {
+            body: {
+                errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+            }
+        };
+    } else {
+        covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+        return covidEntries;
+    }
+}
+```
+
+In this code:
+
+- It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
+- This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with the `CovideEntry[]` type. There are two types of records `CovideEntry[]` and `ConflictingIsoCodesError` that will be used as the return values.
+
+#### Define the error records
+
+Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error records below of the first endpoint using the diagram view in VS Code.
+
+```ballerina
+public type ConflictingIsoCodesError record {|
+    *http:Conflict;
+    ErrorMsg body;
+|};
+
+public type ErrorMsg record {|
+    string errmsg;
+|};
+```
+
+In this code:
+- Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
+- The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
+- Ballerina has a defined set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
+
+## Implement the second endpoint
+
+The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
+
+### Create the resource of the second endpoint
+
+Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
+
+```ballerina
+resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
+    CovidEntry? covidEntry = covidTable[iso_code];
+    if covidEntry is () {
+        return {
+            body: {
+                errmsg: string `Invalid ISO Code: ${iso_code}`
+            }
+        };
+    }
+    return covidEntry;
+}
+```
+
+In this code:
+- This resource is a bit more different than the first two resources. As explained earlier, resource methods have accessors.
+- In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
+-  In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
+
+#### Define the error record
+
+Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error record below of the second endpoint using the diagram view in VS Code.
+
+```ballerina
+public type InvalidIsoCodeError record {|
+    *http:NotFound;
+    ErrorMsg body;
+|};
+```
+
+In this code:
+- As in the previous example, this resource also includes its own return types. However, the basic principle behind them is as the previous example. 
+
+## The complete code
+
+The below is the complete code of the service implementation.
+
+```ballerina
+import ballerina/http;
+
+service /covid/status on new http:Listener(9000) {
+
+    resource function get countries() returns CovidEntry[] {
+        return covidTable.toArray();
+    }
+
+    resource function post countries(@http:Payload CovidEntry[] covidEntries)
+                                    returns CovidEntry[]|ConflictingIsoCodesError {
+
+        string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
+            where covidTable.hasKey(covidEntry.iso_code)
+            select covidEntry.iso_code;
+
+        if conflictingISOs.length() > 0 {
+            return {
+                body: {
+                    errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
+                }
+            };
+        } else {
+            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+            return covidEntries;
+        }
+    }
+
+    resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
+        CovidEntry? covidEntry = covidTable[iso_code];
+        if covidEntry is () {
+            return {
+                body: {
+                    errmsg: string `Invalid ISO Code: ${iso_code}`
+                }
+            };
+        }
+        return covidEntry;
+    }
+}
+
+public type CovidEntry record {|
+    readonly string iso_code;
+    string country;
+    decimal cases;
+    decimal deaths;
+    decimal recovered;
+    decimal active;
+|};
+
+public final table<CovidEntry> key(iso_code) covidTable = table [
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+];
+
+public type ConflictingIsoCodesError record {|
+    *http:Conflict;
+    ErrorMsg body;
+|};
+
+public type InvalidIsoCodeError record {|
+    *http:NotFound;
+    ErrorMsg body;
+|};
+
+public type ErrorMsg record {|
+    string errmsg;
+|};
+```
+
+- It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
+- You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
+
+## Run the service
+
+Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
+
+<GIF>
+
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+
+You view the output below in the Terminal.
+
+```
+Compiling source
+	example/covid19:0.1.0
+
+Running executable
+```
+
+## Try the service
+
+Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case.
+
+### Get all countries
+
+Retrieve all the available records of all countries as shown below.
+
+<GIF>
+
+### Add a country by the ISO code 
+
+Add a record of a country by its ISO code as shown below.
+
+<GIF>
+
+### Filter a country by the ISO code
+
+Retrieve a specific record of a country by providing its ISO code as shown below.
+
+<GIF>
+
+## Learn more
+
+To learn more about RESTful services in Ballerina, see the following:
+- [`http` module documentation](https://lib.ballerina.io/ballerina/http/latest)
+- [Service path and resource path](/learn/by-example/http-service-and-resource-paths/)

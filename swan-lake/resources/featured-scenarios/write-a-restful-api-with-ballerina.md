@@ -183,7 +183,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 ### Create the resource of the second endpoint
 
-To create the resource of the second endpoin, add the code below to the API template file (i.e., `service.bal`).
+To create the resource of the second endpoint, add the code below to the API template file (i.e., `service.bal`).
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {

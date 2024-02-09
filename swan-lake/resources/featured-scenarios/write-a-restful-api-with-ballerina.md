@@ -13,7 +13,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 To complete this tutorial, you need:
 
 1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
-2. Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
+2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 
 ## Understand the implementation
 

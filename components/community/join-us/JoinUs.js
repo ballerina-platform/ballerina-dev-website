@@ -50,7 +50,7 @@ export default function JoinUs(props) {
         <Row>
           <Col sm={12}>
             <p>
-              Our community includes experienced Ballerina engineers and experts from some of the world&apos;s top companies. Use this space to find answers to your questions, get support or learn how others are using Ballerina.
+              Our community includes experienced Ballerina engineers and experts from some of the world's leading companies. Use this space to find answers to your questions, get support, or learn from others who use Ballerina.
             </p>
           </Col>
 
@@ -88,7 +88,7 @@ export default function JoinUs(props) {
                     <Card.Body>
                       <Card.Text className='text-center mt-3'>
                         <div className={styles.join} title="Stackoverflow">
-                          Join our community
+                          Get your questions answered
                         </div>
                       </Card.Text>
                     </Card.Body>
@@ -105,7 +105,7 @@ export default function JoinUs(props) {
                     <Card.Body>
                       <Card.Text className='text-center mt-3'>
                         <div href="https://github.com/ballerina-platform" className={styles.join} title="GitHub">
-                          Join our community
+                          Collaborate on GitHub
                         </div>
                       </Card.Text>
                     </Card.Body>
@@ -142,7 +142,7 @@ export default function JoinUs(props) {
                     <Card.Body>
                       <Card.Text className='text-center mt-3'>
                         <div className={styles.join} title="LinkedIn">
-                          Join our community
+                          Connect with us
                         </div>
                       </Card.Text>
                     </Card.Body>
@@ -176,7 +176,7 @@ export default function JoinUs(props) {
                     <Card.Body>
                       <Card.Text className='text-center mt-3'>
                         <div className={styles.join} title="Meetup">
-                          Join our community
+                          Join our Meetup group
                         </div>
                       </Card.Text>
                     </Card.Body>

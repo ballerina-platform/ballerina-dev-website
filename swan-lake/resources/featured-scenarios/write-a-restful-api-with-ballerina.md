@@ -42,7 +42,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-1. Use the Ctrl + ` keyboard shortcut with the backtick character to open the Terminal window of VS Code. 
+1. Use the ``Ctrl+` `` keyboard shortcut with the backtick character to open the Terminal window of VS Code. 
 
 2. In the terminal, navigate to a preferred location and execute the command below to create the Ballerina package for the API implementation.
 
@@ -82,12 +82,12 @@ To keep things simple, an in-memory dataset is used with three entries. Follow t
 
     ```json
     {
-    "iso_code": "AFG",
-    "country": "Afghanistan",
-    "cases": 159303,
-    "deaths": 7386,
-    "recovered": 146084,
-    "active": 5833
+        "iso_code": "AFG",
+        "country": "Afghanistan",
+        "cases": 159303,
+        "deaths": 7386,
+        "recovered": 146084,
+        "active": 5833
     }
     ```
 

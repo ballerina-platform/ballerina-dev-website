@@ -12,10 +12,8 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
-2. A text editor
-    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-3. A command terminal
+1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
+2. Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
 
 ## Understand the implementation
 
@@ -40,35 +38,65 @@ The second endpoint is about getting data filtered from the service. The data is
 
 ## Create the service package 
 
-Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the API implementation.
+Ballerina uses packages to group code. Follow the steps below to create a Ballerina package and write the business logic in it. 
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```
-$ bal new covid19 -t service
-```
+1. Use the Ctrl + ` keyboard shortcut with the backtick character to open the Terminal window of VS Code. 
 
-You view the output below.
+2. In the terminal, navigate to a preferred location and execute the command below to create the Ballerina package for the API implementation.
 
-```
-Created new package 'covid19' at covid19.
-```
+    ```
+    $ bal new covid19 -t service
+    ```
 
-This creates a directory named `covid19` with the default module along with a sample code for the service as shown below. 
+    You view the output below.
 
-```
-.
-├── covid19
-│   ├── Ballerina.toml
-│   └── service.bal
-```
+    ```
+    Created new package 'covid19' at covid19.
+    ```
 
-- `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
-- The `service.bal` template file provides a look and feel about Ballerina services. 
+    This creates a directory named `covid19` with the default module along with a sample code for the service as shown below. 
+
+    ```
+    .
+    ├── covid19
+    │   ├── Ballerina.toml
+    │   └── service.bal
+    ```
+
+    - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
+    - The `service.bal` template file provides a look and feel about Ballerina services. 
+
+3. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
 
 ## Create the dataset
 
-To keep things simple, an in-memory dataset is used with three entries. To add the definition of the record and the declaration of the table, replace the API template file (i.e., `service.bal`) with the code below.
+To keep things simple, an in-memory dataset is used with three entries. Follow the steps below to add the definition of the record and the declaration of the table.
+
+1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the diagram view in VS Code.
+
+    <GIF>
+
+2. Generate the record types corresponding to the payload from REST service by providing the sample JSON object below.
+
+    ```json
+    {
+    "iso_code": "AFG",
+    "country": "Afghanistan",
+    "cases": 159303,
+    "deaths": 7386,
+    "recovered": 146084,
+    "active": 5833
+    }
+    ```
+
+3. Create the table as shown below.
+
+    <GIF>
+
+
+The generated record and the table will be as follows.
 
 ```ballerina
 public type CovidEntry record {|
@@ -93,7 +121,11 @@ In this code:
 
 ## Create the service
 
-Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. To create the service, add the code below to the API template file (i.e., `service.bal`).
+Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
+
+<GIF>
+
+The generated REST service will be as follows.
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
@@ -111,7 +143,11 @@ The first endpoint has two resources one to get data and the other to add data.
 
 ### Create the first resource to get data
 
-To create the first resource of the first endpoint to get data, add the code below to the API template file (i.e., `service.bal`).
+Create the first resource of the first endpoint to get data, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
+
+<GIF>
+
+The generated resource function will be as follows.
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
@@ -128,8 +164,11 @@ In this code:
 
 ### Create the second resource to add data
 
-To create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, add the code below to the API template file (i.e., `service.bal`).
+Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
 
+<GIF>
+
+The generated resource function will be as follows.
 
 ```ballerina
 resource function post countries(@http:Payload CovidEntry[] covidEntries)
@@ -159,7 +198,7 @@ In this code:
 
 #### Define the error records
 
-To define the error records, add the code below to the API template file (i.e., `service.bal`).
+Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error records below of the first endpoint using the diagram view in VS Code.
 
 ```ballerina
 public type ConflictingIsoCodesError record {|
@@ -183,7 +222,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 ### Create the resource of the second endpoint
 
-To create the resource of the second endpoint, add the code below to the API template file (i.e., `service.bal`).
+Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
@@ -206,7 +245,7 @@ In this code:
 
 #### Define the error record
 
-To define the `InvalidIsoCodeError` record, add the code below to the API template file (i.e., `service.bal`).
+Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error record below of the second endpoint using the diagram view in VS Code.
 
 ```ballerina
 public type InvalidIsoCodeError record {|
@@ -298,16 +337,13 @@ public type ErrorMsg record {|
 
 ## Run the service
 
-In the terminal, navigate to the `covid19` directory, and execute the command below to run the service package.
+Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
 
-> **Info**: The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+<GIF>
 
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-```
-$ bal run
-```
-
-You view the output below.
+You view the output below in the Terminal.
 
 ```
 Compiling source
@@ -318,49 +354,25 @@ Running executable
 
 ## Try the service
 
-In another terminal, execute the cURL commands below one by one to try out the service.
+Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case.
 
 ### Get all countries
 
-Execute the cURL command below.
+Retrieve all the available records of all countries as shown below.
 
-```
-$ curl http://localhost:9000/covid/status/countries
-```
-
-You view the output below.
-
-```
-[{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}, {"iso_code":"SL", "country":"Sri Lanka", "cases":598536, "deaths":15243, "recovered":568637, "active":14656}, {"iso_code":"US", "country":"USA", "cases":69808350, "deaths":880976, "recovered":43892277, "active":25035097}]
-```
+<GIF>
 
 ### Add a country by the ISO code 
 
-Execute the cURL command below.
+Add a record of a country by its ISO code as shown below.
 
-```
-$ curl http://localhost:9000/covid/status/countries -d "[{\"iso_code\":\"DEU\", \"country\":\"Germany\", \"cases\":159333, \"deaths\":7390, \"recovered\":126084, \"active\":6833}]" -H "Content-Type: application/json"
-```
-
-You view the output below.
-
-```
-[{"iso_code":"DEU", "country":"Germany", "cases":159333.0, "deaths":7390.0, "recovered":126084.0, "active":6833.0}]
-```
+<GIF>
 
 ### Filter a country by the ISO code
 
-Execute the cURL command below.
+Retrieve a specific record of a country by providing its ISO code as shown below.
 
-```
-$ curl http://localhost:9000/covid/status/countries/AFG
-```
-
-You view the output below.
-
-```
-{"iso_code":"AFG", "country":"Afghanistan", "cases":159303, "deaths":7386, "recovered":146084, "active":5833}
-```
+<GIF>
 
 ## Learn more
 

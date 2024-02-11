@@ -65,7 +65,65 @@ Now, let’s implement the gRPC service and client in the Ballerina language.
 
 ## Implement the gRPC service
 
-Ballerina uses packages to group code. You need to create a Ballerina package, generate the service code in the package, and write the business logic.
+Ballerina uses packages to group code. Follow the steps below to create a Ballerina package, generate the service code in the package, and write the business logic.
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
+1. Open the VS Code editor, and use the ``Ctrl+` `` keyboard shortcut with the backtick character to open the Terminal window.
+
+2. In the terminal, execute the command below to create the Ballerina package for the API implementation.
+
+    ```
+    $ bal new greeter_service
+    ```
+
+    You view the output below.
+
+    ```
+    Created new package 'greeter_service' at greeter_service.
+    ```
+
+    This creates a directory named `greeter_service` with the files below.
+
+    ```
+    .
+    ├── greeter_service
+    │   ├── Ballerina.toml
+    │   └── main.bal
+    ```
+
+3. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
+
+4. Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
+
+### Generate the source code of the service
+
+In the VS Code terminal, from inside the same `grpc_sample` directory, execute the command below to generate the source code related to the service definition.
+
+```
+$ bal grpc --mode service --input helloworld.proto --output greeter_service/
+```
+
+Once successfully executed, you will see the output below.
+
+```
+Successfully extracted the library files.
+Successfully generated the Ballerina file.
+```
+
+This creates the two files below inside the `greeter_service` directory.
+
+```
+.
+├── greeter_service
+│   ├── greeter_service.bal
+│   └── helloworld_pb.bal
+```
+
+- The `helloworld_pb.bal` file is the stub file, which contains classes that the client/service uses to talk to each other and the Ballerina types corresponding to the request and response messages.
+- The `greeter_service.bal` file is the service template file, which contains service(s) with all the remote methods
+  defined in the `.proto` file.
+
+### Update the service template file
+
+Follow these steps below to add the business logic to the remote method. n this case, you only need to update the `sayHello` method as shown below).

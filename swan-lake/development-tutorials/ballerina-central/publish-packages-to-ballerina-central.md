@@ -147,9 +147,9 @@ You can deprecate a specific version or all versions of a published package due 
 
 ### Deprecate all versions of a published package
 
-To change the name of a published package, you can mark all the versions of the existing package as deprecated and then publish the package under a new name.
+For example, if you want to change the name of a published package, execute the command below to mark all the versions of the existing package as deprecated and then, publish the package under a new name.
 
-An optional deprecation message can also be included, which will be displayed to current users of the package.
+>**Info:** An optional deprecation message can also be included, which will be displayed to current users of the package.
 
 ```
 $ bal deprecate <org-name>/<package-name> --message <deprecation-message>
@@ -157,7 +157,7 @@ $ bal deprecate <org-name>/<package-name> --message <deprecation-message>
 
 ### Deprecate a specific version of a published package
 
-If you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
+For example, if you have released a package version containing a critical bug or security vulnerability, it is possible to deprecate that specific version.
 
 To deprecate a particular version of a package on Ballerina Central, the package owner can run the same command with the package version.
 
@@ -165,14 +165,13 @@ To deprecate a particular version of a package on Ballerina Central, the package
 $ bal deprecate <org-name>/<package-name>:<version> --message <deprecation-message>
 ```
 
-If the deprecated package or version is in use, a warning message containing the provided deprecation message will be shown during the project build.
-
-> **Note:** A deprecated package or version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
+>**Info:** If the deprecated package or version is in use, a warning message containing the provided deprecation message will be shown during the project build.
+A deprecated package or version will not appear in package searches on Ballerina Central or the CLI. Additionally, it will not be used for dependency 
 resolution unless it is already a part of a sticky build or no other compatible package version exists.
  
 ### Undo deprecation of a package
 
-To reverse the deprecation of a package, execute the same command with the `--undo` flag.
+Execute the command with the `--undo` flag below to reverse the deprecation of a package.
 
 ```
 $ bal deprecate <org-name>/<package-name>[:<version>] --undo

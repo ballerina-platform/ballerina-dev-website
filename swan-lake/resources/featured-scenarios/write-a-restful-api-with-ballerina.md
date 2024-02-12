@@ -13,7 +13,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 To complete this tutorial, you need:
 
 1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
-2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
+2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Understand the implementation
 
@@ -42,9 +42,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-1. Open the VS Code editor, and use the ``Ctrl+` `` keyboard shortcut with the backtick character to open the Terminal window. 
-
-2. In the terminal, navigate to a preferred location and execute the command below to create the Ballerina package for the API implementation.
+1. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
     $ bal new covid19 -t service
@@ -68,17 +66,17 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
     - The `service.bal` template file provides a look and feel about Ballerina services. 
 
-3. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
+2. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
 
 ## Create the dataset
 
 To keep things simple, an in-memory dataset is used with three entries. Follow the steps below to add the definition of the record and the declaration of the table.
 
-1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the diagram view in VS Code.
+1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the **Overview Diagram** view in VS Code.
 
-    <GIF>
+    ![Open diagram view](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/open-diagram-view.gif)
 
-2. Generate the record types corresponding to the payload from REST service by providing the sample JSON object below.
+2. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
 
     ```json
     {
@@ -90,28 +88,77 @@ To keep things simple, an in-memory dataset is used with three entries. Follow t
         "active": 5833
     }
     ```
+    ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
 3. Create the table as shown below.
 
-    <GIF>
+    ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
+4. Replace the `{key: value}` of the generated table with the code below.
 
+    ```
+        {
+            iso_code: "AFG", 
+            country: "Afghanistan", 
+            cases: 159303, 
+            deaths: 7386, 
+            recovered: 146084, 
+            active: 5833
+        },
+        {
+            iso_code: "SL", 
+            country: "Sri Lanka", 
+            cases: 598536, 
+            deaths: 15243, 
+            recovered: 568637, 
+            active: 14656
+        },
+        {
+            iso_code: "US", 
+            country: "USA", 
+            cases: 69808350, 
+            deaths: 880976, 
+            recovered: 43892277, 
+            active: 25035097
+        }
+    ```
 The generated record and the table will be as follows.
 
 ```ballerina
-public type CovidEntry record {|
+public type CovidEntry record {
     readonly string iso_code;
     string country;
-    decimal cases;
-    decimal deaths;
-    decimal recovered;
-    decimal active;
-|};
+    int cases;
+    int deaths;
+    int recovered;
+    int active;
+};
 
 public final table<CovidEntry> key(iso_code) covidTable = table [
-    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+    {
+        iso_code: "AFG", 
+        country: "Afghanistan", 
+        cases: 159303, 
+        deaths: 7386, 
+        recovered: 146084, 
+        active: 5833
+    },
+    {
+        iso_code: "SL", 
+        country: "Sri Lanka", 
+        cases: 598536, 
+        deaths: 15243, 
+        recovered: 568637, 
+        active: 14656
+    },
+    {
+        iso_code: "US", 
+        country: "USA", 
+        cases: 69808350, 
+        deaths: 880976, 
+        recovered: 43892277, 
+        active: 25035097
+    }
 ];
 ```
 
@@ -123,12 +170,14 @@ In this code:
 
 Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
 
-<GIF>
+![Create REST service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-rest-service.gif)
 
 The generated REST service will be as follows.
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
+    resource function get .() returns error? {
+    }
 }
 ```
 
@@ -145,7 +194,7 @@ The first endpoint has two resources one to get data and the other to add data.
 
 Create the first resource of the first endpoint to get data, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
 
-<GIF>
+![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
 The generated resource function will be as follows.
 
@@ -164,11 +213,42 @@ In this code:
 
 ### Create the second resource to add data
 
+Before creating the second resource, you need to create the records of the custom error types as shown below.
+
+#### Define the error records
+
+You need to define the error records below for the second resource of the first endpoint.
+
+```ballerina
+
+public type ErrorMsg record {|
+    string errmsg;
+|};
+
+public type ConflictingIsoCodesError record {|
+    *http:Conflict;
+    ErrorMsg body;
+|};
+```
+
+Create the first error record as shown below.
+
+>**Tip:** You can create the second error record when [creating the second resource](#create-the-second-resource).
+
+![Create error record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-error-record.gif)
+
+In this code:
+- Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
+- The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
+- Ballerina has a defined set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
+
+#### Create the second resource
+
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code as shown below.
 
-<GIF>
+![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
-The generated resource function will be as follows.
+Implement the logic of the POST resource function with the code below.
 
 ```ballerina
 resource function post countries(@http:Payload CovidEntry[] covidEntries)
@@ -196,33 +276,27 @@ In this code:
 - It is chosen to either accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
 - This resource has a resource argument named `covidEntries` annotated with `@http:Payload`. This means the resource is expecting a payload with the `CovideEntry[]` type. There are two types of records `CovideEntry[]` and `ConflictingIsoCodesError` that will be used as the return values.
 
-#### Define the error records
-
-Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error records below of the first endpoint using the diagram view in VS Code.
-
-```ballerina
-public type ConflictingIsoCodesError record {|
-    *http:Conflict;
-    ErrorMsg body;
-|};
-
-public type ErrorMsg record {|
-    string errmsg;
-|};
-```
-
-In this code:
-- Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
-- The body of the response is of type `ErrorMsg`, which simply has a string field named `errmsg`. Based on the need, users can have any data type for their response body.
-- Ballerina has a defined set of types for each HTTP status code. This allows you to write services in a type-oriented way, which in turn is helpful when it comes to tooling and generating OpenAPI specifications for HTTP services. 
-
 ## Implement the second endpoint
 
 The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
 
+### Define the error record
+
+Similar to how you created the error record in [Define the error records](#define-the-error-records), define the error record below of the second endpoint using the diagram view in VS Code.
+
+```ballerina
+public type InvalidIsoCodeError record {|
+    *http:NotFound;
+    ErrorMsg body;
+|};
+```
+
+In this code:
+- As in the previous example, this resource also includes its own return types. However, the basic principle behind them is as the previous example. 
+
 ### Create the resource of the second endpoint
 
-Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
+Similar to how you created the [resources of the first endpoint](#create-the-first-resource-to-get-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
@@ -243,20 +317,6 @@ In this code:
 - In addition, it also supports hierarchical paths making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
 -  In this case, `iso_code` is used as the path param, which in turn, becomes a string variable.
 
-#### Define the error record
-
-Similar to how you created the record type in [Create the dataset](#create-the-dataset), define the error record below of the second endpoint using the diagram view in VS Code.
-
-```ballerina
-public type InvalidIsoCodeError record {|
-    *http:NotFound;
-    ErrorMsg body;
-|};
-```
-
-In this code:
-- As in the previous example, this resource also includes its own return types. However, the basic principle behind them is as the previous example. 
-
 ## The complete code
 
 The below is the complete code of the service implementation.
@@ -270,7 +330,7 @@ service /covid/status on new http:Listener(9000) {
         return covidTable.toArray();
     }
 
-    resource function post countries(@http:Payload CovidEntry[] covidEntries)
+    resource function post countries(CovidEntry[] covidEntries)
                                     returns CovidEntry[]|ConflictingIsoCodesError {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
@@ -339,7 +399,7 @@ public type ErrorMsg record {|
 
 Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
 
-<GIF>
+![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
@@ -347,7 +407,7 @@ You view the output below in the Terminal.
 
 ```
 Compiling source
-	example/covid19:0.1.0
+	ballerina/covid19:0.1.0
 
 Running executable
 ```
@@ -360,19 +420,19 @@ Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) C
 
 Retrieve all the available records of all countries as shown below.
 
-<GIF>
+![Get all countries](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/get-all-countries.gif)
 
 ### Add a country by the ISO code 
 
 Add a record of a country by its ISO code as shown below.
 
-<GIF>
+![Add a country](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/add-a-country.gif)
 
 ### Filter a country by the ISO code
 
 Retrieve a specific record of a country by providing its ISO code as shown below.
 
-<GIF>
+![Filter a country](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/filter-a-country.gif)
 
 ## Learn more
 

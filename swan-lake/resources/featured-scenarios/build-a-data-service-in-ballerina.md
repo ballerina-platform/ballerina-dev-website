@@ -12,11 +12,8 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
-2. A text editor
-  >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the 
-  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-3. A command terminal
+1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
+2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Understand the implementation
 
@@ -39,8 +36,7 @@ Select one out of the methods below to set up a MySQL server.
 
 ## Create a database and table
 
-Connect to the MySQL server using the terminal (or any other preferred method), and execute the commands below to 
-create a database and table.
+Connect to the MySQL server using the terminal (or any other preferred method), and execute the commands below to create a database and table.
 
 ```sql
 CREATE DATABASE IF NOT EXISTS Company;
@@ -59,32 +55,58 @@ CREATE TABLE Company.Employees (
 
 ## Create the service package
 
-Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. In the terminal, execute the command below to create the Ballerina package for the implementation.
+Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. 
 
-> **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
+1. In the terminal, execute the command below to create the Ballerina package for the implementation.
 
-```
-$ bal new data_service
-``` 
+    > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-This creates a directory named `data_service` with the files below.
+    ```
+    $ bal new data_service
+    ``` 
 
-```
-.
-├── data_service
-│   ├── Ballerina.toml
-│   └── main.bal
-```
+    This creates a directory named `data_service` with the files below.
 
->**Tip:** Remove the automatically-created `main.bal` file as you are not going to use it in this guide.
+    ```
+    .
+    ├── data_service
+    │   ├── Ballerina.toml
+    │   └── main.bal
+    ```
+
+2. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
 
 ## Create the service
 
+The sections below demonstrates how to create the service.
+
 ### Create a record to represent an employee
 
-In Ballerina, records are a data type that maps keys to values. Define a closed record to represent a single row in the `Employees` table in the `main.bal` file. 
+In Ballerina, records are a data type that maps keys to values. Follow the steps below to define a closed record to represent a single row in the `Employees` table in the `main.bal` file. 
 
 >**Info:** This record type is the basis for interacting with the database.
+
+1. Remove the auto-generated content of the API template file (i.e., `main.bal`) and open the **Overview Diagram** view in VS Code.
+
+ <GIF>
+
+2. Generate the record types corresponding to the payload from the service by providing the sample JSON object below.
+
+    ```json
+    {
+        "int": 6,
+        "string": "test",
+        "string": "test",
+        "string": "test@test.com",
+        "string": "882 771 110",
+        "time:Date": "year": 2021, "month": 12, "day": 16,
+        "int?": 1,
+        "string": "Sales Manager"
+    }
+    ```
+    <GIF>
+
+The generated record will be as follows.
 
 ```ballerina
 import ballerina/time;
@@ -124,30 +146,26 @@ The MySQL driver JAR is necessary to connect to and interact with a MySQL server
    [[platform.java11.dependency]]
    path = "/path/to/mysql/driver.jar”
    ```
-   
+
 ### Define MySQL configurations
 
-In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
+Follow the steps below to define the MySQL configurations.
 
-```toml
-USER="root"
-PASSWORD="rootPassword"
-HOST="localhost"
-PORT=3306
-DATABASE="Company"
-```
+1. In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
 
-To redefine the above variables and access them from within your Ballerina program, add the code below in the `main.bal` file.
+    ```toml
+    USER="root"
+    PASSWORD="rootPassword"
+    HOST="localhost"
+    PORT=3306
+    DATABASE="Company"
+    ```
 
-```ballerina
-configurable string USER = ?;
-configurable string PASSWORD = ?;
-configurable string HOST = ?;
-configurable int PORT = ?;
-configurable string DATABASE = ?;
-```
+2. Define configurable variables to redefine the above variables and access them from within your Ballerina program.
 
->**Note:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
+    >**Info:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
+
+    <GIF>
 
 ### Connect to the database
 
@@ -172,20 +190,15 @@ final mysql:Client dbClient = check new(
     host=HOST, user=USER, password=PASSWORD, port=PORT, database="Company"
 );
 ```
-
 #### Run the MySQL client
 
-Execute the command below to run the client.
+Use the **Run** CodeLens of the VS Code extension to build and run the service as shown below.
 
-```
-$ bal run
-```
+<GIF>
 
 If the program runs without throwing an error, that indicates that the connection has been established successfully. This client can be defined globally and be used across all parts of the program.
 
->**Info:** The MySQL package provides additional connection options and the ability to configure connection pool 
->properties when connecting to the database which, are not covered in this tutorial. To learn more about this, 
->see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
+>**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database which, are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
 
 ### Execute the queries
 
@@ -371,51 +384,65 @@ isolated function removeEmployee(int id) returns int|error {
 After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
 RESTful API. 
 
-### Import the required packages
-For this, create a file named `service.bal` inside the Ballerina package directory (`ata_service`), and add the code below to import the Ballerina [`HTTP` module](https://lib.ballerina.io/ballerina/http/latest).
-
-```ballerina
-import ballerina/http;
-```
-
 ### Create a service
-To create the service, add the code below to the `service.bal` file. 
+
+Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+
+<GIF>
+
+The generated REST service will be as follows.
 
 ```ballerina
 service /employees on new http:Listener(8080) {
 }
 ```
 
-### Create the resource methods
+### Create the resources
 
-Within this service, you can define resource methods to provide access to the database. The code snippet below 
-demonstrates a resource method that can be used to create a new employee via a `POST` request.
+Follow the steps below to define resource functions from within this service to provide access to the database.
 
-```ballerina
-service /employees on new http:Listener(8080) {
+1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
 
-    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
-        return addEmployee(emp);
+    <GIF>
+
+    The generated resource function will be as follows.
+
+    ```ballerina
+    service /employees on new http:Listener(8080) {
+
+        isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+            return addEmployee(emp);
+        }   
     }
+    ```
 
-    isolated resource function get [int id]() returns Employee|error? {
-        return getEmployee(id);
-    }
+2. Similarly, create the other resources as per the code below.
 
-    isolated resource function get .() returns Employee[]|error? {
-        return getAllEmployees();
-    }
+    ```ballerina
+    service /employees on new http:Listener(8080) {
 
-    isolated resource function put .(@http:Payload Employee emp) returns int|error? {
-        return updateEmployee(emp);
-    }
+        isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+            return addEmployee(emp);
+        }
 
-    isolated resource function delete [int id]() returns int|error? {
-        return removeEmployee(id);       
+        isolated resource function get [int id]() returns Employee|error? {
+            return getEmployee(id);
+        }
+
+        isolated resource function get .() returns Employee[]|error? {
+            return getAllEmployees();
+        }
+
+        isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+            return updateEmployee(emp);
+        }
+
+        isolated resource function delete [int id]() returns int|error? {
+            return removeEmployee(id);       
+        }
+        
     }
-    
-}
-```
+    ```
 
 ## The `service.bal` file complete code 
 
@@ -449,15 +476,15 @@ service /employees on new http:Listener(8080) {
 }
 ```
 
-## Run the service 
+## Run the service
 
-Execute the command below to run the service.
+Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
 
-```
-$ bal run
-```
+<GIF>
 
-You view the output below.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory), and executing the `bal run` command. 
+
+You view the output below in the Terminal.
 
 ```
 Compiling source
@@ -466,18 +493,15 @@ Compiling source
 Running executable
 ```
 
->**Info:** This creates an `/employees` endpoint on port `8080`, which can 
-be accessed via a browser by visiting `http://locahost:8080/employees`.
+>**Info:** This creates an `/employees` endpoint on port `8080`, which can be accessed via a browser by visiting `http://locahost:8080/employees`.
 
 ## Try the service
 
-Invoke the defined resource method by sending the `POST` request below to `http://localhost:8080/employees` with the required data as a JSON payload.
+Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as a JSON payload.
 
-```
-$ curl -X POST http://localhost:8080/employees/ -H "Content-Type: application/json" -d "{ \"employee_id\": 6, \"first_name\": \"test\", \"last_name\": \"test\", \"email\": \"test@test.com\", \"phone\": \"882 771 110\", \"hire_date\": { \"year\": 2021, \"month\": 12, \"day\": 16 }, \"manager_id\": 1, \"job_title\": \"Sales Manager\" }"
-```
+<GIF>
 
-You view a row added to the **Employees** table as shown below.
+Also, a row will get added to the **Employees** table as shown below.
 
 ![data service output](/images/data-service-guide-output.png)
 

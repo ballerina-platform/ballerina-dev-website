@@ -499,7 +499,7 @@ service /employees on new http:Listener(8080) {
 
 ## Run the service
 
-Use the `Run` CodeLens of the VS Code extension to build and run the service, as shown below.
+Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
 
 ![Run the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-service.gif)
 
@@ -518,7 +518,7 @@ Running executable
 
 ## Try the service
 
-Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as a JSON payload.
+Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as a JSON payload.
 
 ![Try the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/try-the-service.gif)
 

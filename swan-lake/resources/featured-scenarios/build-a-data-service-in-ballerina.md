@@ -197,11 +197,16 @@ You need to create `isolated` functions to use the `query()`, `queryRow()`, and 
 
 Follow the steps below to create the functions.
 
-1. Create the first function, as shown below.
+1. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logic of the functions.
+
+    ```ballerina
+    import ballerina/sql;
+    ```
+2. Create the first function, as shown below.
 
     ![Create isolated function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-isolated-function.gif)
 
-2. Add the code below to the body of the function.
+3. Add the code below to the body of the function.
 
     ```ballerina
     isolated function addEmployee(Employee emp) returns int|error {
@@ -221,7 +226,7 @@ Follow the steps below to create the functions.
     }   
     ```
 
-3. Similarly, implement the other functions in the `main.bal` file as per the code below.
+4. Similarly, implement the other functions in the `main.bal` file as per the code below.
 
     ```ballerina
     isolated function addEmployee(Employee emp) returns int|error {
@@ -293,19 +298,14 @@ Follow the steps below to create the functions.
     }
     ```
 
-4. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logic of the functions.
-
-    ```ballerina
-    import ballerina/sql;
-    ```
 
 ## The  `main.bal` file complete code
 
 ```ballerina
+import ballerina/sql;
 import ballerina/time;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
-import ballerina/sql;
 
 public type Employee record {|
     int employee_id?;
@@ -424,7 +424,7 @@ Follow the steps below to create the service.
 
 Follow the steps below to define resource functions within this service to provide access to the database.
 
-1. Remove the generated content of the `service.bal` file.
+1. Remove the generated resource function of the `service.bal` file.
 
 2. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 

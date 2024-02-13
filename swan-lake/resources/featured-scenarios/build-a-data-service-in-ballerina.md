@@ -1,7 +1,7 @@
 ---
 layout: ballerina-building-a-data-service-left-nav-pages-swanlake
 title: Build a data service in Ballerina 
-description: Connect to a MySQL database and executing queries using an HTTP RESTful API using Ballerina.
+description: Connect to a MySQL database and execute queries using an HTTP RESTful API using Ballerina.
 keywords: ballerina, data service, mysql, database, REST, API
 permalink: /learn/build-a-data-service-in-ballerina/
 active: build-a-data-service
@@ -25,9 +25,9 @@ This tutorial describes how to connect to a MySQL database and perform queries a
 
 ## Set up a MySQL server instance
 
-Select one out of the methods below to set up a MySQL server.
+Select one of the methods below to set up a MySQL server.
 
->**Tip:** Keep the connection and authentication details for connecting to the MySQL server including the hostname, port, username and password noted down.
+>**Tip:** Keep the connection and authentication details for connecting to the MySQL server, including the hostname, port, username, and password, noted down.
 
 1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
 2. Use a cross-platform web-server solution such as [XAMPP](https://www.apachefriends.org/index.html) or [WampServer](https://www.wampserver.com/en/).
@@ -36,7 +36,7 @@ Select one out of the methods below to set up a MySQL server.
 
 ## Create a database and table
 
-Connect to the MySQL server using the terminal (or any other preferred method), and execute the commands below to create a database and table.
+Connect to the MySQL server using the Terminal (or any other preferred method) and execute the commands below to create a database and table.
 
 ```sql
 CREATE DATABASE IF NOT EXISTS Company;
@@ -57,7 +57,7 @@ CREATE TABLE Company.Employees (
 
 Ballerina uses packages to group code. You need to create a Ballerina package and write the business logic in it. 
 
-1. In the terminal, execute the command below to create the Ballerina package for the implementation.
+1. In the Terminal, execute the command below to create the Ballerina package for the implementation.
 
     > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
@@ -74,15 +74,15 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
     │   └── main.bal
     ```
 
-2. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
+2. Navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
 
 ## Create the service
 
-The sections below demonstrates how to create the service.
+The sections below demonstrate how to create the service.
 
 ### Create a record to represent an employee
 
-In Ballerina, records are a data type that maps keys to values. Follow the steps below to define a closed record to represent a single row in the `Employees` table in the `main.bal` file. 
+In Ballerina, records are a data type that maps keys to values. Follow the steps below to define a closed record representing a single row in the `Employees` table in the `main.bal` file. 
 
 >**Info:** This record type is the basis for interacting with the database.
 
@@ -158,7 +158,7 @@ You can connect to the MySQL database by creating a client.
 
 #### Create the MySQL client
 
-Create a `mysql:Client` to connect to the database as shown below.
+Create a `mysql:Client` to connect to the database, as shown below.
 
 ![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
 
@@ -167,11 +167,11 @@ final mysql:Client dbClient = check new (host = HOST, user = USER, password = PA
 ```
 #### Run the MySQL client
 
-Use the **Run** option of the VS Code extension to build and run the client as shown below.
+Use the **Run** option of the VS Code extension to build and run the client, as shown below.
 
 ![Run the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-client.gif)
 
-If the program runs without throwing an error with the output below, that indicates that the connection has been established successfully. This client can be defined globally and be used across all parts of the program.
+If the program runs without throwing an error with the output below, that indicates that the connection has been established successfully. This client can be defined globally and used across all the parts of the program.
 
 ```
 Compiling source
@@ -180,16 +180,16 @@ Compiling source
 Running executable
 ```
 
->**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database which, are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
+>**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database, which are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
 
 ### Execute the queries
 
 The `mysql:Client` provides two primary remote methods for performing queries.
 
 1. `query()` - Executes an SQL query and returns the results (rows) from the query. 
-   The `queryRow()` method is a variation of this method, which returns at most a single row from the result.
+   The `queryRow()` method is a variation of this method, which returns, at most, a single row from the result.
 
-2. `execute()` - Executes an SQL query and returns only the metadata of the execution.
+2. `execute()` - Executes an SQL query and returns only the execution metadata.
 
 #### Create the functions
 
@@ -197,7 +197,7 @@ You need to create `isolated` functions to use the `query()`, `queryRow()`, and 
 
 Follow the steps below to create the functions.
 
-1. Create the first function as shown below.
+1. Create the first function, as shown below.
 
     ![Create isolated function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-isolated-function.gif)
 
@@ -293,7 +293,7 @@ Follow the steps below to create the functions.
     }
     ```
 
-4. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logics of the functions.
+4. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logic of the functions.
 
     ```ballerina
     import ballerina/sql;
@@ -399,15 +399,15 @@ isolated function removeEmployee(int id) returns int|error {
 
 ## Expose the database via an HTTP RESTful API
 
-After you have defined the functions that are necessary to manipulate the database, expose these selectively via an HTTP RESTful API. 
+After you have defined the functions necessary to manipulate the database, expose these selectively via an HTTP RESTful API. 
 
 ### Create a service
 
 Follow the steps below to create the service.
 
-1. Create a file named `service.bal`` inside the Ballerina package directory (`data_service`).
+1. Create a `service.bal` file inside the Ballerina package directory (`data_service`).
 
-2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
     ![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
 
@@ -422,11 +422,11 @@ Follow the steps below to create the service.
 
 ### Create the resources
 
-Follow the steps below to define resource functions from within this service to provide access to the database.
+Follow the steps below to define resource functions within this service to provide access to the database.
 
 1. Remove the generated content of the `service.bal` file.
 
-2. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+2. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
     ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
 
@@ -499,13 +499,13 @@ service /employees on new http:Listener(8080) {
 
 ## Run the service
 
-Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
+Use the `Run` CodeLens of the VS Code extension to build and run the service, as shown below.
 
 ![Run the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory), and executing the `bal run` command. 
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory) and executing the `bal run` command. 
 
-You view the output below in the Terminal.
+You can view the output below in the Terminal.
 
 ```
 Compiling source
@@ -522,7 +522,7 @@ Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) C
 
 ![Try the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/try-the-service.gif)
 
-Also, a row will get added to the **Employees** table as shown below.
+Also, a row will be added to the **Employees** table, as shown below.
 
 ![Data service output](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/data-service-output.png)
 

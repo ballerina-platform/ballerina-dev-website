@@ -167,7 +167,7 @@ final mysql:Client dbClient = check new (host = HOST, user = USER, password = PA
 ```
 #### Run the MySQL client
 
-Use the **Run** option of the VS Code extension to build and run the client, as shown below.
+Use the [**Run**](/learn/vs-code-extension/run-a-program/) option of the VS Code extension to build and run the client, as shown below.
 
 ![Run the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-client.gif)
 

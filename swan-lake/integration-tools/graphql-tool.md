@@ -5,7 +5,7 @@ description: Check out how the Ballerina GraphQL tool makes it easy to generate 
 keywords: ballerina, programming language, graphql, sdl, schema definition language
 permalink: /learn/graphql-tool/
 active: graphql-tool
-intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL. It generates the GraphQL schema for a given Ballerina GraphQL service and writing it to a file in GraphQL schema definition language (SDL). In addition, the GraphQL tool supports generating the Ballerina service skeletons for a given GraphQL schema. The GraphQL tool generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document [Experimental].
+intro: The Ballerina GraphQL tool makes it easy to start the development of a GraphQL. It generates the GraphQL schema for a given Ballerina GraphQL service and writes it to a file in GraphQL schema definition language (SDL). In addition, the GraphQL tool supports generating the Ballerina service skeletons for a given GraphQL schema. The GraphQL tool generates the client skeletons in Ballerina for a given GraphQL schema and a GraphQL document [Experimental].
 ---
 ## Usage
 
@@ -31,7 +31,7 @@ The general use of the above command options are as follows.
 
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Usage |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| `-i, --input`     | The path of the GraphQL service file, schema file or config file.                                                                                                                                                                                                   | <ul><li><a href="#service-generation-command-options">service generation</a></li><li><a href="#schema-generation-command-options">schema generation</a></li><li><a href="#client-generation-command-options">client generation</a></li></ul>          |
+| `-i, --input`     | The path of the GraphQL service file, schema file, or config file.                                                                                                                                                                                                   | <ul><li><a href="#service-generation-command-options">service generation</a></li><li><a href="#schema-generation-command-options">schema generation</a></li><li><a href="#client-generation-command-options">client generation</a></li></ul>          |
 | `-o, --output`   | The path of the output location of the generated files.                                                                                                                                                                                                                    | <ul><li><a href="#service-generation-command-options">service generation</a></li><li><a href="#schema-generation-command-options">schema generation</a></li><li><a href="#client-generation-command-options">client generation</a></li></ul>           |
 | `-m, --mode`   | The operation mode. The possible values are `schema`, `service`, and `client`.                                                                                                                                                                                                                 | <ul><li><a href="#service-generation-command-options">service generation</a></li><li><a href="#service-generation-command-options">service generation</a></li><li><a href="#client-generation-command-options">client generation</a></li></ul>           |
 | `-r, --use-records-for-objects`   | Specifies to use record types for GraphQL object types whenever it is possible.                                                                                                                                                                                                                   | <ul><li><a href="#service-generation-command-options">service generation</a></li></ul>           |
@@ -43,7 +43,7 @@ The GraphQL tool supports generating a Ballerina GraphQL service from a given Gr
 
 ### Service generation usage
 
-Execute the command below to generate a Ballerina service from a given GraphQL schema which is specified by the GraphQL schema definition language.
+Execute the command below to generate a Ballerina service from a given GraphQL schema, which is specified by the GraphQL schema definition language.
 
 ```shell
 $ bal graphql [-i | --input] <graphql-schema-file-path>

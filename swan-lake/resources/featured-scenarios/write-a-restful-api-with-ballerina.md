@@ -215,12 +215,11 @@ In this code:
 
 Before creating the second resource, you need to create the records of the custom error types, as shown below.
 
-#### Define the error records
+#### Define the error detail records
 
-You need to define the error records below for the second resource of the first endpoint.
+You need to define the error detail records below for the second resource of the first endpoint.
 
 ```ballerina
-
 public type ErrorMsg record {|
     string errmsg;
 |};
@@ -231,11 +230,11 @@ public type ConflictingIsoCodesError record {|
 |};
 ```
 
-Create the first error record, as shown below.
+Create the first error detail record, as shown below.
 
->**Tip:** You can create the second error record when [creating the second resource](#create-the-second-resource).
+>**Tip:** You can create the second error detail record when [creating the second resource](#create-the-second-resource).
 
-![Create error record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-error-record.gif)
+![Create error detail record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-error-record.gif)
 
 In this code:
 - Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
@@ -280,9 +279,9 @@ In this code:
 
 The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
 
-### Define the error record
+### Define the error detail record
 
-Similar to how you created the error record in [Define the error records](#define-the-error-records), define the error record below of the second endpoint using the diagram view in VS Code.
+Similar to how you created the error detail record in [define the error detail records](#define-the-error-detail-records), define the error detail record below of the second endpoint using the diagram view in VS Code.
 
 ```ballerina
 public type InvalidIsoCodeError record {|
@@ -397,7 +396,7 @@ public type ErrorMsg record {|
 
 ## Run the service
 
-Use the **Run** CodeLens of the VS Code extension to build and run the service, as shown below.
+Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 

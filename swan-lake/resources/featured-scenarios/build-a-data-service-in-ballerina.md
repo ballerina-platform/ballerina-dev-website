@@ -88,64 +88,39 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
 
 1. Remove the auto-generated content of the API template file (i.e., `main.bal`) and open the **Overview Diagram** view in VS Code.
 
- <GIF>
+    ![Open diagram view](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/open-diagram-view.gif)
 
 2. Generate the record types corresponding to the payload from the service by providing the sample JSON object below.
 
     ```json
-    {
-        "int": 6,
-        "string": "test",
-        "string": "test",
-        "string": "test@test.com",
-        "string": "882 771 110",
-        "time:Date": "year": 2021, "month": 12, "day": 16,
-        "int?": 1,
-        "string": "Sales Manager"
+    {    
+        "first_name": "test",
+        "last_name": "test",
+        "email": "test@test.com",
+        "phone": "882 771 110",
+        "job_title": "Sales Manager"
     }
     ```
-    <GIF>
+    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, importing the `ballerina/time` module, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
 
-The generated record will be as follows.
+    ![Create data record](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-data-record.gif)
 
-```ballerina
-import ballerina/time;
+    The completed record will be as follows.
 
-public type Employee record {|
-    int employee_id?;
-    string first_name;
-    string last_name;
-    string email;
-    string phone;
-    time:Date hire_date;
-    int? manager_id;
-    string job_title;
-|};
-```
+    ```ballerina
+    import ballerina/time;
 
-### Add the MySQL driver
-
-The MySQL driver JAR is necessary to connect to and interact with a MySQL server. Select one out of the methods below to add it.
-
-1. Import the `ballerinax/mysql.driver` package in your `main.bal` file. This package bundles the latest MySQL driver so that the MySQL connector can be used in Ballerina packages easily.
-
-   ```ballerina
-   import ballerinax/mysql.driver as _;
-   ```
-   
-2. Update the `Ballerina.toml` file with the Maven dependency params for the MySQL driver.
-   ```toml
-   [[platform.java11.dependency]]
-   groupId = "mysql"
-   artifactId = "mysql-connector-java"
-   version = "8.0.26"
-   ```
-   
-3. Download the driver JAR manually and update the path in the `Ballerina.toml` file
-   ```toml
-   [[platform.java11.dependency]]
-   path = "/path/to/mysql/driver.jar”
-   ```
+    public type Employee record {|
+        string first_name;
+        string last_name;
+        string email;
+        string phone;
+        string job_title;
+        int employee_id?;
+        int? manager_id;
+        time:Date hire_date;   
+    |};
+    ```
 
 ### Define MySQL configurations
 
@@ -165,38 +140,45 @@ Follow the steps below to define the MySQL configurations.
 
     >**Info:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
 
-    <GIF>
+    ![Create configurable variable](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-configurable-variable.gif)
+
+    The generated configurable variables will be as follows.
+
+    ```ballerina
+    configurable string USER = "root";
+    configurable string PASSWORD = "rootPassword";
+    configurable string HOST = "localhost";
+    configurable int PORT = 3306;
+    configurable string DATABASE = "Company";
+    ```
 
 ### Connect to the database
 
 You can connect to the MySQL database by creating a client.
 
-#### Import the required packages
-
-To import the [`mysql`](https://lib.ballerina.io/ballerinax/mysql/latest) 
-and [`sql`](https://lib.ballerina.io/ballerina/sql/latest) packages for creating the client, add the code below in the `main.bal` file.
-
-```ballerina
-import ballerinax/mysql;
-import ballerina/sql;
-```
-
 #### Create the MySQL client
 
-To use the `mysql:Client` to the database, add the code below in the `main.bal` file.
+Create a `mysql:Client` to connect to the database as shown below.
+
+![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
 
 ```ballerina
-final mysql:Client dbClient = check new(
-    host=HOST, user=USER, password=PASSWORD, port=PORT, database="Company"
-);
+final mysql:Client dbClient = check new (host = HOST, user = USER, password = PASSWORD, database = "Company", port = PORT);
 ```
 #### Run the MySQL client
 
-Use the **Run** CodeLens of the VS Code extension to build and run the service as shown below.
+Use the **Run** option of the VS Code extension to build and run the client as shown below.
 
-<GIF>
+![Run the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-client.gif)
 
-If the program runs without throwing an error, that indicates that the connection has been established successfully. This client can be defined globally and be used across all parts of the program.
+If the program runs without throwing an error with the output below, that indicates that the connection has been established successfully. This client can be defined globally and be used across all parts of the program.
+
+```
+Compiling source
+        foo/data_service:0.1.0
+
+Running executable
+```
 
 >**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database which, are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
 
@@ -209,77 +191,113 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 
 2. `execute()` - Executes an SQL query and returns only the metadata of the execution.
 
-To use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database, add the code below to the `main.bal` file. 
+#### Create the functions
 
-```ballerina
-isolated function addEmployee(Employee emp) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
-                               hire_date, manager_id, job_title)
-        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                ${emp.job_title})
-    `);
-    int|string? lastInsertId = result.lastInsertId;
-    if lastInsertId is int {
-        return lastInsertId;
-    } else {
-        return error("Unable to obtain last insert ID");
+You need to create `isolated` functions to use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database. 
+
+Follow the steps below to create the functions.
+
+1. Create the first function as shown below.
+
+    ![Create isolated function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-isolated-function.gif)
+
+2. Add the code below to the body of the function.
+
+    ```ballerina
+    isolated function addEmployee(Employee emp) returns int|error {
+        sql:ExecutionResult result = check dbClient->execute(`
+            INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
+                                hire_date, manager_id, job_title)
+            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
+                    ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
+                    ${emp.job_title})
+        `);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        } else {
+            return error("Unable to obtain last insert ID");
+        }
+    }   
+    ```
+
+3. Similarly, implement the other functions in the `main.bal` file as per the code below.
+
+    ```ballerina
+    isolated function addEmployee(Employee emp) returns int|error {
+        sql:ExecutionResult result = check dbClient->execute(`
+            INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
+                                hire_date, manager_id, job_title)
+            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
+                    ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
+                    ${emp.job_title})
+        `);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        } else {
+            return error("Unable to obtain last insert ID");
+        }
     }
-}
 
-isolated function getEmployee(int id) returns Employee|error {
-    Employee employee = check dbClient->queryRow(
-        `SELECT * FROM Employees WHERE employee_id = ${id}`
-    );
-    return employee;
-}
-
-isolated function getAllEmployees() returns Employee[]|error {
-    Employee[] employees = [];
-    stream<Employee, error?> resultStream = dbClient->query(
-        `SELECT * FROM Employees`
-    );
-    check from Employee employee in resultStream
-        do {
-            employees.push(employee);
-        };
-    check resultStream.close();
-    return employees;
-}
-
-isolated function updateEmployee(Employee emp) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        UPDATE Employees SET
-            first_name = ${emp.first_name}, 
-            last_name = ${emp.last_name},
-            email = ${emp.email},
-            phone = ${emp.phone},
-            hire_date = ${emp.hire_date}, 
-            manager_id = ${emp.manager_id},
-            job_title = ${emp.job_title}
-        WHERE employee_id = ${emp.employee_id}  
-    `);
-    int|string? lastInsertId = result.lastInsertId;
-    if lastInsertId is int {
-        return lastInsertId;
-    } else {
-        return error("Unable to obtain last insert ID");
+    isolated function getEmployee(int id) returns Employee|error {
+        Employee employee = check dbClient->queryRow(
+            `SELECT * FROM Employees WHERE employee_id = ${id}`
+        );
+        return employee;
     }
-}
 
-isolated function removeEmployee(int id) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        DELETE FROM Employees WHERE employee_id = ${id}
-    `);
-    int? affectedRowCount = result.affectedRowCount;
-    if affectedRowCount is int {
-        return affectedRowCount;
-    } else {
-        return error("Unable to obtain the affected row count");
+    isolated function getAllEmployees() returns Employee[]|error {
+        Employee[] employees = [];
+        stream<Employee, error?> resultStream = dbClient->query(
+            `SELECT * FROM Employees`
+        );
+        check from Employee employee in resultStream
+            do {
+                employees.push(employee);
+            };
+        check resultStream.close();
+        return employees;
     }
-}
-```
+
+    isolated function updateEmployee(Employee emp) returns int|error {
+        sql:ExecutionResult result = check dbClient->execute(`
+            UPDATE Employees SET
+                first_name = ${emp.first_name}, 
+                last_name = ${emp.last_name},
+                email = ${emp.email},
+                phone = ${emp.phone},
+                hire_date = ${emp.hire_date}, 
+                manager_id = ${emp.manager_id},
+                job_title = ${emp.job_title}
+            WHERE employee_id = ${emp.employee_id}  
+        `);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        } else {
+            return error("Unable to obtain last insert ID");
+        }
+    }
+
+    isolated function removeEmployee(int id) returns int|error {
+        sql:ExecutionResult result = check dbClient->execute(`
+            DELETE FROM Employees WHERE employee_id = ${id}
+        `);
+        int? affectedRowCount = result.affectedRowCount;
+        if affectedRowCount is int {
+            return affectedRowCount;
+        } else {
+            return error("Unable to obtain the affected row count");
+        }
+    }
+    ```
+
+4. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logics of the functions.
+
+    ```ballerina
+    import ballerina/sql;
+    ```
 
 ## The  `main.bal` file complete code
 
@@ -381,49 +399,52 @@ isolated function removeEmployee(int id) returns int|error {
 
 ## Expose the database via an HTTP RESTful API
 
-After you have defined the methods necessary to manipulate the database, expose these selectively via an HTTP
-RESTful API. 
+After you have defined the functions that are necessary to manipulate the database, expose these selectively via an HTTP RESTful API. 
 
 ### Create a service
 
-Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+Follow the steps below to create the service.
 
-<GIF>
+1. Create a file named `service.bal`` inside the Ballerina package directory (`data_service`).
 
-The generated REST service will be as follows.
+2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
 
-```ballerina
-service /employees on new http:Listener(8080) {
-}
-```
+    ![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
+
+    The generated REST service will be as follows.
+
+    ```ballerina
+    service /employees on new http:Listener(8080) {
+        resource function get .() returns error? {
+        }
+    }
+    ```
 
 ### Create the resources
 
 Follow the steps below to define resource functions from within this service to provide access to the database.
 
-1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+1. Remove the generated content of the `service.bal` file.
 
-    <GIF>
+2. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension as shown below.
+
+    ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
 
     The generated resource function will be as follows.
 
     ```ballerina
     service /employees on new http:Listener(8080) {
 
-        isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+        isolated resource function post .(Employee emp) returns int|error? {
             return addEmployee(emp);
         }   
     }
     ```
 
-2. Similarly, create the other resources as per the code below.
+3. Similarly, create the other resources as per the code below.
 
     ```ballerina
     service /employees on new http:Listener(8080) {
-
-        isolated resource function post .(@http:Payload Employee emp) returns int|error? {
-            return addEmployee(emp);
-        }
 
         isolated resource function get [int id]() returns Employee|error? {
             return getEmployee(id);
@@ -433,7 +454,7 @@ Follow the steps below to define resource functions from within this service to 
             return getAllEmployees();
         }
 
-        isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+        isolated resource function put .(Employee emp) returns int|error? {
             return updateEmployee(emp);
         }
 
@@ -480,7 +501,7 @@ service /employees on new http:Listener(8080) {
 
 Use the `Run` CodeLens of the VS Code extension to build and run the service as shown below.
 
-<GIF>
+![Run the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-service.gif)
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory), and executing the `bal run` command. 
 
@@ -499,11 +520,11 @@ Running executable
 
 Use the [Try it](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as a JSON payload.
 
-<GIF>
+![Try the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/try-the-service.gif)
 
 Also, a row will get added to the **Employees** table as shown below.
 
-![data service output](/images/data-service-guide-output.png)
+![Data service output](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/data-service-output.png)
 
 ## Learn more
 

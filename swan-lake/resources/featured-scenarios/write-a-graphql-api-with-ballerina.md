@@ -509,11 +509,23 @@ type Mutation {
 
 ## Try the service
 
-Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case.
+Execute the query below using the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case, as shown below.
+
+```
+{
+  all {
+    country
+    cases
+    active
+  }
+}
+```
 
 In this request:
 - An HTTP POST request is sent to the GraphQL endpoint. 
 - The request body contains the GraphQL query.
+
+![Try the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/try-the-service.gif)
 
 You view the JSON below as the result of this request.
 

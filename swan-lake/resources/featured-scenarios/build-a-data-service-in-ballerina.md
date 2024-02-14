@@ -101,7 +101,7 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
         "job_title": "Sales Manager"
     }
     ```
-    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, importing the `ballerina/time` module, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
+    >**Tip:** You need to complete the generated record by adding the importing the `ballerina/time` module, `public` keyword to the record, pipe signs to mark the record as a closed one, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
 
     ![Create data record](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-data-record.gif)
 

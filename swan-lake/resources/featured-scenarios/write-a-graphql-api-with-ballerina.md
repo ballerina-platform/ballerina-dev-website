@@ -122,7 +122,7 @@ Follow the steps below to define the data table.
 
     ```
         {
-        iso_code: "AFG", 
+        isoCode: "AFG", 
         country: "Afghanistan", 
         cases: 159.303, 
         deaths: 7.386, 
@@ -130,7 +130,7 @@ Follow the steps below to define the data table.
         active: 5.833
     },
     {
-        iso_code: "SL", 
+        isoCode: "SL", 
         country: "Sri Lanka", 
         cases: 598.536, 
         deaths: 15.243, 
@@ -138,7 +138,7 @@ Follow the steps below to define the data table.
         active: 14.656
     },
     {
-        iso_code: "US", 
+        isoCode: "US", 
         country: "USA", 
         cases: 69808.350, 
         deaths: 880.976, 
@@ -157,13 +157,149 @@ table<CovidEntry> key(isoCode) covidEntriesTable = table [
 ];
 ```
 
+## Create the service
+
+Create the service, as shown below.
+
+![Create the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-service.gif)
+
+The generated REST service will be as follows.
+
+```ballerina
+import ballerina/graphql;
+
+service /covid19 on new graphql:Listener(9000) {
+    resource function get .() returns error? {
+    }
+}
+```
+
+>**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
+root, you can remove the path as the follows:
+
+```ballerina
+import ballerina/graphql;
+
+service on new graphql:Listener(9000) {
+
+}
+```
+
+>**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
+
+```ballerina
+import ballerina/graphql;
+import ballerina/http;
+
+listener http:Listener httpListener = check new(9000);
+
+service /covid19 on new graphql:Listener(httpListener) {
+
+}
+```
+
+>**Info:** The above is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
+
+### Implement the service methods
+
+As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
+
+#### Create `Query` type service methods
+
+Create the `Query` type service methods as follows.
+
+##### Create the `all` field resource function
+
+Follow the steps below to create the `all` field, which returns an array of `CovidData` type, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+1. Create the resource function, as shown below.
+
+    ![Create first query](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-first-query.gif)
+
+    >**Info:** This creates the [service class to define the GraphQL object types](#create-the-object-types) also when creating this resource function.
+
+2. Replace the body of the resource function with the code below.
+
+    ```ballerina
+        CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+        return covidEntries.map(entry => new CovidData(entry));
+    ```
+
+The generated resource function will be as follows.
+
+```ballerina
+resource function get all() returns CovidData[] {
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
+}
+```
+
+> **Note:** A Ballerina GraphQL resource or remote method can return a `table` as well. When a method is returning a `table`, the corresponding GraphQL field type is a `LIST` type.
+
+In this code:
+- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the `Query` type. 
+- Then comes the name of the field. The return type is the type of the field.
+- The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
+
+##### Create the `filter` field resource function
+
+Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `isoCode` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+```ballerina
+resource function get filter(string isoCode) returns CovidData? {
+    CovidEntry? covidEntry = covidEntriesTable[isoCode];
+    if covidEntry is CovidEntry {
+        return new (covidEntry);
+    }
+    return;
+}
+```
+
+In this code:
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
+- This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
+
+#### Create `Mutation` type 
+
+Create the `Mutation` type service methods as follows.
+
+##### Create the `add` field remote method
+
+As the `Query` type is completed now, follow the steps below to define the `Mutation` type using remote methods.
+
+1. Define a remote method to add an entry to the data source using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+    ![Create the mutation](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-mutation.gif)
+
+2. Replace the body of the resource function with the code below.
+
+    ```ballerina
+        covidEntriesTable.add(entry);
+        return new CovidData(entry);
+    ```
+
+The generated resource function will be as follows.
+
+```ballerina
+remote function add(CovidEntry entry) returns CovidData {
+    covidEntriesTable.add(entry);
+    return new CovidData(entry);
+}
+```
+
+In this code:
+- This method requires a `CovidEntry` record as the input. 
+- When a remote or resource method has a record type as an input, it will be mapped to a GraphQL input object type. Therefore, this cannot be used as an output type.
+
 ## Create the object types
 
-Since the data used in this guide map to a GraphQL Object, you first have to define this object type. In Ballerina, a GraphQL output object can be defined using either a service type or a record type.
+Since the data used in this guide map to a GraphQL Object, you have to define this object type. In Ballerina, a GraphQL output object can be defined using either a service type or a record type.
 
 > **Note:** Since the GraphQL spec does not allow using an input object as an output object, the same record type cannot be used as the input type of a method and the output type of a method.
 
-To add the definition of the `CovidData` object type, add the code below to the `service.bal` file.
+Update the body of the service class, which you created when [creating the first `Query` type](#create-the-all-field-resource-function) with the code below to add the definition of the `CovidData` object type, as shown below.
+
+![Create service class](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-service-class.gif)
 
 ```ballerina
 public distinct service class CovidData {
@@ -222,124 +358,6 @@ the resource method is the type of the field.
 cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (In GraphQL, these are
 represented by the exclamation mark `!`. E.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
 - The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL schema, which will be generated by the Ballerina GraphQL package.
-
-## Create the service
-
-Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
-
-<GIF>
-
-The generated REST service will be as follows.
-
-```ballerina
-service /covid/status on new http:Listener(9000) {
-    resource function get .() returns error? {
-    }
-}
-```
-
->**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
-root, you can remove the path as the follows:
-
-```ballerina
-import ballerina/graphql;
-
-service on new graphql:Listener(9000) {
-
-}
-```
-
->**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
-
-```ballerina
-import ballerina/graphql;
-import ballerina/http;
-
-listener http:Listener httpListener = check new(9000);
-
-service /covid19 on new graphql:Listener(httpListener) {
-
-}
-```
-
->**Info:** The above is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
-
-### Implement the service methods
-
-As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
-
-#### Create `Query` type
-
-Create the `Query` type service methods as follows.
-
-##### Create the `all` field resource method
-
-Create the `all` field, which returns an array of `CovidData` type using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
-
-<GIF>
-
-The generated resource function will be as follows.
-
-```ballerina
-resource function get all() returns CovidData[] {
-    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
-    return covidEntries.map(entry => new CovidData(entry));
-}
-```
-
-> **Note:** A Ballerina GraphQL resource or remote method can return a `table` as well. When a method is returning a `table`, the corresponding GraphQL field type is a `LIST` type.
-
-In this code:
-- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the `Query` type. 
-- Then comes the name of the field. The return type is the type of the field.
-- The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
-
-##### Create the `filter` field resource method
-
-Add the `filter` field, which is another resource method with an input `isoCode` to filter the data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
-
-<GIF>
-
-The generated resource function will be as follows.
-
-```ballerina
-resource function get filter(string isoCode) returns CovidData? {
-    CovidEntry? covidEntry = covidEntriesTable[isoCode];
-    if covidEntry is CovidEntry {
-        return new (covidEntry);
-    }
-    return;
-}
-```
-
-In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
-- This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
-
-#### Create `Mutation` type 
-
-Create the `Mutation` type service methods as follows.
-
-##### Create the `add` field remote method
-
-As the `Query` type is completed now, define the `Mutation` type using remote methods.
-
-Define a remote method to add an entry to the data source using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
-
-<GIF>
-
-The generated resource function will be as follows.
-
-```ballerina
-remote function add(CovidEntry entry) returns CovidData {
-    covidEntriesTable.add(entry);
-    return new CovidData(entry);
-}
-```
-
-In this code:
-- This method requires a `CovidEntry` record as the input. 
-- When a remote or resource method has a record type as an input, it will be mapped to a GraphQL input object type. Therefore, this cannot be used as an output type.
 
 ## The complete code
 
@@ -432,7 +450,7 @@ service /covid19 on new graphql:Listener(9000) {
 
 Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
 
-<GIF>
+![Run the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/run-the-service.gif)
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
@@ -440,16 +458,16 @@ You can view the output below in the Terminal.
 
 ```
 Compiling source
-	user/graphql:0.1.0
-WARNING [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(29:5,29:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(33:5,33:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(40:5,40:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(47:5,47:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(63:5,63:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [service.bal:(68:5,68:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [service.bal:(76:5,76:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+        graphql/covid19:0.1.0
+HINT [service.bal:(20:5,20:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [service.bal:(33:5,33:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [service.bal:(46:5,46:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+HINT [service.bal:(50:5,50:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+HINT [service.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+HINT [service.bal:(61:5,61:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+HINT [service.bal:(68:5,68:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+HINT [service.bal:(75:5,75:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
 
 Running executable
 ```

@@ -116,20 +116,44 @@ Follow the steps below to define the data table.
 
 1. Create the table, as shown below.
 
-    <GIF>
+   ![Create data table](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-table.gif)
 
 2. Replace the `{key: value}` of the generated table with the code below.
 
     ```
+        {
+        iso_code: "AFG", 
+        country: "Afghanistan", 
+        cases: 159.303, 
+        deaths: 7.386, 
+        recovered: 146.084, 
+        active: 5.833
+    },
+    {
+        iso_code: "SL", 
+        country: "Sri Lanka", 
+        cases: 598.536, 
+        deaths: 15.243, 
+        recovered: 568.637, 
+        active: 14.656
+    },
+    {
+        iso_code: "US", 
+        country: "USA", 
+        cases: 69808.350, 
+        deaths: 880.976, 
+        recovered: 43892.277, 
+        active: 25035.097
+    }
     ```
 
 The generated record and the table will be as follows.
 
 ```ballerina
 table<CovidEntry> key(isoCode) covidEntriesTable = table [
-    {isoCode: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {isoCode: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {isoCode: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
 ];
 ```
 

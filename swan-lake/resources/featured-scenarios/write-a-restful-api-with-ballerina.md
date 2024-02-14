@@ -90,6 +90,8 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
     ```
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
+    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, the pipe signs to mark the record as a closed one, and adding the `readonly` modifier to the `iso_code` variable, which cannot be represented in the JSON format.
+
 3. Create the table, as shown below.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)

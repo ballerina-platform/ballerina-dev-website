@@ -8,7 +8,7 @@ _Edition_: Swan Lake \
 
 ## Introduction  
 
-This is the specification for the `ibm.ibmmq` standard library of [Ballerina language](https://ballerina.io/), which provides the 
+This is the specification for the `ibm.ibmmq` library of [Ballerina language](https://ballerina.io/), which provides the 
 functionality to send and receive messages by connecting to an IBM MQ server.
 
 The `ibm.ibmmq` library specification has evolved and may continue to evolve in the future. The released versions of the 

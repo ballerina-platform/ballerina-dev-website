@@ -83,15 +83,15 @@ Follow the steps below to add the definitions of the data types and the declarat
     {
         "iso_code": "AFG",
         "country": "Afghanistan",
-        "cases": 159303,
-        "deaths": 7386,
-        "recovered": 146084,
-        "active": 5833
+        "cases": 159.303,
+        "deaths": 7.386,
+        "recovered": 146.084,
+        "active": 5.833
     }
     ```
     ![Create data record](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-record.gif)
 
-    You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` to the `iso_code` variable, and marking the `cases`, `deaths`, `recovered`, and `active` variables as optional and of decimal type, which cannot be represented in the JSON format.
+    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, pipe signs to mark the record as a closed one, adding the `readonly` to the `iso_code` variable, and marking the `cases`, `deaths`, `recovered`, and `active` variables as optional and of decimal type, which cannot be represented in the JSON format.
     
     The generated record will be as follows.
 

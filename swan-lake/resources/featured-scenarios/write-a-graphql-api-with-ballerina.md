@@ -75,7 +75,7 @@ Follow the steps below to add the definitions of the data types and the declarat
 
 1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the **Overview Diagram** view in VS Code.
 
-   <GIF>
+   ![Open diagram view](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/open-diagram-view.gif)
 
 2. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
 
@@ -89,24 +89,26 @@ Follow the steps below to add the definitions of the data types and the declarat
         "active": 5833
     }
     ```
-    <GIF>
+    ![Create data record](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-record.gif)
 
-The generated record will be as follows.
+    You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` to the `iso_code` variable, and marking the `cases`, `deaths`, `recovered`, and `active` variables as optional and of decimal type, which cannot be represented in the JSON format.
+    
+    The generated record will be as follows.
 
-```ballerina
-public type CovidEntry record {|
-    readonly string isoCode;
-    string country;
-    decimal cases?;
-    decimal deaths?;
-    decimal recovered?;
-    decimal active?;
-|};
-```
+    ```ballerina
+    public type CovidEntry record {|
+        readonly string isoCode;
+        string country;
+        decimal cases?;
+        decimal deaths?;
+        decimal recovered?;
+        decimal active?;
+    |};
+    ```
 
-In this code:
-- The record type `CovidEntry` is defined.
-- A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
+    In this code:
+    - The record type `CovidEntry` is defined.
+    - A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
 
 ### Add data to the data source
 

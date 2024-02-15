@@ -50,7 +50,7 @@ export default function JoinUs(props) {
         <Row>
           <Col sm={12}>
             <p>
-              Our community includes experienced Ballerina engineers and experts from some of the world's leading companies. Use this space to find answers to your questions, get support, or learn from others who use Ballerina.
+              Our community includes experienced Ballerina engineers and experts from some of the world&apos;s leading companies. Use this space to find answers to your questions, get support, or learn from others who use Ballerina.
             </p>
           </Col>
 

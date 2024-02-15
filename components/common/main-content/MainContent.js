@@ -267,7 +267,7 @@ export default function MainContent(props) {
               return <div style={{
                 background: "#eeeeee", padding: "10px 10px 0px 0px",
                 borderRadius: "5px",
-                marginTop: "20px",
+                marginTop: "10px",
                 backgroundColor: "#eeeeee !important"
               }}>
                 <div style={{ display: "flex", justifyContent: "end" }}>

@@ -297,22 +297,24 @@ Since the data used in this guide map to a GraphQL Object, you have to define th
 
 > **Note:** Since the GraphQL spec does not allow using an input object as an output object, the same record type cannot be used as the input and output types of a method.
 
-Update the body of the service class, which you created when [creating the first `Query` type](#create-the-all-field-resource-function) with the code below to add the definition of the `CovidData` object type, as shown below.
+Follow the steps below to update the body of the service class, which you created when [creating the first `Query` type](#create-the-all-field-resource-function) to add the definition of the `CovidData` object type.
 
-![Create service class](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-service-class.gif)
+1. Add the `public` and `distinct` modifiers to the created service class, and add the code below to the body of the service class by editing the source to define the initial record and function.
 
-```ballerina
-public distinct service class CovidData {
+    ```ballerina
     private final readonly & CovidEntry entryRecord;
-
     function init(CovidEntry entryRecord) {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
+    ```
 
-    resource function get isoCode() returns string {
-        return self.entryRecord.isoCode;
-    }
+3. Click the **Visualize** CodeLens and create a resource function inside the service class using the GraphQL API designer, and design the body of the created resource function using the Statement Editor, as shown below.
 
+    ![Define object type](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/define-object-type.gif)
+
+5. Add the code below to the body of the service class to complete it. 
+
+    ```ballerina
     resource function get country() returns string {
         return self.entryRecord.country;
     }
@@ -344,8 +346,7 @@ public distinct service class CovidData {
         }
         return;
     }
-}
-```
+    ```
 
 In this code:
 - The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource method will return the original value
@@ -472,7 +473,7 @@ Running executable
 
 ## View the generated schema
 
-The schema below will be shown if you connect to this service using any GraphQL client tools.
+The schema below will be shown if you connect to this service using any [GraphQL client tools](/learn/graphql-tool/).
 
 ```graphql
 type CovidData {

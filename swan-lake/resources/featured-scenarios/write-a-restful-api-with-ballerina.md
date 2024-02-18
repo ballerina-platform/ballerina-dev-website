@@ -63,8 +63,9 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     │   └── service.bal
     ```
 
-    - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
+    - `Ballerina.toml` is the file that makes the folder a Ballerina package. 
     - The `service.bal` template file provides a look and feel about Ballerina services. 
+    - It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
 
 2. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
 

@@ -36,7 +36,7 @@ The second endpoint is about getting data filtered from the service. The data is
 
 >**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
 
-## Create the service package 
+## Create the package 
 
 Ballerina uses packages to group code. Follow the steps below to create a Ballerina package and write the business logic. 
 
@@ -45,7 +45,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 1. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
-    $ bal new covid19 -t service
+    $ bal new covid19
     ```
 
     You can view the output below.
@@ -58,26 +58,22 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
     ```
     .
-    ├── covid19
-    │   ├── Ballerina.toml
-    │   └── service.bal
+    ├── Ballerina.toml
+    └── main.bal
     ```
 
     - `Ballerina.toml` is the file that makes the folder a Ballerina package. 
-    - The `service.bal` template file provides a look and feel about Ballerina services. 
-    - It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
+    - The `main.bal` file provides the look and feel of a simple Ballerina program. 
 
-2. In the terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
-
-## Create the dataset
-
-An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the table that holds the data.
-
-1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the **Overview Diagram** view in VS Code.
+2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
 
     ![Open diagram view](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/open-diagram-view.gif)
 
-2. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
+## Create the dataset
+
+An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the [table](/learn/by-example/table/) that holds the data.
+
+1. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
 
     ```json
     {
@@ -93,11 +89,11 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
     >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, the pipe signs to mark the record as a closed one, and adding the `readonly` modifier to the `iso_code` variable, which cannot be represented in the JSON format.
 
-3. Create the table, as shown below.
+2. Create the table, as shown below.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
-4. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
+3. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
 
     ```
         {
@@ -164,10 +160,6 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
     }
 ];
 ```
-
-In this code:
-
-- Ballerina tables are used to store data. A Ballerina record represents each entry in the table.
 
 ## Create the service
 
@@ -253,7 +245,7 @@ Create the second resource of the first endpoint to add new COVID-19 data to the
 Implement the logic of the POST resource function with the code below.
 
 ```ballerina
-resource function post countries(@http:Payload CovidEntry[] covidEntries)
+resource function post countries(CovidEntry[] covidEntries)
                                     returns CovidEntry[]|ConflictingIsoCodesError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
@@ -276,7 +268,7 @@ resource function post countries(@http:Payload CovidEntry[] covidEntries)
 In this code:
 
 - It is chosen to accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
-- This resource has an argument named `covidEntries` annotated with `@http:Payload`, which means the resource expects a payload with the `CovideEntry[]` type. Two types of records, `CovideEntry[]` and `ConflictingIsoCodesError`, will be used as the return values.
+- This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, `CovidEntry[]` and `ConflictingIsoCodesError`, will be used as the return types.
 
 ## Implement the second endpoint
 
@@ -292,9 +284,6 @@ public type InvalidIsoCodeError record {|
     ErrorMsg body;
 |};
 ```
-
-In this code:
-- As in the previous example, this resource also includes its return types. However, the basic principle behind them is as the previous example. 
 
 ### Create the resource of the second endpoint
 

@@ -51,7 +51,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     You can view the output below.
 
     ```
-    Created new package 'covid19' at covid19.
+    Created new package 'covid19' at /Users/covid19.
     ```
 
     This creates a directory named `covid19` with the default module along with a sample code for the service, as shown below. 

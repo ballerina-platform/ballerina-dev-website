@@ -71,7 +71,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 ## Create the dataset
 
-An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the table.
+An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the table that holds the data.
 
 1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the **Overview Diagram** view in VS Code.
 

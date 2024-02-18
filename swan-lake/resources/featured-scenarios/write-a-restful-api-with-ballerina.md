@@ -240,7 +240,7 @@ Create the first error detail record, as shown below.
 ![Create error detail record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-error-record.gif)
 
 In this code:
-- Ballerina uses `*http:Conflict` to denote that one type is a subtype of another. In this case, `ConflictingIsoCodesError` is a subtype of `http:Conflict`.
+- `*http:Conflict` is used to include all the fields of `http:Conflict` in the custom `ConflictingIsoCodesError` record. This definition of `ConflictingIsoCodesError` makes it a subtype of `http:Conflict`.
 - The body of the response is of type `ErrorMsg`, which has a string field named `errmsg`. Users can have any data type for their response body based on their needs.
 - Ballerina has a defined set of types for each HTTP status code, which allows you to write services in a type-oriented way, which is helpful for tooling and generating OpenAPI specifications for HTTP services. 
 

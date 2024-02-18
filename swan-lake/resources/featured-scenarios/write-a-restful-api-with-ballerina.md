@@ -97,7 +97,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
-4. Replace the `{key: value}` of the generated table with the code below.
+4. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
 
     ```
         {

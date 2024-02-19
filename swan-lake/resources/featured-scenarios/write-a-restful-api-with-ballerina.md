@@ -67,7 +67,9 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     - `Ballerina.toml` is the file that makes the folder a Ballerina package. 
     - The `main.bal` file provides the look and feel of a simple Ballerina program. 
 
-2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
+2. Open the created package in VS Code.
+
+3. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
 
     ![Open diagram view](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/open-diagram-view.gif)
 

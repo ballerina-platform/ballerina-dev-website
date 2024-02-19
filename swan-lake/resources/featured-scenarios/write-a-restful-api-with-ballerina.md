@@ -218,7 +218,7 @@ In this code:
 
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types. Complete the generated record by adding the pipe signs to mark the record as a `closed` one. 
+>**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
@@ -256,8 +256,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
->**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Use `CovidEntry[]` and `InvalidIsoCodeError` as the response types. Complete the generated record by adding the pipe signs to mark the record as a `closed` one. 
-
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Use `CovidEntry[]` and `InvalidIsoCodeError` as the response types.
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 
 Implement the logic of this `GET` resource function with the code below.

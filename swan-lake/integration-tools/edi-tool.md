@@ -63,6 +63,7 @@ ITM*D-10*58~
 ITM*K-80*250~
 ITM*T-46*28~
 ```
+If you already have existing X12,EDIFACT or ESL schema file you can convert it to the Ballerina schema  
 
 ## Code generation
 
@@ -187,7 +188,7 @@ The Ballerina library project will be generated in the output folder. This libra
 
 | Command option  | Description                                           | Mandatory/Optional |
 |-----------------|-------------------------------------------------------|--------------------|
-| `-p, --package` | Package name(organization-name/library-name).         | Mandatory          |
+| `-p, --package` | Package name (organization-name/library-name).        | Mandatory          |
 | `-i, --input`   | Path to the folder containing EDI schemas.            | Mandatory          |
 | `-o, --output`  | Path to the folder where libraries will be generated. | Mandatory          |
 
@@ -317,6 +318,7 @@ The above REST call will return a JSON response like the below:
     ],...
 }
 ```
+
 ## Schema Conversion
 
 Instead of writing Ballerina EDI schema from scratch, The Ballerina EDI tool also supports converting various EDI schema formats to Ballerina EDI schema format.
@@ -331,7 +333,7 @@ The below command can be used to convert the X12 schema to the Ballerina EDI sch
 bal edi convertX12Schema -H <enable headers mode> -c <enable collection mode > -i <input schema path> -o <output json file/folder path> -d <segment details path>
 ```
 
-### `convertX12Schema` command options
+#### `convertX12Schema` command options
 
 | Command option     | Description                                                 | Mandatory/Optional |
 |--------------------|-------------------------------------------------------------|--------------------|
@@ -356,7 +358,7 @@ The below command can be used to convert the EDIFACT schema to the Ballerina EDI
 bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>
 ```
 
-### `convertEdifactSchema` command options
+#### `convertEdifactSchema` command options
 
 | Command option  | Description                                                 | Mandatory/Optional |
 |-----------------|-------------------------------------------------------------|--------------------|
@@ -379,7 +381,7 @@ The below command can be used to convert ESL schema to Ballerina EDI schema:
 bal edi convertESL -b <segment definitions file path> -i <input ESL schema file/folder> -o <output file/folder>
 ```
 
-### `convertEdifactSchema` command options
+#### `convertEdifactSchema` command options
 
 | Command option   | Description                                                     | Mandatory/Optional |
 |------------------|-----------------------------------------------------------------|--------------------|

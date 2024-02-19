@@ -195,7 +195,7 @@ The generated resource function will be as follows.
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {
-	resource function get countries() returns CovidEntry[] {
+    resource function get countries() returns CovidEntry[] {
         return covidTable.toArray();
     }
 }
@@ -210,9 +210,22 @@ In this code:
 
 Before creating the second resource, you need to create the records of the custom error types, as shown below.
 
-#### Define the error detail records
+#### Define the conflict response payloads
 
-You need to define the error detail records below for the second resource of the first endpoint.
+Define the conflict response payloads for the second resource of the first endpoint, as shown below.
+
+Create the first conflict response payload, as shown below.
+
+>**Tip:** You can create the second conflict response payload when [creating the second resource](#create-the-second-resource).
+
+![Create conflict response payload](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-conflict-response-payload.gif)
+
+In this code:
+- `*http:Conflict` is used to include all the fields of `http:Conflict` in the custom `ConflictingIsoCodesError` record. This definition of `ConflictingIsoCodesError` makes it a subtype of `http:Conflict`.
+- The body of the response is of type `ErrorMsg`, which has a string field named `errmsg`. Users can have any data type for their response body based on their needs.
+- Ballerina has a defined set of types for each HTTP status code, which allows you to write services in a type-oriented way, which is helpful for tooling and generating OpenAPI specifications for HTTP services. 
+
+The generated error records will be as follows.
 
 ```ballerina
 public type ErrorMsg record {|
@@ -224,17 +237,6 @@ public type ConflictingIsoCodesError record {|
     ErrorMsg body;
 |};
 ```
-
-Create the first error detail record, as shown below.
-
->**Tip:** You can create the second error detail record when [creating the second resource](#create-the-second-resource).
-
-![Create error detail record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-error-record.gif)
-
-In this code:
-- `*http:Conflict` is used to include all the fields of `http:Conflict` in the custom `ConflictingIsoCodesError` record. This definition of `ConflictingIsoCodesError` makes it a subtype of `http:Conflict`.
-- The body of the response is of type `ErrorMsg`, which has a string field named `errmsg`. Users can have any data type for their response body based on their needs.
-- Ballerina has a defined set of types for each HTTP status code, which allows you to write services in a type-oriented way, which is helpful for tooling and generating OpenAPI specifications for HTTP services. 
 
 #### Create the second resource
 
@@ -274,9 +276,9 @@ In this code:
 
 The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
 
-### Define the error detail record
+### Define the conflict response payload
 
-Similar to how you created the error detail record in [define the error detail records](#define-the-error-detail-records), define the error detail record below of the second endpoint using the diagram view in VS Code.
+Similar to how you created the conflict response payload in [define the conflict response payloads](#define-the-conflict-response-payloads), define the conflict response payload below of the second endpoint using the diagram view in VS Code.
 
 ```ballerina
 public type InvalidIsoCodeError record {|
@@ -398,7 +400,7 @@ You can view the output below in the Terminal.
 
 ```
 Compiling source
-	ballerina/covid19:0.1.0
+	rest_service_featured_scenario/covid19:0.1.0
 
 Running executable
 ```
@@ -415,7 +417,18 @@ Retrieve all the available records of all countries, as shown below.
 
 ### Add a country by the ISO code 
 
-Add a record of a country by its ISO code, as shown below.
+Add a record of a country by its ISO code by passing the following payload, as shown below.
+
+```json
+{
+  "iso_code": "DEU",
+  "country": "Germany",
+  "cases": 159333.0,
+  "deaths": 7390.0,
+  "recovered": 126084.0,
+  "active": 6833.0
+}
+```
 
 ![Add a country](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/add-a-country.gif)
 

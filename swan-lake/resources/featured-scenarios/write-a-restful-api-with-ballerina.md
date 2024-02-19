@@ -12,7 +12,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina Swan Lake](/downloads/) or greater
 2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Understand the implementation
@@ -27,7 +27,7 @@ This guide will walk you through creating a RESTful API with two endpoints. In t
 ### The first endpoint
 
 The first endpoint is about getting data from the service and adding data to the service. Therefore, the service should handle HTTP `GET` and `POST` requests.
-- The `GET` request is to get data; the response should be `200 OK`.
+- The `GET` request is to retrieve data; the response should be `200 OK`.
 - The `POST` request is to add data; the response should be `201 Created`.
 
 ### The second endpoint
@@ -77,7 +77,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 1. Generate the record types corresponding to the payload of the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
 
-    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, the pipe signs to mark the record as a closed one, and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, which cannot be represented in the JSON format.
+    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, which cannot be represented in the JSON format.
 
     ```json
     {
@@ -128,16 +128,16 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 The generated record and the table will be as follows.
 
 ```ballerina
-public type CovidEntry record {
+type CovidEntry record {|
     readonly string iso_code;
     string country;
     int cases;
     int deaths;
     int recovered;
     int active;
-};
+|};
 
-public final table<CovidEntry> key(iso_code) covidTable = table [
+final table<CovidEntry> key(iso_code) covidTable = table [
     {
         iso_code: "AFG",
         country: "Afghanistan",
@@ -189,7 +189,7 @@ In this code:
 
 ## Implement the first endpoint
 
-The first endpoint has two resources: one to get data and the other to add data.
+The first endpoint has two resources: one to retrieve data and the other to add data.
 
 ### Create the first resource to get data
 
@@ -218,7 +218,7 @@ In this code:
 
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types. Mark the `ConflictingIsoCodesError` as public once it is created.
+>**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
@@ -256,7 +256,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
->**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Use `CovidEntry[]` and `InvalidIsoCodeError` as the response types. Mark the `InvalidIsoCodeError` as `public` once it is created.
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Use `CovidEntry[]` and `InvalidIsoCodeError` as the response types.
 
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 
@@ -320,7 +320,7 @@ service /covid/status on new http:Listener(9000) {
     }
 }
 
-public type CovidEntry record {|
+type CovidEntry record {|
     readonly string iso_code;
     string country;
     decimal cases;
@@ -329,18 +329,18 @@ public type CovidEntry record {|
     decimal active;
 |};
 
-public final table<CovidEntry> key(iso_code) covidTable = table [
+final table<CovidEntry> key(iso_code) covidTable = table [
     {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
     {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
     {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
-public type ConflictingIsoCodesError record {|
+type ConflictingIsoCodesError record {|
     *http:Conflict;
     string body;
 |};
 
-public type InvalidIsoCodeError record {|
+type InvalidIsoCodeError record {|
     *http:NotFound;
     string body;
 |};

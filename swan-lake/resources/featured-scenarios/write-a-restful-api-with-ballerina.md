@@ -48,7 +48,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     $ bal new covid19
     ```
 
-    You can view the output below.
+    You should see output similar to the following.
 
     ```
     Created new package 'covid19' at /Users/covid19.

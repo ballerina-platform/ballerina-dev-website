@@ -226,7 +226,7 @@ Implement the logic of this `POST` resource function with the code below.
 
 ```ballerina
 resource function post countries(CovidEntry[] covidEntries)
-                                    returns CovidEntry[]|ConflictingIsoCodesError {
+                                returns CovidEntry[]|ConflictingIsoCodesError {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
         where covidTable.hasKey(covidEntry.iso_code)
@@ -267,7 +267,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
     CovidEntry? covidEntry = covidTable[iso_code];
     if covidEntry is () {
         return {
-            body: string `Invalid ISO Code: ${iso_code}`  
+            body: string `Invalid ISO Code: ${iso_code}`
         };
     }
     return covidEntry;

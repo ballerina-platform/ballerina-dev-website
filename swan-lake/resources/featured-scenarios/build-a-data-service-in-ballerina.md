@@ -12,7 +12,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina Swan Lake](/downloads/) or greater
 2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Understand the implementation
@@ -108,7 +108,7 @@ The completed record will be as follows.
 ```ballerina
 import ballerina/time;
 
-public type Employee record {|
+type Employee record {|
     string first_name;
     string last_name;
     string email;
@@ -173,7 +173,7 @@ If the program runs without throwing an error with the output below, that indica
 
 ```
 Compiling source
-        foo/data_service:0.1.0
+        featured_scenarios/build_a_data_service:0.1.0
 
 Running executable
 ```
@@ -205,7 +205,7 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
 3. Add the code below to the body of the function.
 
     ```ballerina
-    isolated function addEmployee(Employee emp) returns int|error {
+    function addEmployee(Employee emp) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
             INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
                                 hire_date, manager_id, job_title)
@@ -225,7 +225,7 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
 4. Similarly, implement the other functions in the `main.bal` file as per the code below.
 
     ```ballerina
-    isolated function addEmployee(Employee emp) returns int|error {
+    function addEmployee(Employee emp) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
             INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
                                 hire_date, manager_id, job_title)
@@ -241,14 +241,14 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
         }
     }
 
-    isolated function getEmployee(int id) returns Employee|error {
+    function getEmployee(int id) returns Employee|error {
         Employee employee = check dbClient->queryRow(
             `SELECT * FROM Employees WHERE employee_id = ${id}`
         );
         return employee;
     }
 
-    isolated function getAllEmployees() returns Employee[]|error {
+    function getAllEmployees() returns Employee[]|error {
         Employee[] employees = [];
         stream<Employee, error?> resultStream = dbClient->query(
             `SELECT * FROM Employees`
@@ -261,7 +261,7 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
         return employees;
     }
 
-    isolated function updateEmployee(Employee emp) returns int|error {
+    function updateEmployee(Employee emp) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
             UPDATE Employees SET
                 first_name = ${emp.first_name}, 
@@ -281,7 +281,7 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
         }
     }
 
-    isolated function removeEmployee(int id) returns int|error {
+    function removeEmployee(int id) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
             DELETE FROM Employees WHERE employee_id = ${id}
         `);
@@ -303,7 +303,7 @@ import ballerina/time;
 import ballerinax/mysql;
 import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
 
-public type Employee record {|
+type Employee record {|
     int employee_id?;
     string first_name;
     string last_name;
@@ -324,7 +324,7 @@ final mysql:Client dbClient = check new(
     host=HOST, user=USER, password=PASSWORD, port=PORT, database="Company"
 );
 
-isolated function addEmployee(Employee emp) returns int|error {
+function addEmployee(Employee emp) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
                                hire_date, manager_id, job_title)
@@ -340,14 +340,14 @@ isolated function addEmployee(Employee emp) returns int|error {
     }
 }
 
-isolated function getEmployee(int id) returns Employee|error {
+function getEmployee(int id) returns Employee|error {
     Employee employee = check dbClient->queryRow(
         `SELECT * FROM Employees WHERE employee_id = ${id}`
     );
     return employee;
 }
 
-isolated function getAllEmployees() returns Employee[]|error {
+function getAllEmployees() returns Employee[]|error {
     Employee[] employees = [];
     stream<Employee, error?> resultStream = dbClient->query(
         `SELECT * FROM Employees`
@@ -360,7 +360,7 @@ isolated function getAllEmployees() returns Employee[]|error {
     return employees;
 }
 
-isolated function updateEmployee(Employee emp) returns int|error {
+function updateEmployee(Employee emp) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         UPDATE Employees SET
             first_name = ${emp.first_name}, 
@@ -380,7 +380,7 @@ isolated function updateEmployee(Employee emp) returns int|error {
     }
 }
 
-isolated function removeEmployee(int id) returns int|error {
+function removeEmployee(int id) returns int|error {
     sql:ExecutionResult result = check dbClient->execute(`
         DELETE FROM Employees WHERE employee_id = ${id}
     `);
@@ -431,7 +431,7 @@ Follow the steps below to define resource functions within this service to provi
     ```ballerina
     service /employees on new http:Listener(8080) {
 
-        isolated resource function post .(Employee emp) returns int|error? {
+        resource function post .(Employee emp) returns int|error? {
             return addEmployee(emp);
         }   
     }
@@ -442,19 +442,19 @@ Follow the steps below to define resource functions within this service to provi
     ```ballerina
     service /employees on new http:Listener(8080) {
 
-        isolated resource function get [int id]() returns Employee|error? {
+        resource function get [int id]() returns Employee|error? {
             return getEmployee(id);
         }
 
-        isolated resource function get .() returns Employee[]|error? {
+        resource function get .() returns Employee[]|error? {
             return getAllEmployees();
         }
 
-        isolated resource function put .(Employee emp) returns int|error? {
+        resource function put .(Employee emp) returns int|error? {
             return updateEmployee(emp);
         }
 
-        isolated resource function delete [int id]() returns int|error? {
+        resource function delete [int id]() returns int|error? {
             return removeEmployee(id);       
         }
         
@@ -470,23 +470,23 @@ import ballerina/http;
 
 service /employees on new http:Listener(8080) {
 
-    isolated resource function post .(Employee emp) returns int|error? {
+    resource function post .(Employee emp) returns int|error? {
         return addEmployee(emp);
     }
     
-    isolated resource function get [int id]() returns Employee|error? {
+    resource function get [int id]() returns Employee|error? {
         return getEmployee(id);
     }
     
-    isolated resource function get .() returns Employee[]|error? {
+    resource function get .() returns Employee[]|error? {
         return getAllEmployees();
     }
     
-    isolated resource function put .(Employee emp) returns int|error? {
+    resource function put .(Employee emp) returns int|error? {
         return updateEmployee(emp);
     }
     
-    isolated resource function delete [int id]() returns int|error? {
+    resource function delete [int id]() returns int|error? {
         return removeEmployee(id);       
     }
 
@@ -505,7 +505,7 @@ You can view the output below in the Terminal.
 
 ```
 Compiling source
-        featured_scenarios/data_service:0.1.0
+        featured_scenarios/build_a_data_service:0.1.0
 
 Running executable
 ```

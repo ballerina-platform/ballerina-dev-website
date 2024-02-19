@@ -56,7 +56,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     Created new package 'write_a_restful_api' at /Users/write-a-restful-api.
     ```
 
-    This creates a directory named `write-a-restful-api` with the default module along with sample code for the service, as shown below. 
+    This creates a directory named `write-a-restful-api` with sample Ballerina code, as shown below. 
 
     ```
     .

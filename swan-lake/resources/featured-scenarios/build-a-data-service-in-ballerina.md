@@ -64,12 +64,18 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
     ```
     $ bal new build-a-data-service
     ``` 
+    You should see the output similar to the following.
+
+    ```
+    package name is derived as 'build_a_data_service'. Edit the Ballerina.toml to change it.
+
+    Created new package 'build_a_data_service' at /Users/build-a-data-service.
+    ```
 
     This creates a directory named `build-a-data-service` with the files below.
 
     ```
     .
-    ├── build-a-data-service
     │   ├── Ballerina.toml
     │   └── main.bal
     ```
@@ -88,7 +94,9 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
 
 >**Info:** This record type is the basis for interacting with the database.
 
-Generate the record types corresponding to the payload from the service by providing the sample JSON object below.
+Generate the record types corresponding to the payload from the service by providing the record name as `Employee` and the sample JSON object below.
+
+>**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `employee_id`, `manager_id`, and `hire_date` types, and importing the `ballerina/time` module, which cannot be represented in the JSON format.
 
 ```json
 {    
@@ -99,7 +107,6 @@ Generate the record types corresponding to the payload from the service by provi
     "job_title": "Sales Manager"
 }
 ```
->**Tip:** You need to complete the generated record by adding the importing the `ballerina/time` module, `public` keyword to the record, pipe signs to mark the record as a closed one, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
 
 ![Create data record](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-data-record.gif)
 
@@ -158,6 +165,8 @@ You can connect to the MySQL database by creating a client.
 
 Create a `mysql:Client` to connect to the database, as shown below.
 
+>**Tip:** Select the `final` descriptor, enter `dbClient` as the MySQL client name, and configure the `host`, `user`, `password`, `database`, and `port` parameters with the `HOST`, `USER`, `PASSWORD`, `C"Company"`, and `PORT` values respectively.
+
 ![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
 
 ```ballerina
@@ -200,12 +209,13 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
     ```
 2. Create the first function, as shown below.
 
-    ![Create isolated function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-isolated-function.gif)
+    >**Tip:** Enter the `addEmployee` as the name of the function, create a parameter named `emp` of type `Employee`, and enter the return type as `int|error`.
+
+    ![Create first function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-first-function.gif)
 
 3. Add the code below to the body of the function.
 
     ```ballerina
-    function addEmployee(Employee emp) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
             INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
                                 hire_date, manager_id, job_title)
@@ -218,29 +228,12 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
             return lastInsertId;
         } else {
             return error("Unable to obtain last insert ID");
-        }
-    }   
+        }  
     ```
 
 4. Similarly, implement the other functions in the `main.bal` file as per the code below.
 
     ```ballerina
-    function addEmployee(Employee emp) returns int|error {
-        sql:ExecutionResult result = check dbClient->execute(`
-            INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
-                                hire_date, manager_id, job_title)
-            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                    ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                    ${emp.job_title})
-        `);
-        int|string? lastInsertId = result.lastInsertId;
-        if lastInsertId is int {
-            return lastInsertId;
-        } else {
-            return error("Unable to obtain last insert ID");
-        }
-    }
-
     function getEmployee(int id) returns Employee|error {
         Employee employee = check dbClient->queryRow(
             `SELECT * FROM Employees WHERE employee_id = ${id}`
@@ -401,9 +394,11 @@ After you have defined the functions necessary to manipulate the database, expos
 
 Follow the steps below to create the service.
 
-1. Create a `service.bal` file inside the Ballerina package directory (`data_service`).
+1. Create a `service.bal` file inside the Ballerina package directory (`build_a_data_service`).
 
 2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
+
+    >**Tip:** Use `/employees` as the service path (or the context) of the service, which is attached to the listener listening on port 8080.
 
     ![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
 
@@ -420,9 +415,9 @@ Follow the steps below to create the service.
 
 Follow the steps below to define resource functions within this service to provide access to the database.
 
-1. Remove the generated resource function of the `service.bal` file.
+1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-2. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
+    >**Tip:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type. Complete the generated record by adding the pipe signs to mark the record as a closed one.
 
     ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
 
@@ -437,11 +432,9 @@ Follow the steps below to define resource functions within this service to provi
     }
     ```
 
-3. Similarly, create the other resources as per the code below.
+2. Similarly, create the other resources as per the code below.
 
     ```ballerina
-    service /employees on new http:Listener(8080) {
-
         resource function get [int id]() returns Employee|error? {
             return getEmployee(id);
         }
@@ -457,8 +450,6 @@ Follow the steps below to define resource functions within this service to provi
         resource function delete [int id]() returns int|error? {
             return removeEmployee(id);       
         }
-        
-    }
     ```
 
 ## The `service.bal` file complete code 
@@ -501,7 +492,7 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory) and executing the `bal run` command. 
 
-You can view the output below in the Terminal.
+You should see the output similar to the following.
 
 ```
 Compiling source
@@ -514,7 +505,24 @@ Running executable
 
 ## Try the service
 
-Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as a JSON payload.
+Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to invoke the defined resource method by sending a `POST` request to `http://localhost:8080/employees` with the required data as shown in the JSON payload below.
+
+```json
+{
+  "first_name": "string",
+  "last_name": "string",
+  "email": "string",
+  "phone": "string",
+  "job_title": "string",
+  "employee_id": 0,
+  "manager_id": 0,
+  "hire_date": {
+    "year": 2024,
+    "month": 2,
+    "day": 12
+  }
+}
+```
 
 ![Try the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/try-the-service.gif)
 

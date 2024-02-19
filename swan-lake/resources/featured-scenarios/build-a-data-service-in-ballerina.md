@@ -80,7 +80,9 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
     │   └── main.bal
     ```
 
-2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
+2. Open the created package in VS Code.
+
+3. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
 
     ![Open diagram view](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/open-diagram-view.gif)
 
@@ -123,7 +125,7 @@ type Employee record {|
     string job_title;
     int employee_id?;
     int? manager_id;
-    time:Date hire_date;   
+    time:Date hire_date;
 |};
 ```
 
@@ -169,6 +171,8 @@ Create a `mysql:Client` to connect to the database, as shown below.
 
 ![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
 
+The generated MySQL client will be as follows.
+
 ```ballerina
 final mysql:Client dbClient = check new (host = HOST, user = USER, password = PASSWORD, database = "Company", port = PORT);
 ```
@@ -213,22 +217,50 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
 
     ![Create first function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-first-function.gif)
 
+    The generated function will be as follows.
+
+    ```ballerina
+    function addEmployee(Employee emp) returns int|error {
+    }
+    ```
+
 3. Add the code below to the body of the function.
 
     ```ballerina
+
+    sql:ExecutionResult result = check dbClient->execute(`
+        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
+                            hire_date, manager_id, job_title)
+        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
+                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
+                ${emp.job_title})
+    `);
+    int|string? lastInsertId = result.lastInsertId;
+    if lastInsertId is int {
+        return lastInsertId;
+    } else {
+        return error("Unable to obtain last insert ID");
+    }
+    ```
+
+    The generated function will be as follows.
+
+    ```ballerina
+    function addEmployee(Employee emp) returns int|error {
         sql:ExecutionResult result = check dbClient->execute(`
-            INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
+        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
                                 hire_date, manager_id, job_title)
-            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                    ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                    ${emp.job_title})
-        `);
+        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
+                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
+                ${emp.job_title})
+    `);
         int|string? lastInsertId = result.lastInsertId;
         if lastInsertId is int {
             return lastInsertId;
         } else {
             return error("Unable to obtain last insert ID");
-        }  
+        }
+    }
     ```
 
 4. Similarly, implement the other functions in the `main.bal` file as per the code below.

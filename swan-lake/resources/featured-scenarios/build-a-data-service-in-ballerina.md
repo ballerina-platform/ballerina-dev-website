@@ -62,21 +62,23 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
     > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
     ```
-    $ bal new data_service
+    $ bal new build-a-data-service
     ``` 
 
-    This creates a directory named `data_service` with the files below.
+    This creates a directory named `build-a-data-service` with the files below.
 
     ```
     .
-    ├── data_service
+    ├── build-a-data-service
     │   ├── Ballerina.toml
     │   └── main.bal
     ```
 
-2. Navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
+2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
 
-## Create the service
+    ![Open diagram view](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/open-diagram-view.gif)
+
+## Create the data service
 
 The sections below demonstrate how to create the service.
 
@@ -86,41 +88,37 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
 
 >**Info:** This record type is the basis for interacting with the database.
 
-1. Remove the auto-generated content of the API template file (i.e., `main.bal`) and open the **Overview Diagram** view in VS Code.
+Generate the record types corresponding to the payload from the service by providing the sample JSON object below.
 
-    ![Open diagram view](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/open-diagram-view.gif)
+```json
+{    
+    "first_name": "test",
+    "last_name": "test",
+    "email": "test@test.com",
+    "phone": "882 771 110",
+    "job_title": "Sales Manager"
+}
+```
+>**Tip:** You need to complete the generated record by adding the importing the `ballerina/time` module, `public` keyword to the record, pipe signs to mark the record as a closed one, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
 
-2. Generate the record types corresponding to the payload from the service by providing the sample JSON object below.
+![Create data record](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-data-record.gif)
 
-    ```json
-    {    
-        "first_name": "test",
-        "last_name": "test",
-        "email": "test@test.com",
-        "phone": "882 771 110",
-        "job_title": "Sales Manager"
-    }
-    ```
-    >**Tip:** You need to complete the generated record by adding the importing the `ballerina/time` module, `public` keyword to the record, pipe signs to mark the record as a closed one, and adding the `employee_id`, `manager_id`, and `hire_date` types, which cannot be represented in the JSON format.
+The completed record will be as follows.
 
-    ![Create data record](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-data-record.gif)
+```ballerina
+import ballerina/time;
 
-    The completed record will be as follows.
-
-    ```ballerina
-    import ballerina/time;
-
-    public type Employee record {|
-        string first_name;
-        string last_name;
-        string email;
-        string phone;
-        string job_title;
-        int employee_id?;
-        int? manager_id;
-        time:Date hire_date;   
-    |};
-    ```
+public type Employee record {|
+    string first_name;
+    string last_name;
+    string email;
+    string phone;
+    string job_title;
+    int employee_id?;
+    int? manager_id;
+    time:Date hire_date;   
+|};
+```
 
 ### Define MySQL configurations
 
@@ -193,9 +191,7 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 
 #### Create the functions
 
-You need to create `isolated` functions to use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database. 
-
-Follow the steps below to create the functions.
+Follow the steps below to create functions to use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database. 
 
 1. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logic of the functions.
 
@@ -401,7 +397,7 @@ isolated function removeEmployee(int id) returns int|error {
 
 After you have defined the functions necessary to manipulate the database, expose these selectively via an HTTP RESTful API. 
 
-### Create a service
+### Create the REST  service
 
 Follow the steps below to create the service.
 
@@ -474,7 +470,7 @@ import ballerina/http;
 
 service /employees on new http:Listener(8080) {
 
-    isolated resource function post .(@http:Payload Employee emp) returns int|error? {
+    isolated resource function post .(Employee emp) returns int|error? {
         return addEmployee(emp);
     }
     
@@ -486,7 +482,7 @@ service /employees on new http:Listener(8080) {
         return getAllEmployees();
     }
     
-    isolated resource function put .(@http:Payload Employee emp) returns int|error? {
+    isolated resource function put .(Employee emp) returns int|error? {
         return updateEmployee(emp);
     }
     
@@ -509,7 +505,7 @@ You can view the output below in the Terminal.
 
 ```
 Compiling source
-        foo/data_service:0.1.0
+        featured_scenarios/data_service:0.1.0
 
 Running executable
 ```

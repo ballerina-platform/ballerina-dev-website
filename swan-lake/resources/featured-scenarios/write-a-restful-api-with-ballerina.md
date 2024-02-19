@@ -45,16 +45,18 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 1. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
-    $ bal new covid19
+    $ bal new write-a-restful-api
     ```
 
     You should see the output similar to the following.
 
     ```
-    Created new package 'covid19' at /Users/covid19.
+    package name is derived as 'write_a_restful_api'. Edit the Ballerina.toml to change it.
+
+    Created new package 'write_a_restful_api' at /Users/write-a-restful-api.
     ```
 
-    This creates a directory named `covid19` with the default module along with sample code for the service, as shown below. 
+    This creates a directory named `write-a-restful-api` with the default module along with sample code for the service, as shown below. 
 
     ```
     .
@@ -73,7 +75,9 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the [table](/learn/by-example/table/) that holds the data.
 
-1. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
+1. Generate the record types corresponding to the payload of the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
+
+    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, the pipe signs to mark the record as a closed one, and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, which cannot be represented in the JSON format.
 
     ```json
     {
@@ -87,9 +91,9 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
     ```
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
-    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, the pipe signs to mark the record as a closed one, and adding the `readonly` field descriptor to the `iso_code` variable to make it non-modifiable as it is the key of the table (i.e., the unique identifier of a data row), which cannot be represented in the JSON format.
-
 2. Create the table, as shown below.
+
+    >**Tip:** Enter `CovidEntry` as the table type, `iso_code` as the key, and `covidTable` as the variable type when creating the table.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
@@ -191,7 +195,7 @@ The first endpoint has two resources: one to get data and the other to add data.
 
 Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type.
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type and replace the auto-generated  body of the resource with `return covidTable.toArray()`.
 
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
@@ -212,43 +216,13 @@ In this code:
 
 ### Create the second resource to add data
 
-Before creating the second resource, you need to create the records of the custom error types, as shown below.
-
-#### Define the conflict response payloads
-
-Define the first conflict response payload for the second resource of the first endpoint, as shown below.
-
->**Tip:** You can create the second conflict response payload when [creating the second resource](#create-the-second-resource).
-
-![Create conflict response payload](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-conflict-response-payload.gif)
-
-In this code:
-- `*http:Conflict` is used to include all the fields of `http:Conflict` in the custom `ConflictingIsoCodesError` record. This definition of `ConflictingIsoCodesError` makes it a subtype of `http:Conflict`.
-- The body of the response is of type `ErrorMsg`, which has a string field named `errmsg`. Users can have any data type for their response body based on their needs.
-- Ballerina has a defined set of types for each HTTP status code, which allows you to write services in a type-oriented way, which is helpful for tooling and generating OpenAPI specifications for HTTP services. 
-
-The generated error records will be as follows.
-
-```ballerina
-public type ErrorMsg record {|
-    string errmsg;
-|};
-
-public type ConflictingIsoCodesError record {|
-    *http:Conflict;
-    ErrorMsg body;
-|};
-```
-
-#### Create the second resource
-
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload. Use `CovidEntry[]` and `ErrorMsg` as the response types.
+>**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types. Mark the `ConflictingIsoCodesError` as public once it is created.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
-Implement the logic of the POST resource function with the code below.
+Implement the logic of this `POST` resource function with the code below.
 
 ```ballerina
 resource function post countries(CovidEntry[] covidEntries)
@@ -260,12 +234,10 @@ resource function post countries(CovidEntry[] covidEntries)
 
     if conflictingISOs.length() > 0 {
         return {
-            body: {
-                errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
-            }
+            body: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
         };
     } else {
-        covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+        covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
         return covidEntries;
     }
 }
@@ -280,29 +252,22 @@ In this code:
 
 The second endpoint has only one resource to get COVID-19 data filtered by the ISO code.
 
-### Define the conflict response payload
-
-Similar to how you created the conflict response payload in [define the conflict response payloads](#define-the-conflict-response-payloads), define the conflict response payload below of the second endpoint using the diagram view in VS Code.
-
-```ballerina
-public type InvalidIsoCodeError record {|
-    *http:NotFound;
-    ErrorMsg body;
-|};
-```
-
 ### Create the resource of the second endpoint
 
-Similar to how you created the [resources of the first endpoint](#create-the-first-resource-to-get-data), create the resource of the second endpoint below using the diagram view in VS Code.
+Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
+
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Use `CovidEntry[]` and `InvalidIsoCodeError` as the response types. Mark the `InvalidIsoCodeError` as `public` once it is created.
+
+![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
+
+Implement the logic of this `GET` resource function with the code below.
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
     CovidEntry? covidEntry = covidTable[iso_code];
     if covidEntry is () {
         return {
-            body: {
-                errmsg: string `Invalid ISO Code: ${iso_code}`
-            }
+            body: string `Invalid ISO Code: ${iso_code}`  
         };
     }
     return covidEntry;
@@ -312,7 +277,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 In this code:
 - This resource is different from the first two resources. As explained earlier, resource methods have accessors.
 - It also supports hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
--  In this case, `iso_code` is used as the path param, which, in turn, becomes a string variable.
+- In this case, `iso_code` is used as the path param, which, in turn, becomes a `string` variable.
 
 ## The complete code
 
@@ -336,12 +301,10 @@ service /covid/status on new http:Listener(9000) {
 
         if conflictingISOs.length() > 0 {
             return {
-                body: {
-                    errmsg: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
-                }
+                body: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             };
         } else {
-            covidEntries.forEach(covdiEntry => covidTable.add(covdiEntry));
+            covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
             return covidEntries;
         }
     }
@@ -350,9 +313,7 @@ service /covid/status on new http:Listener(9000) {
         CovidEntry? covidEntry = covidTable[iso_code];
         if covidEntry is () {
             return {
-                body: {
-                    errmsg: string `Invalid ISO Code: ${iso_code}`
-                }
+                body: string `Invalid ISO Code: ${iso_code}`
             };
         }
         return covidEntry;
@@ -376,16 +337,12 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 
 public type ConflictingIsoCodesError record {|
     *http:Conflict;
-    ErrorMsg body;
+    string body;
 |};
 
 public type InvalidIsoCodeError record {|
     *http:NotFound;
-    ErrorMsg body;
-|};
-
-public type ErrorMsg record {|
-    string errmsg;
+    string body;
 |};
 ```
 
@@ -398,13 +355,16 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `write-a-restful-api` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
 You should see the output similar to the following.
 
 ```
 Compiling source
-	rest_service_featured_scenario/covid19:0.1.0
+        featured_scenarios/write_a_restful_api:0.1.0
+HINT [main.bal:(40:5,40:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(43:5,43:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(61:5,61:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 
 Running executable
 ```
@@ -438,7 +398,7 @@ Add a record of a country by its ISO code by passing the following payload, as s
 
 ### Filter a country by the ISO code
 
-Retrieve a specific record of a country by providing its ISO code, as shown below.
+Retrieve a specific record of a country by providing its ISO code (e.g., `AFG`), as shown below.
 
 ![Filter a country](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/filter-a-country.gif)
 

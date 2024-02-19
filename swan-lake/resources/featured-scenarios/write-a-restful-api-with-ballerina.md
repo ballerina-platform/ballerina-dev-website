@@ -48,7 +48,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     $ bal new covid19
     ```
 
-    You should see output similar to the following.
+    You should see the output similar to the following.
 
     ```
     Created new package 'covid19' at /Users/covid19.
@@ -165,6 +165,8 @@ public final table<CovidEntry> key(iso_code) covidTable = table [
 
 Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
+>**Tip:** Use `/covid/status` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
+
 ![Create REST service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-rest-service.gif)
 
 The generated REST service will be as follows.
@@ -189,6 +191,8 @@ The first endpoint has two resources: one to get data and the other to add data.
 
 Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type.
+
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
 The generated resource function will be as follows.
@@ -212,9 +216,7 @@ Before creating the second resource, you need to create the records of the custo
 
 #### Define the conflict response payloads
 
-Define the conflict response payloads for the second resource of the first endpoint, as shown below.
-
-Create the first conflict response payload, as shown below.
+Define the first conflict response payload for the second resource of the first endpoint, as shown below.
 
 >**Tip:** You can create the second conflict response payload when [creating the second resource](#create-the-second-resource).
 
@@ -241,6 +243,8 @@ public type ConflictingIsoCodesError record {|
 #### Create the second resource
 
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
+
+>**Tip:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` payload. Use `CovidEntry[]` and `ErrorMsg` as the response types.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
@@ -396,7 +400,7 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-You can view the output below in the Terminal.
+You should see the output similar to the following.
 
 ```
 Compiling source

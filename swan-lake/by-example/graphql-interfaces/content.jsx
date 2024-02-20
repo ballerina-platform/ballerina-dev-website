@@ -437,8 +437,8 @@ export function GraphqlInterfaces({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="ID scalar type"
-            href="/learn/by-example/graphql-id-scalar-type"
+            title="Input objects"
+            href="/learn/by-example/graphql-input-objects"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -465,7 +465,7 @@ export function GraphqlInterfaces({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  ID scalar type
+                  Input objects
                 </span>
               </div>
             </div>

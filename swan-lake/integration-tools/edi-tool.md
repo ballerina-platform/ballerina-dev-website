@@ -22,7 +22,7 @@ The tool supports three main usages as follows.
 
 - [**Code generation**](#code-generation): Generate Ballerina records and parser functions for a given EDI schema.
 - [**Library generation**](#library-generation): Generates Ballerina records, parser functions, utility methods, and a REST connector for a given collection of EDI schemas and organizes those as a Ballerina library
-- [**Schema Conversion**](#schema-conversion): Convert various EDI schema formats to Ballerina EDI schema format.
+- [**Schema conversion**](#schema-conversion): Convert various EDI schema formats to Ballerina EDI schema format.
 
 ### Define EDI schema
 
@@ -319,7 +319,7 @@ The above REST call will return a JSON response like the below:
 }
 ```
 
-## Schema Conversion
+## Schema conversion
 
 Instead of writing Ballerina EDI schema from scratch, The Ballerina EDI tool also supports converting various EDI schema formats to Ballerina EDI schema format.
 

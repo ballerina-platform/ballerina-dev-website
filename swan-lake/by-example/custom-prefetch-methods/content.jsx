@@ -507,8 +507,8 @@ export function CustomPrefetchMethods({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Query GraphQL endpoint"
-            href="/learn/by-example/graphql-client-query-endpoint"
+            title="Operation-level caching"
+            href="/learn/by-example/graphql-service-operation-level-caching"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -518,7 +518,7 @@ export function CustomPrefetchMethods({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Query GraphQL endpoint
+                  Operation-level caching
                 </span>
               </div>
               <svg

@@ -51,12 +51,6 @@ version = "0.1.0"
 observabilityIncluded = true
 ```
 
-The `[package]` table contains the meta information about the package. If you wish to publish a private package, you can set the following line to the table to set the package visibility.
-
-```toml
-visibility = "private"
-```
-
 ### The `org` field
 
 The organization is a logical name used for grouping modules together under a common namespace within a repository. 
@@ -109,6 +103,22 @@ Ballerina strictly follows the rules of <a href="https://semver.org/" target="_b
 *   If the changes to pre-release versions are incremental, you can use the numeric pre-release versioning technique (E.g. `1.0.0-alpha.1`, `1.0.0-alpha.2`).
 
 *   Once the package is production-ready, you can use a stable version (E.g. `1.0.0`). Any subsequent minor or patch releases of the same major version should be backward compatible and, should not break existing builds.
+
+### The `visibility` field
+
+By default, packages published to Ballerina Central are public, allowing visibility to all users. To limit access, you can designate a package as private by adding the `visibility` field to the `[package]` table. Private packages are accessible only to members of the associated organization. You can configure the access token in the `<USER_HOME>/.ballerina/Settings.toml` file to utilize the package as a dependency. 
+
+For information on how to obtain an access token, see [prepare for publishing](/learn/publish-packages-to-ballerina-central/#prepare-for-publishing).
+
+Below is an example on setting the visibility of a package to private.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+visibility = "private"
+```
 
 ### The `export` field
 

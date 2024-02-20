@@ -56,8 +56,11 @@ export function GraphqlFileUpload({ codeSnippets }) {
         <code>remote</code> method inside a <code>graphql:Service</code>. The{" "}
         <code>graphql:Upload</code> record includes the details of the file that
         is being uploaded. The GraphQL file upload follows the{" "}
-        <em>Graphql Multipart Request Spec</em> to upload the files. Use this to
-        create a GraphQL API where users can upload files.
+        <a href="https://github.com/jaydenseric/graphql-multipart-request-spec/tree/master">
+          <em>Graphql Multipart Request Spec</em>
+        </a>{" "}
+        to upload the files. Use this to create a GraphQL API where users can
+        upload files.
       </p>
 
       <Row

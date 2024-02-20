@@ -1,0 +1,17 @@
+{
+  "title": "Operation-level caching",
+  "description": "This example demonstrates the caching of a GraphQL service at the operation level.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "graphql",
+    "cache",
+    "server-side caching"
+  ],
+  "permalink": "/learn/by-example/graphql-service-operation-level-caching",
+  "active": "graphql-service-operation-level-caching",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-service-operation-level-caching",
+    "/swan-lake/learn/by-example/graphql-service-operation-level-caching.html"
+  ]
+}

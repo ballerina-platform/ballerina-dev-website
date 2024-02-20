@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2024, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -21,14 +21,12 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
 import Layout from '../../layouts/LayoutCommunity';
-import Newsletter from '../../components/community/newsletter/Newsletter';
-import Events from '../../components/community/events/Events';
-import Resources from '../../components/community/resources/Resources';
-import JoinUs from '../../components/community/join-us/JoinUs';
-import Contact from '../../components/community/contact/Contact';
-import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
+import Outline from '../../components/student-engagement/outline/Outline';
+import PastSessions from '../../components/student-engagement/past-sessions/PastSessions';
+import SECarousel from '../../components/common/image-carousel/ImageCarousel';
+import GetInvolved from '../../components/student-engagement/get-involved/GetInvolved';
 
-export default function Community() {
+export default function StudentEngagemntProgram() {
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -49,20 +47,18 @@ export default function Community() {
   };
 
   const images = [
-    '/images/community/2.jpg',
-    '/images/community/5.jpg',
-    '/images/community/6.jpg',
-    '/images/community/7.jpg',
-    '/images/community/9.png',
-    '/images/community/10.png',
-    '/images/community/11.png',
-    '/images/community/12.png'
+    '/images/university/1.jpg',
+    '/images/university/2.jpg',
+    '/images/university/3.jpg',
+    '/images/university/4.jpg',
+    '/images/university/5.jpg',
+    '/images/university/6.png'
   ];
 
   return (
     <>
       <Head>
-        <title>Community - The Ballerina programming language</title>
+        <title>Student engagemnt program - The Ballerina programming language</title>
         <meta name="description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
@@ -89,14 +85,14 @@ export default function Community() {
                 <Row>
                   <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
-                    <h1>Community</h1>
-                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
-                    <a href="#join-with-us" className="join">
-                    Join our community
+                    <h1>Student engagement program</h1>
+                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to fostering the advancement of the next generation and in pursuit of this goal, we currently organize engaging sessions for university students, focusing on industry topics that are not only relevant to their academic curriculum but also captivating to the student community.</p>
+                    <a href="#" className="join">
+                      Learn more
                     </a>
-                  </Col> 
+                  </Col>
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
-                    <CommunityCarousel images={images}/>
+                    <SECarousel images={images} />
                   </Col>
                 </Row>
               </Container>
@@ -104,23 +100,15 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Events getLink={getLink} />
+            <Outline getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <JoinUs getLink={getLink} />
+            <PastSessions getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Resources getLink={getLink} />
-          </Row>
-
-          <Row className="pageContentRow communityRow">
-            <Newsletter getLink={getLink} showLink={true}/>
-          </Row>
-
-          <Row className="pageContentRow communityRow slackRow">
-            <Contact getLink={getLink} />
+            <GetInvolved getLink={getLink} />
           </Row>
 
         </Col>

@@ -14,7 +14,7 @@ intro: This guide walks you through writing a simple GraphQL service to serve a 
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.8.4 (Swan Lake)](/downloads/) or greater
+1. [Ballerina Swan Lake](/downloads/) or greater
 2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Design the GraphQL endpoint
@@ -26,7 +26,7 @@ The GraphQL endpoint you will create in this guide will have two primary operati
 ### The `Query` type
 The `Query` type has two fields.
 * The `all` field - This field will return all the data in the data source as an array.
-* The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
+* The `filter` field - This field will return the data filtered by the ISO Code of a country(`iso_code`).
 
 ### The `Mutation` type
 The `Mutation` type has a single field.
@@ -42,28 +42,31 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 1. In the Terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
-    $ bal new covid19 -t service
+    $ bal new write-a-graphql-api
     ```
 
-    You can view the output below.
+    You should see the output similar to the following.
 
     ```
-    Created new package 'covid19' at covid19.
+    package name is derived as 'write_a_graphql_api'. Edit the Ballerina.toml to change it.
+
+    Created new package 'write_a_graphql_api' at /Users/write-a-graphql-api.
     ```
 
-    This creates a directory named `covid19` with the default module and a sample code for the service, as shown below. 
+    This creates a directory named `write-a-graphql-api` with the default module and a sample code for the service, as shown below. 
 
     ```
     .
-    ├── covid19
     │   ├── Ballerina.toml
-    │   └── service.bal
+    │   └── main.bal
     ```
 
-    - `Ballerina.toml` is the file that makes the folder a Ballerina package. It also contains a test directory to include tests for the service. However, this will not be used in this guide. 
-    - The `service.bal` template file provides a look and feel about Ballerina services. 
+    - `Ballerina.toml` is the file that makes the folder a Ballerina package.
+    - `main.bal` file provides the look and feel of a simple Ballerina program.
 
-2. In the Terminal, navigate to the directory of the created package and execute the `code .` command to open it in VS Code.
+2. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
+
+    ![Open diagram view](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/open-diagram-view.gif)
 
 ## Create the data source 
 
@@ -73,11 +76,9 @@ Before writing the GraphQL service, let's create a data source for the project. 
 
 Follow the steps below to add the definitions of the data types and the declaration of the table.
 
-1. Remove the auto-generated content of the API template file (i.e., `service.bal`) and open the **Overview Diagram** view in VS Code.
+1. Generate the record types corresponding to the payload from the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
 
-   ![Open diagram view](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/open-diagram-view.gif)
-
-2. Generate the record types corresponding to the payload from the REST service by providing the sample JSON object below.
+    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, and marking the values of the `cases`, `deaths`, `recovered`, and `active` variables as optional, which cannot be represented in the JSON format.
 
     ```json
     {
@@ -90,14 +91,12 @@ Follow the steps below to add the definitions of the data types and the declarat
     }
     ```
     ![Create data record](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-record.gif)
-
-    >**Tip:** You need to complete the generated record by adding the `public` keyword to the record, pipe signs to mark the record as a closed one, adding the `readonly` to the `iso_code` variable, and marking the `cases`, `deaths`, `recovered`, and `active` variables as optional and of decimal type, which cannot be represented in the JSON format.
     
     The generated record will be as follows.
 
     ```ballerina
-    public type CovidEntry record {|
-        readonly string isoCode;
+    type CovidEntry record {|
+        readonly string iso_code;
         string country;
         decimal cases?;
         decimal deaths?;
@@ -108,7 +107,7 @@ Follow the steps below to add the definitions of the data types and the declarat
 
     In this code:
     - The record type `CovidEntry` is defined.
-    - A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
+    - A single entry will include the ISO code for the location (`iso_code`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
 
 ### Add data to the data source
 
@@ -116,13 +115,15 @@ Follow the steps below to define the data table.
 
 1. Create the table, as shown below.
 
+    >**Tip:** Enter `CovidEntry` as the table type, `iso_code` as the key, and `covidEntriesTable` as the variable type when creating the table.
+
    ![Create data table](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-table.gif)
 
 2. Replace the `{key: value}` of the generated table with the code below.
 
     ```
     {
-        isoCode: "AFG", 
+        iso_code: "AFG", 
         country: "Afghanistan", 
         cases: 159.303, 
         deaths: 7.386, 
@@ -130,7 +131,7 @@ Follow the steps below to define the data table.
         active: 5.833
     },
     {
-        isoCode: "SL", 
+        iso_code: "SL", 
         country: "Sri Lanka", 
         cases: 598.536, 
         deaths: 15.243, 
@@ -138,7 +139,7 @@ Follow the steps below to define the data table.
         active: 14.656
     },
     {
-        isoCode: "US", 
+        iso_code: "US", 
         country: "USA", 
         cases: 69808.350, 
         deaths: 880.976, 
@@ -150,16 +151,27 @@ Follow the steps below to define the data table.
 The generated record and the table will be as follows.
 
 ```ballerina
-table<CovidEntry> key(isoCode) covidEntriesTable = table [
-    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
-    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
-    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
+type CovidEntry record {|
+    readonly string iso_code;
+    string country;
+    decimal cases?;
+    decimal deaths?;
+    decimal recovered?;
+    decimal active?;
+|};
+
+table<CovidEntry> key(iso_code) covidEntriesTable = table [
+    {iso_code: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {iso_code: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
 ];
 ```
 
 ## Create the service
 
 Create the service, as shown below.
+
+>**Tip:** Select `service on graphql:Listener` and use `/covid19` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
 
 ![Create the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-service.gif)
 
@@ -169,8 +181,6 @@ The generated REST service will be as follows.
 import ballerina/graphql;
 
 service /covid19 on new graphql:Listener(9000) {
-    resource function get .() returns error? {
-    }
 }
 ```
 
@@ -185,7 +195,7 @@ service on new graphql:Listener(9000) {
 }
 ```
 
->**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
+>**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object for initializing the `graphql:Listener`, add the code below to the `main.bal` file. 
 
 ```ballerina
 import ballerina/graphql;
@@ -243,11 +253,11 @@ In this code:
 
 ##### Create the `filter` field resource function
 
-Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `isoCode` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `iso_code` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
 
 ```ballerina
-resource function get filter(string isoCode) returns CovidData? {
-    CovidEntry? covidEntry = covidEntriesTable[isoCode];
+resource function get filter(string iso_code) returns CovidData? {
+    CovidEntry? covidEntry = covidEntriesTable[iso_code];
     if covidEntry is CovidEntry {
         return new (covidEntry);
     }
@@ -256,8 +266,8 @@ resource function get filter(string isoCode) returns CovidData? {
 ```
 
 In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
-- This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and returns `null` otherwise.
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `iso_code`, you have to add an input parameter to the resource method. 
+- This method returns the corresponding data for the given `iso_code` if such data is available in the data set, and returns `null` otherwise.
 
 #### Create `Mutation` type 
 
@@ -267,7 +277,7 @@ Create the `Mutation` type service methods as follows.
 
 As the `Query` type is completed, follow the steps below to define the `Mutation` type using remote methods.
 
-1. Define a remote method to add an entry to the data source using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+1. Define the `add` field, which returns an array of `CovidData` type to add an entry to the data source, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
 
     ![Create the mutation](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-mutation.gif)
 
@@ -299,7 +309,7 @@ Since the data used in this guide map to a GraphQL Object, you have to define th
 
 Follow the steps below to update the body of the service class, which you created when [creating the first `Query` type](#create-the-all-field-resource-function) to add the definition of the `CovidData` object type.
 
-1. Add the `public` and `distinct` modifiers to the created service class, and add the code below to the body of the service class by editing the source to define the initial record and function.
+1. Add the `distinct` descriptor to the created service class, and add the code below to the body of the service class by editing the source to define the initial record and function.
 
     ```ballerina
     private final readonly & CovidEntry entryRecord;
@@ -308,9 +318,26 @@ Follow the steps below to update the body of the service class, which you create
     }
     ```
 
-3. Click the **Visualize** CodeLens and create a resource function inside the service class using the GraphQL API designer, and design the body of the created resource function using the Statement Editor, as shown below.
+3. Click the **Visualize** CodeLens and create a resource function inside the service class using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/), and design the body of the created resource function using the **Statement Editor**, as shown below.
+
+    >**Tip:** Enter `iso_code` as the field, `string` as the return type, and `self.entryRecord.iso_code` as the return value of the resource function.
 
     ![Define object type](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/define-object-type.gif)
+
+    The generated resource function will be as follows.
+
+    ```ballerina
+    distinct service class CovidData {
+    private final readonly & CovidEntry entryRecord;
+    function init(CovidEntry entryRecord) {
+        self.entryRecord = entryRecord.cloneReadOnly();
+        }
+
+    resource function get iso_code() returns string {
+        return self.entryRecord.iso_code;
+        }
+    }
+    ```
 
 5. Add the code below to the body of the service class to complete it. 
 
@@ -355,7 +382,7 @@ divided by `1000`.
 the data set. 
 - Each resource method in this service represents a field of the GraphQL object type.  The return type of
 the resource method is the type of the field.
-- The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (GraphQL represents these by the exclamation mark `!` (e.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
+- The resource methods returning `iso_code` and the `country` have the return type `string`, which means these fields cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (GraphQL represents these by the exclamation mark `!` (e.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
 - The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL schema, which the Ballerina GraphQL package will generate.
 
 ## The complete code
@@ -365,8 +392,8 @@ Below is the complete code for the Ballerina GraphQL service.
 ```ballerina
 import ballerina/graphql;
 
-public type CovidEntry record {|
-    readonly string isoCode;
+type CovidEntry record {|
+    readonly string iso_code;
     string country;
     decimal cases?;
     decimal deaths?;
@@ -374,21 +401,21 @@ public type CovidEntry record {|
     decimal active?;
 |};
 
-table<CovidEntry> key(isoCode) covidEntriesTable = table [
-    {isoCode: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {isoCode: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {isoCode: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+table<CovidEntry> key(iso_code) covidEntriesTable = table [
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
-public distinct service class CovidData {
+distinct service class CovidData {
     private final readonly & CovidEntry entryRecord;
 
     function init(CovidEntry entryRecord) {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
 
-    resource function get isoCode() returns string {
-        return self.entryRecord.isoCode;
+    resource function get iso_code() returns string {
+        return self.entryRecord.iso_code;
     }
 
     resource function get country() returns string {
@@ -430,8 +457,8 @@ service /covid19 on new graphql:Listener(9000) {
         return covidEntries.map(entry => new CovidData(entry));
     }
 
-    resource function get filter(string isoCode) returns CovidData? {
-        CovidEntry? covidEntry = covidEntriesTable[isoCode];
+    resource function get filter(string iso_code) returns CovidData? {
+        CovidEntry? covidEntry = covidEntriesTable[iso_code];
         if covidEntry is CovidEntry {
             return new (covidEntry);
         }
@@ -453,20 +480,14 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 >**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
-You can view the output below in the Terminal.
+You should see the output similar to the following in the Terminal.
 
 ```
 Compiling source
-        graphql/covid19:0.1.0
-HINT [service.bal:(20:5,20:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-HINT [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-HINT [service.bal:(33:5,33:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-HINT [service.bal:(46:5,46:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-HINT [service.bal:(50:5,50:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-HINT [service.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-HINT [service.bal:(61:5,61:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-HINT [service.bal:(68:5,68:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-HINT [service.bal:(75:5,75:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
+        featured_scenarios/write_a_graphql_api:0.1.0
+HINT [main.bal:(41:5,41:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(46:5,46:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(54:5,54:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 
 Running executable
 ```
@@ -477,7 +498,7 @@ The schema below will be shown if you connect to this service using any [GraphQL
 
 ```graphql
 type CovidData {
-    isoCode: String!
+    iso_code: String!
     country: String!
     cases: Decimal
     recovered: Decimal
@@ -486,7 +507,7 @@ type CovidData {
 }
 
 input CovidEntry {
-    isoCode: String!
+    iso_code: String!
     country: String!
     cases: Decimal
     recovered: Decimal
@@ -498,7 +519,7 @@ scalar Decimal
 
 type Query {
     all: [CovidData!]!
-    filter(isoCode: String!): CovidData
+    filter(iso_code: String!): CovidData
 }
 
 type Mutation {
@@ -509,6 +530,8 @@ type Mutation {
 ## Try the service
 
 Execute the query below using the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case, as shown below.
+
+>**Tip:** In the **Explorer**, select `active`, `cases`, and `country` values under `all`.
 
 ```
 {
@@ -526,7 +549,7 @@ In this request:
 
 ![Try the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/try-the-service.gif)
 
-You can view the JSON below as the result of this request.
+You should see the JSON below as the result of this request.
 
 ```JSON
 {

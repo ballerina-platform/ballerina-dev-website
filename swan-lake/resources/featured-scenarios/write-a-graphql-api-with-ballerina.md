@@ -212,7 +212,7 @@ service /covid19 on new graphql:Listener(httpListener) {
 
 ### Implement the service methods
 
-As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina. In contrast, the fields of the `Mutation` type are represented by the remote methods in Ballerina.
+As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina. In contrast, the fields of the `Mutation` type are defined by the remote methods in Ballerina.
 
 #### Create `Query` type service methods
 
@@ -266,8 +266,8 @@ resource function get filter(string iso_code) returns CovidData? {
 ```
 
 In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `iso_code`, you have to add an input parameter to the resource method. 
-- This method returns the corresponding data for the given `iso_code` if such data is available in the data set, and returns `null` otherwise.
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter named `iso_code`, you have to add an input parameter to the resource method. 
+- This method returns the corresponding data for the given `iso_code` if such data is available in the data set and returns `null` otherwise.
 
 #### Create `Mutation` type 
 
@@ -530,7 +530,7 @@ type Mutation {
 
 ## Try the service
 
-Execute the query below using the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case, as shown below.
+Execute the query below using the [**Try it**](/learn/vs-code-extension/try-the-services/try-graphql-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case, as shown below.
 
 >**Tip:** In the **Explorer**, select `active`, `cases`, and `country` values under `all`.
 

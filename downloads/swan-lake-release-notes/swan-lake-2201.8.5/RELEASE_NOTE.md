@@ -23,6 +23,14 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ## Ballerina library updates
 
+### New features
+
+#### `graphql` package
+
+- Added support for generating compile time schema for default parameters.
+- Added support for generating GraphQL schema for local service variable declaration.
+- Added support for GraphQL server-side caching.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for 2201.8.5 (Swan Lake)](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.8.5).

@@ -111,7 +111,7 @@ Follow the steps below to add the definitions of the data types and the declarat
 
 ### Add data to the data source
 
-Follow the steps below to define the data table.
+Follow the steps below to define the data [table](/learn/by-example/table).
 
 1. Create the table, as shown below.
 
@@ -119,7 +119,7 @@ Follow the steps below to define the data table.
 
    ![Create data table](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-table.gif)
 
-2. Replace the `{key: value}` of the generated table with the code below.
+2. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
 
     ```
     {
@@ -231,8 +231,8 @@ Follow the steps below to create the `all` field, which returns an array of `Cov
 2. Replace the body of the resource function with the code below.
 
     ```ballerina
-        CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
-        return covidEntries.map(entry => new CovidData(entry));
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
     ```
 
 The generated resource function will be as follows.
@@ -284,8 +284,8 @@ As the `Query` type is completed, follow the steps below to define the `Mutation
 2. Replace the body of the resource function with the code below.
 
     ```ballerina
-        covidEntriesTable.add(entry);
-        return new CovidData(entry);
+    covidEntriesTable.add(entry);
+    return new CovidData(entry);
     ```
 
 The generated resource function will be as follows.
@@ -313,6 +313,7 @@ Follow the steps below to update the body of the service class, which you create
 
     ```ballerina
     private final readonly & CovidEntry entryRecord;
+
     function init(CovidEntry entryRecord) {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
@@ -328,13 +329,13 @@ Follow the steps below to update the body of the service class, which you create
 
     ```ballerina
     distinct service class CovidData {
-    private final readonly & CovidEntry entryRecord;
-    function init(CovidEntry entryRecord) {
-        self.entryRecord = entryRecord.cloneReadOnly();
+        private final readonly & CovidEntry entryRecord;
+        function init(CovidEntry entryRecord) {
+            self.entryRecord = entryRecord.cloneReadOnly();
         }
 
-    resource function get iso_code() returns string {
-        return self.entryRecord.iso_code;
+        resource function get iso_code() returns string {
+            return self.entryRecord.iso_code;
         }
     }
     ```

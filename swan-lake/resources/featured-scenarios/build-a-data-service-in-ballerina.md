@@ -211,59 +211,8 @@ Follow the steps below to create functions to use the `query()`, `queryRow()`, a
     ```ballerina
     import ballerina/sql;
     ```
-2. Create the first function, as shown below.
-
-    >**Tip:** Enter the `addEmployee` as the name of the function, create a parameter named `emp` of type `Employee`, and enter the return type as `int|error`.
-
-    ![Create first function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-first-function.gif)
-
-    The generated function will be as follows.
-
-    ```ballerina
-    function addEmployee(Employee emp) returns int|error {
-    }
-    ```
-
-3. Add the code below to the body of the function.
-
-    ```ballerina
-
-    sql:ExecutionResult result = check dbClient->execute(`
-        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
-                            hire_date, manager_id, job_title)
-        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                ${emp.job_title})
-    `);
-    int|string? lastInsertId = result.lastInsertId;
-    if lastInsertId is int {
-        return lastInsertId;
-    } else {
-        return error("Unable to obtain last insert ID");
-    }
-    ```
-
-    The generated function will be as follows.
-
-    ```ballerina
-    function addEmployee(Employee emp) returns int|error {
-        sql:ExecutionResult result = check dbClient->execute(`
-        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
-                                hire_date, manager_id, job_title)
-        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                ${emp.job_title})
-    `);
-        int|string? lastInsertId = result.lastInsertId;
-        if lastInsertId is int {
-            return lastInsertId;
-        } else {
-            return error("Unable to obtain last insert ID");
-        }
-    }
-    ```
-
-4. Similarly, implement the other functions in the `main.bal` file as per the code below.
+    
+2. Implement the other functions in the `main.bal` file by adding the code below.
 
     ```ballerina
     function getEmployee(int id) returns Employee|error {

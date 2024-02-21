@@ -48,9 +48,9 @@ export default function StudentEngagemntProgram() {
 
   const images = [
     '/images/university/1.jpg',
-    '/images/university/2.jpg',
+    '/images/university/2.png',
     '/images/university/3.jpg',
-    '/images/university/4.jpg',
+    '/images/university/4.png',
     '/images/university/5.jpg',
     '/images/university/6.png'
   ];

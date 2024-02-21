@@ -174,7 +174,7 @@ Define the Ballerina service within which the resources will be defined. Create 
 
 >**Tip:** Use `/covid/status` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
 
-![Create REST service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-rest-service.gif)
+![Create the REST service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-rest-service.gif)
 
 The generated REST service will be as follows.
 

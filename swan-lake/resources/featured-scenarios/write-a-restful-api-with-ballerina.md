@@ -12,7 +12,7 @@ intro: This guide helps you understand the basics of Ballerina constructs, which
 
 To complete this tutorial, you need:
 
-1. [Ballerina Swan Lake](/downloads/) or greater
+1. [Ballerina Swan Lake](/downloads/) or later
 2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Understand the implementation
@@ -79,7 +79,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 1. Generate the record type corresponding to the request payload of the REST service by providing `CovidEntry` as the name and the sample JSON payload below.
 
-    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, which cannot be represented in the JSON format.
+    >**Tip:** You need to update the generated record by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/) and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table.
 
     ```json
     {
@@ -128,6 +128,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
             active: 25035097
         }
     ```
+
 The generated record and the table will be as follows.
 
 ```ballerina
@@ -140,31 +141,9 @@ type CovidEntry record {|
     int active;
 |};
 
-final table<CovidEntry> key(iso_code) covidTable = table [
-    {
-        iso_code: "AFG",
-        country: "Afghanistan",
-        cases: 159303,
-        deaths: 7386,
-        recovered: 146084,
-        active: 5833
-    },
-    {
-        iso_code: "SL",
-        country: "Sri Lanka",
-        cases: 598536,
-        deaths: 15243,
-        recovered: 568637,
-        active: 14656
-    },
-    {
-        iso_code: "US",
-        country: "USA",
-        cases: 69808350,
-        deaths: 880976,
-        recovered: 43892277,
-        active: 25035097
-    }
+final table<CovidEntry> key(iso_code) covidTable = table [{iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+{iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+{iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 ```
 
@@ -198,7 +177,7 @@ The first endpoint has two resources: one to retrieve data and the other to add 
 
 Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]` as the response type and replace the auto-generated body of the resource with `return covidTable.toArray()`.
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type and introduce the logic to return the data in the table.
 
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
@@ -248,7 +227,7 @@ resource function post countries(CovidEntry[] covidEntries)
 
 In this code:
 
-- It is chosen to accept the entire payload or send back an error. Copying this straightway results in an error, which is expected as the `ConflictingIsoCodesError` type is not defined yet.
+- It is chosen to accept the entire payload or send back an error.
 - This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, `CovidEntry[]` and `ConflictingIsoCodesError`, will be used as the return types.
 
 ## Implement the second endpoint
@@ -278,7 +257,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 
 In this code:
 - This resource is different from the first two resources. As explained earlier, resource methods have accessors.
-- It also supports hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path parameters.
+- Resource methods also support hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path parameters.
 - In this case, `iso_code` is used as the path param, which, in turn, becomes a `string` variable.
 
 ## The complete code
@@ -357,7 +336,7 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `write-a-restful-api` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `write-a-restful-api` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
 
 You should see the output similar to the following.
 

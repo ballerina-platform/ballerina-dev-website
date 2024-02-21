@@ -96,7 +96,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 2. Create the table, as shown below.
 
-    >**Tip:** Enter `CovidEntry` as the table type, `iso_code` as the key, and `covidTable` as the variable type when creating the table.
+    >**Note:** Enter `CovidEntry` as the row type corresponding to the type of the members of the table, `iso_code` as the key, and `covidTable` as the variable name when creating the table.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 

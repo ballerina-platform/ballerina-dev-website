@@ -48,9 +48,9 @@ export default function StudentEngagemntProgram() {
 
   const images = [
     '/images/university/1.jpg',
-    '/images/university/2.jpg',
+    '/images/university/2.png',
     '/images/university/3.jpg',
-    '/images/university/4.jpg',
+    '/images/university/4.png',
     '/images/university/5.jpg',
     '/images/university/6.png'
   ];
@@ -87,7 +87,7 @@ export default function StudentEngagemntProgram() {
                   <Col xs={12} md={12} lg={6}>
                     <h1>Student engagement program</h1>
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to fostering the advancement of the next generation and in pursuit of this goal, we currently organize engaging sessions for university students, focusing on industry topics that are not only relevant to their academic curriculum but also captivating to the student community.</p>
-                    <a href="#" className="join">
+                    <a href="#program-outline" className="join">
                       Learn more
                     </a>
                   </Col>

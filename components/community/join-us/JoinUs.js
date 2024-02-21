@@ -88,7 +88,7 @@ export default function JoinUs(props) {
                     <Card.Body>
                       <Card.Text className='text-center mt-3'>
                         <div className={styles.join} title="Stackoverflow">
-                          Get your questions answered
+                          Ask, answer, and learn
                         </div>
                       </Card.Text>
                     </Card.Body>

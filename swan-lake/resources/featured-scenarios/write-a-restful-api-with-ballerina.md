@@ -198,7 +198,7 @@ The first endpoint has two resources: one to retrieve data and the other to add 
 
 Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type and replace the auto-generated  body of the resource with `return covidTable.toArray()`.
+>**Tip:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]` as the response type and replace the auto-generated body of the resource with `return covidTable.toArray()`.
 
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 

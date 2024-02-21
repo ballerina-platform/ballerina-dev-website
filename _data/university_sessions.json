@@ -1,0 +1,219 @@
+{
+    "events": [
+        {
+            "date": "Feb 20, 2024",
+            "time": "",
+            "expire": "2024-02-21T00:00:00.0000-00:00",
+            "location": "Greater Noida, India",
+            "url": "",
+            "eventType": "Workshop",
+            "eventName": "Bennett University",
+            "presenters": [
+                {
+                    "name": "Tharik Kanaka",
+                    "designation": "Senior Technical Lead",
+                    "twitter": "https://twitter.com/Keizer619"
+                },
+                {
+                    "name": "Waruna Jayaweera",
+                    "designation": "Technical Lead",
+                    "twitter": "https://twitter.com/WaruLJ"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Feb 19, 2024",
+            "time": "",
+            "expire": "2024-02-20T00:00:00.0000-00:00",
+            "location": "Faridabad, India",
+            "url": "",
+            "eventType": "Workshop",
+            "eventName": "Manav Rachna International Institute of Research and Studies",
+            "presenters": [
+                {
+                    "name": "Tharik Kanaka",
+                    "designation": "Senior Technical Lead",
+                    "twitter": "https://twitter.com/Keizer619"
+                },
+                {
+                    "name": "Waruna Jayaweera",
+                    "designation": "Technical Lead",
+                    "twitter": "https://twitter.com/WaruLJ"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Oct 27, 2023",
+            "time": "",
+            "expire": "2022-10-28T00:00:00.0000-00:00",
+            "location": "Colombo, Sri Lanka",
+            "url": "",
+            "eventType": "Empowering Modern Systems with Microservices and AI-as-a Service using Ballerina",
+            "eventName": "Informatics Institute of Technology (IIT)",
+            "presenters": [
+                {
+                    "name": "Anjana Supun",
+                    "designation": "Senior Software Engineer",
+                    "twitter": "https://twitter.com/AnjanaSupun"
+                },
+                {
+                    "name": "Fathima Dilhasha",
+                    "designation": "Associate Technical Lead",
+                    "twitter": "https://twitter.com/dil_nazeer"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Oct 26, 2023",
+            "time": "",
+            "expire": "2022-10-27T00:00:00.0000-00:00",
+            "location": "Moratuwa, Sri Lanka",
+            "url": "",
+            "eventType": "Mastering Web Backend Fundamentals",
+            "eventName": "University of Moratuwa",
+            "presenters": [
+                {
+                    "name": "Nipuna Ranasinghe",
+                    "designation": "Associate Technical Lead",
+                    "twitter": "https://twitter.com/indrachapa93"
+                },
+                {
+                    "name": "Ayesh Almeida",
+                    "designation": "Senior Software Engineer",
+                    "twitter": "https://twitter.com/Ayesh363"
+                },
+                {
+                    "name": "Sasindu Alahakoon",
+                    "designation": "Software Engineer",
+                    "twitter": "https://twitter.com/Sasindu3625"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Oct 18, 2023",
+            "time": "",
+            "expire": "2022-10-19T00:00:00.0000-00:00",
+            "location": "Kandy, Sri Lanka",
+            "url": "",
+            "eventType": "Mastering Microservices and APIs with Ballerina: A Practical Guide",
+            "eventName": "University of Peradeniya",
+            "presenters": [
+                {
+                    "name": "Thisaru Guruge",
+                    "designation": "Associate Technical Lead",
+                    "twitter": "https://twitter.com/ThisaruGuruge"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Sept 21, 2023",
+            "time": "",
+            "expire": "2022-09-22T00:00:00.0000-00:00",
+            "location": "Colombo, Sri Lanka",
+            "url": "",
+            "eventType": "Lecture",
+            "eventName": "University of Colombo",
+            "presenters": [
+                {
+                    "name": "Dilan Perera",
+                    "designation": "Software Engineer",
+                    "twitter": "https://twitter.com/dilanpererar"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Sept 21, 2023",
+            "time": "",
+            "expire": "2023-09-22T00:00:00.0000-00:00",
+            "location": "Moratuwa, Sri Lanka",
+            "url": "",
+            "eventType": "Workshop",
+            "eventName": "University of Moratuwa",
+            "presenters": [
+                {
+                    "name": "Hasitha Aravinda",
+                    "designation": "Associate Director / Architect",
+                    "twitter": "https://twitter.com/HasithaAravinda"
+                },
+                {
+                    "name": "Maryam Ziyad",
+                    "designation": "Technical Lead",
+                    "twitter": "https://twitter.com/_maryamzi_"
+                },
+                {
+                    "name": "Malintha Ranasinghe",
+                    "designation": "Senior Software Engineer",
+                    "twitter": "https://twitter.com/manuj_malintha"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Sept 12, 2023",
+            "time": "",
+            "expire": "2022-09-12T00:00:00.0000-00:00",
+            "location": "Colombo, Sri Lanka",
+            "url": "",
+            "eventType": "Compiler Construction",
+            "eventName": "University of Colombo",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "designation": "Senior Technical Lead",
+                    "twitter": "https://twitter.com/manurangaperera"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "Aug 14, 2023",
+            "time": "",
+            "expire": "2023-08-15T00:00:00.0000-00:00",
+            "location": "India",
+            "url": "",
+            "eventType": "Integration concepts and Ballerina",
+            "eventName": "Sikkim Manipal Institute of Technology",
+            "presenters": [
+                {
+                    "name": "Aditya Upadhyay",
+                    "designation": "",
+                    "twitter": ""
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        },
+        {
+            "date": "March 10, 2022",
+            "time": "",
+            "expire": "2022-03-11T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://youtu.be/894DMRFQmI0",
+            "eventType": "Workshop - Introduction to Compiler Construction: Ballerina as a Case Study",
+            "eventName": "Sri Lanka Institute of Information Technology (SLIIT)",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "designation": "Senior Technical Lead",
+                    "twitter": "https://twitter.com/manurangaperera"
+                }
+            ],
+            "otherInfo": "",
+            "buttonText": "Watch video"
+        }
+    ]
+}

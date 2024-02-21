@@ -53,11 +53,11 @@ public function main() {
     s2["credits"] = 120.5;
     io:println(s2);
 
-    // A variable of type \`PartTimeStudent\` can be used where a \`Student\` value is expected.
+    // You can assign a \`PartTimeStudent\` type value to a \`Student\`.
     Student s3 = s2;
     io:println(s3);
 
-    // A variable of type \`Student\` can be used where a \`map<anydata>\` value is expected.
+    // You can assign a \`Person\` type value to a \`map\`.
     map<anydata> s4 = s3;
     io:println(s4);
 }

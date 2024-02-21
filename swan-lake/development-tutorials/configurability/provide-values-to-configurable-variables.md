@@ -51,13 +51,13 @@ If you need to use another configuration file, you can specify it by providing i
 For example, if the configurable variables are defined in the following way,
 
 ```ballerina
-configurable int port = 9000;
+configurable int port = 9090;
 configurable float maxPayload = ?;
 configurable string username = ?;
 configurable boolean verbose = true
 ```
 
-provide the values in the `Config.toml` file as follows.
+and the values are provided in two `Config.toml` and `info.toml` files as follows.
 
 ```toml
 port = 9000
@@ -66,29 +66,18 @@ username = "admin-user"
 verbose = true
 ```
 
-Execute the commands below to provide the values via an environment variable based on the operating system you use.
+Execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on the operating system you use.
 
 **For Windows:**
 
 ```
-export BAL_CONFIG_FILES=<path-of-the-toml-file(s)>
-```
-**Example**
-
-```
-export BAL_CONFIG_FILES=/Users/admin-user/results.toml Config.toml
+set BAL_CONFIG_FILES=\Users\admin-user\info.toml Config.toml
 ```
 
 **For Linux/macOS:**
 
 ```
-export BAL_CONFIG_FILES=<path-of-the-toml-file(s)>
-```
-
-**Example**
-
-```
-export BAL_CONFIG_FILES=/Users/admin-user/results.toml Config.toml
+export BAL_CONFIG_FILES=/Users/admin-user/info.toml Config.toml
 ```
 
 For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
@@ -111,13 +100,14 @@ execute the commands below to configure the values via an environment variable b
 **For Windows:**
 
 ```
-export BAL_CONFIG_DATA='maxPayload = 1.0\username = user1\nverbose = true'
+set BAL_CONFIG_DATA=maxPayload=1.0^&username=user1^&verbose=true
+
 ```
 
 **For Linux/macOS:**
 
 ```
-export BAL_CONFIG_DATA <path-of-the-toml-file>
+export BAL_CONFIG_DATA='maxPayload = 1.0\username = user1\nverbose = true'
 ```
 
 ## TOML syntax

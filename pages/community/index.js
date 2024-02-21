@@ -80,7 +80,7 @@ export default function Community() {
                   <Col xs={12} md={12} lg={6}>
                     <h1>Community</h1>
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
-                    <a href="#join-with-us" className="join">
+                    <a href="#join-us" className="join">
                     Join our community
                     </a>
                   </Col> 

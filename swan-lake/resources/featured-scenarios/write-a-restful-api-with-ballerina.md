@@ -32,7 +32,7 @@ The first endpoint is about getting data from the service and adding data to the
 
 ### The second endpoint
 
-The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second endpoint accepts the ISO code as part of the URL and responds with the `200 OK` status code. The relevant error is sent back to the client in the event of an error.
+The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second endpoint accepts the ISO code as part of the URL and responds with the `200 OK` status code. The relevant error response is sent back to the client in the event of an error.
 
 >**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
 

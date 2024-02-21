@@ -116,30 +116,9 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 3. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
 
     ```
-        {
-            iso_code: "AFG", 
-            country: "Afghanistan", 
-            cases: 159303, 
-            deaths: 7386, 
-            recovered: 146084, 
-            active: 5833
-        },
-        {
-            iso_code: "SL", 
-            country: "Sri Lanka", 
-            cases: 598536, 
-            deaths: 15243, 
-            recovered: 568637, 
-            active: 14656
-        },
-        {
-            iso_code: "US", 
-            country: "USA", 
-            cases: 69808350, 
-            deaths: 880976, 
-            recovered: 43892277, 
-            active: 25035097
-        }
+    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
     ```
 
 The generated record and the table will be as follows.

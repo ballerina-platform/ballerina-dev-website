@@ -64,15 +64,15 @@ export default function StudentEngagemntProgram() {
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Community - The Ballerina programming language" />
+        <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content="Community - The Ballerina programming language" />
+        <meta name="twitter:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
       </Head>

@@ -52,7 +52,9 @@ export default function PastEvents() {
       {
         pastEvents.map((item, index) => {
 
-          const eventDate = new Date(item.expire)
+          const eventDate = new Date(item.expire);
+          // Deduct 1 day
+          eventDate.setDate(eventDate.getDate() - 1);
 
           return (
             <Row className={styles.eventRows} key={index}>

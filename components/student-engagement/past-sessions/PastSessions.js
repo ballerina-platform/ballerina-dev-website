@@ -17,35 +17,34 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Carousel } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import styles from './PastSessions.module.css';
+import Events from '../../../_data/university_sessions.json';
+
+export function getPastEvents(now) {
+  const events = Events.events;
+  let pastEvents = [];
+
+  events.map((item) => {
+    if (now > Date.parse(item.expire)) {
+      pastEvents.push(item)
+    }
+  })
+
+  return pastEvents;
+
+}
 
 export default function PastSessions(props) {
 
-  const [index, setIndex] = React.useState(0);
+  const [now, setNow] = React.useState(new Date());
 
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  React.useEffect(() => {
+    setNow(new Date());
+  }, [])
 
-  const images = [
-    '/images/university/1.jpg',
-    '/images/university/2.jpg',
-    '/images/university/3.jpg',
-    '/images/university/4.jpg',
-    '/images/university/5.jpg',
-    '/images/university/6.png'
-  ];
-
-  let dataRows = [];
-  if (images && images != undefined) {
-    const chunkSize = 3;
-    for (let i = 0; i < images.length; i += chunkSize) {
-      const chunk = images.slice(i, i + chunkSize);
-      dataRows.push(chunk);
-    }
-  }
+  const pastEvents = getPastEvents(now)
 
   return (
     <Col xs={12}>
@@ -70,7 +69,7 @@ export default function PastSessions(props) {
           </Col>
         </Row>
 
-        <Row>
+        <Row style={{ marginBottom: "30px" }}>
           <Col sm={12}>
             <p>Take a peek at some of the programs we hosted in the past, where our team of experts empowered the minds of tomorrow.</p>
           </Col>
@@ -78,24 +77,62 @@ export default function PastSessions(props) {
 
         <Row>
           <Col xs={12}>
-            <Carousel controls={true} activeIndex={index} onSelect={handleSelect} variant='dark' id="newsCarousel">
+            {
+              pastEvents.map((item, index) => {
 
-              {dataRows.map((dataRow, index) => {
+                const eventDate = new Date(item.expire)
+                // Deduct 1 day
+                eventDate.setDate(eventDate.getDate() - 1);
+
                 return (
-                  <Carousel.Item key={index}>
-                    <Row>
-                      {dataRow.map((image, index) => {
-                        return (
-                          <Col sm={12} md={12} lg={4} styles={styles.newsCard} key={index}>
-                            <img src={image} className="img-fluid" />
-                          </Col>
-                        )
-                      })}
-                    </Row>
-                  </Carousel.Item>
+                  <Row className={styles.eventRows} key={index}>
+                    <Col sm={12} md={2} className={styles.eventDateContainer}>
+                      <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
+                      <p className={styles.eventDate}>{eventDate.toLocaleString('default', { weekday: 'long' })}</p>
+                      <p className="eventLocation">{item.location}</p>
+                    </Col>
+                    <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+                      <a target="_blank" href={item.url} rel="noreferrer">
+                        <p className="eventName">{item.eventType}</p>
+                      </a>
+                      <h5>{item.eventName}</h5>
+                      {
+                        item.presenters.length > 0 ?
+                          <>
+                            {
+                              item.presenters.map((presenter, index) => {
+                                return (
+                                  <React.Fragment key={index}>
+                                    <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>
+                                    {presenter.designation ?
+                                      <> ({presenter.designation})
+                                        {
+                                          index + 1 < item.presenters.length ?
+                                            <>, </>
+                                            : null
+                                        }
+                                      </>
+                                      : null
+                                    }
+                                  </React.Fragment>
+                                )
+                              }
+                              )
+                            }
+                          </>
+                          : null
+                      }
+                    </Col>
+                    <Col sm={12} md={3} className={styles.eventURL}>
+                      {
+                        item.url !== "" ?
+                          <a className={styles.eventRegistration} href={item.url} target="_blank" rel="noreferrer">{item.buttonText}</a>
+                          : null
+                      }
+                    </Col>
+                  </Row>
                 )
               })}
-            </Carousel>
           </Col>
         </Row>
 

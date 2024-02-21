@@ -41,4 +41,4 @@ To view bug fixes, see the [GitHub milestone for 2201.8.5 (Swan Lake)](https://g
 
 To view bug fixes, see the GitHub milestone for 2201.8.5 (Swan Lake) of the repositories below.
 
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.8.5%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=label%3Amodule%2Fopenapi-tools+milestone%3A2201.8.5+is%3Aclosed)

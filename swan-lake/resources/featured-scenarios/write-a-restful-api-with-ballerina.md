@@ -91,6 +91,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
         "active": 5833
     }
     ```
+
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
 2. Create the table, as shown below.

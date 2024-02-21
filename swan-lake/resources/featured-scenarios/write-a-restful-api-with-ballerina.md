@@ -170,7 +170,7 @@ final table<CovidEntry> key(iso_code) covidTable = table [
 
 ## Create the service
 
-Ballerina resources can only reside inside a service. Therefore, first, a service needs to be created. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
+Define the Ballerina service within which the resources will be defined. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
 >**Tip:** Use `/covid/status` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
 

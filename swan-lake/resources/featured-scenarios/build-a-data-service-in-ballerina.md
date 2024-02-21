@@ -27,7 +27,7 @@ This tutorial describes how to connect to a MySQL database and perform queries a
 
 Select one of the methods below to set up a MySQL server.
 
->**Tip:** Keep the connection and authentication details for connecting to the MySQL server, including the hostname, port, username, and password, noted down.
+>**Note:** Keep the connection and authentication details for connecting to the MySQL server, including the hostname, port, username, and password, noted down.
 
 1. Install a MySQL server on your machine locally by downloading and installing [MySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing) for different platforms.
 2. Use a cross-platform web-server solution such as [XAMPP](https://www.apachefriends.org/index.html) or [WampServer](https://www.wampserver.com/en/).
@@ -98,7 +98,7 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
 
 Generate the record types corresponding to the payload from the service by providing the record name as `Employee` and the sample JSON object below.
 
->**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `employee_id`, `manager_id`, and `hire_date` types, and importing the `ballerina/time` module, which cannot be represented in the JSON format.
+>**Note:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `employee_id`, `manager_id`, and `hire_date` types, and importing the `ballerina/time` module, which cannot be represented in the JSON format.
 
 ```json
 {    
@@ -167,7 +167,7 @@ You can connect to the MySQL database by creating a client.
 
 Create a `mysql:Client` to connect to the database, as shown below.
 
->**Tip:** Select the `final` descriptor, enter `dbClient` as the MySQL client name, and configure the `host`, `user`, `password`, `database`, and `port` parameters with the `HOST`, `USER`, `PASSWORD`, `C"Company"`, and `PORT` values respectively.
+>**Note:** Select the `final` descriptor, enter `dbClient` as the MySQL client name, and configure the `host`, `user`, `password`, `database`, and `port` parameters with the `HOST`, `USER`, `PASSWORD`, `"Company"`, and `PORT` values respectively.
 
 ![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
 
@@ -379,7 +379,7 @@ Follow the steps below to create the service.
 
 2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-    >**Tip:** Use `/employees` as the service path (or the context) of the service, which is attached to the listener listening on port 8080.
+    >**Note:** Use `/employees` as the service path (or the context) of the service, which is attached to the listener listening on port 8080.
 
     ![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
 
@@ -398,7 +398,7 @@ Follow the steps below to define resource functions within this service to provi
 
 1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-    >**Tip:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type. Complete the generated record by adding the pipe signs to mark the record as a closed one.
+    >**Note:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type. Complete the generated record by adding the pipe signs to mark the record as a closed one.
 
     ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
 

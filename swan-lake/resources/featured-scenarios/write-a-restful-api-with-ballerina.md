@@ -278,7 +278,7 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 
 In this code:
 - This resource is different from the first two resources. As explained earlier, resource methods have accessors.
-- It also supports hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path params.
+- It also supports hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path parameters.
 - In this case, `iso_code` is used as the path param, which, in turn, becomes a `string` variable.
 
 ## The complete code

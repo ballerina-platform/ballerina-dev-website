@@ -77,7 +77,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 An in-memory dataset with three entries is used to keep things simple. Follow the steps below to add the definition of the record and the declaration of the [table](/learn/by-example/table/) that holds the data.
 
-1. Generate the record types corresponding to the payload of the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
+1. Generate the record type corresponding to the request payload of the REST service by providing `CovidEntry` as the name and the sample JSON payload below.
 
     >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, which cannot be represented in the JSON format.
 

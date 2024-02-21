@@ -10,11 +10,11 @@ intro: You can provide values for configurable variables through multiple method
 
 >**Info:** The configuration values will be overridden in the following precedence order when retrieving them if given in multiple ways.
 
-- **Command-line arguments:** The values can be configured through command-line arguments executed when running the Ballerina program. 
+1. **Command-line arguments:** The values can be configured through command-line arguments executed when running the Ballerina program. 
 
-- **Configuration files:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through configuration files. 
+2. **Configuration files:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through configuration files. 
 
-- **Environment variables:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through environment variables.
+3. **Environment variables:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through environment variables.
 
     >**Note:** Providing multiple configuration values through separate environment variables is not supported.
 
@@ -42,15 +42,83 @@ The following examples explain how to provide command-line arguments to configur
 
 ## Provide via configuration files
 
-You can provide configurable values via a file by specifying its location through an environment variable named `BAL_CONFIG_FILES`. Ballerina supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
+You can create a `Config.toml` file within your Ballerina project to specify the cofigurable values in the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
 
->**Info:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory. You can provide configuration values for testing in a file named `Config.toml` located in the `tests` directory. 
+If you need to use another configuration file, you can specify it by providing its path via the `BAL_CONFIG_FILES` environment variable. Ballerina also supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
+
+>**Info:** Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. Also, you can use the `Config.toml` file located in the `tests` directory to provide configuration values for testing the code. 
+
+For example, if the configurable variables are defined in the following way,
+
+```ballerina
+configurable int port = 9000;
+configurable float maxPayload = ?;
+configurable string username = ?;
+configurable boolean verbose = true
+```
+
+provide the values in the `Config.toml` file as follows.
+
+```toml
+port = 9000
+maxPayload = 1.0
+username = "admin-user"
+verbose = true
+```
+
+Execute the commands below to provide the values via an environment variable based on the operating system you use.
+
+**For Windows:**
+
+```
+export BAL_CONFIG_FILES=<path-of-the-toml-file(s)>
+```
+**Example**
+
+```
+export BAL_CONFIG_FILES=/Users/admin-user/results.toml Config.toml
+```
+
+**For Linux/macOS:**
+
+```
+export BAL_CONFIG_FILES=<path-of-the-toml-file(s)>
+```
+
+**Example**
+
+```
+export BAL_CONFIG_FILES=/Users/admin-user/results.toml Config.toml
+```
 
 For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 ## Provide via environment variables
 
 You can also provide configurable values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 
+
+For example, if the configurable variables are defined in the following way,
+
+```ballerina
+configurable int port = 9000;
+configurable float maxPayload = ?;
+configurable string username = ?;
+configurable boolean verbose = ?;
+```
+
+execute the commands below to configure the values via an environment variable based on the operating system you use.
+
+**For Windows:**
+
+```
+export BAL_CONFIG_DATA='maxPayload = 1.0\username = user1\nverbose = true'
+```
+
+**For Linux/macOS:**
+
+```
+export BAL_CONFIG_DATA <path-of-the-toml-file>
+```
 
 ## TOML syntax
 

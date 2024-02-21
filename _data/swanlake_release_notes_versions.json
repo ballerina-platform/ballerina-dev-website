@@ -1224,7 +1224,7 @@
    "version":"2201.8.4",
    "short-version":"2201.8.4",
    "display-version":"2201.8.4 (Swan Lake Update 8)",
-   "release-date":"2023-11-27",
+   "release-date":"2023-11-29",
    "windows-installer":"ballerina-2201.8.4-swan-lake-windows-x64.msi",
    "windows-installer-size":"178mb",
    "linux-installer":"ballerina-2201.8.4-swan-lake-linux-x64.deb",

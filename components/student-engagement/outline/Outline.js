@@ -50,7 +50,7 @@ export default function Outline(props) {
 
         <Row>
           <Col sm={12}>
-            <p>Leveraging our extensive expertise in areas like compiler design, integration, microservices, AI, and more, we offer a wide range of programs at no cost to universities or educational institutions.</p>
+            <p>Leveraging our extensive expertise in areas like compiler design, integration, microservices, AI, and more, we offer a wide range of programs to universities or educational institutions at no cost.</p>
 
             <p>Some of these programs include:</p>
           </Col>
@@ -68,7 +68,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Guest lectures and talks</h3>
 
-                    <p className="card-text">Engaging sessions on essential topics like microservices, application integration protocols, cloud-native application development, application security, and data-oriented programming.</p>
+                    <p className="card-text">Insightful sessions covering microservices, integration, cloud-native development, data-oriented programming, and many more.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -105,7 +105,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Hackathons and coding challenges</h3>
 
-                    <p className="card-text">Exciting coding events that foster creativity, innovation, and teamwork with prizes and swag for winning teams (sponsored by WSO2).</p>
+                    <p className="card-text">Exciting coding events to promote teamwork and creativity with prizes sponsored by WSO2.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -123,7 +123,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Research collaborations</h3>
 
-                    <p className="card-text">Partner for research collaborations to explore new tech applications offering students the opportunity to engage in high-impact research projects.</p>
+                    <p className="card-text">Partner for research collaborations to explore innovative technology uses and work on impactful projects.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -141,7 +141,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Open source projects</h3>
 
-                    <p className="card-text">Opportunity to contribute to open-source projects written in Ballerina. This can be an excellent way for students to gain practical experience, understand community-driven development, and collaborate with developers worldwide.</p>
+                    <p className="card-text">Contribute to Ballerina's open-source projects for practical experience and global collaboration.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -159,7 +159,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Industry projects</h3>
 
-                    <p className="card-text">Partner for real-world digital transformation projects to providing students with opportunities to explore, experience and develop skills relevant to industrial practices.</p>
+                    <p className="card-text">Practical workshops for technical skills relevant to industry.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -172,6 +172,8 @@ export default function Outline(props) {
 
         <Row style={{ marginTop: "20px" }}>
           <Col sm={12}>
+
+            <p><a className={styles.mailLink} href='https://github.com/ballerina-guides/training-content/blob/main/University-Program/Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Collaborative learning initiatives: WSO2/Ballerina and Universities</a></p>
 
             <p>
               Want to find out more? Then reach out to our team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a>

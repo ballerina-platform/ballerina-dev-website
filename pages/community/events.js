@@ -92,7 +92,7 @@ export default function Events() {
               </Col>
             </Row>
 
-            <Tabs defaultActiveKey={upcomingEvents ? "Upcoming" : "Past" } id="events" className="mb-3 eventsTabs">
+            <Tabs defaultActiveKey={upcomingEvents && upcomingEvents.length > 0 ? "Upcoming" : "Past" } id="events" className="mb-3 eventsTabs">
               { upcomingEvents && 
               <Tab eventKey="Upcoming" title="Upcoming">
                 <UpcomingEvents />

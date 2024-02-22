@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Tabs, Tab } from 'react-bootstrap';
 
 import styles from './PastSessions.module.css';
 import Events from '../../../_data/university_sessions.json';
@@ -25,15 +25,65 @@ import Events from '../../../_data/university_sessions.json';
 export function getPastEvents(now) {
   const events = Events.events;
   let pastEvents = [];
+  let upcomingEvents = [];
 
   events.map((item) => {
     if (now > Date.parse(item.expire)) {
       pastEvents.push(item)
+    } else {
+      upcomingEvents.push(item)
     }
   })
 
-  return pastEvents;
+  return [pastEvents, upcomingEvents];
 
+}
+
+export function Session(props) {
+  const item = props.item;
+  return (
+    <Row className={styles.eventRows}>
+      <Col sm={12} md={2} className={styles.eventDateContainer}>
+        <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
+        <p className={styles.eventType}>{item.type}</p>
+        <p className="eventLocation">{item.location}</p>
+      </Col>
+      <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
+        <a target="_blank" href={item.url} rel="noreferrer">
+          <p className="eventName">{item.university}{item.faculty !== "" ? <>, {item.faculty}</> : null}</p>
+        </a>
+        <h5>{item.title}</h5>
+        {
+          item.presenters.length > 0 ?
+            <>
+              {
+                item.presenters.map((presenter, index) => {
+                  return (
+                    <React.Fragment key={index}>
+                      <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>
+                      {
+                        index + 1 < item.presenters.length ?
+                          <>, </>
+                          : null
+                      }
+                    </React.Fragment>
+                  )
+                }
+                )
+              }
+            </>
+            : null
+        }
+      </Col>
+      <Col sm={12} md={3} className={styles.eventURL}>
+        {
+          item.url !== "" ?
+            <a className={styles.eventRegistration} href={item.url} target="_blank" rel="noreferrer">{item.buttonText}</a>
+            : null
+        }
+      </Col>
+    </Row>
+  )
 }
 
 export default function PastSessions(props) {
@@ -44,14 +94,14 @@ export default function PastSessions(props) {
     setNow(new Date());
   }, [])
 
-  const pastEvents = getPastEvents(now)
+  const [pastEvents, upcomingEvents] = getPastEvents(now);
 
   return (
     <Col xs={12}>
       <Container>
         <Row>
           <Col xs={12}>
-            <h2 id='past-sessions' className='section'>
+            <h2 id='sessions' className='section'>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -59,12 +109,12 @@ export default function PastSessions(props) {
                 fill="currentColor"
                 className="bi bi-link-45deg mdButton pe-2"
                 viewBox="0 0 16 16"
-                onClick={(e) => props.getLink(e.target, 'past-sessions')}
+                onClick={(e) => props.getLink(e.target, 'sessions')}
               >
                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                 <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
               </svg>
-              Past sessions
+              Sessions
             </h2>
           </Col>
         </Row>
@@ -75,66 +125,38 @@ export default function PastSessions(props) {
           </Col>
         </Row>
 
-        <Row>
-          <Col xs={12}>
+
+        <Tabs defaultActiveKey={upcomingEvents && upcomingEvents.length > 0 ? "Upcoming" : "Past"} id="events" className="mb-3 eventsTabs">
+          {upcomingEvents &&
+            <Tab eventKey="Upcoming" title="Upcoming">
+              {
+                upcomingEvents.length > 0 ?
+                  <>
+                    {
+                      upcomingEvents.map((item, index) => {
+                        return (
+                          <Session item={item} key={index} />
+                        )
+                      }
+                      )
+                    }
+                  </>
+                  : <p>No upcoming sessions</p>
+
+              }
+            </Tab>
+          }
+          <Tab eventKey="Past" title="Past">
             {
               pastEvents.map((item, index) => {
-
-                const eventDate = new Date(item.expire)
-                // Deduct 1 day
-                eventDate.setDate(eventDate.getDate() - 1);
-
                 return (
-                  <Row className={styles.eventRows} key={index}>
-                    <Col sm={12} md={2} className={styles.eventDateContainer}>
-                      <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
-                      <p className={styles.eventDate}>{eventDate.toLocaleString('default', { weekday: 'long' })}</p>
-                      <p className="eventLocation">{item.location}</p>
-                    </Col>
-                    <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
-                      <a target="_blank" href={item.url} rel="noreferrer">
-                        <p className="eventName">{item.eventType}</p>
-                      </a>
-                      <h5>{item.eventName}</h5>
-                      {
-                        item.presenters.length > 0 ?
-                          <>
-                            {
-                              item.presenters.map((presenter, index) => {
-                                return (
-                                  <React.Fragment key={index}>
-                                    <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>
-                                    {presenter.designation ?
-                                      <> ({presenter.designation})
-                                        {
-                                          index + 1 < item.presenters.length ?
-                                            <>, </>
-                                            : null
-                                        }
-                                      </>
-                                      : null
-                                    }
-                                  </React.Fragment>
-                                )
-                              }
-                              )
-                            }
-                          </>
-                          : null
-                      }
-                    </Col>
-                    <Col sm={12} md={3} className={styles.eventURL}>
-                      {
-                        item.url !== "" ?
-                          <a className={styles.eventRegistration} href={item.url} target="_blank" rel="noreferrer">{item.buttonText}</a>
-                          : null
-                      }
-                    </Col>
-                  </Row>
+                  <Session item={item} key={index} />
                 )
-              })}
-          </Col>
-        </Row>
+              }
+              )
+            }
+          </Tab>
+        </Tabs>
 
       </Container>
     </Col>

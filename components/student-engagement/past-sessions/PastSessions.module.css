@@ -33,7 +33,7 @@
     font-weight: 450 !important;
 }
 
-.eventDate {
+.eventDate, .eventType {
     margin-bottom: 15px !important;
 }
 

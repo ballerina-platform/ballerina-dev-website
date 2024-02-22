@@ -20,11 +20,11 @@ import React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
-import Layout from '../../layouts/LayoutCommunity';
-import Outline from '../../components/student-engagement/outline/Outline';
-import PastSessions from '../../components/student-engagement/past-sessions/PastSessions';
-import SECarousel from '../../components/common/image-carousel/ImageCarousel';
-import GetInvolved from '../../components/student-engagement/get-involved/GetInvolved';
+import Layout from '../../../layouts/LayoutCommunity';
+import Outline from '../../../components/student-engagement/outline/Outline';
+import PastSessions from '../../../components/student-engagement/past-sessions/PastSessions';
+import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
+import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';
 
 export default function StudentEngagemntProgram() {
 
@@ -47,12 +47,12 @@ export default function StudentEngagemntProgram() {
   };
 
   const images = [
-    '/images/university/1.jpg',
+    '/images/university/6.png',
     '/images/university/2.png',
-    '/images/university/3.jpg',
     '/images/university/4.png',
-    '/images/university/5.jpg',
-    '/images/university/6.png'
+    '/images/university/1.jpg',
+    '/images/university/3.jpg',
+    '/images/university/5.jpg'
   ];
 
   return (
@@ -86,7 +86,7 @@ export default function StudentEngagemntProgram() {
                   <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Student engagement program</h1>
-                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to fostering the advancement of the next generation and in pursuit of this goal, we currently organize engaging sessions for university students, focusing on industry topics that are not only relevant to their academic curriculum but also captivating to the student community.</p>
+                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to fostering the advancement of the next generation. In pursuit of this goal, we currently organize engaging sessions for university students, focusing on industry topics relevant to their academic curriculum and captivating the student community.</p>
                     <a href="#program-outline" className="join">
                       Learn more
                     </a>

@@ -46,7 +46,7 @@ You can create a `Config.toml` file within your Ballerina project to specify the
 
 If you need to use another configuration file, you can specify it by providing its path via the `BAL_CONFIG_FILES` environment variable. Ballerina also supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
->**Info:** Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. Also, you can use the `Config.toml` file located in the `tests` directory to provide configuration values for testing the code. 
+>**Info:** Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. Also, you can use the `Config.toml` file located in the `tests` directory to provide configuration values for testing the code. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 For example, if the configurable variables are defined in the following way,
 
@@ -86,8 +86,6 @@ set BAL_CONFIG_FILES=\Users\admin-user\info.toml Config.toml
 ```
 export BAL_CONFIG_FILES=/Users/admin-user/info.toml Config.toml
 ```
-
-For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
 ## Provide via environment variables
 

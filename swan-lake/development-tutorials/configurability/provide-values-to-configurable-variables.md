@@ -87,6 +87,8 @@ set BAL_CONFIG_FILES=<path-to-info.toml>;<path-to-Config.toml>
 export BAL_CONFIG_FILES=<path-to-info.toml>:<path-to-Config.toml>
 ```
 
+If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory by default.
+
 ## Provide via environment variables
 
 You can also provide configurable values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 

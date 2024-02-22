@@ -78,7 +78,7 @@ Execute the commands below to provide the values via the `BAL_CONFIG_FILES` envi
 **For Windows:**
 
 ```
-set BAL_CONFIG_FILES=\Users\admin-user\info.toml Config.toml
+set BAL_CONFIG_FILES=<path-to-info.toml>;<path-to-Config.toml>
 ```
 
 **For Linux/macOS:**

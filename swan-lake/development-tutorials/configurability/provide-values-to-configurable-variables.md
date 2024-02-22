@@ -114,7 +114,7 @@ set BAL_CONFIG_DATA=maxPayload=1.0^&username=user1^&verbose=true
 **For Linux/macOS:**
 
 ```
-export BAL_CONFIG_DATA='maxPayload = 1.0\username = user1\nverbose = true'
+export BAL_CONFIG_DATA='maxPayload=1.0\nusername="user1"\nverbose = true'
 ```
 
 ## TOML syntax

@@ -107,7 +107,7 @@ execute the commands below to configure the values via an environment variable b
 **For Windows:**
 
 ```
-set BAL_CONFIG_DATA=maxPayload=1.0^&username=user1^&verbose=true
+set BAL_CONFIG_DATA=maxPayload=1.0\nusername="user1"\nverbose=true
 
 ```
 

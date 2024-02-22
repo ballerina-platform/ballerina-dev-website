@@ -91,7 +91,7 @@ If an environment variable is not specified, a file named `Config.toml` will be 
 
 ## Provide via environment variables
 
-You can also provide configurable values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to be in the [TOML syntax](#toml-syntax). 
+You can also provide configuration values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to comply with the [TOML syntax](#toml-syntax). 
 
 For example, if the configurable variables are defined in the following way,
 

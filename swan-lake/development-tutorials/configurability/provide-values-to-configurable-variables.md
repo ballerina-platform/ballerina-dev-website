@@ -16,7 +16,7 @@ intro: You can provide values for configurable variables through multiple method
 
 3. **Environment variables:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through environment variables.
 
-    >**Note:** Providing multiple configuration values through separate environment variables is not supported.
+    >**Note:** Providing configuration values through separate environment variables for each configurable variable is currently not supported.
 
 ## Provide via command-line arguments
 

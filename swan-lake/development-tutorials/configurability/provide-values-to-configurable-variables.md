@@ -26,7 +26,7 @@ The following syntax can be used to provide values for the variables through com
 -Ckey=value
 ```
 
->**Info:** The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line-based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
+>The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line-based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
 
 The following examples explain how to provide command-line arguments to configure variables of specific Ballerina types.
 

@@ -59,10 +59,17 @@ configurable boolean verbose = true
 
 and the values are provided in two `Config.toml` and `info.toml` files as follows.
 
+**Config.toml**
+
 ```toml
 port = 9000
-maxPayload = 1.0
 username = "admin-user"
+```
+
+**info.toml**
+
+```toml
+maxPayload = 1.0
 verbose = true
 ```
 

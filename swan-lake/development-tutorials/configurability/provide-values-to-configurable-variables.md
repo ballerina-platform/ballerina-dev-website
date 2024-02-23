@@ -8,13 +8,13 @@ active: provide-values-to-configurable-variables
 intro: You can provide values for configurable variables through multiple methods, as described below.
 ---
 
->**Info:** The configuration values will be overridden in the following precedence order when retrieving them if given in multiple ways.
+>**Note:** If the configuration values are given in multiple ways, they will be overridden in the following precedence order when retrieving them.
 
-1. **Command-line arguments:** The values can be configured through command-line arguments executed when running the Ballerina program. 
+1. **Command-line arguments:** Configure the values through command-line arguments executed when running the Ballerina program. 
 
-2. **Configuration files:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through configuration files. 
+2. **Configuration files:** Define the values using the [TOML syntax](#toml-syntax) and configure them through configuration files. 
 
-3. **Environment variables:** The values can be defined using the [TOML syntax](#toml-syntax) and configured through environment variables.
+3. **Environment variables:** Define the values using the [TOML syntax](#toml-syntax) and configure them through environment variables.
 
     >**Note:** Providing configuration values through separate environment variables for each configurable variable is currently not supported.
 
@@ -26,31 +26,31 @@ Use the syntax below to provide values for the variables through command-line ar
 -Ckey=value
 ```
 
->The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line-based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
+>**Note** The configurable value provided through a command-line argument is expected to be in the `toString()` representation of the intended value. Currently, the command-line-based configuration supports only the configurable variables of types `int`, `byte`, `float`, `boolean`, `string`, `decimal`, `enum`, and `xml`.
 
 The following examples explain how to provide command-line arguments to configure variables of specific Ballerina types.
 
 | Ballerina type | Ballerina example                                                                                                                                                                     | Command-line argument                                             |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| boolean        | <code>configurable boolean isAdmin = ?; </code>                                                                                                                                       | `bal run -- -CisAdmin=true` <br> or <br> `bal run -- -CisAdmin=1` |
-| int, byte      | <code>configurable byte age = ?; </code><br> <code>configurable int port = ?;</code>                                                                                                  | `bal run -- -Cage=25 -Cport=9090`                                 |
-| float, decimal | <code>configurable float height = ?; </code><br> <code>configurable decimal salary = ?;</code>                                                                                        | `bal run -- -Cheight=5.6 -Csalary=50500.65`                       |
-| string         | <code>configurable string name = ?; </code>                                                                                                                                           | `bal run -- -Cname=John`                                          |
-| xml            | <code>configurable xml book = ?; </code>                                                                                                                                              | `bal run -- -CxmlVar="<book>The Lost World</book>"`               |
-| enum           | <code>enum Country { </code><br>    <code>LK = "Sri Lanka", </code><br>    <code>US = "United States" </code><br> <code>} </code><br> <code>configurable Country country = ?; </code> | `bal run -- -Ccountry="Sri Lanka"`                                |
-| union          | <code>configurable float&#124;int&#124;string measurement = ?; </code>                                                                                                                | `bal run -- -Cmeasurement=5.0`                                    |
+| boolean        | <code>configurable boolean isAdmin = ?; </code>                                                                                                                                       | `$ bal run -- -CisAdmin=true` <br> or <br> `$ bal run -- -CisAdmin=1` |
+| int, byte      | <code>configurable byte age = ?; </code><br> <code>configurable int port = ?;</code>                                                                                                  | `$ bal run -- -Cage=25 -Cport=9090`                                 |
+| float, decimal | <code>configurable float height = ?; </code><br> <code>configurable decimal salary = ?;</code>                                                                                        | `$ bal run -- -Cheight=5.6 -Csalary=50500.65`                       |
+| string         | <code>configurable string name = ?; </code>                                                                                                                                           | `$ bal run -- -Cname=John`                                          |
+| xml            | <code>configurable xml book = ?; </code>                                                                                                                                              | `$ bal run -- -CxmlVar="<book>The Lost World</book>"`               |
+| enum           | <code>enum Country { </code><br>    <code>LK = "Sri Lanka", </code><br>    <code>US = "United States" </code><br> <code>} </code><br> <code>configurable Country country = ?; </code> | `$ bal run -- -Ccountry="Sri Lanka"`                                |
+| union          | <code>configurable float&#124;int&#124;string measurement = ?; </code>                                                                                                                | `$ bal run -- -Cmeasurement=5.0`                                    |
 
 ## Provide via configuration files
 
-You can provide configuration values via a configuration file(s) as follows.
+You can provide configuration values via one or more configuration files as follows.
 
-1. Create a `Config.toml` file within your Ballerina project to specify the configurable values to comply with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
+1. Create a `Config.toml` file within your Ballerina project to specify the configurable values complying with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
 
-2. If you need to use another configuration file, you can specify its path via the `BAL_CONFIG_FILES` environment variable. 
+2. If you need to use another configuration file, specify its path via the `BAL_CONFIG_FILES` environment variable. 
 
-3. Ballerina also supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
+3. Ballerina also supports specifying multiple configuration files using the `BAL_CONFIG_FILES` environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
->**Info:**Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. 
+    >**Note:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory by default. Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. 
 
 4. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
@@ -63,7 +63,7 @@ configurable string username = ?;
 configurable boolean verbose = true
 ```
 
-and the values are provided in two `Config.toml` and `info.toml` files as follows.
+and the values are provided in two `Config.toml` and `info.toml` files as follows,
 
 **Config.toml**
 
@@ -79,21 +79,19 @@ maxPayload = 1.0
 verbose = true
 ```
 
-Execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.
+execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.
 
 **For Windows:**
 
 ```
-set BAL_CONFIG_FILES=<path-to-info.toml>;<path-to-Config.toml>
+$ set BAL_CONFIG_FILES=<path-to-info.toml>;<path-to-Config.toml>
 ```
 
 **For Linux/macOS:**
 
 ```
-export BAL_CONFIG_FILES=<path-to-info.toml>:<path-to-Config.toml>
+$ export BAL_CONFIG_FILES=<path-to-info.toml>:<path-to-Config.toml>
 ```
-
-If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory by default.
 
 ## Provide via environment variables
 
@@ -113,14 +111,14 @@ execute the commands below to configure the values via an environment variable b
 **For Windows:**
 
 ```
-set BAL_CONFIG_DATA=maxPayload=1.0\nusername="user1"\nverbose=true
+$ set BAL_CONFIG_DATA=maxPayload=1.0\nusername="user1"\nverbose=true
 
 ```
 
 **For Linux/macOS:**
 
 ```
-export BAL_CONFIG_DATA='maxPayload=1.0\nusername="user1"\nverbose = true'
+$ export BAL_CONFIG_DATA='maxPayload=1.0\nusername="user1"\nverbose = true'
 ```
 
 ## TOML syntax

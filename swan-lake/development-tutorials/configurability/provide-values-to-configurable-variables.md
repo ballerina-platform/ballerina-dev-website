@@ -20,7 +20,7 @@ intro: You can provide values for configurable variables through multiple method
 
 ## Provide via command-line arguments
 
-The following syntax can be used to provide values for the variables through command-line arguments.
+Use the syntax below to provide values for the variables through command-line arguments.
 
 ```
 -Ckey=value
@@ -46,7 +46,7 @@ You can provide configuration values via a configuration file(s) as follows.
 
 1. Create a `Config.toml` file within your Ballerina project to specify the configurable values to comply with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
 
-2. If you need to use another configuration file, you can specify it by providing its path via the `BAL_CONFIG_FILES` environment variable. 
+2. If you need to use another configuration file, you can specify its path via the `BAL_CONFIG_FILES` environment variable. 
 
 3. Ballerina also supports specifying multiple configuration files using this environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
@@ -79,7 +79,7 @@ maxPayload = 1.0
 verbose = true
 ```
 
-Execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on the operating system you use.
+Execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.
 
 **For Windows:**
 
@@ -108,7 +108,7 @@ configurable string username = ?;
 configurable boolean verbose = ?;
 ```
 
-execute the commands below to configure the values via an environment variable based on the operating system you use.
+execute the commands below to configure the values via an environment variable based on your operating system.
 
 **For Windows:**
 

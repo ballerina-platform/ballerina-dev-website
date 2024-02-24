@@ -98,12 +98,12 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
     ```ballerina
     type CovidEntry record {|
-    readonly string iso_code;
-    string country;
-    int cases;
-    int deaths;
-    int recovered;
-    int active;
+        readonly string iso_code;
+        string country;
+        int cases;
+        int deaths;
+        int recovered;
+        int active;
     |};
     ```
 
@@ -137,7 +137,7 @@ final table<CovidEntry> key(iso_code) covidTable = table [
     {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
     {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
     {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
-    ];
+];
 ```
 
 ## Create the service
@@ -168,7 +168,7 @@ The first endpoint has two resources: one to retrieve data and the other to add 
 
 ### Create the first resource to get data
 
-Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
+Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/#add-resources-to-the-service) in VS Code, as shown below.
 
 >**Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]`as the response type and introduce the logic to return the data in the table.
 
@@ -191,7 +191,7 @@ In this code:
 
 ### Create the second resource to add data
 
-Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
+Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the Ballerina HTTP API Designer in VS Code, as shown below.
 
 >**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types.
 

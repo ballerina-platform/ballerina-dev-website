@@ -44,7 +44,7 @@ The following examples explain how to provide command-line arguments to configur
 
 You can provide configuration values via one or more configuration files as follows.
 
-1. Create a `Config.toml` file within your Ballerina project to specify the configurable values complying with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
+1. Create a `Config.toml` file within your Ballerina package to specify the configurable values complying with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
 
 2. If you need to use another configuration file, specify its path via the `BAL_CONFIG_FILES` environment variable. 
 
@@ -54,7 +54,7 @@ You can provide configuration values via one or more configuration files as foll
 
 4. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 
-For example, if the configurable variables are defined in the following way,
+For example, consider a scenario in which the configurable variables are defined in the following way,
 
 ```ballerina
 configurable int port = 9090;
@@ -63,7 +63,7 @@ configurable string username = ?;
 configurable boolean verbose = true
 ```
 
-and the values are provided in two `Config.toml` and `info.toml` files as follows,
+and the values are provided in two `Config.toml` and `info.toml` files as follows.
 
 **Config.toml**
 
@@ -79,7 +79,7 @@ maxPayload = 1.0
 verbose = true
 ```
 
-execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.
+Accordingly, execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.
 
 **For Windows:**
 
@@ -97,7 +97,7 @@ $ export BAL_CONFIG_FILES=<path-to-info.toml>:<path-to-Config.toml>
 
 You can also provide configuration values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to comply with the [TOML syntax](#toml-syntax). 
 
-For example, if the configurable variables are defined in the following way,
+For example, consider a scenario in which the configurable variables are defined in the following way,
 
 ```ballerina
 configurable int port = 9000;
@@ -106,7 +106,7 @@ configurable string username = ?;
 configurable boolean verbose = ?;
 ```
 
-execute the commands below to configure the values via an environment variable based on your operating system.
+Accordingly, execute the commands below to configure the values via an environment variable based on your operating system.
 
 **For Windows:**
 

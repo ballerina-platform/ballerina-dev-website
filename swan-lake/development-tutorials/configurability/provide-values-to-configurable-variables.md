@@ -42,15 +42,15 @@ The following examples explain how to provide command-line arguments to configur
 
 ## Provide via configuration files
 
-You can provide configuration values via one or more configuration files as follows.
+You can provide configuration values via one or more configuration files in which the content is expected to comply with the [TOML syntax](#toml-syntax). 
 
-1. Create a `Config.toml` file within your Ballerina package to specify the configurable values complying with the [TOML syntax](#toml-syntax). By default, this will be used when a Ballerina program is executed using the `bal run` command.
+1. Specify the path of the configuration file via the `BAL_CONFIG_FILES` environment variable. 
 
-2. If you need to use another configuration file, specify its path via the `BAL_CONFIG_FILES` environment variable. 
+2. Ballerina also supports specifying multiple configuration files using the `BAL_CONFIG_FILES` environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
-3. Ballerina also supports specifying multiple configuration files using the `BAL_CONFIG_FILES` environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
+3. If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory, and this will be used by default when a Ballerina program is executed using the `bal run` command.
 
-    >**Note:** If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory by default. Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. 
+    >**Note:**  Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. 
 
 4. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
 

@@ -47,10 +47,10 @@ export default function StudentEngagemntProgram() {
   };
 
   const images = [
-    '/images/university/6.png',
+    '/images/university/1.png',
     '/images/university/2.png',
     '/images/university/4.png',
-    '/images/university/1.png',
+    '/images/university/6.png',
     '/images/university/3.jpg',
     '/images/university/5.jpg'
   ];

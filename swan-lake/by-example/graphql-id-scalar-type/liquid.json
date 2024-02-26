@@ -1,0 +1,18 @@
+{
+  "title": "ID scalar type",
+  "description": "This example demonstrates using the GraphQL ID scalar type as a unique identifier.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "graphql",
+    "scalar",
+    "id"
+  ],
+  "permalink": "/learn/by-example/graphql-id-scalar-type",
+  "active": "graphql-id-scalar-type",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-id-scalar-type",
+    "/swan-lake/learn/by-example/graphql-id-scalar-type.html"
+  ]
+}

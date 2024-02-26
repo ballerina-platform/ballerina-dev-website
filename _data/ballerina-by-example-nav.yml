@@ -985,29 +985,32 @@ sublinks:
           - title: Input objects
             id: 7
             url: graphql-input-objects
-          - title: Interfaces
+          - title: ID scalar type
             id: 8
+            url: graphql-id-scalar-type
+          - title: Interfaces
+            id: 9
             url: graphql-interfaces
           - title: Interfaces implementing interfaces
-            id: 9
+            id: 10
             url: graphql-interfaces-implementing-interfaces
           - title: Union types
-            id: 10
+            id: 11
             url: graphql-service-union-types
           - title: Error handling
-            id: 11
+            id: 12
             url: graphql-service-error-handling
           - title: GraphiQL client
-            id: 12
+            id: 13
             url: graphql-graphiql
           - title: Documentation
-            id: 13
+            id: 14
             url: graphql-documentation
           - title: Directives
-            id: 14
+            id: 15
             url: graphql-directives
           - title: Hierarchical resource paths
-            id: 15
+            id: 16
             url: graphql-hierarchical-resource-paths
       - title: '  GraphQL service advanced'
         id: 10
@@ -1039,6 +1042,15 @@ sublinks:
           - title: Custom prefetch methods
             id: 9
             url: custom-prefetch-methods
+          - title: Operation-level caching
+            id: 10
+            url: graphql-service-operation-level-caching
+          - title: Field-level caching
+            id: 11
+            url: graphql-service-field-level-caching
+          - title: Cache invalidation
+            id: 12
+            url: graphql-service-cache-invalidation
       - title: GraphQL client
         id: 11
         sublinks:

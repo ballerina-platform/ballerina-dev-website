@@ -56,10 +56,11 @@ const TopNav = (props) => {
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='11'>WSO2</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='12'>FAT Tuesday</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='13'>MOSIP</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='14'>Ballerina Central</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/redcross-elixir`} className={styles.dropDownItem} key='15'>Red Cross Elixir</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid-ai`} className={styles.dropDownItem} key='16'>RAAPID.AI</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/avinya-foundation`} className={styles.dropDownItem} key='17'>Avinya Academy</Dropdown.Item>
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/qhana`} className={styles.dropDownItem} key='14'>QHAna</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='15'>Ballerina Central</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/redcross-elixir`} className={styles.dropDownItem} key='16'>Red Cross Elixir</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid-ai`} className={styles.dropDownItem} key='17'>RAAPID.AI</Dropdown.Item>,
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/avinya-foundation`} className={styles.dropDownItem} key='18'>Avinya Academy</Dropdown.Item>
   ];
 
   const now = new Date();

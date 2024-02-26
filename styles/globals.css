@@ -328,6 +328,7 @@ pre.default {
   padding: 10px;
   border-radius: 5px;
   background-color: #eeeeee !important;
+  margin-bottom: 10px;
 }
 
 .mdContent img {

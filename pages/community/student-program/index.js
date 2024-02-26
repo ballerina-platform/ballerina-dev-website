@@ -22,7 +22,7 @@ import Head from 'next/head';
 
 import Layout from '../../../layouts/LayoutCommunity';
 import Outline from '../../../components/student-engagement/outline/Outline';
-import PastSessions from '../../../components/student-engagement/past-sessions/PastSessions';
+import Events from '../../../components/student-engagement/events/Events';
 import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
 import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';
 
@@ -50,7 +50,7 @@ export default function StudentEngagemntProgram() {
     '/images/university/6.png',
     '/images/university/2.png',
     '/images/university/4.png',
-    '/images/university/1.jpg',
+    '/images/university/1.png',
     '/images/university/3.jpg',
     '/images/university/5.jpg'
   ];
@@ -104,7 +104,7 @@ export default function StudentEngagemntProgram() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <PastSessions getLink={getLink} />
+            <Events getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">

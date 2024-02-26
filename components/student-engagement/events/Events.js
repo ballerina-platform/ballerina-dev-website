@@ -121,7 +121,7 @@ export default function Events(props) {
 
         <Row style={{ marginBottom: "30px" }}>
           <Col sm={12}>
-            <p>Explore our event timeline, where our team of experts engages with and empowers the brilliant minds of tomorrow.</p>
+            <p>Explore our event timeline, where our team of experts engage with and empowers the brilliant minds of tomorrow.</p>
           </Col>
         </Row>
 

@@ -159,7 +159,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Industry projects</h3>
 
-                    <p className="card-text">Bridge classroom theory with real-world applications, enhancing practical skills.</p>
+                    <p className="card-text">Partner for real-world digital transformation projects to develop skills relevant to industrial practices.</p>
                   </Card.Body>
                 </Col>
               </Row>

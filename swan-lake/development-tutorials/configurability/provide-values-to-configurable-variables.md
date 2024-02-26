@@ -48,11 +48,11 @@ You can provide configuration values via one or more configuration files in whic
 
 2. Ballerina also supports specifying multiple configuration files using the `BAL_CONFIG_FILES` environment variable with the OS-specific separator. The file precedence order will be as specified in the environment variable.
 
-3. If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory, and this will be used by default when a Ballerina program is executed using the `bal run` command.
-
-    >**Note:**  Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed. 
+3. If an environment variable is not specified, a file named `Config.toml` will be sought in the current working directory, and this will be used by default when a Ballerina program is executed using the `bal run` command. 
 
 4. Configuration values for testing can be provided in a file named `Config.toml` located in the `tests` directory. For more details, see [Define test-specific configurations](/learn/test-ballerina-code/configure-tests/#define-test-specific-configurations).
+
+>**Note:**  Once the environment variable is specified, the `Config.toml` will not be considered for the configuration values by default. Therefore, if you are required to use the `Config.toml` file along with others, you need to specify all of them via `BAL_CONFIG_FILES` in the order in which they should be executed.
 
 For example, consider a scenario in which the configurable variables are defined in the following way,
 
@@ -63,20 +63,20 @@ configurable string username = ?;
 configurable boolean verbose = true
 ```
 
-and the values are provided in two `Config.toml` and `info.toml` files as follows.
-
-**Config.toml**
-
-```toml
-port = 9000
-username = "admin-user"
-```
+and the values are provided in an `info.toml`file, which is a user-defined configuration file and `Config.toml` file as follows.
 
 **info.toml**
 
 ```toml
 maxPayload = 1.0
 verbose = true
+```
+
+**Config.toml**
+
+```toml
+port = 9000
+username = "admin-user"
 ```
 
 Accordingly, execute the commands below to provide the values via the `BAL_CONFIG_FILES` environment variable based on your operating system.

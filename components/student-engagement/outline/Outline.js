@@ -159,7 +159,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Industry projects</h3>
 
-                    <p className="card-text">Practical workshops for technical skills relevant to industry.</p>
+                    <p className="card-text">Bridge classroom theory with real-world applications, enhancing practical skills.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -173,7 +173,7 @@ export default function Outline(props) {
         <Row style={{ marginTop: "20px" }}>
           <Col sm={12}>
 
-            <p><a className={styles.mailLink} href='https://github.com/ballerina-guides/training-content/blob/main/University-Program/Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Collaborative learning initiatives: WSO2/Ballerina and Universities</a></p>
+            <p><a className="join" href='https://github.com/ballerina-guides/training-content/blob/main/University-Program/Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Learn more</a></p>
 
             <p>
               Want to find out more? Then reach out to our team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a>

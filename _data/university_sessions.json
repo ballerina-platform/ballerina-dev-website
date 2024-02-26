@@ -161,7 +161,7 @@
             "expire": "2023-10-26T00:00:00.0000-00:00",
             "type": "Workshop",
             "university": "University of Moratuwa",
-            "faculty": "CSE",
+            "faculty": "Computer Science & Engineering",
             "title": "Mastering Web Backend Fundamentals Session 2: Exploring the era of microservices and API integrations with Ballerina",
             "location": "Moratuwa, Sri Lanka",
             "presenters": [
@@ -185,7 +185,7 @@
             "expire": "2023-10-24T00:00:00.0000-00:00",
             "type": "Lecture",
             "university": "Namibia University of Science and Technology",
-            "faculty": "Department of Software engineering",
+            "faculty": "Department of Software Engineering",
             "title": "Demo on GraphQL Kafka and Docker",
             "location": "Virtual",
             "presenters": [
@@ -222,7 +222,7 @@
             "expire": "2023-10-12T00:00:00.0000-00:00",
             "type": "Community lecture",
             "university": "Namibia University of Science and Technology",
-            "faculty": "Department of Software engineering",
+            "faculty": "Department of Software Engineering",
             "title": "Elegent integrations with Ballerina Swan Lake",
             "location": "Virtual",
             "presenters": [
@@ -238,7 +238,7 @@
             "expire": "2023-09-22T00:00:00.0000-00:00",
             "type": "Workshop",
             "university": "University of Moratuwa",
-            "faculty": "CSE",
+            "faculty": "Computer Science & Engineering",
             "title": "Mastering web backend fundamentals: from concept to cloud - Session 1",
             "location": "Moratuwa, Sri Lanka",
             "presenters": [
@@ -261,7 +261,7 @@
             "date": "Sept 21, 2023",
             "expire": "2023-09-22T00:00:00.0000-00:00",
             "type": "Workshop",
-            "university": "University of Colombo - School of Computing (UCSC)",
+            "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Introduction to Ballerina",
             "location": "Colombo, Sri Lanka",
@@ -277,7 +277,7 @@
             "date": "Sept 12, 2023",
             "expire": "2023-09-13T00:00:00.0000-00:00",
             "type": "Lecture",
-            "university": "University of Colombo - School of Computing (UCSC)",
+            "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Compiler Construction Insights from the Ballerina Language",
             "location": "Colombo, Sri Lanka",

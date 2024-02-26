@@ -221,7 +221,7 @@ resource function post countries(CovidEntry[] covidEntries)
 In this code:
 
 - It is chosen to accept the entire payload or send back an error.
-- This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, `CovidEntry[]` and `ConflictingIsoCodesError`, will be used as the return types.
+- This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, the `CovidEntry[]`, which represents the `http:Created` response, and the `IsoCodesConflict`, which represents the `http:Conflict` status code response, will be used as the return types.
 
 ## Implement the second endpoint
 
@@ -249,13 +249,15 @@ resource function get countries/[string iso_code]() returns CovidEntry|InvalidIs
 ```
 
 In this code:
-- This resource is different from the first two resources. As explained earlier, resource methods have accessors.
 - Resource methods also support hierarchical paths, making it ideal for implementing RESTful APIs. Hierarchical paths can have path parameters.
+- This resource is different from the first two resources because it has a path parameter.
 - In this case, `iso_code` is used as the path param, which, in turn, becomes a `string` variable.
 
 ## The complete code
 
 Below is the complete code of the service implementation.
+
+>**Info:** It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. You can also try [generating an OpenAPI specification for the written service](/learn/openapi-tool/) by executing the `bal openapi -i main.bal` command, which creates a `yaml` file in the current folder.
 
 ```ballerina
 import ballerina/http;
@@ -320,9 +322,6 @@ type InvalidIsoCodeError record {|
 |};
 ```
 
-- It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. 
-- You can also try generating an OpenAPI specification for the written service by executing the following command, which creates a `yaml` file in the current folder.
-
 ## Run the service
 
 Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
@@ -358,14 +357,16 @@ Retrieve all the available records of all countries, as shown below.
 Add a record of a country by its ISO code by passing the following payload, as shown below.
 
 ```json
-{
-  "iso_code": "DEU",
-  "country": "Germany",
-  "cases": 159333.0,
-  "deaths": 7390.0,
-  "recovered": 126084.0,
-  "active": 6833.0
-}
+[
+    {
+    "iso_code": "DEU",
+    "country": "Germany",
+    "cases": 159333.0,
+    "deaths": 7390.0,
+    "recovered": 126084.0,
+    "active": 6833.0
+    }
+]
 ```
 
 ![Add a country](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/add-a-country.gif)

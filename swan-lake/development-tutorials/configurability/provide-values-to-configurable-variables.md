@@ -63,7 +63,7 @@ configurable string username = ?;
 configurable boolean verbose = true
 ```
 
-and the values are provided in an `info.toml`file, which is a user-defined configuration file and `Config.toml` file as follows.
+and the values are provided in two files, an `info.toml`file, which is a user-defined configuration file and `Config.toml` file as follows.
 
 **info.toml**
 

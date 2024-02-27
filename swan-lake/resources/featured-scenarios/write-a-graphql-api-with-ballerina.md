@@ -76,7 +76,7 @@ Before writing the GraphQL service, let's create a data source for the project. 
 
 Follow the steps below to add the definitions of the data types and the declaration of the table.
 
-1. Generate the record types corresponding to the payload from the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
+1. Generate the record type corresponding to the table entry providing the record name as `CovidEntry` and the sample JSON object below.
 
     >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` descriptor to the `isoCode` field to make it non-modifiable as it is the key of the table, and marking the values of the `cases`, `deaths`, `recovered`, and `active` variables as optional, which cannot be represented in the JSON format.
 

@@ -246,6 +246,12 @@ Follow the steps below to create the first resource of the service.
     }
     ```
 
+3. Add the code below to import the `ballerina.sql` package.
+
+    ```ballerina
+    import ballerina/sql;
+    ```
+
 #### Create the second resource
 
 Follow the steps below to create the second resource, which has a path parameter.
@@ -409,9 +415,11 @@ service /employees on new http:Listener(8080) {
 
 Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
 
+>**Note:** Select **Create `Config.toml`** to create the configuration file when prompted and provide the configuration values once it gets created.
+
 ![Run the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data_service` directory) and executing the `bal run` command. 
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., `data-service` directory) and executing the `bal run` command. 
 
 You should see the output similar to the following.
 
@@ -430,7 +438,7 @@ Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services
 
 ```json
 {
-  "employee_id": 1,
+  "employee_id": 3,
   "first_name": "Peter",
   "last_name": "David",
   "email": "peter@gmail.com",

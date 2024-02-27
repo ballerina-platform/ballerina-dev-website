@@ -45,21 +45,21 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 1. In the terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
-    $ bal new write-a-restful-api
+    $ bal new restful-service
     ```
 
     You should see the output similar to the following.
 
     ```
-    package name is derived as 'write_a_restful_api'. Edit the Ballerina.toml to change it.
+    package name is derived as 'restful-service'. Edit the Ballerina.toml to change it.
 
-    Created new package 'write_a_restful_api' at /Users/write-a-restful-api.
+    Created new package 'restful-service' at /Users/restful-service.
     ```
 
-    This creates a directory named `write-a-restful-api` with sample Ballerina code, as shown below. 
+    This creates a directory named `restful-service` with sample Ballerina code, as shown below. 
 
     ```
-    .
+    restful-service
     ├── Ballerina.toml
     └── main.bal
     ```
@@ -201,7 +201,7 @@ Implement the logic of this `POST` resource function with the code below.
 
 ```ballerina
 resource function post countries(CovidEntry[] covidEntries)
-                                returns CovidEntry[]|ConflictingIsoCodesError {
+        returns CovidEntry[]|IsoCodeConflict {
 
     string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
         where covidTable.hasKey(covidEntry.iso_code)
@@ -211,10 +211,10 @@ resource function post countries(CovidEntry[] covidEntries)
         return {
             body: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
         };
-    } else {
-        covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
-        return covidEntries;
     }
+
+    covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
+    return covidEntries;
 }
 ```
 
@@ -237,14 +237,13 @@ Similar to how you created the [second resource of the first endpoint](#create-t
 Implement the logic of this `GET` resource function with the code below.
 
 ```ballerina
-resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
-    CovidEntry? covidEntry = covidTable[iso_code];
-    if covidEntry is () {
-        return {
-            body: string `Invalid ISO Code: ${iso_code}`
-        };
+resource function get countries/[string iso_code]() returns CovidEntry|IsoCodeNotFound {
+    if covidTable.hasKey(iso_code) {
+        return covidTable.get(iso_code);
     }
-    return covidEntry;
+    return {
+        body: string `Invalid ISO Code: ${iso_code}`
+    };
 }
 ```
 
@@ -269,7 +268,7 @@ service /covid/status on new http:Listener(9000) {
     }
 
     resource function post countries(CovidEntry[] covidEntries)
-                                    returns CovidEntry[]|ConflictingIsoCodesError {
+            returns CovidEntry[]|IsoCodeConflict {
 
         string[] conflictingISOs = from CovidEntry covidEntry in covidEntries
             where covidTable.hasKey(covidEntry.iso_code)
@@ -279,20 +278,19 @@ service /covid/status on new http:Listener(9000) {
             return {
                 body: string:'join(" ", "Conflicting ISO Codes:", ...conflictingISOs)
             };
-        } else {
-            covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
-            return covidEntries;
         }
+
+        covidEntries.forEach(covidEntry => covidTable.add(covidEntry));
+        return covidEntries;
     }
 
-    resource function get countries/[string iso_code]() returns CovidEntry|InvalidIsoCodeError {
-        CovidEntry? covidEntry = covidTable[iso_code];
-        if covidEntry is () {
-            return {
-                body: string `Invalid ISO Code: ${iso_code}`
-            };
+    resource function get countries/[string iso_code]() returns CovidEntry|IsoCodeNotFound {
+        if covidTable.hasKey(iso_code) {
+            return covidTable.get(iso_code);
         }
-        return covidEntry;
+        return {
+            body: string `Invalid ISO Code: ${iso_code}`
+        };
     }
 }
 
@@ -311,12 +309,12 @@ final table<CovidEntry> key(iso_code) covidTable = table [
     {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
-type ConflictingIsoCodesError record {|
+type IsoCodeConflict record {|
     *http:Conflict;
     string body;
 |};
 
-type InvalidIsoCodeError record {|
+type IsoCodeNotFound record {|
     *http:NotFound;
     string body;
 |};
@@ -328,13 +326,13 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `write-a-restful-api` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `restful-service` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
 
 You should see the output similar to the following.
 
 ```
 Compiling source
-        featured_scenarios/write_a_restful_api:0.1.0
+        featured_scenarios/restful-service:0.1.0
 HINT [main.bal:(40:5,40:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 HINT [main.bal:(43:5,43:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 HINT [main.bal:(61:5,61:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method

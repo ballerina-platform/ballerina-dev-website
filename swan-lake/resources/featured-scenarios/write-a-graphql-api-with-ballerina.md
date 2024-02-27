@@ -26,7 +26,7 @@ The GraphQL endpoint you will create in this guide will have two primary operati
 ### The `Query` type
 The `Query` type has two fields.
 * The `all` field - This field will return all the data in the data source as an array.
-* The `filter` field - This field will return the data filtered by the ISO Code of a country(`iso_code`).
+* The `filter` field - This field will return the data filtered by the ISO Code of a country(`isoCode`).
 
 ### The `Mutation` type
 The `Mutation` type has a single field.
@@ -42,21 +42,21 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 1. In the Terminal, execute the command below to create the Ballerina package for the API implementation.
 
     ```
-    $ bal new write-a-graphql-api
+    $ bal new graphql-service
     ```
 
     You should see the output similar to the following.
 
     ```
-    package name is derived as 'write_a_graphql_api'. Edit the Ballerina.toml to change it.
+    package name is derived as 'graphql_service'. Edit the Ballerina.toml to change it.
 
-    Created new package 'write_a_graphql_api' at /Users/write-a-graphql-api.
+    Created new package 'graphql_service' at /Users/graphql-service.
     ```
 
     This creates a directory named `write-a-graphql-api` with the default module and a sample code for the service, as shown below. 
 
     ```
-    .
+    graphql-service
     │   ├── Ballerina.toml
     │   └── main.bal
     ```
@@ -78,11 +78,11 @@ Follow the steps below to add the definitions of the data types and the declarat
 
 1. Generate the record types corresponding to the payload from the REST service by providing the record name as `CovidEntry` and the sample JSON object below.
 
-    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable as it is the key of the table, and marking the values of the `cases`, `deaths`, `recovered`, and `active` variables as optional, which cannot be represented in the JSON format.
+    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` descriptor to the `isoCode` field to make it non-modifiable as it is the key of the table, and marking the values of the `cases`, `deaths`, `recovered`, and `active` variables as optional, which cannot be represented in the JSON format.
 
     ```json
     {
-        "iso_code": "AFG",
+        "isoCode": "AFG",
         "country": "Afghanistan",
         "cases": 159.303,
         "deaths": 7.386,
@@ -96,7 +96,7 @@ Follow the steps below to add the definitions of the data types and the declarat
 
     ```ballerina
     type CovidEntry record {|
-        readonly string iso_code;
+        readonly string isoCode;
         string country;
         decimal cases?;
         decimal deaths?;
@@ -107,7 +107,7 @@ Follow the steps below to add the definitions of the data types and the declarat
 
     In this code:
     - The record type `CovidEntry` is defined.
-    - A single entry will include the ISO code for the location (`iso_code`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
+    - A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
 
 ### Add data to the data source
 
@@ -115,7 +115,7 @@ Follow the steps below to define the data [table](/learn/by-example/table).
 
 1. Create the table, as shown below.
 
-    >**Tip:** Enter `CovidEntry` as the table type, `iso_code` as the key, and `covidEntriesTable` as the variable type when creating the table.
+    >**Tip:** Enter `CovidEntry` as the table type, `isoCode` as the key, and `covidEntriesTable` as the variable type when creating the table.
 
    ![Create data table](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-table.gif)
 
@@ -123,7 +123,7 @@ Follow the steps below to define the data [table](/learn/by-example/table).
 
     ```
     {
-        iso_code: "AFG", 
+        isoCode: "AFG", 
         country: "Afghanistan", 
         cases: 159.303, 
         deaths: 7.386, 
@@ -131,7 +131,7 @@ Follow the steps below to define the data [table](/learn/by-example/table).
         active: 5.833
     },
     {
-        iso_code: "SL", 
+        isoCode: "SL", 
         country: "Sri Lanka", 
         cases: 598.536, 
         deaths: 15.243, 
@@ -139,7 +139,7 @@ Follow the steps below to define the data [table](/learn/by-example/table).
         active: 14.656
     },
     {
-        iso_code: "US", 
+        isoCode: "US", 
         country: "USA", 
         cases: 69808.350, 
         deaths: 880.976, 
@@ -152,7 +152,7 @@ The generated record and the table will be as follows.
 
 ```ballerina
 type CovidEntry record {|
-    readonly string iso_code;
+    readonly string isoCode;
     string country;
     decimal cases?;
     decimal deaths?;
@@ -160,10 +160,10 @@ type CovidEntry record {|
     decimal active?;
 |};
 
-table<CovidEntry> key(iso_code) covidEntriesTable = table [
-    {iso_code: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
-    {iso_code: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
-    {iso_code: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
+table<CovidEntry> key(isoCode) covidEntriesTable = table [
+    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
 ];
 ```
 
@@ -253,11 +253,11 @@ In this code:
 
 ##### Create the `filter` field resource function
 
-Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `iso_code` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `isoCode` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
 
 ```ballerina
-resource function get filter(string iso_code) returns CovidData? {
-    CovidEntry? covidEntry = covidEntriesTable[iso_code];
+resource function get filter(string isoCode) returns CovidData? {
+    CovidEntry? covidEntry = covidEntriesTable[isoCode];
     if covidEntry is CovidEntry {
         return new (covidEntry);
     }
@@ -266,8 +266,8 @@ resource function get filter(string iso_code) returns CovidData? {
 ```
 
 In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter named `iso_code`, you have to add an input parameter to the resource method. 
-- This method returns the corresponding data for the given `iso_code` if such data is available in the data set and returns `null` otherwise.
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter named `isoCode`, you have to add an input parameter to the resource method. 
+- This method returns the corresponding data for the given `isoCode` if such data is available in the data set and returns `null` otherwise.
 
 #### Create `Mutation` type 
 
@@ -321,7 +321,7 @@ Follow the steps below to update the body of the service class, which you create
 
 3. Click the **Visualize** CodeLens and create a resource function inside the service class using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/), and design the body of the created resource function using the **Statement Editor**, as shown below.
 
-    >**Tip:** Enter `iso_code` as the field, `string` as the return type, and `self.entryRecord.iso_code` as the return value of the resource function.
+    >**Tip:** Enter `isoCode` as the field, `string` as the return type, and `self.entryRecord.isoCode` as the return value of the resource function.
 
     ![Define object type](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/define-object-type.gif)
 
@@ -334,8 +334,8 @@ Follow the steps below to update the body of the service class, which you create
             self.entryRecord = entryRecord.cloneReadOnly();
         }
 
-        resource function get iso_code() returns string {
-            return self.entryRecord.iso_code;
+        resource function get isoCode() returns string {
+            return self.entryRecord.isoCode;
         }
     }
     ```
@@ -383,7 +383,7 @@ divided by `1000`.
 the data set. 
 - Each resource method in this service represents a field of the GraphQL object type.  The return type of
 the resource method is the type of the field.
-- The resource methods returning `iso_code` and the `country` have the return type `string`, which means these fields cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (GraphQL represents these by the exclamation mark `!` (e.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
+- The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (GraphQL represents these by the exclamation mark `!` (e.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
 - The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL schema, which the Ballerina GraphQL package will generate.
 
 ## The complete code
@@ -394,7 +394,7 @@ Below is the complete code for the Ballerina GraphQL service.
 import ballerina/graphql;
 
 type CovidEntry record {|
-    readonly string iso_code;
+    readonly string isoCode;
     string country;
     decimal cases?;
     decimal deaths?;
@@ -402,10 +402,10 @@ type CovidEntry record {|
     decimal active?;
 |};
 
-table<CovidEntry> key(iso_code) covidEntriesTable = table [
-    {iso_code: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {iso_code: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {iso_code: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+table<CovidEntry> key(isoCode) covidEntriesTable = table [
+    {isoCode: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
+    {isoCode: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
 ];
 
 distinct service class CovidData {
@@ -415,8 +415,8 @@ distinct service class CovidData {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
 
-    resource function get iso_code() returns string {
-        return self.entryRecord.iso_code;
+    resource function get isoCode() returns string {
+        return self.entryRecord.isoCode;
     }
 
     resource function get country() returns string {
@@ -458,8 +458,8 @@ service /covid19 on new graphql:Listener(9000) {
         return covidEntries.map(entry => new CovidData(entry));
     }
 
-    resource function get filter(string iso_code) returns CovidData? {
-        CovidEntry? covidEntry = covidEntriesTable[iso_code];
+    resource function get filter(string isoCode) returns CovidData? {
+        CovidEntry? covidEntry = covidEntriesTable[isoCode];
         if covidEntry is CovidEntry {
             return new (covidEntry);
         }
@@ -479,13 +479,13 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `covid19` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `graphql-service` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
 You should see the output similar to the following in the Terminal.
 
 ```
 Compiling source
-        featured_scenarios/write_a_graphql_api:0.1.0
+        featured_scenarios/graphql_service:0.1.0
 HINT [main.bal:(41:5,41:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 HINT [main.bal:(46:5,46:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 HINT [main.bal:(54:5,54:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
@@ -499,7 +499,7 @@ The schema below will be shown if you connect to this service using any [GraphQL
 
 ```graphql
 type CovidData {
-    iso_code: String!
+    isoCode: String!
     country: String!
     cases: Decimal
     recovered: Decimal
@@ -508,7 +508,7 @@ type CovidData {
 }
 
 input CovidEntry {
-    iso_code: String!
+    isoCode: String!
     country: String!
     cases: Decimal
     recovered: Decimal
@@ -520,7 +520,7 @@ scalar Decimal
 
 type Query {
     all: [CovidData!]!
-    filter(iso_code: String!): CovidData
+    filter(isoCode: String!): CovidData
 }
 
 type Mutation {

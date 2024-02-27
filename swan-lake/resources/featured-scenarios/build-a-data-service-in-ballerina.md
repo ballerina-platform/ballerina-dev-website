@@ -170,12 +170,12 @@ You can connect to the MySQL database by creating a client.
 
 The `mysql:Client` provides two primary remote methods for performing queries.
 
+>**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database, which are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
+
 1. `query()` - Executes an SQL query and returns the results (rows) from the query. 
    The `queryRow()` method is a variation of this method, which returns, at most, a single row from the result.
 
 2. `execute()` - Executes an SQL query and returns only the execution metadata.
-
->**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database, which are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
 
 Create a `mysql:Client` to connect to the database, as shown below.
 

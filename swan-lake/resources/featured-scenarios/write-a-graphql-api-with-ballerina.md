@@ -19,7 +19,7 @@ To complete this tutorial, you need:
 
 ## Design the GraphQL endpoint
 
-Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach), while others do not need the schema to create the service (code-first approach). The Ballerina GraphQL package uses the latter. Therefore, you do not need the schema file to create your service. Once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
+Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach), while others do not need the schema to create the service (code-first approach). Ballerina supports both approaches. In this guide, we consider the code-first approach, where you do not need the schema file to create your service. Once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
 
 The GraphQL endpoint you will create in this guide will have two primary operations, `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be utilized to update the data in the data source.
 

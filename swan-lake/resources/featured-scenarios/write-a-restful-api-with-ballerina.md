@@ -51,9 +51,9 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
     You should see the output similar to the following.
 
     ```
-    package name is derived as 'restful-service'. Edit the Ballerina.toml to change it.
+    package name is derived as 'restful_service'. Edit the Ballerina.toml to change it.
 
-    Created new package 'restful-service' at /Users/restful-service.
+    Created new package 'restful_service' at /Users/restful-service.
     ```
 
     This creates a directory named `restful-service` with sample Ballerina code, as shown below. 
@@ -109,7 +109,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 2. Create the table, as shown below.
 
-    >**Note:** Enter `CovidEntry` as the row type corresponding to the type of the members of the table, `iso_code` as the key, and `covidTable` as the variable name when creating the table.
+    >**Note:** Select the `final` modifier and enter `CovidEntry` as the row type corresponding to the type of the members of the table, `iso_code` as the key, and `covidTable` as the variable name when creating the table.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
@@ -193,7 +193,7 @@ In this code:
 
 Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the Ballerina HTTP API Designer in VS Code, as shown below.
 
->**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`. Use `CovidEntry[]` and `ConflictingIsoCodesError` as the response types.
+>**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`. Use `CovidEntry[]` and `IsoCodeConflict` as the response types.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
@@ -221,7 +221,7 @@ resource function post countries(CovidEntry[] covidEntries)
 In this code:
 
 - It is chosen to accept the entire payload or send back an error.
-- This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, the `CovidEntry[]`, which represents the `http:Created` response, and the `IsoCodesConflict`, which represents the `http:Conflict` status code response, will be used as the return types.
+- This resource has an argument named `covidEntries`, which means the resource expects a payload with the `CovidEntry[]` type. Two types of records, the `CovidEntry[]`, which represents the `http:Created` response, and the `IsoCodeConflict`, which represents the `http:Conflict` status code response, will be used as the return types.
 
 ## Implement the second endpoint
 
@@ -231,7 +231,8 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
->**Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Define and use `InvalidIsoCodeError` along with `CovidEntry[]` as the response types.
+>**Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. Define and use `IsoCodeNotFound` along with `CovidEntry[]` as the response types.
+
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 
 Implement the logic of this `GET` resource function with the code below.

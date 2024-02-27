@@ -62,20 +62,20 @@ Ballerina uses packages to group code. You need to create a Ballerina package an
     > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
     ```
-    $ bal new build-a-data-service
+    $ bal new data-service
     ``` 
     You should see the output similar to the following.
 
     ```
-    package name is derived as 'build_a_data_service'. Edit the Ballerina.toml to change it.
+    package name is derived as 'data_service'. Edit the Ballerina.toml to change it.
 
-    Created new package 'build_a_data_service' at /Users/build-a-data-service.
+    Created new package 'data_service' at /Users/data-service.
     ```
 
-    This creates a directory named `build-a-data-service` with the files below.
+    This creates a directory named `data-service` with the files below.
 
     ```
-    .
+    data-service
     │   ├── Ballerina.toml
     │   └── main.bal
     ```
@@ -98,15 +98,30 @@ In Ballerina, records are a data type that maps keys to values. Follow the steps
 
 Generate the record types corresponding to the payload from the service by providing the record name as `Employee` and the sample JSON object below.
 
->**Note:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `employee_id`, `manager_id`, and `hire_date` types, and importing the `ballerina/time` module, which cannot be represented in the JSON format.
+>**Note:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `employee_id` as an optional value, the `manager_id` type to be `int` or `nil`, and changing the `hire_date` type to reuse the `Date` record type in the `ballerina/time` package.
 
 ```json
-{    
-    "first_name": "test",
-    "last_name": "test",
-    "email": "test@test.com",
-    "phone": "882 771 110",
-    "job_title": "Sales Manager"
+{
+  "employee_id": 1,
+  "first_name": "John",
+  "last_name": "Stevens",
+  "email": "john@gmail.com",
+  "phone": "+94777289764",
+  "hire_date": {
+    "year": 1990,
+    "month": 1,
+    "day":  1,
+    "hour": 10,
+    "minute": 30,
+    "second": 40,
+    "utcOffset": {
+      "hours": 5,
+      "minutes": 30,
+      "seconds": 0
+    }
+  },
+  "manager_id": 2,
+  "job_title": "software engineer"
 }
 ```
 
@@ -118,46 +133,34 @@ The completed record will be as follows.
 import ballerina/time;
 
 type Employee record {|
+    int employee_id?;
     string first_name;
     string last_name;
     string email;
     string phone;
-    string job_title;
-    int employee_id?;
-    int? manager_id;
     time:Date hire_date;
+    int? manager_id;
+    string job_title;
 |};
 ```
 
 ### Define MySQL configurations
 
-Follow the steps below to define the MySQL configurations.
+Define configurable variables to define the MySQL configurations and access them from within your Ballerina program.
 
-1. In the package directory, create a new file named `Config.toml` and specify the configurations below to connect to the MySQL database.
+>**Info:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
 
-    ```toml
-    USER="root"
-    PASSWORD="rootPassword"
-    HOST="localhost"
-    PORT=3306
-    DATABASE="Company"
-    ```
+![Create configurable variable](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-configurable-variable.gif)
 
-2. Define configurable variables to redefine the above variables and access them from within your Ballerina program.
+The generated configurable variables will be as follows.
 
-    >**Info:** For more information on defining configurable variables in Ballerina, see [Provide values to configurable variables](/learn/provide-values-to-configurable-variables/).
-
-    ![Create configurable variable](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-configurable-variable.gif)
-
-    The generated configurable variables will be as follows.
-
-    ```ballerina
-    configurable string USER = "root";
-    configurable string PASSWORD = "rootPassword";
-    configurable string HOST = "localhost";
-    configurable int PORT = 3306;
-    configurable string DATABASE = "Company";
-    ```
+```ballerina
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+```
 
 ### Connect to the database
 
@@ -202,195 +205,26 @@ The `mysql:Client` provides two primary remote methods for performing queries.
 
 2. `execute()` - Executes an SQL query and returns only the execution metadata.
 
-#### Create the functions
-
-Follow the steps below to create functions to use the `query()`, `queryRow()`, and `execute()` methods, which can perform basic CRUD operations against the MySQL database. 
-
-1. Add the code below to import the [`sql`](https://lib.ballerina.io/ballerina/sql/latest) package, which is used in the logic of the functions.
-
-    ```ballerina
-    import ballerina/sql;
-    ```
-    
-2. Implement the other functions in the `main.bal` file by adding the code below.
-
-    ```ballerina
-    function getEmployee(int id) returns Employee|error {
-        Employee employee = check dbClient->queryRow(
-            `SELECT * FROM Employees WHERE employee_id = ${id}`
-        );
-        return employee;
-    }
-
-    function getAllEmployees() returns Employee[]|error {
-        Employee[] employees = [];
-        stream<Employee, error?> resultStream = dbClient->query(
-            `SELECT * FROM Employees`
-        );
-        check from Employee employee in resultStream
-            do {
-                employees.push(employee);
-            };
-        check resultStream.close();
-        return employees;
-    }
-
-    function updateEmployee(Employee emp) returns int|error {
-        sql:ExecutionResult result = check dbClient->execute(`
-            UPDATE Employees SET
-                first_name = ${emp.first_name}, 
-                last_name = ${emp.last_name},
-                email = ${emp.email},
-                phone = ${emp.phone},
-                hire_date = ${emp.hire_date}, 
-                manager_id = ${emp.manager_id},
-                job_title = ${emp.job_title}
-            WHERE employee_id = ${emp.employee_id}  
-        `);
-        int|string? lastInsertId = result.lastInsertId;
-        if lastInsertId is int {
-            return lastInsertId;
-        } else {
-            return error("Unable to obtain last insert ID");
-        }
-    }
-
-    function removeEmployee(int id) returns int|error {
-        sql:ExecutionResult result = check dbClient->execute(`
-            DELETE FROM Employees WHERE employee_id = ${id}
-        `);
-        int? affectedRowCount = result.affectedRowCount;
-        if affectedRowCount is int {
-            return affectedRowCount;
-        } else {
-            return error("Unable to obtain the affected row count");
-        }
-    }
-    ```
-
-
-## The  `main.bal` file complete code
-
-```ballerina
-import ballerina/sql;
-import ballerina/time;
-import ballerinax/mysql;
-import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
-
-type Employee record {|
-    int employee_id?;
-    string first_name;
-    string last_name;
-    string email;
-    string phone;
-    time:Date hire_date;
-    int? manager_id;
-    string job_title;
-|};
-
-configurable string USER = ?;
-configurable string PASSWORD = ?;
-configurable string HOST = ?;
-configurable int PORT = ?;
-configurable string DATABASE = ?;
-
-final mysql:Client dbClient = check new(
-    host=HOST, user=USER, password=PASSWORD, port=PORT, database="Company"
-);
-
-function addEmployee(Employee emp) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        INSERT INTO Employees (employee_id, first_name, last_name, email, phone,
-                               hire_date, manager_id, job_title)
-        VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},  
-                ${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},
-                ${emp.job_title})
-    `);
-    int|string? lastInsertId = result.lastInsertId;
-    if lastInsertId is int {
-        return lastInsertId;
-    } else {
-        return error("Unable to obtain last insert ID");
-    }
-}
-
-function getEmployee(int id) returns Employee|error {
-    Employee employee = check dbClient->queryRow(
-        `SELECT * FROM Employees WHERE employee_id = ${id}`
-    );
-    return employee;
-}
-
-function getAllEmployees() returns Employee[]|error {
-    Employee[] employees = [];
-    stream<Employee, error?> resultStream = dbClient->query(
-        `SELECT * FROM Employees`
-    );
-    check from Employee employee in resultStream
-        do {
-            employees.push(employee);
-        };
-    check resultStream.close();
-    return employees;
-}
-
-function updateEmployee(Employee emp) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        UPDATE Employees SET
-            first_name = ${emp.first_name}, 
-            last_name = ${emp.last_name},
-            email = ${emp.email},
-            phone = ${emp.phone},
-            hire_date = ${emp.hire_date}, 
-            manager_id = ${emp.manager_id},
-            job_title = ${emp.job_title}
-        WHERE employee_id = ${emp.employee_id}  
-    `);
-    int|string? lastInsertId = result.lastInsertId;
-    if lastInsertId is int {
-        return lastInsertId;
-    } else {
-        return error("Unable to obtain last insert ID");
-    }
-}
-
-function removeEmployee(int id) returns int|error {
-    sql:ExecutionResult result = check dbClient->execute(`
-        DELETE FROM Employees WHERE employee_id = ${id}
-    `);
-    int? affectedRowCount = result.affectedRowCount;
-    if affectedRowCount is int {
-        return affectedRowCount;
-    } else {
-        return error("Unable to obtain the affected row count");
-    }
-}
-```
-
 ## Expose the database via an HTTP RESTful API
 
 After you have defined the functions necessary to manipulate the database, expose these selectively via an HTTP RESTful API. 
 
 ### Create the REST  service
 
-Follow the steps below to create the service.
+Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-1. Create a `service.bal` file inside the Ballerina package directory (`build_a_data_service`).
+>**Note:** Use `/employees` as the service path (or the context) of the service, which is attached to the listener listening on port 8080.
 
-2. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
+![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
 
-    >**Note:** Use `/employees` as the service path (or the context) of the service, which is attached to the listener listening on port 8080.
+The generated REST service will be as follows.
 
-    ![Create the service](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-service.gif)
-
-    The generated REST service will be as follows.
-
-    ```ballerina
-    service /employees on new http:Listener(8080) {
-        resource function get .() returns error? {
-        }
+```ballerina
+service /employees on new http:Listener(8080) {
+    resource function get .() returns error? {
     }
-    ```
+}
+```
 
 ### Create the resources
 
@@ -398,8 +232,8 @@ Follow the steps below to define resource functions within this service to provi
 
 1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-    >**Note:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type. Complete the generated record by adding the pipe signs to mark the record as a closed one.
-
+    >**Note:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type.
+    
     ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
 
     The generated resource function will be as follows.
@@ -433,35 +267,93 @@ Follow the steps below to define resource functions within this service to provi
         }
     ```
 
-## The `service.bal` file complete code 
+## The complete code 
 
-The complete code in the `service.bal` will be as follows.
+Below is the complete code of the service implementation.
 
 ```ballerina
 import ballerina/http;
+import ballerina/sql;
+import ballerina/time;
+import ballerinax/mysql;
+import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
+
+type Employee record {|
+    int employee_id?;
+    string first_name;
+    string last_name;
+    string email;
+    string phone;
+    time:Date hire_date;
+    int? manager_id;
+    string job_title;
+|};
+
+configurable string user = ?;
+configurable string password = ?;
+configurable string host = ?;
+configurable int port = ?;
+configurable string database = ?;
+
+final mysql:Client dbClient = check new (
+    host = host, user = user, password = password, port = port, database = database
+);
 
 service /employees on new http:Listener(8080) {
 
     resource function post .(Employee emp) returns int|error? {
-        return addEmployee(emp);
-    }
-    
-    resource function get [int id]() returns Employee|error? {
-        return getEmployee(id);
-    }
-    
-    resource function get .() returns Employee[]|error? {
-        return getAllEmployees();
-    }
-    
-    resource function put .(Employee emp) returns int|error? {
-        return updateEmployee(emp);
-    }
-    
-    resource function delete [int id]() returns int|error? {
-        return removeEmployee(id);       
+        sql:ExecutionResult result = check dbClient->execute(`
+            INSERT INTO Employees (employee_id, first_name, last_name, email, phone, hire_date, manager_id, job_title)
+            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},${emp.job_title})`);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        }
+        return;
     }
 
+    resource function get [int id]() returns Employee|error {
+        Employee employee = check dbClient->queryRow(
+            `SELECT * FROM Employees WHERE employee_id = ${id}`
+        );
+        return employee;
+    }
+
+    resource function get .() returns Employee[]|error {
+        stream<Employee, error?> resultStream = dbClient->query(
+            `SELECT * FROM Employees`
+        );
+        return check from Employee employee in resultStream
+            select employee;
+    }
+
+    resource function put .(Employee emp) returns int|error? {
+        sql:ExecutionResult result = check dbClient->execute(`
+            UPDATE Employees SET
+                first_name = ${emp.first_name}, 
+                last_name = ${emp.last_name},
+                email = ${emp.email},
+                phone = ${emp.phone},
+                hire_date = ${emp.hire_date}, 
+                manager_id = ${emp.manager_id},
+                job_title = ${emp.job_title}
+            WHERE employee_id = ${emp.employee_id}`);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        }
+        return;
+    }
+
+    resource function delete [int id]() returns int|error? {
+        sql:ExecutionResult result = check dbClient->execute(`
+            DELETE FROM Employees WHERE employee_id = ${id}`);
+        int? affectedRowCount = result.affectedRowCount;
+        if affectedRowCount is int {
+            return affectedRowCount;
+        }
+        return;
+    }
 }
 ```
 
@@ -477,7 +369,7 @@ You should see the output similar to the following.
 
 ```
 Compiling source
-        featured_scenarios/build_a_data_service:0.1.0
+        featured_scenarios/data_service:0.1.0
 
 Running executable
 ```
@@ -490,18 +382,18 @@ Use the [**Try it**](/learn/vs-code-extension/try-the-services/try-http-services
 
 ```json
 {
-  "first_name": "string",
-  "last_name": "string",
-  "email": "string",
-  "phone": "string",
-  "job_title": "string",
-  "employee_id": 0,
-  "manager_id": 0,
+  "employee_id": 1,
+  "first_name": "Peter",
+  "last_name": "David",
+  "email": "peter@gmail.com",
+  "phone": "+94777329465",
   "hire_date": {
-    "year": 2024,
-    "month": 2,
-    "day": 12
-  }
+    "year": 2020,
+    "month": 12,
+    "day":  2
+  },
+  "manager_id": 2,
+  "job_title": "researcher"
 }
 ```
 

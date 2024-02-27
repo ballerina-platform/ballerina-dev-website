@@ -168,42 +168,26 @@ You can connect to the MySQL database by creating a client.
 
 #### Create the MySQL client
 
-Create a `mysql:Client` to connect to the database, as shown below.
-
->**Note:** Select the `final` descriptor, enter `dbClient` as the MySQL client name, and configure the `host`, `user`, `password`, `database`, and `port` parameters with the `HOST`, `USER`, `PASSWORD`, `"Company"`, and `PORT` values respectively.
-
-![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
-
-The generated MySQL client will be as follows.
-
-```ballerina
-final mysql:Client dbClient = check new (host = HOST, user = USER, password = PASSWORD, database = "Company", port = PORT);
-```
-#### Run the MySQL client
-
-Use the [**Run**](/learn/vs-code-extension/run-a-program/) option of the VS Code extension to build and run the client, as shown below.
-
-![Run the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/run-the-client.gif)
-
-If the program runs without throwing an error with the output below, that indicates that the connection has been established successfully. This client can be defined globally and used across all the parts of the program.
-
-```
-Compiling source
-        featured_scenarios/build_a_data_service:0.1.0
-
-Running executable
-```
-
->**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database, which are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
-
-### Execute the queries
-
 The `mysql:Client` provides two primary remote methods for performing queries.
 
 1. `query()` - Executes an SQL query and returns the results (rows) from the query. 
    The `queryRow()` method is a variation of this method, which returns, at most, a single row from the result.
 
 2. `execute()` - Executes an SQL query and returns only the execution metadata.
+
+>**Info:** The MySQL package provides additional connection options and the ability to configure connection pool properties when connecting to the database, which are not covered in this tutorial. To learn more about this, see [`mysql:Client`](https://lib.ballerina.io/ballerinax/mysql/latest#Client).
+
+Create a `mysql:Client` to connect to the database, as shown below.
+
+>**Note:** Select the `final` descriptor, enter `dbClient` as the MySQL client name, and configure the `host`, `user`, `password`, `database`, and `port` parameters with the `host`, `user`, `password`, `database`, and `port` values respectively.
+
+![Create the client](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-the-client.gif)
+
+The generated MySQL client will be as follows.
+
+```ballerina
+final mysql:Client dbClient = check new (host = host, user = user, password = password, database = database, port = port);
+```
 
 ## Expose the database via an HTTP RESTful API
 
@@ -230,42 +214,108 @@ service /employees on new http:Listener(8080) {
 
 Follow the steps below to define resource functions within this service to provide access to the database.
 
+#### Create the first resource
+
+Follow the steps below to create the first resource of the service.
+
 1. Create the first resource using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) of the VS Code extension, as shown below.
 
-    >**Note:** Define an HTTP resource that allows the POST operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int|error` as the response type.
+    >**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `.` and accepts an `Employee` type payload named `emp`. Use `int` and `error?` as the response types.
     
-    ![Create resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-resource-function.gif)
+    ![Create first resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-first-resource.gif)
 
     The generated resource function will be as follows.
 
     ```ballerina
-    service /employees on new http:Listener(8080) {
+    resource function post .(Employee emp) returns int|error? {
+    }   
+    ```
 
-        resource function post .(Employee emp) returns int|error? {
-            return addEmployee(emp);
-        }   
+2. Implement the logic of this `POST` resource function with the code below.
+
+    ```ballerina
+    resource function post .(Employee emp) returns int|error? {
+        sql:ExecutionResult result = check dbClient->execute(`
+            INSERT INTO Employees (employee_id, first_name, last_name, email, phone, hire_date, manager_id, job_title)
+            VALUES (${emp.employee_id}, ${emp.first_name}, ${emp.last_name},${emp.email}, ${emp.phone}, ${emp.hire_date}, ${emp.manager_id},${emp.job_title})`);
+        int|string? lastInsertId = result.lastInsertId;
+        if lastInsertId is int {
+            return lastInsertId;
+        }
+        return;
     }
     ```
 
-2. Similarly, create the other resources as per the code below.
+#### Create the second resource
+
+Follow the steps below to create the second resource, which has a path parameter.
+
+1. Create the second resource using the Ballerina HTTP API Designer of the VS Code extension, as shown below.
+
+    >**Note:** Define an HTTP resource that allows the `GET` operation on the `/employees` resource path with the `id` path parameter. Use `Employee` and `error?` as the response types.
+    
+    
+    ![Create second resource function](/learn/images/featured-scenarios/build-a-data-service-in-ballerina/create-second-resource.gif)
+
+    The generated resource function will be as follows.
 
     ```ballerina
-        resource function get [int id]() returns Employee|error? {
-            return getEmployee(id);
-        }
-
-        resource function get .() returns Employee[]|error? {
-            return getAllEmployees();
-        }
-
-        resource function put .(Employee emp) returns int|error? {
-            return updateEmployee(emp);
-        }
-
-        resource function delete [int id]() returns int|error? {
-            return removeEmployee(id);       
-        }
+    resource function get [int id]() returns Employee|error {
+    }   
     ```
+
+2. Implement the logic of this `GET` resource function with the code below.
+
+    ```ballerina
+    resource function get [int id]() returns Employee|error {
+        Employee employee = check dbClient->queryRow(
+            `SELECT * FROM Employees WHERE employee_id = ${id}`
+        );
+        return employee;
+    }
+    ```
+
+#### Create the other resources
+
+Similarly, create the other resources as per the code below.
+
+```ballerina
+resource function get .() returns Employee[]|error {
+    stream<Employee, error?> resultStream = dbClient->query(
+        `SELECT * FROM Employees`
+    );
+    return check from Employee employee in resultStream
+        select employee;
+}
+
+resource function put .(Employee emp) returns int|error? {
+    sql:ExecutionResult result = check dbClient->execute(`
+        UPDATE Employees SET
+            first_name = ${emp.first_name}, 
+            last_name = ${emp.last_name},
+            email = ${emp.email},
+            phone = ${emp.phone},
+            hire_date = ${emp.hire_date}, 
+            manager_id = ${emp.manager_id},
+            job_title = ${emp.job_title}
+        WHERE employee_id = ${emp.employee_id}`);
+    int|string? lastInsertId = result.lastInsertId;
+    if lastInsertId is int {
+        return lastInsertId;
+    }
+    return;
+}
+
+resource function delete [int id]() returns int|error? {
+    sql:ExecutionResult result = check dbClient->execute(`
+        DELETE FROM Employees WHERE employee_id = ${id}`);
+    int? affectedRowCount = result.affectedRowCount;
+    if affectedRowCount is int {
+        return affectedRowCount;
+    }
+    return;
+}
+```
 
 ## The complete code 
 
@@ -276,7 +326,7 @@ import ballerina/http;
 import ballerina/sql;
 import ballerina/time;
 import ballerinax/mysql;
-import ballerinax/mysql.driver as _; // This bundles the driver to the project so that you don't need to bundle it via the `Ballerina.toml` file.
+import ballerinax/mysql.driver as _;
 
 type Employee record {|
     int employee_id?;
@@ -295,9 +345,7 @@ configurable string host = ?;
 configurable int port = ?;
 configurable string database = ?;
 
-final mysql:Client dbClient = check new (
-    host = host, user = user, password = password, port = port, database = database
-);
+final mysql:Client dbClient = check new (host = host, user = user, password = password, database = database, port = port);
 
 service /employees on new http:Listener(8080) {
 

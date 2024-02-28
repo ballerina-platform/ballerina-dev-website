@@ -51,7 +51,7 @@ export default function GetInvolved(props) {
 
                 <Row>
                     <Col sm={12}>
-                        <p>If you're interested in collaborating with us on any of these programs or have ideas beyond what's listed, feel free to contact the team at</p>
+                        <p>If you&apos;re interested in collaborating with us on any of these programs or have ideas beyond what&apos;s listed, feel free to contact the team at</p>
 
                         <p>
                             <a href="mailto:contact@ballerina.io">

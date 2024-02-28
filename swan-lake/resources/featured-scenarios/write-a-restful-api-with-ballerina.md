@@ -94,7 +94,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
-    The generated record type will be as follows.
+    The record type will be as follows.
 
     ```ballerina
     type CovidEntry record {|

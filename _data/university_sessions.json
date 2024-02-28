@@ -18,7 +18,8 @@
                     "twitter": "https://twitter.com/WaruLJ"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Feb 22, 2024",
@@ -38,7 +39,8 @@
                     "twitter": "https://twitter.com/WaruLJ"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Feb 21, 2024",
@@ -58,7 +60,8 @@
                     "twitter": "https://twitter.com/WaruLJ"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Feb 20, 2024",
@@ -78,7 +81,8 @@
                     "twitter": "https://twitter.com/WaruLJ"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Feb 19, 2024",
@@ -98,7 +102,8 @@
                     "twitter": "https://twitter.com/WaruLJ"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Feb 02, 2024",
@@ -118,7 +123,8 @@
                     "twitter": "https://twitter.com/ThisaruGuruge"
                 }
             ],
-            "url": ""
+            "url": "Kafka_GraphQL_Cloud_Integration.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Nov 10, 2023",
@@ -134,7 +140,8 @@
                     "twitter": "https://twitter.com/pcnfernando"
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "Oct 27, 2023",
@@ -154,7 +161,8 @@
                     "twitter": "https://twitter.com/dil_nazeer"
                 }
             ],
-            "url": ""
+            "url": "Empowering-Modern-Systems-with-Microservies-and-AI-as-a-Service-using-Ballerina.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Oct 26, 2023",
@@ -178,7 +186,8 @@
                     "twitter": "https://twitter.com/Sasindu3625"
                 }
             ],
-            "url": ""
+            "url": "[Session-2]Exploring-the-Era-of-Microservices-and-API-Integrations-with-Ballerina.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Oct 23, 2023",
@@ -215,7 +224,8 @@
                     "twitter": "https://twitter.com/D_i_m_u_t_h_u_M"
                 }
             ],
-            "url": ""
+            "url": "Mastering-Microservices-and-APIs-with-Ballerina.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Oct 11, 2023",
@@ -231,7 +241,8 @@
                     "twitter": "https://twitter.com/manurangaperera"
                 }
             ],
-            "url": ""
+            "url": "Elegant-Integrations-with-Ballerina-Swan-Lake.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Sept 21, 2023",
@@ -255,7 +266,8 @@
                     "twitter": "https://twitter.com/manuj_malintha"
                 }
             ],
-            "url": ""
+            "url": "[Session-1]Mastering-Web-Backend-Fundamentals.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Sept 21, 2023",
@@ -271,7 +283,8 @@
                     "twitter": "https://twitter.com/dilanpererar"
                 }
             ],
-            "url": ""
+            "url": "[2023-Sept]Introduction-to-Ballerina.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Sept 12, 2023",
@@ -291,7 +304,8 @@
                     "twitter": "https://twitter.com/dilanpererar"
                 }
             ],
-            "url": ""
+            "url": "Compiler-Construction-Insights.pdf",
+            "buttonText": "View slides"
         },
         {
             "date": "Aug 14, 2023",
@@ -307,7 +321,8 @@
                     "twitter": ""
                 }
             ],
-            "url": ""
+            "url": "",
+            "buttonText": ""
         },
         {
             "date": "July 6, 2023",
@@ -323,7 +338,8 @@
                     "twitter": "https://twitter.com/anupama_pathira"
                 }
             ],
-            "url": ""
+            "url": "[2023-July]Introduction-to-Ballerina.pdf",
+            "buttonText": "View slides"
         }
     ]
 }

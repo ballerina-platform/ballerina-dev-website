@@ -191,7 +191,7 @@ In this code:
 
 ### Create the second resource to add data
 
-Create the second resource of the first endpoint to add new COVID-19 data to the dataset by ISO code, using the Ballerina HTTP API Designer in VS Code, as shown below.
+Create the second resource of the first endpoint to add new data to the dataset by ISO code, using the Ballerina HTTP API Designer in VS Code, as shown below.
 
 >**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`. Use `CovidEntry[]` and `IsoCodeConflict` as the response types.
 

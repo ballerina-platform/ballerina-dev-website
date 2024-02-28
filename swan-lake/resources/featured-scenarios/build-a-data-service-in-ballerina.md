@@ -367,10 +367,9 @@ service /employees on new http:Listener(8080) {
     }
 
     resource function get [int id]() returns Employee|error {
-        Employee employee = check dbClient->queryRow(
+        return check dbClient->queryRow(
             `SELECT * FROM Employees WHERE employee_id = ${id}`
         );
-        return employee;
     }
 
     resource function get .() returns Employee[]|error {

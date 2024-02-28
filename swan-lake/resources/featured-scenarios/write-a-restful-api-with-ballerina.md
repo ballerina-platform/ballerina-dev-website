@@ -327,7 +327,7 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `restful-service` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `restful-service` directory) and executing the `bal run` command. The console would have warning logs related to the resource methods not being called concurrently. They are due to the built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
 
 You should see the output similar to the following.
 

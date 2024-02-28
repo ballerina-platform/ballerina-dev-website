@@ -50,7 +50,7 @@ export default function Outline(props) {
 
         <Row>
           <Col sm={12}>
-            <p>Leveraging our extensive expertise in areas like compiler design, integration, microservices, AI, and more, we offer a wide range of programs to universities or educational institutions at no cost.</p>
+            <p>Leveraging our expertise in areas like compiler design, integration, microservices, AI, and more, we offer a wide range of programs to educational institutions at no cost.</p>
 
             <p>Some of these programs include:</p>
           </Col>
@@ -61,14 +61,14 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/guest-lectures-and-talks.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Guest lectures and talks</h3>
 
-                    <p className="card-text">Insightful sessions covering microservices, integration, cloud-native development, data-oriented programming, and many more.</p>
+                    <p className="card-text">Sessions covering microservices, integration, cloud-native development, data-oriented programming, and more.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -79,7 +79,7 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/workshops-and-training-sessions.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
@@ -98,14 +98,14 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/hackathons-and-coding-challenges.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Hackathons and coding challenges</h3>
 
-                    <p className="card-text">Exciting coding events to promote teamwork and creativity with prizes sponsored by WSO2.</p>
+                    <p className="card-text">Coding events to promote teamwork and creativity with prizes for participants.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -116,14 +116,14 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/research-collaborations.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Research collaborations</h3>
 
-                    <p className="card-text">Partner for research collaborations to explore innovative technology uses and work on impactful projects.</p>
+                    <p className="card-text">Research collaborations to explore innovative technology and work on impactful projects.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -134,7 +134,7 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/open-source-projects.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
@@ -152,14 +152,14 @@ export default function Outline(props) {
             <Card className={`mb-3`} style={{ width: "100%", justifyContent: "center" }}>
               <Row className="g-0 align-items-center">
                 <Col md={2} className='text-center'>
-                  <Card.Img src={`${prefix}/images/chevron-right.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                  <Card.Img src={`${prefix}/images/industry-projects.svg`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
                 </Col>
                 <Col md={10}>
                   <Card.Body>
 
                     <h3 className="card-title">Industry projects</h3>
 
-                    <p className="card-text">Partner for real-world digital transformation projects to develop skills relevant to industrial practices.</p>
+                    <p className="card-text">Partner for real-world digital transformation projects to develop skills in industry practices.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -173,10 +173,10 @@ export default function Outline(props) {
         <Row style={{ marginTop: "20px" }}>
           <Col sm={12}>
 
-            <p><a className="join" href='https://github.com/ballerina-guides/training-content/blob/main/University-Program/Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Learn more</a></p>
+            <p><a className={styles.learnMore} href='Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Learn more</a></p>
 
             <p>
-              Want to find out more? Then reach out to our team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a>
+              Want to find out more? Reach out to our team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a>
             </p>
 
           </Col>

@@ -4,3 +4,44 @@
     font-weight: 400 !important;
     text-decoration: none;
 }
+
+.sendEmail {
+    padding: 10px 20px;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #fff;
+    margin: 5px 0px;
+    border: none;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.sendEmail:hover {
+    background-color: #464646;
+    color: #fff !important;
+}
+
+.discord {
+    display: inline-block;
+    transition: none !important;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px 10px 60px;
+    text-decoration: none;
+    line-height: 35px;
+    background-image: url('/images/discord-white-small.svg');
+    background-repeat: no-repeat;
+    background-position: left 20px top 16px;
+    width: fit-content;
+}
+
+.discord:hover {
+    background-image: url("/images/discord-white-small.svg");
+    background-color: #57595d;
+    background-repeat: no-repeat;
+    background-position: left 20px top 16px;
+}

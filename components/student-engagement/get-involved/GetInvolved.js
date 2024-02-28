@@ -18,6 +18,9 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
+import Image from 'next-image-export-optimizer';
+
+import { prefix } from '../../../utils/prefix';
 
 import styles from './GetInvolved.module.css';
 
@@ -48,7 +51,24 @@ export default function GetInvolved(props) {
 
                 <Row>
                     <Col sm={12}>
-                        <p>If you would like to explore a collaboration opportunity, please reach out to the team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a></p>
+                        <p>If you're interested in collaborating with us on any of these programs or have ideas beyond what's listed, feel free to contact the team at</p>
+
+                        <p>
+                            <a href="mailto:contact@ballerina.io">
+                                <button type="button" className={styles.sendEmail}>contact@ballerina.io</button>
+                            </a>
+
+                            &nbsp;or&nbsp;
+
+
+
+                            <a href={`https://discord.gg/ballerinalang`}
+                                className={styles.discord}>
+                                Join our Discord server
+                            </a>
+
+
+                        </p>
                     </Col>
                 </Row>
 

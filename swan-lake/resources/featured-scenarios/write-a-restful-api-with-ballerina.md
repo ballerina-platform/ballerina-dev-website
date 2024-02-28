@@ -174,7 +174,7 @@ Create the first resource of the first endpoint to get data using the [Ballerina
 
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
-The generated code for the updated resource method will be as follows.
+The updated resource method will be as follows.
 
 ```ballerina
 service /covid/status on new http:Listener(9000) {

@@ -79,7 +79,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 1. Generate the record type corresponding to the request payload of the REST service by providing `CovidEntry` as the name and the sample JSON payload below.
 
-    >**Note:** You need to update the generated record by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/) and adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table.
+    >**Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
 
     ```json
     {
@@ -197,7 +197,7 @@ Create the second resource of the first endpoint to add new data to the dataset 
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
-Implement the logic of this `POST` resource function with the code below.
+Implement the logic of this `POST` resource method with the code below.
 
 ```ballerina
 resource function post countries(CovidEntry[] covidEntries)
@@ -235,7 +235,7 @@ Similar to how you created the [second resource of the first endpoint](#create-t
 
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 
-Implement the logic of this `GET` resource function with the code below.
+Implement the logic of this `GET` resource method with the code below.
 
 ```ballerina
 resource function get countries/[string iso_code]() returns CovidEntry|IsoCodeNotFound {
@@ -298,10 +298,10 @@ service /covid/status on new http:Listener(9000) {
 type CovidEntry record {|
     readonly string iso_code;
     string country;
-    decimal cases;
-    decimal deaths;
-    decimal recovered;
-    decimal active;
+    int cases;
+    int deaths;
+    int recovered;
+    int active;
 |};
 
 final table<CovidEntry> key(iso_code) covidTable = table [

@@ -135,13 +135,13 @@ The Ballerina test framework supports the following assertions, which help to ve
        </td>
     </tr>
     <tr>
-       <td><code>assertEquals(anydata|error actual, anydata expected, string message)</code></td>
+       <td><code>assertEquals(any|error actual, anydata expected, string message)</code></td>
        <td>
           Asserts that the actual value is equal to the expected value with an optional message.
        </td>
     </tr>
     <tr>
-       <td><code>assertNotEquals(anydata actual, anydata expected, string message)</code></td>
+       <td><code>assertNotEquals(any actual, anydata expected, string message)</code></td>
        <td>
           Asserts that the actual value is not equal to the expected value with an optional message.
        </td>
@@ -322,6 +322,6 @@ function testAssertTuples() {
 [fail] testAssertTuples:
     Assertion Failed!
 
-        expected: '12 John'
-        actual  : '10 John'
+        expected: '[12,"John"]'
+        actual  : '[10,"John"]'
 ```

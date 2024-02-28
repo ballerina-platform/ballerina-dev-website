@@ -2,10 +2,10 @@
     "events": [
         {
             "date": "May 7-9, 2024",
-            "day": "Florida, USA",
+            "day": "",
             "time": "",
             "expire": "2024-05-10T00:00:00.0000-00:00",
-            "location": "",
+            "location": "Florida, USA",
             "url": "https://wso2.com/wso2con/2024/",
             "eventType": "WSO2Con 2024",
             "eventName": "It's Time to Go Platformless!",
@@ -28,6 +28,31 @@
             "presenterTwitter": "https://twitter.com/sameerajayasoma",
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "March 5-7, 2024",
+            "day": "Tue.",
+            "time": "",
+            "expire": "2024-03-08T00:00:00.0000-00:00",
+            "location": "Addis Ababa, Ethiopia",
+            "url": "https://connect.mosip.io/",
+            "eventType": "MOSIP Connect 2024",
+            "eventName": "WebSub as an Enabler: Facilitating Integration",
+            "presenters": [
+                {
+                    "name": "Shafreen Anfar",
+                    "designation": "Associate Director / Architect",
+                    "twitter": "https://twitter.com/shafreen101"
+                },
+                {
+                    "name": "Ayesh Almeida",
+                    "designation": "Associate Technical Lead",
+                    "twitter": "https://twitter.com/Ayesh363"
+                }
+            ],
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

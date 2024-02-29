@@ -287,25 +287,8 @@ a.dropDownItem:focus, a.dropDownItem:hover {
 }
 
 /* ----------Con banner---------------------- */
-/* .EventBanner {
-    z-index: 0!important;
-    display: inline-block;
-    position: absolute;
-    width: 100%;
-    top: 38px!important;
-    text-align: center;
-    padding: 3rem 0 0.6rem;
-    background-color: #0d045c;
-    background-image: url(https://wso2.cachefly.net/wso2/sites/all/2024/wso2con/wso2home-themecon.webp);
-    background-repeat: no-repeat;
-    background-position: center top 1rem;
-    background-size: 110%;
-} */
-
 .conBanner {
-    /* text-align: center; */
     color: #fff;
-    /* background-color: #20b6b0 !important; */
     padding: 10px 0 10px 0;
     font-weight: 400;
     font-size: 20px;

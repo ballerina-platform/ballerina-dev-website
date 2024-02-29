@@ -137,7 +137,7 @@ export default function Boxes(props) {
                           <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
                             GraphQL tool
                           </a>
-                        <p className={styles.description}>Generate GraphQL service skeletons for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
+                        <p className={styles.description}>Generate GraphQL service skeleton for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
                       </div>
                       <div className={styles.content}>
                         <p className={styles.title}>

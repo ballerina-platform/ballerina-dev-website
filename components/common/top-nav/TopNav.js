@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Accordion, Container, Nav, Navbar, NavDropdown, Dropdown, Offcanvas } from 'react-bootstrap';
+import { Accordion, Container, Nav, Navbar, NavDropdown, Dropdown, Offcanvas, Row, Col } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import Search from '../search/Search';
@@ -66,7 +66,7 @@ const TopNav = (props) => {
   const now = new Date();
   let showBanner = false;
 
-  if (now < Date.parse('2023-11-01T00:00:00.0000-00:00')) {
+  if (now < Date.parse('2024-05-10T00:00:00.0000-00:00')) {
     showBanner = true;
   }
 
@@ -75,10 +75,33 @@ const TopNav = (props) => {
     <>
       {
         (showBanner) ?
-          <div className={styles.hackathonBanner}>
+          <>
+
+            <section className={styles.conBanner}>
+              <Container>
+                <Row style={{ alignItems: "center" }}>
+                  <Col sm={12} md={4} lg={4} className={styles.conBannerLogo}>
+                    <a href="https://wso2.com/wso2con/2024/" id="cWSO2ConHomeLogoBtn" target="_blank" aria-label="">
+                      <img src="https://wso2.cachefly.net/wso2/sites/all/wso2con/2024/wso2con2024-white.webp" width="194" height="19" alt="WSO2Con2024 Logo" className="ls-is-cached lazyloaded " loading="lazy" />
+                    </a>
+                  </Col>
+                  <Col sm={12} md={4} lg={4} className={styles.conBannerDate}>
+                    <h3>May 7-9 | Hollywood, FL, USA</h3>
+                  </Col>
+                  <Col sm={12} md={4} lg={4} className={styles.conBannerBtn}>
+                    <a href="https://wso2.com/wso2con/2024/" target="_blank" className={styles.cButtonN_Standard} id="cWSO2ConHomeNotifyBtn" aria-label="Register Now">
+                      Register Now
+                    </a>
+                  </Col>
+                </Row>
+              </Container>
+            </section>
+
+            {/* <div className={styles.hackathonBanner}>
             Ballerina Hacktoberfest is happening now. <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>!
-          </div>
-        : null
+          </div> */}
+          </>
+          : null
       }
       <>
         <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>

@@ -39,6 +39,40 @@
                     "id": "supported-connectors"
                 }
             ]
+        },
+        {
+            "dirName": "FHIR support",
+            "level": 1,
+            "position": 2,
+            "isDir": true,
+            "url": "swan-lake/healthcare/fhir-support",
+            "id": "fhir-support",
+            "subDirectories": [
+                {
+                    "dirName": "FHIR overview",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/healthcare/fhir-support/fhir-overview",
+                    "id": "fhir-overview"
+                },
+                {
+                    "dirName": "FHIR APIs",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/healthcare/fhir-support/fhir-apis",
+                    "id": "fhir-apis"
+                },
+                {
+                    "dirName": "Supported connectors",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/healthcare/fhir-support/supported-connectors",
+                    "id": "supported-connectors"
+                }
+            ]
         }
     ]
 }

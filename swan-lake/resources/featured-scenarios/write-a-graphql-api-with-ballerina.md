@@ -165,32 +165,6 @@ service /covid19 on new graphql:Listener(9000) {
 }
 ```
 
->**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
-root, you can remove the path as follows.
-
-```ballerina
-import ballerina/graphql;
-
-service on new graphql:Listener(9000) {
-
-}
-```
-
->**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object for initializing the `graphql:Listener`, add the code below to the `main.bal` file. 
-
-```ballerina
-import ballerina/graphql;
-import ballerina/http;
-
-listener http:Listener httpListener = check new(9000);
-
-service /covid19 on new graphql:Listener(httpListener) {
-
-}
-```
-
->**Info:** The above is the same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
-
 ## Implement the service methods
 
 As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina. In contrast, the fields of the `Mutation` type are defined by the remote methods in Ballerina.

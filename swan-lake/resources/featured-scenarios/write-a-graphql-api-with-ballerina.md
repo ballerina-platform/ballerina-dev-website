@@ -8,22 +8,20 @@ active: write-a-graphql-api-with-ballerina
 intro: This guide walks you through writing a simple GraphQL service to serve a dummy dataset related to COVID-19.
 ---
 
->**Info:** Due to the batteries included nature of the Ballerina language, there is no need to add any third-party libraries to implement the GraphQL API. The Ballerina library itself is adequate. 
+>**Info:** Due to the batteries-included nature of the Ballerina language, there is no need to add third-party libraries to implement the GraphQL API. The Ballerina package itself is adequate. 
 
 ## Set up the prerequisites
 
 To complete this tutorial, you need:
 
-1. [Ballerina 2201.0.0 (Swan Lake) ](/downloads/) or greater
-2. A text editor
-    >**Tip:** Preferably, <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed.
-3. A command terminal
+1. [Ballerina Swan Lake](/downloads/) or later
+2. <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a> with the  <a href="https://wso2.com/ballerina/vscode/docs/" target="_blank">Ballerina extension</a> installed
 
 ## Design the GraphQL endpoint
 
-Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach) while others do not need the schema to create the service (code-first approach). Ballerina GraphQL package uses the latter. Therefore, you do not need the schema file to create your service, and instead, once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
+Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach), while others do not need the schema to create the service (code-first approach). Ballerina supports both approaches. This guide uses the code-first approach, where you do not need the schema file to create your service. Once you write the Ballerina service, the Ballerina `graphql` package will generate the schema.
 
-The GraphQL endpoint you will create in this guide will have two main operations, `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be used to update the data in the data source.
+The GraphQL endpoint you will create in this guide will have two primary operations, `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be utilized to update the data in the data source.
 
 ### The `Query` type
 The `Query` type has two fields.
@@ -34,46 +32,107 @@ The `Query` type has two fields.
 The `Mutation` type has a single field.
 * The `add` field - This field will add a given entry to the data source.
 
-## Create the service package
 
-Ballerina uses packages to group code. You need to create a Ballerina package, generate the service code in the package, and write the business logic.
+## Create the service package 
 
->**Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code).
+Ballerina uses packages to group code. Follow the steps below to create a Ballerina package and write the business logic. 
 
-In the terminal, execute the command below to create the Ballerina package for the API implementation.
+> **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-```
-$ bal new covid19 -t service
-```
+1. In the Terminal, execute the command below to create the Ballerina package for the API implementation.
 
-You view the output below.
+    ```
+    $ bal new graphql-service
+    ```
 
-```
-Created new package 'covid19' at covid19.
-```
+    You should see the output similar to the following.
 
-This creates a directory named `covid19` with the default module along with a sample code for the service as shown below.
+    ```
+    package name is derived as 'graphql_service'. Edit the Ballerina.toml to change it.
 
-```
-.
-├── covid19
-│   ├── tests
-│   │   └── service_test.bal
-│   ├── Ballerina.toml
-│   └── service.bal
-```
+    Created new package 'graphql_service' at /Users/graphql-service.
+    ```
+
+    This creates a directory named `graphql-service` with sample Ballerina code, as shown below. 
+
+    ```
+    graphql-service
+    │   ├── Ballerina.toml
+    │   └── main.bal
+    ```
+
+    - `Ballerina.toml` is the file that makes the folder a Ballerina package.
+    - `main.bal` file provides the look and feel of a simple Ballerina program.
+
+2. Open the created package in VS Code.
+
+3. Remove the generated content in the `main.bal` file and open the diagram view in VS Code.
+
+    ![Open diagram view](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/open-diagram-view.gif)
 
 ## Create the data source 
 
-Before writing the GraphQL service, let's create a data source for the project. This will mimic a database that stores the data for the service using an in-memory table in Ballerina as the data source.
+Before writing the GraphQL service, let's create a data source for the project. This data source will mimic a database that stores the data for the service using an in-memory table in Ballerina as the data source.
 
-### Define the types for the data source
+### Define the types of the data source
 
-To define the data type to use in the table, replace the `service.bal` file with the code below. 
+Follow the steps below to add the definitions of the data types and the declaration of the table.
 
+1. Generate the record type corresponding to the table entry providing the record name as `CovidEntry` and the sample JSON object below.
+
+    >**Tip:** You need to complete the generated record by adding the pipe signs to mark the record as a closed one, adding the `readonly` descriptor to the `isoCode` field to make it non-modifiable as it is the key of the table, and marking the values of the `cases`, `deaths`, `recovered`, and `active` variables as optional.
+
+    ```json
+    {
+        "isoCode": "AFG",
+        "country": "Afghanistan",
+        "cases": 159.303,
+        "deaths": 7.386,
+        "recovered": 146.084,
+        "active": 5.833
+    }
+    ```
+    ![Create data record](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-record.gif)
+    
+    The generated record will be as follows.
+
+    ```ballerina
+    type CovidEntry record {|
+        readonly string isoCode;
+        string country;
+        decimal cases?;
+        decimal deaths?;
+        decimal recovered?;
+        decimal active?;
+    |};
+    ```
+
+    In this code:
+    - The record type `CovidEntry` is defined.
+    - A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
+
+### Add data to the data source
+
+Follow the steps below to define the data [table](/learn/by-example/table).
+
+1. Create the table, as shown below.
+
+    >**Tip:** Enter `CovidEntry` as the table type, `isoCode` as the key, and `covidEntriesTable` as the variable type when creating the table.
+
+   ![Create data table](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-data-table.gif)
+
+2. Replace the `{key: value}` placeholder of the generated table with the following entries to add the initial data to the table.
+
+    ```
+    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
+    ```
+
+The generated record and the table will be as follows.
 
 ```ballerina
-public type CovidEntry record {|
+type CovidEntry record {|
     readonly string isoCode;
     string country;
     decimal cases?;
@@ -81,44 +140,164 @@ public type CovidEntry record {|
     decimal recovered?;
     decimal active?;
 |};
-```
 
-In this code:
-- The record type `CovidEntry` is defined.
-- A single entry will include the ISO code for the location (`isoCode`), name of the country (`country`), number of cases (`cases`), number of deaths (`deaths`), number of recovered cases (`recovered`), and the number of active cases (`active`).
-
-### Add data to the data source
-
-To define the data table, add the code below to the `service.bal` file. 
-
-```ballerina
 table<CovidEntry> key(isoCode) covidEntriesTable = table [
-    {isoCode: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {isoCode: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {isoCode: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
 ];
 ```
 
-## Create the object types
+## Create the service
 
-Since the data used in this guide map to a GraphQL Object, you first have to define this object type. In Ballerina, a GraphQL output object can be defined using either a service type or a record type.
+Create the service, as shown below.
 
-> **Note:** Since the GraphQL spec does not allow using an input object as an output object, the same record type cannot be used as the input type of a method and the output type of a method.
+>**Tip:** Select `service on graphql:Listener` and use `/covid19` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
 
-To add the definition of the `CovidData` object type, add the code below to the `service.bal` file.
+![Create the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-service.gif)
+
+The generated REST service will be as follows.
 
 ```ballerina
-public distinct service class CovidData {
+import ballerina/graphql;
+
+service /covid19 on new graphql:Listener(9000) {
+}
+```
+
+## Implement the service methods
+
+As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina. In contrast, the fields of the `Mutation` type are defined by the remote methods in Ballerina.
+
+### Create `Query` type service methods
+
+Create the `Query` type service methods as follows.
+
+#### Create the `all` field resource function
+
+Follow the steps below to create the `all` field, which returns an array of `CovidData` type, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+1. Create the resource function, as shown below.
+
+    ![Create first query](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-first-query.gif)
+
+    >**Info:** This creates the [service class to define the GraphQL object types](#create-the-object-types) also when creating this resource function.
+
+2. Replace the body of the resource function with the code below.
+
+    ```ballerina
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
+    ```
+
+The generated resource function will be as follows.
+
+```ballerina
+resource function get all() returns CovidData[] {
+    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
+    return covidEntries.map(entry => new CovidData(entry));
+}
+```
+
+> **Note:** A Ballerina GraphQL resource or remote method can also return a `table`. When a method returns a `table`, the corresponding GraphQL field type is a `LIST` type.
+
+In this code:
+- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the `Query` type. 
+- Then comes the name of the field. The return type is the type of the field.
+- The above resource method first retrieves the array of `CovidEntry` records from the data source as an array and then returns an array of `CovidData` service type array as the result using the built-in `map` function.
+
+#### Create the `filter` field resource function
+
+Similar to how you [created the `all` field resource function](#create-the-all-field-resource-function), create the `filter` field, which is another resource function with an input `isoCode` to filter the data, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+```ballerina
+resource function get filter(string isoCode) returns CovidData? {
+    CovidEntry? covidEntry = covidEntriesTable[isoCode];
+    if covidEntry is CovidEntry {
+        return new (covidEntry);
+    }
+    return;
+}
+```
+
+In this code:
+- The `filter` field is defined in the root `Query` type. Since this field has an input parameter named `isoCode`, you have to add an input parameter to the resource method. 
+- This method returns the corresponding data for the given `isoCode` if such data is available in the data set and returns `null` otherwise.
+
+### Create `Mutation` type 
+
+Create the `Mutation` type service methods as follows.
+
+#### Create the `add` field remote method
+
+As the `Query` type is completed, follow the steps below to define the `Mutation` type using remote methods.
+
+1. Define the `add` field, which returns an array of `CovidData` type to add an entry to the data source, using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/) in VS Code, as shown below.
+
+    ![Create the mutation](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/create-the-mutation.gif)
+
+2. Replace the body of the resource function with the code below.
+
+    ```ballerina
+    covidEntriesTable.add(entry);
+    return new CovidData(entry);
+    ```
+
+The generated resource function will be as follows.
+
+```ballerina
+remote function add(CovidEntry entry) returns CovidData {
+    covidEntriesTable.add(entry);
+    return new CovidData(entry);
+}
+```
+
+In this code:
+- This method requires a `CovidEntry` record as the input. 
+- When a remote or resource method has a record type as an input, it will be mapped to a GraphQL input object type. Therefore, this cannot be used as an output type.
+
+## Create the object types
+
+Since the data used in this guide map to a GraphQL Object, you have to define this object type. In Ballerina, a GraphQL output object can be defined using either a service or record type.
+
+> **Note:** Since the GraphQL spec does not allow using an input object as an output object, the same record type cannot be used as the input and output types of a method.
+
+Follow the steps below to update the body of the service class, which you created when [creating the first `Query` type](#create-the-all-field-resource-function) to add the definition of the `CovidData` object type.
+
+1. Add the `distinct` descriptor to the created service class, and add the code below to the body of the service class by editing the source to define the initial record and function.
+
+    ```ballerina
     private final readonly & CovidEntry entryRecord;
 
     function init(CovidEntry entryRecord) {
         self.entryRecord = entryRecord.cloneReadOnly();
     }
+    ```
 
-    resource function get isoCode() returns string {
-        return self.entryRecord.isoCode;
+3. Click the **Visualize** CodeLens and create a resource function inside the service class using the [Ballerina GraphQL API Designer](/learn/vs-code-extension/design-the-services/graphql-api-designer/), and design the body of the created resource function using the **Statement Editor**, as shown below.
+
+    >**Tip:** Enter `isoCode` as the field, `string` as the return type, and `self.entryRecord.isoCode` as the return value of the resource function.
+
+    ![Define object type](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/define-object-type.gif)
+
+    The generated resource function will be as follows.
+
+    ```ballerina
+    distinct service class CovidData {
+        private final readonly & CovidEntry entryRecord;
+        function init(CovidEntry entryRecord) {
+            self.entryRecord = entryRecord.cloneReadOnly();
+        }
+
+        resource function get isoCode() returns string {
+            return self.entryRecord.isoCode;
+        }
     }
+    ```
 
+5. Add the code below to the body of the service class to complete it. 
+
+    ```ballerina
     resource function get country() returns string {
         return self.entryRecord.country;
     }
@@ -150,8 +329,7 @@ public distinct service class CovidData {
         }
         return;
     }
-}
-```
+    ```
 
 In this code:
 - The endpoint returns the number of cases in thousands. Therefore, a service type is used to define the output object type, and inside the service type, each resource method will return the original value
@@ -160,109 +338,8 @@ divided by `1000`.
 the data set. 
 - Each resource method in this service represents a field of the GraphQL object type.  The return type of
 the resource method is the type of the field.
-- The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields
-cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (In GraphQL, these are
-represented by the exclamation mark `!`. E.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
-- The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL schema, which will be generated by the Ballerina GraphQL package.
-
-## Create the service
-
-Now, you are all set to write the GraphQL service. To write the service, add the code below to the `service.bal` file.
-
-```ballerina
-import ballerina/graphql;
-
-service /covid19 on new graphql:Listener(9000) {
-
-}
-```
-
->**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
-root, you can remove the path as the follows:
-
-```ballerina
-import ballerina/graphql;
-
-service on new graphql:Listener(9000) {
-
-}
-```
-
->**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file. 
-
-```ballerina
-import ballerina/graphql;
-import ballerina/http;
-
-listener http:Listener httpListener = check new(9000);
-
-service /covid19 on new graphql:Listener(httpListener) {
-
-}
-```
-
->**Info:** The above is as same as the first code snippet above, which will listen on the port `9000` and serve on `/covid19`.
-
-### Implement the service methods
-
-As per the design, there are two fields in the `Query` type and one field in the `Mutation` type in your GraphQL service. The fields of the `Query` type are represented by the resource methods with the `get` accessor in Ballerina, while the fields of the `Mutation` type are represented by the remote methods in Ballerina.
-
-#### Create `Query` type 
-
-##### Create the `all` field resource method
-
-To create the `all` field, which returns an array of `CovidData` type, add the code below to the `service.bal` file.
-
-```ballerina
-resource function get all() returns CovidData[] {
-    CovidEntry[] covidEntries = covidEntriesTable.toArray().cloneReadOnly();
-    return covidEntries.map(entry => new CovidData(entry));
-}
-```
-
-> **Note:** A Ballerina GraphQL resource or remote method can return a `table` as well. When a method is returning a `table`, the corresponding GraphQL field type is a `LIST` type.
-
-In this code:
-- The resource method definition has the accessor `get`, which is used to identify the resource methods as a field of the `Query` type. 
-- Then comes the name of the field. The return type is the type of the field.
-- The above resource method first retrieves the array of `CovidEntry` records from the data source as an array, and then, returns an array of `CovidData` service type array as the result using the built-in `map` function.
-
-##### Create the `filter` field resource method
-
-To add the `filter` field, which is another resource method with an input `isoCode` to filter the data, add the code below to the `service.bal` file.
-
-```ballerina
-resource function get filter(string isoCode) returns CovidData? {
-    CovidEntry? covidEntry = covidEntriesTable[isoCode];
-    if covidEntry is CovidEntry {
-        return new (covidEntry);
-    }
-    return;
-}
-```
-
-In this code:
-- The `filter` field is defined in the root `Query` type. Since this field has an input parameter `isoCode`, you have to add an input parameter to the resource method. 
-- This method returns the corresponding data for the given `isoCode` if such data is available in the data set, and it returns `null` otherwise.
-
-#### Create `Mutation` type 
-
-##### Create the `add` field remote method
-
-As the `Query` type is completed now, define the `Mutation` type using remote methods.
-
-To define a remote method to add an entry to the data source, add the code below to the `service.bal` file.
-
-```ballerina
-remote function add(CovidEntry entry) returns CovidData {
-    covidEntriesTable.add(entry);
-    return new CovidData(entry);
-}
-```
-
-In this code:
-- This method requires a `CovidEntry` record as the input. 
-- When a remote or resource method has a record type as an input, it will be mapped to a GraphQL input object type. Therefore, this cannot be used as an output type.
+- The resource methods returning `isoCode` and the `country` have the return type `string`, which means these fields cannot be `null` in the GraphQL response. In other words, these fields have `NON_NULL` types. (GraphQL represents these by the exclamation mark `!` (e.g., `String!`). However, the resource methods returning numbers can return `null` values. Therefore, the type of fields represented by those resource methods is nullable.
+- The `decimal` type is used as a return type. This will add a `Scalar` type named `Decimal` to the GraphQL schema, which the Ballerina GraphQL package will generate.
 
 ## The complete code
 
@@ -271,7 +348,7 @@ Below is the complete code for the Ballerina GraphQL service.
 ```ballerina
 import ballerina/graphql;
 
-public type CovidEntry record {|
+type CovidEntry record {|
     readonly string isoCode;
     string country;
     decimal cases?;
@@ -281,12 +358,12 @@ public type CovidEntry record {|
 |};
 
 table<CovidEntry> key(isoCode) covidEntriesTable = table [
-    {isoCode: "AFG", country: "Afghanistan", cases: 159303, deaths: 7386, recovered: 146084, active: 5833},
-    {isoCode: "SL", country: "Sri Lanka", cases: 598536, deaths: 15243, recovered: 568637, active: 14656},
-    {isoCode: "US", country: "USA", cases: 69808350, deaths: 880976, recovered: 43892277, active: 25035097}
+    {isoCode: "AFG", country: "Afghanistan", cases: 159.303, deaths: 7.386, recovered: 146.084, active: 5.833},
+    {isoCode: "SL", country: "Sri Lanka", cases: 598.536, deaths: 15.243, recovered: 568.637, active: 14.656},
+    {isoCode: "US", country: "USA", cases: 69808.350, deaths: 880.976, recovered: 43892.277, active: 25035.097}
 ];
 
-public distinct service class CovidData {
+distinct service class CovidData {
     private final readonly & CovidEntry entryRecord;
 
     function init(CovidEntry entryRecord) {
@@ -353,35 +430,27 @@ service /covid19 on new graphql:Listener(9000) {
 
 ## Run the service
 
- Execute the command below to run this service to serve a GraphQL API to the data source.
+Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Code extension to build and run the service, as shown below.
 
-```
-$ bal run
-```
+![Run the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/run-the-service.gif)
 
-You view the output below.
+>**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `graphql-service` directory) and executing the `bal run` command. The console should have warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
 
->**Info:** The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+You should see the output similar to the following in the Terminal.
 
 ```
 Compiling source
-	user/graphql:0.1.0
-WARNING [service.bal:(25:5,25:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(29:5,29:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(33:5,33:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(40:5,40:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(47:5,47:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(54:5,54:5)] concurrent calls will not be made to this method since the service and the method are not 'isolated'
-WARNING [service.bal:(63:5,63:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [service.bal:(68:5,68:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
-WARNING [service.bal:(76:5,76:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+        featured_scenarios/graphql_service:0.1.0
+HINT [main.bal:(41:5,41:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(46:5,46:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
+HINT [main.bal:(54:5,54:5)] concurrent calls will not be made to this method since the method is not an 'isolated' method
 
 Running executable
 ```
 
 ## View the generated schema
 
-If you connect to this service using any GraphQL client tools, it will show the schema below.
+The schema below will be shown if you connect to this service using any [GraphQL client tools](/learn/graphql-tool/).
 
 ```graphql
 type CovidData {
@@ -402,7 +471,7 @@ input CovidEntry {
     deaths: Decimal
 }
 
-Scalar Decimal
+scalar Decimal
 
 type Query {
     all: [CovidData!]!
@@ -416,19 +485,27 @@ type Mutation {
 
 ## Try the service
 
->**Info:** To access the endpoint, use cURL or a GraphQL client such as [GraphiQL](https://github.com/graphql/graphiql).
+Execute the query below using the [**Try it**](/learn/vs-code-extension/try-the-services/try-graphql-services/) CodeLens of the VS Code extension to send a request to the service to try out the use case, as shown below.
 
-Execute the cURL command below to retrieve all the data from the endpoint.
+>**Tip:** In the **Explorer**, select `active`, `cases`, and `country` values under `all` to execute the query below.
 
 ```
-$ curl -X POST -H "Content-type: application/json" -H "scope: unknown" -d "{ \"query\": \"query { all { country cases active} }\" }" http://localhost:9000/covid19
+{
+  all {
+    active
+    cases
+    country
+  }
+}
 ```
 
 In this request:
 - An HTTP POST request is sent to the GraphQL endpoint. 
 - The request body contains the GraphQL query.
 
-You view the JSON below as the result of this request.
+![Try the service](/learn/images/featured-scenarios/write-a-graphql-api-with-ballerina/try-the-service.gif)
+
+You should see the JSON below as the result of this request.
 
 ```JSON
 {

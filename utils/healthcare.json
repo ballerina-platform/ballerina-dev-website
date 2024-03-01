@@ -1,0 +1,44 @@
+{
+    "dirName": "swan lake",
+    "level": 0,
+    "position": 0,
+    "isDir": true,
+    "url": "",
+    "id": "swan-lake",
+    "subDirectories": [
+        {
+            "dirName": "Solution overview",
+            "level": 1,
+            "position": 2,
+            "isDir": true,
+            "url": "swan-lake/healthcare/solution-overview",
+            "id": "solution-overview",
+            "subDirectories": [
+                {
+                    "dirName": "Introduction",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/healthcare/solution-overview/introduction",
+                    "id": "introduction"
+                },
+                {
+                    "dirName": "Supported protocols",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": false,
+                    "url": "/learn/healthcare/solution-overview/supported-protocols",
+                    "id": "supported-protocols"
+                },
+                {
+                    "dirName": "Supported connectors",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/healthcare/solution-overview/supported-connectors",
+                    "id": "supported-connectors"
+                }
+            ]
+        }
+    ]
+}

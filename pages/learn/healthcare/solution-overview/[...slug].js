@@ -28,7 +28,7 @@ import Layout from "../../../../layouts/LayoutDocs";
 import LeftNav from "../../../../components/common/left-nav/LeftNav";
 import MainContent from "../../../../components/common/main-content/MainContent";
 import { prefix } from "../../../../utils/prefix";
-import LearnToc from "../../../../utils/vs-code-ext.json";
+import LearnToc from "../../../../utils/healthcare.json";
 import Toc from "../../../../components/common/pg-toc/Toc";
 import { highlight } from "../../../../utils/highlighter";
 
@@ -55,7 +55,7 @@ var traverseFolder = function (dir) {
       results = results.concat(traverseFolder(filex));
     } else {
       /* Is a file */
-      filex = filex.replace(/swan-lake\/vs-code-extension\/debug-the-code\//g, "");
+      filex = filex.replace(/swan-lake\/healthcare\/solution-overview\//g, "");
       results.push(filex);
     }
   });
@@ -64,7 +64,7 @@ var traverseFolder = function (dir) {
 
 export async function getStaticPaths() {
   // Retrieve all our slugs
-  const files = traverseFolder("swan-lake/vs-code-extension/debug-the-code");
+  const files = traverseFolder("swan-lake/healthcare/solution-overview");
   const paths = files.map((fileName) => ({
     params: {
       slug: fileName.replace(".md", "").split("/"),
@@ -91,7 +91,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   slug = slug.join("/");
   const fileName = fs.readFileSync(
-    `swan-lake/vs-code-extension/debug-the-code/${slug}.md`,
+    `swan-lake/healthcare/solution-overview/${slug}.md`,
     "utf-8"
   );
   const { data: frontmatter, content } = matter(fileName);
@@ -186,7 +186,7 @@ export default function PostPage({
       </Head>
       <Layout>
         <Col sm={3} xxl={2} className="leftNav d-none d-sm-block">
-        <Link href="/learn/vs-code-extension/" passHref>
+        <Link href="/learn/healthcare/" passHref>
                       <div className="backToLanding">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -211,7 +211,7 @@ export default function PostPage({
           <LeftNav
             launcher="vs-code"
             id={id}
-            mainDir="debug-the-code"
+            mainDir="solution-overview"
             sub={sub}
             third={third}
             Toc={LearnToc}
@@ -224,7 +224,7 @@ export default function PostPage({
           <Offcanvas show={show} onHide={handleClose}>
             <Offcanvas.Header closeButton></Offcanvas.Header>
             <Offcanvas.Body>
-            <Link href="/learn/vs-code-extension/" passHref>
+            <Link href="/learn/healthcare/" passHref>
                       <div className="backToLanding">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +249,7 @@ export default function PostPage({
               <LeftNav
                 launcher="vs-code"
                 id={id}
-                mainDir="debug-the-code"
+                mainDir="solution-overview"
                 sub={sub}
                 third={third}
                 Toc={LearnToc}
@@ -265,7 +265,7 @@ export default function PostPage({
               </Col>
               <Col xs={1} className="gitIcon">
                 <a
-                  href={`${process.env.gitHubPath}swan-lake/vs-code-extension/debug-the-code/${slug}.md`}
+                  href={`${process.env.gitHubPath}swan-lake/healthcare/solution-overview/${slug}.md`}
                   target="_blank"
                   rel="noreferrer"
                   title="Edit in GitHub"

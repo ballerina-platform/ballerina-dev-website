@@ -1,0 +1,1 @@
+{"pageProps":{"frontmatter":{},"content":"<div class=\"release_notes\">\n<h1>Overview to Ballerina 0.980.1</h1>\n<p>This release has fixed the issue caused when executing service tests in a project created using ballerina init.</p>\n</div>","id":"0.980.1"},"__N_SSG":true}

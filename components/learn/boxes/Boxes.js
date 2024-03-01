@@ -230,6 +230,13 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Features of the Ballerina Visual Studio Code extension.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a target='_blank' rel="noreferrer" href={`${prefix}/learn/healthcare/`} className={styles.titleLink}>
+                          Open Healthcare Solution</a>
+                        </p>
+                        <p className={styles.description}>Features of the Open Healthcare Solution.</p>
+                      </div>
                     </div>
                   </div>
                 </div>

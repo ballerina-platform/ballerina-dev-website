@@ -8,7 +8,7 @@
 .sendEmail {
     padding: 10px 20px;
     display: inline-block;
-    width: auto;
+    width: 100%;
     text-align: center;
     background-color: #20b6b0;
     color: #fff;
@@ -30,18 +30,18 @@
     font-weight: 400;
     background-color: #20b6b0;
     color: #ffffff !important;
-    padding: 10px 20px 10px 60px;
+    padding: 10px 20px 10px 90px;
     text-decoration: none;
     line-height: 35px;
     background-image: url('/images/discord-white-small.svg');
     background-repeat: no-repeat;
-    background-position: left 20px top 16px;
-    width: fit-content;
+    background-position: left 40px top 16px;
+    width: 100%;
 }
 
 .discord:hover {
     background-image: url("/images/discord-white-small.svg");
     background-color: #57595d;
     background-repeat: no-repeat;
-    background-position: left 20px top 16px;
+    background-position: left 40px top 16px;
 }

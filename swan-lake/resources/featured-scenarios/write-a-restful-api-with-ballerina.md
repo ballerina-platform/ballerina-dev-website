@@ -34,7 +34,7 @@ The first endpoint is about getting data from the service and adding data to the
 
 The second endpoint is about getting data filtered from the service. The data is filtered by the ISO code. Therefore, the second endpoint accepts the ISO code as part of the URL and responds with the `200 OK` status code. The relevant error response is sent back to the client in the event of an error.
 
->**Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
+> **Info:** For the complete source code of this implementation, see [The complete code](/learn/write-a-restful-api-with-ballerina/#the-complete-code).
 
 ## Create the package 
 
@@ -79,7 +79,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 1. Generate the record type corresponding to the request payload of the REST service by providing `CovidEntry` as the name and the sample JSON payload below.
 
-    >**Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
+    > **Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
 
     ```json
     {
@@ -109,7 +109,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 2. Create the table, as shown below.
 
-    >**Note:** Select the `final` modifier, change the variable type to `Table with Key-Fields` expression, select `CovidEntry` as the row type corresponding to the type of the members of the table, enter `iso_code` as the key, enter `covidTable` as the variable name, and select the `table` expression as the value of the table, when creating the table.
+    > **Note:** Select the `final` modifier, change the variable type to `Table with Key-Fields` expression, select `CovidEntry` as the row type corresponding to the type of the members of the table, enter `iso_code` as the key, enter `covidTable` as the variable name, and select the `table` expression as the value of the table, when creating the table.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 
@@ -144,7 +144,7 @@ final table<CovidEntry> key(iso_code) covidTable = table [
 
 Define the Ballerina service within which the resources will be defined. Create the service using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/) in VS Code, as shown below.
 
->**Note:** Use `/covid/status` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
+> **Note:** Use `/covid/status` as the service path (or the context) of the service, which is attached to the listener listening on port `9000`.
 
 ![Create the REST service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-rest-service.gif)
 
@@ -170,7 +170,7 @@ The first endpoint has two resources: one to retrieve data and the other to add 
 
 Create the first resource of the first endpoint to get data using the [Ballerina HTTP API Designer](/learn/vs-code-extension/design-the-services/http-api-designer/#add-resources-to-the-service) in VS Code, as shown below.
 
->**Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]` as the response type and introduce the logic to return the data in the table.
+> **Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries`. Use `CovidEntry[]` as the response type and introduce the logic to return the data in the table.
 
 ![Create GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-get-resource.gif)
 
@@ -193,7 +193,7 @@ In this code:
 
 Create the second resource of the first endpoint to add new data to the dataset by ISO code, using the Ballerina HTTP API Designer in VS Code, as shown below.
 
->**Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`, create a `201 Created` response with the `CovidEntry[]` as the body type, and also create a `409 Conflict` response with `string` as the body type by generating a `IsoCodeConflict` record type of the `http:Conflict` status code response.
+> **Note:** Define an HTTP resource that allows the `POST` operation on the resource path `countries` and accepts a `CovidEntry[]` type payload named `covidEntries`, create a `201 Created` response with the `CovidEntry[]` as the body type, and also create a `409 Conflict` response with `string` as the body type by generating a `IsoCodeConflict` record type of the `http:Conflict` status code response.
 
 ![Create POST resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-post-resource.gif)
 
@@ -231,7 +231,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
->**Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter, create a `200 OK` response with the `CovidEntry` as the body type, and also create a `404 Not Found` response with `string` as the body type by generating a `IsoCodeNotFound` record type of the `http:NotFound` status code response.
+> **Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter, create a `200 OK` response with the `CovidEntry` as the body type, and also create a `404 Not Found` response with `string` as the body type by generating a `IsoCodeNotFound` record type of the `http:NotFound` status code response.
 
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 
@@ -257,7 +257,7 @@ In this code:
 
 Below is the complete code of the service implementation.
 
->**Info:** It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. You can also try [generating an OpenAPI specification for the written service](/learn/openapi-tool/) by executing the `bal openapi -i main.bal` command, which creates a `yaml` file in the current folder.
+> **Info:** It is always a good practice to document your interfaces. However, this example has omitted documentation for brevity. Nevertheless, any production-ready API interface must include API documentation. You can also try [generating an OpenAPI specification for the written service](/learn/openapi-tool/) by executing the `bal openapi -i main.bal` command, which creates a `yaml` file in the current folder.
 
 ```ballerina
 import ballerina/http;
@@ -327,7 +327,7 @@ Use the [**Run**](/learn/vs-code-extension/run-a-program/) CodeLens of the VS Co
 
 ![Run the service](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/run-the-service.gif)
 
->**Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `restful-service` directory) and executing the `bal run` command. The console would have warning logs related to the resource methods not being called concurrently. They are due to the built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
+> **Info:** Alternatively, you can run this service by navigating to the project root (i.e., the `restful-service` directory) and executing the `bal run` command. The console would have warning logs related to the resource methods not being called concurrently. They are due to the built-in [service concurrency safety](https://ballerina.io/learn/by-example/#concurrency-safety) feature of Ballerina.
 
 You should see an output similar to the following.
 

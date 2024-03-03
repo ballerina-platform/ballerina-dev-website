@@ -52,19 +52,24 @@ export default function GetInvolved(props) {
                 <Row>
                     <Col sm={12}>
                         <p>If you&apos;re interested in collaborating with us on any of these programs or have ideas beyond what&apos;s listed, feel free to contact the team.</p>
+                    </Col>
+                </Row>
 
-                        <p>
-                            <a href="mailto:contact@ballerina.io">
-                                <button type="button" className={styles.sendEmail}>contact@ballerina.io</button>
-                            </a>
-&nbsp;&nbsp;
-                            <a href={`https://discord.gg/ballerinalang`}
-                                className={styles.discord}>
-                                Join our Discord server
-                            </a>
+                <Row style={{ alignItems: "center" }}>
+                    <Col sm={12} md={6} lg={3}>
+                        <a href="mailto:contact@ballerina.io">
+                            <button type="button" className={styles.sendEmail}>contact@ballerina.io</button>
+                        </a>
 
+                    </Col>
 
-                        </p>
+                    <Col sm={12} md={6} lg={3}>
+
+                        <a href={`https://discord.gg/ballerinalang`}
+                            className={styles.discord}>
+                            Join our Discord server
+                        </a>
+
                     </Col>
                 </Row>
 

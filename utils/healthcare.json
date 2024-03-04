@@ -9,14 +9,14 @@
         {
             "dirName": "Solution overview",
             "level": 1,
-            "position": 2,
+            "position": 1,
             "isDir": true,
             "url": "swan-lake/healthcare/solution-overview",
             "id": "solution-overview",
             "subDirectories": [
                 {
                     "dirName": "Introduction",
-                    "level": 2,
+                    "level": 1,
                     "position": 1,
                     "isDir": false,
                     "url": "/learn/healthcare/solution-overview/introduction",
@@ -24,7 +24,7 @@
                 },
                 {
                     "dirName": "Supported protocols",
-                    "level": 2,
+                    "level": 1,
                     "position": 2,
                     "isDir": false,
                     "url": "/learn/healthcare/solution-overview/supported-protocols",
@@ -32,7 +32,7 @@
                 },
                 {
                     "dirName": "Supported connectors",
-                    "level": 2,
+                    "level": 1,
                     "position": 3,
                     "isDir": false,
                     "url": "/learn/healthcare/solution-overview/supported-connectors",
@@ -60,19 +60,302 @@
                     "dirName": "FHIR APIs",
                     "level": 2,
                     "position": 2,
-                    "isDir": false,
+                    "isDir": true,
                     "url": "/learn/healthcare/fhir-support/fhir-apis",
-                    "id": "fhir-apis"
+                    "id": "fhir-apis",
+                    "subDirectories": [
+                        {
+                            "dirName": "Resource APIs",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/fhir-support/fhir-apis/resource-apis",
+                            "id": "resource-apis"
+                        },
+                        {
+                            "dirName": "System APIs",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/fhir-support/fhir-apis/system-apis",
+                            "id": "system-apis"
+                        }
+                    ]
                 },
                 {
-                    "dirName": "Supported connectors",
+                    "dirName": "FHIR packages",
                     "level": 2,
                     "position": 3,
                     "isDir": false,
-                    "url": "/learn/healthcare/fhir-support/supported-connectors",
-                    "id": "supported-connectors"
+                    "url": "/learn/healthcare/fhir-support/fhir-packages",
+                    "id": "fhir-packages"
+                },
+                {
+                    "dirName": "FHIR utilities",
+                    "level": 2,
+                    "position": 4,
+                    "isDir": true,
+                    "url": "/learn/healthcare/fhir-support/fhir-utilities",
+                    "id": "fhir-utilities",
+                    "subDirectories": [
+                        {
+                            "dirName": "FHIR parser",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/fhir-support/fhir-utilities/fhir-parser",
+                            "id": "fhir-parser"
+                        },
+                        {
+                            "dirName": "FHIR validator",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/fhir-support/fhir-utilities/fhir-validator",
+                            "id": "fhir-validator"
+                        },
+                        {
+                            "dirName": "FHIR path evaluator",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/healthcare/fhir-support/fhir-utilities/fhir-path-evaluator",
+                            "id": "fhir-path-evaluator"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "FHIR data transformations",
+                    "level": 2,
+                    "position": 5,
+                    "isDir": false,
+                    "url": "/learn/healthcare/fhir-support/fhir-data-transformations",
+                    "id": "fhir-data-transformations"
+                },
+                {
+                    "dirName": "FHIR connectors",
+                    "level": 2,
+                    "position": 6,
+                    "isDir": false,
+                    "url": "/learn/healthcare/fhir-support/fhir-connectors",
+                    "id": "fhir-connectors"
                 }
             ]
+        },
+        {
+            "dirName": "HL7v2 support",
+            "level": 1,
+            "position": 3,
+            "isDir": true,
+            "url": "swan-lake/healthcare/hl7v2-support",
+            "id": "hl7v2-support",
+            "subDirectories": [
+                {
+                    "dirName": "HL7v2 overview",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": false,
+                    "url": "/learn/healthcare/hl7v2-support/hl7v2-overview",
+                    "id": "hl7v2-overview"
+                },
+                {
+                    "dirName": "HL7v2 packages",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": true,
+                    "url": "/learn/healthcare/hl7v2-support/hl7v2-packages",
+                    "id": "hl7v2-packages",
+                    "subDirectories": [
+                        {
+                            "dirName": "HL7v2 parser",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/hl7v2-support/hl7v2-packages/hl7v2-parser",
+                            "id": "hl7v2-parser"
+                        },
+                        {
+                            "dirName": "HL7v2 server",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/hl7v2-support/hl7v2-packages/hl7v2-server",
+                            "id": "hl7v2-server"
+                        },
+                        {
+                            "dirName": "HL7v2 client",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/healthcare/hl7v2-support/hl7v2-packages/hl7v2-client",
+                            "id": "hl7v2-client"
+                        },
+                        {
+                            "dirName": "HL7v2 message types",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/healthcare/hl7v2-support/hl7v2-packages/hl7v2-message-types",
+                            "id": "hl7v2-message-types"
+                        },
+                        {
+                            "dirName": "HL7v2 encoder",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/healthcare/hl7v2-support/hl7v2-packages/hl7v2-encoder",
+                            "id": "hl7v2-encoder"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "HL7v2 data transformations",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": false,
+                    "url": "/learn/healthcare/hl7v2-support/hl7v2-data-transformations",
+                    "id": "hl7v2-data-transformations"
+                }
+            ]
+        },
+        {
+            "dirName": "Pre-built services",
+            "level": 1,
+            "position": 4,
+            "isDir": true,
+            "url": "swan-lake/healthcare/pre-built-services",
+            "id": "pre-built-services",
+            "subDirectories": [
+                {
+                    "dirName": "Data transformations",
+                    "level": 2,
+                    "position": 1,
+                    "isDir": true,
+                    "url": "/learn/healthcare/pre-built-services/data-transformations",
+                    "id": "data-transformations",
+                    "subDirectories": [
+                        {
+                            "dirName": "Hl7v2 to FHIR",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/data-transformations/hl7v2-to-fhir",
+                            "id": "hl7v2-to-fhir"
+                        },
+                        {
+                            "dirName": "C-CDA to FHIR",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/data-transformations/ccda-to-fhir",
+                            "id": "ccda-to-fhir"
+                        }
+                    ]
+            
+                },
+                {
+                    "dirName": "System APIs",
+                    "level": 2,
+                    "position": 2,
+                    "isDir": true,
+                    "url": "/learn/healthcare/pre-built-services/system-apis",
+                    "id": "system-apis",
+                    "subDirectories": [
+                        {
+                            "dirName": "Conformance",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/system-apis/conformance",
+                            "id": "conformance"
+                        },
+                        {
+                            "dirName": "Audit service",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/system-apis/audit-service",
+                            "id": "audit-service"
+                        },
+                        {
+                            "dirName": "Auth service",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/system-apis/auth-service",
+                            "id": "auth-service"
+                        },
+                        {
+                            "dirName": "FHIR path service",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/system-apis/fhir-path-service",
+                            "id": "fhir-path-service"
+                        }
+                    ]
+                },
+                {
+                    "dirName": "EHR connectivity",
+                    "level": 2,
+                    "position": 3,
+                    "isDir": true,
+                    "url": "/learn/healthcare/pre-built-services/ehr-connectivity",
+                    "id": "ehr-connectivity",
+                    "subDirectories": [
+                        {
+                            "dirName": "Administration",
+                            "level": 3,
+                            "position": 1,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/administration",
+                            "id": "administration"
+                        },
+                        {
+                            "dirName": "Clinical",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/clinical",
+                            "id": "clinical"
+                        },
+                        {
+                            "dirName": "Diagnostics",
+                            "level": 3,
+                            "position": 3,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/diagnostics",
+                            "id": "diagnostics"
+                        },
+                        {
+                            "dirName": "Financial",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/financial",
+                            "id": "financial"
+                        },
+                        {
+                            "dirName": "Medications",
+                            "level": 3,
+                            "position": 5,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/medications",
+                            "id": "medications"
+                        },
+                        {
+                            "dirName": "Workflow",
+                            "level": 3,
+                            "position": 6,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/workflow",
+                            "id": "workflow"
+                        }
+                    ]
+                }
+            ]
+                     
         }
     ]
+  
 }

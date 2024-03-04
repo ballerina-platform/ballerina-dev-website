@@ -52,7 +52,8 @@ export default function StudentEngagemntProgram() {
     '/images/university/4.png',
     '/images/university/6.png',
     '/images/university/3.jpg',
-    '/images/university/5.jpg'
+    '/images/university/5.jpg',
+    '/images/university/7.jpg'
   ];
 
   return (
@@ -66,15 +67,29 @@ export default function StudentEngagemntProgram() {
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta
+          property="og:image"
+          itemProp="image"
+          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+        />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta
+          property="og:image"
+          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+        />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Student engagemnt program - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta
+          name="twitter:image"
+          content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
+        />
+
       </Head>
       <Layout>
         <Col sm={12}>

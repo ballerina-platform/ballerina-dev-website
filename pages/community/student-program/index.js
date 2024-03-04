@@ -101,7 +101,7 @@ export default function StudentEngagemntProgram() {
                   <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Student engagement program</h1>
-                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement programs aim to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
+                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aim to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
                   </Col>
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
                     <SECarousel images={images} />

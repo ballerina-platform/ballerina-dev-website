@@ -26,7 +26,7 @@ import Events from '../../../components/student-engagement/events/Events';
 import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
 import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';
 
-export default function StudentEngagemntProgram() {
+export default function StudentengagementProgram() {
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -59,13 +59,13 @@ export default function StudentEngagemntProgram() {
   return (
     <>
       <Head>
-        <title>Student engagemnt program - The Ballerina programming language</title>
+        <title>Student engagement program - The Ballerina programming language</title>
         <meta name="description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
+        <meta property="og:title" content="Student engagement program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta
           property="og:image"
@@ -74,7 +74,7 @@ export default function StudentEngagemntProgram() {
         />
 
         {/* <!--LINKED IN  --> */}
-        <meta property="og:title" content="Student engagemnt program - The Ballerina programming language" />
+        <meta property="og:title" content="Student engagement program - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta
           property="og:image"
@@ -82,7 +82,7 @@ export default function StudentEngagemntProgram() {
         />
 
         {/* <!--TWITTER--> */}
-        <meta name="twitter:title" content="Student engagemnt program - The Ballerina programming language" />
+        <meta name="twitter:title" content="Student engagement program - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta

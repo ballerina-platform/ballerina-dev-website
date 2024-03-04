@@ -26,7 +26,7 @@ import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
 import JoinUs from '../../components/community/join-us/JoinUs';
 import Contact from '../../components/community/contact/Contact';
-import CommunityCarousel from '../../components/community/community-carousel/CommunityCarousel';
+import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
 
 export default function Community() {
 
@@ -47,6 +47,17 @@ export default function Community() {
     navigator.clipboard.writeText(window.location.href);
     element.parentElement.scrollIntoView();
   };
+
+  const images = [
+    '/images/community/2.jpg',
+    '/images/community/5.jpg',
+    '/images/community/6.jpg',
+    '/images/community/7.jpg',
+    '/images/community/9.png',
+    '/images/community/10.png',
+    '/images/community/11.png',
+    '/images/community/12.png'
+  ];
 
   return (
     <>
@@ -85,7 +96,7 @@ export default function Community() {
                     </a>
                   </Col> 
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
-                    <CommunityCarousel />
+                    <CommunityCarousel images={images}/>
                   </Col>
                 </Row>
               </Container>

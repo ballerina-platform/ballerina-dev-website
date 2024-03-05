@@ -304,52 +304,20 @@
                     "id": "ehr-connectivity",
                     "subDirectories": [
                         {
-                            "dirName": "Administration",
+                            "dirName": "Set up and run",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/administration",
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/set-up-and-run",
                             "id": "administration"
                         },
                         {
-                            "dirName": "Clinical",
+                            "dirName": "API reference",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/clinical",
-                            "id": "clinical"
-                        },
-                        {
-                            "dirName": "Diagnostics",
-                            "level": 3,
-                            "position": 3,
-                            "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/diagnostics",
-                            "id": "diagnostics"
-                        },
-                        {
-                            "dirName": "Financial",
-                            "level": 3,
-                            "position": 4,
-                            "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/financial",
-                            "id": "financial"
-                        },
-                        {
-                            "dirName": "Medications",
-                            "level": 3,
-                            "position": 5,
-                            "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/medications",
-                            "id": "medications"
-                        },
-                        {
-                            "dirName": "Workflow",
-                            "level": 3,
-                            "position": 6,
-                            "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/workflow",
-                            "id": "workflow"
+                            "url": "/learn/healthcare/pre-built-services/ehr-connectivity/api-reference",
+                            "id": "api-reference"
                         }
                     ]
                 }

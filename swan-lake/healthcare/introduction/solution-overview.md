@@ -1,21 +1,21 @@
 ---
 title: Solution overview
-description: The WSO2 Open Healthcare solution is an open-source integration platform built on top of the best in its industry. 
+description: The WSO2 Healthcare solution is an open-source integration platform built on top of the best in its industry. 
 keywords: healthcare, solution overview
 permalink: /learn/solution-overview/
 active: solution-overview
-intro: The WSO2 Open Healthcare solution is an open-source integration platform built on top of the best in its industry. 
+intro: The WSO2 Healthcare solution is an open-source integration platform built on top of the best in its industry. 
 ---
 
 The platform allows you to connect to other heterogenous systems (e.g., EHRs/EMRs, insurance claims management systems, databases, etc.), by transforming your data to/from healthcare message formats (e.g., FHIR, HL7, X12, C-CDA etc.) and exposing them through secure APIs.
 
 The primary objective of the solution is to facilitate healthcare providers and other related stakeholders of the domain with the required interoperability to standardize the connectivity of their IT systems through an auto generative, easily extensible, and well supported set of healthcare accelerators.
 
-Following are the key offerings provided through the WSO2 Open Healthcare Platform.
+Following are the key offerings provided through the WSO2 Healthcare Platform.
 
 ## Structures and standardizes data for better interoperability
 
-Expose healthcare records over FHIR® APIs and build an FHIR® R4 server on top of an open source hybrid API management platform. Supports future FHIR versions easily through a well-designed architecture of the solution.
+Expose healthcare records over FHIR® APIs and build an FHIR® R4 server on top of an open-source hybrid API management platform. Supports future FHIR versions easily through a well-designed architecture of the solution.
 
 ## Privacy and security
 

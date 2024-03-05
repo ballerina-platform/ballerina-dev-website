@@ -1,1 +1,1 @@
-This is the solution overview.
+# EHR connectivity clinical

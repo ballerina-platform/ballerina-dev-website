@@ -7,27 +7,27 @@
     "id": "swan-lake",
     "subDirectories": [
         {
-            "dirName": "Solution overview",
+            "dirName": "Introduction",
             "level": 1,
             "position": 1,
             "isDir": true,
-            "url": "swan-lake/healthcare/solution-overview",
-            "id": "solution-overview",
+            "url": "swan-lake/healthcare/introduction",
+            "id": "introduction",
             "subDirectories": [
                 {
-                    "dirName": "Introduction",
+                    "dirName": "Solution overview",
                     "level": 1,
                     "position": 1,
                     "isDir": false,
-                    "url": "/learn/healthcare/solution-overview/introduction",
-                    "id": "introduction"
+                    "url": "/learn/healthcare/introduction/solution-overview",
+                    "id": "solution-overview"
                 },
                 {
                     "dirName": "Supported protocols",
                     "level": 1,
                     "position": 2,
                     "isDir": false,
-                    "url": "/learn/healthcare/solution-overview/supported-protocols",
+                    "url": "/learn/healthcare/introduction/supported-protocols",
                     "id": "supported-protocols"
                 },
                 {
@@ -35,7 +35,7 @@
                     "level": 1,
                     "position": 3,
                     "isDir": false,
-                    "url": "/learn/healthcare/solution-overview/supported-connectors",
+                    "url": "/learn/healthcare/introduction/supported-connectors",
                     "id": "supported-connectors"
                 }
             ]
@@ -65,20 +65,20 @@
                     "id": "fhir-apis",
                     "subDirectories": [
                         {
-                            "dirName": "Resource APIs",
+                            "dirName": "FHIR resource APIs",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/healthcare/fhir-support/fhir-apis/resource-apis",
-                            "id": "resource-apis"
+                            "url": "/learn/healthcare/fhir-support/fhir-apis/fhir-resource-apis",
+                            "id": "fhir-resource-apis"
                         },
                         {
-                            "dirName": "System APIs",
+                            "dirName": "FHIR system APIs",
                             "level": 3,
                             "position": 2,
                             "isDir": false,
-                            "url": "/learn/healthcare/fhir-support/fhir-apis/system-apis",
-                            "id": "system-apis"
+                            "url": "/learn/healthcare/fhir-support/fhir-apis/fhir-system-apis",
+                            "id": "fhir-system-apis"
                         }
                     ]
                 },

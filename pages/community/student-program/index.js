@@ -60,13 +60,13 @@ export default function StudentengagementProgram() {
     <>
       <Head>
         <title>Student engagement program - The Ballerina programming language</title>
-        <meta name="description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta name="description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
 
         {/* <!--FB--> */}
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Student engagement program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta
           property="og:image"
           itemProp="image"
@@ -75,7 +75,7 @@ export default function StudentengagementProgram() {
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Student engagement program - The Ballerina programming language" />
-        <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta
           property="og:image"
           content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
@@ -83,8 +83,8 @@ export default function StudentengagementProgram() {
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Student engagement program - The Ballerina programming language" />
-        <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
-        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="twitter:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
+        <meta property="twitter:text:description" content="The Ballerina student engagement program enriches university students by complementing their academic studies and nurturing them to become industry leaders." />
         <meta
           name="twitter:image"
           content="https://ballerina.io/images/ballerina-student-engagement-program-sm-banner.png"
@@ -101,7 +101,7 @@ export default function StudentengagementProgram() {
                   <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Student engagement program</h1>
-                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aim to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
+                    <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aims to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
                   </Col>
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
                     <SECarousel images={images} />

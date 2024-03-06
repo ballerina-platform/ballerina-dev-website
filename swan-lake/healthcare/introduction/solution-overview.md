@@ -11,6 +11,8 @@ The platform allows you to connect to other heterogenous systems (e.g., EHRs/EMR
 
 The primary objective of the solution is to facilitate healthcare providers and other related stakeholders of the domain with the required interoperability to standardize the connectivity of their IT systems through an auto generative, easily extensible, and well supported set of healthcare accelerators.
 
+<img src="/learn/images/health-solution-overview.png" alt="Healthcare solution overview" width="300" height="450" style='width:auto !important; padding-top:20px; padding-bottom:20px;'>
+
 Following are the key offerings provided through the WSO2 Healthcare Platform.
 
 ## Structures and standardizes data for better interoperability

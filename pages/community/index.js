@@ -70,15 +70,20 @@ export default function Community() {
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Community - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Community - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Community - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
         <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        
       </Head>
       <Layout>
         <Col sm={12}>

@@ -234,9 +234,9 @@ export default function Boxes(props) {
                       <div className={styles.content}>
                         <p className={styles.title}>
                           <a target='_blank' rel="noreferrer" href={`${prefix}/learn/healthcare/introduction/solution-overview`} className={styles.titleLink}>
-                          Open Healthcare Solution</a>
+                          WSO2 Healthcare Solution</a>
                         </p>
-                        <p className={styles.description}>Features of the Open Healthcare Solution.</p>
+                        <p className={styles.description}>Features of the WSO2 Healthcare Solution.</p>
                       </div>
                     </div>
                   </div>

@@ -1,7 +1,7 @@
 ---
 title: Set up and run
 description: The EHR connectivity pre-built services allow you to connect to Epic systems via the provided APIs.
-keywords: healthcare, data transformation, EHR, connector, Epic, pre-built service
+keywords: healthcare, data transformation, EHR, connector, Epic, pre-built service, set up, run
 permalink: /learn/set-up-and-run
 active: set-up-and-run
 intro: The EHR connectivity pre-built services allow you to connect to Epic systems via the provided APIs.

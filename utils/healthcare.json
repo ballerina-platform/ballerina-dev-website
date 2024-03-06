@@ -262,17 +262,25 @@
                     "id": "system-apis",
                     "subDirectories": [
                         {
-                            "dirName": "Conformance",
+                            "dirName": "Metadata service",
                             "level": 3,
                             "position": 1,
                             "isDir": false,
-                            "url": "/learn/healthcare/pre-built-services/system-apis/conformance",
-                            "id": "conformance"
+                            "url": "/learn/healthcare/pre-built-services/system-apis/metadata-service",
+                            "id": "metadata-service"
+                        },
+                        {
+                            "dirName": "Smart configuration service",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/healthcare/pre-built-services/system-apis/smart-config-service",
+                            "id": "smart-config-service"
                         },
                         {
                             "dirName": "Audit service",
                             "level": 3,
-                            "position": 2,
+                            "position": 3,
                             "isDir": false,
                             "url": "/learn/healthcare/pre-built-services/system-apis/audit-service",
                             "id": "audit-service"
@@ -280,7 +288,7 @@
                         {
                             "dirName": "Auth service",
                             "level": 3,
-                            "position": 3,
+                            "position": 4,
                             "isDir": false,
                             "url": "/learn/healthcare/pre-built-services/system-apis/auth-service",
                             "id": "auth-service"
@@ -288,7 +296,7 @@
                         {
                             "dirName": "FHIR path service",
                             "level": 3,
-                            "position": 4,
+                            "position": 5,
                             "isDir": false,
                             "url": "/learn/healthcare/pre-built-services/system-apis/fhir-path-service",
                             "id": "fhir-path-service"

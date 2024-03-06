@@ -89,10 +89,10 @@ Configure the deployment configurables in **Configurations/Configs** using the C
 | `implementationDescription` | Describes this specific instance                                                              | WSO2 Healthcare FHIR                                                                        |
 | `interaction`               | Supported operations                                                                          | search-system, history-system                                                               |
 | `cors`                      | CORS Headers availability                                                                     | true                                                                                        |
-| `discoveryEndpoint`         | The discovery endpoint for the server                                                         | https://api.asgardeo.io/t/<organization_name>/oauth2/token/.well-known/openid-configuration |
-| `tokenEndpoint`             | OAUTH2 access token URL (This is optional. Add if a `discoveryEndpoint` is not provided.)     | https://api.asgardeo.io/t/<organization_name>/oauth2/token                                  |
-| `revocationEndpoint`        | OAUTH2 access revoke url (This is optional. Add if a `discoveryEndpoint` is not provided.)    | https://api.asgardeo.io/t/<organization_name>/oauth2/revoke                                 |
-| `authorizeEndpoint`         | OAUTH2 access authorize url (This is optional. Add if a `discoveryEndpoint` is not provided.) | https://api.asgardeo.io/t/<organization_name>/oauth2/authorize                              |
+| `discoveryEndpoint`         | The discovery endpoint for the server                                                         | `https://api.asgardeo.io/t/<organization_name>/oauth2/token/.well-known/openid-configuration` |
+| `tokenEndpoint`             | OAUTH2 access token URL (This is optional. Add if a `discoveryEndpoint` is not provided.)     | `https://api.asgardeo.io/t/<organization_name>/oauth2/token`                                  |
+| `revocationEndpoint`        | OAUTH2 access revoke url (This is optional. Add if a `discoveryEndpoint` is not provided.)    | `https://api.asgardeo.io/t/<organization_name>/oauth2/revoke`                                 |
+| `authorizeEndpoint`         | OAUTH2 access authorize url (This is optional. Add if a `discoveryEndpoint` is not provided.) | `https://api.asgardeo.io/t/<organization_name>/oauth2/authorize`                              |
 
 Below is a sample `Config.toml` file consisting of the above configurations.
 

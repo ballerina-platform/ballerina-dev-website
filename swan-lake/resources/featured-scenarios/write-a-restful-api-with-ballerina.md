@@ -109,7 +109,7 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 2. Create the table, as shown below.
 
-    > **Note:** Select the `final` modifier, change the variable type to `Table with Key-Fields` expression, select `CovidEntry` as the row type corresponding to the type of the members of the table, enter `iso_code` as the key, enter `covidTable` as the variable name, and select the `table` expression as the value of the table, when creating the table.
+    > **Note:** Select the `final` modifier, change the type to `Table with Key-Fields`, select `CovidEntry` as the row type corresponding to the type of the members of the table, and enter `iso_code` as the key. Use `covidTable` as the variable name and select table constructor expression as the expression used to initialize the variable.
 
     ![Create data table](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-table.gif)
 

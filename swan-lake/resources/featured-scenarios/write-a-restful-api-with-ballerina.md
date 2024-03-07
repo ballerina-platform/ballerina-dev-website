@@ -221,7 +221,7 @@ resource function post countries(CovidEntry[] covidEntries)
 In this code:
 
 - It is chosen to accept the entire payload or send back an error.
-- This resource expects a payload with the `CovidEntry[]` type. Two types of records, the `CovidEntry[]`, which corresponds to a `201 Created` response, and the `IsoCodeConflict`, which corresponds to a `409 Conflict` status code response, will be used as the return types.
+- This resource expects a payload that matches the `CovidEntry[]` type. Two types, `CovidEntry[]`, which corresponds to a `201 Created` response, and `IsoCodeConflict`, which corresponds to a `409 Conflict` status code response, will be used as the return types.
 
 ## Implement the second endpoint
 

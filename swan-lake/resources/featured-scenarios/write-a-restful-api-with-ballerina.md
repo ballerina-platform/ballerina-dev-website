@@ -42,7 +42,7 @@ Ballerina uses packages to group code. Follow the steps below to create a Baller
 
 > **Info:** For more information on Ballerina packages, see [Organize Ballerina code](/learn/organize-ballerina-code/).
 
-1. In the terminal, execute the command below to create the Ballerina package for the API implementation.
+1. In the terminal, execute the command below to create the Ballerina package for the service implementation.
 
     ```
     $ bal new restful-service

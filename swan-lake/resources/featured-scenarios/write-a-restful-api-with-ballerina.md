@@ -231,7 +231,7 @@ The second endpoint has only one resource to get COVID-19 data filtered by the I
 
 Similar to how you created the [second resource of the first endpoint](#create-the-second-resource-to-add-data), create the resource of the second endpoint below using the diagram view in VS Code.
 
-> **Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter, create a `200 OK` response with the `CovidEntry` as the body type, and also create a `404 Not Found` response with `string` as the body type by generating a `IsoCodeNotFound` record type of the `http:NotFound` status code response.
+> **Note:** Define an HTTP resource that allows the `GET` operation on the resource path `countries` and accepts the `iso_code` path parameter. As the return type, use `CovidEntry` as the `200 OK` (default status code) response payload type. Also generate and use a record type (`IsoCodeNotFound`) for the error response by selecting `404 Not Found` as the code and `string` as the body type.
 
 ![Create second GET resource](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-second-get-resource.gif)
 

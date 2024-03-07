@@ -79,8 +79,6 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
 1. Generate the record type corresponding to the request payload of the REST service by providing `CovidEntry` as the name and the sample JSON payload below.
 
-    > **Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
-
     ```json
     {
         "iso_code": "AFG",
@@ -95,6 +93,8 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
     The record type will be as follows.
+
+    > **Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
 
     ```ballerina
     type CovidEntry record {|

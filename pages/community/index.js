@@ -27,6 +27,7 @@ import Resources from '../../components/community/resources/Resources';
 import JoinUs from '../../components/community/join-us/JoinUs';
 import Contact from '../../components/community/contact/Contact';
 import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
+import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 
 export default function Community() {
 
@@ -121,10 +122,14 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <Newsletter getLink={getLink} showLink={true}/>
+            <UniversitySessions getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
+            <Newsletter getLink={getLink} showLink={true}/>
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>
 

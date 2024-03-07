@@ -92,9 +92,9 @@ An in-memory dataset with three entries is used to keep things simple. Follow th
 
     ![Create data record](/learn/images/featured-scenarios/write-a-restful-api-with-ballerina/create-data-record.gif)
 
-    The record type will be as follows.
-
     > **Note:** You need to update the generated record by adding the `readonly` descriptor to the `iso_code` field to make it non-modifiable in order to use it as the key of the table and by adding the pipe symbol to mark the record as a [closed one](https://ballerina.io/learn/by-example/controlling-openness/).
+    
+    The record type will be as follows.
 
     ```ballerina
     type CovidEntry record {|

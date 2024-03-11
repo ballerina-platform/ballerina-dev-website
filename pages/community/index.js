@@ -122,11 +122,11 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <UniversitySessions getLink={getLink} />
+            <Newsletter getLink={getLink} showLink={true}/>
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <Newsletter getLink={getLink} showLink={true}/>
+            <UniversitySessions getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">

@@ -19,6 +19,7 @@
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
 import dynamic from 'next/dynamic';
+import Image from 'next-image-export-optimizer';
 
 import styles from './UniversitySessions.module.css';
 import { prefix } from '../../../utils/prefix';
@@ -48,16 +49,6 @@ export default function UniversitySessions(props) {
 
     let linkArrowPath = prefix + '/images/toc-bg.svg';
     let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
-
-    const linkArrow = {
-        background: 'url(' + linkArrowPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
-
-    const linkArrowHover = {
-        background: 'url(' + linkArrowHoverPath + ') no-repeat scroll right center',
-        paddingRight: '25px'
-    }
 
     const [now, setNow] = React.useState(new Date());
 
@@ -95,10 +86,25 @@ export default function UniversitySessions(props) {
                         <p>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
                         </p>
+
+                        <p className={styles.linkWrap}
+                onMouseEnter={() => {
+                    setHoverBtn(true);
+                }}
+                onMouseLeave={() => {
+                    setHoverBtn(false);
+                }}
+            >
+                <a href={`${prefix}/community/ballerina-newsletter`} className={styles.viewAll}>
+                   Learn more <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
+                </a>
+                
+
+            </p >
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>
-                        <p className={styles.linkWrap}
+                        {/* <p className={styles.linkWrap}
                             onMouseEnter={() => {
                                 setHoverBtn(true);
                             }}
@@ -109,7 +115,9 @@ export default function UniversitySessions(props) {
                                 (hoverBtn ? linkArrowHover : linkArrow)
                             }>
                             <a href={`${prefix}/community/student-program`} className={styles.viewAll}>Learn more</a>
-                        </p>
+                        </p> */}
+
+                        <img src={prefix + '/images/community/xxx.png'} alt='Student engagement program' style={{width:"100%"}}/>
                     </Col>
                 </Row>
                 {/* {

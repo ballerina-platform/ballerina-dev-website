@@ -53,7 +53,8 @@ export default function Newsletter(props) {
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>
-                        <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameBorder="0" allowTransparency="true" className={styles.iframe}></iframe>
+                        <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" 
+                            frameBorder="0" allowTransparency="true" className={styles.iframe}></iframe>
                     </Col>
                 </Row>
             </Container>

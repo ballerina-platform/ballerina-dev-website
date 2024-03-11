@@ -1,4 +1,5 @@
 .viewAll {
+    display: flex;
     color: #20b6b0;
     text-decoration: none;
     text-align: right;

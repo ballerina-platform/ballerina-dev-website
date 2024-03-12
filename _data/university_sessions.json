@@ -1,31 +1,6 @@
 {
     "events": [
-      {
-            "date": "Mar 12, 2024",
-            "expire": "2024-03-13T00:00:00.0000-00:00",
-            "type": "Hands on lecture",
-            "university": "Sikkim Manipal Institute of Technology",
-            "faculty": "",
-            "title": "Mastering API Integrations and Microservice Architecture",
-            "location": "Virtual",
-            "presenters": [
-                {
-                    "name": "Niveathika Rajendran",
-                    "twitter": "https://twitter.com/niveathika"
-                },
-                {
-                    "name": "Sasindu Alahakoon",
-                    "twitter": "https://twitter.com/Sasindu3625"
-                },   
-                {
-                    "name": "Shammi Kolonne",
-                    "twitter": "https://twitter.com/shammi0107"
-                }
-            ],
-            "url": "",
-            "buttonText": ""
-        }, 
-              {
+        {
             "date": "Mar 28, 2024",
             "expire": "2024-03-29T00:00:00.0000-00:00",
             "type": "Community lecture",
@@ -41,7 +16,32 @@
             ],
             "url": "",
             "buttonText": ""
-        }, 
+        },
+        {
+            "date": "Mar 12, 2024",
+            "expire": "2024-03-13T00:00:00.0000-00:00",
+            "type": "Hands on lecture",
+            "university": "Sikkim Manipal Institute of Technology",
+            "faculty": "",
+            "title": "Mastering API Integrations and Microservice Architecture",
+            "location": "Virtual",
+            "presenters": [
+                {
+                    "name": "Niveathika Rajendran",
+                    "twitter": "https://twitter.com/niveathika"
+                },
+                {
+                    "name": "Sasindu Alahakoon",
+                    "twitter": "https://twitter.com/Sasindu3625"
+                },
+                {
+                    "name": "Shammi Kolonne",
+                    "twitter": "https://twitter.com/shammi0107"
+                }
+            ],
+            "url": "Mastering-API-Integrations-and-Microservices-Architecture.pdf",
+            "buttonText": "View slides"
+        },
         {
             "date": "Feb 23, 2024",
             "expire": "2024-02-24T00:00:00.0000-00:00",

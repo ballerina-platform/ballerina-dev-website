@@ -10,12 +10,18 @@ redirect_from:
 - /learn/ballerina-persist/persist-cli/
 ---
 
-## Initialize `bal persist` in the project
+There are two ways that you can use the `bal persist` feature. 
+1. Integrate the client code generation with the package build to avoid committing generated code.
+2. One time generation of the client code against the persist model.
 
-The Ballerina project should be initialized with `bal persist` before generating the derived types, clients, and script files. This can be done using the `init` command. You can specify the preferred data store and the module, which you need to generate files. If you do not specify the data store and the module, the default values will be used.
+## 1. Integrate the client code generation with the package build
+
+### Initialize `bal persist` in the project
+
+The Ballerina project should be initialized with `bal persist` before generating the derived types, clients, and script files. This can be done using the `add` command. You can specify the preferred data store and the module, which you need to generate files. If you do not specify the data store and the module, the default values will be used.
 
 ```
-$ bal persist init --datastore="mysql" --module="store"
+$ bal persist add --datastore="mysql" --module="store"
 ```
 
 |  Command parameter   |                                                               Description                                                                | Mandatory  |        Default value         |
@@ -35,9 +41,11 @@ The command initializes the `bal persist` feature in the project. This command w
 3. Update the `Ballerina.toml` file with the `persist` module configurations.
    It will update the `Ballerina.toml` file with `persist` configurations as follows.
     ```ballerina
-    [persist]
-    datastore = "mysql"
-    module = "rainier.store"
+   [[tool.persist]]
+   id = "generate-db-client"
+   targetModule = "rainier"
+   options.datastore = "mysql"
+   filePath = "persist/model.bal"
    ```
 
 The directory structure will be,
@@ -49,18 +57,14 @@ rainier
    └── main.bal
 ```
 
-Behaviour of the `init` command,
+Behaviour of the `add` command,
 - You should invoke the command from within a Ballerina project.
 - You can use the optional arguments to indicate the preferred module name and data store. Otherwise, the default values will be used.
 - You cannot execute the command multiple times within the same project. You need to remove the `Ballerina.toml` configurations if the user wants to reinitialize the project.
 
-## Generate the derived types, client, and script files
+### Generate the derived types, client, and script files
 
-The command below is used to generate the derived types, clients, and script files based on the data model definition file. This command is executed from within the project root directory as follows.
-
-```
-$ bal persist generate
-```
+The `bal build` command is used to generate the derived types, clients, and script files based on the data model definition file. The command will generate the files based on the data store specified in the `Ballerina.toml` file.
 
 It will add the generated files under the `generated` directory. The directory structure will be as follows.
 
@@ -99,12 +103,58 @@ configurable string database = ?;
 
 Additionally, this command will create/update the `Config.toml` file with the configurables used to connect the client to the data store. The generated configurables will be based on the data store specified in the `Ballerina.toml` file.
 
-Behaviour of the `generate` command
-- You should invoke the command from within a Ballerina project.
-- You should have the `bal persist` feature initiated in the project and update the model definition file.
+## 2. One time generation of the client code against the persist model
+
+### Initialize `bal persist` in the project
+
+you can initialize the project with the following `init` command,
+
+```bash
+bal persist init
+```
+
+This command includes the following steps,
+
+1. Create persist directory:
+   Within this directory, a data model definition file should be created. This file will outline the necessary entities according to the [`persist` specification](https://github.com/ballerina-platform/module-ballerina-persist/blob/main/docs/spec/spec.md#2-data-model-definition)
+2. Generate a model definition file within the persist directory:
+   This action will create a file named model.bal with the requisite imports (import ballerina/persist as _;) if no files currently exist in the persist directory.
+
+### Generate the derived types, client, and script files
+
+You can use the `bal persist generate` command to generate the derived types, client, and script files. 
+
+```bash
+bal persist generate --datastore mysql --module db
+```
+
+| Command Parameter |                                       Description                                        | Mandatory | Default Value  |
+|:-----------------:|:----------------------------------------------------------------------------------------:|:---------:|:--------------:|
+|    --datastore    |  used to indicate the preferred database client. Currently, 'mysql', 'mssql', 'google sheets' and 'postgresql' are supported.   |    Yes     |        |
+|     --module      |      used to indicate the persist enabled module in which the files are generated.       |    No     | <package_name> |
+
+If the module name is provided, it will generate the files under a new subdirectory with the module name like below. Otherwise, it will generate the files under the `root` directory.
+
+```
+rainier
+   ├── modules
+        └── store
+              ├── persist_client.bal
+              ├── persist_db_config.bal
+              ├── persist_types.bal
+              └── script.sql
+   ├── persist
+        └── model.bal
+   ├── Ballerina.toml
+   ├── Config.toml
+   └── main.bal
+```
+
+Behaviour of the `generate` command,
+- User should invoke the command within a Ballerina project
 - The model definition file should contain the `persist` module import (`import ballerina/persist as _;`)
-- The model definition file should contain at least one entity
-- If you invoke the command twice, it will not fail. It will regenerate the files again.
+- The Model definition file should contain at least one entity
+- If the user invokes the command twice, it will not fail. It will generate the files once again.
 
 ## Generate migration scripts for the model definition changes [Experimental]
 

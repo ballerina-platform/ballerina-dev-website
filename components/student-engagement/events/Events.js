@@ -133,7 +133,7 @@ export default function Events(props) {
                 upcomingEvents.length > 0 ?
                   <>
                     {
-                      upcomingEvents.map((item, index) => {
+                      upcomingEvents.reverse().map((item, index) => {
                         return (
                           <Session item={item} key={index} />
                         )

@@ -84,54 +84,26 @@ export default function UniversitySessions(props) {
                 <Row>
                     <Col sm={12} md={6} lg={6}>
                         <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            Elevate your learning experience with workshops, hackathons, and open-source projects to boost your practical skills in programming. It's the perfect opportunity for students looking to make an impact in the tech industry.
                         </p>
-
                         <p className={styles.linkWrap}
-                onMouseEnter={() => {
-                    setHoverBtn(true);
-                }}
-                onMouseLeave={() => {
-                    setHoverBtn(false);
-                }}
-            >
-                <a href={`${prefix}/community/ballerina-newsletter`} className={styles.viewAll}>
-                   Learn more <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
-                </a>
-                
-
-            </p >
-                    </Col>
-
-                    <Col sm={12} md={6} lg={6}>
-                        {/* <p className={styles.linkWrap}
                             onMouseEnter={() => {
                                 setHoverBtn(true);
                             }}
                             onMouseLeave={() => {
                                 setHoverBtn(false);
                             }}
-                            style={
-                                (hoverBtn ? linkArrowHover : linkArrow)
-                            }>
-                            <a href={`${prefix}/community/student-program`} className={styles.viewAll}>Learn more</a>
-                        </p> */}
+                        >
+                            <a href={`${prefix}/community/ballerina-newsletter`} className={styles.viewAll}>
+                                Learn more <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
+                            </a>
+                        </p >
+                    </Col>
 
-                        <img src={prefix + '/images/community/xxx.png'} alt='Student engagement program' style={{width:"100%"}}/>
+                    <Col sm={12} md={6} lg={6}>
+                        <img src={prefix + '/images/community/xxx.png'} alt='Student engagement program' style={{ width: "100%" }} />
                     </Col>
                 </Row>
-                {/* {
-                    !upcomingEvents &&
-                    <>
-                        <Row className={styles.upcomingSection}>
-                            <Col sm={12}>
-                                <h3 className={styles.upcoming}>Upcoming events</h3>
-                            </Col>
-                        </Row>
-
-                        <UpcomingEvents />
-                    </>
-                } */}
             </Container>
         </Col>
     );

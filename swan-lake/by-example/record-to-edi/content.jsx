@@ -441,7 +441,7 @@ export function RecordToEdi({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal edi codegen -s resources/simple_order_schema.json -o modules/sorder/sorder.bal`}</span>
+              <span>{`\$ bal edi codegen -i resources/simple_order_schema.json -o modules/sorder/sorder.bal`}</span>
             </code>
           </pre>
         </Col>

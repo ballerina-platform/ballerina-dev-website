@@ -144,7 +144,7 @@ public type SimpleOrder record {|
 
 The generated ```fromEdiString``` function can be used to read EDI text files into the generated Ballerina record as shown below. Note that any data item in the EDI can be accessed using the record's fields, as shown in the example code.
 
-````ballerina
+```ballerina
 import ballerina/io;
 import sample.orders;
 
@@ -153,13 +153,13 @@ public function main() returns error? {
     orders:SimpleOrder sample_order = check orders:fromEdiString(ediText);
     io:println(sample_order.header.date);
 }
-````
+```
 
 #### Writing EDI files
 
 The generated ```toEdiString``` function can be used to serialize ```SimpleOrder``` records into EDI text as shown below:
 
-````ballerina
+```ballerina
 import ballerina/io;
 import sample.orders;
 public function main() returns error? {
@@ -170,7 +170,7 @@ public function main() returns error? {
     string ediText = check orders:toEdiString(simpleOrder);
     io:println(ediText);
 }
-````
+```
 
 ## Library generation
 
@@ -196,7 +196,7 @@ The Ballerina library project will be generated in the output folder. This libra
 
 let's assume that an organization named "CityMart" needs to work with X12 850, 810, 820, and 855 to handle purchase orders. CityMart's integration developers can put schemas of those X12 specifications into a folder as follows:
 
-````bash
+```bash
 |-- CityMart
     |--lib
     |--schemas
@@ -204,17 +204,17 @@ let's assume that an organization named "CityMart" needs to work with X12 850, 8
        |--810.json
        |--820.json
        |--855.json
-````
+```
 
 Then the libgen command can be used to generate a Ballerina library as shown below:
 
-````
+```
 bal edi libgen -p citymart/porder -i CityMart/schemas -o CityMart/lib
-````
+```
 
 The generated Ballerina library will look like below:
 
-````bash
+```bash
 |-- CityMart
     |--lib  
     |--porder
@@ -242,11 +242,11 @@ The generated Ballerina library will look like below:
        |--810.json
        |--820.json
        |--855.json
-````
+```
 
 As seen in the above project structure, code for each EDI schema is generated into a separate module, in order to prevent possible conflicts. Now it is possible to build the above project using the ```bal pack``` command and publish it into the central repository using the ```bal push``` command. Then any Ballerina project can import this package and use it to work with purchase order-related EDI files. An example of using this library for reading an 850 file and writing an 855 file is shown below:
 
-````ballerina
+```ballerina
 import ballerina/io;
 import citymart/porder.m850;
 import citymart/porder.m855;
@@ -259,7 +259,7 @@ public function main() returns error? {
     string orderAckText = check m855:toEdiString(orderAck);
     check io:fileWriteString("acks/d15_05_2023/ack10.edi", orderAckText);
 }
-````
+```
 
 It is quite common for different trading partners to use variations of standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina library for processing interactions with the particular partner.
 

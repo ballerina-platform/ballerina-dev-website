@@ -7,6 +7,7 @@ active: central
 intro: Ballerina code is organized in a single, shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
 logo: '/images/home-page/user-logos/ballerina-central.svg'
 user: 'central'
+disclaimer: 'Azure Front Door (Microsoft), Azure Firewall (Microsoft), Kubernetes (The Linux Foundation), NGINX Ingress (F5, Inc), GraalVM (Oracle and/or its affiliates), Spring Boot (Broadcom), Next.js (Vercel, Inc.), GraphQL (The GraphQL Foundation), SQL Server (Microsoft), Amazon S3 (Amazon Web Services, Inc.), Azure Application Insights (Microsoft), Azure Log Analytics (Microsoft), and Azure Files (Microsoft)'
 ---
 
 ## Overview

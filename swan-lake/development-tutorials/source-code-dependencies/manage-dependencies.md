@@ -247,7 +247,9 @@ $ bal build --sticky
 
 ### The offline mode
 
-Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
+Using the` –-offline` flag will run the compilation offline without connecting to Ballerina Central or any configured
+Maven repositories. This will save the compilation time since the packages are resolved using the distribution repository, and the file
+system cache of the Ballerina Central repository/Maven repositories.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 

@@ -84,7 +84,7 @@ export default function UniversitySessions(props) {
                 <Row>
                     <Col sm={12} md={6} lg={6}>
                         <p>
-                            Elevate your learning experience with workshops, hackathons, and open-source projects to boost your practical skills in programming. It's the perfect opportunity for students looking to make an impact in the tech industry.
+                        If you are a university student, here is your chance to enhance your practical programming skills through workshops, hackathons, contributing to open-source projects, and more. This program is designed to offer real-world experiences and opportunities for growth in the tech industry.
                         </p>
                         <p className={styles.linkWrap}
                             onMouseEnter={() => {
@@ -101,7 +101,7 @@ export default function UniversitySessions(props) {
                     </Col>
 
                     <Col sm={12} md={6} lg={6}>
-                        <img src={prefix + '/images/community/xxx.png'} alt='Student engagement program' style={{ width: "100%" }} />
+                        <img src={prefix + '/images/community/ballerina-student-engagement-program-banner.png'} alt='Student engagement program' style={{ width: "100%" }} />
                     </Col>
                 </Row>
             </Container>

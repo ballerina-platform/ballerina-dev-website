@@ -592,6 +592,12 @@ pre[class*="language-"] {
   color: #464646;
 }
 
+.disclaimer {
+  font-size: 12px !important;
+  letter-spacing: 0.4px !important;
+  line-height: 16px !important;
+}
+
 /*------------Community----------------*/
 
 .communityRow {

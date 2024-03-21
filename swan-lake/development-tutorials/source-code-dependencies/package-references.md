@@ -346,7 +346,19 @@ warning: Detected conflicting jar files:
 
 **Define the scope for a dependency**
 
-By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+By default, when the scope has not been explicitly specified for a platform dependency in the `Ballerina.toml`, it will be packaged into the final executable JAR or the BALA. There are two scopes that can be used to restrict this behaviour.
+
+***'TestOnly' scope***
+
+If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+
+***'provided' scope***
+
+If you want to restrict a certain platform dependency from been packed into the BALA, specify the scope as `provided`. This will add the platform dependency to the final executable JAR but not to the BALA.
+
+This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure that the dependency is available during compilation and execution, but not packaged with the BALA, thereby avoiding any licensing issues related to redistribution.
+
+In this scenario, when you use such a BALA as a dependency in another project, you'll need to explicitly specify the platform dependency in the Ballerina.toml file since it will not be included in the BALA itself.
 
 The following example shows a platform dependency entry with the `scope`.
 
@@ -357,6 +369,8 @@ The following example shows a platform dependency entry with the `scope`.
   # Scope of the JAR file
   scope =  "<scope-of-the-jar-file>"
   ```
+
+When the scope has been specified as `provided`, the values `groupId`, `artifactId` and `version` will be considered mandatory fields for that dependency.
 
 ## Platform Compatibility
 

@@ -168,6 +168,12 @@ The formats below can be used for excluding.
 $ bal test --test-report --code-coverage --coverage-format=xml --excludes='./generated'
 ```
 
+Execute tests in parallel
+
+```
+$ bal test --parallel
+```
+
 For more options of the test command, run the following.
 
 ```

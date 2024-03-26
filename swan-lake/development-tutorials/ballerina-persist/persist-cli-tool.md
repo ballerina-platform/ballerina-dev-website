@@ -7,7 +7,7 @@ permalink: /learn/ballerina-persist/persist-cli/
 active: persist_cli
 intro: The CLI tool is used to initialize the project with the bal persist command and generate the required files.
 redirect_from:
-- /learn/ballerina-persist/persist-cli/
+   - /learn/ballerina-persist/persist-cli/
 ---
 
 There are two ways that you can use the `bal persist` feature.
@@ -155,6 +155,52 @@ Behaviour of the `generate` command,
 - The model definition file should contain the `persist` module import (`import ballerina/persist as _;`)
 - The model definition file should contain at least one entity
 - If the user invokes the command twice, it will not fail. It will generate the files once again.
+
+## Generate the data model by introspecting an existing database [Experimental]
+
+>**Info:** The support for introspection is currently an experimental feature, and its behavior may be subject to change in future releases. Also, the support for introspection is currently limited to the MySQL data store.
+
+The command below generates the data model for an existing database. The generated data model can be used to generate the client API for the existing database after verifying it.
+
+```
+$ bal persist pull --datastore mysql --host localhost --port 3306 --user root --database db
+```
+
+| Command Parameter |                                   Description                                    | Mandatory | Default Value |
+|:-----------------:|:--------------------------------------------------------------------------------:|:---------:|:-------------:|
+|    --datastore    | used to indicate the preferred data store. Currently, only 'mysql' is supported. |    No     |     mysql     |
+|      --host       |                        used to indicate the database host                        |    Yes    |     None      |
+|      --port       |                        used to indicate the database port                        |    No     |     3306      |
+|      --user       |                        used to indicate the database user                        |    Yes    |     None      |
+|    --database     |                        used to indicate the database name                        |    Yes    |     None      |
+
+
+The file structure of the project after executing the command will be as follows.
+
+```
+rainier
+   ├── persist
+         └── model.bal   
+   ├── Ballerina.toml
+   ├── Config.toml
+   └── main.bal
+```
+
+This command introspects the schema of the database and creates a `model.bal` file with the entities and relations based on the schema of the database. The database configuration should be provided as command-line arguments.
+
+The `persist` directory is created if it is not already present. If a `model.bal` file is already present in the `persist` directory, it will prompt the user to confirm overwriting the existing `model.bal` file.
+
+Running the `pull` command will,
+1. Create a `model.bal` file with the entities and relations based on the introspected schema of the database.
+2. Not change the schema of the database in any way.
+
+The behaviour of the `pull` command is as follows
+- User should invoke the command within a Ballerina project.
+- User should provide the relevant database configuration as command-line arguments.
+- The database password is not provided as a command-line argument. The user will be prompted to enter the password.
+- If the user invokes the command while a `model.bal` file exists in the `persist` directory, it will prompt the user to confirm overwriting the existing `model.bal` file.
+- If the user introspects a database with unsupported data types, it will inform the user by giving a warning and will comment out the relevant field with the tag `[Unsupported[DATA_TYPE]]`.
+- The user must execute the `generate` command to generate the derived types and client API after running the `pull` command in order to use the client API in the project.
 
 ## Generate migration scripts for the model definition changes [Experimental]
 

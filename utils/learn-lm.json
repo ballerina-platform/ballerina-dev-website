@@ -513,6 +513,14 @@
                             "id": "persist-client-api"
                         },
                         {
+                            "dirName": "Introspection",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-introspection",
+                            "id": "persist-introspection"
+                        },
+                        {
                             "dirName": "Supported data stores",
                             "level": 3,
                             "position": 5,

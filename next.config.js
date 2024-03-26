@@ -169,6 +169,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-client-api`,
       },
       {
+        source: `/${redirectBase}learn/persist-introspection`,
+        destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/persist-introspection`,
+      },
+      {
         source: `/${redirectBase}learn/supported-data-stores`,
         destination: `/${redirectBase}learn/development-tutorials/ballerina-persist/supported-data-stores`,
       },

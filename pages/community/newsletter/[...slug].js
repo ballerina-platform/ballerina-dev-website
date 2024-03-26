@@ -85,7 +85,7 @@ export default function PostPage({ frontmatter, content }) {
         </Col>
 
         <Col sm={12} md={4} lg={4} className="subscriptionCol">
-          <NewsletterSubscription/>
+          <NewsletterSubscription showForm={true}/>
         </Col>
 
       </Layout>

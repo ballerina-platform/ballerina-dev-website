@@ -337,7 +337,7 @@ warning: Detected conflicting jar files:
 
 **Define the scope for a dependency**
 
-By default, when the scope has not been explicitly specified for a platform dependency in the `Ballerina.toml`, it will be packaged into the final executable JAR or the BALA. There are two scopes that can be used to restrict this behaviour.
+By default, when the scope has not been explicitly specified for a platform dependency in the `Ballerina.toml`, it will be packaged into the final executable JAR file or the BALA file. There are two scopes that can be used to restrict this behaviour.
 
 ***'TestOnly' scope***
 
@@ -345,11 +345,11 @@ If you want to restrict a certain platform dependency to be used only for testin
 
 ***'provided' scope***
 
-If you want to restrict a certain platform dependency from been packed into the BALA, specify the scope as `provided`. This will add the platform dependency to the final executable JAR but not to the BALA.
+If you want to restrict a certain platform dependency from been packed into the BALA file, specify the scope as `provided`. This will add the platform dependency to the final executable JAR file but not to the BALA file.
 
-This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure that the dependency is available during compilation and execution, but not packaged with the BALA, thereby avoiding any licensing issues related to redistribution.
+This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure the dependency is accessible during both compilation and execution, yet it isn't included in the BALA package. This approach helps avoid any licensing complications associated with redistribution.
 
-In this scenario, when you use such a BALA as a dependency in another project, you'll need to explicitly specify the platform dependency in the Ballerina.toml file since it will not be included in the BALA itself.
+In this scenario, when you use such a BALA as a dependency in another project, you'll need to explicitly specify the platform dependency in the Ballerina.toml file since it will not be included in the BALA file itself.
 
 The following example shows a platform dependency entry with the `scope`.
 

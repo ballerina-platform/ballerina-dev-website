@@ -279,15 +279,26 @@ Select one of the methods below to set up a Redis server.
 - Install a Redis server on your machine locally by downloading and installing it based on your development platform. See the [official Redis documentation](https://redis.io/download/).
 - Use Docker to create a DB server deployment.
    1. Install Docker on your machine if you haven't already.
-   2. Pull the Redis Docker image from Docker Hub using the command `docker pull redis`.
-   3. Run the Redis container as follows `docker run -d -p 6379:6379 --name <container-name> redis`.
+   2. Pull the Redis Docker image from Docker Hub using the following command.
+
+      ```
+      $ docker pull redis
+      ```
+   
+   3. Run the Redis container as follows.
+   
+      ```
+      $ docker run -d -p 6379:6379 --name <container-name> redis
+      ```
+   
 - Use a cloud-based DB solution such as Google’s Cloud, Amazon’s Web Services, or Microsoft’s Azure database.
    1. Visit [Redis cloud console](https://app.redislabs.com).
-   2. Log in using email and password or using one of the Single Sign-On options.
+   2. Log in using email and password or using one of the single sign-On options.
    3. Choose either Amazon Web Services, Google Cloud, or Microsoft Azure as the database provider.
    4. Select a region and create the database.
-   5. Find your `username`, `password` and the `public endpoint`
-   6. Replace the `connection` parameter in `Config.toml` file as below
+   5. Find your `username`, `password` and the `public endpoint`.
+   6. Replace the `connection` parameter in `Config.toml` file as below.
 
       ```toml
       connection = "redis://<username>:<password>@<public_endpoint>"
+      ```

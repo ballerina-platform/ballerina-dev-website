@@ -225,7 +225,7 @@ Follow the steps below to obtain API tokens for Google Sheets.
 
 ## Redis [Experimental]
 
-The Redis data store is a key-value based inmemory datastore. It is useful for storing unstructured data and retrieve them quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
+The Redis data store is a key-value-based in-memory data store. It is useful for storing unstructured data and retrieving them quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
 
 ```shell
 $ bal persist init --datastore redis
@@ -243,6 +243,7 @@ The Redis data store supports the following Ballerina types. As we have utilized
 - time:TimeOfDay
 - time:Utc
 - time:Civil
+- enum
 
 ### Configuration
 
@@ -260,6 +261,7 @@ connection = "redis://localhost:6379"
 ```
 
 Alternatively, you can provide connection parameters instead of `URI` as follows.
+
 ```toml
 [<packageName>.<moduleName>.redis.connection]
 host = "localhost"
@@ -268,7 +270,7 @@ port = 6379
 
 Additionally, you can set values for the advanced configuration parameters in the Config.toml file in your project to use the Redis data store. For more information on these parameters, see the [Redis Connector documentation](https://central.ballerina.io/ballerinax/redis/latest#ConnectionConfig).
 
-### How to set up
+### Setup guide
 
 #### Set up a Redis server instance
 
@@ -286,6 +288,6 @@ Select one of the methods below to set up a Redis server.
    4. Select a region and create the database.
    5. Find your `username`, `password` and the `public endpoint`
    6. Replace the `connection` parameter in `Config.toml` file as below
+
       ```toml
       connection = "redis://<username>:<password>@<public_endpoint>"
-  ```

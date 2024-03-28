@@ -11,8 +11,8 @@ redirect_from:
 ---
 
 There are two ways that you can use the `bal persist` feature. 
-1. Integrate the client code generation with the package build to avoid committing generated code.
-2. One time generation of the client code against the persist model.
+1. Integrate the client code generation with the package build.
+2. One-time generation of the client code against the data model.
 
 ## 1. Integrate the client code generation with the package build
 
@@ -43,7 +43,7 @@ The command initializes the `bal persist` feature in the project. This command w
     ```ballerina
    [[tool.persist]]
    id = "generate-db-client"
-   targetModule = "rainier"
+   targetModule = "store"
    options.datastore = "mysql"
    filePath = "persist/model.bal"
    ```
@@ -103,7 +103,7 @@ configurable string database = ?;
 
 Additionally, this command will create/update the `Config.toml` file with the configurables used to connect the client to the data store. The generated configurables will be based on the data store specified in the `Ballerina.toml` file.
 
-## 2. One time generation of the client code against the persist model
+## 2. One-time generation of the client code against the data model
 
 ### Initialize `bal persist` in the project
 
@@ -125,12 +125,12 @@ This command includes the following steps,
 You can use the `bal persist generate` command to generate the derived types, client, and script files. 
 
 ```bash
-bal persist generate --datastore mysql --module db
+bal persist generate --datastore mysql --module store
 ```
 
 | Command Parameter |                                       Description                                        | Mandatory | Default Value  |
 |:-----------------:|:----------------------------------------------------------------------------------------:|:---------:|:--------------:|
-|    --datastore    |  used to indicate the preferred database client. Currently, 'mysql', 'mssql', 'google sheets' and 'postgresql' are supported.   |    Yes     |        |
+|    --datastore    |  used to indicate the preferred database client. Currently, 'inmemory', 'mysql', 'mssql', 'postgresql', 'google sheets' and  'redis' are supported.   |    Yes     |        |
 |     --module      |      used to indicate the persist enabled module in which the files are generated.       |    No     | <package_name> |
 
 If the module name is provided, it will generate the files under a new subdirectory with the module name like below. Otherwise, it will generate the files under the `root` directory.
@@ -153,7 +153,7 @@ rainier
 Behaviour of the `generate` command,
 - User should invoke the command within a Ballerina project
 - The model definition file should contain the `persist` module import (`import ballerina/persist as _;`)
-- The Model definition file should contain at least one entity
+- The model definition file should contain at least one entity
 - If the user invokes the command twice, it will not fail. It will generate the files once again.
 
 ## Generate migration scripts for the model definition changes [Experimental]

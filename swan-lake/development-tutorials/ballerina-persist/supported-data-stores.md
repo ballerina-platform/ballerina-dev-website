@@ -225,7 +225,7 @@ Follow the steps below to obtain API tokens for Google Sheets.
 
 ## Redis [Experimental]
 
-The Redis data store is a key-value-based in-memory data store. It is useful for storing unstructured data and retrieving them quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
+The Redis data store is a key-value-based inmemory datastore useful for storing and retrieving unstructured data quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
 
 ```shell
 $ bal persist init --datastore redis
@@ -260,7 +260,7 @@ The following is a sample `Config.toml` file with the Redis data store configura
 connection = "redis://localhost:6379"
 ```
 
-Alternatively, you can provide connection parameters instead of `URI` as follows.
+Alternatively, you can provide connection parameters instead of the `URI` as follows.
 
 ```toml
 [<packageName>.<moduleName>.redis.connection]
@@ -268,11 +268,11 @@ host = "localhost"
 port = 6379
 ```
 
-Additionally, you can set values for the advanced configuration parameters in the Config.toml file in your project to use the Redis data store. For more information on these parameters, see the [Redis Connector documentation](https://central.ballerina.io/ballerinax/redis/latest#ConnectionConfig).
+Additionally, you can set values for the advanced configuration parameters in the `Config.toml` file in your project to use the Redis data store. For more information on these parameters, see the [Redis Connector documentation](https://central.ballerina.io/ballerinax/redis/latest#ConnectionConfig).
 
 ### Setup guide
 
-#### Set up a Redis server instance
+#### Setup a Redis server instance
 
 Select one of the methods below to set up a Redis server.
 
@@ -283,8 +283,8 @@ Select one of the methods below to set up a Redis server.
    3. Run the Redis container as follows `docker run -d -p 6379:6379 --name <container-name> redis`.
 - Use a cloud-based DB solution such as Google’s Cloud, Amazon’s Web Services, or Microsoft’s Azure database.
    1. Visit [Redis cloud console](https://app.redislabs.com).
-   2. Login using email and password or using one of the Single Sign-On options.
-   3. Select either one of Amazon Web Services, Google Cloud, or Microsoft Azure as the database vendor.
+   2. Log in using email and password or using one of the Single Sign-On options.
+   3. Choose either Amazon Web Services, Google Cloud, or Microsoft Azure as the database provider.
    4. Select a region and create the database.
    5. Find your `username`, `password` and the `public endpoint`
    6. Replace the `connection` parameter in `Config.toml` file as below

@@ -16,14 +16,13 @@ data model. Currently, introspection is only supported for MySQL databases and n
 in the future. [Advanced SQL annotations](/learn/persist-model/#advanced-sql-annotations) are used to annotate names, special types, declare generated fields, custom foreign
 keys and indexes etc.
 
-During introspection, all table and column names which does not conform to the [Ballerina naming conventions](https://learn-ballerina.github.io/best_practices/naming_conventions.html#objects-and-records) will be converted to conforming names and their original names will be mapped with the [`@sql:Name`](/learn/persist-model/#mapping-names-with-name-annotation) annotation.
+During introspection, all table and column names which does not conform to Ballerina naming conventions will be converted to conforming names and their original names will be mapped with the [`@sql:Name`](/learn/persist-model/#mapping-names-with-name-annotation) annotation.
 
 ## Type Mapping
 
 The below table shows how SQL types are mapped into Ballerina types. Development efforts are underway to support more SQL types.
 
-The types that are partially supported will be fully supported later along with new annotations to better represent their specific SQL types. However, they can still be
-used in queries. The unsupported types will also be supported in the future.
+The types that are partially supported will be fully supported later along with new annotations to better represent their specific SQL types. However, they can still be used in queries. The unsupported types will also be supported in the future.
 
 
 | SQL Type         | Ballerina Type   |                         Annotation                         | Supported |

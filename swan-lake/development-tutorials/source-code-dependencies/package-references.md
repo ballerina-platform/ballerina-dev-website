@@ -349,7 +349,7 @@ To restrict a certain platform dependency from been packed into the BALA file, s
 
 This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure the dependency is accessible during both compilation and execution, yet it is not included in the BALA. This approach helps avoid any licensing complications associated with redistribution.
 
-In this scenario, when you use such a BALA as a dependency in another project, you would need to explicitly specify the platform dependency in the Ballerina.toml file since it will not be included in the BALA file itself. Also note that specifying the `scope` as 'provided' when providing platform dependencies for the `bal build` command is not supported.
+When incorporating such a BALA as a dependency in another project, remember to explicitly define the platform dependency in the `Ballerina.toml` file since it will not be bundled within the BALA file. Additionally, it is important to note that specifying the scope as 'provided' when providing platform dependencies for the bal build command is not supported.
 
 The following example shows a platform dependency entry with the `scope`.
 
@@ -361,7 +361,7 @@ The following example shows a platform dependency entry with the `scope`.
   scope =  "<scope-of-the-jar-file>"
   ```
 
-When the scope has been specified as `provided`, the values `groupId`, `artifactId` and `version` will be considered mandatory fields for that dependency.
+>**Note:** When the scope has been specified as `provided`, the values `groupId`, `artifactId` and `version` will be considered mandatory fields for that dependency.
 
 ## Platform Compatibility
 

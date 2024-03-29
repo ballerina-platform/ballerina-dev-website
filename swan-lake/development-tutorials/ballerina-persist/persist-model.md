@@ -244,7 +244,7 @@ The foreign key field names will be `userId`, and `carId` in the `CarUser` table
 
 ## Advanced SQL annotations
 
-To have custom name and type mappings in the database implementation and to declare indexes, generated fields and custom foreign keys, the below annotations can be used in the data model definition. Note that these annotations can only be used with SQL data stores.
+To have a custom name and type mappings in the database implementation and to declare indexes, generated fields, and custom foreign keys, the below annotations can be used in the data model definition. Note that these annotations can only be used with SQL data stores.
 
 In order to use them, you must first import the `persist.sql` package to your data model definition file as follows.
 

@@ -26,7 +26,7 @@ $ bal persist add --datastore="mysql" --module="store"
 
 |  Command parameter   |                                                               Description                                                                | Mandatory  |        Default value         |
 |:--------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:----------:|:----------------------------:|
-|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, `mssql`  and `googlesheets`  |     No     |          `inmemory`          |
+|     `datastore`      | Used to indicate the preferred data store. Currently, three data stores are supported: `inmemory`, `mysql`, `mssql`,  and `googlesheets` |     No     |          `inmemory`          |
 |       `module`       |                              Used to indicate the persist-enabled module in which the files are generated.                               |     No     |       `<root_module>`        |
 
 
@@ -128,10 +128,10 @@ You can use the `bal persist generate` command to generate the derived types, cl
 bal persist generate --datastore mysql --module store
 ```
 
-| Command Parameter |                                       Description                                        | Mandatory | Default Value  |
-|:-----------------:|:----------------------------------------------------------------------------------------:|:---------:|:--------------:|
-|    --datastore    |  used to indicate the preferred database client. Currently, 'inmemory', 'mysql', 'mssql', 'postgresql', 'google sheets' and  'redis' are supported.   |    Yes     |        |
-|     --module      |      used to indicate the persist enabled module in which the files are generated.       |    No     | <package_name> |
+| Command Parameter |                                                                     Description                                                                     | Mandatory | Default Value  |
+|:-----------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|:---------:|:--------------:|
+|    --datastore    | used to indicate the preferred database client. Currently, 'inmemory', 'mysql', 'mssql', 'postgresql', 'google sheets', and  'redis' are supported. |    Yes     |        |
+|     --module      |                                    used to indicate the persist enabled module in which the files are generated.                                    |    No     | <package_name> |
 
 If the module name is provided, it will generate the files under a new subdirectory with the module name like below. Otherwise, it will generate the files under the `root` directory.
 

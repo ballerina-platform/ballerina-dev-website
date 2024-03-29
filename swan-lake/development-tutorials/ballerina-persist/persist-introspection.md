@@ -14,7 +14,7 @@ redirect_from:
 Introspection lets you use `bal persist` with existing databases without having to write a
 data model. Currently, introspection is only supported for MySQL databases and new data stores will be supported
 in the future. [Advanced SQL annotations](/learn/persist-model/#advanced-sql-annotations) are used to annotate names, special types, declare generated fields, custom foreign
-keys and indexes etc.
+keys, and indexes etc.
 
 During introspection, all table and column names which does not conform to Ballerina naming conventions will be converted to conforming names and their original names will be mapped with the [`@sql:Name`](/learn/persist-model/#mapping-names-with-name-annotation) annotation.
 

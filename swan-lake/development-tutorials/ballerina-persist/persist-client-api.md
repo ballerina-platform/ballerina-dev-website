@@ -92,7 +92,7 @@ public type WorkspaceTargetType typedesc<WorkspaceWithRelations>;
 
 ## Client Object
 
-The client object is derived for each data model definition file, and it is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`.
+The client object is derived for each data model definition file, and it is used to perform CRUD operations on the data source. Each entity type will have five resource methods for each operation. The resource methods are `get`, `get(get by identity)`, `post`, `put`, and `delete`. In addition, there are two `remote` functions to perform native SQL query and execute.
 
 The skeleton of the client object is as follows.
 
@@ -117,6 +117,12 @@ public client class Client {
 
     isolated resource function delete workspaces/[string id]() returns Workspace|persist:Error {
     };
+    
+    remote isolated function queryNativeSQL(sql:ParameterizedQuery sqlQuery, typedesc<record {}> rowType = <>) returns stream<rowType, persist:Error?> {
+    };
+
+    remote isolated function executeNativeSQL(sql:ParameterizedQuery sqlQuery) returns psql:ExecutionResult|persist:Error {
+    };
 
     public function close() returns persist:Error? {
     }
@@ -127,7 +133,7 @@ The conventions used in deriving the client object is as follows.
 1. Since there can be only one generated client in a Ballerina package, the client name is always `Client`.
 2. The client should be of the `persist:AbstractPersistClient` type.
 3. It should contain the `init()` and `close()` functions.
-4. It should contain five resource methods (i.e., `get`, `get(get by identity)`, `post`, `put`, and `delete` for each entity type defined in the data model.
+4. It should contain five resource methods (i.e., `get`, `get(get by identity)`, `post`, `put`, and `delete` for each entity type defined in the data model and two remote functions to perform native queries directly.
 5. Resource names should be in the plural form of the entity names in lowercase.
 6. The resource method should return the derived entity types.
 7. Resource methods with path parameters will support composite identity fields by having multiple path parameters.

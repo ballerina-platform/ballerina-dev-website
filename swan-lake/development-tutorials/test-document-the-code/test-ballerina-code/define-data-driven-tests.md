@@ -107,7 +107,7 @@ The following is an example to execute map data sets.
 >**Note:** Include the key within double-quotes.
 
 ```
-$ bal test --tests fruitsDataProviderTest#"'banana'"
+$ bal test --tests fruitsDataProviderTest#"banana"
 
 Compiling source
 	intg_tests/dataproviders:0.0.0

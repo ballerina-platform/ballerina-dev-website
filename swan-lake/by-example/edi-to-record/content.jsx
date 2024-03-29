@@ -101,7 +101,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -189,7 +189,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -279,7 +279,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/edi-to-record",
                 "_blank",
               );
             }}
@@ -551,7 +551,7 @@ export function EdiToRecord({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref3}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal edi codegen -s resources/simple_order_schema.json -o modules/sorder/sorder.bal`}</span>
+              <span>{`\$ bal edi codegen -i resources/simple_order_schema.json -o modules/sorder/sorder.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -579,7 +579,7 @@ export function EdiToRecord({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/edi-to-record",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/edi-to-record",
                 "_blank",
               );
             }}

@@ -70,7 +70,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-client-query-endpoint",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-client-query-endpoint",
                 "_blank",
               );
             }}
@@ -248,8 +248,8 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Custom prefetch methods"
-            href="/learn/by-example/custom-prefetch-methods"
+            title="Cache invalidation"
+            href="/learn/by-example/graphql-service-cache-invalidation"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -276,7 +276,7 @@ export function GraphqlClientQueryEndpoint({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Custom prefetch methods
+                  Cache invalidation
                 </span>
               </div>
             </div>

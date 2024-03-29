@@ -117,7 +117,7 @@ export function TesterinaAssertions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/testerina-assertions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/testerina-assertions",
                 "_blank",
               );
             }}

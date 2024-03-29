@@ -58,7 +58,7 @@ To get started, let's set up the Ballerina package to run tests.
 
    Running Tests
 
-           hello
+           hello_world
 
 
                    1 passing

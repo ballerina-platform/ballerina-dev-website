@@ -245,7 +245,7 @@ int n = string:length(s);
 
 ## Arrays
 
-Arrays are sequential data structures consisting of values of the same type.  
+Arrays are ordered data structures consisting of values of the same type.  
 
 You can declare an array of integers as:
 

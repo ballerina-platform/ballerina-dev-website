@@ -402,7 +402,7 @@ input CovidEntry {
     deaths: Decimal
 }
 
-Scalar Decimal
+scalar Decimal
 
 type Query {
     all: [CovidData!]!

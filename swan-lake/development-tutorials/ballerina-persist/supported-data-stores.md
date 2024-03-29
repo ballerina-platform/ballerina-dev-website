@@ -258,7 +258,7 @@ Follow the steps below to obtain API tokens for Google Sheets.
 The Redis data store is a key-value-based inmemory datastore useful for storing and retrieving unstructured data quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
 
 ```shell
-$ bal persist init --datastore redis
+$ bal persist init
 ```
 
 ### Supported Ballerina types

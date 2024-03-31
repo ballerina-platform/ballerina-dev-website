@@ -49,11 +49,21 @@ The In-Memory data store does not require any configuration.
 
 ## Relational Databases (MySQL, MSSQL, PostgreSQL)
 
-The data store is a relational database management system that stores data in tables. It is useful for storing data in a relational format. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when initializing `bal persist` in your application as follows.
+The data store is a relational database management system that stores data in tables. It is useful for storing data in a relational format. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when generating the bal persist client APIs for MySQL, MSSQL, and PostgreSQL.
 
-```shell
-$ bal persist init --datastore [mysql/mssql/postgresql]
-```
+Below are the ways you can provide the data store for each client generation option.
+
+1. Integrate the client API generation with the package build.
+
+   ```shell
+   $ bal persist add --datastore [mysql/mssql/postgresql]
+   ```
+
+2. One-time generation of the client API against the data model.
+
+   ```shell
+   $ bal persist generate --datastore [mysql/mssql/postgresql]
+   ```
 
 ### Supported Ballerina types
 
@@ -184,11 +194,21 @@ The `persist generate` command generates a `script.sql` file in the generated di
 
 ## Google Sheets [Experimental]
 
-The Google Sheets data store is a cloud-based spreadsheet application that stores data in tables. It is useful for storing data in a spreadsheet format. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
+The Google Sheets data store is a cloud-based spreadsheet application that stores data in tables. It is useful for storing data in a spreadsheet format. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when generating the bal persist client APIs for Google Sheets.
 
-```shell
-$ bal persist init --datastore googlesheets
-```
+Below are the ways you can provide the data store for each client generation option.
+
+1. Integrate the client API generation with the package build.
+
+   ```shell
+   $ bal persist add --datastore googlesheets
+   ```
+
+2. One-time generation of the client API against the data model.
+
+   ```shell
+   $ bal persist generate --datastore googlesheets
+   ```
 
 ### Supported Ballerina types
 
@@ -255,11 +275,21 @@ Follow the steps below to obtain API tokens for Google Sheets.
 
 ## Redis [Experimental]
 
-The Redis data store is a key-value-based inmemory datastore useful for storing and retrieving unstructured data quickly. It is not the default data store for `bal persist`. Therefore, you need to explicitly specify the data store when initializing `bal persist` in your application as follows.
+The Redis data store is a key-value-based in-memory datastore useful for quickly storing and retrieving unstructured data. It is not the default data store for `bal persist`. Therefore, you need to specify the data store explicitly when generating the bal persist client APIs for Redis DB.
 
-```shell
-$ bal persist init
-```
+Below are the ways you can provide the data store for each client generation option.
+
+1. Integrate the client API generation with the package build.
+
+   ```shell
+   $ bal persist add --datastore redis
+   ```
+
+2. One-time generation of the client API against the data model.
+
+   ```shell
+   $ bal persist generate --datastore redis
+   ```
 
 ### Supported Ballerina types
 
@@ -305,13 +335,13 @@ Select one of the methods below to set up a Redis server.
    1. Install Docker on your machine if you haven't already.
    2. Pull the Redis Docker image from Docker Hub using the following command.
 
-      ```
+      ```shell
       $ docker pull redis
       ```
    
    3. Run the Redis container as follows.
    
-      ```
+      ```shell
       $ docker run -d -p 6379:6379 --name <container-name> redis
       ```
    

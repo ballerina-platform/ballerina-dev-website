@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-<h1>Ballerina Language Specification, 2024R1 preview 2024-03-30</h1>
+<h1>Ballerina Language Specification, 2024R1 preview 2024-03-31</h1>
 <p>
 Primary contributors:
 </p>
@@ -7678,7 +7678,7 @@ class="grammar"><dfn>block-function-body</dfn> :=
 <dfn>default-worker-init</dfn> := <abbr>statement</abbr>*
 <dfn>default-worker</dfn> := <abbr>statement</abbr>*
 <dfn>named-worker-decl</dfn> :=
-   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr>
+   [<abbr>annots</abbr>] [<abbr>transactional-qual</abbr>] <code>worker</code> <abbr>worker-name</abbr> <abbr>return-type-descriptor</abbr> <abbr>statement-block</abbr> [<abbr>on-fail-clause</abbr>]
 <dfn>worker-name</dfn> := <abbr>identifier</abbr>
 </pre>
 <p>
@@ -9744,6 +9744,13 @@ When the regular-compound-stmt is itself a failure handling statement,
 then only failure of that regular-compound-stmt itself causes control to
 transfer to the <code>on-fail-clause</code>; a failure <em>within</em> that
 regular-compound-stmt will be handled by that regular-compound-statement.
+</p>
+<p>
+An <code>on-fail-clause</code> attached to a <code>named-worker-decl</code> is a
+shorthand for a <code>named-worker-decl</code> with a statement block that is a
+<code>do-stmt</code> with that <code>on-fail-clause</code>: <code>worker
+<var>X</var> { <var>Y</var> } on fail <var>Z</var></code> is equivalent to
+<code>worker <var>X</var> { do { <var>Y</var> } on fail <var>Z</var> }</code>.
 </p>
 <p>
 If there is a <code>typed-binding-pattern</code>, then it is matched to the
@@ -14017,6 +14024,7 @@ the <code>stream</code> keyword.</li>
 <li>It is no longer allowed for a lock statement to contain a sync-send-action or a receive-action.</li>
 <li>A <code>retry</code> or <code>transaction</code> statement may now have an <code>on fail</code>
 clause.</li>
+<li>A named worker declaration may now have an <code>on fail</code> clause.</li>
 </ol>
 </section>
 <section>

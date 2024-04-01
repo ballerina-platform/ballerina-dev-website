@@ -17,24 +17,64 @@ Following are the supported data stores.
 * Google Sheets [Experimental]
 * Redis [Experimental]
 
-The data store is passed as a parameter to the `persist init` command. If you do not specify a data store, the in-memory data store is used by default.
+There are two ways to use `bal persist`.
+### Integrating to `bal build`
 
-```shell
-$ bal persist init --datastore mysql
-```
+1. Initialize `bal persist` and integrate to `bal build` using the following command,
+
+    ```shell
+    $ bal persist add --datastore <data_store> --module <module_name>
+    ```
+   
+   > *Note*: If you do not specify the data store, the in-memory data store is used by default.
+
+2. After defining the entities, build the application using the following command,
+
+    ```shell
+    $ bal build
+    ```
+
+### One time generation
+
+1. Initialize `bal persist` using the following command,
+
+    ```shell
+    $ bal persist init
+    ```
+
+2. Generate the persist client using the following command,
+
+    ```shell
+    $ bal persist generate --datastore <data_store> --module <module_name>
+    ```
+   > *Note*: Specifying the data store is mandatory and not implicitly configured.
 
 It is recorded in the `Ballerina.toml` file in your project as follows.
 
 ```toml
-[persist]
-datastore = mysql
+[[tool.persist]]
+options.datastore = mysql
 ...
 ```
 The following sections describe the configurations and supported types for each data store.
 
 ## In-memory
 
-The `in-memory` data store is a simple data store that stores data in memory. This data store is useful for testing purposes. It is the default data store for `bal persist`. Therefore, you do not need to explicitly specify the data store when you are using it.
+The `in-memory` data store is a simple data store that stores data in memory. This data store is useful for testing purposes.
+
+Below are the ways you can provide the data store for each client generation option.
+
+1. Integrate the client API generation with the package build. In-memory is the default data store for `bal persist`. Therefore, you do not need to explicitly specify the data store when you are using it with `bal build`.
+
+   ```shell
+   $ bal persist add [--datastore inmemory]
+   ```
+
+2. One-time generation of the client API against the data model.
+
+   ```shell
+   $ bal persist generate --datastore inmemory
+   ```
 
 ### Supported Ballerina types
 

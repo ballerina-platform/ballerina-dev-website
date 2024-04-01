@@ -18,7 +18,7 @@ Following are the supported data stores.
 * Redis [Experimental]
 
 There are two ways to use `bal persist`.
-### Integrating to `bal build`
+### Integrate to `bal build`
 
 1. Initialize `bal persist` and integrate to `bal build` using the following command,
 

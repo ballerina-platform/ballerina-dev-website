@@ -64,7 +64,8 @@ The `in-memory` data store is a simple data store that stores data in memory. Th
 
 Below are the ways you can provide the data store for each client generation option.
 
-1. Integrate the client API generation with the package build. In-memory is the default data store for `bal persist`. Therefore, you do not need to explicitly specify the data store when you are using it with `bal build`.
+1. Integrate the client API generation with the package build.
+The default data store used in the package build is the in-memory data store. Therefore, you do not need to specify the data store explicitly when using it with `bal build`.
 
    ```shell
    $ bal persist add [--datastore inmemory]

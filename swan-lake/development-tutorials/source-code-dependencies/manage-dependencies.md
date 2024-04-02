@@ -312,7 +312,7 @@ path = "<path-to-jar-file-1>"
 
 The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
 
->**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).
+>**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. You can also specify different scopes to control how platform dependencies are used during program execution. For more information on this, see [Package references](/learn/package-references/).
 
 ## Manage tool dependencies
 

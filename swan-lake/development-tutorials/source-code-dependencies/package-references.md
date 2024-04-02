@@ -346,7 +346,19 @@ warning: Detected conflicting jar files:
 
 **Define the scope for a dependency**
 
-By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+By default, when the scope has not been explicitly specified for a platform dependency in the `Ballerina.toml`, it will be packaged into the final executable JAR file or the BALA file. Two scopes can be used to restrict this behavior.
+
+***'testOnly' scope***
+
+To restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+
+***'provided' scope***
+
+To restrict a certain platform dependency from being packed into the BALA file, specify the scope as `provided`. This will add the platform dependency to the final executable JAR file but not to the BALA file.
+
+This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure the dependency is available during both compilation and execution, without being included in the BALA. This approach helps avoid any licensing complications associated with redistribution.
+
+When incorporating such a BALA as a dependency in another project, remember to explicitly define the platform dependency in the `Ballerina.toml` file since it will not be bundled within the BALA file. Additionally, it is important to note that specifying the scope as 'provided' when providing platform dependencies for the bal build command is not supported.
 
 The following example shows a platform dependency entry with the `scope`.
 
@@ -357,6 +369,8 @@ The following example shows a platform dependency entry with the `scope`.
   # Scope of the JAR file
   scope =  "<scope-of-the-jar-file>"
   ```
+
+>**Note:** When the scope has been specified as `provided`, the values `groupId`, `artifactId`, and `version` will be considered mandatory fields for that dependency.
 
 ### Tools
 

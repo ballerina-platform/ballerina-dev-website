@@ -1,0 +1,21 @@
+.viewAll {
+    display: flex;
+    color: #20b6b0;
+    text-decoration: none;
+    text-align: right;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.viewAll:hover {
+    text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.linkWrap {
+    text-align: right;
+}
+
+.upcomingSection {
+    margin-top: 15px;
+}

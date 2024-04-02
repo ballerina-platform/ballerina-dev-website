@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
+ * Copyright (c) 2024, WSO2 LLC (http://www.wso2.com) All Rights Reserved.
  *
  * WSO2 LLC licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -22,22 +22,6 @@ import Image from 'next-image-export-optimizer';
 
 import styles from './UniversitySessions.module.css';
 import { prefix } from '../../../utils/prefix';
-import EventsData from '../../../_data/university_sessions.json';
-
-export function getUpcomingEvents(now) {
-    const events = EventsData.events;
-    let upcomingEvents = false;
-
-    for (var i = 0; i < events.length; i++) {
-        if (now < Date.parse(events[i].expire)) {
-            upcomingEvents = true;
-            break;
-        }
-    }
-
-    return upcomingEvents;
-
-}
 
 
 export default function UniversitySessions(props) {
@@ -46,14 +30,6 @@ export default function UniversitySessions(props) {
 
     let linkArrowPath = prefix + '/images/toc-bg.svg';
     let linkArrowHoverPath = prefix + '/images/toc-bg-hover.svg';
-
-    const [now, setNow] = React.useState(new Date());
-
-    React.useEffect(() => {
-        setNow(new Date());
-    }, [])
-
-    const upcomingEvents = getUpcomingEvents(now);
 
     return (
         <Col xs={12}>

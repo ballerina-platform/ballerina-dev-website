@@ -18,7 +18,6 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import dynamic from 'next/dynamic';
 import Image from 'next-image-export-optimizer';
 
 import styles from './UniversitySessions.module.css';
@@ -42,8 +41,6 @@ export function getUpcomingEvents(now) {
 
 
 export default function UniversitySessions(props) {
-
-    const UpcomingEvents = dynamic(() => import('../../common/upcoming-events/UpcomingEvents'), { ssr: false });
 
     const [hoverBtn, setHoverBtn] = React.useState(false);
 
@@ -94,7 +91,7 @@ export default function UniversitySessions(props) {
                                 setHoverBtn(false);
                             }}
                         >
-                            <a href={`${prefix}/community/ballerina-newsletter`} className={styles.viewAll}>
+                            <a href={`${prefix}/community/student-program`} className={styles.viewAll}>
                                 Learn more <Image src={`${hoverBtn ? linkArrowHoverPath : linkArrowPath}`} width={20} height={20} alt="Left Arrow" />
                             </a>
                         </p >

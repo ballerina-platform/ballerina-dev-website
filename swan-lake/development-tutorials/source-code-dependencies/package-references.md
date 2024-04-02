@@ -363,6 +363,48 @@ The following example shows a platform dependency entry with the `scope`.
 
 >**Note:** When the scope has been specified as `provided`, the values `groupId`, `artifactId`, and `version` will be considered mandatory fields for that dependency.
 
+### Tools
+
+You can specify code generation tools to integrate with the package build. These tools execute before the package build and generate code that is essential for the build process.
+
+The following example shows how to specify a tool in the `Ballerina.toml` file.
+
+```toml
+[[tool.<command>]]
+id = "<tool-id>"
+filePath = "<schema-or-API-specification-file>"
+targetModule = "<destination-module-to-generate-code>"
+options.<option1> = "<value1>"
+options.<option2> = "<value2>"
+```
+
+The tool command that you need to use should be specified after the `tool.` prefix in the table array header.
+
+The mandatory `id` field specifies a unique identifier for the tool entry, as a tool can utilize multiple schemas/API specifications files. The `id` must consist of alphanumeric characters and underscores only, and must not begin or end with an underscore. Consecutive underscores are also not permitted.
+
+The `filePath` field is mandatory, providing the path to the specification file that the tool uses to generate code.
+ 
+The `targetModule` field specifies the module where the generated code should be placed. If this is not specified, it will default to the root module. This should be unique for each tool entry.
+ 
+The `options` fields can be used to pass additional parameters to the tool.
+
+If a tool provides multiple subcommands, you can specify them as follows.
+
+```toml
+[[tool.<command>.<subcommand1>]]
+id = "<tool-id1>"
+filePath = "<specification-file>"
+targetModule = "<generated-code-destination-module>"
+options.<option1> = "<value1>"
+options.<option2> = "<value2>"
+
+[[tool.<command>.<subcommand2>]]
+id = "<tool-id2>"
+filePath = "<specification-file>"
+targetModule = "<generated-code-destination-module>"
+options.<option1> = "<value1>"
+```
+
 ## Platform Compatibility
 
 The compatibility of a platform with specific runtimes can be specified in the `Ballerina.toml` file using specific parameters.

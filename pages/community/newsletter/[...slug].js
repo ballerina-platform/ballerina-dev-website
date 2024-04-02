@@ -81,14 +81,11 @@ export default function PostPage({ frontmatter, content }) {
       </Head>
       <Layout>
         <Col sm={12} md={8} lg={8} className='newsletter'> 
-          <div className='topRow'>
-            <Col xs={12}><h1>{frontmatter.issue}</h1></Col>
-          </div>
           <div dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(content)}}/>
         </Col>
 
         <Col sm={12} md={4} lg={4} className="subscriptionCol">
-          <NewsletterSubscription/>
+          <NewsletterSubscription showForm={true}/>
         </Col>
 
       </Layout>

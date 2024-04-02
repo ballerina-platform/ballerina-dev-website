@@ -89,12 +89,12 @@ type EntityType record {|
 
 Say type T is a subtype of `SimpleType`, and T does not contain (),
 
-| Field definition |                 Semantics                 |       Examples       |   
-|:----------------:|:-----------------------------------------:|:--------------------:|
-|       `T`        | Mapped to a non-nullable column in the DB |      `int id;`       |  
-|     T? field     |   Mapped to a nullable column in the DB   | string? description; |  
-|     T field?     |                Not allowed                |          -           |  
-|    T? field?     |                Not allowed                |          -           |  
+| Field definition |                 Semantics                 | Supported data sources |        Examples        |   
+|:----------------:|:-----------------------------------------:|:----------------------:|:----------------------:|
+|       `T`        | Mapped to a non-nullable column in the DB |          All           |       `int id;`        |  
+|    `T? field`    |   Mapped to a nullable column in the DB   |    All except Redis    | `string? description;` |  
+|    `T field?`    |  The field can be ignored when inserting  |         Redis          | `string description?;` |  
+|   `T? field?`    |              Invalid syntax               |           -            |           -            |  
 
 ## Relationship definition
 

@@ -114,7 +114,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/testerina-mocking-functions",
                 "_blank",
               );
             }}
@@ -198,7 +198,7 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/testerina-mocking-functions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/testerina-mocking-functions",
                 "_blank",
               );
             }}

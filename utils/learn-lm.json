@@ -715,6 +715,14 @@
                             "isDir": false,
                             "url": "/learn/publish-packages-to-ballerina-central",
                             "id": "publish-packages-to-ballerina-central"
+                        },
+                        {
+                            "dirName": "Configure a network proxy",
+                            "level": 3,
+                            "position": 2,
+                            "isDir": false,
+                            "url": "/learn/configure-a-network-proxy",
+                            "id": "configure-a-network-proxy"
                         }
                     ]
                 },

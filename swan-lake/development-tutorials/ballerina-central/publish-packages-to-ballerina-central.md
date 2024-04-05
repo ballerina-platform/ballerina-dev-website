@@ -68,7 +68,8 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 
 3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
 
-4. Optionally, if you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the Ballerina Central to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).
+### Configure proxy settings (optional)
+If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the Ballerina Central to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).
 
 ### Define the organization
 

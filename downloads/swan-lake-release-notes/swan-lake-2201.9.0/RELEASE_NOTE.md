@@ -84,3 +84,38 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+- A bug that allowed using `self` of an isolated object to access a mutable field without a lock statement within an anonymous function has been fixed.
+
+    ```ballerina
+    import ballerina/log;
+
+    isolated class Data {
+        private int id;
+        private string name;
+
+        isolated function init(int id, string name) {
+            self.id = id;
+            self.name = name;
+        }
+
+        isolated function update(int? id = (), string? name = ()) {
+            lock {
+                if id is int {
+                    self.id = id;
+                }
+
+                if name is string {
+                    self.name = name;
+                }
+            }
+
+            var logger = isolated function () returns string {
+                // Now results in compile-time errors, 
+                // need to use a lock statement. 
+                return string `ID: '${self.id}', Name: '${self.name}'`; 
+            };
+            log:printDebug("Data updated", details = logger);
+        }
+    }
+    ```

@@ -353,6 +353,14 @@
                             "isDir": false,
                             "url": "/learn/organize-ballerina-code",
                             "id": "organize-ballerina-code"
+                        },
+                        {
+                            "dirName": "Customizing formatting",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/customizing-formatting",
+                            "id": "customizing-formatting"
                         }
                     ]
                 },

@@ -18,6 +18,7 @@ host = "HOST_NAME"
 port = PORT
 username = "PROXY_USERNAME"
 password = "PROXY_PASSWORD"
+```
 
 If your proxy does not require any credentials, keep `username` and `password` fields empty as shown below.
 

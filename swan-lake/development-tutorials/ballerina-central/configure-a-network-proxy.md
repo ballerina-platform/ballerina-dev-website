@@ -8,7 +8,7 @@ active: configure-a-network-proxy
 intro: In corporate environments, direct HTTP internet access is often restricted, with a preference for routing traffic through proxy servers. The following section provides a detailed guide on configuring your system to ensure access to Ballerina Central, even when working behind a proxy.
 ---
 
-## Configure a network proxy
+## Configure proxy settings
 
 If you are connected to the internet via an HTTP proxy, you need to configure it in the `<USER_HOME>/.ballerina/Settings.toml` file to carry out operations related to the Ballerina Central such as publishing a package, pulling a package, and resolving packages. Below is the TOML syntax for the proxy settings.
 
@@ -30,7 +30,7 @@ username = ""
 password = ""
 ```
 
-### Add necessary certificates to the truststore
+## Add necessary certificates to the truststore
 
 If you encounter any certificate-related issues such as the one below when connecting via a proxy:
 

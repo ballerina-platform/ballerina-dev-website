@@ -52,7 +52,7 @@ export function GrpcServerReflection({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/grpc-server-reflection",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/grpc-server-reflection",
                 "_blank",
               );
             }}

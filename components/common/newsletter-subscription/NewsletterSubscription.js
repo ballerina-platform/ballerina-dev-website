@@ -48,6 +48,11 @@ export default function NewsletterSubscription(props) {
                 </a>
                 }
 
+                {
+                    props.showForm &&
+                    <iframe src="https://resources.wso2.com/l/142131/2022-01-05/b3x14k" width="100%" type="text/html" frameBorder="0" allowTransparency="true" className={styles.iframe}></iframe>
+                }
+
             </p >
         </>
     );

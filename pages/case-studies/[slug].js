@@ -146,7 +146,7 @@ export default function PostPage({ frontmatter, content, slug }) {
                             <p>{frontmatter.intro}</p>
                         </Col>
                         <Col xs={12} md={3} className={slug == 'fat-tuesday' ? `vLogo` : null}>
-                            <img src={frontmatter.logo} alt={`${slug} logo`} title={`${slug} logo`}/>
+                            <img src={frontmatter.logo} alt={`${slug} logo`} title={`${slug} logo`} />
                         </Col>
                     </Row>
 
@@ -157,6 +157,18 @@ export default function PostPage({ frontmatter, content, slug }) {
                                 handleToc={handleToc} />
                         </Col>
                     </Row>
+
+                    {
+                        frontmatter.disclaimer && <Row className="pageContentRow innerRow">
+                            <Col xs={12}>
+                                <p className="disclaimer">
+                                    The logos and marks used in this page :  {frontmatter.disclaimer}, belong to the respective trademark owners and WSO2 excludes any and all copyrights, trademarks, rights and interests in those logos and marks.
+                                </p>
+                            </Col>
+                        </Row>
+
+                    }
+
                 </Col>
                 <Col sm={2} className="pageToc d-none d-sm-block">
                     {showToc ? (

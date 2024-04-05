@@ -1128,6 +1128,10 @@ import {
   codeSnippetData as GraphqlInputObjectsCodeSnippetData,
 } from "./graphql-input-objects/content.jsx";
 import {
+  GraphqlIdScalarType,
+  codeSnippetData as GraphqlIdScalarTypeCodeSnippetData,
+} from "./graphql-id-scalar-type/content.jsx";
+import {
   GraphqlInterfaces,
   codeSnippetData as GraphqlInterfacesCodeSnippetData,
 } from "./graphql-interfaces/content.jsx";
@@ -1195,6 +1199,18 @@ import {
   CustomPrefetchMethods,
   codeSnippetData as CustomPrefetchMethodsCodeSnippetData,
 } from "./custom-prefetch-methods/content.jsx";
+import {
+  GraphqlServiceOperationLevelCaching,
+  codeSnippetData as GraphqlServiceOperationLevelCachingCodeSnippetData,
+} from "./graphql-service-operation-level-caching/content.jsx";
+import {
+  GraphqlServiceFieldLevelCaching,
+  codeSnippetData as GraphqlServiceFieldLevelCachingCodeSnippetData,
+} from "./graphql-service-field-level-caching/content.jsx";
+import {
+  GraphqlServiceCacheInvalidation,
+  codeSnippetData as GraphqlServiceCacheInvalidationCodeSnippetData,
+} from "./graphql-service-cache-invalidation/content.jsx";
 import {
   GraphqlClientQueryEndpoint,
   codeSnippetData as GraphqlClientQueryEndpointCodeSnippetData,
@@ -2563,6 +2579,8 @@ const BBEs = {
   GraphqlSubscriptionsCodeSnippetData,
   GraphqlInputObjects,
   GraphqlInputObjectsCodeSnippetData,
+  GraphqlIdScalarType,
+  GraphqlIdScalarTypeCodeSnippetData,
   GraphqlInterfaces,
   GraphqlInterfacesCodeSnippetData,
   GraphqlInterfacesImplementingInterfaces,
@@ -2597,6 +2615,12 @@ const BBEs = {
   GraphqlDataloaderCodeSnippetData,
   CustomPrefetchMethods,
   CustomPrefetchMethodsCodeSnippetData,
+  GraphqlServiceOperationLevelCaching,
+  GraphqlServiceOperationLevelCachingCodeSnippetData,
+  GraphqlServiceFieldLevelCaching,
+  GraphqlServiceFieldLevelCachingCodeSnippetData,
+  GraphqlServiceCacheInvalidation,
+  GraphqlServiceCacheInvalidationCodeSnippetData,
   GraphqlClientQueryEndpoint,
   GraphqlClientQueryEndpointCodeSnippetData,
   GraphqlClientHandlePartialResponse,

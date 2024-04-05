@@ -28,9 +28,9 @@ service /graphql on new graphql:Listener(9090) {
 
     // Marks a field as deprecated.
     # # Deprecated
-    # The \`profile\` field is deprecated. Use \`profile\` instead.
+    # The \`profileInfo\` field is deprecated. Use \`profile\` instead.
     @deprecated
-    resource function get profileeeeeee() returns Profile {
+    resource function get profileInfo() returns Profile {
         return {
             name: "Walter White",
             age: 51,
@@ -143,7 +143,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -299,7 +299,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -453,7 +453,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-directives",
                 "_blank",
               );
             }}
@@ -604,7 +604,7 @@ export function GraphqlDirectives({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-directives",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-directives",
                 "_blank",
               );
             }}

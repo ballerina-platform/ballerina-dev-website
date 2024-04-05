@@ -54,13 +54,11 @@ $ bal new covid19 -t service
 
 You will see the output below.
 
-```shell
 Created new package 'covid19' at covid19.
 ```
 
 This creates a directory named `covid19` with the default module along with a sample code for the service as shown below.
 
-```shell
 .
 ├── covid19
 │   ├── tests

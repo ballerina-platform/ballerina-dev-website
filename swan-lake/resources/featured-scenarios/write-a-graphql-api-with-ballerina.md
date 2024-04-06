@@ -16,13 +16,12 @@ To complete this tutorial, you need:
 
 1. [Ballerina 2201.0.0 (Swan Lake)](/downloads/) or greater
 2. A text editor
-    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](https://wso2.com/ballerina/vscode/docs/) installed.
+    >**Tip:** Preferably, [Visual Studio Code](https://code.visualstudio.com/) with the [Ballerina extension](/learn/vs-code-extension) installed.
 3. A command terminal
 
 ## Design the GraphQL endpoint
 
-Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach) while others do not need the schema to create the service (code-first approach). Ballerina supports both the approaches.
-
+Usually, a GraphQL endpoint is defined using a GraphQL schema. Some languages require the GraphQL schema to create a GraphQL service (schema-first approach) while others do not need the schema to create the service (code-first approach). Ballerina supports both approaches.
 This guide follows the code-first approach; therefore, you do not need the schema file to create your service, and instead, once you write the Ballerina service, the Ballerina GraphQL package will generate the schema.
 
 The GraphQL endpoint you will create in this guide will have two main operations, `Query` and `Mutation`. The `Query` type will be used to read the data in the data source, and the `Mutation` operation will be used to mutate (insert, delete, update) the data in the data source.
@@ -156,8 +155,7 @@ service /covid19 on new graphql:Listener(9090) {
 }
 ```
 
->**Info:** The path of this service is defined as `/covid19`. If you want to host the service on the
-root, you can remove the path as the follows:
+The path of this service is defined as `/covid19`. If you want to host the service on the root, you can remove the path as follows:
 
 ```ballerina
 import ballerina/graphql;
@@ -167,7 +165,7 @@ service on new graphql:Listener(9090) {
 }
 ```
 
->**Info:** When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file.
+When creating the `graphql:Listener` object, you need to provide the port to which it is listening. Alternatively, to use an existing `http:Listener` object, for initializing the `graphql:Listener`, add the code below to the `service.bal` file.
 
 ```ballerina
 import ballerina/graphql;
@@ -180,7 +178,7 @@ service /covid19 on new graphql:Listener(httpListener) {
 }
 ```
 
->**Info:** The above is as same as the first code snippet above, which will listen on the port `9090` and serve on `/covid19`.
+>**Info:** The above code is similar to the previous one, which will listen on the port `9090` and serve on the path `/covid19`.
 
 ### Implement the service methods
 

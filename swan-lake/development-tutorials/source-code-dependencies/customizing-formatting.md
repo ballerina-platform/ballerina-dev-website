@@ -13,17 +13,18 @@ Users can provide custom formatting configurations with the use of a separate co
 
 The formatting configuration file can be specified in two ways:
 
-* `Ballerina.toml`: Define the path to a configuration file within the Ballerina.toml itself. The path can be absolute, relative to the package root, or a URL (HTTP/HTTPS). This path is specified under the `format` section in `Ballerina.toml` with the use of the `configPath` attribute. 
+* `Ballerina.toml`: Define the path to a configuration file within the `Ballerina.toml` itself. The path can be absolute, relative to the package root, or a URL (HTTP/HTTPS). This path is specified under the `format` section in `Ballerina.toml` with the use of the `configPath` attribute.
 
     ```
     [format]
     configPath = "Format.toml"
     ```
 
-* Format.bal: If no configuration path is specified in Ballerina.toml, the formatter will look for a file named `Format.toml` in the current package root directory.
-* If the `configPath` argument is not provided in the `Ballerina.toml` or the `Format.toml` file does not exist in the project root, default formatting options will be applied.
-* If the format config path is an HTTP/HTTPS URL, a cache of the configuration file will be maintained inside the target directory. If the remote configuration file is modified, then make sure to delete the cached `Format.toml` file inside the `target/format/` directory.
+* `Format.toml`: If no configuration path is specified in `Ballerina.toml`, the formatter will look for a file named `Format.toml` in the current package root directory.
 
+If the `configPath` argument is not provided in the `Ballerina.toml` or the `Format.toml` file does not exist in the project root, default formatting options will be applied.
+
+If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration file will be maintained inside the `target` directory. If the remote configuration file is modified, then make sure to delete the cached `Format.toml` file inside the `target/format/` directory.
 
 ## Formatting Options
 
@@ -61,13 +62,13 @@ The formatting configuration file can be specified in two ways:
 
 * Maximum line length before code is wrapped.
 * Value: Integer (e.g., 80, 120)
-* Default: No line wrapping if maxLineLength not specified.
+* Default: No line wrapping if `maxLineLength` not specified.
 
 #### simpleBlocksInOneLine 
 
 * Preserve single-line blocks in user code.
 * Value: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     if x == 1 { return true; }
@@ -78,7 +79,7 @@ The formatting configuration file can be specified in two ways:
 
 * Preserve single-line methods on a single line.
 * Value: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     function getName() returns string { return self.name; }
@@ -89,9 +90,9 @@ The formatting configuration file can be specified in two ways:
 #### classBraceStyle: 
 
 * Placement of the opening brace of the class definition.
-* Values: NewLine, EndOfLine
-* Default: EndOfLine
-    * NewLine
+* Values: `NewLine`, `EndOfLine`
+* Default: `EndOfLine`
+    * `NewLine`
         ```ballerina
         class MyClass 
         {
@@ -99,7 +100,7 @@ The formatting configuration file can be specified in two ways:
         }
         ```
 
-    * EndOfLine
+    * `EndOfLine`
         ```ballerina
         class MyClass {
             // class members
@@ -109,9 +110,9 @@ The formatting configuration file can be specified in two ways:
 #### functionBraceStyle 
 
 * Placement of the opening brace of the function definition.
-* Values: NewLine, EndOfLine
-* Default: EndOfLine
-    * NewLine
+* Values: `NewLine`, `EndOfLine`
+* Default: `EndOfLine`
+    * `NewLine`
         ```ballerina
         function foo()
         {
@@ -119,7 +120,7 @@ The formatting configuration file can be specified in two ways:
         }
         ```
 
-    * EndOfLine
+    * `EndOfLine`
         ```ballerina
         function foo(){
             // function members
@@ -130,23 +131,23 @@ The formatting configuration file can be specified in two ways:
 
 #### parametersWrap
 
-* Formatting of the function parameters when the maxLineLength is exceeded.
-* Values: Wrap, NoWrap, ChopDown
-* Default: Wrap if maxLineLength specified, else NoWrap
-    * Wrap
+* Formatting of the function parameters when the `maxLineLength` is exceeded.
+* Values: `Wrap`, `NoWrap`, `ChopDown`
+* Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
+    * `Wrap`
         ```ballerina
         function foo(int argumentNumberOne, int argumentTwo, 
             int argumentThree, int argumentFour) {
         }
         ```
 
-    * NoWrap
+    * `NoWrap`
         ```ballerina
         function foo(int argumentOne, int argumentTwo, int argumentThree) {
         }
         ```
 
-    * ChopDown
+    * `ChopDown`
         ```ballerina
         function foo(int argumentNumberOne, 
             int argumentTwo, 
@@ -159,7 +160,7 @@ The formatting configuration file can be specified in two ways:
 
 * Align multiline parameters with the open brace.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     function foo(int argumentNumberOne, int argumentTwo,
@@ -171,7 +172,7 @@ The formatting configuration file can be specified in two ways:
 
 * Newline after the left parenthesis of the function declaration.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     function foo(
@@ -184,7 +185,7 @@ The formatting configuration file can be specified in two ways:
 
 * Right parenthesis of the function declaration on a newline.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     function foo(int argumentNumberOne, int argumentTwo, 
@@ -197,20 +198,20 @@ The formatting configuration file can be specified in two ways:
 
 #### argumentsWrap
 
-* Values: Wrap, NoWrap, ChopDown
-* Default: Wrap if maxLineLength specified, else NoWrap
-    * Wrap
+* Values: `Wrap`, `NoWrap`, `ChopDown`
+* Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
+    * `Wrap`
         ```ballerina
         myMethod(param1, param2, param3, param4,
                 param5, param6);
         ```
 
-    * NoWrap
+    * `NoWrap`
         ```ballerina
         myMethod(param1, param2, param3, param4, param5, param6);
         ```
 
-    * ChopDown
+    * `ChopDown`
         ```ballerina
         myMethod(param1, 
             param2,
@@ -224,7 +225,7 @@ The formatting configuration file can be specified in two ways:
 
 * Align multiline arguments with the open brace.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     myMethod(param1, param2, param3, param4
@@ -235,7 +236,7 @@ The formatting configuration file can be specified in two ways:
 
 * Newline after the left parenthesis of the function declaration.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     myMethod(
@@ -246,7 +247,7 @@ The formatting configuration file can be specified in two ways:
 
 * Right parenthesis of the function declaration on a newline.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     myMethod(param1, param2, param3, 
@@ -258,9 +259,9 @@ The formatting configuration file can be specified in two ways:
 
 #### elseOnNewLine
 
-* else and else if keyword on the newline which follows after the } of the previous if or else if statement.
+* `else` and `else if` keyword on the newline which follows after the `}` of the previous `if` or `else if` statement.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     if (condition) {
@@ -277,7 +278,7 @@ The formatting configuration file can be specified in two ways:
 
 * Space after type casting.
 * Values: Boolean
-* Default: true
+* Default: `true`
 
     ```ballerina
     int x = <int> someValue;
@@ -287,7 +288,7 @@ The formatting configuration file can be specified in two ways:
 
 * Space after the opening brace and before the closing brace of a mapping constructor.
 * Values: Boolean
-* Default: true
+* Default: `true`
 
     ```ballerina
     Student x = { name: “Alex”, age: 15 };
@@ -297,7 +298,7 @@ The formatting configuration file can be specified in two ways:
 
 * Align equals on consecutive definitions.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     ```ballerina
     const A   = "a";
@@ -309,18 +310,18 @@ The formatting configuration file can be specified in two ways:
 
 #### groupImport
 
-* Group imports by, 
+* Group imports in the order of, 
     * Imports from the same package.
-    * Imports from the ballerina/ and ballerinax/ organizations.
+    * Imports from the `ballerina/` and `ballerinax/` organizations.
     * Imports from third-party organizations.
 * Values: Boolean
-* defaultValue: true
+* Default: `true`
 
 #### sortImports
 
 * Sort imports based on alphabetical order.
 * Values: Boolean
-* defaultValue: true
+* Default: `true`
 
 ### Query
 
@@ -328,7 +329,7 @@ The formatting configuration file can be specified in two ways:
 
 * Align multiline queries with the equals on the first line.
 * Values: Boolean
-* Default: false
+* Default: `false`
 
     * Default behavior
         ```ballerina

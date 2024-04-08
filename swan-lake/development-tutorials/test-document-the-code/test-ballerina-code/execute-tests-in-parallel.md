@@ -4,27 +4,23 @@ title: Execute tests in parallel
 description: Learn how to execute tests in parallel.
 keywords: ballerina, programming language, testing, test execution
 permalink: /learn/test-ballerina-code/execute-tests-in-parallel/
-active: execute-tests
-intro: The sections below include information about executing tests in parallel.
+active: execute-tests-in-parallel
+intro: Ballerina test framework allows developers to execute test cases in parallel, which can significantly reduce the overall test execution time, especially for large codebases with a large number of test cases.
 ---
 
 ## Enable parallel execution of tests
 
-Tests are executed serially by default. User has to consciously enable the parallel execution by passing
-the `--parallel` flag as follows.
+Tests are executed serially by default. The user has to explicitly activate the parallel execution by providing the `--parallel` flag as follows.
 
 ```bash
 bal test --parallel
 ```
 
-Prior to executing tests concurrently, it is imperative to guarantee concurrency safety. Ballerina inherently assesses the concurrency safety of tests to a certain degree using a predefined set of rules. Tests failing to adhere to these rules are executed serially, notwithstanding the activation of the parallel flag.
+Before running tests concurrently, it's crucial to ensure concurrency safety. Ballerina inherently evaluates the concurrency safety of tests to some extent using a predefined set of rules. Tests that don't comply with these rules are executed sequentially, regardless of the parallel flag being enabled.
 
 ## Exclude a specific test from parallel execution
 
-Tests can be flagged to be executed serially eventhough parallel execution is enabled. The common use case is when
-certain tests have dependencies or requirements that make them incompatible with parallel execution. Eg- Shared
-resource/ specific environment set-up. If such a requirment is identfied, User may need to set the `serialExecution`
-flag to `true` as follows.
+Certain tests may have dependencies or requirements that make them incompatible with parallel execution, such as shared resources or specific environment setups. If such a requirement is identified, the user may need to set the `serialExecution` flag to `true` as follows.
 
 ```ballerina
 @test:Config {serialExecution: true}
@@ -35,17 +31,16 @@ function testAssertEquals6() {
 
 ## Write a concurrent safe test case
 
-Following set of rules should be followed while writing a parallel test,
+A set of rules should be followed while writing a parallel test.
 
-1) Test function should be isolated. In some instances, compiler infer the test functions as isolated automatically if
-   there are sufficient conditions to make them concurrently safe.
+1) The test function should be isolated. In some instances, the compiler infers the test functions as isolated automatically if there are sufficient conditions to make them concurrently safe.
 2) If it is a data provider test, 
    - The data provider of the test function should be isolated.
    - The test function parameters should be read-only type.
-3) Respective set-up, and tear-down functions (before, after, before-each, after-each, before-group, after-group) of the test function should be isolated.
+3) Respective set-up and tear-down functions (`before`, `after`, `BeforeEach`, `AfterEach`, `BeforeGroups`, `AfterGroups`) of the test function should be isolated.
 
-A warning related to unparallelized tests are printed at the beginning of the parallel test execution with the reasons.
-Consider the following example,
+A warning related to unparallelized tests is printed at the beginning of the parallel test execution with the reasons.
+Consider the following example.
 
 ```ballerina
 import ballerina/lang.runtime;
@@ -74,12 +69,12 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 }
 ```
 
-The above code results following warning.
+The above code results in the following warning.
 
 ```bash
 WARNING: Test function 'mapDataProviderTest' cannot be parallelized, reason: non-isolated test function, non-isolated data-provider function
 ```
-Based on the warning, we can correct the code as follows,
+Based on the warning, we can correct the code as follows.
 
 ```ballerina
 import ballerina/lang.runtime;

@@ -11,21 +11,17 @@ intro: Mocking is useful to control the behavior of functions and objects to con
 
 ## Mock objects
 
-The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behaviour of 
-the object member functions and values of member fields via stubbing or replacing the entire object with a user-defined 
-equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behaviour of the methods of an object and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
 
 Mocking objects can be done in two ways :
 
 1. Creating a test double (providing an equivalent object in place of the real object)
-2. Stubbing the member function or member variable (specifying the behaviour of the functions and values of the 
-variables)
+2. Stubbing the methods and fields of the object (specifying the behaviour of the methods and values of the object fields)
 
 
 ### Create a test double
 
-You can write a custom mock object and substitute it in place of the real object. The custom object should be made 
-structurally equivalent to the real object via the mocking features in the test module.
+You can write a custom mock object and substitute it in place of the real object. The custom object should be made structurally equivalent to the real object via the mocking features in the test module.
 
 ***Example:***
 
@@ -53,8 +49,7 @@ function getRandomJoke(string name) returns string|error {
 
 Let's write tests for the above `main.bal` file to define a test double for the `clientEndpoint` object.
 
->**Note:** Only the `get` function is implemented since it is the only function used in the sample. Attempting to call
- any other member function of the `clientEndpoint` will result in a runtime error. 
+>**Note:** Only the `get` method is implemented since it is the only method used in the sample. Attempting to call any other methods of the `clientEndpoint` will result in a runtime error. 
 
 ***main_test.bal***
 
@@ -86,13 +81,14 @@ public function testGetRandomJoke() {
 }
 ```
 
-### Stub member functions and variables of an object
+### Stub the methods and fields of an object
 
-Instead of creating a test double, you may also choose to create a default mock object and stub the functions to return 
-a specific value or to do nothing.
+#### Stub remote methods/ normal methods
 
->**Note:** It is important to ensure that all member functions of the object being tested are properly stubbed. 
-> If any function is called within the implementation that hasn't been stubbed, the test framework will generate an 
+Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing.
+
+>**Note:** It is important to ensure that all methods of the object being tested are properly stubbed. 
+> If any method is called within the implementation that hasn't been stubbed, the test framework will generate an 
 > error message in the following format: 
 > `no cases registered for member function '<member_function_name>' of object type '<object_type>'.`
 
@@ -149,11 +145,11 @@ function getCategoriesResponse() returns string[] {
 }
 ```
 
-#### Stub to return a specific value
+##### Stub to return a specific value
 
 ***main_test.bal***
- 
-This test stubs the behaviour of the `get` function to return a specific value in 2 ways:
+
+This test stubs the behaviour of the `get` method to return a specific value in 2 ways:
 
 1. Stubbing to return a specific value in general
 2. Stubbing to return a specific value based on the input
@@ -182,13 +178,13 @@ public function testGetRandomJoke() {
 }
 ```
 
-#### Stub with multiple values to return sequentially for each function call
+##### Stub with multiple values to return sequentially for each function call
 
 ***main_test.bal***
 
-This test stubs the behaviour of the `get` function to return a specified sequence of values for each `get` function 
-invocation (i.e., the first call to the `get` function will return the first argument and the second call will return 
-the second argument).
+This test stubs the behaviour of the `get` method to return a specified sequence of values for each `get` method invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
+
+>**Note:** `withArguments` function does not support with `thenReturnSequence`.
 
 ```ballerina
 import ballerina/test;
@@ -208,6 +204,191 @@ public function testGetRandomJoke() {
 
     // Verify the return value against the expected string
     test:assertEquals(result, "When Sheldon wants an egg, he cracks open a chicken.");
+}
+```
+
+##### Stub to do nothing
+
+If a method has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
+
+***Example:***
+
+***main.bal***
+
+```ballerina
+import ballerina/email;
+
+email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
+
+// This function sends out emails to specified email addresses and returns an error if sending failed.
+function sendNotification(string[] emailIds) returns error? {
+    email:Message msg = {
+        'from: "builder@abc.com",
+        subject: "Error Alert ...",
+        to: emailIds,
+        body: ""
+    };
+    return check smtpClient->sendMessage(msg);
+}
+```
+***main_test.bal***
+
+This test stubs the behaviour of the `sendMessage` method to do nothing for testing the `sendNotification` function.
+
+```ballerina
+import ballerina/test;
+import ballerina/email;
+
+@test:Config {}
+function testSendNotification() {
+    string[] emailIds = ["user1@test.com", "user2@test.com"];
+
+    // Create a default mock SMTP client and assign it to the `smtpClient` object.
+    smtpClient = test:mock(email:SmtpClient);
+
+    // Stub to do nothing when the`sendMessage` method is invoked.
+    test:prepare(smtpClient).when("sendMessage").doNothing();
+
+    // Invoke the function to test and verify that no error occurred.
+    test:assertEquals(sendNotification(emailIds), ());
+}
+```
+
+#### Stub resource methods
+
+Similar to remote methods, resource methods also can be stubbed to return a specific value, a series of values or, to do nothing. To mock a resource method, the resource method name(`get`, `post`, `put`, ...etc) and resource path should be specified. Each path parameter in the resource path should be indicated with a colon(`:`) prefix. Similarly, Rest parameters should be indicated with a double colon(`::`) prefix.
+
+***Example:***
+
+Let's consider the following client example.
+
+***main.bal***
+
+```ballerina
+public type Employee record {|
+    readonly string id;
+    string firstName;
+    string lastName;
+    string gender;
+|};
+
+EmpClient empClient = new ();
+
+public client class EmpClient {
+    map<Employee> employees;
+
+    function init() {
+        self.employees = {};
+    }
+
+    resource function get employees/[string... args]() returns string {
+        return "Welcome to the Employees API";
+    }
+
+    resource function get employee/[string id]() returns Employee? {
+        return self.employees[id];
+    }
+
+    resource function get employee/welcome/[string id](string firstName, string lastName) returns string {
+        return "Welcome " + firstName + " " + lastName + ". your ID is " + id;
+    }
+}
+```
+
+##### Stub to return a specific value with a resource method
+
+***main_test.bal***
+ 
+This test stubs the behaviour of the below resource method to return a specific value in 4 ways:
+
+```ballerina
+    resource function get employee/welcome/[string id](string firstName, string lastName) returns string {
+        return "Welcome " + firstName + " " + lastName + ". your ID is " + id;
+    }
+```
+
+1. Stubbing to return a specific value in general
+2. Stubbing to return a specific value based on the path parameter
+3. Stubbing to return a specific value based on the method arguments
+4. Stubbing to return a specific value based on the path parameter and the method arguments
+
+```ballerina
+@test:Config {}
+function testWelcomeEmployee() {
+    empClient = test:mock(EmpClient);
+    // Stubbing to return a specific value in general
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").thenReturn("Stub_1");
+
+    // Stubbing to return a specific value on a specific path parameter
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: ""}).thenReturn("Stub_2");
+
+    // Stubbing to return a specific value on a specific method arguments
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withArguments("", "").thenReturn("Stub_3");
+
+    // Stubbing to return a specific value on a specific path parameter and method arguments
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: ""}).withArguments("", "").thenReturn("Stub_4");
+
+    // Specific path parameter and method arguments should take precedence over general stubbing
+    string result = empClient->/employee/welcome/[""].get(firstName = "", lastName = "");
+    test:assertEquals(result, "Stub_4");
+
+    // Specific method arguments should take precedence over general stubbing
+    result = empClient->/employee/welcome/["emp001"].get(firstName = "", lastName = "");
+    test:assertEquals(result, "Stub_3");
+
+    // Specific path parameter should take precedence over general stubbing
+    result = empClient->/employee/welcome/[""].get(firstName = "John", lastName = "Kibert");
+    test:assertEquals(result, "Stub_2");
+
+    // General stubbing should be used when no specific stubbing is available
+    result = empClient->/employee/welcome/["emp001"].get(firstName = "John", lastName = "Kibert");
+    test:assertEquals(result, "Stub_1");
+}
+```
+
+##### Stub with multiple values to return sequentially for each function call with a resource method
+
+***main_test.bal***
+
+Similar to other object methods, the resource method also can return a value from a sequence of values during method invocation.
+
+>**Note:** `withArguments` and `withPathParameters` functions do not support with `thenReturnSequence`.
+
+```ballerina
+@test:Config {}
+function testGetAllEmployeeById() {
+    // Create a mock client
+    empClient = test:mock(EmpClient);
+    Employee emp1 = {id: "emp001", firstName: "John", lastName: "Doe", gender: "male"};
+    Employee emp2 = {id: "emp002", firstName: "John", lastName: "Kennedy", gender: "male"};
+    Employee emp3 = {id: "emp003", firstName: "John", lastName: "Kill", gender: "male"};
+
+    // Stub to return the corresponding value for each invocation 
+    test:prepare(empClient).whenResource("employee/:id").onMethod("get").thenReturnSequence(emp1, emp2, emp3);
+
+    // Invoke function calls 
+    Employee? result = empClient->/employee/["emp001"].get();
+    test:assertEquals(result, emp1);
+    Employee? result1 = empClient->/employee/["emp002"].get();
+    test:assertEquals(result1, emp2);
+    Employee? result2 = empClient->/employee/["emp002"].get();
+    test:assertEquals(result2, emp3);
+}
+```
+
+##### Stub to do nothing with a resource method
+
+***main_test.bal***
+
+If a resource method has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
+
+```ballerina
+@test:Config {}
+function testGetAllEmployee() {
+    empClient = test:mock(EmpClient);
+    test:prepare(empClient).whenResource("employee/:id").doNothing();
+    Employee? result = empClient->/employee/["emp001"].get();
+    test:assertEquals(result, ());
 }
 ```
 
@@ -285,54 +466,6 @@ function testMemberVariable() {
     productClient = mockClient;
     // Assert for the mocked product name.
     test:assertEquals(getProductName(), "Bread");
-}
-```
-
-#### Stub to do nothing
-
-If a function has an optional or no return type specified, this function can be mocked to do nothing when writing
- test cases.
-
-***Example:***
-
-***main.bal***
-
-```ballerina
-import ballerina/email;
-
-email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
-
-// This function sends out emails to specified email addresses and returns an error if sending failed.
-function sendNotification(string[] emailIds) returns error? {
-    email:Message msg = {
-        'from: "builder@abc.com",
-        subject: "Error Alert ...",
-        to: emailIds,
-        body: ""
-    };
-    return check smtpClient->sendMessage(msg);
-}
-```
-***main_test.bal***
-
-This test stubs the behaviour of the `send` function to do nothing for testing the `sendNotification` function.
-
-```ballerina
-import ballerina/test;
-import ballerina/email;
-
-@test:Config {}
-function testSendNotification() {
-    string[] emailIds = ["user1@test.com", "user2@test.com"];
-
-    // Create a default mock SMTP client and assign it to the `smtpClient` object.
-    smtpClient = test:mock(email:SmtpClient);
-
-    // Stub to do nothing when the`send` function is invoked.
-    test:prepare(smtpClient).when("sendMessage").doNothing();
-
-    // Invoke the function to test and verify that no error occurred.
-    test:assertEquals(sendNotification(emailIds), ());
 }
 ```
 

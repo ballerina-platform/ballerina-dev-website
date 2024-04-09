@@ -48,6 +48,16 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ## Ballerina library updates
 
+### New features
+
+#### `data.jsondata` module
+
+- Introduced the `data.jsondata` package to provide a set of APIs to work with JSON data.
+
+#### `data.xmldata` module
+
+- Introduced the `data.xmldata` package to provide a set of APIs to work with XML data.
+
 ### Deprecations
 
 ### Bug fixes

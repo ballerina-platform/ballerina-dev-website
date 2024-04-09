@@ -40,7 +40,131 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
-### Improvements                             
+#### Support to Provide Values for Configurable Variables through environment variables
+
+Configurable values can now be provided through environment variables using the following syntax.
+
+```
+BAL_CONFIG_VAR_key=value
+```
+The key conforms to the structure  `org_module_variable`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
+
+The environment variable-based configuration is supported for configurable variables with `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
+
+For example, if the configurable variable is defined in the following way,
+
+```ballerina
+configurable int port = ?;
+```
+The values can be provided through environment variables as follows.
+
+If the configurable variable is defined in the default module or if a single Ballerina file is being used:
+
+For Windows:
+```
+$ set BAL_CONFIG_VAR_PORT=9090
+```
+For Linux/macOS:
+```
+$ export BAL_CONFIG_VAR_PORT=9090
+```
+If the configurable variable is defined in a different module of the same organization:
+For Windows:
+```
+$ set BAL_CONFIG_VAR_MODULENAME_PORT=9090
+```
+For Linux/macOS:
+```
+$ export BAL_CONFIG_VAR_MODULENAME_PORT=9090
+```
+If the configurable variable is defined in a module of a different organization.
+For Windows:
+```
+$ set BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
+```
+For Linux/macOS:
+```
+$ export BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
+```
+
+#### New Runtime Java APIs
+
+##### Java APIs to parse a json string to a target type
+
+A new optimized API is introduced in `ValueUtils`  to parse a given input stream and create a value using a subtype of `json` given by the target type. The user needs to close the provided input stream.
+
+```java
+public static Object parse(InputStream in, Type targetType) throws BError{
+};
+```
+
+##### Java APIs to provide information about runtime artifacts
+
+New runtime Java APIs are added to provide information about the active runtime artifacts.
+
+```java
+public List<Artifact> getArtifacts();
+```
+
+This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only service is supported now), and a details map. The details enclose the following information.
+
+- `listeners` - a list of listener objects attached to the service
+- `attachPoint` - the attach point specified in the service declaration (for example, `basePath` in HTTP)
+- `service` - the service object
+
+```java
+public Node getNode();
+```
+
+This returns a node instance that represents the Ballerina runtime node. A node instance contains a nodeId (self-generated unique ID), and a map of details. The details enclose the following information.
+- `balVersion` - The Ballerina version
+- `balHome` - The path of Ballerina home
+- `osName` - Name of the Operating System
+- `osVersion` - Version of the Operating System
+
+The above APIs can be called from a Ballerina environment instance. Similar to this,
+
+```java 
+import io.ballerina.runtime.api.Artifact;
+import io.ballerina.runtime.api.Environment;
+import io.ballerina.runtime.api.Node;
+
+Repository repository = env.getRepository();
+List<Artifact> artifacts = repository.getArtifacts();
+Node node = repository.getNode();
+```
+
+##### Java APIs to start a new runtime and invoke a Ballerina function
+Java APIs are introduced to start a new Ballerina runtime instance for a given module and perform function invocations within the module by calling the module initialization and module start methods sequentially before any other function calls. It is recommended to call the module stop method to gracefully shut down the Ballerina runtime at the end of the program.
+
+```java
+import io.ballerina.runtime.api.Runtime;
+
+Runtime balRuntime = Runtime.from(module);
+balRuntime.init();
+balRuntime.start();
+balRuntime.invokeMethodAsync(“functionName”, callback, args);
+balRuntime.stop();
+```
+
+### Improvements
+
+#### Support mapping of resource and remote function parameters to BArray parameter of a generic native method
+A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (Path parameters need to be handled separately with a `BArray` parameter and it is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
+
+eg:
+```ballerina
+isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s, int i, typedesc<anydata> targetType = <>) = @java:Method {
+    'class: "javalibs.app.App",
+    name: "getResource",
+    paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
+} external;
+```
+
+```java
+public static void getResource(BObject client, BArray path, BArray args) {
+}
+```
 
 ### Bug fixes
 
@@ -84,3 +208,5 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+- To avoid clashes with Java identifiers, the character `$` used for encoding and decoding identifiers has been replaced by the character `&`.

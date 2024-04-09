@@ -65,6 +65,15 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 - Introduced the `Add private qualifier` code action to set the visibility qualifier of a field in an isolated class to `private`.
 - Introduced the `Make variable immutable` code action to add `final` and/or `readonly` as needed to make the field immutable.
 
+#### Ballerina Shell
+
+- Added support for invoking actions directly from the shell prompt, as shown with the following examples.
+```ballerina
+$= string returnValue = myClient->invoke("input");
+$= string returnValue = myClient->/root/name("input");
+$= future<int> futureResult = start name();
+```
+
 #### CLI
 
 #### OpenAPI tool

@@ -330,7 +330,7 @@ HINT [service.bal:(76:5,76:5)] concurrent calls will not be made to this method 
 Running executable
 ```
 
->**Info:** The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina.
+>**Info:** The console has warning logs related to the isolatedness of resources. It is a built-in service concurrency safety feature of Ballerina. Refer to the [isolated functions](/learn/by-example/isolated-functions) example to learn more about this feature.
 
 ## View the generated schema
 

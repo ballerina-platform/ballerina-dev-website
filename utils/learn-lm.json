@@ -355,12 +355,12 @@
                             "id": "organize-ballerina-code"
                         },
                         {
-                            "dirName": "Customizing formatting",
+                            "dirName": "Customize formatting",
                             "level": 3,
                             "position": 4,
                             "isDir": false,
-                            "url": "/learn/customizing-formatting",
-                            "id": "customizing-formatting"
+                            "url": "/learn/customize-formatting",
+                            "id": "customize-formatting"
                         }
                     ]
                 },

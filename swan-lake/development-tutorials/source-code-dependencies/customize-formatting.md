@@ -1,30 +1,36 @@
 ---
-title: Customization of formatting
+title: Customize formatting
 description: The section on providing custom configurations to the formatter.
 keywords: ballerina, programming language, formatting, custom configurations
-permalink: /learn/customizing-formatting/
-active: customizing-formatting
-intro: This feature allows developers to customize the formatting of Ballerina projects. This is done with the use of a configuration file. This configuration file can be a local or a remote file, which allows for consistency in code style across projects and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
+permalink: /learn/customize-formatting/
+active: customize-formatting
+intro: This feature allows developers to customize how a Ballerina project is formatted via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
 ---
 
-## Configuring
+## The formatting configuration file
 
-Users can provide custom formatting configurations with the use of a separate configuration file of the `toml` format. Users can provide an arbitrary name for the file.
+Users can customize formatting configuration via a configuration file in the `toml` format. Users can provide an arbitrary name for the file.
 
 The formatting configuration file can be specified in two ways:
 
-* `Ballerina.toml`: Define the path to a configuration file within the `Ballerina.toml` itself. The path can be absolute, relative to the package root, or a URL (HTTP/HTTPS). This path is specified under the `format` section in `Ballerina.toml` with the use of the `configPath` attribute.
+* `Ballerina.toml`: Define the path to the configuration file in the `Ballerina.toml` file. The path can be absolute, relative to the package root, or a URL (HTTP/HTTPS). This path has to be specified under the `format` header in the `Ballerina.toml` file as `configPath`.
 
+    ```toml
+        [package]
+        org = "format-org"
+        name = "format_project"
+        version = "0.1.0"
+        distribution = "2201.9.0"
+
+        [format]
+        configPath = "Format.toml"
     ```
-    [format]
-    configPath = "Format.toml"
-    ```
 
-* `Format.toml`: If no configuration path is specified in `Ballerina.toml`, the formatter will look for a file named `Format.toml` in the current package root directory.
+* `Format.toml`: If no configuration path is specified in the `Ballerina.toml` file, the formatter will look for a file named `Format.toml` in the package's root directory.
 
-If the `configPath` argument is not provided in the `Ballerina.toml` or the `Format.toml` file does not exist in the project root, default formatting options will be applied.
+If the `configPath` value is not provided in the `Ballerina.toml` file or the `Format.toml` file does not exist in the project root, default formatting options will be used.
 
-If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration file will be maintained inside the `target` directory. If the remote configuration file is modified, then make sure to delete the cached `Format.toml` file inside the `target/format/` directory.
+If the format `configPath` value is an HTTP/HTTPS URL, the configuration file will be cached in the `target` directory. If the remote configuration file is modified, then make sure to delete the cached `Format.toml` file inside the `target/format/` directory.
 
 ## Formatting Options
 
@@ -37,8 +43,9 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Default: 4
 
     ```ballerina
-    function main() {
-        if (condition) {
+    public function main() {
+        boolean condition = true;
+        if condition {
             io:println("Indented code");
         }
     }
@@ -92,18 +99,20 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Placement of the opening brace of the class definition.
 * Values: `NewLine`, `EndOfLine`
 * Default: `EndOfLine`
+
     * `NewLine`
         ```ballerina
         class MyClass 
         {
-            // class members
+
         }
         ```
 
     * `EndOfLine`
+
         ```ballerina
         class MyClass {
-            // class members
+
         }
         ```
 
@@ -113,17 +122,19 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Values: `NewLine`, `EndOfLine`
 * Default: `EndOfLine`
     * `NewLine`
+
         ```ballerina
         function foo()
         {
-            // function members
+
         }
         ```
 
     * `EndOfLine`
+
         ```ballerina
         function foo(){
-            // function members
+
         }
         ```
 
@@ -135,6 +146,7 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Values: `Wrap`, `NoWrap`, `ChopDown`
 * Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
     * `Wrap`
+
         ```ballerina
         function foo(int argumentNumberOne, int argumentTwo, 
             int argumentThree, int argumentFour) {
@@ -142,12 +154,14 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
         ```
 
     * `NoWrap`
+
         ```ballerina
         function foo(int argumentOne, int argumentTwo, int argumentThree) {
         }
         ```
 
     * `ChopDown`
+
         ```ballerina
         function foo(int argumentNumberOne, 
             int argumentTwo, 
@@ -201,17 +215,20 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Values: `Wrap`, `NoWrap`, `ChopDown`
 * Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
     * `Wrap`
+
         ```ballerina
         myMethod(param1, param2, param3, param4,
                 param5, param6);
         ```
 
     * `NoWrap`
+
         ```ballerina
         myMethod(param1, param2, param3, param4, param5, param6);
         ```
 
     * `ChopDown`
+
         ```ballerina
         myMethod(param1, 
             param2,
@@ -264,7 +281,8 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Default: `false`
 
     ```ballerina
-    if (condition) {
+    boolean condition = true;
+    if condition {
         // if block
     } 
     else {
@@ -332,6 +350,7 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
 * Default: `false`
 
     * Default behavior
+
         ```ballerina
         int[] numsReversed = from int i in nums
                 order by i descending
@@ -339,6 +358,7 @@ If the format `configPath` is an HTTP/HTTPS URL, a cache of the configuration fi
         ```
 
     * When `alignMultiLineQueries = true`
+
         ```ballerina
         int[] numsReversed = from int i in nums
                 order by i descending

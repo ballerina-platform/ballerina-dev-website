@@ -60,6 +60,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### Language Server
 
+- Introduced a code action to extract a value expression into a transform function.
+- Introduced a code action to wrap an isolated variable access with a `lock` statement.
+- Introduced a code action to fix invalid non-private mutable fields in an `isolated` class.
+
 #### CLI
 
 #### OpenAPI tool
@@ -67,6 +71,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 ### Improvements
 
 #### Language Server
+
+- Improved the snippet completion items provided for dependently typed functions.
+- Improved the completion items provided for precise resource parameter types.
+- Improved the hover to show descriptions for resource paths.
+- Improved the order of completions provided for resource access paths.
+- Introduced an error notification to indicate when the project contains cyclic dependencies.
+- Introduced an error notification to indicate high memory usage.
 
 ### Bug fixes
 

@@ -50,13 +50,86 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
-#### `data.jsondata` module
+#### `data.jsondata` package
 
-- Introduced the `data.jsondata` package to provide a set of APIs for JSON data conversions, data projection and JSON naviagation.
+- Introduced the [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
 
-#### `data.xmldata` module
+    ```ballerina
+    import ballerina/data.jsondata;
+    import ballerina/io;
 
-- Introduced the `data.xmldata` package to provide a set of APIs for XML data conversions and data projection.
+    // Define a closed record type to capture the required fields from the JSON content.
+    type Book record {|
+        string name;
+        string author;
+    |};
+
+    json jsonContent = {
+        "name": "Clean Code",
+        "author": "Robert C. Martin",
+        "year": 2008,
+        "publisher": "Prentice Hall"
+    };
+
+    string jsonStr = string `
+    {
+        "name": "The Pragmatic Programmer",
+        "author": "Andrew Hunt, David Thomas",
+        "year": 1999,
+        "publisher": "Addison-Wesley"
+    }`;
+
+    public function main() returns error? {
+        // Based on the expected type, it selectively converts the JSON content to the record type.
+        Book book = check jsondata:parseAsType(jsonContent);
+        io:println(book);
+
+        // Based on the expected type, it selectively converts the JSON string to the record type.
+        Book book2 = check jsondata:parseString(jsonStr);
+        io:println(book2);
+    }
+    ```
+
+#### `data.xmldata` package
+
+- Introduced the [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package to provide a set of APIs for XML data conversions and data projection.
+
+    ```ballerina
+    import ballerina/data.xmldata;
+    import ballerina/io;
+
+    // Define a closed record type to capture the required elements and attributes from the XML data.
+    type Book record {|
+        string name;
+        string author;
+    |};
+
+    xml xmlData = xml `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+
+    string xmlStr = string `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+
+    public function main() returns error? {
+        // Based on the expected type, it selectively converts the XML data to the record type.
+        Book book = check xmldata:parseAsType(xmlData);
+        io:println(book);
+
+        // Based on the expected type, it selectively converts the XML string to the record type.
+        Book book2 = check xmldata:parseString(xmlStr);
+        io:println(book2);
+    }
+    ```
 
 ### Deprecations
 

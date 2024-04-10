@@ -47,7 +47,7 @@ Configurable values can now be provided through environment variables using the 
 ```
 BAL_CONFIG_VAR_key=value
 ```
-The key conforms to the structure  `org_module_variable`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
+The key conforms to the structure  `ORG_MODULE_VARIABLE`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
 
 The environment variable-based configuration is supported for configurable variables with `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
@@ -64,6 +64,7 @@ For Windows:
 ```
 $ set BAL_CONFIG_VAR_PORT=9090
 ```
+
 For Linux/macOS:
 ```
 $ export BAL_CONFIG_VAR_PORT=9090
@@ -74,6 +75,7 @@ For Windows:
 ```
 $ set BAL_CONFIG_VAR_MODULENAME_PORT=9090
 ```
+
 For Linux/macOS:
 ```
 $ export BAL_CONFIG_VAR_MODULENAME_PORT=9090
@@ -84,6 +86,7 @@ For Windows:
 ```
 $ set BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
 ```
+
 For Linux/macOS:
 ```
 $ export BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
@@ -136,6 +139,7 @@ Node node = repository.getNode();
 ```
 
 ##### Java APIs to start a new runtime and invoke a Ballerina function
+
 Java APIs are introduced to start a new Ballerina runtime instance for a given module and perform function invocations within the module by calling the module initialization and module start methods sequentially before any other function calls. It is recommended to call the module stop method to gracefully shut down the Ballerina runtime at the end of the program.
 
 ```java
@@ -151,9 +155,11 @@ balRuntime.stop();
 ### Improvements
 
 #### Support mapping of resource and remote function parameters to `BArray` parameter of a generic native method
+
 A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (Handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
 
 E.g.:
+The following Ballerina resource method,
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s, int i, typedesc<anydata> targetType = <>) = @java:Method {
     'class: "javalibs.app.App",
@@ -161,7 +167,7 @@ isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] 
     paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
 } external;
 ```
-
+can be bound to the following Java method.
 ```java
 public static void getResource(BObject client, BArray path, BArray args) {
 }

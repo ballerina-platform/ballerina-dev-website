@@ -66,7 +66,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     const MIN_AGE = 20;
     ```
 
-* It is recommended to define the constants omitting the type descriptor, unless the type descriptor is used as the inherent type.
+* It is recommended to define the constants without the type descriptor, unless the type descriptor is used as the inherent type.
 
     **Example,**
     
@@ -80,7 +80,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     const TAX_RATE = 0.15d;
     ```
 
-* It may be necessary to explicitly define the type descriptor when the constant is a complicated expression.
+* Explicitly defining the type descriptor can enhance readability, particularly when the constant is defined with a compound expression. This practice provides clarity about the expected type.
 
     **Example,**
     
@@ -89,7 +89,8 @@ intro: The sections below include the coding conventions with respect to top-lev
     const COMPLEX_VALUE = (50 * 2 + 100) % 256;
     
     // do
-    // The explicit `byte` type descriptor ensures this constant can be used where a `byte` is expected.
+    // The explicit `byte` type descriptor here improves readability. 
+    // It ensures that `COMPLEX_VALUE` can be safely used wherever a `byte` is expected.
     const byte COMPLEX_VALUE = (50 * 2 + 100) % 256;
     ```
 

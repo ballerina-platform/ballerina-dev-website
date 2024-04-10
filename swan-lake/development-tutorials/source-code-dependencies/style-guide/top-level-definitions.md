@@ -15,7 +15,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     ```ballerina
     import ballerina/http;
 
-    const int MIN_AGE = 20;
+    const MIN_AGE = 20;
     int repetitions = 0;
 
     service / on ep1 {
@@ -29,7 +29,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     // This import is indented correctly.
     import ballerina/http; 
         
-        const int MIN_AGE = 20; // Not indented correctly.
+        const MIN_AGE = 20; // Not indented correctly.
         int repetitions = 0; // Not indented correctly.
             
     // Not indented correctly.
@@ -49,6 +49,49 @@ intro: The sections below include the coding conventions with respect to top-lev
     ```
 
 * Imports should be sorted alphabetically, first by the organization name and then by the module name.
+
+## Constant declaration
+
+* Use the SCREAMING_SNAKE_CASE for constant names.
+
+    **Example,**
+    
+    ```ballerina
+    // don't
+    const minAge = 20;
+    const MinAge = 20;
+    const min_age = 20;
+    
+    // do
+    const MIN_AGE = 20;
+    ```
+
+* It is recommended to define the constants omitting the type descriptor, unless the type descriptor is used as the inherent type.
+
+    **Example,**
+    
+    ```ballerina
+    // don't
+    const int MIN_AGE = 20;
+    const decimal TAX_RATE = 0.15;
+    
+    // do
+    const MIN_AGE = 20;
+    const TAX_RATE = 0.15d;
+    ```
+
+* It may be necessary to explicitly define the type descriptor when the constant is a complicated expression.
+
+    **Example,**
+    
+    ```ballerina
+    // don't
+    const COMPLEX_VALUE = (50 * 2 + 100) % 256;
+    
+    // do
+    // The explicit `byte` type descriptor ensures this constant can be used where a `byte` is expected.
+    const byte COMPLEX_VALUE = (50 * 2 + 100) % 256;
+    ```
 
 ## Function definition
 * Do not keep spaces between the function name and the open parentheses `(` of the function signature.

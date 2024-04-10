@@ -65,10 +65,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     |};
 
     json jsonContent = {
-        "name": "Clean Code",
-        "author": "Robert C. Martin",
-        "year": 2008,
-        "publisher": "Prentice Hall"
+        name: "Clean Code",
+        author: "Robert C. Martin",
+        year: 2008,
+        publisher: "Prentice Hall"
     };
 
     string jsonStr = string `

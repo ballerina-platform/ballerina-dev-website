@@ -55,7 +55,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 - Implemented support for the `Redis` data store, including the following features:
   - Supported optional fields to be defined in the data model, providing flexibility in structuring data.
   - Supported connection configuration to be defined as separate parameters or as a URI
-  - Supported Redis data store to be used as a cache or as a persistent store.
+  - Supported Redis data store to be used as a cache or persistent store.
 
   >**Info:** The Redis database support is an experimental feature. APIs might change in future releases.
 
@@ -94,8 +94,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 #### OpenAPI tool
 
 #### Persist tool
-- Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (model.bal) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
-- Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new arguments to the persist generate command:
+- Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (`model.bal`) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
+- Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new arguments to the `persist generate` command:
     - `--datastore` - This is used to indicate the preferred data store.
     - `--module` - This is used to indicate the module in which the files are generated.
 
@@ -105,7 +105,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     $ bal persist generate --datastore mysql --module db
     ```
 
-- Changed the `persist generate` command to generate all the Ballerina client, types, `db_config` files, and the script file in the specified module directory allowing the user to commit the generated source code along with the project source code.
+- Changed the `persist generate` command to generate all the Ballerina client, types, `db_config` files, and the script file in the specified module directory, allowing the user to commit the generated source code along with the project source code.
 - Introduced the new `persist add` command to initialize the `bal persist` in the Ballerina project and integrate the source code generation with the `bal build` command. This command will update the `Ballerina.toml` file with the `tool.persist` configuration and generate the `model.bal` file in the `persist` directory, if the file does not exist. This command supports the following arguments:
     - `--datastore` - This is used to indicate the preferred data store.
     - `--module` - This is used to indicate the module in which the files are generated.

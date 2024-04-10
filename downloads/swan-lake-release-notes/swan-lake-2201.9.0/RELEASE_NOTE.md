@@ -32,14 +32,28 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Improvements
 
-#### Allow forward referencing of module-level XML namespace declarations.
-The language supports referencing of module-level XML namespaces which are defined after the usage.
+#### Remove dependence on syntactic location for module-level XMLNS declarations
+It is now possible to refer to module-level XML namespaces declarations that are declared later in the code.
 
 ```ballerina
 public function main() {
     string exdoc = ex:doc;
 }
+
 xmlns "http://example.com" as ex;
+```
+#### Allow declaration of XML namespaces with the same prefix in multiple Ballerina files
+It is now possible to declare XML namespace with the same prefix on different Ballerina files.
+
+`main.bal`
+```ballerina
+xmlns "https://ballerina.io/" as ns;
+```
+
+`utils.bal`
+ ```ballerina
+// Previously resulted in a compile time error `redeclared symbol 'ns'` now works as expeted.
+xmlns "https://example.com/" as ns; 
 ```
 
 ### Bug fixes
@@ -72,9 +86,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ## Developer tools updates
 
-### New features
+### Formatter
 
-#### Formatter
+#### New features
+
+##### Customize formatting
+It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
+
+#### Improvements
 
 ##### Multiline function call formatting.
 When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
@@ -96,14 +115,12 @@ When a multiline function call is present in the code, the subsequent lines used
 When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
 
 ```ballerina
-public function baz() {
-    baz(t1, t2, object {
-                    int i = 1;
-                    int y = 2;
-                },
-                b,
-                c,
-                d);
+public function updateValues(int t1, int t2) {
+    update(t1, object {
+                   int i = 1;
+                   int y = 2;
+               },
+               t2);
 }
 ```
 
@@ -142,8 +159,12 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     ```ballerina
     public function main() {
-        xml x = xml `<e/><f/>`;
-        xml x1 = x.<e>; // which returned empty xml now returns <e/>.
+        xml x = xml `<item><name>Box</name></item>`;
+
+        // Previously evaluated to an empty XML sequence, now evaluates to 
+        // `<item><name>Box</name></item>`
+        xml x1 = x.<item>;
+
         xmlns "http://example.com/";
     }
     ```
@@ -152,40 +173,56 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     ```ballerina
     public function main() {
-        xmlns "foo";
-        xmlns "bar" as k;
-        xml x1 = xml `<item><k:child>C</k:child><child2>D</child2></item>`;
-        xml x2 = x1/<*>; // used to return `<child2 xmlns="foo">D</child2>`, now returns `<k:child xmlns="foo" xmlns:k="bar">C</k:child><child2 xmlns="foo">D</child2>`
+        xmlns "http://example.com/";
+        xmlns "https://ballerina.io/" as ns0;
+
+        xml x1 = xml `
+        <item>
+            <ns0:name>ball</ns0:name>
+            <type>t</type>
+        </item>`;
+
+        // Previously evaluated to `
+        // <type xmlns="http://example.com/">t</type>`,
+        // now evaluates to, 
+        // `<ns0:name xmlns="http://example.com/" xmlns:ns0="https://ballerina.io">ball</ns0:name>
+        // <type xmlns="http://example.com/">t</type>`
+        xml x2 = x1/<*>;
     }
     ```
 
-- A bug which resulted in XML namespace URI being empty when a constant is used for XML namespace URI in the XML namespace definition has been fixed.
+- A bug which resulted in the XML namespace URI being empty when a constant is used in the XML namespace declaration has been fixed.
 
     ```ballerina
     const URI = "http://ballerina.com/";
     xmlns URI as ns0;
 
     public function main() {
-        string s = ns0:foo; // used to result in "{}foo" which now results in {http://ballerina.com/}foo
+        // Previously evaluated to "{}attr", now evaluates to {http://ballerina.com/}attr
+        string s = ns0:attr;
     }
     ```
 
-- A bug which resulted in a compiler crash or a null value for a variable of a binding pattern which is used within closure has been fixed.
+- A bug which resulted in a compiler crash or a nil value for a variable of a binding pattern which is used within closures has been fixed.
 
     ```ballerina
-    function f1() {
-        string[] values = ["a", "b", "c"];
-        map<int> data = {
-            a: 1
-        };
-        foreach var [k, _] in data.entries() {
-            boolean b = <any> k is (); // which resulted true since k is used in a closure, now returns false. k is now not nil.
-            _ = values.filter(item => item == k);
+    type Doctor record {
+        string name;
+        string category;    
+    };
+
+    function updateDoctorCategories(Doctor doctor, string[] categories) returns error? {
+        var {category} = doctor;
+        string cat = category;
+         // Previously evaluated to `true` since category is used in a closure, now returns `false`.
+        boolean b = <any> category is ();
+        if !categories.some(existingCategory => existingCategory == category) {
+            categories.push(category);
         }
     }
     ```
 
-- A bug which resulted in empty XML results in XML navigation when the navigation name pattern contains escape characters has been fixed.
+- A bug which resulted in empty XML sequence in XML navigation when the navigation name pattern contains escape characters has been fixed.
 
     ```ballerina
     public function main() {
@@ -195,37 +232,42 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
             <home-address>some address</home-address>
         </person>`;
 
-        xml x1 = d/<home\-address>; // Used to produce an empty output. Now produce <home-address>some address</home-address>
+        xml x1 = d/<home\-address>; // Previously evaluated to an empty XML sequence, now evaluates to `<home-address>some address</home-address>`
     }
     ```
 
-- A bug which resulted in no compilation error on missing required fields in the select clause has been fixed.
+-  A bug which resulted in no compilation errors being logged for missing required fields in the `select` clause has been fixed.
 
     ```ballerina
-    type Foo record {|
-        int i;
-        string x;
+    type Student record {|
+        int id;
+        string name;
+        Enrollment[] enrollments;
     |};
 
-    type Bar record {|
-        int j;
-        string y;
+    type Course record {|
+        int id;
+        string name;
     |};
 
-    type Baz record {|
-        Foo[] fooArr;
+    type Enrollment record {|
+        int id;
+        string name;
+        int year;
+        int grade;
     |};
 
-    function fn(Baz baz) {
-        int|Bar[] _ = from var foo in baz.fooArr
-            select { // used to give no compilation error. Now gives a compilation error. missing non-defaultable required record field 'y'
-                j: foo.i
-                // y: foo.x
-            };
+    function getStudentCourses(Student student) returns int|Course[] {
+        int|Course[] courses = from var enrollment in student.enrollments
+                            select {
+                                // Compile-time error now, since the `name` field is not specified
+                                id: enrollment.id
+                            };
+        return courses;
     }
     ```
 
-- A bug which resulted in swapping the top most comments above imports while formatting is fixed. This fix results in preserving newlines within comment blocks above imports.
+- A bug which resulted in the top-most comments above imports being moved when formatting imports has been fixed. This fix also preserves new lines within comment blocks above imports.
 
     - Before formatting
 
@@ -247,8 +289,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // under the License.
 
 
-    // just a random comment
-    // for two lines part of this import
+    // this file contains implementaion of the agent code. 
+    // It includes functions for managing the ai client. 
 
 
 
@@ -257,16 +299,16 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     import ballerina/io;
 
     // module imports
-    import bas;
-    import fos;
+    import agent;
+    import utils;
 
-    // foo
-    import abc/foo;
+    // endpoint related functions
+    import ai/endpoints;
 
-    // bar
-    import abc/bar;
+    // config related functions
+    import ai/config;
 
-    function baz() {
+    function attachAgent() {
 
     }
     ```
@@ -290,23 +332,23 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // specific language governing permissions and limitations
     // under the License.
 
-    // just a random comment
-    // for two lines part of this import
+    // this file contains implementaion of the agent code. 
+    // It includes functions for managing the ai client. 
 
     // module imports
-    import bas;
-    import fos;
+    import agent;
+    import utils;
 
     import ballerina/io;
     import ballerinax/oracledb;
 
-    // bar
-    import abc/bar;
+    // config related functions
+    import ai/config;
 
-    // foo
-    import abc/foo;
+    // endpoint related functions
+    import ai/endpoints;
 
-    function baz() {
+    function attachAgent() {
 
     }
     ```

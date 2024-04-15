@@ -51,8 +51,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 ### New features
 
 #### `avro` package
-
-- Added support for data serialization/deserialization using Avro schemas
+- Introduced Avro serialization/deserialization support
 
 ### Deprecations
 

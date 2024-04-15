@@ -619,44 +619,27 @@ $= future<int> result = start name();
 
 #### Test Framework
 
-- The test framework now supports for parallel execution of tests as an experimental feature. To activate the parallel test execution, simply use the `--parallel` flag with the `bal test` command.
+- The test framework now supports the parallel execution of tests as an experimental feature. To activate the parallel test execution, simply use the `--parallel` flag with the `bal test` command.
 
     ```ballerina
     bal test --parallel
     ```
 
-- APIs for mocking object resources is introduced. With these, an object resource can be stubbed to behave in a certain way, previously limited to test double. 
+- APIs for mocking client resources is introduced. With these, a client resource can be stubbed to behave in a certain way, previously limited to test double. 
 
     ```ballerina
-    // Stubbing to return a specific value in general
-    test:prepare(empClient)
-        .whenResource("employee/welcome/:id")
-        .onMethod("get")
-        .thenReturn("Stub_1");
+    // Sample HTTP Client call
 
-    // Stubbing to return a specific value on a specific path parameter
-    test:prepare(empClient)
-        .whenResource("employee/welcome/:id")
-        .onMethod("get")
-        .withPathParameters({id: ""})
-        .thenReturn("Stub_2");
+    http:Client jokes = check new ("https://api.chucknorris.io/jokes/");
+    json joke = check jokes->/random;
 
-    // Stubbing to return a specific value on a specific method arguments
-    test:prepare(empClient)
-        .whenResource("employee/welcome/:id")
-        .onMethod("get")
-        .withArguments("", "")
-        .thenReturn("Stub_3");
-
-    // Stubbing to return a specific value on a specific path parameter and method arguments
-    test:prepare(empClient)
-        .whenResource("employee/welcome/:id")
-        .onMethod("get")
-        .withPathParameters({id: ""})
-        .withArguments("", "").
-        thenReturn("Stub_4");
+    // Stub to return a specific value
+    jokes = test:mock(http:Client);
+    test:prepare(jokes)
+        .whenResource("::path")
+        .withPathParameters({path: ["random"]})
+        .thenReturn(<json>{});
     ```
-
 
 #### EDI tool
     
@@ -822,7 +805,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### New features
 
-- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the bal tool command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools now include automation capabilities for generating OpenAPI and gRPC clients directly within the package build by specifying these tools in the `Ballerina.toml` file. 
+- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools include automation capabilities for generating OpenAPI and Persist clients directly within the package build by specifying these tools in the `Ballerina.toml` file. 
 
     ```toml
     [[tool.openapi]]
@@ -850,8 +833,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repository below.
 
-- https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.9.0
+- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.9.0)
 
+## Backward-incompatible changes
 
 ### Language changes
 

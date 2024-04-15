@@ -88,7 +88,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 ### Improvements
 
 #### `cloud` package
-- Directories can now be mounted as Configmaps and Secrets 
+- Directories can now be mounted as ConfigMaps and Secrets.
 
 ### Bug fixes
 
@@ -104,28 +104,23 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### `cloud` package
 
-#### Cloud.toml related changes
+- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
+    ```toml
+    [[cloud.secret.files]]
+    file="resource."
+    mount_dir="./resource"
+    ```
 
-- SSL configurations are not automatically retrieved from the code anymore. You need to explicitly mark them as secrets in Cloud.toml.
-```toml
-[[cloud.secret.files]]
-file="resource."
-mount_dir="./resource"
-```
+- The `mount_path` of `[[cloud.secret.files]]` and  `[[cloud.config.maps]]` is renamed as `mount_dir` in the `Cloud.toml` file, and now it always expects the destination directory.
 
-##### [[cloud.secret.files]] and [[cloud.config.maps]] changes
-- `mount_path` is renamed to `mount_dir` fields of in Cloud.toml file and now it always expects the destination directory.
+- Entrypoints are used instead of CMD to run the ballerina application in the Dockerfile.
+    ```
+    CMD ["java","..."] //Old
+    ```
 
-##### Potential breaking changes for Kustomize users
+    ```
+    ENTRYPOINT ["java","..."] //New
+    ```
 
-- Entrypoints are used instead of CMD to run the ballerina application in the dockerfile.
-```
-CMD ["java","..."] //Old
-```
-
-```
-ENTRYPOINT ["java","..."] //New
-```
-
-- Suffix is added to generated Config Maps and Secrets in Kubernetes to avoid Conflicts.
-- Subpaths are used in kubernetes to better support multiple files in the same directory.
+- Suffix is added to generated ConfigMaps and Secrets in Kubernetes to avoid Conflicts.
+- Subpaths are used in Kubernetes to better support multiple files in the same directory.

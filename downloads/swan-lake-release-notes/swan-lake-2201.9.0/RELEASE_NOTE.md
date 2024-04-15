@@ -33,7 +33,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 ### Improvements
 
 #### Remove dependence on syntactic location for module-level XMLNS declarations
-It is now possible to refer to module-level XML namespaces declarations that are declared later in the code.
+
+It is now possible for expressions to refer to module-level XML namespaces declarations that are declared later in the code.
 
 ```ballerina
 public function main() {
@@ -43,14 +44,15 @@ public function main() {
 xmlns "http://example.com" as ex;
 ```
 #### Allow declaration of XML namespaces with the same prefix in multiple Ballerina files
-It is now possible to declare XML namespace with the same prefix on different Ballerina files.
 
-`main.bal`
+It is now possible to declare XML namespaces with the same prefix in multiple Ballerina files (source parts) of the same package. This is because the prefix symbol space applies to the source part, and not the module.
+
+main.bal
 ```ballerina
 xmlns "https://ballerina.io/" as ns;
 ```
 
-`utils.bal`
+utils.bal
  ```ballerina
 // Previously resulted in a compile time error `redeclared symbol 'ns'` now works as expeted.
 xmlns "https://example.com/" as ns; 
@@ -86,31 +88,41 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ## Developer tools updates
 
-### Formatter
+### New features
 
-#### New features
+#### Formatter
 
 ##### Customize formatting
+
 It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
 
-#### Improvements
+#### Language Server
+
+#### CLI
+
+#### OpenAPI tool
+
+### Improvements
+
+#### Formatter
 
 ##### Multiline function call formatting.
+
 When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
 
-- Before formatting
+Before formatting
 
-    ```ballerina
-    addNumbers(numberOne,  numberTwo, numberThree,
-    numberFour, numberFive, numberSix);
-    ```
+```ballerina
+addNumbers(numberOne,  numberTwo, numberThree,
+numberFour, numberFive, numberSix);
+```
 
-- After formatting
+After formatting
 
-    ```ballerina
-    addNumbers(numberOne, numberTwo, numberThree,
-            numberFour, numberFive, numberSix);
-    ```
+```ballerina
+addNumbers(numberOne, numberTwo, numberThree,
+        numberFour, numberFive, numberSix);
+```
 
 When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
 
@@ -123,16 +135,6 @@ public function updateValues(int t1, int t2) {
                t2);
 }
 ```
-
-
-
-#### Language Server
-
-#### CLI
-
-#### OpenAPI tool
-
-### Improvements
 
 #### Language Server
 
@@ -203,7 +205,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
-- A bug which resulted in a compiler crash or a nil value for a variable of a binding pattern which is used within closures has been fixed.
+- A bug which resulted in a compiler crash or a nil value for a variable of a binding pattern which is used as a captured variable has been fixed.
 
     ```ballerina
     type Doctor record {
@@ -222,7 +224,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
-- A bug which resulted in empty XML sequence in XML navigation when the navigation name pattern contains escape characters has been fixed.
+- A bug which resulted in XML navigation evaluating to empty XML sequence when the navigation name pattern contains escape characters has been fixed.
 
     ```ballerina
     public function main() {
@@ -269,7 +271,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - A bug which resulted in the top-most comments above imports being moved when formatting imports has been fixed. This fix also preserves new lines within comment blocks above imports.
 
-    - Before formatting
+    Before formatting
 
     ```ballerina
     // Copyright (c) 2024 WSO2 LLC. (http://www.wso2.com).
@@ -313,7 +315,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
-    - After formatting
+    After formatting
 
     ```ballerina
     // Copyright (c) 2024 WSO2 LLC. (http://www.wso2.com).
@@ -360,3 +362,4 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 ### `nats` package
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+

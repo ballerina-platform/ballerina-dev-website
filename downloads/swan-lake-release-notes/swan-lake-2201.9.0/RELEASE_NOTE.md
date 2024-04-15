@@ -44,35 +44,33 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### Introduce closures for default values of default fields in records.
 
-If a default value is required to generate a record literal, now it is produced by evaluating the closure associated 
-with the field. With this improvement, when overriding a field included with record-type-inclusion, the default value 
-associated with that field also override.
+Now, the default value of a record is evaluated only if a value is not provided for a specific field in the mapping 
+constructor.
+
+When overriding a field included with record type inclusion, the default value associated with that field also override.
 
     ```ballerina
     import ballerina/io;
     
     type Data record {
-        int|string name = 1;
+        int|string id = 1;
+        string name;
     };
     
     type Person record {
         *Data;
-        string name;
+        string id;
+        string name = "John";
     };
     
     public function main() {
-        Person person = { name : "John"}; // Prints {"name":"John"}
+        Person person = {"id": "001"}; // Prints {"id":"001","name":"John"}
         io:println(person);
     }
     ```
 
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
-
-## Backward-incompatible changes
-
-- A bug that allowed to use of a mutable value as the default value in immutable record literals has been fixed.
+When creating an immutable record literal with a record type, the default values of the record type should also be 
+immutable.
 
     ```ballerina
     type Temp record {|
@@ -84,6 +82,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
         Temp & readonly _ = {};
     }
     ```
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
 ## Ballerina library updates
 

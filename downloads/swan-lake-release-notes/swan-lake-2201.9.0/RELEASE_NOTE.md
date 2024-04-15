@@ -48,6 +48,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ## Ballerina library updates
 
+### New features
+
+#### `avro` package
+
+- Introduced Avro serialization/deserialization support
+
 ### Deprecations
 
 ### Bug fixes

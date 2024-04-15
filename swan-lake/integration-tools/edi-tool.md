@@ -270,7 +270,7 @@ EDI libraries generated in the previous step can also be compiled to a jar file 
 For example, "citymart" library generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. Converting of X12 850 EDI text to JSON using the REST service is shown below:
 
 ```
-curl --request POST \
+$ curl --request POST \
   --url http://localhost:9090/porderParser/edis/850 \
   --header 'Content-Type: text/plain' \
   --data 'ST*834*12345*005010X220A1~

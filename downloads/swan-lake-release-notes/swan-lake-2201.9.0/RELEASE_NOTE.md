@@ -47,15 +47,17 @@ Configurable values can now be provided through environment variables using the 
 ```
 BAL_CONFIG_VAR_key=value
 ```
-The key conforms to the structure  `ORG_MODULE_VARIABLE`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
 
-The environment variable-based configuration is supported for configurable variables with `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
+The key conforms to the structure `ORG_MODULE_VARIABLE`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
+
+The environment variable-based configuration is supported for configurable variables of `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
 For example, if the configurable variable is defined in the following way,
 
 ```ballerina
 configurable int port = ?;
 ```
+
 The values can be provided through environment variables as follows.
 
 If the configurable variable is defined in the default module or if a single Ballerina file is being used:
@@ -69,6 +71,7 @@ For Linux/macOS:
 ```
 $ export BAL_CONFIG_VAR_PORT=9090
 ```
+
 If the configurable variable is defined in a different module of the same organization:
 
 For Windows:
@@ -80,6 +83,7 @@ For Linux/macOS:
 ```
 $ export BAL_CONFIG_VAR_MODULENAME_PORT=9090
 ```
+
 If the configurable variable is defined in a module of a different organization.
 
 For Windows:
@@ -111,7 +115,8 @@ New runtime Java APIs are added to provide information about the active runtime 
 public List<Artifact> getArtifacts();
 ```
 
-This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only `service` is supported now), and a map of details. The details enclose the following information.
+This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only `service` is supported now), and a map of details. The map of details includes the following information.
+
 - `listeners` - a list of listener objects attached to the service
 - `attachPoint` - the attach point specified in the service declaration (for example, `basePath` in HTTP)
 - `service` - the service object
@@ -120,13 +125,14 @@ This returns a list of artifact instances that represent the services at runtime
 public Node getNode();
 ```
 
-This returns a node instance that represents the Ballerina runtime node. A node instance contains a nodeId (self-generated unique ID), and a map of details. The details enclose the following information.
+This returns a node instance that represents the Ballerina runtime node. A node instance contains a node ID (`nodeId` - self-generated unique ID), and a map of details. The map of details includes the following information.
+
 - `balVersion` - The Ballerina version
 - `balHome` - The path of Ballerina home
 - `osName` - Name of the Operating System
 - `osVersion` - Version of the Operating System
 
-The above APIs can be called from a Ballerina environment instance. Similar to this,
+The above APIs can be called via a Ballerina environment instance as follows.
 
 ```java 
 import io.ballerina.runtime.api.Artifact;
@@ -158,7 +164,7 @@ balRuntime.stop();
 
 A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (Handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
 
-E.g.:
+E.g.,
 The following Ballerina resource method,
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s, int i, typedesc<anydata> targetType = <>) = @java:Method {
@@ -167,6 +173,7 @@ isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] 
     paramTypes: ["io.ballerina.runtime.api.values.BObject", "io.ballerina.runtime.api.values.BArray", "io.ballerina.runtime.api.values.BString"]
 } external;
 ```
+
 can be bound to the following Java method.
 ```java
 public static void getResource(BObject client, BArray path, BArray args) {

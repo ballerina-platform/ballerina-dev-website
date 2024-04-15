@@ -54,6 +54,16 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
+### New features
+
+#### `crypto` package
+
+- Introduced new APIs for ML-KEM-768(Kyber768) key encapsulation mechanism.
+- Introduced new APIs for RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+- Introduced new APIs for ML-KEM-768 hybrid public-key encryption(HPKE).
+- Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption(HPKE).
+- Introduced new APIs for ML-DSA65(Dilithium3) signing.
+
 ## Developer tools updates
 
 ### New features

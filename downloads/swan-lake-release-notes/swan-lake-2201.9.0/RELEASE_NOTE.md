@@ -87,6 +87,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### Improvements
 
+#### `cloud` package
+- Directories can now be mounted as ConfigMaps and Secrets.
+
 ### Bug fixes
 
 ## Backward-incompatible changes
@@ -99,3 +102,25 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
+### `cloud` package
+
+- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
+    ```toml
+    [[cloud.secret.files]]
+    file="resource."
+    mount_dir="./resource"
+    ```
+
+- The `mount_path` of `[[cloud.secret.files]]` and  `[[cloud.config.maps]]` is renamed as `mount_dir` in the `Cloud.toml` file, and now it always expects the destination directory.
+
+- Entrypoints are used instead of CMD to run the ballerina application in the Dockerfile.
+    ```
+    CMD ["java","..."] //Old
+    ```
+
+    ```
+    ENTRYPOINT ["java","..."] //New
+    ```
+
+- Suffix is added to generated ConfigMaps and Secrets in Kubernetes to avoid Conflicts.
+- Subpaths are used in Kubernetes to better support multiple files in the same directory.

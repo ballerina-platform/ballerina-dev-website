@@ -111,7 +111,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     - `--module` - This is used to indicate the module in which the files are generated.
 
   For example,
-
+  ```
   $ bal persist add --datastore mysql --module db
   ```
 - Implemented introspection support for existing databases to facilitate the generation of the persist data model. This functionality is accessible through the new `bal persist pull` command. The command is equipped with the following arguments:
@@ -122,7 +122,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     - `--database` - This is used to indicate the database name.
 
   For example,
-    
+  ```
   $ bal persist pull --datastore mysql --host localhost --port 3306 --user root --database test
   ```
   >**Info:** The database introspection support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.

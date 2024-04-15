@@ -12,15 +12,15 @@ intro: Ballerina test framework allows developers to execute test cases in paral
 
 Tests are executed serially by default. The user has to explicitly activate the parallel execution by providing the `--parallel` flag as follows.
 
-```bash
+```
 bal test --parallel
 ```
 
-Before running tests concurrently, it's crucial to ensure concurrency safety. Ballerina inherently evaluates the concurrency safety of tests to some extent using a predefined set of rules. Tests that don't comply with these rules are executed sequentially, regardless of the parallel flag being enabled.
+Before running tests concurrently, it is crucial to ensure concurrency safety. Ballerina inherently evaluates the concurrency safety of tests to some extent using a predefined set of rules. Tests that do not comply with these rules are executed sequentially, regardless of the parallel flag being enabled.
 
 ## Exclude a specific test from parallel execution
 
-Certain tests may have dependencies or requirements that make them incompatible with parallel execution, such as shared resources or specific environment setups. If such a requirement is identified, the user may need to set the `serialExecution` flag to `true` as follows.
+Certain tests may have dependencies or requirements that make them incompatible with parallel execution, such as shared resources or specific environment setups. If such a requirement is identified, the user may need to set the `serialExecution` flag to `true` as follows:
 
 ```ballerina
 @test:Config {serialExecution: true}
@@ -31,13 +31,13 @@ function testAssertEquals6() {
 
 ## Write a concurrent safe test case
 
-A set of rules should be followed while writing a parallel test.
+A set of rules must be followed while writing a parallel test.
 
-1) The test function should be isolated. In some instances, the compiler infers the test functions as isolated automatically if there are sufficient conditions to make them concurrently safe.
-2) If it is a data provider test, 
-   - The data provider of the test function should be isolated.
-   - The test function parameters should be read-only type.
-3) Respective set-up and tear-down functions (`before`, `after`, `BeforeEach`, `AfterEach`, `BeforeGroups`, `AfterGroups`) of the test function should be isolated.
+1. The test function must be isolated. In some instances, the compiler infers the test functions as isolated automatically if there are sufficient conditions to make them concurrently safe.
+2. If it is a data provider test, 
+   - The data provider of the test function must be isolated.
+   - The test function parameters must be read-only type.
+3. Respective set-up and tear-down functions (`before`, `after`, `BeforeEach`, `AfterEach`, `BeforeGroups`, `AfterGroups`) of the test function must be isolated.
 
 A warning related to unparallelized tests is printed at the beginning of the parallel test execution with the reasons.
 Consider the following example.
@@ -71,10 +71,10 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 
 The above code results in the following warning.
 
-```bash
+```
 WARNING: Test function 'mapDataProviderTest' cannot be parallelized, reason: non-isolated test function, non-isolated data-provider function
 ```
-Based on the warning, we can correct the code as follows.
+Based on the warning, the code can be improved as follows.
 
 ```ballerina
 import ballerina/lang.runtime;

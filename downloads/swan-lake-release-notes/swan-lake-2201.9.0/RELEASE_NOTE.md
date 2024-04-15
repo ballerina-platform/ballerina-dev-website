@@ -62,8 +62,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `graphql` package
 
-- Use aliases instead of field names in GraphQL error responses
-- Reporting GraphQL specific diagnostics in the VS Code extension
+- Improved the GraphQL error responses to use aliases instead of field names in the `path` field
+- Added support to report GraphQL specific diagnostics in the VS Code extension
 
 ### Deprecations
 

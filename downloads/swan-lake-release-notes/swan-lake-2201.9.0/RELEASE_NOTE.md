@@ -1,9 +1,9 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.9.0 (Swan Lake) 
+title: 2201.9.0 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201.9.0/
 active: 2201.9.0
-redirect_from: 
+redirect_from:
     - /downloads/swan-lake-release-notes/2201.9.0
     - /downloads/swan-lake-release-notes/2201.9.0-swan-lake/
     - /downloads/swan-lake-release-notes/2201.9.0-swan-lake
@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 9 (2201.9.0)
 
-<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em> 
+<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -66,7 +66,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
-### Improvements                             
+### Improvements
 
 ### Bug fixes
 
@@ -79,6 +79,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 #### `avro` package
 
 - Introduced Avro serialization/deserialization support
+
+#### `graphql` package
+
+- Introduced GraphQL server-side caching support
+
+### Improvements
+
+#### `graphql` package
+
+- Improved the GraphQL error responses to use aliases instead of field names in the `path` field
+- Added support to report GraphQL specific diagnostics in the VS Code extension
 
 ### Deprecations
 

@@ -1,6 +1,23 @@
 {
     "events": [
         {
+            "date": "April 22, 2024",
+            "expire": "2024-04-23T00:00:00.0000-00:00",
+            "type": "Lecture",
+            "university": "University of Moratuwa",
+            "faculty": "Department of Computer Science & Engineering",
+            "title": "Code Generation and Intermediate Representation in Ballerina Compiler",
+            "location": "Moratuwa, Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "twitter": "https://twitter.com/manurangaperera"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "Mar 28, 2024",
             "expire": "2024-03-29T00:00:00.0000-00:00",
             "type": "Community lecture",

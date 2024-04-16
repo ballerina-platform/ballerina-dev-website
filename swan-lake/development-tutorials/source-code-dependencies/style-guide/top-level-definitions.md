@@ -42,7 +42,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Do not keep spaces between the organization name, divider `/`, and module name.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     import ballerina/http;
@@ -54,7 +54,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Use the SCREAMING_SNAKE_CASE for constant names.
 
-    **Example,**
+    **Example:**
     
     ```ballerina
     // don't
@@ -68,7 +68,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * It is recommended to define the constants without the type descriptor, unless the type descriptor is used as the inherent type.
 
-    **Example,**
+    **Example:**
     
     ```ballerina
     // don't
@@ -82,7 +82,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Explicitly defining the type descriptor can enhance readability, particularly when the constant is defined with a compound expression. This practice provides clarity about the expected type.
 
-    **Example,**
+    **Example:**
     
     ```ballerina
     // don't
@@ -97,7 +97,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 ## Function definition
 * Do not keep spaces between the function name and the open parentheses `(` of the function signature.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     function func1() {
@@ -106,7 +106,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * If the function needs to be split into new lines due to it exceeding the max line length, you can break lines from the parameter list by moving only a parameter value to a new line and indenting it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value,
@@ -117,7 +117,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
   - You can break before the `returns` keyword and indent it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value, string name)
@@ -129,7 +129,7 @@ intro: The sections below include the coding conventions with respect to top-lev
   - You can break after the `returns` keyword by moving the return value to a new line
     and indenting it with four spaces from the starting position of the function.
     
-    **Example,**
+    **Example:**
 
     ```ballerina
     function getAddress(int value, string name) returns
@@ -142,7 +142,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 * Keep the listener inline with the service signature.
   
-    **Example,**
+    **Example:**
 
     ```ballerina
     service / on new http:Listener(9090) {
@@ -153,7 +153,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 * When formatting service-level method definitions, block indent each element and
   follow the [Function definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
   
-    **Example,**
+    **Example:**
 
     ```ballerina
     import ballerina/http;
@@ -175,7 +175,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 * The `init` method should be placed before all the other methods.
 * For method definitions in the class definition, follow the [Function definition](/learn/style-guide/top-level-definitions/#function-definition) formatting guidelines.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     class Person {
@@ -205,7 +205,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 ## Record definition
 * Block indent each of the field definitions (including the rest field) in their own line.
 
-    **Example,**
+    **Example:**
 
     ```ballerina
     type Person record {|
@@ -224,7 +224,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 ## Reference record or object
 * Do not keep spaces between the `*` and the object name or the record name.
   
-    **Example,**
+    **Example:**
     
     ```ballerina
     *Person;

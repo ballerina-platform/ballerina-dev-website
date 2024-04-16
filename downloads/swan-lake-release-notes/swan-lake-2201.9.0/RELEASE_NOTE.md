@@ -98,28 +98,28 @@ For Linux/macOS:
 $ export BAL_CONFIG_VAR_PORT=9090
 ```
 
-If the configurable variable is defined in a different module of the same organization:
+If the configurable variable is defined in a different module with name `foo.bar` from the same organization:
 
 For Windows:
 ```
-$ set BAL_CONFIG_VAR_MODULENAME_PORT=9090
+$ set BAL_CONFIG_VAR_FOO_BAR_PORT=9090
 ```
 
 For Linux/macOS:
 ```
-$ export BAL_CONFIG_VAR_MODULENAME_PORT=9090
+$ export BAL_CONFIG_VAR_FOO_BAR_PORT=9090
 ```
 
-If the configurable variable is defined in a module of a different organization.
+If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`.
 
 For Windows:
 ```
-$ set BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
+$ set BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT=9090
 ```
 
 For Linux/macOS:
 ```
-$ export BAL_CONFIG_VAR_ORGNAME_MODULENAME_PORT=9090
+$ export BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT=9090
 ```
 
 #### New Runtime Java APIs
@@ -151,7 +151,7 @@ This returns a list of artifact instances that represent the services at runtime
 public Node getNode();
 ```
 
-This returns a node instance that represents the Ballerina runtime node. A node instance contains a node ID (`nodeId` - self-generated unique ID), and a map of details. The map of details includes the following information.
+This returns a node instance that represents the Ballerina runtime node. A node instance contains a node ID (`nodeId` - a unique generated ID), and a map of details. The map of details includes the following information.
 
 - `balVersion` - The Ballerina version
 - `balHome` - The path of Ballerina home

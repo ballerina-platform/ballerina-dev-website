@@ -84,6 +84,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 - Introduced GraphQL server-side caching support
 
+#### `crypto` package
+
+- Introduced new APIs for ML-KEM-768 (Kyber768) key encapsulation mechanism.
+- Introduced new APIs for RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+- Introduced new APIs for ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for ML-DSA65 (Dilithium3) signing.
+
 ### Improvements
 
 #### `cloud` package

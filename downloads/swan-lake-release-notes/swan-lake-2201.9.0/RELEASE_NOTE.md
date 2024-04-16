@@ -198,7 +198,42 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ## Backward-incompatible changes
 
-### Language
+### Language changes
+
+- A bug that allowed using `self` of an isolated object to access a mutable field without a lock statement within an anonymous function has been fixed.
+
+    ```ballerina
+    import ballerina/log;
+
+    isolated class Data {
+        private int id;
+        private string name;
+
+        isolated function init(int id, string name) {
+            self.id = id;
+            self.name = name;
+        }
+
+        isolated function update(int? id = (), string? name = ()) {
+            lock {
+                if id is int {
+                    self.id = id;
+                }
+
+                if name is string {
+                    self.name = name;
+                }
+            }
+
+            var logger = isolated function () returns string {
+                // Now results in compile-time errors, 
+                // need to use a lock statement. 
+                return string `ID: '${self.id}', Name: '${self.name}'`; 
+            };
+            log:printDebug("Data updated", details = logger);
+        }
+    }
+    ```
 
 - A bug which resulted in the addition of a default namespace to an XML navigation name pattern, even when the default namespace is defined after it, has been fixed.
 
@@ -398,15 +433,17 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
-### `rabbitmq` package
+### Ballerina library changes
+
+#### `rabbitmq` package
 
 - Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
 
-### `nats` package
+#### `nats` package
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
-### `cloud` package
+#### `cloud` package
 
 - SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
     ```toml

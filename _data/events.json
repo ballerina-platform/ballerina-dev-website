@@ -101,6 +101,22 @@
             "buttonText": "More info"
         },
         {
+            "date": "April 24, 2024",
+            "day": "Wed.",
+            "time": "6.30 p.m. PDT",
+            "expire": "2024-04-26T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/300423848/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Level up your APIs: GraphQL with Ballerina",
+            "presenterTwitter": "https://twitter.com/ThisaruGuruge",
+            "presenter": "Thisaru Guruge",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP today"
+        },
+        {
             "date": "March 7, 2024",
             "day": "Thur.",
             "time": "",

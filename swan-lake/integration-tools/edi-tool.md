@@ -13,7 +13,7 @@ intro: The EDI tool provides the below set of command line tools to work with ED
 Execute the command below to pull the EDI tool from [Ballerina Central](https://central.ballerina.io/ballerina/edi/latest).
 
 ```
-bal tool pull edi
+$ bal tool pull edi
 ```
 
 ## Usage
@@ -70,7 +70,7 @@ If you already have existing X12,EDIFACT or ESL schema file you can convert it t
 The below command can be used to generate typed Ballerina records and parser functions for a given EDI schema.
 
 ```
-bal edi codegen -i <input schema path> -o <output path>
+$ bal edi codegen -i <input schema path> -o <output path>
 ```
 
 The above command generates all Ballerina records and parser functions required for working with data in the given EDI schema and writes those into the file specified in the `output path`. The generated parser function (i.e. `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from Ballerina code similar to accessing any other Ballerina record. Similarly, generated serialization function (i.e. `toEdiString(...)`) can serialize Generated Ballerina records into EDI text.
@@ -115,7 +115,7 @@ Ballerina records for the EDI schema in the `resources/schema.json` can be gener
 Run the below command from the project root directory to generate the Ballerina parser for the above schema.
 
 ```
-bal edi codegen -i resources/schema.json -o modules/orders/records.bal
+$ bal edi codegen -i resources/schema.json -o modules/orders/records.bal
 ```
 
 Generated Ballerina records for the above schema are shown below:
@@ -179,7 +179,7 @@ Usually, organizations have to work with many EDI formats, and integration devel
 The below command can be used to generate Ballerina records, parser and util functions, and a REST connector for a given collection of EDI schemas organized into a Ballerina package:
 
 ```
-bal edi libgen -p <package name> -i <input schema folder> -o <output folder>
+$ bal edi libgen -p <package name> -i <input schema folder> -o <output folder>
 ```
 
 The Ballerina library project will be generated in the output folder. This library can be built and published by issuing "bal pack" and "bal push" commands from the output folder. Then the generated library can be imported into any Ballerina project and generated utility functions of the library can be invoked to parse EDI messages into Ballerina records. 
@@ -196,7 +196,7 @@ The Ballerina library project will be generated in the output folder. This libra
 
 let's assume that an organization named "CityMart" needs to work with X12 850, 810, 820, and 855 to handle purchase orders. CityMart's integration developers can put schemas of those X12 specifications into a folder as follows:
 
-```bash
+```
 |-- CityMart
     |--lib
     |--schemas
@@ -209,12 +209,12 @@ let's assume that an organization named "CityMart" needs to work with X12 850, 8
 Then the libgen command can be used to generate a Ballerina library as shown below:
 
 ```
-bal edi libgen -p citymart/porder -i CityMart/schemas -o CityMart/lib
+$ bal edi libgen -p citymart/porder -i CityMart/schemas -o CityMart/lib
 ```
 
 The generated Ballerina library will look like below:
 
-```bash
+```
 |-- CityMart
     |--lib  
     |--porder
@@ -270,7 +270,7 @@ EDI libraries generated in the previous step can also be compiled to a jar file 
 For example, "citymart" library generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. Converting of X12 850 EDI text to JSON using the REST service is shown below:
 
 ```
-curl --request POST \
+$ curl --request POST \
   --url http://localhost:9090/porderParser/edis/850 \
   --header 'Content-Type: text/plain' \
   --data 'ST*834*12345*005010X220A1~
@@ -330,7 +330,7 @@ X12, short for ANSI ASC X12, is a standard for electronic data interchange (EDI)
 The below command can be used to convert the X12 schema to the Ballerina EDI schema:
 
 ``` 
-bal edi convertX12Schema -H <enable headers mode> -c <enable collection mode > -i <input schema path> -o <output json file/folder path> -d <segment details path>
+$ bal edi convertX12Schema -H <enable headers mode> -c <enable collection mode > -i <input schema path> -o <output json file/folder path> -d <segment details path>
 ```
 
 #### `convertX12Schema` command options
@@ -355,7 +355,7 @@ EDIFACT, which stands for Electronic Data Interchange For Administration, Commer
 The below command can be used to convert the EDIFACT schema to the Ballerina EDI schema:
 
 ```
-bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>
+$ bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>
 ```
 
 #### `convertEdifactSchema` command options
@@ -378,7 +378,7 @@ ESL, or Electronic Shelf Labeling, is a technology used in retail stores to disp
 The below command can be used to convert ESL schema to Ballerina EDI schema:
 
 ```
-bal edi convertESL -b <segment definitions file path> -i <input ESL schema file/folder> -o <output file/folder>
+$ bal edi convertESL -b <segment definitions file path> -i <input ESL schema file/folder> -o <output file/folder>
 ```
 
 #### `convertEdifactSchema` command options

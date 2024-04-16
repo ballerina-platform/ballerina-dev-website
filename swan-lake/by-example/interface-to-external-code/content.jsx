@@ -40,7 +40,7 @@ export function InterfaceToExternalCode({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Interface to exteral code</h1>
+      <h1>Interface to external code</h1>
 
       <p>
         Ballerina supports interfacing to external code. This can be done by

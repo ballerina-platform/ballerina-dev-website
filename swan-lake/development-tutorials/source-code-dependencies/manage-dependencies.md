@@ -24,6 +24,8 @@ The distribution repository is a file system repository added with the local Bal
 
 The Ballerina Central is a remote repository and creates a local file system cache at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache.
 
+> **Note:** If you are connected to the internet via an HTTP proxy, you need to configure the proxy settings to perform operations with the Ballerina Central. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).
+
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/bala`. 
@@ -247,7 +249,7 @@ $ bal build --sticky
 
 ### The offline mode
 
-Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
+Using the` –-offline` flag will run the compilation offline without connecting to Ballerina Central or any configured Maven repositories. This will save the compilation time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository/Maven repositories.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 

@@ -40,46 +40,36 @@ import ballerina/lang.runtime;
 
 public function main() {
     worker w1 {
-        2 -> w3;
+        2 -> function;
     }
 
     worker w2 {
         runtime:sleep(2);
-        3 -> w3;
+        3 -> function;
     }
 
-    worker w3 returns int {
-        // The value of the variable `result` is set as soon as the value from either
-        // worker `w1` or `w2` is received.
-        int result = <- w1 | w2;
-        return result;
-    }
-
-    worker w4 returns error? {
+    worker w3 returns error? {
         int value = 10;
         if value == 10 {
-            return error("Error in worker 4");
+            return error("Error in worker 3");
         }
-        value -> w6;
+        value -> function;
     }
 
-    worker w5 {
+    worker w4 {
         runtime:sleep(2);
-        3 -> w6;
+        3 -> function;
     }
 
-    worker w6 returns int|error? {
-        // Alternate receive action waits until a message that is not an error is received. 
-        // Since `w4` returns an error, it waits further and sets the value that is received from `w5`.
-        int a = check <- w4 | w5;
-        return a;
-    }
+    // The value of the variable `result` is set as soon as the value from either
+    // worker `w1` or `w2` is received.
+    int result1 = <- w1 | w2;
+    io:println(result1); // 2
 
-    int w3Result = wait w3;
-    io:println(w3Result);
-
-    int|error? w6Result = wait w6;
-    io:println(w6Result);
+    // Alternate receive action waits until a message that is not an error is received. 
+    // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
+    int|error? result2 = <- w3 | w4;
+    io:println(result2); // 3
 }
 ```
 
@@ -91,30 +81,25 @@ The multiple receive action can be used to receive values corresponding to multi
 import ballerina/io;
 import ballerina/lang.runtime;
 
-type Result record {
-    int a;
-    int b;
-};
-
 public function main() {
     worker w1 {
-        2 -> w3;
+        2 -> function;
     }
 
     worker w2 {
         runtime:sleep(2);
-        3 -> w3;
+        3 -> function;
     }
 
-    worker w3 returns Result {
-        // The worker waits until both values are received.
-        Result result = <- {a: w1, b: w2};
-        return result;
-    }
-
-    Result result = wait w3;
-    io:println(result);
+    // The worker waits until both values are received.
+    Result result = <- {a: w1, b: w2};
+    io:println(result); // {"a":2,"b":3}
 }
+
+type Result record {
+    int a;
+    int b;
+};
 ```
 
 #### The `send-action` is allowed to be executed conditionally
@@ -130,39 +115,29 @@ public function main() {
     worker w1 {
         // A send action can be used in a conditional context.
         if isDataReady {
-            10 -> w2;
+            10 -> function;
         }
     }
 
-    worker w2 returns int|error:NoMessage {
-        // The send action corresponding to this receive action is conditionally executed.
-        // Thus, there is a possibility that the send action may not get executed.
-        // Therefore, the static type of the receive includes the `error:NoMessage` type
-        // indicating the absence of a message in such cases.
-        int|error:NoMessage a = <- w1;
-        return a;
-    }
-
-    worker w3 {
+    worker w2 {
         if isDataReady {
-            1 -> w4;
+            1 -> function;
         } else {
-            0 -> w4;
+            0 -> function;
         }
     }
 
-    worker w4 returns int|error:NoMessage {
-        // Two different conditional send actions exists within the worker `w3`.
-        // Therefore, an alternate receive action can be used to receive them.
-        int|error:NoMessage d = <- w3 | w3;
-        return d;
-    }
+    // The send action corresponding to this receive action is conditionally executed.
+    // Thus, there is a possibility that the send action may not get executed.
+    // Therefore, the static type of the receive includes the `error:NoMessage` type
+    // indicating the absence of a message in such cases.
+    int|error:NoMessage w1Message = <- w1;
+    io:println(w1Message); // 10
 
-    int|error:NoMessage w2Result = wait w2;
-    io:println(w2Result);
-
-    int|error:NoMessage w4Result = wait w4;
-    io:println(w4Result);
+    // Two different conditional send actions exists within the worker `w3`.
+    // Therefore, an alternate receive action can be used to receive them.
+    int|error:NoMessage w2Message = <- w2 | w2;
+    io:println(w2Message); // 1
 }
 ```
 
@@ -173,35 +148,24 @@ The `on fail` clause can be incorporated into a named worker, to handle any erro
 ```ballerina
 import ballerina/io;
 
-function getIndex(int[] values, int value) returns int|error {
-    int? index = values.indexOf(value);
-    if index is () {
-        return error("value not found");
-    } 
-
-    return index;
-}
-
 public function main() {
     int[] values = [2, 3, 4, 5];
     int value = 0;
 
     worker w1 {
         int index = check getIndex(values, value);
-        index -> w2;
+        index -> function;
     } on fail {
         // Handle the error thrown in the worker body.
-        -1 -> w2;
+        -1 -> function;
     }
 
-    worker w2 returns int|error:NoMessage {
-        int|error:NoMessage result = <- w1 | w1;
-        return result;
-    }
-
-    int|error:NoMessage result = wait w2;
-    io:println(result);
+    int|error:NoMessage result = <- w1 | w1;
+    io:println(result); // -1
 }
+
+function getIndex(int[] values, int value) returns int|error =>
+    let int? index = values.indexOf(value) in index is () ? error("value not found") : index;
 ```
 
 ### Improvements

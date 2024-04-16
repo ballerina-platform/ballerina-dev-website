@@ -129,6 +129,10 @@ All the connectors listed below have been released under new major versions, due
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
+
 ## Developer tools updates
 
 ### New features

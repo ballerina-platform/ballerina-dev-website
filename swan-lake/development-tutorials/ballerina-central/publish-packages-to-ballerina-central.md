@@ -73,7 +73,7 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
     accesstoken="<token>"
     ```
 
-Note: These generated tokens are valid only for one year from the generation date. Upon the expiration of the token, a new token should be generated, and `Settings.toml` should be updated with it. Otherwise, you may get an error related to unauthorized access.
+> **Note:** The tokens remain valid for one year from the generation date. Upon expiration, you must generate a new token and update the `Settings.toml` file to avoid the unauthorized access error.
 
 ### Configure proxy settings (optional)
 If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the Ballerina Central to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).

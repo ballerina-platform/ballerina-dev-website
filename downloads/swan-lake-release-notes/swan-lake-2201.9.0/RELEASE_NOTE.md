@@ -51,11 +51,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 ### New features
 
 #### `persist` package
-- Incorporated support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
-- Implemented support for the `Redis` data store, including the following features:
-  - Support optional fields to be defined in the data model, providing flexibility in structuring data.
-  - Support connection configuration to be defined as separate parameters or as a URI
-  - Support Redis data store to be used as a cache or persistent store.
+- Introduced support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
+- Implemented support for the Redis data store, including the following features:
+  - Support for optional fields to be defined in the data model, providing flexibility in structuring data.
+  - Support for connection configuration to be defined as separate parameters or as a URI
+  - Support for Redis data store to be used as a cache or persistent store.
 
   >**Info:** The Redis database support is an experimental feature. APIs might change in future releases.
 
@@ -98,7 +98,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### Persist tool
 - Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (`model.bal`) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
-- Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new arguments to the `persist generate` command:
+- Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new options to the `persist generate` command:
     - `--datastore` - This is used to indicate the preferred data store.
     - `--module` - This is used to indicate the module in which the files are generated.
 
@@ -108,7 +108,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     ```
 
 - Changed the `persist generate` command to generate all the Ballerina types, client, `db_config` files, and the script file in the specified module directory, allowing the user to commit the generated source code along with the project source code.
-- Introduced the new `persist add` command to initialize the `bal persist` feature in the Ballerina project and integrate the source code generation with the `bal build` command. This command will update the `Ballerina.toml` file with the `tool.persist` configuration and generate the `model.bal` file in the `persist` directory, if the file does not exist. This command supports the following arguments:
+- Introduced the new `persist add` command to initialize the `bal persist` feature in the Ballerina project and integrate the source code generation with the `bal build` command. This command will update the `Ballerina.toml` file with the `tool.persist` configuration and generate the `model.bal` file in the `persist` directory, if the file does not exist. This command supports the following options:
     - `--datastore` - This is used to indicate the preferred data store.
     - `--module` - This is used to indicate the module in which the files are generated.
 
@@ -117,7 +117,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     $ bal persist add --datastore mysql --module db
     ```
 
-- Implemented introspection support for existing databases to facilitate the generation of the persist data model. This functionality is accessible through the new `bal persist pull` command. The command is equipped with the following arguments:
+- Implemented introspection support for existing databases to facilitate the generation of the persist data model. This functionality is accessible through the new `bal persist pull` command. The command is equipped with the following options:
     - `--datastore` - This is used to indicate the preferred data store.
     - `--host` - This is used to indicate the host of the database.
     - `--port` - This is used to indicate the port of the database.
@@ -130,7 +130,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     ```
     >**Info:** The database introspection support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
 
-- Revised the persist migrate command to extract the datastore configuration from the provided argument instead of the Ballerina.toml file. The command now accepts the following arguments:
+- Revised the persist migrate command to extract the datastore configuration from the provided argument instead of the Ballerina.toml file. The command now accepts the following option:
     - `--datastore` - This is used to indicate the preferred data store. The default value is `mysql`.
 
     For example,

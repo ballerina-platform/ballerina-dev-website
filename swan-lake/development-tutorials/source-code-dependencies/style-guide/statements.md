@@ -12,26 +12,26 @@ intro: The sections below include the coding conventions with respect to stateme
 
 * Avoid enclosing the condition with parentheses.
   
-**Do's**
+    **Do's**
 
-```ballerina
-if valid {
-    ...
-} else if active {
-    ...
-}
-```
+    ```ballerina
+    if valid {
+        ...
+    } else if active {
+        ...
+    }
+    ```
   
-**Don'ts**
+    **Don'ts**
 
 
-```ballerina
-if (valid) {
-    ...
-} else if (active) {
-    ...
-}
-```
+    ```ballerina
+    if (valid) {
+        ...
+    } else if (active) {
+        ...
+    }
+    ```
 
 * Keep the `else` and `else if` keywords in the same line with the matching `if` or `else if` block's
   closing brace separated only by a single space.
@@ -41,62 +41,64 @@ if (valid) {
 * Do not have any empty `if`, `else if`, or `else` blocks.
 * If empty, add an empty line between the opening and closing braces.
       
-**Example,**
+    **Example,**
 
-```ballerina
-if inProperSallaryRange {
-      
-} else if inSallaryRange {
-      
-} else {
-      
-}
-```
+    ```ballerina
+    if inProperSallaryRange {
+        
+    } else if inSallaryRange {
+        
+    } else {
+        
+    }
+    ```
 
 ## Match statement
+
+The best practices related to the `match` statement are as follows.
 
 ### Match patterns clause
 
 * Block indent each pattern clause in its own line.
 * Keep a single space before and after the `=>` sign.
 
-**Example,**
+    **Example,**
 
-```ballerina
-function foo(string|int|boolean a) returns string {
-    match a {
-        12 => {
-            return "Value is '12'";
+    ```ballerina
+    function foo(string|int|boolean a) returns string {
+        match a {
+            12 => {
+                return "Value is '12'";
+            }
         }
+    
+        return "Value is 'Default'";
     }
-  
-    return "Value is 'Default'";
-}
-```
+    ```
 
 * If a pattern clause has more than one statement, block indent each statement in its own line.
 
-**Example,**
+    **Example,**
 
-```ballerina
-match x {
-    var [s, i] if s is string => {
-        io:println("string");
+    ```ballerina
+    match x {
+        var [s, i] if s is string => {
+            io:println("string");
+        }
+        var [s, i] if s is int => {
+            io:println("int");
+        }
     }
-    var [s, i] if s is int => {
-        io:println("int");
-    }
-}
-```
+    ```
 
 * If the pattern body is empty, then keep it as an empty block.
   
   
   **Example,**
 
-```ballerina
-match x {
-    var [s, i] if s is string => {}
-    var [s, i] if s is int => {}
-}
-```
+    ```ballerina
+    match x {
+        var [s, i] if s is string => {}
+        var [s, i] if s is int => {}
+    }
+    ```

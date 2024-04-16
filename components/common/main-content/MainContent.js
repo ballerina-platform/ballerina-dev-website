@@ -267,11 +267,11 @@ export default function MainContent(props) {
               return <div style={{
                 background: "#eeeeee", padding: "10px 10px 0px 0px",
                 borderRadius: "5px",
-                marginTop: "20px",
+                marginTop: "10px",
                 backgroundColor: "#eeeeee !important"
               }}>
                 <div style={{ display: "flex", justifyContent: "end" }}>
-                  <CopyToClipboard text={key}
+                  <CopyToClipboard text={children[0]}
                     onCopy={() => codeCopy(key)} style={{ float: "right" }}>
                     {
                       copied && copiedText == key ? <FaCheck style={{ color: "20b6b0" }} title="Copied" /> : <FaRegCopy title="Copy" />

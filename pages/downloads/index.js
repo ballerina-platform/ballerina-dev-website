@@ -120,7 +120,7 @@ export default function Downloads() {
                   <a id="packVsCode" href="vscode://wso2.ballerina/open-file?gist=74cea880fefcb463d26a0c46f38fce39&file=hello_world.bal" 
                   className={styles.cVSCodeSample} data-download="downloads" 
                   target="_blank" rel="noreferrer">
-                     <div className={styles.cSize}>Open `hello_world.bal` on <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visual Studio Code</p></div>
+                     <div className={styles.cSize}>Open <code style={{padding:"3px", color:"#585a5e"}}>hello_world.bal</code> on <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visual Studio Code</p></div>
                   </a>
                </Col>
 

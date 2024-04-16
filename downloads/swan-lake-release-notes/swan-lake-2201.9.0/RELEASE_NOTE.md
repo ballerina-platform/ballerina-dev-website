@@ -112,6 +112,21 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### Language Server
 
+- Introduced the `Extract to transform function` code action to extract the value expression of a field in a mapping constructor into an expression-bodied function that returns expected record.
+- Introduced the `Surround with lock` code action to wrap an isolated variable access with a `lock` statement.
+- Introduced the `Add private qualifier` code action to set the visibility qualifier of a field in an isolated class to `private`.
+- Introduced the `Make variable immutable` code action to add `final` and/or `readonly` as needed to make the field immutable.
+
+#### Ballerina Shell
+
+- Added support for invoking actions directly from the shell prompt, as shown in the following examples.
+
+```ballerina
+$= string value = myClient->invoke("input");
+$= string value = myClient->/root/name("input");
+$= future<int> result = start name();
+```
+
 #### CLI
 
 #### OpenAPI tool
@@ -151,6 +166,12 @@ public function updateValues(int t1, int t2) {
 ```
 
 #### Language Server
+
+- Improved the snippet completion items provided for dependently-typed functions.
+- Improved the completion items provided for resource parameters with singleton types.
+- Improved the order of completions provided for resource access actions.
+- Introduced an error notification to indicate when the project contains cyclic dependencies.
+- Introduced an error notification to indicate high memory usage.
 
 ### Bug fixes
 

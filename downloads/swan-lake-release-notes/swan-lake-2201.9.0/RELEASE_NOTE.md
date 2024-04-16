@@ -50,9 +50,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
-#### `data.jsondata` package
+#### Introduction of the `data.jsondata` package
 
-- Introduced the [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
+- The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
 
     ```ballerina
     import ballerina/data.jsondata;
@@ -64,35 +64,33 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
         string author;
     |};
 
-    json jsonContent = {
-        name: "Clean Code",
-        author: "Robert C. Martin",
-        year: 2008,
-        publisher: "Prentice Hall"
-    };
-
-    string jsonStr = string `
-    {
-        "name": "The Pragmatic Programmer",
-        "author": "Andrew Hunt, David Thomas",
-        "year": 1999,
-        "publisher": "Addison-Wesley"
-    }`;
-
     public function main() returns error? {
-        // Based on the expected type, it selectively converts the JSON content to the record type.
+        json jsonContent = {
+            name: "Clean Code",
+            author: "Robert C. Martin",
+            year: 2008,
+            publisher: "Prentice Hall"
+        };
+        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book = check jsondata:parseAsType(jsonContent);
         io:println(book);
 
-        // Based on the expected type, it selectively converts the JSON string to the record type.
+        string jsonStr = string `
+        {
+            "name": "The Pragmatic Programmer",
+            "author": "Andrew Hunt, David Thomas",
+            "year": 1999,
+            "publisher": "Addison-Wesley"
+        }`;
+        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book2 = check jsondata:parseString(jsonStr);
         io:println(book2);
     }
     ```
 
-#### `data.xmldata` package
+#### Introduction of the `data.xmldata` package
 
-- Introduced the [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package to provide a set of APIs for XML data conversions and data projection.
+- The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has introduced to provide a set of APIs for XML data conversions and data projection.
 
     ```ballerina
     import ballerina/data.xmldata;
@@ -104,28 +102,26 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
         string author;
     |};
 
-    xml xmlData = xml `
-    <book>
-        <name>Clean Code</name>
-        <author>Robert C. Martin</author>
-        <year>2008</year>
-        <publisher>Prentice Hall</publisher>
-    </book>`;
-
-    string xmlStr = string `
-    <book>
-        <name>Clean Code</name>
-        <author>Robert C. Martin</author>
-        <year>2008</year>
-        <publisher>Prentice Hall</publisher>
-    </book>`;
-
     public function main() returns error? {
-        // Based on the expected type, it selectively converts the XML data to the record type.
+        xml xmlData = xml `
+        <book>
+            <name>Clean Code</name>
+            <author>Robert C. Martin</author>
+            <year>2008</year>
+            <publisher>Prentice Hall</publisher>
+        </book>`;
+        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book = check xmldata:parseAsType(xmlData);
         io:println(book);
 
-        // Based on the expected type, it selectively converts the XML string to the record type.
+        string xmlStr = string `
+        <book>
+            <name>Clean Code</name>
+            <author>Robert C. Martin</author>
+            <year>2008</year>
+            <publisher>Prentice Hall</publisher>
+        </book>`;
+        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book2 = check xmldata:parseString(xmlStr);
         io:println(book2);
     }

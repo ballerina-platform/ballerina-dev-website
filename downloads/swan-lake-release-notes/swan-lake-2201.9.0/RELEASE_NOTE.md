@@ -42,56 +42,56 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements                             
 
+#### Create immutable record value using record type with mutable default values
+
+With these improvements, enable the usage of mutable defaults by wrapping them with `cloneReadOnly` when creating an immutable record value with a record type.
+
+```ballerina
+type Temp record {|
+    any[] initalValues = [10, 20, 30];
+|};
+
+function value() {
+    // Now results in compile-time error.
+    Temp & readonly _ = {};
+}
+```
+
 #### Improvements to the usage of default values of record fields
 
-Now, the default value of a record is evaluated only if a value is not provided for a specific field in the mapping 
-constructor.
+Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
 
-- With these improvements, enable the usage of mutable defaults by wrapping them with `cloneReadOnly` when creating an
-immutable record value with a record type.
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
 
-    ```ballerina
-    type Temp record {|
-        any[] initalValues = [10, 20, 30];
-    |};
-    
-    function value() {
-        // Now results in compile-time error.
-        Temp & readonly _ = {};
+```ballerina
+import ballerina/io;
+
+isolated int id = 1;
+
+type Data record {
+    int id = getId();
+};
+
+type Person record {
+    *Data;
+    int id;
+};
+
+public function main() {
+    Person person = {"id": 10};
+    io:println(person.id); // Prints 10.
+    lock {
+        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
     }
-    ```
+}
 
-- With these improvements, with record type inclusion, the default value from an included record will not be used if the
-including record overrides the field with a default value.
-
-    ```ballerina
-    import ballerina/io;
-    
-    isolated int id = 1;
-    
-    type Data record {
-        int id = getId();
-    };
-    
-    type Person record {
-        *Data;
-        int id;
-    };
-    
-    public function main() {
-        Person _ = {"id": 10};
-        lock {
-            io:println(id); // Prints 1
-        }
+isolated function getId() returns int {
+    lock {
+        id = id + 1;
+        return id;
     }
-    
-    isolated function getId() returns int {
-        lock {
-            id = id + 1;
-            return id;
-        }
-    }
-    ```
+}
+```
 
 ### Bug fixes
 

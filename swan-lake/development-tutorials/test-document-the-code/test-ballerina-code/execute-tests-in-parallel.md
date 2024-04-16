@@ -31,13 +31,15 @@ function testAssertEquals6() {
 
 ## Write a concurrent safe test case
 
-A set of rules must be followed while writing a parallel test.
+The following conditions have to be met for a test to be identified as one that can be run in parallel.
 
-1. The test function must be isolated. In some instances, the compiler infers the test functions as isolated automatically if there are sufficient conditions to make them concurrently safe.
+1. The test function must be isolated. If the function is not exposed publicly and all the conditions for `isolated` functions are met, the compiler may infer the test functions as `isolated`. 
 2. If it is a data provider test, 
-   - The data provider of the test function must be isolated.
-   - The test function parameters must be read-only type.
-3. Respective set-up and tear-down functions (`before`, `after`, `BeforeEach`, `AfterEach`, `BeforeGroups`, `AfterGroups`) of the test function must be isolated.
+   - The data provider of the test function must be isolated, either explicitly marked or inferred to be isolated.
+   - The types of the test function parameters must be subtypes of `readonly`. I.e., only immutable values can be passed as arguments.
+3. Corresponding set-up and tear-down functions (`before`, `after`, `BeforeEach`, `AfterEach`, `BeforeGroups`, `AfterGroups`) of the test function must be isolated.
+
+To learn more about concurrency safety in Ballerina, see [Concurrency safety](https://ballerina.io/learn/concurrency/#concurrency-safety).
 
 A warning related to unparallelized tests is printed at the beginning of the parallel test execution with the reasons.
 Consider the following example.

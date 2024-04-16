@@ -39,8 +39,8 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 #### indentSize
 
 * Specifies the number of spaces for each level of indentation.
-* Value: Integer (e.g., 2, 4)
-* Default: 4
+* Value: Integer (e.g. `2`, `4`)
+* Default: `4`
 
     ```ballerina
     public function main() {
@@ -54,8 +54,8 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 #### continuationIndentSize
 
 * Determines the indentation size for continuation lines.
-* Value: Integer (e.g., 4, 8)
-* Default: 8
+* Value: Integer (e.g. `4`, `8`)
+* Default: `8`
 
     ```ballerina
     function longFunctionName(int param1, int param2, int param3,
@@ -67,9 +67,9 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### maxLineLength
 
-* Maximum line length before code is wrapped.
-* Value: Integer (e.g., 80, 120)
-* Default: No line wrapping if `maxLineLength` not specified.
+* Specifies the maximum line length before code is wrapped.
+* Value: Integer (e.g. `80`, `120`)
+* Default: No line wrapping if `maxLineLength` is not specified.
 
 #### simpleBlocksInOneLine 
 
@@ -84,7 +84,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### simpleFunctionsInOneLine
 
-* Preserve single-line methods on a single line.
+* Preserve single-line methods on one line.
 * Value: Boolean
 * Default: `false`
 
@@ -144,7 +144,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 * Formatting of the function parameters when the `maxLineLength` is exceeded.
 * Values: `Wrap`, `NoWrap`, `ChopDown`
-* Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
+* Default: `Wrap` if `maxLineLength` is specified, else `NoWrap`
     * `Wrap`
 
         ```ballerina
@@ -172,7 +172,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### alignMultilineParameters
 
-* Align multiline parameters with the open brace.
+* Align multiline parameters with the opening brace.
 * Values: Boolean
 * Default: `false`
 
@@ -240,7 +240,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### alignMultilineArguments
 
-* Align multiline arguments with the open brace.
+* Align multiline arguments with the opening brace.
 * Values: Boolean
 * Default: `false`
 
@@ -276,7 +276,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### elseOnNewLine
 
-* `else` and `else if` keyword on the newline which follows after the `}` of the previous `if` or `else if` statement.
+* Specify the start of the `else` and `else if` clause on a newline following the `}` of the previous `if` or `else if` clause.
 * Values: Boolean
 * Default: `false`
 
@@ -294,7 +294,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### afterTypeCast
 
-* Space after type casting.
+*  Add a space after the `type-cast-param`.
 * Values: Boolean
 * Default: `true`
 
@@ -306,7 +306,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 * Space after the opening brace and before the closing brace of a mapping constructor.
 * Values: Boolean
-* Default: `true`
+* Default: `false`
 
     ```ballerina
     Student x = { name: “Alex”, age: 15 };
@@ -314,7 +314,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 #### alignConsecutiveDefinitions
 
-* Align equals on consecutive definitions.
+* Align the equals signs in consecutive definitions.
 * Values: Boolean
 * Default: `false`
 
@@ -360,9 +360,9 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
     * When `alignMultiLineQueries = true`
 
         ```ballerina
-        int[] numsReversed = from int i in nums
-                order by i descending
-                select i;
+        int[] numsReversed = from int j in nums
+                             order by j descending
+                             select ;
         ```
 
 ## Example Configuration

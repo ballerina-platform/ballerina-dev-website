@@ -113,7 +113,30 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### OpenAPI tool
 
+- Integrated OpenAPI client generation to `bal build` command, in here user can provide the openapi tool config details in to the Ballerina.toml file and generate the client using `bal build` command.
+Example:
+```ballerina
+[[tool.openapi]]
+id = "dBclient"
+filePath = "openapi.yaml"
+targetModule = "delivery"
+```
+- Introduced the `add` sub-command to the OpenAPI tool to update the Ballerina.toml file with the OpenAPI tool configuration details.
+Example:
+`bal openapi add -i <yaml file> --mode client --id <tool config id>`
+- Added OpenAPI mapping for the Ballerina constraints in OpenAPI specification generation.
+- Added OpenAPI link field mapping for the Ballerina HATEOAS feature in OpenAPI specification generation.
+- Added OpenAPI mapping for the Ballerina HTTP interceptor services in OpenAPI specification generation.
+- Added OpenAPI response mapping for the Ballerina HTTP status code errors in OpenAPI specification generation.
+- Added the support for the Ballerina client generation with status code response binding, this can be enabled by providing the `--with-status-code-binding` flag to the `openapi` client generation command.
+Example:
+`bal openapi -i <yaml file> --mode client --with-status-code-binding`
+
 ### Improvements
+
+#### OpenAPI Tool
+- Added support for the Ballerina record rest field mapping in OpenAPI specification generation.
+- Improved the OpenAPI client generation with the parameterized path segments in the OpenAPI specification by generating the Ballerina `remote` functions for the client.
 
 #### Formatter
 
@@ -154,7 +177,7 @@ public function updateValues(int t1, int t2) {
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.9.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug+is%3Aclosed)
 
 ## Ballerina packages updates
 

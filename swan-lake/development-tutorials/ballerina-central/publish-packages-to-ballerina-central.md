@@ -66,15 +66,18 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
-3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
+3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml` as follows.
 
-Note :  These generated tokens are valid only for an year from the generation. Upon the expiration of
-the token, a new token should be generated and `Settings.toml` should be updated with it. Otherwise, you
-may get any error related to unauthorised access.
+    ```Toml
+    [central]
+    accesstoken="<token>"
+    ```
+
+Note: These generated tokens are valid only for one year from the generation date. Upon the expiration of the token, a new token should be generated, and `Settings.toml` should be updated with it. Otherwise, you may get an error related to unauthorized access.
 
 ### Configure proxy settings (optional)
 
-If you are connected to the internet via an HTTP proxy, you need to configure it in the `Settings.toml` file to carry out the Ballerina Central related operations such as publishing a package, pulling a package or resolving packages. Add the following section to `Settings.toml`.
+If you are connected to the internet via an HTTP proxy, you need to configure it in the `Settings.toml` file to carry out the Ballerina Central-related operations such as publishing a package, pulling a package or resolving packages. Add the following section to `Settings.toml`.
 
 ```toml
 [proxy]

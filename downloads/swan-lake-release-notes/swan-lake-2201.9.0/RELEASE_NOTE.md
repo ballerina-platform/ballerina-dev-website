@@ -42,35 +42,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements                             
 
-#### Introduce closures for default values of default fields in records.
+#### Improvements to the usage of default values of record fields
 
 Now, the default value of a record is evaluated only if a value is not provided for a specific field in the mapping 
 constructor.
 
-When overriding a field included with record type inclusion, the default value associated with that field also override.
-
-    ```ballerina
-    import ballerina/io;
-    
-    type Data record {
-        int|string id = 1;
-        string name;
-    };
-    
-    type Person record {
-        *Data;
-        string id;
-        string name = "John";
-    };
-    
-    public function main() {
-        Person person = {"id": "001"}; // Prints {"id":"001","name":"John"}
-        io:println(person);
-    }
-    ```
-
-When creating an immutable record literal with a record type, the default values of the record type should also be 
-immutable.
+- With these improvements, enable the usage of mutable defaults by wrapping them with `cloneReadOnly` when creating an
+immutable record value with a record type.
 
     ```ballerina
     type Temp record {|
@@ -80,6 +58,38 @@ immutable.
     function value() {
         // Now results in compile-time error.
         Temp & readonly _ = {};
+    }
+    ```
+
+- With these improvements, with record type inclusion, the default value from an included record will not be used if the
+including record overrides the field with a default value.
+
+    ```ballerina
+    import ballerina/io;
+    
+    isolated int id = 1;
+    
+    type Data record {
+        int id = getId();
+    };
+    
+    type Person record {
+        *Data;
+        int id;
+    };
+    
+    public function main() {
+        Person _ = {"id": 10};
+        lock {
+            io:println(id); // Prints 1
+        }
+    }
+    
+    isolated function getId() returns int {
+        lock {
+            id = id + 1;
+            return id;
+        }
     }
     ```
 

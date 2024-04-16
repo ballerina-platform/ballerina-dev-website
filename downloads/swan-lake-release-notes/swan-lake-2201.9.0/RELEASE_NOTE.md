@@ -32,7 +32,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 #### Introduction of the alternate receive action
 
-The alternate receive action can be used to receive values corresponding to multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the result.
+The alternate receive action can be used to receive one of multiple values corresponding to multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the result.
 
 ```ballerina
 import ballerina/io;
@@ -102,7 +102,7 @@ type Result record {
 };
 ```
 
-#### The `send-action` is allowed to be executed conditionally
+#### Support for conditional worker send action
 
 The send action in workers can be used in a conditional context, allowing for more flexible and dynamic inter-worker communication based on specific conditions. The receiver side in a conditional send might not always receive a message. Thus, to handle such scenarios, the static type of the receive action includes the `error:NoMessage` type.
 
@@ -134,16 +134,16 @@ public function main() {
     int|error:NoMessage w1Message = <- w1;
     io:println(w1Message); // 10
 
-    // Two different conditional send actions exists within the worker `w3`.
+    // Two different conditional send actions exist within the worker `w3`.
     // Therefore, an alternate receive action can be used to receive them.
     int|error:NoMessage w2Message = <- w2 | w2;
     io:println(w2Message); // 1
 }
 ```
 
-#### Introduction of the `on-fail` clause for named workers
+#### Introduction of the `on fail` clause for named workers
 
-The `on fail` clause can be incorporated into a named worker, to handle any errors that occur within the worker's body.
+The `on fail` clause can be used with a named worker, to handle any errors that occur within the worker's body.
 
 ```ballerina
 import ballerina/io;
@@ -165,7 +165,7 @@ public function main() {
 }
 
 function getIndex(int[] values, int value) returns int|error =>
-    let int? index = values.indexOf(value) in index is () ? error("value not found") : index;
+    let int? index = values.indexOf(value) in index ?: error("value not found");
 ```
 
 ### Improvements

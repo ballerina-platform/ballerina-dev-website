@@ -30,13 +30,9 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### Introduction of several features to workers
+#### Introduction of the alternate receive action
 
-Several new features have been introduced to enhance the capabilities of workers.  
-
-- Introduction of alternate receive action
-
-The alternate receive action can be used to receive values from multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the outcome.
+The alternate receive action can be used to receive values corresponding to multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the result.
 
 ```ballerina
 import ballerina/io;
@@ -53,7 +49,7 @@ public function main() {
     }
 
     worker w3 returns int {
-        // The value of the variable `result` is set as soon as the values from either
+        // The value of the variable `result` is set as soon as the value from either
         // worker `w1` or `w2` is received.
         int result = <- w1 | w2;
         return result;
@@ -87,9 +83,9 @@ public function main() {
 }
 ```
 
-- Introduction of multiple receive action
+#### Introduction of the multiple receive action
 
-The multiple receive action can be used to receive values from multiple send actions. It operates by awaiting the receipt of values from all the send actions, subsequently constructing a map containing those values.
+The multiple receive action can be used to receive values corresponding to multiple send actions. It operates by waiting for the receipt of values from all the send actions, subsequently constructing a mapping value containing those values.
 
 ```ballerina
 import ballerina/io;
@@ -121,11 +117,9 @@ public function main() {
 }
 ```
 
-- The `send-action` is allowed to be executed conditionally
+#### The `send-action` is allowed to be executed conditionally
 
-The send action in workers can be used in a conditional context, allowing for more flexible and dynamic inter-worker 
-communication based on specific conditions. The receiver-side in a conditional send might not always receive a 
-message. Thus, to handle such scenarios, the static type of the receiver variable include the `error:NoMessage` type.
+The send action in workers can be used in a conditional context, allowing for more flexible and dynamic inter-worker communication based on specific conditions. The receiver side in a conditional send might not always receive a message. Thus, to handle such scenarios, the static type of the receive action includes the `error:NoMessage` type.
 
 ```ballerina
 import ballerina/io;
@@ -172,7 +166,7 @@ public function main() {
 }
 ```
 
-- Introduction of `on-fail-clause` to the named workers
+#### Introduction of the `on-fail` clause for named workers
 
 The `on fail` clause can be incorporated into a named worker, to handle any errors that occur within the worker's body.
 

@@ -11,12 +11,12 @@ intro: Mocking is useful to control the behavior of functions and objects to con
 
 ## Mock objects
 
-The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behaviour of the methods of an object and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
+The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the methods of an object and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
 
 Mocking objects can be done in two ways :
 
 1. Creating a test double (providing an equivalent object in place of the real object)
-2. Stubbing the methods and fields of the object (specifying the behaviour of the methods and values of the object fields)
+2. Stubbing the methods and fields of the object (specifying the behavior of the methods and values of the object fields)
 
 
 ### Create a test double
@@ -83,7 +83,7 @@ public function testGetRandomJoke() {
 
 ### Stub the methods and fields of an object
 
-#### Stub remote methods/ normal methods
+#### Stub remote methods or normal methods
 
 Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing.
 
@@ -149,7 +149,7 @@ function getCategoriesResponse() returns string[] {
 
 ***main_test.bal***
 
-This test stubs the behaviour of the `get` method to return a specific value in 2 ways:
+This test stubs the behavior of the `get` method to return a specific value in 2 ways:
 
 1. Stubbing to return a specific value in general
 2. Stubbing to return a specific value based on the input
@@ -182,7 +182,7 @@ public function testGetRandomJoke() {
 
 ***main_test.bal***
 
-This test stubs the behaviour of the `get` method to return a specified sequence of values for each `get` method invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
+This test stubs the behavior of the `get` method to return a specified sequence of values for each `get` method invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
 
 >**Note:** `withArguments` function does not support with `thenReturnSequence`.
 
@@ -220,7 +220,7 @@ import ballerina/email;
 
 email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
 
-// This function sends out emails to specified email addresses and returns an error if sending failed.
+// This function sends out emails to specified email addresses and returns an error if sending fails.
 function sendNotification(string[] emailIds) returns error? {
     email:Message msg = {
         'from: "builder@abc.com",
@@ -233,7 +233,7 @@ function sendNotification(string[] emailIds) returns error? {
 ```
 ***main_test.bal***
 
-This test stubs the behaviour of the `sendMessage` method to do nothing for testing the `sendNotification` function.
+This test stubs the behavior of the `sendMessage` method to do nothing for testing the `sendNotification` function.
 
 ```ballerina
 import ballerina/test;
@@ -299,7 +299,7 @@ public client class EmpClient {
 
 ***main_test.bal***
  
-This test stubs the behaviour of the below resource method to return a specific value in 4 ways:
+This test stubs the behavior of the below resource method to return a specific value in 4 ways:
 
 ```ballerina
     resource function get employee/welcome/[string id](string firstName, string lastName) returns string {
@@ -513,11 +513,11 @@ import ballerina/test;
 test:MockFunction intAddMockFn = new ();
 ```
 
-After the initialization, the following options can be used to stub the behaviour of a function written in the module being tested.
+After the initialization, the following options can be used to stub the behavior of a function written in the module being tested.
  
 ### Stub to return a specific value
   
- This test stubs the behaviour of the `get` function to return a specific value in 2 ways:
+ This test stubs the behavior of the `get` function to return a specific value in 2 ways:
      
  1. Stubbing to return a specific value in general
  2. Stubbing to return a specific value based on the input
@@ -543,7 +543,7 @@ function testReturn() {
 
 ### Stub to invoke another function in place of the real
 
-This test stubs the behaviour of the `intAdd` function to substitute it with a user-defined mock function.
+This test stubs the behavior of the `intAdd` function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;
@@ -565,7 +565,7 @@ public function mockIntAdd(int a, int b) returns int {
 }
 ```
 
-This test stubs the behaviour of an imported function to substitute it with a user-defined mock function.
+This test stubs the behavior of an imported function to substitute it with a user-defined mock function.
 
 ```ballerina
 import ballerina/test;

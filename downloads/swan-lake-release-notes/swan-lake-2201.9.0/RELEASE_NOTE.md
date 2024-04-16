@@ -130,7 +130,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     ```
     >**Info:** The database introspection support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
 
-- Revised the persist migrate command to extract the datastore configuration from the provided argument instead of the Ballerina.toml file. The command now accepts the following option:
+- Revised the persist migrate command to extract the datastore configuration from the provided argument instead of the `Ballerina.toml` file. The command now accepts the following option:
     - `--datastore` - This is used to indicate the preferred data store. The default value is `mysql`.
 
     For example,

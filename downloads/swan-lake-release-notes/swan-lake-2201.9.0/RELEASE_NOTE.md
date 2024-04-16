@@ -121,6 +121,14 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
 
+#### `rabbitmq` package
+
+- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
+
+#### `nats` package
+
+- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+
 ## Developer tools updates
 
 ### New features
@@ -392,14 +400,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     }
     ```
-
-### `rabbitmq` package
-
-- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
-
-### `nats` package
-
-- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
 ### `cloud` package
 

@@ -86,6 +86,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements
 
+#### `cloud` package
+- Directories can now be mounted as ConfigMaps and Secrets.
+
 #### `graphql` package
 
 - Improved the GraphQL error responses to use aliases instead of field names in the `path` field
@@ -161,9 +164,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 ### New features
 
 ### Improvements
-
-#### `cloud` package
-- Directories can now be mounted as ConfigMaps and Secrets.
 
 ### Bug fixes
 

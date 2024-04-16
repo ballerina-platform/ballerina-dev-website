@@ -310,7 +310,7 @@ export default function MainContent(props) {
                     </CopyToClipboard>}
                   </div>
                   <div>
-                    <pre class="shiki github-light" style={{ backgroundColor: "#ffffff", tabIndex: "0" }}>
+                    <pre className="shiki github-light" style={{ backgroundColor: "#ffffff", tabIndex: "0" }}>
                       <code className={className} {...props}>
                         {children}
                       </code>

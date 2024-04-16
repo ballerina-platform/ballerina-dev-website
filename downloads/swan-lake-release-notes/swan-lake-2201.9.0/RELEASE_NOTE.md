@@ -192,7 +192,7 @@ xmlns "https://ballerina.io/" as ns;
 
 utils.bal
  ```ballerina
-// Previously resulted in a compile time error `redeclared symbol 'ns'` now works as expeted.
+// Previously resulted in the compile-time error `redeclared symbol 'ns'`, now works as expected.
 xmlns "https://example.com/" as ns; 
 ```
 
@@ -216,11 +216,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `avro` package
 
-- Introduced Avro serialization/deserialization support
+- Introduced Avro serialization/deserialization support.
 
 #### `graphql` package
 
-- Introduced GraphQL server-side caching support
+- Introduced GraphQL server-side caching support.
 
 #### `crypto` package
 
@@ -237,8 +237,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `graphql` package
 
-- Improved the GraphQL error responses to use aliases instead of field names in the `path` field
-- Added support to report GraphQL specific diagnostics in the VS Code extension
+- Improved the GraphQL error responses to use aliases instead of field names in the `path` field.
+- Added support to report GraphQL specific diagnostics in the VS Code extension.
 
 ### Deprecations
 

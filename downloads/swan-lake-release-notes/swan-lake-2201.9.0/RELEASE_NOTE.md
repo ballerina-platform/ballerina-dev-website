@@ -97,43 +97,29 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
-## Ballerina extended library updates
+### Revamped library updates
 
-The following new modules and major updates have been added to the Ballerina extended library, in parallel with the Ballerina Swan Lake Update 9 (2201.9.0) release.
+The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative. 
+All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
 
-### New Modules
+#### `asana` package
+
+- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
 
 #### `candid` package 
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
-
-#### `zendesk` package
-
-- Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
-
-### New features
 
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.
 - Introduced support for secure connections (SSL/TLS) to Redis servers.
 - Added support for Redis connection strings (i.e. Redis URIs).
-
-### Improvements
-
-#### `asana` package
-
-- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
-
-#### `redis` package
-
 - Extended connector compatibility to include the latest Redis server versions (upto 7.2.x).
 
-### Deprecations
+#### `zendesk` package
 
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
+- Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
 
 ## Developer tools updates
 

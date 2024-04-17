@@ -230,6 +230,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 - Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
 - Introduced new APIs for ML-DSA65 (Dilithium3) signing.
 
+#### `edi` package
+
+- Introduced support for EDIFACT schema conversion.
+
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
+ 
 ### Improvements
 
 #### `cloud` package
@@ -294,9 +302,9 @@ All the connectors listed below have been released under new major versions, due
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
-#### `aws.redshift` package
+#### `googleapis.gmail` package
 
-- Introduced seamless connectivity to Amazon Redshift databases.
+- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
 
 ## Developer tools updates
 

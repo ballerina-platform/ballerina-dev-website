@@ -258,6 +258,19 @@ All the connectors listed below have been released under new major versions, due
 #### `candid` package 
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
+
+#### `docusign.dsadmin` package
+
+- Introduced new APIs to be consistent with DocuSign Admin APIs.
+
+#### `docusign.dsclick` package
+
+- Introduced new APIs to be consistent with DocuSign Click APIs.
+
+#### `docusign.dsesign` package
+
+- Introduced new APIs to be consistent with DocuSign eSignature APIs.
+
 #### `googleapis.gcalendar` package
 
 - Introduced support for connecting to Google Calendar REST APIs.

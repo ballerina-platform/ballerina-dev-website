@@ -206,6 +206,74 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements
 
+#### Support to construct immutable record values with record type-descriptors that have mutable default values
+
+It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
+
+```ballerina
+import ballerina/io;
+
+type Student record {|
+    int id;
+    string name;
+    // The inherent type of the default value expression is `int[]`.
+    int[] moduleCodes = [1001, 2001, 3010];
+    // The inherent type of the default value expression is `any[]`.
+    any[] config = getStudentConfig();
+|};
+
+function createEmployee(int id, string name, readonly & string[] config) {
+    // No longer panics at runtime, since an immutable value is set
+    // for the `moduleCodes` field.
+    Student & readonly s1 = {id, name, config};
+    io:println(s1.moduleCodes is readonly & int[]); // true
+}
+
+isolated function getStudentConfig() returns any[] {
+    return [];
+}
+```
+
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
+
+```ballerina
+function createEmployee(int id, string name) {
+    // Results in a compile-time error now since there is no default
+    // value that can be used for `config`.
+    Student & readonly s1 = {id, name};
+}   
+```
+
+#### Improvements to the usage of default values of record fields
+
+Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
+
+```ballerina
+import ballerina/io;
+
+isolated int id = 1;
+
+type Data record {
+    int id = getId();
+};
+
+public function main() {
+    Data data = {"id": 10};
+    lock {
+        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
+    }
+}
+
+isolated function getId() returns int {
+    lock {
+        id = id + 1;
+        return id;
+    }
+}
+```
+
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).

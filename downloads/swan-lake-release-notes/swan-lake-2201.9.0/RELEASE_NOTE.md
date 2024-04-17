@@ -279,23 +279,23 @@ All the connectors listed below have been released under new major versions, due
 
 #### `confluent.cregistry` package
 
-- Introduced support for integrating with the Confluent Schema Registry.
+- Introduced new APIs to connect with the Confluent Schema Registry.
 
 #### `docusign.dsadmin` package
 
-- Enhanced the connector APIs to align with DocuSign Admin APIs by incorporating resource functions.
-- With the new changes the package name is changed to `docusign.dsadmin` which was previously maintained under the name `docusign.admin`.
+- Enhanced the connector APIs by incorporating resource functions.
+- The package name has been changed to `docusign.dsadmin` from its previous name, `docusign.admin`.
 - Add the documentation and examples.
 
 #### `docusign.dsclick` package
 
-- Enhanced the connector APIs to align with DocuSign Click APIs by incorporating resource functions.
-- With the new changes the package name is changed to `docusign.dsclick` which was previously maintained under the name `docusign.click`.
+- Enhanced the connector APIs by incorporating resource functions.
+- The package name has been changed to `docusign.dsclick` from its previous name, `docusign.click`.
 - Add the documentation and examples.
 
 #### `docusign.dsesign` package
 
-- Introduced new APIs to align with DocuSign eSignature APIs by incorporating resource functions.
+- Introduced new APIs to connect with DocuSign eSignature REST APIs.
 - Add the documentation and examples.
 
 #### `github` package
@@ -305,7 +305,7 @@ All the connectors listed below have been released under new major versions, due
 #### `googleapis.gcalendar` package
 
 - Enhanced the connector APIs by incorporating resource functions.
-- With the new changes the package name is changed to `googleapis.gcalendar` which was previously maintained under the name `googleapis.calendar`.
+- The package name has been changed to `googleapis.gcalendar` from its previous name, `googleapis.calendar`.
 - Improved the documentation and examples.
 
 #### `guidewire.insnow` package

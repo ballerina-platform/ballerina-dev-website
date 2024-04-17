@@ -192,7 +192,7 @@ xmlns "https://ballerina.io/" as ns;
 
 utils.bal
  ```ballerina
-// Previously resulted in the compile-time error `redeclared symbol 'ns'`, now works as expected.
+// Previously resulted in a `redeclared symbol` compile-time error, now works as expected.
 xmlns "https://example.com/" as ns; 
 ```
 

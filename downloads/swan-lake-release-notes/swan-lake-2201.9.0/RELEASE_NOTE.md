@@ -30,6 +30,144 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### Introduction of the alternate receive action
+
+The alternate receive action can be used to receive one of multiple values corresponding to multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the result.
+
+```ballerina
+import ballerina/io;
+import ballerina/lang.runtime;
+
+public function main() {
+    worker w1 {
+        2 -> function;
+    }
+
+    worker w2 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    worker w3 returns error? {
+        int value = 10;
+        if value == 10 {
+            return error("Error in worker 3");
+        }
+        value -> function;
+    }
+
+    worker w4 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    // The value of the variable `result` is set as soon as the value from either
+    // worker `w1` or `w2` is received.
+    int result1 = <- w1 | w2;
+    io:println(result1); // 2
+
+    // Alternate receive action waits until a message that is not an error is received. 
+    // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
+    int|error? result2 = <- w3 | w4;
+    io:println(result2); // 3
+}
+```
+
+#### Introduction of the multiple receive action
+
+The multiple receive action can be used to receive values corresponding to multiple send actions. It operates by waiting for the receipt of values from all the send actions, subsequently constructing a mapping value containing those values.
+
+```ballerina
+import ballerina/io;
+import ballerina/lang.runtime;
+
+public function main() {
+    worker w1 {
+        2 -> function;
+    }
+
+    worker w2 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    // The worker waits until both values are received.
+    Result result = <- {a: w1, b: w2};
+    io:println(result); // {"a":2,"b":3}
+}
+
+type Result record {
+    int a;
+    int b;
+};
+```
+
+#### Support for conditional worker send action
+
+The send action in workers can be used in a conditional context, allowing for more flexible and dynamic inter-worker communication based on specific conditions. The receiver side in a conditional send might not always receive a message. Thus, to handle such scenarios, the static type of the receive action includes the `error:NoMessage` type.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    boolean isDataReady = true;
+
+    worker w1 {
+        // A send action can be used in a conditional context.
+        if isDataReady {
+            10 -> function;
+        }
+    }
+
+    worker w2 {
+        if isDataReady {
+            1 -> function;
+        } else {
+            0 -> function;
+        }
+    }
+
+    // The send action corresponding to this receive action is conditionally executed.
+    // Thus, there is a possibility that the send action may not get executed.
+    // Therefore, the static type of the receive includes the `error:NoMessage` type
+    // indicating the absence of a message in such cases.
+    int|error:NoMessage w1Message = <- w1;
+    io:println(w1Message); // 10
+
+    // Two different conditional send actions exist within the worker `w3`.
+    // Therefore, an alternate receive action can be used to receive them.
+    int|error:NoMessage w2Message = <- w2 | w2;
+    io:println(w2Message); // 1
+}
+```
+
+#### Introduction of the `on fail` clause for named workers
+
+The `on fail` clause can be used with a named worker, to handle any errors that occur within the worker's body.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    int[] values = [2, 3, 4, 5];
+    int value = 0;
+
+    worker w1 {
+        int index = check getIndex(values, value);
+        index -> function;
+    } on fail {
+        // Handle the error thrown in the worker body.
+        -1 -> function;
+    }
+
+    int|error:NoMessage result = <- w1 | w1;
+    io:println(result); // -1
+}
+
+function getIndex(int[] values, int value) returns int|error =>
+    let int? index = values.indexOf(value) in index ?: error("value not found");
+```
+
 ### Improvements
 
 #### Remove dependence on syntactic location for module-level XMLNS declarations
@@ -54,7 +192,7 @@ xmlns "https://ballerina.io/" as ns;
 
 utils.bal
  ```ballerina
-// Previously resulted in a compile time error `redeclared symbol 'ns'` now works as expeted.
+// Previously resulted in a `redeclared symbol` compile-time error, now works as expected.
 xmlns "https://example.com/" as ns; 
 ```
 
@@ -78,18 +216,29 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `avro` package
 
-- Introduced Avro serialization/deserialization support
+- Introduced Avro serialization/deserialization support.
 
 #### `graphql` package
 
-- Introduced GraphQL server-side caching support
+- Introduced GraphQL server-side caching support.
+
+#### `crypto` package
+
+- Introduced new APIs for ML-KEM-768 (Kyber768) key encapsulation mechanism.
+- Introduced new APIs for RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+- Introduced new APIs for ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for ML-DSA65 (Dilithium3) signing.
 
 ### Improvements
 
+#### `cloud` package
+- Directories can now be mounted as ConfigMaps and Secrets.
+
 #### `graphql` package
 
-- Improved the GraphQL error responses to use aliases instead of field names in the `path` field
-- Added support to report GraphQL specific diagnostics in the VS Code extension
+- Improved the GraphQL error responses to use aliases instead of field names in the `path` field.
+- Added support to report GraphQL specific diagnostics in the VS Code extension.
 
 ### Deprecations
 
@@ -161,6 +310,21 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### Language Server
 
+- Introduced the `Extract to transform function` code action to extract the value expression of a field in a mapping constructor into an expression-bodied function that returns expected record.
+- Introduced the `Surround with lock` code action to wrap an isolated variable access with a `lock` statement.
+- Introduced the `Add private qualifier` code action to set the visibility qualifier of a field in an isolated class to `private`.
+- Introduced the `Make variable immutable` code action to add `final` and/or `readonly` as needed to make the field immutable.
+
+#### Ballerina Shell
+
+- Added support for invoking actions directly from the shell prompt, as shown in the following examples.
+
+```ballerina
+$= string value = myClient->invoke("input");
+$= string value = myClient->/root/name("input");
+$= future<int> result = start name();
+```
+
 #### CLI
 
 #### OpenAPI tool
@@ -201,6 +365,12 @@ public function updateValues(int t1, int t2) {
 
 #### Language Server
 
+- Improved the snippet completion items provided for dependently-typed functions.
+- Improved the completion items provided for resource parameters with singleton types.
+- Improved the order of completions provided for resource access actions.
+- Introduced an error notification to indicate when the project contains cyclic dependencies.
+- Introduced an error notification to indicate high memory usage.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repositories below.
@@ -214,14 +384,54 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### Improvements
 
-#### `cloud` package
-- Directories can now be mounted as ConfigMaps and Secrets.
-
 ### Bug fixes
 
 ## Backward-incompatible changes
 
-### Language
+### Language changes
+
+- A bug that allowed using `self` of an isolated object to access a mutable field without a lock statement within an anonymous function has been fixed.
+
+    ```ballerina
+    import ballerina/log;
+
+    isolated class Data {
+        private int id;
+        private string name;
+
+        isolated function init(int id, string name) {
+            self.id = id;
+            self.name = name;
+        }
+
+        isolated function update(int? id = (), string? name = ()) {
+            lock {
+                if id is int {
+                    self.id = id;
+                }
+
+                if name is string {
+                    self.name = name;
+                }
+            }
+
+            var logger = isolated function () returns string {
+                // Now results in compile-time errors, 
+                // need to use a lock statement. 
+                return string `ID: '${self.id}', Name: '${self.name}'`; 
+            };
+            log:printDebug("Data updated", details = logger);
+        }
+    }
+    ```
+
+- A bug which resulted in the rest parameter of a function not being considered final has been fixed.
+
+    ```ballerina
+    function sum(int i, int... j) {
+        j = [1, 2, 3]; // Compile-time error now.
+    }
+    ```
 
 - A bug which resulted in the addition of a default namespace to an XML navigation name pattern, even when the default namespace is defined after it, has been fixed.
 
@@ -421,7 +631,17 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
-### `cloud` package
+### Ballerina library changes
+
+#### `rabbitmq` package
+
+- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
+
+#### `nats` package
+
+- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+
+#### `cloud` package
 
 - SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
     ```toml

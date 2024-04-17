@@ -134,7 +134,7 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 - Added support for OpenAPI link field mapping for Ballerina HATEOAS feature in OpenAPI specification generation.
 - Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
 - Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
-- Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--with-status-code-binding` option to the OpenAPI client generation command.
+- Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
   
   For example:
 

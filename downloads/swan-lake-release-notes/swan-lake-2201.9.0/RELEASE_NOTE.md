@@ -97,7 +97,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
-### Revamped library updates
+### Revamped connector updates
 
 The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative. 
 All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
@@ -118,12 +118,24 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced a Ballerina connector to connect with the IBM MQ message broker.
 
+#### `mongodb` package
+
+- Introduced `mongodb:Client`, `mongodb:Database`, and `mongodb:Collection` objects to provide a more intuitive and user-friendly API for MongoDB operations.
+- Introduced new APIs to be consistent with MongoDB's native APIs.
+- Added support for MongoDB aggregation operations.
+- Added support for MongoDB projections through type inference and manual projection.
+- Added support for connecting to MongoDB Atlas databases and clusters.
+- Added support for SSL connections to MongoDB servers.
+- Improved the `find` API with support for filtering, sorting, and pagination.
+- Improved the `update` API by providing `matchedCount` and `modifiedCount` in the response.
+- Improved the overall documentation and examples.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.
 - Introduced support for secure connections (SSL/TLS) to Redis servers.
 - Added support for Redis connection strings (i.e. Redis URIs).
-- Extended connector compatibility to include the latest Redis server versions (upto 7.2.x).
+- Extended connector compatibility to include the latest Redis server versions (up to 7.2.x).
 
 #### `zendesk` package
 

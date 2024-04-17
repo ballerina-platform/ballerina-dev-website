@@ -283,19 +283,19 @@ All the connectors listed below have been released under new major versions, due
 
 #### `docusign.dsadmin` package
 
-- Introduced new APIs to be consistent with DocuSign Admin APIs by incorporating resource functions.
+- Enhanced the connector APIs to align with DocuSign Admin APIs by incorporating resource functions.
 - With the new changes the package name is changed to `docusign.dsadmin` which was previously maintained under the name `docusign.admin`.
 - Add the documentation and examples.
 
 #### `docusign.dsclick` package
 
-- Enhance new APIs to be consistent with DocuSign Click APIs by incorporating resource functions.
+- Enhanced the connector APIs to align with DocuSign Click APIs by incorporating resource functions.
 - With the new changes the package name is changed to `docusign.dsclick` which was previously maintained under the name `docusign.click`.
 - Add the documentation and examples.
 
 #### `docusign.dsesign` package
 
-- Introduced new APIs to be consistent with DocuSign eSignature APIs by incorporating resource functions.
+- Introduced new APIs to align with DocuSign eSignature APIs by incorporating resource functions.
 - Add the documentation and examples.
 
 #### `github` package

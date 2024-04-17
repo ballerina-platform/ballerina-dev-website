@@ -42,19 +42,41 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements                             
 
-#### Create immutable record value using record type with mutable default values
+#### Support to construct immutable record values with record type-descriptors that have mutable default values
 
-With these improvements, enable the usage of mutable defaults by wrapping them with `cloneReadOnly` when creating an immutable record value with a record type.
+It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
 
 ```ballerina
-type Temp record {|
-    any[] initalValues = [10, 20, 30];
+import ballerina/io;
+
+type Student record {|
+    int id;
+    string name;
+    // The inherent type of the default value expression is `int[]`.
+    int[] moduleCodes = [1001, 2001, 3010];
+    // The inherent type of the default value expression is `any[]`.
+    any[] config = getStudentConfig();
 |};
 
-function value() {
-    // Now results in compile-time error.
-    Temp & readonly _ = {};
+function createEmployee(int id, string name, readonly & string[] config) {
+    // No longer panics at runtime, since an immutable value is set
+    // for the `moduleCodes` field.
+    Student & readonly s1 = {id, name, config};
+    io:println(s1.moduleCodes is readonly & int[]); // true
 }
+
+isolated function getStudentConfig() returns any[] {
+    return [];
+}
+```
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default will not be used).
+
+```ballerina
+function createEmployee(int id, string name) {
+    // Results in a compile-time error now since there is no default
+    // value that can be used for `config`.
+    Student & readonly s1 = {id, name};
+}   
 ```
 
 #### Improvements to the usage of default values of record fields
@@ -72,14 +94,8 @@ type Data record {
     int id = getId();
 };
 
-type Person record {
-    *Data;
-    int id;
-};
-
 public function main() {
-    Person person = {"id": 10};
-    io:println(person.id); // Prints 10.
+    Data data = {"id": 10};
     lock {
         io:println(id); // Prints 1 since it is `getId()` is not evaluated.
     }

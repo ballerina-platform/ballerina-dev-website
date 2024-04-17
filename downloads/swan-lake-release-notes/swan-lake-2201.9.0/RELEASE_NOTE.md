@@ -110,6 +110,10 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
 
+#### `guidewire.insnow` package 
+
+- Introduced support for connecting to Guidewire InsuranceNow REST API.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.

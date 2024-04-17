@@ -84,11 +84,11 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 - Introduced GraphQL server-side caching support
 
-#### Introduction of the `data.jsondata` package
+#### `data.jsondata` package
 
-- The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
+The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
 
-    ##### Data Projection
+- Data Projection: JSON data can be converted to a Ballerina record by specifying the required fields in the JSON data.
 
     ```ballerina
     import ballerina/data.jsondata;
@@ -107,7 +107,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
             year: 2008,
             publisher: "Prentice Hall"
         };
-        // Based on the expected type, it only converts the `name` and `arthur` fields.
+        // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
         Book book = check jsondata:parseAsType(jsonContent);
         io:println(book);
 
@@ -118,13 +118,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
             "year": 1999,
             "publisher": "Addison-Wesley"
         }`;
-        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book2 = check jsondata:parseString(jsonStr);
         io:println(book2);
     }
     ```
 
-    ##### Json Navigation
+- JSON Navigation: JSONPath expressions can be used to navigate through JSON data and extract the required information.
     
     ```ballerina
     import ballerina/data.jsondata;
@@ -167,9 +166,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
     }
     ```
 
-#### Introduction of the `data.xmldata` package
+#### `data.xmldata` package
 
-- The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has introduced to provide a set of APIs for XML data conversions and data projection.
+The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has been introduced to provide a set of APIs for XML data conversions and data projection.
 
     ```ballerina
     import ballerina/data.xmldata;
@@ -189,7 +188,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
             <year>2008</year>
             <publisher>Prentice Hall</publisher>
         </book>`;
-        // Based on the expected type, it only converts the `name` and `arthur` fields.
+        // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
         Book book = check xmldata:parseAsType(xmlData);
         io:println(book);
 
@@ -200,7 +199,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
             <year>2008</year>
             <publisher>Prentice Hall</publisher>
         </book>`;
-        // Based on the expected type, it only converts the `name` and `arthur` fields.
         Book book2 = check xmldata:parseString(xmlStr);
         io:println(book2);
     }

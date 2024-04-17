@@ -97,7 +97,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
-### Revamped library updates
+### Revamped connector updates
 
 The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative. 
 All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
@@ -109,6 +109,10 @@ All the connectors listed below have been released under new major versions, due
 #### `candid` package 
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
+
+#### `guidewire.insnow` package 
+
+- Introduced support for connecting to Guidewire InsuranceNow REST API.
 
 #### `mongodb` package
 
@@ -127,11 +131,23 @@ All the connectors listed below have been released under new major versions, due
 - Added support to connect and work with Redis clusters.
 - Introduced support for secure connections (SSL/TLS) to Redis servers.
 - Added support for Redis connection strings (i.e. Redis URIs).
-- Extended connector compatibility to include the latest Redis server versions (upto 7.2.x).
+- Extended connector compatibility to include the latest Redis server versions (up to 7.2.x).
 
 #### `zendesk` package
 
 - Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
+
+#### `rabbitmq` package
+
+- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
+
+#### `nats` package
+
+- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
 
 ## Developer tools updates
 
@@ -404,14 +420,6 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     }
     ```
-
-### `rabbitmq` package
-
-- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
-
-### `nats` package
-
-- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
 ### `cloud` package
 

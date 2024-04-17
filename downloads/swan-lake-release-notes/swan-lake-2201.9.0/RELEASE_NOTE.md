@@ -232,7 +232,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `edi` package
 
-- Introduced support for EDIFACT schema conversion.
+- Added support for field length constraints (min/max) to enhance schema validation capabilities.
+- Introduced support for an escape character in EDI, allowing more flexibility in data formatting and transmission.
+
+#### `edi` Tool package
+
+- Introduced support for field length constraints (min/max), enhancing validation capabilities for EDI data fields.
+- Added support for EDIFACT to Ballerina schema conversion, facilitating smoother integrations and automations.
 
 #### `aws.redshift` package
 
@@ -305,6 +311,11 @@ All the connectors listed below have been released under new major versions, due
 #### `googleapis.gmail` package
 
 - Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
+
+#### `twilio` package
+
+- Enhanced integration with Twilio services, now fully supporting all features offered through the Twilio Basic API version 2010-04-01.
+- This comprehensive update includes capabilities across messaging, voice calls, media services, and more, ensuring full utilization of Twilio's extensive functionality.
 
 ## Developer tools updates
 

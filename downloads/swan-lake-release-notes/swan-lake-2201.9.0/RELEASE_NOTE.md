@@ -248,16 +248,24 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Revamped connector updates
 
-The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative. 
+The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative.
 All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
 
 #### `asana` package
 
 - Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
 
-#### `candid` package 
+#### `candid` package
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
+
+#### `confluent.cavroserdes` package
+
+- Introduced support for serializing and deserializing data using Avro schemas stored in the Confluent Schmema Registry.
+
+#### `confluent.cregistry` package
+
+- Introduced support for integrating with the Confluent Schema Registry.
 
 #### `docusign.dsadmin` package
 
@@ -279,7 +287,7 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
 
-#### `guidewire.insnow` package 
+#### `guidewire.insnow` package
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 

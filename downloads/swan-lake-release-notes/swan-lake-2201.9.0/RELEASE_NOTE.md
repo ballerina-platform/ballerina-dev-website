@@ -293,13 +293,13 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced new APIs to be consistent with DocuSign eSignature APIs.
 
+#### `github` package
+
+- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
+
 #### `googleapis.gcalendar` package
 
 - Introduced support for connecting to Google Calendar REST APIs.
-
-#### `github` package 
-
-- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
 
 #### `guidewire.insnow` package
 

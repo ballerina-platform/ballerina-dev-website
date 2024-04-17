@@ -113,30 +113,39 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### OpenAPI tool
 
-- Integrated OpenAPI client generation to `bal build` command, in here user can provide the openapi tool config details in to the Ballerina.toml file and generate the client using `bal build` command.
-Example:
-```ballerina
-[[tool.openapi]]
-id = "dBclient"
-filePath = "openapi.yaml"
-targetModule = "delivery"
-```
-- Introduced the `add` sub-command to the OpenAPI tool to update the Ballerina.toml file with the OpenAPI tool configuration details.
-Example:
-`bal openapi add -i <yaml file> --mode client --id <tool config id>`
-- Added OpenAPI mapping for the Ballerina constraints in OpenAPI specification generation.
-- Added OpenAPI link field mapping for the Ballerina HATEOAS feature in OpenAPI specification generation.
-- Added OpenAPI mapping for the Ballerina HTTP interceptor services in OpenAPI specification generation.
-- Added OpenAPI response mapping for the Ballerina HTTP status code errors in OpenAPI specification generation.
-- Added the support for the Ballerina client generation with status code response binding, this can be enabled by providing the `--with-status-code-binding` flag to the `openapi` client generation command.
-Example:
-`bal openapi -i <yaml file> --mode client --with-status-code-binding`
+- OpenAPI client generation has been integrated to the `bal build` command. The user can provide the OpenAPI tool configuration in the Ballerina.toml file and generate the client during a build.
+
+  For example:
+  ```ballerina
+  [[tool.openapi]]
+  id = "dbclient"
+  filePath = "openapi.yaml"
+  targetModule = "delivery"
+  ```
+  
+- Introduced the `add` sub-command to the OpenAPI tool to update the Ballerina.toml file with the OpenAPI tool configuration details. 
+  
+   For example:
+
+  `bal openapi add -i <yaml file> --mode client --id <tool config id>`
+
+
+- Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
+- Added support for OpenAPI link field mapping for Ballerina HATEOAS feature in OpenAPI specification generation.
+- Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
+- Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
+- Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--with-status-code-binding` option to the OpenAPI client generation command.
+  
+  For example:
+
+  `bal openapi -i <yaml file> --mode client --with-status-code-binding`
+
 
 ### Improvements
 
 #### OpenAPI Tool
 - Added support for the Ballerina record rest field mapping in OpenAPI specification generation.
-- Improved the OpenAPI client generation with the parameterized path segments in the OpenAPI specification by generating the Ballerina `remote` functions for the client.
+- Improved the OpenAPI client generation with parameterized path segments in the OpenAPI specification by generating `remote` methods in the Ballerina client.
 
 #### Formatter
 

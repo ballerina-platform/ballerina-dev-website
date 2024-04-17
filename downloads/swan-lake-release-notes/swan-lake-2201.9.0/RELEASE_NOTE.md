@@ -116,7 +116,7 @@ All the connectors listed below have been released under new major versions, due
 
 #### `ibm.ibmmq` package 
 
-- Introduced a Ballerina connector to connect with the IBM MQ message broker.
+- Introduced support for connecting to IBM MQ server versions up to 9.3.
 
 #### `mongodb` package
 

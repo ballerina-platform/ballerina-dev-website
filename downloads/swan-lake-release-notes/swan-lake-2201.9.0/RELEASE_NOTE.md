@@ -69,7 +69,8 @@ isolated function getStudentConfig() returns any[] {
     return [];
 }
 ```
-If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default will not be used).
+
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
 
 ```ballerina
 function createEmployee(int id, string name) {
@@ -82,8 +83,6 @@ function createEmployee(int id, string name) {
 #### Improvements to the usage of default values of record fields
 
 Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
-
-With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
 
 ```ballerina
 import ballerina/io;
@@ -108,6 +107,8 @@ isolated function getId() returns int {
     }
 }
 ```
+
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
 
 ### Bug fixes
 

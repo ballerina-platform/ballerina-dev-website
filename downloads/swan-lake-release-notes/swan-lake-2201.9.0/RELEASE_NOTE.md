@@ -214,6 +214,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
+#### `avro` package
+- Introduced Avro serialization/deserialization support
+
 #### `persist` package
 - Introduced support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
 - Implemented support for the Redis data store, including the following features:
@@ -240,9 +243,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `mysql` package
 - Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
-
-#### `avro` package
-- Introduced Avro serialization/deserialization support
 
 #### `graphql` package
 

@@ -443,6 +443,14 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     }
     ```
 
+- A bug which resulted in the rest parameter of a function not being considered final has been fixed.
+
+    ```ballerina
+    function sum(int i, int... j) {
+        j = [1, 2, 3]; // Compile-time error now.
+    }
+    ```
+
 - A bug which resulted in the addition of a default namespace to an XML navigation name pattern, even when the default namespace is defined after it, has been fixed.
 
     ```ballerina

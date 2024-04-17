@@ -114,6 +114,10 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 
+#### `ibm.ibmmq` package 
+
+- Introduced a Ballerina connector to connect with the IBM MQ message broker.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.

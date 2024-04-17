@@ -114,6 +114,18 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 
+#### `mongodb` package
+
+- Introduced `mongodb:Client`, `mongodb:Database`, and `mongodb:Collection` objects to provide a more intuitive and user-friendly API for MongoDB operations.
+- Introduced new APIs to be consistent with MongoDB's native APIs.
+- Added support for MongoDB aggregation operations.
+- Added support for MongoDB projections through type inference and manual projection.
+- Added support for connecting to MongoDB Atlas databases and clusters.
+- Added support for SSL connections to MongoDB servers.
+- Improved the `find` API with support for filtering, sorting, and pagination.
+- Improved the `update` API by providing `matchedCount` and `modifiedCount` in the response.
+- Improved the overall documentation and examples.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.

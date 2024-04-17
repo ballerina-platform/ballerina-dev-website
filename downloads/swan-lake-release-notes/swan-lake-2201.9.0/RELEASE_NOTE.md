@@ -243,7 +243,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 #### `aws.redshift` package
 
 - Introduced seamless connectivity to Amazon Redshift databases.
- 
+
 ### Improvements
 
 #### `cloud` package
@@ -324,6 +324,12 @@ All the connectors listed below have been released under new major versions, due
 
 - Enhanced integration with Twilio services, now fully supporting all features offered through the Twilio Basic API version 2010-04-01.
 - This comprehensive update includes capabilities across messaging, voice calls, media services, and more, ensuring full utilization of Twilio's extensive functionality.
+
+#### `snowflake` package
+
+- Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
+- Implemented a test suite to verify the functionality of the Snowflake connector.
+- Enhanced the documentation and examples for the Snowflake connector.
 
 ## Developer tools updates
 

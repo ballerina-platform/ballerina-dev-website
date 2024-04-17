@@ -295,7 +295,6 @@ All the connectors listed below have been released under new major versions, due
 - Added support for SSL connections to MongoDB servers.
 - Improved the `find` API with support for filtering, sorting, and pagination.
 - Improved the `update` API by providing `matchedCount` and `modifiedCount` in the response.
-- Improved the overall documentation and examples.
 
 #### `redis` package
 

@@ -258,6 +258,9 @@ All the connectors listed below have been released under new major versions, due
 #### `candid` package 
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
+#### `googleapis.gcalendar` package
+
+- Introduced support for connecting to Google Calendar REST APIs.
 
 #### `github` package 
 

@@ -110,6 +110,10 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
 
+#### `github` package 
+
+- Introduced support for connecting to GitHub REST API version 2022-11-28, transitioning from GraphQL previously used.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.

@@ -263,8 +263,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 ### Revamped connector updates
 
 The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative.
-All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
-These updates also include improvements to the documentation and examples.
+All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
 #### `asana` package
 

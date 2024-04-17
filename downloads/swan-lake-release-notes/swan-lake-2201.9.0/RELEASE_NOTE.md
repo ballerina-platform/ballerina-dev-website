@@ -324,6 +324,13 @@ All the connectors listed below have been released under new major versions, due
 - Enhanced integration with Twilio services, now fully supporting all features offered through the Twilio Basic API version 2010-04-01.
 - This comprehensive update includes capabilities across messaging, voice calls, media services, and more, ensuring full utilization of Twilio's extensive functionality.
 
+#### `salesforce` package
+
+- Upgraded connector APIs with remote function syntax, along with improved documentation and examples.
+- Introduced client credentials flow and username-password flow options to the Salesforce connector.
+- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities.
+- Updated compatibility with the latest API version, v59.
+
 ## Developer tools updates
 
 ### New features

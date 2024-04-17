@@ -329,7 +329,6 @@ All the connectors listed below have been released under new major versions, due
 
 - Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
 - Implemented a test suite to verify the functionality of the Snowflake connector.
-- Enhanced the documentation and examples for the Snowflake connector.
 
 ## Developer tools updates
 

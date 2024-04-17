@@ -112,7 +112,7 @@ All the connectors listed below have been released under new major versions, due
 
 #### `github` package 
 
-- Introduced support for connecting to GitHub REST API version 2022-11-28, transitioning from GraphQL previously used.
+- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
 
 #### `guidewire.insnow` package 
 

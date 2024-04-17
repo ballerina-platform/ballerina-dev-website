@@ -263,6 +263,10 @@ All the connectors listed below have been released under new major versions, due
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 
+#### `ibm.ibmmq` package 
+
+- Introduced support for connecting to IBM MQ server versions up to 9.3.
+
 #### `mongodb` package
 
 - Introduced `mongodb:Client`, `mongodb:Database`, and `mongodb:Collection` objects to provide a more intuitive and user-friendly API for MongoDB operations.

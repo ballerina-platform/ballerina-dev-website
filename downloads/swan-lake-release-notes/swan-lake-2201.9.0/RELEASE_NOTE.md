@@ -258,22 +258,49 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Revamped connector updates
 
-The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative. 
-All the connectors listed below have been released under new major versions, due to significant changes in the APIs and functionalities.
+The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative.
+All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
 #### `asana` package
 
 - Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
 
-#### `candid` package 
+#### `candid` package
 
 - Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
 
-#### `github` package 
+#### `confluent.cavroserdes` package
+
+- Introduced support for serializing and deserializing data using Avro schemas stored in the Confluent Schmema Registry.
+
+#### `confluent.cregistry` package
+
+- Introduced new APIs to connect with the Confluent Schema Registry.
+
+#### `docusign.dsadmin` package
+
+- Enhanced the connector APIs by incorporating resource functions.
+- The package name has been changed to `docusign.dsadmin` from its previous name, `docusign.admin`.
+
+#### `docusign.dsclick` package
+
+- Enhanced the connector APIs by incorporating resource functions.
+- The package name has been changed to `docusign.dsclick` from its previous name, `docusign.click`.
+
+#### `docusign.dsesign` package
+
+- Introduced new APIs to connect with DocuSign eSignature REST APIs.
+
+#### `github` package
 
 - Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
 
-#### `guidewire.insnow` package 
+#### `googleapis.gcalendar` package
+
+- Enhanced the connector APIs by incorporating resource functions.
+- The package name has been changed to `googleapis.gcalendar` from its previous name, `googleapis.calendar`, which is still available for users.
+
+#### `guidewire.insnow` package
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 

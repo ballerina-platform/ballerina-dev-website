@@ -86,9 +86,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `data.jsondata` package
 
-The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to provide a set of APIs for JSON data conversions, data projection, and JSON navigation.
+The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, and navigation.
 
-- Data Projection: JSON data can be converted to a Ballerina record by specifying the required fields in the JSON data.
+- JSON data projection: JSON data can be converted to a Ballerina record by specifying only the required fields from the JSON data. This is helpful when the requirement is to extract a specific subset of fields from JSON data with a large number of fields.
 
     ```ballerina
     import ballerina/data.jsondata;
@@ -123,7 +123,7 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
     }
     ```
 
-- JSON Navigation: JSONPath expressions can be used to navigate through JSON data and extract the required information.
+- JSON navigation: JSONPath expressions can now be used to navigate and extract JSON data.
     
     ```ballerina
     import ballerina/data.jsondata;
@@ -151,16 +151,16 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
             }
         ];
 
-        // JSONPath expression to get the list of titles in the books array.
+        // Use a JSONPath expression to extract the list of titles in the books array.
         json titles = check jsondata:read(books, `$..title`);
         io:println(titles);
 
-        // JSONPath expression to get the list of published years for the 
+        // Use a JSONPath expression to extract the list of published years for the 
         // books that have a price value of more than 80.
         json years = check jsondata:read(books, `$..[?(@.price > 80)].year`);
         io:println(years);
 
-        // JSONPath expression to get the total sum of the prices of the books.
+        // Use a JSONPath expression to extract the total sum of the prices of the books.
         json sum = check jsondata:read(books, `$..price.sum()`);
         io:println(sum);
     }
@@ -168,41 +168,41 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
 
 #### `data.xmldata` package
 
-The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has been introduced to provide a set of APIs for XML data conversions and data projection.
+The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has been introduced to support XML data conversions and data projection.
 
-    ```ballerina
-    import ballerina/data.xmldata;
-    import ballerina/io;
+```ballerina
+import ballerina/data.xmldata;
+import ballerina/io;
 
-    // Define a closed record type to capture the required elements and attributes from the XML data.
-    type Book record {|
-        string name;
-        string author;
-    |};
+// Define a closed record type to capture the required elements and attributes from the XML data.
+type Book record {|
+    string name;
+    string author;
+|};
 
-    public function main() returns error? {
-        xml xmlData = xml `
-        <book>
-            <name>Clean Code</name>
-            <author>Robert C. Martin</author>
-            <year>2008</year>
-            <publisher>Prentice Hall</publisher>
-        </book>`;
-        // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
-        Book book = check xmldata:parseAsType(xmlData);
-        io:println(book);
+public function main() returns error? {
+    xml xmlData = xml `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+    // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
+    Book book = check xmldata:parseAsType(xmlData);
+    io:println(book);
 
-        string xmlStr = string `
-        <book>
-            <name>Clean Code</name>
-            <author>Robert C. Martin</author>
-            <year>2008</year>
-            <publisher>Prentice Hall</publisher>
-        </book>`;
-        Book book2 = check xmldata:parseString(xmlStr);
-        io:println(book2);
-    }
-    ```
+    string xmlStr = string `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+    Book book2 = check xmldata:parseString(xmlStr);
+    io:println(book2);
+}
+```
 
 ### Improvements
 

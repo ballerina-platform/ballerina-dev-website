@@ -317,7 +317,7 @@ All the connectors listed below have been released under new major versions, due
 
 #### `twilio` package
 
-- Enhanced integration with Twilio services (messaging, voice calls, media services, and more) offered through the Twilio Basic REST API version 2010-04-01. 
+- Enhanced integration with Twilio services (messaging, voice calls, media services, etc.) offered via the Twilio Basic REST API version 2010-04-01. 
 
 ## Developer tools updates
 

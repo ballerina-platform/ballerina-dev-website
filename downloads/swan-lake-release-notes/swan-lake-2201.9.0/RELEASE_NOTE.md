@@ -326,10 +326,10 @@ All the connectors listed below have been released under new major versions, due
 
 #### `salesforce` package
 
-- Upgraded connector APIs with remote function syntax, along with improved documentation and examples.
 - Introduced client credentials flow and username-password flow options to the Salesforce connector.
-- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities.
-- Updated compatibility with the latest API version, v59.
+- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities. 
+- Updated compatibility with the latest Salesforce REST API version (v59).
+- Improved documentation and examples.
 
 ## Developer tools updates
 

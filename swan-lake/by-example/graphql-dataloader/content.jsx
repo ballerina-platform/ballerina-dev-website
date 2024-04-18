@@ -46,7 +46,7 @@ final readonly & table<BookRow> key(id) bookTable = table [
 // of this function is an array of results in which each element in the result array corresponds
 // to a primary key from the \`ids\` array.
 isolated function bookLoaderFunction(readonly & anydata[] ids) returns BookRow[][]|error {
-    final readonly & int[] keys = check ids.ensureType();
+    final int[] keys = check ids.ensureType();
     log:printInfo("executing bookLoaderFunction", keys = keys);
     // Implement the batching logic.
     return keys.'map(isolated function(readonly & int key) returns BookRow[] {

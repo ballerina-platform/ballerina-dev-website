@@ -1,0 +1,19 @@
+{
+  "title": "XML to record",
+  "description": "This BBE demonstrates how to convert a XML source, which can be provided as a string, byte array, byte block stream, or xml, into a Ballerina record.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "BBE",
+    "xml",
+    "record",
+    "stream",
+    "byte array"
+  ],
+  "permalink": "/learn/by-example/xml-to-record",
+  "active": "xml-to-record",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/xml-to-record",
+    "/swan-lake/learn/by-example/xml-to-record.html"
+  ]
+}

@@ -33,7 +33,7 @@ service on fileListener {
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // Get the newly added file from the FTP server as a \`byte[]\` stream.
-            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.path);
+            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.pathDecoded);
 
             // Write the content to a file.
             check io:fileWriteBlocksFromStream(string \`./local/\${addedFile.name}\`, fileStream);

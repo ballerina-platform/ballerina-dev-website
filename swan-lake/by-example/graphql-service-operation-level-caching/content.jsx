@@ -49,7 +49,7 @@ service /graphql on new graphql:Listener(9090) {
     }
 
     // The \`maxAge\` field sets the maximum age of the cache in seconds. (default: 60)
-    // The \`maxSize\` field indicates the maximum capacity of the cache table by entries.
+    // The \`maxSize\` field indicates the maximum capacity of the cache table by entries. 
     // (default: 120)
     @graphql:ResourceConfig {
         cacheConfig: {

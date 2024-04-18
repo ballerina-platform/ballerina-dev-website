@@ -1031,6 +1031,27 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record with projection",
+        "url": "json-to-record-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSONPath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1135,6 +1156,20 @@
       {
         "name": "XMLNS declarations",
         "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record",
+        "url": "xml-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record with projection",
+        "url": "xml-to-record-with-projection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1466,6 +1501,13 @@
         "url": "flush",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Fork",
+        "url": "fork",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -4118,6 +4160,21 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Serialization/Deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false
       }

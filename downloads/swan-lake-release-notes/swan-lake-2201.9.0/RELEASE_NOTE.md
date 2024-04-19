@@ -477,7 +477,7 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `asana` package
 
-- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
+- Enhanced connector APIs by incorporating resource function syntax.
 
 #### `candid` package
 

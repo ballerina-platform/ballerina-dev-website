@@ -571,6 +571,17 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
 
+#### `aws.dynamodb` package
+
+- Introduced new APIs to work with database backups with DynamoDB REST APIs.
+
+#### `aws.dynamodbstreams` package
+
+- Introduced a new connector to work with DynamoDB streams.
+
+#### `aws.sns` package
+
+- Enhanced the connector APIs to support all the APIs provided by the AWS SNS REST API.
 ## Developer tools updates
 
 ### New features

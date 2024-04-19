@@ -328,6 +328,7 @@ pre.default {
   padding: 10px;
   border-radius: 5px;
   background-color: #eeeeee !important;
+  margin-bottom: 10px;
 }
 
 .mdContent img {
@@ -591,6 +592,12 @@ pre[class*="language-"] {
   color: #464646;
 }
 
+.disclaimer {
+  font-size: 12px !important;
+  letter-spacing: 0.4px !important;
+  line-height: 16px !important;
+}
+
 /*------------Community----------------*/
 
 .communityRow {
@@ -644,7 +651,7 @@ pre[class*="language-"] {
 }
 
 .slackRow {
-  background-color: #e6eaeb;
+  background-color: #eee;
 }
 
 .modal-content {

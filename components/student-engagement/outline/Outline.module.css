@@ -1,0 +1,44 @@
+.mailLink {
+    color: #20b6b0 !important;
+    font-size: 16px;
+    font-weight: 400 !important;
+    text-decoration: none;
+}
+
+.card {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.learnMore {
+    display: block;
+    transition: none !important;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px 10px 60px;
+    text-decoration: none;
+    min-height: 60px;
+    line-height: 35px;
+    background-image: url('/images/arrow-right-white.svg');
+    background-repeat: no-repeat;
+    background-position: left 20px top 14px;
+    width: fit-content;
+}
+
+.learnMore:hover {
+    background-color: #57595d;
+}
+
+@media (max-width: 768px) {
+    .icon {
+        padding-left: 0;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .icon {
+        padding-left: 1rem;
+    }
+  }

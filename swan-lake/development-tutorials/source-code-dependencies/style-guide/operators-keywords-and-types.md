@@ -11,86 +11,86 @@ intro: The sections below include the coding conventions with respect to operato
 ## Keywords and Types
 * Do not keep spaces between the type and the pipe operator when it is in a union type (e.g., `string|int`).
   
-**Example,**
+    **Example,**
 
-```ballerina
-type method "POST"|"GET"|"PUT";
+    ```ballerina
+    type method "POST"|"GET"|"PUT";
+        
+    int|string variable = 0;
     
-int|string variable = 0;
-  
-function getValue(string key) returns string|error {
-    ...
-}
-  
-function getName() returns string|error {
-    string|error valueOrError = getValue("name");
-    ...
-}
-```
+    function getValue(string key) returns string|error {
+        ...
+    }
+    
+    function getName() returns string|error {
+        string|error valueOrError = getValue("name");
+        ...
+    }
+    ```
 
 * Do not keep spaces between the type and the optional operator `?`.
-  
-**Example,**
+    
+    **Example,**
 
-```ballerina
-string? name;
-```
+    ```ballerina
+    string? name;
+    ```
 
 * Avoid line breaks inside constrained types.
   
-**Do's**
+    **Do's**
 
-```ballerina
-map<int|string> x; // map reference type
-```
+    ```ballerina
+    map<int|string> x; // map reference type
+    ```
   
-**Don'ts**
+    **Don'ts**
 
-```ballerina
-map<
-    int
-    |
-    string
-> x;
-```
+    ```ballerina
+    map<
+        int
+        |
+        string
+    > x;
+    ```
 
 ## Operators
 * Keep only a single space before and after the `=` operator.
   
-**Example,**
+    **Example,**
 
-```ballerina
-int a = 0;
-```
+    ```ballerina
+    int a = 0;
+    ```
 
 * Do not keep spaces around the semicolon `;`.
 * Do not keep spaces between the unary operator and the expression.
 
-**Example,**
+    **Example,**
 
-```ballerina
-a = -a;
-``` 
+    ```ballerina
+    a = -a;
+    ``` 
 
 * Keep a single space before and after any `binary` or `ternary` operator.
 
-**Example,**
+    **Example,**
 
-```ballerina
-var fullName = firstName + lastName;
-  
-string? name = isNameAvailable() ? getName() : "Unknown";
-  
-var elvisOperator = name ?: "Unknown";
-```
+    ```ballerina
+    var fullName = firstName + lastName;
+    
+    string? name = isNameAvailable() ? getName() : "Unknown";
+    
+    var elvisOperator = name ?: "Unknown";
+    ```
 
 * Keep a single space before and after a compound operator such as `-=` and `+=`.
 
-**Example,**
+    **Example,**
 
-```ballerina
-name += lastName;
-```
+    ```ballerina
+    name += lastName;
+    ```
 
 <div class="cGitButtonContainer"><p data-button="iGitStarText">"Star"</p><p data-button="iGitWatchText">"Watch"</p></div>
 

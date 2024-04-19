@@ -1,0 +1,17 @@
+{
+  "title": "Field-level caching",
+  "description": "This example demonstrates the field-level caching functionality within a GraphQL service.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "graphql",
+    "cache",
+    "server-side caching"
+  ],
+  "permalink": "/learn/by-example/graphql-service-field-level-caching",
+  "active": "graphql-service-field-level-caching",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/graphql-service-field-level-caching",
+    "/swan-lake/learn/by-example/graphql-service-field-level-caching.html"
+  ]
+}

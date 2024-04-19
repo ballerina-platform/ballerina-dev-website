@@ -24,6 +24,8 @@ The distribution repository is a file system repository added with the local Bal
 
 The Ballerina Central is a remote repository and creates a local file system cache at `<USER_HOME>/.ballerina/repositories/central.ballerina.io/bala`. Ballerina queries the remote repository only if the specified dependency version is not present in its local cache.
 
+> **Note:** If you are connected to the internet via an HTTP proxy, you need to configure the proxy settings to perform operations with the Ballerina Central. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).
+
 **Local repository**
 
 The local repository is also a file system repository, which will be created in the `<USER_HOME>` location. The repository location is `<USER_HOME>/.ballerina/repositories/local/bala`. 
@@ -64,36 +66,28 @@ The following is another example that shows the usage of multiple modules from d
 ```ballerina
 // Imports the default module from the `ballerina/log` package.
 import ballerina/log;
-// Imports the default module from the `googleapis.gmail` package
+// Imports the default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/googleapis.gmail as gmail;
-// Imports the only non-default module from the `googleapis.gmail` package
+import ballerinax/salesforce as sf;
+// Imports a non-default module from the `salesforce` package
 // with an import prefix.
-import ballerinax/googleapis.gmail.'listener as gmailListener;
+import ballerinax/salesforce.bulk as sfBulk;
 
-configurable string refreshToken = ?;
-configurable string clientId = ?;
-configurable string clientSecret = ?;
-configurable int port = ?;
-configurable string project = ?;
-configurable string pushEndpoint = ?;
+configurable string baseUrl = ?;
+configurable string token = ?;
 
-gmail:ConnectionConfig gmailConfig = {
-    auth: {
-        refreshUrl: gmail:REFRESH_URL,
-        refreshToken: refreshToken,
-        clientId: clientId,
-        clientSecret: clientSecret
-    }
-};
+sf:ConnectionConfig sfConfig = {baseUrl, auth: {token}};
 
-listener gmailListener:Listener gmailEventListener =
-                            new (port, gmailConfig, project, pushEndpoint);
+public function main() returns error? {
+    string contacts = "Name,Email\n"
+        + "John,john434@gmail.com\n"
+        + "Peter,peter77@gmail.com";
 
-service / on gmailEventListener {
-    remote function onNewEmail(gmail:Message message) returns error? {
-        log:printInfo("New Email : ", message = message);
-    }
+    sfBulk:Client bulkClient = check new (sfConfig);
+    sfBulk:BulkJob insertJob = check bulkClient->createJob("insert", "Contact", "CSV");
+    sfBulk:BatchInfo batch = check bulkClient->addBatch(insertJob, contacts);
+
+    log:printInfo(batch.id.length() > 0 ? "Batch Added Successfully" : "Failed to add the Batch");
 }
 ```
 
@@ -255,7 +249,7 @@ $ bal build --sticky
 
 ### The offline mode
 
-Using the` –-offline` flag with `bal build` will run the build offline without connecting to Ballerina Central. This will save build time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository.
+Using the` –-offline` flag will run the compilation offline without connecting to Ballerina Central or any configured Maven repositories. This will save the compilation time since the packages are resolved using the distribution repository, and the file system cache of the Ballerina Central repository/Maven repositories.
 
 Using the `--offline` flag along with the `--sticky` flag will ensure a predictable build with optimal time for compilation. 
 

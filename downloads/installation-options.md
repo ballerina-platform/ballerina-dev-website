@@ -56,15 +56,23 @@ $ rpm -i ballerina-<VERSION>-swan-lake-linux-x64.rpm
 
 ## Install via the Ballerina language ZIP file
 
-> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net" target="_blank">AdoptOpenJRE</a> version 11 or above.
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the <a href="https://adoptopenjdk.net" target="_blank">AdoptOpenJRE</a> version 11 for Ballerina Update 7 or below and version 17 for Ballerina Update 8 or above.
 
 1. <a id="packWindows" href="{{ dist_server }}/downloads/{{ version }}/{{ other-artefacts | first }}" class="cGTMDownload cDownload" data-download="downloads" data-pack="{{ zip-installer }}"> Download the Ballerina language ZIP file </a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named `ballerina-<VERSION>` in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
-    - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
+    - **For Linux or macOS:** 
+        - set the PATH environment variable to point to the `bin` directory of the unzipped Ballerina distribution.
+            ```
+            $ PATH=<YOUR_LOCATION>/ballerina-<VERSION>/bin:$PATH;
+            $ export PATH;
+            ```
+        - set the `JAVA_HOME` environment variable to your Java installation directory or to the root directory of the installed JRE. 
     - **For Windows:** add a new environment variable specifying the following values:
-        - **Variable name:** PATH
-        - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
+        - set the `PATH` environment variable to point to the `bin` directory of the unzipped Ballerina distribution.
+            - **Variable name:** PATH
+            - **Variable value:** The location of the `bin` directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
+        - set the `JAVA_HOME` environment variable to your Java installation directory or to the root directory of the installed JRE.
 
 
 ## Verify the installation
@@ -80,9 +88,9 @@ $ bal version
 Make certain the command output shows the version that you downloaded as shown below.
 
 ```
-Ballerina <VERSION> (Swan Lake)
-Language specification 2022R1
-update tool 1.3.8
+Ballerina <VERSION> (Swan Lake Update <MINOR_VERSION>)
+Language specification <SPEC_VERSION>
+Update Tool <UPDATE_TOOL_VERSION>
 ```
 
 ## Build from source

@@ -7,6 +7,7 @@ active: central
 intro: Ballerina code is organized in a single, shareable unit called a package. Ballerina packages are developed via different channels in multiple categories. These categories include the Ballerina packages that are developed by the Ballerina team, which are shipped with the Ballerina distribution, the BallerinaX packages that are developed by the Ballerina team but are not shipped with the distribution, and the packages that are developed by third-party users, which are also not shipped with the distribution.
 logo: '/images/home-page/user-logos/ballerina-central.svg'
 user: 'central'
+disclaimer: 'Azure Front Door (Microsoft), Azure Firewall (Microsoft), Kubernetes (The Linux Foundation), NGINX Ingress (F5, Inc), GraalVM (Oracle and/or its affiliates), Spring Boot (Broadcom), Next.js (Vercel, Inc.), GraphQL (The GraphQL Foundation), SQL Server (Microsoft), Amazon S3 (Amazon Web Services, Inc.), Azure Application Insights (Microsoft), Azure Log Analytics (Microsoft), and Azure Files (Microsoft)'
 ---
 
 ## Overview
@@ -49,4 +50,4 @@ Implementing the Ballerina Central platform had a profound impact on managing Ba
 
 The journey of Ballerina Central to implement a robust and resilient Ballerina package management platform was successful mainly due to the perfect matching of the Ballerina features with the requirements of the planned solution. The platform not only paved the way for them to meet the expectations of managing the Ballerina packages smoothly and effectively but also demonstrated a practical example of utilizing the feature-rich Ballerina language in a real-world scenario, thereby, safeguarding and strengthening the simplicity and powerfulness of the Ballerina language ecosystem for continued growth in the enterprise integration solutions arena.
 
->*"Ballerina Central's successful implementation of a robust package management platform showcases the perfect synergy between Ballerina's features and the solution's needs. This achievement not only ensures efficient Ballerina package management but also serves as a compelling real-world testament to the language's adaptability by strengthening the simplicity and power of the Ballerina language ecosystem.*<br/><br/>Anuruddha Liyanarachchi - Technical Lead, WSO2 LLC.
+>*Ballerina Central's successful implementation of a robust package management platform showcases the perfect synergy between Ballerina's features and the solution's needs. This achievement not only ensures efficient Ballerina package management but also serves as a compelling real-world testament to the language's adaptability by strengthening the simplicity and power of the Ballerina language ecosystem.*<br/><br/>Anuruddha Liyanarachchi - Technical Lead, WSO2 LLC.

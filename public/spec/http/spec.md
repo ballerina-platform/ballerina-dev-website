@@ -2090,7 +2090,7 @@ service class RequestInterceptor {
  
    resource function 'default [string… path](http:RequestContext ctx, http:Request req) returns http:NextService|error? {
        req.setHeader("X-requestHeader", "RequestInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2108,7 +2108,7 @@ service class RequestInterceptor {
  
    resource function 'default foo(http:RequestContext ctx, http:Request req) returns http:NextService|error? {
        req.setHeader("X-requestHeader", "RequestInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2211,7 +2211,7 @@ service class ResponseInterceptor {
  
    remote function interceptResponse(http:RequestContext ctx, http:Response res) returns http:NextService|error? {
        res.setHeader("X-responseHeader", "ResponseInterceptor");
-       ctx.next();
+       return ctx.next();
    }
 }
 ```
@@ -2317,13 +2317,6 @@ ResponseInterceptor : 5, 3
 However, if the user decides to respond at 4 and terminate the cycle, only the `ResponseInterceptor` at 3 gets executed.
 Also, when the `RequestInterceptor` at 2 returns an error, the execution jumps from 2 to 6 as the nearest Error Interceptor
 is at 6. The same goes to the response path.
-
-The execution order when interceptors are engaged at both service and listener levels is as follows:
-
-```
-ListenerLevel : RequestInterceptors -> ServiceLevel : RequestInterceptors -> TargetService -> 
-ServiceLevel : ResponseInterceptors -> ListenerLevel : ResponseInterceptors
-```
 
 Execution of interceptors does not depend on the existence of the end service i.e. the interceptors are executed in the
 relevant order even though the end service does not exist.

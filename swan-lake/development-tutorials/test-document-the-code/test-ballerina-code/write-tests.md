@@ -59,7 +59,7 @@ function afterFunc() {
 
 // This test function will not be executed.
 @test:Config {
-enable: false
+    enable: false
 }
 function testFunction1() {
     io:println("I'm in test function 1!");
@@ -68,14 +68,14 @@ function testFunction1() {
 
 // This test function depends on the `testFunction3` and is executed with an 
 // array based data set.
-@test:Config{  
+@test:Config {
     before: beforeFunc,
     after: afterFunc,
     dependsOn: [testFunction3],
     dataProvider: dataGen,
     groups: ["g1"]
 }
-function testFunction2 (int value) returns error? {
+function testFunction2(int value) returns error? {
     test:assertEquals(value, 1, msg = "value is not correct");
 }
 
@@ -115,60 +115,22 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 
 ## Use assertions
 
-The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of
- code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
-<table class="table cCodeTable" >
-    <tr>
-       <th class="cDescription">Assertion function</th>
-       <th class="cCodeCol">Description</th>
-    </tr>
-    <tr>
-       <td><code>assertTrue(boolean expression, string message)</code></td>
-       <td>
-          Asserts that the expression is true with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertFalse(boolean expression, string message)</code></td>
-       <td>
-          Asserts that the expression is false with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertEquals(anydata|error actual, anydata expected, string message)</code></td>
-       <td>
-          Asserts that the actual value is equal to the expected value with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertNotEquals(anydata actual, anydata expected, string message)</code></td>
-       <td>
-          Asserts that the actual value is not equal to the expected value with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertExactEquals(any|error actual, any|error expected, string message)</code></td>
-       <td>
-          Asserts that the actual entity is exactly equal to the expected entity with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertNotExactEquals(any|error actual, any|error expected, string message)</code></td>
-       <td>
-          Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertFail(string message)</code></td>
-       <td>
-           Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
-       </td>
-    </tr>
-</table>
+| Assertion function                                                                    | Description                                                                                              |
+|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `assertTrue(boolean expression, string message)`                                      | Asserts that the expression is true with an optional message.                                            |
+| `assertFalse(boolean expression, string message)`                                     | Asserts that the expression is false with an optional message.                                           |
+| `assertEquals(any\|error actual, anydata expected, string message)`                   | Asserts that the actual value is equal to the expected value with an optional message.                   |
+| `assertNotEquals(any actual, anydata expected, string message)`                       | Asserts that the actual value is not equal to the expected value with an optional message.               |
+| `assertExactEquals(any\|error actual, any\|error expected, string message)`           | Asserts that the actual entity is exactly equal to the expected entity with an optional message.         |
+| `assertNotExactEquals(any\|error actual, any\|error expected, string message)`        | Asserts that the actual entity is not exactly equal to the expected entity with an optional message.     |
+| `assertFail(string message)`                                                          | Fails the test. This is useful to fail a test based on a check for a condition while it is in execution. |
+
 
 ### Troubleshoot assertion failures when using `assertEquals`
 
+You can troubleshoot assertion failures of different types when using the `assertEquals` function as shown below.
 
 #### Values with different types
 
@@ -322,6 +284,6 @@ function testAssertTuples() {
 [fail] testAssertTuples:
     Assertion Failed!
 
-        expected: '12 John'
-        actual  : '10 John'
+        expected: '[12,"John"]'
+        actual  : '[10,"John"]'
 ```

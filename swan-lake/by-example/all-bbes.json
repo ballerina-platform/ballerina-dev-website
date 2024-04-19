@@ -459,7 +459,7 @@
         "name": "List subtyping",
         "url": "list-subtyping",
         "verifyBuild": true,
-        "verifyOutput": false,
+        "verifyOutput": true,
         "isLearnByExample": true
       },
       {
@@ -1387,7 +1387,7 @@
         "name": "Sequence diagrams",
         "url": "sequence-diagrams",
         "verifyBuild": true,
-        "verifyOutput": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       },
       {
@@ -2371,6 +2371,14 @@
         "isLearnByExample": false
       },
       {
+        "name": "ID scalar type",
+        "url": "graphql-id-scalar-type",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
         "name": "Interfaces",
         "url": "graphql-interfaces",
         "verifyBuild": true,
@@ -2509,6 +2517,30 @@
       {
         "name": "Custom prefetch methods",
         "url": "custom-prefetch-methods",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Operation-level caching",
+        "url": "graphql-service-operation-level-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Field-level caching",
+        "url": "graphql-service-field-level-caching",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Cache invalidation",
+        "url": "graphql-service-cache-invalidation",
         "verifyBuild": true,
         "verifyOutput": false,
         "disablePlayground": true,

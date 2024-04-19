@@ -83,7 +83,7 @@ export function GraphqlServiceInterceptors({ codeSnippets }) {
         the <code>graphql:Interceptor</code> service object type. They can be
         passed as an array using the <code>interceptors</code> field in the{" "}
         <code>graphql:ServiceConfig</code> annotation. The provided interceptors
-        will be executed using the <code>_onion principle_</code>. Use the
+        will be executed using the <em>onion principle</em>. Use the
         interceptors to execute custom logic before and after executing the{" "}
         <code>resource</code> and <code>remote</code> methods that need to be
         separated from the business logic.
@@ -105,7 +105,7 @@ export function GraphqlServiceInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-service-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-service-interceptors",
                 "_blank",
               );
             }}
@@ -258,7 +258,7 @@ export function GraphqlServiceInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-service-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-service-interceptors",
                 "_blank",
               );
             }}

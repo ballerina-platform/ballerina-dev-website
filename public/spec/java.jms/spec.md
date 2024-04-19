@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @ayeshLK \
 _Reviewers_: @shafreenAnfar \
 _Created_: 2023/08/15 \
-_Updated_: 2023/08/17 \
+_Updated_: 2024/02/02 \
 _Edition_: Swan Lake 
 
 ## Introduction  
@@ -19,7 +19,7 @@ server. Based on the outcome of the discussion, the specification and implementa
 is always welcome. Any accepted proposal which affects the specification is stored under `/docs/proposals`. Proposals 
 under discussion can be found with the label `type/proposal` in Github.
 
-The conforming implementation of the specification is released and included in the distribution. Any deviation from the 
+The conforming implementation of the specification is released to Ballerina Central. Any deviation from the 
 specification is considered a bug.
 
 ## Content  

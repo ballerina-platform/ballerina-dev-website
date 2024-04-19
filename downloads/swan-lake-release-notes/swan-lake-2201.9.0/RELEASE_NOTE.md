@@ -582,6 +582,7 @@ All listed connectors have been released under new major versions, featuring sig
 #### `aws.sns` package
 
 - Enhanced the connector APIs to support all the APIs provided by the AWS SNS REST API.
+
 ## Developer tools updates
 
 ### New features

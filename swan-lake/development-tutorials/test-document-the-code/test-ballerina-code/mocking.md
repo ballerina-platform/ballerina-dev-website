@@ -11,12 +11,12 @@ intro: Mocking is useful to control the behavior of functions and objects to con
 
 ## Mock objects
 
-The `Test` module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the methods of an object and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
+The [ballerina/test](https://central.ballerina.io/ballerina/test/latest) module provides capabilities to mock an object for unit testing. This allows you to control the behavior of the methods of an object and values of member fields via stubbing or replacing the entire object with a user-defined equivalent. This feature will help you to test the Ballerina code independently of other modules and external endpoints.
 
 Mocking objects can be done in two ways :
 
 1. Creating a test double (providing an equivalent object in place of the real object)
-2. Stubbing the methods and fields of the object (specifying the behavior of the methods and values of the object fields)
+2. Stubbing the methods, resources and fields of the object (specifying the behavior of the methods, resources and values of the object fields)
 
 
 ### Create a test double
@@ -81,11 +81,11 @@ public function testGetRandomJoke() {
 }
 ```
 
-### Stub the methods and fields of an object
+### Stub methods
 
-#### Stub remote methods or normal methods
+Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing. 
 
-Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing.
+>**Note:** Usage of this approach is applicable all the methods other than resources.
 
 >**Note:** It is important to ensure that all methods of the object being tested are properly stubbed. 
 > If any method is called within the implementation that hasn't been stubbed, the test framework will generate an 
@@ -145,7 +145,7 @@ function getCategoriesResponse() returns string[] {
 }
 ```
 
-##### Stub to return a specific value
+#### Stub to return a specific value
 
 ***main_test.bal***
 
@@ -178,13 +178,13 @@ public function testGetRandomJoke() {
 }
 ```
 
-##### Stub with multiple values to return sequentially for each function call
+#### Stub with multiple values to return sequentially for each function call
 
 ***main_test.bal***
 
-This test stubs the behavior of the `get` method to return a specified sequence of values for each `get` method invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
+This test stubs the behavior of the `get` method to return a specified sequence of values for each invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
 
->**Note:** `withArguments` function does not support with `thenReturnSequence`.
+>**Note:** `withArguments` function is not supported with `thenReturnSequence`.
 
 ```ballerina
 import ballerina/test;
@@ -207,7 +207,7 @@ public function testGetRandomJoke() {
 }
 ```
 
-##### Stub to do nothing
+#### Stub to do nothing
 
 If a method has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
 
@@ -254,9 +254,9 @@ function testSendNotification() {
 }
 ```
 
-#### Stub resource methods
+### Stub resources
 
-Similar to remote methods, resource methods also can be stubbed to return a specific value, a series of values or, to do nothing. To mock a resource method, the resource method name(`get`, `post`, `put`, ...etc) and resource path should be specified. Each path parameter in the resource path should be indicated with a colon(`:`) prefix. Similarly, Rest parameters should be indicated with a double colon(`::`) prefix.
+Similar to remote methods, resources also can be stubbed to return a specific value, a series of values or, to do nothing. To mock a resource, the resource name (e.g: `get`, `post`, `put`) and resource path must be specified. Each path parameter in the resource path must be indicated with a colon (`:`) prefix. Similarly, rest parameters should be indicated with a double colon(`::`) prefix.
 
 ***Example:***
 
@@ -295,11 +295,11 @@ public client class EmpClient {
 }
 ```
 
-##### Stub to return a specific value with a resource method
+#### Stub to return a specific value with a resource
 
 ***main_test.bal***
  
-This test stubs the behavior of the below resource method to return a specific value in 4 ways:
+This test stubs the behavior of the below resource to return a specific value in 4 ways:
 
 ```ballerina
     resource function get employee/welcome/[string id](string firstName, string lastName) returns string {
@@ -320,24 +320,24 @@ function testWelcomeEmployee() {
     test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").thenReturn("Stub_1");
 
     // Stubbing to return a specific value on a specific path parameter
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: ""}).thenReturn("Stub_2");
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: "path1"}).thenReturn("Stub_2");
 
     // Stubbing to return a specific value on a specific method arguments
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withArguments("", "").thenReturn("Stub_3");
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withArguments("arg1", "arg2").thenReturn("Stub_3");
 
     // Stubbing to return a specific value on a specific path parameter and method arguments
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: ""}).withArguments("", "").thenReturn("Stub_4");
+    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: "path1"}).withArguments("arg1", "arg2").thenReturn("Stub_4");
 
     // Specific path parameter and method arguments should take precedence over general stubbing
-    string result = empClient->/employee/welcome/[""].get(firstName = "", lastName = "");
+    string result = empClient->/employee/welcome/["path1"].get(firstName = "arg1", lastName = "arg2");
     test:assertEquals(result, "Stub_4");
 
     // Specific method arguments should take precedence over general stubbing
-    result = empClient->/employee/welcome/["emp001"].get(firstName = "", lastName = "");
+    result = empClient->/employee/welcome/["emp001"].get(firstName = "arg1", lastName = "arg2");
     test:assertEquals(result, "Stub_3");
 
     // Specific path parameter should take precedence over general stubbing
-    result = empClient->/employee/welcome/[""].get(firstName = "John", lastName = "Kibert");
+    result = empClient->/employee/welcome/["path1"].get(firstName = "John", lastName = "Kibert");
     test:assertEquals(result, "Stub_2");
 
     // General stubbing should be used when no specific stubbing is available
@@ -346,13 +346,13 @@ function testWelcomeEmployee() {
 }
 ```
 
-##### Stub with multiple values to return sequentially for each function call with a resource method
+#### Stub with multiple values to return sequentially for each invocation of the resource
 
 ***main_test.bal***
 
-Similar to other object methods, the resource method also can return a value from a sequence of values during method invocation.
+Similar to other object methods, the resource also can return a value from a sequence of values during method invocation.
 
->**Note:** `withArguments` and `withPathParameters` functions do not support with `thenReturnSequence`.
+>**Note:** `withArguments` and `withPathParameters` functions are not supported with `thenReturnSequence`.
 
 ```ballerina
 @test:Config {}
@@ -376,11 +376,11 @@ function testGetAllEmployeeById() {
 }
 ```
 
-##### Stub to do nothing with a resource method
+#### Stub to do nothing with a resource
 
 ***main_test.bal***
 
-If a resource method has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
+If a resource has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
 
 ```ballerina
 @test:Config {}
@@ -392,7 +392,7 @@ function testGetAllEmployee() {
 }
 ```
 
-#### Stub a member variable
+### Stub a member variable
 
 If a `client` object has a public member variable, it can be stubbed to return a mock value for testing.
 

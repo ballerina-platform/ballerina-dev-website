@@ -286,10 +286,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 - Introduced Avro serialization/deserialization support.
 
-#### `aws.redshift` package
-
-- Introduced seamless connectivity to Amazon Redshift databases.
-
 #### `persist` package
 - Introduced support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
 - Implemented support for the Redis data store, including the following features:
@@ -566,6 +562,10 @@ All listed connectors have been released under new major versions, featuring sig
 - Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities. 
 - Updated compatibility with the latest Salesforce REST API version (v59).
 - Improved documentation and examples.
+
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
 
 #### `snowflake` package
 

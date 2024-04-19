@@ -239,7 +239,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 #### `aws.redshift` package
 
 - Introduced seamless connectivity to Amazon Redshift databases.
- 
+
 ### Improvements
 
 #### `cloud` package
@@ -352,6 +352,10 @@ All listed connectors have been released under new major versions, featuring sig
 - Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities. 
 - Updated compatibility with the latest Salesforce REST API version (v59).
 - Improved documentation and examples.
+
+#### `snowflake` package
+
+- Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
 
 ## Developer tools updates
 

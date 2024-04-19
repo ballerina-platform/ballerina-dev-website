@@ -287,6 +287,11 @@ a.dropDownItem:focus, a.dropDownItem:hover {
 }
 
 .seeMore {
+    list-style: none;
+    padding: 0.25rem 1rem;
+}
+
+.seeMore a {
     color: #20b6b0;
     font-style: italic;
     text-decoration: none;

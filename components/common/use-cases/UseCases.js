@@ -60,7 +60,7 @@ export default function UseCases(props) {
                                 <>
                                     {
                                         propsData.map((_, idx) => (
-                                            <Link href={`/case-studies/${_.slug}`} className={styles.wrapperLink}>
+                                            <Link key={idx} href={`/case-studies/${_.slug}`} className={styles.wrapperLink}>
                                                 <Col className={`${styles.useCaseCard} mt-4`}>
 
                                                     <div className={styles.cardWrapper}>

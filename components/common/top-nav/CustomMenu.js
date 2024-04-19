@@ -18,6 +18,7 @@
 
 import React, { useState } from "react";
 import { Accordion } from "react-bootstrap";
+import Link from "next/link";
 
 import styles from './TopNav.module.css';
 
@@ -51,6 +52,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                    <li className={styles.seeMore}><Link href="/usecases">See more</Link></li>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="case studies" className={styles.acItem}>
@@ -69,6 +71,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                <li className={styles.seeMore}><Link href="/case-studies">See more</Link></li>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="comparisons" className={styles.acItem}>
@@ -109,7 +112,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
-                                    <li><a className={styles.seeMore} href="/usecases">See more</a></li>
+                                    <li className={styles.seeMore}><Link href="/usecases">See more</Link></li>
                                 </ul>
                             </div>
 
@@ -129,7 +132,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                           )
                                     }
-                                    <li><a className={styles.seeMore} href="/case-studies">See more</a></li>
+                                    <li className={styles.seeMore}><Link href="/case-studies">See more</Link></li>
                                 </ul>
                             </div>
 

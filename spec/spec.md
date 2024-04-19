@@ -33,6 +33,7 @@ Below are the most stable versions of the language specification, which are in s
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- |
+| <a target="_blank" href="/spec/lang/2023R1/">2023R1</a> | 2023-07-07 | First release of 2023. This is the basis for Ballerina Swan Lake Update 7. |
 | <a target="_blank" href="/spec/lang/2022R4/">2022R4</a> | 2022-12-09 | Fourth release of 2022. This is the basis for Ballerina 2201.3.0 (Swan Lake Update 3). | 
 | <a target="_blank" href="/spec/lang/2022R3/">2022R3</a> | 2022-08-12 | Third release of 2022. This is the basis for Ballerina 2201.2.0 (Swan Lake Update 2). | 
 | <a target="_blank" href="/spec/lang/2022R2/">2022R2</a> | 2022-06-02 | Second release of 2022. This is the basis for Ballerina 2201.1.0 (Swan Lake Update 1). |
@@ -73,41 +74,3 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | `os` | Swan Lake | <a target="_blank" href="/spec/os/">Snapshot</a> | OS package of Ballerina language, which provides APIs to retrieve information about the operating system and its current users. |
 | `protobuf` | Swan Lake | <a target="_blank" href="/spec/protobuf/">Snapshot</a> | Protobuf package of Ballerina language, which provides APIs to represent a set of pre-defined protobuf types. |
 | `random` | Swan Lake | <a target="_blank" href="/spec/random/">Snapshot</a> | Random package of Ballerina language, which provides APIs to generate pseudo-random numbers. |
-| `regex` | Swan Lake | <a target="_blank" href="/spec/regex/">Snapshot</a> | Regex package of Ballerina language, which provides functionalities such as matching, replacing and splitting strings based on regular expressions. |
-| `serdes` | Swan Lake | <a target="_blank" href="/spec/serdes/">Snapshot</a> | Serdes package of Ballerina language, which provides functinalities for serializing and deserializing subtypes of Ballerina anydata type. |
-| `sql` | Swan Lake | <a target="_blank" href="/spec/sql/">Snapshot</a> | SQL package of Ballerina language, which provides the generic interface and functionality to interact with a SQL database. |
-| `task` | Swan Lake | <a target="_blank" href="/spec/task/">Snapshot</a> | Task package of Ballerina language, which provides APIs to schedule a Ballerina job either once or periodically and manage the execution of those jobs. |
-| `tcp` | Swan Lake | <a target="_blank" href="/spec/tcp/">Snapshot</a> | TCP package of Ballerina language, which provides TCP client-server functionalities. |
-| `time` | Swan Lake | <a target="_blank" href="/spec/time/">Snapshot</a> | Time package of Ballerina language, which provides time generation and conversion APIs. |
-| `toml` | Swan Lake | <a target="_blank" href="/spec/toml/">Snapshot</a> | TOML package of Ballerina language, which provides APIs to convert a TOML configuration file to `map<json>`, and vice-versa. |
-| `udp` | Swan Lake | <a target="_blank" href="/spec/udp/">Snapshot</a> | UDP package of Ballerina language, which provides UDP client-server functionalities. |
-| `uuid` | Swan Lake | <a target="_blank" href="/spec/uuid/">Snapshot</a> | UUID package of Ballerina language, which provides APIs to generate UUIDs based on the RFC 4122. |
-| `websocket` | Swan Lake | <a target="_blank" href="/spec/websocket/">Snapshot</a> | WebSocket package of Ballerina language, which provides WebSocket client-server functionalities. |
-| `websub` | Swan Lake | <a target="_blank" href="/spec/websub/">Snapshot</a> | WebSub package of Ballerina language, which provides WebSub compliant subscriber related functionalities. |
-| `webusuhub` | Swan Lake | <a target="_blank" href="/spec/websubhub/">Snapshot</a> | WebSubHub package of Ballerina language, which provides WebSub compliant hub and publisher related functionalities. |
-| `xmldata` | Swan Lake | <a target="_blank" href="/spec/xmldata/">Snapshot</a> | Xmldata package of Ballerina language, which provides APIs to perform conversions between XML and JSON/Ballerina records. |
-| `yaml` | Swan Lake | <a target="_blank" href="/spec/yaml/">Snapshot</a> | YAML package of Ballerina language, which provides APIs to convert a YAML configuration file to JSON, and vice-versa. |
-
-## Platform specifications
-
-| Specification | Latest released version | Current snapshot |
-| ---- | --------------- | ---------------- |
-| Code to Cloud | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/c2c/code-to-cloud-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/c2c/code-to-cloud-spec.md">Snapshot</a> |
-| Configurable | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/configurable/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/configurable/spec.md">Snapshot</a> |
-| Language Extensions - Deprecation | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/langext/deprecation/spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/langext/deprecation/spec.md">Snapshot</a> |
-| Package | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/packages/package-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/packages/package-spec.md">Snapshot</a> |
-| Test Framework | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/v2022R1/test/test-framework-spec.md">2022R1</a> | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/test/test-framework-spec.md">Snapshot</a> |
-
-## Proposals for improvements/enhancements
-
-For the proposals for improving Ballerina, see the <a target="_blank" href="/community/active-proposals/">work in progress proposals</a>.
-
-<style> 
-table {
-    width:100%;
-}
-td {
-    padding: 20px; 
-}
-li.cVersionItem  {display: none !important;}
-</style>

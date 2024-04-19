@@ -26,7 +26,8 @@ import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
 import JoinUs from '../../components/community/join-us/JoinUs';
 import Contact from '../../components/community/contact/Contact';
-import CommunityCarousel from '../../components/community/community-carousel/CommunityCarousel';
+import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
+import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';
 
 export default function Community() {
 
@@ -48,6 +49,17 @@ export default function Community() {
     element.parentElement.scrollIntoView();
   };
 
+  const images = [
+    '/images/community/2.jpg',
+    '/images/community/5.jpg',
+    '/images/community/6.jpg',
+    '/images/community/7.jpg',
+    '/images/community/9.png',
+    '/images/community/10.png',
+    '/images/community/11.png',
+    '/images/community/12.png'
+  ];
+
   return (
     <>
       <Head>
@@ -59,15 +71,20 @@ export default function Community() {
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Community - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--LINKED IN  --> */}
         <meta property="og:title" content="Community - The Ballerina programming language" />
         <meta property="og:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="og:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
 
         {/* <!--TWITTER--> */}
         <meta name="twitter:title" content="Community - The Ballerina programming language" />
         <meta property="twitter:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
-        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta property="twitter:text:description" content="Join the Ballerina community and use the below channels to ask questions, find answers, share feedback, and help establish Ballerina as a truly community-owned resource." />
+        <meta name="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        <meta property="twitter:image" content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png" />
+        
       </Head>
       <Layout>
         <Col sm={12}>
@@ -80,12 +97,12 @@ export default function Community() {
                   <Col xs={12} md={12} lg={6}>
                     <h1>Community</h1>
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Welcome to the Ballerina community! Use the below channels to ask questions, find answers, post feedback, and help establish Ballerina as a truly community-owned resource.</p>
-                    <a href="#join-with-us" className="join">
+                    <a href="#join-us" className="join">
                     Join our community
                     </a>
                   </Col> 
                   <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
-                    <CommunityCarousel />
+                    <CommunityCarousel images={images}/>
                   </Col>
                 </Row>
               </Container>
@@ -109,6 +126,10 @@ export default function Community() {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
+            <UniversitySessions getLink={getLink} />
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <Contact getLink={getLink} />
           </Row>
 

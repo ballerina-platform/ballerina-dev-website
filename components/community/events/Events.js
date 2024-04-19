@@ -93,7 +93,7 @@ export default function Events(props) {
                 <Row>
                     <Col sm={12} md={6} lg={6}>
                         <p>
-                            Join us at our upcoming events and be a part of the conversation from anywhere in the world. We host or take part in events where we talk about language features and updates, present demos, and explore Ballerina use cases.
+                            Join us at our upcoming events and be a part of the conversation from anywhere in the world. We either host or participate in events where we talk about Ballerina&apos;s features and updates, present demos, and explore practical use cases.
                         </p>
                     </Col>
 

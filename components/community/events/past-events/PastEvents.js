@@ -52,7 +52,9 @@ export default function PastEvents() {
       {
         pastEvents.map((item, index) => {
 
-          const eventDate = new Date(item.expire)
+          let eventDate = new Date(item.expire);
+          // Deduct 1 day
+          eventDate.setDate(eventDate.getDate() - 1);
 
           return (
             <Row className={styles.eventRows} key={index}>
@@ -67,10 +69,31 @@ export default function PastEvents() {
                 </a>
                 <h5>{item.eventName}</h5>
                 {
-                  (item.presenter !== '') ?
-                    <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</>: null }</>
-                    : <>{item.otherInfo}</>
-                }
+                    item.presenters && item.presenters.length > 0 ?
+                      <>
+                        {
+                          item.presenters.map((presenter, index) => {
+                            return (
+                              <React.Fragment key={index}>
+                                <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>{presenter.designation ? <> - {presenter.designation}</> : null}
+                                {
+                                  index + 1 < item.presenters.length ?
+                                    <>, </>
+                                    : null
+                                }
+                              </React.Fragment>
+                            )
+                          }
+                          )
+                        }
+                      </>
+                      : null
+                  }
+                  {
+                    (item.presenter && item.presenter !== '') ?
+                      <><a target="_blank" rel="noreferrer" href={item.presenterTwitter}>{item.presenter}</a>{item.presenterDesignation ? <>, {item.presenterDesignation}</> : null}</>
+                      : <>{item.otherInfo}</>
+                  }
               </Col>
               <Col sm={12} md={3} className={styles.eventURL}>
                 <a className={styles.eventRegistration} href={(item.videoURL !== '') ? item.videoURL : item.url} target="_blank" rel="noreferrer">{item.buttonText}</a>

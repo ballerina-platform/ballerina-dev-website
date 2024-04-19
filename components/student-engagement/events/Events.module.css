@@ -1,0 +1,100 @@
+.mailLink {
+    color: #20b6b0 !important;
+    font-size: 16px;
+    font-weight: 400 !important;
+    text-decoration: none;
+}
+
+.eventRows {
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.eventRows p {
+    font-size: 16px;
+    color: #57595d;
+    line-height: 24px;
+    font-weight: 300;
+    margin-bottom: 0;
+    line-height: 27px;
+    letter-spacing: 0.4px;
+}
+
+.upcoming {
+    color: #585a5e;
+}
+
+.eventRows h3 {
+    padding-bottom: 20px;
+}
+
+.eventDateNum {
+    font-size: 16px !important;
+    font-weight: 450 !important;
+}
+
+.eventDate, .eventType {
+    margin-bottom: 15px !important;
+}
+
+.eventRows h5 {
+    margin-bottom: 18px;
+    /* font-size: 20px; */
+    font-size: 16px;
+    scroll-margin-top: 40px;
+    color: #57595d !important;
+    line-height: 21px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: 300;
+}
+
+.eventDetail a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
+.eventURL {
+    display: flex;
+    align-items: center;
+    margin-top: 10px !important;
+}
+
+a.eventRegistration {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+a.eventRegistration:hover {
+    background-color: #57595d;
+    color: #ffffff !important;
+}
+
+@media (min-width: 576px) { 
+    .eventDateContainer {
+        text-align: right;
+    }
+
+    .eventURL {
+        margin-top: 0px;
+    }
+}
+
+@media (min-width: 992px) { 
+    a.eventRegistration {
+        margin: 0 15px;
+    }
+}

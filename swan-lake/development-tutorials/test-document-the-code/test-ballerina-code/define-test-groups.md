@@ -45,7 +45,7 @@ function testFunction3() {
 To execute groups of tests, the `--groups` flag is used during test execution.
 
 ```
-$ bal test --groups g
+$ bal test --groups g1
 ```
 
 The above results in an output of :

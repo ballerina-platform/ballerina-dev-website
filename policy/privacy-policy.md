@@ -5,7 +5,7 @@ permalink: /privacy-policy/
 description: Privacy policy of the Ballerina website
 ---
 
-At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://play.ballerina.io/">Ballerina Playground</a>, <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share, and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
+At WSO2, we recognize that privacy is important. This privacy policy applies to the Ballerina sites and services offered at <a target="_blank" href="https://ballerina.io/">https://ballerina.io/</a>, <a target="_blank" href="https://central.ballerina.io/">Ballerina Central</a>, <a target="_blank" href="https://blog.ballerina.io/">Ballerina Blog</a>, and any other site to which a link to these terms may appear. We’ve set out below the details of how we collect, use, share, and secure the personal information you provide. “You” or “Your” means the person visiting the Ballerina sites (the “Sites”) or using any services on it. “We,” “us,” and “our” means WSO2 LLC.
 
 California residents may view WSO2's California-specific privacy policy at <a target="_blank" href="https://wso2.com/california-privacy">https://wso2.com/california-privacy</a>.
 

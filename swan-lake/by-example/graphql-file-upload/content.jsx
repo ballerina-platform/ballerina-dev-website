@@ -56,8 +56,11 @@ export function GraphqlFileUpload({ codeSnippets }) {
         <code>remote</code> method inside a <code>graphql:Service</code>. The{" "}
         <code>graphql:Upload</code> record includes the details of the file that
         is being uploaded. The GraphQL file upload follows the{" "}
-        <em>Graphql Multipart Request Spec</em> to upload the files. Use this to
-        create a GraphQL API where users can upload files.
+        <a href="https://github.com/jaydenseric/graphql-multipart-request-spec/tree/master">
+          <em>Graphql Multipart Request Spec</em>
+        </a>{" "}
+        to upload the files. Use this to create a GraphQL API where users can
+        upload files.
       </p>
 
       <Row
@@ -70,7 +73,7 @@ export function GraphqlFileUpload({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-file-upload",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-file-upload",
                 "_blank",
               );
             }}

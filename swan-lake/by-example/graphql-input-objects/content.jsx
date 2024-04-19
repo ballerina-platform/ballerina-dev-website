@@ -83,7 +83,7 @@ export function GraphqlInputObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-input-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-input-objects",
                 "_blank",
               );
             }}
@@ -232,7 +232,7 @@ export function GraphqlInputObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-input-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-input-objects",
                 "_blank",
               );
             }}
@@ -443,7 +443,10 @@ export function GraphqlInputObjects({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Interfaces" href="/learn/by-example/graphql-interfaces">
+          <Link
+            title="ID scalar type"
+            href="/learn/by-example/graphql-id-scalar-type"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -452,7 +455,7 @@ export function GraphqlInputObjects({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Interfaces
+                  ID scalar type
                 </span>
               </div>
               <svg

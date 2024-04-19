@@ -1,20 +1,161 @@
 {
     "events": [
         {
-            "date": "May 6-7, 2024",
-            "day": "Mon.",
+            "date": "May 8, 2024",
+            "day": "Wed.",
             "time": "",
-            "expire": "2024-05-08T00:00:00.0000-00:00",
-            "location": "Estes Park, Colorado",
-            "url": "https://www.lambdaconf.us/",
-            "eventType": "LambdaConf 2024",
-            "eventName": "Introducing Ballerina: A Pragmatic Programming Language Designed for Cloud-Native Apps",
+            "expire": "2024-05-09T00:00:00.0000-00:00",
+            "location": "Florida, USA",
+            "url": "https://wso2.com/wso2con/2024/",
+            "eventType": "WSO2Con 2024",
+            "eventName": "Modernizing Legacy Systems Using Ballerina",
+            "presenterTwitter": "https://twitter.com/ccekanayake",
+            "presenter": "Chathura Ekanayake",
+            "presenterDesignation": "Associate Director/Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 8, 2024",
+            "day": "Wed.",
+            "time": "",
+            "expire": "2024-05-09T00:00:00.0000-00:00",
+            "location": "Florida, USA",
+            "url": "https://wso2.com/wso2con/2024/",
+            "eventType": "WSO2Con 2024",
+            "eventName": "Low-Code Integration Tooling",
+            "presenterTwitter": "https://twitter.com/hevayo",
+            "presenter": "Joseph Fonseka",
+            "presenterDesignation": "Senior Director and Head of Developer Tooling, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 8, 2024",
+            "day": "Wed.",
+            "time": "",
+            "expire": "2024-05-09T00:00:00.0000-00:00",
+            "location": "Florida, USA",
+            "url": "https://wso2.com/wso2con/2024/",
+            "eventType": "WSO2Con 2024",
+            "eventName": "Ballerina Product Update",
             "presenterTwitter": "https://twitter.com/sameerajayasoma",
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"
+        },
+        {
+            "date": "May 7, 2024",
+            "day": "Tue.",
+            "time": "",
+            "expire": "2024-05-08T00:00:00.0000-00:00",
+            "location": "Florida, USA",
+            "url": "https://wso2.com/wso2con/2024/",
+            "eventType": "WSO2Con 2024",
+            "eventName": "Tutorial: Utilizing Ballerina for Cloud Native and Decentralized Integrations",
+            "presenterTwitter": "",
+            "presenters": [
+                {
+                    "name": "Anupama Pathirage",
+                    "designation": "Director of Engineering - Integration",
+                    "twitter": "https://twitter.com/anupama_pathira"
+                },
+                {
+                    "name": "Maryam Ziyad",
+                    "designation": "Senior Technical Lead",
+                    "twitter": "https://twitter.com/_maryamzi_"
+                },
+                {
+                    "name": "Mohamad Shafreen",
+                    "designation": "Associate Director/Architect",
+                    "twitter": "https://twitter.com/shafreen101"
+                },
+                {
+                    "name": "Hasitha Aravinda",
+                    "designation": "Associate Director/Architect",
+                    "twitter": "https://twitter.com/HasithaAravinda"
+                }
+            ],
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "May 6-7, 2024",
+            "day": "Mon.",
+            "time": "",
+            "expire": "2024-05-08T00:00:00.0000-00:00",
+            "location": "Estes Park, Colorado",
+            "url": "https://www.lambdaconf.us/speakers/sameera-jayasoma",
+            "eventType": "LambdaConf 2024",
+            "eventName": "Ballerina: A Pragmatic Programming Language Designed for Cloud-Native Apps",
+            "presenterTwitter": "https://twitter.com/sameerajayasoma",
+            "presenter": "Sameera Jayasoma",
+            "presenterDesignation": "Ballerina Platform Architect",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "April 24, 2024",
+            "day": "Wed.",
+            "time": "6.30 p.m. PDT",
+            "expire": "2024-04-26T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/300423848/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Level up your APIs: GraphQL with Ballerina",
+            "presenterTwitter": "https://twitter.com/ThisaruGuruge",
+            "presenter": "Thisaru Guruge",
+            "presenterDesignation": "Technical Lead, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP today"
+        },
+        {
+            "date": "March 7, 2024",
+            "day": "Thur.",
+            "time": "",
+            "expire": "2024-03-08T00:00:00.0000-00:00",
+            "location": "Addis Ababa, Ethiopia",
+            "url": "https://connect.mosip.io/",
+            "eventType": "MOSIP Connect 2024",
+            "eventName": "WebSub as an Enabler: Facilitating Integration",
+            "presenters": [
+                {
+                    "name": "Shafreen Anfar",
+                    "designation": "Associate Director / Architect",
+                    "twitter": "https://twitter.com/shafreen101"
+                },
+                {
+                    "name": "Ayesh Almeida",
+                    "designation": "Associate Technical Lead",
+                    "twitter": "https://twitter.com/Ayesh363"
+                }
+            ],
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "Feb 20, 2024",
+            "day": "Tue.",
+            "time": "",
+            "expire": "2024-02-21T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "https://www.meetup.com/ballerinalang-community/events/298924508/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Meet the Future: Streamlining Integrations with Ballerina AI Agents",
+            "presenterTwitter": "https://www.linkedin.com/in/nadheeshjihan/",
+            "presenter": "Nadheesh Jihan",
+            "presenterDesignation": "Associate Technical Lead",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "RSVP today"
         },
         {
             "date": "Jan 31, 2024",

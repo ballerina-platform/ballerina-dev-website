@@ -78,8 +78,8 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
         passed as a single interceptor or an array of interceptors using the{" "}
         <code>interceptors</code> field in the{" "}
         <code>graphql:ResourceConfig</code> annotation. The provided
-        interceptors will be executed using the <code>_onion principle_</code>.
-        Use the field interceptors to execute custom logic before and after
+        interceptors will be executed using the <em>onion principle</em>. Use
+        the field interceptors to execute custom logic before and after
         executing a <code>resource</code> or a <code>remote</code> method that
         needs to be separated from the business logic.
       </p>
@@ -100,7 +100,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-field-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-field-interceptors",
                 "_blank",
               );
             }}
@@ -253,7 +253,7 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.4/examples/graphql-field-interceptors",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-field-interceptors",
                 "_blank",
               );
             }}

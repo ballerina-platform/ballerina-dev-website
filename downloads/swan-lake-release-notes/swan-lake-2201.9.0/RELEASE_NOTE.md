@@ -310,13 +310,6 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### Improvements
 
-#### `mysql` package
-- Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
-
-#### `graphql` package
-
-- Introduced GraphQL server-side caching support.
-
 #### `crypto` package
 
 - Introduced new APIs for ML-KEM-768 (Kyber768) key encapsulation mechanism.
@@ -324,6 +317,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 - Introduced new APIs for ML-KEM-768 hybrid public-key encryption (HPKE).
 - Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
 - Introduced new APIs for ML-DSA65 (Dilithium3) signing.
+
 
 #### `data.jsondata` package
 
@@ -365,7 +359,7 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
     ```
 
 - JSON navigation: JSONPath expressions can now be used to navigate and extract JSON data.
-    
+
     ```ballerina
     import ballerina/data.jsondata;
     import ballerina/io;
@@ -450,6 +444,13 @@ public function main() returns error? {
 - Added support for field length constraints (min/max) to enhance schema validation capabilities.
 - Introduced support for escape characters in EDI, allowing more flexibility in data formatting and transmission.
 
+#### `graphql` package
+
+- Introduced GraphQL server-side caching support.
+
+#### `mysql` package
+- Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
+
 ### Improvements
 
 #### `cloud` package
@@ -474,6 +475,23 @@ All listed connectors have been released under new major versions, featuring sig
 #### `asana` package
 
 - Enhanced connector APIs by incorporating resource method syntax.
+
+
+#### `aws.dynamodb` package
+
+- Introduced new APIs to work with database backups with DynamoDB REST APIs.
+
+#### `aws.dynamodbstreams` package
+
+- Introduced a new connector to work with DynamoDB streams.
+
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
+
+#### `aws.sns` package
+
+- Enhanced the connector APIs to support all the APIs provided by the AWS SNS REST API.
 
 #### `candid` package
 
@@ -510,6 +528,10 @@ All listed connectors have been released under new major versions, featuring sig
 - Enhanced the connector APIs by incorporating resource functions.
 - The package name has been changed to `googleapis.gcalendar` from its previous name, `googleapis.calendar`, which is still available for users.
 
+#### `googleapis.gmail` package
+
+- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
+
 #### `guidewire.insnow` package
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
@@ -529,6 +551,14 @@ All listed connectors have been released under new major versions, featuring sig
 - Improved the `find` API with support for filtering, sorting, and pagination.
 - Improved the `update` API by providing `matchedCount` and `modifiedCount` in the response.
 
+#### `nats` package
+
+- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+
+#### `rabbitmq` package
+
+- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
+
 #### `redis` package
 
 - Added support to connect and work with Redis clusters.
@@ -536,52 +566,24 @@ All listed connectors have been released under new major versions, featuring sig
 - Added support for Redis connection strings (i.e., Redis URIs).
 - Extended connector compatibility to include the latest Redis server versions (up to 7.2.x).
 
-#### `zendesk` package
-
-- Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
-
-#### `rabbitmq` package
-
-- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
-
-#### `nats` package
-
-- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
-
-#### `googleapis.gmail` package
-
-- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
-
-#### `twilio` package
-
-- Enhanced integration with Twilio services (messaging, voice calls, media services, etc.) offered via the Twilio Basic REST API version 2010-04-01. 
-
 #### `salesforce` package
 
 - Introduced client credentials flow and username-password flow options to the Salesforce connector.
-- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities. 
+- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities.
 - Updated compatibility with the latest Salesforce REST API version (v59).
 - Improved documentation and examples.
-
-#### `aws.redshift` package
-
-- Introduced seamless connectivity to Amazon Redshift databases.
 
 #### `snowflake` package
 
 - Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
 
-#### `aws.dynamodb` package
+#### `twilio` package
 
-- Introduced new APIs to work with database backups with DynamoDB REST APIs.
+- Enhanced integration with Twilio services (messaging, voice calls, media services, etc.) offered via the Twilio Basic REST API version 2010-04-01.
 
-#### `aws.dynamodbstreams` package
+#### `zendesk` package
 
-- Introduced a new connector to work with DynamoDB streams.
-
-#### `aws.sns` package
-
-- Enhanced the connector APIs to support all the APIs provided by the AWS SNS REST API.
+- Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
 
 ## Developer tools updates
 

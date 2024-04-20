@@ -466,18 +466,18 @@ public function main() returns error? {
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
-### Revamped connector updates
+### Revamped connectors
 
-The following new connectors along with major updates have been added to the Ballerina library, as part of the Ballerina connector revamp initiative.
+New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
 All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
 #### `asana` package
 
-- Enhanced connector APIs by incorporating resource function syntax.
+- Enhanced connector APIs by incorporating resource method syntax.
 
 #### `candid` package
 
-- Introduced support for connecting to Candid's Charity Check, Essentials and Premier REST APIs.
+- Introduced support for connecting to Candid's Charity Check, Essentials, and Premier REST APIs.
 
 #### `confluent.cavroserdes` package
 
@@ -489,8 +489,8 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `docusign.dsadmin` package
 
-- Enhanced the connector APIs by incorporating resource functions.
-- The package name has been changed to `docusign.dsadmin` from its previous name, `docusign.admin`.
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `docusign.dsadmin` from `docusign.admin`.
 
 #### `docusign.dsclick` package
 
@@ -503,7 +503,7 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `github` package
 
-- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API based connector.
+- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API-based connector.
 
 #### `googleapis.gcalendar` package
 
@@ -533,7 +533,7 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Added support to connect and work with Redis clusters.
 - Introduced support for secure connections (SSL/TLS) to Redis servers.
-- Added support for Redis connection strings (i.e. Redis URIs).
+- Added support for Redis connection strings (i.e., Redis URIs).
 - Extended connector compatibility to include the latest Redis server versions (up to 7.2.x).
 
 #### `zendesk` package

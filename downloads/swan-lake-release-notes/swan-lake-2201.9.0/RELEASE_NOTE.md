@@ -144,19 +144,19 @@ public List<Artifact> getArtifacts();
 This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only `service` is supported now), and a map of details. The map of details includes the following information.
 
 - `listeners` - a list of listener objects attached to the service
-- `attachPoint` - the attach point specified in the service declaration (for example, `basePath` in HTTP)
+- `attachPoint` - the attach point specified in the service declaration (for example, base path in HTTP)
 - `service` - the service object
 
 ```java
 public Node getNode();
 ```
 
-This returns a node instance that represents the Ballerina runtime node. A node instance contains a node ID (`nodeId` - self-generated unique ID), and a map of details. The map of details includes the following information.
+This returns a node instance that represents the Ballerina runtime node. A node instance contains a node ID (`nodeId` - self-generated unique ID) and a map of details. The map of details includes the following information.
 
 - `balVersion` - The Ballerina version
 - `balHome` - The path of Ballerina home
-- `osName` - Name of the Operating System
-- `osVersion` - Version of the Operating System
+- `osName` - Name of the operating system
+- `osVersion` - Version of the operating system
 
 The above APIs can be called via a Ballerina environment instance as follows.
 
@@ -186,9 +186,9 @@ balRuntime.stop();
 
 ### Improvements
 
-#### Support mapping of resource and remote function parameters to `BArray` parameter of a generic native method
+#### Support mapping of resource and remote method parameters to `BArray` parameter of a generic native method
 
-A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (Handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
+A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
 
 E.g.,
 The following Ballerina resource method,
@@ -506,8 +506,10 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     }
     ```
+  
+### Runtime changes
 
-- To avoid clashes with Java identifiers, the character `$` which is used for encoding and decoding identifiers has been replaced by the character `&`.
+- To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
 
 ### `rabbitmq` package
 

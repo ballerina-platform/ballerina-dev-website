@@ -30,6 +30,144 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### Introduction of the alternate receive action
+
+The alternate receive action can be used to receive one of multiple values corresponding to multiple send actions. It operates by waiting until it encounters a non-error message, a panic termination status on a closed channel, or the closure of all channels. Alternate receive action sets the first non-error value it encounters as the result.
+
+```ballerina
+import ballerina/io;
+import ballerina/lang.runtime;
+
+public function main() {
+    worker w1 {
+        2 -> function;
+    }
+
+    worker w2 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    worker w3 returns error? {
+        int value = 10;
+        if value == 10 {
+            return error("Error in worker 3");
+        }
+        value -> function;
+    }
+
+    worker w4 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    // The value of the variable `result` is set as soon as the value from either
+    // worker `w1` or `w2` is received.
+    int result1 = <- w1 | w2;
+    io:println(result1); // 2
+
+    // Alternate receive action waits until a message that is not an error is received. 
+    // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
+    int|error? result2 = <- w3 | w4;
+    io:println(result2); // 3
+}
+```
+
+#### Introduction of the multiple receive action
+
+The multiple receive action can be used to receive values corresponding to multiple send actions. It operates by waiting for the receipt of values from all the send actions, subsequently constructing a mapping value containing those values.
+
+```ballerina
+import ballerina/io;
+import ballerina/lang.runtime;
+
+public function main() {
+    worker w1 {
+        2 -> function;
+    }
+
+    worker w2 {
+        runtime:sleep(2);
+        3 -> function;
+    }
+
+    // The worker waits until both values are received.
+    Result result = <- {a: w1, b: w2};
+    io:println(result); // {"a":2,"b":3}
+}
+
+type Result record {
+    int a;
+    int b;
+};
+```
+
+#### Support for conditional worker send action
+
+The send action in workers can be used in a conditional context, allowing for more flexible and dynamic inter-worker communication based on specific conditions. The receiver side in a conditional send might not always receive a message. Thus, to handle such scenarios, the static type of the receive action includes the `error:NoMessage` type.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    boolean isDataReady = true;
+
+    worker w1 {
+        // A send action can be used in a conditional context.
+        if isDataReady {
+            10 -> function;
+        }
+    }
+
+    worker w2 {
+        if isDataReady {
+            1 -> function;
+        } else {
+            0 -> function;
+        }
+    }
+
+    // The send action corresponding to this receive action is conditionally executed.
+    // Thus, there is a possibility that the send action may not get executed.
+    // Therefore, the static type of the receive includes the `error:NoMessage` type
+    // indicating the absence of a message in such cases.
+    int|error:NoMessage w1Message = <- w1;
+    io:println(w1Message); // 10
+
+    // Two different conditional send actions exist within the worker `w3`.
+    // Therefore, an alternate receive action can be used to receive them.
+    int|error:NoMessage w2Message = <- w2 | w2;
+    io:println(w2Message); // 1
+}
+```
+
+#### Introduction of the `on fail` clause for named workers
+
+The `on fail` clause can be used with a named worker, to handle any errors that occur within the worker's body.
+
+```ballerina
+import ballerina/io;
+
+public function main() {
+    int[] values = [2, 3, 4, 5];
+    int value = 0;
+
+    worker w1 {
+        int index = check getIndex(values, value);
+        index -> function;
+    } on fail {
+        // Handle the error thrown in the worker body.
+        -1 -> function;
+    }
+
+    int|error:NoMessage result = <- w1 | w1;
+    io:println(result); // -1
+}
+
+function getIndex(int[] values, int value) returns int|error =>
+    let int? index = values.indexOf(value) in index ?: error("value not found");
+```
+
 ### Improvements
 
 #### Remove dependence on syntactic location for module-level XMLNS declarations
@@ -54,7 +192,7 @@ xmlns "https://ballerina.io/" as ns;
 
 utils.bal
  ```ballerina
-// Previously resulted in a compile time error `redeclared symbol 'ns'` now works as expeted.
+// Previously resulted in a `redeclared symbol` compile-time error, now works as expected.
 xmlns "https://example.com/" as ns; 
 ```
 
@@ -206,6 +344,74 @@ public static void getResource(BObject client, BArray path, BArray args) {
 }
 ```
 
+#### Support to construct immutable record values with record type-descriptors that have mutable default values
+
+It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
+
+```ballerina
+import ballerina/io;
+
+type Student record {|
+    int id;
+    string name;
+    // The inherent type of the default value expression is `int[]`.
+    int[] moduleCodes = [1001, 2001, 3010];
+    // The inherent type of the default value expression is `any[]`.
+    any[] config = getStudentConfig();
+|};
+
+function createEmployee(int id, string name, readonly & string[] config) {
+    // No longer panics at runtime, since an immutable value is set
+    // for the `moduleCodes` field.
+    Student & readonly s1 = {id, name, config};
+    io:println(s1.moduleCodes is readonly & int[]); // true
+}
+
+isolated function getStudentConfig() returns any[] {
+    return [];
+}
+```
+
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
+
+```ballerina
+function createEmployee(int id, string name) {
+    // Results in a compile-time error now since there is no default
+    // value that can be used for `config`.
+    Student & readonly s1 = {id, name};
+}   
+```
+
+#### Improvements to the usage of default values of record fields
+
+Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
+
+```ballerina
+import ballerina/io;
+
+isolated int id = 1;
+
+type Data record {
+    int id = getId();
+};
+
+public function main() {
+    Data data = {"id": 10};
+    lock {
+        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
+    }
+}
+
+isolated function getId() returns int {
+    lock {
+        id = id + 1;
+        return id;
+    }
+}
+```
+
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
@@ -216,18 +422,176 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `avro` package
 
-- Introduced Avro serialization/deserialization support
+- Introduced Avro serialization/deserialization support.
 
-#### `graphql` package
+#### `persist` package
+- Introduced support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
+- Implemented support for the Redis data store, including the following features:
+  - Support for optional fields to be defined in the data model, providing flexibility in structuring data.
+  - Support for connection configuration to be defined as separate parameters or as a URI
+  - Support for Redis data store to be used as a cache or persistent store.
 
-- Introduced GraphQL server-side caching support
+  >**Info:** The Redis database support is an experimental feature. APIs might change in future releases.
+
+- Added support for the following annotations within the `persist.sql` package to facilitate entity mapping alongside additional SQL database features.
+  - `@sql:Name` - Map an entity name to a specific table name and a field name to a specific column name.
+  - `@sql:Varchar` - Give a specific VARCHAR length. 
+  - `@sql:Char` - Give a specific CHAR length. 
+  - `@sql:Decimal` - Give specific DECIMAL precision and scale. 
+  - `@sql:Index` - Declare an index field.
+  - `@sql:UniqueIndex` - Declare a unique index field.
+  - `@sql:Relation` - Declare a relation field. This is used to define a foreign key relationship between two entities.
+  - `@sql:Generated` - Declare a generated field. This is used to define a field that is generated by the database.
+
+#### `uuid` package
+- Implemented support for generating random UUIDs in an intuitive manner via the `uuid:createRandomUuid` function.
 
 ### Improvements
 
+#### `mysql` package
+- Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
+
 #### `graphql` package
 
-- Improved the GraphQL error responses to use aliases instead of field names in the `path` field
-- Added support to report GraphQL specific diagnostics in the VS Code extension
+- Introduced GraphQL server-side caching support.
+
+#### `crypto` package
+
+- Introduced new APIs for ML-KEM-768 (Kyber768) key encapsulation mechanism.
+- Introduced new APIs for RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+- Introduced new APIs for ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for ML-DSA65 (Dilithium3) signing.
+
+#### `data.jsondata` package
+
+The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, and navigation.
+
+- JSON data projection: JSON data can be converted to a Ballerina record by specifying only the required fields from the JSON data. This is helpful when the requirement is to extract a specific subset of fields from JSON data with a large number of fields.
+
+    ```ballerina
+    import ballerina/data.jsondata;
+    import ballerina/io;
+
+    // Define a closed record type to capture the required fields from the JSON content.
+    type Book record {|
+        string name;
+        string author;
+    |};
+
+    public function main() returns error? {
+        json jsonContent = {
+            name: "Clean Code",
+            author: "Robert C. Martin",
+            year: 2008,
+            publisher: "Prentice Hall"
+        };
+        // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
+        Book book = check jsondata:parseAsType(jsonContent);
+        io:println(book);
+
+        string jsonStr = string `
+        {
+            "name": "The Pragmatic Programmer",
+            "author": "Andrew Hunt, David Thomas",
+            "year": 1999,
+            "publisher": "Addison-Wesley"
+        }`;
+        Book book2 = check jsondata:parseString(jsonStr);
+        io:println(book2);
+    }
+    ```
+
+- JSON navigation: JSONPath expressions can now be used to navigate and extract JSON data.
+    
+    ```ballerina
+    import ballerina/data.jsondata;
+    import ballerina/io;
+
+    public function main() returns error? {
+        json books = [
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                price: 100,
+                year: 1925
+            },
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                price: 72.5,
+                year: 1960
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                price: 90,
+                year: 1949
+            }
+        ];
+
+        // Use a JSONPath expression to extract the list of titles in the books array.
+        json titles = check jsondata:read(books, `$..title`);
+        io:println(titles);
+
+        // Use a JSONPath expression to extract the list of published years for the 
+        // books that have a price value of more than 80.
+        json years = check jsondata:read(books, `$..[?(@.price > 80)].year`);
+        io:println(years);
+
+        // Use a JSONPath expression to extract the total sum of the prices of the books.
+        json sum = check jsondata:read(books, `$..price.sum()`);
+        io:println(sum);
+    }
+    ```
+
+#### `data.xmldata` package
+
+The [`data.xmldata`](https://lib.ballerina.io/ballerina/data.xmldata/latest/) package has been introduced to support XML data conversions and data projection.
+
+```ballerina
+import ballerina/data.xmldata;
+import ballerina/io;
+
+// Define a closed record type to capture the required elements and attributes from the XML data.
+type Book record {|
+    string name;
+    string author;
+|};
+
+public function main() returns error? {
+    xml xmlData = xml `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+    // Based on the expected type, it includes only the `name` and `author` fields in the converted value.
+    Book book = check xmldata:parseAsType(xmlData);
+    io:println(book);
+
+    string xmlStr = string `
+    <book>
+        <name>Clean Code</name>
+        <author>Robert C. Martin</author>
+        <year>2008</year>
+        <publisher>Prentice Hall</publisher>
+    </book>`;
+    Book book2 = check xmldata:parseString(xmlStr);
+    io:println(book2);
+}
+```
+
+### Improvements
+
+#### `cloud` package
+- Directories can now be mounted as ConfigMaps and Secrets.
+
+#### `graphql` package
+
+- Improved the GraphQL error responses to use aliases instead of field names in the `path` field.
+- Added support to report GraphQL specific diagnostics in the VS Code extension.
 
 ### Deprecations
 
@@ -247,9 +611,67 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### Language Server
 
+- Introduced the `Extract to transform function` code action to extract the value expression of a field in a mapping constructor into an expression-bodied function that returns expected record.
+- Introduced the `Surround with lock` code action to wrap an isolated variable access with a `lock` statement.
+- Introduced the `Add private qualifier` code action to set the visibility qualifier of a field in an isolated class to `private`.
+- Introduced the `Make variable immutable` code action to add `final` and/or `readonly` as needed to make the field immutable.
+
+#### Ballerina Shell
+
+- Added support for invoking actions directly from the shell prompt, as shown in the following examples.
+
+```ballerina
+$= string value = myClient->invoke("input");
+$= string value = myClient->/root/name("input");
+$= future<int> result = start name();
+```
+
 #### CLI
 
 #### OpenAPI tool
+
+#### Persist tool
+- Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (`model.bal`) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
+- Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new options to the `persist generate` command:
+    - `--datastore` - This is used to indicate the preferred data store.
+    - `--module` - This is used to indicate the module in which the files are generated.
+
+    For example,
+    ```
+    $ bal persist generate --datastore mysql --module db
+    ```
+
+- Changed the `persist generate` command to generate all the Ballerina types, client, `db_config` files, and the script file in the specified module directory, allowing the user to commit the generated source code along with the project source code.
+- Introduced the new `persist add` command to initialize the `bal persist` feature in the Ballerina project and integrate the source code generation with the `bal build` command. This command will update the `Ballerina.toml` file with the `tool.persist` configuration and generate the `model.bal` file in the `persist` directory, if the file does not exist. This command supports the following options:
+    - `--datastore` - This is used to indicate the preferred data store.
+    - `--module` - This is used to indicate the module in which the files are generated.
+
+    For example,
+    ```
+    $ bal persist add --datastore mysql --module db
+    ```
+
+- Implemented introspection support for existing databases to facilitate the generation of the persist data model. This functionality is accessible through the new `bal persist pull` command. The command is equipped with the following options:
+    - `--datastore` - This is used to indicate the preferred data store.
+    - `--host` - This is used to indicate the host of the database.
+    - `--port` - This is used to indicate the port of the database.
+    - `--user` - This is used to indicate the username of the database.
+    - `--database` - This is used to indicate the database name.
+
+    For example,
+    ```
+    $ bal persist pull --datastore mysql --host localhost --port 3306 --user root --database test
+    ```
+    >**Info:** The database introspection support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
+
+- Revised the persist migrate command to extract the datastore configuration from the provided argument instead of the `Ballerina.toml` file. The command now accepts the following option:
+    - `--datastore` - This is used to indicate the preferred data store. The default value is `mysql`.
+
+    For example,
+    ```
+    $ bal persist migrate --datastore mysql
+    ```
+    >**Info:** The migration support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
 
 ### Improvements
 
@@ -287,6 +709,12 @@ public function updateValues(int t1, int t2) {
 
 #### Language Server
 
+- Improved the snippet completion items provided for dependently-typed functions.
+- Improved the completion items provided for resource parameters with singleton types.
+- Improved the order of completions provided for resource access actions.
+- Introduced an error notification to indicate when the project contains cyclic dependencies.
+- Introduced an error notification to indicate high memory usage.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repositories below.
@@ -300,14 +728,54 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### Improvements
 
-#### `cloud` package
-- Directories can now be mounted as ConfigMaps and Secrets.
-
 ### Bug fixes
 
 ## Backward-incompatible changes
 
-### Language
+### Language changes
+
+- A bug that allowed using `self` of an isolated object to access a mutable field without a lock statement within an anonymous function has been fixed.
+
+    ```ballerina
+    import ballerina/log;
+
+    isolated class Data {
+        private int id;
+        private string name;
+
+        isolated function init(int id, string name) {
+            self.id = id;
+            self.name = name;
+        }
+
+        isolated function update(int? id = (), string? name = ()) {
+            lock {
+                if id is int {
+                    self.id = id;
+                }
+
+                if name is string {
+                    self.name = name;
+                }
+            }
+
+            var logger = isolated function () returns string {
+                // Now results in compile-time errors, 
+                // need to use a lock statement. 
+                return string `ID: '${self.id}', Name: '${self.name}'`; 
+            };
+            log:printDebug("Data updated", details = logger);
+        }
+    }
+    ```
+
+- A bug which resulted in the rest parameter of a function not being considered final has been fixed.
+
+    ```ballerina
+    function sum(int i, int... j) {
+        j = [1, 2, 3]; // Compile-time error now.
+    }
+    ```
 
 - A bug which resulted in the addition of a default namespace to an XML navigation name pattern, even when the default namespace is defined after it, has been fixed.
 
@@ -511,15 +979,17 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
 
-### `rabbitmq` package
+### Ballerina library changes
+
+#### `rabbitmq` package
 
 - Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
 
-### `nats` package
+#### `nats` package
 
 - Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
 
-### `cloud` package
+#### `cloud` package
 
 - SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
     ```toml

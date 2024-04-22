@@ -476,7 +476,6 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Enhanced connector APIs by incorporating resource method syntax.
 
-
 #### `aws.dynamodb` package
 
 - Introduced new APIs to work with database backups with DynamoDB REST APIs.

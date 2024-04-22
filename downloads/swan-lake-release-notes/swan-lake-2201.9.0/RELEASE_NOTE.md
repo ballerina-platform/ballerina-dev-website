@@ -415,6 +415,7 @@ public function main() returns error? {
 ```
 
 #### `persist` package
+
 - Introduced support for the PostgreSQL data store, mirroring the functionality provided for other supported SQL data stores like MySQL and MSSQL.
 - Implemented support for the Redis data store, including the following features:
   - Support for optional fields to be defined in the data model, providing flexibility in structuring data.
@@ -494,6 +495,7 @@ $= future<int> result = start name();
 #### OpenAPI tool
 
 #### Persist tool
+
 - Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (`model.bal`) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
 - Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new options to the `persist generate` command:
     - `--datastore` - This is used to indicate the preferred data store.

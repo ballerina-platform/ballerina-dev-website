@@ -613,6 +613,11 @@ $= future<int> result = start name();
 
 #### CLI
 
+#### EDI tool
+
+- Introduced support for field length constraints (min/max), enhancing validation capabilities for EDI data fields.
+- Added support for EDIFACT to Ballerina schema conversion, facilitating smoother integrations and automations.
+
 #### OpenAPI tool
 
 - Integrated OpenAPI client generation to the `bal build` command.

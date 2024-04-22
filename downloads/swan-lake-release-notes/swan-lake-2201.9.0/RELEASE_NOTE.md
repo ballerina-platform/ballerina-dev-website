@@ -614,7 +614,15 @@ $= future<int> result = start name();
 #### CLI
 
 #### EDI tool
+    
+- Added support for EDIFACT to Ballerina schema conversion.
+  
+  Users can now directly convert EDIFACT messages to Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
+  
+  For example,
 
+  `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
+  
 - Introduced Support for field length constraints (min/max)
 
   This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
@@ -636,14 +644,6 @@ $= future<int> result = start name();
         {"tag": "ResponseType", "length": {"min": 1, "max": 3}}
     ]
     ```
-    
-- Added support for EDIFACT to Ballerina schema conversion.
-  
-  Users can now directly convert EDIFACT messages to Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
-  
-  For example,
-
-  `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
   
 #### OpenAPI tool
 
@@ -720,8 +720,8 @@ $= future<int> result = start name();
 ### Improvements
 #### EDI tool
 
-- Introduced support for field length constraints (min/max), enhancing validation capabilities for EDI data fields.
 - Added support for EDIFACT to Ballerina schema conversion.
+- Introduced support for field length constraints (min/max), enhancing validation capabilities for EDI data fields.
 
 #### OpenAPI Tool
 

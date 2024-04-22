@@ -623,7 +623,7 @@ $= future<int> result = start name();
 
   `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
   
-- Introduced Support for field length constraints (min/max)
+- Introduced support for field length constraints (min/max)
 
   This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
     

@@ -113,10 +113,11 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 #### OpenAPI tool
 
-- OpenAPI client generation has been integrated to the `bal build` command. The user can provide the OpenAPI tool configuration in the Ballerina.toml file and generate the client during a build.
+- Integrated OpenAPI client generation to the `bal build` command.
 
-  For example:
-  ```ballerina
+The user can provide the OpenAPI tool configuration in the Ballerina.toml file and generate the client during a build as follows:
+
+  ```toml
   [[tool.openapi]]
   id = "dbclient"
   filePath = "openapi.yaml"
@@ -125,10 +126,9 @@ It is now possible to provide custom formatting configurations to the Ballerina 
   
 - Introduced the `add` sub-command to the OpenAPI tool to update the Ballerina.toml file with the OpenAPI tool configuration details. 
   
-   For example:
+   For example,
 
   `bal openapi add -i <yaml file> --mode client --id <tool config id>`
-
 
 - Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
 - Added support for OpenAPI link field mapping for Ballerina HATEOAS feature in OpenAPI specification generation.
@@ -136,7 +136,7 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 - Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
 - Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
   
-  For example:
+  For example,
 
   `bal openapi -i <yaml file> --mode client --with-status-code-binding`
 
@@ -144,6 +144,7 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 ### Improvements
 
 #### OpenAPI Tool
+
 - Added support for the Ballerina record rest field mapping in OpenAPI specification generation.
 - Improved the OpenAPI client generation with parameterized path segments in the OpenAPI specification by generating `remote` methods in the Ballerina client.
 

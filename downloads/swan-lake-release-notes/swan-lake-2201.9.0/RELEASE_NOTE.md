@@ -617,7 +617,7 @@ $= future<int> result = start name();
     
 - Added support for EDIFACT to Ballerina schema conversion.
   
-  Users can now directly convert EDIFACT messages to Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
+  Users can now directly convert EDIFACT schema to Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
   
   For example,
 

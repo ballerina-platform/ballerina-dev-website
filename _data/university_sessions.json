@@ -37,7 +37,7 @@
                         {
             "date": "May 2, 2024",
             "expire": "2024-05-03T00:00:00.0000-00:00",
-            "type": "Community lecture",
+            "type": "Tech Talk",
             "university": "Sabaragamuwa University of Sri Lanka",
             "faculty": "Faculty of Computing",
             "title": "Ballerina language for Seamless Integration",

@@ -615,6 +615,33 @@ $= future<int> result = start name();
 
 #### OpenAPI tool
 
+- Integrated OpenAPI client generation to the `bal build` command.
+
+  The user can provide the OpenAPI tool configuration in the `Ballerina.toml` file and generate the client during a build as follows:
+
+  ```toml
+  [[tool.openapi]]
+  id = "dbclient"
+  filePath = "openapi.yaml"
+  targetModule = "delivery"
+  ```
+  
+- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details. 
+  
+  For example,
+  
+  `bal openapi add -i <yaml file> --mode client --id <tool config id>`
+
+- Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
+- Added support for OpenAPI link field mapping for Ballerina HATEOAS feature in OpenAPI specification generation.
+- Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
+- Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
+- Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
+  
+  For example,
+
+  `bal openapi -i <yaml file> --mode client --with-status-code-binding`
+
 #### Persist tool
 - Modified the `persist init` command to solely create a `persist` directory within the Ballerina project and generate a new definition file (`model.bal`) within the `persist` directory if it doesn't already exist. It no longer updates the `Ballerina.toml` file with the persist configuration as it did previously.
 - Modified the `persist generate` command to function as a one-time source code generation tool. Additionally, introduced the following new options to the `persist generate` command:
@@ -659,6 +686,11 @@ $= future<int> result = start name();
     >**Info:** The migration support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
 
 ### Improvements
+
+#### OpenAPI Tool
+
+- Added support for the Ballerina record rest field mapping in OpenAPI specification generation.
+- Improved the OpenAPI client generation with parameterized path segments in the OpenAPI specification by generating `remote` methods in the Ballerina client.
 
 #### Formatter
 
@@ -705,7 +737,7 @@ public function updateValues(int t1, int t2) {
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.9.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug+is%3Aclosed)
 
 ## Ballerina packages updates
 

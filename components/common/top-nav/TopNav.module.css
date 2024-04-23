@@ -293,7 +293,6 @@ a.dropDownItem:focus, a.dropDownItem:hover {
 
 .seeMore a, .seeMoreMobile a {
     color: #20b6b0;
-    font-style: italic;
     text-decoration: none;
 }
 

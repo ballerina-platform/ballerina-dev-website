@@ -1,6 +1,5 @@
 .useCaseCard {
     display: flex;
-    flex-flow: row wrap;
 }
 
 .useCaseCard .cardWrapper {
@@ -74,4 +73,19 @@
 .centerLogo {
     width: 50%;
     margin: 0 auto;
+}
+
+.imgw {
+    height: fit-content;
+}
+
+.imgw img {
+    object-position: 50% 50%;
+    object-fit: cover;
+    aspect-ratio: 2 / 1;
+}
+
+.footer {
+    background-color: #ffffff !important;
+    border: none !important;
 }

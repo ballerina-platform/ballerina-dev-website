@@ -39,8 +39,8 @@ export default function UseCases(props) {
                                         <Col key={idx} style={{ display: "flex", flexFlow: "row wrap" }} >
                                             <Link href={`/usecases/${_.slug}`} className={styles.wrapperLink}>
                                                 <Card className={`${styles.useCaseCard} mt-4`}>
-                                                    <div className={styles.cardImgWrapper}> 
-                                                    <Card.Img variant="top" src={_.frontmatter.logo} />
+                                                    <div className={styles.cardImgWrapper}>
+                                                        <Card.Img variant="top" src={_.frontmatter.logo} />
                                                     </div>
                                                     <Card.Body>
                                                         <Card.Title>{_.frontmatter.title}</Card.Title>
@@ -49,7 +49,7 @@ export default function UseCases(props) {
                                                         </Card.Text>
                                                     </Card.Body>
                                                     <Card.Footer className={styles.footer}>
-                                                    <div className={styles.cardLinks}>
+                                                        <div className={styles.cardLinks}>
                                                             <a href={`/usecases/${_.slug}`} className={styles.cDownload}>
                                                                 Learn more
                                                             </a>

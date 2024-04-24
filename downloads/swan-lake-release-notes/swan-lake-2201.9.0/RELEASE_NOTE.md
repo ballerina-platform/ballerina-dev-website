@@ -272,7 +272,7 @@ public List<Artifact> getArtifacts();
 This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only `service` is supported now), and a map of details. The map of details includes the following information.
 
 - `listeners` - a list of listener objects that the service is attached to
-- `attachPoint` - the attach point specified in the service declaration (for example, `basePath` in HTTP)
+- `attachPoint` - the attach point specified in the service declaration (for example, base path in HTTP)
 - `service` - the service object
 
 ```java

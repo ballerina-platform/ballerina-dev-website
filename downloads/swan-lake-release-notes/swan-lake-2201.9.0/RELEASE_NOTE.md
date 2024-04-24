@@ -414,6 +414,11 @@ public function main() returns error? {
 }
 ```
 
+#### `edi` package
+
+- Added support for field length constraints (min/max) to enhance schema validation capabilities.
+- Introduced support for escape characters in EDI, allowing more flexibility in data formatting and transmission.
+
 #### `graphql` package
 
 - Introduced GraphQL server-side caching support.
@@ -463,6 +468,127 @@ public function main() returns error? {
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aclosed+is%3Aissue+milestone%3A%222201.9.0%22+label%3AType%2FBug).
 
+### Revamped connectors
+
+New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
+All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
+
+#### `asana` package
+
+- Enhanced connector APIs by incorporating resource method syntax.
+
+#### `aws.dynamodb` package
+
+- Introduced new APIs to work with database backups with DynamoDB REST APIs.
+
+#### `aws.dynamodbstreams` package
+
+- Introduced a new connector to work with DynamoDB streams.
+
+#### `aws.redshift` package
+
+- Introduced seamless connectivity to Amazon Redshift databases.
+
+#### `aws.sns` package
+
+- Enhanced the connector APIs to support all the APIs provided by the AWS SNS REST API.
+
+#### `candid` package
+
+- Introduced support for connecting to Candid's Charity Check, Essentials, and Premier REST APIs.
+
+#### `confluent.cavroserdes` package
+
+- Introduced support for serializing and deserializing data using Avro schemas stored in the Confluent Schmema Registry.
+
+#### `confluent.cregistry` package
+
+- Introduced new APIs to connect with the Confluent Schema Registry.
+
+#### `docusign.dsadmin` package
+
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `docusign.dsadmin` from `docusign.admin`.
+
+#### `docusign.dsclick` package
+
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `docusign.dsclick` from `docusign.click`.
+
+#### `docusign.dsesign` package
+
+- Introduced new APIs to connect with DocuSign eSignature REST APIs.
+
+#### `github` package
+
+- Introduced support for connecting to GitHub REST API version 2022-11-28, replacing the GitHub GraphQL API-based connector.
+
+#### `googleapis.gcalendar` package
+
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `googleapis.gcalendar` from `googleapis.calendar`, which is still available for users.
+
+#### `googleapis.gmail` package
+
+- Enhanced connector APIs by incorporating resource function syntax, along with improved documentation and examples.
+
+#### `guidewire.insnow` package
+
+- Introduced support for connecting to Guidewire InsuranceNow REST API.
+
+#### `ibm.ibmmq` package 
+
+- Introduced support for connecting to IBM MQ server versions up to 9.3.
+
+#### `mongodb` package
+
+- Introduced `mongodb:Client`, `mongodb:Database`, and `mongodb:Collection` objects to provide a more intuitive and user-friendly API for MongoDB operations.
+- Introduced new APIs to be consistent with MongoDB's native APIs.
+- Added support for MongoDB aggregation operations.
+- Added support for MongoDB projections through type inference and manual projection.
+- Added support for connecting to MongoDB Atlas databases and clusters.
+- Added support for SSL connections to MongoDB servers.
+- Improved the `find` API with support for filtering, sorting, and pagination.
+- Improved the `update` API by providing `matchedCount` and `modifiedCount` in the response.
+
+#### `nats` package
+
+- Removed the previously deprecated `nats:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `nats:AnydataMessage` for continued functionality.
+
+#### `rabbitmq` package
+
+- Removed the previously deprecated `rabbitmq:Message` record. Consequently, corresponding APIs no longer accommodate this record. Users are advised to transition to utilizing subtypes of `rabbitmq:AnydataMessage` for continued functionality.
+
+#### `redis` package
+
+- Added support to connect and work with Redis clusters.
+- Introduced support for secure connections (SSL/TLS) to Redis servers.
+- Added support for Redis connection strings (i.e., Redis URIs).
+- Extended connector compatibility to include the latest Redis server versions (up to 7.2.x).
+
+#### `salesforce` package
+
+- Introduced client credentials flow and username-password flow options to the Salesforce connector.
+- Expanded support to include Bulk v2 API, APEX REST API, and additional REST API functionalities.
+- Updated compatibility with the latest Salesforce REST API version (v59).
+- Improved documentation and examples.
+
+#### `snowflake` package
+
+- Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
+
+#### `soap` package
+
+- Introduced new APIs to connect with SOAP endpoints.
+
+#### `twilio` package
+
+- Enhanced integration with Twilio services (messaging, voice calls, media services, etc.) offered via the Twilio Basic REST API version 2010-04-01.
+
+#### `zendesk` package
+
+- Introduced support to connect to Zendesk REST API V2, combining the functionalities of the `zendesk.support` and `zendesk.voice` packages.
+
 ## Developer tools updates
 
 ### New features
@@ -493,6 +619,33 @@ $= future<int> result = start name();
 #### CLI
 
 #### OpenAPI tool
+
+- Integrated OpenAPI client generation to the `bal build` command.
+
+  The user can provide the OpenAPI tool configuration in the `Ballerina.toml` file and generate the client during a build as follows:
+
+  ```toml
+  [[tool.openapi]]
+  id = "dbclient"
+  filePath = "openapi.yaml"
+  targetModule = "delivery"
+  ```
+  
+- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details. 
+  
+  For example,
+  
+  `bal openapi add -i <yaml file> --mode client --id <tool config id>`
+
+- Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
+- Added support for OpenAPI link field mapping for Ballerina HATEOAS feature in OpenAPI specification generation.
+- Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
+- Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
+- Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
+  
+  For example,
+
+  `bal openapi -i <yaml file> --mode client --with-status-code-binding`
 
 #### Persist tool
 
@@ -540,6 +693,11 @@ $= future<int> result = start name();
 
 ### Improvements
 
+#### OpenAPI Tool
+
+- Added support for the Ballerina record rest field mapping in OpenAPI specification generation.
+- Improved the OpenAPI client generation with parameterized path segments in the OpenAPI specification by generating `remote` methods in the Ballerina client.
+
 #### Formatter
 
 ##### Multiline function call formatting.
@@ -585,7 +743,7 @@ public function updateValues(int t1, int t2) {
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.9.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug+is%3Aclosed)
 
 ## Ballerina packages updates
 

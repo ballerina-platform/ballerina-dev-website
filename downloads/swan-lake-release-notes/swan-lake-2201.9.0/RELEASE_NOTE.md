@@ -204,7 +204,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 ### New features
 
-#### Support to provide values for configurable variables through environment variables
+#### Support to provide values for configurable variables via environment variables
 
 Configurable values can now be provided through environment variables using the following syntax.
 
@@ -212,9 +212,7 @@ Configurable values can now be provided through environment variables using the 
 BAL_CONFIG_VAR_key=value
 ```
 
-The key conforms to the structure `ORG_MODULE_VARIABLE`, where each part in the structured identifier is converted to uppercase, and dots are converted to underscores.
-
-The environment variable-based configuration is supported for configurable variables of `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
+The key conforms to the structure `ORG_MODULE_VARIABLE`, where each part in the unique identifier is converted to uppercase, and dots are converted to underscores.
 
 For example, if the configurable variable is defined in the following way,
 
@@ -224,41 +222,33 @@ configurable int port = ?;
 
 The values can be provided through environment variables as follows.
 
-If the configurable variable is defined in the default module or if a single Ballerina file is being used:
+- If the configurable variable is defined in the default module or if a single Ballerina file is being used, the expected environment variable
+  will be `BAL_CONFIG_VAR_PORT`.
+
+- If the configurable variable is defined in a different module with name `foo.bar` from the same organization, the expected environment variable
+  will be `BAL_CONFIG_VAR_FOO_BAR_PORT`.
+
+- If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`, the expected environment variable
+  will be `BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT`.
+
+The environment variables can be defined according to the operating system as follows.
 
 For Windows:
 ```
-$ set BAL_CONFIG_VAR_PORT=9090
+$ set <env-var-name>=9090
 ```
 
 For Linux/macOS:
 ```
-$ export BAL_CONFIG_VAR_PORT=9090
+$ export <env-var-name>=9090
 ```
 
-If the configurable variable is defined in a different module with name `foo.bar` from the same organization:
+The environment variable-based configuration is supported for configurable variables of `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
-For Windows:
-```
-$ set BAL_CONFIG_VAR_FOO_BAR_PORT=9090
-```
-
-For Linux/macOS:
-```
-$ export BAL_CONFIG_VAR_FOO_BAR_PORT=9090
-```
-
-If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`.
-
-For Windows:
-```
-$ set BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT=9090
-```
-
-For Linux/macOS:
-```
-$ export BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT=9090
-```
+If the configuration values are given in multiple ways, they will be overridden in the following decreasing order of precedence when retrieving them.
+1. Environment variables
+2. Command-line arguments
+3. Configuration TOML files
 
 #### New Runtime Java APIs
 
@@ -281,8 +271,8 @@ public List<Artifact> getArtifacts();
 
 This returns a list of artifact instances that represent the services at runtime. An artifact instance contains a name (service name), type (only `service` is supported now), and a map of details. The map of details includes the following information.
 
-- `listeners` - a list of listener objects attached to the service
-- `attachPoint` - the attach point specified in the service declaration (for example, base path in HTTP)
+- `listeners` - a list of listener objects that the service is attached to
+- `attachPoint` - the attach point specified in the service declaration (for example, `basePath` in HTTP)
 - `service` - the service object
 
 ```java

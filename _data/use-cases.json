@@ -49,6 +49,14 @@
             }
         },
         {
+            "slug": "etl",
+            "frontmatter": {
+                "title": "Ballerina for ETL",
+                "description": "Write code with integration-friendly abstractions.",
+                "logo": "/images/etl-sm-banner.png"
+            }
+        },
+        {
             "slug": "microservices",
             "frontmatter": {
                 "title": "Ballerina: The ultimate toolset for seamless microservices development",

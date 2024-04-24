@@ -16,14 +16,14 @@ The formatting configuration file can be specified in two ways:
 * `Ballerina.toml`: Define the path to the configuration file in the `Ballerina.toml` file. The path can be absolute, relative to the package root, or a URL (HTTP/HTTPS). This path has to be specified under the `format` header in the `Ballerina.toml` file as `configPath`.
 
     ```toml
-        [package]
-        org = "format-org"
-        name = "format_project"
-        version = "0.1.0"
-        distribution = "2201.9.0"
+    [package]
+    org = "format-org"
+    name = "format_project"
+    version = "0.1.0"
+    distribution = "2201.9.0"
 
-        [format]
-        configPath = "Format.toml"
+    [format]
+    configPath = "Format.toml"
     ```
 
 * `Format.toml`: If no configuration path is specified in the `Ballerina.toml` file, the formatter will look for a file named `Format.toml` in the package's root directory.
@@ -121,6 +121,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 * Placement of the opening brace of the function definition.
 * Values: `NewLine`, `EndOfLine`
 * Default: `EndOfLine`
+
     * `NewLine`
 
         ```ballerina
@@ -145,6 +146,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 * Formatting of the function parameters when the `maxLineLength` is exceeded.
 * Values: `Wrap`, `NoWrap`, `ChopDown`
 * Default: `Wrap` if `maxLineLength` is specified, else `NoWrap`
+
     * `Wrap`
 
         ```ballerina
@@ -214,6 +216,7 @@ If the format `configPath` value is an HTTP/HTTPS URL, the configuration file wi
 
 * Values: `Wrap`, `NoWrap`, `ChopDown`
 * Default: `Wrap` if `maxLineLength` specified, else `NoWrap`
+
     * `Wrap`
 
         ```ballerina

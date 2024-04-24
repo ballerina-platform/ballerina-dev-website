@@ -577,6 +577,10 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Removed the `requestGeneratedKeys` option from the Client configuration. Given that Snowflake databases do not return generated keys, the `requestGeneratedKeys` option is now defaulted to `NONE`.
 
+#### `soap` package
+
+- Introduced new APIs to connect with SOAP endpoints.
+
 #### `twilio` package
 
 - Enhanced integration with Twilio services (messaging, voice calls, media services, etc.) offered via the Twilio Basic REST API version 2010-04-01.

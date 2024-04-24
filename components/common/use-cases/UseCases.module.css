@@ -75,11 +75,11 @@
     margin: 0 auto;
 }
 
-.imgw {
+.cardImgWrapper {
     height: fit-content;
 }
 
-.imgw img {
+.cardImgWrapper img {
     object-position: 50% 50%;
     object-fit: cover;
     aspect-ratio: 2 / 1;

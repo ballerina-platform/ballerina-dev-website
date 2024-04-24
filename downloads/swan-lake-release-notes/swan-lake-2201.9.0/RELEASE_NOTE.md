@@ -512,8 +512,8 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `docusign.dsclick` package
 
-- Enhanced the connector APIs by incorporating resource functions.
-- The package name has been changed to `docusign.dsclick` from its previous name, `docusign.click`.
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `docusign.dsclick` from `docusign.click`.
 
 #### `docusign.dsesign` package
 
@@ -525,8 +525,8 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### `googleapis.gcalendar` package
 
-- Enhanced the connector APIs by incorporating resource functions.
-- The package name has been changed to `googleapis.gcalendar` from its previous name, `googleapis.calendar`, which is still available for users.
+- Enhanced the connector APIs by incorporating resource methods.
+- The package name has been changed to `googleapis.gcalendar` from `googleapis.calendar`, which is still available for users.
 
 #### `googleapis.gmail` package
 

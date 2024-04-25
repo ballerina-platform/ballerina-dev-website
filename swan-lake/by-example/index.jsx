@@ -1600,6 +1600,22 @@ import {
   codeSnippetData as KafkaConsumerSaslCodeSnippetData,
 } from "./kafka-consumer-sasl/content.jsx";
 import {
+  SoapClientSendReceive,
+  codeSnippetData as SoapClientSendReceiveCodeSnippetData,
+} from "./soap-client-send-receive/content.jsx";
+import {
+  SoapClientSecuritySslTsl,
+  codeSnippetData as SoapClientSecuritySslTslCodeSnippetData,
+} from "./soap-client-security-ssl-tsl/content.jsx";
+import {
+  SoapClientSecurityInboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-inbound-security-config/content.jsx";
+import {
+  SoapClientSecurityOutboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-outbound-security-config/content.jsx";
+import {
   RabbitmqConsumer,
   codeSnippetData as RabbitmqConsumerCodeSnippetData,
 } from "./rabbitmq-consumer/content.jsx";
@@ -2843,6 +2859,14 @@ const BBEs = {
   KafkaConsumerSslCodeSnippetData,
   KafkaConsumerSasl,
   KafkaConsumerSaslCodeSnippetData,
+  SoapClientSendReceive,
+  SoapClientSendReceiveCodeSnippetData,
+  SoapClientSecuritySslTsl,
+  SoapClientSecuritySslTslCodeSnippetData,
+  SoapClientSecurityInboundSecurityConfig,
+  SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+  SoapClientSecurityOutboundSecurityConfig,
+  SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
   RabbitmqConsumer,
   RabbitmqConsumerCodeSnippetData,
   RabbitmqConsumerWithClientAcknowledgement,

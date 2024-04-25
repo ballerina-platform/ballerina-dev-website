@@ -5,53 +5,30 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/avro;
-import ballerina/io;
-
-// Define a type, which is a subtype of anydata.
-type Student record {
-    int id;
-    string name;
-};
+  `import ballerina/soap;
+import ballerina/soap.soap12;
 
 public function main() returns error? {
-    // Assign the value to the variable.
-    Student student = {
-        id: 1,
-        name: "John"
-    };
-
-    // Create a schema instance by passing the string value of an Avro schema.
-    avro:Schema schema = check new (string \`{
-        "namespace": "example.avro",
-        "type": "record",
-        "name": "Student",
-        "fields": [
-            {
-                "name": "id", 
-                "type": "int"
-            },
-            {
-                "name": "name",
-                "type": "string"
+    soap12:Client soapClient = check new ("http://soap-endpoint.com?wsdl",
+        {
+            inboundSecurity: {
+                username: "user",
+                password: "password",
+                passwordType: soap:TEXT
             }
-        ]
-    }\`);
+        }
+    );
 
-    // Serialize the record value to bytes.
-    byte[] serializedData = check schema.toAvro(student);
+    xml body = xml \`<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+                        <soap:Body></soap:Body>
+                    </soap:Envelope>\`;
 
-    // Deserialize the record value to bytes. 
-    Student studentResult = check schema.fromAvro(serializedData);
-
-    // Print deserialized data.
-    io:println("Student ID: ", studentResult.id);
-    io:println("Student Name: ", studentResult.name);
+    check soapClient->sendOnly(body);
 }
 `,
 ];
 
-export function AvroSerdes({ codeSnippets }) {
+export function SoapClientSecurityInboundSecurityConfig({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,23 +38,18 @@ export function AvroSerdes({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Avro - Serialization/Deserialization</h1>
+      <h1>SOAP client security - Inbound security configuration</h1>
 
       <p>
-        The <code>avro</code> module allows serializing and deserializing data
-        with the <code>anydata</code> type. Initially, an{" "}
-        <code>avro:Schema</code> instance must be created by providing a{" "}
-        <code>string</code> value representing an Avro schema. The{" "}
-        <code>toAvro()</code> and <code>fromAvro()</code> methods of the{" "}
-        <code>avro</code> module serialize and deserialize data using the given
-        Avro schema.
-      </p>
-
-      <p>
-        The <code>toAvro()</code> method serializes the data according to the
-        specified Avro schema. The <code>fromAvro()</code> method accepts a{" "}
-        <code>byte[]</code> argument containing serialized data and binds the
-        deserialized value to the inferred data type determined by the user.
+        The <code>soap</code> client can be configured to apply inbound security
+        settings when a request is made. These configurations include various
+        web service security policies such as <code>Username Token</code>,{" "}
+        <code>Timestamp Token</code>, <code>X509 Token</code>,{" "}
+        <code>Symmetric Binding</code>, <code>Asymmetric Binding</code>, and{" "}
+        <code>Transport Binding</code>. These configurations can be implemented
+        individually or in combination with one another. After applying the
+        security configuration, the required security tags will be included
+        under the <code>&lt;soap:Header&gt;</code> tag within the SOAP envelope.
       </p>
 
       <Row
@@ -197,9 +169,7 @@ export function AvroSerdes({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run avro_serdes.bal`}</span>
-              <span>{`Student ID: 1`}</span>
-              <span>{`Student Name: John`}</span>
+              <span>{`\$ bal run soap_client_security_inbound_security_config.bal`}</span>
             </code>
           </pre>
         </Col>
@@ -211,8 +181,8 @@ export function AvroSerdes({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerina/avro/">
-              <code>avro</code> - API documentation
+            <a href="https://central.ballerina.io/ballerina/soap/">
+              <code>soap</code> module - API documentation
             </a>
           </span>
         </li>
@@ -221,8 +191,9 @@ export function AvroSerdes({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/avro">
-              <code>avro</code> - Specification
+            <a href="/spec/soap/#321-inbound-security-configurations">
+              SOAP client security inbound security configuration -
+              Specification
             </a>
           </span>
         </li>
@@ -232,8 +203,8 @@ export function AvroSerdes({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Call stored procedures"
-            href="/learn/by-example/mysql-call-stored-procedures"
+            title="SSL/TLS"
+            href="/learn/by-example/soap-client-security-ssl-tsl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -260,14 +231,17 @@ export function AvroSerdes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Call stored procedures
+                  SSL/TLS
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
+          <Link
+            title="Outbound Security"
+            href="/learn/by-example/soap-client-security-outbound-security-config"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -276,7 +250,7 @@ export function AvroSerdes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write bytes
+                  Outbound Security
                 </span>
               </div>
               <svg

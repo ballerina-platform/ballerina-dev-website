@@ -5,53 +5,45 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/avro;
-import ballerina/io;
+  `import ballerina/io;
+import ballerina/soap.soap12;
 
-// Define a type, which is a subtype of anydata.
-type Student record {
-    int id;
-    string name;
-};
+xmlns "http://tempuri.org/" as quer;
 
 public function main() returns error? {
-    // Assign the value to the variable.
-    Student student = {
-        id: 1,
-        name: "John"
-    };
+    int additionA = 37;
+    int additionB = 73;
 
-    // Create a schema instance by passing the string value of an Avro schema.
-    avro:Schema schema = check new (string \`{
-        "namespace": "example.avro",
-        "type": "record",
-        "name": "Student",
-        "fields": [
-            {
-                "name": "id", 
-                "type": "int"
-            },
-            {
-                "name": "name",
-                "type": "string"
-            }
-        ]
-    }\`);
+    // The SOAP 1.2 client connects to a live SOAP endpoint 
+    // that executes basic arithmetic operations
+    soap12:Client soapClient = check new ("http://www.dneonline.com/calculator.asmx?WSDL");
 
-    // Serialize the record value to bytes.
-    byte[] serializedData = check schema.toAvro(student);
+    // The SOAP envelope is constructed including necessary numerical values 
+    // for the addition operation.
+    xml body = xml \`<soap:Envelope
+                        xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+                        soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+                        <soap:Body>
+                        <quer:Add xmlns:quer="http://tempuri.org/">
+                            <quer:intA>\${additionA}</quer:intA>
+                            <quer:intB>\${additionB}</quer:intB>
+                        </quer:Add>
+                        </soap:Body>
+                    </soap:Envelope>\`;
 
-    // Deserialize the record value to bytes. 
-    Student studentResult = check schema.fromAvro(serializedData);
+    // \`sendOnly()\` fires and forgets a request.
+    check soapClient->sendOnly(body, "http://tempuri.org/Add");
 
-    // Print deserialized data.
-    io:println("Student ID: ", studentResult.id);
-    io:println("Student Name: ", studentResult.name);
+    // \`sendReceive()\` sends a request to a SOAP endpoint
+    // and receives the response in \`xml\` or \`mime:Entity[]\` format.
+    xml response = check soapClient->sendReceive(body, "http://tempuri.org/Add");
+    xml result = response/**/<quer:AddResult>/*;
+    io:println(string \`Sum: \${additionA} + \${additionB} = \`, result);
 }
 `,
 ];
 
-export function AvroSerdes({ codeSnippets }) {
+export function SoapClientSendReceive({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -61,23 +53,16 @@ export function AvroSerdes({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>Avro - Serialization/Deserialization</h1>
+      <h1>SOAP client - Send/Receive</h1>
 
       <p>
-        The <code>avro</code> module allows serializing and deserializing data
-        with the <code>anydata</code> type. Initially, an{" "}
-        <code>avro:Schema</code> instance must be created by providing a{" "}
-        <code>string</code> value representing an Avro schema. The{" "}
-        <code>toAvro()</code> and <code>fromAvro()</code> methods of the{" "}
-        <code>avro</code> module serialize and deserialize data using the given
-        Avro schema.
-      </p>
-
-      <p>
-        The <code>toAvro()</code> method serializes the data according to the
-        specified Avro schema. The <code>fromAvro()</code> method accepts a{" "}
-        <code>byte[]</code> argument containing serialized data and binds the
-        deserialized value to the inferred data type determined by the user.
+        The <code>soap</code> module provides APIs to connect to a SOAP endpoint
+        that supports SOAP 1.1 or 1.2 versions. Users can specify the version
+        when importing the <code>soap</code> module. The{" "}
+        <code>sendReceive()</code> API will send a request to a SOAP endpoint
+        and bind the response to one of the <code>xml</code> or{" "}
+        <code>mime:Entity[]</code> data types determined by the user. The{" "}
+        <code>sendOnly()</code> API only sends a request to a SOAP endpoint.
       </p>
 
       <Row
@@ -197,9 +182,8 @@ export function AvroSerdes({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run avro_serdes.bal`}</span>
-              <span>{`Student ID: 1`}</span>
-              <span>{`Student Name: John`}</span>
+              <span>{`\$ bal run soap_client_send_receive.bal`}</span>
+              <span>{`Sum: 37 + 73 = 110`}</span>
             </code>
           </pre>
         </Col>
@@ -211,8 +195,8 @@ export function AvroSerdes({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://central.ballerina.io/ballerina/avro/">
-              <code>avro</code> - API documentation
+            <a href="https://central.ballerina.io/ballerina/soap/">
+              <code>soap</code> module - API documentation
             </a>
           </span>
         </li>
@@ -221,8 +205,8 @@ export function AvroSerdes({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/avro">
-              <code>avro</code> - Specification
+            <a href="/spec/soap/#21-client">
+              <code>soap</code> Client - Specification
             </a>
           </span>
         </li>
@@ -232,8 +216,8 @@ export function AvroSerdes({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Call stored procedures"
-            href="/learn/by-example/mysql-call-stored-procedures"
+            title="SASL authentication"
+            href="/learn/by-example/kafka-consumer-sasl"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -260,14 +244,17 @@ export function AvroSerdes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Call stored procedures
+                  SASL authentication
                 </span>
               </div>
             </div>
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Read/write bytes" href="/learn/by-example/io-bytes">
+          <Link
+            title="SSL/TLS"
+            href="/learn/by-example/soap-client-security-ssl-tsl"
+          >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -276,7 +263,7 @@ export function AvroSerdes({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Read/write bytes
+                  SSL/TLS
                 </span>
               </div>
               <svg

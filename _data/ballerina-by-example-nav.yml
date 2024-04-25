@@ -1414,8 +1414,26 @@ sublinks:
           - title: SASL authentication
             id: 2
             url: kafka-consumer-sasl
-      - title: RabbitMQ service
+      - title: SOAP client
         id: 35
+        sublinks:
+          - title: Send/Receive
+            id: 1
+            url: soap-client-send-receive
+      - title: SOAP client security
+        id: 36
+        sublinks:
+          - title: SSL/TLS
+            id: 1
+            url: soap-client-security-ssl-tsl
+          - title: Inbound Security
+            id: 2
+            url: soap-client-security-inbound-security-config
+          - title: Outbound Security
+            id: 3
+            url: soap-client-security-outbound-security-config
+      - title: RabbitMQ service
+        id: 37
         sublinks:
           - title: Consume message
             id: 1
@@ -1430,7 +1448,7 @@ sublinks:
             id: 4
             url: rabbitmq-service-constraint-validation
       - title: RabbitMQ client
-        id: 36
+        id: 38
         sublinks:
           - title: Declare a queue
             id: 1
@@ -1448,7 +1466,7 @@ sublinks:
             id: 5
             url: rabbitmq-client-constraint-validation
       - title: RabbitMQ service security
-        id: 37
+        id: 39
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1457,7 +1475,7 @@ sublinks:
             id: 2
             url: rabbitmq-service-basic-auth
       - title: RabbitMQ client security
-        id: 38
+        id: 40
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1466,19 +1484,19 @@ sublinks:
             id: 2
             url: rabbitmq-client-basic-auth
       - title: MQTT service
-        id: 39
+        id: 41
         sublinks:
           - title: Subscribe to messages
             id: 1
             url: mqtt-service-subscribe-message
       - title: MQTT client
-        id: 40
+        id: 42
         sublinks:
           - title: Publish message
             id: 1
             url: mqtt-client-publish-message
       - title: MQTT service security
-        id: 41
+        id: 43
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1487,7 +1505,7 @@ sublinks:
             id: 2
             url: mqtt-service-basic-authentication
       - title: MQTT client security
-        id: 42
+        id: 44
         sublinks:
           - title: SSL/TLS
             id: 1
@@ -1496,13 +1514,13 @@ sublinks:
             id: 2
             url: mqtt-client-basic-authentication
       - title: JMS service
-        id: 43
+        id: 45
         sublinks:
           - title: Consume message
             id: 1
             url: jms-service-consume-message
       - title: JMS message producer
-        id: 44
+        id: 46
         sublinks:
           - title: Produce message
             id: 1
@@ -1511,7 +1529,7 @@ sublinks:
             id: 2
             url: jms-producer-transaction
       - title: JMS message consumer
-        id: 45
+        id: 47
         sublinks:
           - title: Consume message
             id: 1
@@ -1520,37 +1538,37 @@ sublinks:
             id: 2
             url: jms-consumer-acknowledgement
       - title: TCP service
-        id: 46
+        id: 48
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-listener
       - title: TCP client
-        id: 47
+        id: 49
         sublinks:
           - title: Send/Receive bytes
             id: 1
             url: tcp-client
       - title: TCP service security
-        id: 48
+        id: 50
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-service-ssl-tls
       - title: TCP client security
-        id: 49
+        id: 51
         sublinks:
           - title: SSL/TLS
             id: 1
             url: tcp-client-ssl-tls
       - title: UDP service
-        id: 50
+        id: 52
         sublinks:
           - title: Send/Receive datagram
             id: 1
             url: udp-listener
       - title: UDP client
-        id: 51
+        id: 53
         sublinks:
           - title: Send/Receive datagram
             id: 1
@@ -1559,13 +1577,13 @@ sublinks:
             id: 2
             url: udp-connect-client
       - title: Email service
-        id: 52
+        id: 54
         sublinks:
           - title: Receive email
             id: 1
             url: receive-email-using-service
       - title: Email client
-        id: 53
+        id: 55
         sublinks:
           - title: Send email
             id: 1
@@ -1574,19 +1592,19 @@ sublinks:
             id: 2
             url: receive-email-using-client
       - title: Email service security
-        id: 54
+        id: 56
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-service-ssl-tls
       - title: Email client security
-        id: 55
+        id: 57
         sublinks:
           - title: SSL/TLS
             id: 1
             url: email-client-ssl-tls
       - title: FTP Service
-        id: 56
+        id: 58
         sublinks:
           - title: Receive file
             id: 1
@@ -1595,7 +1613,7 @@ sublinks:
             id: 2
             url: ftp-service-send-file
       - title: FTP client
-        id: 57
+        id: 59
         sublinks:
           - title: Receive file
             id: 1
@@ -1604,7 +1622,7 @@ sublinks:
             id: 2
             url: ftp-client-send-file
       - title: SFTP Service
-        id: 58
+        id: 60
         sublinks:
           - title: Receive file
             id: 1
@@ -1613,7 +1631,7 @@ sublinks:
             id: 2
             url: sftp-service-send-file
       - title: SFTP client
-        id: 59
+        id: 61
         sublinks:
           - title: Receive file
             id: 1
@@ -1622,7 +1640,7 @@ sublinks:
             id: 2
             url: sftp-client-send-file
       - title: Database access
-        id: 60
+        id: 62
         sublinks:
           - title: Simple query
             id: 1

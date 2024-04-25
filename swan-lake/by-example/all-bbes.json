@@ -3527,6 +3527,52 @@
     ]
   },
   {
+    "title": "SOAP client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive",
+        "url": "soap-client-send-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SOAP client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "soap-client-security-ssl-tsl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Inbound Security",
+        "url": "soap-client-security-inbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Outbound Security",
+        "url": "soap-client-security-outbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",

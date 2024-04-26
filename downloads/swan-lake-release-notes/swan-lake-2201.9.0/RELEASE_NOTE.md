@@ -222,30 +222,29 @@ configurable int port = ?;
 
 The values can be provided through environment variables as follows.
 
-- If the configurable variable is defined in the default module or if a single Ballerina file is being used, the expected environment variable
-  will be `BAL_CONFIG_VAR_PORT`.
+- If the configurable variable is defined in the default module or if a single Ballerina file is being used, the expected environment variable will be `BAL_CONFIG_VAR_PORT`.
 
-- If the configurable variable is defined in a different module with name `foo.bar` from the same organization, the expected environment variable
-  will be `BAL_CONFIG_VAR_FOO_BAR_PORT`.
+- If the configurable variable is defined in a different module with name `foo.bar` from the same organization, the expected environment variable will be `BAL_CONFIG_VAR_FOO_BAR_PORT`.
 
-- If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`, the expected environment variable
-  will be `BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT`.
+- If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`, the expected environment variable will be `BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT`.
 
 The environment variables can be defined according to the operating system as follows.
 
 For Windows:
+
 ```
 $ set <env-var-name>=9090
 ```
 
 For Linux/macOS:
+
 ```
 $ export <env-var-name>=9090
 ```
 
 The environment variable-based configuration is supported for configurable variables of `boolean`, `int`, `float`, `decimal`, `string`, and `xml` types.
 
-If the configuration values are given in multiple ways, they will be overridden in the following decreasing order of precedence when retrieving them.
+If values are specified for the same configurable variable in multiple ways, the precedence, in decreasing order, will be as follows.
 1. Environment variables
 2. Command-line arguments
 3. Configuration TOML files
@@ -314,12 +313,11 @@ balRuntime.stop();
 
 ### Improvements
 
-#### Support mapping of resource and remote method parameters to `BArray` parameter of a generic native method
+#### Support mapping of resource and remote method parameters to `BArray` parameters of generic native methods
 
-A new way has been introduced to support the binding of any resource or remote function to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
+A new way has been introduced to support the binding of any resource or remote method to a generic native method, regardless of the function parameters. The generic native method should be defined with a `BArray` parameter, which represents all the parameters excluding path parameters (handling path parameters in a similar manner is supported from 2201.5.0). To avoid errors due to overloaded methods, it is recommended to define parameter type constraints as well.
 
-E.g.,
-The following Ballerina resource method,
+For example, the following Ballerina resource method,
 ```ballerina
 isolated resource function get abc/[int p1]/[string p2]/[string p3]/[int ...p4] (string s, int i, typedesc<anydata> targetType = <>) = @java:Method {
     'class: "javalibs.app.App",

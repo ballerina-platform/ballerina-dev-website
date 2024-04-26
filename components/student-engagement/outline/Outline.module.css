@@ -24,8 +24,7 @@
     background-image: url('/images/arrow-right-white.svg');
     background-repeat: no-repeat;
     background-position: left 20px top 14px;
-    width: 100%;
-    margin-bottom: 10px;
+    width: fit-content;
 }
 
 .learnMore:hover {

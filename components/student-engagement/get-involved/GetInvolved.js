@@ -18,6 +18,9 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
+import Image from 'next-image-export-optimizer';
+
+import { prefix } from '../../../utils/prefix';
 
 import styles from './GetInvolved.module.css';
 

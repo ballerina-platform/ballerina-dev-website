@@ -224,9 +224,9 @@ The values can be provided through environment variables as follows.
 
 - If the configurable variable is defined in the default module or if a single Ballerina file is being used, the expected environment variable will be `BAL_CONFIG_VAR_PORT`.
 
-- If the configurable variable is defined in a different module with name `foo.bar` from the same organization, the expected environment variable will be `BAL_CONFIG_VAR_FOO_BAR_PORT`.
+- If the configurable variable is defined in a different module with the name `foo.bar` from the same organization, the expected environment variable will be `BAL_CONFIG_VAR_FOO_BAR_PORT`.
 
-- If the configurable variable is defined in a module with name `foo.bar` from a different organization called `testOrg`, the expected environment variable will be `BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT`.
+- If the configurable variable is defined in a module with the name `foo.bar` from a different organization called `testOrg`, the expected environment variable will be `BAL_CONFIG_VAR_TESTORG_FOO_BAR_PORT`.
 
 The environment variables can be defined according to the operating system as follows.
 

@@ -32,17 +32,6 @@
     background-color: #57595d;
 }
 
-/* @media (max-width: 768px) {
-    .icon {
-        padding-left: 0;
-    }
-
-    .learnMore {
-        display: inline-block;
-        width: 200px;
-    }
-} */
-
 @media (max-width: 768px) {
     .icon {
         padding-left: 0;

@@ -615,7 +615,7 @@ $= future<int> result = start name();
 
 #### EDI tool
     
-- Added support for EDIFACT to Ballerina schema conversion.
+- ##### Added support for EDIFACT to Ballerina schema conversion
   
   Users can now directly convert EDIFACT schema to Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
   
@@ -623,16 +623,16 @@ $= future<int> result = start name();
 
   `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
   
-- Introduced support for field length constraints (min/max)
+- ##### Introduced support for field length constraints (min/max)
 
   This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
     
-  Length Constraints Overview:
+  Length constraints overview:
   
-    - Fixed-Length: Fields must match the specified length `N`. If not, Ballerina will either pad the field with spaces or produce an error if the field exceeds `N`.
-    - Range Limits:
-      - Minimum Length: If a field is shorter than specified, an error is triggered.
-      - Maximum Length: Fields longer than allowed will also trigger an error.
+    - Fixed-length: Fields must match the specified length `N`. If not, Ballerina will either pad the field with spaces or produce an error if the field exceeds `N`.
+    - Range limits:
+      - Minimum length: If a field is shorter than specified, an error is triggered.
+      - Maximum length: Fields longer than allowed will also trigger an error.
     
     For example,
   
@@ -718,10 +718,6 @@ $= future<int> result = start name();
     >**Info:** The migration support is an experimental feature and currently only supports MySQL databases. The commands associated with the feature might change in future releases.
 
 ### Improvements
-#### EDI tool
-
-- Added support for EDIFACT to Ballerina schema conversion.
-- Introduced support for field length constraints (min/max), enhancing validation capabilities for EDI data fields.
 
 #### OpenAPI Tool
 

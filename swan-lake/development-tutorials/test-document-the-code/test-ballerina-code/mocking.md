@@ -72,7 +72,7 @@ public client class MockHttpClient {
 
 }
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
 
     // create and assign a test double to the `clientEndpoint` object
@@ -162,7 +162,7 @@ This test stubs the behaviour of the `get` function to return a specific value i
 import ballerina/test;
 import ballerina/http;
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object
     clientEndpoint = test:mock(http:Client);
@@ -194,7 +194,7 @@ the second argument).
 import ballerina/test;
 import ballerina/http;
     
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
     clientEndpoint = test:mock(http:Client);
@@ -278,11 +278,11 @@ import ballerina/test;
 function testMemberVariable() {
     int mockProductCode = 2;
     // Create a mockClient which represents product with the code `mockProductCode`
-    ProductClient mockClient = test:mock(ProductClient);
+    productClient = test:mock(ProductClient);
     // Stub the member variable `productCode`
-    test:prepare(mockClient).getMember("productCode").thenReturn(mockProductCode);
+    test:prepare(productClient).getMember("productCode").thenReturn(mockProductCode);
     // Replace `productClient` with the `mockClient`
-    productClient = mockClient;
+    productClient = productClient;
     // Assert for the mocked product name.
     test:assertEquals(getProductName(), "Bread");
 }
@@ -321,7 +321,7 @@ This test stubs the behaviour of the `send` function to do nothing for testing t
 import ballerina/test;
 import ballerina/email;
 
-@test:Config {}
+@test:Config
 function testSendNotification() {
     string[] emailIds = ["user1@test.com", "user2@test.com"];
 
@@ -342,7 +342,7 @@ The Ballerina test framework provides the capability to mock a function. You can
 you are testing or a function of an imported module by using the mocking feature. This feature will help you to test 
 your Ballerina code independently from other modules and functions.
 
-The object specified with the `@test:Mock{}` annotation will be considered as a mock function, which gets triggered in 
+The object specified with the `@test:Mock` annotation will be considered as a mock function, which gets triggered in 
 place of the real function.
 
 * ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides 
@@ -395,7 +395,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
    
-@test:Config {}
+@test:Config
 function testReturn() {
     // Stub to return the specified value when the `intAdd` is invoked.
     test:when(intAddMockFn).thenReturn(20);
@@ -418,7 +418,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
 
-@test:Config {}
+@test:Config
 function testCall() {
     // Stub to call another function when `intAdd` is called.
     test:when(intAddMockFn).call("mockIntAdd");
@@ -451,7 +451,7 @@ public function mockPrint(any|error... val) {
     tally = tally + 1;
 }
 
-@test:Config {}
+@test:Config
 function testCall() {
     test:when(printlnMockFn).call("mockPrint");
 
@@ -471,7 +471,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
 
-@test:Config {}
+@test:Config
 function testCallOriginal() {
     // Stub to call another function when `intAdd` is called.
     test:when(intAddMockFn).call("mockIntAdd");

@@ -619,6 +619,38 @@ $= future<int> result = start name();
 
 #### CLI
 
+#### EDI tool
+    
+ - Added support for EDIFACT to Ballerina schema conversion.
+  
+  Users can now directly convert the EDIFACT schema to the Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
+  
+  For example,
+
+  `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
+  
+- Introduced support for field length constraints (min/max).
+
+  This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
+    
+  Overview of length constraints:
+  
+    - Fixed-length: Fields must match the specified length `N`. If not, Ballerina will either pad the field with spaces or produce an error if the field exceeds `N`.
+    - Range limits:
+      - Minimum length: If a field is shorter than specified, an error is triggered.
+      - Maximum length: Fields longer than allowed will also trigger an error.
+    
+    For example,
+  
+    ```json
+    "fields": [
+        {"tag": "DocumentNameCode", "length": 10},
+        {"tag": "DocumentNumber", "length": {"min": 1}},
+        {"tag": "MessageFunction", "length": {"max": 3}},
+        {"tag": "ResponseType", "length": {"min": 1, "max": 3}}
+    ]
+    ```
+  
 #### OpenAPI tool
 
 - Integrated OpenAPI client generation to the `bal build` command.

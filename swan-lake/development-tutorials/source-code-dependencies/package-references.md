@@ -195,6 +195,62 @@ version = "0.1.0"
 include = ["documents", "sample.png"]
 ```
 
+### The `keywords` field
+
+The keywords field is used to specify a list of short phrases that describe the package. Keywords are helpful for users to discover the package in the Ballerina Central using the built-in search. These keywords are also listed under the `Keywords` section on the API documentation page in Ballerina Central.
+
+The `keywords` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+keywords = ["service", "edi", "manufacturing"]
+```
+
+### The `authors` field
+
+The `authors` field is used to specify the authors who contributed to the package. This information will be listed under the `Contributors` section on the API documentation page in Ballerina Central. 
+
+The `authors` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+authors = ["John Doe", "Jane Doe"]
+```
+
+### The `repository` field
+
+The `repository` field is used to specify the URL of the repository where the source code of the package is hosted. This will be listed as `Source Repository` on the API documentation page in Ballerina Central.
+
+The `repository` field is optional and accepts a string.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+repository = "https://github.com/john-doe/module-winery"
+```
+
+### The `license` field
+
+The `license` field is used to specify the licenses under which the package is distributed. This will be listed as `License` under the `Metadata` section on the API documentation page in Ballerina Central.
+
+The `license` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+license = ["Apache-2.0"]
+```
+
 ### Build options
 
 The `[build-options]` table specifies options that should be applied when building the package. You can provide build options in the `Ballerina.toml` instead of passing them to the `bal build` command.

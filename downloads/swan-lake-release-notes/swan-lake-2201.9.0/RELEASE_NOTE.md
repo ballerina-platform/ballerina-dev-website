@@ -619,20 +619,22 @@ $= future<int> result = start name();
 
 #### Test Framework
 
-- The test framework now supports the parallel execution of tests as an experimental feature. To activate the parallel test execution, simply use the `--parallel` flag with the `bal test` command.
+- The test framework now supports the parallel execution of tests as an experimental feature. To enable parallel test execution, simply use the `--parallel` flag with the `bal test` command.
 
-    ```ballerina
-    bal test --parallel
+    ```bash
+    $ bal test --parallel
     ```
 
-- APIs for mocking client resources is introduced. With these, a client resource can be stubbed to behave in a certain way, previously limited to test double. 
+- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods. 
 
     ```ballerina
     // Sample HTTP Client call
 
     http:Client jokes = check new ("https://api.chucknorris.io/jokes/");
     json joke = check jokes->/random;
+    ```
 
+    ```ballerina
     // Stub to return a specific value
     jokes = test:mock(http:Client);
     test:prepare(jokes)
@@ -805,7 +807,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### New features
 
-- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools include automation capabilities for generating OpenAPI and Persist clients directly within the package build by specifying these tools in the `Ballerina.toml` file. 
+- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file. 
 
     ```toml
     [[tool.openapi]]
@@ -813,6 +815,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     filePath = "delivery.yml"
     options.mode = "client"
     ```
+
 ### Improvements
 
 - The `provided` scope has been introduced for platform dependencies to prevent a certain platform library from being included in the BALA file. This scope is particularly useful when the license of the provider restricts the redistribution of the platform library.
@@ -828,6 +831,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     # Scope of the dependency.
     scope = "provided"
     ```
+
+- With Update 9, diagnostics issued by the dependency packages are hidden by default. These diagnostics can be printed to the console by passing the `--show-dependency-diagnostics` build option to the CLI command.
 
 ### Bug fixes
 

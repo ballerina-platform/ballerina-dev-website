@@ -257,6 +257,10 @@ const nextConfig = {
         destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/package-references`,
       },
       {
+        source: `/${redirectBase}learn/customize-formatting`,
+        destination: `/${redirectBase}learn/development-tutorials/source-code-dependencies/customize-formatting`,
+      },
+      {
         source: `/${redirectBase}learn/cli-commands/`,
         destination: `/${redirectBase}learn/development-tutorials/build-and-run/cli-commands/`,
       },

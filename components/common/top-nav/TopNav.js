@@ -41,13 +41,13 @@ const TopNav = (props) => {
   const handleShow = () => setShow(true);
 
   const MenuItems = [
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
-    <Dropdown.Item category='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
-    <Dropdown.Item category='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data-oriented programming</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
+    <Dropdown.Item category='comparisons' href={`${prefix}/use-cases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
+    <Dropdown.Item category='comparisons' href={`${prefix}/use-cases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data-oriented programming</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='11'>WSO2</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='12'>FAT Tuesday</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='13'>MOSIP</Dropdown.Item>,

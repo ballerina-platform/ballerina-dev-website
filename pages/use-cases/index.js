@@ -57,14 +57,14 @@ export default function UseCasesPage() {
         <meta
           property="og:image"
           itemProp="image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
 
         {/* LINKED IN */}
         <meta property="og:title" content="Ballerina use cases - The Ballerina programming language" />
         <meta
           property="og:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="og:description"
@@ -84,7 +84,7 @@ export default function UseCasesPage() {
         />
         <meta
           name="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
         <meta
           property="twitter:text:description"
@@ -92,7 +92,7 @@ export default function UseCasesPage() {
         />
         <meta
           property="twitter:image"
-          content="https://ballerina.io/images/ballerina-for-integration-sm-banner.png"
+          content="https://ballerina.io/images/ballerina-generic-social-media-image-2023.png"
         />
       </Head>
 

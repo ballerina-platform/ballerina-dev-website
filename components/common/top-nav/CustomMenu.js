@@ -52,7 +52,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
-                                    <li className={styles.seeMoreMobile}><Link href="/usecases">See more</Link></li>
+                                    <li className={styles.seeMoreMobile}><Link href="/use-cases">See more</Link></li>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="case studies" className={styles.acItem}>
@@ -112,7 +112,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
-                                    <li className={styles.seeMore}><Link href="/usecases">See more</Link></li>
+                                    <li className={styles.seeMore}><Link href="/use-cases">See more</Link></li>
                                 </ul>
                             </div>
 

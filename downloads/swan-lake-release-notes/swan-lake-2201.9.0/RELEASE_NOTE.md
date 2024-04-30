@@ -593,6 +593,10 @@ public function main() returns error? {
 
 - Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
 
+#### `java.jms` package
+
+- Introduced revamped JMS protocol connector for Ballerina.
+
 ### Deprecations
 
 ### Bug fixes

@@ -63,7 +63,7 @@ ITM*D-10*58~
 ITM*K-80*250~
 ITM*T-46*28~
 ```
-If you already have existing X12,EDIFACT or ESL schema file you can convert it to the Ballerina schema  
+If you already have an existing X12, EDIFACT, or ESL schema file, you can convert it to the Ballerina schema using the EDI tool's [schema-conversion](#schema-conversion) capabilities.
 
 ## Code generation
 
@@ -73,7 +73,7 @@ The below command can be used to generate typed Ballerina records and parser fun
 $ bal edi codegen -i <input schema path> -o <output path>
 ```
 
-The above command generates all Ballerina records and parser functions required for working with data in the given EDI schema and writes those into the file specified in the `output path`. The generated parser function (i.e. `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from Ballerina code similar to accessing any other Ballerina record. Similarly, generated serialization function (i.e. `toEdiString(...)`) can serialize Generated Ballerina records into EDI text.
+The above command generates all Ballerina records and parser functions required for working with data in the given EDI schema and writes those into the file specified in the `output path`. The generated parser function (i.e. `fromEdiString(...)`) can read EDI text files into generated records, which can be accessed from Ballerina code similar to accessing any other Ballerina record. Similarly, the generated serialization function (i.e. `toEdiString(...)`) can serialize Generated Ballerina records into EDI text.
 
 ### `codegen` command options
 

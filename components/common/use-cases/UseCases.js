@@ -37,7 +37,7 @@ export default function UseCases(props) {
                                 <>
                                     {propsData.map((_, idx) => (
                                         <Col key={idx} style={{ display: "flex", flexFlow: "row wrap" }} >
-                                            <Link href={`/usecases/${_.slug}`} className={styles.wrapperLink}>
+                                            <Link href={`/use-cases/${_.slug}`} className={styles.wrapperLink}>
                                                 <Card className={`${styles.useCaseCard} mt-4`}>
                                                     <div className={styles.cardImgWrapper}>
                                                         <Card.Img variant="top" src={_.frontmatter.logo} />
@@ -50,7 +50,7 @@ export default function UseCases(props) {
                                                     </Card.Body>
                                                     <Card.Footer className={styles.footer}>
                                                         <div className={styles.cardLinks}>
-                                                            <a href={`/usecases/${_.slug}`} className={styles.cDownload}>
+                                                            <a href={`/use-cases/${_.slug}`} className={styles.cDownload}>
                                                                 Learn more
                                                             </a>
                                                         </div>

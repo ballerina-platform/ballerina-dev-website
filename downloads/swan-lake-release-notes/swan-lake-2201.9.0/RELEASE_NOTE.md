@@ -502,7 +502,7 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
     }
     ```
 
-- JSON prettify: JSON data can be prettified to improve readability.
+- Prettify JSON: JSON data can be prettified to improve readability.
 
     ```ballerina
     import ballerina/data.jsondata;

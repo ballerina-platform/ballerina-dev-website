@@ -743,7 +743,31 @@ $= string value = myClient->/root/name("input");
 $= future<int> result = start name();
 ```
 
-#### CLI
+#### Test Framework
+
+- The test framework now supports the parallel execution of tests as an experimental feature. To enable parallel test execution, simply use the `--parallel` flag with the `bal test` command.
+
+    ```bash
+    $ bal test --parallel
+    ```
+
+- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods. 
+
+    ```ballerina
+    // Sample HTTP Client call
+
+    http:Client jokes = check new ("https://api.chucknorris.io/jokes/");
+    json joke = check jokes->/random;
+    ```
+
+    ```ballerina
+    // Stub to return a specific value
+    jokes = test:mock(http:Client);
+    test:prepare(jokes)
+        .whenResource("::path")
+        .withPathParameters({path: ["random"]})
+        .thenReturn(<json>{});
+    ```
 
 #### EDI tool
     
@@ -903,14 +927,44 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.0+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug+is%3Aclosed)
+- [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+label%3AArea%2FTestFramework+milestone%3A2201.9.0)
 
 ## Ballerina packages updates
 
 ### New features
 
+- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file. 
+
+    ```toml
+    [[tool.openapi]]
+    id = "generate-delivery-client"
+    filePath = "delivery.yml"
+    options.mode = "client"
+    ```
+
 ### Improvements
 
+- The `provided` scope has been introduced for platform dependencies to prevent a certain platform library from being included in the BALA file. This scope is particularly useful when the license of the provider restricts the redistribution of the platform library.
+
+    ```toml
+    [[platform.java11.dependency]]
+    # Group ID of the Maven dependency.
+    groupId = "<group-id>"
+    # Artifact ID of the Maven dependency.
+    artifactId = "<artifact-id>"
+    # Version of the Maven dependency.
+    version = "<version>"
+    # Scope of the dependency.
+    scope = "provided"
+    ```
+
+- With Update 9, diagnostics issued by the dependency packages are hidden by default. These diagnostics can be printed to the console by passing the `--show-dependency-diagnostics` build option to the CLI command.
+
 ### Bug fixes
+
+To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of the repository below.
+
+- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FProjectAPI+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.9.0)
 
 ## Backward-incompatible changes
 

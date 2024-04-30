@@ -63,7 +63,7 @@ ITM*D-10*58~
 ITM*K-80*250~
 ITM*T-46*28~
 ```
-If you already have an existing X12, EDIFACT, or ESL schema file, you can convert it to the Ballerina schema using the EDI tool's [schema-conversion](#schema-conversion) capabilities.
+If you already have an existing X12, EDIFACT, or ESL schema file, you can convert it to the Ballerina EDI schema using the EDI tool's [schema-conversion](#schema-conversion) capabilities.
 
 ## Code generation
 

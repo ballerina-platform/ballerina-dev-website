@@ -66,7 +66,7 @@ public function main() {
     int result1 = <- w1 | w2;
     io:println(result1); // 2
 
-    // Alternate receive action waits until a message that is not an error is received. 
+    // Alternate receive action waits until a message that is not an error is received.
     // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
     int|error? result2 = <- w3 | w4;
     io:println(result2); // 3
@@ -193,7 +193,7 @@ xmlns "https://ballerina.io/" as ns;
 utils.bal
  ```ballerina
 // Previously resulted in a `redeclared symbol` compile-time error, now works as expected.
-xmlns "https://example.com/" as ns; 
+xmlns "https://example.com/" as ns;
 ```
 
 ### Bug fixes
@@ -287,7 +287,7 @@ This returns a node instance that represents the Ballerina runtime node. A node 
 
 The above APIs can be called via a Ballerina environment instance as follows.
 
-```java 
+```java
 import io.ballerina.runtime.api.Artifact;
 import io.ballerina.runtime.api.Environment;
 import io.ballerina.runtime.api.Node;
@@ -367,7 +367,7 @@ function createEmployee(int id, string name) {
     // Results in a compile-time error now since there is no default
     // value that can be used for `config`.
     Student & readonly s1 = {id, name};
-}   
+}
 ```
 
 #### Improvements to the usage of default values of record fields
@@ -422,7 +422,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `data.jsondata` package
 
-The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, and navigation.
+The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, navigation, and prettification.
 
 - JSON data projection: JSON data can be converted to a Ballerina record by specifying only the required fields from the JSON data. This is helpful when the requirement is to extract a specific subset of fields from JSON data with a large number of fields.
 
@@ -491,7 +491,7 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
         json titles = check jsondata:read(books, `$..title`);
         io:println(titles);
 
-        // Use a JSONPath expression to extract the list of published years for the 
+        // Use a JSONPath expression to extract the list of published years for the
         // books that have a price value of more than 80.
         json years = check jsondata:read(books, `$..[?(@.price > 80)].year`);
         io:println(years);
@@ -499,6 +499,43 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
         // Use a JSONPath expression to extract the total sum of the prices of the books.
         json sum = check jsondata:read(books, `$..price.sum()`);
         io:println(sum);
+    }
+    ```
+
+- JSON prettify: JSON data can be prettified to improve readability.
+
+    ```ballerina
+    import ballerina/data.jsondata;
+    import ballerina/io;
+
+    public function main() returns error? {
+        json books = [
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                price: 100,
+                year: 1925
+            },
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                price: 72.5,
+                year: 1960
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                price: 90,
+                year: 1949
+            }
+        ];
+
+        // Prettify JSON data using the `prettify` function with default indentation level.
+        string booksPrettified1 = check jsondata:prettify(books);
+        io:println(booksPrettified1);
+
+        // Prettify JSON data with a custom indentation level.
+        string booksPrettified2 = check jsondata:prettify(books, 2);
     }
     ```
 
@@ -561,9 +598,9 @@ public function main() returns error? {
 
 - Added support for the following annotations within the `persist.sql` package to facilitate entity mapping alongside additional SQL database features.
   - `@sql:Name` - Map an entity name to a specific table name and a field name to a specific column name.
-  - `@sql:Varchar` - Give a specific VARCHAR length. 
-  - `@sql:Char` - Give a specific CHAR length. 
-  - `@sql:Decimal` - Give specific DECIMAL precision and scale. 
+  - `@sql:Varchar` - Give a specific VARCHAR length.
+  - `@sql:Char` - Give a specific CHAR length.
+  - `@sql:Decimal` - Give specific DECIMAL precision and scale.
   - `@sql:Index` - Declare an index field.
   - `@sql:UniqueIndex` - Declare a unique index field.
   - `@sql:Relation` - Declare a relation field. This is used to define a foreign key relationship between two entities.
@@ -667,7 +704,7 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 
-#### `ibm.ibmmq` package 
+#### `ibm.ibmmq` package
 
 - Introduced support for connecting to IBM MQ server versions up to 9.3.
 
@@ -751,7 +788,7 @@ $= future<int> result = start name();
     $ bal test --parallel
     ```
 
-- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods. 
+- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods.
 
     ```ballerina
     // Sample HTTP Client call
@@ -770,28 +807,28 @@ $= future<int> result = start name();
     ```
 
 #### EDI tool
-    
+
  - Added support for EDIFACT to Ballerina schema conversion.
-  
+
   Users can now directly convert the EDIFACT schema to the Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
-  
+
   For example,
 
   `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
-  
+
 - Introduced support for field length constraints (min/max).
 
   This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
-    
+
   Overview of length constraints:
-  
+
     - Fixed-length: Fields must match the specified length `N`. If not, Ballerina will either pad the field with spaces or produce an error if the field exceeds `N`.
     - Range limits:
       - Minimum length: If a field is shorter than specified, an error is triggered.
       - Maximum length: Fields longer than allowed will also trigger an error.
-    
+
     For example,
-  
+
     ```json
     "fields": [
         {"tag": "DocumentNameCode", "length": 10},
@@ -800,7 +837,7 @@ $= future<int> result = start name();
         {"tag": "ResponseType", "length": {"min": 1, "max": 3}}
     ]
     ```
-  
+
 #### OpenAPI tool
 
 - Integrated OpenAPI client generation to the `bal build` command.
@@ -813,11 +850,11 @@ $= future<int> result = start name();
   filePath = "openapi.yaml"
   targetModule = "delivery"
   ```
-  
-- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details. 
-  
+
+- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details.
+
   For example,
-  
+
   `bal openapi add -i <yaml file> --mode client --id <tool config id>`
 
 - Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
@@ -825,7 +862,7 @@ $= future<int> result = start name();
 - Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
 - Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
 - Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
-  
+
   For example,
 
   `bal openapi -i <yaml file> --mode client --with-status-code-binding`
@@ -933,7 +970,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 ### New features
 
-- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file. 
+- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file.
 
     ```toml
     [[tool.openapi]]
@@ -996,9 +1033,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
             }
 
             var logger = isolated function () returns string {
-                // Now results in compile-time errors, 
-                // need to use a lock statement. 
-                return string `ID: '${self.id}', Name: '${self.name}'`; 
+                // Now results in compile-time errors,
+                // need to use a lock statement.
+                return string `ID: '${self.id}', Name: '${self.name}'`;
             };
             log:printDebug("Data updated", details = logger);
         }
@@ -1019,7 +1056,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     public function main() {
         xml x = xml `<item><name>Box</name></item>`;
 
-        // Previously evaluated to an empty XML sequence, now evaluates to 
+        // Previously evaluated to an empty XML sequence, now evaluates to
         // `<item><name>Box</name></item>`
         xml x1 = x.<item>;
 
@@ -1042,7 +1079,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
         // Previously evaluated to `
         // <type xmlns="http://example.com/">t</type>`,
-        // now evaluates to, 
+        // now evaluates to,
         // `<ns0:name xmlns="http://example.com/" xmlns:ns0="https://ballerina.io">ball</ns0:name>
         // <type xmlns="http://example.com/">t</type>`
         xml x2 = x1/<*>;
@@ -1066,7 +1103,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     ```ballerina
     type Doctor record {
         string name;
-        string category;    
+        string category;
     };
 
     function updateDoctorCategories(Doctor doctor, string[] categories) returns error? {
@@ -1147,8 +1184,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // under the License.
 
 
-    // this file contains implementaion of the agent code. 
-    // It includes functions for managing the ai client. 
+    // this file contains implementaion of the agent code.
+    // It includes functions for managing the ai client.
 
 
 
@@ -1190,8 +1227,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // specific language governing permissions and limitations
     // under the License.
 
-    // this file contains implementaion of the agent code. 
-    // It includes functions for managing the ai client. 
+    // this file contains implementaion of the agent code.
+    // It includes functions for managing the ai client.
 
     // module imports
     import agent;
@@ -1210,7 +1247,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     }
     ```
-  
+
 ### Runtime changes
 
 - To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
@@ -1219,7 +1256,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 #### `cloud` package
 
-- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
+- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`.
     ```toml
     [[cloud.secret.files]]
     file="resource."

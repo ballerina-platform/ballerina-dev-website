@@ -24,9 +24,9 @@ The tool supports three main usages, as follows:
 - [**Library generation**](#library-generation): Generates Ballerina records, parser functions, utility methods, and a REST connector for a given collection of EDI schemas and organizes those as a Ballerina library.
 - [**Schema conversion**](#schema-conversion): Convert various EDI schema formats to Ballerina EDI schema format.
 
-### Define EDI schema
+### Define the EDI schema
 
-Prior to utilizing the EDI Tools, it is crucial to define the structure of the EDI data meant for import. Developers have the option to utilize the [Ballerina EDI Schema Specification](https://github.com/ballerina-platform/module-ballerina-edi/blob/main/docs/specs/SchemaSpecification.md) for guidance. This specification outlines the essential components required to describe an EDI schema, encompassing attributes such as name, delimiters, segments, field definitions, components, sub-components, and additional configuration options.
+Prior to utilizing the EDI tools, it is crucial to define the structure of the EDI data meant for import. Developers have the option to utilize the [Ballerina EDI Schema Specification](https://github.com/ballerina-platform/module-ballerina-edi/blob/main/docs/specs/SchemaSpecification.md) for guidance. This specification outlines the essential components required to describe an EDI schema, encompassing attributes such as name, delimiters, segments, field definitions, components, sub-components, and additional configuration options.
 
 As an illustrative example, consider the following EDI schema definition for a _simple order_, assumed to be stored as "schema.json":
 
@@ -244,7 +244,7 @@ The generated Ballerina library will look like below:
        |--855.json
 ```
 
-As seen in the above project structure, code for each EDI schema is generated into a separate module, in order to prevent possible conflicts. Now it is possible to build the above project using the `bal pack` command and publish it into the central repository using the `bal push` command. Then any Ballerina project can import this package and use it to work with purchase order-related EDI files. An example of using this library for reading an 850 file and writing an 855 file is shown below:
+As seen in the above project structure, code for each EDI schema is generated into a separate module, to prevent possible conflicts. Now it is possible to build the above project using the `bal pack` command and publish it into the central repository using the `bal push` command. Then any Ballerina project can import this package and use it to work with purchase order-related EDI files. An example of using this library for reading an 850 file and writing an 855 file is shown below:
 
 ```ballerina
 import ballerina/io;
@@ -265,9 +265,9 @@ It is quite common for different trading partners to use variations of standard 
 
 #### Using generated EDI libraries as standalone REST services
 
-EDI libraries generated in the previous step can also be compiled to a jar file (using the `bal build` command) and executed (using the `bal run` command) as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservice environments where the EDI processing functionality can be deployed as a separate microservice.
+EDI libraries generated in the previous step can also be compiled into a jar file (using the `bal build` command) and executed (using the `bal run` command) as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservice environments where the EDI processing functionality can be deployed as a separate microservice.
 
-For example,the "citymart" library generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files.The convertion of X12 850 EDI text to JSON using the REST service is shown below:
+For example, the "citymart" library generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. The conversion of X12 850 EDI text to JSON using the REST service is shown below:
 
 ```
 $ curl --request POST \
@@ -373,7 +373,7 @@ $ bal edi convertEdifactSchema -v d03a -t ORDERS -o output/schema.json
 
 ### ESL to Ballerina EDI schema
 
-ESL, or Electronic Shelf Labeling, is a technology used in retail stores to display product pricing and information electronically. Instead of traditional paper price tags, ESL systems use digital displays that can be updated remotely, allowing retailers to change prices in real time and automate pricing strategies.
+ESL, or Electronic Shelf Labeling, is a technology used in retail stores to display product pricing and information electronically. Instead of traditional paper price tags, ESL systems use digital displays that can be updated remotely, allowing retailers to change prices in real-time and automate pricing strategies.
 
 The below command can be used to convert the ESL schema to the Ballerina EDI schema:
 

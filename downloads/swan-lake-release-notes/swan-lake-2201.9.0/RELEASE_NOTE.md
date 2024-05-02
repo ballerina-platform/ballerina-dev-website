@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 9 (2201.9.0)
 
-<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em>
+<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -169,6 +169,74 @@ function getIndex(int[] values, int value) returns int|error =>
 ```
 
 ### Improvements
+
+#### Support to construct immutable record values with record type-descriptors that have mutable default values
+
+It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
+
+```ballerina
+import ballerina/io;
+
+type Student record {|
+    int id;
+    string name;
+    // The inherent type of the default value expression is `int[]`.
+    int[] moduleCodes = [1001, 2001, 3010];
+    // The inherent type of the default value expression is `any[]`.
+    any[] config = getStudentConfig();
+|};
+
+function createEmployee(int id, string name, readonly & string[] config) {
+    // No longer panics at runtime, since an immutable value is set
+    // for the `moduleCodes` field.
+    Student & readonly s1 = {id, name, config};
+    io:println(s1.moduleCodes is readonly & int[]); // true
+}
+
+isolated function getStudentConfig() returns any[] {
+    return [];
+}
+```
+
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
+
+```ballerina
+function createEmployee(int id, string name) {
+    // Results in a compile-time error now since there is no default
+    // value that can be used for `config`.
+    Student & readonly s1 = {id, name};
+}
+```
+
+#### Improvements to the usage of default values of record fields
+
+Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
+
+```ballerina
+import ballerina/io;
+
+isolated int id = 1;
+
+type Data record {
+    int id = getId();
+};
+
+public function main() {
+    Data data = {"id": 10};
+    lock {
+        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
+    }
+}
+
+isolated function getId() returns int {
+    lock {
+        id = id + 1;
+        return id;
+    }
+}
+```
+
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
 
 #### Remove dependence on syntactic location for module-level XMLNS declarations
 
@@ -331,74 +399,6 @@ can be bound to the following Java method.
 public static void getResource(BObject client, BArray path, BArray args) {
 }
 ```
-
-#### Support to construct immutable record values with record type-descriptors that have mutable default values
-
-It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
-
-```ballerina
-import ballerina/io;
-
-type Student record {|
-    int id;
-    string name;
-    // The inherent type of the default value expression is `int[]`.
-    int[] moduleCodes = [1001, 2001, 3010];
-    // The inherent type of the default value expression is `any[]`.
-    any[] config = getStudentConfig();
-|};
-
-function createEmployee(int id, string name, readonly & string[] config) {
-    // No longer panics at runtime, since an immutable value is set
-    // for the `moduleCodes` field.
-    Student & readonly s1 = {id, name, config};
-    io:println(s1.moduleCodes is readonly & int[]); // true
-}
-
-isolated function getStudentConfig() returns any[] {
-    return [];
-}
-```
-
-If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
-
-```ballerina
-function createEmployee(int id, string name) {
-    // Results in a compile-time error now since there is no default
-    // value that can be used for `config`.
-    Student & readonly s1 = {id, name};
-}
-```
-
-#### Improvements to the usage of default values of record fields
-
-Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
-
-```ballerina
-import ballerina/io;
-
-isolated int id = 1;
-
-type Data record {
-    int id = getId();
-};
-
-public function main() {
-    Data data = {"id": 10};
-    lock {
-        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
-    }
-}
-
-isolated function getId() returns int {
-    lock {
-        id = id + 1;
-        return id;
-    }
-}
-```
-
-With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
 
 ### Bug fixes
 
@@ -626,10 +626,6 @@ public function main() returns error? {
 - Improved the GraphQL error responses to use aliases instead of field names in the `path` field.
 - Added support to report GraphQL specific diagnostics in the VS Code extension.
 
-#### `mysql` package
-
-- Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
-
 #### `java.jms` package
 
 - Revamped the connector according to Swan Lake standards.
@@ -638,7 +634,9 @@ public function main() returns error? {
 - Improved the documentation along with new examples.
 - Introduced Ballerina ActiveMQ driver to support integrations with Apache ActiveMQ broker.
 
-### Deprecations
+#### `mysql` package
+
+- Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
 
 ### Bug fixes
 
@@ -767,9 +765,9 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### Formatter
 
-##### Customize formatting
+- Support to customize formatting
 
-It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
+    It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
 
 #### Language Server
 
@@ -782,11 +780,11 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 - Added support for invoking actions directly from the shell prompt, as shown in the following examples.
 
-```ballerina
-$= string value = myClient->invoke("input");
-$= string value = myClient->/root/name("input");
-$= future<int> result = start name();
-```
+    ```ballerina
+    $= string value = myClient->invoke("input");
+    $= string value = myClient->/root/name("input");
+    $= future<int> result = start name();
+    ```
 
 #### Test Framework
 
@@ -816,13 +814,15 @@ $= future<int> result = start name();
 
 #### EDI tool
 
- - Added support for EDIFACT to Ballerina schema conversion.
+- Added support for EDIFACT to Ballerina schema conversion.
 
   Users can now directly convert the EDIFACT schema to the Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
 
   For example,
 
-  `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
+  ```bash
+  bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>
+  ```
 
 - Introduced support for field length constraints (min/max).
 
@@ -928,35 +928,35 @@ $= future<int> result = start name();
 
 #### Formatter
 
-##### Multiline function call formatting.
+- Improvement to multiline function call formatting.
 
-When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
+    When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
 
-Before formatting
+    Before formatting
 
-```ballerina
-addNumbers(numberOne,  numberTwo, numberThree,
-numberFour, numberFive, numberSix);
-```
+    ```ballerina
+    addNumbers(numberOne,  numberTwo, numberThree,
+    numberFour, numberFive, numberSix);
+    ```
 
-After formatting
+    After formatting
 
-```ballerina
-addNumbers(numberOne, numberTwo, numberThree,
-        numberFour, numberFive, numberSix);
-```
+    ```ballerina
+    addNumbers(numberOne, numberTwo, numberThree,
+            numberFour, numberFive, numberSix);
+    ```
 
-When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
+    When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
 
-```ballerina
-public function updateValues(int t1, int t2) {
-    update(t1, object {
-                   int i = 1;
-                   int y = 2;
-               },
-               t2);
-}
-```
+    ```ballerina
+    public function updateValues(int t1, int t2) {
+        update(t1, object {
+                       int i = 1;
+                       int y = 2;
+                   },
+                   t2);
+    }
+    ```
 
 #### Language Server
 

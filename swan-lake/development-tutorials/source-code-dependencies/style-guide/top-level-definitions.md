@@ -52,7 +52,7 @@ intro: The sections below include the coding conventions with respect to top-lev
 
 ## Constant declaration
 
-* Use the SCREAMING_SNAKE_CASE for constant names.
+* Use SCREAMING_SNAKE_CASE for constant names.
 
     **Example:**
     
@@ -66,7 +66,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     const MIN_AGE = 20;
     ```
 
-* It is recommended to define the constants without the type descriptor, unless the type descriptor is used as the inherent type.
+* The type descriptor can be omitted in a constant declaration unless the type descriptor is required to construct the value (e.g., provide defaults, provide expected types to determine the inherent type, etc.).
 
     **Example:**
     
@@ -80,7 +80,7 @@ intro: The sections below include the coding conventions with respect to top-lev
     const TAX_RATE = 0.15d;
     ```
 
-* Explicitly defining the type descriptor can enhance readability, particularly when the constant is defined with a compound expression. This practice provides clarity about the expected type.
+* Explicitly defining the type descriptor can enhance readability, particularly when the constant is defined with a compound expression.
 
     **Example:**
     

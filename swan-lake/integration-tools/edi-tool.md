@@ -28,7 +28,7 @@ The tool supports three main usages, as follows:
 
 Prior to utilizing the EDI tools, it is crucial to define the structure of the EDI data meant for import. Developers have the option to utilize the [Ballerina EDI Schema Specification](https://github.com/ballerina-platform/module-ballerina-edi/blob/main/docs/specs/SchemaSpecification.md) for guidance. This specification outlines the essential components required to describe an EDI schema, encompassing attributes such as name, delimiters, segments, field definitions, components, sub-components, and additional configuration options.
 
-As an illustrative example, consider the following EDI schema definition for a _simple order_, assumed to be stored as "schema.json":
+As an illustrative example, consider the following EDI schema definition for a `_simple order_`, assumed to be stored as `schema.json`:
 
 ```json
 {
@@ -51,9 +51,9 @@ As an illustrative example, consider the following EDI schema definition for a _
 }
 ```
 
-This schema can be employed to parse EDI documents featuring one HDR segment, mapped to the _header_, and any number of ITM segments, mapped to _items_. The HDR segment incorporates three _fields_, corresponding to _orderId_, _organization_, and _date_. Each ITM segment comprises two fields, mapped to _item_ and _quantity_.
+This schema can be employed to parse EDI documents featuring one HDR segment, mapped to the `header`, and any number of ITM segments, mapped to `items`. The HDR segment incorporates three `fields`, corresponding to `orderId`, `organization`, and `date`. Each ITM segment comprises two fields, mapped to `item` and `quantity`.
 
-Below is an example of an EDI document that can be parsed using the aforementioned schema. Let's assume that the following EDI information is saved in a file named 'sample.edi':
+Below is an example of an EDI document that can be parsed using the aforementioned schema. Let's assume that the following EDI information is saved in a file named `sample.edi`:
 
 ```
 HDR*ORDER_1201*ABC_Store*2008-01-01~
@@ -206,7 +206,7 @@ Let's assume that an organization named "CityMart" needs to work with X12 850, 8
        |--855.json
 ```
 
-Then the libgen command can be used to generate a Ballerina package as shown below:
+Then, the `libgen` command can be used to generate a Ballerina package as shown below:
 
 ```
 $ bal edi libgen -p citymart/porder -i CityMart/schemas -o CityMart/lib
@@ -267,7 +267,7 @@ It is quite common for different trading partners to use variations of standard 
 
 EDI libraries generated in the previous step can also be compiled into a jar file (using the `bal build` command) and executed (using the `bal run` command) as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservice environments where the EDI processing functionality can be deployed as a separate microservice.
 
-For example, the "citymart" package generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. The conversion of X12 850 EDI text to JSON using the REST service is shown below:
+For example, the citymart package generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. The conversion of X12 850 EDI text to JSON using the REST service is shown below:
 
 ```
 $ curl --request POST \
@@ -325,7 +325,7 @@ Instead of writing the Ballerina EDI schema from scratch, the Ballerina EDI tool
 
 ### X12 schema to the Ballerina EDI schema
 
-X12, short for ANSI ASC X12, is a standard for electronic data interchange (EDI) in the United States. It defines the structure and format of business documents such as purchase orders, invoices, and shipping notices, allowing for seamless communication between different computer systems. X12 standards cover a wide range of industries, including healthcare, finance, retail, and manufacturing.
+X12, short for ANSI ASC X12, is a standard for electronic data interchange (EDI) in the United States. It defines the structure and format of business documents such as `purchase orders`, `invoices`, and `shipping notices`, allowing for seamless communication between different computer systems. X12 standards cover a wide range of industries, including healthcare, finance, retail, and manufacturing.
 
 The below command can be used to convert the X12 schema to the Ballerina EDI schema:
 

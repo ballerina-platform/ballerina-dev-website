@@ -85,7 +85,7 @@ public function testGetRandomJoke() {
 
 Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing. 
 
->**Note:** Usage of this approach is applicable all the methods other than resources.
+This approach applies to all the methods other than resources.
 
 >**Note:** It is important to ensure that all methods of the object being tested are properly stubbed. 
 > If any method is called within the implementation that hasn't been stubbed, the test framework will generate an 
@@ -312,37 +312,50 @@ This test stubs the behavior of the below resource to return a specific value in
 3. Stubbing to return a specific value based on the method arguments
 4. Stubbing to return a specific value based on the path parameter and the method arguments
 
+Here, Precedence is given to more specific stubbing over more general stubbing when a call is made to the resource with a particular set of path parameters, arguments, or both.
+
 ```ballerina
 @test:Config {}
 function testWelcomeEmployee() {
     empClient = test:mock(EmpClient);
     // Stubbing to return a specific value in general
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").thenReturn("Stub_1");
+    test:prepare(empClient)
+        .whenResource("employee/welcome/:id")
+        .onMethod("get")
+        .thenReturn("Welcome..general stubbing");
 
-    // Stubbing to return a specific value on a specific path parameter
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: "path1"}).thenReturn("Stub_2");
+    // Stubbing to return a specific value on specific path parameter
+    test:prepare(empClient)
+        .whenResource("employee/welcome/:id")
+        .onMethod("get").withPathParameters({id: "emp014"})
+        .thenReturn("Welcome...path given stub");
 
-    // Stubbing to return a specific value on a specific method arguments
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withArguments("arg1", "arg2").thenReturn("Stub_3");
+    // Stubbing to return a specific value on specific method arguments
+    test:prepare(empClient)
+        .whenResource("employee/welcome/:id")
+        .onMethod("get").withArguments("vijay", "kumar")
+        .thenReturn("Welcome...arg given stub");
 
-    // Stubbing to return a specific value on a specific path parameter and method arguments
-    test:prepare(empClient).whenResource("employee/welcome/:id").onMethod("get").withPathParameters({id: "path1"}).withArguments("arg1", "arg2").thenReturn("Stub_4");
+    // Stubbing to return a specific value on specific path parameter and method arguments
+    test:prepare(empClient)
+        .whenResource("employee/welcome/:id")
+        .onMethod("get")
+        .withPathParameters({id: "emp014"})
+        .withArguments("vijay", "kumar").thenReturn("Welcome...more specific stub");
 
-    // Specific path parameter and method arguments should take precedence over general stubbing
-    string result = empClient->/employee/welcome/["path1"].get(firstName = "arg1", lastName = "arg2");
-    test:assertEquals(result, "Stub_4");
+    // As the arguments and the path match with the above stub specifically, 
+    // "Welcome...more specific stub" is returned from the stub
+    string result = empClient->/employee/welcome/["emp014"].get(firstName = "vijay", lastName = "kumar"); 
+    test:assertEquals(result, "Welcome...more specific stub"); 
 
-    // Specific method arguments should take precedence over general stubbing
-    result = empClient->/employee/welcome/["emp001"].get(firstName = "arg1", lastName = "arg2");
-    test:assertEquals(result, "Stub_3");
+    result = empClient->/employee/welcome/["emp001"].get(firstName = "vijay", lastName = "kumar");
+    test:assertEquals(result, "Welcome...arg given stub");
 
-    // Specific path parameter should take precedence over general stubbing
-    result = empClient->/employee/welcome/["path1"].get(firstName = "John", lastName = "Kibert");
-    test:assertEquals(result, "Stub_2");
+    result = empClient->/employee/welcome/["emp014"].get(firstName = "John", lastName = "Kibert");
+    test:assertEquals(result, "Welcome...path given stub");
 
-    // General stubbing should be used when no specific stubbing is available
     result = empClient->/employee/welcome/["emp001"].get(firstName = "John", lastName = "Kibert");
-    test:assertEquals(result, "Stub_1");
+    test:assertEquals(result, "Welcome..general stubbing");
 }
 ```
 

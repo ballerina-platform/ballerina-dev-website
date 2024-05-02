@@ -595,10 +595,10 @@ public function main() returns error? {
 
 #### `java.jms` package
 
-- Revamped Ballerina JMS protocol connector to the Swanlake standards.
-- Incorporate observability support for the Ballerina JMS connector.
-- Incorporate GraalVM native image support for the Ballerina JMS connector.
-- Improved the documentation of the Ballerina JMS protocol connector.
+- Revamped the connector according to Swan Lake standards.
+- Incorporated observability support.
+- Added support for GraalVM native image build.
+- Improved the documentation along with new examples.
 - Introduced Ballerina ActiveMQ driver to support integrations with Apache ActiveMQ broker.
 
 ### Deprecations

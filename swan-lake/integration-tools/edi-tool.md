@@ -182,7 +182,7 @@ The below command can be used to generate Ballerina records, parser and util fun
 $ bal edi libgen -p <package name> -i <input schema folder> -o <output folder>
 ```
 
-The Ballerina package will be generated in the output folder. This package can be built and published by issuing "bal pack" and "bal push" commands from the output folder. Then the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records. 
+The Ballerina package will be generated in the output folder. This package can be built and published by issuing `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records. 
 
 ### `libgen` command options
 

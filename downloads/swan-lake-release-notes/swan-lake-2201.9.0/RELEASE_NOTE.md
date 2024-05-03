@@ -593,14 +593,6 @@ public function main() returns error? {
 
 - Specified SSL as the preferred option when users provide options without SSL configuration. Additionally, introduced support for explicitly disabling SSL.
 
-#### `java.jms` package
-
-- Revamped the connector according to Swan Lake standards.
-- Incorporated observability support.
-- Added support for GraalVM native image build.
-- Improved the documentation along with new examples.
-- Introduced Ballerina ActiveMQ driver to support integrations with Apache ActiveMQ broker.
-
 ### Deprecations
 
 ### Bug fixes
@@ -678,6 +670,14 @@ All listed connectors have been released under new major versions, featuring sig
 #### `ibm.ibmmq` package 
 
 - Introduced support for connecting to IBM MQ server versions up to 9.3.
+
+#### `java.jms` package
+
+- Revamped the connector according to Swan Lake standards.
+- Incorporated observability support.
+- Added support for GraalVM native image build.
+- Improved the documentation along with new examples.
+- Introduced Ballerina ActiveMQ driver to support integrations with Apache ActiveMQ broker.
 
 #### `mongodb` package
 

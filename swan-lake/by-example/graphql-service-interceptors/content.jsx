@@ -26,7 +26,7 @@ readonly service class LogInterceptor {
         log:printInfo(string \`Field "\${fieldName}" execution started!\`);
 
         // The \`context.resolve()\` function can be used to invoke the next interceptor. If all the
-        // interceptors were executed, and it invokes the actual resolver function. The function
+        // interceptors were executed, then it invokes the actual resolver function. The function
         // returns an \`anydata\` type value that includes the execution result of the next
         // interceptor or the actual resolver. To call the \`context.resolve()\` function, the
         // \`graphql:Field\` value should be provided as the argument.

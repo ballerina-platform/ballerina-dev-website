@@ -300,8 +300,8 @@ export function KafkaConsumerSasl({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Consume message"
-            href="/learn/by-example/rabbitmq-consumer"
+            title="Send/Receive"
+            href="/learn/by-example/soap-client-send-receive"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -311,7 +311,7 @@ export function KafkaConsumerSasl({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Consume message
+                  Send/Receive
                 </span>
               </div>
               <svg

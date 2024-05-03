@@ -1,0 +1,20 @@
+{
+  "title": "SSL/TLS",
+  "description": "This example demonstrates applying HTTP security configurations for a Ballerina SOAP client.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "soap",
+    "http",
+    "client",
+    "security",
+    "ssl",
+    "tls"
+  ],
+  "permalink": "/learn/by-example/soap-client-security-ssl-tsl",
+  "active": "soap-client-security-ssl-tsl",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/soap-client-security-ssl-tsl",
+    "/swan-lake/learn/by-example/soap-client-security-ssl-tsl.html"
+  ]
+}

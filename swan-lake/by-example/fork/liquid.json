@@ -1,0 +1,18 @@
+{
+  "title": "Fork",
+  "description": "This BBE demonstrates how the `fork` statement can be used for concurrency.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "bbe",
+    "fork",
+    "concurrency",
+    "named workers"
+  ],
+  "permalink": "/learn/by-example/fork",
+  "active": "fork",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/fork",
+    "/swan-lake/learn/by-example/fork.html"
+  ]
+}

@@ -117,54 +117,16 @@ function mapDataProvider() returns map<[int, int, string]>|error {
 
 The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
-<table class="table cCodeTable" >
-    <tr>
-       <th class="cDescription">Assertion function</th>
-       <th class="cCodeCol">Description</th>
-    </tr>
-    <tr>
-       <td><code>assertTrue(boolean expression, string message)</code></td>
-       <td>
-          Asserts that the expression is true with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertFalse(boolean expression, string message)</code></td>
-       <td>
-          Asserts that the expression is false with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertEquals(any|error actual, anydata expected, string message)</code></td>
-       <td>
-          Asserts that the actual value is equal to the expected value with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertNotEquals(any actual, anydata expected, string message)</code></td>
-       <td>
-          Asserts that the actual value is not equal to the expected value with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertExactEquals(any|error actual, any|error expected, string message)</code></td>
-       <td>
-          Asserts that the actual entity is exactly equal to the expected entity with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertNotExactEquals(any|error actual, any|error expected, string message)</code></td>
-       <td>
-          Asserts that the actual entity is not exactly equal to the expected entity with an optional message.
-       </td>
-    </tr>
-    <tr>
-       <td><code>assertFail(string message)</code></td>
-       <td>
-           Fails the test. This is useful to fail a test based on a check for a condition while it is in execution.
-       </td>
-    </tr>
-</table>
+| Assertion function                                                                    | Description                                                                                              |
+|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `assertTrue(boolean expression, string message)`                                      | Asserts that the expression is true with an optional message.                                            |
+| `assertFalse(boolean expression, string message)`                                     | Asserts that the expression is false with an optional message.                                           |
+| `assertEquals(any\|error actual, anydata expected, string message)`                   | Asserts that the actual value is equal to the expected value with an optional message.                   |
+| `assertNotEquals(any actual, anydata expected, string message)`                       | Asserts that the actual value is not equal to the expected value with an optional message.               |
+| `assertExactEquals(any\|error actual, any\|error expected, string message)`           | Asserts that the actual entity is exactly equal to the expected entity with an optional message.         |
+| `assertNotExactEquals(any\|error actual, any\|error expected, string message)`        | Asserts that the actual entity is not exactly equal to the expected entity with an optional message.     |
+| `assertFail(string message)`                                                          | Fails the test. This is useful to fail a test based on a check for a condition while it is in execution. |
+
 
 ### Troubleshoot assertion failures when using `assertEquals`
 

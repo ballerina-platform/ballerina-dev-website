@@ -11,20 +11,20 @@
 }
 
 .learnMore {
-    display: block;
     transition: none !important;
     font-size: 18px;
     font-weight: 400;
     background-color: #20b6b0;
     color: #ffffff !important;
-    padding: 10px 20px 10px 60px;
+    padding: 13px 20px 10px 60px;
     text-decoration: none;
     min-height: 60px;
     line-height: 35px;
     background-image: url('/images/arrow-right-white.svg');
     background-repeat: no-repeat;
-    background-position: left 20px top 14px;
-    width: fit-content;
+    background-position: left 20px top 16px;
+    /* width: 100%; */
+    margin-bottom: 10px;
 }
 
 .learnMore:hover {
@@ -35,10 +35,20 @@
     .icon {
         padding-left: 0;
     }
-  }
-  
-  @media (min-width: 768px) {
+    .learnMore {
+        display: block;
+        width: 100%;
+    }
+    
+}
+
+@media (min-width: 768px) {
     .icon {
         padding-left: 1rem;
     }
-  }
+    .learnMore {
+        display: inline-block;
+        width: 200px;
+        margin-right: 20px;
+    }
+}

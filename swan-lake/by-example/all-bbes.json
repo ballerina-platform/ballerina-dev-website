@@ -1031,6 +1031,27 @@
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record",
+        "url": "json-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSON to record with projection",
+        "url": "json-to-record-with-projection",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "JSONPath expressions",
+        "url": "jsonpath-expressions",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
       }
     ]
   },
@@ -1135,6 +1156,20 @@
       {
         "name": "XMLNS declarations",
         "url": "xmlns-declarations",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record",
+        "url": "xml-to-record",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "XML to record with projection",
+        "url": "xml-to-record-with-projection",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true
@@ -1466,6 +1501,13 @@
         "url": "flush",
         "verifyBuild": true,
         "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Fork",
+        "url": "fork",
+        "verifyBuild": true,
+        "verifyOutput": false,
         "isLearnByExample": true
       }
     ]
@@ -3485,6 +3527,52 @@
     ]
   },
   {
+    "title": "SOAP client",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "Send/Receive",
+        "url": "soap-client-send-receive",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "SOAP client security",
+    "column": 2,
+    "category": "Network libraries",
+    "samples": [
+      {
+        "name": "SSL/TLS",
+        "url": "soap-client-security-ssl-tsl",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Inbound Security",
+        "url": "soap-client-security-inbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      },
+      {
+        "name": "Outbound Security",
+        "url": "soap-client-security-outbound-security-config",
+        "verifyBuild": true,
+        "verifyOutput": false,
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
     "title": "RabbitMQ service",
     "column": 3,
     "category": "Network libraries",
@@ -4118,6 +4206,21 @@
         "verifyBuild": false,
         "verifyOutput": false,
         "disableVerificationReason": "Includes ballerinax components",
+        "disablePlayground": true,
+        "isLearnByExample": false
+      }
+    ]
+  },
+  {
+    "title": "Avro",
+    "column": 0,
+    "category": "Common libraries",
+    "samples": [
+      {
+        "name": "Serialization/Deserialization",
+        "url": "avro-serdes",
+        "verifyBuild": true,
+        "verifyOutput": true,
         "disablePlayground": true,
         "isLearnByExample": false
       }

@@ -5,50 +5,28 @@ import { copyToClipboard, extractOutput } from "../../../utils/bbe";
 import Link from "next/link";
 
 export const codeSnippetData = [
-  `import ballerina/ftp;
-import ballerina/io;
+  `import ballerina/soap.soap12;
 
-// Creates the listener with the connection parameters and the protocol-related
-// configuration. The listener listens to the files
-// with the given file name pattern located in the specified path.
-listener ftp:Listener fileListener = new ({
-    protocol: ftp:SFTP,
-    host: "sftp.example.com",
-    auth: {
-        credentials: {
-            username: "user1",
-            password: "pass456"
-        },
-        privateKey: {
-            path: "../resource/path/to/private.key",
-            password: "keyPass123"
+public function main() returns error? {
+    soap12:Client soapClient = check new ("https://soap-endpoint.com?wsdl",
+        {
+            httpConfig: {
+                secureSocket: {
+                    cert: "../resource/path/to/public.crt"
+                }
+            }
         }
-    },
-    port: 22,
-    path: "/home/in",
-    fileNamePattern: "(.*).txt"
-});
+    );
 
-// One or many services can listen to the SFTP listener for the
-// periodically-polled file related events.
-service on fileListener {
-
-    // When a file event is successfully received, the \`onFileChange\` method is called.
-    remote function onFileChange(ftp:WatchEvent event, ftp:Caller caller) returns error? {
-        // \`addedFiles\` contains the paths of the newly-added files/directories
-        // after the last polling was called.
-        foreach ftp:FileInfo addedFile in event.addedFiles {
-            // The \`ftp:Caller\` can be used to append another file to the added files in the server.
-            stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.pathDecoded, fileStream);
-            check fileStream.close();
-        }
-    }
+    xml body = xml \`<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+                        <soap:Body></soap:Body>
+                    </soap:Envelope>\`;
+    check soapClient->sendOnly(body);
 }
 `,
 ];
 
-export function SftpServiceSendFile({ codeSnippets }) {
+export function SoapClientSecuritySslTsl({ codeSnippets }) {
   const [codeClick1, updateCodeClick1] = useState(false);
 
   const [outputClick1, updateOutputClick1] = useState(false);
@@ -58,19 +36,15 @@ export function SftpServiceSendFile({ codeSnippets }) {
 
   return (
     <Container className="bbeBody d-flex flex-column h-100">
-      <h1>SFTP service - Send file</h1>
+      <h1>SOAP client security - SSL/TLS</h1>
 
       <p>
-        The <code>ftp:Service</code> connects to a given SFTP server via the{" "}
-        <code>ftp:Listener</code>. Once connected, service starts receiving
-        events every time a file is deleted or added to the server. To take
-        action for these events <code>ftp:Caller</code> is used. The{" "}
-        <code>ftp:Caller</code> can be specified as a parameter of{" "}
-        <code>onFileChange</code> remote method. The <code>ftp:Caller</code>{" "}
-        allows interacting with the server via <code>get</code>,{" "}
-        <code>append</code>, <code>delete</code>, etc remote methods. Use this
-        to listen to file changes occurring in a remote file system and take
-        action for those changes.
+        The <code>soap</code> client can be configured to apply HTTP security
+        configurations using the <code>httpConfig</code> parameter. SSL
+        certificate can be applied using the <code>secureSocket</code> field to
+        establish an HTTPS connection between the client and the server. The
+        SOAP client supports all client security configurations supported by the
+        HTTP client.
       </p>
 
       <Row
@@ -79,31 +53,9 @@ export function SftpServiceSendFile({ codeSnippets }) {
         style={{ marginLeft: "0px" }}
       >
         <Col className="d-flex align-items-start" sm={12}>
-          <button
-            className="bg-transparent border-0 m-0 p-2 ms-auto"
-            onClick={() => {
-              window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/sftp-service-send-file",
-                "_blank",
-              );
-            }}
-            aria-label="Edit on Github"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="#000"
-              className="bi bi-github"
-              viewBox="0 0 16 16"
-            >
-              <title>Edit on Github</title>
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-            </svg>
-          </button>
           {codeClick1 ? (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               disabled
               aria-label="Copy to Clipboard Check"
             >
@@ -121,7 +73,7 @@ export function SftpServiceSendFile({ codeSnippets }) {
             </button>
           ) : (
             <button
-              className="bg-transparent border-0 m-0 p-2"
+              className="bg-transparent border-0 m-0 p-2 ms-auto"
               onClick={() => {
                 updateCodeClick1(true);
                 copyToClipboard(codeSnippetData[0]);
@@ -157,24 +109,7 @@ export function SftpServiceSendFile({ codeSnippets }) {
         </Col>
       </Row>
 
-      <h2>Prerequisites</h2>
-
-      <ul style={{ marginLeft: "0px" }}>
-        <li>
-          <span>&#8226;&nbsp;</span>
-          <span>
-            Start a{" "}
-            <a href="https://hub.docker.com/r/atmoz/sftp/">SFTP server</a>{" "}
-            instance.
-          </span>
-        </li>
-      </ul>
-
-      <p>
-        Run the program by executing the following command. Each newly added
-        file in the SFTP server will be appended with the content in the
-        appending file.
-      </p>
+      <p>Run the program by executing the following command.</p>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -229,21 +164,11 @@ export function SftpServiceSendFile({ codeSnippets }) {
         <Col sm={12}>
           <pre ref={ref1}>
             <code className="d-flex flex-column">
-              <span>{`\$ bal run sftp_service_read_write.bal`}</span>
+              <span>{`\$ bal run soap_client_security_ssl_tls.bal`}</span>
             </code>
           </pre>
         </Col>
       </Row>
-
-      <blockquote>
-        <p>
-          <strong>Tip:</strong> Run the SFTP client given in the{" "}
-          <a href="/learn/by-example/sftp-client-send-file">
-            SFTP client - Send file
-          </a>{" "}
-          example to put a file in the SFTP server.
-        </p>
-      </blockquote>
 
       <h2>Related links</h2>
 
@@ -251,8 +176,8 @@ export function SftpServiceSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="https://lib.ballerina.io/ballerina/ftp/latest#Caller">
-              <code>ftp:Caller</code> client object - API documentation
+            <a href="https://central.ballerina.io/ballerina/soap/">
+              <code>soap</code> module - API documentation
             </a>
           </span>
         </li>
@@ -261,8 +186,18 @@ export function SftpServiceSendFile({ codeSnippets }) {
         <li>
           <span>&#8226;&nbsp;</span>
           <span>
-            <a href="/spec/ftp/#52-functions">
-              <code>ftp:Caller</code> functions - Specification
+            <a href="https://ballerina.io/spec/http/#2411-security">
+              HTTP client security - Specification
+            </a>
+          </span>
+        </li>
+      </ul>
+      <ul style={{ marginLeft: "0px" }} class="relatedLinks">
+        <li>
+          <span>&#8226;&nbsp;</span>
+          <span>
+            <a href="/spec/soap">
+              <code>soap</code> - Specification
             </a>
           </span>
         </li>
@@ -272,8 +207,8 @@ export function SftpServiceSendFile({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/sftp-service-receive-file"
+            title="Send/Receive"
+            href="/learn/by-example/soap-client-send-receive"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -300,7 +235,7 @@ export function SftpServiceSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Send/Receive
                 </span>
               </div>
             </div>
@@ -308,8 +243,8 @@ export function SftpServiceSendFile({ codeSnippets }) {
         </Col>
         <Col sm={6}>
           <Link
-            title="Receive file"
-            href="/learn/by-example/sftp-client-receive-file"
+            title="Inbound Security"
+            href="/learn/by-example/soap-client-security-inbound-security-config"
           >
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
@@ -319,7 +254,7 @@ export function SftpServiceSendFile({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Receive file
+                  Inbound Security
                 </span>
               </div>
               <svg

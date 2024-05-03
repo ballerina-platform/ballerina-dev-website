@@ -1,6 +1,57 @@
 {
     "events": [
         {
+            "date": "May 2, 2024",
+            "expire": "2024-05-03T00:00:00.0000-00:00",
+            "type": "Tech talk",
+            "university": "Sabaragamuwa University of Sri Lanka",
+            "faculty": "Faculty of Computing",
+            "title": "Ballerina language for Seamless Integration",
+            "location": "Virtual",
+            "presenters": [
+                {
+                    "name": "Heshan Padmasiri",
+                    "twitter": "https://twitter.com/HPadmasiri"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "April 29, 2024",
+            "expire": "2024-04-30T00:00:00.0000-00:00",
+            "type": "Lecture",
+            "university": "University of Moratuwa",
+            "faculty": "Department of Computer Science & Engineering",
+            "title": "Modern Compiler Trends: Insights from the Ballerina Compiler",
+            "location": "Moratuwa, Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Hasitha Aravinda",
+                    "twitter": "https://twitter.com/HasithaAravinda"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
+            "date": "April 22, 2024",
+            "expire": "2024-04-23T00:00:00.0000-00:00",
+            "type": "Lecture",
+            "university": "University of Moratuwa",
+            "faculty": "Department of Computer Science & Engineering",
+            "title": "Code Generation and Intermediate Representation in Ballerina Compiler",
+            "location": "Moratuwa, Sri Lanka",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "twitter": "https://twitter.com/manurangaperera"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "Mar 28, 2024",
             "expire": "2024-03-29T00:00:00.0000-00:00",
             "type": "Community lecture",

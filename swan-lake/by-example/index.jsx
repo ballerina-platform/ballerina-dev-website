@@ -500,6 +500,18 @@ import {
   codeSnippetData as JsonNumbersCodeSnippetData,
 } from "./json-numbers/content.jsx";
 import {
+  JsonToRecord,
+  codeSnippetData as JsonToRecordCodeSnippetData,
+} from "./json-to-record/content.jsx";
+import {
+  JsonToRecordWithProjection,
+  codeSnippetData as JsonToRecordWithProjectionCodeSnippetData,
+} from "./json-to-record-with-projection/content.jsx";
+import {
+  JsonpathExpressions,
+  codeSnippetData as JsonpathExpressionsCodeSnippetData,
+} from "./jsonpath-expressions/content.jsx";
+import {
   RawTemplates,
   codeSnippetData as RawTemplatesCodeSnippetData,
 } from "./raw-templates/content.jsx";
@@ -551,6 +563,14 @@ import {
   XmlnsDeclarations,
   codeSnippetData as XmlnsDeclarationsCodeSnippetData,
 } from "./xmlns-declarations/content.jsx";
+import {
+  XmlToRecord,
+  codeSnippetData as XmlToRecordCodeSnippetData,
+} from "./xml-to-record/content.jsx";
+import {
+  XmlToRecordWithProjection,
+  codeSnippetData as XmlToRecordWithProjectionCodeSnippetData,
+} from "./xml-to-record-with-projection/content.jsx";
 import {
   Documentation,
   codeSnippetData as DocumentationCodeSnippetData,
@@ -703,6 +723,10 @@ import {
   Flush,
   codeSnippetData as FlushCodeSnippetData,
 } from "./flush/content.jsx";
+import {
+  Fork,
+  codeSnippetData as ForkCodeSnippetData,
+} from "./fork/content.jsx";
 import {
   TransactionStatement,
   codeSnippetData as TransactionStatementCodeSnippetData,
@@ -1576,6 +1600,22 @@ import {
   codeSnippetData as KafkaConsumerSaslCodeSnippetData,
 } from "./kafka-consumer-sasl/content.jsx";
 import {
+  SoapClientSendReceive,
+  codeSnippetData as SoapClientSendReceiveCodeSnippetData,
+} from "./soap-client-send-receive/content.jsx";
+import {
+  SoapClientSecuritySslTsl,
+  codeSnippetData as SoapClientSecuritySslTslCodeSnippetData,
+} from "./soap-client-security-ssl-tsl/content.jsx";
+import {
+  SoapClientSecurityInboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-inbound-security-config/content.jsx";
+import {
+  SoapClientSecurityOutboundSecurityConfig,
+  codeSnippetData as SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
+} from "./soap-client-security-outbound-security-config/content.jsx";
+import {
   RabbitmqConsumer,
   codeSnippetData as RabbitmqConsumerCodeSnippetData,
 } from "./rabbitmq-consumer/content.jsx";
@@ -1779,6 +1819,10 @@ import {
   MysqlCallStoredProcedures,
   codeSnippetData as MysqlCallStoredProceduresCodeSnippetData,
 } from "./mysql-call-stored-procedures/content.jsx";
+import {
+  AvroSerdes,
+  codeSnippetData as AvroSerdesCodeSnippetData,
+} from "./avro-serdes/content.jsx";
 import {
   IoBytes,
   codeSnippetData as IoBytesCodeSnippetData,
@@ -2265,6 +2309,12 @@ const BBEs = {
   ResourceMethodTypingCodeSnippetData,
   JsonNumbers,
   JsonNumbersCodeSnippetData,
+  JsonToRecord,
+  JsonToRecordCodeSnippetData,
+  JsonToRecordWithProjection,
+  JsonToRecordWithProjectionCodeSnippetData,
+  JsonpathExpressions,
+  JsonpathExpressionsCodeSnippetData,
   RawTemplates,
   RawTemplatesCodeSnippetData,
   BacktickTemplates,
@@ -2291,6 +2341,10 @@ const BBEs = {
   XmlNamespacesCodeSnippetData,
   XmlnsDeclarations,
   XmlnsDeclarationsCodeSnippetData,
+  XmlToRecord,
+  XmlToRecordCodeSnippetData,
+  XmlToRecordWithProjection,
+  XmlToRecordWithProjectionCodeSnippetData,
   Documentation,
   DocumentationCodeSnippetData,
   Annotations,
@@ -2367,6 +2421,8 @@ const BBEs = {
   AsynchronizeMessagePassingCodeSnippetData,
   Flush,
   FlushCodeSnippetData,
+  Fork,
+  ForkCodeSnippetData,
   TransactionStatement,
   TransactionStatementCodeSnippetData,
   CheckSemantics,
@@ -2803,6 +2859,14 @@ const BBEs = {
   KafkaConsumerSslCodeSnippetData,
   KafkaConsumerSasl,
   KafkaConsumerSaslCodeSnippetData,
+  SoapClientSendReceive,
+  SoapClientSendReceiveCodeSnippetData,
+  SoapClientSecuritySslTsl,
+  SoapClientSecuritySslTslCodeSnippetData,
+  SoapClientSecurityInboundSecurityConfig,
+  SoapClientSecurityInboundSecurityConfigCodeSnippetData,
+  SoapClientSecurityOutboundSecurityConfig,
+  SoapClientSecurityOutboundSecurityConfigCodeSnippetData,
   RabbitmqConsumer,
   RabbitmqConsumerCodeSnippetData,
   RabbitmqConsumerWithClientAcknowledgement,
@@ -2905,6 +2969,8 @@ const BBEs = {
   MysqlAtomicTransactionCodeSnippetData,
   MysqlCallStoredProcedures,
   MysqlCallStoredProceduresCodeSnippetData,
+  AvroSerdes,
+  AvroSerdesCodeSnippetData,
   IoBytes,
   IoBytesCodeSnippetData,
   IoStrings,

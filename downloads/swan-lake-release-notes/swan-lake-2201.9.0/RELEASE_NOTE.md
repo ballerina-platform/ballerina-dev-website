@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 9 (2201.9.0)
 
-<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2023R1 version of the Language Specification.</em>
+<em> Swan Lake Update 9 (2201.9.0) is the ninth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -66,7 +66,7 @@ public function main() {
     int result1 = <- w1 | w2;
     io:println(result1); // 2
 
-    // Alternate receive action waits until a message that is not an error is received. 
+    // Alternate receive action waits until a message that is not an error is received.
     // Since `w3` returns an error, it waits further and sets the value that is received from `w4`.
     int|error? result2 = <- w3 | w4;
     io:println(result2); // 3
@@ -170,6 +170,74 @@ function getIndex(int[] values, int value) returns int|error =>
 
 ### Improvements
 
+#### Support to construct immutable record values with record type-descriptors that have mutable default values
+
+It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
+
+```ballerina
+import ballerina/io;
+
+type Student record {|
+    int id;
+    string name;
+    // The inherent type of the default value expression is `int[]`.
+    int[] moduleCodes = [1001, 2001, 3010];
+    // The inherent type of the default value expression is `any[]`.
+    any[] config = getStudentConfig();
+|};
+
+function createEmployee(int id, string name, readonly & string[] config) {
+    // No longer panics at runtime, since an immutable value is set
+    // for the `moduleCodes` field.
+    Student & readonly s1 = {id, name, config};
+    io:println(s1.moduleCodes is readonly & int[]); // true
+}
+
+isolated function getStudentConfig() returns any[] {
+    return [];
+}
+```
+
+If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
+
+```ballerina
+function createEmployee(int id, string name) {
+    // Results in a compile-time error now since there is no default
+    // value that can be used for `config`.
+    Student & readonly s1 = {id, name};
+}
+```
+
+#### Improvements to the usage of default values of record fields
+
+Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
+
+```ballerina
+import ballerina/io;
+
+isolated int id = 1;
+
+type Data record {
+    int id = getId();
+};
+
+public function main() {
+    Data data = {"id": 10};
+    lock {
+        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
+    }
+}
+
+isolated function getId() returns int {
+    lock {
+        id = id + 1;
+        return id;
+    }
+}
+```
+
+With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
+
 #### Remove dependence on syntactic location for module-level XMLNS declarations
 
 It is now possible for expressions to refer to module-level XML namespaces declarations that are declared later in the code.
@@ -193,7 +261,7 @@ xmlns "https://ballerina.io/" as ns;
 utils.bal
  ```ballerina
 // Previously resulted in a `redeclared symbol` compile-time error, now works as expected.
-xmlns "https://example.com/" as ns; 
+xmlns "https://example.com/" as ns;
 ```
 
 ### Bug fixes
@@ -287,7 +355,7 @@ This returns a node instance that represents the Ballerina runtime node. A node 
 
 The above APIs can be called via a Ballerina environment instance as follows.
 
-```java 
+```java
 import io.ballerina.runtime.api.Artifact;
 import io.ballerina.runtime.api.Environment;
 import io.ballerina.runtime.api.Node;
@@ -332,74 +400,6 @@ public static void getResource(BObject client, BArray path, BArray args) {
 }
 ```
 
-#### Support to construct immutable record values with record type-descriptors that have mutable default values
-
-It is now possible to use record type-descriptors with mutable default values when constructing immutable record values, as long as the default value belongs to `lang.value:Cloneable`. When used in a context that requires an immutable value, the default value will be wrapped in a `value:cloneReadOnly` call to produce an immutable value.
-
-```ballerina
-import ballerina/io;
-
-type Student record {|
-    int id;
-    string name;
-    // The inherent type of the default value expression is `int[]`.
-    int[] moduleCodes = [1001, 2001, 3010];
-    // The inherent type of the default value expression is `any[]`.
-    any[] config = getStudentConfig();
-|};
-
-function createEmployee(int id, string name, readonly & string[] config) {
-    // No longer panics at runtime, since an immutable value is set
-    // for the `moduleCodes` field.
-    Student & readonly s1 = {id, name, config};
-    io:println(s1.moduleCodes is readonly & int[]); // true
-}
-
-isolated function getStudentConfig() returns any[] {
-    return [];
-}
-```
-
-If the default value does not belong to `value:Cloneable`, and therefore, an immutable value cannot be created by calling `value:cloneReadOnly`, the compiler requires specifying a value for such a field (i.e., the default value will not be used).
-
-```ballerina
-function createEmployee(int id, string name) {
-    // Results in a compile-time error now since there is no default
-    // value that can be used for `config`.
-    Student & readonly s1 = {id, name};
-}   
-```
-
-#### Improvements to the usage of default values of record fields
-
-Now, the default value of a record is evaluated only if a value is not provided for the specific field in the mapping constructor.
-
-```ballerina
-import ballerina/io;
-
-isolated int id = 1;
-
-type Data record {
-    int id = getId();
-};
-
-public function main() {
-    Data data = {"id": 10};
-    lock {
-        io:println(id); // Prints 1 since it is `getId()` is not evaluated.
-    }
-}
-
-isolated function getId() returns int {
-    lock {
-        id = id + 1;
-        return id;
-    }
-}
-```
-
-With these improvements, with record type inclusion, the default value from an included record will not be used if the including record overrides the field.
-
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
@@ -422,7 +422,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `data.jsondata` package
 
-The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, and navigation.
+The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) package has been introduced to support JSON data conversions, data projection, navigation, and prettification.
 
 - JSON data projection: JSON data can be converted to a Ballerina record by specifying only the required fields from the JSON data. This is helpful when the requirement is to extract a specific subset of fields from JSON data with a large number of fields.
 
@@ -491,7 +491,7 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
         json titles = check jsondata:read(books, `$..title`);
         io:println(titles);
 
-        // Use a JSONPath expression to extract the list of published years for the 
+        // Use a JSONPath expression to extract the list of published years for the
         // books that have a price value of more than 80.
         json years = check jsondata:read(books, `$..[?(@.price > 80)].year`);
         io:println(years);
@@ -499,6 +499,43 @@ The [`data.jsondata`](https://lib.ballerina.io/ballerina/data.jsondata/latest/) 
         // Use a JSONPath expression to extract the total sum of the prices of the books.
         json sum = check jsondata:read(books, `$..price.sum()`);
         io:println(sum);
+    }
+    ```
+
+- Prettify JSON: JSON data can be prettified to improve readability.
+
+    ```ballerina
+    import ballerina/data.jsondata;
+    import ballerina/io;
+
+    public function main() returns error? {
+        json books = [
+            {
+                title: "The Great Gatsby",
+                author: "F. Scott Fitzgerald",
+                price: 100,
+                year: 1925
+            },
+            {
+                title: "To Kill a Mockingbird",
+                author: "Harper Lee",
+                price: 72.5,
+                year: 1960
+            },
+            {
+                title: "1984",
+                author: "George Orwell",
+                price: 90,
+                year: 1949
+            }
+        ];
+
+        // Prettify JSON data using the `prettify` function with default indentation level.
+        string booksPrettified1 = check jsondata:prettify(books);
+        io:println(booksPrettified1);
+
+        // Prettify JSON data with a custom indentation level.
+        string booksPrettified2 = check jsondata:prettify(books, 2);
     }
     ```
 
@@ -561,9 +598,9 @@ public function main() returns error? {
 
 - Added support for the following annotations within the `persist.sql` package to facilitate entity mapping alongside additional SQL database features.
   - `@sql:Name` - Map an entity name to a specific table name and a field name to a specific column name.
-  - `@sql:Varchar` - Give a specific VARCHAR length. 
-  - `@sql:Char` - Give a specific CHAR length. 
-  - `@sql:Decimal` - Give specific DECIMAL precision and scale. 
+  - `@sql:Varchar` - Give a specific VARCHAR length.
+  - `@sql:Char` - Give a specific CHAR length.
+  - `@sql:Decimal` - Give specific DECIMAL precision and scale.
   - `@sql:Index` - Declare an index field.
   - `@sql:UniqueIndex` - Declare a unique index field.
   - `@sql:Relation` - Declare a relation field. This is used to define a foreign key relationship between two entities.
@@ -667,7 +704,7 @@ All listed connectors have been released under new major versions, featuring sig
 
 - Introduced support for connecting to Guidewire InsuranceNow REST API.
 
-#### `ibm.ibmmq` package 
+#### `ibm.ibmmq` package
 
 - Introduced support for connecting to IBM MQ server versions up to 9.3.
 
@@ -730,9 +767,9 @@ All listed connectors have been released under new major versions, featuring sig
 
 #### Formatter
 
-##### Customize formatting
+- Support to customize formatting
 
-It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
+    It is now possible to provide custom formatting configurations to the Ballerina formatter via a local or remote configuration file. This allows for consistency in code style across projects in an organization and simplifies the process of enforcing formatting standards. This is introduced as an experimental feature in Ballerina 2201.9.0.
 
 #### Language Server
 
@@ -745,11 +782,11 @@ It is now possible to provide custom formatting configurations to the Ballerina 
 
 - Added support for invoking actions directly from the shell prompt, as shown in the following examples.
 
-```ballerina
-$= string value = myClient->invoke("input");
-$= string value = myClient->/root/name("input");
-$= future<int> result = start name();
-```
+    ```ballerina
+    $= string value = myClient->invoke("input");
+    $= string value = myClient->/root/name("input");
+    $= future<int> result = start name();
+    ```
 
 #### Test Framework
 
@@ -759,7 +796,7 @@ $= future<int> result = start name();
     $ bal test --parallel
     ```
 
-- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods. 
+- APIs for mocking client resource methods is introduced. With these, a client resource can be stubbed to behave in a certain way. Previously, test doubles had to be used to mock client resource methods.
 
     ```ballerina
     // Sample HTTP Client call
@@ -778,28 +815,30 @@ $= future<int> result = start name();
     ```
 
 #### EDI tool
-    
- - Added support for EDIFACT to Ballerina schema conversion.
-  
+
+- Added support for EDIFACT to Ballerina schema conversion.
+
   Users can now directly convert the EDIFACT schema to the Ballerina schema by specifying the EDIFACT version, message type, and output directory using the new tooling support.
-  
+
   For example,
 
-  `bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>`
-  
+  ```bash
+  bal edi convertEdifactSchema -v <EDIFACT version> -t <EDIFACT message type> -o <output folder>
+  ```
+
 - Introduced support for field length constraints (min/max).
 
   This update introduces minimum and maximum length constraints for EDI data fields, enhancing validation capabilities and ensuring data compliance.
-    
+
   Overview of length constraints:
-  
+
     - Fixed-length: Fields must match the specified length `N`. If not, Ballerina will either pad the field with spaces or produce an error if the field exceeds `N`.
     - Range limits:
       - Minimum length: If a field is shorter than specified, an error is triggered.
       - Maximum length: Fields longer than allowed will also trigger an error.
-    
+
     For example,
-  
+
     ```json
     "fields": [
         {"tag": "DocumentNameCode", "length": 10},
@@ -808,7 +847,7 @@ $= future<int> result = start name();
         {"tag": "ResponseType", "length": {"min": 1, "max": 3}}
     ]
     ```
-  
+
 #### OpenAPI tool
 
 - Integrated OpenAPI client generation to the `bal build` command.
@@ -821,11 +860,11 @@ $= future<int> result = start name();
   filePath = "openapi.yaml"
   targetModule = "delivery"
   ```
-  
-- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details. 
-  
+
+- Introduced the `add` sub-command to the OpenAPI tool to update the `Ballerina.toml` file with the OpenAPI tool configuration details.
+
   For example,
-  
+
   `bal openapi add -i <yaml file> --mode client --id <tool config id>`
 
 - Added support for OpenAPI mapping for Ballerina constraints in OpenAPI specification generation.
@@ -833,7 +872,7 @@ $= future<int> result = start name();
 - Added support for OpenAPI mapping for Ballerina HTTP interceptor services in OpenAPI specification generation.
 - Added support for OpenAPI response mapping for Ballerina HTTP status code errors in OpenAPI specification generation.
 - Added support for Ballerina client generation with status code response binding. This can be enabled by providing the `--status-code-binding` option to the OpenAPI client generation command.
-  
+
   For example,
 
   `bal openapi -i <yaml file> --mode client --with-status-code-binding`
@@ -891,35 +930,35 @@ $= future<int> result = start name();
 
 #### Formatter
 
-##### Multiline function call formatting.
+- Improvement to multiline function call formatting.
 
-When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
+    When a multiline function call is present in the code, the subsequent lines used to have the same indentation as the first line. This behavior is modified to have an indentation of 8 spaces in the subsequent lines.
 
-Before formatting
+    Before formatting
 
-```ballerina
-addNumbers(numberOne,  numberTwo, numberThree,
-numberFour, numberFive, numberSix);
-```
+    ```ballerina
+    addNumbers(numberOne,  numberTwo, numberThree,
+    numberFour, numberFive, numberSix);
+    ```
 
-After formatting
+    After formatting
 
-```ballerina
-addNumbers(numberOne, numberTwo, numberThree,
-        numberFour, numberFive, numberSix);
-```
+    ```ballerina
+    addNumbers(numberOne, numberTwo, numberThree,
+            numberFour, numberFive, numberSix);
+    ```
 
-When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
+    When a multiline object is present as an argument, the indentation of the subsequent lines is set such that those lines have the same indentation as the object declaration.
 
-```ballerina
-public function updateValues(int t1, int t2) {
-    update(t1, object {
-                   int i = 1;
-                   int y = 2;
-               },
-               t2);
-}
-```
+    ```ballerina
+    public function updateValues(int t1, int t2) {
+        update(t1, object {
+                       int i = 1;
+                       int y = 2;
+                   },
+                   t2);
+    }
+    ```
 
 #### Language Server
 
@@ -936,12 +975,14 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.0+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.9.0+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug+is%3Aclosed)
 - [Test Framework](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+label%3AArea%2FTestFramework+milestone%3A2201.9.0)
+- [Bindgen tool](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FBindgen+milestone%3A2201.9.0+is%3Aclosed)
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FDebugger+milestone%3A2201.9.0+is%3Aclosed)
 
 ## Ballerina packages updates
 
 ### New features
 
-- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file. 
+- Build tools can now be seamlessly integrated into the package build. This enhancement allows authors of tools managed by the `bal tool` command to expand the tool functionality, supporting direct integration into the package build. With Update 9, platform-provided tools such as the OpenAPI and Persist tools include automation capabilities for generating clients during the package build itself by specifying these tools in the `Ballerina.toml` file.
 
     ```toml
     [[tool.openapi]]
@@ -1004,9 +1045,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
             }
 
             var logger = isolated function () returns string {
-                // Now results in compile-time errors, 
-                // need to use a lock statement. 
-                return string `ID: '${self.id}', Name: '${self.name}'`; 
+                // Now results in compile-time errors,
+                // need to use a lock statement.
+                return string `ID: '${self.id}', Name: '${self.name}'`;
             };
             log:printDebug("Data updated", details = logger);
         }
@@ -1027,7 +1068,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     public function main() {
         xml x = xml `<item><name>Box</name></item>`;
 
-        // Previously evaluated to an empty XML sequence, now evaluates to 
+        // Previously evaluated to an empty XML sequence, now evaluates to
         // `<item><name>Box</name></item>`
         xml x1 = x.<item>;
 
@@ -1050,7 +1091,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
         // Previously evaluated to `
         // <type xmlns="http://example.com/">t</type>`,
-        // now evaluates to, 
+        // now evaluates to,
         // `<ns0:name xmlns="http://example.com/" xmlns:ns0="https://ballerina.io">ball</ns0:name>
         // <type xmlns="http://example.com/">t</type>`
         xml x2 = x1/<*>;
@@ -1074,7 +1115,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     ```ballerina
     type Doctor record {
         string name;
-        string category;    
+        string category;
     };
 
     function updateDoctorCategories(Doctor doctor, string[] categories) returns error? {
@@ -1155,8 +1196,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // under the License.
 
 
-    // this file contains implementaion of the agent code. 
-    // It includes functions for managing the ai client. 
+    // this file contains implementaion of the agent code.
+    // It includes functions for managing the ai client.
 
 
 
@@ -1198,8 +1239,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
     // specific language governing permissions and limitations
     // under the License.
 
-    // this file contains implementaion of the agent code. 
-    // It includes functions for managing the ai client. 
+    // this file contains implementaion of the agent code.
+    // It includes functions for managing the ai client.
 
     // module imports
     import agent;
@@ -1218,7 +1259,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
     }
     ```
-  
+
 ### Runtime changes
 
 - To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
@@ -1227,7 +1268,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 #### `cloud` package
 
-- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`. 
+- SSL configurations are no longer automatically retrieved from the code. You need to explicitly mark them as secrets in `Cloud.toml`.
     ```toml
     [[cloud.secret.files]]
     file="resource."

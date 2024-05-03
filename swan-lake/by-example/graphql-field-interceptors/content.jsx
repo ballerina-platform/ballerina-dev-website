@@ -78,8 +78,8 @@ export function GraphqlFieldInterceptors({ codeSnippets }) {
         passed as a single interceptor or an array of interceptors using the{" "}
         <code>interceptors</code> field in the{" "}
         <code>graphql:ResourceConfig</code> annotation. The provided
-        interceptors will be executed using the <code>_onion principle_</code>.
-        Use the field interceptors to execute custom logic before and after
+        interceptors will be executed using the <em>onion principle</em>. Use
+        the field interceptors to execute custom logic before and after
         executing a <code>resource</code> or a <code>remote</code> method that
         needs to be separated from the business logic.
       </p>

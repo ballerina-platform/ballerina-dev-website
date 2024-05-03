@@ -353,6 +353,14 @@
                             "isDir": false,
                             "url": "/learn/organize-ballerina-code",
                             "id": "organize-ballerina-code"
+                        },
+                        {
+                            "dirName": "Customize formatting",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/customize-formatting",
+                            "id": "customize-formatting"
                         }
                     ]
                 },
@@ -453,6 +461,14 @@
                                     "id": "execute-tests"
                                 },
                                 {
+                                    "dirName": "Execute tests in parallel",
+                                    "level": 4,
+                                    "position": 11,
+                                    "isDir": false,
+                                    "url": "/learn/test-ballerina-code/execute-tests-in-parallel/",
+                                    "id": "execute-tests-in-parallel"
+                                },
+                                {
                                     "dirName": "Define data-driven tests",
                                     "level": 4,
                                     "position": 6,
@@ -511,6 +527,14 @@
                             "isDir": false,
                             "url": "/learn/persist-client-api",
                             "id": "persist-client-api"
+                        },
+                        {
+                            "dirName": "Introspection",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/persist-introspection",
+                            "id": "persist-introspection"
                         },
                         {
                             "dirName": "Supported data stores",
@@ -880,8 +904,6 @@
                 }
             ]
         },
-        
-
         {
             "dirName": "other",
             "level": 1,
@@ -1246,7 +1268,6 @@
                 }
             ]
         },
-
         {
             "dirName": "slides",
             "level": 1,

@@ -8,7 +8,7 @@ active: provide-values-to-configurable-variables
 intro: You can provide values for configurable variables through multiple methods, as described below.
 ---
 
->**Note:** If the configuration values are given in multiple ways, they will be overridden in the following decreasing order of precedence when retrieving them.
+>**Note:** If the configuration values are given in multiple ways, they will be overridden in the following order when retrieving them.
 
 1. **Environment variables:** Configure the values through separate environment variables for each 
    configurable variable.

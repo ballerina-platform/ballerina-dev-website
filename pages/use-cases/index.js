@@ -37,7 +37,7 @@ export default function UseCasesPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Explore a comprehensive list of use cases for the Ballerina programming language, designed for seamless integration and orchestration of distributed systems."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -52,7 +52,7 @@ export default function UseCasesPage() {
         <meta property="og:title" content="Ballerina use cases - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Explore a comprehensive list of use cases for the Ballerina programming language, designed for seamless integration and orchestration of distributed systems."
         />
         <meta
           property="og:image"
@@ -69,7 +69,7 @@ export default function UseCasesPage() {
         <meta
           property="og:description"
           itemProp="image"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Explore a comprehensive list of use cases for the Ballerina programming language, designed for seamless integration and orchestration of distributed systems."
         />
 
         {/* TWITTER */}
@@ -80,7 +80,7 @@ export default function UseCasesPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Explore a comprehensive list of use cases for the Ballerina programming language, designed for seamless integration and orchestration of distributed systems."
         />
         <meta
           name="twitter:image"
@@ -88,7 +88,7 @@ export default function UseCasesPage() {
         />
         <meta
           property="twitter:text:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Explore a comprehensive list of use cases for the Ballerina programming language, designed for seamless integration and orchestration of distributed systems."
         />
         <meta
           property="twitter:image"

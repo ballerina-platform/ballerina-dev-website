@@ -24,7 +24,7 @@ program.
 
 ## Provide via environment variables
 
-Use the syntax below to provide values for the variables through command-line arguments.
+Use the syntax below to provide values for the variables through environment variables.
 
 ```
 BAL_CONFIG_VAR_key=value

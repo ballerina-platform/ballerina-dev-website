@@ -1286,3 +1286,41 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - Suffix is added to generated ConfigMaps and Secrets in Kubernetes to avoid Conflicts.
 - Subpaths are used in Kubernetes to better support multiple files in the same directory.
+
+### Developer tool changes
+
+#### OpenAPI tool
+
+- The generated client methods will no longer have the header and query parameters as separate function parameters. The parameters will be grouped as `headers` and `queries` which is align with the HTTP client methods. If there are no header parameter specified then the client methods will have a default headers parameter of type `map<string|string[]>`. This change is applicable for both `remote` and `resource` methods.
+
+  - Old client method:
+    ```ballerina
+    // version and user-id are header parameters and genre is a query parameter
+    resource isolated function get albums(Version version, string user\-id, string genre = "Hard Rock") returns Album[]|error {
+       ...
+    }
+    ```
+  - New client method:
+    ```ballerina
+    // version and user-id are header parameters and genre is a query parameter
+    resource isolated function get albums(GetAlbumsHeaders headers, *GetAlbumsQueries) returns Album[]|error {
+       ...
+    }
+    ```
+    Header and Query parameter types:
+    ```ballerina
+    public type GetAlbumsHeaders record {
+        string user\-id;
+        Version version;
+    };
+    
+    public type GetAlbumsQueries record {
+        string genre = "Hard Rock";
+    };
+    ```
+  - Client call change:
+    ```ballerina
+    Album[] albums = check oldClient->/albums("V1", "U102", "Progressive Rock"); //Old client
+
+    Album[] albums = check newClient->/albums({ version: "V1", user\-id: "U102" }, genre = "Progressive Rock"); //New client
+    ```  

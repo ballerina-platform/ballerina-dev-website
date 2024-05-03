@@ -83,12 +83,12 @@ public function testGetRandomJoke() {
 
 ### Stub methods
 
-Instead of creating a test double, you may also choose to create a default mock object and stub the methods to return a specific value or to do nothing. 
+Instead of creating a test double, you may also choose to create a mock object and stub the methods to return a specific value or to do nothing.
 
 This approach applies to all the methods other than resources.
 
->**Note:** It is important to ensure that all methods of the object being tested are properly stubbed. 
-> If any method is called within the implementation that hasn't been stubbed, the test framework will generate an 
+>**Note:** It is important to ensure that all the methods (of the object) being tested are properly stubbed. 
+> If a method that has not been stubbed is called in the implementation, the test framework will generate an  
 > error message in the following format: 
 > `no cases registered for member function '<member_function_name>' of object type '<object_type>'.`
 
@@ -184,7 +184,7 @@ public function testGetRandomJoke() {
 
 This test stubs the behavior of the `get` method to return a specified sequence of values for each invocation (i.e., the first call to the `get` method will return the first argument and the second call will return the second argument).
 
->**Note:** `withArguments` function is not supported with `thenReturnSequence`.
+>**Note:** The `withArguments` method is not supported with `thenReturnSequence`.
 
 ```ballerina
 import ballerina/test;
@@ -209,7 +209,7 @@ public function testGetRandomJoke() {
 
 #### Stub to do nothing
 
-If a method has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
+If a method has no return type or has an optional type as the return type, the method can be mocked to do nothing when writing test cases.
 
 ***Example:***
 
@@ -256,7 +256,7 @@ function testSendNotification() {
 
 ### Stub resources
 
-Similar to remote methods, resources also can be stubbed to return a specific value, a series of values or, to do nothing. To mock a resource, the resource name (e.g: `get`, `post`, `put`) and resource path must be specified. Each path parameter in the resource path must be indicated with a colon (`:`) prefix. Similarly, rest parameters should be indicated with a double colon(`::`) prefix.
+Similar to remote methods, resources also can be stubbed to return a specific value, a series of values, or to do nothing. To mock a resource, the resource name (e.g., `get`, `post`, `put`) and resource path must be specified. Each path parameter in the resource path must be indicated with a colon (`:`) prefix and rest parameters should be indicated with a double colon (`::`) prefix.
 
 ***Example:***
 
@@ -275,15 +275,7 @@ public type Employee record {|
 EmpClient empClient = new ();
 
 public client class EmpClient {
-    map<Employee> employees;
-
-    function init() {
-        self.employees = {};
-    }
-
-    resource function get employees/[string... args]() returns string {
-        return "Welcome to the Employees API";
-    }
+    map<Employee> employees = {};
 
     resource function get employee/[string id]() returns Employee? {
         return self.employees[id];
@@ -363,9 +355,9 @@ function testWelcomeEmployee() {
 
 ***main_test.bal***
 
-Similar to other object methods, the resource also can return a value from a sequence of values during method invocation.
+Similar to other object methods, resources also can be stubbed to return a value from a sequence of values during method invocation.
 
->**Note:** `withArguments` and `withPathParameters` functions are not supported with `thenReturnSequence`.
+>**Note:** The `withArguments` and `withPathParameters` methods are not supported with `thenReturnSequence`.
 
 ```ballerina
 @test:Config {}
@@ -393,7 +385,7 @@ function testGetAllEmployeeById() {
 
 ***main_test.bal***
 
-If a resource has an optional or no return type specified, this method can be mocked to do nothing when writing test cases.
+If a resource has no return type or has an optional type as the return type, the method can be mocked to do nothing when writing test cases.
 
 ```ballerina
 @test:Config {}

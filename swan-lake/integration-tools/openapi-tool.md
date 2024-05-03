@@ -289,13 +289,13 @@ $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|rem
 
 ### Automate client generation with Package Build
 
-#### Update the Ballerina.toml file with OpenAPI tool configurations
+#### Update the `Ballerina.toml` file with OpenAPI tool configurations
 
-Adding the following OpenAPI tool configurations to the Ballerina.toml file will generate a client during the `bal build`. This eliminates the need to commit the generated code.
+Adding the following OpenAPI tool configurations to the `Ballerina.toml` file will generate a client during the `bal build`. This eliminates the need to commit the generated code.
 
-> **Info:** It is mandatory to provide `id`,` filePath`, and `targetModule` attributes for the OpenAPI tool configurations. The other attributes are optional.
+> **Info:** It is mandatory to provide `id`, and ` filePath` attributes for the OpenAPI tool configurations. The other attributes are optional.
 
-The following is an example of the tool configuration usage in the Ballerina.toml.
+The following is an example of the tool configuration usage in the `Ballerina.toml`.
 
 ```ballerina
 [[tool.openapi]]
@@ -315,7 +315,8 @@ The below tool configuration can be used
 | Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | `filePath`   | The `filePath` tool option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                                         | Mandatory          |
-| `targetModule`  | The Ballerina files are generated at the given directory name in the Ballerina package.                                                                                                                                                                                                                                                                                     | Mandatory          |
+| `id`          | Id for the generation module                                                                                                                                                                                                                                                                                      | Mandatory        |
+| `targetModule`  | The Ballerina files are generated at the given directory name in the Ballerina package.                                                                                                                                                                                                                                                                                     | Optional          |
 | `options.mode`          | Mode type can be client. It generates client stubs for the given OpenAPI contract.                                                                                                                                                                                                                                                                                                 | Optional          |
 | `options.tags`          | To generate the Ballerina client stub with a subset of tags defined in the OpenAPI contract                                                                                                                                                                                                             |  Optional        |
 | `options.operations`    | To generate the Ballerina client stub with a subset of operations defined in the OpenAPI contract, use the `options.operations` option and specify the operations you need as specified in the OpenAPI definition.                                                                                                                                                                                                            |  Optional        |
@@ -327,7 +328,7 @@ The below tool configuration can be used
 
 #### Update the Ballerina.toml file with OpenAPI tool configurations using OpenAPI CLI command
 
-Executing the following OpenAPI `add` sub-command, along with the OpenAPI to Ballerina CLI options, will update the Ballerina.toml with OpenAPI tool configurations.
+Executing the following OpenAPI `add` sub-command, along with the OpenAPI to Ballerina CLI options, will update the `Ballerina.toml` with OpenAPI tool configurations.
 
 ```
 $ bal openapi add [-i | --input] <openapi-contract-file-path>

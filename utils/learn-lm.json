@@ -353,6 +353,14 @@
                             "isDir": false,
                             "url": "/learn/organize-ballerina-code",
                             "id": "organize-ballerina-code"
+                        },
+                        {
+                            "dirName": "Customize formatting",
+                            "level": 3,
+                            "position": 4,
+                            "isDir": false,
+                            "url": "/learn/customize-formatting",
+                            "id": "customize-formatting"
                         }
                     ]
                 },
@@ -451,6 +459,14 @@
                                     "isDir": false,
                                     "url": "/learn/test-ballerina-code/execute-tests",
                                     "id": "execute-tests"
+                                },
+                                {
+                                    "dirName": "Execute tests in parallel",
+                                    "level": 4,
+                                    "position": 11,
+                                    "isDir": false,
+                                    "url": "/learn/test-ballerina-code/execute-tests-in-parallel/",
+                                    "id": "execute-tests-in-parallel"
                                 },
                                 {
                                     "dirName": "Define data-driven tests",
@@ -880,8 +896,6 @@
                 }
             ]
         },
-        
-
         {
             "dirName": "other",
             "level": 1,
@@ -1246,7 +1260,6 @@
                 }
             ]
         },
-
         {
             "dirName": "slides",
             "level": 1,

@@ -8,7 +8,7 @@ active: provide-values-to-configurable-variables
 intro: You can provide values for configurable variables through multiple methods, as described below.
 ---
 
->**Note:** If the configuration values are given in multiple ways, they will be overridden in the following precedence order when retrieving them.
+>**Note:** If the configuration values are given in multiple ways, they will be overridden in the following decreasing order of precedence when retrieving them.
 
 1. **Environment variables:** Configure the values through separate environment variables for each 
    configurable variable.
@@ -123,7 +123,7 @@ $ set BAL_CONFIG_FILES=<path-to-info.toml>;<path-to-Config.toml>
 $ export BAL_CONFIG_FILES=<path-to-info.toml>:<path-to-Config.toml>
 ```
 
-### Provide via environment variables with TOML content
+### Provide via environment variables
 
 You can also provide configuration values through an environment variable named `BAL_CONFIG_DATA` in which the content is expected to comply with the [TOML syntax](#toml-syntax). 
 

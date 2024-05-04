@@ -314,4 +314,8 @@ path = "<path-to-jar-file-1>"
 
 The Ballerina compiler will copy the specified JAR file from the provided path when creating the archive.
 
->**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. For more information, see [Package references](/learn/package-references/).
+>**Info:** You can also provide custom package repositories such as GitHub Packages and private Maven repositories. You can also specify different scopes to control how platform dependencies are used during program execution. For more information on this, see [Package references](/learn/package-references/).
+
+## Manage tool dependencies
+
+Similar to package dependencies, tools specified in `Ballerina.toml` and executed in the package build are also resolved from the distribution repository and the Ballerina Central repository. The tool dependency resolution mechanism is akin to package dependencies. Once resolved, the tool versions are automatically recorded in the `Dependencies.toml` file and used as the minimum required versions for subsequent builds.

@@ -1,0 +1,18 @@
+{
+  "title": "Outbound Security",
+  "description": "This example demonstrates applying outbound security configurations to decrypt and verify signatures in SOAP responses.",
+  "keywords": [
+    "ballerina",
+    "ballerina by example",
+    "soap",
+    "client",
+    "security",
+    "outbound security"
+  ],
+  "permalink": "/learn/by-example/soap-client-security-outbound-security-config",
+  "active": "soap-client-security-outbound-security-config",
+  "redirect_from": [
+    "/swan-lake/learn/by-example/soap-client-security-outbound-security-config",
+    "/swan-lake/learn/by-example/soap-client-security-outbound-security-config.html"
+  ]
+}

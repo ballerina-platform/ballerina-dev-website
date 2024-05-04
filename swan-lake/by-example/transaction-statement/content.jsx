@@ -203,7 +203,7 @@ export function TransactionStatement({ codeSnippets }) {
 
       <Row className="mt-auto mb-5">
         <Col sm={6}>
-          <Link title="Flush" href="/learn/by-example/flush">
+          <Link title="Fork" href="/learn/by-example/fork">
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +229,7 @@ export function TransactionStatement({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Flush
+                  Fork
                 </span>
               </div>
             </div>

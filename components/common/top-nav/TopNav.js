@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Accordion, Container, Nav, Navbar, NavDropdown, Dropdown, Offcanvas, Row, Col } from 'react-bootstrap';
+import { Accordion, Container, Nav, Navbar, Dropdown, Offcanvas, Row, Col } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import Search from '../search/Search';
@@ -28,7 +28,6 @@ import styles from './TopNav.module.css';
 
 const TopNav = (props) => {
   const launcher = props.launcher;
-  const versionPicker = 'Swan Lake';
 
   if (global.location.pathname.indexOf('learn') > 0) {
     launcher = launcher + '-learn';
@@ -42,25 +41,18 @@ const TopNav = (props) => {
   const handleShow = () => setShow(true);
 
   const MenuItems = [
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
-    <Dropdown.Item category='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
-    <Dropdown.Item category='comparisons' href={`${prefix}/usecases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data-oriented programming</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/b2b`} className={styles.dropDownItem} key='8'>B2B</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/etl`} className={styles.dropDownItem} key='12'>ETL</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/microservices`} className={styles.dropDownItem} key='9'>Microservices</Dropdown.Item>,
-    <Dropdown.Item category='usecases' href={`${prefix}/usecases/bff`} className={styles.dropDownItem} key='10'>BFF</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/integration`} className={styles.dropDownItem} key='1'>Integration</Dropdown.Item>,
+    <Dropdown.Item category='comparisons' href={`${prefix}/use-cases/integration/ballerina-vs-apollo-for-graphql/`} className={`${styles.dropDownItem}`} key='2'><span>Ballerina vs. Apollo for GraphQL</span></Dropdown.Item>,
+    <Dropdown.Item category='comparisons' href={`${prefix}/use-cases/integration/ballerina-vs-java-for-data-oriented-programming/`} className={styles.dropDownItem} key='4'>Ballerina vs. Java for data-oriented programming</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/ai`} className={styles.dropDownItem} key='5'>AI</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/healthcare`} className={styles.dropDownItem} key='6'>Healthcare</Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/data-oriented-programming`} className={`${styles.dropDownItem}`} key='3'><span>Data-oriented programming</span></Dropdown.Item>,
+    <Dropdown.Item category='usecases' href={`${prefix}/use-cases/eda`} className={styles.dropDownItem} key='7'>EDA</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/wso2`} className={styles.dropDownItem} key='11'>WSO2</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/fat-tuesday`} className={styles.dropDownItem} key='12'>FAT Tuesday</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/mosip`} className={styles.dropDownItem} key='13'>MOSIP</Dropdown.Item>,
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/qhana`} className={styles.dropDownItem} key='14'>QHAna</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='15'>Ballerina Central</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/redcross-elixir`} className={styles.dropDownItem} key='16'>Red Cross Elixir</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/raapid-ai`} className={styles.dropDownItem} key='17'>RAAPID.AI</Dropdown.Item>,
-    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/avinya-foundation`} className={styles.dropDownItem} key='18'>Avinya Academy</Dropdown.Item>
+    <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='15'>Ballerina Central</Dropdown.Item>
   ];
 
   const now = new Date();

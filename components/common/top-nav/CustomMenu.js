@@ -18,6 +18,7 @@
 
 import React, { useState } from "react";
 import { Accordion } from "react-bootstrap";
+import Link from "next/link";
 
 import styles from './TopNav.module.css';
 
@@ -51,6 +52,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                    <li className={styles.seeMoreMobile}><Link href="/use-cases">See more</Link></li>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="case studies" className={styles.acItem}>
@@ -69,6 +71,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                <li className={styles.seeMoreMobile}><Link href="/case-studies">See more</Link></li>
                                 </Accordion.Body>
                             </Accordion.Item>
                             <Accordion.Item eventKey="comparisons" className={styles.acItem}>
@@ -109,6 +112,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                         )
                                     }
+                                    <li className={styles.seeMore}><Link href="/use-cases">See more</Link></li>
                                 </ul>
                             </div>
 
@@ -128,6 +132,7 @@ const CustomMenu = React.forwardRef(
                                             }
                                           )
                                     }
+                                    <li className={styles.seeMore}><Link href="/case-studies">See more</Link></li>
                                 </ul>
                             </div>
 

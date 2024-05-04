@@ -73,6 +73,20 @@ export default function RedirectMessage(props) {
       <br /><br /><br />
       <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
     </>
+  } else if (global.location.pathname.indexOf('usecases') > 0) {
+    let redirectTo = global.location.pathname.replace('usecases', 'use-cases');
+
+    pageBody = <>
+      <meta charSet="utf-8" />
+      <title>Redirecting&hellip;</title>
+      <link rel="canonical" href={redirectTo} />
+      <script>location=&quot;{redirectTo}&quot;</script>
+      <meta httpEquiv="refresh" content={"0; url=\"" + redirectTo + '"'} />
+      <meta name="robots" content="noindex" />
+      <h2>Redirecting&hellip;</h2>
+      <br /><br /><br />
+      <p><Link href={redirectTo}>Click here if you are not redirected.</Link></p>
+    </>
   } else if (global.location.href.indexOf('learn/build-a-native-executable/#configure-graalvm') > 0) {
     let redirectTo = '/learn/build-the-executable-locally/#configure-graalvm'
 

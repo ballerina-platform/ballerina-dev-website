@@ -286,6 +286,16 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     background-position: right 20px top 13px;
 }
 
+.seeMoreMobile {
+    list-style: none;
+    padding: 0.25rem 1rem;
+}
+
+.seeMore a, .seeMoreMobile a {
+    color: #20b6b0;
+    text-decoration: none;
+}
+
 /* ----------Con banner---------------------- */
 .conBanner {
     color: #fff;

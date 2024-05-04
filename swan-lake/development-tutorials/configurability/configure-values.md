@@ -77,6 +77,21 @@ The following format is used to provide the module information of a variable in 
 variable-name = "value"
 ```
 
+#### Environment variable syntax
+
+The key of an environment variable can be specified as,
+
+```
+BAL_CONFIG_VAR_key=value
+```
+
+The key can contain module information as follows.
+
+```
+key:= ORGNAME_MODULENAME_VARIABLE
+```
+
+Each part in the structured identifier of the key is converted to uppercase, and the dots are converted to underscores.
 
 ## Configure in a Kubernetes environment
 

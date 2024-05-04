@@ -287,11 +287,11 @@ $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|rem
 
 >**Info:** For more command options, see [OpenAPI to Ballerina CLI options](#openapi-to-ballerina-command-options).
 
-### Automate client generation with Package Build
+### Automate client generation
 
 #### Update the `Ballerina.toml` file with OpenAPI tool configurations
 
-Adding the following OpenAPI tool configurations to the `Ballerina.toml` file will generate a client during the `bal build`. This eliminates the need to commit the generated code.
+Adding the following OpenAPI tool configurations to the `Ballerina.toml` file will generate a client during the package build. This eliminates the need to commit the generated code.
 
 > **Info:** It is mandatory to provide `id`, and ` filePath` attributes for the OpenAPI tool configurations. The other attributes are optional.
 

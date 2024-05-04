@@ -293,7 +293,7 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     font-weight: 400;
     font-size: 20px;
     background-color: #0d045c;
-    background-image: url(https://wso2.cachefly.net/wso2/sites/all/2024/wso2con/wso2home-themecon.webp);
+    background-image: url(/images/conbg2024.png);
     background-repeat: no-repeat;
     background-position: center top 0rem;
     background-size: 110%;

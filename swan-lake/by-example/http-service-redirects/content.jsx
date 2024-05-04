@@ -54,7 +54,7 @@ export function HttpServiceRedirects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/http-service-redirects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/http-service-redirects",
                 "_blank",
               );
             }}

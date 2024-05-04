@@ -59,7 +59,7 @@ export default function CaseStudies({ caseStudies }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Discover how Ballerina enhances cloud-native development with real-world examples and applications across various industries."
         />
         <meta name="author" content="WSO2 LLC" />
         <meta
@@ -74,7 +74,7 @@ export default function CaseStudies({ caseStudies }) {
         <meta property="og:title" content="Ballerina case studies - The Ballerina programming language" />
         <meta
           property="og:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Discover how Ballerina enhances cloud-native development with real-world examples and applications across various industries."
         />
         <meta
           property="og:image"
@@ -91,7 +91,7 @@ export default function CaseStudies({ caseStudies }) {
         <meta
           property="og:description"
           itemProp="image"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Discover how Ballerina enhances cloud-native development with real-world examples and applications across various industries."
         />
 
         {/* TWITTER */}
@@ -102,7 +102,7 @@ export default function CaseStudies({ caseStudies }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Discover how Ballerina enhances cloud-native development with real-world examples and applications across various industries."
         />
         <meta
           name="twitter:image"
@@ -110,7 +110,7 @@ export default function CaseStudies({ caseStudies }) {
         />
         <meta
           property="twitter:text:description"
-          content="Just write the code using the only language with integration-friendly abstractions."
+          content="Discover how Ballerina enhances cloud-native development with real-world examples and applications across various industries."
         />
         <meta
           property="twitter:image"

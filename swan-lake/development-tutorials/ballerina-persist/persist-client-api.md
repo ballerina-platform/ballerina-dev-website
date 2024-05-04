@@ -39,7 +39,7 @@ public type Workspace record {|
 
 ### `Insert` types
 
-These are the records used to insert data in the data source. This is the same as the entity type, except when the readonly field has the [`@sql:Generated`](/learn/persist-model/#declaring-generated-fields-with-generated-annotation) annotation. When the readonly field has the [`@sql:Generated`](/learn/persist-model/#declaring-generated-fields-with-generated-annotation) annotation, the field will be removed from the insert type.
+These are the records used to insert data in the data source. This is the same as the entity type, except when the readonly field has the [`@sql:Generated`](/learn/persist-model/#declare-generated-fields-with-generated-annotation) annotation. When the readonly field has the [`@sql:Generated`](/learn/persist-model/#declare-generated-fields-with-generated-annotation) annotation, the field will be removed from the insert type.
 
 ```ballerina
 public type WorkspaceInsert Workspace;

@@ -763,6 +763,10 @@ All listed connectors have been released under new major versions, featuring sig
 
 ### New features
 
+#### AI Assisted Data Mapper
+
+- Introduced a new experimental feature in the VS Code plugin for the data mapper to generate simple mappings automatically.
+ 
 #### Formatter
 
 - Support to customize formatting

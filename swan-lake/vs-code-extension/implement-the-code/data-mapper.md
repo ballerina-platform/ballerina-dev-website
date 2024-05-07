@@ -290,9 +290,9 @@ With this experimental feature, you can automatically generate simple mappings b
 
 >**Info:** The mapping expressions in the expression-bodied function are automatically generated through an API call to a LLM.
 
-#### Logging in to Choreo
+#### Logging in to Ballerina Copilot
 
-To use the AI-assisted mapping, you must log in to Choreo. If you haven't done so already, you can either log in using the command palette or click on the automap button, which will redirect you to the login page.
+To use the AI-assisted mapping, you must log in to Ballerina Copilot. If you haven't done so already, you can either log in using the command palette or click on the automap button, which will redirect you to the login page.
 
 <img src="/learn/images/vs-code-extension/visual-programming/datamapper/auth-for-ai-datamapper.gif" class="cInlineImage-full"/>
 

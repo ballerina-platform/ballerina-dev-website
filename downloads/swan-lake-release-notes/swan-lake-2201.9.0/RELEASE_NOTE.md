@@ -617,6 +617,10 @@ public function main() returns error? {
 
 ### Improvements
 
+#### `http` package
+
+- Introduced support for X25519Kyber768 as a named group for key encapsulation in TLS.
+
 #### `cloud` package
 
 - Directories can now be mounted as ConfigMaps and Secrets.

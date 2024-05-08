@@ -619,7 +619,7 @@ public function main() returns error? {
 
 #### `http` package
 
-- Added TLS support for X25519Kyber768 key encapsulation.
+- Introduced support for X25519Kyber768 as a named group for key encapsulation in TLS.
 
 #### `cloud` package
 

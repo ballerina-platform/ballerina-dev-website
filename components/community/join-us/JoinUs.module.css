@@ -172,15 +172,15 @@
 }
 
 .joinCard {
-  /* border: none !important; */
+  border: none !important;
   background: transparent !important;
   padding-top: 1rem;
-  box-shadow: 1px 1px #ccc;
+  /* box-shadow: 1px 1px #ccc; */
 }
 
-.joinCard:hover {
+/* .joinCard:hover {
   border: 1px solid #20b6b0;
-}
+} */
 
 .imageWrap {
   height: 40px;
@@ -202,11 +202,12 @@
   padding: 0 60px;
 }
 
-.join {
+/* .join {
   transition: none !important;
   font-size: 18px;
   font-weight: 400;
   color: #57595d !important;
+  color: #ffffff !important;
   padding: 0 20px 0 20px;
   text-decoration: none;
   min-width: 200px;
@@ -215,4 +216,41 @@
 
 .join:hover {
   color: #20b6b0 !important;
+  color: #ffffff !important;
+}
+
+.btnStyle {
+  background-color: #20b6b0; 
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  margin: 5px 0px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #57595d;
+  color: #57595d;
+}
+
+.btnStyle:hover {
+  background-color: #57595d;
+  color: #ffffff !important;
+} */
+
+.btnStyle {
+  text-decoration: none !important;
+}
+
+.btnStyle p {
+  padding: 0.5rem 0;
+  border: 2px solid #57595d;
+  color: #57595d;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.btnStyle p:hover {
+  background-color: #57595d;
+  color: #ffffff !important;
 }

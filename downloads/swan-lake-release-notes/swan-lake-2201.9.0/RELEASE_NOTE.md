@@ -414,14 +414,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `crypto` package
 
-Introduced new APIs for the following NIST finalist post-quantum algorithms, incorporating specifications aligned with FIPS drafts.
-- ML-KEM-768 (Kyber768) key encapsulation mechanism.
-- ML-DSA65 (Dilithium3) digital signature algorithm.
+- Introduced new APIs for the following NIST finalist post-quantum algorithms, incorporating specifications aligned with FIPS drafts.
+  - ML-KEM-768 (Kyber768) key encapsulation mechanism.
+  - ML-DSA65 (Dilithium3) digital signature algorithm.
 
-Introduced new APIs for the following C + Q key encapsulation algorithms, and C + Q hybrid public key encryption (HPKE) algorithms.
-- RSA-KEM-ML-KEM-768 key encapsulation mechanism.
-- ML-KEM-768 hybrid public-key encryption (HPKE).
-- RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
+- Introduced new APIs for the following C + Q key encapsulation algorithms, and C + Q hybrid public key encryption (HPKE) algorithms.
+  - RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+  - ML-KEM-768 hybrid public-key encryption (HPKE).
+  - RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
 
 #### `data.jsondata` package
 

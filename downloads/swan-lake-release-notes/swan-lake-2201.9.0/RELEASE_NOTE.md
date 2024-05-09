@@ -414,11 +414,14 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.0)](
 
 #### `crypto` package
 
-- Introduced new APIs for ML-KEM-768 (Kyber768) key encapsulation mechanism.
-- Introduced new APIs for RSA-KEM-ML-KEM-768 key encapsulation mechanism.
-- Introduced new APIs for ML-KEM-768 hybrid public-key encryption (HPKE).
-- Introduced new APIs for RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
-- Introduced new APIs for ML-DSA65 (Dilithium3) signing.
+Introduced new APIs for NIST finalist post-quantum algorithms, incorporating specifications aligned with FIPS drafts.
+- ML-KEM-768 (Kyber768) key encapsulation mechanism.
+- ML-DSA65 (Dilithium3) digital signature algorithm.
+
+Introduced new APIs for C + Q key encapsulation algorithms, and C + Q hybrid public key encryption (HPKE) algorithms.
+- RSA-KEM-ML-KEM-768 key encapsulation mechanism.
+- ML-KEM-768 hybrid public-key encryption (HPKE).
+- RSA-KEM-ML-KEM-768 hybrid public-key encryption (HPKE).
 
 #### `data.jsondata` package
 
@@ -619,7 +622,7 @@ public function main() returns error? {
 
 #### `http` package
 
-- Introduced support for X25519Kyber768 as a named group for key encapsulation in TLS.
+- Introduced support for the X25519Kyber768Draft00 post-quantum key agreement for TLS 1.3.
 
 #### `cloud` package
 

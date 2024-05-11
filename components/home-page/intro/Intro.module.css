@@ -84,6 +84,12 @@ a.homeIntroButton:hover {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.socialMediaIcons:hover {
+    color:#ffffff;
 }
 
 .socialMediaPanel {

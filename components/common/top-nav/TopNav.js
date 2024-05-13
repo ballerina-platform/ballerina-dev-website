@@ -19,6 +19,7 @@
 import * as React from 'react';
 import { Accordion, Container, Nav, Navbar, Dropdown, Offcanvas, Row, Col } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 
 import Search from '../search/Search';
 import CustomToggle from "./CustomToggle";
@@ -63,6 +64,45 @@ const TopNav = (props) => {
   }
 
 
+
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  const darkReaderOptions = { brightness: 100, contrast: 100, sepia: 0 }; // Settings for dark reader
+
+  React.useEffect(() => {
+    const darkMode = typeof window != "undefined" ? window.localStorage.getItem('dark-mode') : false; // Get dark mode setting from local storage
+    if (darkMode === 'true') {
+      setIsDarkMode(true)
+      enableDarkMode();
+    }
+  }, []);
+
+  async function enableDarkMode() {
+    if (typeof window != "undefined") {
+      const { enable, setFetchMethod } = await import("darkreader");
+      setFetchMethod(window.fetch);
+      enable(darkReaderOptions);
+    }
+  }
+
+  async function toggleDarkMode() {
+    if (typeof window != "undefined") {
+      const { isEnabled, enable, disable, setFetchMethod } = await import("darkreader");
+      setFetchMethod(window.fetch);
+      const isOn = isEnabled();
+      if (isOn) {
+        setIsDarkMode(false);
+        window.localStorage.setItem('dark-mode', 'false');
+        disable()
+      } else {
+        setIsDarkMode(true);
+        window.localStorage.setItem('dark-mode', 'true');
+        enable(darkReaderOptions);
+      }
+    }
+  }
+
+
   return (
     <>
       {
@@ -103,7 +143,8 @@ const TopNav = (props) => {
                 <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
               : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+                {/* <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" /> */}
+                <Image src={`${prefix}/images/logo/ballerina-logo-${isDarkMode ? "white" : "grey"}.svg`} height={50} width={150} alt="Ballerina Logo" />
               </Navbar.Brand>
             }
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -168,6 +209,10 @@ const TopNav = (props) => {
                   <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Packages</Nav.Link>
                   <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
                   <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
+
+                  <Nav.Link className="d-flex align-items-center" onClick={toggleDarkMode} title={isDarkMode ? "Swtich to Light Mode" : "Swtich to Dark Mode"}>
+                    {isDarkMode ? <BsSunFill size={16} color='#20b6b0' /> : <BsMoonFill size={16} color='#20b6b0' />}
+                  </Nav.Link>
                 </Nav>
                 <Search />
               </Offcanvas.Body>

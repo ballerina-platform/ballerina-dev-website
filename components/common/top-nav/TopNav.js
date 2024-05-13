@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Accordion, Container, Nav, Navbar, Dropdown, Offcanvas, Row, Col } from 'react-bootstrap';
+import { Accordion, Container, Nav, Navbar, Dropdown, Offcanvas } from 'react-bootstrap';
 import Image from 'next-image-export-optimizer';
 
 import Search from '../search/Search';
@@ -55,128 +55,87 @@ const TopNav = (props) => {
     <Dropdown.Item category='case studies' href={`${prefix}/case-studies/ballerina-central`} className={styles.dropDownItem} key='15'>Ballerina Central</Dropdown.Item>
   ];
 
-  const now = new Date();
-  let showBanner = false;
-
-  if (now < Date.parse('2024-05-10T00:00:00.0000-00:00')) {
-    showBanner = true;
-  }
-
-
   return (
     <>
-      {
-        (showBanner) ?
-          <>
-
-            <section className={styles.conBanner}>
-              <Container>
-                <Row style={{ alignItems: "center" }}>
-                  <Col sm={12} md={4} lg={4} className={styles.conBannerLogo}>
-                    <a href="https://wso2.com/wso2con/2024/" id="cWSO2ConHomeLogoBtn" target="_blank" aria-label="" rel="noreferrer">
-                      <img src="https://wso2.cachefly.net/wso2/sites/all/wso2con/2024/wso2con2024-white.webp" width="194" height="19" alt="WSO2Con2024 Logo" className="ls-is-cached lazyloaded " loading="lazy" />
-                    </a>
-                  </Col>
-                  <Col sm={12} md={4} lg={4} className={styles.conBannerDate}>
-                    <h3>May 7-9 | Hollywood, FL, USA</h3>
-                  </Col>
-                  <Col sm={12} md={4} lg={4} className={styles.conBannerBtn}>
-                    <a href="https://wso2.com/wso2con/2024/" target="_blank" className={styles.cButtonN_Standard} id="cWSO2ConHomeNotifyBtn" aria-label="Register Now" rel="noreferrer">
-                      Register Now
-                    </a>
-                  </Col>
-                </Row>
-              </Container>
-            </section>
-
-            {/* <div className={styles.hackathonBanner}>
-            Ballerina Hacktoberfest is happening now. <a href="https://ballerina.io/hacktoberfest/" target="_blank" rel="noreferrer">Join us</a>!
-          </div> */}
-          </>
-          : null
-      }
-      <>
-        <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
-          <Container fluid>
-            {(launcher === "home") ?
-              <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
-                <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
-              </Navbar.Brand>
-              : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
+      <Navbar key={expand} expand={expand} className={(launcher === 'home') ? `${styles[launcher]} navbar-dark` : styles[launcher]} sticky='top'>
+        <Container fluid>
+          {(launcher === "home") ?
+            <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
+              <Image src={`${prefix}/images/logo/ballerina-logo-white.svg`} height={50} width={150} alt="Ballerina Logo" />
+            </Navbar.Brand>
+            : <Navbar.Brand href={`${prefix}/`} className={styles.logo}>
+              <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
+            </Navbar.Brand>
+          }
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+          <Navbar.Offcanvas
+            id={`offcanvasNavbar-expand-${expand}`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+            placement="end"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                 <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
-              </Navbar.Brand>
-            }
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <Image src={`${prefix}/images/logo/ballerina-logo-grey.svg`} height={50} width={150} alt="Ballerina Logo" />
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className={`${styles.topNav} ms-auto my-2 my-lg-0`}>
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Nav className={`${styles.topNav} ms-auto my-2 my-lg-0`}>
 
-                  <Dropdown className={(launcher === 'usecases') ? `${styles.active} nav-item d-none d-lg-block` : 'nav-item d-none d-lg-block'} id={`dropdown-button-drop-end`}>
-                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" launcher={launcher}>
-                      Explore
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu as={CustomMenu} style={{ minWidth: '700px', marginLeft: '-210px' }} className="dropdown-center" renderOnMount={true}>
-                      {MenuItems}
-                    </Dropdown.Menu>
-                  </Dropdown>
-
-                  {/* Offcanvas nav bar for mobile view */}
-                  <a className={(launcher === 'usecases') ? `${styles.active} ${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none` : `${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none`}
-                    onClick={handleShow}>
+                <Dropdown className={(launcher === 'usecases') ? `${styles.active} nav-item d-none d-lg-block` : 'nav-item d-none d-lg-block'} id={`dropdown-button-drop-end`}>
+                  <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" launcher={launcher}>
                     Explore
-                  </a>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu as={CustomMenu} style={{ minWidth: '700px', marginLeft: '-210px' }} className="dropdown-center" renderOnMount={true}>
+                    {MenuItems}
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                {/* Offcanvas nav bar for mobile view */}
+                <a className={(launcher === 'usecases') ? `${styles.active} ${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none` : `${styles.navItem} ${styles.arrow} nav-link d-block d-lg-none`}
+                  onClick={handleShow}>
+                  Explore
+                </a>
 
 
-                  <Offcanvas show={show} onHide={handleClose} placement='end'>
-                    <Offcanvas.Header>
-                      <Offcanvas.Title onClick={handleClose} className={styles.back}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          fill="#20b6b0"
-                          className={` bi bi-arrow-right`}
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                          />
-                        </svg> Back
-                      </Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                      <Accordion as={CustomMenu} launcher='mobile' className={styles.mobileAccordion}>
-                        {MenuItems}
-                      </Accordion>
-                    </Offcanvas.Body>
-                  </Offcanvas>
+                <Offcanvas show={show} onHide={handleClose} placement='end'>
+                  <Offcanvas.Header>
+                    <Offcanvas.Title onClick={handleClose} className={styles.back}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="#20b6b0"
+                        className={` bi bi-arrow-right`}
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                        />
+                      </svg> Back
+                    </Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    <Accordion as={CustomMenu} launcher='mobile' className={styles.mobileAccordion}>
+                      {MenuItems}
+                    </Accordion>
+                  </Offcanvas.Body>
+                </Offcanvas>
 
-                  {/* Offcanvas nav bar for mobile view */}
+                {/* Offcanvas nav bar for mobile view */}
 
-                  <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
-                  <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Packages</Nav.Link>
-                  <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
-                  <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
-                </Nav>
-                <Search />
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
-        </Navbar>
-      </>
+                <Nav.Link className={(launcher === 'docs-learn') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/learn`}>Learn</Nav.Link>
+                <Nav.Link className={styles.navItem} href="https://central.ballerina.io/" target='_blank' rel="noreferrer">Packages</Nav.Link>
+                <Nav.Link className={(launcher === 'community') ? `${styles.active} ${styles.navItem}` : `${styles.navItem}`} href={`${prefix}/community`}>Community</Nav.Link>
+                <Nav.Link className={styles.navItem} href="https://blog.ballerina.io/" target='_blank' rel="noreferrer">Blog</Nav.Link>
+              </Nav>
+              <Search />
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
     </>
-
   );
 };
 export default TopNav;

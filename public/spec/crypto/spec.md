@@ -901,7 +901,7 @@ crypto:KeyStore keyStore = {
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(keyStore, "keyAlias");
 crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateRsaKem(publicKey);
 byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
-crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "keyAlias");
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
 byte[] sharedSecret = check crypto:decapsulateRsaKem(encapsulatedSecret, privateKey);
 ```
     
@@ -917,7 +917,7 @@ crypto:KeyStore keyStore = {
 crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
 crypto:EncapsulationResult encapsulationResult = check crypto:encapsulateMlKem768(publicKey);
 byte[] encapsulatedSecret = encapsulationResult.encapsulatedSecret;
-crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias");
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
 byte[] sharedSecret = check crypto:decapsulateMlKem768(encapsulatedSecret, privateKey);
 ```
     
@@ -945,7 +945,7 @@ byte[] sharedSecret = check crypto:decapsulateRsaKemMlKem768(encapsulatedSecret,
 
 ## 9. [Hybrid Public Key Encryption (HPKE)](#9-hybrid-public-key-encryption-hpke)
 
-The `crypto` module supports Hybrid Public Key Encryption (HPKE). It supportspost-quantum ML-KEM-768-HPKE and RSA-KEM-ML-KEM-768-HPKE for encryption and decryption.
+The `crypto` module supports Hybrid Public Key Encryption (HPKE). It supports post-quantum ML-KEM-768-HPKE and RSA-KEM-ML-KEM-768-HPKE for encryption and decryption.
 
 ### 9.1. [Encrypt](#91-encrypt)
     
@@ -961,7 +961,7 @@ crypto:KeyStore keyStore = {
     password: "keyStorePassword"
 };
 crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
-crypto:HybridEncryptionResult encryptionResult = crypto:encryptMlKem768Hpke(data, publicKey);
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptMlKem768Hpke(data, publicKey);
 ```
     
 #### 9.1.2. [RSA-KEM-ML-KEM-768-HPKE](#912-rsa-kem-ml-kem-768-hpke)
@@ -981,7 +981,7 @@ crypto:KeyStore rsaKeyStore = {
 };
 crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
 crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
-crypto:HybridEncryptionResult encryptionResult = crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
 ```
 
 ### 9.2. [Decrypt](#92-decrypt)
@@ -998,10 +998,10 @@ crypto:KeyStore keyStore = {
     password: "keyStorePassword"
 };
 crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(keyStore, "keyAlias");
-crypto:HybridEncryptionResult encryptionResult = crypto:encryptMlKem768Hpke(data, publicKey);
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptMlKem768Hpke(data, publicKey);
 byte[] cipherText = encryptionResult.cipherText;
 byte[] encapsulatedKey = encryptionResult.encapsulatedSecret;
-crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias");
+crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyStorePassword");
 byte[] decryptedData = check crypto:decryptMlKem768Hpke(cipherText, encapsulatedKey, privateKey);
 ```
     
@@ -1022,10 +1022,10 @@ crypto:KeyStore rsaKeyStore = {
 };
 crypto:PublicKey mlkemPublicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(mlkemKeyStore, "keyAlias");
 crypto:PublicKey rsaPublicKey = check crypto:decodeRsaPublicKeyFromTrustStore(rsaKeyStore, "keyAlias");
-crypto:HybridEncryptionResult encryptionResult = crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
+crypto:HybridEncryptionResult encryptionResult = check crypto:encryptRsaKemMlKem768Hpke(data, rsaPublicKey, mlkemPublicKey);
 byte[] cipherText = encryptionResult.cipherText;
 byte[] encapsulatedKey = encryptionResult.encapsulatedSecret;
-crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias");
-crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias");
+crypto:PrivateKey mlkemPrivateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(mlkemKeyStore, "keyAlias", "keyStorePassword");
+crypto:PrivateKey rsaPrivateKey = check crypto:decodeRsaPrivateKeyFromKeyStore(rsaKeyStore, "keyAlias", "keyStorePassword");
 byte[] decryptedData = check crypto:decryptRsaKemMlKem768Hpke(cipherText, encapsulatedKey, rsaPrivateKey, mlkemPrivateKey);
 ```

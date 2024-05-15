@@ -150,7 +150,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/aws-lambda-dynamodb-trigger",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/aws-lambda-dynamodb-trigger",
                 "_blank",
               );
             }}
@@ -438,7 +438,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>7.</span>
+          <span>8.</span>
           <span>
             Under the <strong>Trigger</strong> section, click{" "}
             <strong>Create trigger</strong>, select the{" "}
@@ -449,7 +449,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>8.</span>
+          <span>9.</span>
           <span>
             Click <strong>Explore table items</strong>, and click{" "}
             <strong>Create items</strong> under the{" "}
@@ -459,7 +459,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>9.</span>
+          <span>10.</span>
           <span>
             Enter a value under the <strong>Attributes</strong> section to add
             an entry to the DynamoDB table to invoke the Lambda function, and
@@ -469,7 +469,7 @@ export function AwsLambdaDynamodbTrigger({ codeSnippets }) {
       </ul>
       <ul style={{ marginLeft: "0px" }}>
         <li>
-          <span>10.</span>
+          <span>11.</span>
           <span>
             Click the <strong>Monitor</strong> tab of the Lambda function in the
             AWS Management Console, and click{" "}

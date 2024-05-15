@@ -24,7 +24,7 @@ The package automatically sets your `PATH` environment variable for you. You may
 
 Alternatively, you can install Ballerina using [Homebrew](https://brew.sh/) by executing the commands below.
 
-```bash
+```
 $ brew install bal
 ```
 

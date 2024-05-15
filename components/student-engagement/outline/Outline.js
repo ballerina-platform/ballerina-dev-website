@@ -157,9 +157,9 @@ export default function Outline(props) {
                 <Col md={10}>
                   <Card.Body>
 
-                    <h3 className="card-title">Industry projects</h3>
+                    <h3 className="card-title">Project mentorship</h3>
 
-                    <p className="card-text">Partner for real-world digital transformation projects to develop skills in industry practices.</p>
+                    <p className="card-text">Connect students with industry experts for innovative solutions through guided project development.</p>
                   </Card.Body>
                 </Col>
               </Row>
@@ -170,15 +170,9 @@ export default function Outline(props) {
         </Row>
 
         <Row style={{ alignItems: "center", marginTop: "20px" }}>
-          <Col sm={12} md={6} lg={3}>
-            <a className={styles.learnMore} href='WSO2-Ballerina-Student-Engagement-Program-Concept-Note.pdf' target='_blank' rel="noreferrer">Concept note</a>
-
-          </Col>
-
-          <Col sm={12} md={6} lg={3}>
-
-            <a className={styles.learnMore} href='Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Learn more</a>
-
+          <Col sm={12}>
+          <a className={styles.learnMore} href='WSO2-Ballerina-Student-Engagement-Program-Concept-Note.pdf' target='_blank' rel="noreferrer">Concept note</a>
+          <a className={styles.learnMore} href='Collaborative-Learning-Initiatives-WSO2-Ballerina-and-Universities.pdf' target='_blank' rel="noreferrer">Learn more</a>
           </Col>
         </Row>
 

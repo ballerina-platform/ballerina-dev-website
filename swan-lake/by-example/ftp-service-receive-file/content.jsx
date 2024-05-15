@@ -33,7 +33,7 @@ service on fileListener {
         // after the last polling was called.
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // Get the newly added file from the FTP server as a \`byte[]\` stream.
-            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.path);
+            stream<byte[] & readonly, io:Error?> fileStream = check caller->get(addedFile.pathDecoded);
 
             // Write the content to a file.
             check io:fileWriteBlocksFromStream(string \`./local/\${addedFile.name}\`, fileStream);
@@ -80,7 +80,7 @@ export function FtpServiceReceiveFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/ftp-service-receive-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/ftp-service-receive-file",
                 "_blank",
               );
             }}

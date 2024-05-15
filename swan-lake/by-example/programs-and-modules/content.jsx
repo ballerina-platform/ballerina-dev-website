@@ -7,6 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `// This import declaration binds the prefix \`io\` to the \`ballerina/io\` package. 
 // The prefix by default comes from the last part of the package name.
+
 // The \`ballerina\` org name is reserved for the Ballerina library packages.
 import ballerina/io;
 
@@ -47,7 +48,7 @@ export function ProgramsAndModules({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/programs-and-modules",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/programs-and-modules",
                 "_blank",
               );
             }}

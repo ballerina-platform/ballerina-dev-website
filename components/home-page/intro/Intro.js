@@ -18,7 +18,6 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 import { BsCheck } from 'react-icons/bs';
 
 import { prefix } from '../../../utils/prefix';
@@ -93,24 +92,24 @@ export default function Intro() {
 
 
             <div className={styles.socialMediaPanel} >
-              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer"  title="GitHub">
-                <Image src={`${prefix}/images/sm-icons/github-white.svg`} width={25} height={25} alt="GitHub" />
+              <a className={styles.socialMediaIcons} href="https://github.com/ballerina-platform/ballerina-lang" target="_blank" rel="noreferrer" title="GitHub">
+                <i className="bi bi-github"></i>
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer"  title="X">
-                <Image src={`${prefix}/images/sm-icons/twitter-x-white.svg`} width={24} height={24} alt="X" />
+              <a className={styles.socialMediaIcons} href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X">
+                <i className="bi bi-twitter-x"></i>
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer"  title="Discord">
-                <Image src={`${prefix}/images/sm-icons/discord-white.svg`} width={25} height={25} alt="Discord" />
+              <a className={styles.socialMediaIcons} href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord">
+                <i className="bi bi-discord"></i>
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer"  title="Stackoverflow">
-                <Image src={`${prefix}/images/sm-icons/stackoverflow-white.svg`} width={25} height={25} alt="Stackoverflow" />
+              <a className={styles.socialMediaIcons} href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow">
+                <i className="bi bi-stack-overflow"></i>
               </a>
 
-              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer"  title="YouTube">
-                <Image src={`${prefix}/images/sm-icons/youtube-white.svg`} width={25} height={25} alt="YouTube" />
+              <a className={styles.socialMediaIcons} href="https://www.youtube.com/c/Ballerinalang" target="_blank" rel="noreferrer" title="YouTube">
+                <i className="bi bi-youtube"></i>
               </a>
 
               {/* <a className={styles.socialMediaIcons} href="https://www.linkedin.com/company/79080790" target="_blank" rel="noreferrer"  title="LinkedIn">

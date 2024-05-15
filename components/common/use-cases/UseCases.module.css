@@ -1,0 +1,91 @@
+.useCaseCard {
+    display: flex;
+}
+
+.useCaseCard .cardWrapper {
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: #a7a8ab solid 0.3px !important;
+}
+
+.useCaseCard .cardWrapper:hover {
+   border: #20b6b0 solid 0.3px !important;
+   cursor: pointer;
+}
+
+.wrapperLink {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cardWrapper h3 {
+    font-size: 22px;
+    color: #585a5e;
+    height: auto;
+}
+
+.cardDescription {
+    font-size: 16px;
+}
+
+.cardWrapper .cardDescription {
+    height: auto;
+    margin-top: 20px;
+    color: #585a5e;
+    font-weight: 400;
+}
+
+.cardLinks {
+    color: #20b6b0;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cardLinks a {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.cardLinks a:hover {
+    color: #494949;
+}
+
+.imageWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    height: 120px;
+}
+
+.vLogo {
+    width: 30% !important;
+}
+
+.centerLogo {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.cardImgWrapper {
+    height: fit-content;
+}
+
+.cardImgWrapper img {
+    object-position: 50% 50%;
+    object-fit: cover;
+    aspect-ratio: 2 / 1;
+}
+
+.footer {
+    background-color: #ffffff !important;
+    border: none !important;
+}

@@ -67,7 +67,7 @@ export function Flush({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/flush",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/flush",
                 "_blank",
               );
             }}
@@ -240,10 +240,7 @@ export function Flush({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link
-            title="Transaction statement"
-            href="/learn/by-example/transaction-statement"
-          >
+          <Link title="Fork" href="/learn/by-example/fork">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -252,7 +249,7 @@ export function Flush({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Transaction statement
+                  Fork
                 </span>
               </div>
               <svg

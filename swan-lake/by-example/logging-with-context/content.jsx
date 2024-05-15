@@ -59,7 +59,7 @@ export function LoggingWithContext({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/logging-with-context",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/logging-with-context",
                 "_blank",
               );
             }}
@@ -191,8 +191,8 @@ export function LoggingWithContext({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run logging_with_context.bal`}</span>
-              <span>{`time = 2021-05-25T10:34:25.460+05:30 level = INFO module = "" message = "info log" current_time = "2021-05-25T05:04:25.473981Z"`}</span>
-              <span>{`time = 2021-05-25T10:34:25.487+05:30 level = INFO module = "" message = "info log" percentage = 38.4141353500368`}</span>
+              <span>{`time=2023-09-04T13:38:09.181+05:30 level=INFO module="" message="info log" current_time="2023-09-04T08:08:09.184211Z"`}</span>
+              <span>{`time=2023-09-04T13:38:09.194+05:30 level=INFO module="" message="info log" percentage=15.125095844268799`}</span>
             </code>
           </pre>
         </Col>

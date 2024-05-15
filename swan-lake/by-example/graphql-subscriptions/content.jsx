@@ -6,15 +6,12 @@ import Link from "next/link";
 
 export const codeSnippetData = [
   `import ballerina/graphql;
+import ballerina/lang.runtime;
+import ballerina/random;
 
 service /graphql on new graphql:Listener(9090) {
-    // Defines a \`string\` array in the service.
-    private string[] names;
 
-    function init() {
-        // Initialize the array.
-        self.names = ["Walter White", "Jesse Pinkman", "Skyler White"];
-    }
+    private final readonly & string[] names = ["Walter White", "Jesse Pinkman", "Saul Goodman"];
 
     resource function get names() returns string[] {
         return self.names;
@@ -23,8 +20,30 @@ service /graphql on new graphql:Listener(9090) {
     // A resource method with the \`subscribe\` accessor represents a field in the root
     // \`Subscription\` operation. It must always return a stream. Since the stream is of type
     // \`string\`, the resulting field in the generated GraphQL schema will be of type \`String!\`.
-    resource function subscribe names() returns stream<string> {
-        return self.names.toStream();
+    resource function subscribe names() returns stream<string, error?> {
+        // Create a \`NameGenerator\` object.
+        NameGenerator nameGenerator = new (self.names);
+        // Create a stream using the \`NameGenerator\` object.
+        stream<string, error?> names = new (nameGenerator);
+        return names;
+    }
+}
+
+// Defines a stream implementor that can be used to create a stream of strings. This will pick a random name from
+// the list of names and return it with a delay to demonstrate a stream of values.
+class NameGenerator {
+    private final string[] names;
+
+    isolated function init(string[] names) {
+        self.names = names;
+    }
+
+    // The \`next\` method picks a random name from the list and returns it.
+    public isolated function next() returns record {|string value;|}|error? {
+        // Sleep for 1 second to simulate a delay.
+        runtime:sleep(1);
+        int index = check random:createIntInRange(0, self.names.length());
+        return {value: self.names[index]};
     }
 }
 `,
@@ -90,7 +109,7 @@ export function GraphqlSubscriptions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-subscriptions",
                 "_blank",
               );
             }}
@@ -227,8 +246,7 @@ export function GraphqlSubscriptions({ codeSnippets }) {
 
       <p>
         Send the following document to the GraphQL endpoint to test the service
-        using any GraphQL client that supports subscriptions to test the
-        service.
+        using a GraphQL client that supports subscriptions to test the service.
       </p>
 
       <Row
@@ -241,7 +259,7 @@ export function GraphqlSubscriptions({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-subscriptions",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-subscriptions",
                 "_blank",
               );
             }}
@@ -315,7 +333,14 @@ export function GraphqlSubscriptions({ codeSnippets }) {
         </Col>
       </Row>
 
-      <p>It should return the following values.</p>
+      <p>It should result in a response similar to the following.</p>
+
+      <blockquote>
+        <p>
+          <strong>Note:</strong> The response will get updated in real-time and
+          can be different due to the random name generation.
+        </p>
+      </blockquote>
 
       <Row
         className="bbeOutput mx-0 py-0 rounded "
@@ -371,8 +396,6 @@ export function GraphqlSubscriptions({ codeSnippets }) {
           <pre ref={ref2}>
             <code className="d-flex flex-column">
               <span>{`{ "data": { "names": "Walter White" } }`}</span>
-              <span>{`{ "data": { "names": "Jesse Pinkman" } }`}</span>
-              <span>{`{ "data": { "names": "Skyler White" } }`}</span>
             </code>
           </pre>
         </Col>

@@ -81,7 +81,7 @@ export function JsonNumbers({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/json-numbers",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/json-numbers",
                 "_blank",
               );
             }}
@@ -291,7 +291,7 @@ export function JsonNumbers({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Raw templates" href="/learn/by-example/raw-templates">
+          <Link title="JSON to record" href="/learn/by-example/json-to-record">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -300,7 +300,7 @@ export function JsonNumbers({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Raw templates
+                  JSON to record
                 </span>
               </div>
               <svg

@@ -52,7 +52,7 @@ export function LoggingConfiguration({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/logging-configuration",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/logging-configuration",
                 "_blank",
               );
             }}
@@ -184,9 +184,9 @@ export function LoggingConfiguration({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run logging_configuration.bal`}</span>
-              <span>{`time = 2021-05-25T11:06:54.998+05:30 level = ERROR module = "" message = "error log"`}</span>
-              <span>{`time = 2021-05-25T11:06:55.009+05:30 level = INFO module = "" message = "info log"`}</span>
-              <span>{`time = 2021-05-25T11:06:55.010+05:30 level = WARN module = "" message = "warn log"`}</span>
+              <span>{`time=2023-09-04T13:39:47.027+05:30 level=ERROR module="" message="error log"`}</span>
+              <span>{`time=2023-09-04T13:39:47.037+05:30 level=INFO module="" message="info log"`}</span>
+              <span>{`time=2023-09-04T13:39:47.038+05:30 level=WARN module="" message="warn log"`}</span>
               <span>{`# As shown in the output, only the \`INFO\` and higher level logs are logged by default.`}</span>
               <span>{`
 `}</span>
@@ -196,10 +196,10 @@ export function LoggingConfiguration({ codeSnippets }) {
               <span>{`# [ballerina.log]`}</span>
               <span>{`# level = "DEBUG"`}</span>
               <span>{`# \`\`\``}</span>
-              <span>{`time = 2021-05-25T11:11:24.898+05:30 level = DEBUG module = "" message = "debug log"`}</span>
-              <span>{`time = 2021-05-25T11:11:24.914+05:30 level = ERROR module = "" message = "error log"`}</span>
-              <span>{`time = 2021-05-25T11:11:24.915+05:30 level = INFO module = "" message = "info log"`}</span>
-              <span>{`time = 2021-05-25T11:11:24.915+05:30 level = WARN module = "" message = "warn log"`}</span>
+              <span>{`time=2023-09-04T13:42:07.797+05:30 level=DEBUG module="" message="debug log"`}</span>
+              <span>{`time=2023-09-04T13:42:07.807+05:30 level=ERROR module="" message="error log"`}</span>
+              <span>{`time=2023-09-04T13:42:07.808+05:30 level=INFO module="" message="info log"`}</span>
+              <span>{`time=2023-09-04T13:42:07.809+05:30 level=WARN module="" message="warn log"`}</span>
               <span>{`# As shown in the output, now the \`DEBUG\` and higher level logs are logged.`}</span>
               <span>{`
 `}</span>
@@ -219,9 +219,9 @@ export function LoggingConfiguration({ codeSnippets }) {
               <span>{`# [ballerina.log]`}</span>
               <span>{`# format = "json"`}</span>
               <span>{`# \`\`\``}</span>
-              <span>{`{"time":"2021-05-25T11:14:43.986+05:30", "level":"ERROR", "module":"", "message":"error log"}`}</span>
-              <span>{`{"time":"2021-05-25T11:14:44.005+05:30", "level":"INFO", "module":"", "message":"info log"}`}</span>
-              <span>{`{"time":"2021-05-25T11:14:44.006+05:30", "level":"WARN", "module":"", "message":"warn log"}`}</span>
+              <span>{`{"time":"2023-09-04T13:44:10.529+05:30", "level":"ERROR", "module":"", "message":"error log"}`}</span>
+              <span>{`{"time":"2023-09-04T13:44:10.536+05:30", "level":"INFO", "module":"", "message":"info log"}`}</span>
+              <span>{`{"time":"2023-09-04T13:44:10.536+05:30", "level":"WARN", "module":"", "message":"warn log"}`}</span>
             </code>
           </pre>
         </Col>

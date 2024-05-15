@@ -7,7 +7,7 @@ import Link from "next/link";
 export const codeSnippetData = [
   `import ballerina/graphql;
 
-// All the types that are used in the GraphQL service can have doc comments to add as documentation.
+// All the types that are used in the GraphQL service can have documentation.
 # Represents a profile.
 # + name - The name of the profile
 # + age - The age of the profile
@@ -18,7 +18,7 @@ type Profile record {|
 
 service /graphql on new graphql:Listener(9090) {
 
-    // Add doc comments to reflect them in the generated GraphQL schema.
+    // Add documentation to reflect them in the generated GraphQL schema.
     # Returns a profile using the provided ID.
     # + id - The ID of the profile
     # + return - The profile with the requested ID
@@ -74,11 +74,12 @@ export function GraphqlDocumentation({ codeSnippets }) {
 
       <p>
         The Ballerina <code>graphql</code> module allows adding documentation to
-        the <code>graphql:Service</code> and its subsequent types. To add
-        documentation, use the Ballerina doc comments for the{" "}
+        the generated GraphQL schema and its subsequent types. To add
+        documentation, use Ballerina documentation for the{" "}
         <code>graphql:Service</code>, <code>resource</code>/<code>remote</code>{" "}
-        methods, types, and <code>enum</code>s. Add the documentation to include
-        the descriptions to the generated GraphQL schema.
+        methods, types, and <code>enum</code>s. The Ballerina documentation will
+        be automatically added as the documentation in the generated GraphQL
+        schema.
       </p>
 
       <Row
@@ -91,7 +92,7 @@ export function GraphqlDocumentation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-documentation",
                 "_blank",
               );
             }}
@@ -241,7 +242,7 @@ export function GraphqlDocumentation({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-documentation",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-documentation",
                 "_blank",
               );
             }}

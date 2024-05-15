@@ -46,11 +46,11 @@ http:Client testClient = check new ("http://localhost:9090/foo");
 
 @test:Config
 public function testGet() returns error? {
-    http:Response response = check testClient->get("/bar/?value=10");
+    http:Response response = check testClient->/bar.get(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);
     test:assertEquals(response.getTextPayload(), "Retrieved ID 10");
 
-    response = check testClient->get("/bar/?value=-5");
+    response = check testClient->/bar.get(value = -5);
     test:assertEquals(response.statusCode, http:STATUS_BAD_REQUEST);
     test:assertEquals(response.getTextPayload(), "Incorrect ID value");
 }
@@ -67,8 +67,8 @@ may not be able to access during the test execution.
 ***main.bal***
 
 ```ballerina
-import ballerina/io;
 import ballerina/http;
+import ballerina/io;
 
 http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 
@@ -76,7 +76,7 @@ http:Client clientEndpoint = check new ("https://api.chucknorris.io/jokes/");
 // with the name replaced by the provided name or an error if the API invocation fails.
 function getRandomJoke(string name) returns string|error {
 
-    http:Response response = check clientEndpoint->get("/random");
+    http:Response response = check clientEndpoint->/random;
 
     if response.statusCode != http:STATUS_OK {
         string errorMsg = "error occurred while sending GET request";
@@ -94,16 +94,16 @@ function getRandomJoke(string name) returns string|error {
 ***main_test.bal***
 
 ```ballerina
-import ballerina/test;
 import ballerina/http;
+import ballerina/test;
 
 @test:Config
 public function testGetRandomJoke() returns error? {
     clientEndpoint = test:mock(http:Client);
 
-    test:prepare(clientEndpoint).when("get").thenReturn(getMockResponse());
+    test:prepare(clientEndpoint).whenResource("::path").withPathParameters({path: ["random"]}).onMethod("get").thenReturn(getMockResponse());
 
-    http:Response result = check clientEndpoint->get("/random");
+    http:Response result = check clientEndpoint->/random;
     json payload = check result.getJsonPayload();
 
     test:assertEquals(payload, {"value": "When Chuck Norris wants an egg, he cracks open a chicken."});    
@@ -146,7 +146,7 @@ function getMockClient() returns http:Client|error {
     return test:mock(http:Client);
 }
 ```
-To lean more about how to use mocking to test services, see [Mocking](/learn/test-ballerina-code/mocking).
+To learn more about how to use mocking to test services, see [Mocking](/learn/test-ballerina-code/mocking).
 
 ## Configure services and clients
 
@@ -184,11 +184,11 @@ http:Client testClient = check new (hostName);
 
 @test:Config
 public function testGet() returns error? {
-    http:Response response = check testClient->get("/bar/?value=10");
+    http:Response response = check testClient->/bar(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);
     test:assertEquals(response.getTextPayload(), "Retrieved ID 10");
 
-    response = check testClient->get("/bar/?value=-5");
+    response = check testClient->/bar(value = -5);
     test:assertEquals(response.statusCode, http:STATUS_BAD_REQUEST);
     test:assertEquals(response.getTextPayload(), "Incorrect ID value");
 }

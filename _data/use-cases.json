@@ -1,0 +1,76 @@
+{
+    "useCases" : [
+        {
+            "slug": "integration",
+            "frontmatter": {
+                "title": "Ballerina for integration",
+                "description": "Just write the code using the only language with integration-friendly abstractions.",
+                "logo": "/images/integration_diagram.png"
+            }
+        },
+        {
+            "slug": "ai",
+            "frontmatter": {
+                "title": "Ballerina for AI as a Service",
+                "description": "Ballerina is the best language to write your AI-powered applications that consume LLMs and other generative models.",
+                "logo": "/images/Vectors-05.png"
+            }
+        },
+        {
+            "slug": "healthcare",
+            "frontmatter": {
+                "title": "Ballerina for healthcare",
+                "description": "Write code with healthcare-friendly abstractions.",
+                "logo": "/images/health-intro.png"
+            }
+        },
+        {
+            "slug": "data-oriented-programming",
+            "frontmatter": {
+                "title": "Data-oriented programming with Ballerina",
+                "description": "With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing.",
+                "logo": "/images/usecases/integration/dop-banner.png"
+            }
+        },
+        {
+            "slug": "eda",
+            "frontmatter": {
+                "title": "Ballerina for Event-Driven Architecture (EDA)",
+                "description": "Event-driven architecture provides loose coupling, scalability, responsiveness, extensibility, and fault tolerance. Remarkably, Ballerina can produce and consume events like no other.",
+                "logo": "/images/eda1.png"
+            }
+        },
+        {
+            "slug": "b2b",
+            "frontmatter": {
+                "title": "Ballerina for B2B integrations",
+                "description": "Ballerina is the only language with native support for B2B integrations.",
+                "logo": "/images/edi-intro.png"
+            }
+        },
+        {
+            "slug": "etl",
+            "frontmatter": {
+                "title": "Ballerina for ETL",
+                "description": "Write code with integration-friendly abstractions.",
+                "logo": "/images/etl-sm-banner.png"
+            }
+        },
+        {
+            "slug": "microservices",
+            "frontmatter": {
+                "title": "Ballerina: The ultimate toolset for seamless microservices development",
+                "description": "The ultimate toolset for seamless microservices development.",
+                "logo": "/images/msa-intro.png"
+            }
+        },
+        {
+            "slug": "bff",
+            "frontmatter": {
+                "title": "Ballerina for developing back-ends for modern front-ends",
+                "description": "Ballerina's support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends.",
+                "logo": "/images/bff-intro.png"
+            }
+        }
+    ]
+}

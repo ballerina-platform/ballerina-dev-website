@@ -195,6 +195,62 @@ version = "0.1.0"
 include = ["documents", "sample.png"]
 ```
 
+### The `keywords` field
+
+The keywords field is used to specify a list of short phrases that describe the package. Keywords are helpful for users to discover the package in the Ballerina Central using the built-in search. These keywords are also listed under the `Keywords` section on the API documentation page in Ballerina Central.
+
+The `keywords` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+keywords = ["service", "edi", "manufacturing"]
+```
+
+### The `authors` field
+
+The `authors` field is used to specify the authors who contributed to the package. This information will be listed under the `Contributors` section on the API documentation page in Ballerina Central. 
+
+The `authors` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+authors = ["John Doe", "Jane Doe"]
+```
+
+### The `repository` field
+
+The `repository` field is used to specify the URL of the repository where the source code of the package is hosted. This will be listed as `Source Repository` on the API documentation page in Ballerina Central.
+
+The `repository` field is optional and accepts a string.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+repository = "https://github.com/john-doe/module-winery"
+```
+
+### The `license` field
+
+The `license` field is used to specify the licenses under which the package is distributed. This will be listed as `License` under the `Metadata` section on the API documentation page in Ballerina Central.
+
+The `license` field is optional and accepts a string array.
+
+```toml
+[package]
+org = "samjs"
+name = "winery"
+version = "0.1.0"
+license = ["Apache-2.0"]
+```
+
 ### Build options
 
 The `[build-options]` table specifies options that should be applied when building the package. You can provide build options in the `Ballerina.toml` instead of passing them to the `bal build` command.
@@ -346,7 +402,19 @@ warning: Detected conflicting jar files:
 
 **Define the scope for a dependency**
 
-By default, the scope takes the value `default` which will add it to the final executable JAR file. If you want to restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+By default, when the scope has not been explicitly specified for a platform dependency in the `Ballerina.toml`, it will be packaged into the final executable JAR file or the BALA file. Two scopes can be used to restrict this behavior.
+
+***'testOnly' scope***
+
+To restrict a certain platform dependency to be used only for testing, specify the scope as `testOnly`. This will add the platform dependency to the test runtime but will avoid packing it into the final executable JAR file.
+
+***'provided' scope***
+
+To restrict a certain platform dependency from being packed into the BALA file, specify the scope as `provided`. This will add the platform dependency to the final executable JAR file but not to the BALA file.
+
+This scope is useful in cases where the provider's license restricts the redistribution of the platform library. By specifying the "provided" scope, you ensure the dependency is available during both compilation and execution, without being included in the BALA. This approach helps avoid any licensing complications associated with redistribution.
+
+When incorporating such a BALA as a dependency in another project, remember to explicitly define the platform dependency in the `Ballerina.toml` file since it will not be bundled within the BALA file. Additionally, it is important to note that specifying the scope as 'provided' when providing platform dependencies for the bal build command is not supported.
 
 The following example shows a platform dependency entry with the `scope`.
 
@@ -357,6 +425,50 @@ The following example shows a platform dependency entry with the `scope`.
   # Scope of the JAR file
   scope =  "<scope-of-the-jar-file>"
   ```
+
+>**Note:** When the scope has been specified as `provided`, the values `groupId`, `artifactId`, and `version` will be considered mandatory fields for that dependency.
+
+### Tools
+
+You can specify code generation tools to integrate with the package build. These tools execute before the package build and generate code that is essential for the build process.
+
+The following example shows how to specify a tool in the `Ballerina.toml` file.
+
+```toml
+[[tool.<command>]]
+id = "<tool-id>"
+filePath = "<schema-or-API-specification-file>"
+targetModule = "<destination-module-to-generate-code>"
+options.<option1> = "<value1>"
+options.<option2> = "<value2>"
+```
+
+The tool command that you need to use should be specified after the `tool.` prefix in the table array header.
+
+The mandatory `id` field specifies a unique identifier for the tool entry, as a tool can utilize multiple schemas/API specifications files. The `id` must consist of alphanumeric characters and underscores only, and must not begin or end with an underscore. Consecutive underscores are also not permitted.
+
+The `filePath` field is mandatory, providing the path to the specification file that the tool uses to generate code.
+ 
+The `targetModule` field specifies the module where the generated code should be placed. If this is not specified, it will default to the root module. This should be unique for each tool entry.
+ 
+The `options` fields can be used to pass additional parameters to the tool.
+
+If a tool provides multiple subcommands, you can specify them as follows.
+
+```toml
+[[tool.<command>.<subcommand1>]]
+id = "<tool-id1>"
+filePath = "<specification-file>"
+targetModule = "<generated-code-destination-module>"
+options.<option1> = "<value1>"
+options.<option2> = "<value2>"
+
+[[tool.<command>.<subcommand2>]]
+id = "<tool-id2>"
+filePath = "<specification-file>"
+targetModule = "<generated-code-destination-module>"
+options.<option1> = "<value1>"
+```
 
 ## Platform Compatibility
 

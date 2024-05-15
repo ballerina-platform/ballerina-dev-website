@@ -33,7 +33,7 @@ $ tree .
 2 directories, 5 files
 ```
 
-* The `Ballerina.toml` file identifies the directory as a Ballerina package. You can edit the `Ballerina.toml` file to change the organization, name, and the version of the package. 
+* The `Ballerina.toml` file identifies the directory as a Ballerina package. You can edit the `Ballerina.toml` file to change the organization, name, and version of the package.  Additionally, you can add an icon, a description, and keywords to the package, allowing users to easily find it through search functions. To learn more about these fields, see [The Ballerina.toml file](/learn/package-references/#the-ballerinatoml-file)
 * The `Package.md` is required when you publish a package to a repository. You can edit the content to add a meaningful description about the package.
 * The `hello.bal` file, `resources/` directory `tests/` directory, and the `Module.md` file belong to the default module of the package. 
  
@@ -66,7 +66,14 @@ You can publish a Ballerina archive to the <a href="https://central.ballerina.io
 
 2. Navigate to the <a href="https://central.ballerina.io/dashboard?tab=token" target="_blank">Dashboard</a> and acquire an access token.
 
-3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml`. 
+3. Download and place the `Settings.toml` file in your home repository (`<USER_HOME>/.ballerina/`). If you already have a `Settings.toml` file configured in your home repository, follow the other option and copy the access token into the `Settings.toml` as follows.
+
+    ```Toml
+    [central]
+    accesstoken="<token>"
+    ```
+
+> **Note:** The tokens remain valid for one year from the generation date. Upon expiration, you must generate a new token and update the `Settings.toml` file to avoid the unauthorized access error.
 
 ### Configure proxy settings (optional)
 If you are connected to the internet via an HTTP proxy, configure the proxy settings in the `Settings.toml` file to access the Ballerina Central to publish packages. For more information on proxy settings, see [Configure a network proxy](/learn/configure-a-network-proxy).

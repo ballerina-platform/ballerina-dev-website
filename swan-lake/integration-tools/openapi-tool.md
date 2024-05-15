@@ -32,6 +32,7 @@ $ bal openapi [-i | --input] <openapi-contract-file-path>
             [-n | --nullable]
             [--license] <license-file-path> 
             [--with-tests]
+            [--status-code-binding]
 ```
 
 ### Ballerina to OpenAPI usage
@@ -63,6 +64,7 @@ The command-line arguments below can be used with the command for each particula
 | `-n \|--nullable` | If your OpenAPI specification includes JSON schema properties that are not marked as `nullable:true`, they may return as null in some responses. It results in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.<br><br>**E.g.,** `bal openapi -i <openapi-contract> [-n \|--nullable]`                          | Optional          |
 | `--with-tests`    | It works with the client generation command and generates a boiler-plate test for all the remote methods of the generated client.                                                                                                                                                                                                                                                                                                                                                                                              | Optional          |
 | `--client-methods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
+| `--status-code-binding`| This option can be used in the client generation to generate the client methods with status code response binding.                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
 
 ### Ballerina to OpenAPI command options
 
@@ -218,7 +220,7 @@ import ballerina/openapi;
     contract: "/path/to/openapi.json|yaml",
     tags: ["store"],
     operations: ["op1", "op2"],
-    failOnErrors: true // (default value => true),
+    failOnErrors: true # (default value => true),
     excludeTags: ["pets", "user"],
     excludeOperations: ["op1", "op2"]
 }
@@ -282,6 +284,71 @@ Use the `--client-methods <resource|remote>` option to select the client method 
 ```
 $ bal openapi -i <openapi-contract> --mode client --client-methods <resource|remote>
 ```
+
+>**Info:** For more command options, see [OpenAPI to Ballerina CLI options](#openapi-to-ballerina-command-options).
+
+### Automate client generation
+
+#### Update the `Ballerina.toml` file with OpenAPI tool configurations
+
+Adding the following OpenAPI tool configurations to the `Ballerina.toml` file will generate a client during the package build. This eliminates the need to commit the generated code.
+
+> **Info:** It is mandatory to provide `id` and `filePath` attributes for the OpenAPI tool configurations. The other attributes are optional.
+
+The following is an example of the tool configuration usage in the `Ballerina.toml`.
+
+```ballerina
+[[tool.openapi]]
+id = "client01"
+filePath = "./openapi.yaml"
+targetModule = "delivery"
+options.mode = "client"
+options.statusCodeBinding = true
+options.tags = ["tag1", "tag2"]
+options.operations = ["op1", "op2"]
+options.nullable = true # (default value => false)
+options.license = "./license.txt"
+```
+
+The below tool configuration can be used.
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `filePath`   | The `filePath` tool option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                                         | Mandatory          |
+| `id`          | Id for the generated module.                                                                                                                                                                                                                                                                                  | Mandatory        |
+| `targetModule`  | The Ballerina files are generated at the given directory name in the Ballerina package.                                                                                                                                                                                                                                                                                     | Optional          |
+| `options.mode`          | The supported mode type is `client`. It generates client stubs for the given OpenAPI contract.                                                                                                                                                                                                                                                                                                 | Optional          |
+| `options.tags`          | To generate the Ballerina client stub with a subset of tags defined in the OpenAPI contract                                                                                                                                                                                                             |  Optional        |
+| `options.operations`    | To generate the Ballerina client stub with a subset of operations defined in the OpenAPI contract, use the `options.operations` option and specify the operations you need as specified in the OpenAPI definition.                                                                                                                                                                                                            |  Optional        |
+| `options.license`       | To generate the Ballerina files with the given copyright or license header, you can use this `options.license` option with the path to your copyright text.                                                                                                                                                                                                                                                                                                         |  Optional         |
+| `options.nullable` | If your OpenAPI specification includes JSON schema properties that are not marked as `options.nullable=true`, they may return as null in some responses. It results in a JSON schema to Ballerina record data binding error. If you suspect this can happen for any property, it is safe to generate all data types in the generated record with Ballerina nil support by turning on this flag.           | Optional          |
+| `options.clientMethods`| This option can be used in the client generation to select the client method type, which can be `resource` or `remote`. (The default option is `resource`).                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
+| `options.statusCodeBinding`| This option can be used in the client generation to generate the client methods with status code response binding.                                                                                                                                                                                                                                                                                                                                                                                           |  Optional         |
+
+
+#### Update the Ballerina.toml file with OpenAPI tool configurations using OpenAPI CLI command
+
+Executing the following OpenAPI `add` sub-command, along with the OpenAPI to Ballerina CLI options, will update the `Ballerina.toml` with OpenAPI tool configurations.
+
+```
+$ bal openapi add [-i | --input] <openapi-contract-file-path>
+                  [--id] <client-id>
+                  [--module] <target-module>
+                  [--package] <ballerina-package-path>
+```
+
+For example,
+
+```
+$ bal openapi add -i <openapi-contract> --id <client_id> --module <target-module> --package <ballerina package path> --tags <"tag1","tag2">
+```
+
+| Command option      | Description                                                                                                                                                                                                                                                                                                                                                                     | Mandatory/Optional |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| `-i \| --input`   | The `-i\|--input` command option specifies the path of the OpenAPI contract file (e.g., `my-api.yaml` or `my-api.json`).                                                                                                                                                                                                                                                                                                                                         | Mandatory          |
+| `--id`          | Id for the generated module | Mandatory          |
+| `--module`          | Module name for the generated client stub module (default will be generated directory)|  Optional        |
+| `-p \|--package`    | The Ballerina package location to generate the Ballerina client or service stub.                                                                                                                                                                                                              |  Optional        |
 
 >**Info:** For more command options, see [OpenAPI to Ballerina CLI options](#openapi-to-ballerina-command-options).
 

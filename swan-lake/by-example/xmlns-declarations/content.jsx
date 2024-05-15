@@ -69,7 +69,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/xmlns-declarations",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/xmlns-declarations",
                 "_blank",
               );
             }}
@@ -259,7 +259,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
           </Link>
         </Col>
         <Col sm={6}>
-          <Link title="Documentation" href="/learn/by-example/documentation">
+          <Link title="XML to record" href="/learn/by-example/xml-to-record">
             <div className="btnContainer d-flex align-items-center ms-auto">
               <div className="d-flex flex-column me-4">
                 <span className="btnNext">Next</span>
@@ -268,7 +268,7 @@ export function XmlnsDeclarations({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([false, true])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  Documentation
+                  XML to record
                 </span>
               </div>
               <svg

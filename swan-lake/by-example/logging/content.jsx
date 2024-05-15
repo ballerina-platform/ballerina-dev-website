@@ -61,7 +61,7 @@ export function Logging({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/logging",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/logging",
                 "_blank",
               );
             }}
@@ -193,12 +193,11 @@ export function Logging({ codeSnippets }) {
           <pre ref={ref1}>
             <code className="d-flex flex-column">
               <span>{`\$ bal run logging.bal`}</span>
-              <span>{`time = 2021-05-25T11:29:58.290+05:30 level = DEBUG module = "" message = "debug log"`}</span>
-              <span>{`time = 2021-05-25T11:29:58.305+05:30 level = ERROR module = "" message = "error log"`}</span>
-              <span>{`time = 2021-05-25T11:29:58.306+05:30 level = INFO module = "" message = "info log"`}</span>
-              <span>{`time = 2021-05-25T11:29:58.307+05:30 level = WARN module = "" message = "warn log"`}</span>
-              <span>{`time = 2021-05-25T11:29:58.307+05:30 level = INFO module = "" message = "info log" name = "foo" id = 845315 successful = true`}</span>
-              <span>{`time = 2021-05-25T11:29:58.317+05:30 level = ERROR module = "" message = "error log with cause" error = "something went wrong!" name = "foo" id = 845315`}</span>
+              <span>{`time=2023-09-04T13:35:12.309+05:30 level=ERROR module="" message="error log"`}</span>
+              <span>{`time=2023-09-04T13:35:12.319+05:30 level=INFO module="" message="info log"`}</span>
+              <span>{`time=2023-09-04T13:35:12.320+05:30 level=WARN module="" message="warn log"`}</span>
+              <span>{`time=2023-09-04T13:35:12.321+05:30 level=INFO module="" message="info log" id=845315 name="foo" successful=true`}</span>
+              <span>{`time=2023-09-04T13:35:12.323+05:30 level=ERROR module="" message="error log with cause" error={"causes":[],"message":"something went wrong!","detail":{},"stackTrace":[{"callableName":"main","moduleName":(),"fileName":"logging.bal","lineNumber":15}]} id=845315 name="foo"`}</span>
             </code>
           </pre>
         </Col>

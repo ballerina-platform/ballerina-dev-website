@@ -364,6 +364,14 @@ export default function Boxes(props) {
                         </p>
                         <p className={styles.description}>Best practices to follow when formatting Ballerina code.</p>
                       </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a href={`${prefix}/learn/customize-formatting`} className={styles.titleLink}>
+                            Customize formatting
+                          </a>
+                        </p>
+                        <p className={styles.description}>Provide custom formatting options to Ballerina formatter.</p>
+                      </div> 
                     </div>
                   </div>
                 </div>

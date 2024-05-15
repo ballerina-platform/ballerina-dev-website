@@ -62,7 +62,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/rabbitmq-consumer",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/rabbitmq-consumer",
                 "_blank",
               );
             }}
@@ -245,8 +245,8 @@ export function RabbitmqConsumer({ codeSnippets }) {
       <Row className="mt-auto mb-5">
         <Col sm={6}>
           <Link
-            title="SASL authentication"
-            href="/learn/by-example/kafka-consumer-sasl"
+            title="Outbound Security"
+            href="/learn/by-example/soap-client-security-outbound-security-config"
           >
             <div className="btnContainer d-flex align-items-center me-auto">
               <svg
@@ -273,7 +273,7 @@ export function RabbitmqConsumer({ codeSnippets }) {
                   onMouseEnter={() => updateBtnHover([true, false])}
                   onMouseOut={() => updateBtnHover([false, false])}
                 >
-                  SASL authentication
+                  Outbound Security
                 </span>
               </div>
             </div>

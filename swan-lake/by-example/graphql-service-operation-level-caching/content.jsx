@@ -49,7 +49,7 @@ service /graphql on new graphql:Listener(9090) {
     }
 
     // The \`maxAge\` field sets the maximum age of the cache in seconds. (default: 60)
-    // The \`maxSize\` field indicates the maximum capacity of the cache table by entries.
+    // The \`maxSize\` field indicates the maximum capacity of the cache table by entries. 
     // (default: 120)
     @graphql:ResourceConfig {
         cacheConfig: {
@@ -106,7 +106,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-service-operation-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-service-operation-level-caching",
                 "_blank",
               );
             }}
@@ -255,7 +255,7 @@ export function GraphqlServiceOperationLevelCaching({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/graphql-service-operation-level-caching",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/graphql-service-operation-level-caching",
                 "_blank",
               );
             }}

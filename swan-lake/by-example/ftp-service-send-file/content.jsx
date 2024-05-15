@@ -32,7 +32,7 @@ service on fileListener {
         foreach ftp:FileInfo addedFile in event.addedFiles {
             // The \`ftp:Caller\` can be used to append another file to the added files in the server.
             stream<io:Block, io:Error?> fileStream = check io:fileReadBlocksAsStream("./local/appendFile.txt", 7);
-            check caller->append(addedFile.path, fileStream);
+            check caller->append(addedFile.pathDecoded, fileStream);
             check fileStream.close();
         }
     }
@@ -75,7 +75,7 @@ export function FtpServiceSendFile({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.8.6/examples/ftp-service-send-file",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/ftp-service-send-file",
                 "_blank",
               );
             }}

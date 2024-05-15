@@ -472,54 +472,6 @@ function testMemberVariable() {
 }
 ```
 
-#### Stub to do nothing
-
-If a function has an optional or no return type specified, this function can be mocked to do nothing when writing
- test cases.
-
-***Example:***
-
-***main.bal***
-
-```ballerina
-import ballerina/email;
-
-email:SmtpClient smtpClient = check new ("localhost", "admin","admin");
-
-// This function sends out emails to specified email addresses and returns an error if sending failed.
-function sendNotification(string[] emailIds) returns error? {
-    email:Message msg = {
-        'from: "builder@abc.com",
-        subject: "Error Alert ...",
-        to: emailIds,
-        body: ""
-    };
-    return check smtpClient->sendMessage(msg);
-}
-```
-***main_test.bal***
-
-This test stubs the behaviour of the `send` function to do nothing for testing the `sendNotification` function.
-
-```ballerina
-import ballerina/test;
-import ballerina/email;
-
-@test:Config {}
-function testSendNotification() {
-    string[] emailIds = ["user1@test.com", "user2@test.com"];
-
-    // Create a default mock SMTP client and assign it to the `smtpClient` object.
-    smtpClient = test:mock(email:SmtpClient);
-
-    // Stub to do nothing when the`send` function is invoked.
-    test:prepare(smtpClient).when("sendMessage").doNothing();
-
-    // Invoke the function to test and verify that no error occurred.
-    test:assertEquals(sendNotification(emailIds), ());
-}
-```
-
 ## Mock functions
 
 The Ballerina test framework provides the capability to mock a function. You can easily mock a function in a module that

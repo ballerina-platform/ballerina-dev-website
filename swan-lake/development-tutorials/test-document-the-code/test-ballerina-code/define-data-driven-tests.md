@@ -60,7 +60,7 @@ function dataGen() returns map<[int, int, string]>|error {
 
 ```
 Compiling source
-        my_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 
@@ -100,7 +100,7 @@ function dataGen() returns string[][] {
 
 ```
 Compiling source
-        my_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 
@@ -126,7 +126,7 @@ The following is an example to execute map data sets.
 $ bal test --tests fruitsDataProviderTest#"banana"
 
 Compiling source
-	my_tests/dataproviders:0.0.0
+	myTests/dataproviders:0.0.0
 
 Running Tests
 
@@ -146,7 +146,7 @@ The following is an example to execute array data sets.
 $ bal test --tests stringDataProviderTest#1
 
 Compiling source
-        my_tests/dataproviders:0.1.0
+        myTests/dataproviders:0.1.0
 
 Running Tests
 

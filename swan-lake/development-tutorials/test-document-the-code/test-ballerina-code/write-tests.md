@@ -115,7 +115,7 @@ function mapDataProvider() returns map<[int, int, string]>|error =>
 
 ## Use assertions
 
-The Ballerina test framework supports the following assertions, which help verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help in verifying the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 | Assertion function                                                                    | Description                                                                                              |
 |---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|

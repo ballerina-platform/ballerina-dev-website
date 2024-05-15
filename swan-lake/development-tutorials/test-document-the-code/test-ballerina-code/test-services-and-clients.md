@@ -58,9 +58,7 @@ public function testGet() returns error? {
 
 ## Test with clients
 
-In cases where a fully-fledged client is already defined for a particular service, and the client is used across your code. Now, you want to test your code. Here, you can make use
-of `object mocking` to mock the client calls to the service and return curated responses from the client to test your code.
-It is useful when testing with the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios. It would cover a variety of cases that the client can handle without having the service to be up and running.
+A fully-fledged client is defined and the client is used across your code. Now, you want to test your code. Here, you can make use of `object mocking` to mock the client calls and return curated responses from the client to test your code. It is useful when testing with the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios. It would cover a variety of cases that the client can handle without having the service to be up and running.
 
 ***Example:***
 The following is a simple example on how mocking can be used to stub responses to services that you 

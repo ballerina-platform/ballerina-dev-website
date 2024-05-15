@@ -5,7 +5,7 @@ description: Learn how to use Ballerina's built-in test framework to write testa
 keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/test-a-simple-function/
 active: test-a-simple-function
-intro: The Ballerina language has a built-in robust test framework, which allows you to achieve multiple levels of testing. It provides support for assertions, data providers, mocking, and code coverage features, which enable programmers to write comprehensive tests.
+intro: The Ballerina language has a built-in robust test framework, which allows you to ensure that your applications are reliable. It provides support for assertions, data providers, mocking, and code coverage features, which enable programmers to write comprehensive tests.
 ---
 
 To get started, let's set up the Ballerina package to run tests.

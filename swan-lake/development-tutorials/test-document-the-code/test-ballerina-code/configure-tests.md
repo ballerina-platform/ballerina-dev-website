@@ -49,7 +49,7 @@ function testFunction2() {
 
 #### The `@test:AfterSuite` annotation
 
-The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for test suite level clean up. A test suite covers tests related to a module.
+The `AfterSuite` annotated function will be run once after all the tests in the test suite are run. This can be used for cleaning up at the test suite level. A test suite covers tests related to a module.
 
 ***Example:***
 
@@ -233,7 +233,7 @@ function testFunction3() {
 
 #### The `before` attribute of the `@test:Config` annotation
 
-The test config annotation makes use of ‘before’ to denote which function needs to execute before the particular test is run.
+The ‘before’ field in the test config annotation can be used to specify the function to execute before the particular test is run.
 
 ***Example:***
 
@@ -247,7 +247,7 @@ function testFunction3() {
 
 #### The `after` attribute of the `@test:Config` annotation
 
-The test config annotation makes use of ‘after’ to denote which function needs to execute after the particular test is run.
+The ‘after’ field in the test config annotation can be used to specify the function to execute after the particular test is run.
 
 ***Example:***
 
@@ -261,7 +261,7 @@ function testFunction2() {
 
 ## Ensure test execution order
 
-The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies upon.This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
+The test config annotation makes use of `dependsOn` to indicate the specific test cases that the current test relies upon. This is beneficial for guaranteeing the correct sequence of test execution by specifying the required dependencies.
 
 ***Example:***
 

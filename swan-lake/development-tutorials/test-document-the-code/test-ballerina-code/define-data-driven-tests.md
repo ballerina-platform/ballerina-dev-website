@@ -5,12 +5,12 @@ description: Learn how to do write data-driven tests using the ballerina test fr
 keywords: ballerina, programming language, testing, data-driven, data providers
 permalink: /learn/test-ballerina-code/define-data-driven-tests/
 active: define-data-driven-tests
-intro: The Ballerina Test Framework allows you to specify a function that returns a set of data values as a data provider for data-driven tests.
+intro: The Ballerina test Framework allows you to specify a function that returns a set of data values as a data provider for data-driven tests.
 ---
 
 ## Set up data-driven tests
 
-A data-driven test can be configured to use a data provider with the `dataProvider` field of the `@test:Config` annotation. Unlike, normal test cases, data-driven test cases take parameters that can be provided by a configured data provider.
+A data-driven test can be configured to use a data provider with the `dataProvider` field of the `@test:Config` annotation. Unlike normal test cases, data-driven test cases take parameters that can be provided by a configured data provider.
 
 ```ballerina
 import ballerina/test;
@@ -60,7 +60,7 @@ function dataGen() returns map<[int, int, string]>|error {
 
 ```
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        my_tests/dataproviders:0.1.0
 
 Running Tests
 
@@ -100,7 +100,7 @@ function dataGen() returns string[][] {
 
 ```
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        my_tests/dataproviders:0.1.0
 
 Running Tests
 
@@ -126,7 +126,7 @@ The following is an example to execute map data sets.
 $ bal test --tests fruitsDataProviderTest#"banana"
 
 Compiling source
-	ballerina_tests/dataproviders:0.0.0
+	my_tests/dataproviders:0.0.0
 
 Running Tests
 
@@ -146,7 +146,7 @@ The following is an example to execute array data sets.
 $ bal test --tests stringDataProviderTest#1
 
 Compiling source
-        ballerina_tests/dataproviders:0.1.0
+        my_tests/dataproviders:0.1.0
 
 Running Tests
 

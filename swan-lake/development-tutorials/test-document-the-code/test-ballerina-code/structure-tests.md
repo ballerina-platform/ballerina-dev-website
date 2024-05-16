@@ -13,7 +13,7 @@ Unit tests bound to a module need to be placed in a subfolder called `tests` wit
 In a standard Ballerina package, a module is mapped to a test suite. All tests within a module’s `tests` subdirectory 
 are considered to be part of the same test suite. The test source files could have any name. The test functions are just 
 Ballerina functions, which use a special annotation to mark the function as a test. Test functions must be specified 
-with the `@test:Config{}` annotation and there is no restriction on the test function name.
+with the `@test:Config` annotation and there is no restriction on the test function name.
 
 The functions, services, and global variables defined in a module are accessible from within the test files.
 Hence, you cannot redefine a symbol in the test files if it is already declared in the module.

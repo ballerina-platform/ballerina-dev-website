@@ -20,7 +20,7 @@ import ballerina/test;
 Once the test module is imported, the following annotation can be used to write a test function.
 
 ```ballerina
-@test:Config {}
+@test:Config
 ```
 
 The function defined after the above annotation will be detected as a test function. 
@@ -28,9 +28,9 @@ This annotation supports the following attributes in order to configure the test
 
 * ***enable: {true&#124;false}*** - Enable/disable the test. The default value is `true`.
     
-* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. The default value is `nil`.
+* ***before: &lt;function name&gt;*** - The function to be run just before the test is run. This is an optional field.
 
-* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. The default value is `nil`.
+* ***after: &lt;function name&gt;*** - The function to be run just after the test is run. This is an optional field.
  
 * ***dependsOn: [&lt;function names>, …]*** - List of functions on which the test function depends. The order in which 
 the comma-separated list appears has no prominence. In case there needs to be an order, the `dependsOn` parameter can 
@@ -51,10 +51,12 @@ import ballerina/test;
 
 function beforeFunc() {
     // This is the function, which will be executed before the Test functions.
+    io:println("I'm in before function!");
 }
 
 function afterFunc() {
     // This is the function, which will be executed after the Test functions.
+    io:println("I'm in after function!");
 }
 
 // This test function will not be executed.
@@ -79,7 +81,7 @@ function testFunction2(int value) returns error? {
     test:assertEquals(value, 1, msg = "value is not correct");
 }
 
-function dataGen() returns (int[][]) {
+function dataGen() returns int[][] {
     return [[1]];
 }
 
@@ -104,18 +106,16 @@ function mapDataProviderTest(int value1, int value2, string fruit) returns error
 }
 
 // The data provider function, which returns a  data set as a map of tuples.
-function mapDataProvider() returns map<[int, int, string]>|error {
-    map<[int, int, string]> dataSet = {
-        "banana": [10, 10, "banana"],
-        "cherry": [5, 5, "cherry"]
-    };
-    return dataSet;
-}
+function mapDataProvider() returns map<[int, int, string]>|error =>
+{
+    "banana": [10, 10, "banana"],
+    "cherry": [5, 5, "cherry"]
+};
 ```
 
 ## Use assertions
 
-The Ballerina test framework supports the following assertions, which help to verify the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
+The Ballerina test framework supports the following assertions, which help in verifying the expected behavior of a piece of code. These assertions can be used to decide if the test is passing or failing based on the condition.
 
 | Assertion function                                                                    | Description                                                                                              |
 |---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
@@ -126,6 +126,8 @@ The Ballerina test framework supports the following assertions, which help to ve
 | `assertExactEquals(any\|error actual, any\|error expected, string message)`           | Asserts that the actual entity is exactly equal to the expected entity with an optional message.         |
 | `assertNotExactEquals(any\|error actual, any\|error expected, string message)`        | Asserts that the actual entity is not exactly equal to the expected entity with an optional message.     |
 | `assertFail(string message)`                                                          | Fails the test. This is useful to fail a test based on a check for a condition while it is in execution. |
+
+>**Info:** The optional message parameter is useful for providing additional context when the assertion fails. It helps in understanding why the assertion failed without needing to examine the code or the test output in detail.
 
 
 ### Troubleshoot assertion failures when using `assertEquals`
@@ -141,7 +143,7 @@ The assertion failure shows the `expected` and `actual` values preceded by the t
 ```ballerina
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 function testAssertStringAndInt() {
     test:assertEquals(1, "1");
 }
@@ -168,7 +170,7 @@ The `Diff` is displayed in the GNU format using `+` and `-` to show the
 ```ballerina
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 function testAssertString() {
     test:assertEquals("hello Ballerina user\nWelcome to Ballerina",
         "hello user\nWelcome to Ballerina");
@@ -198,7 +200,7 @@ function testAssertString() {
          Welcome to Ballerina
 ```
 
-#### Values of the `JSON/record/map` type
+#### Records and maps, including JSON objects
 
 The `Diff` lists the JSON key mismatch using the `expected keys` and `actual keys`.
 The JSON value mismatch is listed per key showing the `expected` and `actual` values.
@@ -208,7 +210,7 @@ The JSON value mismatch is listed per key showing the `expected` and `actual` va
 ```ballerina
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 function testAssertJson() {
     json j1 = {
         name: "Anne",
@@ -270,7 +272,7 @@ The assertion failure is displayed showing the `expected` and `actual` values.
 ```ballerina
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 function testAssertTuples() {
     [int, string] a = [10, "John"];
     [int, string] b = [12, "John"];

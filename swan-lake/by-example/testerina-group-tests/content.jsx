@@ -23,7 +23,7 @@ function testFunction2() {
 }
 
 // Does not belong to any test group.
-@test:Config { }
+@test:Config
 function testFunction3() {
     io:println("I'm the ungrouped test");
     test:assertTrue(true, msg = "Failed!");
@@ -424,9 +424,8 @@ export function TesterinaGroupTests({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[0] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -470,9 +469,8 @@ export function TesterinaGroupTests({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

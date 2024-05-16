@@ -44,7 +44,7 @@ import ballerina/http;
 
 http:Client testClient = check new ("http://localhost:9090/foo");
 
-@test:Config {}
+@test:Config
 public function testGet() returns error? {
     http:Response response = check testClient->/bar.get(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);
@@ -56,12 +56,9 @@ public function testGet() returns error? {
 }
 ```
 
-## Test clients
+## Test with clients
 
-In cases where a fully fledged client is already defined for a particular service, you can make use
-of `object mocking` to mock the calls to the service and return curated responses to the client.
-It is useful when testing the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios.
- It would cover a variety of cases that the client can handle without having the service to be up and running.
+A fully-fledged client is defined and the client is used across your code. Now, you want to test your code. Here, you can make use of `object mocking` to mock the client calls and return curated responses from the client to test your code. It is useful when testing with the full extent of the client by mocking responses that are difficult to reproduce in actual scenarios. It would cover a variety of cases that the client can handle without having the service to be up and running.
 
 ***Example:***
 The following is a simple example on how mocking can be used to stub responses to services that you 
@@ -100,7 +97,7 @@ function getRandomJoke(string name) returns string|error {
 import ballerina/http;
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() returns error? {
     clientEndpoint = test:mock(http:Client);
 
@@ -185,7 +182,7 @@ configurable string hostName = "http://originalService.com/foo";
 
 http:Client testClient = check new (hostName);
 
-@test:Config {}
+@test:Config
 public function testGet() returns error? {
     http:Response response = check testClient->/bar(value = 10);
     test:assertEquals(response.statusCode, http:STATUS_OK);

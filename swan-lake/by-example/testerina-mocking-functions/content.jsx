@@ -24,7 +24,7 @@ import ballerina/io;
 @test:Mock { functionName: "intAdd" }
 test:MockFunction intAddMockFn = new();
 
-@test:Config {}
+@test:Config
 function testReturn() {
     // Stubs the calls to return a specific value.
     test:when(intAddMockFn).thenReturn(20);
@@ -52,7 +52,7 @@ public function mockPrint(any|error... val) {
     tally = tally + 1;
 }
 
-@test:Config {}
+@test:Config
 function testCall() {
     // Stubs the calls to the \`io:println\` function
     // to invoke the \`mockPrint\` function instead.
@@ -362,9 +362,8 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[0] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -408,9 +407,8 @@ export function TesterinaMockingFunctions({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

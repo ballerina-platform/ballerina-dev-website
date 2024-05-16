@@ -24,7 +24,7 @@ import Layout from '../../layouts/LayoutCommunity';
 import Newsletter from '../../components/community/newsletter/Newsletter';
 import Events from '../../components/community/events/Events';
 import Resources from '../../components/community/resources/Resources';
-import JoinUs from '../../components/community/join-us/JoinUs';
+import JoinUs from '../../components/community/join-us2/JoinUs';
 import Contact from '../../components/community/contact/Contact';
 import CommunityCarousel from '../../components/common/image-carousel/ImageCarousel';
 import UniversitySessions from '../../components/community/university-sessions/UniversitySessions';

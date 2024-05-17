@@ -47,7 +47,7 @@ export default function JoinUs(props) {
           </Col>
         </Row>
 
-        <Row>
+        {/* <Row>
           <Col sm={12}>
             <p>
               Our community includes experienced Ballerina engineers and experts from some of the world&apos;s leading companies. Use this space to find answers to your questions, get support, or learn from others who use Ballerina.
@@ -183,6 +183,138 @@ export default function JoinUs(props) {
 
           </Col>
 
+        </Row> */}
+
+        <Row className='align-items-start'>
+          <Col xs={12} lg={4}>
+          <p>
+              Our community includes experienced Ballerina engineers and experts from some of the world&apos;s leading companies. Use this space to find answers to your questions, get support, or learn from others who use Ballerina.
+            </p>
+          </Col>
+
+          <Col xs={12} lg={4}>
+          <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/Discord_logo.svg`} className="img-fluid rounded-start" alt="Discord" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://discord.gg/ballerinalang" target="_blank" rel="noreferrer" title="Discord" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Join our server
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+
+            <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/Stack_Overflow_logo.svg`} className="img-fluid rounded-start" alt="Stackoverflow" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank" rel="noreferrer" title="Stackoverflow" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Ask, answer, and learn
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/github-black.svg`} className={`img-fluid rounded-start ${styles.centerLogo}`} alt="GitHub" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://github.com/ballerina-platform" target="_blank" rel="noreferrer" title="GitHub" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Collaborate on GitHub
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/twitter-x-black.png`} className={`img-fluid rounded-start ${styles.centerLogo}`} alt="X" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://twitter.com/ballerinalang" target="_blank" rel="noreferrer" title="X" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Follow us
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+
+          <Col xs={12} lg={4}>
+<div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/LI-Logo.png`} className={`img-fluid rounded-start`} alt="LinkedIn" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://www.linkedin.com/showcase/ballerinalang/" target="_blank" rel="noreferrer" title="LinkedIn" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Connect with us
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/yt_logo_rgb_light.png`} className={`img-fluid rounded-start`} alt="YouTube" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://www.youtube.com/c/Ballerinalang?reload=9" target="_blank" rel="noreferrer" title="YouTube" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Subscribe to our channel
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+
+            <div className={`card mb-3 ${styles.borderless}`}>
+              <Row className="g-0">
+                <Col md={4} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                  <img src={`${prefix}/images/sm-icons/logo--mSwarm.svg`} className={`img-fluid rounded-start ${styles.centerLogo}`} alt="Meetup" />
+                </Col>
+                <Col md={8}>
+                  <div className="card-body">
+                    <a href="https://www.meetup.com/ballerinalang-community/" target="_blank" rel="noreferrer" title="Meetup" className={styles.btnStyle}>
+                      <Card.Text className='text-center mt-xs-3 mt-md-0 mb-xs-3 mb-md-0'>
+                        Join our Meetup group
+                      </Card.Text>
+                    </a>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
         </Row>
       </Container>
     </Col>

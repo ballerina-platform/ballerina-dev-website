@@ -1,6 +1,23 @@
 {
     "events": [
         {
+            "date": "June 6, 2024",
+            "expire": "2024-06-07T00:00:00.0000-00:00",
+            "type": "Tech talk",
+            "university": "Universitas Teknologi Digital Indonesia",
+            "faculty": "Faculty of Information Technology",
+            "title": "Elegant Integrations with Ballerina Swan Lake",
+            "location": "Virtual",
+            "presenters": [
+                {
+                    "name": "Manuranga Perera",
+                    "twitter": "https://twitter.com/manurangaperera"
+                }
+            ],
+            "url": "",
+            "buttonText": ""
+        },
+        {
             "date": "May 2, 2024",
             "expire": "2024-05-03T00:00:00.0000-00:00",
             "type": "Tech talk",

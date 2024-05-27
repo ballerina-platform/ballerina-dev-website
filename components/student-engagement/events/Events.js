@@ -49,9 +49,13 @@ export function Session(props) {
         <p className="eventLocation">{item.location}</p>
       </Col>
       <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
-        <a target="_blank" href={item.url} rel="noreferrer">
-          <p className="eventName" style={{fontWeight:"500"}}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
-        </a>
+        {
+          item.url !== "" ?
+            <a target="_blank" href={item.url} rel="noreferrer">
+              <p className="eventName" style={{ fontWeight: "500" }}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
+            </a>
+            : <p className="eventName" style={{ fontWeight: "500" }}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
+        }
         <h5>{item.title}</h5>
         {
           item.presenters.length > 0 ?
@@ -127,7 +131,7 @@ export default function Events(props) {
 
 
         <Tabs defaultActiveKey={upcomingEvents && upcomingEvents.length > 0 ? "Upcoming" : "Past"} id="events" className="mb-3 eventsTabs">
-          {upcomingEvents &&  upcomingEvents.length > 0 &&
+          {upcomingEvents && upcomingEvents.length > 0 &&
             <Tab eventKey="Upcoming" title="Upcoming">
               {
                 upcomingEvents.length > 0 ?

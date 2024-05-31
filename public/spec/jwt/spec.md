@@ -104,7 +104,7 @@ public type ValidatorSignatureConfig record {|
         cache:CacheConfig cacheConfig?;
         ClientConfiguration clientConfig = {};
     |} jwksConfig?;
-    string certFile?;
+    string|crypto:PublicKey certFile?;
     record {|
         crypto:TrustStore trustStore;
         string certAlias;
@@ -222,7 +222,7 @@ public type IssuerSignatureConfig record {|
     |}|record {|
         string keyFile;
         string keyPassword?;
-    |}|string config?;
+    |}|crypto:PrivateKey|string config?;
 |};
 
 public class ClientSelfSignedJwtAuthProvider {

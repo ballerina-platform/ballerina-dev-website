@@ -34,21 +34,23 @@ The conforming implementation of the specification is released and included in t
 4. [Decode private/public key](#4-decode-private-public-keys)
    * 4.1. [Decode RSA Private key from PKCS12 file](#41-rsa-decode-private-key-from-pkcs12-file)
    * 4.2. [Decode RSA Private key using Private key and Password](#42-decode-rsa-private-key-using-private-key-and-password)
-   * 4.3. [Decode RSA Public key from PKCS12 file](#43-decode-rsa-public-key-from-pkcs12-file)
-   * 4.4. [Decode RSA Public key from the certificate file](#44-decode-rsa-public-key-from-the-certificate-file)
-   * 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
-   * 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
-   * 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
-   * 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
-   * 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
-   * 4.10. [Decode ML-DSA-65 Private key from PKCS12 file](#410-decode-ml-dsa-65-private-key-from-pkcs12-file)
-   * 4.11. [Decode ML-DSA-65 Private key using Private key and Password](#411-decode-ml-dsa-65-private-key-using-private-key-and-password)
-   * 4.12. [Decode ML-DSA-65 Public key from PKCS12 file](#412-decode-ml-dsa-65-public-key-from-pkcs12-file)
-   * 4.13. [Decode ML-DSA-65 Public key from the certificate file](#413-decode-ml-dsa-65-public-key-from-the-certificate-file)
-   * 4.14. [Decode ML-KEM-768 Private key from PKCS12 file](#414-decode-ml-kem-768-private-key-from-pkcs12-file)
-   * 4.15. [Decode ML-KEM-768 Private key using Private key and Password](#415-decode-ml-kem-768-private-key-using-private-key-and-password)
-   * 4.16. [Decode ML-KEM-768 Public key from PKCS12 file](#416-decode-ml-kem-768-public-key-from-pkcs12-file)
-   * 4.17. [Decode ML-KEM-768 Public key from the certificate file](#417-decode-ml-kem-768-public-key-from-the-certificate-file)
+   * 4.3. [Decode RSA Private key using Private key content and Password](#43-decode-rsa-private-key-using-private-key-content-and-password)
+   * 4.4. [Decode RSA Public key from PKCS12 file](#44-decode-rsa-public-key-from-pkcs12-file)
+   * 4.5. [Decode RSA Public key from the certificate file](#45-decode-rsa-public-key-from-the-certificate-file)
+   * 4.6. [Decode RSA Public key from the certificate content](#46-decode-rsa-public-key-from-the-certificate-content)
+   * 4.7. [Decode EC Private key from PKCS12 file](#47-decode-ec-private-key-from-pkcs12-file)
+   * 4.8. [Decode EC Private key using Private key and Password](#48-decode-ec-private-key-using-private-key-and-password)
+   * 4.9. [Decode EC Public key from PKCS12 file](#49-decode-ec-public-key-from-pkcs12-file)
+   * 4.10. [Decode EC Public key from the certificate file](#410-decode-ec-public-key-from-the-certificate-file)
+   * 4.11. [Build RSA Public key from modulus and exponent parameters](#411-build-rsa-public-key-from-modulus-and-exponent-parameters)
+   * 4.12. [Decode ML-DSA-65 Private key from PKCS12 file](#412-decode-ml-dsa-65-private-key-from-pkcs12-file)
+   * 4.13. [Decode ML-DSA-65 Private key using Private key and Password](#413-decode-ml-dsa-65-private-key-using-private-key-and-password)
+   * 4.14. [Decode ML-DSA-65 Public key from PKCS12 file](#414-decode-ml-dsa-65-public-key-from-pkcs12-file)
+   * 4.15. [Decode ML-DSA-65 Public key from the certificate file](#415-decode-ml-dsa-65-public-key-from-the-certificate-file)
+   * 4.16. [Decode ML-KEM-768 Private key from PKCS12 file](#416-decode-ml-kem-768-private-key-from-pkcs12-file)
+   * 4.17. [Decode ML-KEM-768 Private key using Private key and Password](#417-decode-ml-kem-768-private-key-using-private-key-and-password)
+   * 4.18. [Decode ML-KEM-768 Public key from PKCS12 file](#418-decode-ml-kem-768-public-key-from-pkcs12-file)
+   * 4.19. [Decode ML-KEM-768 Public key from the certificate file](#419-decode-ml-kem-768-public-key-from-the-certificate-file)
 
 5. [Encrypt-Decrypt](#5-encrypt-decrypt)   
    * 5.1. [Encryption](#51-encryption)
@@ -251,7 +253,16 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.3. [Decode RSA Public key from PKCS12 file](#43-decode-rsa-public-key-from-pkcs12-file)
+4.3. [Decode RSA Private key using Private key content and Password](#43-decode-rsa-private-key-using-private-key-content-and-password)
+
+This API can be used to decode the RSA public key from the given public certificate content as a byte array.
+
+```ballerina
+byte[] keyContent = [45,45,45,45,45,66,69,71,73,78,...];
+crypto:PrivateKey privateKey = check crypto:decodeRsaPrivateKeyFromContent(keyContent);
+```
+
+### 4.4. [Decode RSA Public key from PKCS12 file](#44-decode-rsa-public-key-from-pkcs12-file)
 
 This API can be used to decode the RSA public key from the given PKCS#12 archive file.
 
@@ -263,7 +274,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.4. [Decode RSA Public key from the certificate file](#44-decode-rsa-public-key-from-the-certificate-file)
+### 4.5. [Decode RSA Public key from the certificate file](#45-decode-rsa-public-key-from-the-certificate-file)
 
 This API can be used to decode the RSA public key from the given public certificate file.
 
@@ -272,7 +283,16 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromCertFile(certFile);
 ```
 
-### 4.5. [Decode EC Private key from PKCS12 file](#45-decode-ec-private-key-from-pkcs12-file)
+### 4.6. [Decode RSA Public key from the certificate content](#46-decode-rsa-public-key-from-the-certificate-content)
+
+This API can be used to decode the RSA public key from the given public certificate content as a byte array.
+
+```ballerina
+byte[] certFileContent = [45,45,45,45,45,66,69,71,73,78,...];
+crypto:PublicKey publicKey = check crypto:decodeRsaPublicKeyFromContent(certFileContent);
+```
+
+### 4.7. [Decode EC Private key from PKCS12 file](#47-decode-ec-private-key-from-pkcs12-file)
 
 This API can be used to decode the EC private key from the given PKCS#12 file.
 
@@ -284,7 +304,7 @@ crypto:KeyStore keyStore = {
 crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
 ```
 
-### 4.6. [Decode EC Private key using Private key and Password](#46-decode-ec-private-key-using-private-key-and-password)
+### 4.8. [Decode EC Private key using Private key and Password](#48-decode-ec-private-key-using-private-key-and-password)
 
 This API can be used to decode the EC private key from the given private key and private key password.
 
@@ -293,7 +313,7 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeEcPrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.7. [Decode EC Public key from PKCS12 file](#47-decode-ec-public-key-from-pkcs12-file)
+### 4.9. [Decode EC Public key from PKCS12 file](#49-decode-ec-public-key-from-pkcs12-file)
 
 This API can be used to decode the RSA public key from the given PKCS#12 archive file.
 
@@ -305,7 +325,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.8. [Decode EC Public key from the certificate file](#48-decode-ec-public-key-from-the-certificate-file)
+### 4.10. [Decode EC Public key from the certificate file](#410-decode-ec-public-key-from-the-certificate-file)
 
 This API can be used to decode the EC public key from the given public certificate file.
 
@@ -314,7 +334,7 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeEcPublicKeyFromCertFile(certFile);
 ```
 
-### 4.9. [Build RSA Public key from modulus and exponent parameters](#49-build-rsa-public-key-from-modulus-and-exponent-parameters)
+### 4.11. [Build RSA Public key from modulus and exponent parameters](#411-build-rsa-public-key-from-modulus-and-exponent-parameters)
 
 This API can be used to build the RSA public key from the given modulus and exponent parameters.
 
@@ -327,7 +347,7 @@ string exponent = "AQAB";
 crypto:PublicKey publicKey = check crypto:buildRsaPublicKey(modulus, exponent);
 ```
 
-### 4.10. [Decode ML-DSA-65 Private key from PKCS12 file](#410-decode-ml-dsa-65-private-key-from-pkcs12-file)
+### 4.12. [Decode ML-DSA-65 Private key from PKCS12 file](#412-decode-ml-dsa-65-private-key-from-pkcs12-file)
 
 This API can be used to decode the ML-DSA-65 private key from the given PKCS#12 file.
 
@@ -339,7 +359,7 @@ crypto:KeyStore keyStore = {
 crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
 ```
 
-### 4.11. [Decode ML-DSA-65 Private key using Private key and Password](#411-decode-ml-dsa-65-private-key-using-private-key-and-password)
+### 4.13. [Decode ML-DSA-65 Private key using Private key and Password](#413-decode-ml-dsa-65-private-key-using-private-key-and-password)
 
 This API can be used to decode the ML-DSA-65 private key from the given private key and private key password.
 
@@ -348,7 +368,7 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeMlDsa65PrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.12. [Decode ML-DSA-65 Public key from PKCS12 file](#412-decode-ml-dsa-65-public-key-from-pkcs12-file)
+### 4.14. [Decode ML-DSA-65 Public key from PKCS12 file](#414-decode-ml-dsa-65-public-key-from-pkcs12-file)
 
 This API can be used to decode the ML-DSA-65 public key from the given PKCS#12 archive file.
 
@@ -360,7 +380,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeMlDsa65PublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.13. [Decode ML-DSA-65 Public key from the certificate file](#413-decode-ml-dsa-65-public-key-from-the-certificate-file)
+### 4.15. [Decode ML-DSA-65 Public key from the certificate file](#415-decode-ml-dsa-65-public-key-from-the-certificate-file)
 
 This API can be used to decode the ML-DSA-65 public key from the given public certificate file.
 
@@ -369,7 +389,7 @@ string certFile = "/path/to/public.cert";
 crypto:PublicKey publicKey = check crypto:decodeMlDsa65PublicKeyFromCertFile(certFile);
 ```
 
-### 4.14. [Decode ML-KEM-768 Private key from PKCS12 file](#414-decode-ml-kem-768-private-key-from-pkcs12-file)
+### 4.16. [Decode ML-KEM-768 Private key from PKCS12 file](#416-decode-ml-kem-768-private-key-from-pkcs12-file)
 
 This API can be used to decode the ML-KEM-768 private key from the given PKCS#12 file.
 
@@ -381,7 +401,7 @@ crypto:KeyStore keyStore = {
 crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyStore(keyStore, "keyAlias", "keyPassword");
 ```
 
-### 4.15. [Decode ML-KEM-768 Private key using Private key and Password](#415-decode-ml-kem-768-private-key-using-private-key-and-password)
+### 4.17. [Decode ML-KEM-768 Private key using Private key and Password](#417-decode-ml-kem-768-private-key-using-private-key-and-password)
 
 This API can be used to decode the ML-KEM-768 private key from the given private key and private key password.
 
@@ -390,7 +410,7 @@ string keyFile = "/path/to/private.key";
 crypto:PrivateKey privateKey = check crypto:decodeMlKem768PrivateKeyFromKeyFile(keyFile, "keyPassword");
 ```
 
-### 4.16. [Decode ML-KEM-768 Public key from PKCS12 file](#416-decode-ml-kem-768-public-key-from-pkcs12-file)
+### 4.18. [Decode ML-KEM-768 Public key from PKCS12 file](#418-decode-ml-kem-768-public-key-from-pkcs12-file)
 
 This API can be used to decode the ML-KEM-768 public key from the given PKCS#12 archive file.
 
@@ -402,7 +422,7 @@ crypto:TrustStore trustStore = {
 crypto:PublicKey publicKey = check crypto:decodeMlKem768PublicKeyFromTrustStore(trustStore, "keyAlias");
 ```
 
-### 4.17. [Decode ML-KEM-768 Public key from the certificate file](#417-decode-ml-kem-768-public-key-from-the-certificate-file)
+### 4.19. [Decode ML-KEM-768 Public key from the certificate file](#419-decode-ml-kem-768-public-key-from-the-certificate-file)
 
 This API can be used to decode the ML-KEM-768 public key from the given public certificate file.
 

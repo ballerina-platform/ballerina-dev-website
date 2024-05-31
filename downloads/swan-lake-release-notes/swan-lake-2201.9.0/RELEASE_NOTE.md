@@ -1273,9 +1273,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
 
-- Interop calls to constructors of Java abstract classes has been restricted at compile time.
+- Interop calls to Java abstract class constructors have been restricted at compile time.
 
-    For example, defining an external function to call as follows wil result in a compile-time error, says `{ballerina/jballerina.java}INSTANTIATION_ERROR ''java.io.InputStream' is abstract, and cannot be instantiated'` since `java.io.InputStream` is an abstract class.
+    For example, defining an external function as follows will result in a compile-time error, says `{ballerina/jballerina.java}INSTANTIATION_ERROR ''java.io.InputStream' is abstract, and cannot be instantiated'` since `java.io.InputStream` is an abstract class.
 
     ```ballerina
     function newInputstream() returns handle = @java:Constructor {

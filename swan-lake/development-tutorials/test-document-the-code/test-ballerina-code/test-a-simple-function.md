@@ -5,7 +5,7 @@ description: Learn how to use Ballerina's built-in test framework to write testa
 keywords: ballerina, programming language, testing
 permalink: /learn/test-ballerina-code/test-a-simple-function/
 active: test-a-simple-function
-intro: The Ballerina language has a built-in robust test framework, which allows you to achieve multiple levels of the test pyramid including, unit testing, integration testing, and end-to-end testing. It provides assertions, data providers, mocking, and code coverage features, which enable the programmers to write comprehensive tests.
+intro: The Ballerina language has a built-in robust test framework, which allows you to ensure that your applications are reliable. It provides support for assertions, data providers, mocking, and code coverage features, which enable programmers to write comprehensive tests.
 ---
 
 To get started, let's set up the Ballerina package to run tests.
@@ -29,7 +29,7 @@ To get started, let's set up the Ballerina package to run tests.
 3. Create the following function in the `main.bal` file.
 
     ```ballerina
-    public function intAdd(int a, int b) returns (int) {
+    public function intAdd(int a, int b) returns int {
         return a + b;
     }
     ```
@@ -39,7 +39,7 @@ To get started, let's set up the Ballerina package to run tests.
     ```ballerina
     import ballerina/test;
 
-    @test:Config {}
+    @test:Config
     function intAddTest() {
         test:assertEquals(intAdd(1, 3), 4);
     }

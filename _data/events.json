@@ -1,6 +1,22 @@
 {
     "events": [
         {
+            "date": "June 6, 2024",
+            "day": "Thur.",
+            "time": "8:00pm IST",
+            "expire": "2024-06-07T00:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/devopedia-org/events/301290100/",
+            "eventType": "Tech Talk",
+            "eventName": "Unlocking the Power of Ballerina for Modern Integration Challenges",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "May 8, 2024",
             "day": "Wed.",
             "time": "",

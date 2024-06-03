@@ -25,7 +25,7 @@ The conforming implementation of the specification is released and included in t
     * 3.1 [The `toAvro` API](#31-the-toavro-api)
         * 3.1.1 [API Parameters](#311-api-parameters)
             * 3.1.1.1 [The `data` Parameter](#3111-the-data-parameter)
-                * 3.1.1.1.1 [Accepted Ballerina types](#31111-accepted-ballerina-types)
+                * 3.1.1.1.1 [Map Avro types to Ballerina Types](#31111-map-avro-types-to-ballerina-types)
         * 3.1.2 [Return type](#312-return-type)
 4. [Deserialize bytes to a specific Ballerina type](#4-deserialize-bytes-to-a-specific-ballerina-type)
     * 4.1 [The `fromAvro` API](#41-the-fromavro-api)
@@ -74,11 +74,27 @@ byte[] serializedData = check schema.toAvro("avro-data");
 
 The `data` parameter accepts the following Ballerina data types that is needed to be serialized into `byte` array.
 
-###### 3.1.1.1.1 Accepted Ballerina types
+###### 3.1.1.1.1 Map Avro types to Ballerina Types
 
-* `json`
-* `enum`
-* `record`
+The following table summarizes how Avro types are mapped to corresponding Ballerina types. These rules are applicable when serializing/deserializing Ballerina data according to an Avro schema.
+
+| Avro Type    | Ballerina Type |
+|--------------|----------------|
+| null         | nil            |
+| boolean      | boolean        |
+| int,long     | int            |
+| float,double | float          |
+| bytes        | byte[]         |
+| string       | string         |
+| record       | record         |
+| enum         | enum           |
+| array        | array          |
+| map          | map            |
+| fixed        | byte[]         |
+
+>**Note:** The Ballerina [`int`](https://ballerina.io/spec/lang/2023R1/#section_5.2.3) type can represent integers up to 64 bits in size using the two's complement representation. Therefore, it can handle both `int` (32-bit signed integer) and `long` (64-bit signed integer) Avro types.
+
+>**Note:** The Ballerina [`float`](https://ballerina.io/spec/lang/2023R1/#section_5.2.4.1) type supports the IEEE 754-2008 64-bit binary (radix 2) floating-point number standard. Therefore, it can handle both `float` (32-bit single precision IEEE 754 floating-point number) and `double` (64-bit double precision IEEE 754 floating-point number) Avro types.
 
 #### 3.1.2 Return type
 

@@ -67,7 +67,7 @@ public client class MockHttpClient {
 
 }
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
 
     // create and assign a test double to the `clientEndpoint` object
@@ -158,7 +158,7 @@ This test stubs the behavior of the `get` method to return a specific value in 2
 import ballerina/test;
 import ballerina/http;
 
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object
     clientEndpoint = test:mock(http:Client);
@@ -190,7 +190,7 @@ This test stubs the behavior of the `get` method to return a specified sequence 
 import ballerina/test;
 import ballerina/http;
     
-@test:Config {}
+@test:Config
 public function testGetRandomJoke() {
     // Create a default mock HTTP Client and assign it to the `clientEndpoint` object.
     clientEndpoint = test:mock(http:Client);
@@ -239,7 +239,7 @@ This test stubs the behavior of the `sendMessage` method to do nothing for testi
 import ballerina/test;
 import ballerina/email;
 
-@test:Config {}
+@test:Config
 function testSendNotification() {
     string[] emailIds = ["user1@test.com", "user2@test.com"];
 
@@ -307,7 +307,7 @@ This test stubs the behavior of the below resource to return a specific value in
 Here, Precedence is given to more specific stubbing over more general stubbing when a call is made to the resource with a particular set of path parameters, arguments, or both.
 
 ```ballerina
-@test:Config {}
+@test:Config
 function testWelcomeEmployee() {
     empClient = test:mock(EmpClient);
     // Stubbing to return a specific value in general
@@ -360,7 +360,7 @@ Similar to other object methods, resources also can be stubbed to return a value
 >**Note:** The `withArguments` and `withPathParameters` methods are not supported with `thenReturnSequence`.
 
 ```ballerina
-@test:Config {}
+@test:Config
 function testGetAllEmployeeById() {
     // Create a mock client
     empClient = test:mock(EmpClient);
@@ -388,7 +388,7 @@ function testGetAllEmployeeById() {
 If a resource has no return type or has an optional type as the return type, the method can be mocked to do nothing when writing test cases.
 
 ```ballerina
-@test:Config {}
+@test:Config
 function testGetAllEmployee() {
     empClient = test:mock(EmpClient);
     test:prepare(empClient).whenResource("employee/:id").doNothing();
@@ -460,15 +460,13 @@ This test stubs the member variable `productCode` of the `ProductClient` to set 
 ```ballerina
 import ballerina/test;
 
-@test:Config {}
+@test:Config
 function testMemberVariable() {
     int mockProductCode = 2;
     // Create a mockClient which represents product with the code `mockProductCode`
-    ProductClient mockClient = test:mock(ProductClient);
+    productClient = test:mock(ProductClient);
     // Stub the member variable `productCode`
-    test:prepare(mockClient).getMember("productCode").thenReturn(mockProductCode);
-    // Replace `productClient` with the `mockClient`
-    productClient = mockClient;
+    test:prepare(productClient).getMember("productCode").thenReturn(mockProductCode);
     // Assert for the mocked product name.
     test:assertEquals(getProductName(), "Bread");
 }
@@ -480,7 +478,7 @@ The Ballerina test framework provides the capability to mock a function. You can
 you are testing or a function of an imported module by using the mocking feature. This feature will help you to test 
 your Ballerina code independently from other modules and functions.
 
-The object specified with the `@test:Mock{}` annotation will be considered as a mock function, which gets triggered in 
+The object specified with the `@test:Mock` annotation will be considered as a mock function, which gets triggered in 
 place of the real function.
 
 * ***moduleName : "&lt;moduleName&gt;"*** - (optional) Name of the module in which the function to be mocked resides 
@@ -533,7 +531,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
    
-@test:Config {}
+@test:Config
 function testReturn() {
     // Stub to return the specified value when the `intAdd` is invoked.
     test:when(intAddMockFn).thenReturn(20);
@@ -556,7 +554,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
 
-@test:Config {}
+@test:Config
 function testCall() {
     // Stub to call another function when `intAdd` is called.
     test:when(intAddMockFn).call("mockIntAdd");
@@ -589,7 +587,7 @@ public function mockPrint(any|error... val) {
     tally = tally + 1;
 }
 
-@test:Config {}
+@test:Config
 function testCall() {
     test:when(printlnMockFn).call("mockPrint");
 
@@ -609,7 +607,7 @@ import ballerina/test;
 @test:Mock {functionName: "intAdd"}
 test:MockFunction intAddMockFn = new ();
 
-@test:Config {}
+@test:Config
 function testCallOriginal() {
     // Stub to call another function when `intAdd` is called.
     test:when(intAddMockFn).call("mockIntAdd");

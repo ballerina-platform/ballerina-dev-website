@@ -180,7 +180,7 @@ Follow the steps below to run the tests with the native image.
 
    http:Client testClient = check new ("http://localhost:8080");
 
-   @test:Config {}
+   @test:Config
    function testServiceWithProperName() {
       string|error response = testClient->get("/greeting");
       test:assertEquals(response, "Hello, World!");

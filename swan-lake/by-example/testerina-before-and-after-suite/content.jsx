@@ -15,21 +15,21 @@ function beforeSuit() {
 }
 
 // A Test function.
-@test:Config { }
+@test:Config
 function testFunction1() {
     io:println("I'm in test function 1!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // A Test function.
-@test:Config { }
+@test:Config
 function testFunction2() {
     io:println("I'm in test function 2!");
     test:assertTrue(true, msg = "Failed");
 }
 
 // Executed after all the test functions in the module.
-@test:AfterSuite { }
+@test:AfterSuite
 function afterSuite() {
     io:println("I'm the after suite function!");
 }
@@ -248,9 +248,8 @@ export function TesterinaBeforeAndAfterSuite({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[0] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -294,9 +293,8 @@ export function TesterinaBeforeAndAfterSuite({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${
-                  btnHover[1] ? "btnArrowHover" : "btnArrow"
-                } bi bi-arrow-right`}
+                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
+                  } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

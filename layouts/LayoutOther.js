@@ -20,12 +20,11 @@ import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Container, Row, Stack } from 'react-bootstrap';
 
-import Footer from '../components/common/footer/Footer';
-
 
 export default function Layout({ children }) {
   const TopNav = dynamic(() => import('../components/common/top-nav/TopNav'), { ssr: false });
   const Meta = dynamic(() => import('../components/common/meta/Meta'), { ssr: false });
+  const Footer = dynamic(() => import('../components/common/footer/Footer'), { ssr: false });
 
   return (
     <>

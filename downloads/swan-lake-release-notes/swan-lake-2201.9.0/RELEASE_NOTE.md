@@ -1273,7 +1273,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.0) of
 
 - To avoid clashes with Java identifiers, the character used for encoding and decoding identifiers has been changed from `$` to `&`.
 
-- A bug that resulted in no compilation errors for interop calls of Java abstract class constructors and interface methods has been fixed.
+- A bug that resulted in no compilation errors for external function mappings of constructors for Java abstract classes and interfaces has been fixed.
 
     For example, defining an external function as follows will result in a compile-time error, which states `{ballerina/jballerina.java}INSTANTIATION_ERROR ''java.io.InputStream' is abstract, and cannot be instantiated'`, since `java.io.InputStream` is an abstract class.
 

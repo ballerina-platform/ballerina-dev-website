@@ -1,13 +1,29 @@
 {
     "events": [
+       {
+            "date": "June 25, 2024",
+            "day": "Tue.",
+            "time": "9:00 a.m. IST",
+            "expire": "2024-06-25T04:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/ballerinalang-community/events/301634546/",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "Beyond CLI Basics: Using Extended Ballerina CLI Tools for Powerful Integrations",
+            "presenterTwitter": "https://x.com/gcdassanayake",
+            "presenter": "Gayal Dassanayake",
+            "presenterDesignation": "Senior Software Engineer",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
         {
             "date": "June 6, 2024",
             "day": "Thur.",
-            "time": "8:00pm IST",
+            "time": "8:00 p.m. IST",
             "expire": "2024-06-07T00:00:00.0000-00:00",
             "location": "Online",
             "url": "https://www.meetup.com/devopedia-org/events/301290100/",
-            "eventType": "Tech Talk",
+            "eventType": "Devopedia Meetup",
             "eventName": "Unlocking the Power of Ballerina for Modern Integration Challenges",
             "presenterTwitter": "https://twitter.com/anupama_pathira",
             "presenter": "Anupama Pathirage",
@@ -29,8 +45,8 @@
             "presenter": "Chathura Ekanayake",
             "presenterDesignation": "Associate Director/Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/tdcN2flIvS8?si=P38A6eaVC6aUx6bf",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 8, 2024",
@@ -45,8 +61,8 @@
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://www.youtube.com/watch?v=X3IIkVdxwxo&t=1s",
+            "buttonText": "Watch recording"
         },
         {
             "date": "May 7, 2024",
@@ -81,8 +97,8 @@
                 }
             ],
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://wso2.com/library/conference/2024/05/utilizing-ballerina-for-cloud-native-integrations/",
+            "buttonText": "View slides"
         },
         {
             "date": "May 6-7, 2024",
@@ -113,8 +129,24 @@
             "presenter": "Thisaru Guruge",
             "presenterDesignation": "Technical Lead, WSO2",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP today"
+            "videoURL": "https://youtu.be/hkOMet6bF70?si=Em3PXueujsuz1Kdn",
+            "buttonText": "Watch recording"
+        },
+        {
+            "date": "March 28, 2024",
+            "day": "Thur.",
+            "time": "9.00 a.m. IST",
+            "expire": "2024-03-29T00:00:00.0000-00:00",
+            "location": "Virtual",
+            "url": "",
+            "eventType": "Ballerina Tech Talk",
+            "eventName": "ETL with Ballerina: Batch and Event-driven ETL in a Single Platform",
+            "presenterTwitter": "https://www.linkedin.com/in/lakshan-weerasinghe/",
+            "presenter": "Lakshan Weerasinghe",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/wXWK3Zsk4Cc?si=IOIDYcHK3WFrOuwE",
+            "buttonText": "Watch recording"
         },
         {
             "date": "March 7, 2024",
@@ -154,8 +186,8 @@
             "presenter": "Nadheesh Jihan",
             "presenterDesignation": "Associate Technical Lead",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "RSVP today"
+            "videoURL": "https://youtu.be/_k8iqp2rXX0?si=82Tu6FtlRu6V5qax",
+            "buttonText": "Watch recording"
         },
         {
             "date": "Jan 31, 2024",

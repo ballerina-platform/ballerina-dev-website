@@ -52,3 +52,14 @@
         margin-right: 20px;
     }
 }
+
+.cardLinks {
+    color: #20b6b0;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.cardLinks:hover {
+    color: #494949;
+}

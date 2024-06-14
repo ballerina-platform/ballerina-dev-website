@@ -142,6 +142,8 @@ export default function Outline(props) {
                     <h3 className="card-title">Open source projects</h3>
 
                     <p className="card-text">Contribute to Ballerina&apos;s open-source projects for practical experience and global collaboration.</p>
+                    
+                    <a href={`#`} className={styles.cardLinks}>See more</a>
                   </Card.Body>
                 </Col>
               </Row>
@@ -160,6 +162,8 @@ export default function Outline(props) {
                     <h3 className="card-title">Project mentorship</h3>
 
                     <p className="card-text">Connect students with industry experts for innovative solutions through guided project development.</p>
+                    
+                    <a href={`#`} className={styles.cardLinks}>See more</a>
                   </Card.Body>
                 </Col>
               </Row>
@@ -181,7 +185,6 @@ export default function Outline(props) {
             <p style={{ marginBottom: "0" }}>
               Want to find out more? Reach out to our team at <a className={styles.mailLink} href="mailto:contact@ballerina.io">contact@ballerina.io</a>
             </p>
-
           </Col>
         </Row>
 

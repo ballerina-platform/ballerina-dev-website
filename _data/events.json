@@ -1,17 +1,33 @@
 {
     "events": [
        {
-            "date": "June 25, 2024",
-            "day": "Tue.",
+            "date": "July 11, 2024",
+            "day": "Thurs.",
             "time": "9:00 a.m. IST",
-            "expire": "2024-06-25T04:30:00.0000-00:00",
+            "expire": "2024-07-11T04:30:00.0000-00:00",
             "location": "Online",
             "url": "https://www.meetup.com/ballerinalang-community/events/301634546/",
             "eventType": "Ballerina Tech Talk",
             "eventName": "Beyond CLI Basics: Using Extended Ballerina CLI Tools for Powerful Integrations",
             "presenterTwitter": "https://x.com/gcdassanayake",
             "presenter": "Gayal Dassanayake",
-            "presenterDesignation": "Senior Software Engineer",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "July 9, 2024",
+            "day": "Tue.",
+            "time": "7:00 p.m. IST",
+            "expire": "2024-07-09T14:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/coderrange-ai-bigdata-datascience/events/301637018/",
+            "eventType": "CodeRange Meetup",
+            "eventName": "API/Integration Development with Ballerina",
+            "presenterTwitter": "https://x.com/manurangaperera",
+            "presenter": "Manuranga Perera",
+            "presenterDesignation": "Associate Director/Architect - Engineering, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

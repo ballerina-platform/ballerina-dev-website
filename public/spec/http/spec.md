@@ -3,7 +3,7 @@
 _Owners_: @shafreenAnfar @TharmiganK @ayeshLK @chamil321  
 _Reviewers_: @shafreenAnfar @bhashinee @TharmiganK @ldclakmal  
 _Created_: 2021/12/23  
-_Updated_: 2023/04/17   
+_Updated_: 2024/06/13   
 _Edition_: Swan Lake
 
 
@@ -42,7 +42,9 @@ The conforming implementation of the specification is released and included in t
             * 2.3.5.1. [Status Code Response](#2351-status-code-response)
             * 2.3.5.2. [Return nil](#2352-return-nil)
             * 2.3.5.3. [Default response status codes](#2353-default-response-status-codes)
-        * 2.3.6. [Introspection resource](#236-introspection-resource)
+        * 2.3.6. [OpenAPI specification resources](#236-openapi-specification-resources)
+            * 2.3.6.1. [Introspection resource](#2361-introspection-resource)
+            * 2.3.6.2. [SwaggerUI resource](#2362-swaggerui-resource)
     * 2.4. [Client](#24-client)
         * 2.4.1. [Client types](#241-client-types)
             * 2.4.1.1. [Security](#2411-security)
@@ -944,18 +946,20 @@ response when returning `anydata` directly from a resource method.
 | HEAD              | Retrieve headers                                              | 200 OK                  |
 | OPTIONS           | Retrieve permitted communication options                      | 200 OK                  |
 
-#### 2.3.6. Introspection resource
+#### 2.3.6. OpenAPI specification resources
 
-The introspection resource is internally generated for each service and host the openAPI doc can be generated 
-(or retrieved) at runtime when requested from the hosted service itself. In order to get the openAPI doc hosted
-resource path, user can send an OPTIONS request either to one of the resources or the service. The link header
-in the 204 response specifies the location. Then user can send a GET request to the dynamically generated URL in the 
-link header with the relation openapi to get the openAPI definition for the service.
+OAS resources are internally generated for each service and host the generated OpenAPI specification for the service in
+different formats. In order to access these resources user can send an OPTIONS request either to one of the resources or
+the service base-path. The link header in the 204 response specifies the location for the OAS resources.
 
 Sample service
 ```ballerina
 import ballerina/http;
+import ballerina/openapi;
 
+@openapi:ServiceInfo {
+    embed: true
+}
 service /hello on new http:Listener(9090) {
     resource function get greeting() returns string {
         return "Hello world";
@@ -963,97 +967,95 @@ service /hello on new http:Listener(9090) {
 }
 ```
 
-Output of OPTIONS call to usual resource
-```ballerina
-curl -v localhost:9090/hello/greeting -X OPTIONS
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> OPTIONS /hello/greeting HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 204 No Content
-< allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:09:40 +0530
-< 
-```
-
-Output of GET call to introspection resource
-```ballerina
-curl -v localhost:9090/hello/openapi-doc-dygixywsw
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-> GET /hello/openapi-doc-dygixywsw HTTP/1.1
-> Host: localhost:9090
-> User-Agent: curl/7.64.1
-> Accept: */*
-> 
-< HTTP/1.1 200 OK
-< content-type: application/json
-< content-length: 634
-< server: ballerina/2.0.0-beta.2.1
-< date: Wed, 18 Aug 2021 14:22:29 +0530
-< 
-{
-  "openapi": "3.0.1",
-  "info": {
-     "title": " hello",
-     "version": "1.0.0"
-  },
-  "servers": [
-     {
-        "url": "localhost:9090/hello"
-     }
-  ],
-  "paths": {
-     "/greeting": {
-        "get": {
-           "operationId": "operation1_get_/greeting",
-           "responses": {
-              "200": {
-                 "description": "Ok",
-                 "content": {
-                    "text/plain": {
-                       "schema": {
-                          "type": "string"
-                       }
-                    }
-                 }
-              }
-           }
-        }
-     }
-  },
-  "components": {}
-}
-```
-
 Output of OPTIONS call to service base path
-
 ```ballerina
 curl -v localhost:9090/hello -X OPTIONS 
-*   Trying ::1...
+*   Trying 127.0.0.1:9090...
 * TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 > OPTIONS /hello HTTP/1.1
 > Host: localhost:9090
-> User-Agent: curl/7.64.1
+> User-Agent: curl/7.68.0
 > Accept: */*
-> 
+>
 < HTTP/1.1 204 No Content
 < allow: GET, OPTIONS
-< link: </hello/openapi-doc-dygixywsw>;rel="service-desc"
-< server: ballerina/2.0.0-beta.2.1
-< date: Thu, 19 Aug 2021 13:47:29 +0530
+< link: </hello/openapi-doc-dygixywsw>;rel="service-desc", </hello/swagger-ui-dygixywsw>;rel="swagger-ui"
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:04:11 +0530
 < 
 * Connection #0 to host localhost left intact
 * Closing connection 0
 ```
+
+##### 2.3.6.1. Introspection resource
+
+The introspection resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service 
+in JSON format. The user can send a GET request to the resource path specified in the link header with the relation 
+attribute set to `service-desc`.
+
+Output of GET call to introspection resource
+```ballerina
+curl -v localhost:9090/hello/openapi-doc-dygixywsw
+*   Trying 127.0.0.1:9090...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+> GET /hello/openapi-doc-dygixywsw HTTP/1.1
+> Host: localhost:9090
+> User-Agent: curl/7.68.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< content-type: application/json
+< content-length: 675
+< server: ballerina
+< date: Thu, 13 Jun 2024 20:05:03 +0530
+< 
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Hello",
+    "version" : "0.1.0"
+  },
+  "servers" : [ {
+    "url" : "{server}:{port}/hello",
+    "variables" : {
+      "server" : {
+        "default" : "http://localhost"
+      },
+      "port" : {
+        "default" : "9090"
+      }
+    }
+  } ],
+  "paths" : {
+    "/greeting" : {
+      "get" : {
+        "operationId" : "getGreeting",
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+##### 2.3.6.2. SwaggerUI resource
+
+The swagger-ui resource is one of the generated OAS resources, and it hosts the OpenAPI specification for the service in 
+HTML format. The user can view it in a web browser by accessing the URL specified in the HTTP link header, which has 
+relation attribute set to `swagger-ui`.
 
 ### 2.4. Client
 A client allows the program to send network messages to a remote process according to the HTTP protocol. The fixed 

@@ -1,6 +1,22 @@
 {
     "events": [
-       {
+      {
+            "date": "Aug 14, 2024",
+            "day": "Wed.",
+            "time": "5:30 p.m. CDT",
+            "expire": "2024-08-14T15:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/graphql-chicago/events/301626581/",
+            "eventType": "GraphQL Chicago Meetup",
+            "eventName": "Streamlining GraphQL API Development with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "July 11, 2024",
             "day": "Thurs.",
             "time": "9:00 a.m. IST",
@@ -28,6 +44,22 @@
             "presenterTwitter": "https://x.com/manurangaperera",
             "presenter": "Manuranga Perera",
             "presenterDesignation": "Associate Director/Architect - Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "June 27, 2024",
+            "day": "Thur.",
+            "time": "10:00 a.m. CDT",
+            "expire": "2024-06-27T14:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/austin-developer-community/events/301626607/",
+            "eventType": "Austin Developer Community Meetup",
+            "eventName": "Modernizing Legacy Applications with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"

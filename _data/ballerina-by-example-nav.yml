@@ -628,20 +628,26 @@ sublinks:
           - title: Inter-worker message passing
             id: 10
             url: inter-worker-message-passing
-          - title: Inter-worker failure propagation
+          - title: Conditional send
             id: 11
-            url: inter-worker-failure-propagation
-          - title: Synchronize message passing
+            url: conditional-send
+          - title: Inter-worker failure propagation
             id: 12
+            url: inter-worker-failure-propagation
+          - title: Named worker with on fail clause
+            id: 13
+            url: named-worker-with-on-fail-clause
+          - title: Synchronize message passing
+            id: 14
             url: synchronize-message-passing
           - title: Asynchronize message passing
-            id: 13
+            id: 15
             url: asynchronize-message-passing
           - title: Flush
-            id: 14
+            id: 16
             url: flush
           - title: Fork
-            id: 15
+            id: 17
             url: fork
       - title: Transactions
         id: 31

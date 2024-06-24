@@ -1476,8 +1476,22 @@
         "isLearnByExample": true
       },
       {
+        "name": "Conditional send",
+        "url": "conditional-send",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
         "name": "Inter-worker failure propagation",
         "url": "inter-worker-failure-propagation",
+        "verifyBuild": true,
+        "verifyOutput": true,
+        "isLearnByExample": true
+      },
+      {
+        "name": "Named worker with on fail clause",
+        "url": "named-worker-with-on-fail-clause",
         "verifyBuild": true,
         "verifyOutput": true,
         "isLearnByExample": true

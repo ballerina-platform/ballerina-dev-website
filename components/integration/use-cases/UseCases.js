@@ -18,7 +18,6 @@
 
 import * as React from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
 
 import styles from './UseCases.module.css';
 
@@ -48,7 +47,7 @@ export default function UseCases(props) {
                         </Col>
                     </Row>
 
-                    <Row className='pageContentRow integration'>
+                    <Row>
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                             <div>

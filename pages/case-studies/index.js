@@ -130,7 +130,7 @@ export default function CaseStudies({ caseStudies }) {
           </Row>
 
           <Row className="pageContentRow integration">
-            <UseCases propsData={caseStudies} />
+            <UseCases propsData={caseStudies} launcher="case-studies"/>
           </Row>
 
         </Col>

@@ -50,16 +50,16 @@ export default function UseCases(props) {
                     <Row>
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
-                            <div>
-                                <h3>Automate anything</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Automation is just code after all - write a main() and do whatever you want.</p>
+                                <div>
+                                    <h3>Automate anything</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Automation is just code after all - write a main() and do whatever you want.</p>
 
-                                    <p>Use the Ballerina library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
+                                        <p>Use the Ballerina library to connect to any system, speak any protocol, process any data, and run it anywhere (on a VM, in Kubernetes, or just as a script).</p>
 
-                                    <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
+                                        <p>Powerful data transformations that can be simultaneously programmed graphically and as code makes data integration a breeze.</p>
 
-                                </div>
+                                    </div>
                                 </div>
                                 {/* <div className={styles.sampleText}>
                                     <p>See Sample Automation: GitHub to Google Sheets</p>
@@ -76,14 +76,14 @@ export default function UseCases(props) {
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Event-driven integrations</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Events are core to the responsive enterprise. Ballerina makes it simple to consume or produce events.</p>
+                                    <h3>Event-driven integrations</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Events are core to the responsive enterprise. Ballerina makes it simple to consume or produce events.</p>
 
-                                    <p>Subscribe to any kind of event source, including WebHooks, Kafka, GraphQL, gRPC, AMQP, email, or react to system events such as file upload and do whatever you want in a type-safe development model with subscription, data binding, and error handling is already taken care of for you.</p>
+                                        <p>Subscribe to any kind of event source, including WebHooks, Kafka, GraphQL, gRPC, AMQP, email, or react to system events such as file upload and do whatever you want in a type-safe development model with subscription, data binding, and error handling is already taken care of for you.</p>
 
-                                    <p>Be an event producer in any protocol you like.</p>
-                                </div>
+                                        <p>Be an event producer in any protocol you like.</p>
+                                    </div>
                                 </div>
 
                                 {/* <div className={styles.sampleText}>
@@ -101,14 +101,14 @@ export default function UseCases(props) {
                         <Col xs={12} md={4} lg={4} className={styles.useCaseCard}>
                             <div className={styles.cardWrapper}>
                                 <div>
-                                <h3>Integrations as APIs</h3>
-                                <div className={styles.cardDescription}>
-                                    <p>Ballerina&apos;s service creation abstractions make it simple to take any integration and make it reusable as an API.</p>
+                                    <h3>Integrations as APIs</h3>
+                                    <div className={styles.cardDescription}>
+                                        <p>Ballerina&apos;s service creation abstractions make it simple to take any integration and make it reusable as an API.</p>
 
-                                    <p>Use Ballerina service types for HTTP services, WebSockets, GraphQL, gRPC, and more to take your integration code, parameterize it and make it a reusable integration.</p>
+                                        <p>Use Ballerina service types for HTTP services, WebSockets, GraphQL, gRPC, and more to take your integration code, parameterize it and make it a reusable integration.</p>
 
-                                    <p>APIs are the new DLLs. Exposing your integrations as APIs is how your integrated capability adds new value to your business.</p>
-                                </div>
+                                        <p>APIs are the new DLLs. Exposing your integrations as APIs is how your integrated capability adds new value to your business.</p>
+                                    </div>
                                 </div>
 
                                 {/* <div className={styles.sampleText}>

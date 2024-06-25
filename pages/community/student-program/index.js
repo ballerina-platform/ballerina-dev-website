@@ -21,7 +21,7 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
 import Layout from '../../../layouts/LayoutCommunity';
-import Outline from '../../../components/student-engagement/outline2/Outline';
+import Outline from '../../../components/student-engagement/outline/Outline';
 import Events from '../../../components/student-engagement/events/Events';
 import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
 import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';

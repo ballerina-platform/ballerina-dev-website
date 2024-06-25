@@ -20,9 +20,9 @@ import * as React from 'react';
 import { Row, Col, Container, Card, Image } from 'react-bootstrap';
 import Link from 'next/link';
 
-import styles from './UseCases.module.css';
+import styles from './CardGrid.module.css';
 
-export default function UseCases(props) {
+export default function CardGrid(props) {
 
     const propsData = props.propsData;
 

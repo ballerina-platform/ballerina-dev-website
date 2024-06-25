@@ -26,31 +26,31 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>Web apps and mobile apps are the face of digital organizations. Therefore, back-ends powering these apps need to be highly secure, scalable, and responsive. In addition, such back-ends need to aggregate data from multiple services, transform data as necessary, and transmit those to front-ends over required protocols.
-                        </p>
+                                <p className={styles.introText2}>Web apps and mobile apps are the face of digital organizations. Therefore, back-ends powering these apps need to be highly secure, scalable, and responsive. In addition, such back-ends need to aggregate data from multiple services, transform data as necessary, and transmit those to front-ends over required protocols.
+                                </p>
 
-                        <p className={styles.introText3}>Ballerina&apos;s support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends. 
-                        </p>
+                                <p className={styles.introText3}>Ballerina&apos;s support for various protocols, availability of connectors, built-in security features, and advanced data transformation capabilities make it the ideal choice for developing back-ends for modern front-ends.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={`${styles.introImg} ${styles.ipaas}`}>
-                    <img src={`${prefix}/images/bff-intro.png`} alt="BFF" className={styles.doNotFill} width='90%' />
-                </Col>
-            </Row>
-            </Container>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={`${styles.introImg} ${styles.ipaas}`}>
+                            <img src={`${prefix}/images/bff-intro.png`} alt="BFF" className={styles.doNotFill} width='90%' />
+                        </Col>
+                    </Row>
+                </Container>
             </Col>
         </>
     );

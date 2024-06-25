@@ -26,31 +26,31 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>Ballerina is the only integration language built for healthcare.  With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
-                        </p>
+                                <p className={styles.introText2}>Ballerina is the only integration language built for healthcare.  With its native support for healthcare standards like FHIR, HL7, and X12, Ballerina enables rapid health tech application development.
+                                </p>
 
-                        <p className={styles.introText3}>Build with Ballerina and make a difference in the world today.
-                        </p>
+                                <p className={styles.introText3}>Build with Ballerina and make a difference in the world today.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/health-intro.png`} alt="Position Ballerina" />
-                </Col>
-            </Row>
-            </Container>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+                            <img src={`${prefix}/images/health-intro.png`} alt="Position Ballerina" />
+                        </Col>
+                    </Row>
+                </Container>
             </Col>
         </>
     );

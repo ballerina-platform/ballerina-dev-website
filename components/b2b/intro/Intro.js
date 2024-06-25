@@ -26,31 +26,31 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
+            <Col xs={12}>
+                <Container>
+                    <Row>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
 
-                        <p className={styles.introText2}>Ballerina is the only language with native support for B2B integrations. It enables a seamless exchange of business data with partner networks using standard formats like X12, EDIFACT, or even custom EDI formats.
-                        </p>
+                                <p className={styles.introText2}>Ballerina is the only language with native support for B2B integrations. It enables a seamless exchange of business data with partner networks using standard formats like X12, EDIFACT, or even custom EDI formats.
+                                </p>
 
-                        <p className={styles.introText3}>Ballerina&apos;s powerful EDI data mapping and processing capabilities facilitate interoperability among data formats and simplify the use of EDI data within business apps.
-                        </p>
+                                <p className={styles.introText3}>Ballerina&apos;s powerful EDI data mapping and processing capabilities facilitate interoperability among data formats and simplify the use of EDI data within business apps.
+                                </p>
 
-                        <p className={styles.dVersion}>
-                        <a href={`${prefix}/downloads/`}
-                            className={styles.cDownload}>
-                            Download Ballerina
-                        </a>
-                    </p>
-                    </div>
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                    <img src={`${prefix}/images/edi-intro.png`} alt="Position Ballerina" />
-                </Col>
-            </Row>
-            </Container>
+                                <p className={styles.dVersion}>
+                                    <a href={`${prefix}/downloads/`}
+                                        className={styles.cDownload}>
+                                        Download Ballerina
+                                    </a>
+                                </p>
+                            </div>
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+                            <img src={`${prefix}/images/edi-intro.png`} alt="Position Ballerina" />
+                        </Col>
+                    </Row>
+                </Container>
             </Col>
         </>
     );

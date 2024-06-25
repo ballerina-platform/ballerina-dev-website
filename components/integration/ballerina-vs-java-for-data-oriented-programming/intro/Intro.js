@@ -33,11 +33,11 @@ export default function Intro() {
                             <div>
 
                                 <p className={styles.introText2}>
-                                Data-oriented programming is crucial in modern software development due to the complex and data-intensive nature of applications and the widespread adoption of microservices architecture, emphasizing the need for efficient data handling.<br />
+                                    Data-oriented programming is crucial in modern software development due to the complex and data-intensive nature of applications and the widespread adoption of microservices architecture, emphasizing the need for efficient data handling.<br />
                                 </p>
 
                                 <p className={styles.introText3}>
-                                With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing.
+                                    With its robust support, seamless integration with data constructs, and powerful features make Ballerina the top choice for efficient data handling and processing.
                                 </p>
 
                                 <p className={styles.dVersion}>

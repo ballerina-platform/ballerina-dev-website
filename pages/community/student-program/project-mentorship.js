@@ -21,12 +21,8 @@ import { Row, Col, Container } from 'react-bootstrap';
 import Head from 'next/head';
 
 import Layout from '../../../layouts/LayoutCommunity';
-// import Outline from '../../../components/student-engagement/outline2/Outline';
-// import Events from '../../../components/student-engagement/events/Events';
-// import SECarousel from '../../../components/common/image-carousel/ImageCarousel';
-// import GetInvolved from '../../../components/student-engagement/get-involved/GetInvolved';
 import Projects from '../../../_data/student_projects.json';
-import UseCases from '../../../components/common/use-cases/UseCases';
+import ProjectsGrid from '../../../components/common/card-grid/CardGrid';
 import { fetchContributors } from '../../../utils/github';
 
 export async function getStaticProps() {
@@ -38,7 +34,7 @@ export async function getStaticProps() {
       } catch (error) {
         console.error(`Failed to fetch contributors for ${project.title}:`, error);
       }
-      return { ...project, contributors:contributors.slice(0, 5) };
+      return { ...project, contributors: contributors.slice(0, 5) };
     })
   );
 
@@ -49,9 +45,8 @@ export async function getStaticProps() {
   };
 }
 
-export default function StudentengagementProgram({projects}) {
+export default function StudentengagementProgram({ projects }) {
 
-  // const propsData = Projects.projects;
   const past = projects.filter(project => project.status === "past");
   const ongoing = projects.filter(project => project.status === "ongoing");
   const upcoming = projects.filter(project => project.status === "upcoming");
@@ -112,7 +107,7 @@ export default function StudentengagementProgram({projects}) {
       <Layout>
         <Col sm={12}>
 
-          <Row className="pageHeader pageContentRow communityRow communityIntro" style={{paddingBottom:"4rem"}}>
+          <Row className="pageHeader pageContentRow communityRow communityIntro" style={{ paddingBottom: "4rem" }}>
             <Col xs={12}>
               <Container>
                 <Row>
@@ -130,15 +125,15 @@ export default function StudentengagementProgram({projects}) {
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <UseCases propsData={past} launcher="project-mentorship" section="Past" getLink={getLink}/>
+            <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow">
-          <UseCases propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink}/>
+            <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} />
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-          <UseCases propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink}/>
+            <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} />
           </Row>
 
         </Col>

@@ -17,10 +17,9 @@
  */
 
 export async function fetchContributors(owner, repo) {
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contributors`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch contributors');
-    }
-    return response.json();
+  const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contributors`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch contributors');
   }
-  
+  return response.json();
+}

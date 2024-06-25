@@ -516,13 +516,14 @@ a.cGreenLinkArrow:hover {
 }
 
 .pageHeader h1 {
-  padding-top: 35px;
+  /* padding-top: 35px; */
   padding-bottom: 0px;
   color: #464646;
   /* color: #585a5e; */
   font-weight: 500;
   /* font-size: 2rem; */
   font-size: 3rem;
+  margin-bottom: 0;
 }
 
 .communityIntro {
@@ -608,7 +609,7 @@ pre[class*="language-"] {
 
 .communityRow h2 {
   /* margin-top: 40px; */
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: 30px;
   font-size: 1.5rem;
 }
@@ -1345,7 +1346,7 @@ table.cTopControlsContainer tbody {
 .integration h2,
 .llanding h2, 
 .communityRow h2 {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   margin-bottom: 30px;
   scroll-margin-top: 65px;
 }
@@ -1395,7 +1396,12 @@ table.cTopControlsContainer tbody {
 .pageContentRow.llanding,
 .pageContentRow.communityRow {
   margin-bottom: 0 !important;
-  padding-bottom: 50px;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.pageHeader.pageContentRow {
+  padding-bottom: 0;
 }
 
 .pageContentRow.integration #use-cases {

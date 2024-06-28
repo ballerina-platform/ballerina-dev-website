@@ -1773,7 +1773,7 @@ a.join {
   /* background-position: left 20px top 22px; */
   /* background-position: left 20px top 14px; */
   width: fit-content;
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 
 a.join:hover {

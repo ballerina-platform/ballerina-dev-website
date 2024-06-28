@@ -1,6 +1,13 @@
 {
     "articles": [
         {
+            "url": "https://middaylive.com/technology/5-cutting-edge-programming-languages-that-you-should-not-ignore/",
+            "title": "5 Cutting-edge programming languages that you should not ignore",
+            "author": "Editorial Team",
+            "source": "Midday Live",
+            "date": "May 25, 2024"
+        },
+        {
             "url": "https://eluminoustechnologies.com/blog/best-microservices-framework/",
             "title": "Best Microservices Framework: A Handy Listicle",
             "author": "Robert S",
@@ -13,13 +20,6 @@
             "author": "Varun Kumar",
             "source": "RankRed",
             "date": "Jan 23, 2024"
-        },
-        {
-            "url": "https://eluminoustechnologies.com/blog/best-microservices-framework/",
-            "title": "Best Microservices Framework: A Handy Listicle",
-            "author": "Robert S",
-            "source": "eLuminous Technologies",
-            "date": "Nov 13, 2023"
         },
         {
             "url": "https://itechnolabs.ca/top-microservices-frameworks-to-build-highly-scalable-applications/",

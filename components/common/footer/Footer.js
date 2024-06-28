@@ -23,6 +23,8 @@ import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  
+  const copyYear = new Date().getFullYear();
 
   return (
     <Stack gap={0} className={styles.stack}>
@@ -100,7 +102,7 @@ export default function Footer() {
 
         <Row className={styles.policyLinks}>
           <Col xs={12} sm={2}>
-            <span className="footerLink">© 2023 WSO2 LLC</span>
+            <span className="footerLink">© {copyYear} WSO2 LLC</span>
           </Col>
           <Col xs={12} sm={10}>
             <ul>

@@ -1315,8 +1315,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.45.rpm",
       "rpm-installer-size": "168mb",
       "other-artefacts": [
-         "ballerina-1.2.45.zip",
-         "ballerina-1.2.45.vsix"
+         "ballerina-1.2.45.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.45.zip",
       "release-notes": "ballerina-release-notes-1.2.45.md"
@@ -1333,8 +1332,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.46.rpm",
       "rpm-installer-size": "168mb",
       "other-artefacts": [
-         "ballerina-1.2.46.zip",
-         "ballerina-1.2.46.vsix"
+         "ballerina-1.2.46.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.46.zip",
       "release-notes": "ballerina-release-notes-1.2.46.md"
@@ -1351,8 +1349,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.47.rpm",
       "rpm-installer-size": "168mb",
       "other-artefacts": [
-         "ballerina-1.2.47.zip",
-         "ballerina-1.2.47.vsix"
+         "ballerina-1.2.47.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.47.zip",
       "release-notes": "ballerina-release-notes-1.2.47.md"
@@ -1369,8 +1366,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.48.rpm",
       "rpm-installer-size": "167mb",
       "other-artefacts": [
-         "ballerina-1.2.48.zip",
-         "ballerina-1.2.48.vsix"
+         "ballerina-1.2.48.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.48.zip",
       "release-notes": "ballerina-release-notes-1.2.48.md"
@@ -1387,8 +1383,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.49.rpm",
       "rpm-installer-size": "168mb",
       "other-artefacts": [
-         "ballerina-1.2.49.zip",
-         "ballerina-1.2.49.vsix"
+         "ballerina-1.2.49.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.49.zip",
       "release-notes": "ballerina-release-notes-1.2.49.md"
@@ -1405,8 +1400,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.50.rpm",
       "rpm-installer-size": "171mb",
       "other-artefacts": [
-         "ballerina-1.2.50.zip",
-         "ballerina-1.2.50.vsix"
+         "ballerina-1.2.50.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.50.zip",
       "release-notes": "ballerina-release-notes-1.2.50.md"
@@ -1423,8 +1417,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.51.rpm",
       "rpm-installer-size": "171mb",
       "other-artefacts": [
-         "ballerina-1.2.51.zip",
-         "ballerina-1.2.51.vsix"
+         "ballerina-1.2.51.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.51.zip",
       "release-notes": "ballerina-release-notes-1.2.51.md"
@@ -1441,8 +1434,7 @@
       "rpm-installer": "ballerina-linux-installer-x64-1.2.52.rpm",
       "rpm-installer-size": "170mb",
       "other-artefacts": [
-         "ballerina-1.2.52.zip",
-         "ballerina-1.2.52.vsix"
+         "ballerina-1.2.52.zip"
       ],
       "api-docs": "ballerina-api-docs-1.2.52.zip",
       "release-notes": "ballerina-release-notes-1.2.52.md"

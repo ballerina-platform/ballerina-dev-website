@@ -26,25 +26,43 @@ export default function CardGrid(props) {
 
     const propsData = props.propsData;
 
-    const getTechnologies = (technologies) => {
+    const getTechnologies = (tags) => {
         // const technologiesArray = technologies.split(', ');
         return (
             <p className={styles.technologies}>
                 {
-                    technologies.map((technology, index) => (
-                        <Badge as={"a"} className={styles.tag} key={technology} onClick={()=>props.handleSelectedTag(technology)}>{technology}</Badge>
+                    tags.map((tag, index) => (
+                        <Badge as={"a"} className={styles.tag} key={tag} onClick={()=>props.handleSelectedTag(tag)}>{tag}</Badge>
                     ))
                 }
             </p>
         )
     }
 
+    const [limit, setLimit] = React.useState(8);
+  const [showSMBtn, setShowSMBtn] = React.useState(true);
+  const [showHideBtn, setShowHideBtn] = React.useState(false);
+
+  const length = propsData.length;
+
+  const showMoreVersions = () => {
+    setLimit(length);
+    setShowSMBtn(false);
+    setShowHideBtn(true);
+  };
+
+  const hideMoreVersions = () => {
+    setLimit(8);
+    setShowSMBtn(true);
+    setShowHideBtn(false);
+  };
+
     return (
         <>
             <Col xs={12}>
                 <Container>
 
-                    {
+                    {/* {
                         (props.launcher == "project-mentorship") &&
                         <Row>
                             <Col xs={12}>
@@ -65,7 +83,7 @@ export default function CardGrid(props) {
                                 </h2>
                             </Col>
                         </Row>
-                    }
+                    } */}
 
                     <Row xs={1} md={2} lg={props.launcher == "project-mentorship"? 4 : 3} className='g-4'>
                         {
@@ -137,7 +155,7 @@ export default function CardGrid(props) {
                             <>
                                 {
 
-                                    propsData.map((_, idx) => (
+propsData.slice(0, limit).map((_, idx) => (
                                         <>
                                             <Col className={`${styles.useCaseCard} mt-4`}>
 
@@ -148,20 +166,13 @@ export default function CardGrid(props) {
                                                         </div>
                                                         <h3>{_.title}</h3>
                                                         <div className={styles.cardDescription}>
-                                                            <p>{_.description}</p>
-
+                                                            <p>{_.description} &nbsp;<a href="#" className={styles.repoLink}>Learn more</a></p>
                                                         </div>
                                                     </div>
 
-                                                    {/* <>
-                                                        {
-                                                            getTechnologies(_.technologies)
-                                                        }
-                                                    </> */}
-
                                                     <div className={styles.cardLinks}>
                                                         {
-                                                            getTechnologies(_.technologies)
+                                                            getTechnologies(_.tags)
                                                         }
                                                         <p>Advisor: <a href={_.advisor.x} className={styles.cDownload}>
                                                             {_.advisor.name}
@@ -184,11 +195,39 @@ export default function CardGrid(props) {
                                             </Col>
                                         </>
                                     ))}
+
+                                    {/* <div className='newRow'>
+
+{
+        showSMBtn && length > 8 && <div onClick={showMoreVersions} className="seeMore">See more...</div>
+      }
+      {
+        showHideBtn && length > 8 && <div onClick={hideMoreVersions} className="seeMore">Hide</div>
+      }
+      </div> */}
                             </>
 
                         }
 
                     </Row>
+{
+    (props.launcher == "project-mentorship") &&
+    <Row className='mt-5'>
+        <Col>
+          {showSMBtn && length > 8 && (
+            <div onClick={showMoreVersions} className={styles.seeMore}>
+              + Show more...
+            </div>
+          )}
+          {showHideBtn && length > 8 && (
+            <div onClick={hideMoreVersions} className={styles.seeMore}>
+              - Hide
+            </div>
+          )}
+        </Col>
+      </Row>
+}
+                    
 
                 </Container>
             </Col>

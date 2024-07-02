@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { Row, Col, Container, Badge } from 'react-bootstrap';
+import { Row, Col, Container, Badge, Tabs, Tab } from 'react-bootstrap';
 import Head from 'next/head';
 import {RxCross2} from "react-icons/rx"
 
@@ -47,10 +47,6 @@ export async function getStaticProps() {
 }
 
 export default function StudentengagementProgram({ projects }) {
-
-  const past = projects.filter(project => project.status === "past");
-  const ongoing = projects.filter(project => project.status === "ongoing");
-  const upcoming = projects.filter(project => project.status === "upcoming");
 
   const getLink = (element, id) => {
     if (element.tagName.toLowerCase() === "path")
@@ -89,13 +85,17 @@ export default function StudentengagementProgram({ projects }) {
   function handleFilteredTags() {
     if (selectedTags.length > 0) {
       const filteredItems = projects.filter((item) => {
-        return selectedTags.every((tag) => item.technologies.includes(tag));
+        return selectedTags.every((tag) => item.tags.includes(tag));
       });
       setFilteredTags(filteredItems);
     } else {
       setFilteredTags([...projects]);
     }
   }
+
+  const past = filteredTags.filter(project => project.status === "past");
+  const ongoing = filteredTags.filter(project => project.status === "ongoing");
+  const upcoming = filteredTags.filter(project => project.status === "upcoming");
 
   return (
     <>
@@ -139,7 +139,7 @@ export default function StudentengagementProgram({ projects }) {
             <Col xs={12}>
               <Container>
                 <Row>
-                  <img src="/images/ballerina-mesh-grey-cropped.svg" className="background-image" alt="Background" />
+                  <img src="/images/mesh-1-row-cropped.svg" className="background-image" alt="Background" />
                   <Col xs={12} md={12} lg={6}>
                     <h1>Project Mentorship</h1>
                     <p style={{ fontSize: "24px", fontWeight: "400", color: "#20b6b0", marginTop: "40px" }}>Ballerina is dedicated to supporting the advancement of the next generation. Our student engagement program aims to provide university students with informative sessions that complement their academic curriculum and foster a sense of community among them.</p>
@@ -151,10 +151,13 @@ export default function StudentengagementProgram({ projects }) {
               </Container>
             </Col>
           </Row>
+{
+  selectedTags.length > 0 &&
 
           <Row className="selectedTagContainer">
             <Col xs={12}>
               <Container>
+                Filtered by:&nbsp;
                 {selectedTags.map((selectedTag)=>{
                   return(
                     <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
@@ -165,13 +168,35 @@ export default function StudentengagementProgram({ projects }) {
               </Container>
             </Col>
           </Row>
+          }
 
+          <Row className="pageContentRow communityRow" style={{background:"#ffffff", paddingTop:"0"}}>
+            {/* <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/> */}
+          <Col xs={12}>
+          <Container>
+            <Tabs defaultActiveKey="Past" id="events" className="mb-3 eventsTabs">
+              <Tab eventKey="Past" title={<>Past&nbsp;<Badge bg="secondary" style={{borderRadius:"50%"}}>{past.length}</Badge></>}>
+              <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+              </Tab>
 
-          <Row className="pageContentRow communityRow slackRow">
-            <ProjectsGrid propsData={projects} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+              <Tab eventKey="Ongoing" title={<>Ongoing&nbsp;<Badge bg="secondary" style={{borderRadius:"50%"}}>{ongoing.length}</Badge></>}>
+              <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+              </Tab>
+
+              <Tab eventKey="Upcoming" title={<>Upcoming&nbsp;<Badge bg="secondary" style={{borderRadius:"50%"}}>{upcoming.length}</Badge></>}>
+              <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+              </Tab>
+            </Tabs>
+            </Container>
+          </Col>
           </Row>
 
-          {/* <Row className="pageContentRow communityRow">
+
+          {/* <Row className="pageContentRow communityRow slackRow">
+            <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+          </Row>
+
+          <Row className="pageContentRow communityRow">
             <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 

@@ -40,19 +40,19 @@
     font-weight: 400;
 }
 
-.cardLinks {
+.cardLinks, .repoLink {
     font-weight: 400;
     font-style: italic;
 }
 
-.cardLinks a {
+.cardLinks a, .repoLink {
     color: #20b6b0;
     text-decoration: none;
     font-weight: 400;
     font-size: 16px;
 }
 
-.cardLinks a:hover {
+.cardLinks a:hover, .repoLink:hover {
     color: #494949;
 }
 
@@ -108,4 +108,27 @@
 .tag:hover{
     opacity: 0.8;
     color: #ffffff;
+}
+
+.seeMore {
+    display: block;
+    margin: 0;
+    transition: none !important;
+    font-size: 16px;
+    text-align: center;
+    background-color: #20b6b0;
+    color: #ffffff !important;
+    padding: 10px 20px;
+    background-repeat: no-repeat;
+    background-position: left 25px top 18px;
+    text-decoration: none;
+    border: none;
+    font-family: "pragmatica", sans-serif;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.seeMore:hover {
+    background-color: #57595d;
+    color: #ffffff !important;
 }

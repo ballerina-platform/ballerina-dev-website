@@ -41,7 +41,6 @@
 }
 
 .cardLinks {
-    color: #20b6b0;
     font-weight: 400;
     font-style: italic;
 }
@@ -88,4 +87,25 @@
 .footer {
     background-color: #ffffff !important;
     border: none !important;
+}
+
+.cardLinks .technologies a {
+    color: #ffffff;
+    font-style: normal;
+    font-size: 0.75em;
+    font-weight: 700;
+}
+
+.tag {
+    margin-right: 5px;
+    margin-top: 5px;
+    background-color: #888 !important;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tag:hover{
+    opacity: 0.8;
+    color: #ffffff;
 }

@@ -22,9 +22,8 @@ import Head from "next/head";
 
 import Layout from "../../../layouts/LayoutUseCase";
 import Intro from "../../../components/ai/intro/Intro";
-import UseCases from "../../../components/ai/use-cases/UseCases";
 import Code from "../../../components/ai/code/Code";
-import { prefix } from '../../../utils/prefix';
+
 
 import fs from "fs";
 import matter from "gray-matter";

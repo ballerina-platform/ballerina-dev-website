@@ -23,7 +23,6 @@ import Head from "next/head";
 import Layout from "../../../layouts/LayoutUseCase";
 import Intro from "../../../components/bff/intro/Intro";
 import Code from "../../../components/bff/code/Code";
-import { prefix } from '../../../utils/prefix';
 
 import fs from "fs";
 import matter from "gray-matter";

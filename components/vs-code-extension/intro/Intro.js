@@ -48,62 +48,62 @@ export default function Intro() {
 
     return (
         <>
-        <Col xs={12}>
-            <Container>
-            <Row className='pageContentRow integration' style={{paddingBottom:"0"}}>
-                <Col xs={12} lg={5} className={styles.introText}>
-                    <div>
-                        <br/>
-                        <h1 className={styles.title}>Code and visualize<br/>Ballerina</h1>
-                        
-                        <br/>
-                        <p className={styles.introText3}>
-                        The VS Code extension provides robust language support with visualization and design tools for Ballerina.
-                        </p>
-                        <br/>  
-                        
-                        <p className={styles.dVersion}>
-                    
-                        <a href={`${prefix}/learn/vs-code-extension/get-started/`}
-                            className={styles.cDownload}>
-                            See documentation
-                        </a>                    
+            <Col xs={12}>
+                <Container>
+                    <Row>
+                        <Col xs={12} lg={5} className={styles.introText}>
+                            <div>
+                                <br />
+                                <h1 className={styles.title}>Code and visualize<br />Ballerina</h1>
 
-                    </p>
-                    <p className={styles.dGetBallerinaText}>If you are new to the Ballerina VS Code extension,</p>
-                        <p>
-                        <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
-                            className={styles.cVideoBtn} target="_blank" rel="noreferrer"> 
-                            <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
-                            Install the extension
-                            
-                        </a>
-                        </p>
-                    </div>
-                    <br/>    
-                </Col>
-                <Col xs={12} lg={7} className={styles.introImg}>
-                
+                                <br />
+                                <p className={styles.introText3}>
+                                    The VS Code extension provides robust language support with visualization and design tools for Ballerina.
+                                </p>
+                                <br />
 
-                <Carousel controls={false} variant="dark">
-      <Carousel.Item>
-      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-5.png`} alt="AI" />
-      </Carousel.Item>
-      <Carousel.Item>
-      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-4.png`} alt="AI" />
-      </Carousel.Item>
-      <Carousel.Item>
-      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-1.png`} alt="AI" />
-      </Carousel.Item>
-      <Carousel.Item>
-      <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-3.png`} alt="AI" />
-      </Carousel.Item>
-    </Carousel>
+                                <p className={styles.dVersion}>
 
-                </Col>
-            </Row>
+                                    <a href={`${prefix}/learn/vs-code-extension/get-started/`}
+                                        className={styles.cDownload}>
+                                        See documentation
+                                    </a>
 
-            </Container>
+                                </p>
+                                <p className={styles.dGetBallerinaText}>If you are new to the Ballerina VS Code extension,</p>
+                                <p>
+                                    <a href={`https://marketplace.visualstudio.com/items?itemName=WSO2.ballerina`}
+                                        className={styles.cVideoBtn} target="_blank" rel="noreferrer">
+                                        <Image src={`${prefix}/images/ballerina-get-started.svg`} width={20} height={20} alt="Try GraphQL services" />
+                                        Install the extension
+
+                                    </a>
+                                </p>
+                            </div>
+                            <br />
+                        </Col>
+                        <Col xs={12} lg={7} className={styles.introImg}>
+
+
+                            <Carousel controls={false} variant="dark">
+                                <Carousel.Item>
+                                    <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-5.png`} alt="AI" />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-4.png`} alt="AI" />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-1.png`} alt="AI" />
+                                </Carousel.Item>
+                                <Carousel.Item>
+                                    <img className={styles.SliderImg1} src={`${prefix}/images/vsc-slider-images-3.png`} alt="AI" />
+                                </Carousel.Item>
+                            </Carousel>
+
+                        </Col>
+                    </Row>
+
+                </Container>
             </Col>
         </>
     );

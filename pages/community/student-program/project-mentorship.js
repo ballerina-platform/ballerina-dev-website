@@ -19,6 +19,7 @@
 import React from 'react';
 import { Row, Col, Container, Badge } from 'react-bootstrap';
 import Head from 'next/head';
+import {RxCross2} from "react-icons/rx"
 
 import Layout from '../../../layouts/LayoutCommunity';
 import Projects from '../../../_data/student_projects.json';
@@ -87,8 +88,8 @@ export default function StudentengagementProgram({ projects }) {
 
   function handleFilteredTags() {
     if (selectedTags.length > 0) {
-      const filteredItems = data.filter((item) => {
-        return selectedTags.every((tag) => item.tags.includes(tag));
+      const filteredItems = projects.filter((item) => {
+        return selectedTags.every((tag) => item.technologies.includes(tag));
       });
       setFilteredTags(filteredItems);
     } else {
@@ -167,16 +168,16 @@ export default function StudentengagementProgram({ projects }) {
 
 
           <Row className="pageContentRow communityRow slackRow">
-            <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+            <ProjectsGrid propsData={projects} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 
-          <Row className="pageContentRow communityRow">
+          {/* <Row className="pageContentRow communityRow">
             <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
             <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
-          </Row>
+          </Row> */}
 
         </Col>
       </Layout>

@@ -27,11 +27,11 @@ export default function CardGrid(props) {
     const propsData = props.propsData;
 
     const getTechnologies = (technologies) => {
-        const technologiesArray = technologies.split(', ');
+        // const technologiesArray = technologies.split(', ');
         return (
             <p className={styles.technologies}>
                 {
-                    technologiesArray.map((technology, index) => (
+                    technologies.map((technology, index) => (
                         <Badge as={"a"} className={styles.tag} key={technology} onClick={()=>props.handleSelectedTag(technology)}>{technology}</Badge>
                     ))
                 }
@@ -138,7 +138,7 @@ export default function CardGrid(props) {
                                 {
 
                                     propsData.map((_, idx) => (
-                                        <Link key={idx} href={`/case-studies/${_.slug}`} className={styles.wrapperLink}>
+                                        <>
                                             <Col className={`${styles.useCaseCard} mt-4`}>
 
                                                 <div className={styles.cardWrapper}>
@@ -182,7 +182,7 @@ export default function CardGrid(props) {
                                                 </div>
 
                                             </Col>
-                                        </Link>
+                                        </>
                                     ))}
                             </>
 

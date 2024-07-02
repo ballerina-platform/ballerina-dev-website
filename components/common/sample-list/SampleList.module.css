@@ -7,6 +7,10 @@
     color: #464646;
 }
 
+.cardLink img:hover {
+    border: #20b6b0 1px solid;
+}
+
 .cardLink:hover {
     color: #20b6b0;
 }

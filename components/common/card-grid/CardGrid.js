@@ -17,7 +17,7 @@
  */
 
 import * as React from 'react';
-import { Row, Col, Container, Card, Image } from 'react-bootstrap';
+import { Row, Col, Container, Card, Image, Badge } from 'react-bootstrap';
 import Link from 'next/link';
 
 import styles from './CardGrid.module.css';
@@ -25,6 +25,19 @@ import styles from './CardGrid.module.css';
 export default function CardGrid(props) {
 
     const propsData = props.propsData;
+
+    const getTechnologies = (technologies) => {
+        const technologiesArray = technologies.split(', ');
+        return (
+            <p className={styles.technologies}>
+                {
+                    technologiesArray.map((technology, index) => (
+                        <Badge as={"a"} className={styles.tag} key={technology} onClick={()=>props.handleSelectedTag(technology)}>{technology}</Badge>
+                    ))
+                }
+            </p>
+        )
+    }
 
     return (
         <>
@@ -54,7 +67,7 @@ export default function CardGrid(props) {
                         </Row>
                     }
 
-                    <Row xs={1} md={2} lg={3} className='g-4'>
+                    <Row xs={1} md={2} lg={props.launcher == "project-mentorship"? 4 : 3} className='g-4'>
                         {
                             (props.launcher == "usecases") &&
                             <>
@@ -140,7 +153,16 @@ export default function CardGrid(props) {
                                                         </div>
                                                     </div>
 
+                                                    {/* <>
+                                                        {
+                                                            getTechnologies(_.technologies)
+                                                        }
+                                                    </> */}
+
                                                     <div className={styles.cardLinks}>
+                                                        {
+                                                            getTechnologies(_.technologies)
+                                                        }
                                                         <p>Advisor: <a href={_.advisor.x} className={styles.cDownload}>
                                                             {_.advisor.name}
                                                         </a>

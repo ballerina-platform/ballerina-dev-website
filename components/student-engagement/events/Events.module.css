@@ -6,8 +6,15 @@
 }
 
 .eventRows {
-    margin-bottom: 40px;
+    
     font-weight: 400;
+    margin-top: 40px;
+}
+
+.eventRows:not(:last-of-type) {
+    border-bottom: 0.3px solid #d9dadb;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .eventRows p {
@@ -47,6 +54,12 @@
     margin-bottom: 20px;
     margin-top: 20px;
     font-weight: 300;
+}
+
+.eventDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .eventDetail a {
@@ -97,4 +110,10 @@ a.eventRegistration:hover {
     a.eventRegistration {
         margin: 0 15px;
     }
+}
+
+.eventDateContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

@@ -46,6 +46,9 @@ export function Session(props) {
       <Col sm={12} md={2} className={styles.eventDateContainer}>
         <p className={`${styles.eventDate} ${styles.eventDateNum}`}>{item.date}</p>
         <p className={styles.eventType}>{item.type}</p>
+        {
+          item.isVirtual && <p className={styles.eventType}>Virtual</p>
+        }
         <p className="eventLocation">{item.location}</p>
       </Col>
       <Col sm={12} md={7} className={styles.eventDetail} id="eventDetails">
@@ -57,6 +60,7 @@ export function Session(props) {
             : <p className="eventName" style={{ fontWeight: "500" }}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
         }
         <h5>{item.title}</h5>
+        <div>
         {
           item.presenters.length > 0 ?
             <>
@@ -78,6 +82,7 @@ export function Session(props) {
             </>
             : null
         }
+        </div>
       </Col>
       <Col sm={12} md={3} className={styles.eventURL}>
         {

@@ -16,8 +16,7 @@
  * under the License.
  */
 import * as React from 'react';
-import { Row, Col, Container, Card, Badge } from 'react-bootstrap';
-import Image from 'next-image-export-optimizer';
+import { Row, Col, Card, Badge } from 'react-bootstrap';
 import styles from './SampleList.module.css';
 import { prefix } from '../../../utils/prefix';
 

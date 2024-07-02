@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Badge } from 'react-bootstrap';
 import Head from 'next/head';
 
 import Layout from '../../../layouts/LayoutCommunity';
@@ -68,6 +68,33 @@ export default function StudentengagementProgram({ projects }) {
     navigator.clipboard.writeText(window.location.href);
     element.parentElement.scrollIntoView();
   };
+
+  const [selectedTags, setSelectedTags] = React.useState([]);
+  const [filteredTags, setFilteredTags] = React.useState(projects);
+
+  function handleSelectedTag(selectedCategory){
+    if(selectedTags.includes(selectedCategory)){
+      let filters = selectedTags.filter((el)=>el!==selectedCategory)
+      setSelectedTags(filters);
+    }else{
+      setSelectedTags([...selectedTags, selectedCategory])
+    }
+  }
+
+  React.useEffect(() => {
+    handleFilteredTags()
+  }, [selectedTags])
+
+  function handleFilteredTags() {
+    if (selectedTags.length > 0) {
+      const filteredItems = data.filter((item) => {
+        return selectedTags.every((tag) => item.tags.includes(tag));
+      });
+      setFilteredTags(filteredItems);
+    } else {
+      setFilteredTags([...projects]);
+    }
+  }
 
   return (
     <>
@@ -124,16 +151,31 @@ export default function StudentengagementProgram({ projects }) {
             </Col>
           </Row>
 
+          <Row className="selectedTagContainer">
+            <Col xs={12}>
+              <Container>
+                {selectedTags.map((selectedTag)=>{
+                  return(
+                    <Badge as={"a"} key={selectedTag} className="selectedTagBadge" onClick={()=>handleSelectedTag(selectedTag)} bg="#888" pill>{selectedTag}
+                    <RxCross2 className="selectedTagIcon" />
+                    </Badge>
+                  )
+                })}
+              </Container>
+            </Col>
+          </Row>
+
+
           <Row className="pageContentRow communityRow slackRow">
-            <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} />
+            <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 
           <Row className="pageContentRow communityRow">
-            <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} />
+            <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 
           <Row className="pageContentRow communityRow slackRow">
-            <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} />
+            <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
           </Row>
 
         </Col>

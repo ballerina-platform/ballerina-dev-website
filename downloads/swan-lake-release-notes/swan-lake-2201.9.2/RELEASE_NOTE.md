@@ -55,6 +55,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.2) of
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.2+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=label%3Amodule%2Fopenapi-tools+milestone%3A2201.9.2+is%3Aclosed)
 - [Bindgen too](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FBindgen+milestone%3A2201.9.2+is%3Aclosed)
+- [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.2+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FCLI-BuildTools)
 
 ## Ballerina packages updates
 

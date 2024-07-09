@@ -55,3 +55,20 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.2) of
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.2+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=label%3Amodule%2Fopenapi-tools+milestone%3A2201.9.2+is%3Aclosed)
 - [Bindgen too](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FBindgen+milestone%3A2201.9.2+is%3Aclosed)
+
+## Ballerina packages updates
+
+### Improvements
+
+Introduced an experimental build option to enable memory-efficient compilation of package dependencies. This can help prevent out-of-memory issues during the initial compilation with a clean central cache. Pass the flag to the `bal` command or specify the build option in the `Ballerina.toml` file to enable this experimental feature.
+
+```bash
+$ bal build --optimize-dependency-compilation
+```
+
+Specifying the build option in the `Ballerina.toml` file:
+
+```toml
+[build-options]
+optimizeDependencyCompilation = true
+```

@@ -52,19 +52,24 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](
 
 #### WSDL tool
 
-Introduced the WSDL CLI tool as an experimental feature which generates Ballerina types from a WSDL file. This tool can be accessed by pulling it from Ballerina Central and running it with an input WSDL file.
+Introduced the WSDL CLI tool as an experimental feature that generates Ballerina types from a WSDL file. This tool can be accessed by pulling it from the Ballerina Central and running it with an input WSDL file.
+
+Execute the following command to pull the tool from the Ballerina Central.
 
 ```bash
-# To pull the tool from Ballerina Central:
-bal tool pull wsdl
+$ bal tool pull wsdl
+```
 
-# To use the tool to generate Ballerina types from a WSDL file:
-bal wsdl -i <FILE_NAME> --operations <COMMA_SEPARATED_OPERATION_NAMES>
+Execute the following command to generate Ballerina types from a WSDL file.
 
-# -i, --input <FILE_NAME>: Specifies the input WSDL file from which to generate Ballerina types.
+```bash
+$ bal wsdl -i <FILE_NAME> [--operations <COMMA_SEPARATED_OPERATION_NAMES>]
 
-# --operations <COMMA_SEPARATED_OPERATION_NAMES> (Optional):
-#                Lists specific operations to generate Ballerina types for.
+# -i, --input <FILE_NAME>
+#     Input WSDL file from which to generate Ballerina types.
+
+# --operations <COMMA_SEPARATED_OPERATION_NAMES>
+#     Optional. Specify the list of operations, for which Ballerina types need to be generated.
 ```
 
 ### Bug fixes
@@ -73,7 +78,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.2) of
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.9.2+is%3Aclosed+label%3AType%2FBug+)
 - [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=label%3Amodule%2Fopenapi-tools+milestone%3A2201.9.2+is%3Aclosed)
-- [Bindgen too](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FBindgen+milestone%3A2201.9.2+is%3Aclosed)
+- [Bindgen tool](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AArea%2FBindgen+milestone%3A2201.9.2+is%3Aclosed)
 - [CLI](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.2+is%3Aclosed+label%3AType%2FBug+label%3AArea%2FCLI-BuildTools)
 
 ## Ballerina packages updates

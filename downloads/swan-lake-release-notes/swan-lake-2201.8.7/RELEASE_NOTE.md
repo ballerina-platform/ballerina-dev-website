@@ -28,6 +28,28 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ## Language updates
 
+### Improvements
+
+Introduced timeout configurations to prevent premature commits of long-running transactions. The following configurations related to transactions can be added to the `Config.toml` file.
+
+```toml
+[ballerina.lang.transaction]
+transactionAutoCommitTimeout=120
+transactionCleanupTimeout=600
+```
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 8 (2201.8.7)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.8.7).
+
+## Developer tools updates
+
+### Improvements
+
+Improved the performance of the VSCode editor.
+
+## Bug fixes
+
+To view bug fixes, see the GitHub milestone for Swan Lake Update 8 (2201.8.7) of the repositories below.
+- [Debugger](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.7+is%3Aclosed+label%3AArea%2FDebugger+label%3AType%2FBug)
+- [Project API](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.8.7+is%3Aclosed+label%3AArea%2FProjectAPI+label%3AType%2FBug)

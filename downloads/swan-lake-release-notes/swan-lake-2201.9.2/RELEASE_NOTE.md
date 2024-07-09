@@ -48,6 +48,23 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](
 
 ## Developer tools updates
 
+### Improvements
+
+Introduced the WSDL CLI-tool as an experimental feature which generates Ballerina types from a WSDL file. This tool can be accessed by pulling it from Ballerina Central and running it with an input WSDL file.
+
+```bash
+# To pull the tool from Ballerina Central
+bal tool pull wsdl
+
+# To use the tool to generate Ballerina types from a WSDL file:
+bal wsdl -i <FileName> --operations <COMMA SEPARATED OPERATION NAMES>
+
+# -i <FileName>: Specifies the input WSDL file from which to generate Ballerina types.
+
+# --operations <COMMA SEPARATED OPERATION NAMES> (Optional):
+#                Lists specific operations to generate Ballerina types for.
+```
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.2) of the repositories below.

@@ -10,7 +10,7 @@ redirect_from:
     - /downloads/swan-lake-release-notes/2201.9.2-swan-lake
 ---
 
-## Overview of Ballerina Swan Lake Update 8 (<RELEASE_VERSION>)
+## Overview of Ballerina Swan Lake Update 9 (2201.9.2)
 
 <em>Swan Lake Update 9 (2201.9.2) is the second patch release of Ballerina 2201.9.0 (Swan Lake Update 9) and it includes a new set of bug fixes to the <ADD_THE_LIST_OF_COMPONENTS>.</em>
 

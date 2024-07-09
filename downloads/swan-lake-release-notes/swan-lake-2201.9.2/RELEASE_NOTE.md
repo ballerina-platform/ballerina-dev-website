@@ -16,10 +16,10 @@ redirect_from:
 
 ## Update Ballerina
 
-Run the command below to update your current Ballerina installation directly to <RELEASE_VERSION> by using the [Ballerina Update Tool](/learn/update-tool/).
+Run the command below to update your current Ballerina installation directly to 2201.9.2 by using the [Ballerina Update Tool](/learn/update-tool/).
 
 ```
-$ bal dist pull <RELEASE_VERSION>
+$ bal dist pull 2201.9.2
 ```
 
 ## Install Ballerina
@@ -32,13 +32,13 @@ If you have not installed Ballerina, then, download the [installers](/downloads/
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A<RELEASE_VERSION>).
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.9.2).
 
 ## Runtime updates
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A<RELEASE_VERSION>+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+milestone%3A2201.9.2+label%3ATeam%2FjBallerina+label%3AType%2FBug+is%3Aclosed).
 
 ## Ballerina library updates
 

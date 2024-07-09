@@ -57,11 +57,11 @@ Introduced the WSDL CLI-tool as an experimental feature which generates Ballerin
 bal tool pull wsdl
 
 # To use the tool to generate Ballerina types from a WSDL file:
-bal wsdl -i <FileName> --operations <COMMA SEPARATED OPERATION NAMES>
+bal wsdl -i <FILE_NAME> --operations <COMMA_SEPARATED_OPERATION_NAMES>
 
-# -i <FileName>: Specifies the input WSDL file from which to generate Ballerina types.
+# -i <FILE_NAME>: Specifies the input WSDL file from which to generate Ballerina types.
 
-# --operations <COMMA SEPARATED OPERATION NAMES> (Optional):
+# --operations <COMMA_SEPARATED_OPERATION_NAMES> (Optional):
 #                Lists specific operations to generate Ballerina types for.
 ```
 

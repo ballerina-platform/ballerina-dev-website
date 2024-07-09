@@ -44,7 +44,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-standard-library/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A<RELEASE_VERSION>).
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 9 (2201.9.2)](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+label%3AType%2FBug+is%3Aclosed+milestone%3A2201.9.2).
 
 ## Developer tools updates
 

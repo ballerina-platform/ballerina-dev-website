@@ -56,13 +56,13 @@ Introduced the WSDL CLI tool as an experimental feature that generates Ballerina
 
 Execute the following command to pull the tool from the Ballerina Central.
 
-```bash
+```
 $ bal tool pull wsdl
 ```
 
 Execute the following command to generate Ballerina types from a WSDL file.
 
-```bash
+```
 $ bal wsdl -i <FILE_NAME> [--operations <COMMA_SEPARATED_OPERATION_NAMES>]
 
 # -i, --input <FILE_NAME>
@@ -87,7 +87,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 9 (2201.9.2) of
 
 Introduced an experimental build option to enable memory-efficient compilation of package dependencies. This can help prevent out-of-memory issues during the initial compilation with a clean central cache. Pass the flag to the `bal` command or specify the build option in the `Ballerina.toml` file to enable this experimental feature.
 
-```bash
+```
 $ bal build --optimize-dependency-compilation
 ```
 

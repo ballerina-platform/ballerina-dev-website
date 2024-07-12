@@ -154,7 +154,7 @@ export default function StudentengagementProgram({ projects }) {
 {
   selectedTags.length > 0 &&
 
-          <Row className="selectedTagContainer">
+          <Row className="selectedTagContainer slackRow">
             <Col xs={12}>
               <Container>
                 Filtered by:&nbsp;
@@ -170,11 +170,14 @@ export default function StudentengagementProgram({ projects }) {
           </Row>
           }
 
-          <Row className="pageContentRow communityRow" style={{background:"#ffffff", paddingTop:"0"}}>
+          <Row className="pageContentRow communityRow slackRow">
             {/* <ProjectsGrid propsData={ongoing} launcher="project-mentorship" section="Ongoing" getLink={getLink} handleSelectedTag={handleSelectedTag}/> */}
           <Col xs={12}>
-          <Container>
-            <Tabs defaultActiveKey="Past" id="events" className="mb-3 eventsTabs">
+          <Container style={{padding:"20px", background:"#ffffff"}}>
+            <div >
+          <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
+          </div>
+            {/* <Tabs defaultActiveKey="Past" id="events" className="mb-3 eventsTabs">
               <Tab eventKey="Past" title={<>Past&nbsp;<Badge bg="secondary" style={{borderRadius:"50%"}}>{past.length}</Badge></>}>
               <ProjectsGrid propsData={past} launcher="project-mentorship" section="Past" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
               </Tab>
@@ -186,7 +189,7 @@ export default function StudentengagementProgram({ projects }) {
               <Tab eventKey="Upcoming" title={<>Upcoming&nbsp;<Badge bg="secondary" style={{borderRadius:"50%"}}>{upcoming.length}</Badge></>}>
               <ProjectsGrid propsData={upcoming} launcher="project-mentorship" section="Upcoming" getLink={getLink} handleSelectedTag={handleSelectedTag}/>
               </Tab>
-            </Tabs>
+            </Tabs> */}
             </Container>
           </Col>
           </Row>

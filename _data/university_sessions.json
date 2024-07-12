@@ -7,7 +7,8 @@
             "university": "Universitas Teknologi Digital Indonesia",
             "faculty": "Faculty of Information Technology",
             "title": "Elegant Integrations with Ballerina Swan Lake",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "Indonesia",
             "presenters": [
                 {
                     "name": "Manuranga Perera",
@@ -24,7 +25,8 @@
             "university": "Sabaragamuwa University of Sri Lanka",
             "faculty": "Faculty of Computing",
             "title": "Ballerina language for Seamless Integration",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Heshan Padmasiri",
@@ -41,7 +43,8 @@
             "university": "University of Moratuwa",
             "faculty": "Department of Computer Science & Engineering",
             "title": "Modern Compiler Trends: Insights from the Ballerina Compiler",
-            "location": "Moratuwa, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Hasitha Aravinda",
@@ -58,7 +61,8 @@
             "university": "University of Moratuwa",
             "faculty": "Department of Computer Science & Engineering",
             "title": "Code Generation and Intermediate Representation in Ballerina Compiler",
-            "location": "Moratuwa, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Manuranga Perera",
@@ -75,7 +79,8 @@
             "university": "Namibia University of Science and Technology",
             "faculty": "Department of Software Engineering",
             "title": "Elegant Integrations with Ballerina Swan Lake",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "Namibia",
             "presenters": [
                 {
                     "name": "Thisaru Guruge",
@@ -92,7 +97,8 @@
             "university": "Sikkim Manipal Institute of Technology",
             "faculty": "",
             "title": "Mastering API Integrations and Microservice Architecture",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Niveathika Rajendran",
@@ -117,7 +123,8 @@
             "university": "MAIT Campus",
             "faculty": "",
             "title": "Building Cloud Native Applications with Ballerina and Choreo",
-            "location": "Rohini - Delhi, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Tharik Kanaka",
@@ -138,7 +145,8 @@
             "university": "KIET",
             "faculty": "",
             "title": "Building Cloud Native Applications with Ballerina and Choreo",
-            "location": "Ghaziabad, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Tharik Kanaka",
@@ -159,7 +167,8 @@
             "university": "KR Mangalam University",
             "faculty": "",
             "title": "Building Cloud Native Applications with Ballerina and Choreo",
-            "location": "Gurugram, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Tharik Kanaka",
@@ -180,7 +189,8 @@
             "university": "Bennett University",
             "faculty": "",
             "title": "Building Cloud Native Applications with Ballerina and Choreo",
-            "location": "Greater Noida, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Tharik Kanaka",
@@ -201,7 +211,8 @@
             "university": "Manav Rachna International Institute of Research and Studies",
             "faculty": "",
             "title": "Building Cloud Native Applications with Ballerina and Choreo",
-            "location": "Faridabad, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Tharik Kanaka",
@@ -222,7 +233,8 @@
             "university": "University of Peradeniya",
             "faculty": "Faculty of Engineering",
             "title": "Deploying Apps In Cloud",
-            "location": "Kandy, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Anuruddha Liyanarachchi",
@@ -243,7 +255,8 @@
             "university": "University of Moratuwa",
             "faculty": "Institute of Technology",
             "title": "Initiating and Integrating Software Development Projects",
-            "location": "Moratuwa, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Chiran Fernando",
@@ -260,7 +273,8 @@
             "university": "Informatics Institute of Technology (IIT)",
             "faculty": "",
             "title": "Empowering Modern Systems with Microservices and AI-as-a Service using Ballerina",
-            "location": "Colombo, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Anjana Supun",
@@ -281,7 +295,8 @@
             "university": "University of Moratuwa",
             "faculty": "Computer Science & Engineering",
             "title": "Mastering Web Backend Fundamentals Session 2: Exploring the era of microservices and API integrations with Ballerina",
-            "location": "Moratuwa, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Nipuna Ranasinghe",
@@ -306,7 +321,8 @@
             "university": "Namibia University of Science and Technology",
             "faculty": "Department of Software Engineering",
             "title": "Demo on GraphQL Kafka and Docker",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "Namibia",
             "presenters": [
                 {
                     "name": "Dilan Sachintha",
@@ -323,7 +339,8 @@
             "university": "University of Peradeniya",
             "faculty": "Faculty of Engineering",
             "title": "Mastering Microservices and APIs with Ballerina: A Practical Guide",
-            "location": "Kandy, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Thisaru Guruge",
@@ -344,7 +361,8 @@
             "university": "Namibia University of Science and Technology",
             "faculty": "Department of Software Engineering",
             "title": "Elegent integrations with Ballerina Swan Lake",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "Namibia",
             "presenters": [
                 {
                     "name": "Manuranga Perera",
@@ -361,7 +379,8 @@
             "university": "University of Moratuwa",
             "faculty": "Computer Science & Engineering",
             "title": "Mastering web backend fundamentals: from concept to cloud - Session 1",
-            "location": "Moratuwa, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Hasitha Aravinda",
@@ -386,7 +405,8 @@
             "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Introduction to Ballerina",
-            "location": "Colombo, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Dilan Perera",
@@ -403,7 +423,8 @@
             "university": "University of Colombo School of Computing (UCSC)",
             "faculty": "",
             "title": "Compiler Construction Insights from the Ballerina Language",
-            "location": "Colombo, Sri Lanka",
+            "isVirtual": false,
+            "location": "Sri Lanka",
             "presenters": [
                 {
                     "name": "Manuranga Perera",
@@ -424,7 +445,8 @@
             "university": "Sikkim Manipal Institute of Technology",
             "faculty": "",
             "title": "Ballerina language workshop",
-            "location": "Sikkim, India",
+            "isVirtual": false,
+            "location": "India",
             "presenters": [
                 {
                     "name": "Aditya Upadhyay",
@@ -441,7 +463,8 @@
             "university": "University of Texas - Dallas",
             "faculty": "",
             "title": "Ballerina language: Seamless Integration and Cloud-Native Development",
-            "location": "Virtual",
+            "isVirtual": true,
+            "location": "USA",
             "presenters": [
                 {
                     "name": "Anupama Pathirage",

@@ -56,28 +56,39 @@ export function Session(props) {
             </a>
             : <p className="eventName" style={{ fontWeight: "500" }}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
         }
-        <h5>{item.title}</h5>
-        {
-          item.presenters.length > 0 ?
-            <>
-              {
-                item.presenters.map((presenter, index) => {
-                  return (
-                    <React.Fragment key={index}>
-                      <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>
-                      {
-                        index + 1 < item.presenters.length ?
-                          <>, </>
-                          : null
-                      }
-                    </React.Fragment>
-                  )
+        <h5>{item.title}&nbsp;{item.isVirtual && <>(Virtual)</>}</h5>
+        <div> <span style={{ fontWeight: "300", color: "#57595d" }}>Conducted by:</span> &nbsp;
+          {
+            item.presenters.length > 0 ?
+              <>
+                {
+                  item.presenters.map((presenter, index) => {
+                    const isLast = index === item.presenters.length - 1;
+                    const isSecondLast = index === item.presenters.length - 2;
+                    const hasTwoPresenters = item.presenters.length === 2;
+
+                    return (
+                      <React.Fragment key={index}>
+                        <a target="_blank" rel="noreferrer" href={presenter.twitter}>{presenter.name}</a>
+                        {
+                          !isLast && (
+                            hasTwoPresenters
+                              ? <span style={{ fontWeight: "300", color: "#57595d" }}> and </span>
+                              : (isSecondLast
+                                ? <span style={{ fontWeight: "300", color: "#57595d" }}>, and </span>
+                                : <span style={{ fontWeight: "300", color: "#57595d" }}>, </span>
+                              )
+                          )
+                        }
+                      </React.Fragment>
+                    )
+                  })
                 }
-                )
-              }
-            </>
-            : null
-        }
+
+              </>
+              : null
+          }
+        </div>
       </Col>
       <Col sm={12} md={3} className={styles.eventURL}>
         {

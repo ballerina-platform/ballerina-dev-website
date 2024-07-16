@@ -2498,20 +2498,48 @@ path = "testTraceLog.txt"   # Optional
 host = "localhost"          # Optional
 port = 8080                 # Optional
 ```
-#### 8.2.4 Access log
 
-Ballerina supports HTTP access logs for HTTP services. The access log format used is the combined log format.
-The HTTP access logs are **disabled as default**.
-To enable access logs, set console=true under the ballerina.http.accessLogConfig in the Config.toml file. Also, 
-the path field can be used to specify the file path to save the access logs.
+#### 8.2.4 Access log
+Ballerina supports HTTP access logs for HTTP services, providing insights into web traffic and request handling.
+The access log feature is **disabled by default** to allow users to opt-in as per their requirements.
+
+To enable access logs, configuration settings are provided under `ballerina.http.accessLogConfig` in the
+`Config.toml` file. Users can specify whether logs should be output to the console, a file, or both, 
+and can select the format and specific attributes to log.
 
 ```toml
 [ballerina.http.accessLogConfig]
 # Enable printing access logs in console
 console = true              # Default is false
-# Specify the file path to save the access logs  
-path = "testAccessLog.txt"  # Optional
+# Specify the file path to save the access logs
+path = "testAccessLog.txt"  # Optional, omit to disable file logging
+# Select the format of the access logs
+format = "json"             # Options: "flat", "json"; Default is "flat". Omit to stick to the default.
+# Specify which attributes to log. Omit to stick to the default set.
+attributes = ["ip", "date_time", "request", "status", "response_body_size", "http_referrer", "http_user_agent"]
+# Default attributes: ip, date_time, request, status, response_body_size, http_referrer, http_user_agent
 ```
+
+##### Configurable Attributes
+Users can customize which parts of the access data are logged by specifying attributes in the configuration.
+This allows for tailored logging that can focus on particular details relevant to the users' needs.
+
+|        Attribute       | Description                                         |
+|:----------------------:|:---------------------------------------------------:|
+| ip                     | Client's IP address                                 |
+| date_time              | HTTP request received time                          |
+| request                | Full HTTP request line (method, URI, protocol)      |
+| request_method         | HTTP method of the request                          |
+| request_uri            | URI of the request, including parameters            |
+| scheme                 | Scheme of the request and HTTP version              |
+| status                 | HTTP status code returned to the client             |
+| request_body_size      | Size of the request body in bytes                   |
+| response_body_size     | Size of the HTTP response body in bytes             |
+| request_time           | Total time taken to process the request             |
+| http_referrer          | HTTP Referer header, indicating the previous page   |
+| http_user_agent        | User-Agent header, identifying the client software  |
+| http_x_forwarded_for   | Originating IP address if using a proxy             |
+| http_(X-Custom-Header) | Header fields. Referring to them with `http` followed by the header name. (`x-request-id` ->; `http_x-request-id`) |
 
 #### 8.2.5 Panic inside resource
 

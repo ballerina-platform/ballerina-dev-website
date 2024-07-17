@@ -1,20 +1,68 @@
 {
     "events": [
-       {
-            "date": "June 25, 2024",
-            "day": "Tue.",
+      {
+            "date": "Aug 14, 2024",
+            "day": "Wed.",
+            "time": "5:30 p.m. CDT",
+            "expire": "2024-08-14T23:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/graphql-chicago/events/301626581/",
+            "eventType": "GraphQL Chicago Meetup",
+            "eventName": "Streamlining GraphQL API Development with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "July 11, 2024",
+            "day": "Thurs.",
             "time": "9:00 a.m. IST",
-            "expire": "2024-06-25T04:30:00.0000-00:00",
+            "expire": "2024-07-11T04:30:00.0000-00:00",
             "location": "Online",
             "url": "https://www.meetup.com/ballerinalang-community/events/301634546/",
             "eventType": "Ballerina Tech Talk",
             "eventName": "Beyond CLI Basics: Using Extended Ballerina CLI Tools for Powerful Integrations",
             "presenterTwitter": "https://x.com/gcdassanayake",
             "presenter": "Gayal Dassanayake",
-            "presenterDesignation": "Senior Software Engineer",
+            "presenterDesignation": "Senior Software Engineer, WSO2",
             "otherInfo": "",
             "videoURL": "",
             "buttonText": "More info"
+        },
+        {
+            "date": "July 9, 2024",
+            "day": "Tue.",
+            "time": "7:00 p.m. IST",
+            "expire": "2024-07-09T14:30:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/coderrange-ai-bigdata-datascience/events/301637018/",
+            "eventType": "CoderRange Meetup",
+            "eventName": "Deep Dive into API Design with the Ballerina Programming Language",
+            "presenterTwitter": "https://x.com/manurangaperera",
+            "presenter": "Manuranga Perera",
+            "presenterDesignation": "Associate Director/Architect - Engineering, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
+            "date": "June 27, 2024",
+            "day": "Thur.",
+            "time": "10:00 a.m. CDT",
+            "expire": "2024-06-27T16:00:00.0000-00:00",
+            "location": "Online",
+            "url": "https://www.meetup.com/austin-developer-community/events/301626607/",
+            "eventType": "Austin Developer Community Meetup",
+            "eventName": "Modernizing Legacy Applications with Ballerina",
+            "presenterTwitter": "https://twitter.com/anupama_pathira",
+            "presenter": "Anupama Pathirage",
+            "presenterDesignation": "Director of Engineering - Integration, WSO2",
+            "otherInfo": "",
+            "videoURL": "https://youtu.be/hGTaZt9VaMQ?si=RgszyIIMQR6a8DjP",
+            "buttonText": "Watch reocording"
         },
         {
             "date": "June 6, 2024",
@@ -113,8 +161,8 @@
             "presenter": "Sameera Jayasoma",
             "presenterDesignation": "Ballerina Platform Architect",
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/0b8VbSd1zXA?si=jLhLo7uIdDd0zXXb",
+            "buttonText": "Watch recording"
         },
         {
             "date": "April 24, 2024",
@@ -170,8 +218,8 @@
                 }
             ],
             "otherInfo": "",
-            "videoURL": "",
-            "buttonText": "More info"
+            "videoURL": "https://youtu.be/I00MwlNpQuk?si=zw4u69RVmwdT7gDn",
+            "buttonText": "Watch recording"
         },
         {
             "date": "Feb 20, 2024",

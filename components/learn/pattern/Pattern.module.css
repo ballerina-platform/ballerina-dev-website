@@ -6,9 +6,14 @@
 .card div {
   border-radius: 0;
 }
+
 .cardLink {
   text-decoration: none;
   color: #464646;
+}
+
+.cardLink img:hover {
+  border: #20b6b0 1px solid;
 }
 
 .cardLink:hover {

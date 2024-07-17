@@ -286,7 +286,7 @@
             }
         },
         {
-            "title": "TravelMate",
+            "title": "TravelMatexx",
             "description": "The 'TravelMate' project aims to develop a travel planning and booking application that offers personalized recommendations, itinerary management, and seamless booking experiences.",
             "tags": ["Flutter", "Ballerina", "DynamoDB", "Sketch", "Balsamiq"],
             "status": "ongoing",

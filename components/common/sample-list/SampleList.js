@@ -29,7 +29,7 @@ export default function SampleList(props) {
     </a>
     <p className="card-text">{props.description}</p>
     <p className={`${styles.tagWrapper} card-text text-body-secondary`} style={{ display: "flex", flexWrap: "wrap" }}>
-      {props.tags.map((tag) => (<Badge as={"a"} className={styles.tag} key={tag} onClick={()=>props.handleSelectedTag(tag)}>{tag}</Badge>))}
+      {props.tags.map((tag) => (<Badge as={"a"} className={styles.tag} key={tag} onClick={() => props.handleSelectedTag(tag)}>{tag}</Badge>))}
     </p>
   </Card.Body>;
 
@@ -51,7 +51,9 @@ export default function SampleList(props) {
                 :
                 <>
                   <Col md={2} className='text-center'>
-                    <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                    <a href={href} className={styles.cardLink}>
+                      <Card.Img src={`${prefix}/images/pre-built/${href}.png`} className={styles.icon} alt={`${props.name} icon`} height={100} width={100} />
+                    </a>
                   </Col>
                   <Col md={10}>
                     {cardBody}

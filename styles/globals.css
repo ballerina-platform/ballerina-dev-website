@@ -331,7 +331,7 @@ pre.default {
   margin-bottom: 10px;
 }
 
-.mdContent img {
+.mdContent img, .introImg img {
   width: -moz-available;
   width: -webkit-fill-available;
   width: fill-available;

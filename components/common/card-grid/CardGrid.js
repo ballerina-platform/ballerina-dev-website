@@ -22,7 +22,7 @@ import Link from 'next/link';
 
 import styles from './CardGrid.module.css';
 
-export default function CardGrid(props) {
+const CardGrid = React.forwardRef((props, ref) => {
 
     const propsData = props.propsData;
 
@@ -57,24 +57,29 @@ export default function CardGrid(props) {
     setShowHideBtn(false);
   };
 
+  React.useImperativeHandle(ref, () => ({
+    showMoreVersions,
+  }));
+
     return (
         <>
             <Col xs={12}>
                 <Container>
 
-                    {/* {
+                    {
                         (props.launcher == "project-mentorship") &&
                         <Row>
                             <Col xs={12}>
-                                <h2 id={props.section.toLowerCase()} className='section'>
+                                <h2 id={props.section.replace(/ /g, '-').toLowerCase()} className='section' style={{marginBottom:"20px !important"}}>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="30"
-                                        height="30"
+                                        width="25"
+                                        height="25"
                                         fill="currentColor"
+                                        style={{paddingRight: "0 !important", marginLeft: "-25px"}}
                                         className="bi bi-link-45deg mdButton pe-2"
-                                        viewBox="0 0 16 16"
-                                        onClick={(e) => props.getLink(e.target, props.section.toLowerCase())}
+                                        viewBox="0 0 17 17"
+                                        onClick={(e) => props.getLink(e.target, props.section.replace(/ /g, '-').toLowerCase())}
                                     >
                                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
                                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
@@ -83,7 +88,7 @@ export default function CardGrid(props) {
                                 </h2>
                             </Col>
                         </Row>
-                    } */}
+                    }
 
                     <Row xs={1} md={2} lg={props.launcher == "project-mentorship"? 4 : 3} className='g-4'>
                         {
@@ -164,7 +169,22 @@ propsData.slice(0, limit).map((_, idx) => (
                                                         <div className={styles.imageWrapper}>
                                                             <img src={_.icon} className={_.slug != 'fat-tuesday' ? styles.vLogo : styles.centerLogo} alt='Automate anything' />
                                                         </div>
-                                                        <h3>{_.title}</h3>
+                                                        <h3 id={_.title.replace(/ /g, '-').toLowerCase()}  className='section' style={{scrollMarginTop:"65px"}}>
+                                                        <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="22"
+                                    height="22"
+                                    fill="currentColor"
+                                    className="bi bi-link-45deg mdButton"
+                                    style={{paddingRight: "0", marginLeft: "-18px", marginRight: "-4px"}}
+                                    viewBox="0 0 18 18"
+                                    onClick={(e) => props.getLink(e.target, _.title.replace(/ /g, '-').toLowerCase())}
+                                >
+                                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z" />
+                                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z" />
+                                </svg>
+                                {_.title}
+                                </h3>
                                                         <div className={styles.cardDescription}>
                                                             <p>{_.description} &nbsp;<a href="#" className={styles.repoLink}>Learn more</a></p>
                                                         </div>
@@ -212,7 +232,7 @@ propsData.slice(0, limit).map((_, idx) => (
                     </Row>
 {
     (props.launcher == "project-mentorship") &&
-    <Row className='mt-5'>
+    <Row className={length > 8 ? 'mt-5' : ''} style={{paddingBottom:"24px"}}>
         <Col>
           {showSMBtn && length > 8 && (
             <div onClick={showMoreVersions} className={styles.seeMore}>
@@ -233,4 +253,6 @@ propsData.slice(0, limit).map((_, idx) => (
             </Col>
         </>
     );
-}
+});
+
+export default CardGrid;

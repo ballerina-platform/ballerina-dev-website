@@ -3812,11 +3812,13 @@ The Ballerina GraphQL module offers built-in server-side caching for GraphQL `qu
 
 ##### 10.7.1.1 Operation-level Caching
 
-Operation-level caching can be used to cache the entire operation, and this can be enabled by providing the [operation cache configurations](#719-operation-level-cache-configurations). Once enabled, the GraphQL server initiates caching for all subfields of `query` operations. The fields requested through query operations will be cached based on the specified cache configurations
+Operation-level caching can be used to cache the entire operation, and this can be enabled by providing the [operation cache configurations](#719-operation-level-cache-configurations). Once enabled, the GraphQL server initiates caching for all subfields of `query` operations. The fields requested through query operations will be cached based on the specified cache configurations.
 
 ##### 10.7.1.2 Field-level Caching
 
 The GraphQL field-level caching can be enabled only for a specific field. This can be done by providing the [field cache configurations](#723-field-level-cache-configuration). Once the field-level caching is enabled for a field, it will be applied to the sub-fields of that field. The field-level cache configuration can be used to override the operation-level cache configurations.
+
+>**Note:**  In both cases above, if the resolver returns a record that doesn't contain any optional fields, then the entire record will be cached instead of individually caching the subfields of this record. In the case of the resolver returning a record containing optional fields, all the subfields of the record will be cached individually.
 
 #### 10.7.1.3 Cache Invalidation
 

@@ -33,6 +33,7 @@ Below are the most stable versions of the language specification, which are in s
 
 | Version | Release Date | Description |
 | ------- | ------------ | ----------- |
+| <a target="_blank" href="/spec/lang/2024R1/">2024R1</a> | 2024-07-18 | First release of 2024. This is the basis for Ballerina Swan Lake Update 9. |
 | <a target="_blank" href="/spec/lang/2023R1/">2023R1</a> | 2023-07-07 | First release of 2023. This is the basis for Ballerina Swan Lake Update 7 and upwards. |
 | <a target="_blank" href="/spec/lang/2022R4/">2022R4</a> | 2022-12-09 | Fourth release of 2022. This is the basis for Ballerina 2201.3.0 (Swan Lake Update 3). | 
 | <a target="_blank" href="/spec/lang/2022R3/">2022R3</a> | 2022-08-12 | Third release of 2022. This is the basis for Ballerina 2201.2.0 (Swan Lake Update 2). | 
@@ -73,4 +74,3 @@ For previous draft language specifications of a Ballerina release, see the <a ta
 | `oauth2` | Swan Lake | <a target="_blank" href="/spec/oauth2/">Snapshot</a> | OAuth2 package of Ballerina language, which is used for authorization of listeners and clients (HTTP, gRPC, GraphQL, WebSocket, WebSub, etc.). |
 | `os` | Swan Lake | <a target="_blank" href="/spec/os/">Snapshot</a> | OS package of Ballerina language, which provides APIs to retrieve information about the operating system and its current users. |
 | `protobuf` | Swan Lake | <a target="_blank" href="/spec/protobuf/">Snapshot</a> | Protobuf package of Ballerina language, which provides APIs to represent a set of pre-defined protobuf types. |
-| `random` | Swan Lake | <a target="_blank" href="/spec/random/">Snapshot</a> | Random package of Ballerina language, which provides APIs to generate pseudo-random numbers. |

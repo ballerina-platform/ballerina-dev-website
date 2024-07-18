@@ -186,7 +186,7 @@ propsData.slice(0, limit).map((_, idx) => (
                                 {_.title}
                                 </h3>
                                                         <div className={styles.cardDescription}>
-                                                            <p>{_.description} &nbsp;<a href="#" className={styles.repoLink}>Learn more</a></p>
+                                                            <p>{_.description} {props.section !== "Available projects" && <>&nbsp;<a href="#" className={styles.repoLink}>Learn more</a></>}</p>
                                                         </div>
                                                     </div>
 
@@ -198,8 +198,13 @@ propsData.slice(0, limit).map((_, idx) => (
                                                             {_.advisor.name}
                                                         </a>
                                                         </p>
+{
+    props.section === "Available projects" ?
 
-                                                        <p>Contributors:&nbsp;
+    <a className={styles.eventRegistration} href="#" target="_blank" rel="noreferrer">Join the project</a>
+
+    :
+    <p>Contributors:&nbsp;
                                                             {
                                                                 _.contributors.map((contributor, index) => (
                                                                     <a href={contributor.html_url} className={styles.cDownload} style={{ marginRight: "5px" }}>
@@ -208,6 +213,8 @@ propsData.slice(0, limit).map((_, idx) => (
                                                                 ))
                                                             }
                                                         </p>
+}
+                                                        
 
                                                     </div>
                                                 </div>

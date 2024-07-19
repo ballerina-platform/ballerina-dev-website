@@ -18,7 +18,7 @@ In some cases, a page may include content consisting of images, audio or video m
 
 
 ## Attribution
-Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the <a target="_blank" href="http://creativecommons.org/licenses/by/3.0/legalcode">Creative Commons legal code</a>.
+Proper attribution is required when you reuse or create modified versions of content that appears on a page made available under the terms of the Creative Commons Attribution license. The complete requirements for attribution can be found in section 4 of the <a target="_blank" href="https://creativecommons.org/licenses/by/3.0/legalcode">Creative Commons legal code</a>.
 
 In practice we ask that you provide attribution to Ballerina to the best of the ability of the medium in which you are producing the work.
 

@@ -1,0 +1,352 @@
+{
+    "projects": [
+        {
+            "title": "Highlights",
+            "description": "The main goal of the 'Highlights' project is to develop a mobile and web application that significantly enhances users' productivity and time management by seamlessly integrating task management and calendar functionalities, enabling effective task prioritization, focused work sessions, and continuous improvement.",
+            "tags": ["React.js", "Ballerina", "MYSQL", "Figma", "Draw.io", "Mermaid"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Nipuna Fernando",
+                "x": "https://x.com/NipunaFernando"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TechTalks",
+            "description": "The 'TechTalks' project aimed to develop a platform for organizing and attending virtual technology conferences, featuring live streaming, interactive Q&A sessions, and networking opportunities.",
+            "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Samantha Weerasinghe",
+                "x": "https://x.com/SamanthaWeerasinghe"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "CodeStream",
+            "description": "The 'CodeStream' project focuses on creating a real-time code collaboration tool, allowing multiple developers to edit and debug code simultaneously with built-in video conferencing and chat features.",
+            "tags": ["Node.js", "Ballerina", "MongoDB", "Sketch", "PlantUML"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Amara Perera",
+                "x": "https://x.com/AmaraPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "HealthTracker",
+            "description": "The 'HealthTracker' project aims to build a comprehensive health monitoring system that integrates with wearable devices to track fitness, diet, and sleep patterns, providing users with personalized health insights.",
+            "tags": ["Angular", "Ballerina", "PostgreSQL", "Adobe XD", "Lucidchart"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Kasun Wickramasinghe",
+                "x": "https://x.com/KasunWickramasinghe"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "Highlights",
+            "description": "The main goal of the 'Highlights' project is to develop a mobile and web application that significantly enhances users' productivity and time management by seamlessly integrating task management and calendar functionalities, enabling effective task prioritization, focused work sessions, and continuous improvement.",
+            "tags": ["React.js", "Ballerina", "MYSQL", "Figma", "Draw.io", "Mermaid"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Nipuna Fernando",
+                "x": "https://x.com/NipunaFernando"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TechTalks",
+            "description": "The 'TechTalks' project aimed to develop a platform for organizing and attending virtual technology conferences, featuring live streaming, interactive Q&A sessions, and networking opportunities.",
+            "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Samantha Weerasinghe",
+                "x": "https://x.com/SamanthaWeerasinghe"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "CodeStream",
+            "description": "The 'CodeStream' project focuses on creating a real-time code collaboration tool, allowing multiple developers to edit and debug code simultaneously with built-in video conferencing and chat features.",
+            "tags": ["Node.js", "Ballerina", "MongoDB", "Sketch", "PlantUML"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Amara Perera",
+                "x": "https://x.com/AmaraPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "HealthTracker",
+            "description": "The 'HealthTracker' project aims to build a comprehensive health monitoring system that integrates with wearable devices to track fitness, diet, and sleep patterns, providing users with personalized health insights.",
+            "tags": ["Angular", "Ballerina", "PostgreSQL", "Adobe XD", "Lucidchart"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Kasun Wickramasinghe",
+                "x": "https://x.com/KasunWickramasinghe"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "Highlights",
+            "description": "The main goal of the 'Highlights' project is to develop a mobile and web application that significantly enhances users' productivity and time management by seamlessly integrating task management and calendar functionalities, enabling effective task prioritization, focused work sessions, and continuous improvement.",
+            "tags": ["React.js", "Ballerina", "MYSQL", "Figma", "Draw.io", "Mermaid"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Nipuna Fernando",
+                "x": "https://x.com/NipunaFernando"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TechTalks",
+            "description": "The 'TechTalks' project aimed to develop a platform for organizing and attending virtual technology conferences, featuring live streaming, interactive Q&A sessions, and networking opportunities.",
+            "tags": ["Django", "Ballerina", "SQLite", "Figma", "Miro"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Samantha Weerasinghe",
+                "x": "https://x.com/SamanthaWeerasinghe"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "CodeStream",
+            "description": "The 'CodeStream' project focuses on creating a real-time code collaboration tool, allowing multiple developers to edit and debug code simultaneously with built-in video conferencing and chat features.",
+            "tags": ["Node.js", "Ballerina", "MongoDB", "Sketch", "PlantUML"],
+            "status": "past",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Amara Perera",
+                "x": "https://x.com/AmaraPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "EduConnect",
+            "description": "The 'EduConnect' project is developing an online platform to connect students with tutors for personalized learning sessions, integrating video calls, interactive whiteboards, and scheduling tools.",
+            "tags": ["Vue.js", "Ballerina", "Firebase", "InVision", "Coggle"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Rajith Perera",
+                "x": "https://x.com/RajithPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "MarketPlace",
+            "description": "The 'MarketPlace' project is focused on building a decentralized e-commerce platform that ensures secure transactions and transparency using blockchain technology.",
+            "tags": ["React Native", "Ballerina", "Ethereum", "Figma", "D3.js"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Dilshan Silva",
+                "x": "https://x.com/DilshanSilva"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TravelMate",
+            "description": "The 'TravelMate' project aims to develop a travel planning and booking application that offers personalized recommendations, itinerary management, and seamless booking experiences.",
+            "tags": ["Flutter", "Ballerina", "DynamoDB", "Sketch", "Balsamiq"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Harsha Liyanage",
+                "x": "https://x.com/HarshaLiyanage"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "EduConnect",
+            "description": "The 'EduConnect' project is developing an online platform to connect students with tutors for personalized learning sessions, integrating video calls, interactive whiteboards, and scheduling tools.",
+            "tags": ["Vue.js", "Ballerina", "Firebase", "InVision", "Coggle"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Rajith Perera",
+                "x": "https://x.com/RajithPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "MarketPlace",
+            "description": "The 'MarketPlace' project is focused on building a decentralized e-commerce platform that ensures secure transactions and transparency using blockchain technology.",
+            "tags": ["React Native", "Ballerina", "Ethereum", "Figma", "D3.js"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Dilshan Silva",
+                "x": "https://x.com/DilshanSilva"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TravelMate",
+            "description": "The 'TravelMate' project aims to develop a travel planning and booking application that offers personalized recommendations, itinerary management, and seamless booking experiences.",
+            "tags": ["Flutter", "Ballerina", "DynamoDB", "Sketch", "Balsamiq"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Harsha Liyanage",
+                "x": "https://x.com/HarshaLiyanage"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "EduConnect",
+            "description": "The 'EduConnect' project is developing an online platform to connect students with tutors for personalized learning sessions, integrating video calls, interactive whiteboards, and scheduling tools.",
+            "tags": ["Vue.js", "Ballerina", "Firebase", "InVision", "Coggle"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Rajith Perera",
+                "x": "https://x.com/RajithPerera"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "MarketPlace",
+            "description": "The 'MarketPlace' project is focused on building a decentralized e-commerce platform that ensures secure transactions and transparency using blockchain technology.",
+            "tags": ["React Native", "Ballerina", "Ethereum", "Figma", "D3.js"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Dilshan Silva",
+                "x": "https://x.com/DilshanSilva"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "TravelMatexx",
+            "description": "The 'TravelMate' project aims to develop a travel planning and booking application that offers personalized recommendations, itinerary management, and seamless booking experiences.",
+            "tags": ["Flutter", "Ballerina", "DynamoDB", "Sketch", "Balsamiq"],
+            "status": "ongoing",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Harsha Liyanage",
+                "x": "https://x.com/HarshaLiyanage"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "SmartHome",
+            "description": "The 'SmartHome' project will create an IoT-based home automation system that allows users to control and monitor home appliances remotely, integrating voice commands and automation rules.",
+            "tags": ["React.js", "Ballerina", "AWS IoT", "Figma", "Gliffy"],
+            "status": "upcoming",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Tharindu Weerasinghe",
+                "x": "https://x.com/TharinduWeerasinghe",
+                "email": "tharindu123@wso2.com"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "FitLife",
+            "description": "The 'FitLife' project focuses on developing a fitness app that offers personalized workout plans, tracks progress, and integrates with various fitness devices for real-time monitoring.",
+            "tags": ["Ionic", "Ballerina", "Firestore", "Adobe XD", "MindMeister"],
+            "status": "upcoming",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Mahesh Gunawardena",
+                "x": "https://x.com/MaheshGunawardena",
+                "email": "mahesh123@wso2.com"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        },
+        {
+            "title": "FinanceHub",
+            "description": "The 'FinanceHub' project aims to build a financial management tool that helps users track expenses, set budgets, and achieve financial goals through intelligent analytics and forecasting.",
+            "tags": ["Svelte", "Ballerina", "MySQL", "Sketch", "Wireframe.cc"],
+            "status": "upcoming",
+            "icon": "/images/icon.png",
+            "advisor": {
+                "name": "Nuwan Jayasena",
+                "x": "https://x.com/NuwanJayasena",
+                "email": "nuwan123@wso2.com"
+            },
+            "repo": {
+                "org": "ballerina-platform",
+                "name": "ballerina-dev-website"
+            }
+        }
+    ]
+}

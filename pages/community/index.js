@@ -89,7 +89,7 @@ export default function Community() {
       <Layout>
         <Col sm={12}>
 
-          <Row className="pageHeader pageContentRow communityRow communityIntro">
+          <Row className="pageHeader pageContentRow communityRow communityIntro" style={{paddingBottom:"4rem"}}>
             <Col xs={12}>
               <Container>
                 <Row>
@@ -101,7 +101,7 @@ export default function Community() {
                     Join our community
                     </a>
                   </Col> 
-                  <Col xs={12} md={12} lg={6} style={{ paddingTop: "35px" }}>
+                  <Col xs={12} md={12} lg={6}>
                     <CommunityCarousel images={images}/>
                   </Col>
                 </Row>

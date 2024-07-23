@@ -21,7 +21,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import Head from "next/head";
 
 import Layout from "../../layouts/LayoutUseCase";
-import UseCases from "../../components/common/use-cases/UseCases";
+import CaseStudiesGrid from "../../components/common/card-grid/CardGrid";
 
 
 import fs from "fs";
@@ -130,7 +130,7 @@ export default function CaseStudies({ caseStudies }) {
           </Row>
 
           <Row className="pageContentRow integration">
-            <UseCases propsData={caseStudies} />
+            <CaseStudiesGrid propsData={caseStudies} launcher="case-studies"/>
           </Row>
 
         </Col>

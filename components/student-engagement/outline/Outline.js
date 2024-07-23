@@ -141,7 +141,7 @@ export default function Outline(props) {
 
                     <h3 className="card-title">Open source projects</h3>
 
-                    <p className="card-text">Contribute to Ballerina&apos;s open-source projects for practical experience and global collaboration. <a href="https://github.com/orgs/ballerina-platform/projects/369" className={styles.cardLinks} target='_blank' rel='noreffer'>See more</a></p>
+                    <p className="card-text">Contribute to Ballerina&apos;s open-source projects for practical experience and global collaboration. <a href="https://github.com/orgs/ballerina-platform/projects/369" className={styles.cardLinks} target='_blank' rel='noreferrer'>See more</a></p>
                   
                   </Card.Body>
                 </Col>

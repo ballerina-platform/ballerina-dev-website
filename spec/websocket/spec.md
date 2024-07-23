@@ -34,7 +34,8 @@ The conforming implementation of the specification is released and included in t
             * [onIdleTimeout](#onidletimeout)
             * [onClose](#onclose)
             * [onError](#onerror)
-        * 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
+        * 3.2.2. [Dispatching custom remote methods](#322-dispatching-custom-remote-methods)
+          * [Dispatching custom error remote methods](#Dispatching custom error remote methods)
 4. [Client](#4-client)
     * 4.1. [Client Configurations](#41-client-configurations)
     * 4.2. [Initialization](#42-initialization)
@@ -341,7 +342,7 @@ remote function onError(websocket:Caller caller, error err) {
 }
 ```
 
-#### 3.2.2. [Dispatching to custom remote methods](#322-dispatching-to-custom-remote-methods)
+#### 3.2.2. [Dispatching custom remote methods](#322-dispatching-custom-remote-methods)
 
 The WebSocket service also supports dispatching messages to custom remote functions based on the message type(declared by a field in the received message) with the end goal of generating meaningful Async APIs. 
 
@@ -364,6 +365,19 @@ dispatching to remote function = "onHeartbeat"
     dispatcherKey: "event"
 }
 service / on new websocket:Listener(9090) {}
+```
+
+##### [Dispatching custom error remote methods](#Dispatching custom error remote methods)
+
+If the user has defined a remote function with the name `customRemoteFunction` + `Error` in the WebSocket service, the error messages will get dispatched to that remote function when there is a data binding error. If that is not defined, the generic `onError` remote function gets dispatched.
+
+```ballerina
+Ex:
+incoming message = ` {"event": "heartbeat"}`
+dispatcherKey = "event"
+event/message type = "heartbeat"
+dispatching remote function = "onHeartbeat"
+dispatching error remote function = "onHeartbeatError"
 ```
 
 2. Naming of the remote function.

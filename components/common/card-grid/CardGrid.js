@@ -61,6 +61,13 @@ const CardGrid = React.forwardRef((props, ref) => {
     showMoreVersions,
   }));
 
+  const handleEmailClick = (event) => {
+    event.preventDefault(); // Prevent the default action
+    const element = event.currentTarget;
+    const decodedEmail = atob(element.getAttribute('data-email')); // Decode the email
+    window.location.href = `mailto:${decodedEmail}`;
+  };
+
     return (
         <>
             <Col xs={12}>
@@ -160,7 +167,10 @@ const CardGrid = React.forwardRef((props, ref) => {
                             <>
                                 {
 
-propsData.slice(0, limit).map((_, idx) => (
+propsData.slice(0, limit).map((_, idx) => {
+    const encodedEmail = _.advisor.email ? btoa(_.advisor.email) : '';
+
+    return (
                                         <>
                                             <Col className={`${styles.useCaseCard} mt-4`}>
 
@@ -201,7 +211,9 @@ propsData.slice(0, limit).map((_, idx) => (
 {
     props.section === "Available projects" ?
 
-    <a className={styles.eventRegistration} href="#" target="_blank" rel="noreferrer">Join the project</a>
+    <a className={styles.eventRegistration} data-email={encodedEmail}
+    href="#" 
+    onClick={handleEmailClick}>Join the project</a>
 
     :
     <p>Contributors:&nbsp;
@@ -221,7 +233,7 @@ propsData.slice(0, limit).map((_, idx) => (
 
                                             </Col>
                                         </>
-                                    ))}
+                                    )})}
 
                                     {/* <div className='newRow'>
 

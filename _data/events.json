@@ -1,6 +1,22 @@
 {
     "events": [
       {
+            "date": "Sep 18, 2024",
+            "day": "Wed.",
+            "time": "5:10 p.m. GMT-3",
+            "expire": "2024-09-18T20:00:00.0000-00:00",
+            "location": "São Paulo, Brazil",
+            "url": "https://thedevconf.com/tdc/2024/sao-paulo/trilha-microservices",
+            "eventType": "The Developer's Conference - São Paulo",
+            "eventName": "Building Cloud-Native Microservices with Ballerina",
+            "presenterTwitter": "https://www.linkedin.com/in/lianecafarate/?originalSubdomain=br",
+            "presenter": "Liane Cafarate",
+            "presenterDesignation": "Lead - Solutions Engineer, WSO2",
+            "otherInfo": "",
+            "videoURL": "",
+            "buttonText": "More info"
+        },
+        {
             "date": "Aug 14, 2024",
             "day": "Wed.",
             "time": "5:30 p.m. CDT",

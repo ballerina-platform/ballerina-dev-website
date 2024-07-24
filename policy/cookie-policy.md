@@ -2,9 +2,8 @@
 layout: ballerina-inner-page
 title: Cookie policy
 permalink: /cookie-policy/
-description: Cookie policy of the Ballerina website
-redirect_from:
-- /cookie-policy
+description: Learn about our use of cookies and how we ensure your privacy and data security on the Ballerina website in our Cookie Policy.
+keywords: ballerinalang, integration, microservices, programming language, cloud native, ballerina language, cookie policy
 
 ---
 

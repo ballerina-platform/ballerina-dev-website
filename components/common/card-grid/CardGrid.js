@@ -57,11 +57,12 @@ const CardGrid = React.forwardRef((props, ref) => {
         showMoreVersions,
     }));
 
-    const handleEmailClick = (event) => {
+    const handleEmailClick = (event, projectName, advisorEmail) => {
         event.preventDefault(); // Prevent the default action
-        const element = event.currentTarget;
-        const decodedEmail = atob(element.getAttribute('data-email')); // Decode the email
-        window.location.href = `mailto:${decodedEmail}`;
+        const decodedEmail = atob(advisorEmail); // Decode the email
+        const subject = `Request to join ${projectName} project`;
+        const mailtoLink = `mailto:${decodedEmail},contact@ballerina.io?subject=${encodeURIComponent(subject)}`;
+        window.location.href = mailtoLink;
     };
 
     return (
@@ -185,7 +186,7 @@ const CardGrid = React.forwardRef((props, ref) => {
                                                         {_.advisor.name}
                                                     </a></p>
                                                     {props.section === "Available projects" ? (
-                                                        <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={handleEmailClick}>
+                                                        <a className={styles.eventRegistration} data-email={encodedEmail} href="#" onClick={(e) => handleEmailClick(e, _.title, encodedEmail)}>
                                                             Join the project
                                                         </a>
                                                     ) : (

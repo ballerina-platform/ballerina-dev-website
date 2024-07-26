@@ -79,7 +79,7 @@ const CardGrid = React.forwardRef((props, ref) => {
                                         height="25"
                                         fill="currentColor"
                                         style={{ paddingRight: "0 !important", marginLeft: "-25px" }}
-                                        className="bi bi-link-45deg mdButton pe-2"
+                                        className="bi bi-link-45deg mdButton"
                                         viewBox="0 0 17 17"
                                         onClick={(e) => props.getLink(e.target, props.section.replace(/ /g, '-').toLowerCase())}
                                     >
@@ -92,7 +92,12 @@ const CardGrid = React.forwardRef((props, ref) => {
                         </Row>
                     )}
 
-                    <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ? 4 : 3} className='g-4'>
+                    {/* <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ?
+                            propsData.length > 4 ? 4: propsData.length
+                            : 
+                            3
+                            } className='g-4'> */}
+                    <Row xs={1} md={2} lg={props.launcher === "project-mentorship" ? 4: 3} className='g-4'>
                         {props.launcher === "usecases" && (
                             <>
                                 {propsData.map((_, idx) => (

@@ -156,3 +156,16 @@ a.eventRegistration:hover {
     background-color: #57595d;
     color: #ffffff !important;
 }
+
+.fillTile {
+    background: #000 !important;
+    color: #fff;
+    font-weight: bold;
+    font-size: 90px;
+    justify-content: center !important;
+    border: #20b6b0 solid 0.3px !important;
+}
+
+.fillTile:hover {
+    cursor: default !important;
+}

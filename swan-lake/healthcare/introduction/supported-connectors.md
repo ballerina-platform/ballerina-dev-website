@@ -1,0 +1,14 @@
+---
+title: Supported connectors
+description: The WSO2 Healthcare solution supports the connectors listed below.
+keywords: healthcare, supported connectors
+permalink: /learn/supported-connectors/
+active: supported-connectors
+intro: The WSO2 Healthcare solution supports the connectors listed below.
+---
+
+| Connector | Description                                                                                                                                                                                                                               | Reference                                                                                                                                                                                                                                                                                                                      |
+|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| FHIR        | Connect and interact with any FHIR server.  | <a href="https://github.com/ballerina-platform/module-ballerinax-health.clients/blob/main/fhir/fhir_connector.bal" target="_blank">FHIR client connector</a> 
+| EHR         | Integrate with EHR systems featuring standard FHIR APIs and OAuth2 authentication support.                                                                                                                                            | <a href="https://github.com/wso2/open-healthcare-prebuilt-services/tree/main/ehr-connectivity" target="_blank">EHR client connector</a>                                                                                                                                                                                                                                                   |
+| Other (Epic, Athena, etc.)        | Connect to other EHR systems such as (Epic, Athena, etc.) by customizing the FHIR client connector.                                                                                                                                            | <a href="https://github.com/ballerina-platform/module-ballerinax-health.clients/blob/main/fhir/fhir_connector.bal" target="_blank">FHIR client connector</a>                                                                                                                                    

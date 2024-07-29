@@ -137,6 +137,7 @@ export default function Boxes(props) {
                           <a href={`${prefix}/learn/graphql-tool`} className={styles.titleLink}>
                             GraphQL tool
                           </a>
+                        </p>
                         <p className={styles.description}>Generate GraphQL service skeleton for a given GraphQL schema and generate schema for a given Ballerina GraphQL service.</p>
                       </div>
                       <div className={styles.content}>
@@ -229,6 +230,13 @@ export default function Boxes(props) {
                             Visual Studio Code extension</a>
                         </p>
                         <p className={styles.description}>Features of the Ballerina Visual Studio Code extension.</p>
+                      </div>
+                      <div className={styles.content}>
+                        <p className={styles.title}>
+                          <a target='_blank' rel="noreferrer" href={`${prefix}/learn/healthcare/introduction/solution-overview`} className={styles.titleLink}>
+                          WSO2 Healthcare solution</a>
+                        </p>
+                        <p className={styles.description}>Features of the WSO2 Healthcare solution.</p>
                       </div>
                     </div>
                   </div>

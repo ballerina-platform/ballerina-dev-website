@@ -1,0 +1,1 @@
+# HL7v2 message types

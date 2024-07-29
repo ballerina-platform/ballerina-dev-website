@@ -81,7 +81,7 @@ const TopNav = (props) => {
               <Container>
                 <Row style={{ alignItems: "center" }}>
                   <Col sm={12} md={4} lg={4} className={styles.conBannerLogo}>
-                    <a href="https://wso2.com/wso2con/2024/" id="cWSO2ConHomeLogoBtn" target="_blank" aria-label="">
+                    <a href="https://wso2.com/wso2con/2024/" id="cWSO2ConHomeLogoBtn" target="_blank" aria-label="" rel="noreferrer">
                       <img src="https://wso2.cachefly.net/wso2/sites/all/wso2con/2024/wso2con2024-white.webp" width="194" height="19" alt="WSO2Con2024 Logo" className="ls-is-cached lazyloaded " loading="lazy" />
                     </a>
                   </Col>
@@ -89,7 +89,7 @@ const TopNav = (props) => {
                     <h3>May 7-9 | Hollywood, FL, USA</h3>
                   </Col>
                   <Col sm={12} md={4} lg={4} className={styles.conBannerBtn}>
-                    <a href="https://wso2.com/wso2con/2024/" target="_blank" className={styles.cButtonN_Standard} id="cWSO2ConHomeNotifyBtn" aria-label="Register Now">
+                    <a href="https://wso2.com/wso2con/2024/" target="_blank" className={styles.cButtonN_Standard} id="cWSO2ConHomeNotifyBtn" aria-label="Register Now" rel="noreferrer">
                       Register Now
                     </a>
                   </Col>

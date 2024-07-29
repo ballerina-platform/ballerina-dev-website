@@ -323,6 +323,12 @@ a.dropDownItem:focus, a.dropDownItem:hover {
     text-decoration: none;
 }
 
+.conBannerBtn a.cButtonN_Standard:hover {
+    background-color: #da207a !important;
+    font-weight: 600;
+    color: #ffffff !important;
+}
+
 @media (max-width: 768px) {
     .conBannerBtn, .conBannerLogo {
         text-align: center;

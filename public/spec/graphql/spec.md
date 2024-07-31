@@ -4163,7 +4163,7 @@ Due to [a limitation](https://github.com/ballerina-platform/ballerina-lang/issue
 
 The introspection queries will have the `defaultFieldComplexity` per each field. This cannot be overridden.
 
-> **Note:** When the maximum query complexity value is set to a lower value, tools such as GraphiQL may fail to generate the schema from the service due the introspection query complexity exceeding the maximum query complexity value. The complexity value of the introspection query from the GrapihQL client is 23 (assuming the default field complexity value is 1). In such cases, the testings can be done by either increasing the threshold value or using the `warnOnly` mode.
+> **Note:** When the maximum query complexity value is set to a lower value, tools such as GraphiQL may fail to generate the schema from the service due the introspection query complexity exceeding the maximum query complexity value. The complexity value of the introspection query from the GraphiQL client is 23 (assuming the default field complexity value is 1). In such cases, the testings can be done by either increasing the threshold value or using the `warnOnly` mode.
 
 ##### 10.9.1.3 Response for Invalid Document with Exceeding Max Query Complexity
 

@@ -1,9 +1,9 @@
 # Specification: Ballerina GraphQL Library
 
-_Owners_: @shafreenAnfar @DimuthuMadushan @ThisaruGuruge @MohamedSabthar \
-_Reviewers_: @shafreenAnfar @ThisaruGuruge @DimuthuMadushan @ldclakmal \
+_Authors_: [@aashikam](https://github.com/aashikam) [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@MohamedSabthar](https://github.com/MohamedSabthar) [@Nuvindu](https://github.com/Nuvindu) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
+_Reviewers_: [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@ldclakmal](https://github.com/ldclakmal) [@MohamedSabthar](https://github.com/MohamedSabthar) [@shafreenAnfar](https://github.com/shafreenAnfar) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
 _Created_: 2022/01/06 \
-_Updated_: 2024/05/02 \
+_Updated_: 2024/07/23 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
@@ -108,10 +108,15 @@ The conforming implementation of the specification is released and included in t
             * 7.1.9.1 [The `enabled` Field](#7191-the-enabled-field)
             * 7.1.9.2 [The `maxAge` Field](#7192-the-maxage-field)
             * 7.1.9.3 [The `maxSize` Field](#7193-the-maxsize-field)
+        * 7.1.10 [Query Complexity Configurations](#7110-query-complexity-configurations)
+            * 7.1.10.1 [The `maxComplexity` Field](#71101-the-maxcomplexity-field)
+            * 7.1.10.2 [The `defaultFieldComplexity` Field](#71102-the-defaultfieldcomplexity-field)
+            * 7.1.10.3 [The `warnOnly` Field](#71103-the-warnonly-field)
     * 7.2 [Resource Configuration](#72-resource-configuration)
         * 7.2.1 [Field Interceptors](#721-field-interceptors)
-        * 7.2.2 [Prefetch Method Name Configuration](#722-prefetch-method-name-configuration)
-        * 7.2.3 [Field-level Cache Configurations](#723-field-level-cache-configuration)
+        * 7.2.2 [Prefetch Method Name Configurations](#722-prefetch-method-name-configurations)
+        * 7.2.3 [Field-level Cache Configurations](#723-field-level-cache-configurations)
+        * 7.2.4 [Query Complexity Configurations](#724-query-complexity-configurations)
     * 7.3 [Interceptor Configuration](#73-interceptor-configuration)
         * 7.3.1 [Scope Configuration](#731-scope-configuration)
     * 7.4 [ID Annotation](#74-id-annotation)
@@ -215,6 +220,27 @@ The conforming implementation of the specification is released and included in t
             * 10.8.1.4 [Errors](#10814-errors)
         * 10.8.2 [Tracing](#1082-tracing)
         * 10.8.3 [Logging](#1083-logging)
+    * 10.9 [Document Validation](#109-document-validation)
+        * 10.9.1 [Query Complexity Validation](#1091-query-complexity-validation)
+            * 10.9.1.1 [Query Complexity Validation Configurations](#10911-configure-query-complexity-validation-for-a-graphql-service)
+                * 10.9.1.1.1 [The `maxComplexity` Field](#109111-the-maxcomplexity-field)
+                * 10.9.1.1.2 [The `defaultFieldComplexity` Field](#109112-the-defaultfieldcomplexity-field)
+                * 10.9.1.1.3 [The `warnOnly` Field](#109113-the-warnonly-field)
+            * 10.9.1.2 [Configure Query Complexity Validation for a Field](#10912-configure-query-complexity-validation-for-a-field)
+                * 10.9.1.2.1 [Record Field Complexity](#109121-record-field-complexity)
+                * 10.9.1.2.2 [List Field Complexity](#109122-list-field-complexity)
+                * 10.9.1.2.3 [Hierarchical Resource Paths Complexity](#109123-hierarchical-resource-paths-complexity)
+                * 10.9.1.2.4 [Interfaces and Objects Implementing Interfaces](#109124-interfaces-and-objects-implementing-interfaces)
+                * 10.9.1.2.5 [Introspection Query Complexities](#109125-introspection-query-complexities)
+            * 10.9.1.3 [Response for Invalid Document with Exceeding Max Query Complexity](#10913-response-for-invalid-document-with-exceeding-max-query-complexity)
+        * 10.9.2 [Query Depth Validation](#1092-query-depth-validation)
+            * 10.9.2.1 [Configure Query Depth Validation for a GraphQL Service](#10921-configure-query-depth-validation-for-a-graphql-service)
+                * 10.9.2.1.1 [The `maxDepth` Field](#109211-the-maxdepth-field)
+            * 10.9.2.2 [Response for Invalid Document with Exceeding Max Query Depth](#10922-response-for-invalid-document-with-exceeding-max-query-depth)
+        * 10.9.3 [Introspection](#1093-introspection)
+            * 10.9.3.1 [Response for Disabled Introspection](#10931-response-for-disabled-introspection)
+        * 10.9.4 [Constraint Validation](#1094-constraint-validation)
+            * 10.9.4.1 [Response for Invalid Document with Constraint Violation](#10941-response-for-invalid-document-with-constraint-violation)
 
 ## 1. Overview
 
@@ -1607,7 +1633,7 @@ This annotation consists of the following fields.
 
 #### 7.1.1 Max Query Depth
 
-The `maxQueryDepth` field is used to provide a limit on the depth of an incoming request. When this is set, every incoming request is validated by checking the depth of the query. This includes the depths of the spread fragments. If a particular GraphQL document exceeds the maximum query depth, the request is invalidated and the server will respond with an error.
+The `maxQueryDepth` field is used to provide a limit on the depth of an incoming request.
 
 ###### Example: Setting Max Query Depth
 
@@ -1617,42 +1643,6 @@ The `maxQueryDepth` field is used to provide a limit on the depth of an incoming
 }
 service on new graphql:Listener(9090) {
 
-}
-```
-
-In the above example, when a document has a depth of more than 3, the request will be failed.
-
-###### Example: Invalid Document with Exceeding Max Query Depth
-
-```graphql
-{
-    profile {
-        friend {
-            friend {
-                name # Depth is 4
-            }
-        }
-    }
-}
-```
-
-This will result in the following response.
-
-```json
-{
-  "error": {
-    "errors": [
-      {
-        "message": "Query has depth of 4, which exceeds max depth of 3",
-        "locations": [
-          {
-            "line": 1,
-            "column": 1
-          }
-        ]
-      }
-    ]
-  }
 }
 ```
 
@@ -1806,7 +1796,7 @@ service on new graphql:Listener(9090) {
 
 #### 7.1.8 Constraint Configurations
 
-The `validation` field is used to enable or disable the validation of constraints defined on GraphQL input types. If constraint validation support is enabled, the GraphQL service verifies all constraints set on the GraphQL inputs when executing the resolver. By default, constraint validation is enabled for Ballerina GraphQL services.
+The `validation` field is used to enable or disable the validation of constraints defined on GraphQL input types.
 
 ###### Example: Disable Constraint Validation Support
 
@@ -1861,6 +1851,48 @@ The optional field `maxAge` accepts a valid `decimal` value which is considered 
 
 The optional field `maxSize` accepts an int that denotes the maximum number of cache entries in the cache table. By default, it has been set to `120`.
 
+#### 7.1.10 Query Complexity Configurations
+
+The `queryComplexityConfig` field is used to provide the configurations for [Query Complexity Validation](#1091-query-complexity-validation) in Ballerina GraphQL services.
+
+###### Example: Enable Query Complexity with Default Values
+
+```ballerina
+@graphql:ServiceConfig {
+    queryComplexityConfig: {}
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+###### Example: Query Complexity Configurations
+
+```ballerina
+@graphql:ServiceConfig {
+    queryComplexityConfig: {
+        maxComplexity: 100,
+        defaultFieldComplexity: 1,
+        warnOnly: true
+    }
+}
+service on new graphql:Listener(9090) {
+    // ...
+}
+```
+
+##### 7.1.10.1 The `maxComplexity` Field
+
+The `maxComplexity` field is used to provide the maximum allowed complexity of a query. The default value is `100`.
+
+##### 7.1.10.2 The `defaultFieldComplexity` Field
+
+The `defaultFieldComplexity` field is used to provide the default complexity of a field. The default value is `1`.
+
+##### 7.1.10.3 The `warnOnly` Field
+
+The `warnOnly` field is used to provide a boolean value to denote whether to warn only when the query complexity exceeds the `maxComplexity` or to fail the request. By default, it has been set to `false`.
+
 ### 7.2 Resource Configuration
 
 The configurations stated in the `graphql:ResourceConfig`, are used to change the behavior of a particular GraphQL resolver. These configurations are applied to the resolver functions.
@@ -1880,7 +1912,7 @@ service on new graphql:Listener(9090) {
         interceptors: new Interceptor1()
     }
     resource function get name(int id) returns string {
-      // ...
+        // ...
    }
 }
 ```
@@ -1894,12 +1926,12 @@ service on new graphql:Listener(9090) {
         interceptors: [new Interceptor1(), new Interceptor2()]
     }
     resource function get name(int id) returns string {
-      // ...
+        // ...
    }
 }
 ```
 
-#### 7.2.2 Prefetch Method Name Configuration
+#### 7.2.2 Prefetch Method Name Configurations
 
 The `prefetchMethodName` field is used to override the default prefetch method name. To know more about the prefetch method, refer to the [Define the Corresponding `prefetch` Method](#10633-define-the-corresponding-prefetch-method) section.
 
@@ -1916,12 +1948,12 @@ service on new graphql:Listener(9090) {
         prefetchMethodName: "loadBooks"
     }
     resource function get books(graphql:Context ctx) returns Book[] {
-      // ...
+        // ...
    }
 }
 ```
 
-#### 7.2.3 Field-level Cache Configuration
+#### 7.2.3 Field-level Cache Configurations
 
 The `cacheConfig` field is used to provide the [field-level cache](#10712-field-level-caching) configs. The fields are as same as the operation cache configs.
 
@@ -1938,7 +1970,25 @@ service on new graphql:Listener(9090) {
         }
     }
     resource function get name(int id) returns string {
-      // ...
+        // ...
+   }
+}
+```
+
+#### 7.2.4 Query Complexity Configurations
+
+The `complexity` field is used to provide the query complexity value for a given field in [Query Complexity Validation](#1091-query-complexity-validation).
+
+###### Example: Query Complexity Configuration
+
+```ballerina
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        complexity: 10
+    }
+    resource function get name(int id) returns string {
+        // ...
    }
 }
 ```
@@ -3630,7 +3680,7 @@ service on new graphql:Listener(9090) {
 
 To engage the DataLoader with a GraphQL field (let's assume the field name is `foo`), define a corresponding _prefetch_ method named `preFoo` in the service, where `Foo` represents the Pascal-cased name of the GraphQL field. The `preFoo` method can include some or all of the parameters from the GraphQL field and must include the `graphql:Context` parameter. Adding the parameters of the GraphQL `foo` field to the `preFoo` method is optional. However, if these parameters are added, the GraphQL Engine will make the same parameter values of the GraphQL field available to the `preFoo` method.
 
-The GraphQL Engine guarantees the execution of the `preFoo` method before the `foo` method. By default, the GraphQL engine searches for a method named `preFoo` in the service class before executing the `foo` method. If the method name is different, the user can override the prefetch method name using the [`prefetchMethodName`](#722-prefetch-method-name-configuration) configuration of the `@graphql:ResourceConfig` annotation.
+The GraphQL Engine guarantees the execution of the `preFoo` method before the `foo` method. By default, the GraphQL engine searches for a method named `preFoo` in the service class before executing the `foo` method. If the method name is different, the user can override the prefetch method name using the [`prefetchMethodName`](#722-prefetch-method-name-configurations) configuration of the `@graphql:ResourceConfig` annotation.
 
 The user is responsible for implementing the logic to collect the keys of the data to be loaded into the `DataLoader` in the `preFoo` method. Subsequently, the user can implement the logic to retrieve the data from the `DataLoader` within the `foo` method.
 
@@ -3816,7 +3866,7 @@ Operation-level caching can be used to cache the entire operation, and this can 
 
 ##### 10.7.1.2 Field-level Caching
 
-The GraphQL field-level caching can be enabled only for a specific field. This can be done by providing the [field cache configurations](#723-field-level-cache-configuration). Once the field-level caching is enabled for a field, it will be applied to the sub-fields of that field. The field-level cache configuration can be used to override the operation-level cache configurations.
+The GraphQL field-level caching can be enabled only for a specific field. This can be done by providing the [field cache configurations](#723-field-level-cache-configurations). Once the field-level caching is enabled for a field, it will be applied to the sub-fields of that field. The field-level cache configuration can be used to override the operation-level cache configurations.
 
 >**Note:**  In both cases above, if the resolver returns a record that doesn't contain any optional fields, then the entire record will be cached instead of individually caching the subfields of this record. In the case of the resolver returning a record containing optional fields, all the subfields of the record will be cached individually.
 
@@ -4038,3 +4088,360 @@ The GraphQL tracing feature provides detailed information about the execution of
 #### 10.8.3 Logging
 
 A Ballerina GraphQL service will log the errors that occurred during the execution of the GraphQL request. The errors will be logged at the `ERROR` level. The error message and the stack trace will be printed in the log, in the `ballerina/log` module log format.
+
+### 10.9 Document Validation
+
+The Ballerina GraphQL package provides various measures to validate incoming GraphQL documents before executing them to ensure the security and integrity of the GraphQL service. This section describes the document validation features provided by the Ballerina GraphQL package.
+
+#### 10.9.1 Query Complexity Validation
+
+The query complexity validation will evaluate the complexity of incoming GraphQL queries and help prevent performance and security issues caused by overly complex queries.
+
+The query complexity of a GraphQL operation can be calculated based on the complexity of its fields. The complexity of a field can be defined by the user based on the field’s type and the amount of data it retrieves. The complexity of a query is the sum of the complexities of its fields. Users can set a maximum complexity threshold for queries, and queries exceeding this threshold can be either rejected by throwing an error or logged as a warning as per the user’s configuration.
+
+##### 10.9.1.1 Configure Query Complexity Validation for a GraphQL Service
+
+This section describes the behavior of the query complexity validation configurations. See [Query Complexity Configurations](#7110-query-complexity-configurations) section for information on how to configure query complexity.
+
+###### 10.9.1.1.1 The `maxComplexity` Field
+
+This field defines the maximum allowed complexity for a GraphQL document. The default value is set to `100` and the value should be a positive integer.
+
+The incoming GraphQL requests are validated against the `maxComplexity` value before executing the operation. When calculating the complexity of a query, only the operation intended to execute will be considered. All the other operations will be ignored. The complexity will be accumulated per each field and the final complexity will be the sum of all the field complexities. The behavior of the scenario where the complexity exceeds the `maxComplexity` value will depend on the [`warnOnly`](#109113-the-warnonly-field) field.
+
+###### 10.9.1.1.2 The `defaultFieldComplexity` Field
+
+This field defines the default complexity value for all the fields in the GraphQL schema. The default value is set to `1` and the value should be a positive integer.
+
+When the query complexity analysis is enabled and a particular field has not defined a complexity value, the `defaultFieldComplexity` value will be applied to that field.
+
+###### 10.9.1.1.3 The `warnOnly` Field
+
+This field defines the behavior of the scenario where the complexity of a query exceeds the `maxComplexity` value. The default value is set to `false` and the value should be a boolean.
+
+1. When `warnOnly: false`
+   An error will be thrown without executing the query. The corresponding HTTP status code will be 400. The error message will be in the following format:
+
+    ```none
+    The operation <Operation Name : Will be empty for anonymous query> exceeds the maximum query complexity threshold. Maximum allowed complexity: <Max Complexity>. Calculated query complexity: <Calculated Complexity>.
+    ```
+
+2. When `warnOnly: true`
+   A warning will be logged without executing the query. The warning message will be in the following format:
+
+    ```none
+    The operation <Operation Name : Will be empty for anonymous query> exceeds the maximum query complexity threshold. Maximum allowed complexity: <Max Complexity>. Calculated query complexity: <Calculated Complexity>.
+    ```
+
+##### 10.9.1.2 Configure Query Complexity Validation for a Field
+
+This section describes the behavior of the query complexity validation configurations for a field. See [Field Complexity Configurations](#724-query-complexity-configurations) section for information on how to configure field complexity.
+
+The field complexity value is derived from either from the provided field-specific complexity value, or from the `defaultFieldComplexity` value.
+
+To override the `defaultFieldComplexity` value for a specific field, the user can define the field complexity value in the field configuration. The field complexity value should be a positive integer.
+
+There are exceptions for overriding the `defaultFieldComplexity` value, as mentioned in the following section.
+
+###### 10.9.1.2.1 Record Field Complexity
+
+The `complexity` value of a record field cannot be overriden and will always get the `defaultFieldComplexity` value set at the service level. This is because the value of a record is calculated at a single time and assigning complexity for each field does not make sense.
+
+###### 10.9.1.2.2 List Field Complexity
+
+When a GraphQL field type is a `LIST`, the complexity value will not be dependent on the number of elements in the returned list. Users are advised to consider the complexity of retrieving a list of values when assigning a complexity value to a particular field.
+
+###### 10.9.1.2.3 Hierarchical Resource Paths Complexity
+
+For hierarchical resource paths, intermediate fields get `defaultFieldComplexity` values, while leaf fields get their specific complexity values. The total complexity of the path is the sum of the complexities of all fields.
+
+###### 10.9.1.2.4 Interfaces and Objects Implementing Interfaces
+
+Due to [a limitation](https://github.com/ballerina-platform/ballerina-lang/issues/43151) in the jBallerina runtime, the field complexity value of an interface or an object implementing an interface cannot be overridden. The field complexity value will always get the `defaultFieldComplexity` value set at the service level. This will be fixed in a future release.
+
+###### 10.9.1.2.5 Introspection Query Complexities
+
+The introspection queries will have the `defaultFieldComplexity` per each field. This cannot be overridden.
+
+> **Note:** When the maximum query complexity value is set to a lower value, tools such as GraphiQL may fail to generate the schema from the service due the introspection query complexity exceeding the maximum query complexity value. The complexity value of the introspection query from the GrapihQL client is 23 (assuming the default field complexity value is 1). In such cases, the testings can be done by either increasing the threshold value or using the `warnOnly` mode.
+
+##### 10.9.1.3 Response for Invalid Document with Exceeding Max Query Complexity
+
+When a GraphQL document exceeds the maximum query complexity, the GraphQL service will respond with an error message. The error message will be in the following format:
+
+```none
+The operation <Operation Name : Will be empty for anonymous query> exceeds the maximum query complexity threshold. Maximum allowed complexity: <Max Complexity>. Calculated query complexity: <Calculated Complexity>.
+```
+
+###### Example: Invalid Document with Exceeding Max Query Complexity
+
+Consider the following GraphQL service.
+
+```ballerina
+import ballerina/graphql;
+
+@graphql:ServiceConfig {
+    queryComplexityConfig: {
+        maxComplexity: 10
+    }
+}
+service on new graphql:Listener(9090) {
+
+    @graphql:ResourceConfig {
+        complexity: 3
+    }
+    resource function get profile(int id) returns Profile {
+        // ...
+    }
+}
+```
+
+Consider the following GraphQL document. The `profile` field has a complexity value of 3 and all the other fields (`name`, `age`) have a complexity value of 1. The profile is intended to be executed three times with aliases. Therefore, the document has a combined complexity of 15.
+
+```graphql
+{
+    p1: profile(id: 1) {
+        name
+        age
+    }
+    p2: profile(id: 2) {
+        name
+        age
+    }
+    p3: profile(id: 3) {
+        name
+        age
+    }
+}
+```
+
+This document will result in the following response:
+
+```json
+{
+  "errors": [
+    {
+      "message": "The operation exceeds the maximum query complexity threshold. Maximum allowed complexity: 10. Calculated query complexity: 15.",
+      "locations": [
+        {
+          "line": 1,
+          "column": 1
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### 10.9.2 Query Depth Validation
+
+The query depth validation will evaluate the depth of incoming GraphQL queries and help prevent performance and security issues caused by overly deep queries.
+
+The query depth of a GraphQL operation can be calculated based on the depth of its fields. The depth of a query is the maximum depth of its fields. Users can set a maximum depth threshold for queries, and queries exceeding this threshold will be rejected by throwing an error.
+
+##### 10.9.2.1 Configure Query Depth Validation for a GraphQL Service
+
+This section describes the behavior of the query depth validation configurations. See [Max Query Depth](#711-max-query-depth) section for information on how to configure query depth.
+
+###### 10.9.2.1.1 The `maxDepth` Field
+
+This field defines the threshold for the maximum allowed depth for a GraphQL document. The value should be a positive integer.
+
+When this is set, every incoming request is validated by checking the depth of the query. This includes the depths of the spread fragments. If a particular GraphQL document exceeds the maximum query depth, the request is invalidated and the server will respond with an error.
+
+In the above example, when a document has a depth of more than 3, the request will be failed.
+
+##### 10.9.2.2 Response for Invalid Document with Exceeding Max Query Depth
+
+When a GraphQL document exceeds the maximum query depth, the GraphQL service will respond with an error message. The error message will be in the following format:
+
+```none
+Query has depth of <query depth>, which exceeds max depth of <max depth>
+```
+
+###### Example: Invalid Document with Exceeding Max Query Depth
+
+Consider the following GraphQL service.
+
+```ballerina
+import ballerina/graphql;
+
+@graphql:ServiceConfig {
+    maxQueryDepth: 3
+}
+service on new graphql:Listener(9090) {
+    resource function get profile() returns Profile {
+        // ...
+    }
+}
+```
+
+The following GraphQL document has a depth of 4.
+
+```graphql
+{
+    profile {
+        friend {
+            friend {
+                name # Depth is 4
+            }
+        }
+    }
+}
+```
+
+This will result in the following response.
+
+```json
+{
+  "error": {
+    "errors": [
+      {
+        "message": "Query has depth of 4, which exceeds max depth of 3",
+        "locations": [
+          {
+            "line": 1,
+            "column": 1
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+#### 10.9.3 Introspection
+
+The introspection queries can be either enabled or disabled for a given GraphQL service. By default, the introspection queries are enabled. See the [Introspection Configurations](#717-introspection-configurations) section for information on how to configure introspection.
+
+##### 10.9.3.1 Response for Disabled Introspection
+
+When the introspection queries are disabled, the GraphQL service will respond with an error message when an introspection query is executed. The error message will be in the following format:
+
+```none
+GraphQL introspection is not allowed by the GraphQL Service, but the query contained <Introspection field name>.
+```
+
+###### Example: Disabled Introspection
+
+Consider the following GraphQL service.
+
+```ballerina
+import ballerina/graphql;
+
+@graphql:ServiceConfig {
+    introspection: false
+}
+service on new graphql:Listener(9090) {
+    resource function get profile() returns Profile {
+        // ...
+    }
+}
+```
+
+The following introspection query will result in the following response.
+
+```graphql
+{
+    __type(name: "Profile") {
+        kind
+    }
+}
+```
+
+This will result in the following response.
+
+```json
+{
+  "errors": [
+    {
+      "message": "GraphQL introspection is not allowed by the GraphQL Service, but the query contained __type.",
+      "locations": [
+        {
+          "line": 2,
+          "column": 2
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### 10.9.4 Constraint Validation
+
+This section describes the constraint validation features provided by the Ballerina GraphQL package. See the [Constraint Configurations](#718-constraint-configurations) section for information on how to configure constraints.
+
+If constraint validation support is enabled, the GraphQL service verifies all constraints set on the GraphQL inputs when executing the resolver. By default, constraint validation is enabled for Ballerina GraphQL services.
+
+##### 10.9.4.1 Response for Invalid Document with Constraint Violation
+
+When a GraphQL input violates the constraints set on it, the GraphQL service will respond with an error message. The error message will be in the following format:
+
+```none
+Input validation failed in the field "<Field Name>": Validation failed for '<Input Name>:<Constraint Name>' constraint(s).
+```
+
+###### Example: Constraint Validation
+
+Consider the following GraphQL service.
+
+```ballerina
+import ballerina/constraint;
+import ballerina/graphql;
+
+type ProfileInput record {|
+
+    @constraint:String {
+        minLength: 2,
+        maxLength: 15
+    }
+    string name;
+
+    @constraint:Int {
+        minValue: 18
+    }
+    int age;
+|};
+
+service on new graphql:Listener(9090) {
+    resource function get profile(int id) returns Profile {
+        // ...
+    }
+
+    remote function addProfile(ProfileInput profile) returns Profile {
+        // ...
+    }
+}
+```
+
+The following GraphQL document has a `name` field with a length of 1 and an `age` field with a value of 17.
+
+```graphql
+mutation {
+    addProfile(profile: {name: "A", age: 17}) {
+        id
+    }
+}
+```
+
+The response will be as follows.
+
+```json
+{
+  "errors": [
+    {
+      "message": "Input validation failed in the field \"addProfile\": Validation failed for '$.age:minValue','$.name:minLength' constraint(s).",
+      "locations": [
+        {
+          "line": 2,
+          "column": 5
+        }
+      ],
+      "path": [
+        "addProfile"
+      ]
+    }
+  ],
+  "data": null
+}
+```

@@ -708,9 +708,17 @@ import {
   codeSnippetData as InterWorkerMessagePassingCodeSnippetData,
 } from "./inter-worker-message-passing/content.jsx";
 import {
+  ConditionalSend,
+  codeSnippetData as ConditionalSendCodeSnippetData,
+} from "./conditional-send/content.jsx";
+import {
   InterWorkerFailurePropagation,
   codeSnippetData as InterWorkerFailurePropagationCodeSnippetData,
 } from "./inter-worker-failure-propagation/content.jsx";
+import {
+  NamedWorkerWithOnFailClause,
+  codeSnippetData as NamedWorkerWithOnFailClauseCodeSnippetData,
+} from "./named-worker-with-on-fail-clause/content.jsx";
 import {
   SynchronizeMessagePassing,
   codeSnippetData as SynchronizeMessagePassingCodeSnippetData,
@@ -2413,8 +2421,12 @@ const BBEs = {
   NamedWorkersAndFuturesCodeSnippetData,
   InterWorkerMessagePassing,
   InterWorkerMessagePassingCodeSnippetData,
+  ConditionalSend,
+  ConditionalSendCodeSnippetData,
   InterWorkerFailurePropagation,
   InterWorkerFailurePropagationCodeSnippetData,
+  NamedWorkerWithOnFailClause,
+  NamedWorkerWithOnFailClauseCodeSnippetData,
   SynchronizeMessagePassing,
   SynchronizeMessagePassingCodeSnippetData,
   AsynchronizeMessagePassing,

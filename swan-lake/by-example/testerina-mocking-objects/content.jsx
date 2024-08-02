@@ -71,7 +71,7 @@ public client class MockHttpClient {
     }
 }
 
-@test:Config
+@test:Config { }
 function testTestDouble() {
     // Creates and assigns the defined test-double.
     clientEndpoint = test:mock(http:Client, new MockHttpClient());
@@ -79,7 +79,7 @@ function testTestDouble() {
     test:assertEquals(res.statusCode, 500);
 }
 
-@test:Config
+@test:Config { }
 function testReturn() {
     // Creates and assigns a default mock object,
     // which subsequently needs to be stubbed.
@@ -90,7 +90,7 @@ function testReturn() {
     test:assertEquals(res.statusCode, 200);
 }
 
-@test:Config
+@test:Config { }
 function testReturnSequence() {
     http:Response mockResponse = new;
     mockResponse.statusCode = 404;
@@ -105,7 +105,7 @@ function testReturnSequence() {
     test:assertEquals(res.statusCode, 404);
 }
 
-@test:Config
+@test:Config { }
 function testReturnWithArgs() {
     http:Response mockResponse = new;
     mockResponse.statusCode = 404;
@@ -121,7 +121,7 @@ function testReturnWithArgs() {
     test:assertEquals(res.statusCode, 404);
 }
 
-@test:Config
+@test:Config { }
 function testSendNotification() {
     smtpClient = test:mock(email:SmtpClient);
     // Stubs the \`send\` method of the \`mockSmtpClient\` to do nothing.
@@ -132,7 +132,7 @@ function testSendNotification() {
     test:assertEquals(err, ());
 }
 
-@test:Config
+@test:Config {}
 function testMemberVariable() {
     string mockId = "test";
     lock {
@@ -216,7 +216,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/testerina-mocking-objects",
                 "_blank",
               );
             }}
@@ -300,7 +300,7 @@ export function TesterinaMockingObjects({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/testerina-mocking-objects",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/testerina-mocking-objects",
                 "_blank",
               );
             }}
@@ -478,8 +478,9 @@ export function TesterinaMockingObjects({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[0] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -523,8 +524,9 @@ export function TesterinaMockingObjects({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[1] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

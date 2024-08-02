@@ -25,7 +25,7 @@ function testFunction2() {
 
 // This will be executed without depending on other functions.
 // However, since other functions depend on this function, it will be executed first.
-@test:Config
+@test:Config { }
 function testFunction3() {
     io:println("I'm in test function 3!");
     test:assertTrue(true, msg = "Failed!");
@@ -78,7 +78,7 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
             className="bg-transparent border-0 m-0 p-2 ms-auto"
             onClick={() => {
               window.open(
-                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.0/examples/testerina-guarantee-test-execution-order",
+                "https://github.com/ballerina-platform/ballerina-distribution/tree/v2201.9.2/examples/testerina-guarantee-test-execution-order",
                 "_blank",
               );
             }}
@@ -244,8 +244,9 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[0] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[0] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([true, false])}
                 onMouseOut={() => updateBtnHover([false, false])}
@@ -289,8 +290,9 @@ export function TesterinaGuaranteeTestExecutionOrder({ codeSnippets }) {
                 width="20"
                 height="20"
                 fill="#3ad1ca"
-                className={`${btnHover[1] ? "btnArrowHover" : "btnArrow"
-                  } bi bi-arrow-right`}
+                className={`${
+                  btnHover[1] ? "btnArrowHover" : "btnArrow"
+                } bi bi-arrow-right`}
                 viewBox="0 0 16 16"
                 onMouseEnter={() => updateBtnHover([false, true])}
                 onMouseOut={() => updateBtnHover([false, false])}

@@ -179,7 +179,7 @@ Usually, organizations have to work with many EDI formats, and integration devel
 The below command can be used to generate Ballerina records, parser and util functions, and a REST connector for a given collection of EDI schemas organized into a Ballerina package:
 
 ```
-$ bal edi libgen -p <package name> -i <input schema folder> -o <output folder>
+$ bal edi libgen -p <organization-name/package-name> -i <input schema folder> -o <output folder>
 ```
 
 The Ballerina package will be generated in the output folder. This package can be built and published by issuing `bal pack` and `bal push` commands from the output folder. Then, the generated package can be imported into any Ballerina project, and the generated utility functions of the package can be invoked to parse EDI messages into Ballerina records. 
@@ -263,60 +263,111 @@ public function main() returns error? {
 
 It is quite common for different trading partners to use variations of standard EDI formats. In such cases, it is possible to create partner-specific schemas and generate a partner-specific Ballerina package for processing interactions with the particular partner.
 
-#### Using generated EDI libraries as standalone REST services
+### Using generated EDI libraries as standalone REST services
 
 EDI libraries generated in the previous step can also be compiled into a jar file (using the `bal build` command) and executed (using the `bal run` command) as a standalone Ballerina service that processes EDI files via a REST interface. This is useful for microservice environments where the EDI processing functionality can be deployed as a separate microservice.
 
-For example, the citymart package generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. The conversion of X12 850 EDI text to JSON using the REST service is shown below:
+For example, the "citymart" package generated in the above step can be built and executed as a jar file. Once executed, it will expose a REST service to work with X12 850, 810, 820, and 855 files. 
+
+#### Converting of X12 850 EDI text to JSON using the REST service
+
+The below REST call can be used to convert an X12 850 EDI text to JSON using the REST service generated from the "citymart" package:
 
 ```
-$ curl --request POST \
-  --url http://localhost:9090/porderParser/edis/850 \
-  --header 'Content-Type: text/plain' \
-  --data 'ST*834*12345*005010X220A1~
-BGN*00*12456*20020601*1200****~
-REF*38*ABCD012354~
-AMT*cc payment*467.34*~
-N1*P5**FI*999888777~
-N1*IN**FI*654456654~
-INS*Y*18*025**A***FT~
-REF*0F*202443307~
-REF*1L*123456001~
-NM1*IL*1*SMITH*WILLIAM****ZZ*202443307~
-HD*025**DEN~
-DTP*348*D8*20020701~
-SE*12*12345~'
+curl --location 'http://localhost:9090/porderParser/edis/850' \
+--header 'Content-Type: text/plain' \
+--data-raw 'GS*PO*SENDERID*RECEIVERID*20240802*1705*1*X*004010~
+ST*850*0001~
+BEG*00*NE*4500012345**20240802~
+REF*DP*038~
+PER*BD*John Doe*TE*1234567890*EM*john.doe@example.com~
+FOB*CC~
+ITD*01*3*2**30**31~
+DTM*002*20240902~
+N1*ST*SHIP TO NAME*92*SHIP TO CODE~
+N3*123 SHIP TO ADDRESS~
+N4*CITY*STATE*12345*US~
+PO1*1*10*EA*15.00**BP*123456789012*VP*9876543210*UP*123456789012~
+PID*F****PRODUCT DESCRIPTION~
+PO4*1*CA*20*LB~
+CTT*1~
+SE*16*0001~
+GE*1*1~
+IEA*1*000000001~'
 ```
 
 The above REST call will return a JSON response like the below:
 
 ```
 {
-    "Transaction_Set_Header": {
-        "Transaction_Set_Identifier_Code": "834",
-        "Transaction_Set_Control_Number": "12345",
-        "Implementation_Convention_Reference": "005010X220A1"
-    },
-    "Beginning_Segment": {
-        "Transaction_Set_Purpose_Code": "00",
-        "Reference_Identification": "12456",
-        "Date": "20020601",
-        "Time": "1200"
-    },
-    "Reference_Information": [
-        {
-            "Reference_Identification_Qualifier": "38",
-            "Reference_Identification": "ABCD012354"
+    "X12_FunctionalGroup": {
+        "FunctionalGroupHeader": {
+            "code": "GS",
+            "GS01__FunctionalIdentifierCode": "PO",
+            "GS02__ApplicationSendersCode": "SENDERID",
+            "GS03__ApplicationReceiversCode": "RECEIVERID",
+            ... // Other fields
         }
-    ],
-    "Date_or_Time_or_Period": [],
-    "Monetary_Amount_Information": [
-        {
-            "Amount_Qualifier_Code": "cc payment",
-            "Monetary_Amount": 467.34
-        }
-    ],...
+        ... // Other fields
+    },
+    "InterchangeControlTrailer": {
+        "code": "IEA",
+        "IEA01__NumberofIncludedFunctionalGroups": 1.0,
+        "IEA02__InterchangeControlNumber": 1.0
+    }
 }
+```
+
+#### Converting of JSON to X12 850 EDI text using the REST service
+
+The below REST call can be used to convert a JSON to X12 850 EDI text using the REST service generated from the "citymart" package:
+
+```
+curl --location 'http://localhost:9090/ediParser/objects/850' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "X12_FunctionalGroup": {
+        "FunctionalGroupHeader": {
+            "code": "GS",
+            "GS01__FunctionalIdentifierCode": "PO",
+            "GS02__ApplicationSendersCode": "SENDERID",
+            "GS03__ApplicationReceiversCode": "RECEIVERID",
+            "GS04__Date": "20240802",
+            "GS05__Time": "1705",
+            "GS06__GroupControlNumber": 1.0,
+            ... // Other fields
+        },
+        ... // Other fields
+    },
+    "InterchangeControlTrailer": {
+        "code": "IEA",
+        "IEA01__NumberofIncludedFunctionalGroups": 1.0,
+        "IEA02__InterchangeControlNumber": 1.0
+    }
+}'
+```
+
+The above REST call will return an X12 850 EDI text response like the below:
+
+```
+GS*PO*SENDERID*RECEIVERID*20240802*1705*1*X*004010~
+ST*850*0001~
+BEG*00*NE*4500012345**20240802~
+REF*DP*038~
+PER*BD*John Doe*TE*1234567890*EM*john.doe@example.com~
+FOB*CC~
+ITD*01*3*2**30**31~
+DTM*002*20240902~
+N1*ST*SHIP TO NAME*92*SHIP TO CODE~
+N3*123 SHIP TO ADDRESS~
+N4*CITY*STATE*12345*US~
+PO1*1*10*EA*15.00**BP*123456789012*VP*9876543210*UP*123456789012~
+PID*F****PRODUCT DESCRIPTION~
+PO4*1*CA*20*LB~
+CTT*1~
+SE*16*0001~
+GE*1*1~
+IEA*1*1~
 ```
 
 ## Schema conversion

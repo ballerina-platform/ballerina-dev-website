@@ -827,13 +827,13 @@ service /headerparamservice on HeaderBindingIdealEP {
 
 
 #### 2.3.5. Return types
-The resource method supports anydata, error?, http:Response and http:StatusCodeResponse as return types. 
+The resource method supports `anydata`, `error?`, `http:Response`, `http:StatusCodeResponse` and `stream<http:SseEvent, error?>` as return types. 
 Whenever user returns a particular output, that will result in an HTTP response to the caller who initiated the 
 call. Therefore, user does not necessarily depend on the `http:Caller` and its remote methods to proceed with the 
 response. 
 
 ```ballerina
-resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|http:Error? {
+resource function XXX NAME_TEMPLATE () returns @http:Payload anydata|http:Response|http:StatusCodeResponse|stream<http:SseEvent, error?>|http:Error? {
 }
 ```
 
@@ -857,6 +857,7 @@ Based on the return types respective header value is added as the `Content-type`
 | int, float, decimal, boolean                                          | application/json            |
 | map\<json\>, table<map\<json\>>, map\<json\>[], table<map\<json\>>)[] | application/json            |
 | http:StatusCodeResponse                                               | derived from the body field |
+| stream<http:SseEvent, error?>                                         | text/event-stream           |
 
 ##### 2.3.5.1. Status Code Response
 
@@ -933,7 +934,19 @@ Return nil from the resource has few meanings.
     }
     ```
 
-##### 2.3.5.3. Default response status codes
+##### 2.3.5.3. Return stream<http:SseEvent, error?>
+
+When an `http:SseEvent` stream is returned from the service, it's considered a server-sent event. By default, the service will add the following headers: 
+
+- For HTTP 2.0: 
+  - `Content-Type: text/event-stream`
+  - `Cache-Control: no-cache`
+
+- For HTTP 1.1, in addition to the previously mentioned headers, the following headers will also be included in the response: 
+  - `Transfer-Encoding: chunked`
+  - `Connection: keep-alive`
+
+##### 2.3.5.4. Default response status codes
 
 To improve the developer experience for RESTful API development, following default status codes will be used in outbound 
 response when returning `anydata` directly from a resource method.
@@ -1494,50 +1507,52 @@ infer the expected payload type from the LHS variable type. This is called as cl
 inbound response payload is accessed and parse to the expected type in the method signature. It is easy to access the
 payload directly rather manipulation `http:Response` using its support methods such as `getTextPayload()`, ..etc.
 
-Client data binding supports `anydata` where the payload is deserialized based on the media type before binding it 
+Client data binding supports `anydata` and `stream<http:SseEvent>` where the payload is deserialized based on the media type before binding it 
 to the required type. Similar to the service data binding following table explains the compatible `anydata` types with 
 each common media type. In the absence of a standard media type, the binding type is inferred by the payload parameter 
 type itself. If the type is not compatible with the media type, error is returned.
 
-| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" |
-|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|
-| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |
-|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |
-|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |
-| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
-|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |
+| Ballerina Type | Structure               | "text" | "xml" | "json" | "x-www-form-urlencoded" | "octet-stream" | "event-stream" |
+|----------------|-------------------------|:------:|:-----:|:------:|:-----------------------:|:--------------:|:--------------:
+| boolean        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | boolean[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<boolean\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<boolean\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| int            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | int[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<int\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<int\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| float          |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | float[]                 |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<float\>            |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<float\>\>   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| decimal        |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | decimal[]               |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<decimal\>          |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<decimal\>\> |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| byte[]         |                         |   ✅    |   ❌   |   ✅    |            ❌            |       ✅        |       ❌  
+|                | byte[][]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<byte[]\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<byte[]\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| string         |                         |   ✅    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | string[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<string\>           |   ❌    |   ❌   |   ✅    |            ✅            |       ❌        |       ❌        |
+|                | table\<map\<string\>\>  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| xml            |                         |   ❌    |   ✅   |   ❌    |            ❌            |       ❌        |       ❌        |
+| json           |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | json[]                  |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<json\>             |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<json\>\>    |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| map            |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map[]                   |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<map\>              |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<map\<map\>\>     |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| record         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | record[]                |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | map\<record\>           |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                | table\<record\>         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+| stream         |                         |   ❌    |   ❌   |   ✅    |            ❌            |       ❌        |       ❌        |
+|                |stream<http:SseEvent, error?>|   ❌    |   ❌   |   ❌    |            ❌            |       ❌        |        ✅        |
 
 ```ballerina
 http:Client httpClient = check new ("https://person.free.beeceptor.com");

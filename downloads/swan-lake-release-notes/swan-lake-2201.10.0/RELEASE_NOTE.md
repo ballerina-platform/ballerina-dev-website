@@ -32,6 +32,8 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Improvements
 
+- Add support for mapping constructor expression with mapping binding patterns.
+
 ### Bug fixes
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).

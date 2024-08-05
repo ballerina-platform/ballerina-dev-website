@@ -20,8 +20,24 @@ import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {SSRProvider} from '@react-aria/ssr';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+
+      if (hash === '#trivial-hosting-in-wso2-choreo-ipaas') {
+        const newHash = '#trivial-hosting-in-wso2-choreo';
+        const newUrl = window.location.pathname + window.location.search + newHash;
+        router.replace(newUrl);
+      }
+    }
+  }, [router]);
+
   return <SSRProvider>
           <Component {...pageProps} />
         </SSRProvider>

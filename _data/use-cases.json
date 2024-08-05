@@ -59,7 +59,7 @@
         {
             "slug": "microservices",
             "frontmatter": {
-                "title": "Ballerina: The ultimate toolset for seamless microservices development",
+                "title": "Ballerina for microservices",
                 "description": "The ultimate toolset for seamless microservices development.",
                 "logo": "/images/msa-intro.png"
             }

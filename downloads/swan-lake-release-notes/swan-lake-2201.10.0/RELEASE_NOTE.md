@@ -86,6 +86,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### CLI
 
+- Introduced auto-restarting of services with the `bal run` command as an experimental feature.
+
+    ```
+    $ bal run --watch
+    ```
+
 #### OpenAPI tool
 
 ### Improvements
@@ -104,6 +110,22 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ### New features
 
 ### Improvements
+
+- Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
+
+    ``` toml
+    [[platform.java11.dependency]]
+    groupId = "<group-id>"
+    artifactId = "<artifact-id>"
+    version = "<version>"
+    graalvmCompatible = true
+    ```
+
+- Introduced an experimental build option to enable memory-efficient compilation for large packages to prevent out-of-memory issues that can happen during the initial compilation which happens with a clean Central cache.
+
+    ```
+    $ bal build --optimize-dependency-compilation
+    ```
 
 ### Bug fixes
 

@@ -30,6 +30,10 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### `http` packages
+
+- Introduced support for server-sent events.
+
 ### Improvements
 
 ### Bug fixes

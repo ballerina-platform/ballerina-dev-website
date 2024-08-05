@@ -58,6 +58,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ### New features
 
+#### `data.jsondata` packages
+
+- Introduced constraint annotation validation support.
+- Introduced support for union as expected type.
+
+#### `data.xmldata` packages
+
+- Introduced constraint annotation validation support. 
+- Introduced support for default values in the expected record types.
+- Introduced support for an option to switch between semantic and syntactic equality of XML elements and attributes.
+
 #### Language Server
 
 #### CLI

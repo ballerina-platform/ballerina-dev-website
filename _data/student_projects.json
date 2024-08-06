@@ -310,10 +310,6 @@
                 "name": "Tharindu Weerasinghe",
                 "x": "https://x.com/TharinduWeerasinghe",
                 "email": "tharindu123@wso2.com"
-            },
-            "repo": {
-                "org": "ballerina-platform",
-                "name": "ballerina-dev-website"
             }
         },
         {
@@ -326,10 +322,6 @@
                 "name": "Mahesh Gunawardena",
                 "x": "https://x.com/MaheshGunawardena",
                 "email": "mahesh123@wso2.com"
-            },
-            "repo": {
-                "org": "ballerina-platform",
-                "name": "ballerina-dev-website"
             }
         },
         {
@@ -342,10 +334,6 @@
                 "name": "Nuwan Jayasena",
                 "x": "https://x.com/NuwanJayasena",
                 "email": "nuwan123@wso2.com"
-            },
-            "repo": {
-                "org": "ballerina-platform",
-                "name": "ballerina-dev-website"
             }
         }
     ]

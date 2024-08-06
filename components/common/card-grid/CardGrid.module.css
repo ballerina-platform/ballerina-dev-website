@@ -185,6 +185,7 @@ a.eventRegistration:hover {
     .icon {
         padding-top: 0;
         margin-left: 8px;
+        width: 75%;
     }
 }
 

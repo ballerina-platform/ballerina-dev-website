@@ -222,10 +222,10 @@ const CardGrid = React.forwardRef((props, ref) => {
                   {
                     _.repo ?
                     <a href={`https://github.com/${_.repo.org}/${_.repo.name}`} className={styles.iconLink}>
-                      <Card.Img src={_.icon} className={`${styles.icon} ps-3 pe-3`} alt={`${props.name} icon`}/>
+                      <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`}/>
                     </a>
                     :
-                    <Card.Img src={_.icon} className={`${styles.icon} ps-3 pe-3`} alt={`${props.name} icon`}/>
+                    <Card.Img src={_.icon} className={`${styles.icon} ps-2 pe-2`} alt={`${props.name} icon`}/>
                     
                   }
                     

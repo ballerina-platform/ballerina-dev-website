@@ -38,61 +38,27 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Improvements
 
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 - A bug that resulted in an invalid subtype for concatenation between an xml value and a value of string subtype has been fixed.
+- A bug that resulted in an invalid static type for concatenation of operands of an XML and string subtype has been fixed.
 
 ```ballerina
 public function main() {
     xml<xml:Element> x = xml `<bar/>`;
     string s1 = "foo";
 
-    // used to result in error: incompatible types: expected 'xml<(xml:Element|xml:Text)>', found 'xml'
+    // Used to result in an incompatible types error, allowed now.
     xml<xml:Element|xml:Text> r1 = x + s1;
 
     "foo"|"bar" s2 = "foo";
-    // used to emit no error for this
+    // Compile-time error now.
     xml<xml:Element|xml:Comment> r2 = x + s2;
 }
 ```
 
-- A bug that resulted in a compile time error for attribute access of an xml variable of non `xml:Element` type singleton value and the union of xml singleton types have been fixed.
+#### `http` package
 
-```ballerina
-public function main() {
-    xml:Comment x1 = xml `<!--comment-->`;
-    // used to result in compile time error: incompatible types: expected '(string|error)', found 'xml'
-    string|error result = x1.attr;
-    // used to result in compile time error: 
-    // invalid operation: type 'xml:Comment' does not support optional field access
-    string|error? resultOptional = x1?.attr;
-
-    xml:Text x2 = xml `text`;
-    // similar to above case used to result in a compile time error
-    result = x2.attr;
-    resultOptional = x2?.attr;
-
-    xml:ProcessingInstruction x3 = xml `<?data?>`;
-    // similar to above cases used to result in a compile time error
-    result = x3.attr;
-    resultOptional = x3?.attr;
-
-    xml:Element|xml:ProcessingInstruction x4 = xml `<h attr="ha">h</h>`;
-    // used to result in compile time error:
-    // invalid operation: type '(xml:Element|xml:ProcessingInstruction)' does not support field access
-    result = x4.attr;
-    // used to result in compile time error:
-    // invalid operation: type '(xml:Element|xml:ProcessingInstruction)' does not support optional field access
-    resultOptional = x4?.attr;
-
-    xml:Comment|xml:Text x5 = xml `<!--comment-->`;
-    // similar to above case used to result in a compile time error
-    result = x5.attr;
-    resultOptional = x5?.attr;
-}
-```
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -165,7 +131,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ```ballerina
 public function main() {
     xml:Element xe = xml `<x attr="e"/>`;
-    string? xmlResult = xe?.attr; // this used to get compiled successfully, now gives a compile time error
+    string? xmlResult = xe?.attr; // Used to get compiled successfully, now gives a compile time error
     // incompatible types: expected 'string?', found '(string|error)?'
 }
 ```

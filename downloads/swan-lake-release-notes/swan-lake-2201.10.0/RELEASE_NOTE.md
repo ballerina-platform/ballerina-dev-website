@@ -72,6 +72,45 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+#### `data.yaml` package
+
+The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML to Ballerina `anydata` value with data projection and serialize Ballerina values to YAML.
+
+```ballerina
+import ballerina/data.yaml;
+import ballerina/io;
+
+type ServerConfig record {|
+    string host;
+    int port;
+    int[2] remotePorts;
+    DatabaseConfig database;
+|};
+
+type DatabaseConfig record {|
+    string dbName;
+    string username;
+|};
+
+public function main() returns error? {
+    // Can read from a file as well.
+    string yamlString = string
+        `
+        host: "localhost"
+        port: 8080
+        remotePorts: [9000, 9001, 9002, 9003]
+        protocol: "http"
+        database:
+          dbName: "testdb"
+          username: "dbuser"
+          password: "dbpassword"`;
+
+    // Based on the expected type, it selectively converts the YAML string to the record type.
+    ServerConfig serverConfig = check yaml:parseString(yamlString);
+    io:println(serverConfig);
+}
+```
+
 ### Deprecations
 
 ### Bug fixes

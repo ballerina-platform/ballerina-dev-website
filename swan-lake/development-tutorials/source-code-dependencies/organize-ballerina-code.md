@@ -14,7 +14,7 @@ Writing code in an organized manner from the beginning of the project is importa
 
 Ballerina code is organized in a single shareable unit called a `package`.
 
-A `package` is a collection of `modules`, and a `module` is a collection of Ballerina source files, test files, and resources. A package should contain at least one module called the default module. Each module has its own directory, which organizes source files, test files, and resources.
+A `package` is a collection of `modules`, and a `module` is a collection of Ballerina source files, and test files. A package should contain at least one module called the default module. Each module has its own directory, which organizes source files, and test files. A package can contain resources and test-only resources specific to the package in the package source root.
 
 It is common in small projects to have only one (default) module in a package. As a result, the default module’s content is placed directly in the root of the package directory.
 
@@ -75,7 +75,6 @@ This creates a Ballerina source file containing a function that prints `Hello, w
 ├── hello_lib.bal
 ├── Module.md
 ├── Package.md
-├── resources
 └── tests
     └── lib_test.bal
 ```
@@ -114,7 +113,6 @@ The package structure after adding a non-default module will have the directory 
 └── modules
     └── util
         ├── Module.md
-        ├── resources
         ├── tests
         │   └── lib_test.bal
         └── util.bal

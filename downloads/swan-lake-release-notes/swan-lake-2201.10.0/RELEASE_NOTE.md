@@ -102,12 +102,22 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 - Add support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` in JWT signature configurations. With this update, the `config` field in `jwt:IssuerSignatureConfig` now supports `crypto:PrivateKey`, and the `certFile` field in `jwt:ValidatorSignatureConfig` now supports `crypto:PublicKey`. These additions will breaks the previous union-type support.
     ```ballerina
-    # Represents JWT signature configurations.
-    #
-    # + algorithm - Cryptographic signing algorithm for JWS
-    # + config - KeyStore configurations, private key configurations, `crypto:PrivateKey` or shared key configurations
+    // previous `jwt:IssuerSignatureConfig` record
     public type IssuerSignatureConfig record {|
-        SigningAlgorithm algorithm = RS256;
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+
+    // new `jwt:IssuerSignatureConfig` record
+    public type IssuerSignatureConfig record {|
+        // ... other fields
         record {|
             crypto:KeyStore keyStore;
             string keyAlias;
@@ -118,23 +128,15 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
         |}|crypto:PrivateKey|string config?;
     |};
 
-    # Represents JWT signature configurations.
-    #
-    # + jwksConfig - JWKS configurations
-    # + certFile - Public certificate file path or a `crypto:PublicKey`
-    # + trustStoreConfig - JWT TrustStore configurations
-    # + secret - HMAC secret configuration
+    // previous `jwt:ValidatorSignatureConfig` record
     public type ValidatorSignatureConfig record {|
-        record {|
-            string url;
-            cache:CacheConfig cacheConfig?;
-            ClientConfiguration clientConfig = {};
-        |} jwksConfig?;
+        // ... other fields
         string|crypto:PublicKey certFile?;
-        record {|
-            crypto:TrustStore trustStore;
-            string certAlias;
-        |} trustStoreConfig?;
-        string secret?;
+    |};
+
+    // new `jwt:ValidatorSignatureConfig` record
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
     |};
     ```

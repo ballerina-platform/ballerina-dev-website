@@ -57,7 +57,7 @@ export function Session(props) {
             : <p className="eventName" style={{ fontWeight: "500" }}>{item.university}{item.faculty !== "" ? <> - {item.faculty}</> : null}</p>
         }
         <h5>{item.title}&nbsp;{item.isVirtual && <>(Virtual)</>}</h5>
-        <div> <span style={{ fontWeight: "300", color: "#57595d" }}>Conducted by:</span> &nbsp;
+        {item.presenters && <div> <span style={{ fontWeight: "300", color: "#57595d" }}>Conducted by:</span> &nbsp;
           {
             item.presenters.length > 0 ?
               <>
@@ -89,6 +89,7 @@ export function Session(props) {
               : null
           }
         </div>
+        }
       </Col>
       <Col sm={12} md={3} className={styles.eventURL}>
         {

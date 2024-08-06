@@ -72,6 +72,25 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+### Revamped connectors
+
+New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
+All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
+
+#### `discord` package
+
+- Introduced as a new connector with support for the Discord REST API v10.
+
+#### `slack` package
+- Replaced existing remote function-based APIs with resource function-based APIs.
+- Added support for the latest Slack REST API.
+
+#### `twitter(X)` package
+
+- Added support for the Twitter REST API v2.
+- Replaced existing remote function-based APIs with resource function-based APIs.
+
+
 ### Deprecations
 
 ### Bug fixes

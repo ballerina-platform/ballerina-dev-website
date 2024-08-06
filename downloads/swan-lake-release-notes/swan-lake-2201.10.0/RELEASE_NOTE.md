@@ -60,13 +60,13 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### `data.jsondata` packages
 
-- Introduced constraint validation support.
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
 - Introduced support for parsing JSON with union types as expected types.
 
 #### `data.xmldata` packages
 
-- Introduced constraint validation support.
-- Introduced support for parsing XML with record types containing default values.
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
 #### Language Server

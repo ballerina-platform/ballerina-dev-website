@@ -1,5 +1,23 @@
 {
     "events": [
+               {
+            "date": "Sep 27, 2024",
+            "expire": "2024-09-27T00:00:00.0000-00:00",
+            "type": "Ballerina Hackathon",
+            "university": "Namibia University of Science and Technology",
+            "faculty": "Department of Software Engineering",
+            "title": "Forging Integration Innovations",
+            "isVirtual": true,
+            "location": "",
+            "presenters": [
+                {
+                    "name": "",
+                    "twitter": ""
+                }
+            ],
+            "url": "https://docs.google.com/forms/d/e/1FAIpQLSf_2lnv9wZwmopnUJSvj3U9uJ0EsCjoDmecJ-1NnjjoYkiqHw/viewform",
+            "buttonText": "Register today"
+        },
         {
             "date": "June 6, 2024",
             "expire": "2024-06-07T00:00:00.0000-00:00",

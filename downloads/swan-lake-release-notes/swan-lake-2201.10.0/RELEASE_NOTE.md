@@ -38,9 +38,45 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ## Runtime updates
 
-### New features
-
 ### Improvements
+
+#### Added shift, unshift, pop and remove operation support to tuples
+The runtime now supports the shift, unshift, pop and remove operations on tuples similar to how they work on arrays. The necessary checks have been implemented to make sure that the operations will work as expected without causing problems related to mutability and inherent type.
+
+A few examples regarding the use of the operations are given below.
+```ballerina
+[int, int...] tuple1 = [1, 2];
+int val1 = tuple1.shift();          // 1
+
+[string, string...] tuple2 = ["hello"];
+tuple2.unshift("world", "cat");     // ["hello", "world", "cat"]
+
+[int, string, int...] tuple3 = [1, "hello", 4];
+var val3 = tuple3.pop();            // 4
+
+[int,string, float...] tuple4 = [7, "hello", 67.5, 89.7];
+var val4 = tuple4.remove(2);        // 67.5
+```
+
+### New Runtime Java APIs
+
+#### A Runtime Java API to get whether the remote management is enabled
+
+A new runtime Java API is added to provide information whether the remote management is enabled through a build option.
+
+```java
+boolean isRemoteEnabled();
+```
+
+The above API can be called via a Ballerina environment instance as follows.
+
+```java
+import io.ballerina.runtime.api.Repository;
+import io.ballerina.runtime.api.Environment;
+
+Repository repository = env.getRepository();
+boolean isRemoteEnabled  = repository.isRemoteEnabled();
+```
 
 ### Bug fixes
 

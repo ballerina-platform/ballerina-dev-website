@@ -38,8 +38,16 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Improvements
 
-- A bug that resulted in an invalid subtype for concatenation between an xml value and a value of string subtype has been fixed.
-- A bug that resulted in an invalid static type for concatenation of operands of an XML and string subtype has been fixed.
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
+
+### Bug fixes
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
+
+- A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed
 
 ```ballerina
 public function main() {
@@ -54,15 +62,6 @@ public function main() {
     xml<xml:Element|xml:Comment> r2 = x + s2;
 }
 ```
-
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
-
-### Bug fixes
-
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 
@@ -126,13 +125,12 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ## Backward-incompatible changes
 
-- A bug that allowed assigning optional xml attribute access of a variable of static type `xml:Element` to invalid static type `string?`, has been fixed.
+- A bug that caused an invalid static type to be set for optional XML attribute access with a variable of type `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
 
 ```ballerina
 public function main() {
     xml:Element xe = xml `<x attr="e"/>`;
-    string? xmlResult = xe?.attr; // Used to get compiled successfully, now gives a compile time error
-    // incompatible types: expected 'string?', found '(string|error)?'
+    string? xmlResult = xe?.attr; // Compile-time error now.
 }
 ```
 

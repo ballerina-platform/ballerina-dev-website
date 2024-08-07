@@ -78,6 +78,7 @@ New versions of the following connectors have been released with major updates, 
 All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
 #### `dayforce` package
+
 - Introduced as a new connector with support for the Dayforce REST API v1.
 
 #### `discord` package
@@ -85,6 +86,7 @@ All listed connectors have been released under new major versions, featuring sig
 - Introduced as a new connector with support for the Discord REST API v10.
 
 #### `slack` package
+
 - Replaced existing remote function-based APIs with resource function-based APIs.
 - Added support for the latest Slack REST API.
 

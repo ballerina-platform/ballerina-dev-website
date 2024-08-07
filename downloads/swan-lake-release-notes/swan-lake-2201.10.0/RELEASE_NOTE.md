@@ -74,7 +74,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### `data.yaml` package
 
-The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML to Ballerina `anydata` value with data projection and serialize Ballerina values to YAML.
+The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
 
 ```ballerina
 import ballerina/data.yaml;
@@ -94,8 +94,7 @@ type DatabaseConfig record {|
 
 public function main() returns error? {
     // Can read from a file as well.
-    string yamlString = string
-        `
+    string yamlString = string `
         host: "localhost"
         port: 8080
         remotePorts: [9000, 9001, 9002, 9003]

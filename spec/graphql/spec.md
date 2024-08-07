@@ -3,7 +3,7 @@
 _Authors_: [@aashikam](https://github.com/aashikam) [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@MohamedSabthar](https://github.com/MohamedSabthar) [@Nuvindu](https://github.com/Nuvindu) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
 _Reviewers_: [@DimuthuMadushan](https://github.com/DimuthuMadushan) [@ldclakmal](https://github.com/ldclakmal) [@MohamedSabthar](https://github.com/MohamedSabthar) [@shafreenAnfar](https://github.com/shafreenAnfar) [@ThisaruGuruge](https://github.com/ThisaruGuruge) \
 _Created_: 2022/01/06 \
-_Updated_: 2024/07/23 \
+_Updated_: 2024/08/06 \
 _Edition_: Swan Lake \
 _GraphQL Specification_: [October 2021](https://spec.graphql.org/October2021/)
 
@@ -1041,7 +1041,9 @@ resource function get greeting(string name = "Stranger") returns string {
 
 In GraphQL, an interface can be used to define a set of common fields for objects. Then the `Object` types can implement the interface with the common fields and optionally, additional fields.
 
-In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods.
+In Ballerina, `distinct` `service` objects can be used to define GraphQL interfaces. The other `distinct` `service` classes can be used to implement the interface. To implement an interface, the intended interface type should be added as an included type in the service types that implement the interface. All the service classes that are implementing the interface must provide the implementation for all resource methods declared in the interface, and they can define additional resource methods for additional fields.
+
+> **Note:** If an included service object type is not returning from a GraphQL `resource` or `remote` method, it will not be considered as an interface, even if it is included in another service type.
 
 Non-distinct `service` objects and `service` classes can not be used to define or implement GraphQL interfaces.
 
@@ -1120,6 +1122,12 @@ public isolated service class Student {
 
     isolated resource function get id() returns int {
         return self.id;
+    }
+}
+
+service on new graphql:Listener(9090) {
+    resource function get profile() returns Profile {
+        return new Student("Walter White", 52);
     }
 }
 ```

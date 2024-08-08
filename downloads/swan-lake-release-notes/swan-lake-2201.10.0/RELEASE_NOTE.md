@@ -111,6 +111,42 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ### Improvements
 
+- With this update, resources have been moved to the package level and module-level resources are deprecated. Resources available in module resource paths will be ignored. To be recognized as valid, any existing module-level resources must be relocated to the resources directory in the package root.
+  Any resources within the current package, as well as those exported from package dependencies, can now be accessed through an interop function.
+
+    * Old package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           ├── resources
+           │   └── open-api-spec.json
+           └── util.bal
+    ```
+
+    * New package structure
+
+    ```
+    .
+    ├── Ballerina.toml
+    ├── main.bal
+    ├── resources
+    │   └── open-api-spec.json
+    └── modules
+       └── util
+           ├── Module.md
+           ├── tests
+           │   └── lib_test.bal
+           └── util.bal
+    ```
+
 - Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
 
     ``` toml

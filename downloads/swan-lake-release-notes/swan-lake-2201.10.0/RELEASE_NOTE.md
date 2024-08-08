@@ -137,7 +137,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
     // Previous `jwt:ValidatorSignatureConfig` record.
     public type ValidatorSignatureConfig record {|
         // ... other fields
-        string|crypto:PublicKey certFile?;
+        string certFile?;
     |};
 
     // New `jwt:ValidatorSignatureConfig` record.

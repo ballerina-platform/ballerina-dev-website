@@ -113,9 +113,10 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 #### `jwt` package
 
-- Add support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` in JWT signature configurations. With this update, the `config` field in `jwt:IssuerSignatureConfig` now supports `crypto:PrivateKey`, and the `certFile` field in `jwt:ValidatorSignatureConfig` now supports `crypto:PublicKey`. These additions will breaks the previous union-type support.
+- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`. With these additions, union types (or whatever that is not supported now) will be disallowed.
+
     ```ballerina
-    // previous `jwt:IssuerSignatureConfig` record
+    // Previous `jwt:IssuerSignatureConfig` record.
     public type IssuerSignatureConfig record {|
         // ... other fields
         record {|
@@ -128,7 +129,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
         |}|string config?;
     |};
 
-    // new `jwt:IssuerSignatureConfig` record
+    // New `jwt:IssuerSignatureConfig` record.
     public type IssuerSignatureConfig record {|
         // ... other fields
         record {|
@@ -141,13 +142,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
         |}|crypto:PrivateKey|string config?;
     |};
 
-    // previous `jwt:ValidatorSignatureConfig` record
+    // Previous `jwt:ValidatorSignatureConfig` record.
     public type ValidatorSignatureConfig record {|
         // ... other fields
         string|crypto:PublicKey certFile?;
     |};
 
-    // new `jwt:ValidatorSignatureConfig` record
+    // New `jwt:ValidatorSignatureConfig` record.
     public type ValidatorSignatureConfig record {|
         // ... other fields
         string|crypto:PublicKey certFile?;

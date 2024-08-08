@@ -30,7 +30,18 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract type.
+- Introduced default status code response record type.
+
 ### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -102,6 +113,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ## Ballerina library updates
 
+### New features
+
+#### `data.jsondata` package
+
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing JSON with union types as expected types.
+
+#### `data.xmldata` package
+
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
+- Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
+
 ### Deprecations
 
 ### Bug fixes
@@ -115,6 +139,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 #### Language Server
 
 #### CLI
+
+- Introduced auto-restarting of services with the `bal run` command as an experimental feature.
+
+    ```
+    $ bal run --watch
+    ```
 
 #### OpenAPI tool
 
@@ -135,6 +165,67 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ### Improvements
 
+- Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
+
+    ``` toml
+    [[platform.java11.dependency]]
+    groupId = "<group-id>"
+    artifactId = "<artifact-id>"
+    version = "<version>"
+    graalvmCompatible = true
+    ```
+
+- Introduced an experimental build option to enable memory-efficient compilation for large packages to prevent out-of-memory issues that can happen during the initial compilation which happens with a clean Central cache.
+
+    ```
+    $ bal build --optimize-dependency-compilation
+    ```
+
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+### Ballerina library changes
+
+#### `jwt` package
+
+- Add support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` in JWT signature configurations. With this update, the `config` field in `jwt:IssuerSignatureConfig` now supports `crypto:PrivateKey`, and the `certFile` field in `jwt:ValidatorSignatureConfig` now supports `crypto:PublicKey`. These additions will breaks the previous union-type support.
+    ```ballerina
+    // previous `jwt:IssuerSignatureConfig` record
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+
+    // new `jwt:IssuerSignatureConfig` record
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|crypto:PrivateKey|string config?;
+    |};
+
+    // previous `jwt:ValidatorSignatureConfig` record
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+
+    // new `jwt:ValidatorSignatureConfig` record
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+    ```

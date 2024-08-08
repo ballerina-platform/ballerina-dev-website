@@ -153,7 +153,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
       |};
       ```
 
->**Note:** This feature will break any code references that use the previous union type.
+    >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
 
 ### Improvements
 

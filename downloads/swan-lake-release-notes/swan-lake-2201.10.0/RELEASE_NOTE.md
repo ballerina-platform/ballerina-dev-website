@@ -103,17 +103,9 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ### New features
 
-### Improvements
-
-### Bug fixes
-
-## Backward-incompatible changes
-
-### Ballerina library changes
-
 #### `jwt` package
 
-- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`. With these additions, previously allowed union types for the respective record fields will be disallowed.
+- Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`.
 
     ```ballerina
     // Previous `jwt:IssuerSignatureConfig` record.
@@ -154,3 +146,13 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
         string|crypto:PublicKey certFile?;
     |};
     ```
+
+>**Note:** This feature will break any code references that use the previous union type.
+
+### Improvements
+
+### Bug fixes
+
+## Backward-incompatible changes
+
+### Ballerina library changes

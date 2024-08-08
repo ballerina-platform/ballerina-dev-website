@@ -40,10 +40,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ### Improvements
 
-#### Added shift, unshift, pop and remove operation support to tuples
-The runtime now supports the shift, unshift, pop and remove operations on tuples similar to how they work on arrays. The necessary checks have been implemented to make sure that the operations will work as expected without causing problems related to mutability and inherent type.
+#### Added support for the `shift`, `unshift`, `pop`, and `remove` functions with tuples
+The runtime now supports the `shift`, `unshift`, `pop`, and `remove` operations on tuples similar to arrays, as long as they do not violate inherent type or mutability constraints.
 
-A few examples regarding the use of the operations are given below.
+The following are now allowed.
 ```ballerina
 [int, int...] tuple1 = [1, 2];
 int val1 = tuple1.shift();          // 1
@@ -58,11 +58,29 @@ var val3 = tuple3.pop();            // 4
 var val4 = tuple4.remove(2);        // 67.5
 ```
 
-### New Runtime Java APIs
+The following examples will cause errors.
+```ballerina
+[int, string...] tuple1 = [1, "hello"];
+int val1 = tuple1.shift();          // inherent type violation
 
-#### A Runtime Java API to get whether the remote management is enabled
+[int, int] tuple2 = [1, 2];
+int val2 = tuple2.shift();          // immutable tuple
 
-A new runtime Java API is added to provide information whether the remote management is enabled through a build option.
+[string, string...] tuple3 = ["hello"];
+tuple3.unshift(154);                // inherent type violation
+
+[int, string, int] tuple4 = [1, "hello", 4];
+var val4 = tuple4.pop();            // immutable tuple
+
+[int,string, float...] tuple5 = [7, "hello", 67.5, 89.7];
+var val5 = tuple5.remove(1);        // inherent type violation
+```
+
+### New runtime Java APIs
+
+#### A runtime Java API to check if remote management is enabled
+
+A new runtime Java API is added to check if remote management is enabled, via a build option.
 
 ```java
 boolean isRemoteEnabled();

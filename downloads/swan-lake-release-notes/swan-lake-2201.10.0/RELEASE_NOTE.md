@@ -108,50 +108,50 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 - Added support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` values in JWT signature configurations. With this update, the `config` field of `jwt:IssuerSignatureConfig` now allows `crypto:PrivateKey`, and the `certFile` field of `jwt:ValidatorSignatureConfig` now allows `crypto:PublicKey`.
 
     - Previous `jwt:IssuerSignatureConfig` record.
-      ```ballerina
-      public type IssuerSignatureConfig record {|
-          // ... other fields
-          record {|
-              crypto:KeyStore keyStore;
-              string keyAlias;
-              string keyPassword;
-          |} | record {|
-              string keyFile;
-              string keyPassword?;
-          |}|string config?;
-      |};
-      ```
+        ```ballerina
+        public type IssuerSignatureConfig record {|
+            // ... other fields
+            record {|
+                crypto:KeyStore keyStore;
+                string keyAlias;
+                string keyPassword;
+            |} | record {|
+                string keyFile;
+                string keyPassword?;
+            |}|string config?;
+        |};
+        ```
 
     - New `jwt:IssuerSignatureConfig` record.
-      ```ballerina
-      public type IssuerSignatureConfig record {|
-          // ... other fields
-          record {|
-              crypto:KeyStore keyStore;
-              string keyAlias;
-              string keyPassword;
-          |} | record {|
-              string keyFile;
-              string keyPassword?;
-          |}|crypto:PrivateKey|string config?;
-      |};
-      ```
+        ```ballerina
+        public type IssuerSignatureConfig record {|
+            // ... other fields
+            record {|
+                crypto:KeyStore keyStore;
+                string keyAlias;
+                string keyPassword;
+            |} | record {|
+                string keyFile;
+                string keyPassword?;
+            |}|crypto:PrivateKey|string config?;
+        |};
+        ```
 
     - Previous `jwt:ValidatorSignatureConfig` record.
-      ```ballerina
-      public type ValidatorSignatureConfig record {|
-          // ... other fields
-          string certFile?;
-      |};
-      ```
+        ```ballerina
+        public type ValidatorSignatureConfig record {|
+            // ... other fields
+            string certFile?;
+        |};
+        ```
 
     - New `jwt:ValidatorSignatureConfig` record.
-      ```ballerina
-      public type ValidatorSignatureConfig record {|
-          // ... other fields
-          string|crypto:PublicKey certFile?;
-      |};
-      ```
+        ```ballerina
+        public type ValidatorSignatureConfig record {|
+            // ... other fields
+            string|crypto:PublicKey certFile?;
+        |};
+        ```
 
     >**Note:** This feature may break existing code if the relevant fields are referred to using the previous types.
 

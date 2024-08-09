@@ -84,7 +84,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 #### `sap` package
 
 - Added support for invoking any OData endpoints in S/4HANA.
-- Automatic CSRF token authentication for enhanced security and usability.
+- Added support for automatic CSRF token authentication for enhanced security and usability.
 
 #### `sap.jco` package
 

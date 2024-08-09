@@ -74,8 +74,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### `salesforce` package
 
-- Added support for a Salesforce listener with Streaming API as backend.
-- Enabled real-time data synchronization and event-driven workflows.
+- Added support for Salesforce listener with Streaming API for real-time data synchronization and event-driven workflows.
 - Added support for base types with `salesforce.types` submodule.
 - Reorganized salesforce clients for better usability.
 
@@ -89,12 +88,12 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 #### `sap.jco` package
 
 - Enabled invocation of RFC modules with improved type binding.
-- Added support for sending and receiving iDocs for robust data exchange.
+- Added support for sending and receiving iDocs.
 
 #### `sap.s4hana.sales` packages
 
 - Provided a high-level interface for APIs related to Sales and Distribution (SD) in S/4HANA.
-- Streamlined operations for sales order management, delivery processing, and billing.
+- Provided operations for sales order management, delivery processing, and billing.
 
 ### Revamped connectors
 

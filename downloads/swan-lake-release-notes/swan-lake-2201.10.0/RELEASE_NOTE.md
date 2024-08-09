@@ -30,18 +30,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### `http` package
-
-- Introduced support for server-sent events.
-- Introduced service contract type.
-- Introduced default status code response record type.
-
 ### Improvements
-
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -71,6 +60,19 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
+
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract type.
+- Introduced default status code response record type.
+
+### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Deprecations
 

@@ -65,9 +65,66 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ## Runtime updates
 
-### New features
-
 ### Improvements
+
+#### Added support for the `shift`, `unshift`, `pop`, and `remove` functions with tuples
+
+The runtime now supports the `shift`, `unshift`, `pop`, and `remove` operations on tuples similar to arrays, as long as they do not violate inherent type or mutability constraints.
+
+The following are now allowed.
+
+```ballerina
+[int, int...] tuple1 = [1, 2];
+int val1 = tuple1.shift();          // 1
+
+[string, string...] tuple2 = ["hello"];
+tuple2.unshift("world", "cat");     // ["hello", "world", "cat"]
+
+[int, string, int...] tuple3 = [1, "hello", 4];
+var val3 = tuple3.pop();            // 4
+
+[int,string, float...] tuple4 = [7, "hello", 67.5, 89.7];
+var val4 = tuple4.remove(2);        // 67.5
+```
+
+The following examples will result in errors.
+
+```ballerina
+[int, string...] tuple1 = [1, "hello"];
+int val1 = tuple1.shift();          // inherent type violation
+
+[int, int] tuple2 = [1, 2];
+int val2 = tuple2.shift();          // inherent type violation
+
+[string, string...] tuple3 = ["hello"];
+tuple3.unshift(154);                // inherent type violation
+
+[int, string, int] tuple4 = [1, "hello", 4];
+var val4 = tuple4.pop();            // inherent type violation
+
+[int,string, float...] tuple5 = [7, "hello", 67.5, 89.7];
+var val5 = tuple5.remove(1);        // inherent type violation
+```
+
+### New runtime Java APIs
+
+#### A runtime Java API to check if remote management is enabled
+
+A new runtime Java API is added to check if remote management is enabled, via a build option.
+
+```java
+boolean isRemoteEnabled();
+```
+
+The above API can be called via a Ballerina environment instance as follows.
+
+```java
+import io.ballerina.runtime.api.Repository;
+import io.ballerina.runtime.api.Environment;
+
+Repository repository = env.getRepository();
+boolean isRemoteEnabled  = repository.isRemoteEnabled();
+```
 
 ### Bug fixes
 

@@ -125,12 +125,14 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ## Backward-incompatible changes
 
+### Language changes
+
  A bug that caused an invalid static type to be set for optional XML attribute access on `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
 
 ```ballerina
 public function main() {
     xml:Element xe = xml `<x attr="e"/>`;
-    string? xmlResult = xe?.attr; // Compile-time error now.
+    string? attr = xe?.attr; // Compile-time error now.
 }
 ```
 

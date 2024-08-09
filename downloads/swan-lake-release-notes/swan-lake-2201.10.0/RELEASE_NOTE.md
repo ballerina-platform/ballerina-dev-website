@@ -90,6 +90,11 @@ All listed connectors have been released under new major versions, featuring sig
 - Replaced existing remote function-based APIs with resource function-based APIs.
 - Added support for the latest Slack REST API.
 
+#### `stripe` package
+
+- Replaced existing remote function-based APIs with resource function-based APIs.
+- Added support for the latest Stripe v1 REST API.
+
 #### `twitter(X)` package
 
 - Added support for the Twitter REST API v2.

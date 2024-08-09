@@ -45,9 +45,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### Bug fixes
 
-To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
-
-- A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed
+- A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed.
 
 ```ballerina
 public function main() {
@@ -62,6 +60,8 @@ public function main() {
     xml<xml:Element|xml:Comment> r2 = x + s2;
 }
 ```
+
+To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
 
 ## Runtime updates
 
@@ -125,7 +125,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ## Backward-incompatible changes
 
-- A bug that caused an invalid static type to be set for optional XML attribute access with a variable of type `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
+ A bug that caused an invalid static type to be set for optional XML attribute access on `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
 
 ```ballerina
 public function main() {

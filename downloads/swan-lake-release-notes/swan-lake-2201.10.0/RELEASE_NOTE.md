@@ -64,7 +64,7 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 #### `http` package
 
 - Introduced support for server-sent events.
-- Introduced service contract type.
+- Introduced service contract types.
 - Introduced default status code response record type.
 
 #### `ldap` package

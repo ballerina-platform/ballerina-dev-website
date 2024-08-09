@@ -71,9 +71,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### Language Server
 
-- Introduced the `Convert to configurable` code action to convert a module level variable into a configurable variable.
+- Introduced the `Convert to configurable` code action to convert a module-level variable into a configurable variable.
 - Introduced the `Extract to configurable` code action to extract expressions or function arguments into configurable variables.
-- Introduced the `Add to Config.toml` code action to add configurable variables in to the Config.toml file.
+- Introduced the `Add to Config.toml` code action to add configurable variables to the `Config.toml` file.
 
 #### CLI
 
@@ -81,9 +81,9 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ### Improvements
 
-- Added navigation and reference finding support for init functions.
-
 #### Language Server
+
+- Added navigation and reference-finding support for object `init` functions.
 
 ### Bug fixes
 

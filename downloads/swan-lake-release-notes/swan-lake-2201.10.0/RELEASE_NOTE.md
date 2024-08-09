@@ -72,6 +72,30 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+#### `salesforce` package
+
+- Added support for a Salesforce listener with Streaming API as backend.
+- Enabled real-time data synchronization and event-driven workflows.
+- Added support for base types with `salesforce.types` submodule.
+- Reorganized salesforce clients for better usability.
+
+### New connectors
+
+#### `sap` package
+
+- Added support for invoking any OData endpoints in S/4HANA.
+- Automatic CSRF token authentication for enhanced security and usability.
+
+#### `sap.jco` package
+
+- Enabled invocation of RFC modules with improved type binding.
+- Added support for sending and receiving iDocs for robust data exchange.
+
+#### `sap.s4hana.sales` packages
+
+- Provided a high-level interface for APIs related to Sales and Distribution (SD) in S/4HANA.
+- Streamlined operations for sales order management, delivery processing, and billing.
+
 ### Revamped connectors
 
 New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.

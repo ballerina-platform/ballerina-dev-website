@@ -77,6 +77,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 New versions of the following connectors have been released with major updates, as part of the Ballerina connector revamp initiative.
 All listed connectors have been released under new major versions, featuring significant API and functionality changes, along with improved documentation and examples.
 
+#### `asb` package
+
+- Introduced support for listener-service-based async message consumption functionality.
+
 #### `dayforce` package
 
 - Introduced as a new connector with support for the Dayforce REST API v1.

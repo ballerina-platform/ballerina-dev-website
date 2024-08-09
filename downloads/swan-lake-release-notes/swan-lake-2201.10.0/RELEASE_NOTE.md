@@ -1,9 +1,9 @@
 ---
 layout: ballerina-left-nav-release-notes
-title: 2201.10.0 (Swan Lake) 
+title: 2201.10.0 (Swan Lake)
 permalink: /downloads/swan-lake-release-notes/2201.10.0/
 active: 2201.10.0
-redirect_from: 
+redirect_from:
     - /downloads/swan-lake-release-notes/2201.10.0
     - /downloads/swan-lake-release-notes/2201.10.0-swan-lake/
     - /downloads/swan-lake-release-notes/2201.10.0-swan-lake
@@ -13,7 +13,7 @@ redirect_from:
 
 ## Overview of Ballerina Swan Lake Update 10 (2201.10.0)
 
-<em> Swan Lake Update 10 (2201.10.0) is the tenth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em> 
+<em> Swan Lake Update 10 (2201.10.0) is the tenth update release of Ballerina Swan Lake, and it includes a new set of features and significant improvements to the compiler, runtime, Ballerina library, and developer tooling. It is based on the 2024R1 version of the Language Specification.</em>
 
 ## Update Ballerina
 
@@ -207,4 +207,36 @@ public function main() {
         // ... other fields
         string|crypto:PublicKey certFile?;
     |};
+    ```
+
+#### `graphql` package
+
+- Add support to GraphQL query complexity analysis, which can be used to enhance the GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` record now includes a new field `queryComplexityConfig` to configure the query complexity analysis.
+
+    ```ballerina
+    import ballerina/graphql;
+
+    @graphql:ServiceConfig {
+        // Following are the default values, which can be overridden.
+        queryComplexityConfig: {
+            maxComplexity: 100,
+            defaultFieldComplexity: 1,
+            warnOnly: false
+        }
+    }
+    service graphql:Service /graphql on new graphql:Listener(9090) {
+
+        // Defines a custom complexity value for the field
+        @graphql:ResourceConfig {
+            complexity: 10
+        }
+        resource function get profile(@graphql:ID int id) returns Profile {
+            // Implementation
+        }
+
+        // Uses the default field complexity value
+        resource function get greeting() returns string {
+            // Implementation
+        }
+    }
     ```

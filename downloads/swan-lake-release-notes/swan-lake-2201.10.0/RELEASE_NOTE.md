@@ -93,7 +93,7 @@ type DatabaseConfig record {|
 |};
 
 public function main() returns error? {
-    // Can read from a file as well.
+    // Similar to content read from a YAML file.
     string yamlString = string `
         host: "localhost"
         port: 8080
@@ -104,7 +104,7 @@ public function main() returns error? {
           username: "dbuser"
           password: "dbpassword"`;
 
-    // Based on the expected type, it selectively converts the YAML string to the record type.
+    // Based on the expected type, it parses the YAML string to selectively construct the record value.
     ServerConfig serverConfig = check yaml:parseString(yamlString);
     io:println(serverConfig);
 }

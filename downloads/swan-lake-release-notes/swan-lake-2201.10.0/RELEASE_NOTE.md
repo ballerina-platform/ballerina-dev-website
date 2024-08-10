@@ -113,19 +113,79 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
     ```
 
 #### OpenAPI tool
+-  Added support to generate a mock client for OAS if including the example details. To generate mock client, use `--mock` flag along with openAPI CLI client generation command.
+  ```
+  $ bal openapi -i <yml file> --mode client --mock
+  ```
 
+-  Provided the option to generate a single bal file for client/service. To generate single file, use `--single-file` flag along with openAPI CLI client/service generation command.
+  ```
+  $ bal openapi -i <yml file> --mode <client/service> --single-file
+  ```
+
+-  Added support to generate Ballerina service object type from given OAS. To generate a service contract object type file, use the `--with-service-contract` flag along with the OpenAPI CLI service generation command.
+  ```
+  $ bal openapi -i <yml file> --mode service --with-service-contract
+  ```
+
+-  Introduced example annotations in the OpenAPI tool. This feature will  enable rendering example schemas in the generated OpenAPI specification.
+ex:
+  1. Using Example annotation
+ ```ballerina
+    @openapi:Example {
+      value: {
+        id: 10,
+        name: "Jessica Smith"
+      }
+    }
+    type User record {
+      int id;
+      string name
+    }
+ ```
+  2. Using Examples annotation
+  ```ballerina
+    @openapi:Examples {
+      Jessica: { // Example 1
+        value: {
+           id: 10,
+           name: "Jessica Smith"
+        }
+      },
+      Ron: { // Example 2
+        value: {
+           id: 11,
+           name: "Ron Stewart"
+        }
+      } 
+    }
+    type User record {
+      int id;
+      string name
+    }
+  ```
+- Provided an option to generate Ballerina client/service according to Ballerina friendly naming convention. To enable this feature, use `--use-sanitized-oas` flag along with client/service CLI code generation.
+  ```
+  $ bal openapi -i <yml file> --mode <client/service> --use-sanitized-oas
+  ```
+  
 ### Improvements
 
 #### Language Server
 
 - Added navigation and reference-finding support for object `init` functions.
 
+#### OpenAPI tool
+- Added support for Server Sent Events (SSE) in Ballerina Client generation.
+- Added improvement for supporting reference JSON example file path for the examples field in `@openapi:ResourceInfo` annotation.
+- Added request body example mapping support for `@openapi:ResourceInfo` annotation in OAS generation.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) of the repositories below.
 
 - [Language server](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FLanguageServer+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug+)
-- [OpenAPI](https://github.com/ballerina-platform/openapi-tools/issues?q=is%3Aissue+label%3AType%2FBug+milestone%3A%22Swan+Lake+2201.10.0%22+is%3Aclosed)
+- [OpenAPI](https://github.com/ballerina-platform/ballerina-library/issues?q=is%3Aissue+milestone%3A2201.10.0+is%3Aclosed+label%3Amodule%2Fopenapi-tools+label%3AType%2FBug)
 
 ## Ballerina packages updates
 

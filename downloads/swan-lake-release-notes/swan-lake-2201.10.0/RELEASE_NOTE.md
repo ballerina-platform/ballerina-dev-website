@@ -30,9 +30,36 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract type.
+- Introduced default status code response record type.
+
 ### Improvements
 
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
+
 ### Bug fixes
+
+- A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed.
+
+```ballerina
+public function main() {
+    xml<xml:Element> x = xml `<bar/>`;
+    string s1 = "foo";
+
+    // Used to result in an incompatible types error, allowed now.
+    xml<xml:Element|xml:Text> r1 = x + s1;
+
+    "foo"|"bar" s2 = "foo";
+    // Compile-time error now.
+    xml<xml:Element|xml:Comment> r2 = x + s2;
+}
+```
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
 
@@ -56,6 +83,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 ### Improvements
 
+#### `data.jsondata` package
+
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing JSON with union types as expected types.
+
+#### `data.xmldata` package
+
+- Introduced constraint validation support, allowing validation of the output against constraints specified in the target type.
+- Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
+- Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
+
 #### `java.jdbc` package
 
 - Updated the `datasourceName` and `properties` field in the `jdbc:Options` record from optional value types to optional fields to allow users to use the record as a configurable variable.
@@ -72,7 +110,17 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### Language Server
 
+- Introduced the `Convert to configurable` code action to convert a module-level variable into a configurable variable.
+- Introduced the `Extract to configurable` code action to extract expressions or function arguments into configurable variables.
+- Introduced the `Add to Config.toml` code action to add configurable variables to the `Config.toml` file.
+
 #### CLI
+
+- Introduced auto-restarting of services with the `bal run` command as an experimental feature.
+
+    ```
+    $ bal run --watch
+    ```
 
 #### OpenAPI tool
 
@@ -100,6 +148,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 
 #### Language Server
 
+- Added navigation and reference-finding support for object `init` functions.
+
 ### Bug fixes
 
 To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) of the repositories below.
@@ -113,6 +163,78 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ### Improvements
 
+- Added support to mark a Java dependency as GraalVM compatible in the `Ballerina.toml` file as follows.
+
+    ``` toml
+    [[platform.java11.dependency]]
+    groupId = "<group-id>"
+    artifactId = "<artifact-id>"
+    version = "<version>"
+    graalvmCompatible = true
+    ```
+
+- Introduced an experimental build option to enable memory-efficient compilation for large packages to prevent out-of-memory issues that can happen during the initial compilation which happens with a clean Central cache.
+
+    ```
+    $ bal build --optimize-dependency-compilation
+    ```
+
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+### Language changes
+
+ A bug that caused an invalid static type to be set for optional XML attribute access on `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
+
+```ballerina
+public function main() {
+    xml:Element xe = xml `<x attr="e"/>`;
+    string? attr = xe?.attr; // Compile-time error now.
+}
+```
+
+### Ballerina library changes
+
+#### `jwt` package
+
+- Add support to directly provide `crypto:PrivateKey` and `crypto:PublicKey` in JWT signature configurations. With this update, the `config` field in `jwt:IssuerSignatureConfig` now supports `crypto:PrivateKey`, and the `certFile` field in `jwt:ValidatorSignatureConfig` now supports `crypto:PublicKey`. These additions will breaks the previous union-type support.
+    ```ballerina
+    // previous `jwt:IssuerSignatureConfig` record
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|string config?;
+    |};
+
+    // new `jwt:IssuerSignatureConfig` record
+    public type IssuerSignatureConfig record {|
+        // ... other fields
+        record {|
+            crypto:KeyStore keyStore;
+            string keyAlias;
+            string keyPassword;
+        |} | record {|
+            string keyFile;
+            string keyPassword?;
+        |}|crypto:PrivateKey|string config?;
+    |};
+
+    // previous `jwt:ValidatorSignatureConfig` record
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+
+    // new `jwt:ValidatorSignatureConfig` record
+    public type ValidatorSignatureConfig record {|
+        // ... other fields
+        string|crypto:PublicKey certFile?;
+    |};
+    ```

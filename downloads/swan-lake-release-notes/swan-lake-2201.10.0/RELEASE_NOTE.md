@@ -119,7 +119,7 @@ public function main() returns error? {
 
 - Introduced support for server-sent events.
 - Introduced service contract types.
-- Introduced default status code response record type.
+- Introduced the default status code response record type.
 
 #### `ldap` package
 

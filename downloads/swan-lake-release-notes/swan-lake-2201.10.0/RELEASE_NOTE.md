@@ -111,7 +111,7 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 
 ### Improvements
 
-- Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level, have to be moved from modules to the package root to continue to be identified as resources.
+- Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level have to be moved from modules to the package root to continue to be identified as resources.
 
   >**Note:** Any resources within the current package, as well as those exported from package dependencies, can be accessed via an [external function](https://ballerina.io/learn/by-example/interface-to-external-code/).
 

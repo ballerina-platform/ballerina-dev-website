@@ -80,10 +80,10 @@ The following examples will result in errors.
 
 ```ballerina
 [int, string...] tuple1 = [1, "hello"];
-int val1 = tuple1.shift();          // inherent type violation
+var val1 = tuple1.shift();          // inherent type violation
 
 [int, int] tuple2 = [1, 2];
-int val2 = tuple2.shift();          // inherent type violation
+var val2 = tuple2.shift();          // inherent type violation
 
 [string, string...] tuple3 = ["hello"];
 tuple3.unshift(154);                // inherent type violation

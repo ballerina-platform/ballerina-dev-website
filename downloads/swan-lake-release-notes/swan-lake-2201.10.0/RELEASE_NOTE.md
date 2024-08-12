@@ -97,7 +97,7 @@ var val5 = tuple5.remove(1);        // inherent type violation
 A new runtime Java API is added to check if remote management is enabled, via a build option.
 
 ```java
-boolean isRemoteEnabled();
+boolean isRemoteManagementEnabled();
 ```
 
 The above API can be called via a Ballerina environment instance as follows.
@@ -107,7 +107,7 @@ import io.ballerina.runtime.api.Repository;
 import io.ballerina.runtime.api.Environment;
 
 Repository repository = env.getRepository();
-boolean isRemoteEnabled  = repository.isRemoteEnabled();
+boolean isRemoteManagementEnabled  = repository.isRemoteManagementEnabled();
 ```
 
 ### Bug fixes

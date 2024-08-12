@@ -30,18 +30,7 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### `http` package
-
-- Introduced support for server-sent events.
-- Introduced service contract type.
-- Introduced default status code response record type.
-
 ### Improvements
-
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Bug fixes
 
@@ -125,6 +114,23 @@ public function main() returns error? {
     io:println(serverConfig);
 }
 ```
+
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract types.
+- Introduced the default status code response record type.
+
+#### `ldap` package
+
+- Added support for the main operation types in LDAP.
+
+### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
 
 ### Deprecations
 

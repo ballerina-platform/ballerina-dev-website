@@ -118,7 +118,7 @@ public function main() returns error? {
 #### `http` package
 
 - Introduced support for server-sent events.
-- Introduced service contract type.
+- Introduced service contract types.
 - Introduced default status code response record type.
 
 #### `ldap` package

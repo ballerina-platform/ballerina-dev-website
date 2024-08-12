@@ -112,7 +112,8 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ### Improvements
 
 - Resources are now expected at the package level, and module-level resources are no longer supported. Resources that were previously included at module-level, have to be moved from modules to the package root to continue to be identified as resources.
-  Any resources within the current package, as well as those exported from package dependencies, can now be accessed through an interop function.
+
+  >**Note:** Any resources within the current package, as well as those exported from package dependencies, can be accessed through an interop function.
 
     * Old package structure
 

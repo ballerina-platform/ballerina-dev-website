@@ -30,20 +30,25 @@ If you have not installed Ballerina, download the [installers](/downloads/#swanl
 
 ### New features
 
-#### `http` package
-
-- Introduced support for server-sent events.
-- Introduced service contract type.
-- Introduced default status code response record type.
-
 ### Improvements
 
-#### `http` package
-
-- Added connection eviction support for the HTTP listener.
-- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
-
 ### Bug fixes
+
+- A bug that caused an invalid static type to be set for an additive expression with operands of an XML and string subtype has been fixed.
+
+```ballerina
+public function main() {
+    xml<xml:Element> x = xml `<bar/>`;
+    string s1 = "foo";
+
+    // Used to result in an incompatible types error, allowed now.
+    xml<xml:Element|xml:Text> r1 = x + s1;
+
+    "foo"|"bar" s2 = "foo";
+    // Compile-time error now.
+    xml<xml:Element|xml:Comment> r2 = x + s2;
+}
+```
 
 To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)](https://github.com/ballerina-platform/ballerina-lang/issues?q=is%3Aissue+label%3ATeam%2FCompilerFE+milestone%3A2201.10.0+is%3Aclosed+label%3AType%2FBug).
 
@@ -129,6 +134,61 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+#### `data.yaml` package
+
+The [`data.yaml`](https://lib.ballerina.io/ballerina/data.yaml/latest/) package has been introduced to parse YAML as Ballerina `anydata` values with data projection and to serialize Ballerina values to YAML format.
+
+```ballerina
+import ballerina/data.yaml;
+import ballerina/io;
+
+type ServerConfig record {|
+    string host;
+    int port;
+    int[2] remotePorts;
+    DatabaseConfig database;
+|};
+
+type DatabaseConfig record {|
+    string dbName;
+    string username;
+|};
+
+public function main() returns error? {
+    // Similar to content read from a YAML file.
+    string yamlString = string `
+        host: "localhost"
+        port: 8080
+        remotePorts: [9000, 9001, 9002, 9003]
+        protocol: "http"
+        database:
+          dbName: "testdb"
+          username: "dbuser"
+          password: "dbpassword"`;
+
+    // Based on the expected type, it parses the YAML string to selectively construct the record value.
+    ServerConfig serverConfig = check yaml:parseString(yamlString);
+    io:println(serverConfig);
+}
+```
+
+#### `http` package
+
+- Introduced support for server-sent events.
+- Introduced service contract types.
+- Introduced the default status code response record type.
+
+#### `ldap` package
+
+- Added support for the main operation types in LDAP.
+
+### Improvements
+
+#### `http` package
+
+- Added connection eviction support for the HTTP listener.
+- Enhanced the configurability of Ballerina access logging by introducing multiple configuration options.
+
 ### Deprecations
 
 ### Bug fixes
@@ -140,6 +200,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 ### New features
 
 #### Language Server
+
+- Introduced the `Convert to configurable` code action to convert a module-level variable into a configurable variable.
+- Introduced the `Extract to configurable` code action to extract expressions or function arguments into configurable variables.
+- Introduced the `Add to Config.toml` code action to add configurable variables to the `Config.toml` file.
 
 #### CLI
 
@@ -154,6 +218,8 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 ### Improvements
 
 #### Language Server
+
+- Added navigation and reference-finding support for object `init` functions.
 
 ### Bug fixes
 
@@ -187,6 +253,17 @@ To view bug fixes, see the GitHub milestone for Swan Lake Update 10 (2201.10.0) 
 ### Bug fixes
 
 ## Backward-incompatible changes
+
+### Language changes
+
+ A bug that caused an invalid static type to be set for optional XML attribute access on `xml:Element` has been fixed for compliance with the specification. The static type now includes `error`.
+
+```ballerina
+public function main() {
+    xml:Element xe = xml `<x attr="e"/>`;
+    string? attr = xe?.attr; // Compile-time error now.
+}
+```
 
 ### Ballerina library changes
 

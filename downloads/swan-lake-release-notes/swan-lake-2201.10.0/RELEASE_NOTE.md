@@ -88,6 +88,10 @@ To view bug fixes, see the [GitHub milestone for Swan Lake Update 10 (2201.10.0)
 - Introduced support for parsing XML with record types with default values as the expected type, using the default values where required (i.e., if a value corresponding to the record field is not present in the XML value).
 - Introduced the option to choose between semantic and syntactic equality of XML elements and attributes.
 
+#### `graphql` package
+
+- Added support for GraphQL query complexity analysis, which can be used to enhance the GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` record now includes a new field named `queryComplexityConfig` to configure the query complexity analysis.
+
 ### Deprecations
 
 ### Bug fixes
@@ -207,36 +211,4 @@ public function main() {
         // ... other fields
         string|crypto:PublicKey certFile?;
     |};
-    ```
-
-#### `graphql` package
-
-- Add support to GraphQL query complexity analysis, which can be used to enhance the GraphQL service security by mitigating the risk of denial-of-service attacks. With this update, the `graphql:ServiceConfig` record now includes a new field `queryComplexityConfig` to configure the query complexity analysis.
-
-    ```ballerina
-    import ballerina/graphql;
-
-    @graphql:ServiceConfig {
-        // Following are the default values, which can be overridden.
-        queryComplexityConfig: {
-            maxComplexity: 100,
-            defaultFieldComplexity: 1,
-            warnOnly: false
-        }
-    }
-    service graphql:Service /graphql on new graphql:Listener(9090) {
-
-        // Defines a custom complexity value for the field
-        @graphql:ResourceConfig {
-            complexity: 10
-        }
-        resource function get profile(@graphql:ID int id) returns Profile {
-            // Implementation
-        }
-
-        // Uses the default field complexity value
-        resource function get greeting() returns string {
-            // Implementation
-        }
-    }
     ```

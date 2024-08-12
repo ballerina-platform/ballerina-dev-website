@@ -121,6 +121,10 @@ public function main() returns error? {
 - Introduced service contract type.
 - Introduced default status code response record type.
 
+#### `ldap` package
+
+- Added support for the main operation types in LDAP.
+
 ### Improvements
 
 #### `http` package
